@@ -207,11 +207,32 @@ still said 001-021, and a verbose RENAMES example. **5987 bytes** and eight sect
 intact. The card enforcing its own rule on itself is the point of having the rule
 printed on it.
 
-**Open at close:** the mirror REFRESH CADENCE is undecided and is now the most important
-open item -- a snapshot drifts the moment Kim edits, and a backup nobody refreshes is a
-false sense of safety. Then: the per-project credential audit of Drive; six repo/clone
-mismatches; two stale Quarto Pub prose claims; three unidentified orphan story covers;
-Desktop originals and the SoundCloud close awaiting go-aheads.
+### The cadence, decided and wired in
+
+Kim did not know the term, which was my fault for using it. Plainly: **the GitHub copy
+is a photocopy taken at one moment, and it does not update itself.** Every edit on Drive
+makes it one edit staler. A stale backup is worse than an obvious absence -- it reads as
+safety right up to the moment it fails.
+
+**Decision: Mechanism 5, item 12.** `pkm_backup()` now runs at every session close
+beside `pkm_health()`, and appears on `pkm_card.md`. It refreshes all five venues, every
+project and `Projects_Index`; runs `pkm_secret_scan()` as a HARD GATE that refuses to
+commit on any match; commits; pushes; and verifies against the SERVER rather than the
+return value.
+
+*Why not the alternatives.* A scheduled task needs the machine on and the R server up --
+a backup that silently stops running is precisely the failure being guarded against. On
+demand depends on remembering, which is what Mechanism 5 exists to replace. Attaching it
+to an existing trigger costs nothing and inherits a habit that already holds. Same
+principle the card was built on: *the trigger is the mechanism, not the list.*
+
+First live run: 967 files refreshed, 1 changed, committed, pushed, verified in sync.
+The card absorbed the extra call and came out at 6001 bytes against its 6144 budget.
+
+**Open at close:** the per-project credential audit of Drive; six repo/clone mismatches
+(confirm listsr is not simply PRIVATE); two stale Quarto Pub prose claims; three
+unidentified orphan story covers; Desktop originals and the SoundCloud account close
+awaiting go-aheads.
 
 ---
 

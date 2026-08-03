@@ -415,10 +415,18 @@ costs nothing here. *Raised by Claude, 2026-08-02.*
 source across 49 projects), verified from GitHub's trees API. See proj_PKM.md and
 Findings 027/028.
 
-**TASK — settle a refresh cadence.** The mirror is a point-in-time snapshot and starts
-drifting the moment Kim edits anything. Options: run `pkm_mirror_*` at session close as
-part of Mechanism 5; a scheduled task; or on demand before anything risky. **Undecided.**
-A backup nobody refreshes becomes a false sense of safety, which is worse than none.
+**DONE 2026-08-03 — the refresh cadence is settled: Mechanism 5, item 12.**
+`pkm_backup()` refreshes all five venues, every project and `Projects_Index`, runs
+`pkm_secret_scan()` as a hard gate, commits, pushes, and verifies against the SERVER
+rather than the return value. It now runs at every session close beside `pkm_health()`,
+and is on `pkm_card.md`. Kim can also run it alone at any time; it is safe when nothing
+has changed and says so.
+
+*Why this answer:* the alternatives were a scheduled task (needs the machine on and the
+R server up — a backup that silently stops running is the exact failure being guarded
+against) or on-demand (depends on remembering, which is what Mechanism 5 exists to
+replace). Attaching it to an existing trigger costs nothing and inherits a habit that
+already holds.
 
 **TASK — six repo/clone mismatches** (open since 2026-07-30). accessOAI, geContour,
 milestones and plainmaps have a public GitHub repo but no local clone; listsr and

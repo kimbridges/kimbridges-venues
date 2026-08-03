@@ -276,13 +276,25 @@ findings to Kim:
    named here, with its retention: scratch goes once the deploy is verified
    live, clones are permanent and belong in `C:\repos\`.
 11. **Run `pkm_health()`** and report the summary. Adopted 2026-07-31.
-   `source("G:/My Drive/Projects_Index/pkm_health.R"); pkm_health()`
+   `source("G:/My Drive/Projects_Index/pkm_health.R"); pkm_health(); pkm_backup()`
    This is the mechanical half of the checklist -- the part that does not
    depend on anyone remembering. It regenerates the works register and
    reports reconciliation failures, broken pointers, drift, size budgets,
    consolidation status and the pre-deletion gate. **Where a claim can be
    checked by the tool, the tool's answer is the record** -- not anyone's
    recollection, and not a note written in an earlier session.
+12. **Run `pkm_backup()`** -- retake the photocopy. Adopted 2026-08-03 (Kim).
+   The GitHub mirror is a point-in-time snapshot; it does not update itself, so
+   every edit on Drive makes it one edit staler. **A stale backup is worse than an
+   obvious absence: it reads as safety right up to the moment it fails.** Putting
+   it here means it fires on the same trigger as the rest of the close, rather
+   than on anyone remembering.
+   It refreshes all five venues, every project, and `Projects_Index` itself; runs
+   `pkm_secret_scan()` as a HARD GATE and refuses to commit if anything matches;
+   commits; pushes; and **verifies against the SERVER, not the return value** --
+   `gert::git_push()` reports success while transferring nothing (Finding 028).
+   Kim can run it alone at any time; it is safe to run when nothing has changed,
+   and says so.
 
 The checklist is the explicit close-the-loop step. Running it
 takes a few minutes. Skipping it is what produces silent drift.

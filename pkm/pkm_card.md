@@ -127,4 +127,4 @@ placeholders and git reads them as corrupt or empty. Decided 2026-07-31.
 
 ## RUN AT SESSION CLOSE
 
-`source("G:/My Drive/Projects_Index/pkm_health.R"); pkm_health()`
+`source("G:/My Drive/Projects_Index/pkm_health.R"); pkm_health(); pkm_backup()`
