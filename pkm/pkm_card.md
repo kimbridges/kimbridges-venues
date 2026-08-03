@@ -3,11 +3,10 @@
 _The one page read at EVERY session start. Created 2026-07-31 (Tier 3)._
 _Budget: 6 KB. If it outgrows that, the surplus belongs in pkm_findings.md._
 
-Full detail lives in `pkm_findings.md` (Findings 001-021). This card exists because
-that file reached 66 KB and **nothing was firing it** -- two rules already written
-there were broken within three days of writing them. See Finding 020. The principle
-is deferred.md's: *the trigger is the mechanism, not the list.*
-
+Full detail lives in `pkm_findings.md` (Findings 001-028). This card exists because
+that file passed 66 KB with **nothing firing it** -- rules were broken days after being
+written (020). *The trigger is the mechanism, not the list.*
+Full detail lives in `pkm_findings.md` (Findings 001-028). This card exists because
 ---
 
 ## THE GROUND-TRUTH RULE
@@ -46,11 +45,14 @@ headings, known strings), never by reading size.
 | sync or mirror two folders | 021 -- reconcile COUNTS after; case-only renames delete |
 | render one format of a book | 021 -- it clears the other formats from output-dir |
 | write a `grep` to locate a line | 022 -- `fixed=TRUE` ignores `^`; ALWAYS check the match count before using the index |
+| push, or trust a tool's "success" | **028** -- verify against the REMOTE, not the return value |
+| commit anything to a repo | **027** -- `pkm_secret_scan()` first, with `stopifnot` |
+| create a folder or scratch tree | **026** -- `C:\temp` ONLY; the bridge cannot rmdir |
 | conclude a document has NO SOURCE | **025** -- read the PDF's producer string first |
 
 ---
 
-## ABSENCE CLAIMS -- the rule broken twice this week
+## ABSENCE CLAIMS
 
 **Never assert something is missing without proving it.** An absence written into
 the PKM becomes load-bearing: the next session reads the note instead of re-checking.
@@ -59,22 +61,17 @@ the PKM becomes load-bearing: the next session reads the note instead of re-chec
 - Before calling a site dead: retry, vary the user-agent, check DNS, try http and
   https, bare and www. **A live site can return 403 to curl** -- exposure.co does
   (020).
-- If any of that is untried, the honest statement is **"could not reach it"**, not
-  "it is gone".
+- Untried? The honest statement is **"could not reach it"**, not "it is gone".
 
 ---
 
 ## RENAMES: forward pointers move, history does not
 
-Adopted 2026-07-31 (Kim). When something is renamed, **update every pointer that
-tells a future session where to go**, and **leave every record of what was true at
-the time**. A log entry saying "the working folder said `Cinque_terra`" is the fact
-being recorded; rewriting it would falsify the past. A deferred item saying
-"reopen `Cinque_terra/...`" is an instruction, and a stale instruction sends the
-next session to a path that no longer exists.
-
-The test: *is this sentence telling someone where to go, or telling them what
-happened?* Move the first, preserve the second.
+Adopted 2026-07-31 (Kim). **Update every pointer that tells a future session where to
+go; leave every record of what was true at the time.** The test: *is this sentence
+telling someone where to go, or telling them what happened?* Move the first, preserve
+the second. A stale instruction sends the next session to a path that is gone; a
+rewritten log entry falsifies the past.
 
 ---
 

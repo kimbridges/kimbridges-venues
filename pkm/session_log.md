@@ -179,11 +179,39 @@ The common shape: each failure was silent at the point of use and visible only f
 outside -- the remote ref, the file's content, the user's own machine. *Where a tool
 reports on its own work, get the answer somewhere the tool does not control.*
 
-**Open at close:** a refresh cadence for the mirror is UNDECIDED and matters -- a backup
-nobody refreshes is a false sense of safety. Kim to revoke the April-2024 key. The
-broader Drive credential audit, run per-project in batches. Six repo/clone mismatches.
-Plus the standing items: two stale Quarto Pub prose claims, three unidentified orphan
-story covers, Desktop originals and the SoundCloud close awaiting go-aheads.
+### The gap found during cleanup: the PKM was not backing up the PKM
+
+After the migration was declared done, one check remained worth making: was
+`Projects_Index` in it? It was not. The venues and 49 projects were on GitHub; the
+index that makes them findable was still single-copy on Drive -- `pkm_health.R`, every
+`proj_*.md`, 83 KB of findings, the session log and its archive.
+
+Added as `pkm/`: 87 files, 2.0 MB. Repo now carries **969 blobs**. The reasoning is
+worth keeping: the venues and projects can be re-read from their own files, but nothing
+else records WHY a decision was made, what was tried and rejected, or which mistakes
+have already been paid for once. **Backing up the work and not the index leaves a future
+reader with the artifacts and no map.**
+
+Kim confirmed the April-2024 Anthropic key is deleted; that conditional is closed.
+
+### The card earned three new triggers, and had to be trimmed to hold them
+
+`pkm_card.md` gained rows for the three failures that would otherwise recur: verify a
+push against the REMOTE not the return value (028), run `pkm_secret_scan()` before any
+commit (027), and create scratch only in `C:\temp` because the bridge cannot remove
+directories (026).
+
+That took it to 6222 bytes against its own 6144 budget, so it was trimmed rather than
+allowed to breach: the stale "broken twice this week" heading, a Findings count that
+still said 001-021, and a verbose RENAMES example. **5987 bytes** and eight sections
+intact. The card enforcing its own rule on itself is the point of having the rule
+printed on it.
+
+**Open at close:** the mirror REFRESH CADENCE is undecided and is now the most important
+open item -- a snapshot drifts the moment Kim edits, and a backup nobody refreshes is a
+false sense of safety. Then: the per-project credential audit of Drive; six repo/clone
+mismatches; two stale Quarto Pub prose claims; three unidentified orphan story covers;
+Desktop originals and the SoundCloud close awaiting go-aheads.
 
 ---
 

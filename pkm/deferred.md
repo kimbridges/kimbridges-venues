@@ -431,8 +431,14 @@ first attempt without an extension filter hung the bridge and Kim had to interru
 Now filtered, but still slow over Drive Stream, so run it per-project in batches rather
 than all at once. `.Renviron` legitimately holds keys and is not a finding.
 
-**CONDITIONAL — if the Anthropic key was ever active.** Kim was asked to revoke the
-April-2024 `sk-ant-` key found in `Projects/LLM_API_R/Claude_API.qmd`. It was never
-published, so exposure was limited to Kim's own disk. *If revocation is confirmed, close
-this. If not done, it stays open.*
+**CLOSED 2026-08-03 — the Anthropic key is revoked.** Kim deleted the April-2024
+`sk-ant-` key found in `Projects/LLM_API_R/Claude_API.qmd`. It was never published,
+so exposure was limited to his own disk, and it is now dead regardless. Source is
+clean; `pkm_secret_scan()` gates every commit; original at `LLM_API_R/_backup/`.
 
+**DONE 2026-08-03 — the PKM itself is now mirrored.** `Projects_Index` was NOT in the
+first migration: the venues and project source went to GitHub, but not the index that
+makes them findable. Added as `pkm/` — 87 files, 2.0 MB, including `pkm_health.R`,
+every `proj_*.md`, `pkm_findings.md`, the session log and its archive. Repo now carries
+**969 blobs**. The artifacts could be re-read from their own files; nothing else records
+why a decision was made or which mistakes have already been paid for once.
