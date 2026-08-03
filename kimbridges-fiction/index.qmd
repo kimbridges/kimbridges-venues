@@ -1,0 +1,15 @@
+---
+title: "Fiction"
+listing:
+  contents: works
+  sort: "date desc"
+  type: grid
+  grid-columns: 2
+  image-height: auto
+  categories: true
+  fields: [image, title, subtitle, date, categories]
+  filter-ui: false
+  sort-ui: false
+---
+
+Imagined lives and invented places — long-form stories built as a collaboration between human direction and AI craft. Each is presented as an illustrated flipbook.

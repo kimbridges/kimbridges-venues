@@ -1,0 +1,13 @@
+---
+title: "My Name Is Nike"
+subtitle: "A graduate student's accidental tattoo becomes the credential that makes her science honest."
+date: 2026-06-26
+categories: ["Fiction", "Short Story", "Illustrated"]
+image: ../images/My_Name_Is_Nike.jpg
+pdf: ../pdfs/My_Name_Is_Nike.pdf
+---
+A young woman wakes after a blackout with the word *NIKE* inked across her forehead — and turns two years of humiliation into the unlikely key to a field study no one else could do. An illustrated short story about names, trust, and what it takes to earn the thing you were accidentally called.
+
+Pages: 25
+
+<iframe src="../viewer.html?pdf=My_Name_Is_Nike.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

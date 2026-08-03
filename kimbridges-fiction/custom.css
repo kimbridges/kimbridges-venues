@@ -1,0 +1,6 @@
+/* Fiction listing thumbnails — show full cover, no cropping */
+.card-img-top {
+  object-fit: contain !important;
+  background-color: #f8f8f8 !important;
+  max-height: 460px;
+}

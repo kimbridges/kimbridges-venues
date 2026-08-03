@@ -1,0 +1,20 @@
+_site/
+_book/
+.quarto/
+site_libs/
+_freeze/
+pdfs/
+images/
+*.pdf
+*.jpg
+*.jpeg
+*.png
+*.tif
+*.mp3
+*.mp4
+.Rproj.user/
+.Rhistory
+.RData
+
+# mirror-specific
+*.Rproj

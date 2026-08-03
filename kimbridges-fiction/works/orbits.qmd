@@ -1,0 +1,13 @@
+---
+title: "Orbits"
+subtitle: "A Japanese street artist spends a year on the road to prove he is a real artist."
+date: 2024-08-01
+categories: ["Fiction", "Novel", "Illustrated"]
+image: ../images/Orbits.png
+pdf: ../pdfs/Orbits.pdf
+---
+Tad Nakamura steps out of a gallery catalog and into his own story — a book-length journey through Los Angeles, Washington, Utrecht, London, Paris, and Italy, interpreting each place he sees through the lens of his Japanese culture. The longest and most demanding test of cooperative human–AI writing in the Gallery project.
+
+Pages: 183
+
+<iframe src="../viewer.html?pdf=Orbits.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>
