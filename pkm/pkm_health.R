@@ -854,3 +854,61 @@ pkm_secret_scan <- function(dir = VENUE_MIRROR, patterns = SECRET_PATTERNS,
                                       kind = character(0)))
   do.call(rbind, out)
 }
+
+
+## ---- pkm_backup(): retake the photocopy --------------------------------
+# The mirror is a point-in-time snapshot. It does not update itself, so every
+# edit on Drive makes the GitHub copy one edit staler. A stale backup is worse
+# than an obvious absence: it reads as safety right up to the moment it fails.
+# Adopted 2026-08-03 as part of Mechanism 5, so it fires on the same trigger as
+# the rest of session close rather than on anyone remembering.
+
+pkm_backup <- function(push = TRUE, message = NULL, quiet = FALSE) {
+  say <- function(...) if (!quiet) cat(...)
+  m <- VENUE_MIRROR
+  if (!dir.exists(file.path(m, ".git"))) stop("no repo at ", m)
+
+  say("refreshing mirror...\n")
+  ven <- c(PKM$venues$folder, "kimbridges-info")
+  prj <- setdiff(list.dirs(file.path(PKM$drive, "Projects"), recursive = FALSE,
+                           full.names = FALSE), grep("^_", list.dirs(
+    file.path(PKM$drive, "Projects"), recursive = FALSE, full.names = FALSE),
+    value = TRUE))
+  rv <- lapply(ven, function(v) pkm_mirror_venue(v))
+  rp <- lapply(prj, function(v) pkm_mirror_project(v))
+  rk <- pkm_mirror("pkm", PKM$index)
+  n  <- sum(vapply(c(rv, rp, list(rk)), function(x) x$tracked, numeric(1)))
+  pr <- sum(vapply(c(rv, rp, list(rk)), function(x) x$orphans_removed, numeric(1)))
+  mm <- sum(vapply(c(rv, rp, list(rk)), function(x) x$size_mismatch, numeric(1)))
+  say("  ", n, " files | ", pr, " pruned | ", mm, " size mismatches\n", sep = "")
+  if (mm > 0) stop("size mismatch after copy -- investigate before committing")
+
+  # HARD GATE. Never rely on GitHub to catch a secret: a private repo, or a
+  # pattern GitHub does not know, passes silently. Finding 027.
+  s <- pkm_secret_scan(m)
+  if (nrow(s)) { print(s); stop("SECRETS FOUND -- nothing committed") }
+  say("  secret scan: clean\n")
+
+  st <- gert::git_status(repo = m)
+  if (!nrow(st)) { say("no changes since last backup\n"); return(invisible(
+    list(files = n, changed = 0, pushed = FALSE, head = gert::git_log(repo = m)$commit[1]))) }
+  gert::git_add(c("venues", "projects", "pkm", "README.md", ".gitignore"), repo = m)
+  msg <- if (is.null(message))
+    paste0("Backup refresh: ", nrow(st), " changed of ", n, " tracked") else message
+  sig <- gert::git_signature("Kim Bridges", "kim.bridges@gmail.com")
+  cid <- gert::git_commit(msg, repo = m, author = sig, committer = sig)
+  say("  committed ", substr(cid, 1, 10), " (", nrow(st), " changed)\n", sep = "")
+
+  if (!push) return(invisible(list(files = n, changed = nrow(st), pushed = FALSE, head = cid)))
+  credentials::set_github_pat(Sys.getenv("GITHUB_TOKEN"))
+  invisible(utils::capture.output(
+    gert::git_push(remote = "origin", repo = m, verbose = TRUE), type = "message"))
+  # Verify against the SERVER, not the return value. git_push reports success
+  # while transferring nothing (Finding 028). git_remote_ls asks the server;
+  # GitHub's REST ref endpoint can lag a second behind a push.
+  rl <- gert::git_remote_ls("origin", repo = m)
+  ok <- identical(cid, rl$oid[rl$ref == "refs/heads/main"])
+  say("  push verified against server: ", ok, "\n", sep = "")
+  if (!ok) warning("push did NOT reach the server -- check verbose output")
+  invisible(list(files = n, changed = nrow(st), pushed = ok, head = cid))
+}
