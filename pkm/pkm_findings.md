@@ -1430,6 +1430,12 @@ under `verbose = TRUE`. Had the ref not been checked against GitHub's API, the s
 would have ended believing 880 files were backed up when 8 were.
   *Rule: verify a push against the REMOTE ref, never against the return value.*
 
+**One qualifier, learned the same day.** GitHub's `git/ref` endpoint can lag a second
+or two behind a successful push -- a check run immediately after reported a mismatch
+that resolved on the next call. Confirm with `gert::git_remote_ls()`, which asks the
+server directly, before concluding a push failed. The rule stands; the impatience does
+not.
+
 **2. A size read straight after a write reported 4.08 KB against a true 6101 bytes.**
 Finding 020 again, firing on the very file that prints the rule.
 
