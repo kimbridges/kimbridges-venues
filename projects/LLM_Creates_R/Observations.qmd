@@ -1,0 +1,80 @@
+# Observations & Thoughts
+
+:::::: columns
+::: {.column width="50%"}
+Creating this document was a whirlwind exercise. I felt the need to test some LLM developments and to bring the results to other people.
+
+I stated at the beginning that I wanted to show you some *generative AI concepts*.
+
+The two big concepts are ***narrative-style input*** and ***automatic, custom R code generation***. Both of these have significant implications for researchers.
+
+You've seen a range of examples of what this new technology delivers.
+
+What I chose to illustrate the power of AI generation and how it's presented required quick decisions.
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+![](observations_cover.png)
+:::
+::::::
+
+:::: columns
+::: {.column width="50%"}
+Now, it's time to look back and evaluate what's been learned.
+:::
+::::
+
+### Rapid Prototyping
+
+At the time this is being written, Claude's Project capability is only a few weeks old.
+
+I have quickly pulled together a bunch of make-believe scenarios that fit into my general research orientation: ethnobiology and ecology. There was no attempt to make any of the situations a real investigation. They're simple data frameworks that demonstrate the power (and shortcomings) of the technology.
+
+A big part of the demonstrations is the utility of guidelines. This is where you place the desired rule for creating R. Links to the files are in the Package Knowledge section. I could have fine-tuned the guidelines more. This might have produced better R code. Doing so would have slowed down the completion of this document. That would have been a negative consequence.
+
+Rest assured, in my own guideline files, I'm adding a lot of details that improve the R code in ways are important to me. I trust that other people will do the same. Having this capability is an important change in our approach to data analysis.
+
+### An Artifact is the Goal
+
+An artifact, in Anthropic's terminology, is a body of R code. The production of an artifact is, generally, the goal of each demonstration.
+
+The artifact is the framework for data organization, input and analysis. Perhaps, too, the artifact will produce some of the data interpretation. This is done before actual data are collected.
+
+You can create several sets of test data. Each set can focus on a different extreme in your research. Running these different sets shows you how different scenarios will look in your results
+
+A well-made artifact can be used again and again. You just give it new data. The first few times, you might use test data. After that, you can use it over and over for real data.
+
+Producing good artifacts can contribute to better and more efficient data analysis.
+
+### No Code Writing
+
+Writing R code is a skill. Technical skills get rusty without practice.
+
+If you don't use R for a long time (like 6 months or more), you'll likely need to relearn some parts of it.
+
+In this project, there was no R coding. I didn't add or modify any R code manually. If a change was needed, I just wrote a simple instruction in plain English. The LLM did the revision.
+
+This means you don't need to be an expert in R programming. You also don't need to spend time refreshing that skill.
+
+This saves time and makes research more efficient.
+
+### Dictating Data
+
+Laboring over a spreadsheet as you type in data can be an exhausting exercise.
+
+Note that virtually all of the example here use a narrative style of data entry. There are plenty of speech-to-text engines that automatically transcribe your words.
+
+The LLM model showed that you don't need to be consistent in how you structure the data. This was done automatically. That nicely fits a dictation style.
+
+Switching to dictating may not be easy. There is a reward. You might gain some efficiency. Perhaps more important, you might enter your data sooner and get analysis results rapidly.
+
+Learning this skill is a task that should be started sooner than later. Easier and faster research might be the motivation you need.
+
+### The "Photographs"
+
+Each chapter begins with an image generated using the Flux realism LoRA model on the fal.ai platform. These images serve to establish the chapter's context. They also function as storyboard references for fieldwork. These visual references ensure purposeful and informative photography at the research site.
+
+This approach underscores another utility of generative AI. Each image is produced by providing text descriptions to the image-generating LLM. The process is iterative, involving the refinement and reorganization of details through successive image generations until a suitable portrayal is achieved. This process creates reminders which will be important when doing the photographic documentation.

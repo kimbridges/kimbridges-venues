@@ -1,0 +1,578 @@
+# Photo Documentation
+
+Well-annotated set of images provide a way to keep track of a set of activities. This may be a daily photolog or a set of images relating to a topic such as the documentation of the collection a plant specimens, visiting a local market or interviewing people.
+
+The workflow associated with photo documentation is important. This version is based on using an Android phone to take the images, Windows and Google support for file transfers.
+
+## Getting Started
+
+There are a few standard steps needed to begin the process.
+
+### Library, Key and Default Value Initialization 
+
+```{r}
+#| label: Initialize
+
+## Basic packages
+library(tidyverse)   ## Lots of key tools
+library(ggmap)       ## Wrapper for Google maps API
+library(gt)          ## Tables
+library(here)        ## Directory assistance and simplification
+
+## Special packages
+library(png)         ## Read PNG files
+library(magick)      ## Manipulate images
+library(grobblR)     ## Build the PDF page from PNG images
+library(rjson)       ## Read JSON files
+library(exiftoolr)   ## Handle EXIF data in images
+library(sitemaps)    ## Make maps
+library(qpdf)        ## Handle PDF files (e.g., combine PDFs)
+library(webshot2)    ## Make PDF files
+
+## Use the Google API key (stored locally)
+api_key <- google_key()
+register_google(key = api_key)
+
+## Use two functions from sitemaps to initialize column values
+column <- site_styles()
+hide  <- site_google_hides()
+
+## Establish a theme that improves the appearance of a map.
+## this theme removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   linewidth=2),
+                    legend.position = "none")
+
+```
+
+### Functions
+
+The functions are in the following chunk. When these are developed more fully, they will be moved to a formal package.
+
+```{r}
+#| label: functions
+
+photo_thumbs <- function(in_folder, 
+                         exif_file,
+                         out_folder, 
+                         cap_height = 12,
+                         wrap_width = 35){
+  
+  ## Get the exif data for all the photos
+  photo_data <- read_csv(show_col_types = FALSE, 
+                         file=exif_file)
+
+  ## Get the names of all the files in the folder
+  files <- list.files(path=here(in_folder), 
+                    pattern="*.jpg", 
+                    full.names=TRUE, 
+                    recursive=FALSE)
+
+  ## Process each of the photos, one at a time
+  for (i in 1:length(files)){
+  
+    ## Get the photo and associated exif data
+    full_photo <- image_read(files[i])
+    
+    ## Make a small, reference image
+    small_photo <- image_scale(full_photo,"400") ## was "10%"
+  
+    ## Get the photo orientation
+    ## This is important for camera photos, not cell phone photos
+    ## oriented <- as.integer(photo_exif$orientation)
+  
+    ## Test if photo is portrait (if so, rotate) - not for cell photos
+    ## if(oriented == 6){small_photo <- image_rotate(small_photo,90)}
+    ## if(oriented == 8){small_photo <- image_rotate(small_photo,-90)}
+  
+    ## Get the place name
+    place_caption <- photo_data$location[i]
+  
+    ## Wrap the place_caption if necessary
+    place_caption <- str_wrap(place_caption, width=wrap_width)
+  
+    ## Add the caption above the place_caption
+    caption <- photo_data$caption[i]
+    if(!is.null(caption)){
+      caption <- str_wrap(caption, width=wrap_width)
+      place_caption <- paste0(caption,"\n",place_caption)}
+  
+    ## Create an image, then put a caption on the top
+    out_img <- image_ggplot(small_photo)
+    out_img <- out_img + 
+               ggtitle(place_caption) + 
+               theme(plot.title = 
+                     element_text(size = cap_height))
+    
+    cat(i,"  ", place_caption, "  ")
+  
+    ## Prepare a file name, then save the captioned image
+    out_name <- paste0(out_folder,"/out_",i,".png")
+    ggsave(filename = out_name,plot = out_img)
+    
+    } ## end photo loop
+  
+  } ## end function photo_thumbs
+
+#####################################################
+
+six_img_pdf <- function(temp_folder,
+                        image_title = "",
+                        page = 1,
+                        title_height = 18){
+
+## This function uses all the PNG images in the "temp_folder"
+## to create pages. Each page will have a title ("image_title"),
+## 6 thumbnails (created by the photo_thumbs function), and a
+## page number. The "page" parameter is the starting page number.
+## The result is a set of PDF files, one for each page.
+
+## Note that the PNG files are NOT deleted after they are used.
+  
+  ## This nested function is used to create a single pdf page.
+ 
+  build_page <- function(img_grob, 
+                         temp_folder,
+                         page, 
+                         image_title,
+                         title_height){
+    
+    page_content <- grob_layout(
+      title        = image_title,
+      title_height = title_height,
+      grob_row(
+        grob_col(img_grob[[1]]),
+        grob_col(img_grob[[2]])
+        ),
+      grob_row(
+        grob_col(img_grob[[3]]),
+        grob_col(img_grob[[4]])
+        ),
+      grob_row(
+        grob_col(img_grob[[5]]),
+        grob_col(img_grob[[6]])
+        ),
+      height = 279.4, 
+      width  = 215.9,
+      page_number = page)
+
+    ## Create the output file name
+    page_name <- paste0(temp_folder,"/page_",page,".pdf")
+    grob_to_pdf(
+      list(page_content),
+      file_name = page_name) 
+    } ## End function build_page
+
+## Get a list of the image names
+image_list <- list.files(path  = temp_folder,  
+                    pattern    = "*.png", 
+                    full.names = TRUE, 
+                    recursive  = FALSE)
+
+no_images <- length(image_list)
+
+## Initialize
+  page <- 1
+  j    <- 0
+  img_grob <- NULL 
+  img_grob[[1]] <- img_grob[[2]] <- img_grob[[3]] <- 
+  img_grob[[4]] <- img_grob[[5]] <- img_grob[[6]] <- " "
+  image_cache <- FALSE
+
+## Process each of the images
+for(i in 1:no_images){
+  
+  image_cache <- TRUE
+  
+  ## Count the items on the page (j)
+  j <- j + 1
+  
+  file_name <- paste0(temp_folder,"/out_",i,".png") 
+  img_grob[[j]] <- grob_image(file_name) 
+  
+  ## Use the mod function to check on the number of images
+  ## If there are six images, build the page
+  if(i %% 6 == 0){
+    build_page(img_grob     = img_grob,
+               temp_folder  = temp_folder,
+               page         = page, 
+               image_title  = image_title,
+               title_height = title_height)
+  
+    ## Reinitialize everything
+    j <- 0
+    page <- page + 1
+    img_grob[[1]] <- img_grob[[2]] <- img_grob[[3]] <- 
+    img_grob[[4]] <- img_grob[[5]] <- img_grob[[6]] <- " "
+    image_cache <- FALSE
+  } ## End of mod check for the number of images
+  
+} ## End of file loop
+
+  ## Test the cache to see if there is an "incomplete" page
+if(isTRUE(image_cache)){
+  build_page(img_grob     = img_grob,
+             temp_folder  = temp_folder,
+             page         = page, 
+             image_title  = image_title,
+             title_height = title_height)
+  } ## End cache test
+  
+} ## End function six_img_pdf
+
+#####################################################
+
+extract_exif <- function(in_folder){
+  
+## This function extracts a set of basic information for each
+## JPG photo in a folder ("in_folder"). The returned information
+## is $id, $file (base file name), $lat, $lon, $date, $time, $caption.
+
+## Get the list of images
+image_list <- list.files(path=here(in_folder),
+                    pattern="*.jpg", 
+                    full.names=TRUE, 
+                    recursive=FALSE)
+
+## Get the number of images to be processed
+no_images <- length(image_list)
+
+  ## Prepare a place to store the exif data
+  exif_data <- data.frame(id=NA, file=NA,
+                          lat=NA, lon=NA, 
+                          date=as.Date(NA), time=NA,
+                          caption=NA)
+
+  exif_out  <- NULL
+
+  ## Process each of the photos, one at a time
+  for (i in 1:length(image_list)){
+  
+    ## Number the photos
+    exif_data$id <- i
+  
+    ## Get the file name
+    exif_data$file <- basename(image_list[i])
+  
+    ## Here is where the heavy lifting is done
+    photo_exif <- exif_read(image_list[i],recursive = FALSE)
+
+    ## Get the photo orientation
+    ## Maybe not important for Android photos
+  
+    ## Store the location data
+    exif_data$lat <- unlist(photo_exif$GPSLatitude)
+    exif_data$lon <- unlist(photo_exif$GPSLongitude)
+  
+    ## Make the precision appropriate
+    exif_data$lat <- round(exif_data$lat, digits=5)
+    exif_data$lon <- round(exif_data$lon, digits=5)
+  
+    ## Process the date and time
+    exif_data$date <-
+       as.Date(substring(photo_exif$DateTimeOriginal,1,10),
+                         "%Y:%m:%d")
+    exif_data$time <- substring(photo_exif$DateTimeOriginal,12,16)
+    
+    ## Process the caption
+    exif_data$caption <- photo_exif$Description
+    
+    ## Add the row of data to the growing master list
+    exif_out <- bind_rows(exif_out, exif_data)
+  
+    } ## end loop for images
+ 
+   return(exif_out)
+
+  } ## end function extract_exif
+
+##################################################################
+
+extract_locs <- function(in_file){
+  
+## This function uses the Google reverse geocoding to get
+## locations from lat,lon data.
+## The data come from a file named "exif_info.csv" that
+## has coordinate info and a photo id.
+
+  ## Get the file with location information
+  photo_file <- read_csv(file=in_file)
+  
+  ## Initialize some data structures
+  file_row   <- data.frame(id=NA, loc_name=NA)
+  photo_locs <- NULL
+
+  ## Go through the data for each photo in the table
+  for (i in 1:length(photo_file)){
+    
+    ## Store the photo id
+    file_row$id <- photo_file$id[i]
+    
+    ## Put the location into a string
+    location_coords <- c(photo_file$lon[i], photo_file$lat[i])
+  
+    ## Reverse geocode
+    name_structure <- revgeocode(location_coords)
+    file_row$loc_name <- name_structure[1]
+  
+    ## Add the entry to the full set of info
+    photo_locs <- bind_rows(photo_locs, file_row)
+    
+    } ## end of photo_info loop
+  
+  ## Delete any rows that don't have an id
+  photo_locs <- photo_locs |> na.omit(id)
+  
+  return(photo_locs)
+  
+  } ## end of function extract_locs
+
+#######################################################
+
+```
+
+## Workflow
+
+### Overview
+
+The camera photos store considerable information in each image's metadata. This includes the date, time, and location of the photo. It is also possible to annotate each image by adding text to the "info" field in the exif data.
+
+The goal is to bring a subset of the camera images into R and use them to create pages of annotated thumbnail photos.
+
+Some of the process involves work with the camera. The rest is done on a PC. The boundary between what is done on each platform is fluid. For example, except for taking the photos, all the subsequent processing can be done on a PC. Alternatively, the photography, annotation and image organization can take place on the camera with fewer operations on the PC. It's even possible to mix the activities.
+
+The point is that there are several tasks, each of which can be done using facilities of the camera or PC.
+
+### General Steps
+
+1.  Take the photos.
+
+2.  At the end of the day, connect the phone to a computer with a USB cable.
+
+3.  Bring up the messages panel, scroll to the bottom to USB Preferences. Choose File Transfer/Android Auto.
+
+4.  On the PC, open the Internal Shared Storage folder and select the DCIM folder. Open it and choose the Camera folder. Open it. You'll see a listing of the image file names.
+
+5.  Choose the images covering the date/time range that you'll be using.
+
+6.  Open a PC folder that you'll be using to store the images. Use copy and paste to move a copy of the images into the PC folder.
+
+7.  Use the Windows Photo app (or any other high-end image editor, such as Photo Mechanic) to add captions to the images.
+
+You can add captions using the windows Photos on a PC. Open up the photos (or album). Click on the "i" (in a circle) icon to open an information panel. Type the caption at the top where it says "Add a description".
+
+## Photo Processing
+
+1.  Establish the photo file location and assign title (or use the default).
+
+2.  Create an external file of the EXIF, location name and caption data.
+
+3.  Print tables of the photo data as PDF files. Use the pages to make a single document here and in the following steps.
+
+4.  Create pages with 6-up captioned thumbnail images.
+
+5.  Create a map page showing the photo locations.
+
+# The Processing Procedure
+
+## Initialize
+
+This is likely the only place you need to make modifications.
+
+Once the values are set, just run the entire set of code. 
+
+The result is a PDF document that has pages showing a map with photo locations, two lists of information about the photos, and a set of pages with thumbnails of the photos (along with captions).
+
+Note: This who procedure will likely be "encapsulated" to streamline the process. For now, the code is exposed to aid in the development of the functionality.
+
+```{r}
+#| label: controls
+
+## The daily folder to be processed.
+daily_folder  <- "Japan"
+
+## The name of the folder with daily photos.
+photos_folder <- "photos"
+
+## Title for the pages.
+title         <- daily_folder
+
+## Type of basemap (options: satellite, roadmap, hybrid, terrain)
+map_type      <- "roadmap"
+
+## Thumbnail captions
+wrap_width    <- 40  ## Default is 35
+cap_height    <- 24
+
+## Title characteristics (title at the top of the thumbs page)
+title_height  <- 18  ## Default is 18
+
+############### DON'T CHANGE THE LINES BELOW #################
+
+## Folder for the temporary files.
+## Create this and make sure it isn't read-only (use "properties).
+temp_folder   <- here("temp_folder")
+
+## Folder for the photos to be processed (handled automatically).
+in_folder     <- here(paste0(photos_folder,"/",daily_folder))
+
+```
+
+## Document the Photos
+
+Make a file that stores the basic exif data for each JPG images.
+
+```{r}
+#| label: extract
+
+## Build an external file with the photo information
+
+## Extract the EXIF information
+photo_info <- extract_exif(in_folder = in_folder)
+
+## Create a table documenting the photos
+exif_data <- gt(photo_info) |>
+  cols_hide(columns = c(lat,lon)) |>
+  tab_header(title=title)
+
+## Write the EXIF table into a PDF file
+gtsave(exif_data, filename=paste0(temp_folder,"/exif.pdf"))
+
+## Write the extracted data into a file where the photos are stored
+exif_file <- paste0(in_folder,"/exif_info.csv")
+
+write_csv(photo_info,file=exif_file)
+
+```
+
+## Location Names
+
+Google reverse geocoding is used to obtain location names from the coordinate information stored in the "exif_info.csv" file.
+
+```{r}
+#| label: locnames
+
+## Use the name from the previous step for the exif file
+## Do the reverse geolocation on the coordinates
+photo_locations <- extract_locs(in_file = exif_file)
+
+## Create a table with the photo location names
+loc_table <- gt(photo_locations)|>
+  tab_header(title=title) 
+
+## Save the table to a PDF file
+gtsave(loc_table, filename=paste0(temp_folder,"/locs.pdf"))
+
+## Add the location to the exif_info file
+exif <- read_csv(file=exif_file)
+exif$location <- photo_locations$loc_name
+write_csv(exif,file=exif_file)
+
+```
+## Photo Thumbs
+
+```{r}
+#| label: pthumbs
+
+## This creates thumbnail images and
+## puts the caption and location above each image.
+## The exif_file comes from a previous step
+
+photo_thumbs(in_folder = in_folder, 
+             exif_file = exif_file, 
+             out_folder = temp_folder,
+             cap_height = cap_height,
+             wrap_width = wrap_width)
+
+```
+
+## Six-Thumbnail Pages
+
+```{r}
+#| label: Sixup
+
+## Put six images from the photo_thumbs output on a page.
+
+six_img_pdf(temp_folder = temp_folder, 
+            image_title = title)
+
+## Remove the temporary images
+png_list <- list.files(temp_folder,
+                    pattern="*.png", 
+                    full.names=TRUE, 
+                    recursive=FALSE)
+
+unlink(png_list)
+
+```
+
+## Map
+
+```{r}
+#| label: maplocs
+
+## Read the stored data about each photo
+data_table <- read_csv(file=paste0(in_folder,"/exif_info.csv"))
+
+## Rename column to "text" to get the id as a label
+data_table <- data_table |>
+  dplyr::rename(text = id)
+
+## Create a basemap with a satellite base
+column$gmaptype <- map_type
+
+basemap <- site_google_basemap(datatable = data_table)
+
+## Create the map
+loc_map <- ggmap(basemap) +
+  site_points(datatable = data_table) +
+  site_labels(datatable = data_table) +
+  simple_black_box +
+  labs(caption = title)
+
+## Save the map as a PDF file
+ggsave(loc_map,filename=paste0(temp_folder,"/map.pdf"), 
+       width=7, height=7, units = "in")
+
+```
+
+## One PDF
+
+```{r}
+
+## Create a name for the PDF that combines all the info.
+pdf_name <- paste0(in_folder,"/",daily_folder,".pdf")
+
+## Create a temporary name for the combined PDF pages.
+pdf_temp <- paste0(in_folder,"/",daily_folder,"_temp.pdf")
+
+## Put on the early pages
+pdf_combine(input=c(paste0(temp_folder,"/map.pdf"),
+                    paste0(temp_folder,"/exif.pdf"),
+                    paste0(temp_folder,"/locs.pdf")),
+            output=pdf_temp)
+
+## Remove PDF files already used
+unlink(c(paste0(temp_folder,"/map.pdf"),
+         paste0(temp_folder,"/exif.pdf"),
+         paste0(temp_folder,"/locs.pdf")))
+
+## Make a list of the thumbnail pages
+pdf_list <- list.files(path=temp_folder,
+                    pattern="*.pdf", 
+                    full.names=TRUE, 
+                    recursive=FALSE)
+
+## Add the 6-up thumb pages to the previous PDF
+pdf_combine(input=c(pdf_temp,pdf_list),
+            output=pdf_name)
+
+## Get rid of the remaining temporary PDF files
+unlink(pdf_list)
+unlink(pdf_temp)
+
+```
+

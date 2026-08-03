@@ -1,0 +1,39 @@
+
+# Process the Notes File
+
+```{r}
+
+## Download the Google Drive file.
+drive_download("notes.txt",type = "txt", overwrite = TRUE)
+
+## Read a multi-line file with basic citations.
+data <- readLines("notes.txt", warn = FALSE)
+
+## Give instructions on what to do.
+prompt <- "The input file has bibliographic citations, along with some comment lines. Ignore the comment lines. Convert the bibliographic citations into a standard BibTex format. If possible, include the DOI data. If you find an abstract for an article, include it as well. Don't include any comments in your response."
+
+## Define the LLM role.
+role <- "You are a bibliographic expert. You know the various formats that are used in the scientific literature. You are able to convert from one format to another. You can also find the DOI data and abstracts for an entry."
+
+## Enhance the bibliographic citation.
+response <- analyzeTXT(analysis_text = data,
+                       AI_role = role,
+                       analysis_prompt = prompt,
+                       LLM = LLM_alt,
+                       apiKey = apiKey,
+                       connecttimeout = 90)
+
+## Check to see what was added.
+## cat(response)
+
+## Get rid of extra characters and the start and end.
+## response_clean <- substr(response,11,9999)
+## response_clean <- chartr("`", " ", response_clean)
+
+response
+
+## Append the result to a file.
+cat(response, file="references.bib", append = FALSE)
+
+
+```

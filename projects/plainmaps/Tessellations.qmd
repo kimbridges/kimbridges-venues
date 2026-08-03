@@ -1,0 +1,320 @@
+
+# Tessellations
+
+BIG PROBLEMS -- DON'T USE UNTIL FIXED
+
+Here is the problem. You have a set of points. Each point belongs to a category. For now, let's assign each point a color. The goal is to extend the color outward from each point until it bumps into a color coming from another point. This makes a mosaic of color. Each colored cell in the mosaic has a data point at its center. This is called a "Voronoi tessellation."
+
+You can see that a tessellation divides a plane into regions based on the distances between a set of points. The visualization of this process produces a "Voronoi diagram."
+
+Creating a Voronoi diagram occurs inside a boundary. This outline may be a square or a polygon.
+
+Voronoi tessellations are an interesting way to fill a boundary with colors based on data values at geographic locations.
+
+## Initializing the Packages
+
+As usual, it is necessary to initialize some R packages to provide the functions needed to handle the data and create the visualizations.
+
+```{r}
+#| label:   core-tess
+#| message: false
+#| echo:    true
+#| warning: false
+
+
+## Set an option for the read_csv function
+options(readr.show_col_types = FALSE) ## Suppress warning msg
+
+## Initialize the standard packages
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(gt)
+
+## Sitemaps
+library(sitemaps)
+library(plainmaps)
+
+## Useful tools
+library(remotes)
+
+## Initialize specialized packages
+## remotes::install_github("garretrc/ggvoronoi", dependencies = TRUE, build_opts = c("--no-resave-data"))
+library(ggvoronoi)
+
+library(ggforce)
+
+## Initialize for Sitemaps
+column <- site_styles()
+hide   <- site_google_hides()
+
+## Read stored border data
+oahu_border_400 <- read_csv(file = 
+                   "hawaii_400/oahu_outline.csv")
+
+## Themes
+plain_background_theme <- theme(
+  panel.border     = element_blank(), 
+  panel.grid       = element_blank(),
+  panel.background = element_blank(),
+  axis.text        = element_blank(),
+  axis.ticks       = element_blank(),
+  axis.title       = element_blank()) 
+
+```
+
+## An Example Tessellation
+
+## Create a Tesselation
+
+Tessellations are built inside a bounding area. For our purposes, this is an area on a map. Inside this area there are data points. Each data point represents a classification unit (such as a forest type, a weather station, or a "magnet location" like a school).
+
+1.  Outline the area.
+
+2.  Define the units and their central locations (centroids).
+
+3.  Create and plot the Voronoi tessellation.
+
+```{r}
+#| label:   step1
+#| message: false
+#| echo:    true
+#| warning: false
+
+## STEP 1: Outline the area
+
+## Outline data obtained from Google Maps.
+## Google maps often gives order of the coordinates "backwards".
+kakaako <- read_csv(file =
+  "lat,      lon
+   21.29581, -157.86933
+   21.29045, -157.86118
+   21.29449, -157.85736
+   21.29317, -157.85504
+   21.29125, -157.85616
+   21.29217, -157.85826
+   21.29105, -157.85937
+   21.29085, -157.85577
+   21.29137, -157.85543
+   21.28893, -157.84852
+   21.29993, -157.84414
+   21.30513, -157.85834
+   21.30209, -157.86319
+   21.30317, -157.86422")
+
+## Swap the order of the columns in the outline.
+## The expected order is x, y, group. (Group handles "islands".)
+## Make sure the names of the columns are correct.
+kakaako <- data.frame(kakaako$lon, kakaako$lat, "A")
+names(kakaako) <- c("lon", "lat", "group")
+
+## Check the outline
+ggplot(kakaako) +
+  geom_polygon(mapping=aes(x=lon, y=lat),fill = "lightgrey", 
+               color = "black") +
+  geom_point(aes(x=lon, y=lat, color = "red"))
+```
+
+```{r}
+#| label:   step2
+#| message: false
+#| echo:    true
+#| warning: false
+
+## STEP 2: Define the units and their centroids
+
+## These are the centroid locations of the different areas.
+districts <- read_csv(file = 
+      "type,          lat,      lon
+       shipping,      21.30037, -157.86586
+       industrial,    21.29842, -157.85641
+       auto sales,    21.29653, -157.86079
+       recreation,    21.29319, -157.86435
+       recreation,    21.29057, -157.85146
+       education,     21.29891, -157.84938
+       auto sales,    21.29956, -157.85313
+       recreation,    21.29924, -157.85847
+       dining,        21.29865, -157.86144
+       dining,        21.30169, -157.86259
+       entertainment, 21.29432, -157.85372
+       industrial,    21.29466, -157.84918
+       industrial,    21.29677, -157.85195
+       shipping,      21.29253, -157.85973")
+
+## Create a lookup table for the color assignments.
+lookup_list <- read_csv(file = 
+     "type,           tile_color
+      dining,         gold
+      education,      green
+      entertainment,  lightgreen
+      industrial,     blue
+      recreation,     purple
+      shipping,       magenta
+      auto sales,     tomato")
+
+## Merge the look-up table with the districts table.
+districts <- merge(districts, lookup_list, by="type")
+```
+
+```{r}
+#| label:   step3
+#| message: false
+#| echo:    true
+#| warning: false
+
+## STEP 3: Create and plot the voronoi tessellation
+
+## Plot the Voronoi tiles.
+ggplot(districts) +
+  geom_voronoi(mapping=aes(x=lon,y=lat,fill=type), 
+               outline=kakaako, 
+               color="black") +
+  scale_fill_discrete(name = "District", 
+                      labels = unique(districts$type)) +
+  scale_color_manual(values=lookup_list$tile_color)
+
+```
+
+## Enhance the Tessellation
+
+Adjacent areas that are the same color don't need to have a boundary drawn between the data location (centroids).
+
+The next example modifies the previous code to eliminate the internal boundaries.
+
+THIS IS NOT WORKING
+
+Alternative
+
+```{r}
+
+colnames(kakaako) <- c("x","y")
+
+kakaako2 <- dplyr::select(kakaako, x, y)
+kakaako2 <- data.frame(kakaako2)
+
+
+ggplot(districts, aes(lon, lat, group = -1L)) +
+  geom_voronoi_tile(aes(fill = type), colour = "black",
+                    linetype = 0,
+                    bound=kakaako2) +
+  geom_polygon(data=kakaako2, aes(x,y),
+               linetype="solid",
+               color="black",fill=NA) +
+  plain_background_theme
+                    
+```
+
+
+```{r}
+#| label:   merge
+#| message: false
+#| echo:    true
+#| warning: false
+
+## This version visually merges the areas that are equal and adjacent.
+## The area is outlined with geom_polygon.
+## Lots of theme code used to eliminate the background stuff.
+
+vor <- ggplot(districts, aes(x=lon, y=lat, fill=type)) +
+  geom_voronoi(outline=kakaako) +
+  geom_polygon(data=kakaako,mapping = aes(x=lon, y=lat), 
+               color = "black", fill=NA) +
+  scale_fill_discrete(name = "District", 
+                      labels = unique(districts$type)) +
+  scale_color_manual(values=lookup_list$tile_color) +
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.text.x=element_blank(), 
+        axis.ticks.x=element_blank(), 
+        axis.text.y=element_blank(), 
+        axis.ticks.y=element_blank()) +
+  labs(x="",y="")
+
+vor
+```
+
+## Market Draw
+
+Colors are not mapping properly.
+
+```{r}
+#| label:   markets
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Locations of Costco Warehouse stores on O`ahu.
+stores <- read_csv(file = 
+ "name,       address,             lat,      lon,        tile_color
+  Iwilei,     525 Alakawa St,      21.30893, -157.85833, red
+  Hawaii Kai, 333A Keahole St,     21.33105, -157.83748, blue
+  Waipahu,    94-1231 Ka Uka Blvd, 21.42206, -158.00944, orange
+  Kapolei,    4589 Kapolei Pkwy,   21.34785, -158.02916, yellow")
+
+## Print a data confirmation table.
+gt(stores)
+
+## Confirm the map border.
+ggplot(oahu_border_400) +
+  geom_polygon(mapping=aes(x=lon, y=lat),fill = "lightgrey", 
+               color = "black") +
+  coord_fixed(1.1)
+
+## Plot the Voronoi tiles.
+ggplot(stores, aes(x=lon,y=lat,fill=tile_color)) +
+       geom_voronoi(outline=oahu_border_400, 
+                    color="black") +
+ scale_fill_discrete(name   = "Store", 
+                     labels = stores$name)  +
+ scale_color_manual(values=stores$tile_color,
+                    labels=stores$name) +
+ coord_fixed(1.1)
+
+```
+
+Another Try
+
+```{r}
+schools <- readr::read_csv(file = 
+"number, school,	  lon,	      lat,      color
+1, Roosevelt,  −157.83743,	21.31061, red
+2, Kaiser,	    −157.69538,	21.28552, blue
+3, Kalani,	    −157.77375,	21.27865, green
+4, Moanalua,	  −157.90036,	21.34712, yellow
+5, Kalaheo,	  −157.75689,	21.40925, purple
+6, Mililani,	  −158.01056,	21.45252, orange
+7, Pearl City,	−157.97152,	21.39104, brown
+8, McKinley,		−157.84824,	21.29900, wheat1
+9, Radford,    −157.92850,	21.35984, goldenrod
+10, Aiea,       −157.93008,	21.38490, peach
+11, Farrington, -157.85056, 21.30472, red
+12, Campbell,   -158.00722, 21.32250, blue
+13, Kailua,     -157.74056, 21.39167, green
+14, Waipahu,    -158.0091,  21.3866,  aqua
+15, Waianae,    -158.1858,  21.4458,  pink
+16, Waialua,    -158.1283,  21.5732,  scarlet
+17, Nanakuli,   -158.1545,  21.3900,  coral
+18, Leilehua,   -158.0203,  21.4506,  darkseagreen1
+19, Kapolei,    -158.0618,  21.3353,  azure2
+20, Castle,     -157.7394,  21.4083,  bisque4
+21, Kaimuki,    -157.8021,  21.2905,  darkgrey")
+
+schools <- dplyr::arrange(schools, school)
+
+gt(schools)
+
+## Boundary
+## Make the labels x, y
+outline <- readr::read_csv("inst/extdata/oahu_outline.csv")
+colnames(outline) <- c("x", "y" )
+
+ggplot(schools, aes(x=lon, y=lat, group = -1L)) +
+  geom_voronoi_segment(colour = "black") + 
+  ##geom_voronoi_tile(aes(fill=number), color="black") +
+  ##                  bound=outline) +
+ geom_point() 
+ ## coord_fixed(1.1) 
+```
+

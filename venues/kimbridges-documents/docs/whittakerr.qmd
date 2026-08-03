@@ -1,0 +1,8 @@
+---
+title: "Whittakerr"
+subtitle: "Putting the Whittaker biome diagram to work"
+categories: ["Ecology", "R", "Climate"]
+image: ../whittakerr/whittakerr_cover_art_text.png
+---
+
+[View Document](../whittakerr/){.btn .btn-primary}

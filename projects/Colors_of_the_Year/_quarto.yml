@@ -1,0 +1,39 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Colors of the Year"
+  subtitle: "A deep dive into paint colors"
+  author: "K. W. Bridges"
+  date: today
+  cover-image: coty.png
+  chapters:
+    - index.qmd
+    - data.qmd
+    - color_space.qmd
+    - volatility.qmd
+    - moodiness.qmd
+    - evolution.qmd
+    - coda.qmd
+  navbar: 
+    logo: coty_logo.png
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    embed-resources: false
+
+editor: visual
+
+toc: true
+number-sections: true
+number-depth: 2
+
+execute: 
+  warning: false
+  error: false
+  message: false
+
+

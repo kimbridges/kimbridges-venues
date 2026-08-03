@@ -1,0 +1,56 @@
+---
+title: "topology"
+format: html
+editor: visual
+---
+
+## topology
+
+```{r}
+# Install and load igraph package
+install.packages("igraph")
+library(igraph)
+
+# Example data (replace this with your pole data)
+# Assuming each row is Pole, Nearest Neighbor
+# Test data for poles and their nearest neighbors
+data <- data.frame(
+  Pole = c("A", "A", "B", "B", "C", "C", "D", "D", "E", "E", 
+           "F", "F", "G", "G", "H", "H", "I", "I", "J", "J"),
+  Neighbor = c("B", "C", "A", "D", "A", "D", "B", "E", "D", "F", 
+               "E", "G", "F", "H", "G", "I", "H", "J", "I", "A")
+)
+
+# Print out the data
+print(data)
+
+# Create graph
+g <- graph_from_data_frame(data, directed = FALSE)
+
+# Plot the graph to visualize the topology
+plot(g)
+
+# You can also calculate various properties
+degrees <- degree(g)
+# ... and other analyses as needed
+
+print(degrees)
+
+# Assuming 'g' is your graph object from the previous example
+
+# Calculate the shortest path between two poles, say A and E
+path_result = shortest_paths(g, from = "A", to = "E")
+
+# The length of the path (number of links)
+path_length = lengths(path_result$vpath)[1] - 1
+
+# Print the path length
+print(path_length)
+
+###############################################################
+## Add this to the Console to get the plot
+## png(file = "topology.png",width=2000, height = 2000, res = 300)
+## plot(g)
+## dev.off()
+
+```

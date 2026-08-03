@@ -1,0 +1,7 @@
+- source: project
+  quarto-pub:
+    - id: qpa_HWKD8aPSVb93D38cEMeYqw1cBpq62teVaTHBBFZX2fp4icpaaNIVab85J2Foa1Tu
+      url: https://kim.quarto.pub/photolocs
+  netlify:
+    - id: 0307c519-592d-40af-9a65-02ac72e2ccd9
+      url: https://singular-axolotl-8a9bc8.netlify.app

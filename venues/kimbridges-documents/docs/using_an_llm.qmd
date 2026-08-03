@@ -1,0 +1,8 @@
+---
+title: "LLM to Create R Code"
+subtitle: "Simplify Data Entry and Analysis with AI."
+categories: ["Data Analysis"]
+image: ../using_an_llm/LLM2R_cover.png
+---
+
+[View Document](../using_an_llm/){.btn .btn-primary}

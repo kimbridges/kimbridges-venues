@@ -1,0 +1,8 @@
+---
+title: "Colors of the Year"
+subtitle: "An exploration of annual color trends and their phylogenetic relationships."
+categories: ["Data Analysis", "Design"]
+image: ../colors/coty.png
+---
+
+[View Document](../colors/){.btn .btn-primary}

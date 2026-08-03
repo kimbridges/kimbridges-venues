@@ -1,0 +1,205 @@
+
+```{r}
+library(bbstruct)
+library(readr)
+```
+
+
+```{r}
+
+A <- bb_read_csv("data/bb_blocks_unordered_A.csv")
+B <- bb_read_csv("data/bb_blocks_unordered_B.csv")
+
+res_A <- bb_reorder(
+  A,
+  order_method = "blind",
+  k = 4,
+  diff_min = 0.30
+)
+
+res_B <- bb_reorder(
+  B,
+  order_method = "blind",
+  k = 4,
+  diff_min = 0.30
+)
+
+bb_metrics(res_A)
+bb_metrics(res_B)
+
+names(res_A$bb)
+class(res_A$bb)
+str(res_A, max.level = 1)
+
+gt(as.data.frame(res_A$bb$x), rownames_to_stub = TRUE) |>
+  tab_options(table.font.size = px(12))
+
+gt(res_B$Y_ord) |>
+  tab_options(table.font.size = px(12))
+
+######################
+
+Y_A_ord <- res_A$bb$x[res_A$species_order, res_A$site_order, drop = FALSE]
+
+gt(as.data.frame(Y_A_ord), rownames_to_stub = TRUE) |>
+  tab_options(table.font.size = px(12))
+
+dim(res_A$bb$x)
+length(res_A$species_order)
+length(res_A$site_order)
+
+```
+
+
+```{r}
+apply_bb_order <- function(res) {
+  X <- res$bb$x
+
+  ## Determine row index
+  ro <- res$species_order
+  if (is.character(ro)) {
+    ridx <- match(ro, rownames(X))
+  } else {
+    ridx <- ro
+  }
+
+  ## Determine column index
+  co <- res$site_order
+  if (is.character(co)) {
+    cidx <- match(co, colnames(X))
+  } else {
+    cidx <- co
+  }
+
+  X[ridx, cidx, drop = FALSE]
+}
+
+Y_A_ord <- apply_bb_order(res_A)
+Y_B_ord <- apply_bb_order(res_B)
+
+library(gt)
+gt(as.data.frame(Y_A_ord), rownames_to_stub = TRUE) |>
+   tab_header(title = "Clean Block A") |>
+  tab_options(table.font.size = px(12))
+
+gt(as.data.frame(Y_B_ord), rownames_to_stub = TRUE) |>
+   tab_header(title = "Clean Block B") |>
+  tab_options(table.font.size = px(12))
+
+```
+
+```{r}
+
+X_A <- res_A$bb$x
+
+## Identity checks (handles either numeric or name orders)
+row_changed <- if (is.character(res_A$species_order)) {
+  !identical(res_A$species_order, rownames(X_A))
+} else {
+  !identical(res_A$species_order, seq_len(nrow(X_A)))
+}
+
+col_changed <- if (is.character(res_A$site_order)) {
+  !identical(res_A$site_order, colnames(X_A))
+} else {
+  !identical(res_A$site_order, seq_len(ncol(X_A)))
+}
+
+row_changed
+col_changed
+
+str(res_A$diagnostics, max.level = 2)
+
+
+```
+
+```{r}
+class(res_A$bb$x)
+mode(res_A$bb$x)
+typeof(res_A$bb$x)
+
+range(res_A$bb$x, na.rm = TRUE)
+table(res_A$bb$x)
+
+########
+
+getAnywhere(bb_reorder)
+
+args(bb_reorder)
+
+res_B$diagnostics
+
+
+
+```
+
+```{r}
+library(bbstruct)
+res_A <- bb_reorder(A, method = "blind", k = 4, diff_min = 0.40)
+res_A$diagnostics
+head(res_A$site_order)
+head(res_A$species_order)
+
+X_A <- res_A$bb$x
+
+row_changed <- !identical(res_A$species_order, seq_len(nrow(X_A)))
+col_changed <- !identical(res_A$site_order, seq_len(ncol(X_A)))
+
+row_changed
+col_changed
+
+
+
+
+```
+
+
+```{r}
+
+
+
+library(bbstruct)
+A <- bb_read_csv("data/bb_blocks_unordered_A.csv")
+B <- bb_read_csv("data/bb_blocks_unordered_B.csv")
+
+res_A <- bb_reorder(B, method = "blind")
+res_B <- bb_reorder(B, method = "pca")
+
+res_A$diagnostics
+res_B$diagnostics
+
+## confirm it really moved something
+identical(res_A$site_order, seq_len(ncol(A$x)))
+identical(res_A$species_order, seq_len(nrow(A$x)))
+
+exists("bb_reorder_pca", where = asNamespace("bbstruct"), inherits = FALSE)
+
+getAnywhere(bb_reorder)
+
+
+
+```
+
+```{r}
+library(gt)
+
+gt(as.data.frame(res_A$bb$x), rownames_to_stub = TRUE)  |>
+   tab_header(title = "Clean Block B blind") |>
+  cols_align("center", everything()) |>
+  sub_values(
+    columns = everything(),
+    values = 0,          # Target the specific value 0
+    replacement = " " ) |>  # Replace with a blank
+  tab_options(table.font.size = px(12))
+
+gt(as.data.frame(res_B$bb$x), rownames_to_stub = TRUE)  |>
+   tab_header(title = "Clean Block B pca") |>
+  cols_align("center", everything()) |>
+  sub_values(
+    columns = everything(),
+    values = 0,          # Target the specific value 0
+    replacement = " " ) |>  # Replace with a blank
+  tab_options(table.font.size = px(12))
+
+
+```

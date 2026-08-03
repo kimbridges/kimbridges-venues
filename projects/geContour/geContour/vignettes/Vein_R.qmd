@@ -1,0 +1,185 @@
+---
+title: "leafshape"
+format: html
+editor: visual
+---
+
+Leaf Shape
+
+```{r}
+# Leaf Shape Generator in R
+# Based on conversion of TOTALO PL/I program
+
+library(ggplot2)
+
+# Function to generate a leaf shape based on polynomial equations
+generate_leaf <- function(
+  margin_coeffs = c(0, 1, -0.01, 0, 0),  # Coefficients for margin equation (v1-v5)
+  size_coeffs = c(1, 0, 0, 0, 0),        # Coefficients for size equation (v6-v10)
+  angle_coeffs = c(0, 0.1, 0, 0, 0),     # Coefficients for angle equation (v11-v15)
+  insertion_coeffs = c(0, 0, 0, 0, 0),   # Coefficients for insertion point (v16-v20)
+  num_lobes = 3                          # Number of lobes (v21)
+) {
+  # Error checking
+  if(num_lobes < 1) {
+    num_lobes <- 1
+  }
+  
+  # Create empty data frames for top and bottom margins
+  points_top <- data.frame(x = numeric(0), y = numeric(0), lobe = numeric(0))
+  points_bottom <- data.frame(x = numeric(0), y = numeric(0), lobe = numeric(0))
+  
+  # Function to evaluate a polynomial with given coefficients
+  eval_poly <- function(coeffs, x) {
+    result <- 0
+    for(i in 1:length(coeffs)) {
+      result <- result + coeffs[i] * x^(i-1)
+    }
+    return(result)
+  }
+  
+  # Generate points for each lobe
+  for(lobe in 1:num_lobes) {
+    # Create x coordinates (similar to the original program's approach)
+    # Original uses 25 points with x = 4 * j for j in 1:25
+    x_values <- seq(4, 100, by = 4)
+    
+    # Calculate margin shape (based on E(1) function in original)
+    y_values <- sapply(x_values, function(x) {
+      eval_poly(margin_coeffs, x)
+    })
+    
+    # Calculate size scaling (based on scale function in original)
+    scale_factor <- eval_poly(size_coeffs, lobe)
+    if(scale_factor != 0) {
+      x_scaled <- x_values * scale_factor
+      y_scaled <- y_values * scale_factor
+    } else {
+      x_scaled <- x_values
+      y_scaled <- y_values
+    }
+    
+    # Calculate rotation (based on rotate function in original)
+    rotation_angle <- eval_poly(angle_coeffs, lobe)
+    if(rotation_angle != 0) {
+      # Convert to radians
+      rotation_radians <- rotation_angle
+      
+      # Calculate vectors and angles for rotation
+      radius <- sqrt(x_scaled^2 + y_scaled^2)
+      current_angles <- atan2(y_scaled, x_scaled)
+      
+      # Apply rotation
+      new_angles <- current_angles + rotation_radians
+      x_rotated <- radius * cos(new_angles)
+      y_rotated <- radius * sin(new_angles)
+    } else {
+      x_rotated <- x_scaled
+      y_rotated <- y_scaled
+    }
+    
+    # Calculate translation (based on move function in original)
+    insertion_x <- eval_poly(insertion_coeffs, lobe)
+    if(insertion_x != 0) {
+      x_translated <- x_rotated + insertion_x
+    } else {
+      x_translated <- x_rotated
+    }
+    y_translated <- y_rotated
+    
+    # Add to points dataframes
+    lobe_top <- data.frame(
+      x = x_translated,
+      y = y_translated,
+      lobe = lobe
+    )
+    
+    lobe_bottom <- data.frame(
+      x = x_translated,
+      y = -y_translated,  # Mirror for bottom half
+      lobe = lobe
+    )
+    
+    points_top <- rbind(points_top, lobe_top)
+    points_bottom <- rbind(points_bottom, lobe_bottom)
+  }
+  
+  # Combine all points into one dataframe
+  all_points <- rbind(
+    points_top,
+    points_bottom[order(points_bottom$x, decreasing = TRUE),]  # Reverse order for bottom edge
+  )
+  
+  # Add insertion point
+  insertion_x <- eval_poly(insertion_coeffs, 1)
+  insertion_point <- data.frame(x = insertion_x, y = 0, lobe = 0)
+  
+  # Final leaf shape
+  leaf_shape <- rbind(insertion_point, all_points, insertion_point)
+  
+  return(leaf_shape)
+}
+
+# Plot the leaf shape
+plot_leaf <- function(leaf_data, fill_color = "darkgreen", border_color = "black", 
+                     title = "Generated Leaf Shape") {
+  ggplot(leaf_data, aes(x = x, y = y)) +
+    geom_polygon(fill = fill_color, color = border_color) +
+    labs(title = title) +
+    coord_fixed(ratio = 1) +  # Keep aspect ratio 1:1
+    theme_minimal()
+}
+
+# Example usage for a simple leaf
+leaf_data <- generate_leaf(
+  margin_coeffs = c(0, 1, -0.01, 0, 0),  # Basic margin shape
+  size_coeffs = c(1, 0, 0, 0, 0),        # No size change across lobes
+  angle_coeffs = c(0, 0.1, 0, 0, 0),     # Small increasing angle
+  insertion_coeffs = c(0, 0, 0, 0, 0),   # No insertion point shift
+  num_lobes = 3                          # 3 lobes as in the original example
+)
+
+# Plot the leaf
+plot_leaf(leaf_data)
+
+# Function to generate multiple leaf examples
+generate_leaf_examples <- function() {
+  # Example 1: Simple leaf with 3 lobes
+  leaf1 <- generate_leaf(
+    margin_coeffs = c(0, 1, -0.01, 0, 0),
+    size_coeffs = c(1, 0, 0, 0, 0),
+    angle_coeffs = c(0, 0.1, 0, 0, 0),
+    num_lobes = 3
+  )
+  plot1 <- plot_leaf(leaf1, fill_color = "lightgreen", title = "Simple Leaf with 3 Lobes")
+  
+  # Example 2: Oak-like leaf with 5 lobes and deeper sinuses
+  leaf2 <- generate_leaf(
+    margin_coeffs = c(0, 1.5, -0.03, 0.0001, 0),
+    size_coeffs = c(0.8, 0.1, 0, 0, 0),
+    angle_coeffs = c(0, 0.15, -0.01, 0, 0),
+    num_lobes = 5
+  )
+  plot2 <- plot_leaf(leaf2, fill_color = "forestgreen", title = "Oak-like Leaf with 5 Lobes")
+  
+  # Example 3: Long slender leaf
+  leaf3 <- generate_leaf(
+    margin_coeffs = c(0, 0.3, -0.001, 0, 0),
+    size_coeffs = c(1.5, 0, 0, 0, 0),
+    angle_coeffs = c(0, 0.05, 0, 0, 0),
+    num_lobes = 1
+  )
+  plot3 <- plot_leaf(leaf3, fill_color = "olivedrab", title = "Long Slender Leaf")
+  
+  # Return list of plots
+  return(list(plot1, plot2, plot3))
+}
+
+# Generate example leaves
+leaf_examples <- generate_leaf_examples()
+
+# Display the first example
+leaf_examples[[1]]
+
+
+```

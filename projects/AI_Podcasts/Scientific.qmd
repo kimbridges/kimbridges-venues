@@ -1,0 +1,72 @@
+# Scientific Papers
+
+Reports about science can be, well, boring. Do you remember when you were a student and the teacher's assignment was a science paper? Or the times you needed to work your way through a chapter in a science textbook? *Snooze time*.
+
+The test here is to see if a lively podcast that previews the reading can provide motivation to work through the document in a positive way. The idea is that a short audio introduction might be worth the time spent if it provides orientation and motivation.
+
+## The Species Problem
+
+The first podcast is based on a single body of text. The second one uses the same text and combines it with another text that generally involves the same topic.
+
+### The Biology Textbook
+
+The biology textbook, **Biology: The science of life**, is by Robert Wallace & Jack King (1981). This is not a new textbook (obviously) but the topic, in a broad sense, is little changed from when it was described by Wallace and King. This textbook was known for its excellent, and generally interesting, exposition of difficult topics.
+
+The podcast is based on the start of Chapter 13, *Systematics and Taxonomy: Testing evolutionary hypotheses*.
+
+Podcast:
+
+<audio controls>
+  <source src="audio/Species_problem.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+### Stephen Jay Gould
+
+Professor Gould is known as one of the [best science writers](https://en.wikipedia.org/wiki/Stephen_Jay_Gould) of all time. His many books are popular among the scientific and lay community. He had a talent for taking a difficult, and often obtruse, topic and making it interesting.
+
+The text used here is Chapter 13 (*The Rule of Five*) is from Stephen Jay Gould (1985), **The Flamingo’s Smile**. This chapter, and the textbook extract used previously, were both provided to the LLM for summarization. The test was to see if the arguments in the two sources can be combined into a coherent discussion.
+
+Podcast:
+
+<audio controls>
+  <source src="audio/Species_Problem_and_Gould.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+## Classic Papers
+
+There are publications that, when they were introduced, made quite a splash. Everyone would be talking about the topic and debating its significance. Over the years, the chatter dies down and, unfortunately, many of these "classic" papers are forgotten. Let's revisit a few of these documents, now through introductions from the folks at NotebookLM.
+
+### Making Categories
+
+George Miller’s **The Magical Number Seven, Plus or Minus Two** (1956) in [The Psychology Review](https://pure.mpg.de/rest/items/item_2364276_4/component/file_2364275/content) tells us a lot about how humans handle data. In particular, how we divide up a continuum into categories. That's a relevant topic as it is a fundamental way we understand and use measurement data.
+
+Podcast:
+
+<audio controls>
+  <source src="audio/Magical_Number_7.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+### Slow vs Fast Science
+
+John Platt’s **Strong Inference** (1964) in [Science](https://www.eecg.toronto.edu/~moshovos/ACA08/readings/Strong_Inference.pdf) describes how the methodologies in some branches of science lead to more rapid progress. He describes a general approach to doing scientific research that applies to many, if not all, fields of science.
+
+Podcast:
+
+<audio controls>
+  <source src="audio/Strong_Inference.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+### Asking Questions
+
+Jared Diamond’s **The Ethnobiologist’s Dilemma** (1989) in [Natural History](https://lmorgan1301.wordpress.com/wp-content/uploads/2014/08/ethnobiologistsdilemna.pdf) reminds us that it’s best to have some expertise in a field before asking other people questions. This approach is relevant everywhere, not just in the narrow niche of ethnobiology.
+
+Podcast:
+
+<audio controls>
+  <source src="audio/Ethnobiologists_Dilemma.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>

@@ -1,0 +1,41 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "A Checklist Is an Argument"
+  subtitle: "Reconstructing a flora from herbarium records — and reading its uncertainties"
+  author: "K. W. Bridges and Claude (Anthropic)"
+  date: today
+  cover-image: checklistr_cover_image.jpg
+  chapters:
+    - index.qmd
+    - the-question.qmd
+    - collectors.qmd
+    - scale.qmd
+    - completeness.qmd
+    - conflict.qmd
+    - lifeform.qmd
+    - status.qmd
+    - two-islands.qmd
+    - limits.qmd
+    - appendix.qmd
+  navbar:
+    logo: checklistr_cover_image_logo.jpg
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    embed-resources: false
+
+editor: visual
+
+toc: true
+number-sections: true
+number-depth: 2
+
+execute:
+  warning: false
+  error: false
+  message: false

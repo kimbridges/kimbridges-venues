@@ -1,0 +1,585 @@
+---
+title: "Photo File Documentation"
+author: "K. W. Bridges"
+date: "8/15/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+
+## Set some useful chunk options
+knitr::opts_chunk$set(echo    = FALSE)  ## FALSE suppresses the listing of the code
+knitr::opts_chunk$set(message = FALSE)  ## FALSE suppresses the listing of the message
+knitr::opts_chunk$set(warning = FALSE)  ## FALSE suppresses the listing of the warning
+knitr::opts_chunk$set(fig.width = 8)
+knitr::opts_chunk$set(fig.height = 10)
+
+library(exifr)       ## Read EXIF data from photos
+library(flextable)   ## Great table generator
+library(gt)          ## Perhaps a more useful table generator
+library(dplyr)       ## Data wrangling
+library(readr)       ## Read files
+library(here)        ## Directory assistance and simplification
+library(lubridate)   ## Decode and manipulate dates
+library(jpeg)        ## Handle jpeg images
+library(magick)      ## Manipulate images
+library(ggmap)       ## Wrapper for google maps API
+library(patchwork)   ## Assemble and annotate output objects
+library(ggplot2)     ## Basic plotting
+library(cowplot)     ## ggdraw
+library(png)         ## Read PNG files
+library(ggrepel)     ## Automatic adjustment of labels
+library(sp)          ## Used to calculate the center of a set of points
+library(raster)      ## Used to calculate the center of a set of points
+library(grobblR)     ## To composite the photos on one page; also convert png to grob
+library(numbers)     ## mod function
+library(pdftools)    ## Build PDF docs
+library(tibble)      ## Used for the add_column function
+library(webshot)     ## Needed to help save images
+library(ptinpoly)   ## Points inside or outside a polygon
+
+library(BiocManager)
+##BiocManager::install("EBImage")
+library(EBImage)
+
+## Initialize Google Map key; the is stored in a Project directory.
+My_Key <- read_file("P://Hot/Workflow/Workflow/keys/Google_Maps_API_Key.txt")
+
+## Register the Google Maps API Key.
+register_google(key = My_Key, account_type = "standard")
+```
+
+## Custom Functions
+
+There are several functions that make the processing of photos appear simpler. Several of these are quite general as they are very useful when drawing any kind of map.
+
+* LineWrapper: Inserts "\n" into strings to break them when printing
+
+* tmt_text: Adds text blocks to a map (used inside ggmap)
+
+* tmt_points: Adds point symbols to a map (used inside ggmap)
+
+* tmt_labels: Adds labels to a map (used inside ggmap)
+
+* map_center: Calculate the center of a set of geographic points
+
+* map_zoom: Determine the zoom level for a Google map that includes all the points
+
+```{r functions}
+
+##### FUNCTION LINEWRAPPER #######################################
+
+LineWrapper <- function(x,length=25){
+  
+## Wraps text with a default of 25 characters
+  
+## Handle the column that needs to be wrapped
+LineWrapper = sapply(lapply(x, strwrap, width=length), paste, collapse=" \n")  
+  
+} ## end function Linewrapper
+
+##### FUNCTION tmt_text ##########################################
+
+tmt_text <- function(text,texts_default=text_default){
+  
+  ## Add labels to a map (used inside ggmap)
+
+  ## Fill in any missing columns with default values 
+  ## Thanks to Chris Umphlett on StackOverflow (5/3/2019)
+  text <- text %>% 
+  add_column(!!!texts_default[!names(texts_default) %in% names(.)])
+  
+  text$text <- str_replace(text$text,"%%","\n")
+
+  ## Generate the labels
+  geom_text(data = text,
+            aes(x = lon, y = lat, 
+                label = text),
+                size          = text$size, 
+                color         = text$color, 
+                fontface      = text$fontface,
+                angle         = text$angle) 
+
+  } ## End function tmt_text
+
+##### FUNCTION tmt_points ########################################
+
+tmt_points <- function(points, points_default=point_default){
+  
+  ## Add points to a map (used inside ggmap)
+
+  ## Fill in any missing columns with default values 
+  ## Thanks to Chris Umphlett on StackOverflow (5/3/2019)
+  points <- points %>% 
+  add_column(!!!points_default[!names(points_default) %in% names(.)])
+
+  ## Note the following convention for symbol shapes.
+  ## You can use circle, square, diamond, triangle,& wedge.
+  ## These are mapped to pch 21-25.
+  
+  points$shape <- sub("circle",  "21",points$shape)
+  points$shape <- sub("square",  "22",points$shape)
+  points$shape <- sub("diamond", "23",points$shape)
+  points$shape <- sub("triangle","24",points$shape)
+  points$shape <- sub("wedge",   "25",points$shape)
+  
+  points$shape <- as.numeric(points$shape)
+
+  ## Generate the labels
+  geom_point(data = points,
+             aes(x = lon, y = lat),
+                  size          = points$size, 
+                  color         = points$color,              
+                  alpha         = points$alpha,                 
+                  fill          = points$fill,
+                  shape         = points$shape,
+                  stroke        = points$stroke)
+  
+} ## End Function tmt_points
+
+##### FUNCTION tmt_labels #######################################
+
+tmt_labels <- function(labels,labels_default=label_default){
+  
+  ## Add labels to a map (used inside ggmap)
+
+  ## Fill in any missing columns with default values 
+  ## Thanks to Chris Umphlett on StackOverflow (5/3/2019)
+  labels <- labels %>% 
+  add_column(!!!labels_default[!names(labels_default) %in% names(.)])
+
+  ## Generate the labels
+  geom_label_repel(data = labels,
+             aes(x = lon, y = lat, 
+                 label = text),
+                  size          = labels$size, 
+                  color         = labels$color,              
+                  alpha         = labels$alpha,                 
+                  label.r       = labels$label.r,
+                  label.size    = labels$label.size,
+                  fill          = labels$fill,
+                  box.padding   = 0.8,
+                  #point.padding = labels$point.padding,
+                  segment.color = labels$segment.color,
+                  segment.size  = labels$segment.size,
+                  min.segment.length = 0.01, 
+                  seed          = labels$seed) 
+
+  } ## End function tmt_labels
+
+##### FUNCTION MAP_CENTER #########################################
+
+map_center <- function(data_points){
+
+## Finds the lat,lon of the center of a set of data points (each a lat,lon).  
+    
+## Required libraries (sp, raster)
+
+## Data.frame data_points must have variables "lat" and "lon". 
+
+## Transfer the data into a new data.frame
+dat <- data.frame(lat=data_points$lat, lon=data_points$lon) 
+
+## Put the coordinates into a SpatialPointDataFrame
+coordinates(dat) <- ~lon+lat
+proj4string(dat) <- "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+    
+## Get the center point coordinates    
+cpt <- coordinates(as(extent(dat), "SpatialPolygons"))
+
+cpt <- as.data.frame(cpt) %>% 
+  rename(lat = V2, lon = V1)
+
+cpt <- as.list(cpt)
+
+return(cpt)
+}  ## end map_center
+
+##### FUNCTION MAP_ZOOM ###########################################
+
+map_zoom <- function(point_data, center_point){
+  
+## The data.frame data_points must have variables "lat" and "lon".
+## Similarly, center_point must also have a "lon" and "lat".
+  
+## Set starting conditions.
+zoom <- 17
+outside <- FALSE
+
+## Look at successively zoomed out levels until all points are inside
+for (level in seq(from=zoom, to=5, by=-1)){
+  
+    ## Get a Google map at a particular zoom level
+    t_map <- get_googlemap(center=center_point,
+                           zoom=level)
+    
+    ## Parse out the latitude and longitude data of the bounding box
+    box <- attr(t_map,"bb")
+
+    ## Rename the bounding box coordinates
+    box <- box %>% 
+           rename(left = ll.lon, right = ur.lon, bottom = ll.lat, top = ur.lat)
+    
+    ## Get the coordinates of the vertices of the box
+    box_vertices <- c(box$left,box$bottom,
+                      box$left,box$top,
+                      box$right,box$top,
+                      box$right,box$bottom)
+    
+    ## Make the vertices into matrix values
+    b_v_matrix <- matrix(box_vertices,nrow=4,ncol=2,byrow=TRUE)
+    d_p_matrix <- matrix(c(point_data$lon,point_data$lat),
+                         nrow=nrow(point_data),
+                         ncol=2,
+                         byrow=FALSE)
+    
+    ## Using this function looks like overkill, but it is a general solution to the
+    ## problem of finding points inside a polygon. It did not seem to work with negative
+    ## values for the longitude. So absolute values are used.
+    ## res is a vector of all of the points indicating if they are inside or outside.
+    res <- pip2d(abs(b_v_matrix),abs(d_p_matrix))
+    
+    ## Test if any of the points are outside the bounding box (-1 = outside; 1 = inside)
+    if (any(res < 0)){outside <- TRUE}
+  
+    ## The most zoomed-in level is chosen.
+    if(outside != TRUE) {
+      level <- level - 1
+      return(level)
+    
+      } ## end if outside
+    
+  } ## end Level loop
+
+} ## end function map_zoom
+
+
+
+```
+
+## Photo Information
+
+The overall goal is to process all the photos in a folder and produce a PDF document that summarizes the photo information.
+
+
+
+
+```{r photos}
+
+## The one thing you need to specify
+folder   <- "Photos/Tidal_Basin"
+
+#######################################################################
+
+## Make a blank image (used later when images are printed)
+blank <- image_blank(width=640, height=480, color = "white", pseudo_image = "", defines = NULL)
+image_write(image=blank,path="temp/z_blank.png")
+
+## Read all the files in a folder
+files <- list.files(path=here(folder), 
+                    pattern="*.jpg", 
+                    full.names=TRUE, 
+                    recursive=FALSE)
+
+## Count the photos in the folder
+no_files <- length(files)
+
+## Prepare a place to store the photo data
+out_info <- setNames(data.frame(matrix(ncol = 4, nrow = 0)), 
+                     c("number", "location", "lat", "lon"))
+
+table_info <- setNames(data.frame(matrix(ncol = 5, nrow = 0)), 
+                     c("number", "file", "location", "date", "time"))
+
+## Process each of the photos, one at a time
+for (i in 1:no_files){
+ 
+  ## Here is where the heavy lifting is done
+  sheet  <- image_read(files[i])
+  
+  tags <- c("GPSLatitude","GPSLongitude","DateTimeOriginal")
+  
+  photo_exif <- read_exif(path=files[i],tags=tags,recursive = FALSE)
+
+  ## Make a small, reference image
+  small_photo <- image_scale(sheet,"10%")
+
+  ## Get the location and put in easy-to-use variables
+  in_lat <- photo_exif$GPSLatitude
+  in_lon <- photo_exif$GPSLongitude
+  in_location <- c(in_lon, in_lat)
+  
+  ## Process the date and time
+
+  in_date <- as.Date(substring(photo_exif$DateTimeOriginal,1,10),"%Y:%m:%d")
+
+  lub_str   <- ymd_hms(photo_exif$DateTimeOriginal) 
+  in_hour   <- hour(lub_str)
+  in_minute <- minute(lub_str)
+  in_minute <- sprintf("%02d",in_minute)
+  in_time   <- paste0(in_hour,":",in_minute)
+  
+  in_date <- as.Date(substring(photo_exif$DateTimeOriginal,1,10),"%Y:%m:%d")
+  in_when <- paste0(in_time," on ",weekdays(in_date),", ",
+                    format(in_date, format="%B %d, %Y")) 
+
+  ## Get the name of the place
+  in_place_name <- revgeocode(in_location)
+  in_place_name <- LineWrapper(in_place_name, length = 50)
+  
+  ## Make a caption with the place name and when the photo was taken
+  place_caption <- paste0("Photo: ",i," -- ", in_when,"\n",in_place_name[1])
+
+  ## Composite the image and the caption
+  out_img <- image_ggplot(small_photo)
+  out_img <- out_img + ggtitle(place_caption)
+  
+  ## Write the file for later use
+  out_name <- paste0("out_",i,".png")
+  ggsave(out_name,out_img)
+  
+  ## Save the basic data about each image for later processing
+  out_list <- data.frame(number=i, location=in_place_name[1], lat=in_lat, lon=in_lon)
+  out_info <- rbind(out_info, out_list)
+  
+  ## Build a table to add to the document
+  f_name <- basename(files[i])
+  table_list <- data.frame(number=i, file = f_name, 
+                           location=in_place_name[1], date=in_date, time=in_time)
+  table_info <- rbind(table_info, table_list)
+
+ } ## End photo loop
+
+## Create a basic table of the photo information
+table_1 <- gt(table_info) %>% 
+  tab_header(
+    title = paste0("Photo Index: ", folder)
+    ) %>% 
+  tab_source_note(
+    source_note = paste0("Report Prepared: ",Sys.Date())
+  ) %>%
+  tab_style(
+    style = cell_text(v_align="top"),
+    locations = cells_body()
+    ) %>% 
+  opt_row_striping(row_striping = TRUE)
+
+## Put the table as a temporary PNG file
+gtsave("loc_table_temp.png",data=table_1,path="temp")
+
+## Use the grob functions to get a PDF version of the table
+loc_table <- grob_layout(
+  grob_row(
+    border = FALSE,
+    grob_col(
+      border = FALSE,
+      aes_list = ga_list(
+        maintain_aspect_ratio = TRUE
+        ),
+      "temp/loc_table_temp.png"
+      )
+    ),
+  height = 279.4,
+  width = 215.9
+  ) 
+
+## Put the grob out as a PDF file
+grob_to_pdf(
+  list(loc_table),
+  file_name = file.path("temp", "location_table.pdf"),
+  meta_data_title = "Grob approach to PDFs"
+  )
+
+## Clean up by removing the temporary PNG file
+file.remove("temp/loc_table_temp.png")
+```
+
+## Make a Montage
+
+This puts six images on a page (as a PDF file).
+
+The routine needs to be generalized so that any number of images will be made into 6-up pages.
+
+
+
+```{r}
+## Required libraries (grobblR, numbers)
+
+## Round the number of files up to a multiple of 6
+files_ceiling <- ceiling(7/6) * 6
+
+## Process each labeled small picture, one at a time
+page_no <- 0
+
+for(i in 1:files_ceiling){
+
+## Up to six images per page
+  ## Count by six
+  img_no <- mod(i-1,6) + 1
+ 
+  ## Build a name for the temporary grob image
+  img_name <- paste0("out_",i,".png")
+  if(!file.exists(img_name))img_name <- "z_blank.png"
+
+  if(img_no == 1) img1g <- grob_image(img_name)
+  if(img_no == 2) img2g <- grob_image(img_name)
+  if(img_no == 3) img3g <- grob_image(img_name)
+  if(img_no == 4) img4g <- grob_image(img_name)
+  if(img_no == 5) img5g <- grob_image(img_name)
+  if(img_no == 6) img6g <- grob_image(img_name)
+  
+  ## Things to do when the images fill a page
+  if(img_no == 6){
+    
+    ## Keep track of the page count
+    page_no <- page_no + 1
+    
+    ## Make a montage
+    page <- grob_layout(
+      grob_row(
+        grob_col(img1g),
+        grob_col(img2g)
+        ),
+      grob_row(
+        grob_col(img3g),
+        grob_col(img4g)
+        ),
+      grob_row(
+        grob_col(img5g),
+        grob_col(img6g)
+        ),
+      height = 279.4, 
+      width = 215.9)   
+
+    ## File name for the PDF file
+    page_name <- paste0("temp/Photo_map",page_no,".pdf")
+
+    ## Put the page into a PDF file
+    grob_to_pdf(
+      list(page),
+      file_name = page_name,
+      meta_data_title = paste0("Photo Map Test PDF page ",page_no))
+
+    } ## end img_no section
+
+  } ## end for loop
+
+  
+
+```
+
+## Some Defaults
+
+
+```{r defaults}
+
+## Label Defaults
+## Note: "lines" is a unit of measure for some dimensions (default)
+label_default       <- NULL          ## Needed to get started
+label_default$size  <- 4             ## text size        
+label_default$color <- "black"       ## text color
+label_default$alpha <- 0.9           ## transparency
+label_default$label.r <- unit(0.3, "lines") ## rounded corner radius 
+label_default$label.size    <- 0.5   ## label border size (mm)
+label_default$fill    <- "white"     ## label background color
+#label_default$box_padding <- 0.8     ## from point location
+#label_default$point.padding <- 0     ## space around point
+label_default$segment.color <- "red" ## line from point to label
+label_default$segment.size  <- 1
+label_default$seed          <- 1002  ## randomizes without a value 
+
+## Point Defaults
+point_default <- NULL                ## Needed to get started
+point_default$size   <- 3            ## symbols size
+point_default$color  <- "black"      ## outside border
+point_default$alpha  <- 0.9          ## point transparency
+point_default$fill   <- "red"        ## inside color
+point_default$shape  <- "circle"     ## circle (symbol 21)
+point_default$stroke <- 1            ## border thickness
+
+## Text default
+text_default          <- NULL       ## Needed to get started
+text_default$size     <- 4          ## text size
+text_default$color    <- "black"    ## text color
+text_default$fontface <- "plain"    ## alt: italics, bold
+text_default$angle    <- 0          ## negative is clockwise
+
+## Google Maps style defaults
+## Use these to hide map layers
+no_poi        <- "feature:poi|element:labels|visibility:off"
+no_transit    <- "feature:transit|element:labels|visibility:off"
+no_water      <- "feature:water|element:labels|visibility:off"
+no_road       <- "feature:road|element:labels|visibility:off"
+no_landscape  <- "feature:landscape|element:labels|visibility:off"
+no_administrative <- "feature:administrative|element:labels|visibility:off"
+no_country    <- "feature:administrative.country|element:labels|visibility:off"
+hide_all      <- "feature:all|element:labels|visibility:off"
+
+```
+
+## Photo Locations
+
+This retrieves a Google Map and places the photo number in the proper location as a map overlay.
+
+
+```{r refmap}
+
+## Use the data points to make a reference map
+
+## Find the center of the data points
+cpt <- map_center(out_info)
+
+cpt <- c(cpt$lon, cpt$lat)
+
+## Calculate the best zoom level to hold all of the points
+best_zoom <- map_zoom(point_data = out_info, center_point = cpt)
+
+## Use the map center (cpt) and the data points (out_info) to make the map
+
+## Rename a column in the data for use with the mapping functions.
+point_data <- out_info %>% 
+  rename(text = number)
+
+## Retrieve a satellite map.
+temp_map <- get_googlemap(center= cpt,
+                        zoom= best_zoom,
+                        style=no_country, maptype = "satellite")
+
+## Display the map.
+## ggmap(temp_map)
+
+## Plot the labels on the map with ggmap using the custom functions. 
+final_map <- ggmap(temp_map) +
+   tmt_points(points=point_data,
+              points_default=point_default) +
+   tmt_labels(point_data) +
+   labs(x="",y="") +
+   theme(panel.border=element_rect(color="Black", fill=NA, size=2))
+
+final_map
+
+ggsave(filename = "temp/report_map.pdf",final_map,width=8,height=10)
+
+```
+
+## Assemble the PDF
+
+PDF files of each of the pages have been stored in the `temp` folder. 
+
+The file names were chosen so that the pages will be combined in the proper order. (Alphabetical)
+
+The assembled PDF is saved in the folder with the original images.
+
+```{r assemble}
+
+pdf_files <- list.files(path="temp", 
+                    pattern="*.pdf", 
+                    full.names=TRUE, 
+                    recursive=FALSE)
+
+report <- paste0(folder,"/photo_report.pdf")
+
+pdf_combine(pdf_files, report)
+
+```
+

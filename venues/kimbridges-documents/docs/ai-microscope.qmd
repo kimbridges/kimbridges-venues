@@ -1,0 +1,8 @@
+---
+title: "Preview & Review"
+subtitle: "Rebuilding the AI Microscope — a 1989 learning environment, reconstructed in the browser"
+categories: ["AI", "Botany", "Design"]
+image: ../ai_microscope/ai_microscope_cover_art_text.png
+---
+
+[View Document](../ai_microscope/){.btn .btn-primary}

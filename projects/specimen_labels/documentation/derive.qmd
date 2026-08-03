@@ -1,0 +1,49 @@
+# Derive, Don't Card
+
+The filter set a whole class of things aside as fixed by the place, to be looked up rather than written down. Now we make good on that promise, and the promise is a bold one. Everything the landscape fixes about a collection site can be recovered from the coordinate pair alone, after the fact, with nothing measured in the field. Give the software a coordinate pair, and it hands back the site.
+
+Take a photograph made high on a flank of Kīlauea, in ʻōhiʻa forest. From that single coordinate pair, the software returns the elevation, the steepness of the slope and the direction it faces, the roughness of the ground, the way water would run off it, the name of the place, the rock beneath, and the soil. A gentle, east-facing slope, high up, on young basalt, over the ash soils that weather there. None of it was noted in the field. All of it was read back from a single pair of numbers.
+
+```{r}
+#| label: derive-terrain
+library(vouchr)
+site <- site_extract("Kīlauea, ʻōhiʻa forest", 19.435731, -155.336334)
+cat(site$sentences, sep = "\n")
+```
+
+Read the second line as carefully as the first. It is not decoration. It says which elevation model the numbers came from, how fine that model is, and the scale the slope was computed over, and without those three the slope is a number with no meaning attached.
+
+Then the rock and the soil, from two more public surveys.
+
+```{r}
+#| label: derive-substrate
+sub <- site_substrate(19.435731, -155.336334)
+cat(sub$sentences, sep = "\n")
+```
+
+Young basalt, and an ash soil weathered on top of it. Neither was observed. Both are correct, and both would have been just as correct for a specimen collected at this spot in 1955.
+
+```{r}
+#| label: fig-hillshade
+#| fig-cap: "The ground around the collection point, drawn from the same elevation patch the terrain figures were computed from, with the point itself marked. The relief here is gentle enough that the shading is subtle, which is the honest picture: this is a four-degree slope, not a cliff. Obtained from `site_extract()` on one coordinate pair, at 4.4 m native resolution; nothing was surveyed and nothing was carried into the field to make it."
+#| fig-width: 6
+#| fig-height: 6
+site_hillshade(site)
+pt <- terra::project(terra::vect(cbind(-155.336334, 19.435731), crs = "EPSG:4326"),
+                     terra::crs(site$dem))
+terra::plot(pt, add = TRUE, pch = 21, bg = "red", col = "white", cex = 1.8, lwd = 2)
+```
+
+This is allowed because none of it was ever the collector's to measure. The shape of the land is mapped. The elevation of every point is on file. The geology and the soil have been surveyed and published. The place has a name in a public gazetteer. The old kit, the altimeter and the clinometer and the compass, was a portable and worse copy of records that already existed, and today those records sit online, free, open to anyone who has the coordinates. The instruments didn't measure anything the world hadn't already measured better.
+
+There's a gain here past the weight of the kit. Every fact you don't record in the field is attention you keep for the plant. The fixed things don't change between the slope and the desk, so noting them in the field buys nothing and spends the one resource the field is stingy with. Leave them to the coordinate pair, and your eyes stay on the thing only your eyes can judge. The derive step and the decks are the same idea from two sides: card what only a person at the plant can know, derive everything the place already fixes.
+
+A derived number has to be honest about where it came from, though, or it's worse than no number at all. Ask for the slope at a point and the answer depends on how closely you look. Measured across a wide, coarse grid, a hillside comes out gentler than it does measured close in, and the roughness of the ground changes with the ruler completely. So every value the software returns carries its lineage: the source it was drawn from, the resolution of that source, and the scale the calculation was made at. A slope of thirty degrees says nothing until you know it was figured over thirty meters and not three hundred. A derived value without its scale and source is a rumor.
+
+Some things the coordinate pair can only half-answer, and honesty means saying which. Canopy height is the plain example. You can estimate it cheaply, by taking the surface the treetops make and subtracting the bare ground beneath, and over open country and low forest it holds up. Over tall, closed forest it quietly fails and reads far too short, because the cheap layers can't find the true ground under a dense canopy. We learned this the honest way. The quick method reported eight meters for a stand we had walked through that stood near twenty. So the cheap estimate is a fine detector of forest and a poor measure of tall forest, and for a real height you reach for a purpose-built layer instead. A derived value has to carry its limits as plainly as it carries its number.
+
+We could say that only because we checked it where it could be checked, against a grassland that ought to read zero and a tall stand we already knew. A value you can't test against something you already know isn't verified, it's just output. The best test sites are the ones you can judge two ways, by standing in them and by the published record, and they agree.
+
+One more thing follows, and it reaches back a long way. If the site can be recovered from a coordinate pair, it can be recovered for any specimen that carries coordinates, not only the ones collected this new way. The great mass of georeferenced sheets already in the world's herbaria, gathered to fix a name, never carrying a word about their terrain or their soil, can be enriched now, in a batch, from the coordinates they already hold. The method doesn't only serve the next collection. It reaches back and pays the old ones forward.
+
+So the fixed half of the record fills itself, honestly, from a single coordinate pair, for the plant in your hand and for the plant pressed a century ago. That leaves the question we've kept putting off. Not what a deck is, but which decks, and how many, and how anyone could know. The answer isn't an opinion. It's already written in the record.

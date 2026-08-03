@@ -1,0 +1,105 @@
+# Koch Figure 6
+
+This is a really, really quick demonstration of how a Large Language Model can help you. Note that I did NO code writing. I just made two prompts in simple English.
+
+You'll see the two prompts below. Each of these is a request to Anthropic's **Claude** 3.5 Sonnet LLM engine. Basically, I've asked for some data to be put into a bar chart (first prompt) and then for a map to be made (second prompt).
+
+**Claude** returns a lot of comments about what it has done in creating these two charts. I've not included that text and it's not very relevant here. In other cases, it may be quite interesting.
+
+There are some R messages in the output. Just ignore them.
+
+The map is missing three points. There is also overlap of the place names. These sorts of problems are easily remedied with a bit of code. I expect that I'll soon have some ways that these deficiencies are fixed automatically.
+
+In many ways, **Claude** is your "R for Data Analysis for Dummies" book.
+
+Remember, this is a very quick demo. There is much more to come!
+
+**Prompt**
+
+Can you make a bar chart using name, n and color? I'd like the chart produced using R language code. The 'name' field is the 'School District' and the 'n' field is the 'Student Funding from 1986 to 1997 (CPI adjusted %)'. Here are the data: """ name,n,color,lat, lon Jericho,-0.0372178849683299,red,40.792044, -73.539848 Rye,-0.0372986210199416,red,40.980654, -73.68374 Bronxville,-0.0137496374629097,pink,40.938154, -73.832078 Yonkers,-0.00683495547984861,pink,40.931210, -73.898747 Manhasset,0.00206577626134903,yellow,40.797879, -73.699575 New York City,0.0236334226397084,yellow,40.712775, -74.005973 Great Neck,0.0397186541161786,yellow,40.800657, -73.728465 Roosevelt,0.123206781625851,chartreuse,40.678713, -73.589017 Levittown,0.114257578985353,chartreuse,40.725934, -73.514292 Mount Vernon,0.161142482251224,green,40.912599, -73.837079"""
+
+**Response**
+
+```{r}
+# Load required library
+library(ggplot2)
+
+# Create the data frame
+data <- data.frame(
+  name = c("Jericho", "Rye", "Bronxville", "Yonkers", "Manhasset", "New York City", "Great Neck", "Roosevelt", "Levittown", "Mount Vernon"),
+  n = c(-0.0372178849683299, -0.0372986210199416, -0.0137496374629097, -0.00683495547984861, 0.00206577626134903, 0.0236334226397084, 0.0397186541161786, 0.123206781625851, 0.114257578985353, 0.161142482251224),
+  color = c("red", "red", "pink", "pink", "yellow", "yellow", "yellow", "chartreuse", "chartreuse", "green")
+)
+
+# Create the bar chart
+ggplot(data, aes(x = reorder(name, n), y = n, fill = color)) +
+  geom_bar(stat = "identity") +
+  scale_fill_identity() +
+  coord_flip() +
+  labs(
+    title = "Student Funding Changes from 1986 to 1997 (CPI adjusted %)",
+    x = "School District",
+    y = "Change in Student Funding"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 8),
+    plot.title = element_text(size = 10, face = "bold")
+  )
+
+# Save the plot (optional)
+# ggsave("student_funding_changes.png", width = 10, height = 6, dpi = 300)
+
+```
+
+**Prompt**
+
+Very good! There are latitude and longitude values in the data. Can you use R language to make a map? I have a Google Maps API key. Here is the code to activate it. googleKey \<- Sys.getenv("GGMAP_GOOGLE_API_KEY") register_google(key = googleKey, account_type = "standard")
+
+**Response**
+
+```{r}
+# Load required libraries
+library(ggmap)
+library(ggplot2)
+
+# Activate Google Maps API
+googleKey <- Sys.getenv("GGMAP_GOOGLE_API_KEY")
+register_google(key = googleKey, account_type = "standard")
+
+# Create the data frame
+data <- data.frame(
+  name = c("Jericho", "Rye", "Bronxville", "Yonkers", "Manhasset", "New York City", "Great Neck", "Roosevelt", "Levittown", "Mount Vernon"),
+  n = c(-0.0372178849683299, -0.0372986210199416, -0.0137496374629097, -0.00683495547984861, 0.00206577626134903, 0.0236334226397084, 0.0397186541161786, 0.123206781625851, 0.114257578985353, 0.161142482251224),
+  color = c("red", "red", "pink", "pink", "yellow", "yellow", "yellow", "chartreuse", "chartreuse", "green"),
+  lat = c(40.792044, 40.980654, 40.938154, 40.931210, 40.797879, 40.712775, 40.800657, 40.678713, 40.725934, 40.912599),
+  lon = c(-73.539848, -73.68374, -73.832078, -73.898747, -73.699575, -74.005973, -73.728465, -73.589017, -73.514292, -73.837079)
+)
+
+# Calculate the bounding box
+bbox <- make_bbox(lon = data$lon, lat = data$lat, f = 0.1)
+
+# Get the map
+map <- get_map(location = bbox, maptype = "roadmap", source = "google")
+
+# Create the plot
+ggmap(map) +
+  geom_point(data = data, aes(x = lon, y = lat, color = color, size = abs(n)), alpha = 0.7) +
+  scale_color_identity() +
+  scale_size_continuous(range = c(3, 10)) +
+  geom_text(data = data, aes(x = lon, y = lat, label = name), vjust = -1.5, size = 3) +
+  labs(
+    title = "School Districts: Student Funding Changes (1986-1997)",
+    subtitle = "Size indicates magnitude of change, color indicates direction (red: decrease, yellow: small change, green: increase)",
+    size = "Absolute Change"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    plot.title = element_text(size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 8)
+  )
+
+# Save the plot (optional)
+# ggsave("school_districts_map.png", width = 10, height = 8, dpi = 300)
+```

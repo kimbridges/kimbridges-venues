@@ -1,0 +1,59 @@
+project:
+  type: website
+  render:
+    - index.qmd
+    - about.qmd
+    - getting_started.qmd
+    - tables_and_maps.qmd
+    - data_wrangling.qmd
+    - map_coordinates.qmd
+    - map_basemaps.qmd
+    - Google_Simple.qmd
+    - map_points.qmd
+    - map_names.qmd
+    - map_cuts.qmd
+    - map_fan.qmd
+    - map_kml.qmd
+    - map_functions.qmd
+
+website:
+  title: "Sitemaps: The Website"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - getting_started.qmd
+      - tables_and_maps.qmd
+      - data_wrangling.qmd
+      - map_coordinates.qmd
+      - map_basemaps.qmd
+      - Google_Simple.qmd
+      - map_points.qmd
+      - map_names.qmd
+      - map_cuts.qmd
+      - map_fan.qmd
+      - map_kml.qmd
+      - map_functions.qmd
+
+format:
+  html:
+    theme: flatly
+    css: styles.css
+    toc: true
+    fig-width: 8
+    fig-height: 8
+    code-fold: true
+    code-summary: "Show the code chunk"
+    
+editor: visual
+
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+    
+execute:
+  warning: false
+  error: false
+  message: false

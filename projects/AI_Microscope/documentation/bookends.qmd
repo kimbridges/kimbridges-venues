@@ -1,0 +1,29 @@
+# The bookends
+
+Here is the question this whole tool finally answers: where does it belong? Not what it does, but where it sits in a student's actual week. And the answer is the one that took me longest to see. It doesn't belong as a replacement for the lab. It belongs on either side of of the lab.
+
+Think of the AI Microscope as two bookends with the real lab standing between them. Before the lab, it's a preview. After the lab, it's a review. The tool has exactly two jobs, one for each side. Before, it removes friction. After, it induces review. Everything in the earlier chapters, the honest identification, the voiced names, the roots, was building the thing that does those two jobs. This chapter is what they're for.
+
+## Before the lab
+
+A physical microscope is a lot of friction all by itself. You fight the focus. The slide slides. Your eye searches for the right viewing spot. And on top of all that, you're often meeting the tissues and their names for the very first time, right there at the bench, with your lab workbook challenging you to find strange things. That's too much to learn at once.
+
+The preview takes the first meeting somewhere calmer. The night before, on a phone, a student can move the field of view, change the magnification, find the palisade parenchyma and the xylem, and hear the names said out loud. All this with none of the physical fuss and nobody watching. It's not hard. It's not graded. It's likely they'll actually do it. Then they walk into the real lab, already on speaking terms with the material. The first time they see palisade parenchyma shouldn't also be the first time they wrestle a microscope. The preview makes sure it isn't.
+
+## After the lab
+
+The second bookend is the one people skip, and it's the one that matters most.
+
+Most learning in a lab doesn't happen during the lab. It happens afterward, when the pieces settle and the thing you were fumbling with an hour ago suddenly makes sense. The trouble is that almost nobody reviews, because reviewing is friction too. Digging out your notes. Looking at the drawing again. Reconstructing what you saw. The tool removes that. After the lab, a student opens the same microscope in its review mode. Now the tissue they struggled to find is easy, and the explanation they half-heard lands. The experience was the lab. The knowledge is the review. A tool that makes review frictionless enough that people actually do it is quietly doing the most important work of all.
+
+![The same tissue, after the lab. The setting is the only thing that changed, and the explanation goes deeper because the student has now seen the real thing.](figures/aim_6_review_stage.png){#fig-review width=45% fig-align="center"}
+
+## Nobody loses
+
+There's a stress point in most labs that we don't talk about enough: the quiz at the door. The pre-lab quiz. The one you face before you've touched a thing. The one that decides whether you're allowed to begin. It sets the whole session on edge. A student who spent the night before in the preview walks in past that quiz already knowing the material. The dread has been removed. The lab stops being a test you might fail at the entrance. Instead, the lab becomes the good part. The hands-on part. The reward. That's the student's side of it.
+
+The teacher's side is just as important, and it's the reason I built it the way I did. This tool threatens nothing. It doesn't replace the lab. It doesn't replace the teacher. It complements what a good lab already does. It's optional homework, before and after, that a student can do on a phone. It's a tool that asks nothing of the instructor except that they let it help.
+
+There's a lot of educational technology right now that arrives promising to do the teacher's job. This one arrives promising to make the teacher's lab work better. Students come prepared and leave with the material consolidated. The lab in the middle, the part the teacher cares about, is exactly as it was. Only now it lands. Nobody loses. That's rare enough to be worth pointing at.
+
+The thing that makes all of this actually happen, that gets a tired student to open a preview on a phone the night before, isn't the diagram or the data. It's that the tool talks. Audio is what turns a screen into a companion, and audio is where this project is really headed. That's the last real chapter.

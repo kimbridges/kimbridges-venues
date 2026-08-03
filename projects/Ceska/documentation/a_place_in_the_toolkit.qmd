@@ -1,0 +1,33 @@
+# A Place in the Toolkit
+
+Anyone who works with data for long enough builds a personal set of tools. Mine has been accumulating for decades. Some are software I wrote, some I borrowed, some are just habits of looking. The collection is never finished, because the ground keeps shifting underneath it — new machines, new languages, new methods. A tool that was indispensable on a mainframe can become a curiosity on a laptop, and a technique that was impractical by hand becomes routine once the computing is cheap.
+
+Two forces drive that change. One is technology: each generation of hardware and software makes easy what used to be hard, and quietly retires the tools built around the old constraints. The other is theory — the methods of analysis keep advancing, and a genuinely better idea earns its place. Between them, a working toolkit is always being revised, things added and things set down.
+
+But not everything turns over. A few tools settle in and stay, used year after year, long after newer and more sophisticated alternatives have arrived. They earn that place not by being powerful but by being *reliable* — well understood, predictable, quick to reach for, honest about what they do. These are the old standbys. And because they are neither new nor fashionable, they are easy to overlook. Someone learning analysis today might never meet them at all.
+
+The two-way table is one of these.
+
+## A tool found, and lost
+
+I came to the two-way table early in my career, and at first it did not fit. I had been trained in statistics, and my mental models were built for dense data — rows and columns full of numbers, ready for tests I already knew. A two-way table of species and sites was mostly empty, and nothing I had learned told me what to do with it. The breakthrough, for me, was discovering that I could measure how similar the sites were to one another and draw the result as a dendrogram. That was a kind of pattern discovery, and it became my first tool for data of this shape.
+
+Then chance intervened, as it so often does in a career. I came to share a laboratory with Professor Dieter Mueller-Dombois — the same Mueller-Dombois whose book these pages keep citing. We worked together on a project testing hypotheses about how plant communities are distributed. I brought my dendrograms. Dieter brought COENOS, and had me run it — on punched cards, of course, years before the tidy DOS program these pages have followed. It gave me a second tool, and more than that, it widened how I thought about two-way tables: here was a different way to find pattern, one that worked on the table directly instead of collapsing it into distances.
+
+Time went on. My interests turned elsewhere, as interests do, and for years the two-way table sat quietly at the back of the kit. But eventually it came forward again — the data structure that had once puzzled me turned out to matter for question after question. By then, though, one of my two tools was gone. COENOS had vanished with the machines that ran it. The loss was not a matter of convenience; it was fundamental. I could still explain the COENOS approach — and I did, often, to students and colleagues, sketching on a board how the groups took shape. But I could not show them. I could describe the tool without being able to put it in anyone's hands.
+
+Now I can.
+
+## The newest tools, the oldest method
+
+Here is how. Recovering one of the oldest tools in the kit took some of the newest. The original program was a compiled binary with no surviving source; what it left behind were a few example files and its own cryptic restart records. Reading those, reconstructing the rules they implied, decoding the format byte by byte, and rebuilding the whole method as a tested R package — that work was done in collaboration with an AI.
+
+I want to name that plainly, because it is the truth of how this was made, and because I think it is a glimpse of something larger. This document and the `coenosr` package have two authors, and the second is Claude, the AI I worked with throughout. The partnership was real, and it was a genuine division of labor: I brought the method, the memory of how it was meant to behave, and the judgment of what counted as right; my collaborator brought the patience to decode a dead file format, the reach to find the published descriptions that closed the gaps, and the discipline to turn every recovered rule into code checked against the program's own output. Neither of us would have finished this alone. I could not have decoded the binary by hand in any reasonable time; the AI could not have known what the answer was supposed to look like, or which of the surviving traces mattered.
+
+This is, to me, one of the most hopeful uses of the new technology — not replacing the analyst, but extending the reach of one. An old method that would otherwise have stayed lost is alive again because a human who remembered it and a machine that could read its remains worked the problem together. The newest tool in the kit was used to restore one of the oldest, and to put it back within reach of anyone who wants it.
+
+## Onward
+
+So here it is: a reliable old standby, decoded from a program that no longer runs and rebuilt in a language that does. It earns its place the way these tools always do — by being simple, transparent, and dependable, and by working anywhere a sparse table might hide a pattern, in vegetation or markets or anything shaped the same way. Reach for it when you have such a table and a suspicion that structure is hiding in it. And when some newer, cleverer method comes along, as one surely will, keep this one anyway.
+
+For me, the recovery closed a gap I had carried for years — the distance between being able to explain a tool and being able to hand it to someone. I can stop sketching COENOS on a whiteboard now. The idea Adolf Ceska and Hans Roemer set down, the tool Dieter Mueller-Dombois once handed me on a deck of cards, is back in the kit — mine, and now yours.

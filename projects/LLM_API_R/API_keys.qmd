@@ -1,0 +1,30 @@
+# API Keys
+
+## Viewing & Editing
+
+The recommended way is to use the following:
+
+# install.packages("usethis") # If you don't have it
+usethis::edit_r_environ()
+
+Put this code into an R script. Run it and the `.Renviron` file will open in a tab. Then you can edit the contents.
+
+You'll see pairs of values.
+
+`API_NAME="key"`
+
+The key in quotation marks is optional, but recommended.
+
+Important: 
+- Make sure there is a blank line at the bottom of the set of APIs.
+- No spaces around the = sign.
+
+Save this file when you are done.
+
+Important note: The changes won't work until you restart your R session.
+
+## Accessing the API Keys
+
+Use the `Sys.getenv` function. Here is the format:
+
+`api_key <- Sys.getenv("API_NAME")`

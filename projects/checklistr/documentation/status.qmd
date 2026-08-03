@@ -1,0 +1,113 @@
+# Native, or Not?
+
+There is a shrub along the trail that most people walk past. *Dodonaea viscosa* — *ʻaʻaliʻi* — is a modest thing: a shrub or short tree, no showy flowers, easy to overlook. It is also one of the more common plants in the Hawaiian dry and mesic forests, ʻaʻaliʻi turning up almost everywhere. And two respected sources cannot agree on whether it belongs here. One calls it native to Hawaiʻi; the other calls it introduced.
+
+This is a different kind of disagreement from the last chapter. There, a conflict of *identity* could be settled by pulling the physical sheet and asking a specialist which name was right. Here, no sheet will help. Whether ʻaʻaliʻi is native is not written on the plant. It is a judgment about history — did the lineage arrive on its own, long before people, or did it come with them? — and on that question, honest experts differ. This chapter is about those disagreements, and about a surprising idea: that they are the most valuable thing the checklist produces.
+
+```{r}
+#| label: setup-status
+#| message: false
+
+## --- Standard packages ---
+
+## data handling and graphics (dplyr, readr, ggplot2, ...)
+library(tidyverse)
+## formatted tables
+library(gt)
+
+## --- Package from github/kimbridges ---
+
+## install once with: install_github("kimbridges/checklistr")
+library(checklistr)
+
+## --- Options ---
+
+## suppress read_csv() column-type messages
+options(readr.show_col_types = FALSE)
+```
+
+## Status is a judgment, not a fact
+
+Every other field in this checklist is, more or less, a property of the plant. Its family, its growth form, the year it was collected — these are things about the specimen. *Native status* is not like that. Whether a plant is native is a **relation between the plant and the place**: the very same species is native in one region and introduced in another. And that relation is not measured; it is **judged**, by an authority, from evidence about how and when the plant arrived. Authorities revise their judgments, and authorities disagree.
+
+So a native/introduced label can never be read off a specimen the way a flowering date can. It is a claim about biogeographic history, and it carries all the uncertainty that history carries. The honest way to handle such a field is not to pick one answer and print it, but to show *who* is making the claim — and to notice, carefully, when two authorities make different ones.
+
+## A global default against a regional authority
+
+`checklistr` builds status as a *relation with a verifiable overlay* rather than a baked-in fact. It carries two judgments side by side. The first is a **global default** from GIFT, the Global Inventory of Floras and Traits, which classifies species worldwide as endemic, indigenous, or introduced. The second is a **regional authority** — for Hawaiʻi, the *Manual of the Flowering Plants of Hawaiʻi* (Wagner and colleagues), the standard treatment. `add_status()` lays one against the other and records, for every taxon, whether they agree.
+
+```{r}
+#| label: status-agreement
+#| include: false
+
+## the agreement tally, from the generated checklist
+cl <- read_csv("data/kipuka_puaulu_checklist_generated.csv")
+n_agree    <- sum(cl$status_agree == TRUE,  na.rm = TRUE)
+n_disagree <- sum(cl$status_agree == FALSE, na.rm = TRUE)
+n_nocompare <- sum(is.na(cl$status_agree))
+pct_agree  <- round(100 * n_agree / (n_agree + n_disagree))
+```
+
+Most of the time, they agree. Of the `r n_agree + n_disagree` taxa that both sources classify, they concur on `r n_agree` — **`r pct_agree`%.** (A further `r n_nocompare` taxa cannot be compared at all, because one source or the other has no entry for them — a coverage gap worth remembering.) That high agreement is what makes the exceptions interesting. Where a global source and a regional specialist part ways, it is rarely random. It is a signpost.
+
+## Fourteen disagreements, two kinds
+
+There are `r n_disagree` taxa where GIFT and Wagner disagree, and they do not all disagree for the same reason. Sorted by *why*, they fall into two very different groups.
+
+```{r}
+#| label: disagreement-table
+
+## the flagged disagreements, saved from add_status(verify_against = wagner)
+disagreements <- read_csv("data/status_gift_vs_wagner_disagreements.csv")
+
+## the botanist's reading of each disagreement (verified by K. W. Bridges)
+kind <- tribble(
+  ~taxon,                    ~kind,
+  "Asplenium macraei",       "A — the global source's blind spot",
+  "Cyanea floribunda",       "A — the global source's blind spot",
+  "Cibotium glaucum",        "A — the global source's blind spot",
+  "Dryopteris fuscoatra",    "A — the global source's blind spot",
+  "Dryopteris hawaiiensis",  "A — the global source's blind spot",
+  "Alyxia stellata",         "A — the global source's blind spot",
+  "Ilex anomala",            "A — the global source's blind spot",
+  "Dodonaea viscosa",        "B — a genuine biogeographic debate",
+  "Ipomoea indica",          "B — a genuine biogeographic debate",
+  "Persicaria punctata",     "B — a genuine biogeographic debate",
+  "Microlepia speluncae",    "B — a genuine biogeographic debate",
+  "Nephrolepis biserrata",   "B — a genuine biogeographic debate",
+  "Nephrolepis cordifolia",  "B — a genuine biogeographic debate",
+  "Pteris cretica",          "B — a genuine biogeographic debate"
+)
+
+## readable Wagner labels (E = endemic, I = indigenous; both are "native")
+disagreements |>
+  left_join(kind, by = "taxon") |>
+  mutate(wagner = recode(wagner_status, E = "endemic (native)",
+                         I = "indigenous (native)")) |>
+  arrange(kind, taxon) |>
+  select(taxon, gift_status, wagner, kind) |>
+  gt(groupname_col = "kind") |>
+  cols_label(taxon = "Taxon", gift_status = "GIFT (global)",
+             wagner = "Wagner (regional)") |>
+  tab_style(style = cell_text(style = "italic"),
+            locations = cells_body(columns = taxon)) |>
+  tab_source_note("Where GIFT and Wagner disagree at Kīpuka Puaulu. Group A: the regional authority is right and the global source lacks the resolution. Group B: nativity is genuinely contested.")
+```
+
+The first group is the global source's **blind spot**. Here Wagner is simply right and GIFT lacks the resolution to see it. *Asplenium macraei* is the starkest case: a fern found nowhere on Earth but Hawaiʻi, which the global source records as *introduced*. The endemic tree fern *Cibotium glaucum* — hāpuʻu — and members of the famously Hawaiian genus *Cyanea* are demoted from endemic to merely indigenous. In a couple of cases the error runs the other way, GIFT over-calling endemism. None of these is a real scientific dispute. They are the gaps of a worldwide database that cannot know every region in fine detail, and the lesson is plain: for endemism, defer to the regional authority.
+
+The second group is something else entirely — a **genuine debate**, where no authority can simply settle the question. These are wide-ranging, often pantropical plants: ʻaʻaliʻi (*Dodonaea*), the morning glory *Ipomoea indica*, several ferns. Each is native somewhere across a vast range, and the question for Hawaiʻi is whether its population here is old and self-arrived (indigenous) or recent and human-carried (introduced). GIFT, seeing a species that grows on every warm continent, guesses introduced. Wagner, weighing the Hawaiian evidence, judges it indigenous. Both readings are defensible. Pulling the sheet will not decide it, because the disagreement is not about what the plant *is* but about how it *got here*.
+
+## Why the global source stumbles
+
+It is no accident that ferns dominate both groups. Their trouble is two-sided. It is **botanical**: ferns disperse by spores, which travel on the wind across oceans, so ferns naturally have enormous ranges — and a wide range is precisely the cue a global source reads as "introduced." A fern that is genuinely native to Hawaiʻi looks, from orbit, like a cosmopolitan weed. But the trouble is also **cultural**: the Hawaiian fern flora is traditionally understudied. Careful modern work — Tom Ranker's among it — has sharpened the picture in recent years, but it is far from resolved. So a fern disagreement is partly about biology and partly about attention: the record wavers where spores travel well *and* where few specialists have looked closely. The flowering plants that appear here, *Dodonaea* and *Ipomoea* and the rest, are the pantropical analogue — common, widespread, and easy to read as introduced precisely because they are everywhere.
+
+## The disagreement is the product
+
+It would be a mistake to read this chapter as a list of GIFT's errors. The disagreement flag is not a defect in the data; it is the **product**. Running a global default against a regional authority does not yield a cleaner status column — it yields a *map of where global knowledge and regional knowledge diverge*. Group A points a checklist toward the taxa where it should defer to local expertise. Group B points botany itself toward its open questions. Either way, the 87% you can move past, and the 14% is where the interesting work begins.
+
+This is where something larger comes into view. Consolidating herbaria into inclusive databases like GBIF and GIFT creates a resource no single herbarium ever had — and it lets the analysis go **beyond a list of species to sharpen our knowledge of the species themselves**. We set out only to build a checklist. But from even this one small forest, laying two authorities side by side has pointed at a dozen-odd taxa where something interesting is happening: an endemic fern the world has mislabeled, a common shrub whose history is genuinely in question. We are not declaring how it is. We are showing that from one site, carefully read, we can point to problems worth a specialist's time.
+
+That reframes what it means to contribute a collection. A specialty herbarium — the National Tropical Botanical Garden, say, whose Kauaʻi collections make the second site in this book possible — might see adding its specimens to GBIF as a matter of access, a way to let others find them. It is more than that. Set beside the aggregate, a collection's own holdings get their disagreements surfaced too; the institution learns where its material sits at the frontier of what is known. The aggregate gains value, and so earns support, by becoming an instrument for learning rather than merely a place to look things up. The checklist was only the entry point. The conflicts are where the aggregate begins to do science.
+
+What it cannot do is finish that science on its own — and that honest limit is where the last chapter turns.

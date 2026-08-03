@@ -1,0 +1,226 @@
+# Weather
+
+It can be useful to get a summary of the daily weather for a site. For example, this can be useful when writing up a trip report and comments on the weather will add to the understanding of the activities.
+
+The routines here focus on a single WMO Weather Station (see the Climate section on how to get the station numbers) and a single month.
+
+```{r}
+#| label:   core-weather
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Core packages
+library(tidyverse) ## General data manipulation
+library(lubridate) ## Date functions
+library(gt)        ## Tables
+library(gtExtras)  ## Table printing
+library(webshot2)  ## Print GT tables
+
+## Specialized packages
+##install_github("bczernecki/climate")
+library(climate)   ## Support for meteo_ogimet
+library(hms)       ## Format time
+##library(geosphere) ## Lots of specialized geometry calculations
+
+```
+
+### Extract Weather Data
+
+The routines here extract daily weather data for a specific station over a one-month period.
+
+All the useful data fields are extracted and formatted into a table.
+
+A few station ID numbers are listed for testing.
+
+```{r}
+#| label:   specify
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Choose a station WHO Weather Station (by number).
+station <- 91182
+
+## Specify a year and month number.
+year <- 2023
+month <- 5
+
+```
+
+## Process the Request
+
+```{r}
+#| label:   obtain-weather
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Process the request. ##############################
+
+## Table caption.
+caption_info <- paste0("WHO Weather Station: ",station)
+
+## Format the date information.
+begin  <- ymd(paste(year,"-",month,"-1"))
+finish <- ymd(paste(year,"-",month,"-",
+                    days_in_month(month)))
+
+## Extract the daily data for the period.
+daily <- meteo_ogimet(interval = "daily", 
+                      date = c(begin, finish), 
+                      station = station) 
+
+## Pare down the data and rename the columns, then sort by Date.
+useful_daily <- daily |>
+  select(-PreselevHp,-SunD1h,-SnowDepcm) |>
+  rename(Avg = TemperatureCAvg) |>
+  rename(Max = TemperatureCMax) |>
+  rename(Min = TemperatureCMin) |>
+  rename(Dew = TdAvgC)          |>
+  rename(Hum = HrAvg)           |>
+  rename(Dir = WindkmhDir)      |>
+  rename(Speed = WindkmhInt)    |>
+  rename(Pres  = PresslevHp)    |>
+  rename(Ppt = Precmm)          |>
+  rename(Total = TotClOct)      |>
+  rename(Low = lowClOct)        |>
+  rename(Vis = VisKm)           |>
+  arrange(Date)
+```
+
+## Create the Tables
+
+There are enough variables recorded that two tables are required.
+
+Note that some stations report wind gusts; others don't include this measurement. This adds some complexity to the table creation process. However, seeing how this is done might be important if this routine is adapted to other places where there is "unusual" data reporting.
+
+```{r}
+#| label:   create-tables
+#| message: false
+#| echo:    true
+#| warning: false
+
+if("WindkmhGust" %in% names(useful_daily)){
+  useful_daily <- useful_daily |>
+  rename(Gust = WindkmhGust)}
+
+## Arrange the columns for the first table.
+table1 <- useful_daily |>
+  select(Date, Avg, Max, Min, Dew, Hum, Ppt)
+
+## Print the first set of data.
+t1 <- gt(table1) |>
+  opt_row_striping() |>
+  ## Caption the table
+  tab_header(title = caption_info) |>
+  ## Caption sets of columns
+  tab_spanner(
+    label = "Temperature",
+    columns = c(Avg, Max, Min)) |>
+  ## Source Information
+  tab_source_note(
+    source_note = "Source: Extracted using ogimet") |> 
+  ## Footnotes
+  tab_footnote(
+    footnote = "degrees C @ 2 m AGL",
+    locations = cells_column_labels(columns=c(Avg, Max, Min))) |>
+  tab_footnote(
+    footnote = "average dewpoint, degrees C @ 2 m AGL",
+    locations = cells_column_labels(columns=Dew)) |>
+  tab_footnote(
+    footnote = "average relative humidity, %",
+    locations = cells_column_labels(columns=Hum)) |> 
+  tab_footnote(
+    footnote = "precipitation, mm",
+    locations = cells_column_labels(columns=Ppt)) |>
+  tab_options(table.align = "left")
+
+## Prepare the second table.
+if("Gust" %in% names(useful_daily)){
+     col_list <- c("Date","Dir","Speed","Gust",
+                   "Pres","Total","Low","Vis")
+     wind_span <- c("Dir","Speed","Gust")} else {
+     col_list <- c("Date","Dir","Speed",
+                   "Pres","Total","Low","Vis")
+     wind_span <- c("Dir","Speed")} 
+
+table2 <- useful_daily |>
+  select(col_list)
+
+## Print the second set of data.
+t2 <- gt(table2) |>
+  opt_row_striping() |>
+  ## Caption the table
+  tab_header(title = caption_info) |>
+  ## Caption sets of columns
+  tab_spanner(
+    label = "Wind",
+    columns = wind_span) |>
+  tab_spanner(
+    label = "Clouds",
+    columns = c(Total, Low)) |>
+  ## Source Information
+  tab_source_note(
+    source_note = "Source: Extracted using ogimet") |>
+  ## Footnotes
+  tab_footnote(
+    footnote = "wind direction",
+    locations = cells_column_labels(columns=Dir)) |>
+  tab_footnote(
+    footnote = "wind speed, km/h",
+    locations = cells_column_labels(columns=Speed)) |>
+  tab_footnote(
+    footnote = "sea level pressure, hPa",
+    locations = cells_column_labels(columns=Pres)) |> 
+  tab_footnote(
+    footnote = "total cloudiness, octants",
+    locations = cells_column_labels(columns=Total)) |> 
+  tab_footnote(
+    footnote = "cloudiness by low level clouds, octants",
+    locations = cells_column_labels(columns=Low)) |> 
+  tab_footnote(
+    footnote = "visibility, km",
+    locations = cells_column_labels(columns=Vis)) |>
+  tab_options(table.align = "left")
+
+## If there are gusts, add a footnote.
+if("Gust" %in% names(useful_daily)){
+  t2 <- t2 |>
+    tab_footnote(
+    footnote = "wind gusts, km/h",
+    locations = cells_column_labels(columns=Gust))}
+
+## Print the tables
+t1
+t2
+
+## Save tables
+gtsave(data=t1, filename = "Weather_table1.png")
+gtsave(data=t2, filename = "Weather_table2.png")
+
+```
+
+## Interpretation
+
+The two tables were sent to Claude-3 with the following request.
+
+*These two tables report the weather conditions for one month. Can you interpret these data and write a summary of the weather at this location for the month?*
+
+Here is the response.
+
+**The instructions are to interpret the weather data from the two tables showing temperature, humidity, precipitation, wind speed/direction, and cloud cover for the WHO Weather Station 91182 during the month of May 2023, and to write a summary of the weather conditions for that month.**
+
+**Summary of weather conditions at WHO Weather Station 91182 for May 2023:**
+
+**Temperatures were mild, with daily averages ranging from 23.2°C to 26.9°C (73.8°F to 80.4°F). The highest temperature reached was 30.6°C (87.1°F) on May 22-23, while the lowest was 21.1°C (70.0°F) on May 12-13.**
+
+**Humidity levels were moderately high, typically in the 60-70% range. The highest humidity of 84.4% occurred on May 12.**
+
+**Precipitation was minimal, with only 4 days recording any rainfall. The highest daily total was 12.0 mm on May 20.**
+
+**Winds were generally from the ENE direction at speeds ranging from 9.7 to 26.4 km/h (6 to 16.4 mph). The strongest winds of 26.4 km/h from the NE were recorded on May 24.**
+
+**Cloud cover was present on all days, with total cloudiness octant values between 2.5 and 5.5 throughout the month. Visibility remained good at 16.0 km on most days, except for a couple days with slightly lower 15.5 km visibility.**
+
+**Overall, the month saw mild temperatures, moderately high humidity, light winds mostly from the ENE, minimal rainfall, and partly cloudy skies. The weather was generally pleasant and stable throughout May 2023 at this location.**

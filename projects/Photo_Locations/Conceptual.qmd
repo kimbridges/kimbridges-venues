@@ -1,0 +1,40 @@
+
+# Conceptual Structure
+
+## Android: Location History
+
+An Android phone will capture location history periodically. How frequently depends on how much movement is being done. Frequent location changes may get positions recorded every few minutes. When there is little movement, the interval between positions may be hours.
+
+**This is important.** Android compresses the location history after 1 month. The detailed moves that were stored are reduced, basically, to a single general location per day. This data compression will seriously degrade the location quality. *This is a good reason to download the location history as soon as possible.*
+
+### Downloading the Location History
+
+Previously, Google kept the location history in the cloud. Then, you'd use the Google takeout capability (`takeout.google.com`) to retrieve your location history.
+
+That's all changed. Now, your locations are stored directly on your cell phone.
+
+The data format used by Google is `json`. Keep that in mind.
+
+There are quite a few programs that let you use a file location data to add geotags to photos. Most of these expect the locations in a simple column-oriented `csv` format. The `json` format, in comparison, is very complex as it is a data structure. The use of `json` is important with the phone location history as the data are in two formats, those detailed locations coming from recent days and summarized data locations for older periods. The `timelinesr` functions recognize these differences and handle the data appropriately.
+
+It takes a few steps to move a complete location history file from a phone to a Google Drive folder. From there, the file can be copied into a RStudio project. It is usual to create a folder with a name like "Timeline" as a place to store the location file.
+
+## Camera Image: EXIF data
+
+Modern DSLR-style cameras store a lot of information in the `jpg`-format image files. For example, the date and time the photo was taken (assuming, of course, that you've properly set this up on the camera). There is also a place to store the latitude and longitude of the photo location. Some cameras have a built-in GPS or connect to an external GPS; the location data are automatically added to the EXIF data for each photo.
+
+Having the location stored with each image means that the photo location travels with the image.
+
+Raw photos don't have EXIF data as part of the raw image file. A "sidecar" file is often created to hold supplemental image information. This is a separate file, generally sharing the name of the photo file. It takes care (or software) to keep the two files together.
+
+#### Storing Photos in an RStudio Project
+
+It is assumed that you are most interested in geotagging a set of photos as many people take many more shots than they will actually use. The focus here is on enhancing a set of photos with location data.
+
+The processing happens in an RStudio project. There is where text and R code can be used together. A folder with a name like "Photos" is established in the project. This is where the photos to be geotagged will reside.
+
+## Matching Locations with Images
+
+Locations in the cellphone log have a date and time. So do photos. This common property allows the matching of locations to images.
+
+There usually isn't an exact match between the location log and photo date and time. It might be off by a few seconds. That wouldn't be a problem. But sometimes, the closest match has a difference of several minutes, or even an hour or two. Software is designed to make assumptions about the best match.

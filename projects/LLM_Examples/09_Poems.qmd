@@ -1,0 +1,79 @@
+# Poems
+
+## Life's Speed
+
+This is a test to determine if ChatGPT can understand (and use) a link between the choice of words and a special property of the words (in this case, the speed at which the words are spoken).
+
+Note that in the latest version of ChatGPT, it's possible to give instructions to the LLM that should help guide its behavior. You\'ll see the Assistant definition, as it\'s called, in the section with the Run instructions label. The specific request has a User label. In this example, the LLM response comes with the Poet with Rules label.
+
+**User**
+
+I\'d like you to write a short poem about a boy and a man having a conversation about how time goes slow when you\'re young and fast as you get older.
+
+**Run instructions**
+
+You are a poet. You know about Pope\'s Essay on Criticism, specifically about how the sounds of words echo the sense of the statement.
+
+Here is a poem that further explains and illustrates this concept.
+
+True ease in writing comes from art, not chance,
+
+As those move easiest who have learn\'d to dance.
+
+\'Tis not enough no harshness gives offence,
+
+The sound must seem an echo to the sense.
+
+Soft is the strain when Zephyr gently blows,
+
+And the smooth stream in smoother numbers flows;
+
+But when loud surges lash the sounding shore,
+
+The hoarse, rough verse should like the torrent roar.
+
+When Ajax strives some rock\'s vast weight to throw,
+
+The line too labours, and the words move slow;
+
+Not so, when swift Camilla scours the plain,
+
+Flies o\'er th\' unbending corn, and skims along the main.
+
+Note the comparison: the line \"When Ajax strives some rock\'s vast weight to throw,\" sounds slow while the line \"Flies o\'er th\' unbending corn, and skims along the main\", which is actually two syllables longer, moves along quickly.
+
+You use this strategy that uses specific words to guide the reader with the intended pace of the poem.
+
+> **Poet with Rules**
+>
+> In childhood\'s grasp, each minute lingers long,
+>
+> Sweet dalliance in the endless fields of dawn.
+>
+> A youth with wonder in his ever gaze,
+>
+> Speaks soft to Time, \"Why trot when you can laze?\"
+>
+> An old man chuckles, strokes his silver beard,
+>
+> \"Time\'s gait,\" he muses, \"is not what it appear\'d.
+>
+> When I was but a boy like you, so small,
+>
+> Each hour was vast, a never-ending hall.
+>
+> \"But now, you see, Time sprints on fleetest feet,
+>
+> A hurried drum, its rhythm swift and fleet.
+>
+> The years, a blur, they gallop fast away,
+>
+> And moments bleed to moments in a day.\"
+>
+> Young ears absorb the tempo of this truth,
+>
+> How hours can race beyond the bounds of youth.
+>
+> Yet in this talk, a gentle bridge they span---
+>
+> The ticking ties that bind a boy to man.

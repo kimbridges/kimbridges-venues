@@ -1,0 +1,21 @@
+---
+title: "Photo Books"
+format: html
+editor: visual
+---
+
+# Photo Books
+
+A photo book, as this term is used here, is a PDF document that has pages of text and pages of photos.
+
+Here are some examples:
+
+## Productive Workflow
+
+## The Goal: Straightforward Production
+
+The text pages are created in a text editor (like Google Docs) and saved as PDF files.
+
+Images are enhanced by adding information to specific EXIF fields, like a description and location. There are specific R code chunks that help streamline this process. During the picture book creation, the EXIF data are extracted and used to help arrange the photo locations within the document and enhanced by displaying information in the photo caption.
+
+The

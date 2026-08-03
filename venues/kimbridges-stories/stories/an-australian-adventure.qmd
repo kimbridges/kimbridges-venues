@@ -1,0 +1,13 @@
+---
+title: "An Australian Adventure"
+subtitle: "Photo log of a trip to Sydney, Australia."
+date: 2016-09-18
+categories: ["Travel", "Australia"]
+image: ../images/An_Australian_Adventure.jpg
+pdf: ../pdfs/An_Australian_Adventure.pdf
+---
+We explored Sydney and nearby coastal and mountain areas.
+
+Pages: 99
+
+<iframe src="../viewer.html?pdf=An_Australian_Adventure.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

@@ -1,0 +1,20 @@
+
+# Preface {.unnumbered}
+
+This document provides R code to help you create plain maps. "Plain" doesn't mean the maps are not important. Quite the contrary. This type of map is used in many reports and publications.
+
+This document is another series of programming books. Together, they show how I do tasks that, to me, are common to a scientist with my general interests (ethnobiology, ecology) and which are useful in everyday life (travel, photography). 
+
+This series isn't a comprehensive guide to R functions or analysis strategies. Quite the opposite; these documents show just my preferred solutions for the sorts of tasks that I frequently encounter. Often, what's presented here, are starting points get a project underway.
+
+The overall strategy of these presentations are to show code blocks, they're called "chunks," that are useful. Find a chunk that matches your needs and then copy the code into your project code. You'll make modifications, of course. But the chunk should provide a useful core on which you can build.
+
+This documentation is done in Quarto. One of the beneficial aspects of Quarto is the option to copy code chunks with the click of a button. I've made a conscious effort to arrange the examples in a manner that facilitates copy-and-paste functionality, making it straightforward to reuse the code.
+
+Posting these materials on the Quarto Pub website provides easy access to the code. It makes it easy for me (and I do use it quite often). 
+
+Every programmer writes in a particular style within the constrains of the language she or he uses. People using R have watched the language evolve over the years. Different programming styles have developed as the capabilities of the language have changed. In R, there are generally many ways to accomplish the same task. As a result, if you are already an R programmer, you'll likely wonder at some of my style choices. That's OK. We each do what works in our own way. I'll further admit that some of my style choices are not consistent with the majority of mainstream R programming.
+
+I've tried to be consistent with the examples in the text. In part, I want my style to be uniform across the set documents I'm producing. For example, the examples here mesh well with those in [sitemaps](https://kimbridges-documents.netlify.app/sitemaps/).
+
+What's shown here is just a partial treatment of the general topic of Plain Maps. I expect to offer periodic updates as this is a personal repository of boiler plate code. It's also likely that I'll dig deeper into this subject as I think more about the potential of these aspects of the R language and the discovery of useful R packages.

@@ -1,0 +1,8 @@
+---
+title: "Voucher Labels"
+subtitle: "Capturing the field record, from the plant to the sheet — QR-coded cards photographed in the field become a herbarium label and an archivable field log, with no transcription"
+categories: ["Botany", "Methods", "R"]
+image: ../vouchr/vouchr_cover_art_text.png
+---
+
+[View Document](../vouchr/){.btn .btn-primary}

@@ -1,0 +1,13 @@
+---
+title: "Flower Fields"
+subtitle: "A visit to The Flower Fields to see Ranunculus variety."
+date: 2017-04-05
+categories: ["Gardens", "Ranunculus"]
+image: ../images/2017_Flower_Fields.jpg
+pdf: ../pdfs/2017_Flower_Fields.pdf
+---
+Our first visit in 2017 to The Flower Fields in Carlsbad, California. Ranunculus come in many colors, shapes and sizes.
+
+Pages: 30
+
+<iframe src="../viewer.html?pdf=2017_Flower_Fields.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

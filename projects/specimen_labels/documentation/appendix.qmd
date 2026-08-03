@@ -1,0 +1,263 @@
+# Appendix: Function Reference {.unnumbered}
+
+Everything the book describes is carried out by one R package, `vouchr`, and this
+appendix is a plain reference to it. Most readers will meet this document without
+ever loading the package, so nothing here assumes you have. Read it as a statement
+of what the system is made of: five groups of functions, in the order you would
+actually use them, from printing a deck before a trip to reading a discipline's
+decks out of the herbarium record.
+
+Every one of the twenty-five functions and data objects that version 0.1.0 exports
+appears below. Inside R, `?make_qr_cards` and its like give the same information in
+fuller form, and `library(vouchr)` followed by `help(package = "vouchr")` lists the
+lot.
+
+Two outside tools are needed, and only for one step each. Reading the codes out of
+a photograph uses Python's `opencv-python` and `pyzbar` through `reticulate`,
+because R has no maintained QR *decoder* of its own; reading a photograph's GPS
+and timestamp uses `exiftool`. Everything else, including all the printing and all
+the deriving, is R.
+
+The package is at [github.com/kimbridges/vouchr](https://github.com/kimbridges/vouchr).
+
+## Printing the cards
+
+The before-the-trip half. You need a deck definition, which is a CSV with one row
+per card and four columns: `copies`, `header` (the short value printed large),
+`footer` (the field name printed below the code), and `text` (the self-describing
+string the code carries, e.g. `Life Form: Tree`).
+
+`make_qr_cards(deck_csv, pdf_file, ecl, template, bind_left, x_offset, y_offset, guides, pad)`
+:   Renders a deck CSV to a printable PDF, ten cards to a US-Letter sheet. Returns
+    the PDF path invisibly.
+
+    `ecl`
+    :   Error-correction level, `"L"`, `"M"`, `"Q"` or `"H"`. Default `"H"`, about
+        30%, which is the right choice for cards that get handled and photographed
+        in the field.
+
+    `bind_left`
+    :   Inches reserved along the card's bound edge for the screw post and the
+        fanned stack above it. Nothing prints there. This is the parameter the
+        decks chapter is about; set it to `0` for cards that ride loose in a
+        holder rather than on a post.
+
+    `x_offset`, `y_offset`
+    :   Shift the whole grid on the sheet, in inches, positive right and down.
+        For cancelling a printer's feed offset, and nothing else — a fact about
+        the printer, deliberately kept separate from `bind_left`, which is a fact
+        about the binding.
+
+    `guides`
+    :   Draw card outlines, the reserved band and a punch mark alongside the
+        cards, so alignment and clearance can be proved on plain paper before
+        card stock is spent.
+
+`make_number_cards(pdf_file, prefix, start, n, ..., ledger, allow_reprint, pad_digits, gap)`
+:   Prints a run of collection-number identity cards — `prefix` plus a sequence,
+    encoded as `Number: KWB 1243`. These carry no binding band, because you detach
+    one onto a specimen rather than keeping it in a deck, and the number is printed
+    beside the code rather than above it so the code can run the card's full height.
+
+    `ledger`
+    :   Path to a CSV of every number ever issued. The run is refused if it would
+        reissue one. This is not fussiness: a collection number used twice is
+        unrepairable, because two specimens then share one key.
+
+    `allow_reprint`
+    :   Reissue numbers the ledger has seen, with a warning. For a sheet you know
+        was lost or spoiled.
+
+    `pad_digits`
+    :   Zero-pad the printed number to this width. `0` gives `1243`; `5` gives
+        `01243`, which has the advantage of sorting correctly as text.
+
+`qr_calibration_sheet(pdf_file, template, bind_left, x_offset, y_offset, pad)`
+:   Prints a sheet of card outlines, band boundaries and a measuring scale. Hold it
+    against a blank sheet of the real stock at a window: the outlines should sit on
+    the die cuts. Whatever they are off by is what goes into `x_offset` and
+    `y_offset`.
+
+`validate_qr_engine(sample_text, ecl)`
+:   Encodes a probe string and checks the result has the rigid skeleton a real QR
+    code must have — three finder patterns, the timing rows, a legal side length —
+    in pure R, with no scanner and no external tool. Returns `TRUE` invisibly, or
+    stops. Both card makers call it before anything is written.
+
+    It exists because a deck and a sheet of number cards were once printed from
+    PDFs whose codes came from a placeholder generator: visually convincing,
+    completely unreadable, and nothing in the pipeline noticed, because every check
+    measured where things were and none measured what they said.
+
+`avery_5371`
+:   The sheet geometry all three makers use: US Letter, two columns by five rows,
+    3.5 × 2.0 in cards, 0.75 in side margin, 0.5 in top margin. The numbers close
+    exactly, which is the check worth remembering — `0.75 + 3.5 + 3.5 + 0.75 = 8.5`
+    and `0.5 + 5 × 2 + 0.5 = 11`. Avery 5371, 8371 and 28877 are the same stock.
+    Copy and modify the list for other stock, then pass it as `template`.
+
+## Reading the photograph
+
+The at-the-desk half begins here. If you want only one function from this appendix,
+it is the first one.
+
+`read_photo(photo, place, derive)`
+:   The whole pipeline in one call: decode every card in the photograph, read the
+    GPS coordinate and timestamp from its EXIF, derive the site from the
+    coordinate, and return the assembled record together with both of its
+    projections. Gives back a list of `record`, `label` and `log_row`.
+
+`decode_qr(photo)`
+:   Returns every QR string the image yields, sorted. A field photograph is not a
+    clean scan, so this reads the image several ways and pools whatever any pass
+    finds; no single decoder gets them all.
+
+`read_exif(photo)`
+:   Returns `lat`, `lon` and `datetime`. Read the local `DateTimeOriginal` with its
+    offset for anything a person will see; a UTC stamp is there as well when an
+    absolute instant is wanted.
+
+`parse_cards(codes)`
+:   Turns decoded strings into a named list by splitting each on its `Field: value`
+    form. That prefix is what lets the reader sort a heap of codes found in one
+    frame, and it is why cards are printed self-describing rather than as tokens
+    needing a codebook.
+
+## Deriving the site
+
+Everything the landscape fixes, recovered from the coordinate pair alone. The
+sources are open and keyless by design, not by convenience — that choice is the
+equity argument in technical form.
+
+`site_extract(place, lat, lon, source, z, analysis_scale_m, relief_radius_m, key)`
+:   The terrain engine. Returns `values` (the derived variables), `sentences`
+    (label-ready lines) and `dem` (the elevation patch itself).
+
+    `source`
+    :   `"aws"` by default — free, keyless, global, and automatically
+        fine-resolution over the United States. `"google"` keeps the older method
+        as a fallback and is the only argument here that needs a `key`.
+
+    `analysis_scale_m`
+    :   The scale in metres at which slope, aspect and flow are computed; the
+        elevation model is aggregated to it first. This is a parameter and not a
+        constant on purpose. A hillside measured across a coarse grid comes out
+        gentler than the same hillside measured close in, and roughness changes
+        with the ruler completely. Every value the function returns carries its
+        source, resolution and scale, because a derived number without them is a
+        rumour.
+
+    `relief_radius_m`
+    :   Radius in metres for roughness and local relief.
+
+`site_place(lat, lon, zoom)`
+:   Reverse geocode, composed from the levels that are reliable. In dense urban
+    areas a gazetteer's city field and postcode are erratic — the postcode is even
+    zoom-dependent — while neighbourhood, county, state and country hold up, so the
+    locality is built from those and the unreliable middle is skipped. The
+    coordinates remain the authoritative locality; the name is a convenience for
+    human readers.
+
+`site_geology(lat, lon)`
+:   Bedrock unit, lithology and age, from Macrostrat. Global, keyless, and correct
+    in both young lava and old gneiss.
+
+`site_soil(lat, lon, source)`
+:   Soil classification. `"auto"` uses the detailed regional survey inside its
+    coverage and falls back to the global product outside it, which is the same
+    principle as preferring fine national elevation data over a coarse global
+    layer.
+
+`site_substrate(lat, lon, soil_source)`
+:   Geology and soil together, with label sentences. This is the function that
+    settled an argument in the decks chapter: substrate is a facet whose values are
+    hopelessly local — lava and ash in Hawaii, clay and alluvium in Georgia — which
+    makes it a poor candidate for a card and a good one for derivation, where it is
+    automatically right in either place with no vocabulary to write.
+
+`site_hillshade(x, ...)`
+:   Plots the elevation patch from a `site_extract()` result as a hillshade. The
+    base map the field-log chapter puts collections onto.
+
+`deg_to_compass(deg)`
+:   A bearing in degrees to a label such as `"NNE"`. Small, and it is what makes a
+    derived aspect readable on a label.
+
+## Assembling the record and its two views
+
+One capture, one record, two projections. The design claim of the whole system is
+that the label and the log cannot disagree, and this is where that is enforced:
+neither is written from the other.
+
+`assemble_record(codes, lat, lon, datetime, photo, place, derive)`
+:   Builds the record. Identity fields are lifted out of the cards and kept
+    separate from observations: `collection_number`, `collectors` and
+    `determined_by` on one side, the observed categories on the other, then the
+    coordinate and time, then the derived terrain, geology, soil and place.
+
+    The separation is not cosmetic. An observation is what the collector saw; a
+    determination is who asserted the identification, and it carries an authority
+    that a later worker can revise without disturbing anything recorded in the
+    field. Collector fields are read through a set of aliases, because a deck may
+    label a card `Collected by` while a reader looks for `Collectors` — a bug found
+    by running this function on a real photograph, and fixed here rather than by
+    reprinting cards.
+
+`read_capture(codes, lat, lon, datetime, photo, place, derive)`
+:   The same as `assemble_record()` but returning the record together with both
+    projections already made. Use it when the codes and coordinate are in hand from
+    somewhere other than a photograph.
+
+`make_label(rec)`
+:   Projects a record to herbarium label text. Worth being clear about what a label
+    is: a well-established herbarium wants the data as a file in shared Darwin Core
+    terms and prints its own label on its own archival paper. This function is the
+    provisional rendering, and it matters most exactly where a herbarium cannot
+    print its own.
+
+`make_log_row(rec)`
+:   Projects the same record to one row of the field log. Gather the rows from a
+    trip's photographs and you have the artifact that used to go missing.
+
+## Discovering the decks
+
+The empirical answer to what the cards should say. Not a prescription — a procedure
+that reads a discipline's own habits out of the accumulated record.
+
+`fetch_records(taxonKey, country, years)`
+:   Pulls preserved-specimen records for a taxon from the aggregated Darwin Core
+    corpus, paged. All fields, which is the point: the same ~161 columns that
+    overwhelm one collector at submission are, across a community, what reveals the
+    few cards each discipline needs.
+
+`first_collector(s)`
+:   Reduces a tangled `recordedBy` string to its primary collector surname. Dull,
+    and everything downstream depends on it, because the signal is carried by
+    collectors and a collector spelled four ways is four collectors.
+
+`signature_features(d)`
+:   Turns records into a logical table, one row per record, one column per kind of
+    datum: did this record note the habitat, the substrate, the neighbours, the
+    phenology, the floral detail.
+
+`discover_decks(taxonKey, data, country, years, min_records, k, plot, label)`
+:   The method itself. Fetches or accepts records, consolidates collectors,
+    computes each one's fill-signature, clusters them, and reports the clusters as
+    deck profiles. Returns the data, signatures, clusters, counts, per-cluster
+    profiles, the tree, and optionally the heatmap.
+
+    `min_records`
+    :   How many specimens a collector needs before being included. A signature
+        computed from three sheets is noise.
+
+    `k`
+    :   Number of clusters.
+
+    A field that almost nobody fills, but that everyone would want filled, is not
+    one discipline's deck — it is everyone's. Phenology is the standing example.
+
+`signature_heatmap(Mm, cl, counts, label)`
+:   Draws collectors against features, grouped by cluster. Returns a `ggplot`
+    object. This is the figure that carries the whole argument, and it is worth
+    reading it as the book asks you to read every figure: what it shows, and how it
+    was obtained.

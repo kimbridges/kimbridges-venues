@@ -1,0 +1,40 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Photo Locations"
+  subtitle: "Moving cellphone location logs to photo EXIF data"
+  author: "Kim Bridges"
+  date: today
+  cover-image: timelinesr_cover.png
+  chapters:
+    - index.qmd
+    - Conceptual.qmd
+    - Workflow.qmd
+    - Observations.qmd
+    - Time.qmd
+  navbar:
+    logo: timelinesr_logo.png
+
+toc: true
+number-sections: false
+
+execute:
+  warning: false
+  error: false
+  message: false
+
+format:
+  html:
+    css: styles.css
+    code-fold: true
+    code-summary: "Show the code"
+    theme: cosmo
+  pdf:
+    documentclass: report
+    margin-left: 30mm
+    margin-right: 30mm
+
+editor: visual
+

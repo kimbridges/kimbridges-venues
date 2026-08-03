@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: f418ed8e-2219-4540-a6da-e62eef7d7bee
+      url: 'https://kim.quarto.pub/r_code'

@@ -1,0 +1,183 @@
+---
+title: "sandbox"
+---
+
+```{r}
+
+library(gt)
+library(dplyr)
+
+# 1. Create dummy data
+data <- data.frame(
+  Col1 = c("A", "B", "C", "A", " "),
+  Col2 = c("C", "A", " ", "B", "A"),
+  Col3 = c("B", " ", "A", "C", "B")
+)
+
+# 2. Create the table
+data %>%
+  gt() %>%
+  data_color(
+    columns = everything(), # Apply to all columns
+    fn = function(x) {
+      # Return "yellow" if value is "A", otherwise no color (NA)
+      ifelse(x == "A", "yellow", "white")
+    }
+  )
+
+```
+
+
+```{r}
+# 1. Initialize the gt object
+my_table <- data %>% 
+  gt()
+
+# 2. Loop through every column name to apply the style dynamically
+for(col in names(data)) {
+  my_table <- my_table %>%
+    tab_style(
+      style = cell_fill(color = "yellow"),
+      locations = cells_body(
+        columns = all_of(col),
+        # The logic: Apply if the cell in this specific column equals "A"
+        rows = .data[[col]] == "A" 
+      )
+    ) %>%
+  tab_style(
+      style = cell_fill(color = "lightblue"),
+      locations = cells_body(
+        columns = all_of(col),
+        # The logic: Apply if the cell in this specific column equals "B"
+        rows = .data[[col]] == "B" 
+      )
+    ) %>%
+    tab_style(
+      style = cell_text(color = "lightblue"),
+      locations = cells_body(
+        columns = all_of(col),
+        # The logic: Apply if the cell in this specific column equals "B"
+        rows = .data[[col]] == "B" 
+      )
+    ) %>%
+    tab_style(
+      style = cell_fill(color = "lightgreen"),
+      locations = cells_body(
+        columns = all_of(col),
+        # The logic: Apply if the cell in this specific column equals "C"
+        rows = .data[[col]] == "C" 
+      )
+    )
+}
+
+my_table
+```
+
+
+```{r}
+library(gt)
+# 1. Create dummy data
+data <- data.frame(
+  Col1 = c("E", "2", "5", "1", " "),
+  Col2 = c("A", "1", "8", "4", "1"),
+  Col3 = c("T", " ", "3", "6", "2")
+)
+
+# 2. Generate 8 colors (for values 0 through 7)
+my_colors <- colorRampPalette(c("white", "honeydew4"))(8)
+
+# 3. Create the table
+my_table <- data %>%
+  gt() %>%
+  data_color(
+    columns = everything(),
+    # Define a custom function to map values to colors
+    fn = function(x) {
+      # Define your lookup list
+      colors <- c("1" = my_colors[2], 
+                  "2" = my_colors[3], 
+                  "3" = my_colors[4], 
+                  "4" = my_colors[5],
+                  "5" = my_colors[6],
+                  "6" = my_colors[7],
+                  "7" = my_colors[8], 
+                  "8" = "red", 
+                  " " = my_colors[1])
+      
+      # Create the vector of mapped colors
+      # We ensure x is character to prevent errors if the column is a Factor
+      result_colors <- colors[as.character(x)] 
+      
+      # Find any NAs (values not in the list) and set them to white
+      result_colors[is.na(result_colors)] <- "white"
+      
+      return(result_colors)
+    }
+  )
+
+my_table
+```
+
+```{r}
+
+## Create a function for the color overlay
+bb_color_map <- function(
+  max_val = 7,
+  low = "white",
+  high = "honeydew4",
+  overflow = "white",
+  blanks = c("", " ", NA)
+) {
+  ## Palette has (max_val + 1) steps: 0..max_val
+  pal <- colorRampPalette(c(low, high))(max_val + 1)
+
+  ## Map 0..max_val
+  m <- setNames(pal, as.character(0:max_val))
+
+  ## Add blank variants -> low color
+  for (b in blanks) {
+    if (is.na(b)) next
+    m[[b]] <- pal[1]
+  }
+
+  list(map = m, pal = pal, max_val = max_val, overflow = overflow)
+}
+
+## Build the mapping
+cm <- bb_color_map(max_val = 7, 
+                   low = "white", 
+                   high = "honeydew4", 
+                   overflow = "white")
+
+## Apply color using a lookup function
+gt_tbl_colored <- gt_tbl %>%
+  gt::data_color(
+    columns = gt::everything(),  ## or restrict to site columns; see note below
+    fn = function(x) {
+      ## Work in character space
+      x_chr <- as.character(x)
+      x_chr[is.na(x_chr)] <- "0"   ## treat NA as 0 (blank)
+
+      ## Flag out-of-range numeric values
+      suppressWarnings(x_num <- as.numeric(x_chr))
+      over <- !is.na(x_num) & (x_num < 0 | x_num > cm$max_val)
+
+      ## Default: map using known keys; unknown values go to white
+      out <- cm$map[x_chr]
+      out[is.na(out)] <- cm$map[["0"]]
+
+      ## Overflow highlight
+      out[over] <- cm$overflow
+
+      out
+    }
+  )
+
+gt_tbl_colored
+
+  
+  
+
+```
+
+

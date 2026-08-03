@@ -1,0 +1,173 @@
+# Conceptual Foundations
+
+This section describes the conceptual model underlying Braun–Blanquet analysis, focusing on how vegetation data are structured, ordered, and interpreted.
+
+## Vegetation Data as Structured Information
+
+Vegetation data are often treated as collections of independent observations: species counts, cover estimates, or presence–absence values summarized across sites. While this perspective is convenient for many statistical methods, it obscures an important reality. Vegetation data are inherently structured. Species do not occur independently of one another, and sites are rarely interchangeable. Patterns of co-occurrence, dominance, and turnover reflect underlying environmental gradients, historical contingencies, and biological interactions.
+
+The Braun–Blanquet approach begins from this premise. Rather than asking how individual species or sites behave in isolation, it asks how groups of species and groups of sites relate to one another when viewed as parts of an ordered whole. The central analytical object is not a single measurement or summary statistic, but the species-by-site table itself.
+
+In this framework, a vegetation table is not simply a container for data. It is a representation of ecological structure. When rows (species) and columns (sites) are ordered appropriately, relationships that are otherwise difficult to detect become visually and conceptually apparent. Species that respond similarly to environmental conditions tend to cluster together. Sites that share comparable floristic composition align along the same portions of the table. Dominant species exert a disproportionate influence on this structure, often defining the major patterns that less abundant species then refine.
+
+This emphasis on structure has important consequences. First, it recognizes that ecological signal is often expressed through *relative* patterns rather than absolute values. Second, it allows gradual transitions—such as those found along environmental gradients—to be represented without forcing artificial boundaries. Finally, it places interpretation at the center of the analysis. The analyst is not merely computing an output, but actively engaging with the ordered table to understand how vegetation responds to underlying processes.
+
+Seen in this light, Braun–Blanquet analysis is best understood as a way of organizing information to support ecological reasoning. The method does not replace quantitative analysis, nor does it depend on a single formal criterion for success. Instead, it provides a structured lens through which complex, heterogeneous data can be examined, compared, and interpreted.
+
+## Dominance, Similarity, and Ecological Signal
+
+A defining feature of vegetation data is that not all species contribute equally to ecological structure. A small number of dominant species often account for most of the cover or biomass at a site, while many additional species occur at lower abundance. From an analytical standpoint, this asymmetry is not a nuisance—it is a signal.
+
+The Braun–Blanquet approach treats dominance as informative rather than something to be normalized away. Species that are abundant across a set of sites, or that show strong, coherent responses along an environmental gradient, play a central role in defining vegetation structure. Less abundant species may still be ecologically meaningful, but they tend to refine patterns rather than establish them.
+
+Similarity emerges when species respond in comparable ways across sites. Two species that increase and decrease together, even if at different absolute levels, convey shared ecological behavior. Likewise, sites that share a similar constellation of dominant and subordinate species can be considered floristically similar, even if they differ in minor details.
+
+To illustrate these ideas, consider the simplified species-by-site table below. The data shown here were created to reflect common patterns found in gradient-based vegetation studies. This two-way table is formatted to emphasize clarity and interpretability.
+
+```{r two-way-table, echo=FALSE, message=FALSE, warning=FALSE}
+## Load required packages
+library(tidyverse)
+library(gt)
+
+## Read the two-way table
+options(readr.show_col_types = FALSE)
+twoway_tbl <- read_csv(file=
+"species, site 1, site 2, site 3, site 4, site 5
+ A,       8,     7,     4,     2,     1
+ B,       1,     2,     1,     7,     6
+ C,       7,     6,     0,     1,     0
+ D,       1,     1,     1,     1,     1
+ E,       0,     1,     2,     6,     7")
+
+## Define table metadata
+table_title <- "Two-Way (Species × Site) Table"
+table_subtitle <- "Data collection order"
+table_source <- paste(
+  "Data: Relative abundance; zero = absent.",
+  "Source: Example data."
+)
+
+## Display table
+twoway_tbl |>
+  gt(rowname_col = "species") |>
+  tab_stubhead(label = "Species") |>
+  tab_header(title = table_title,
+             subtitle = table_subtitle) |>
+  tab_source_note(source_note = table_source) |>
+  opt_all_caps(FALSE)
+
+
+```
+
+Several features are immediately apparent. Species A and C are dominant at Sites 1 and 2, declining sharply toward Sites 3 and 4. Species B and E show the opposite pattern, increasing in abundance across the same sequence of sites. Species D occurs at low but constant abundance throughout.
+
+From a Braun–Blanquet perspective, Species A and C form a similarity group, as do Species B and E. These groupings arise not from absolute abundance, but from shared response patterns. Species E, while present everywhere, contributes little to defining structure because it does not differentiate among sites.
+
+This example also highlights an important interpretive principle. The ecological signal is carried primarily by *relative patterns of dominance and co-occurrence*, not by the mere presence of species. Ordered appropriately, such tables reveal transitions, contrasts, and associations that are difficult to detect through summary statistics alone.
+
+In later sections, we will see how these intuitive observations can be made systematic through ordering and grouping procedures, and how synthetic data can be used to explore both clear and ambiguous cases.
+
+## Why Order Matters
+
+In a two-way table, the arrangement of rows and columns is not arbitrary. The same data, presented in a different order, can either obscure structure or make it immediately apparent. This is a central insight of the Braun–Blanquet approach: **ordering is an analytical act**.
+
+In the previous section, the two-way table was presented in a natural or neutral order. While the values themselves were visible, the ecological relationships among species and sites required careful inspection to detect. Nothing in the table explicitly highlighted which species behaved similarly, which sites were floristically related, or where transitions occurred.
+
+When rows (species) and columns (sites) are reordered to place similar entities next to one another, the table begins to organize itself visually. Patterns that were previously implicit become explicit. Blocks of high abundance align, gradients become apparent, and contrasts sharpen. Importantly, no new information is added; the transformation lies entirely in the arrangement.
+
+Consider the same data as before, now reordered so that species with similar response patterns are adjacent, and sites are arranged to reflect the underlying gradient.
+
+```{r}
+## Read the two-way table
+options(readr.show_col_types = FALSE)
+twoway_tbl <- read_csv(file=
+"species, site 1, site 2, site 3, site 4, site 5
+ A,       8,      7,      4,      2,      1
+ C,       7,      6,      0,      1,      0
+ B,       1,      2,      1,      7,      6
+ E,       0,      1,      2,      6,      7
+ D,       1,      1,      1,      1,      1")
+
+## Define table metadata
+table_title <- "Two-Way (Species × Site) Table"
+table_subtitle <- "Hand reordered rows"
+table_source <- paste(
+  "Data: Relative abundance; zero = absent.",
+  "Source: Example data."
+)
+
+## Display table
+twoway_tbl |>
+  gt(rowname_col = "species") |>
+  tab_stubhead(label = "Species") |>
+  tab_header(title = table_title,
+             subtitle = table_subtitle) |>
+  tab_source_note(source_note = table_source) |>
+  opt_all_caps(FALSE)
+```
+
+In this ordered version, several features are immediately clearer. Species that increase and decrease together now appear as contiguous groups. Sites with similar species composition cluster along the table, while transitions across sites are easier to follow row by row. The eye is naturally drawn to coherent regions of the table rather than isolated values.
+
+This visual coherence is not merely aesthetic. It reflects ecological structure. Dominant species define the major axes of variation, while subordinate species refine or soften those patterns. Constant species, which do not differentiate among sites, recede into the background. The table, as an object, now encodes ecological relationships in a way that supports interpretation.
+
+The key point is that **ordering precedes grouping**. Rather than assigning species or sites to categories based on a fixed rule, Braun–Blanquet analysis uses ordering to *reveal* where groupings naturally occur. Boundaries, when they exist, emerge from the data rather than being imposed upon it.
+
+This is why ordering is not a cosmetic step, nor a convenience for presentation. It is the primary mechanism by which structure is uncovered in Braun–Blanquet analysis. Learning to interpret an ordered two-way table is therefore a fundamental skill, one that develops through repeated exposure to both clear and ambiguous cases—a theme that will recur throughout this documentation.
+
+In this simple example, the ordering was done manually to make the underlying structure clear. For larger and more complex datasets, such reordering quickly becomes impractical without computational support, motivating the analytical tools described later.
+
+## Ordering of Sites (Columns)
+
+While ordering species reveals patterns of shared response, ordering sites serves a complementary purpose. Column ordering aligns sites so that similarities in species composition become apparent across the table. Together, row and column ordering allow the two-way table to function as a coherent representation of vegetation structure.
+
+```{r}
+## Read the two-way table
+options(readr.show_col_types = FALSE)
+twoway_tbl <- read_csv(file=
+"species, site 1, site 2, site 4, site 5, site 3
+ A,       8,      7,      2,      1,      4
+ C,       7,      6,      1,      0,      0
+ B,       1,      2,      7,      6,      1
+ E,       0,      1,      6,      7,      2
+ D,       1,      1,      1,      1,      1")
+
+## Define table metadata
+table_title <- "Two-Way (Species × Site) Table"
+table_subtitle <- "Hand reordered rows & columns"
+table_source <- paste(
+  "Data: Relative abundance; zero = absent.",
+  "Source: Example data."
+)
+
+## Display table
+twoway_tbl |>
+  gt(rowname_col = "species") |>
+  tab_stubhead(label = "Species") |>
+  tab_header(title = table_title,
+             subtitle = table_subtitle) |>
+  tab_source_note(source_note = table_source) |>
+  opt_all_caps(FALSE) 
+
+```
+
+In the example shown above, the sites have been reordered to reflect similarities in their dominant species. Sites 1 and 2 appear adjacent because they share high abundances of Species A and C and low abundances of Species B and E. Sites 4 and 5 form a second grouping, characterized by the opposite pattern. This ordering brings into focus two floristically distinct sets of sites without assigning them to formal categories.
+
+Site 3 occupies an intermediate position. Its species composition shares features with both neighboring site groups but does not align strongly with either. Rather than forcing Site 3 into a group, its placement between the two dominant site groupings preserves important ecological information. The table now reflects more than discrete clusters; it also conveys transition.
+
+This illustrates a key principle of Braun–Blanquet analysis: **site ordering is not performed to create groups, but to expose relationships**. Groups, when they are appropriate, emerge from the ordered structure. Transitional or ambiguous sites remain visible as such, rather than being absorbed into a category where they do not clearly belong.
+
+As with species ordering, the ordering of sites in this example was done manually to clarify the underlying structure. In larger datasets, where visual inspection alone is insufficient, computational tools are needed to assist in identifying orderings that best reflect similarity and dominance patterns. The interpretive role of the analyst, however, remains central.
+
+## Emergent Groups and Boundaries
+
+Once species and sites have been ordered, groups begin to suggest themselves without being explicitly defined. This is a central characteristic of the Braun–Blanquet approach: group structure is *revealed* through organization rather than imposed by a formal classification rule.
+
+In the ordered two-way table, species A and C form a coherent group associated with Sites 1 and 2, while species B and E form a second group associated with Sites 4 and 5. These groupings are supported by consistent patterns of dominance and co-occurrence. They are not the result of thresholding or optimization, but of alignment—species that behave similarly appear together, and sites that share floristic composition align accordingly.
+
+Importantly, group boundaries are not always sharp. Site 3 illustrates this clearly. Its species composition overlaps with both dominant site groupings but does not belong cleanly to either. Rather than being a problem, this ambiguity conveys ecological meaning. It suggests transition along an underlying gradient or the influence of multiple processes acting simultaneously. The table preserves this information by allowing Site 3 to remain between groups instead of forcing assignment.
+
+The same principle applies to species. Species D, which shows little variation across sites, does not contribute strongly to group definition. Its role is informational rather than diagnostic. The presence of such species reminds us that not all taxa are equally useful for distinguishing vegetation structure, and that grouping emerges primarily from differential responses, not mere occurrence.
+
+Emergent groups, therefore, should be understood as **interpretive constructs** grounded in observable structure. They summarize dominant patterns while leaving room for exceptions, transitions, and uncertainty. This stands in contrast to methods that require every species or site to be assigned to a single class, regardless of how well it fits.
+
+In Braun–Blanquet analysis, boundaries are provisional and context-dependent. They are drawn to support understanding, not to assert categorical truth. As datasets become larger and more complex, identifying these emergent groups reliably requires computational assistance. However, the logic by which groups are recognized—and the judgment involved in interpreting boundaries—remains fundamentally the same.

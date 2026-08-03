@@ -1,0 +1,28 @@
+---
+title: "spread"
+format: html
+editor: visual
+---
+
+
+```{r}
+source("spread_pdf.R")
+
+# Single image
+create_spread_pdf("spreads/my_photo.jpg", "output/my_photo_spread.pdf")
+
+# All JPGs in a folder
+process_folder("spreads/", "output/")
+
+# Batch + combined PDF
+process_folder("spreads/", "output/", combine = TRUE,
+               combined_name = "bird_book.pdf")
+
+# Custom options
+process_folder("photos/", "spreads/", 
+               combine = TRUE,
+               combined_name = "bird_book.pdf",
+               font_size = 36,
+               margin = 0.75)
+```
+

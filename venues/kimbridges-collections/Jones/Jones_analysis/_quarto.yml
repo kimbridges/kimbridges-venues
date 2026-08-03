@@ -1,0 +1,35 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - Gallery/pdfs/**
+    - Gallery/audio/**
+    - Gallery/images/**
+    - Gallery/viewer.html
+    - Jones/images/**
+    - Jones/pdfs/**
+    - Jones/data/**
+    - Jones/Jones_Collection_Gallery.html
+    - Jones/jones_timeline.html
+    - Jones/sea_otter_map.html
+
+website:
+  title: "Kim Bridges — Collections"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Collections
+    right:
+      - icon: house
+        href: https://kimbridges.info
+        text: kimbridges.info
+      - icon: globe
+        href: https://www.kimbridges.com
+        text: kimbridges.com
+
+format:
+  html:
+    theme: cosmo
+    css: custom.css
+    toc: false
+    code-copy: true

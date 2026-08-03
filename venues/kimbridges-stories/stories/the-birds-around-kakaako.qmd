@@ -1,0 +1,13 @@
+---
+title: "The Birds Around Kaka‘ako"
+subtitle: "The introduced and native birds of urban Honolulu — and what they say about us."
+date: 2026-06-23
+categories: ["Birds", "Hawaii"]
+image: ../images/Kakaako_Birds.jpg
+pdf: ../pdfs/Kakaako_Birds.pdf
+---
+A photographic walk through the birds of Kaka‘ako and urban Honolulu — roughly fifteen introduced species and five natives. Each chapter tells the story of a bird's relationship with people and place rather than cataloguing its plumage: the cattle egret that followed the mowers, the pigeon asked to be looked at fairly, the saffron finch whose arrival you could watch, and a closing section of natives — the night heron, the kōlea, the koloa, and the white tern that nests downtown. The introduced birds mirror the immigrants who carried them; the natives mirror the place itself.
+
+Pages: 125
+
+<iframe src="../viewer.html?pdf=Kakaako_Birds.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

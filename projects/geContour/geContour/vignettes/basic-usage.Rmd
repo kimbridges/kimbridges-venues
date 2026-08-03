@@ -1,0 +1,113 @@
+---
+title: "Getting Started with geContour"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with geContour}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+The `geContour` package provides tools to visualize sparse spatial data as contour plots and export them as Google Earth overlays. This makes it easy to explore patterns in your geographic data within the Google Earth environment.
+
+## Basic Usage
+
+First, let's load the package:
+
+```{r setup}
+library(geContour)
+```
+
+### Creating a Simple Dataset
+
+Let's create a sample dataset with latitude, longitude, and some values:
+
+```{r}
+# Generate sample data
+set.seed(42)
+sample_data <- data.frame(
+  lat = runif(50, 30, 35),
+  lon = runif(50, -120, -115),
+  value = runif(50, 0, 100)
+)
+
+head(sample_data)
+```
+
+### Creating a Contour Plot
+
+Now we can create a contour plot from this data:
+
+```{r, fig.width=7, fig.height=5}
+# Create a basic contour plot
+contour_plot <- create_contour_plot(
+  data = sample_data,
+  interpolate = TRUE,
+  interp_method = "akima"
+)
+
+# Display the plot
+print(contour_plot)
+```
+
+### Exporting for Google Earth
+
+To export this visualization for use in Google Earth, we would use:
+
+```{r, eval=FALSE}
+# Export to Google Earth (not actually run in this vignette)
+result <- contour_to_google_earth(
+  data = sample_data,
+  output_name = "sample_overlay",
+  alpha = 0.7,
+  buffer_percent = 5
+)
+
+# The result contains paths to the created files
+result$png  # Path to PNG image
+result$kml  # Path to KML file
+result$kmz  # Path to KMZ file
+```
+
+## Customization Options
+
+The package provides several options for customizing your visualizations:
+
+### Custom Colors
+
+```{r, fig.width=7, fig.height=5}
+# Using a custom color palette
+custom_colors <- colorRampPalette(c("blue", "cyan", "yellow", "red"))(10)
+
+custom_plot <- create_contour_plot(
+  data = sample_data,
+  fill_colors = custom_colors,
+  alpha = 0.8
+)
+
+print(custom_plot)
+```
+
+### Custom Contour Breaks
+
+```{r, fig.width=7, fig.height=5}
+# Using a specific number of contour levels
+break_plot <- create_contour_plot(
+  data = sample_data,
+  contour_breaks = 5
+)
+
+print(break_plot)
+```
+
+## Conclusion
+
+The `geContour` package makes it easy to visualize spatial data and export it for use in Google Earth. For more details, refer to the function documentation using `?contour_to_google_earth`.br

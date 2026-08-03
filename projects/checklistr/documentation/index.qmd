@@ -1,0 +1,25 @@
+# Preface {.unnumbered}
+
+I have walked the loop trail at Kīpuka Puaulu many times, over many decades. It is a fine walk — a small island of old forest set in a younger sea of lava, on the flank of Mauna Loa. For years I walked it with students, and my job was to teach them the names. Nearly every plant along the trail I could name, and by the end of a walk, so could they.
+
+I get there less often now, and I am not teaching the names anymore. My memory of some of them has faded. Walking the loop not long ago, I found myself reaching — as anyone might — for a checklist: a simple list of what grows here. One quick scan, I knew, and the forgotten name would pop off the page.
+
+But where do you *get* a checklist for a place? Not a field guide to a whole island or a whole state, but a list for *this* trail, this forest, this patch of ground. I could not think of an easy answer. Not for Kīpuka Puaulu, and not for the other places I know well, and certainly not for the ones I have yet to visit. That question — where would the checklist come from? — is where this project began.
+
+The answer, it turned out, was the herbarium. For more than a century, botanists have collected plants at Kīpuka Puaulu and pressed them onto sheets, each labeled with a name, a date, a collector, and a place. Those sheets are now catalogued in databases you can query from a laptop. The plants of a place are, in a sense, already written down — scattered across the world's herbaria, waiting to be gathered back into a list.
+
+So I set out to assemble that list, and building it taught a longer lesson — one this document is about as much as the list itself. A checklist looks like a statement of fact. *Here are the species that grow here.* Read it closely, though, and it is nothing of the kind. It is a reconstruction, assembled from those specimens — each gathered by a particular person, on a particular day, filed under a name that may since have changed. Every entry is a claim. Every claim has a provenance and an uncertainty. A checklist, in other words, is an argument.
+
+The companion R package, **checklistr**, is built to make that argument visible. Given a place, it retrieves the herbarium records, resolves their names, removes the duplicates, and assembles a checklist — keeping, rather than hiding, the messiness: the specimens entered twice, the identifications that disagree, the gaps where no one has collected, the split between authorities over what is native and what is not.
+
+Two of those disagreements give the document its spine. The first is a record at odds with itself — a single herbarium sheet that two catalogs have named as two different plants. The second is a record at odds with the experts — a global database and a regional authority that place the same species on opposite sides of the native line. Neither is an error to be smoothed away. Each is a signal: a marker of the places where the experts disagree.
+
+One idea runs underneath all of it, and it is worth stating plainly at the start. A herbarium is not an ecological survey. Botanists collect to document a region's plants, not to census a plot; once a species is in the collection for an area, it is seldom gathered again at every site where it grows. A checklist drawn from such records is a taxonomic accumulation over a region, not a snapshot of a single point. Mistake the one for the other and every number that follows will mislead. A map of where the specimens actually fall keeps that mistake at bay — which is why the map, in this account, matters more than it first appears.
+
+So the list serves two readers at once. There is the one who knows the flora and needs only a reminder — the forgotten name jogged loose by a scan of the page. And there is the one who does not know it, and deserves to be told plainly which entries are solid and which are contested. The chapters serve both: who collected the flora, and when; the question of scale, and what the map reveals; how complete the record is, and how one could even know; the two kinds of conflict; the growth-forms that sort a flora into trees and herbs; the fraught question of native status; and a second site, on another island, that tells a different story with the same tools. A closing chapter is honest about what the method cannot do, and invites you to point it at a place you know.
+
+The larger hope is simple. Centuries of collecting, and centuries of botanical thought, sit inside these records. Tools like these open new access to both — a way to verify what we believe we know, to refresh what we have forgotten, and to see, clearly, where the knowledge runs out.
+
+::: {.callout-note appearance="simple"}
+This document is written to be read without running any code; the R is folded away behind a *Show the code* link at each step, for those who want it. The `checklistr` package is open source at [github.com/kimbridges/checklistr](https://github.com/kimbridges/checklistr). The work was a collaboration between K. W. Bridges and Claude (Anthropic).
+:::

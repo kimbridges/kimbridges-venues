@@ -1,0 +1,77 @@
+# Appendix {.unnumbered}
+
+## Function reference
+
+The `checklistr` package is open source at [github.com/kimbridges/checklistr](https://github.com/kimbridges/checklistr) and installs with `remotes::install_github("kimbridges/checklistr")`. This reference lists the exported functions, grouped by the stage of the workflow where each is used. Most readers meet these functions only in this book, without ever loading the package; the reference is the overview they would otherwise miss. Full argument details live in each function's help page (`?fetch_specimens_gbif`).
+
+The pipeline reads top to bottom: **fetch** records, **clean** them, **build** the checklist, then **enrich** it with growth form and status. The remaining groups are analytical lenses that read the specimen records directly.
+
+### Fetch the records
+
+`fetch_specimens_gbif(lon, lat, r_km, taxon, rank)` — retrieve preserved-specimen (herbarium) records from GBIF within a radius of a point. The entry point to everything else.
+
+`circle_wkt(lon, lat, r_km)` — build the WKT geometry string for the query circle; used internally by the fetch, exposed for custom queries.
+
+### Consolidate collectors
+
+`primary_collector(x)` — reduce a messy `recordedBy` string (multiple names, initials, suffixes) to a single primary collector surname.
+
+`add_primary_collector(df)` — add a tidy `collector` column to a records table by applying `primary_collector()` to every row.
+
+### Deduplicate
+
+`dedup_specimens(df)` — collapse duplicate records to one row per gathering, so counts mean something. Handles the common institutional double-entry.
+
+`normalize_institution(x)` — fold institution codes that name the same herbarium onto one label (e.g. BISH and BPBM, both Bishop Museum).
+
+`clean_record_number(x)` — strip a collector's record number to a comparable core, so the same gathering matches across entries.
+
+### Flag determination conflicts
+
+`detect_det_conflicts(df)` — find single sheets carrying two different determinations (the same specimen named as two plants). Run on the **raw** records, before deduplication collapses the evidence.
+
+### Build the checklist
+
+`build_checklist(df)` — the keystone. Resolve verbatim names to accepted species via the GBIF backbone, deduplicate, flag determination conflicts, and return one row per accepted taxon with a record count.
+
+### Add growth form
+
+`gift_growthform(cache)` — fetch the growth-form trait table from GIFT (cached locally after the first call).
+
+`add_lifeform(checklist, growthform)` — attach a `lifeform` (tree/shrub/herb/graminoid/fern) and a `lifeform_source` (how each was assigned) to the checklist.
+
+### Add status
+
+`status_gift(all_list_ID, endemic_list_ID, cache_dir)` — the global default: read GIFT region lists into an endemic / indigenous / introduced status per species.
+
+`add_status(checklist, status, verify_against, normalize)` — attach status to the checklist as a pluggable overlay; with `verify_against`, compare a global default to a regional authority and record where they disagree (`status_agree`).
+
+`crosswalk_gbif(names)` — resolve a set of names to accepted GBIF-backbone names, so a status table joins cleanly to the checklist.
+
+`add_checklist_status(...)` — convenience wrapper that runs the status join in one call.
+
+### Collector and date lenses
+
+`collector_profile(df)` — per-collector summary: specimens, taxa, active years, institutions.
+
+`collector_contributions(df)` — each collector's total and *unique* taxa (taxa collected by no one else).
+
+`plot_collecting_history(df, n_top, place)` — specimens by year, colored by primary collector; shows collecting eras at a glance.
+
+`plot_collector_activity(df, min_specimens, place)` — each collector's window of activity, sized by specimens and colored by distinct taxa.
+
+`plot_collector_composition(df, min_specimens, place)` — how collectors divide by the native/introduced composition of what they gathered (requires status on the records).
+
+### Accumulation and completeness
+
+`species_discovery(df)` — cumulative distinct taxa by year first collected (the discovery curve data).
+
+`richness_estimate(df)` — inventory-completeness estimators (Chao and relatives) from the record counts.
+
+`plot_species_discovery(df, place)` — the discovery curve: has the flora been worked out, or is it still climbing?
+
+`plot_accumulation(df, place)` — species accumulation against collecting effort.
+
+### Map
+
+`map_specimens(df, ...)` — map specimen locations, revealing nominal-locality stacking versus dispersed field sampling.

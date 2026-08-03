@@ -1,0 +1,10 @@
+---
+title: "Fiction"
+subtitle: "Imagined lives and invented places"
+---
+
+Long-form fiction built as a collaboration between human direction and AI craft. Each story is presented as an illustrated flipbook.
+
+Currently on the shelf: *My Name Is Nike*, an illustrated short story, and *Orbits*, a novel-length journey across six cities.
+
+[Enter the Fiction site &rarr;](https://kimbridges-fiction.netlify.app){.btn .btn-primary}

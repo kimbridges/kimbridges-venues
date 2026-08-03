@@ -1,0 +1,11 @@
+
+# Synthesis
+
+Here is a draft version of the synthesized story.
+
+```{r}
+
+```
+
+{{< include full_story.txt >}}
+

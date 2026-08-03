@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: fce3095e-fe25-4871-9fe9-6a5ca5b38cb1
+      url: 'https://kim.quarto.pub/plainmaps'

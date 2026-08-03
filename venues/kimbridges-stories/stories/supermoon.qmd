@@ -1,0 +1,13 @@
+---
+title: "SuperMoon"
+subtitle: "A rare SuperMoon."
+date: 2026-04-28
+categories: ["Photography", "Hawaii"]
+image: ../images/Supermoon.jpg
+pdf: ../pdfs/Supermoon.pdf
+---
+A SuperMoon occurs when the Moon and Earth closer than average on a Full Moon. The last time was 1948.
+
+Pages: 17
+
+<iframe src="../viewer.html?pdf=Supermoon.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

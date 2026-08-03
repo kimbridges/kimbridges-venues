@@ -1,0 +1,28 @@
+# photobookr configuration file
+# Copy this to your project folder and customize
+
+book_name: "The Birds Around Kaka`ako"
+output_pdf: "Kakaako_Birds_Book.pdf"
+
+# Optional cover page (leave blank or remove for no cover)
+cover_file: "Kakaako_Birds_cover.pdf"
+
+# Folder locations
+folders:
+  stories: "Stories"     # Chapter PDFs go here
+  images: "Images"       # Source images with EXIF metadata
+  kml: "KML"             # Generated KML files for mapping
+
+# Two-page spread settings
+spread:
+  suffix: "_2W"          # Images ending with this get two-page treatment
+                         # e.g., "panorama_2W.jpg" spans two pages
+
+# Verification table (set to false to skip)
+verification:
+  enabled: true
+  output_file: "Photo_Book_verification.pdf"
+
+# Optional: Map generation settings (used by build_map)
+map:
+  output_file: "Kakaako_Birds_map.html"

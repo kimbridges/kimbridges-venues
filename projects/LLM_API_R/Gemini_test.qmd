@@ -1,0 +1,33 @@
+---
+title: "Gemini Test"
+format: html
+editor: visual
+---
+
+## Quarto
+
+```{r}
+library(gt)
+# Create a list of data pairs
+data <- list("Housing" = 238, "Food" = 154, "Transportation" = 453, "Internet" = 121, "Entertainment" = 228)
+
+data <- as.data.frame(data)
+
+data2 <- data.frame(category = 
+                  c("Housing", "Food", "Transportation", "Internet", "Entertainment"), 
+           cost = c(238, 154, 453, 121, 228))
+
+data2$category <- as.factor(data2$category)
+           
+gt(data2)
+
+# Define colors for the bars
+colors <- c("yellow", "yellow", "lightgreen", "yellow", "yellow")  # Set the color of the third bar to light green
+
+# Create a bar chart
+library(ggplot2)
+ggplot(data2, aes(x = category, y = cost)) +
+  geom_bar(stat = "identity", fill = colors) +
+  labs(title = "Revenue by Category", x = "Category", y = "Revenue ($)") 
+
+```

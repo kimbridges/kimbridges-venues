@@ -1,0 +1,13 @@
+---
+title: "Autumn Colors of Kyoto - Part 3"
+subtitle: "Kyoto temples during peak fall foliage."
+date: 2017-11-22
+categories: ["Travel", "Japan", "Gardens", "Asia"]
+image: ../images/Kyoto_Part3.jpg
+pdf: ../pdfs/Kyoto_Part3.pdf
+---
+A four-part photolog documenting our viewing of the fall foliage. We spent four days wandering, along with huge crowds during this popular seasonal event.
+
+Pages: 75
+
+<iframe src="../viewer.html?pdf=Kyoto_Part3.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

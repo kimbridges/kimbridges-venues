@@ -1,0 +1,54 @@
+---
+title: "Alt Input"
+format: html
+---
+
+## Quotation marks in the input
+
+Sometimes, there are small problems with the input that seem to make things fail. An example is a data value that includes a single quotation mark. This is shown in the following example where a new R function (r) reads data as raw lines.
+
+```{r}
+
+## Quiet readr 
+options(readr.show_col_types = FALSE)
+
+## Load packages 
+library(tidyverse)          ## brings in readr
+library(gt)
+
+## Raw string literal protects all quotes 
+csv_text <- r"(
+Hamlet,2024,2023,2022,2021,2019
+Achtmaal,7,2,19,16,11
+De Berk,14,16,10,15,19
+De Lent,8,19,4,6,15
+Helpt Elkander,5,14,2,9,17
+'t Kapelleke,18,18,11,8,13
+Klein Zundert,9,3,3,1,14
+Klein-Zundertse Heikant,,6,1,2,2
+Laarheide,13,17,18,20,20
+Laer-Akkermolen,2,10,12,14,7
+Markt,10,15,13,3,3
+Molenstraat,4,5,20,12,4
+Poteind,3,1,16,19,9
+Raamberg,19,11,14,4,10
+Rijsbergen,15,12,13,13,16
+Schijf,1,8,5,5,12
+Stuivezand,17,9,17,18,5
+'t Stuk,12,7,7,17,6
+Tiggelaar,6,4,6,7,1
+Veldstraat,16,20,9,10,18
+Wernhout,11,13,8,11,8
+)"     ## Raw string delimiter closes here
+
+## Read the data from the string
+corso_results <- read_csv(
+  file        = I(csv_text),
+  na          = c("", "NA"),
+  name_repair = "minimal"
+)
+
+## Examine the data in a table
+gt(corso_results)
+
+```

@@ -1,0 +1,135 @@
+---
+title: "Tessellations"
+author: "K. W. Bridges"
+date: "12/6/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Tessellation Test
+
+See:
+
+http://search.r-project.org/library/deldir/html/deldir.html
+
+### Progress
+
+* Things seem to be working.
+* Need to do some Tidy work to get the table showing point locations and the dir.area
+* Can lat,lng be used as coordinate locations?
+* Can the plot be made into a KML file to be used with Google Earth?
+
+
+```{r }
+library(deldir)
+library(tidyverse)
+
+x    <- c(2.3,3.0,7.0,1.0,3.0,8.0)
+y    <- c(2.3,3.0,2.0,5.0,8.0,9.0)
+
+# Let deldir() choose the rectangular window.
+dxy <- deldir(x,y)
+
+plot(dxy,wlines = "tess",number = TRUE,wpoints = "none")
+
+# Plot 
+## cmpnt_col key:
+##  triangulation
+##  tesselation
+##  data points
+##  dummy points
+##  point numbers
+##  enclosing rectangle
+
+## number = show numbers? (based on row number from the data)
+## showrect = show bounding rectangle?
+## axes = show axes with the scale?
+## wlines = "triang", "tess", "both" (default)
+## wpoints = "dummy", "real" or "both" (default)
+## nex = scale for size of point numbers
+## cex = scale for size of data points
+## cmpnt_lty = line types (e.g., c(tri=1,tess-1))
+## pch = plot symbols (data,dummy); 19 = filled circle, 4 = x
+
+## add = should this be added to an existing plot?
+
+
+plot(dxy,cmpnt_col=c("orange","green","red","blue","black","black"),
+     cmpnt_lty=1, number=TRUE,nex=1.5,pch=c(19,9),
+     showrect=TRUE,axes=TRUE,wlines = "tess",cex = 0.5)
+
+dxy_table <- data.frame(dxy$summary)
+
+## Select the x,y, and dir.area and make a new table
+
+
+```
+
+## Complex Example
+
+```{r}
+# Complicated example from He Huang:
+# "Linguistic distances".
+vldm <- c(308.298557,592.555483,284.256926,141.421356,449.719913,
+          733.976839,591.141269,282.842712,1.414214,732.562625)
+ldm <- matrix(nrow=5,ncol=5)
+ldm[row(ldm) > col(ldm)]  <- vldm
+ldm[row(ldm) <= col(ldm)] <- 0
+ldm <- (ldm + t(ldm))/2
+rownames(ldm) <- LETTERS[1:5]
+colnames(ldm) <- LETTERS[1:5]
+
+# Data to be triangulated.
+id <- c("A","B","C","D","E")
+x  <- c(0.5,1,1,1.5,2)
+y  <- c(5.5,3,7,6.5,5)
+dat_Huang <- data.frame(id = id, x = x, y = y)
+
+# Form the triangulation/tessellation.
+dH <- deldir(dat_Huang)
+
+# Plot the triangulation with line widths proportional
+# to "linguistic distances".
+all_col <- rainbow(100)
+i       <- pmax(1,round(100*vldm/max(vldm)))
+use_col <- all_col[i]
+ind     <- as.matrix(dH$delsgs[,c("ind1","ind2")])
+lwv <- ldm[ind]
+lwv <- 10*lwv/max(lwv)
+plot(dH,wlines="triang",col=use_col,wpoints="none",
+     lw=lwv,asp=NA)
+with(dH,text(x,y,id,cex=1.5))
+
+```
+
+## Another example lifted from the docs
+
+This has a lot of the needed features!
+
+```{r}
+set.seed(42)
+x <- runif(20)
+y <- runif(20)
+z <- deldir(x,y,rw=c(0,1,0,1))
+w <- tile.list(z)
+plot(w)
+ccc <- heat.colors(20) # Or topo.colors(20), or terrain.colors(20)
+# or cm.colors(20), or rainbow(20).
+plot(w,fillcol=ccc,close=TRUE)
+if(require(polyclip)) {
+CP <- list(x=c(0.49,0.35,0.15,0.20,0.35,0.42,
+0.43,0.62,0.46,0.63,0.82,0.79),
+y=c(0.78,0.86,0.79,0.54,0.58,0.70,
+0.51,0.46,0.31,0.20,0.37,0.54))
+plot(w,clipp=CP,showpoints=FALSE,fillcol=topo.colors(20))
+}
+plot(w,number=TRUE,col.num="red")
+plot(w,number=TRUE,col.num="red",cex=0.5)
+plot(w,showpoints=TRUE,number=TRUE,col.pts="green",col.num="red")
+
+```
+

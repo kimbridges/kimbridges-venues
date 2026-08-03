@@ -1,0 +1,13 @@
+---
+title: "Birds in the Gardens"
+subtitle: "Birds at two Phoenix area botanical gardens."
+date: 2019-02-16
+categories: ["Birds", "Gardens"]
+image: ../images/Birds_in_the_Gardens.jpg
+pdf: ../pdfs/Birds_in_the_Gardens.pdf
+---
+Birds seen on brief visits to the Desert Botanical Garden and Boyce Thompson Arboretum. This study includes an analysis of whether expected species were present.
+
+Pages: 112
+
+<iframe src="../viewer.html?pdf=Birds_in_the_Gardens.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

@@ -1,0 +1,55 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Voucher Labels"
+  subtitle: "Capturing the field record, from the plant to the sheet"
+  author:
+    - "K. W. Bridges"
+    - "Claude (Anthropic)"
+  date: today
+  cover-image: images/voucher_cover_art_text.png
+  chapters:
+    - index.qmd
+    - field-capture-system.qmd
+    - mechanisms.qmd
+    - capture-once.qmd
+    - decks.qmd
+    - derive.qmd
+    - discovering-decks.qmd
+    - closing-the-loop.qmd
+    - data-equity.qmd
+    - the-workflow.qmd
+    - on-fragility.qmd
+    - field-log.qmd
+    - acknowledgements.qmd
+    - appendix.qmd
+  sidebar:
+    logo: images/voucher_logo_art.png
+  #
+  # NOTE (2026-07-29): the cover art carries NO baked-in title text, despite the
+  # "_text" in its filename, so the title was never coupled to the artwork —
+  # unlike the AI_Microscope cover, this one needs no reshoot.
+  #
+  # TITLE SETTLED 2026-07-29 (Kim): "Voucher Labels". Descriptive, and it spans
+  # both halves of the work — the `vouchr` package and the label writeup. Closes
+  # Open Question #1 (naming), which had been deferred to the read-through. The
+  # art files were already named voucher_*, which now reads as deliberate.
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    embed-resources: false
+
+editor: visual
+
+toc: true
+number-sections: true
+number-depth: 2
+
+execute:
+  warning: false
+  error: false
+  message: false

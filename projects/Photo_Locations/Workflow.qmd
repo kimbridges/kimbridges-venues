@@ -1,0 +1,115 @@
+# Workflow
+
+## Activities on Your Android Phone
+
+Remember that detailed information is compressed after on month. It is important to periodically move data off the phone to the computer as soon as practical.
+
+#### The Downloading Procedure
+
+This is for an Android phone. Tap on the items in the following sequence:
+
+-   `Settings`
+
+-   `Location`
+
+-   `Location services`
+
+-   `Timeline`
+
+-   `Export Timeline data`
+
+You'll get a message: Export a copy of your Timeline data? (There is also an explanation that this will just be a copy. Your data will remain on your phone, too.)
+
+-   Tap on `Continue`
+
+You get a `Verify it's You` screen. Once you're verified (via facial or fingerprint), a `Downloads` screen will appear.
+
+At the bottom, there is a place (next to the `Save` Button) to enter a `file name` (it defaults to `timeline.json`). You should put in a new file name. Make sure that the extension is "`.json`".
+
+At the top left corner, there is a `hamburger` button. Tap it and a `Save As ...` menu appears.
+
+Tap on `My Drive` (this is your `Google Drive` and it's linked to the cloud).
+
+Create a Timelines folder, if necessary, and open it.
+
+Tap on `Save`.
+
+This finishes the steps needed on your phone.
+
+#### Verify the Procedure
+
+On your computer, go to your `Google Drive` and make sure your **timeline file** is there.
+
+You can move this file to an appropriate folder for location history processing. This will usually be an RStudio project where you process images.
+
+## Workflows Using RStudio
+
+#### Loading the timelinesr package
+
+The package is stored in a `GitHub` repository. You need to load the package on your computer just once. When it is loaded, you should see it in the list when using the Packages tab.
+
+Here is the code to load `timelinesr`.
+
+```{r}
+
+## Remove the comments to run the code
+
+## library(devtools)
+
+## devtools::install_github("kimbridges/timelinesr")
+
+```
+
+### Using the timelinesr Functions
+
+There are two approaches to using the `timelinesr` functions. The first is used when you have some photos and your goal is simply to do the geotagging. The other is when you have some photos that are in need of geotagging and you are doing this in the context of creating a Photo Book.
+
+#### A Focus on Geotagging
+
+Here, you either create a new project or reuse one that was previously built for geotagging.
+
+The usual pattern is to create two folders. One holds the photos (called "`photos`" in the example) and the other the timeline (called "`timeline`" in the example). You can use other names as they are referenced in the code.
+
+#### Adding Geotagging to a Photo Book Workflow
+
+Each Photo Book project usually has its own project. One of the folders in the project holds the photos that will be assembled into a book along with some text. In this case, we only add a file (with the timeline) and some code (`timelinesr` functions) to the existing project structure.
+
+```{r}
+
+library(timelinesr)
+
+## 1. IDENTIFY LOCATIONS
+timeline_json <- "Timelines/AlaMoana.json"
+photo_folder  <- "Photos/"
+
+## 2. INGEST THE TIMELINE
+timeline <- read_timeline(timeline_json)
+
+## 3. FUSE TIMELINE DATA
+track <- fuse_layers(timeline)
+
+## 4. LOAD PHOTOS 
+photos <- get_photo_timestamps(photo_folder) 
+
+## 5. GET THE TIMELINE-PHOTO MATCH
+tagged <- geotag_photos(track, photos)
+
+## 6. CHECK THE RESULTS
+head(tagged, 20)
+
+## 7. WRITE LOCATIONS TO THE PHOTO EXIF DATA 
+write_geotags(tagged)
+
+## 8. VISUALIZE GEOTAG LOCATIONS ON A MAP
+visualize_geotags(tagged)
+ 
+
+```
+
+The red dots show the places used for the geotags. Note that there is likely to be overlap as there will be nearby places linked to a particular geotag. The results are, therefore, approximate.
+
+In many situation, if not most, the approximate locations will be adequate.
+
+This is a sort of "goldilocks" solution. There is virtually no cost or effort involved in obtaining the locations. And these locations are mostly, good enough. It seems like a reasonable trade off. Consider that don't need to remember to bring a GPS tracker, keep it charged, turn it on at the start of a day and turn it off at night.
+
+Both general uses of the `timelinesr` functions (simple geotagging or geotagging images for a photo book) use the same workflow. Photo book creation just requires a few additional steps.

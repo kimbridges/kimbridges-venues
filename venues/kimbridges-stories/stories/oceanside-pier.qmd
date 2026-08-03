@@ -1,0 +1,13 @@
+---
+title: "Oceanside Pier"
+subtitle: "Two vists to the Oceanside Pier."
+date: 2026-04-28
+categories: ["Travel", "US"]
+image: ../images/oceanside_pier.jpg
+pdf: ../pdfs/oceanside_pier.pdf
+---
+This California coastal town's pier extends far into the Pacific. It's a good place to see surfers, beach, pelicans, and sunset. Visiting here is an iconic California experience.
+
+Pages: 35
+
+<iframe src="../viewer.html?pdf=oceanside_pier.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

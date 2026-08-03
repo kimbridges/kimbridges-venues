@@ -1,0 +1,63 @@
+# Setting the Stage
+
+## Product
+
+[Gallery Catalog](../viewer.html?pdf=1_Gallery_Catalog.pdf) (a browsable PDF file shown as two-page spreads)
+
+## Process
+
+I wrote in the Introduction that I don't like the emphasis of AI generated images on either dystopian urban scenes or a dumb theme like "an astronaut riding a unicorn under a rainbow on the moon." I asked, "Can 'normal' art be produced? And, if so, can it span a range of styles?"
+
+So I went to work with [OpenAI's ChatGPT](https://openai.com/index/chatgpt/ "Visit the OpenAI website") (which uses [DALL-E](https://openai.com/index/dall-e-3/ "Visit the DALL-E website")) with my own themes. It all starts with a detailed prompt to get a particular type of image. I'd get an image and then rephrase the prompt to make the next image better match my preferences. This would go on through several rounds until I got something I like (or failed, as happened in about half my tries).
+
+In many cases, I'd take the acceptable image and work on it in Photoshop. AI image generation introduces a number of artifacts. These are easily recognized markers that tip off a viewer that the image came from an AI generator. My Wacom tablet came in handy as some of the detailing required quite precise touch-up work. In a few cases, I spent as much as two hours working to "clean up" an image.
+
+My objective was to have at least three acceptable images in each of the styles. Toward the end, it was getting difficult as I wanted to finish this within a three day window I'd set as the goal. As a result, a few of the artworks are, in my view, a bit marginal.
+
+One of the images needed to be upscaled. That required a different AI engine; [Topaz Labs' Gigapixel AI](https://www.topazlabs.com/gigapixel "Visit Topaz Labs' Gigapixel AI website").
+
+Overall, I deliberately chose themes and styles that cover a wide geographic range. An *ikebana* floral style combined with still life painting represented Japan. Hawaii got some *gyotaku* (fish print) images; we frequently eat at a restaurant named Gyotaku in Honolulu. The West Coast was reflected in watercolor landscapes of the Bay Area. Crops painted in the style of oil paintings fit the Midwest. Finally, abstract stripes were used for the East Coast. Five painting styles and media. Five regions spanning the globe.
+
+## Packaging as a Catalog
+
+I didn't have any idea how I would organize the images when I started.
+
+I imagined a "persona" for each of the themes as I built sets of images. This personalization helped me keep on track with images in a consistent style. 
+
+The process morphed into a singular product by envisioning an art gallery.
+
+Consider a small, New York gallery in SoHo or one of the other neighborhoods known for supporting the art industry. I could have created the interior of the gallery and placed the images on the walls. But that seemed too complicated. Instead, I envisioned a catalog for an upcoming exhibition. This gallery catalog would have images representative of those that would be on display. In addition, the text would provides note about the overall show and biographical statements about the authors.
+
+The catalog concept was purely a human idea. AI technology played no role in this part. I didn't refer to any real gallery catalog. I'm not even sure if they exist. I simply created a structure that I figured a gallery might use.
+
+The work then began on creating the catalog. There were some missing elements that need to be made.
+
+I needed artists, and a gallery owner. These were, like the artwork, a product of my imagination. I crafted a name for each person and then words to give background information for each participant. Each statement was fed through [Gemini](https://deepmind.google/technologies/gemini/ "Visit the Gemini website"), a Large Language Model, for "improvement." Finally, I re-edited the "improved" words. At this stage, it was a cooperative man-machine exercise that strongly leaned toward human input.
+
+The "artist" personalities were chosen to represent different artist styles. Ethnic and regional contrasts were exploited to emphasize the basic artistic style of each set of images.
+
+I needed photos of each artist and the gallery owner. I used the text-to-image capabilities of Flux.1 on the [fal.ai](https://fal.ai/ "Visit the fal.ai platform") platform to generate realistic portraits. This involved several rounds of revisions, tweaking the text prompts to achieve both a convincing likeness for each person and a plausible background.
+
+The parts for the catalog were then complete. The assembly was done with [Adobe's inDesign](https://www.adobe.com/products/indesign.html "Visit the Adobe website") software. The product is a PDF file. This file was uploaded to the [ISSUU website](https://issuu.com/about "Visit the publishing website ISSUU") for browser-based viewing.
+
+## Looking Back
+
+The Gallery Catalog is a series of short stories. These aren't just text stories, but a combination of text and images. The images are designed to be dominant elements in the stories. The images are visual storytellers.
+
+This catalog is, perhaps, a new structure with which you can tell stories.
+
+Consider that the product was created by a single individual. AI tools, along with other software packages, provided important production skills. But it was human creativity that guided the overall vision, detailed specification, image adjustment and project execution.
+
+In the end, I hope this project shows that there is a useful and legitimate role of AI in assisting humans build creative products that begin to match the accepted standards for interesting art.
+
+I believe that I met my overall goal by showcasing the current state of the AI image generators in a way that I think has been left out. My criterion was whether I'd put images I generated on the wall of my apartment.
+
+During the process I felt a bit uneasy when I made modifications to the AI-generated art. I had become attached to each "artist" and thought that I might be violating something by making changes to the images associated with them. It was pretty hard to realize that I was actually the "artist" and that it's OK for me to alter the AI original.
+
+There might be some ethical issues in this exercise. Is it OK for me to create fake artists? Do I have to explicitly acknowledge the use of AI? Should I say that I made modifications to the originals?
+
+## Looking Ahead
+
+In my mind, the project wasn't done. A newly released AI application, [NotebookLM](https://notebooklm.google/ "Visit the NotebookLM site"), creates podcast-like narrations based on document analysis and summarization.
+
+I was anxious to see what this type of software would produce when given the Gallery Catalog.

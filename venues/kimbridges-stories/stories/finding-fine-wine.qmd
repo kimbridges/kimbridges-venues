@@ -1,0 +1,13 @@
+---
+title: "Finding Fine Wine"
+subtitle: "Trip to Napa Valley for wine and a special meal ."
+date: 2018-06-24
+categories: ["Travel", "Food", "Wine"]
+image: ../images/Finding_Fine_Wine.jpg
+pdf: ../pdfs/Finding_Fine_Wine.pdf
+---
+We discovered how fine wines are produced. While there, we had a once-in-a-lifetime meal experience.
+
+Pages: 70
+
+<iframe src="../viewer.html?pdf=Finding_Fine_Wine.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

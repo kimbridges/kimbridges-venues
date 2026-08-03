@@ -1,0 +1,31 @@
+# Thoughts
+
+The `kinship2` package, on which `tiny_pedigree` is based, is likely very useful to people who handle complex problems involving pedigree information. It's nice that it is possible to create a wrapper for `kinship2` so that a non-specialist can use this package for simple problems without too much difficulty.
+
+Having a pedigree display program in R is important. This allows an individual to stay within the R-universe and to integrate pedigree information with other tabular and visualization activities. `kinship2` fills most of this requirement and this compatibility is inherited by `tiny_pedigree`. But there are some limitations.
+
+## Limitations
+
+`kinship2` was not built in the `ggplot2` universe. Therefore, many of the useful features in `ggplot2` are not available. For example, it's not obvious how to modify the width of the lines in the plot. Therefore, all the connector lines are very thin without a way to make them wider.
+
+This incompatibility extends to creating external graphics files.
+
+It is hoped that some subsequent version of `kinship2` will shift so it will fit into the data structures used in `ggplot2`. That would be a very handy simplification.
+
+## Gratitude
+
+The authors of `kinship2` and the contributors to the development of this package need to be thanked for their contribution. The authors are Jason P. Sinnwell, Terry M. Therneau, Elizabeth J. Atkinson, Daniel J. Schaid, and Carly Mester.
+
+The `R.devices` package has turned out to be the "missing link" needed to get graphic output from `kinship2` files. Thanks to Henrik Bengtsson for this great contribution to the R community.
+
+## Software Versions
+
+-   `kinship2` (1.9.6)
+
+-   `tidyverse` (2.0.0)
+
+-   `gt` (0.9.0)
+
+-   `R.devices` (2.17.1)
+
+The CRAN page for `kinship2` is found at <https://cran.r-project.org/package=kinship2>.

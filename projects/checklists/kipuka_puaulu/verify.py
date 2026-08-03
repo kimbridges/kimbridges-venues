@@ -1,0 +1,93 @@
+import csv, re
+# Authoritative raw GBIF SCIENTIFIC_NAME facet (name, count) exactly as returned 2026-07-05
+facet = [
+("Melicope pseudoanisata (Rock) T.G.Hartley & B.C.Stone",12),("Castanea dentata (Marshall) Borkh.",6),
+("Cynoglossum amabile Stapf & J.R.Drumm.",6),("Freycinetia arborea Gaudich.",6),("Melinis minutiflora P.Beauv.",6),
+("Metrosideros polymorpha Gaudich.",6),("Peperomia cookiana C.DC.",6),("Stachytarpheta australis Moldenke",6),
+("Alyxia stellata (J.R.Forst. & G.Forst.) Roem. & Schult.",5),("Dodonaea viscosa (L.) Jacq.",5),
+("Hibiscadelphus giffardianus Rock",5),("Wikstroemia sandwicensis Meisn.",5),("Ageratina riparia (Regel) R.M.King & H.Rob.",4),
+("Asplenium adiantum-nigrum L.",4),("Buddleja asiatica Lour.",4),("Coprosma rhynchocarpa A.Gray",4),
+("Cyrtandra platyphylla A.Gray",4),("Elaphoglossum hirtum var. micans (Mett.) C.Chr.",4),("Fragaria vesca L.",4),
+("Ilex anomala Hook. & Arn.",4),("Juglans regia L.",4),("Microlepia strigosa (Thunb.) C.Presl",4),
+("Mimosa pudica var. unijuga (Duchass. & Walp.) Griseb.",4),("Modiola caroliniana (L.) G.Don",4),("Physalis peruviana L.",4),
+("Psidium guajava L.",4),("Pteridium aquilinum var. decompositum (Gaudich.) R.M.Tryon",4),("Racosperma koa (A.Gray) Pedley",4),
+("Rumex acetosella L.",4),("Setaria parviflora (Poir.) Kerguelen",4),("Youngia japonica (L.) DC.",4),("Asplenium L.",3),
+("Cyrtomium caryotideum (Wall. ex Hook. & Grev.) C.Presl",3),("Dianella sandwicensis Hook. & Arn.",3),
+("Hibiscadelphus hualalaiensis Rock",3),("Metrosideros polymorpha var. incana (H.Lev.) Skottsb.",3),("Myrsine lessertiana A.DC.",3),
+("Nestegis sandwicensis (A.Gray) O.Deg., I.Deg. & L.A.S.Johnson",3),("Pipturus albidus (Hook. & Arn.) A.Gray",3),
+("Pipturus albidus (Hook. & Arn.) A.Gray ex H.Mann",3),("Pseudoscleropodium purum (Hedw.) M.Fleisch.",3),
+("Pyracantha koidzumii (Hayata) Rehder",3),("Sophora chrysophylla (Salisb.) Seem.",3),("Agrostis stolonifera L.",2),
+("Alphitonia ponderosa Hillebr.",2),("Araucaria Juss.",2),("Axonopus fissifolius (Raddi) Kuhlm.",2),("Briza minor L.",2),
+("Clermontia parviflora Gaudich. ex A.Gray",2),("Cocculus orbiculatus (L.) DC.",2),("Cunninghamia lanceolata (Lamb.) Hook.",2),
+("Cuphea carthagenensis (Jacq.) J.F.Macbr.",2),("Cupressus arizonica Greene",2),("Cupressus sempervirens L.",2),
+("Cyanea floribunda E.Wimm.",2),("Dactylis glomerata L.",2),("Digitaria eriantha Steud.",2),
+("Diplazium sandwichianum (C.Presl) Diels",2),("Dryopteris wallichiana (Spreng.) Hyl.",2),("Festuca bromoides L.",2),
+("Hypochaeris radicata L.",2),("Kadua centranthoides Hook. & Arn.",2),("Lachnagrostis filiformis (G.Forst.) Trin.",2),
+("Leucanthemum vulgare Lam.",2),("Linaria texana Scheele",2),("Lolium multiflorum Lam.",2),("Medicago lupulina L.",2),
+("Microlaena stipoides (Labill.) R.Br.",2),("Microlepia speluncae (L.) T.Moore",2),("Myoporum sandwicense (A.DC.) A.Gray",2),
+("Nephroia orbiculata (L.) L.Lian & Wei Wang",2),("Nephrolepis exaltata (L.) Schott",2),
+("Peperomia blanda var. floribunda (Miq.) H.Huber",2),("Persicaria punctata (Elliott) Small",2),("Pinus halepensis Mill.",2),
+("Pinus patula Schiede ex Schltdl. & Cham.",2),("Pittosporum hosmeri Rock",2),("Pluchea carolinensis (Jacq.) G.Don",2),
+("Psidium cattleianum var. cattleianum",2),("Rubus ellipticus var. obcordatus (Franch.) Focke",2),("Sapindus saponaria L.",2),
+("Sapindus saponaria var. saponaria",2),("Sequoia sempervirens (D.Don) Endl.",2),("Sphenomeris chinensis (L.) Maxon",2),
+("Stenogyne calaminthoides A.Gray",2),("Stenogyne rugosa Benth.",2),("Stenogyne scrophularioides Benth.",2),
+("Stenotaphrum secundatum (Walter) Kuntze",2),("Straussia hillebrandii Rock",2),("Verbena litoralis Kunth",2),
+("Vulpia bromoides (L.) Gray",2),("Achillea millefolium L.",1),("Agrostis avenacea J.F.Gmel.",1),
+("Aira caryophyllea var. capillaris (Host) Mutel",1),("Andropogon virginicus L.",1),("Andropogon virginicus var. virginicus",1),
+("Anemone hupehensis (E.Lemoine) E.Lemoine",1),("Anemone hupehensis var. japonica (Thunb.) Bowles & Stearn",1),
+("Anthoxanthum odoratum L.",1),("Asplenium contiguum Kaulf.",1),("Asplenium furcatum Hillebr., 1888",1),
+("Asplenium macraei Hook. & Grev.",1),("Barbellopsis trichophora (Mont.) W.R.Buck",1),("Brassica L.",1),
+("Bulbostylis capillaris (L.) Kunth ex C.B.Clarke",1),("Cardamine flexuosa With.",1),("Cardamine occulta Hornem.",1),
+("Carya illinoensis (Wangenh.) K.Koch",1),("Carya illinoinensis (Wangenh.) K.Koch",1),("Centaurium erythraea subsp. erythraea",1),
+("Centaurium erythraea var. erythraea",1),("Cerastium fontanum subsp. triviale (E.H.L.Krause) Jalas",1),
+("Cerastium fontanum subsp. vulgare (Hartm.) Greuter & Burdet",1),("Charpentiera Gaudich.",1),("Charpentiera obovata Gaudich.",1),
+("Cheirodendron trigynum (Gaudich.) A.Heller",1),("Cibotium glaucum (Sm.) Hook. & Arn.",1),("Clermontia hawaiiensis (Hillebr.) Rock",1),
+("Clermontia hawaiiensis var. hawaiiensis",1),("Coprosma J.R.Forst. & G.Forst.",1),("Coprosma ernodeoides A.Gray",1),
+("Coprosma menziesii A.Gray",1),("Coprosma ochracea W.R.B.Oliv.",1),("Corylus americana Walter",1),("Corylus cornuta Marshall",1),
+("Ctenopteris Blume ex Kunze",1),("Cyperus brevifolius (Rottb.) Hassk.",1),("Cyperus hillebrandii Boeckeler",1),
+("Dianella lavarum O.Deg.",1),("Dicranopteris pectinata (Willd.) Underw.",1),("Digitaria violascens Link",1),
+("Dryopteris fuscoatra (Hillebr.) W.J.Rob.",1),("Dryopteris glabra (Brack.) Kuntze",1),("Dryopteris hawaiiensis (Hillebr.) W.J.Rob.",1),
+("Dryopteris paleacea (Lag. ex Sw.) C.Chr.",1),("Dubautia ciliolata (DC.) D.D.Keck",1),("Ectropothecium zollingeri (Muell.Hal.) A.Jaeger",1),
+("Elaphoglossum crassifolium (Gaudich.) W.R.Anderson & Crosby",1),("Elaphoglossum paleaceum (Hook. & Grev.) Sledge",1),
+("Elaphoglossum wawrae (Luerss.) C.Chr.",1),("Floribundaria floribunda (Dozy & Molk.) M.Fleisch.",1),("Geranium carolinianum L.",1),
+("Hedyotis biflora (L.) Lam.",1),("Hypochoeris radicata L.",1),("Ipomoea indica (Burm.) Merr.",1),("Kyllinga brevifolia Rottb.",1),
+("Lepisorus thunbergianus (Kaulf.) Ching",1),("Ludwigia palustris (L.) Elliott",1),("Melicope cinerea A.Gray",1),
+("Melinis repens (Willd.) Zizka",1),("Metrosideros collina (Forst.) A.Gray",1),("Metrosideros polymorpha var. glabrifolia (A.Heller) H.St.John",1),
+("Metrosideros polymorpha var. polymorpha",1),("Metrosideros polymorpha var. pumila (A.Heller) Skottsb.",1),
+("Microlepia strigosa var. hirta (Kaulf.) Hillebr.",1),("Morelotia affinis (Brongn.) S.T.Blake",1),("Myoporum Banks & Sol. ex G.Forst.",1),
+("Myrica faya (Dryand.) Aiton",1),("Nephrolepis Schott",1),("Nephrolepis biserrata (Sw.) Schott",1),
+("Nephrolepis cordifolia (L.) C.Presl",1),("Nephrolepis multiflora (Roxb. ex Griff.) F.M.Jarrett ex C.V.Morton",1),
+("Nephrolepis saligna Carruth.",1),("Nuttallanthus canadensis (L.) D.A.Sutton",1),("Pellaea ternifolia (Cav.) Fee",1),
+("Peperomia tetraphylla var. parvifolia (C.DC.) O.Deg. & I.Deg.",1),("Perrottetia sandwicensis A.Gray",1),("Pipturus hawaiiensis H.Lev.",1),
+("Pisonia brunoniana Endl.",1),("Pisonia sandwicensis Hillebr.",1),("Pisonia umbellifera (J.Forst. & G.Forst.) Seem.",1),
+("Pittosporum Gaertn.",1),("Pityrogramma calomelanos (L.) Link",1),("Pleopeltis thunbergiana Kaulf.",1),
+("Psychotria hawaiiensis (A.Gray) Fosberg",1),("Pteridium aquilinum subsp. decompositum (Gaudich.) Lamoureux ex J.A.Thomson",1),
+("Pteris cretica L.",1),("Pyracantha angustifolia (Franch.) C.K.Schneid.",1),("Sadleria rigida Copel.",1),
+("Sapindus oahuensis Hillebr. ex Radlk.",1),("Scaevola chamissoniana Gaudich.",1),("Scaevola chamissoniana var. bracteosa Hillebr.",1),
+("Schizachyrium condensatum (Kunth) Nees",1),("Schizachyrium microstachyum (Desv.) Roseng., B.R.Arrill. & Izag.",1),
+("Solanum americanum Mill.",1),("Solanum pseudocapsicum L.",1),("Sporobolus indicus (L.) R.Br.",1),("Stenogyne Benth.",1),
+("Stenogyne rotundifolia A.Gray",1),("Styphelia tameiameiae (Cham.) F.Muell.",1),("Trifolium repens subsp. repens",1),
+("Trifolium repens var. repens",1),("Vaccinium reticulatum Sm.",1),("Zanthoxylum dipetalum H.Mann",1),
+]
+print("Facet: distinct names =",len(facet)," total records =",sum(c for _,c in facet))
+
+# collect verbatims captured in the checklist build
+captured={}
+for fn in ("kipuka_puaulu_checklist.csv","kipuka_puaulu_bryophytes.csv"):
+    for r in csv.DictReader(open(fn,encoding="utf-8")):
+        for m in re.finditer(r"(.+?) \[(\d+)\](?:; |$)", r["verbatim_names"]):
+            captured[m.group(1)] = int(m.group(2))
+fac=dict(facet)
+missing=[n for n in fac if n not in captured]
+extra=[n for n in captured if n not in fac]
+badcount=[(n,fac[n],captured[n]) for n in fac if n in captured and fac[n]!=captured[n]]
+print("Missing from checklist:",missing)
+print("In checklist but not in facet:",extra)
+print("Count mismatches:",badcount)
+print("Captured total records:",sum(captured.values()))
+
+# also write the raw names file
+with open("kipuka_puaulu_gbif_rawnames.csv","w",newline="",encoding="utf-8") as f:
+    w=csv.writer(f); w.writerow(["gbif_scientificName","n_records"])
+    for n,c in facet: w.writerow([n,c])
+print("Wrote kipuka_puaulu_gbif_rawnames.csv")

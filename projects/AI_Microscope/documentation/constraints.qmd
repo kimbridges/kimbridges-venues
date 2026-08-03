@@ -1,0 +1,35 @@
+# The constraints of the era
+
+Every reach in the last chapter ran into a wall. The voice. The meanings. The pictures over prose. The tutor with real knowledge behind it. We knew what we wanted the AI Microscope to be. Then we sat down at the machines of 1989 and found out what they would let us build. This chapter is about the distance between those two things.
+
+It's an unusual kind of gap. Most of the time, the hard part of a project is the idea. You struggle to see what to make. Once you see it, building it is a matter of work. The AI Microscope was the other way around. The idea was clear and it was sound. The trouble was entirely in the machinery. That reversal is the whole story of this chapter, and in a way, of this book.
+
+## The weight of a picture
+
+Start with storage, because it shaped everything else. A digital image of a single microscope slide, the *Syringa* leaf we built the system around, took about 1.25 megabytes to store. Today that's nothing. You have larger photographs than that arriving in text messages. In 1989, it was a serious use of limited disk space.
+
+Here's the bind. Words are cheap to store and pictures are expensive. The whole design leaned on pictures. We wanted the image to carry the teaching and the words to stay short. That's exactly the choice the hardware punished hardest. One slide was heavy. A course wants many slides. Many tissues, Many species. We could keep a bare handful. We could not keep a library. The thing we most wanted to show was the thing the machine could least afford to hold.
+
+![The price of the constraint, drawn out. At 1.25 megabytes, one slide cost about fourteen dollars to keep on a disk in 1989, and a 20 megabyte drive of the day would hold sixteen of them and nothing else. Storing that same slide now costs about two hundredths of a cent.](figures/aim_8_storage_cost.svg){#fig-storage width=100% fig-align="center" .column-body-outset}
+
+## Two machines and a wire
+
+Now the strange part. The part that sounds made up when I describe it to anyone under fifty. The AI Microscope was not one computer. It was two.
+
+No single machine of ours did both jobs well. The graphics, the simulated microscope with its moving field of view, ran as a C program on an HP 9000 workstation. This was a machine that could push pixels. The tutor, the Prolog expert system with the knowledge in it, ran on a PC. That was was where this specialized software lived. So we had the eyes on one computer and the brain on another. We joined them with a serial cable. That's a very tiny data pipeline.
+
+Picture what that means. A student points at the palisade parenchyma on the workstation screen. That point has to travel down the wire to the PC, where the tutor reasons about it, and the answer has to travel back. The cable was slow, the way serial cables were slow. The student saw one smooth instrument. Behind the glass, two machines were passing notes through a keyhole. It worked. It was also a seam running straight through the middle of a thing that was supposed to feel whole.
+
+## Canned words
+
+The last wall was the language itself. The tutor could reason about which tissue you'd found. But what it said about that tissue was written in advance. Every explanation was a fixed string, composed by us, stored, and played back when the rules selected it. The machine chose from our words. It could not make its own.
+
+The voice was the same story, only harder. We had said the system would pronounce the scientific names, and it did, after a fashion, but a computer in 1989 could barely speak. The names came out fixed and stiff, produced ahead of time, the same every time whether they helped or not. There was no adjusting to the student in front of the screen, because there was nothing there that could adjust. The help was real, but it was frozen.
+
+## A strong idea, barely touched
+
+Put the walls together and you can see the shape of the problem. The idea wanted to be fluid: pictures anywhere, a voice that spoke, a tutor that answered in language fit to the moment. The machinery could only be rigid: a few heavy images, two computers on a wire, a fixed script read from a shelf.
+
+None of these were failures of thought. Every one was a limit of the year. The team knew exactly what it wanted, and the machines, doing their honest best, could deliver it only in pieces. That's what an idea ahead of its time actually feels like from the inside. Not a flash of genius waiting for applause. Just a clear picture in your head, and a set of tools that keep handing you a rougher version of it.
+
+The interesting question is what happens when the tools finally catch up. That's the next chapter.

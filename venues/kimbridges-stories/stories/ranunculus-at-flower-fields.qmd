@@ -1,0 +1,13 @@
+---
+title: "Ranunculus at Flower Fields"
+subtitle: "Impressionistic photo essay about Ranunculus."
+date: 2026-04-28
+categories: ["Ranunculus", "Gardens", "US"]
+image: ../images/Ranunculus_at_Flower_Fields.jpg
+pdf: ../pdfs/Ranunculus_at_Flower_Fields.pdf
+---
+A demonstration of the biological diversity of the Ranunculus at The Flower Fields in Carlsbad, California.
+
+Pages: 66
+
+<iframe src="../viewer.html?pdf=Ranunculus_at_Flower_Fields.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

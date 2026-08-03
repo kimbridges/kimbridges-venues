@@ -1,0 +1,175 @@
+# Projects
+
+::: columns
+::: {.column width="50%"}
+Claude can use files of stored information to help guide its work. These files are used in "Projects."
+
+The overall instruction says that we are creating R code. The code produced is called an "artifact" in the Claude LLM system.
+
+Beyond the general requirement for code, the most important use for us here is to give Claude specific advice on how we like our R code. That means we can specify our preferred colors for charts, the structure of our data tables, and a host of other details. 
+
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+![](appletable_cover.png)
+:::
+:::
+
+Coding style hints improve the quality and consistency of the results. The materials that R produces are also more likely to fit into our overall documentation as the charts and tables will have a consistent style.
+
+### Types of Project Files
+
+Each Project has a name and uses several files. This looks complicated at the start but, in practice, it is quite simple. :
+
+-   **Project Name**: Something descriptive as you may have several different projects.
+
+-   **Custom Instructions**: The overall goal (e.g., R code) for the project and a few of the project-spanning rules.
+
+-   **Project Knowledg**e: Files with specific information, particularly about formatting R code for different types of output.
+
+### Data Input With No Project File
+
+You can see the importance of supplying Project information in an example.
+
+First, we'll ask for some R code without any Project Knowledge files. After that, we'll use a Project Knowledge file for the same task.
+
+**Prompt** (without any Project Knowledge files)
+
+Please create some R code that will place the following data into a variable called "data". Here is the narrative: """
+
+On Monday, August 5, we went to Eastpoint village. We visited 3 farms and sampled 4 ciders. We returned with one bottle of cider made from heritage trees.
+
+We visited Southbend city on Wednesday. There were four ciders for sampling and we brought back 2 bottles produced from imported trees. While there, we went to 2 nearby farms.
+
+Our next trip was on Friday. We sampled 5 ciders as we visited four farms in Westville. We were given 3 bottles of heritage tree cider.
+
+Northview was our Monday destination where we made observations on 4 farms where we had a chance to sample 6 ciders. The make cider using imported trees and we brought back 5 bottles.
+
+On Wednesday, we took our final trip by going to Midway city. This area only grows heritage trees. We visited just one farm, sampled only one cider, and got 1 bottle to bring back."""
+
+**Response** (without any Project Knowledge files)
+
+Certainly! I'll create R code to place the given data into a variable called "data". I'll structure it as a data frame with columns for the date, location, number of farms visited, number of ciders sampled, number of bottles brought back, and the type of trees used for the cider.
+
+Here's the R code to create the data frame.
+
+This code creates a data frame with 5 rows (one for each trip) and 6 columns. The `stringsAsFactors = FALSE` argument ensures that character columns are not automatically converted to factors.
+
+You can view the data by simply typing `data` in the R console after running this code. If you'd like to see a summary of the data, you can use the `summary(data)` function.
+
+Would you like me to explain any part of this code or provide any additional information about the data structure?
+
+```{r}
+#| code-fold: show
+
+data <- data.frame(
+  Date = c("Monday, August 5", "Wednesday", "Friday", "Monday", "Wednesday"),
+  Location = c("Eastpoint", "Southbend", "Westville", "Northview", "Midway"),
+  Farms_Visited = c(3, 2, 4, 4, 1),
+  Ciders_Sampled = c(4, 4, 5, 6, 1),
+  Bottles_Brought = c(1, 2, 3, 5, 1),
+  Tree_Type = c("heritage", "imported", "heritage", "imported", "heritage"),
+  stringsAsFactors = FALSE
+)
+```
+
+The result is the "standard" way data are input in most R code. 
+
+Here, the text variables, such as Location and Tree_Type, have values surrounded by quotation marks. That adds to the data entry work and is a potential place for errors (i.e., forgetting the quotation marks).
+
+If there were more observations, say 30 lines, it would be difficult to match the locations in the sets of values if an error needed correction.
+
+Arranging data in a table format solves many of these problems.
+
+### Data Input With a Project File
+
+There are a number of alternatives to how data can be entered into an R program. Using a stored file of guideline specifications and an example, we can define a better style.
+
+Here is the contents of the simple Project file with the specifications. These are stored in a text file ("data_input_mini.txt") and dragged and dropped into Claude as part of the prompting process.
+
+>1. Data Input
+>
+> 1.1 Load the readr package as it contains the read_csv function.
+>
+> 1.2 Create an easy to read data table.\
+> Use the \`read_csv\` function from the readr package for inputting data. Here is an example.\
+> \`\`\`r\
+> data \<- read_csv(col_names=TRUE, show_col_types = FALSE, file=\
+> "city, lon, lat\
+> London, 0.1278, 51.5074\
+> Paris, 2.3522, 48.8566")\
+> \`\`\`
+>
+> 1.3 Arrange the data for easy viewing.
+> Make sure there are spaces between the data values so that the columns are lined up.
+
+We can use this file along with a prompt.
+
+**Prompt** (with the specification file)
+
+Please create some R code that will place the following data into a variable called "data". Here is the narrative: """
+
+On Monday, August 5, we went to Eastpoint village. We visited 3 farms and sampled 4 ciders. We returned with one bottle of cider made from heritage trees.
+
+We visited Southbend city on Wednesday. There were four ciders for sampling and we brought back 2 bottles produced from imported trees. While there, we went to 2 nearby farms.
+
+Our next trip was on Friday. We sampled 5 ciders as we visited four farms in Westville. We were given 3 bottles of heritage tree cider.
+
+Northview was our Monday destination where we made observations on 4 farms where we had a chance to sample 6 ciders. The make cider using imported trees and we brought back 5 bottles.
+
+On Wednesday, we took our final trip by going to Midway city. This area only grows heritage trees. We visited just one farm, sampled only one cider, and got 1 bottle to bring back."""
+
+Use the specification file that was loaded.
+
+**Response** (with the specification file)
+
+Certainly! I'll create R code to place the given data into a variable called "data" using the specifications from the document you provided. Let's break this down step by step:
+
+1. First, we'll format the data according to the specifications.
+2. Then, we'll create the R code to input this data using the `read_csv` function.
+
+Here's the R code to create the data table.
+
+This code does the following:
+
+1. It loads the `readr` package, which contains the `read_csv` function as specified in the document.
+
+2. It uses the `read_csv` function to input the data, setting `col_names = TRUE` to use the first row as column names, and `show_col_types = FALSE` to suppress the column specification messages.
+
+3. The data is formatted with spaces between the values to align the columns, as suggested in the specification.
+
+4. After creating the data table, it prints the data for easy viewing.
+
+You can run this code in R to create and view the "data" variable containing the information from your cider tour narrative. The data is structured with columns for the day, date, location, number of farms visited, ciders sampled, bottles brought back, and the type of trees used for the cider.
+
+Would you like me to explain any part of this code or make any modifications?
+
+```{r}
+#| code-fold: show
+
+library(readr)
+
+data <- read_csv(col_names = TRUE, show_col_types = FALSE, file =
+"day,        date,     location,    farms_visited, ciders_sampled, bottles_brought, tree_type
+Monday,    August 5, Eastpoint,    3,             4,              1,               heritage
+Wednesday, August 7, Southbend,    2,             4,              2,               imported
+Friday,    August 9, Westville,    4,             5,              3,               heritage
+Monday,    August 12,Northview,    4,             6,              5,               imported
+Wednesday, August 14,Midway,       1,             1,              1,               heritage")
+
+```
+
+Note that the instructions in the specification file were followed. This created an entirely different format for the entry of data. In this arrangement, you can see a simpler way to input your data. It's also easier to verify the data and make changes, if necessary.
+
+A file like the specifications, can be added as a Project Knowledge file. In this way, the text from this specification file can be used in combination with many other statements, often coming from other specification files, to control the creation of the R code.
+
+### Building a Project Knowledge File
+
+It's expected that Project Knowledge files will be 15 lines long, or longer.
+
+A good practice is to structure the information in the file. This can be seen in any of the Project Knowledge files that I'm developing for my research. Check the Appendix. The Project Knowledge files are used throughout the remaining examples.
+
+You can use one, or many Project Knowledge files. Create them in a way that's convenient for you. (You can use RStudio as an editor.)

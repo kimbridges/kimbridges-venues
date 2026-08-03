@@ -1,0 +1,220 @@
+---
+title: "Claude AI"
+format: html
+editor: visual
+---
+
+# Claude AI
+
+The `ClaudeR` package comes from:
+
+`https://github.com/yrvelez/claudeR`
+
+```{r}
+#| label:   core-packages
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Set an option for the read_csv function
+options(readr.show_col_types = FALSE) ## Suppress warning msg
+
+## Standard Packages
+library(tidyverse)
+library(gt)
+library(readr)
+
+## Specialized Packages
+devtools::install_github("yrvelez/claudeR")
+library(claudeR)
+
+library(sitemaps)
+library(ggmap)
+
+## Set the Anthropic API Key
+library(devtools)
+## The key is NOT stored here. It lives in ~/.Renviron as ANTHROPIC_API_KEY.
+## ClaudeKey <- Sys.getenv("ANTHROPIC_API_KEY")
+
+## Use two functions from sitemaps to initialize columneters
+column <- site_styles()
+hide  <- site_google_hides()
+
+## Establish a theme that improves the appearance of a map.
+## this theme removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2),
+                    legend.position = "none")
+
+```
+
+## Testing Claude
+
+```{r}
+
+
+response <- claudeR(prompt = "What is the capital of France?", 
+                    model = "claude-2", 
+                    max_tokens = 50)
+
+cat(paste(response,"\n\n"))
+
+query <- "How much wood can a woodchuck chuck?"
+
+response2 <- claudeR(prompt = list(list(role = "user", 
+                                       content = query)), 
+                    model = "claude-3-opus-20240229", 
+                    max_tokens = 50)
+
+cat(response2)
+```
+
+### Produce at a Farmers Market
+
+```{r}
+
+dialog <- "I'm at the market and headed to the first vendor.
+The sign says Johnson Farms in Alhambra. All of the vendors
+come from California. This stand has a lot of tomato varieties,
+lettuce, broccoli, cabbage and chard. You could make a salad
+here. The next stand is Sato Brothers. They come from Fresno.
+That's a long way away. Anyway, they've got watermelons,
+potatoes, and pumpkins. There are some food stands next. I'll come back to these later. We're now at Mountain Farm. The sign says Yucaipa. That's up in the mountains for sure. Anyway, they mostly have apples and pears. There are some peaches, too. Next to them is Mary Smith Orchard. It's in Redlands. I didn't know there are orchards there. The bins here are filled with fruit like oranges, limes and lemons. OK. There's an Oceanside farm next. The name is Walter and Sons. It's got lots of lettuce, tomatoes, cabbage and cauliflower. Another fruit farm is next. Let's see. It says 
+Riverside. And the name is National Fruit. That doesn't sound very family farm like. Their specialty is oranges and lemons.
+Nakasone Farms is next. They're found in Bakersfield. Their stand is selling lettuce, limes, apples, chard, and tomatoes."
+
+request1 <- "I need you to extract information from a story about a visit to a local farmers market. What I need are separate data rows. Each row should have only the name of a farm and a list of what produce they are selling with each item separated by a comma. Make sure to include all the produce being sold by each farm. Each produce item should be listed as singular. Just give the data lines as the response. Here is the story: "
+
+request2 <- "Will you please extract the name of each farm, the city in which it is located and then add the latitude and longitude of the city. There should be just four decimal digits precision for these geographic coordinates and if the city is west of the prime meridian or south of the equator, the longitude coordinate value should be negative. The data should be presented in a csv-style table. The column names should be text, city, lat, lon. Please respond with only the table." 
+
+
+```
+
+Using Claude 3
+
+```{r}
+
+## Build the first query.
+query <- paste(request1, "###", dialog, " ###")
+
+## Submit the first query for processing.
+data_rows <- claudeR(prompt = list(list(role = "user", 
+                                       content = query)), 
+                    model = "claude-3-opus-20240229", 
+                    max_tokens = 2000)
+
+data <- read_lists(data_rows=data_rows)
+
+## Submit the second query for processing.
+query <- paste(request2, "###", dialog, " ###")
+data_rows <- claudeR(prompt = list(list(role = "user", 
+                                       content = query)), 
+                    model = "claude-3-opus-20240229", 
+                    max_tokens = 2000)
+
+data2 <- read_csv(file = data_rows)
+
+```
+
+### Using the Extracted Information
+
+```{r}
+
+data <- read_csv(file =
+      "Farm Name,            Latitude, Longitude
+       Johnson Farms,        34.0954,  118.1270
+       Sato Brothers,        36.7378,  119.7871
+       Bill and Pete's Farm, 34.0336,  117.0430
+       Mary's Place,         34.0556,  117.1825
+       Walter and Sons,      33.1958,  117.3795
+       National Fruit,       33.9533,  117.3961
+       Nakasone Farms,       35.3733,  119.0187")
+
+## Rename the columns
+colnames(data) <- c("text","lat","lon")
+
+## Fix the longitudes for West of the Prime Meridian
+data$lon <- -data$lon
+
+## Check the data
+gt(data)
+
+## Expand the map (Fresno and Oceanside)
+column$margin <- 0.9
+
+## Generate a basemap
+basemap <- site_google_basemap(datatable = data)
+
+## Make smaller labels
+column$label_text_size <- 2
+
+## Generate a map
+ggmap(basemap) +
+  site_labels(datatable = data) +
+  site_points(datatable = data) +
+  simple_black_box
+  
+```
+
+### Add Data to the Sites
+
+The elevation function
+
+```{r}
+
+library(googleway)
+library(geosphere)
+
+## Get the elevations (meters)
+data2 <- google_elevation(df_locations = data, 
+                          location_type = "individual",
+                          key=google_key())
+
+data3 <- cbind(data,data2$results$elevation)
+
+data3 <- data3 |>
+  dplyr::rename(elevation_m = "data2$results$elevation") |>
+  mutate(elev_ft = elevation_m * 3.28084) |>
+  mutate(elev_ft = round(elev_ft,digits=0)) |>
+  select(-elevation_m)
+
+## Torrance Farmers Market
+market <- c(-118.32706,33.82679)
+
+for(i in 1:nrow(data3)){
+    ## Isolate the origin
+    origin <- c(data3$lon[i],data3$lat[i])
+    dist_meters <- distm(market, origin, fun=distHaversine)
+    ## Convert meter to miles
+    dist_miles <- dist_meters * 0.000621371
+    data3$dist_mi[i] <- round(dist_miles,digits = 0)
+    } ## end for loop
+
+gt(data3)
+
+dist_stats <- summary(data3$dist_mi)
+
+cat("The closest farm:",dist_stats[1],"miles\n")
+cat("The farthest farm:",dist_stats[6],"miles\n")
+cat("The average farm distance:",dist_stats[3],"miles\n")
+
+```
+
+## Produce Data
+
+```{r}
+
+produce <- read_csv(file = 
+  "Johnson Farms, Alhambra, tomato, lettuce, celery, radish, carrot
+   Sato Brothers, Fresno, watermelon, yellow squash, pumpkin
+   Bill and Pete's Farm, Yucaipa, apple, peach
+   Mary's Place, Redlands, kiwi, pomegranate, lime, lemon
+   Walter and Sons, Oceanside, lettuce, tomato, carrot, pea, okra
+   National Fruit, Riverside, orange, lemon, lime
+   Nakasone Farms, Bakersfield, lettuce, chard, cabbage")
+
+
+```

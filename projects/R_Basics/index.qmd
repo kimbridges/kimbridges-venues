@@ -1,0 +1,17 @@
+# Preface {.unnumbered}
+
+Put simply, what's here are small boilerplate snippets. The focus is on providing the R code you need when you start a project, such as routines for reading data and creating tables.
+
+I wrote this book to help myself. This document contains some of my current approaches to handling repetitive tasks that frequently arise in my work. This is not a comprehensive discussion of the R functions or analysis strategies. Quite the opposite; it shows my preferred solutions for the sorts of tasks that I frequently encounter. In this case, these are the key starting activities that get a project underway.
+
+The intent is to show code blocks, they're called "chunks," that I (and, hopefully you) can use. Find what's needed then copy the code chunk into the new project code. Some modifications are necessary, of course. But the chunks should provide much of what is needed.
+
+This documentation is done in Quarto. One of the beneficial aspects of Quarto is the option to copy code chunks with the click of a button. I've made a conscious effort to arrange the examples in a manner that facilitates copy-and-paste functionality, making it straight forward to reuse the code.
+
+Posting this book on the Quarto Pub website means that I have easy access to the code. If my code helps other people, then I'm even happier.
+
+A person writes in a particular style within the constrains of the language she or he uses. Programmers using R have watched the language evolve over the years. As the language has changed, there have been increased opportunities for different programming styles. In R, there are now many ways to accomplish the same tasks. As a result, if you are already an R programmer, you'll likely wonder at some of my style choices. That's OK. We each do what works in our own way.
+
+I've tried to be consistent with the examples in the text. In part, I want my style to be uniform with documents I'm producing that go into depth in specific areas (e.g., [sitemaps](https://kimbridges-documents.netlify.app/sitemaps/)).
+
+This is, in large part, a personal repository of boiler plate code. I expect to revise and update the contents as I develop my skills and venture into new areas of R programming.

@@ -1,0 +1,1191 @@
+---
+title: "Page Creation"
+format: pdf
+editor: visual
+---
+
+Test of Page Creation
+
+```{r}
+# Load the required libraries
+library(magick)
+library(exifr)
+
+# --- User-configurable settings ---
+
+# 1. Set the whitespace around the image (in inches). 
+#    A smaller number means a larger image. Good values are 0.5 to 1.0.
+page_margin_inches <- 0.1
+
+# 2. Set the image scale factor within the margins.
+#    1.0 = fill the space completely (up to the margins).
+#    0.9 = use 90% of the available space.
+image_scale_factor <- 1.0
+
+
+# --- Main script ---
+
+# 1. Select the JPG file interactively
+image_path <- file.choose()
+if (length(image_path) == 0) {
+  stop("No file selected. Please run the script again.")
+}
+
+# 2. Read all available metadata
+exif_data <- read_exif(image_path)
+
+# --- EXIF Inspector (to find your caption field) ---
+cat("--- Potential Caption Fields Found ---\n")
+common_fields <- c(
+  "ImageDescription", "DateTimeOriginal", "Description", "City", 
+  "Title", "Event", "Location")
+found_caption <- FALSE
+for (field in common_fields) {
+  if (field %in% names(exif_data) && !is.na(exif_data[[field]])) {
+    cat(sprintf("Field: %s\nText: %s\n\n", field, exif_data[[field]]))
+    found_caption <- TRUE
+  }
+}
+if (!found_caption) {
+  cat("No text found in common descriptive fields.\n")
+}
+cat("------------------------------------\n\n")
+
+# 3. Define the caption text
+# >>> ACTION REQUIRED <<<
+# Change "ImageDescription" below to the correct field name you found above.
+caption_field_name <- "Description" 
+caption_text <- ifelse(
+  !is.null(exif_data[[caption_field_name]]), 
+  exif_data[[caption_field_name]], 
+  " " # Default to blank if field doesn't exist
+)
+location_field_name <- "Location" 
+location_text <- ifelse(
+  !is.null(exif_data[[location_field_name]]), 
+  exif_data[[location_field_name]], 
+  " " # Default to blank if field doesn't exist
+)
+
+# 4. Read the image and define the PDF path
+img <- image_read(image_path)
+pdf_path <- sub("\\.jpg$", ".pdf", image_path, ignore.case = TRUE)
+
+# 5. Create the PDF file (8.5x11 inches)
+pdf(file = pdf_path, width = 8.5, height = 11)
+
+# Set page margins directly in inches (bottom, left, top, right)
+# We add a little extra to the bottom margin to make space for the caption
+bottom_margin <- page_margin_inches + 1.0
+par(mai = c(bottom_margin, page_margin_inches, page_margin_inches, page_margin_inches))
+
+# Create a blank plotting area that respects the new margins
+plot(0:1, 0:1, type = "n", axes = FALSE, xlab = "", ylab = "")
+
+# Center the image within the plot area, applying the scale factor
+# The plot area is now our "canvas" defined by the margins
+x_center <- 0.5
+y_center <- 0.5
+plot_width <- 1 * image_scale_factor
+plot_height <- 1 * image_scale_factor
+
+# Define image coordinates to center it
+xleft <- x_center - (plot_width / 2)
+ybottom <- y_center - (plot_height / 2)
+xright <- x_center + (plot_width / 2)
+ytop <- y_center + (plot_height / 2)
+
+rasterImage(img, xleft, ybottom, xright, ytop)
+
+# 6. Add the caption in the bottom margin
+# 'line=2' places it 2 lines down from the plot area, 'cex' is character expansion (font size)
+mtext(caption_text, side = 1, line = 0, adj = 0.1, cex = 1.4)
+mtext(location_text, side = 1, line = 1, adj = 0.1, cex = 0.9)
+
+# 7. Close the PDF device to save the file
+dev.off()
+
+# Print a confirmation message
+cat("PDF created successfully at:", pdf_path, "\n")
+```
+
+Function Version
+
+```{r}
+
+# Load the required libraries
+library(magick)
+library(exifr)
+
+
+# --- User-configurable settings ---
+
+## Whitespace around the image (in inches). 
+##    A smaller number means a larger image. Good values are 0.1 to 1.0.
+page_margin_inches <- 0.1
+
+## Image scale factor within the margins.
+##    1.0 = fill the space completely (up to the margins).
+##    0.9 = use 90% of the available space.
+image_scale_factor <- 1.0
+
+## Type size for captions
+main_caption_size <- 1.4
+sub_caption_size <- 0.9
+
+## Where components
+where1 <- "Location"
+where2 <- "City"
+
+# --- Main script ---
+
+image_pdf <- function(image_file,
+                      page_margin_inches=0.1,
+                      image_scale_factor=1.0,
+                      main_caption_size=1.4,
+                      sub_caption_size=0.9,
+                      main_caption="Event",
+                      sub_caption="Where",
+                      where1="Location",
+                      where2="City"){
+
+# 1. Select the JPG file interactively
+image_path <- image_file
+if (length(image_path) == 0) {
+  stop("No file selected. Please specify file.")
+}
+
+## 2. Read all available metadata.
+exif_data <- read_exif(image_path)
+
+## 3. Define the caption text lines.
+
+main_caption_text <- ifelse(
+  !is.null(exif_data[[main_caption]]), 
+  exif_data[[main_caption]], 
+  " " # Default to blank if field doesn't exist
+)
+
+sub_caption_text1 <- ifelse(
+  !is.null(exif_data[[where1]]), 
+  exif_data[[where1]], 
+  " " # Default to blank if field doesn't exist
+)
+
+sub_caption_text2 <- ifelse(
+  !is.null(exif_data[[where2]]), 
+  exif_data[[where2]], 
+  " " # Default to blank if field doesn't exist
+)
+
+sub_caption_text <- paste0(sub_caption_text1,", ",
+                           sub_caption_text2)
+
+## 4. Read the image and define the PDF path
+img <- image_read(image_path)
+pdf_path <- sub("\\.jpg$", ".pdf", image_path, ignore.case = TRUE)
+
+## 5. Create the PDF file (8.5x11 inches).
+pdf(file = pdf_path, width = 8.5, height = 11)
+
+# Set page margins directly in inches (bottom, left, top, right).
+# Add a little extra to the bottom margin to make space for the caption.
+bottom_margin <- page_margin_inches + 1.0
+par(mai = c(bottom_margin, page_margin_inches, page_margin_inches, page_margin_inches))
+
+# Create a blank plotting area that respects the new margins.
+plot(0:1, 0:1, type = "n", axes = FALSE, xlab = "", ylab = "")
+
+## Center the image within the plot area, applying the scale factor
+## The plot area is now our "canvas" defined by the margins
+x_center <- 0.5
+y_center <- 0.5
+plot_width <- 1 * image_scale_factor
+plot_height <- 1 * image_scale_factor
+
+## Define image coordinates to center it
+xleft <- x_center - (plot_width / 2)
+ybottom <- y_center - (plot_height / 2)
+xright <- x_center + (plot_width / 2)
+ytop <- y_center + (plot_height / 2)
+
+rasterImage(img, xleft, ybottom, xright, ytop)
+
+## 6. Add the caption in the bottom margin
+mtext(main_caption_text, side = 1, line = 0, adj = 0.1, 
+      cex = main_caption_size)
+mtext(sub_caption_text, side = 1, line = 1, adj = 0.1, 
+      cex = sub_caption_size)
+
+## 7. Close the PDF device to save the file
+dev.off()
+
+## Print a confirmation message
+## cat("PDF created successfully at:", pdf_path, "\n")
+} ## end image_pdf function
+
+######################################################
+
+## Caption contents
+## Fields
+##   Description  -- Usually the text describing the photo
+##   Event        -- Categorizing variable (e.g., species)
+##   Location
+##   Date         -- DMY
+##   City
+##   Where        -- Combines Location and City
+
+photo <- "Keepers/A1203427_crop_nik_adj.jpg"
+
+image_pdf(image_file=photo,
+          main_caption = "Description",
+          sub_caption = "Where")
+
+```
+
+Refined
+
+```{r}
+# Load the required libraries
+library(magick)
+library(exifr)
+
+#' Create a PDF from a JPG with EXIF Captions
+#'
+#' This function takes a JPG image, extracts metadata from its EXIF tags,
+#' and creates a letter-sized PDF with the image and captions. It offers
+#' flexible captioning and date formatting.
+#'
+#' @param image_file Path to the input JPG file.
+#' @param main_caption_field A single string naming the EXIF field for the main caption.
+#'   If a date field (like 'DateTimeOriginal') is used, it will be auto-formatted.
+#' @param sub_caption_fields A character vector of EXIF field names for the sub-caption.
+#'   The function will combine the text from these fields with commas.
+#' @param page_margin_inches Numeric. The size of the whitespace margin in inches.
+#' @param image_scale_factor Numeric. Scales the image within the margins (1.0 = fill).
+#' @param main_caption_size Numeric. The type size for the main caption.
+#' @param sub_caption_size Numeric. The type size for the sub-caption.
+#' @return Invisibly returns the path to the created PDF.
+#'
+image_pdf <- function(image_file,
+                      main_caption_field = "Description",
+                      sub_caption_fields = c("Location", "City"),
+                      page_margin_inches = 0.5,
+                      image_scale_factor = 1.0,
+                      main_caption_size = 1.2,
+                      sub_caption_size = 0.9) {
+
+  # --- 1. Validate Input and Read Data ---
+  if (!file.exists(image_file)) {
+    stop("File not found: ", image_file)
+  }
+  exif_data <- read_exif(image_file)
+  img <- image_read(image_file)
+
+  # --- 2. Process Captions with Flexibility ---
+
+  ## Main Caption (with Date Formatting)
+  main_caption_text <- ""
+  if (!is.null(exif_data[[main_caption_field]])) {
+    # Check if the requested field looks like a date
+    is_date <- grepl("date", main_caption_field, ignore.case = TRUE)
+    
+    if (is_date) {
+      # Attempt to parse and format the date
+      date_val <- as.Date(exif_data[[main_caption_field]], format = "%Y:%m:%d")
+      main_caption_text <- format(date_val, "%B %e, %Y")
+    } else {
+      # Use the text as-is
+      main_caption_text <- exif_data[[main_caption_field]]
+    }
+  }
+
+  ## Sub-caption (combines multiple fields)
+  sub_caption_parts <- sapply(sub_caption_fields, function(field) {
+    exif_data[[field]]
+  })
+  # Filter out any NULL or empty values and combine them
+  sub_caption_text <- paste(Filter(Negate(is.null), sub_caption_parts), collapse = ", ")
+
+
+  # --- 3. Create PDF and Set Layout ---
+  pdf_path <- sub("\\.jpg$", ".pdf", image_file, ignore.case = TRUE)
+  pdf(file = pdf_path, width = 8.5, height = 11)
+
+  # Dynamically adjust bottom margin based on how many captions we have
+  caption_lines <- c(main_caption_text, sub_caption_text)
+  caption_lines <- caption_lines[caption_lines != "" & caption_lines != " "]
+  bottom_margin <- page_margin_inches + (length(caption_lines) * 0.5) # Add 0.5" per line
+  
+  par(mai = c(bottom_margin, page_margin_inches, page_margin_inches, page_margin_inches))
+  plot(0:1, 0:1, type = "n", axes = FALSE, xlab = "", ylab = "")
+
+  # --- 4. Place Image ---
+  rasterImage(img, 0, 0, 1, 1, interpolate = TRUE)
+
+  # --- 5. Add Captions ---
+  if (nchar(main_caption_text) > 1) {
+    mtext(main_caption_text, side = 1, line = 0, adj = 0, cex = main_caption_size)
+  }
+  if (nchar(sub_caption_text) > 1) {
+    mtext(sub_caption_text, side = 1, line = 2, adj = 0, cex = sub_caption_size)
+  }
+  
+  # --- 6. Finalize ---
+  dev.off()
+  cat("PDF created successfully at:", pdf_path, "\n")
+  invisible(pdf_path)
+}
+
+######################################################
+##                  Example Usage                   ##
+######################################################
+
+## Define the path to your photo
+photo <- "Keepers/A1203427_crop_nik_adj.jpg"
+
+## Run the function with new flexible options
+
+# Example 1: Use 'Description' for main caption and combine 'Location' and 'City' for sub-caption
+image_pdf(image_file = photo,
+          main_caption_field = "Description",
+          sub_caption_fields = c("Location", "City"))
+
+# Example 2: Use a formatted date for the main caption and the 'Event' field for the sub-caption
+image_pdf(image_file = photo,
+          main_caption_field = "DateTimeOriginal", # This will be auto-formatted
+          sub_caption_fields = c("Event"))
+
+# Example 3: Use 'Description' for main caption and just the 'Location' for the sub-caption
+image_pdf(image_file = photo,
+          main_caption_field = "Description",
+          sub_caption_fields = "Location")
+
+```
+
+Make a Book
+
+```{r}
+
+# Load the required libraries
+library(exifr)
+library(pdftools)
+
+# --- 1. SETUP ---
+
+# Load the function we created previously
+source("photo_image_function.R") 
+
+# --- Configuration ---
+cover_file <- "cover.pdf"
+category_file <- "category_list.txt"
+image_folder <- "Keepers" # Correctly points to the subfolder
+output_filename <- "Photo_Book.pdf"
+
+
+# --- 2. MAIN SCRIPT ---
+
+categories <- readLines(category_file)
+all_images <- list.files(image_folder, pattern = "\\.jpg$", ignore.case = TRUE)
+temp_pdf_files <- c()
+
+cat("Starting to process images...\n")
+
+# Loop through each category
+for (category in categories) {
+  
+  cat(paste0("\nLooking for images in category: '", category, "'\n"))
+  
+  # Loop through each image file
+  for (image_file in all_images) {
+    
+    # *** FIX: Create the full path to the image file ***
+    full_path <- file.path(image_folder, image_file)
+    
+    # Read the 'Event' field using the full path
+    exif_data <- read_exif(full_path, tags = "Event")
+    image_event <- exif_data$Event
+    
+    if (!is.null(image_event)) {
+      if (tolower(image_event) == tolower(category)) {
+        
+        cat(paste0("  - Found match: ", image_file, "\n"))
+        
+        # *** FIX: Use the full path when calling the function ***
+        new_pdf_path <- image_pdf(
+          image_file = full_path,
+          main_caption_field = "Description",
+          sub_caption_fields = c("Location", "City")
+        )
+        
+        temp_pdf_files <- c(temp_pdf_files, new_pdf_path)
+      }
+    }
+  }
+}
+
+# --- 3. COMBINE AND CLEAN UP ---
+
+if (length(temp_pdf_files) > 0) {
+  cat("\nAll images processed. Combining PDFs into the final book...\n")
+
+  files_to_combine <- c(cover_file, temp_pdf_files)
+  pdf_combine(input = files_to_combine, output = output_filename)
+
+  cat("Cleaning up temporary files...\n")
+  file.remove(temp_pdf_files)
+
+  cat(paste0("\nSuccess! Your book has been created: '", output_filename, "'\n"))
+} else {
+  cat("\n--- No matching images were found to create pages. ---\n")
+}
+
+```
+Now with intro pages
+
+```{r}
+# Load the required libraries
+library(exifr)
+library(pdftools)
+
+# --- 1. SETUP ---
+
+# Load the function we created previously
+source("photo_image_function.R") 
+
+# --- Configuration ---
+cover_file      <- "cover.pdf"
+category_file   <- "category_list.txt"
+image_folder    <- "Keepers"
+stories_folder  <- "Stories" # <-- New folder for your story PDFs
+output_filename <- "Photo_Book.pdf"
+
+
+# --- 2. MAIN SCRIPT ---
+
+categories <- readLines(category_file)
+all_images <- list.files(image_folder, pattern = "\\.jpg$", ignore.case = TRUE)
+
+# This list will hold the final, ordered paths of ALL pages for the book
+pages_to_combine <- c(cover_file) 
+# This list tracks ONLY the temporary image PDFs that we need to delete later
+temp_files_to_delete <- c() 
+
+cat("Starting to build book...\n")
+
+# Loop through each category from your list
+for (category in categories) {
+  
+  cat(paste0("\n--- Processing Category: '", category, "' ---\n"))
+  
+  # >> NEW: Look for a matching story PDF for this category <<
+  story_pdf_path <- file.path(stories_folder, paste0(category, ".pdf"))
+  if (file.exists(story_pdf_path)) {
+    pages_to_combine <- c(pages_to_combine, story_pdf_path)
+    cat(paste0("  + Found and added story page: ", story_pdf_path, "\n"))
+  }
+  
+  # Loop through each image file to find matches
+  for (image_file in all_images) {
+    
+    full_path <- file.path(image_folder, image_file)
+    exif_data <- read_exif(full_path, tags = "Event")
+    image_event <- exif_data$Event
+    
+    if (!is.null(image_event)) {
+      if (tolower(image_event) == tolower(category)) {
+        
+        cat(paste0("  - Found match: ", image_file, "\n"))
+        
+        # Create the single-page PDF for the image
+        new_pdf_path <- image_pdf(
+          image_file = full_path,
+          main_caption_field = "Description",
+          sub_caption_fields = c("Location", "City")
+        )
+        
+        # Add the new page to our final list AND our temporary delete list
+        pages_to_combine <- c(pages_to_combine, new_pdf_path)
+        temp_files_to_delete <- c(temp_files_to_delete, new_pdf_path)
+      }
+    }
+  }
+}
+
+# --- 3. COMBINE AND CLEAN UP ---
+
+# Check if any pages were added after the cover
+if (length(pages_to_combine) > 1) {
+  cat("\nAll sections processed. Combining PDFs into the final book...\n")
+
+  pdf_combine(input = pages_to_combine, output = output_filename)
+
+  # Clean up ONLY the temporary image PDFs
+  if (length(temp_files_to_delete) > 0) {
+    cat("Cleaning up temporary files...\n")
+    file.remove(temp_files_to_delete)
+  }
+
+  cat(paste0("\nSuccess! Your book has been created: '", output_filename, "'\n"))
+} else {
+  cat("\n--- No matching images or stories were found to create pages. ---\n")
+}
+
+```
+
+Adding KML files
+
+```{r}
+# Load the required libraries
+library(exifr)
+library(pdftools)
+
+# --- 1. SETUP ---
+
+# Load the function we created previously
+source("photo_image_function.R") 
+
+# --- Configuration ---
+cover_file      <- "cover.pdf"
+category_file   <- "category_list.txt"
+image_folder    <- "Keepers"
+stories_folder  <- "Stories"
+kml_folder      <- "KML" # <-- New folder for KML files
+output_filename <- "Photo_Book.pdf"
+
+
+# --- 2. MAIN SCRIPT ---
+
+# Create the KML directory if it doesn't already exist
+if (!dir.exists(kml_folder)) {
+  dir.create(kml_folder)
+}
+
+categories <- readLines(category_file)
+all_images <- list.files(image_folder, pattern = "\\.jpg$", ignore.case = TRUE)
+
+pages_to_combine <- c(cover_file) 
+temp_files_to_delete <- c() 
+
+cat("Starting to build book...\n")
+
+# Loop through each category from your list
+for (category in categories) {
+  
+  cat(paste0("\n--- Processing Category: '", category, "' ---\n"))
+  
+  # Add story page if it exists
+  story_pdf_path <- file.path(stories_folder, paste0(category, ".pdf"))
+  if (file.exists(story_pdf_path)) {
+    pages_to_combine <- c(pages_to_combine, story_pdf_path)
+    cat(paste0("  + Found and added story page: ", story_pdf_path, "\n"))
+  }
+  
+  # >> NEW: List to hold GPS data for the KML file <<
+  kml_placemarks <- c()
+  
+  # Loop through each image file to find matches
+  for (image_file in all_images) {
+    
+    full_path <- file.path(image_folder, image_file)
+    # Read Event and GPS tags from the image
+    tags_to_read <- c("Event", "GPSLatitude", "GPSLongitude", "Description")
+    exif_data <- read_exif(full_path, tags = tags_to_read)
+    
+    image_event <- exif_data$Event
+    
+    if (!is.null(image_event)) {
+      if (tolower(image_event) == tolower(category)) {
+        
+        cat(paste0("  - Found match: ", image_file, "\n"))
+        
+        # Create the single-page PDF for the image
+        new_pdf_path <- image_pdf(image_file = full_path)
+        pages_to_combine <- c(pages_to_combine, new_pdf_path)
+        temp_files_to_delete <- c(temp_files_to_delete, new_pdf_path)
+        
+        # >> NEW: If GPS data exists, format it for the KML <<
+        if (!is.null(exif_data$GPSLatitude) && !is.null(exif_data$GPSLongitude)) {
+          placemark_name <- ifelse(!is.null(exif_data$Description), exif_data$Description, image_file)
+          # KML format: longitude,latitude,altitude
+          coordinates <- paste(exif_data$GPSLongitude, exif_data$GPSLatitude, 0, sep = ",")
+          
+          # Create the KML <Placemark> block
+          placemark_xml <- paste0(
+            "    <Placemark>\n",
+            "      <name>", placemark_name, "</name>\n",
+            "      <Point>\n",
+            "        <coordinates>", coordinates, "</coordinates>\n",
+            "      </Point>\n",
+            "    </Placemark>"
+          )
+          kml_placemarks <- c(kml_placemarks, placemark_xml)
+        }
+      }
+    }
+  }
+  
+  # >> NEW: After checking all images, write the KML file for the category <<
+  if (length(kml_placemarks) > 0) {
+    kml_filename <- file.path(kml_folder, paste0(category, ".kml"))
+    
+    # Combine header, placemarks, and footer into the final KML content
+    kml_content <- c(
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<kml xmlns="http://www.opengis.net/kml/2.2">',
+      '  <Document>',
+      paste0('    <name>', category, '</name>'),
+      kml_placemarks,
+      '  </Document>',
+      '</kml>'
+    )
+    
+    # Write the content to the .kml file
+    writeLines(kml_content, kml_filename)
+    cat(paste0("  + Successfully created KML file: ", kml_filename, "\n"))
+  }
+}
+
+# --- 3. COMBINE AND CLEAN UP ---
+# (This section remains unchanged)
+if (length(pages_to_combine) > 1) {
+  cat("\nAll sections processed. Combining PDFs into the final book...\n")
+  pdf_combine(input = pages_to_combine, output = output_filename)
+  if (length(temp_files_to_delete) > 0) {
+    cat("Cleaning up temporary files...\n")
+    file.remove(temp_files_to_delete)
+  }
+  cat(paste0("\nSuccess! Your book has been created: '", output_filename, "'\n"))
+} else {
+  cat("\n--- No matching images or stories were found to create pages. ---\n")
+}
+
+```
+
+Going for the Leaflet Map
+
+```{r}
+
+# Load required libraries
+library(exifr)
+library(leaflet)
+library(htmlwidgets)
+
+# --- 1. Configuration ---
+image_folder <- "Keepers"
+output_map_file <- "Interactive_Event_Map.html"
+cat("Configuration loaded.\n")
+
+# --- 2. Data Gathering ---
+# This part is similar to our book-building script.
+# We'll create a single data frame with all the info we need.
+
+all_images <- list.files(image_folder, pattern = "\\.jpg$", ignore.case = TRUE)
+# List to hold the data from each photo
+photo_data_list <- list()
+
+cat("Gathering metadata from all images...\n")
+for (image_file in all_images) {
+  full_path <- file.path(image_folder, image_file)
+  
+  # Read all the tags we might need
+  tags_to_read <- c("Event", "GPSLatitude", "GPSLongitude", "Description")
+  exif_data <- read_exif(full_path, tags = tags_to_read)
+  
+  # Only include photos that have an Event and GPS coordinates
+  if (!is.null(exif_data$Event) && !is.null(exif_data$GPSLatitude)) {
+    photo_data_list[[length(photo_data_list) + 1]] <- data.frame(
+      Event = exif_data$Event,
+      Lat = exif_data$GPSLatitude,
+      Lon = exif_data$GPSLongitude,
+      Description = ifelse(!is.null(exif_data$Description), exif_data$Description, "No description."),
+      FileName = image_file
+    )
+  }
+}
+
+# Combine the list into a single, clean data frame
+photo_data <- do.call(rbind, photo_data_list)
+cat(paste("Found", nrow(photo_data), "photos with complete GPS and Event data.\n"))
+
+
+# --- 3. Map Creation ---
+
+# Get a list of the unique event categories
+unique_events <- unique(photo_data$Event)
+
+# Create a color palette function that assigns a color to each event
+# The 'viridis' palette is good for color-blind friendliness
+pal <- colorFactor(palette = "viridis", domain = unique_events)
+
+# Start building the Leaflet map
+# We start with the base data and add layers with the pipe (%>%) operator
+event_map <- leaflet(data = photo_data) %>%
+  # Add the base map tiles. 'CartoDB.Positron' is a clean, light base map.
+  addProviderTiles(providers$CartoDB.Positron)
+
+cat("Building map layers for each event category...\n")
+# Loop through each event type to add it as a separate layer group
+for (event_cat in unique_events) {
+  # Filter the data for the current category
+  category_data <- photo_data[photo_data$Event == event_cat, ]
+  
+  event_map <- event_map %>%
+    # Add circle markers for the current group
+    addCircleMarkers(
+      data = category_data,
+      lng = ~Lon, lat = ~Lat,
+      # Define the pop-up content using HTML
+      popup = ~paste0("<b>", Description, "</b><br>", FileName),
+      radius = 6,
+      color = ~pal(Event), # Use our palette to color the circle border
+      stroke = TRUE,
+      fillOpacity = 0.8,
+      # This 'group' name is what appears in the layer control
+      group = event_cat
+    )
+}
+
+# --- 4. Add Controls and Save ---
+
+# Add the final map components
+event_map <- event_map %>%
+  # Add the layer control widget, allowing groups to be toggled
+  addLayersControl(
+    overlayGroups = unique_events,
+    options = layersControlOptions(collapsed = FALSE) # Keep the control box open
+  ) %>%
+  # Add a legend to explain the colors
+  addLegend(
+    pal = pal, 
+    values = ~Event, 
+    title = "Event Categories",
+    opacity = 1
+  )
+
+# Save the map to a single, self-contained HTML file
+saveWidget(event_map, file = output_map_file, selfcontained = TRUE)
+
+cat(paste0("\nSuccess! Your interactive map has been created:\n", output_map_file, "\n"))
+
+```
+
+Revised Leaflet Map
+
+```{r}
+
+# Load required libraries
+library(exifr)
+library(leaflet)
+library(htmlwidgets)
+
+# --- 1. Configuration ---
+image_folder <- "Keepers"
+output_map_file <- "Interactive_Event_Map.html"
+cat("Configuration loaded.\n")
+
+# --- 2. Data Gathering ---
+all_images <- list.files(image_folder, pattern = "\\.jpg$", ignore.case = TRUE)
+photo_data_list <- list()
+
+cat("Gathering metadata from all images...\n")
+for (image_file in all_images) {
+  full_path <- file.path(image_folder, image_file)
+  tags_to_read <- c("Event", "GPSLatitude", "GPSLongitude", "Description")
+  exif_data <- read_exif(full_path, tags = tags_to_read)
+  
+  if (!is.null(exif_data$Event) && !is.null(exif_data$GPSLatitude)) {
+    photo_data_list[[length(photo_data_list) + 1]] <- data.frame(
+      Event = exif_data$Event,
+      Lat = exif_data$GPSLatitude,
+      Lon = exif_data$GPSLongitude,
+      Description = ifelse(!is.null(exif_data$Description), exif_data$Description, "No description."),
+      FileName = image_file
+    )
+  }
+}
+
+photo_data <- do.call(rbind, photo_data_list)
+cat(paste("Found", nrow(photo_data), "photos with complete GPS and Event data.\n"))
+
+# --- 3. Map Creation ---
+unique_events <- unique(photo_data$Event)
+
+# >> CHANGE 1: Use a "rainbow" color palette for more distinct colors <<
+# We generate a color for each unique event.
+rainbow_colors <- rainbow(length(unique_events))
+pal <- colorFactor(palette = rainbow_colors, domain = unique_events)
+
+# Start building the Leaflet map
+event_map <- leaflet(data = photo_data) %>%
+  addProviderTiles(providers$CartoDB.Positron)
+
+cat("Building map layers for each event category...\n")
+for (event_cat in unique_events) {
+  category_data <- photo_data[photo_data$Event == event_cat, ]
+  
+  event_map <- event_map %>%
+    addCircleMarkers(
+      data = category_data,
+      lng = ~Lon, lat = ~Lat,
+      popup = ~paste0("<b>", Description, "</b><br>", FileName),
+      radius = 6,
+      color = ~pal(Event),
+      stroke = TRUE,
+      fillOpacity = 0.8,
+      group = event_cat
+    )
+}
+
+# --- 4. Add Controls and Finalize ---
+
+# Add the layer control widget
+event_map <- event_map %>%
+  addLayersControl(
+    overlayGroups = unique_events,
+    options = layersControlOptions(collapsed = FALSE)
+  )
+
+# >> CHANGE 2: Hide all the groups by default when the map loads <<
+for(event_cat in unique_events) {
+    event_map <- event_map %>% hideGroup(event_cat)
+}
+
+# >> CHANGE 3: The addLegend() function has been removed <<
+
+# Save the map to a single, self-contained HTML file
+saveWidget(event_map, file = output_map_file, selfcontained = TRUE)
+
+cat(paste0("\nSuccess! Your interactive map has been created:\n", output_map_file, "\n"))
+
+```
+
+Updated Leaflet Map with different basemaps
+
+```{r}
+# Load required libraries
+library(exifr)
+library(leaflet)
+library(htmlwidgets)
+
+# --- 1. Configuration ---
+image_folder <- "Keepers"
+output_map_file <- "Interactive_Event_Map.html"
+cat("Configuration loaded.\n")
+
+# --- 2. Data Gathering ---
+all_images <- list.files(image_folder, pattern = "\\.jpg$", ignore.case = TRUE)
+photo_data_list <- list()
+
+cat("Gathering metadata from all images...\n")
+for (image_file in all_images) {
+  full_path <- file.path(image_folder, image_file)
+  tags_to_read <- c("Event", "GPSLatitude", "GPSLongitude", "Description")
+  exif_data <- read_exif(full_path, tags = tags_to_read)
+  
+  if (!is.null(exif_data$Event) && !is.null(exif_data$GPSLatitude)) {
+    photo_data_list[[length(photo_data_list) + 1]] <- data.frame(
+      Event = exif_data$Event,
+      Lat = exif_data$GPSLatitude,
+      Lon = exif_data$GPSLongitude,
+      Description = ifelse(!is.null(exif_data$Description), exif_data$Description, "No description."),
+      FileName = image_file
+    )
+  }
+}
+
+photo_data <- do.call(rbind, photo_data_list)
+cat(paste("Found", nrow(photo_data), "photos with complete GPS and Event data.\n"))
+
+# --- 3. Map Creation ---
+unique_events <- unique(photo_data$Event)
+rainbow_colors <- rainbow(length(unique_events))
+pal <- colorFactor(palette = rainbow_colors, domain = unique_events)
+
+# Start building the Leaflet map
+event_map <- leaflet(data = photo_data) %>%
+  
+  # >> CHANGE 1: Add multiple base map layers, each with a unique 'group' name <<
+  addProviderTiles(providers$OpenStreetMap, group = "Street Map") %>%
+  addProviderTiles(providers$Esri.WorldImagery, group = "Satellite") %>%
+  addProviderTiles(providers$OpenTopoMap, group = "Topographic")
+
+cat("Building map layers for each event category...\n")
+# Loop through each event type to add it as a separate layer group
+for (event_cat in unique_events) {
+  category_data <- photo_data[photo_data$Event == event_cat, ]
+  
+  event_map <- event_map %>%
+    addCircleMarkers(
+      data = category_data,
+      lng = ~Lon, lat = ~Lat,
+      popup = ~paste0("<b>", Description, "</b><br>", FileName),
+      radius = 6,
+      color = ~pal(Event),
+      stroke = TRUE,
+      fillOpacity = 0.8,
+      group = event_cat
+    )
+}
+
+# --- 4. Add Controls and Finalize ---
+
+# Add the layer control widget
+event_map <- event_map %>%
+  addLayersControl(
+    # >> CHANGE 2: Define the 'baseGroups' for the radio buttons <<
+    baseGroups = c("Street Map", "Satellite", "Topographic"),
+    # The 'overlayGroups' for the checkboxes remain the same
+    overlayGroups = unique_events,
+    options = layersControlOptions(collapsed = FALSE)
+  )
+
+# Hide all the event groups by default when the map loads
+for(event_cat in unique_events) {
+    event_map <- event_map %>% hideGroup(event_cat)
+}
+
+# Save the map to a single, self-contained HTML file
+saveWidget(event_map, file = output_map_file, selfcontained = TRUE)
+
+cat(paste0("\nSuccess! Your interactive map has been created:\n", output_map_file, "\n"))
+
+```
+
+Adding the confirmation table
+
+```{r}
+# Load required libraries
+library(exifr)
+library(pdftools)
+library(gt) # <-- Replaces gridExtra
+
+# --- 1. SETUP ---
+`%||%` <- function(a, b) if (is.null(a)) b else a
+source("photo_image_function.R") 
+
+# --- Configuration ---
+cover_file      <- "cover.pdf"
+category_file   <- "category_list.txt"
+image_folder    <- "Keepers"
+stories_folder  <- "Stories"
+kml_folder      <- "KML"
+output_filename <- "Photo_Book.pdf"
+
+# --- 2. MAIN SCRIPT ---
+# This section remains unchanged.
+if (!dir.exists(kml_folder)) dir.create(kml_folder)
+categories <- readLines(category_file)
+all_images <- list.files(image_folder, pattern = "\\.jpg$", ignore.case = TRUE)
+pages_to_combine <- c(cover_file) 
+temp_files_to_delete <- c()
+verification_data_list <- list()
+
+cat("Starting to build book...\n")
+for (category in categories) {
+  cat(paste0("\n--- Processing Category: '", category, "' ---\n"))
+  story_pdf_path <- file.path(stories_folder, paste0(category, ".pdf"))
+  if (file.exists(story_pdf_path)) {
+    pages_to_combine <- c(pages_to_combine, story_pdf_path)
+    cat(paste0("  + Found and added story page: ", story_pdf_path, "\n"))
+  }
+  kml_placemarks <- c()
+  for (image_file in all_images) {
+    full_path <- file.path(image_folder, image_file)
+    tags_to_read <- c("Event", "Description", "Location", "City", "GPSLatitude", "GPSLongitude")
+    exif_data <- read_exif(full_path, tags = tags_to_read)
+    if (!is.null(exif_data$Event) && tolower(exif_data$Event) == tolower(category)) {
+      cat(paste0("  - Found match: ", image_file, "\n"))
+      new_pdf_path <- image_pdf(image_file = full_path)
+      pages_to_combine <- c(pages_to_combine, new_pdf_path)
+      temp_files_to_delete <- c(temp_files_to_delete, new_pdf_path)
+      verification_data_list[[length(verification_data_list) + 1]] <- data.frame(
+          File = image_file,
+          Event = exif_data$Event %||% "NA",
+          Description = exif_data$Description %||% "NA",
+          Location = exif_data$Location %||% "NA",
+          City = exif_data$City %||% "NA",
+          GPS = ifelse(!is.null(exif_data$GPSLatitude), "Yes", "No")
+      )
+      if (!is.null(exif_data$GPSLatitude) && !is.null(exif_data$GPSLongitude)) {
+        placemark_name <- exif_data$Description %||% image_file
+        coordinates <- paste(exif_data$GPSLongitude, exif_data$GPSLatitude, 0, sep = ",")
+        placemark_xml <- paste0("    <Placemark>\n      <name>", placemark_name, "</name>\n      <Point>\n        <coordinates>", coordinates, "</coordinates>\n      </Point>\n    </Placemark>")
+        kml_placemarks <- c(kml_placemarks, placemark_xml)
+      }
+    }
+  }
+  if (length(kml_placemarks) > 0) {
+    kml_filename <- file.path(kml_folder, paste0(category, ".kml"))
+    kml_content <- c('<?xml version="1.0" encoding="UTF-8"?>', '<kml xmlns="http://www.opengis.net/kml/2.2">', '  <Document>', paste0('    <name>', category, '</name>'), kml_placemarks, '  </Document>', '</kml>')
+    writeLines(kml_content, kml_filename)
+    cat(paste0("  + Successfully created KML file: ", kml_filename, "\n"))
+  }
+}
+
+# --- 3. CREATE DATA TABLE PAGE (using gt) ---
+# >> This section has been completely replaced with the 'gt' workflow <<
+if (length(verification_data_list) > 0) {
+  cat("\nGenerating data verification table with gt...\n")
+  verification_df <- do.call(rbind, verification_data_list)
+  table_pdf_path <- "temp_table_page.pdf"
+  
+  # Create a gt table object
+  gt_table <- gt(verification_df) %>%
+    # Add a title to the table
+    tab_header(title = "Data Verification Table") %>%
+    # Apply standard table styling options
+    tab_options(
+      table.border.top.color = "black",
+      column_labels.border.bottom.color = "black",
+      table.width = pct(95)) %>%
+    tab_style(style = cell_text(size = "smaller",
+                                v_align = "top"),
+              locations = cells_body(columns = everything()))
+    
+  # Save the gt table directly to a PDF file
+  gtsave(gt_table, filename = table_pdf_path)
+  
+  # Add the new table page to the end of our book
+  pages_to_combine <- c(pages_to_combine, table_pdf_path)
+  temp_files_to_delete <- c(temp_files_to_delete, table_pdf_path)
+}
+
+# --- 4. COMBINE AND CLEAN UP ---
+# This section remains unchanged.
+if (length(pages_to_combine) > 1) {
+  cat("\nAll sections processed. Combining PDFs into the final book...\n")
+  pdf_combine(input = pages_to_combine, output = output_filename)
+  if (length(temp_files_to_delete) > 0) {
+    cat("Cleaning up temporary files...\n")
+    file.remove(temp_files_to_delete)
+  }
+  cat(paste0("\nSuccess! Your book has been created: '", output_filename, "'\n"))
+} else {
+  cat("\n--- No matching images or stories were found to create pages. ---\n")
+}
+
+```
+
+The Final Code
+
+```{r}
+
+# Load required libraries
+library(exifr)
+library(pdftools)
+library(gt) # For the verification table
+
+# --- 1. SETUP ---
+# Defines a helper function to handle NULL values
+`%||%` <- function(a, b) if (is.null(a)) b else a
+# Load the function that creates individual image pages
+source("photo_image_function.R") 
+
+# --- Configuration ---
+cover_file      <- "cover.pdf"
+category_file   <- "category_list.txt"
+image_folder    <- "Keepers"
+stories_folder  <- "Stories"
+kml_folder      <- "KML"
+output_filename <- "Photo_Book.pdf"
+map_script_file <- "make_map.R" # The name of your map script
+
+# --- 2. MAIN SCRIPT ---
+# This section remains unchanged and builds the main PDF content.
+if (!dir.exists(kml_folder)) dir.create(kml_folder)
+categories <- readLines(category_file)
+all_images <- list.files(image_folder, pattern = "\\.jpg$", ignore.case = TRUE)
+pages_to_combine <- c(cover_file) 
+temp_files_to_delete <- c()
+verification_data_list <- list()
+
+cat("Starting to build book...\n")
+for (category in categories) {
+  cat(paste0("\n--- Processing Category: '", category, "' ---\n"))
+  story_pdf_path <- file.path(stories_folder, paste0(category, ".pdf"))
+  if (file.exists(story_pdf_path)) {
+    pages_to_combine <- c(pages_to_combine, story_pdf_path)
+    cat(paste0("  + Found and added story page: ", story_pdf_path, "\n"))
+  }
+  kml_placemarks <- c()
+  for (image_file in all_images) {
+    full_path <- file.path(image_folder, image_file)
+    tags_to_read <- c("Event", "Description", "Location", "City", "GPSLatitude", "GPSLongitude")
+    exif_data <- read_exif(full_path, tags = tags_to_read)
+    if (!is.null(exif_data$Event) && tolower(exif_data$Event) == tolower(category)) {
+      cat(paste0("  - Found match: ", image_file, "\n"))
+      new_pdf_path <- image_pdf(image_file = full_path)
+      pages_to_combine <- c(pages_to_combine, new_pdf_path)
+      temp_files_to_delete <- c(temp_files_to_delete, new_pdf_path)
+      verification_data_list[[length(verification_data_list) + 1]] <- data.frame(
+          File = image_file,
+          Event = exif_data$Event %||% "NA",
+          Description = exif_data$Description %||% "NA",
+          Location = exif_data$Location %||% "NA",
+          City = exif_data$City %||% "NA",
+          GPS = ifelse(!is.null(exif_data$GPSLatitude), "Yes", "No")
+      )
+      if (!is.null(exif_data$GPSLatitude) && !is.null(exif_data$GPSLongitude)) {
+        placemark_name <- exif_data$Description %||% image_file
+        coordinates <- paste(exif_data$GPSLongitude, exif_data$GPSLatitude, 0, sep = ",")
+        placemark_xml <- paste0("    <Placemark>\n      <name>", placemark_name, "</name>\n      <Point>\n        <coordinates>", coordinates, "</coordinates>\n      </Point>\n    </Placemark>")
+        kml_placemarks <- c(kml_placemarks, placemark_xml)
+      }
+    }
+  }
+  if (length(kml_placemarks) > 0) {
+    kml_filename <- file.path(kml_folder, paste0(category, ".kml"))
+    kml_content <- c('<?xml version="1.0" encoding="UTF-8"?>', '<kml xmlns="http://www.opengis.net/kml/2.2">', '  <Document>', paste0('    <name>', category, '</name>'), kml_placemarks, '  </Document>', '</kml>')
+    writeLines(kml_content, kml_filename)
+    cat(paste0("  + Successfully created KML file: ", kml_filename, "\n"))
+  }
+}
+
+# --- 3. CREATE DATA TABLE PAGE ---
+# >> CHANGE 1: Using your preferred 'gt' table code <<
+if (length(verification_data_list) > 0) {
+  cat("\nGenerating data verification table with gt...\n")
+  verification_df <- do.call(rbind, verification_data_list)
+  table_pdf_path <- "temp_table_page.pdf"
+  
+  # Create a gt table object using your formatting
+  gt_table <- gt(verification_df) %>%
+    tab_header(title = "Data Verification Table") %>%
+    tab_options(
+      table.border.top.color = "black",
+      column_labels.border.bottom.color = "black",
+      table.width = pct(95)
+    ) %>%
+    tab_style(
+      style = cell_text(size = "smaller", v_align = "top"),
+      locations = cells_body(columns = everything())
+    )
+    
+  # Save the gt table directly to a PDF file
+  gtsave(gt_table, filename = table_pdf_path)
+  
+  pages_to_combine <- c(pages_to_combine, table_pdf_path)
+  temp_files_to_delete <- c(temp_files_to_delete, table_pdf_path)
+}
+
+# --- 4. COMBINE AND CLEAN UP ---
+if (length(pages_to_combine) > 1) {
+  cat("\nAll sections processed. Combining PDFs into the final book...\n")
+  pdf_combine(input = pages_to_combine, output = output_filename)
+  if (length(temp_files_to_delete) > 0) {
+    cat("Cleaning up temporary files...\n")
+    file.remove(temp_files_to_delete)
+  }
+  cat(paste0("\nSuccess! Your book has been created: '", output_filename, "'\n"))
+} else {
+  cat("\n--- No matching images or stories were found to create pages. ---\n")
+}
+
+# --- 5. GENERATE THE INTERACTIVE MAP ---
+# >> CHANGE 2: Automatically run the map script to update the HTML file <<
+cat("\nRunning map generation script...\n")
+source(map_script_file)
+
+```
+

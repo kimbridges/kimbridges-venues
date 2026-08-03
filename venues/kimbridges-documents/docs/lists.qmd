@@ -1,0 +1,8 @@
+---
+title: "lists"
+subtitle: "Finding pattern in the data you already collect"
+categories: ["Ecology", "R", "Methods"]
+image: ../lists/lists_cover.png
+---
+
+[View Document](../lists/){.btn .btn-primary}

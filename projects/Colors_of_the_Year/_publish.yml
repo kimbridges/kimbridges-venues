@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: d939b0b0-dc0d-4fe9-981a-d96d3dc15622
+      url: 'https://kim.quarto.pub/colors-of-the-year'

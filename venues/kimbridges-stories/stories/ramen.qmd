@@ -1,0 +1,13 @@
+---
+title: "Ramen"
+subtitle: "A rare chance to try an unusual food."
+date: 2026-04-28
+categories: ["Food", "Hawaii"]
+image: ../images/ramen.jpg
+pdf: ../pdfs/ramen.pdf
+---
+This popup event sold a very limited number of ramen burgers. It was very popular. And expensive.
+
+Pages: 13
+
+<iframe src="../viewer.html?pdf=ramen.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

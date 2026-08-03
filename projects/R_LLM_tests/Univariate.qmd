@@ -1,0 +1,144 @@
+---
+title: "Univariate"
+format: html
+---
+
+# Univariate Analysis
+
+### Data Distribution
+
+Prompt
+
+I need R code to analyze a set of numbers. Specifically, I need to determine the basic statistics (e.g., mean, median) and determine which is better based on whether the data are normally distributed or not. With this decision, I then need to see the statistical values appropriate for the better descriptor and a chart that shows the data in the context of the proper distribution.
+
+***The boxplot doesn't look right for univariate data.***
+
+```{r}
+# Load required libraries
+library(ggplot2)
+
+# Function to analyze data
+analyze_data <- function(data) {
+  # Basic statistics
+  mean_val <- mean(data)
+  median_val <- median(data)
+  sd_val <- sd(data)
+  
+  # Test for normality
+  shapiro_test <- shapiro.test(data)
+  is_normal <- shapiro_test$p.value > 0.05
+  
+  # Determine better descriptor
+  better_descriptor <- ifelse(is_normal, "Mean", "Median")
+  
+  # Calculate additional statistics
+  if (is_normal) {
+    additional_stats <- c(mean = mean_val, sd = sd_val)
+  } else {
+    additional_stats <- c(median = median_val, 
+                          q1 = quantile(data, 0.25), 
+                          q3 = quantile(data, 0.75))
+  }
+  
+  # Create plot
+  if (is_normal) {
+    p <- ggplot(data.frame(x = data), aes(x)) +
+      geom_histogram(aes(y = ..density..), bins = 30, fill = "lightblue", color = "black") +
+      geom_density(color = "red") +
+      geom_vline(xintercept = mean_val, color = "blue", linetype = "dashed") +
+      labs(title = "Data Distribution with Normal Curve",
+           x = "Value", y = "Density") +
+      theme_minimal()
+  } else {
+    p <- ggplot(data.frame(x = data), aes(x)) +
+      geom_boxplot(fill = "lightblue", color = "black") +
+      labs(title = "Data Distribution (Box Plot)",
+           x = "Value") +
+      theme_minimal()
+  }
+  
+  # Return results
+  list(
+    basic_stats = c(mean = mean_val, median = median_val),
+    is_normal = is_normal,
+    better_descriptor = better_descriptor,
+    additional_stats = additional_stats,
+    plot = p
+  )
+}
+
+# Example usage
+set.seed(123)  # for reproducibility
+data <- rnorm(100, mean = 10, sd = 2)  # replace with your actual data
+
+results <- analyze_data(data)
+
+# Print results
+print("Basic Statistics:")
+print(results$basic_stats)
+print(paste("Data is normally distributed:", results$is_normal))
+print(paste("Better descriptor:", results$better_descriptor))
+print("Additional Statistics:")
+print(results$additional_stats)
+
+# Display plot
+print(results$plot)
+```
+
+Sample Size
+
+Prompt
+
+Can I see some code that will determine if I have sampled enough, given that I want to have at least 5% confidence that the mean is within 5% of the correct value?
+
+```{r}
+# Function to check if sample size is adequate
+check_sample_size <- function(data, confidence_level = 0.95, margin_of_error_percent = 0.05) {
+  # Calculate sample size and mean
+  n <- length(data)
+  sample_mean <- mean(data)
+  
+  # Calculate standard error
+  se <- sd(data) / sqrt(n)
+  
+  # Calculate t-score for the given confidence level
+  degrees_of_freedom <- n - 1
+  t_score <- qt((1 + confidence_level) / 2, degrees_of_freedom)
+  
+  # Calculate margin of error
+  margin_of_error <- t_score * se
+  
+  # Calculate the current margin of error as a percentage of the mean
+  current_margin_percent <- margin_of_error / abs(sample_mean)
+  
+  # Check if the current margin of error is within the desired percentage
+  is_adequate <- current_margin_percent <= margin_of_error_percent
+  
+  # Calculate required sample size if not adequate
+  required_n <- ifelse(!is_adequate,
+                       ceiling((t_score * sd(data) / (margin_of_error_percent * abs(sample_mean)))^2),
+                       n)
+  
+  # Return results
+  list(
+    sample_size = n,
+    is_adequate = is_adequate,
+    current_margin_percent = current_margin_percent,
+    required_sample_size = required_n
+  )
+}
+
+# Example usage
+set.seed(123)  # for reproducibility
+data <- rnorm(15, mean = 10, sd = 2)  # replace with your actual data
+
+result <- check_sample_size(data)
+
+# Print results
+cat("Current sample size:", result$sample_size, "\n")
+cat("Is sample size adequate?", result$is_adequate, "\n")
+cat("Current margin of error (as % of mean):", result$current_margin_percent * 100, "%\n")
+if (!result$is_adequate) {
+  cat("Required sample size for adequacy:", result$required_sample_size, "\n")
+}
+```

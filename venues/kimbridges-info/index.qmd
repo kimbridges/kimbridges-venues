@@ -1,0 +1,64 @@
+---
+title: "Kim Bridges"
+subtitle: "Research, travel, and the spaces between"
+---
+
+![](Kim_with_beer.png){.profile-image}
+
+Field research, cultural geography, photography, and the tools that connect them. These pages collect work from five decades across the Pacific, Europe, and the American West.
+
+::: {.grid}
+
+::: {.g-col-3}
+### Stories
+
+Narratives from the field and the road. Ailinginae Atoll, the dahlia sheds of Zundert, Kauai's rainfall gradient, and more.
+
+[Browse stories &rarr;](stories.qmd)
+:::
+
+::: {.g-col-3}
+### Fiction
+
+Imagined lives and invented places. *My Name Is Nike* and *Orbits* — long-form stories built through human–AI collaboration.
+
+[Browse fiction &rarr;](fiction.qmd)
+:::
+
+::: {.g-col-3}
+### Documents
+
+Quarto books, R packages, and technical guides. gePoints, timelinesR, and a growing collection from current projects.
+
+[Browse documents &rarr;](documents.qmd)
+:::
+
+::: {.g-col-3}
+### Collections
+
+Curated sets of work where one idea spawns the next. AI-generated art, multimedia narratives, and collaborative experiments.
+
+[Browse collections &rarr;](collections.qmd)
+:::
+
+:::
+
+::: {.grid}
+
+::: {.g-col-6}
+### Schedule
+
+Current and upcoming projects.
+
+[View schedule &rarr;](schedule.qmd)
+:::
+
+::: {.g-col-6}
+### Following
+
+Sources, people, and ideas worth tracking.
+
+[View following &rarr;](following.qmd)
+:::
+
+:::

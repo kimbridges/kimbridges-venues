@@ -1,0 +1,13 @@
+---
+title: "St. Paul's Cathedral"
+subtitle: "Twenty views of a London landmark."
+date: 2026-04-28
+categories: ["Photography", "Travel", "Europe"]
+image: ../images/StPauls.jpg
+pdf: ../pdfs/StPauls.pdf
+---
+Saint Paul's cathedral seen from many locations at all times of day and night. Photography focused on a single theme.
+
+Pages: 31
+
+<iframe src="../viewer.html?pdf=StPauls.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

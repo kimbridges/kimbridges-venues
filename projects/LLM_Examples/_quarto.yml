@@ -1,0 +1,37 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Experiments with LLMs"
+  subtitle: "Early tests on the utility of Large Language Models"
+  author: "K. W. Bridges"
+  date: "2024-01-01"
+  search: true
+  cover-image: LLM_Examples_cover.jpg
+  chapters:
+    - index.qmd
+    - 01_Writing_Assistance.qmd
+    - 02_Statistics_and_Data_Analysis.qmd
+    - 03_Data_Grubbing.qmd
+    - 04_Applied_Mathematics.qmd
+    - 05_General_Queries.qmd
+    - 06_Academic_Activities.qmd
+    - 07_Travel_Information.qmd
+    - 08_Musical_Lyrics.qmd
+    - 09_Poems.qmd
+    - 10_Image_Processing.qmd
+    - 11_Complex_Interactions.qmd
+    - 12_Using_ChatGPTs_GPTs.qmd
+
+toc: true
+toc-depth: 2
+number-sections: false
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-copy: true
+
+editor: visual

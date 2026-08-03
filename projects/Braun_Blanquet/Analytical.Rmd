@@ -1,0 +1,388 @@
+# Analytical Workflow
+
+In this chapter, we move from conceptual descriptions of structure to a concrete analytical workflow, using a fully synthetic but realistic Braun–Blanquet table to illustrate each step.
+
+## A Basic Table
+
+We begin with a deliberately simple step: reading a two-way Braun–Blanquet table from a CSV file and displaying it as a table. No analysis, no reordering, and no annotation are performed at this stage. The goal is to establish a realistic starting point that closely mirrors how data often appear when first assembled from field observations.
+
+The table shown below represents an unordered dataset. Sites are listed in the sequence in which they were collected, and species are listed in the order in which they were encountered or added to the table. Species absences are recorded explicitly as zeros but are rendered as blank cells to improve readability. These blank cells indicate absence, not missing data.
+
+Although the dataset has been constructed to contain structure, that structure is not yet obvious in its current form. This is intentional. Braun–Blanquet analysis is fundamentally about revealing patterns that are present but visually obscured when data are viewed in their raw, unordered state. The apparent disorder of the table is therefore not a flaw—it is the starting condition that motivates the analytical steps that follow.
+
+```{r}
+## Analytical Workflow — setup
+
+## Packages
+library(tidyverse)
+library(gt)
+library(bbstruct) ## Our new package!
+
+## Temporary Check
+stopifnot(utils::packageVersion("bbstruct") >= "0.0.0.9000")
+
+## Read data
+options(readr.show_col_types = FALSE)
+bb_raw <- readr::read_csv("data/bb_blocks_unordered.csv")
+
+## Display
+bb_raw %>%
+  gt(rowname_col = "species") %>%
+  tab_header(title = "Raw Braun–Blanquet Table (Unordered)") %>%
+  opt_row_striping() %>%
+  cols_align("center", everything()) %>%
+  sub_values(
+    columns = everything(),
+    values = 0,          # Target the specific value 0
+    replacement = " " )  # Replace with a blank
+
+```
+
+## Block Tables
+
+### *Why ordering is necessary*
+
+Viewed in its raw form, the table already contains ecological signal, but that signal is difficult to perceive. Species that tend to co-occur are scattered across the table, and sites that share similar species compositions are not adjacent to one another. As a result, patterns of association are present but visually fragmented.
+
+Braun–Blanquet analysis addresses this problem by reordering rows and columns so that similar species and similar sites are placed next to one another. Importantly, this reordering does not alter the underlying data in any way. No values are changed, added, or removed. Instead, the same information is rearranged to make structure visible.
+
+The act of ordering transforms the table from a list of observations into a visual summary of relationships. Groups of species begin to emerge, sites with similar compositions align, and contrasts between assemblages become apparent. What follows in the next step is therefore not an analytical transformation of the data, but a visual one—one that reveals patterns that were already present but difficult to see.
+
+```{r}
+
+## Read ordered data
+options(readr.show_col_types = FALSE)
+bb_ordered <- readr::read_csv("data/bb_blocks_ordered.csv")
+
+## Display ordered table
+ordered_table <- bb_ordered %>%
+  gt(rowname_col = "species") %>%
+  sub_values(
+    columns = everything(),
+    values = 0,
+    replacement = " "
+  ) %>%
+  tab_header(title = "Braun–Blanquet Table After Ordering") %>%
+  opt_row_striping() %>%
+  cols_align("center", everything())
+
+ordered_table
+
+```
+
+Once ordered, the structure of the data becomes immediately apparent. Groups of species that tend to co-occur are now contiguous, and sites with similar species composition align. The contrast between assemblages, which was difficult to perceive in the unordered table, is now visually clear.
+
+At this point, it is worth pausing to note why Braun–Blanquet analysis was historically so demanding to carry out. What has just been shown involves the simultaneous reordering of both species and sites. Even for a modest table, this requires repeated inspection, comparison, and revision.
+
+Before the availability of computational tools, this process was performed by hand, using pencil and paper. For realistic datasets—often involving dozens of sites and well over a hundred species—the task was not merely time-consuming, but effectively prohibitive. Attempting to reorder a table of, for example, 40 sites by 130 species by hand would have required extraordinary patience and was highly prone to error.
+
+Yet the value of the result was substantial. Once ordered, patterns of co-occurrence, contrast between assemblages, and ecological structure became immediately visible in ways that were otherwise very difficult to perceive. The challenge was never a lack of insight in the method itself, but the sheer practical difficulty of executing it manually.
+
+### *Adding Row Block Labels*
+
+Once the table has been ordered, coherent blocks of species become visible. At this stage, it is useful to give these blocks simple names so that they can be referred to unambiguously in discussion. The labels introduced here are intentionally neutral. They do not imply ecological interpretation or formal classification, but simply identify groups of species that tend to occur together in the ordered table.
+
+In this section, we focus on naming species groups (row blocks) only. Groups of sites (column blocks) will be addressed separately, after the logic of species grouping has been established.
+
+```{r}
+
+row_groups_table <- ordered_table %>%
+  tab_header(title = "Braun–Blanquet Table After Ordering (Row Groups Named)") %>%
+  tab_row_group(label = "Ungrouped species", rows = 12:16) %>%   ## optional, later
+  tab_row_group(label = "Group 3", rows = 8:11) %>%
+  tab_row_group(label = "Group 2", rows = 6:7) %>%
+  tab_row_group(label = "Group 1", rows = 3:5) %>%
+  tab_row_group(label = "Ubiquitous species", rows = 1:2) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_row_groups()
+  ) %>%
+  opt_row_striping() %>%
+  cols_align("center", everything())
+
+row_groups_table
+
+
+```
+
+At this point, the table has reached a form that many practitioners consider a useful endpoint. The rows have been ordered and the resulting species blocks have been given neutral names (Group 1, Group 2, Group 3), with ubiquitous species identified at the top and ungrouped species collected at the bottom. Without changing any values, the table has been transformed into a compact visual summary of co-occurrence structure among species.
+
+For some purposes, this species-centered view is sufficient. It provides an immediate sense of which species tend to occur together and which species do not participate strongly in any group. In many applications, this alone can guide interpretation, inform field discussion, or motivate follow-on work such as mapping or targeted comparison among groups.
+
+However, a Braun–Blanquet table is a two-way object. The same logic that reveals blocks in the rows can also be applied to the columns. When sites are grouped and labeled, the table becomes easier to read as a statement about assemblages: not only which species co-occur, but which sites share similar composition. In the next step, we therefore introduce column blocks (site groups), again using neutral labels and again without altering the underlying data.
+
+### *Adding Column Block Names*
+
+Naming species groups tells us what tends to occur together; naming site groups tells us where those groups occur together.
+
+```{r}
+r_and_g_table <- row_groups_table %>%
+  ## Column (site) blocks
+  tab_spanner(
+    label   = "Site Group 1",
+    columns = c(site_02, site_01, site_04, site_03, site_06, site_05)
+  ) %>%
+  tab_spanner(
+    label   = "Site Group 2",
+    columns = c(site_07, site_08, site_10, site_09, site_11, site_12)
+  ) %>%
+  tab_spanner(
+    label   = "Site Group 3",
+    columns = c(site_10, site_09, site_11, site_12)
+  ) %>%
+  ## Optional: make the spanner labels bold
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_spanners()
+  ) 
+
+r_and_g_table
+
+```
+
+With both species groups (rows) and site groups (columns) named, the table now presents a fully annotated two-way structure. In this example, the site groups are not strictly disjoint. In particular, Site Group 3 overlaps with Site Group 2 across several sites.
+
+This overlap is not a problem to be corrected. Instead, it reflects a common ecological situation in which sites do not fall neatly into exclusive categories. The sites that appear in both groups can be interpreted as transitional, sharing characteristics of adjacent assemblages rather than belonging unequivocally to a single group. In ecological terms, such sites are often described as forming an ecotone—a zone of transition rather than a sharp boundary.
+
+Allowing site groups to overlap emphasizes an important point: Braun–Blanquet tables are descriptive tools, not rigid classification schemes. Their purpose is to make patterns of similarity and contrast visible, not to force data into artificially crisp partitions. In practice, overlapping groups often convey more information than strictly separated ones, especially when working with gradients or mixed assemblages.
+
+### *Adding a Color*
+
+At this stage, the Braun–Blanquet table is already interpretable through ordering and grouping alone. A simple numeric color ramp can be added to support visual scanning without altering the analytical meaning of the table. Here, cell values are mapped from white (absence) to a single dark green tone (maximum Braun–Blanquet value), using a common scale across the entire table. This treatment highlights blocks, gradients, and ubiquitous species while preserving the table’s role as the primary analytical object rather than transforming it into a separate visualization.
+
+Braun–Blanquet analysis has always relied on visual interpretation of ordered tables. Historically, this interpretation was limited to the arrangement of rows and columns and the inspection of numeric values. Modern rendering tools allow the same tables to be enhanced with color, increasing their readability without altering their analytical meaning. In particular, color is valuable for recognizing gradients, where patterns of gradual change are difficult to perceive using numbers alone.
+
+```{r}
+## Color the cells 
+
+## Establish the color ramp
+## Define the darkest cell
+cell_color_ramp <- "darkolivegreen4" 
+## Find the max value of the cells
+max_value   <- max(bb_ordered[, grep("^site_", names(bb_ordered))], na.rm = TRUE)
+
+## Build the colored table (uses the already created table)
+r_and_g_table %>%
+  data_color(
+     method = "numeric",
+     domain = c(0, max_value),
+     palette = c("white", cell_color_ramp))
+
+
+```
+
+## Analytic Observations
+
+Up to this point, structure has been something we could see. But there’s more: we can quantify the same structure. Using the same reordered table, bb_metrics() returns a small set of diagnostics that summarize how sharply the table separates into blocks and how smoothly composition changes from one site to the next. These values do not replace visual inspection; instead they provide a compact, reproducible way to compare tables and to monitor the effects of tuning parameters in later steps.
+
+```{r}
+
+library(bbstruct)
+
+## Read Data
+bb0 <- bb_read_csv("data/bb_blocks_unordered.csv")
+
+## Reorder the Table
+res <- bb_reorder(bb0)
+
+## Calculate the Metrics
+met <- bb_metrics(res)
+
+## Reformat the Metrics and Print Table
+met_output <- tibble(
+  parameter = c("Contrast","Adjacent Column Smoothness (Norm)"),
+  value = c(met$contrast, met$adjacent_col_smoothness_norm))
+
+gt(met_output) %>%
+  tab_header(title = "Braun–Blanquet Table Analytic Data") %>%
+  fmt_number(
+    columns = value,
+    decimals = 2)
+
+```
+
+For this example, the contrast value is slightly greater than one (1.06), indicating that the table is dominated by strong departures from the global mean. In practical terms, this reflects a pattern in which many species show high abundance within a limited subset of sites and low or zero abundance elsewhere, rather than changing gradually across the table. At the same time, the normalized adjacent column smoothness is modest (0.13), showing that although there are noticeable transitions between neighboring sites, these changes are not uniformly abrupt. This combination—a high contrast value paired with moderate smoothness—captures a table structure characterized by well-defined blocks with transitional boundaries, consistent with the ecological interpretation of discrete community types separated by ecotones.
+
+```{r}
+
+met_interp <- tibble(
+  parameter = c("Contrast","Adjacent Column Smoothness (Norm)"),
+  value = c(met$contrast, met$adjacent_col_smoothness_norm),
+  range = c("~0.2 - 1.5", "~0.02 - 0.4"),
+  interpreation = c("Higher values indicate stronger block structure",
+       "Lower values indicate smoother compositional gradients"))
+
+gt(met_interp) %>%
+  tab_header(title = "Braun–Blanquet Table Analytic Data Interpretation") %>%
+  tab_footnote(
+    footnote = "These are empirical and intended for orientation, not as strict thresholds.",
+    locations = cells_column_labels(columns = range)) %>%
+  fmt_number(
+    columns = value,
+    decimals = 2) %>%
+  cols_label(
+    value = "current value",
+    range = "typical range") %>%
+  cols_align(
+    align = "center",
+    columns = c(value, range)) %>%
+  tab_style(
+    style = cell_text(v_align = "top"),
+    locations = cells_body())  ## All rows and columns
+  
+```
+
+The ranges shown here are not theoretical limits, but reflect values commonly observed in synthetic examples and empirical tables analyzed using this workflow. They are intended as orientation aids rather than strict thresholds.
+
+**Contrast** measures how strongly species abundances in a table depart from the overall mean, with higher values indicating sharper separation between areas of presence and absence across sites.
+
+**Normalized adjacent column smoothness** measures how gradually total species composition changes from one site to the next, with lower values indicating smoother transitions and higher values indicating more abrupt shifts.
+
+Taken together, contrast and adjacent column smoothness summarize whether structure in a table is dominated by discrete blocks, smooth gradients, or a mixture of the two.
+
+## Gradient Tables
+
+### Site Order by Design
+
+Not all Braun–Blanquet tables resolve into discrete species and site groups. In many ecological settings, particularly along environmental gradients, species show gradual changes in frequency and abundance rather than abrupt transitions.
+
+```{r}
+
+## Read data
+options(readr.show_col_types = FALSE)
+bb_raw_gradient <- readr::read_csv("data/gradient.csv")
+
+## Display
+bb_raw_gradient %>%
+  gt(rowname_col = "species") %>%
+  tab_header(title = "Raw Braun–Blanquet Table (Fixed Site Order)") %>%
+  opt_row_striping() %>%
+  cols_align("center", everything()) %>%
+  sub_values(
+    columns = everything(),
+    values = 0,           ## Target the specific value 0
+    replacement = " " )   ## Replace with a blank
+  
+```
+
+### Color and Metadata as Interpretation
+
+Once a Braun–Blanquet block structured table has been reordered, most of the analytical work is complete. What remains is interpretation.
+
+Gradient analyses, especially those based on larger tables, the interpretation depends critically on how the table is rendered. Some of the things done to order a block structured table aren't done. The order of the sites, for example, is generally fixed by the intent of the research as this determines the design of the sampling.
+
+Instead of shuffling site and species order, color plays a central role. A reordered table without color still contains the structure, but that structure is cognitively demanding to extract. Applying a restrained color scale to the site columns allows patterns of co-occurrence, turnover, and continuity to be perceived almost immediately. This is particularly important for gradients, where boundaries are not sharp and species replacements occur gradually across sites.
+
+Metadata associated with sites—such as elevation, distance, exposure, or substrate—adds another layer of interpretive context. Placing this information directly in the table, aligned with the site columns, allows the reader to relate species patterns to environmental structure without cross-referencing external figures or tables. Although it would be ideal to place such metadata above the column labels, current table-rendering tools do not yet support that layout cleanly. In practice, placing metadata rows immediately below the site labels and visually distinguishing them works well and preserves readability.
+
+A small example shows the general layout of a gradient-oriented table that has a metadata row.
+
+```{r}
+
+bb_gt_table(
+  bb_ex,
+  meta  = list(elevation = c(50, 150, 300, 450, 650, 850)),
+  theme = "sage"
+  ) %>%
+  tab_header(title = "Example Gradient Table")
+
+
+```
+
+## Block-Structured and Gradient-Structured Tables
+
+Reordered Braun–Blanquet tables tend to fall into two broad structural forms: block-structured tables and gradient-structured tables. These forms are not imposed by the method; rather, they emerge from the ecological organization of the data and the sampling design.
+
+### Block-structured tables
+
+Block-structured tables are characterized by relatively discrete groups of species that co-occur across subsets of sites. When reordered, these tables show compact blocks of non-zero values, often separated by regions of absence. Species within a block tend to have similar distributions, and sites within a block tend to share similar species assemblages.
+
+In practice, block structure is common in studies where sites represent distinct habitat types, management units, or categorical treatments. Once the table has been reordered, the internal order of sites within a block is often of secondary importance. Columns can frequently be permuted within a block without changing the ecological interpretation.
+
+For block-structured tables, the next analytical step is often spatial or categorical mapping: sites are assigned to groups, and those groups are examined in relation to geography, management history, or environmental classes. The reordered table serves primarily as a diagnostic tool to justify those groupings.
+
+### Gradient-structured tables
+
+Gradient-structured tables differ fundamentally. Instead of compact blocks, species distributions change gradually across sites. No single boundary cleanly separates groups of sites; instead, species appear, increase in frequency, and disappear along a continuum.
+
+This structure is typical of studies designed along environmental gradients such as elevation, moisture, salinity, or distance from a disturbance source. In these cases, the order of sites is not arbitrary: it reflects the underlying gradient, whether explicitly measured or inferred through reordering.
+
+In gradient-structured tables, color becomes especially important. The eye is better at detecting gradual transitions in color than in raw numeric values. A carefully chosen color scale allows unimodal responses, turnover points, and regions of overlap to be recognized without requiring the reader to parse individual cells.
+
+Metadata aligned with the site columns plays a crucial interpretive role here. When elevation, distance, or another gradient variable is displayed directly in the table, it becomes possible to see how species distributions relate to that gradient without leaving the table. This tight coupling between pattern and context is essential for understanding gradient structure.
+
+### Transitional patterns and overlap
+
+Many real data sets fall between these two idealized forms. Partial blocks may overlap, or blocks may be connected by transitional regions where species from adjacent groups co-occur. In ecological terms, these transitional zones often correspond to ecotones or areas of gradual environmental change.
+
+Rather than being a flaw, such complexity is often an important result. The reordered table makes these transitional patterns visible, while color and metadata help prevent them from being misinterpreted as noise or error.
+
+### Why structural distinction matters
+
+Recognizing whether a table is primarily block-structured or gradient-structured helps determine what questions can be asked next. Block structure encourages grouping and comparison; gradient structure encourages interpretation of continuity, turnover, and response curves. The same reordering process can reveal both forms, but they demand different modes of reading and different analytical follow-ups.
+
+## Structural Metrics as Descriptors of Table Organization
+
+Once a Braun–Blanquet table has been reordered and rendered in a way that makes its structure visible, it is often useful to describe that structure more formally. Structural metrics serve this purpose. They do not replace visual interpretation, nor do they define the structure; rather, they summarize properties that are already evident in the table.
+
+For block-structured tables, such metrics tend to reflect the compactness and separation of species–site groupings. For gradient-structured tables, they tend to reflect smoothness, continuity, or the degree to which adjacent sites share similar species profiles. Importantly, the same metric may behave differently depending on the underlying structure of the table.
+
+These measures are best understood as comparative tools. They allow tables to be contrasted—before and after reordering, or across different data sets—without requiring the reader to re-examine every individual cell. Used cautiously, they can support statements such as “this table exhibits stronger block structure than that one” or “this gradient is more continuous after reordering.”
+
+Because structural metrics depend on the ordering of rows and columns, they should always be interpreted in conjunction with the reordered table itself. Metrics without context risk obscuring the very patterns they are meant to summarize.
+
+This chapter introduces these metrics conceptually and demonstrates how they can be computed. Detailed examples, including the construction of synthetic block-like and gradient-like tables, are deferred to a later chapter where the emphasis shifts from interpretation to hands-on use of the tools.
+
+## Structural Metrics
+
+Reordering a Braun–Blanquet table reveals structure visually, but visual impressions alone are not always sufficient—particularly when tables must be compared, summarized, or discussed across studies. Structural metrics provide a way to describe aspects of table organization numerically, while remaining grounded in the reordered table itself.
+
+It is important to emphasize that these metrics are **descriptive**, not diagnostic. They do not discover structure; they summarize properties of a table *after* structure has been revealed through reordering. Used appropriately, they support interpretation rather than replace it.
+
+### What structural metrics measure
+
+Structural metrics quantify different aspects of how values are arranged within the table. Although specific implementations may vary, most fall into a small number of conceptual categories:
+
+-   **Block coherence**: the degree to which non-zero values are concentrated into compact regions rather than dispersed.
+
+-   **Adjacency smoothness**: the similarity of neighboring columns (or rows), particularly relevant for gradients.
+
+-   **Contrast**: the degree to which high and low values are separated rather than intermingled.
+
+-   **Residual dispersion**: the extent to which values remain scattered outside the dominant structural pattern.
+
+Each of these properties can be perceived visually in a reordered table, but metrics allow them to be summarized and compared across tables or across alternative reorderings.
+
+### Metrics and table structure
+
+The same metric may behave very differently depending on whether a table is block-structured or gradient-structured.
+
+In block-structured tables, metrics that emphasize concentration or separation tend to show strong signals. Blocks are visually distinct, and numerical summaries often reinforce that impression. In such cases, metrics may help confirm that a proposed grouping is well supported by the data.
+
+In gradient-structured tables, block-oriented metrics are often less informative. Gradients rarely produce sharp boundaries, and strong “blockiness” is not expected. Instead, metrics that emphasize smoothness or continuity across adjacent sites are more meaningful. These metrics capture gradual turnover rather than discrete separation.
+
+For this reason, no single metric should be treated as universally informative. Metrics must be interpreted in light of the observed table structure and the underlying study design.
+
+### Metrics as comparative tools
+
+Structural metrics are most useful when used comparatively. Common comparisons include:
+
+-   before and after reordering,
+
+-   alternative reorderings of the same table,
+
+-   tables derived from similar studies along different gradients,
+
+-   or observed tables compared with synthetic or null models.
+
+In each case, the metric does not stand alone. It gains meaning only when interpreted alongside the reordered table and the ecological context of the data.
+
+### Limits of formalization
+
+While structural metrics provide useful summaries, they cannot capture all aspects of table interpretation. Transitional zones, overlapping species distributions, and ecotonal patterns may be ecologically significant even when they reduce the apparent strength of a metric. In such cases, lower metric values do not indicate failure; they indicate complexity.
+
+For this reason, structural metrics should be viewed as **annotations** on interpretation rather than endpoints. They help articulate what the eye already sees, but they do not replace careful reading of the table.
+
+### Scope of this chapter
+
+This chapter has introduced structural metrics conceptually and shows how they fit into the overall analytical workflow. Detailed examples—including the construction of synthetic block-like and gradient-like tables and exploration of metric behavior under controlled conditions—are deferred to a subsequent chapter focused on applied use of the tools.

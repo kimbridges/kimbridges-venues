@@ -1,0 +1,595 @@
+# Presentation Tables
+
+Producing good ***presentation*** tables is a basic requirement in virtually all R applications.
+
+> | ***A good table is informative. This requires careful attention to table design and details. The small things are important!***
+
+There are quite a few packages that print tables. Even base R lets you make a simple table. Choosing a competent, full-function table package is important as you'll want to master many of the key aspects of table-making, even for simple projects.
+
+The package `gt` is the choice shown here. "gt" stands for "grammar of tables." While this package is not part of the tidyverse, its style reflect the philosophy of `ggplot2`.
+
+The main documentation for gt is given on this website: <https://gt.rstudio.com/index.html>
+
+```{r}
+#| label:   core
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Activate the Core Packages
+library(tidyverse) ## Brings in a core of useful functions
+library(gt)        ## Tables
+
+## Specialized Packages
+library(webshot2)  ## Output PNG or PDF files from gt
+library(gtExtras)  ## gt table formatting and highlighting
+
+```
+
+## Basic Tables
+
+Let's get some basic data which describes properties of the Hawaiian Islands. We'll use some statistics from Wikipedia [@Wikipedia2023]. Besides the data from Wikipedia, we'll calculate the population density for each island.
+
+```{r}
+#| label:   data
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Read the data
+data <- read_csv(col_names=TRUE, show_col_types=FALSE, file=  
+   "Island,     Nickname,           Area,      Population
+    Hawaiʻi,    The Big Island,     4028.0,     200629
+    Maui,       The Valley Isle,     727.2,     164221
+    Oʻahu,      The Gathering Place, 596.7,    1016508
+    Kauaʻi,     The Garden Isle,     552.3,      73298
+    Molokaʻi,   The Friendly Isle,   260.0,       7345
+    Lānaʻi,     The Pineapple Isle,  140.5,       3367
+    Niʻihau,    The Forbidden Isle,   69.5,         84
+    Kahoʻolawe, The Target Isle,      44.6,          0")
+
+## Calculate the population density
+data$Density <- data$Population/data$Area
+
+## Confirm the data
+data
+
+```
+
+This simple table confirms the data entry. But this output doesn't work very well for a formal report. Lots of things need fixing.
+
+## Formatting in gt
+
+Our package choice for table making, `gt`, starts with a simple specification. Complexity is added with statement that do specific enhancements.
+
+### The Default Table
+
+It is a straight forward task to show the Hawaiian Islands data in a `gt` table.
+
+```{r}
+#| label:   default
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Use the data from the previous chunk
+
+## Make a default gt table
+gt(data)
+
+```
+
+### Number Formatting
+
+Everything fits in the table now. But there too many digits in the Density column. It will be easier to read the large Area and Population values if commas are added. Also, these two columns shouldn't have any decimal values.
+
+```{r}
+#| label:   formatted
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Use the data from the previous chunk
+
+## Make a default gt table
+gt(data) |> 
+  fmt_number(
+    columns = Density, decimals = 1) |> 
+  fmt_number(
+    columns = c(Area, Population), 
+    use_seps = TRUE) |> 
+  fmt_number(
+    columns = c(Area,Population), 
+    decimals = 0)
+
+```
+
+### Source, Units and Annotations
+
+A good table has general descriptions and annotations about specific data.
+
+Several statements add needed information.
+
+-   **Data Source:** It's a good idea to *always* include the source of the data as part of the table.
+
+-   **Measurement Units:** Quantitative data need to have units specified.
+
+-   **Superscript:** The Unicode value ("\\U00B2") is used to generate the squared symbol.
+
+Note that here, we pass the table to the `hawaii` variable. That's useful when we want to save copy of the table.
+
+```{r}
+#| label:   enhanced
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Use the data from the previous chunk
+
+## Make a complex gt table
+hawaii <- gt(data) |> 
+  ## Column Formatting
+  fmt_number(columns = Density, 
+             decimals = 1) |> 
+  fmt_number(columns = c(Area, Population), 
+             use_seps = TRUE) |> 
+  fmt_number(columns = c(Area,Population), 
+             decimals = 0) |> 
+  ## Source Information
+  tab_source_note(
+    source_note = "Source: Wikipedia (Hawaiian_Islands") |> 
+  ## Footnotes
+  tab_footnote(
+    footnote = "miles\U00B2",
+    locations = cells_column_labels(columns=Area)) |> 
+  tab_footnote(
+    footnote = "2020 Population",
+    locations = cells_column_labels(columns=Population)) |> 
+  tab_footnote(
+    footnote = "people/mile\U00B2",
+    locations = cells_column_labels(columns=Density)) |> 
+  tab_footnote(
+    footnote = "Limited or no access",
+    locations = cells_body(columns=Nickname,
+                           rows=c(7,8)))
+
+## Show the table
+hawaii
+
+```
+
+This `gt` code looks complex. Indeed, detailed instructions are needed to do the precise control of the formatting and location of the annotation. This code chunk provides all of the types of information you'll generally need to add the required meta data.
+
+### Data Column Formatting
+
+You can change the appearance of the data in a column. Scientific names, for example, are always shown in italics.
+
+```{r}
+#| label:   italic
+#| message: false
+#| echo:    true
+#| warning: false
+
+data <- read_csv(col_names=TRUE, show_col_types=FALSE, file= 
+    "Scientific,            Common
+     Aleurites moluccana,   Kukui
+     Artocarpus altilis,    Breadfruit
+     Cocos nucifera,        Coconut Palm
+     Cordia subcordata,     Kou
+     Cordyline fruticosa,   Ti
+     Dioscorea bulbifera,   Air Yam
+     Hibiscus tiliaceus,    Hau
+     Ipomoea cairica,       Mile A Minute Vine
+     Morinda citrifolia,    Noni
+     Pandanus tectorius,    Hala
+     Saccharum officinarum, Sugarcane
+     Syzygium malaccense,   Mountain Apple
+     Thespesia populnea,    Milo
+     Zingiber zerumbet,     Shampoo Ginger")
+
+## Make a gt table
+gt(data) |> 
+  ## Source Information
+  tab_source_note(
+    source_note = "Source: wildlifeofhawaii.com") |>
+  ## Italics for the Scientific names
+  tab_style(
+    style = 
+      cell_text(style = "italic"),
+    locations = 
+      cells_body(columns = Scientific))
+  
+```
+
+### Column Head Enhancement
+
+The column contents are identified by the column head text. There are a number of things that help clarify and emphasize table content.
+
+#### Column spanners
+
+A spanner is a heading that spans the width of several column headers.
+
+```{r}
+#| label: ColSpan
+#| tbl-cap: "Column spanner example"
+
+data <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+        "Mountain,  Location,    Feet,  Meters
+         Everest,   Nepal/Tibet, 29029, 8848
+         Denali,    Alaska,      20310, 6190
+         Whitney,   California,  14505, 4421
+         Mauna Kea, Hawai`i,     13786, 4205
+         Mauna Loa, Hawai`i,     13680, 4170")
+
+## Build the table
+gt(data) |>
+   tab_spanner(
+    label = "Elevation",
+    columns = c(Feet, Meters)) |>
+  tab_footnote(
+    footnote  = "Tallest if measured from its base",
+    locations = cells_body(columns=Mountain, rows=4)) |> 
+  tab_source_note(source_note = "Source: Internet search")
+  
+
+```
+
+#### Column head formatting
+
+The default is for the same font weight as the table cell entries. This means your eye isn't drawn to the information that identifies the table contents. Making the head text bold corrects this deficiency.
+
+```{r}
+#| label: BoldHeads
+#| tbl-cap: "Hawaiian Monarchs"
+
+data <- read_csv(col_names = TRUE, show_col_types = FALSE, file = 
+        "Name,          Born, Died, Age
+        Kamehameha I,   1758, 1819, 61
+        Kamehameha II,  1797, 1824, 27
+        Kamehameha III, 1813, 1854, 41
+        Kamehameha IV,  1834, 1863, 29
+        Kamehameha V,   1830, 1872, 42
+        Lunalilo,       1835, 1874, 39
+        Kalākaua,       1836, 1891, 54
+        Lili`uokalani,  1838, 1917, 79")
+
+## Build the table
+gt(data) |>
+   tab_style(style = cell_text(weight = "bold"),
+             locations = cells_column_labels()) |>
+   tab_footnote(
+       footnote  = "Exact date unknown",
+       locations = cells_body(columns=Born, rows=1)) |> 
+  tab_source_note(source_note = "Source: Wikipedia")
+  
+```
+
+### Grouping with a Column Variable
+
+Sometimes, the structure of a table can be improved by grouping rows that share a characteristic. This can be seen in the following example with the same data presented as ungrouped followed by the same data in a grouped table.
+
+The grouped table includes coloring the rows with the grouped values.
+
+```{r}
+#| label: grouping
+
+data <- read_csv(col_names=TRUE, show_col_types=FALSE, file=       "Author, Title, Year
+      Jones,  Riding the Wind,    2012
+      Jones,  Viewing Space,      2009
+      Smith,  People and Places,  2010
+      Smith,  Been Seen There,    2012
+      Smith,  Focus and Defocus,  2007
+      Jones,  I am Out of Order,  2010")
+
+## Ungrouped table
+gt(data) |>
+   tab_caption(caption = "Ungrouped data") |>
+   tab_source_note(source_note = "Source: Example data")
+
+## Grouped table
+gt(data,
+   groupname_col = "Author") |>
+   tab_options(row_group.background.color = "lightblue") |>
+   tab_style(style = cell_text(weight = "bold"),
+             locations = cells_column_labels()) |>
+   tab_caption(caption = "Grouped data") |>
+   tab_source_note(source_note = "Source: Example data")
+  
+```
+
+## Outputting the Table
+
+There are times when you need to generate a table as either a PNG graphic file or a PDF file.
+
+Here are a few points worth noting:
+
+-   **Webshot2:** This package is required to get either a PNG or PDF output.
+
+-   **Whitespace:** The `expand` parameter puts white space on the sides of the graphic. The default value is 5.
+
+```{r}
+#| label:   saves
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Output the table created in a previous chunk.
+
+## Make it a PNG file.
+hawaii |> 
+  gtsave("Hawaiian_Islands.png", expand = 20)  
+
+## Make it a PDF document
+hawaii |> 
+  gtsave("Hawaiian_Islands.pdf")
+
+```
+
+## Table Captions
+
+Tables need a caption. This is the row that is on the top of the table. It generally includes a table number, such as "Table 1. The Hawaiian Islands"
+
+### Quarto Captions
+
+The R option `tbl-cap:` is the place to give the text for the table caption. Don't put in the "Table X." part; Quarto does automatic table numbering.
+
+You use the R option `label:` to make links to the table number in the text. For example, there are eight Hawaiian Island (@tbl-hawaii).
+
+```{r}
+#| label: tbl-hawaii
+#| tbl-cap: "The Hawaiian Islands"
+
+## Uses a table generated in a previous chunk
+
+hawaii
+
+```
+
+### Caption with gt
+
+If you are generating a table for use outside Quarto, such as with a PNG or PDF file, you may want to add a table caption using `gt`. There is a caption function that lets you do this.
+
+Note that you'll need to specify your own table numbering.
+
+```{r}
+#| label:   q-caption
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Uses a table generated in a previous chunk
+
+hawaii <- hawaii |> 
+  tab_caption(caption = "Table 5. The Hawaiian Islands")
+
+hawaii
+
+```
+
+## Special Situations
+
+There are a few table tasks that are less commonly encountered. Here are some solutions.
+
+### Scientific Names with Authors
+
+A proper scientific name has a binomial followed by the author of the name. The difficulty is making the binomial in italics and the author in roman type.
+
+The solution is to add markdown format character (i.e., "\*" for italics) around the type to be italicized. Then add a `fmt_markdown()` statement to the `gt` function.
+
+Data for the following example show a list of butterfly plants. The list is from a Google search. Species names came from a ChatGPT request. The authors were obtained from Kew's Plants of the World.
+
+```{r}
+#| label: butterfly
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Read the data
+data <- read_csv(col_names = TRUE, file = 
+   "Common,           Species,                 Author
+    Butterfly Bush,   Buddleja davidii,        Franch.
+    Butterfly weed,   Asclepias tuberosa,      L.
+    Coneflower,       Echinacea purpurea,      (L.) Moench
+    Lantana,          Lantana camara,          L.
+    Bluestar,         Amsonia tabernaemontana, Walter
+    Phlox,            Phlox paniculata,        L.
+    Black-eyed Susan, Rudbeckia hirta,         L.
+    Lavender,         Lavandula angustifolia,  Mill.")
+
+## Put the Scientific name in italics & add the Author
+data$Scientific <- paste0("*",
+                       data$Species,
+                       "* ", 
+                       data$Author)
+
+## Remove the unneeded columns
+data <- data |> 
+  select(Common, Scientific)
+
+## Make a nice table
+gt(data) |> 
+  fmt_markdown() |> 
+  tab_source_note(
+    source_note = "Sources: Google, ChatGPT and Kew Plants of the World")
+
+```
+
+### Sorting a Table
+
+Sometimes you need to sort a table so the rows are in a different order than the original data. The `dplyr` package provides the `arrange` function to accomplish this task.
+
+```{r}
+#| label: b-sort
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Data from the previous chunk
+
+## Do the sort using dplyr
+data <- data |> 
+  arrange(Scientific)
+
+## Make a nice table
+gt(data) |> 
+  fmt_markdown() |> 
+  tab_source_note(
+    source_note = "Sources: Google, ChatGPT and Kew Plants of the World") 
+  
+
+```
+
+### Color Stripes: Enhance with gtExtras
+
+The `gtExtras` package [@mock2022] makes it quite straight forward to apply useful overall table formatting and highlight cells.
+
+Information and examples of gtExtras application are on the website: <https://themockup.blog/posts/2022-06-13-gtextras-cran/index.html>.
+
+The following example shows how rows are emphasized by using color stripes.
+
+```{r}
+#| label: extras
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Read the data from a CSV file
+data <- read_csv(col_names = TRUE,
+                 file="data/hawaii_ethnicity_2019.csv")
+
+## Assign annotation information
+fn1 <- "The sum of the individual categories may sum to more than 100% because people who reported more than one race were tallied in each ethnicity category."
+
+fn2 <- "Date: July 1, 2019"
+
+source <- "Source: census.hawaii.gov"
+
+## Create the table
+gt(data) |> 
+  ## Put percent signs on all the values
+  fmt_percent(
+    scale_values = FALSE,
+    decimals = 1) |> 
+  ## Add standard annotations
+  tab_source_note(source_note = source) |> 
+  tab_footnote(
+    footnote  = fn1,
+    locations = cells_column_labels(columns=Ethnicity)) |> 
+  tab_footnote(
+    footnote  = fn2,
+    locations = cells_column_labels(columns=Ethnicity)) |> 
+  ## Shade alternate rows
+   gt_theme_guardian()
+
+```
+
+The gtExtras package has a variety of overall formats as well as ways to use color to highlight rows, emphasize numeric differences, and add specialized formats to values (e.g., percent signs and ^o^F).
+
+The addition of a bar graph to a table is another useful `gtExtras` function. This is shown in an example later.
+
+### Wrapped & Multipage Tables
+
+Sometimes, a table is too big to fit on a single page. There are two basic strategies:
+
+-   Wrap the data into parallel columns
+
+-   Divide the data into separate tables that share a common header.
+
+#### Wrap into two columns
+
+This example shows that the two columns in the table do not need to have the same number of entries. This is the case when the total number of table rows is odd.
+
+A vertical line is used to separate the two sides of the table.
+
+```{r}
+#| label: wrapcols
+#| tbl-cap: "Table data wrapped into two parallel columns"
+
+## Get some data
+data <- read_csv(col_names=TRUE,show_col_types=FALSE,file=
+      "name, id_code
+      R. Jones, 243
+      P. Smith, 126
+      J. Brown, 045
+      M. Fryer, 084
+      K. Laner, 312
+      Q. Ables, 264
+      H. Ramus, 165
+      H. Tokai, 311
+      J. Manus, 205")
+
+no_entries   <- nrow(data)
+left_divide  <- round((no_entries/2)+0.5) ## account for odd rows
+right_divide <- left_divide + 1
+
+## Divides the entries into two sets
+left_data  <- data[1:left_divide,]
+right_data <- data[right_divide:no_entries,]
+colnames(right_data)[1] <- "name2"
+colnames(right_data)[2] <- "id_code2"
+
+## Pad out the lengths of each set so they are equal
+n <- max(length(left_data$name), length(right_data$name2))
+both_data <- data.frame(left_data$name[1:n],
+                        left_data$id_code[1:n],
+                        right_data$name2[1:n],
+                        right_data$id_code2[1:n])
+
+## Make sure column names are correct
+colnames(both_data) <- c("name","id_code","name2","id_code2")
+
+## Build the table
+wrapped_table <-  gt(both_data) %>% 
+  cols_label(name2 = "name") %>%
+  cols_label(id_code2 = "id_code") %>%
+  cols_align(align = "left", columns = name) %>% 
+  sub_missing(columns = everything(),rows = everything(),
+              missing_text = " ") %>% 
+  gt_add_divider(columns = "id_code", 
+                  style = "solid",
+                  color = "gray88") %>% 
+  tab_source_note(source_note = "Source: Not real data.")
+
+## Output the table
+wrapped_table
+
+```
+
+The code should be wrapped into a function if this table structure is used very often.
+
+#### Divide into multiple tables
+
+Using multiple tables is important when you are using big data sets. Dividing the tables gives you header information on each table.
+
+Create a limited table by choosing the rows to be used to create the table. Note the structure of the statement, where `data` is the table content and `1:5` (followed by a comma!) gives the rows in data to be used in the table:
+
+| `gt(data[1:5,])`
+
+You need one of these `gt` blocks for each of the tables.
+
+A `tab_header` is used to create a title (and, optionally, a subtitle) instead of the `tbl-cap` statement. This allows all the tables to be created in a single code chunk. However, you can use multiple chunks and `tbl-cap` statements as an alternative.
+
+```{r}
+#| label: DividedTable
+
+## Use the data from a previous chunk
+
+## Divide by specifying row numbers for each table
+## NOTE: a comma comes after the row numbers
+gt(data[1:5,]) |>
+  tab_header(title = "Divided table",
+             subtitle = "(1 of 2)") |>
+  tab_source_note(source_note = "Source: Not real data.")
+  
+
+gt(data[6:nrow(data),]) |>
+  tab_header(title = "Divided table",
+             subtitle = "(2 of 2)") |>
+  tab_source_note(source_note = "Source: Not real data.") 
+
+
+```
+
+In practice, it's likely that each table will be printed as a PDF file.
+
+**References**

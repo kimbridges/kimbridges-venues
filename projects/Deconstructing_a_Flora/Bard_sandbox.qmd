@@ -1,0 +1,50 @@
+---
+title: "Bard_stats"
+format: html
+---
+
+```{r}
+## Load the necessary libraries
+library(car)
+library(ggplot2)
+
+## Create two variables
+x <- c(1,6,5,2,8,9,7,4,1,2,3,9,4)
+y <- c(8,6,7,9,8,9,6,8,7,9,9,7,8)
+
+## Test if the variances are equal
+var.test(x, y)
+
+## Create an IF statement to handle the difference between equal and unequal variances
+if (var.test(x, y)$p.value < 0.05) {
+
+## The variances are significantly different
+t.test(x, y, var.equal = FALSE)
+print(paste("The variances are significantly different. The p-value is", var.test(x, y)$p.value))
+
+## Determine if the two samples are significantly different
+if (t.test(x, y)$p.value < 0.05) {
+print("The two samples are significantly different.")
+} else {
+print("The two samples are not significantly different.")
+}
+} else {
+
+## The variances are not significantly different
+t.test(x, y)
+print(paste("The variances are not significantly different. The p-value is", var.test(x, y)$p.value))
+
+## Determine if the two samples are significantly different
+if (t.test(x, y)$p.value < 0.05) {
+print("The two samples are significantly different.")
+} else {
+print("The two samples are not significantly different.")
+}
+}
+
+# Plot the frequency distributions of x and y in the same chart
+ggplot(data.frame(x, y), aes(x, fill = y)) +
+  geom_histogram() +
+  ggtitle("Frequency distribution of x and y") +
+  facet_wrap(~y)
+```

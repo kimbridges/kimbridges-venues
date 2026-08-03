@@ -1,0 +1,38 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Citations"
+  subtitle: "A LLM helps organize references"
+  search: true
+  author: "K. W. Bridges"
+  date: today
+  cover-image: citations_cover_art.png
+  chapters:
+    - index.qmd
+    - resources.qmd
+    - quick_start.qmd
+    - background.qmd
+    - observations.qmd
+    - references.qmd
+  navbar: 
+    logo: citations_logo_art.png
+    
+toc: true
+number-sections: true
+
+execute: 
+  warning: false
+  error: false
+  message: false
+
+bibliography: references.bib
+
+format:
+  html:
+    css: styles.css
+    code-fold: true
+    code-summary: "Show the code"
+
+editor: visual

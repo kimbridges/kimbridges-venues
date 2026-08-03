@@ -1,0 +1,240 @@
+---
+title: "Reg2"
+format: html
+editor: visual
+
+execute: 
+  warning: false
+  error: false
+  message: false
+---
+
+## Comparing Two Regression Lines
+
+This is a development document that has the ultimate goal of statistically testing whether two regression lines have the same slope. Getting to this goal involves several steps. The step that's unique to this process is the generation of "synthetic" data. There are several parameters that are used to create two groups of data values. These control the intercept and slope of each regression line fit to the data. (A small amount of "noise" is also added to each set of data.)
+
+The other steps are likely to be used in any application requiring this statistical test: listing data, visualizing the data distribution and lines of best fit, the display of the regression models and their fit and, finally, the values and interpretation of the statistical test.
+
+## Code Blocks
+
+The code blocks in this document are used for the following tasks:
+
+**Initialize:** Load the needed libraries. This is also the place to set some parameters to control the appearance of the regression plot and the characteristics of the synthetic data used in the test.
+
+**Functions:** Load user-defined functions.
+
+**Generate:** Create test data for two regression lines. There are parameters that control the characteristics of the data so that interpretations can be tested.
+
+**Visualize:** Generate a plot with the regression data and fitted lines.
+
+**Statistics:** Compare the slopes of the two regression lines. This also prepares a variable for use with a document.
+
+```{r}
+#| label: initialize
+
+## Core Libraries
+library(gt)         ## Neat tables
+library(tidyverse)  ## Useful functions
+
+## Specialized Libraries
+library(broom)      ## Simplified statistical reports
+library(ggpmisc)    ## Used here to plot reg equations
+
+## Regression Plot Controls (change as necessary)
+colors       <- c("burlywood3", "darkseagreen")
+labels       <- c("1","2")
+x_label      <- "X"
+y_label      <- "Y"
+legend_title <- "Line"
+include_legend <- TRUE  ## FALSE for no legend
+
+## Synthetic Data Controls (change as necessary)
+slope        <- c(0.2,0.21)
+intercept    <- c(10,8)
+sample_size  <- 20
+```
+
+### Functions
+
+The only function in this example controls the format of the plot.
+
+```{r}
+#| label: functions
+
+## Control all of the visual elements
+theme_plot <- function(){ 
+       
+    ## Font family for all text
+    font <- "Roboto"
+    
+    ## Replace elements to be changed
+    theme_minimal() %+replace%  
+    
+    ## Here are the replacements
+    theme(
+      
+      ## Strip gridlines (major, minors)
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      
+      ## Axis lines & Ticks
+      axis.line = element_line(
+          color = 'black', 
+           size = 1.0), 
+      ## Axis ticks
+      axis.ticks = element_line(
+          colour = "black"),
+      axis.ticks.length = unit(5, "pt"), 
+      
+      ## Text elements
+      plot.title = element_text(
+          family = font, 
+            size = 20,
+            face = "bold",
+           hjust = 0,      ## Left align
+           vjust = 2),     ## Raise slightly
+      
+      plot.subtitle = element_text(
+             family = font,
+               size = 14),
+      
+      plot.caption = element_text(
+            family = font,
+              size = 9,
+             hjust = 1),  ## Right align
+      
+      axis.title = element_text(
+          family = font,
+            face = "bold",
+            size = 12),
+      
+      axis.text = element_text(
+         family = font,
+           size = 12),
+      
+      ## Margin for the axis text
+      axis.text.x = element_text( 
+           margin = margin(5, b = 10)),
+      
+      ## Background color
+      panel.background = element_rect(
+                  fill = "slategray1")
+    )
+} ## End of function theme_plot
+
+```
+
+### Generate
+
+This chunk uses some parameters to create two sets of data.
+
+The two basic parameters used to generate the test data are the slope and intercept values. Each line has one value for each parameter.
+
+A small amount of "noise" (i.e., random data) is added or subtracted to each predicted (i.e., "y") value.
+
+The statistical distribution of both the "x" and "y" values is "normal." This meets one of the criteria for using the ANOVA test for differences in the slopes.
+
+```{r}
+#| label: generate
+
+## Build random regression data
+part1 <- data.frame(index=c(1:sample_size))
+part1 <- part1 %>%
+  mutate(x=abs(round((rnorm(sample_size)*100),digits = 0))) %>%
+  mutate(color  = as.factor(colors[1])) %>%
+  mutate(reg = 1)
+
+part2 <- data.frame(index=c(1:sample_size))
+part2 <- part2 %>%
+  mutate(x=abs(round((rnorm(sample_size)*100),digits = 0))) %>%
+  mutate(color  = as.factor(colors[2])) %>%
+  mutate(reg = 2)
+
+## Put the two sets of numbers together
+alldata <- rbind(part1, part2)
+
+## Generate the Y variable (with noise)
+alldata <- alldata %>%
+  mutate(noise = round(((0.5 - runif(nrow(alldata))) * 10),digits=2)) %>%
+  mutate(y = intercept[reg]+(slope[reg]*x)+noise) %>%
+  select(reg,x,y,color)
+
+gt(alldata) %>%
+  tab_source_note(source_note="Source: Fake data")
+
+
+```
+
+### Visualize
+
+The data are shown with colors representing the two sets. The two colors were specified when the data were generated.
+
+A few important notes:
+
+-   The `scale_color_manual` statement controls the color of the regression lines.
+
+-   The color for the data points has been built into the data frame. The `color` need to be a factor in the data frame as they are used in this code for ggplot.
+
+```{r}
+#| label: visualize
+
+regplot <- ggplot(alldata,
+                  aes(x=x,y=y,group=reg, color=color)) +
+  scale_color_manual(values = colors,
+                     labels = labels,
+                     name   = legend_title) +
+  geom_smooth(method    = "lm",
+              se        = FALSE,
+              aes(group = reg),
+              linewidth = 2) +
+  geom_point(shape  = 21, 
+             color  = "black", 
+             fill   = alldata$color, 
+             size   = 3, 
+             stroke = 1) +
+  labs(x=x_label, y=y_label) +
+  stat_poly_eq(formula = y ~ x, 
+               aes(label = paste(after_stat(eq.label),
+                                 after_stat(rr.label),
+                   after_stat(p.value.label), 
+                   sep = "~~~")), 
+               parse = TRUE) +
+  theme_plot() + 
+  
+  ## Test whether to suppress the legend
+  if (isFALSE(include_legend)){regplot <- regplot +
+              theme(legend.position = "none")}
+
+regplot
+```
+
+### Test
+
+All this is from: https://r-eco-evo.blogspot.com/2011/08/comparing-two-regression-slopes-by.html
+
+```{r}
+#| label: test
+
+## Obtain basic stats for testing slope and intercept
+## test_intercept <- aov(y~x+reg, data=alldata)
+test_slope <- aov(y~x*reg, data=alldata)
+
+## Do a test for interactions (needed???)
+## anova(test_intercept, test_slope)
+
+## Extract information useful for a writeup
+slope_info <- tidy(test_slope)
+slope_prob <- slope_info$p.value[3]
+if (slope_prob <= 0.05){s_result <- "are"
+                      } else {
+                      s_result <- "are not"}
+
+s_prob <- round(slope_prob,digits = 3)
+
+result <- paste0("The slopes of the two regression lines ",
+    s_result,
+    " significantly different (p=",s_prob,").")
+
+result
+
+```

@@ -1,0 +1,29 @@
+# What the rebuild taught
+
+The tool is finished, as far as it needs to go before someone who knows more plant anatomy than I do gets to argue with it. So this is a good place to stop and ask what the whole exercise was actually for. Not the app. The app was only ever the evidence. What I want to close on is what the rebuild taught me, because those lessons have nothing to do with microscopes. And they'll outlast this one small tool by a long way.
+
+## The method
+
+The first lesson is a way of working. The color map is where I learned it. It was there that something was wrong, quietly, in a way that in 1989 could have hidden forever. This time I could measure it. I could count the colors, prove which labels pointed at nothing, rebuild the map, and check the result, all in an afternoon and for almost nothing.
+
+That loop is the real prize. Measure. Fix. Iterate. The rich environment doesn't just let you build things; it lets you interrogate them. And it does this cheaply and fast enough that being wrong stops being expensive. That changes how you work. You stop guarding your first guess and start testing it, because testing it costs an hour instead of a season. I came for a microscope and left with a habit, and the habit has much more value.
+
+## Neglected nuggets
+
+The second lesson is where to look for work worth doing. This whole project began as an old idea sitting in a thirty-seven-year-old paper, half-built, waiting for tools that hadn't arrived. Going back for it wasn't nostalgia. It was a method. And I think it's a good one.
+
+Good ideas are often just early. They were right when someone had them, and they got shelved, not because they were wrong, but because the technology of the day couldn't carry them. Those ideas don't expire. They sit in old papers and old notebooks. Every few years the tools quietly catch up to another batch of them. So one of the most productive things you can do is go back and look, not for what was mistaken, but for what was merely too soon. The past is full of neglected nuggets. Some of them are ready now.
+
+## Knowing what not to teach
+
+The third lesson is the hardest, and it runs against everything the new power tempts you toward.
+
+When the tools can do almost anything, the danger is that you let them. Every feature is suddenly possible, so every feature feels justified. It isn't. I learned the corrective long ago from two students working with me, Mick Crawley and Mark Westoby, who both became eminent ecologists, one in England and one in Australia. They gave me a line I've kept my whole career: the art of teaching is knowing what not to teach. Think of it as a boat. Everything you carry aboard is weight, and for every new thing you bring on, something else has to come off, or you sink. Each addition has to earn its place against the ones already there.
+
+That's the test the rebuilt microscope kept passing by subtraction. It stayed good because of what I kept off the boat, not what I loaded on. No game. No quiz. No hoard of stored audio. No clever feature that would have turned a calm tool into a busy one. The more the tools can do, the more this discipline matters, not less. Anyone can add. The art is in the leaving out.
+
+## The place it earns
+
+So what is this thing, in the end? Honestly. Not a revolution. Not a replacement for a teacher or a lab. It's a bookend, a friction-remover, a quiet companion that makes a dull assignment kinder and a good lab land harder. That's a modest claim, and I'll make it gladly, because a small thing that is real beats a large thing that is hollow every time.
+
+And it sends me back to where this started. A student in 1989, sitting at a screen, in front of a leaf image, with a good idea running on machines that could barely hold it up. That student is still there. Only now the picture loads before they notice. The tutor answers in real language. When they point at the strange long name they've been afraid of, the tool simply says it, out loud, like introducing a friend. And it tells them it means wood, or upon the skin, or a fence of standing cells. The idea was right the whole time. It only had to wait for the tools, and for someone to go back and carry it across. The tool is the gift. The way of working is the inheritance.

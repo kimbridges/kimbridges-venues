@@ -1,0 +1,13 @@
+---
+title: "Bordeaux"
+subtitle: "An expedition to Bordeaux for wine, food, and scenery."
+date: 2020-04-12
+categories: ["Travel", "Food", "Wine", "Europe"]
+image: ../images/Bordeaux.jpg
+pdf: ../pdfs/Bordeaux.pdf
+---
+Our group went to Bordeaux in October 2019. We spent over a week in the region exploring the full range of things to see and do.
+
+Pages: 136
+
+<iframe src="../viewer.html?pdf=Bordeaux.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

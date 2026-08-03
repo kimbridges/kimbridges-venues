@@ -1,0 +1,13 @@
+---
+title: "The Washington Monument"
+subtitle: "An early morning on the National Mall, and the long, interrupted story of the obelisk at its centre."
+date: 2016-11-15
+categories: ["Travel", "US", "Photography"]
+image: ../images/Washington_Monument.jpg
+pdf: ../pdfs/Washington_Monument.pdf
+---
+Get out early, watch the sun rise behind the Capitol, and walk west. This is the story of the monument between the Capitol and the Lincoln Memorial -- authorised soon after Washington's death, then stalled for decades by politics and money. Construction began in 1848 and stopped in 1854 with the column at 152 feet, roughly a quarter of its intended height, where it stood until after the Civil War. The surrounding colonnade was abandoned; the obelisk was finished in 1884 and was briefly the tallest building in the world. It remains the tallest stone structure. Photographed from the World War Two Memorial fountain, the Reflecting Pool, the steps of the Lincoln Memorial, the Tidal Basin, and the Vietnam Veterans Memorial, whose walls point directly at it -- a quiet continuity between the memorials that is easy to walk past.
+
+Pages: 23
+
+<iframe src="../viewer.html?pdf=Washington_Monument.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

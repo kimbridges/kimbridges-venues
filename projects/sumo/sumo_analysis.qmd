@@ -1,0 +1,628 @@
+---
+title: "Sumo Analysis"
+format: html
+editor: visual
+---
+Sumo
+
+```{r}
+## Sumo analytics starter — Kim style
+## Packages & options
+options(readr.show_col_types = FALSE)
+
+required_pkgs <- c("tidyverse","lubridate","gt","ggplot2","dplyr")
+to_install <- setdiff(required_pkgs, rownames(installed.packages()))
+if (length(to_install)) install.packages(to_install)
+invisible(lapply(required_pkgs, library, character.only = TRUE))
+
+## Paths (edit as needed)
+data_dir <- "data"
+
+## Read tables (tabular CSVs)
+tournaments <- readr::read_csv(file.path(data_dir, "tournaments.csv"))
+wrestlers   <- readr::read_csv(file.path(data_dir, "wrestlers.csv"))
+stables     <- readr::read_csv(file.path(data_dir, "stables.csv"))
+rankings    <- readr::read_csv(file.path(data_dir, "rankings.csv"))
+bouts       <- readr::read_csv(file.path(data_dir, "bouts.csv"))
+kimarite    <- readr::read_csv(file.path(data_dir, "kimarite.csv"))
+
+## Helpers ---------------------------------------------------------------
+
+## Title + source for gt tables
+tbl_title   <- "Sumo Snapshot"
+tbl_source  <- paste0("Source: Sumo DB (compiled), date: ", format(Sys.Date(), "%Y-%m-%d"))
+
+## Bar chart aesthetics per Kim
+bar_fill_1 <- "cornsilk3"
+bar_fill_2 <- "darkgoldenrod2"
+bar_fill_3 <- "lightsalmon2"
+plot_bg    <- "darkslategray3"
+
+theme_kim_bar <- function() {
+  theme_minimal(base_size = 12) +
+    theme(
+      panel.background = element_rect(fill = plot_bg, colour = NA),
+      plot.background  = element_rect(fill = "white", colour = NA),
+      axis.title       = element_text(color = "black", size = 12),
+      axis.text        = element_text(color = "black", size = 12)
+    )
+}
+
+## Derivations -----------------------------------------------------------
+
+## Join for convenience
+bouts_long <- bouts |>
+  left_join(wrestlers |> select(rikishi_id, shikona, heya_id), by = c("east_id" = "rikishi_id")) |>
+  rename(east_shikona = shikona, east_heya = heya_id) |>
+  left_join(wrestlers |> select(rikishi_id, shikona, heya_id), by = c("west_id" = "rikishi_id")) |>
+  rename(west_shikona = shikona, west_heya = heya_id) |>
+  left_join(wrestlers |> select(rikishi_id, shikona), by = c("winner_id" = "rikishi_id")) |>
+  rename(winner_shikona = shikona) |>
+  left_join(stables, by = c("east_heya" = "heya_id")) |>
+  rename(east_heya_name = heya_name) |>
+  left_join(stables, by = c("west_heya" = "heya_id")) |>
+  rename(west_heya_name = heya_name) |>
+  left_join(kimarite, by = "kimarite")
+
+## Utility: pick a tournament
+pick_tourney <- function(year, basho){
+  tournaments |>
+    filter(year == {{year}}, basho == {{basho}}) |>
+    slice(1) |>
+    pull(tourney_id)
+}
+
+## Example views ---------------------------------------------------------
+
+## 1) Kimarite profile for a tournament (stacked by family)
+kimarite_profile <- function(tourney_id){
+  
+df <- bouts_long |>
+  filter(tourney_id == {{tourney_id}}) |>
+  count(kimarite, family, sort = TRUE) |>
+  mutate(family = tidyr::replace_na(family, "other")) |>
+  group_by(family) |>
+  mutate(pct_in_family = n / sum(n)) |>
+  ungroup()
+
+df |> distinct(family) |> arrange(family)
+
+
+## build a palette of the right length using your three standard colors
+fam_levels <- unique(df$family)
+base_cols  <- c(bar_fill_1, bar_fill_2, bar_fill_3)   # cornsilk3, darkgoldenrod2, lightsalmon2
+pal        <- rep_len(base_cols, length(fam_levels))
+names(pal) <- fam_levels
+
+p <- ggplot(df, aes(x = reorder(kimarite, n), y = n, fill = family)) +
+  geom_col(color = "black") +
+  scale_fill_manual(values = pal, drop = FALSE) +
+  coord_flip() +
+  labs(x = "Kimarite", y = "Count", title = "Kimarite usage (by family)") +
+  theme_kim_bar()
+
+  gt_tbl <- df |>
+    arrange(desc(n)) |>
+    mutate(pct_in_family = scales::percent(pct_in_family, accuracy = 0.1)) |>
+    gt::gt() |>
+    gt::tab_header(title = tbl_title) |>
+    gt::tab_source_note(source_note = tbl_source) |>
+    gt::opt_vertical_padding(scale = 0.7) |>
+    gt::opt_row_striping() |>
+    gt::cols_label(kimarite = "Kimarite", family = "Family", n = "Count", pct_in_family = "% within family")
+
+  list(plot = p, table = gt_tbl)
+}
+
+## 2) Stable (heya) performance table for a tournament
+heya_performance <- function(tourney_id){
+  df <- bouts_long |>
+    filter(tourney_id == {{tourney_id}}) |>
+    mutate(winner_side = case_when(
+      winner_id == east_id ~ "East",
+      winner_id == west_id ~ "West",
+      TRUE ~ NA_character_
+    )) |>
+    pivot_longer(
+      cols = c(east_shikona, west_shikona, east_heya_name, west_heya_name, east_id, west_id),
+      names_to = c(".value","side"),
+      names_pattern = "(east|west)_(.*)"
+    ) |>
+    mutate(won = if_else(winner_side == str_to_title(side), 1L, 0L)) |>
+    group_by(heya_name) |>
+    summarise(bouts = n(), wins = sum(won, na.rm = TRUE), .groups = "drop") |>
+    mutate(win_rate = wins / bouts)
+
+  gt::gt(df |>
+           arrange(desc(win_rate)) |>
+           mutate(win_rate = scales::percent(win_rate, accuracy = 0.1))) |>
+    gt::tab_header(title = "Heya performance this basho") |>
+    gt::tab_source_note(source_note = tbl_source) |>
+    gt::opt_vertical_padding(scale = 0.7) |>
+    gt::opt_row_striping() |>
+    gt::cols_label(heya_name = "Heya", bouts = "Bouts", wins = "Wins", win_rate = "Win rate")
+}
+
+## 3) Wrestler dashboard (per basho)
+wrestler_dashboard <- function(tourney_id, rikishi){
+  df <- bouts_long |>
+    filter(tourney_id == {{tourney_id}}, east_shikona == rikishi | west_shikona == rikishi) |>
+    mutate(opponent = if_else(east_shikona == rikishi, west_shikona, east_shikona),
+           result   = if_else(winner_shikona == rikishi, "W", "L"))
+
+  ## Summary table
+  sum_tbl <- df |>
+    count(result) |>
+    complete(result = c("W","L"), fill = list(n = 0)) |>
+    mutate(metric = if_else(result == "W","Wins","Losses")) |>
+    select(metric, n)
+
+  ## Kimarite bar
+  kdf <- df |>
+    filter(winner_shikona == rikishi) |>
+    count(kimarite, sort = TRUE) |>
+    mutate(kimarite = fct_lump_n(kimarite, n = 10))
+
+  p <- ggplot(kdf, aes(x = reorder(kimarite, n), y = n)) +
+    geom_col(fill = bar_fill_1, color = "black") +
+    coord_flip() +
+    labs(x = "Kimarite (wins)", y = "Count", title = paste0("Winning kimarite: ", rikishi)) +
+    theme_kim_bar()
+
+  list(
+    summary = gt::gt(sum_tbl) |>
+      gt::tab_header(title = paste0("Dashboard — ", rikishi)) |>
+      gt::tab_source_note(source_note = tbl_source) |>
+      gt::opt_row_striping(),
+    plot = p
+  )
+}
+
+## Example usage (uncomment & set params)
+ kyushu_2025 <- pick_tourney(2025, "Kyushu")
+ out <- kimarite_profile(kyushu_2025); print(out$plot); print(out$table)
+## heya_performance(kyushu_2025)
+ wrestler_dashboard(kyushu_2025, "Hoshoryu")
+ 
+ out
+
+```
+
+Upset analysis
+
+```{r}
+## ------------------------------------------------------------
+## San’yaku vs. Maegashira Upset Rate — early basho indicator
+## ------------------------------------------------------------
+
+sanmyaku_vs_maegashira_upsets <- function(tourney_id){
+  ## Join necessary tables
+  ranks <- rankings |> 
+    select(tourney_id, rikishi_id, rank)
+  
+  df <- bouts |>
+    filter(tourney_id == {{tourney_id}}) |>
+    left_join(ranks, by = c("east_id" = "rikishi_id")) |>
+    rename(east_rank = rank) |>
+    left_join(ranks, by = c("west_id" = "rikishi_id")) |>
+    rename(west_rank = rank) |>
+    mutate(
+      east_group = if_else(east_rank %in% c("Yokozuna","Ozeki","Sekiwake","Komusubi"),
+                           "San'yaku","Maegashira"),
+      west_group = if_else(west_rank %in% c("Yokozuna","Ozeki","Sekiwake","Komusubi"),
+                           "San'yaku","Maegashira")
+    ) |>
+    filter(east_group != west_group) |>    ## Only cross-group bouts
+    mutate(
+      winner_group = case_when(
+        winner_id == east_id ~ east_group,
+        winner_id == west_id ~ west_group,
+        TRUE ~ NA_character_
+      ),
+      upset = (winner_group == "Maegashira")
+    )
+  
+  ## Summarize overall
+  sum_df <- df |>
+    summarise(
+      bouts = n(),
+      upsets = sum(upset, na.rm = TRUE),
+      upset_rate = upsets / bouts
+    )
+  
+  ## Optional day-by-day breakdown
+  day_df <- df |>
+    group_by(day) |>
+    summarise(
+      bouts = n(),
+      upsets = sum(upset, na.rm = TRUE),
+      upset_rate = upsets / bouts,
+      .groups = "drop"
+    )
+  
+  ## Plot
+  p <- ggplot(day_df, aes(x = day, y = upset_rate)) +
+    geom_col(fill = "cornsilk3", color = "black") +
+    scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+    labs(
+      title = "San’yaku vs. Maegashira Upset Rate",
+      subtitle = paste0("Tournament: ", tourney_id),
+      x = "Day",
+      y = "Upset rate"
+    ) +
+    theme_kim_bar()
+  
+  ## Table output
+  gt_tbl <- day_df |>
+    mutate(upset_rate = scales::percent(upset_rate, accuracy = 0.1)) |>
+    gt() |>
+    gt::tab_header(title = "Day-by-day upset rate") |>
+    gt::tab_source_note(source_note = tbl_source) |>
+    gt::opt_row_striping()
+  
+  list(summary = sum_df, plot = p, table = gt_tbl)
+}
+
+## Example usage:
+# kyushu_2025 <- pick_tourney(2025, "Kyushu")
+# up <- sanmyaku_vs_maegashira_upsets(kyushu_2025)
+# print(up$plot); print(up$table); up$summary
+
+
+```
+
+How to run the upset analysis
+
+```{r}
+kyushu_2025 <- pick_tourney(2025, "Kyushu")
+up <- sanmyaku_vs_maegashira_upsets(kyushu_2025)
+up$plot
+up$table
+up$summary
+
+```
+
+Get the past tournament data
+
+```{r}
+## ===========================================
+## Sumo: build tournament_records.csv (last 5 basho)
+## Source of results: SumoDB W/L Matrix (scgroup_matrix.aspx?b=YYYYMM)
+## Outputs: tournament_records.csv (wide) keyed by rikishi_id
+## ===========================================
+
+## ---- Packages & options
+options(readr.show_col_types = FALSE)
+
+req_pkgs <- c("tidyverse","rvest","stringi","lubridate")
+to_install <- setdiff(req_pkgs, rownames(installed.packages()))
+if (length(to_install)) install.packages(to_install, repos = "https://cloud.r-project.org")
+invisible(lapply(req_pkgs, library, character.only = TRUE))
+
+## ---- Config
+wrestlers_path <- "data/wrestlers_updated.csv"   ## must contain columns: rikishi_id, shikona
+out_csv        <- "data/tournament_records.csv"
+
+## ---- Helper: compute last 5 completed basho codes (YYYYMM)
+## Uses standard basho months: Jan (01), Mar (03), May (05), Jul (07), Sep (09), Nov (11)
+basho_months <- c(1,3,5,7,9)  ## exclude current/ongoing Nov for stability
+
+last_five_basho <- function(ref_date = Sys.Date()) {
+  yr  <- year(ref_date)
+  ## We want the 5 finished tournaments just before (or equal to) ref_date's schedule point.
+  ## If we're in Nov, "finished" set is Jan..Sep of this year; if earlier, roll back.
+  sched <- tibble(
+    y = yr,
+    m = c(1,3,5,7,9,11),
+    label = c("Hatsu","Haru","Natsu","Nagoya","Aki","Kyushu")
+  )
+
+  ## Keep only those strictly before the current tournament window
+  now_m <- month(ref_date)
+  finished <- if (now_m >= 11) {
+    ## During Nov, treat Kyushu as ongoing; finished are Jan..Sep of this year
+    sched %>% filter(m %in% c(1,3,5,7,9))
+  } else if (now_m >= 9) {
+    sched %>% filter(m %in% c(1,3,5,7))     ## up to Jul finished
+  } else if (now_m >= 7) {
+    sched %>% filter(m %in% c(1,3,5))       ## up to May finished
+  } else if (now_m >= 5) {
+    sched %>% filter(m %in% c(1,3))         ## up to Mar finished
+  } else if (now_m >= 3) {
+    sched %>% filter(m %in% c(1))           ## only Jan finished
+  } else {
+    ## Jan: use last year's Sep/Nov etc. Build a 6-basho rolling window and then pick last 5 finished.
+    sched_prev <- tibble(
+      y = yr - 1,
+      m = c(1,3,5,7,9,11),
+      label = c("Hatsu","Haru","Natsu","Nagoya","Aki","Kyushu")
+    )
+    bind_rows(sched_prev, sched) %>%
+      arrange(y, m) %>%
+      filter(y < yr | (y == yr & m < now_m)) %>%
+      tail(5)
+  }
+
+  ## If fewer than 5 because of early-year timing, fill by rolling back into previous year:
+  if (nrow(finished) < 5) {
+    need <- 5 - nrow(finished)
+    prev <- tibble(
+      y = yr - 1,
+      m = c(11,9,7,5,3,1)  ## reverse order for easy pick
+    ) %>%
+      head(need) %>%
+      arrange(y, m) %>%
+      mutate(label = case_when(
+        m==1 ~ "Hatsu", m==3 ~ "Haru", m==5 ~ "Natsu",
+        m==7 ~ "Nagoya", m==9 ~ "Aki", TRUE ~ "Kyushu"
+      ))
+    finished <- bind_rows(prev, finished)
+  }
+
+  finished %>%
+    arrange(y, m) %>%
+    tail(5) %>%
+    mutate(basho_code = sprintf("%04d%02d", y, m)) %>%
+    mutate(basho_label = factor(label, levels=c("Hatsu","Haru","Natsu","Nagoya","Aki","Kyushu")))
+}
+
+## ---- Helper: scrape one basho's Makuuchi W/L matrix
+## Example URL: https://sumodb.sumogames.de/scgroup_matrix.aspx?b=202509
+## Page lists each Makuuchi rikishi with a final record like "13-2" next to the name. :contentReference[oaicite:1]{index=1}
+## ---- Improved scraper: robust to Unicode dashes; tries table-first, then text fallback
+scrape_basho_summary <- function(basho_code) {
+  library(xml2); library(rvest); library(dplyr); library(stringr); library(stringi); library(purrr)
+
+  url <- sprintf("https://sumodb.sumogames.de/scgroup_matrix.aspx?b=%s", basho_code)
+  pg  <- read_html(url)
+
+  # 1) Pick the large matrix table (many rows + many cells)
+  pick_matrix_table <- function(doc) {
+    tabs <- html_elements(doc, "table")
+    if (!length(tabs)) return(NULL)
+    score <- function(node) {
+      n_tr  <- length(html_elements(node, xpath = ".//tr"))
+      n_td  <- length(html_elements(node, xpath = ".//td|.//th"))
+      txt   <- html_text2(node)
+      # favor large, contentful tables
+      n_tr + n_td + nchar(txt)/200
+    }
+    tabs[[which.max(vapply(tabs, score, numeric(1)))]]
+  }
+
+  mat <- pick_matrix_table(pg)
+  if (is.null(mat)) return(tibble())
+
+  # 2) Convert table to list-of-rows, each a character vector of cell texts
+  trs <- html_elements(mat, xpath = ".//tr")
+  if (!length(trs)) return(tibble())
+
+  row_texts <- map(trs, function(tr) {
+    cells <- html_elements(tr, xpath = ".//th|.//td")
+    vals  <- html_text2(cells)
+    vals  <- stri_trans_general(vals, "Any-Latin; Latin-ASCII")
+    trimws(vals)
+  })
+
+  # 3) Find the header row (contains "RANK" and "NAME" somewhere)
+  is_header <- function(v) {
+    any(str_detect(toupper(v), "\\bRANK\\b")) && any(str_detect(toupper(v), "\\bNAME\\b"))
+  }
+  hdr_idx <- which(vapply(row_texts, is_header, logical(1)))[1]
+  if (is.na(hdr_idx)) hdr_idx <- 1  # fallback
+
+  # 4) Parse data rows AFTER the header
+  rank_token <- "^[YOSMKJ][0-9]+[ew]?$"  # Y/O/S/K/M/J, e.g., M2e, O1w, Y1e
+
+  parse_line <- function(v) {
+    v <- v[nzchar(v)]
+    if (!length(v)) return(NULL)
+    if (any(str_detect(toupper(v), "\\bRANK\\b")) && any(str_detect(toupper(v), "\\bNAME\\b"))) return(NULL)
+
+    if (str_detect(v[1], "^[0-9]+$") && length(v) >= 5) {
+      idx      <- v[1]; rank_val <- v[2]; name_val <- v[3]; prev_b <- v[4]; prev_r <- v[5]
+    } else if (str_detect(v[1], rank_token) && length(v) >= 4) {
+      idx      <- NA_character_; rank_val <- v[1]; name_val <- v[2]; prev_b <- v[3]; prev_r <- v[4]
+    } else {
+      return(NULL)
+    }
+
+    if (!nzchar(name_val) || !str_detect(name_val, "^[A-Za-z][A-Za-z\\-']+$")) return(NULL)
+
+    rec <- str_replace_all(prev_b, "[^0-9\\-]", "")
+    w   <- suppressWarnings(as.integer(str_extract(rec, "^[0-9]+")))
+    l   <- suppressWarnings(as.integer(str_extract(rec, "(?<=-)[0-9]+")))
+
+    tibble(
+  index = suppressWarnings(as.integer(idx)),
+  rank_str  = rank_val,            # <-- assign it, don’t leave `rank,`
+  shikona = name_val,
+  prev_basho = rec,
+  prev_rank  = prev_r,
+  wins = w,
+  losses = l
+)
+
+  }
+
+  bind_rows(lapply(row_texts[(hdr_idx+1):length(row_texts)], parse_line)) %>%
+    mutate(basho_code = basho_code) %>%
+    filter(!is.na(wins), !is.na(losses), nzchar(shikona)) %>%
+    distinct(shikona, .keep_all = TRUE)
+}
+
+### End scraper
+
+## ---- Pipeline
+## 1) Load your wrestlers list (to define who we care about and to map to rikishi_id)
+wrestlers <- readr::read_csv(wrestlers_path) %>%
+  mutate(shikona_clean = stri_trans_general(shikona, "Latin-ASCII"))
+
+## If you want to restrict to a subset (e.g., top 40 you maintain in this file), just keep as-is.
+
+## 2) Determine last 5 completed basho (labels in chronological order)
+basho_tbl <- last_five_basho()
+
+## 3) Scrape each basho and combine
+records_long <- purrr::map_dfr(basho_tbl$basho_code, scrape_basho_results)
+
+## 4) Keep only wrestlers in your file, and join to get rikishi_id
+records_long <- records_long %>%
+  left_join(
+    wrestlers %>% select(rikishi_id, shikona_clean),
+    by = c("shikona" = "shikona_clean")
+  ) %>%
+  filter(!is.na(rikishi_id))
+
+## 5) Attach basho labels for ordering
+records_long <- records_long %>%
+  left_join(basho_tbl %>% select(basho_code, basho_label), by = "basho_code") %>%
+  arrange(basho_label)
+
+## 6) Reshape to wide: basho1..basho5 wins/losses (oldest -> most recent)
+## Ensure exactly five unique basho in order
+b_labels <- basho_tbl %>% arrange(y, m) %>% pull(basho_label)
+records_wide <- records_long %>%
+  mutate(idx = as.integer(factor(basho_label, levels = b_labels))) %>%
+  select(rikishi_id, idx, w, l) %>%
+  pivot_wider(
+    names_from = idx,
+    values_from = c(w, l),
+    names_glue = "basho{idx}_{.value}"
+  ) %>%
+  arrange(rikishi_id)
+
+## 7) Write CSV
+readr::write_csv(records_wide, out_csv)
+
+## ---- Done
+message("Wrote: ", normalizePath(out_csv))
+
+##### Sanity Test ##############
+
+test <- scrape_basho_summary("202509")  # Aki 2025 example
+print(head(test, 10))
+
+
+```
+Make the longer table with other basho
+
+```{r}
+records_long <- purrr::map_dfr(basho_tbl$basho_code, scrape_basho_summary)
+
+# Join to your wrestlers file and pivot wide
+library(readr); library(tidyr)
+wrestlers <- read_csv("data/wrestlers_updated.csv") %>%
+  mutate(shikona_clean = stringi::stri_trans_general(shikona, "Any-Latin; Latin-ASCII"))
+
+records_long <- records_long %>%
+  mutate(shikona_clean = stringi::stri_trans_general(shikona, "Any-Latin; Latin-ASCII")) %>%
+  left_join(wrestlers %>% select(rikishi_id, shikona_clean), by = "shikona_clean")
+
+# Order basho chronologically and assign indices 1..5
+records_long <- records_long %>%
+  left_join(basho_tbl %>% select(basho_code, y, m), by = "basho_code") %>%
+  arrange(y, m) %>%
+  mutate(bi = dense_rank(paste(y, m)))  # 1 oldest ... 5 most recent
+
+tournament_records <- records_long %>%
+  select(rikishi_id, bi, wins, losses) %>%
+  pivot_wider(
+    names_from = bi, values_from = c(wins, losses),
+    names_glue = "basho{bi}_{.value}"
+  ) %>%
+  arrange(rikishi_id)
+
+readr::write_csv(tournament_records, "data/tournament_records_long.csv")
+
+```
+
+Check and fix
+
+```{r}
+## --- 0) Setup
+library(tidyverse); library(stringi)
+
+normalize_name <- function(x) {
+  x %>%
+    stri_trans_general("Any-Latin; Latin-ASCII") %>%
+    tolower() %>%
+    str_replace_all("[^a-z0-9]+","")        # drop spaces, hyphens, apostrophes
+}
+
+## You already have:
+## - wrestlers_updated.csv (with rikishi_id, shikona)
+## - basho_tbl (5 rows) from your earlier code
+## - scrape_basho_summary() defined
+
+## --- 1) Rebuild records_long (sanity)
+records_long <- purrr::map_dfr(basho_tbl$basho_code, scrape_basho_summary)
+
+cat("# rows from scraper: ", nrow(records_long), "\n")
+print(head(records_long, 5))
+summary(records_long$wins); summary(records_long$losses)
+
+## Expect: >0 rows and nonzero wins/losses summaries
+
+## --- 2) Check name matching BEFORE join
+wrestlers <- readr::read_csv("data/wrestlers_updated.csv", show_col_types = FALSE) %>%
+  mutate(shikona_clean = normalize_name(shikona),
+         rikishi_id    = as.character(rikishi_id))
+
+scr_names <- records_long %>%
+  mutate(shikona_clean = normalize_name(shikona)) %>%
+  distinct(shikona, shikona_clean)
+
+## How many match?
+matches <- scr_names %>% inner_join(wrestlers %>% select(rikishi_id, shikona_clean), by="shikona_clean")
+cat("Matched shikona count: ", nrow(matches), " / ", nrow(scr_names), "\n")
+
+## What didn't match?
+unmatched <- anti_join(scr_names, wrestlers %>% select(shikona_clean), by="shikona_clean")
+if (nrow(unmatched)) {
+  cat("Unmatched examples:\n"); print(head(unmatched, 10))
+}
+
+## --- 3) Build records_long with rikishi_id
+records_long <- records_long %>%
+  mutate(shikona_clean = normalize_name(shikona)) %>%
+  left_join(wrestlers %>% select(rikishi_id, shikona_clean), by="shikona_clean")
+
+## Diagnose join result
+cat("rows after join: ", nrow(records_long), "\n")
+cat("distinct rikishi_id (non-NA): ", n_distinct(na.omit(records_long$rikishi_id)), "\n")
+print(records_long %>% filter(is.na(rikishi_id)) %>% distinct(shikona) %>% head(10))
+
+## --- 4) Ensure basho indexing 1..5 is present
+## (Your basho_tbl should have y, m; if not, add them the same way you built it earlier.)
+stopifnot(all(c("basho_code","y","m") %in% names(basho_tbl)))
+
+records_long <- records_long %>%
+  left_join(basho_tbl %>% select(basho_code, y, m), by="basho_code") %>%
+  arrange(y, m) %>%
+  mutate(bi = dense_rank(paste(y, m)))   # 1 oldest ... 5 most recent
+
+cat("basho index range: ", paste(range(records_long$bi, na.rm=TRUE), collapse=".."), "\n")
+print(records_long %>% count(bi))
+
+## --- 5) Final wide pivot (wins/losses)
+tournament_records <- records_long %>%
+  filter(!is.na(rikishi_id), !is.na(bi)) %>%
+  select(rikishi_id, bi, wins, losses) %>%
+  group_by(rikishi_id, bi) %>%
+  summarise(wins = first(wins), losses = first(losses), .groups="drop") %>%  # in case of dup rows
+  tidyr::pivot_wider(
+    names_from = bi, values_from = c(wins, losses),
+    names_glue = "basho{bi}_{.value}"
+  ) %>%
+  arrange(rikishi_id)
+
+## Show a few rows to confirm values are there
+print(tournament_records %>% slice_head(n=10))
+
+## --- 6) Write CSV
+readr::write_csv(tournament_records, "data/tournament_records_all.csv")
+cat("Wrote tournament_records_all.csv with ", nrow(tournament_records), " rikishi.\n")
+
+```
+

@@ -1,0 +1,92 @@
+---
+title: "Chat_apples"
+format: html
+---
+
+```{r}
+## Load necessary packages
+library(tidyverse)  ## Provides many useful functions
+library(dplyr)      ## Data crunching functions
+library(gt)         ## For creating tables
+
+## Data input
+data <- tibble(
+  orchard = c("Traditional", "Experimental"),
+  apples_collected = c(592, 623),
+  time_hours = c(2, 2),
+  rate = c(592 / 2, 623 / 2)
+)
+
+## Create a nicely formatted table with gt
+table_title <- "Apple Harvesting Results: 2 Hour Calibration Test"
+data_source <- paste0("Source: ", "Orchard Experiment", " (", Sys.Date(), ")")
+
+table <- data %>%
+  gt() %>%
+  tab_header(
+    title = table_title
+  ) %>%
+  tab_source_note(
+    source_note = data_source
+  ) %>%
+  cols_label(
+    orchard = "Orchard Type",
+    apples_collected = "Apples Collected",
+    time_hours = "Time (Hours)",
+    rate = "Rate"
+  ) %>%
+  fmt_number(
+    columns = c(apples_collected, rate),
+    decimals = 0
+  ) %>%
+  tab_style(
+    style = cell_text(v_align = "top"),
+    locations = cells_body()
+  ) %>%
+  opt_row_striping(row_striping = TRUE) %>%
+  cols_align(
+    align = "center",
+    columns = everything()
+  ) %>%
+  tab_footnote(
+    footnote = "Units: apples per hour",
+    locations = cells_column_labels(columns = "rate")
+  )
+
+## Print the table
+table
+
+```
+
+```{r}
+## Load necessary packages
+library(tidyverse)  ## Provides many useful functions
+library(ggplot2)    ## For creating plots
+
+## Data input
+data <- tibble(
+  orchard = c("Traditional", "Experimental"),
+  rate = c(592 / 2, 623 / 2)
+)
+
+## Create a bar chart
+bar_chart <- ggplot(data, aes(x = orchard, y = rate, fill = orchard)) +
+  geom_bar(stat = "identity", color = "black") +
+  scale_fill_manual(values = c("cornsilk3", "cornsilk3")) + 
+  labs(
+    title = "Apple Harvesting Rate: 2 Hour Calibration Test",
+    x = "Orchard Type",
+    y = "Rate (apples per hour)"
+  ) +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "darkslategray3"),
+    axis.text = element_text(size = 12, color = "black"),
+    axis.title = element_text(size = 12, color = "black"),
+    legend.position = "none"
+  )
+
+## Print the bar chart
+print(bar_chart)
+
+```

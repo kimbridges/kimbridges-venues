@@ -1,0 +1,107 @@
+# Bibliographic Citations
+
+Most scientific reports need a proper bibliography.
+
+There are a lot of difficulties in building and using bibliographic entries. The goal here is to provide a straight forward solution that works in the context of R.
+
+You'll use tools outside of R to collect and format bibliographic citations. Most of the focus here is on the storage of the citations and their use in various reports.
+
+```{r}
+#| label:   core
+#| echo:    true
+#| warning: false
+
+## Activate the Core Packages
+library(readr)      ## Read square data; make a tibble
+library(tidyverse)
+library(gt)         ## Tables
+
+## Specialized Packages
+library(lubridate)     ## Date functions
+
+```
+
+## Basic Concepts
+
+Bibliographic citations are kept in a file. Each entry is in the BibTex format. The order of the citations is not important. There may be more citations in this file than will be used in a document.
+
+The BibTex format for a simple citation looks like the following.
+
+```         
+@article{monson2008,
+title={Cognitive-behavioral conjoint therapy for post-traumatic stress disorder: Application to operation enduring and Iraqi freedom veterans},
+author={Monson, Candice M and Fredman, Steffany J and Adair, Kathryn C}, 
+journal={Journal of Clinical Psychology}, 
+volume={64},
+pages={958–971},
+year={2008},
+url={https://doi.org/10.1002/jclp.20511},
+doi={10.1002/jclp.20511}
+}
+```
+
+Each citation has a unique "key" that is used for reference. In the example above, the key is `monson2008`. This key is used in the text of a report to link to the full citation. The formats for using keys is shown later in the examples.
+
+The full bibliography, which is usually added to the end of a report, is automatically built. Each time a new key is used as a reference in the report, the corresponding citation is added to the set of citations that will form the full bibliography. The bibliography is automatically formatted in a specific style so that there is uniformity in the presentation.
+
+The mechanics of this system require specifications in the YAML at the start of the R document. These include the name of the file holding the citations and the desired output formatting. An example of the YAML additions is shown below.
+
+```         
+output: html_document
+bibliography: references.bib
+csl: biomed-central.csl
+```
+
+## The Bib File
+
+Creating (and maintaining) a bibliographic citation file is the first focus. There are many ways to get citations. The follow examples show some labor-saving techniques.
+
+### Get citations from scientific papers
+
+Reading the scientific literature is the most common way to get citations. Many citations have a DOI number. You can use this link in RStudio's DOI support (see below) to add the citation to your bibliography. If there isn't a DOI link, you can copy the citation and paste it into a ChapGPT request (see below).
+
+### Find & format a citation with Google Scholar
+
+Searching is Google Scholar might be helpful if you have incomplete citation information for a reference. When you find the citation, click the "cite" button and you'll get a reference in several styles. You can get the citation in BibTeX format (note the button at the bottom).
+
+### Use RStudio's Insert DOI to add a citation
+
+First, find a DOI reference for a citation you want to use and copy it. Then, using RStudio, go to the Insert menu and select Citation ... (also CTRL + Shift + F8). From the My Sources list, choose From DOI and paste the DOI reference into the box. Click the Insert button. This does two things: it adds the citation to your bibliography and it enters the citation reference to the text at the location of your cursor.
+
+If this is the first reference in your bibliography, RStudio creates a file `references.bib` to hold this and future citations.
+
+You can look at this bibliography file, edit it, and make manual additions, by opening it in RStudio (just like the Quarto files you've been creating).
+
+### Reformat a reference using ChatGPT
+
+ChatGPT seems to be pretty good at manipulating "traditional" literature citations so they are in the BibTex format.
+
+Copy the citation text. In ChatGPT, enter the following prompt and then paste the citation text onto the end of the prompt.
+
+```         
+Make a BibTex format entry for the following bibliographic citation.
+```
+
+ChatGPT will do the reformatting and provide the BibTex formatted result in a box with a copy button. Click the button and you can then past the citation into your `references.bib` file.
+
+## Using Citation References
+
+Insert a literature reference by typing the bibliographic entry's key into the text. There are two formats that you'll likely use.
+
+**Reference in parentheses.** Use square bracket, then put the key after an "\@" sign. Separate multiple reference keys with semicolons.
+
+**Name in the text, date in parentheses.** Type the name in the text, followed by the key after an "-\@" sign within square brackets.
+
+Here are some examples.
+
+`Conjoint therapy [@monson2008] is critical.` is displayed as Conjoint therapy [@monson2008] is critical.
+
+`Literate programming [@knuth1984; @ramsey1994] is now popular.` is displayed as Literate programming [@knuth1984; @ramsey1994] is now popular.
+
+**Name in the text, date in parentheses.** Type the key in the text. Note that a multi-author citation is handled with "et al." for the authors beyond the third one.
+
+`Specialists, such as @monson2008, advocate conjoint therapy.` is displayed as Specialists, such as @monson2008, advocate conjoint therapy.
+
+`In this context, @Iannone2023 show a better approach.` is displayed as In this context, @Iannone2023 show a better approach.
+
+**References**

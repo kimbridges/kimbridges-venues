@@ -1,0 +1,29 @@
+# Introduction
+
+## Rapid Prototyping
+
+Rapid prototyping is an iterative approach to technology development. The strategy is to create and test early versions of a system, with the expectation that some aspects may fail. The developer gains valuable insights into the strengths and weaknesses of the designs by analyzing the failures. This should be a quick process. Early identification and resolution of potential issues, enables a developer to refine and improve the technology incrementally. This is opposite from a strategy of striving for perfection in the initial stages.
+
+The goals are to facilitate innovation, reduce overall development time, and produce a better final product.
+
+It is in the spirit of Rapid Prototyping that the examples shown in this document are being shared.
+
+This strategy is particularly important as AI technologies are a key part of each of the examples. Large Language Models (LLMs) are changing rapidly. So is our knowledge of how to interact with these models.
+
+## A Focus on Field Studies
+
+Field research, such as ethnobotanical and ecological studies, is demanding. Often, there is limited time at the field site. There are many competing pressures ranging from social interactions to everyday logistics like eating and sleeping.
+
+Usually, field data is returned to "home base" for processing and analysis. This puts the data at risk as there are often many other tasks that are higher priority and awaiting attention. Data processing gets shoved to the "I'll get too it later" pile. All too often, these data are never used.
+
+The routines shown here attempt to break this cycle. This is done in two ways:
+
+-   Data entry is highly simplified. This is particularly apparent in the Produce section where AI technology is used to collect and format complex data.
+
+-   Analysis streams are pre-defined. This means that it is straightforward to obtain results with little effort. These are not "canned" solutions but rather sets of modules that can be adapted for different purposes.
+
+The high degree of automation of all aspects makes this process ideal for simulation. This means that you can (read: should!) create some test data and run it through the system before undertaking a "real" field-data collection. It's best to create several scenarios so that you can gain experience viewing the results of the processing.
+
+You should see, as you gain experience, that it is possible to collect the data and complete the processing very quickly.
+
+The result is a data-collection and analysis strategy that produces "report ready" results while still in the field.

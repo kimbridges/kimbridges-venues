@@ -1,0 +1,15 @@
+# Preface {.unnumbered}
+
+This is a document about a method, a program, and a small act of rescue.
+
+The method is the *two-way table*: an old and surprisingly general way of finding pattern in records of what occurs where. Ecologists have used it for a century to make sense of vegetation. The same structure fits many other fields. The program is **COENOS**, written in 1991 by Adolf Ceska and Hans Roemer to sort such tables for vegetation studies. The rescue is **coenosr**, an R package that brings the COENOS method back to life.
+
+The program needed rescuing because of a quiet kind of loss. COENOS still ran. You could feed it data and it would produce a sorted table, just as it did decades ago. But its source code was gone. A program you can run but cannot read is a strange thing. It does its work in front of you and tells you nothing about how. The method inside it — the judgment of two experienced ecologists, written down once in Turbo Pascal — was slowly going dark.
+
+So we did something a little unusual. We could not read the program, but we could read what it left behind: a handful of example datasets and the tables it had produced from them. Those worked examples turned out to hold far more than they appeared to. Working from them, we recovered the method — the rules COENOS used to sort a table — and wrote it back down in modern, legible R. This document tells that story and, along the way, serves as the guide to the package that resulted.
+
+It is written for two kinds of reader, and you may be both. The first wants to understand the two-way table itself: what it is, why it is built the way it is, and why its particular way of looking for pattern is worth knowing. That reader need not be an ecologist; the ideas travel. The second wants to use `coenosr` on their own data. The chapters move from the one to the other — from the idea, through the history and the recovery, to the method made plain, and finally to the package at work.
+
+A word on why a project like this matters. The two-way table is traditional technology. It was worked out by hand, refined over generations, and eventually encoded in small programs by the people who used it. Those people are retiring, and their programs are being lost — not dramatically, but the way most things are lost, by no one in particular keeping them. The COENOS executable survived almost by accident. It is unlikely that many copies of its 1991 files still exist. Recovering the method now, while the examples are still here to check it against, is a way of passing a piece of careful, hard-won craft from one generation to the next. That is a satisfying thing to do, and it is done close to the last moment it could be.
+
+The method recovered here is the work of Adolf Ceska and Hans Roemer. The broader tradition it belongs to — Braun-Blanquet phytosociology — reached the English-speaking world chiefly through Mueller-Dombois and Ellenberg's *Aims and Methods of Vegetation Ecology* (1974), the standard reference for the two-way-table approach. One of the example datasets bundled with `coenosr` is Ellenberg's own. The work is theirs; ours is only to keep it readable.

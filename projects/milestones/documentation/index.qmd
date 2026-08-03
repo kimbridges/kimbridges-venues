@@ -1,0 +1,9 @@
+# Preface {.unnumbered}
+
+The focus of this Quarto book in on the use of two functions. One function builds milestone graphics. This is a visualization that shows when events occur on a timeline. The other function builds bars. This bar-timeline shows stretches when events occur on a timeline. As such, these are closely related graphics.
+
+Producing either of the two time-related visualizations starts by creating a data table that's simple in structure. A few lines of R code are required to generate the graphic. Many types of enhancements can be done so that data are better understood.
+
+The use of a table-driven strategy was developed first for use in the package `sitemaps`. The design of for using the `milestones` and `bar_timelines` functions is nearly identical.
+
+The examples were chosen to demonstrate real-world visualization problems. The code, the the extent possible, is consistent and readable. Lots of examples are given so that you can see how a variety of enhancements are made. The goal is that you'll see new ways to better represent your own data.

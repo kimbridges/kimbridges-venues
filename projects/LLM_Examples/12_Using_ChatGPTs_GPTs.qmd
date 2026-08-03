@@ -1,0 +1,231 @@
+# Using ChatGPT's GPTs
+
+GPTs add precision to ChatGPT requests. This is a new area for ChatGPT.
+
+## Consensus: Marshall Islands Climate Change
+
+This example uses the Consensus GPT. This GPT states: *Your AI Research Assistant. Search 200M academic papers from Consensus, get science-based answers, and draft content with accurate citations.* If true, this will overcome a huge limitation that's been seen in earlier examples where information and citations were hallucinations. The other aspect being tested is whether the information bases (i.e., "200M academic papers") is sufficiently broad to include the topic.
+
+**User**
+
+How will the Marshall Islanders respond to climate change?
+
+> **GPT**
+>
+> Talked to chat.consensus.app
+>
+> The response of the Marshall Islanders to climate change is multifaceted, reflecting their unique cultural, historical, and environmental context. Key insights from various studies include:
+
+1.  **Cultural Adaptation and Narrative:** Marshall Islanders, despite their minimal contribution to global climate change, have exhibited a tendency toward self-blame and atonement rather than outrage and protest. This response aligns with a local narrative of modernity and cultural decline, and may embody empowering, postcolonial, and counterhegemonic potentialities ([[Rudiak-Gould, 2014]{.underline}](https://consensus.app/papers/climate-change-accusation-rudiakgould/ba90c8ec19d55e7f8ec65afdf7292a0b/?utm_source=chatgpt)).
+
+2.  **Colonial Legacy and Sovereignty:** The colonial history of the Marshall Islands has led to a dependency on external funding for climate adaptation, undermining their sovereignty over adaptation strategies. This dependency is viewed by local leaders as a barrier to implementing effective measures against climate change ([[Bordner, Ferguson, & Ortolano, 2020]{.underline}](https://consensus.app/papers/colonial-dynamics-limit-adaptation-oceania-perspectives-bordner/2b7a413e4f4052f7b205d6363dbf30b5/?utm_source=chatgpt)).
+
+3.  **Shoreline Changes and Island Growth:** Contrary to widespread belief, a study found that more shoreline has accreted than eroded in the Marshall Islands since the mid-20th century, suggesting some degree of resilience to sea-level rise ([[Ford & Kench, 2015]{.underline}](https://consensus.app/papers/multidecadal-shoreline-changes-response-level-rise-ford/9d8ce22b54a857138f3b264c62db7d5a/?utm_source=chatgpt)).
+
+4.  **International Policy Engagement:** The Marshall Islands have played a proactive role in international climate policy, significantly contributing to the Paris Agreement\'s commitment to limiting global temperature rise. They have also facilitated dialogue and cooperation between signatories of the Paris Agreement through the institution of Talanoa Dialogues ([[Kirsch, 2020]{.underline}](https://consensus.app/papers/pacific-islanders-stopped-worrying-apocalypse-started-kirsch/30154526bbcb5224aa464ab631f0ecc4/?utm_source=chatgpt)).
+
+5.  **Cultural Preservation Amid Relocation:** Climate-induced migration and relocation pose threats to cultural preservation. Studies show that although certain Pacific islands have displayed geomorphological resilience to climate change, the overall stress may still necessitate migration, raising concerns about cultural continuity ([[Yamamoto, 2020]{.underline}](https://consensus.app/papers/climate-relocation-indigenous-culture-preservation-yamamoto/488296f04a48503d803f3cc4a5ff3538/?utm_source=chatgpt)).
+
+6.  **Health and Food Security:** Climate change impacts are exacerbating health issues in the Marshall Islands, partly due to increased dependence on food aid, which often leads to poor health outcomes. This situation is compounded by the challenges of forced migration and environmental degradation ([[Ahlgren, Yamada, & Wong, 2014]{.underline}](https://consensus.app/papers/rising-oceans-change-food-rights-marshall-islands-ahlgren/0bd19143eff15cfe93ba693cafc49746/?utm_source=chatgpt)).
+
+> In conclusion, the Marshall Islanders\' response to climate change is deeply influenced by their historical, cultural, and socio-political context. It involves a blend of adaptation strategies, international engagement, cultural resilience, and challenges related to health and sovereignty.
+
+Several of the links were checked and they do, indeed, go to real research publications.
+
+## AutoExpert (Academic): Publication PDF
+
+The publication submitted as a PDF is a paper written a few years ago. Here is the citation:
+
+> Bridges, K. W., McClatchey, W. C., **Living on the margin: Ethnoecological insights from Marshall Islanders at Rongelap atoll.** Global Environ. Change (2009), doi: 10.1016/j.gloenvcha.2009.01.009
+
+The paper is referenced quite often, especially as it has to do with Climate Change and the potential displacement of people from their traditional lands.
+
+Note that the response is very long and, perhaps, a bit redundant. The format of the response given below is similar but not identical to the ChatGPT answer.
+
+**You**
+
+Analyze this uploaded research paper.
+
+> **AutoExpert (Academic)**
+>
+> **Living on the margin: Ethnoecological insights from Marshall Islanders at Rongelap Atoll**
+>
+> **Citation Information**
+>
+> **Author(s):** K.W. Bridges, Will C. McClatchey
+>
+> **Title:** Living on the margin: Ethnoecological insights from Marshall Islanders at Rongelap Atoll
+>
+> **Journal/Source:** Global Environmental Change
+>
+> **Publication Year:** 2009
+>
+> **Pages:** Not specified in the document
+>
+> **DOI/URL:** Not provided in the document
+>
+> **Affiliation:** Department of Botany, University of Hawaii at Manoa
+>
+> **Audience**
+>
+> **Target Audience:** This research is particularly valuable for environmental scientists, policy makers, anthropologists, and conservationists.
+>
+> **Application:** The audience can apply these insights to understand the impact of climate change on island communities and to develop strategies for sustainable resource management.
+>
+> **Outcome:** The expected outcome is increased awareness and implementation of ethnoecological practices in similar contexts worldwide.
+>
+> **Relevance**
+>
+> **Significance:** The paper is highly relevant in the context of climate change and its impact on island communities.
+>
+> **Real-world Implications:** The findings can inform policies and strategies for managing resources in small island communities affected by environmental changes.
+>
+> **Conclusions**
+>
+> **Takeaways:** The study reveals how the traditional ecological knowledge of Marshall Islanders is vital in managing resources and adapting to environmental changes.
+>
+> **Practical Implications:** Suggests that integrating traditional knowledge into modern environmental management can be beneficial.
+>
+> **Potential Impact:** The insights could lead to more sustainable resource management practices in similar communities globally.
+>
+> **Contextual Insight:**
+>
+> **Abstract in a nutshell:** The paper examines the traditional ecological knowledge of Marshall Islanders and their strategies for coping with environmental changes, particularly in the context of climate change.
+>
+> **Abstract Keywords:** Ethnoecology, Marshall Islands, Traditional Ecological Knowledge, Climate Change.
+>
+> **Gap/Need:** There\'s a need to understand how indigenous knowledge contributes to sustainability, especially in environmentally vulnerable regions like atolls.
+>
+> **Innovation:** The paper\'s focus on traditional ecological practices as a means of resilience and adaptation in the face of climate change is a notable innovation.
+>
+> **Key Quotes**
+>
+> \"Pacific Islanders who live on atolls are among the first people who have begun to be seriously impacted by the effects of global climate change.\"
+>
+> \"Traditional ecological knowledge of Marshall Islanders at Rongelap atoll serves to illustrate some of the coping strategies that have enabled these people to be resilient.\"
+>
+> \"Interviews revealed that these atoll dwellers actively manage the resources that are most likely to be impacted by climate change.\"
+>
+> **Questions and Answers**
+>
+> **Q:** How do Marshall Islanders cope with environmental changes? **A:** Through traditional ecological knowledge and practices that enable resource management and adaptation.
+>
+> **Q:** What is the significance of traditional ecological knowledge in the context of climate change? **A:** It provides practical strategies for resilience and sustainability in vulnerable environments.
+>
+> **Q:** What are the implications of this study for global environmental change? **A:** It highlights the importance of integrating traditional knowledge into broader environmental management and policy frameworks.
+>
+> **Paper Details**
+>
+> **Purpose/Objective**
+>
+> **Goal:** To explore and document the traditional ecological knowledge and practices of Marshall Islanders, particularly in the context of environmental changes and climate change.
+>
+> **Research Questions/Hypotheses:** The paper hypothesizes that traditional ecological knowledge and practices of atoll dwellers provide significant insights into sustainable resource management and adaptation to environmental changes.
+>
+> **Significance:** This research is crucial for understanding how indigenous knowledge systems can contribute to environmental sustainability and resilience in the face of global climate change.
+>
+> **Background Knowledge**
+>
+> **Core Concepts:** Ethnoecology, Traditional Ecological Knowledge, Climate Change Adaptation.
+>
+> **Preliminary Theories:** The paper builds upon theories of sustainability and resilience in environmental management.
+>
+> **Contextual Timeline:** The study is set against the backdrop of increasing global environmental changes, particularly affecting island communities.
+>
+> **Prior Research:** Previous studies have documented the impact of climate change on island ecosystems but have paid less attention to indigenous knowledge systems.
+>
+> **Terminology:** Ethnoecology, Ground-water lens, Atoll, Traditional Knowledge.
+>
+> **Essential Context:** The study is influenced by the urgent need to address the challenges posed by climate change, especially in vulnerable island ecosystems.
+>
+> **Methodology**
+>
+> **Research Design & Rationale:**
+>
+> **Type:** Ethnographic and ecological research.
+>
+> **Implications:** Provides insights into the practical application of traditional knowledge.
+>
+> **Reasoning:** The methodology is chosen to gain an in-depth understanding of indigenous practices and their relevance to environmental challenges.
+>
+> **Participants/Subjects:**
+>
+> **Sample Size:** Not specified, but includes elected officials and elderly men of Rongelap.
+>
+> **Demographics:** Elderly men who grew up on Rongelap.
+>
+> **Selection Criteria:** Participants were chosen based on their traditional knowledge and experience.
+>
+> **Instruments/Tools:** Interviews, ethnographic observations, and analysis of historical and current environmental data.
+>
+> **Data Collection:**
+>
+> **Process:** Conducting interviews and observations.
+>
+> **Locations:** Rongelap Atoll, Marshall Islands.
+>
+> **Duration:** Conducted over multiple visits.
+>
+> **Controls:** Information was corroborated independently by informants.
+>
+> **Data Analysis Techniques:**
+>
+> **Techniques:** Qualitative analysis of interview data.
+>
+> **Software:** Not specified.
+>
+> **Rationale:** To understand the depth and application of traditional knowledge.
+>
+> **Ethical Considerations:** Informed consent and adherence to PABITRA protocol.
+>
+> **Comparison to Standard:** The study aligns with ethnographic standards but focuses specifically on ethnoecological knowledge.
+>
+> **Replicability Score:** 7/10 - the specific cultural context may limit replicability but methodologies can be applied elsewhere.
+>
+> **Main Results/Findings**
+>
+> **Metrics:** Not applicable in a qualitative study.
+>
+> **Graphs/Tables:** Not specified in the summary.
+>
+> **Outcomes:** Documentation of traditional ecological knowledge and practices related to resource management and adaptation to climate change.
+>
+> **Data & Code Availability:** Not mentioned in the document.
+>
+> **Statistical Significance:** Not applicable as this is a qualitative study.
+>
+> **Unintended Findings:** The study also highlights the loss of traditional knowledge due to modernization and displacement.
+>
+> **Authors\' Perspective**
+>
+> **Authors\' Views:** Emphasize the importance and relevance of traditional ecological knowledge in managing environmental challenges.
+>
+> **Comparative Analysis:** The authors' interpretations align with the broader recognition of indigenous knowledge in sustainability but provide specific insights from a unique cultural context.
+>
+> **Contradictions:** None apparent, but the study emphasizes the often-underrepresented role of indigenous knowledge in environmental science.
+>
+> **Limitations**
+>
+> **List:** Limited by its ethnographic focus and the specificity of the studied community.
+>
+> **Mitigations:** Attempts to corroborate information and apply findings to broader contexts.
+>
+> **Proposed Future Work**
+>
+> **Authors\' Proposals:** Further research into integrating traditional ecological knowledge with modern environmental management practices.
+>
+> **References**
+>
+> **Notable Citations:** Cited works focus on environmental change, traditional knowledge, and ethnoecological practices.
+>
+> **AutoExpert Insights and Commentary**
+>
+> As a researcher in environmental science, I find this paper both intriguing and essential. It highlights the often-overlooked value of traditional ecological knowledge in managing resources sustainably and adapting to climate change. This study is a vital reminder that indigenous practices, honed over generations, hold key insights for contemporary environmental challenges.
+>
+> **Critiques:** The study could have benefitted from a broader sample size and more diverse participant demographics for a more comprehensive understanding.
+>
+> **Praise:** The thorough documentation of indigenous practices and the emphasis on their relevance in the face of global environmental changes is commendable.
+>
+> **Questions:** How can these insights be integrated into wider environmental policies and practices? What mechanisms can ensure the preservation and transmission of such traditional knowledge?
+>
+> Need help with your own LLM implementation? Reach out to dustin@llmimagineers.com with your requirements. Also try AutoExpert (Chat).

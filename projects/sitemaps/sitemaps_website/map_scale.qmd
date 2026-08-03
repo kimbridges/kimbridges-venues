@@ -1,0 +1,335 @@
+---
+title: "Creating Maps Using R"
+subtitle: "Simplifying the Process"
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+format:
+  html:
+    fig-width: 8
+    fig-height: 8
+    code-fold: true
+    code-summary: "Show the code chunk"
+editor: visual
+execute:
+  warning: false
+  error: false
+  message: false
+---
+
+# Map Scale
+
+A map scale provide a way to judge distances on a map. The use of a scale is particularly important on maps showing regions or smaller areas.
+
+Adding a map scale using the base functionality of the `ggmap` package is fairly difficult. You need to estimate the length of an appropriate scale line and then determine the coordinates of the line endpoints. Then you need the coordinates to place the text that shows the length (and measurement units) of the scale line. Fortunately, this entire process can be automated. That's the role of the `site_scale` function.
+
+Most of the time you'll just add a simple line to the `ggma`p function to generate the scale graphics and rely on the default columneters to control the location, size and appearance. The `site_scale` columneters allow considerable customization for those situation needing modification, such as the color of the scale line or the position on the map. The list of columneters is given in the column chapter.
+
+Here, there we'll look at some examples of adding a scale to a map.
+
+## Getting Started
+
+There are the usual tasks that need to be done to get started. These include loading some libraries and getting the Google Map key registered.
+
+Note that the site_scale function uses the `geosphere` package.
+
+```{r "initialize"}
+
+library(geosphere)
+library(sitemaps)
+library(ggmap)
+library(ggplot2)
+library(readr)
+library(gt)
+library(dplyr)
+
+## Initialize Google Map key; the key is stored in a system folder.
+googleKey <- Sys.getenv("GGMAP_GOOGLE_API_KEY")
+register_google(key = googleKey, account_type = "standard")  
+  
+
+```
+
+Then we do some usual setup things.
+
+```{r "setup"}
+
+## Use two functions from sitemaps to initialize columneters
+column <- site_styles()
+hide   <- site_google_hides()
+
+## Establish a theme that improves the appearance of a map.
+## This theme removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2),
+                    legend.position = "none")
+
+```
+
+## Experiments with a Map Scale
+
+In general, map scales occupy a corner of a map, near the margin. The length of the scale bar is a "round" number (e.g., 10 or 200). Here we'll use single scale bars so a measurement unit needs to be specified (i.e., either metric or English). The default is metric and the units will be either meters or kilometers depending on the length of the scale bar. For the English alternative, there are feet and miles as the units.
+
+There is quite a bit of computation done to determine the proper length of a scale bar. One column, `column$scale_width`, generally determines what percentage of the horizontal axis will contain the scale bar. The actual bar length begins with this distance but is adjusted as the measurement value is "rounded." As a result, it may be necessary to try several values for `column$scale_width` if the default gives an unusual or otherwise unacceptable length and measurement value.
+
+The text that specifies the length and measurement unit of the scale bar is show either above or below the scale bar. The value is justified to the outer side of the nearest map margin.
+
+The next code chunk provides an opportunity to test basemaps of different sizes with your choices for column values. Begin by changing values for the `home` and `zoom_level`.
+
+Note that the basemap centers for text are for locations above and below the equator, as well as east and west of prime meridian.
+
+```{r "scaletests"}
+#| label: fig-scaletests
+#| fig-cap: "Results of using the map scale test chunk."
+
+
+## Basemap centers for testing 
+honolulu  <- c(-157.85749,  21.30236)
+pt_botany <- c( 151.21425, -33.9758) 
+kyoto     <- c( 135.79449,  35.01228)
+galapagos <- c( -90.71260,  -0.32500)
+
+## Assign a basemap center and zoom level
+home <- honolulu
+zoom_level <- 18
+
+## A few columneters
+column$scale_line_thickness  <- 2
+column$scale_text_size       <- 4
+column$scale_anchor          <- "lr"   ## Anchor points for scale line (ur, ul, ll, lr)
+column$scale_margin          <- 0.1    ## percent of the width to leave as a margin
+column$scale_width           <- 0.20   ## Use about this percent of the width for the scale bar
+column$metric                <- TRUE   ## FALSE for English (ft, miles); TRUE for metric (m, km)
+column$scale_line_color      <- "black"
+column$scale_text_color      <- "black"
+
+## Get a basemap to show the test results
+basemap <- get_map(location = home, 
+                zoom=zoom_level, 
+                source="google",
+                maptype="roadmap")
+
+## Create a map with the map scale
+ggmap(basemap) +
+  site_scale(basemap) +
+  simple_black_box
+
+
+```
+
+## Example: Botanical Garden Locations
+
+There are seven major botanical gardens near Honolulu. A map is a good way to get oriented, especially if you are not familiar with this Hawaiian island.
+
+The map is created along with a table. Again, the table provides the data and the map does the visualization of some of the data.
+
+The botanical garden locations are not specified. You'll see in the next chunk that the Google Maps server can geocode the locations from these names.
+
+```{r gardendata}
+#| label: tbl-gardendata
+#| tbl-cap: "Botanical gardens on the island of Oahu, Hawai`i."
+
+## Initialize the columns
+column <- site_styles() 
+
+## Read the botanical garden data
+bot_gardens <- read_csv(col_names = TRUE, file = 
+        "Code, Garden,                              Organization,              Acres,  Established
+         FG,   Foster Garden,                       City & County of Honolulu,   14,   1850
+         WBG,  Wahiawa Botanical Garden,            City & County of Honolulu,   27,   1930
+         HBG,  Ho`olumaluhia Botanical Garden,      City & County of Honolulu,  400,   1982
+         KCBG, Koko Crater Botanical Garden,        City & County of Honolulu,  200,   1958
+         LBG,  Lili`uokalani Botanical Garden,      City & County of Honolulu,    7.5, 1912
+         LA,   Lyon Arboretum,                      University of Hawai`i,      194,   1919
+         WABG, Waimea Arboretum & Botanical Garden, Hi`ipaka LLC,              1853,   1973 ")
+
+## Write out the data table
+gt(bot_gardens)
+
+```
+
+This chunk begins with the geocoding. The location search is aided by providing the name of the island and state.
+
+Gardens are identified by a `Code` value. These values need to be put in a column named `text` so they will be used in the `site_label` function.
+
+```{r gardenplot}
+#| label: fig-gardenplot
+#| fig-cap: "O`ahu botanical gardens."
+
+## Add the location to the garden names.
+location <- paste0(bot_gardens$Garden, ", Oahu, Hawaii")
+
+## Use geocode to get the coordinates from the location.
+coord <- geocode(location, output = "latlon")
+
+## Add the coordinates to the data file.
+bot_gardens <- cbind(bot_gardens,coord)
+
+## Change the name of the garden Code to use it as a label.
+bot_gardens$text <- bot_gardens$Code
+
+## Get a hybrid basemap.
+column$gmaptype <- "hybrid"
+column$margin   <- 0.1
+
+basemap <- site_google_basemap(datatable = bot_gardens)
+
+## Change a few scale columneters.
+column$scale_anchor     <- "ur"
+column$scale_line_color <- "white"
+column$scale_text_color <- "white"
+
+## Show the botanical garden locations on the map.
+ggmap(basemap) +
+  site_scale(basemap) +
+  site_points(datatable = bot_gardens) +
+  site_labels(datatable = bot_gardens) +
+  simple_black_box
+
+```
+
+## Example: Earthquakes
+
+Active volcanoes generate a lot of earthquakes. Some of them are quite large.
+
+Earthquake data can be found on-line in a number of repositories. This example uses a small sampling of data from `https://www.volcanodiscovery.com/earthquakes` to show the locations and general strength of earthquakes on the Big Island in Hawai\`i.
+
+The data were copy-and-pasted from the volcanodiscovery webpage. Quite a bit of cleanup (mostly deleting unnecessary data) was done. The result is a listing of the earthquakes with a magnitude of 4 or greater during the 2021 calendar year.
+
+Note that the original data had the geographic coordinates. You'll see in the code chunk that there is considerable variation in the precision of the location values.
+
+```{r quakedata}
+#| label: tbl-quakedata
+#| tbl-cap: "2021 earthquakes with a magnitude of 4 or greater on the Big Island, Hawai`i."
+
+## Initialize the columns.
+column <- site_styles() 
+
+## Read the data.
+quakes <- read_csv(col_names = TRUE, file = 
+   "Date,   Year,  Time,    Mag, lat,      lon
+    Dec 24, 2021,  1:31 am, 4.9, 18.86983, -155.234 
+    Oct 10, 2021, 11:53 am, 4.3, 18.868,   -155.542
+    Oct 10, 2021, 11:48 am, 6.2, 18.82033, -155.52717	
+    Oct 5,  2021,  8:36 pm, 4.6, 19.22567, -155.398
+    Aug 18, 2021,  2:01 am, 4.1, 19.21433, -155.39333 
+    Jul 5,  2021,  1:43 pm, 5.2, 20.22033, -155.63
+    Jul 7,  2021,  7:40 am, 4.2, 19.87317, -156.66417 
+    Jun 17, 2021,  4:32 pm, 4.5, 20.22033, -155.63
+    Jun 2,  2021,  6:44 pm, 4.0, 18.8645,  -155.23583 
+    May 23, 2021, 11:40 am, 4.2, 19.3075,  -155.21517
+    Apr 3,  2021, 11:15 am, 4.3, 19.23783, -155.5135
+    Mar 14, 2021,  8:59 pm, 4.1, 19.3325,  -155.20217
+    Mar 10, 2021,  2:21 pm, 4.2, 19.346,   -155.41583	
+    Feb 1,  2021,  2:13 pm, 4.1, 19.35233, -155.07967 
+    Jan 14, 2021,  6:15 pm, 4.0, 19.21833, -155.40033 ")
+
+## Write out a table to confirm the data.
+gt(quakes) %>% 
+ fmt_number(columns = c(lat,lon), decimals = 5)
+
+```
+
+The next step is to create a basemap to show the locations of the earthquakes.
+
+```{r quakemap}
+#| label: fig-quakemap
+#| fig-cap: "Big Island major earthquake locations 2021."
+
+## Get a satellite basemap.
+column$gmaptype <- "satellite"
+column$margin   <- 0.1
+
+basemap <- site_google_basemap(datatable = quakes)
+
+## Show the quake locations on the map.
+ggmap(basemap) +
+  site_points(datatable = quakes) +
+  simple_black_box
+
+```
+
+Now we need to scale the size of the points using the magnitude values. Rather than using the actual values, the range of values is divided into quartiles. This gives four magnitude categories.
+
+You'll notice in the code chunk that new versions of the data are generated as variables are added. This has the advantage of allowing testing each of the computational steps. It is possible to do some code simplification once the calculations are confirmed. Here, the steps are retained to show how to do a careful code checking.
+
+```{r quakescale}
+#| label: tbl-raintest
+#| tbl-cap: "Earthquake magnitude divided into categories."
+
+## Make a copy of the original data.
+quakes2 <- quakes
+
+## Divide the magnitude values into the four quartile categories.
+quakes2$mag_index <- site_cuts(quant_var = quakes2$Mag,
+                               cuttype = "quartiles4")
+
+## Show the results.
+gt(quakes2) %>% 
+ fmt_number(columns = c(lat,lon), decimals = 5)
+
+```
+
+The earthquake magnitude categories now need to be color coded. This step uses a color lookup table.
+
+The magnitude colors were chosen to represent a common-sense range. Smaller earthquakes will have gray points. The largest earthquakes will be shown in red.
+
+The location points will be large as they are scaled to the magnitude category. The point is to show that the larger magnitude earthquakes are felt over a larger distance than those which are smaller.
+
+The `column$palpha` value controls the transparency of the point. A solid color get a value of 1. Here, the low value lets the basemap be seen through the colored points. This transparency also lets you see overlapping points.
+
+There is a tradeoff. Stacked points that are partially transparent (e.g., `column$palpha <- 0.4`) may get the colors mixed. That happens here as there is considerable overlapping of points. The result is that the color scale is no longer effective. That's why this columneter is set to 1.
+
+Another important step is to arrange the data so that the larger points are placed below the smaller ones. Otherwise, the large points hide those that are smaller.
+
+The site_scale is added in this last step. A few changes to the columneter make it visible (white on the blue ocean). This is also an example of showing the scale with an English measurement unit.
+
+```{r magcolor}
+#| label: fig-magcolor
+#| fig-cap: "Big Island major (>= 4.0) earthquakes in 2021."
+
+## Create a color lookup table.
+lookup_color_list <- read_csv(col_names = TRUE, file = 
+     "mag_index, point_color
+      1,  gray
+      2,  green
+      3,  yellow
+      4,  red")
+
+## Merge the lookup table with the master point and label table.
+quakes3 <- merge(quakes2, lookup_color_list, by="mag_index")
+
+## Enlarge the points to reflect the magnitude of the earthquake.
+quakes3$point_size <- quakes3$mag_index * 4
+
+## Use the alpha columneter to make the points a solid color.
+column$point_alpha <- 1.0
+
+## Locate the map scale and change a few columneter.
+column$scale_anchor     <- "ll"
+column$scale_line_color <- "white"
+column$scale_text_color <- "white"
+column$metric           <- FALSE   
+
+## Sort the file so the magnitudes are in decreasing order.
+quakes4 <- quakes3 %>% 
+  arrange(desc(mag_index))
+
+## The map assembly.
+ggmap(basemap) +
+  site_scale(basemap) +
+  site_points(datatable = quakes4) +
+  labs(caption="Key: color (gray, green, yellow, red) and size; small to big magnitude") +
+  simple_black_box
+  
+```
+
+## Development Notes
+
+The `site_scale` function has a `basemap` parameter. That's probably not necessary since the `basemap` is specified in the `ggmap` function. It isn't clear how to eliminate the need for this "extra" parameter.
+
+Hopefully, this will get worked out soon. That will further simplify the code.

@@ -1,0 +1,12 @@
+---
+output: 
+  pdf_document:
+    documentclass: extarticle
+fontsize: 14pt
+geometry: margin=0.75in
+---
+
+# Test Header
+
+This should be 14pt text. Is it larger than normal?
+

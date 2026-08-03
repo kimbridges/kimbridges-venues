@@ -1,0 +1,154 @@
+---
+title: "The Jones Collection"
+subtitle: "Recovering a 27-year wildlife legacy through AI-assisted research."
+date: 2026-05-05
+categories: ["AI", "Science", "Ethnobiology"]
+image: Jones/images/Sea_otter_after_Jones1968.png
+toc: false
+---
+
+![](Jones/images/Sea_otter_after_Jones1968.png){.hero-image}
+
+Robert D. Jones Jr. — known to colleagues as "Sea Otter Jones" — served as Refuge Manager at Izembek National Wildlife Refuge and the Aleutian Islands NWR from 1948 to 1974. Over 27 years he produced 38 narrative reports totaling approximately 1,300 pages: one of the most detailed firsthand records of Alaskan wildlife and environmental change from the mid-twentieth century. By the 21st century, those reports existed only as degraded typewritten scans — rich in content but largely inaccessible.
+
+This collection documents the AI-assisted recovery of Jones' body of work. Using a vision-language OCR model combined with AI contextual understanding, the original reports were digitized, structured, and analyzed. The result is a set of interconnected products — data, maps, narratives, and interactive tools — that make Jones' observations available for contemporary research.
+
+The collection also includes a personal narrative recovered from a separate typescript: Jones' account of an 8-day canoe trip down the Missouri River, written before his Alaska years.
+
+### Methodology
+
+The recovery pipeline combines olmOCR-2-7B (a vision-language model) with AI-assisted contextual interpretation. Raw OCR extracts text from degraded scans; AI understands it — correcting errors, resolving the 21 variant spellings of "Izembek Bay," reassembling data tables broken across pages, and distinguishing census counts from casual sightings.
+
+Every product in this collection was created through human-AI collaboration. The human directs the questions, validates the outputs, and provides the domain expertise. The AI processes the volume, maintains consistency across 1,300 pages, and surfaces patterns that manual review would miss.
+
+::: {.objective}
+**Objective:** Demonstrate that AI-assisted OCR and contextual analysis can recover historical field records for contemporary scientific use, using Jones' refuge reports as the proof of concept.
+:::
+
+::: {.collection-section}
+
+## Collection Overview
+
+The gallery below presents the full collection: its components, methodology, key findings, and opportunities for future research. Jones' own words appear throughout.
+
+<iframe src="Jones/Jones_Collection_Gallery.html" width="100%" height="800px" style="border: 1px solid #ddd; border-radius: 6px;"></iframe>
+
+:::
+
+::: {.collection-section}
+
+## Interactive Timeline: 1948–1974
+
+Jones' 27-year tenure spans the transition from post-war exploration through the nuclear testing era to the dawn of modern wildlife management. This interactive timeline organizes key events from all 38 reports into filterable categories: sea otters, wildlife, environmental events, management actions, and historical context.
+
+::: {.objective}
+**Objective:** Provide a navigable chronological framework for the entire report series — essentially a table of contents to 27 years of field observations.
+:::
+
+<iframe src="Jones/jones_timeline.html" width="100%" height="800px" style="border: 1px solid #ddd; border-radius: 6px;"></iframe>
+
+:::
+
+::: {.collection-section}
+
+## The Sea Otter: A Case Study in Recovery
+
+The sea otter work is the proof of concept for the entire collection. Jones documented the species' recovery from near-extinction with a depth of observation that is, in retrospect, irreplaceable. From the structured data, interactive map, and thematic narrative, a researcher today can reconstruct the sea otter's return to the eastern Aleutians in ways that were impossible from the undigitized reports.
+
+The interactive map below plots sea otter observation locations across the Aleutian chain, from Attu to the Alaska Peninsula.
+
+::: {.objective}
+**Objective:** Extract structured species data, geographic information, and narrative voice from the same source material — demonstrating the methodology's capacity for scientific analysis.
+:::
+
+<iframe src="Jones/sea_otter_map.html" width="100%" height="600px" style="border: 1px solid #ddd; border-radius: 6px;"></iframe>
+
+::: {.jones-quote}
+"The first Sea Otter recorded at Cold Bay was observed by myself … This animal was observed at very close range and there was absolutely no question of its identity."
+<span class="attribution">— Jones, Refuge Narrative Report, 1955</span>
+:::
+
+::: {.jones-quote}
+"My experience trying to inventory Sea Otter from the nose of a B17 at 140 to 150 KMH has not been very successful principally because of the speed."
+<span class="attribution">— Jones, Refuge Narrative Report, 1949</span>
+:::
+
+**Collection components:**
+
+- [Sea Otter Narrative (PDF)](Jones/pdfs/Sea_Otter_Narrative.pdf) — Jones' own words across 8 thematic sections
+- [Sea Otter Census Data (CSV)](Jones/data/Jones_sea_otter_data.csv) — 52 curated observation records
+- [Census Map (PDF)](Jones/pdfs/Sea_Otter_Census_Map.pdf) — Static version of the interactive map
+
+:::
+
+::: {.collection-section}
+
+## The Canoe Story
+
+Separate from the refuge reports, the collection includes a remarkable personal narrative: Jones' account of an 8-day, 265-mile canoe trip down the Missouri River from Mobridge to Chamberlain, South Dakota. Written while Jones was a District Supervisor for Grasshopper and Mormon Cricket Control, the story predates his Alaska years and reveals the naturalist, writer, and adventurer who would become "Sea Otter Jones."
+
+The narrative was recovered from an 18-page scanned typescript using the same AI-assisted OCR pipeline developed for the refuge reports.
+
+::: {.objective}
+**Objective:** Validate the OCR pipeline's generalizability beyond government wildlife records, while recovering a document that reveals the person behind the science.
+:::
+
+::: {.jones-quote}
+"Here, drifting down the 'Big Muddy,' one comes face to face with the signs of those wild and primitive forces which prepared the world for a habitation of man."
+<span class="attribution">— Jones, A Canoe Trip Down the Missouri</span>
+:::
+
+::: {.jones-quote}
+"Real friendship does not, however, take time nor distance into account, and as we separately turned away from the river I knew we would forever meet there on its inexorable course to the sea."
+<span class="attribution">— Jones, closing lines</span>
+:::
+
+**Download:** [Jones Story Transcription (PDF)](Jones/pdfs/Jones_Story_Transcription.pdf)
+
+:::
+
+::: {.collection-section}
+
+## Geographic Gazetteer
+
+The reports contain 875 raw place-name references. AI-assisted deduplication — recognizing that *Iseabek*, *Isombok*, *Isenbok*, and 18 other variants all refer to Izembek Bay — reduced these to 210 curated locations. Each entry includes feature type, region, mention count, year ranges, and the OCR variant spellings preserved as an audit trail.
+
+::: {.objective}
+**Objective:** Build a geographic framework for the report series, demonstrating AI's ability to reconcile OCR errors using contextual geographic knowledge.
+:::
+
+**Downloads:**
+
+- [Gazetteer (PDF)](Jones/pdfs/jones_gazetteer_v2.pdf) — 210 locations, formatted for reference
+- [Gazetteer (CSV)](Jones/data/jones_gazetteer_v2.csv) — Machine-readable version with all fields
+
+:::
+
+::: {.collection-section}
+
+## Methodology Paper
+
+Prepared for the International Society for Ethnobotany AI Workshop, this paper documents the recovery pipeline in sufficient detail for replication with other historical document collections.
+
+::: {.objective}
+**Objective:** Provide a replicable methodology for the ethnobiology community and other disciplines working with historical field records.
+:::
+
+**Download:** [SEB Workshop Paper (PDF)](Jones/pdfs/SEB_Workshop_Paper.pdf)
+
+:::
+
+::: {.collection-section}
+
+## For Future Researchers
+
+This collection is deliberately unfinished. It demonstrates what AI-assisted recovery can accomplish; it does not exhaust what Jones' reports contain. Seventy-one other species await the same treatment as the sea otter. The gazetteer provides a geographic framework, but the reports contain environmental observations, weather records, and management decisions that could yield structured datasets of considerable value.
+
+Jones spent 27 years in the field, observing and recording with a dedication that was extraordinary even by the standards of his era. This collection is an attempt to honor that work by making it accessible again — not as an archive to be preserved, but as a foundation to be built upon.
+
+::: {.jones-quote}
+"Before our figures can become a sound basis for management the method of census taking must be perfected."
+<span class="attribution">— Jones, 1949 — a standard he held himself to for the next 25 years</span>
+:::
+
+:::

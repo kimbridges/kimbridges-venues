@@ -1,0 +1,249 @@
+---
+title: "Test"
+format: html
+editor: visual
+---
+
+## The Goal
+
+The overarching goal is to create substantial draft documents quickly and efficiently. By "draft," this means that there are some compromises in the structure of the document in exchange for building documents on the fly.
+
+The benefits:
+
+-   A simple organizational structure that adapts to different kinds of projects.
+
+-   An encouragement of practices, such as using photo EXIF data, that help retain information.
+
+-   Promotion of viewing documents early in the development stage and with successive additions of information.
+
+-   A fully automated process of document stitching.
+
+The potential disadvantages:
+
+-   Photos appear one per page. This might result in considerable white space and a small image if the photo aspect ratio is horizontal (i.e., landscape).
+
+-   Photo are group into sections when they might naturally fall more logically in with the text.
+
+-   Strict use of EXIF data is required even when the text might have the same information.
+
+-   Creatig a book requires the use of software running in the R language environment.
+
+-   The output format is 8.5 x 11 inches.
+
+Overall, this system is designed for medium complexity projects. A small document, such as a few pages, doesn't need this system. A very large, complex book project should use specialized software, such as Adobe inDesign, for document layout. That said, it is likely that drafts of sections will benefit from this approach.
+
+## How to Start
+
+The procedural goal is to produce a PDF document that has sections of text, which we call stories, each followed by some photos that are relevant to the story. This is accomplished automatically with a simple matching of PDF file names in the stories folder with values in the photos EXIF metadata, specifically the Event field.
+
+The organization of the book elements is the key.
+
+Here is the procedure.
+
+1.  Put all the **photos in image folder**. *Only JPG files work in this version.*
+
+2.  Annotate the photos using the **EXIF data**. In particular, each photo must have an **Event field** with a text entry that match that of the PDF body text with which it will be associated. There are several ways to do the EXIF annotation that are discussed later. Mapping of the file locations will be done so it is important to have the **photo location coordinates** (GPSlatitude, GPSlongitude) stored with each image.
+
+3.  Create **story documents**. Each story is a PDF file with a file name that is the same as the text in the corresponding photo EXIF Event fields. The separate story documents are all stored in a **stories folder**.
+
+4.  Create an **category list**. This is a simple text listing of the names of the stories in the order in which the stories and images should be arranged.
+
+5.  Build a **cover** PDF document. This has a cover image and, if needed, a copyright page and introductory comments pages.
+
+## Structure
+
+There are two folders and two files, one is a text file and the other a PDF file.
+
+Here is an example of the layout.
+
+`Photos` (folder with all the photos, each with a Event entry in the EXIF data)\
+`Image_1.jpg` (EXIF Event field: Story 1)\
+`Image_2.jpg` (EXIF Event field: Story 1)\
+`Image_3.jpg` (EXIF Event field: Story 2)
+
+`Stories` (folder with PDF documents, each describing the photos that will follow)\
+`Story 1.pdf` `Story 2.pdf`
+
+`Index.txt` (text file with a list of stories in order: Story 1, Story 2; each on a separate line)
+
+`Cover.pdf` (pdf file with the cover and first few pages of text)
+
+The folder and file names need not be the same as this example. You specify the names you've used when you run the program. Blanks in file names are allowed (as shown above). The file type (i.e., ".pdf") is not used in the EXIF Event field or the Index file.
+
+**The key thing**: The photo EXIF Event names must match the PDF story file names – exactly, and the index list of names must also match the names – exactly.
+
+The output structure of the document will be a single document with pages in this order (based on the example above):
+
+> Cover\
+> Story 1\
+> Image_1\
+> Image_2\
+> Story 2\
+> Image_3
+
+## A Few Practical Comments
+
+I start by creating a folder structure inside the Photo_Book folder. One folder for the Stories and another folder for the Photos.
+
+Stories are written using Google Docs. Once I have a draft of a story, I use the `file -> download -> PDF document` choices to create a story PDF file. I move the file to the Stories folder. In practice, I sometimes use a story file as a header that I intend to return to when I want to fill in the details. By placing a header, I get to see the photos I've chosen to go with that section.
+
+Photos are selected and placed in the Photos folder. The selection process and relocation of photos depends on whether the images come from a camera or cell phone (this is discussed below).
+
+-   I edit each photo using Photoshop. Part of the edit is cropping the image to 2540 x 3300 pixels (portrait orientation). This creates a 300 DPI image that fits an 8.5x11 inch page.
+
+-   I use Photo Mechanic to add EXIF data. This is generally fills the Description, Event, City, and State fields. (I've modified the input panel in Photo Mechanic to simplify this process). I also use Photo Mechanic to georeference points that don't have geographic coordinates. If you don't have Photo Mechanic, a procedure is given below that lets you do the same thing using a spreadsheet.
+
+I create a cover for the project in Google Docs. This often starts with a page that has a photo to represent the project. I might, during the photo editing process, add a book title as an overlay on the photo. Like the stories, I turn this document into a PDF file. This single page might be enough to let me build early drafts. Generally, at some point in the project development, return to this document and add pages for the copyright and contact information and a page or two that describes the purpose of the project.
+
+I use RStudio and in this environment, I create the index listing. This is the file with the names of the stories that is used to establish the order of the stories. This is a simple text file and it is straightforward to create and save this file using the RStudio editor.
+
+Once I have a minimal set of files organized in the proper folders, I create an instance of the software and modify the code to match the names of the folders and files that I'm using for this project. This all fits inside an RStudio project.
+
+I run the R code and look at the results. The process continues as I add and expand stories and put more photos into the collection. Remember that this is a system that was built to create successive draft documents. Once you have some basic entries producing a reasonable PDF output, the enhancement of the contents no longer needs to focus on how to produce the document. You just run the code again with updated data.
+
+## Adding EXIF data
+
+There are several ways to add EXIF data. Some data come automatically, depending on how you took the photo. For example, cell phone photos include the geographic coordinates. But you'll always need to add more information.
+
+In practice, you might use several systems. For example, you can add Event, Description, City, State and Location data using Photoshop. Or you can add the same information in [Photo Mechanic](https://home.camerabits.com/ "Camera Bit Photo Mechanic") or even by using a spreadsheet.
+
+Georeferencing, if it wasn't included in the photo automatically, might require Photo Mechanic. Or, if you find a photo location on Google Maps, you can cut and paste the coordinates into a spreadsheet. The spreadsheet data can then be inserted into the photo.
+
+There are other ways, too. The important thing is that you need to adopt a workflow that fits your capabilities and matches the volume of EXIF editing that is required.
+
+### Add EXIF data with a spreadsheet
+
+The following code looks specifically at the photos in your photos folder.
+
+```{r}
+# Load required libraries
+library(exifr)
+library(pdftools)
+library(gt) # For the verification table
+library(readr)
+library(dplyr)
+
+# --- 1. Input Specification ---
+photos_folder <- "Test_Images"
+
+# --- 2. Configuration ---
+fields <- read_csv(show_col_types = FALSE, col_names = TRUE, file=
+    "name
+     Event
+     Description
+     GPSlatitude
+     GPSlongitude
+     Location
+     City")
+
+csv_table <- paste0(photos_folder,".csv")
+
+# --- 3. Data Gathering ---
+all_images <- list.files(photos_folder, 
+                         pattern = "\\.jpg$", 
+                         ignore.case = TRUE)
+
+photo_data_list <- list()
+
+cat("Gathering metadata from all images...\n")
+
+for (image_file in all_images) {
+  full_path <- file.path(photos_folder, image_file)
+  tags_to_read <- fields$name
+  exif_data <- read_exif(full_path, tags = tags_to_read)
+  
+  # Create data frame with NA for missing values
+  photo_data_list[[length(photo_data_list) + 1]] <- data.frame(
+    Event = ifelse(!is.null(exif_data$Event) && length(exif_data$Event) > 0, 
+                   exif_data$Event, NA),
+    Lat = ifelse(!is.null(exif_data$GPSLatitude) && length(exif_data$GPSLatitude) > 0, 
+                 exif_data$GPSLatitude, NA),
+    Lon = ifelse(!is.null(exif_data$GPSLongitude) && length(exif_data$GPSLongitude) > 0, 
+                 exif_data$GPSLongitude, NA),
+    Description = ifelse(!is.null(exif_data$Description) && length(exif_data$Description) > 0, 
+                         exif_data$Description, NA),
+    Location = ifelse(!is.null(exif_data$Location) && length(exif_data$Location) > 0, 
+                      exif_data$Location, NA),
+    City = ifelse(!is.null(exif_data$City) && length(exif_data$City) > 0, 
+                  exif_data$City, NA),
+    FileName = image_file
+  )
+}
+
+photo_data <- do.call(rbind, photo_data_list)
+
+cat(paste("\nFound", nrow(photo_data), "photos total.\n"))
+cat(paste("Photos with Event data:", sum(!is.na(photo_data$Event)), "\n"))
+cat(paste("Photos with GPS data:", sum(!is.na(photo_data$Lat)), "\n"))
+
+# --- 4. Confirm the Data ---
+# Only show unique events if any exist
+if (any(!is.na(photo_data$Event))) {
+  unique_events <- unique(photo_data$Event[!is.na(photo_data$Event)])
+  events <- tibble(Events = unique_events)
+  gt(events) %>%
+    tab_header(title = "Event Names Check")
+}
+
+gt(photo_data) %>%
+  tab_header(title = "Confirmation Listing of the EXIF Data")
+
+# --- 5. Create a CSV table with the EXIF data ---
+write_csv(photo_data, csv_table)
+cat(paste("CSV file created:", csv_table, "\n"))
+```
+
+### EXIF Annotation Check
+
+There are two rows of annotation data: the main_caption_field and the sub_caption_field.
+
+The EXIF annotation fields that are likely to be used include:
+
+-   Title
+
+-   Description\*
+
+-   Location\*
+
+-   City\*
+
+-   Event\*
+
+-   Latitude\*
+
+-   Longitude\*
+
+-   FileName\*
+
+-   = fields used in the standard Photo_Book code.
+
+It is possible to do some combinations of annotation by concatenating the fields together, such as `sub_caption_field = c("Location","City")`.
+
+### The photo_image_function parameters
+
++--------------------+-----------------------------------+------------------------------------+
+| Parameter          | Purpose                           | Example (Default)                  |
++====================+===================================+====================================+
+| image_file         | Path to the photos                | image_file = "keepers"             |
++--------------------+-----------------------------------+------------------------------------+
+| main_caption_field | EXIF field name                   | main_caption_field = "Description" |
++--------------------+-----------------------------------+------------------------------------+
+| sub_caption_fields | One or more EXIF names            | sub_caption_fields =\              |
+|                    |                                   | c("Location","City")               |
++--------------------+-----------------------------------+------------------------------------+
+| page_margin_inches | Margin whitespace in inches       | page_margin_inches = 0.5           |
++--------------------+-----------------------------------+------------------------------------+
+| image_scale_factor | Scale the image (1 = fill)        | image_scale_factor = 1             |
++--------------------+-----------------------------------+------------------------------------+
+| main_caption_size  | Type scaling for the main caption | main_caption_size = 1.2            |
++--------------------+-----------------------------------+------------------------------------+
+| sub_caption_size   | Type scaling for the sub caption  | sub_caption_size = 0.9             |
++--------------------+-----------------------------------+------------------------------------+
+
+### Saving the EXIF data
+
+Puts the EXIF data in a CSV file so it can be edited in a spreadsheet.
+
+### Upload saved EXIF data to images
+
+Use the CSV file with EXIF data to update the photos.

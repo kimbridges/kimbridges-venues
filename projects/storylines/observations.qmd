@@ -1,0 +1,64 @@
+# Observations
+
+The purpose of this exercise is to test some new technology. It is worth taking some time to think about the process, results, areas for improvement and overall implications.
+
+## Rapid Prototyping
+
+The object at this point is to get a fairly complete demonstration in a form and location where it can be shared and evaluated. This means that decisions need to be made so the product is "good enough."
+
+## Keeping the Focus
+
+This was a test of whether it is possible to create a basic narrative and supporting visualizations, starting with a set of images in a local-disk folder, and providing only the name of the folder to a set of code.
+
+There are many things that could have been done to improve the results. Here are just a few:
+
+-   Add details of the day's planned itinerary, including travel, lodging and likely places to visit.
+
+-   Enhance each photo's metadata that provide specific information about the photo (e.g., people's names, building names, menu choices).
+
+-   Provide missing information and corrections to the LLM results and re-run the LLM model.
+
+-   Request the LLM to add background information about key places, events and other features shown in the photos.
+
+-   Fix the problem of map resolution (i.e., several maps are needed, each with a different resolution).
+
+-   Consider making all the output elements (e.g., tables, map, milestones) into PDF files so they can be used in other documents.
+
+-   Reorganize the code into a "production-like" workflow that uses just a few, simple functions.
+
+There is no conceptual difficulty in tasks. It just takes time.
+
+## The Code
+
+This is a research project. The code reflects this focus.
+
+The code is divided into small units ("chunks" in RStudio terminology). The chunks are also spread into different chapters in this document. That was all by design as it helped in the incremental development and testing of the procedures.
+
+The code has a lot of comments. For some people, there might be too many. It's just my style.
+
+Communication of data between the chunks is done with a file of stored values. This helped in the development process. This isn't necessary in a production environment.
+
+The two functions that provide access to the OpenAI API are not documented here. You can find the code on github ("`kimbridges/accessOAI`").
+
+## Feedback for Photography
+
+This prototype should demonstrate the value of taking photos at the right time and place. Here's an example of a mistake. Photos17-22 show our dinner. Photo 23 is the exterior of the restaurant at which we ate dinner. It would have been better to take the picture of the restaurant as we entered, not when we left.
+
+The point is, this exercise provides feedback on the photography. You need to remember to take photos and each image should clearly show why the picture was taken.
+
+## Simplifying the Travel Log
+
+Travel, whether it is for pleasure, education or research, is stressful. In the end, this prototype explores a way to simplify the documentation of the travel. This might not work for everyone. Some people like to write journals and they find time to keep up with the narrative each day.
+
+It is possible to envision a hybrid approach. Consider combining planning information (e.g., a detailed itinerary), purchase receipts, dictated comments, and the use of photos similar to that demonstrated here.
+
+## Team Effort
+
+The day's photos are uploaded to the Google cloud. An interesting collaboration can happen if a family member or research colleague who is not part of the travel group has access to the account that stores the photos. This "base station" person can take the day's album (created by a person traveling) and run the code to do the visualizations and interpretation. This can then be returned to the traveler. Differences in time zone might make this a particularly interesting joint-effort.
+
+This distributes the workload and it aids in group communication. It is likely that the travelers might receive feedback from the "base station" that will improve the trip activities.
+
+## The Synthesis Narrative
+
+The synthesis of the day's activities is, of course, just a draft document. It's generally necessary to edit the LLM output. After editing a few such documents, additional directives will likely become apparent for the role or prompt given to the LLM, reducing the need for extensive editing in future runs.
+

@@ -1,0 +1,63 @@
+# Limits and the Frontier
+
+It is fair to end by saying plainly what this method cannot do.
+
+It does not know the truth about a name; it knows what the databases currently say, and the databases change. It gives a coarse first answer on native status, not the settled one a regional flora provides. It sees only what has been collected and digitized, so it is silent about the plants no one has pressed and the sheets no one has yet entered. The checklist it produces is a good first draft of a flora — not the last word, and never a substitute for walking the ground.
+
+```{r}
+#| label: setup-limits
+#| message: false
+
+## --- Standard packages ---
+
+## data handling and graphics (dplyr, readr, ggplot2, ...)
+library(tidyverse)
+
+## --- Package from github/kimbridges ---
+
+## install once with: install_github("kimbridges/checklistr")
+library(checklistr)
+```
+
+## Four honest limits
+
+Each earlier chapter left a caution, and it is worth gathering them in one place.
+
+The **names move.** Taxonomy is a living science; the accepted name for a plant today may be a synonym tomorrow. The checklist resolves names against the current backbone, which means it is exactly as current — and as provisional — as the backbone itself.
+
+The **status is coarse.** A global source gives a first-pass native-or-introduced call. Chapter 7 showed both what that is worth (agreement most of the time) and where it fails (fern endemism, contested pantropical natives). The label is a starting point for a specialist, not a verdict.
+
+The **crosswalk is lossy.** Matching a herbarium's verbatim names to a global backbone, and the backbone to a status source, drops taxa at every join — the taxa that simply show no status are the visible edge of that loss. A name that does not match is not a name that does not matter.
+
+The **record is not the flora.** This is the deepest limit, and it has two faces. A plant that was never collected is invisible; so is a plant collected but never digitized into GBIF. The checklist is complete relative to the *digitized record*, which is not the same as complete relative to the forest. A flat discovery curve can mean a flora exhausted — or a botanist who simply stopped coming.
+
+None of these is fatal, but all of them are real, and a checklist that hid them would be worse than one that names them. The honest move is to surface the uncertainty — which is what every flag in this book has been for.
+
+## Point it at a place you love
+
+With the limits stated, here is the invitation. The whole pipeline is three lines, and the only thing you change is where.
+
+```{r}
+#| label: your-own-site
+#| eval: false
+
+## your place: a point, a radius, a taxon
+records   <- fetch_specimens_gbif(lon = -159.63, lat = 22.13, r_km = 2,
+                                  taxon = "Tracheophyta", rank = "phylum")
+
+## the checklist, with growth form and status
+checklist <- records |>
+  add_primary_collector() |>
+  build_checklist() |>
+  add_status()
+```
+
+Run it on a trail you have walked for years and you can check your own memory against the accumulated record — and read, in the disagreements, exactly where the record is unsure of itself. Run it on a place you have never been and a first draft of its flora arrives in about a minute. Neither is the final word. Both are a beginning that did not exist before.
+
+## The larger frontier
+
+Step back from the single checklist and a bigger picture is visible. Consolidating the world's herbaria into shared, inclusive databases has done more than make specimens reachable from a laptop, as Chapter 1 described. It has created a resource no single herbarium ever had — and, as Chapter 7 argued, it lets the work go *beyond* a list of species to sharpen our knowledge of the species themselves. A flagged disagreement is not a defect. It is a research question the aggregate has surfaced that no one collection could have raised alone. The aggregate gains value by becoming an instrument for learning, and in doing so earns the support that keeps it growing.
+
+That reframes the tool's reach in two directions worth naming. For **institutions**, contributing a collection is not merely offering another way in; it is a way to learn where one's own holdings sit at the edge of what is known. And for **other kinds of collecting**, the method may read differently in ways that are themselves informative: an ethnobotanical corpus, gathered wherever a plant is *used* rather than once per region, would look less like Kīpuka's taxonomic accumulation and more like an ecological survey — so the same collecting-mode diagnostic that told one story here would tell another there. The tool does not only build checklists. It characterizes how a body of collections was assembled, and that is a question every discipline that presses plants can ask of itself.
+
+This is where the book began: a walk on a familiar trail, and a wish for a list of what grows along it. The list, it turned out, was never a simple fact to be looked up. It was a reconstruction, assembled from a century of other people's work, carrying every judgment and every uncertainty that went into it — an argument, not an answer. That is not a disappointment. A list you can read critically is worth far more than one you must take on faith. Point the tool at a place you love, read the argument it makes, and see where it is sure of itself and where it is not. Then go and walk the ground.

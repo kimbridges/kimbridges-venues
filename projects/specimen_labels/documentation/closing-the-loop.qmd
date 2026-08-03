@@ -1,0 +1,64 @@
+# Closing the Loop
+
+We've built the pieces one at a time. A way to capture in the field, a record that projects two views, decks for what must be observed, a derive step for what the place fixes, and a method for knowing which decks a field needs. Now put a single real photograph in at one end and watch a label and a log row come out the other.
+
+Here is the photograph. Six cards laid on a flat surface: the number card, the two that name who collected and who will determine, and three observation cards. In the image file, unseen, are the coordinate pair and the time the phone wrote when the shutter closed. That is the whole of the input. One picture.
+
+I should say plainly where this particular picture was taken, because the coordinates will tell you anyway and it is better said than caught. It was taken at my house, on a couch, to test the whole chain end to end with cards I had just printed. It is a bench run, not a collection. I could have quietly swapped in a coordinate from a real ʻōhiʻa forest and the output would have looked more like the argument I have been making, and I would rather show you the honest one, because a system you cannot audit is not a system you should trust. Nothing in what follows depends on where the shutter fired: the codes decode the same, the phone stamps place and time the same, and the derive step asks the landscape the same question. What changes is only that the landscape answers with a city.
+
+![The single input. Six cards laid out flat and photographed once: the collection-number card, the collector and determiner cards, and three observation cards from the phenology, life form and abundance decks. Each deck is a screw-post stack under a coloured cover, rotated to show the one card that applies. Everything in the record that follows was read out of this frame and the coordinate pair inside its file. (Photograph: K. Bridges)](images/Example_1.jpg){#fig-input width=100%}
+
+The software's first job is to read the codes, and this is harder than it sounds. A field photograph is not a clean scan. The cards sit at angles, the light falls unevenly, the surface is whatever was to hand. No single code reader gets them all from a picture like that. So the software doesn't lean on one. It reads the image several ways, sharpening it and re-lighting it and passing it to more than one decoder, and it pools everything any of them finds. What one reader misses, another catches. The trick isn't a cleverer reader. It's refusing to trust just one.
+
+```{r}
+#| label: decode
+library(vouchr)
+photo <- "../photos/Example_1.jpg"
+codes <- decode_qr(photo)
+codes
+```
+
+Six cards in the frame, six strings out, and each one reads as the words the card carries. Note what the strings are not: they are not codes needing a table to look them up. `Phenology: No Flowers` is the finished label text, which is why a stranger scanning one of these cards with an ordinary phone sees something sensible rather than a broken link.
+
+Next the file's own metadata, which nobody typed.
+
+```{r}
+#| label: exif
+ex <- read_exif(photo)
+ex
+```
+
+And then the step that costs the collector nothing at all. The coordinate goes out to the public record and comes back as the site.
+
+```{r}
+#| label: derive
+site <- site_substrate(ex$lat, ex$lon)
+cat(site$sentences, sep = "\n")
+```
+
+There is the city answering. The locality composes out of the levels a gazetteer is reliable at — district, county, state — and skips the ones it is erratic at in dense urban areas, which is a fix that only a run like this one would ever exercise. The soil survey is just as sure of a Honolulu clay loam as it is of a volcanic ash. The machinery does not know it is indoors.
+
+Now all of it into one record, and the record into its two views.
+
+With the cards read, the rest falls in behind. The software takes the coordinate pair and the time from the file. From the coordinate pair it derives the fixed things, the elevation and slope and place and soil, in the way the derive chapter described. And it sets all of it, the read cards, the stamped time, the derived site, into one record. This is the record we have been building toward since the middle of the book, and now it assembles itself, from a photograph, with no one typing.
+
+From that record come the two views. One is the label, held in the record as data. A well-established herbarium would rather take that data as a file, in the shared Darwin Core terms every herbarium reads, and print the label itself on its own archival paper; a herbarium not set up for that can render a provisional label from the same record and use it as it is. The other is the log, which gains a row, the same facts laid out as one line among the trip's others. One photograph in, a labelled record and a log row out.
+
+```{r}
+#| label: assemble
+cap <- read_photo(photo)
+cat(cap$label)
+```
+
+That is the label, and every line of it arrived by a different route. The collector, the number, the determiner and the three observations were read off the cards. The coordinates and the date came from the file. The locality, the elevation, the slope, the aspect, the bedrock and the soil were derived from the coordinate pair after the fact. Not one character was typed.
+
+```{r}
+#| label: log-row
+t(cap$log_row)
+```
+
+The same record, laid out as one line. Gather these from a trip's photographs and the log assembles itself.
+
+Look at what never happened. No one wrote a label. No one sat down months later to transcribe a soaked notebook into a database. The field log, the artifact that used to vanish, is simply there, because it was never a separate chore that could be put off and then lost. The friction we set out to remove wasn't reduced. It was designed out.
+
+The loop is closed. Capture once, in the field, in a single act. Project twice, at the desk, into the two records the science has always needed and too often lost, with nothing written by hand in between. The machine works. What remains is to say plainly what it is for, and who it is for, which turns out to be the reason the whole thing was worth building.

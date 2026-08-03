@@ -1,0 +1,39 @@
+project:
+  output-dir: _output
+  type: book
+
+book:
+  title: "LLM-API-R"
+  subtitle: "Experiments in Aiding the Research Process"
+  search: true
+  author: "K. W. Bridges"
+  date: today
+  cover-image: farm_stand_image.jpg
+  chapters:
+    - index.qmd
+    - Introduction.qmd
+    - Produce.qmd
+    - functions.qmd
+    - Climate.qmd
+    - Weather.qmd
+  navbar: 
+    logo: farm_stand_logo.jpg
+
+toc: false
+number-sections: true
+
+execute: 
+  warning: false
+  error: false
+  message: false
+
+format:
+  html:
+    css: styles.css
+    code-fold: true
+    code-summary: "Show the code"
+  pdf:
+    documentclass: report
+    margin-left: 30mm
+    margin-right: 30mm
+    

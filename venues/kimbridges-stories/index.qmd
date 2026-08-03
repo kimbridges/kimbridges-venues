@@ -1,0 +1,15 @@
+---
+title: "Stories"
+listing:
+  contents: stories
+  sort: "date desc"
+  type: grid
+  grid-columns: 3
+  image-height: auto
+  categories: true
+  fields: [image, title, subtitle, date, categories]
+  filter-ui: true
+  sort-ui: true
+---
+
+Narratives from the field and the road.

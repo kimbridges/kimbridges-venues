@@ -1,0 +1,273 @@
+# Standards via Artifacts
+
+Anthropic's Claude lets you use what they call "artifacts." These a files with background information that can be used during a particular conversation. The files should have a minimum of 15 lines.
+
+I've developed a fairly strong personal style for my R code. This includes specific libraries that I use in most programs, a style for my comments, and a way to input data that's much clearer than the "standard" used in most programs. I also have some functions stored in my Github account that I use in my code.
+
+I've assembled my preferences into a file. Here is the content.
+
+```         
+R Language Guidelines
+
+- General Guidelines
+
+Comment lines and comments should be preceded by two hash marks (##).
+
+- Initializing Packages and Establishing Default Values
+
+The beginning chunk of R code should have a set of packages loaded with the library function. The following R code provides an example that should usually be used.
+
+## Load standard packages.
+library(devtools)  ## Load Github packages
+library(tidyverse) ## Many useful functions
+library(ggplot2)   ## Graphics functions
+library(dplyr)     ## Data crunching functions
+library(lubridate) ## Time functions
+library(gt)        ## Tables
+
+There are several packages available from github/kimbridges
+
+Here is a list of the packages at GitHub/kimbridges:
+plainmaps ## Simple maps
+milestones ## Milestones and Bar-timelines
+tinypedigree ## Pedigree diagrams
+sitemaps ## Data-based, location maps
+
+If one of these is needed. The code below is an example of how the package can be loaded. This should be included as part of the Initializing process.
+
+## Load special libraries.
+install_github("kimbridges/milestones") 
+library(milestones) ## Milestones and Bar-timelines
+
+- Data Input Preferences
+
+In general, the input of data from a CSV file should use the read_csv function from the dplyr package.
+
+Here is an example of the general structure of this statement.
+
+## Data Input.
+  data <- read_csv(col_names=TRUE, file=
+  "city,    lon,    lat
+   London,  0.1278, 51.5074
+   Paris,   2.3522, 48.8566")
+
+Note that the data are arranged in columns and spacing of the CSV values makes the data structure clear. There is a double quotation mark (") at the start and end of the CSV values.
+
+When the data file includes values for latitude and longitude, the data columns should be abbreviated to lat and lon.
+```
+
+Here is an example of how this works.
+
+**Prompt**
+
+I'm going to give you a file that contains some guidelines on how I prefer to structure my R code.
+
+**Response**
+
+Thank you for letting me know. I'm ready to review the file containing your guidelines for structuring R code. Once you provide the file, I'll be happy to go through it and assist you with any questions or tasks related to those guidelines. Please go ahead and share the file when you're ready.
+
+**Prompt**
+
+*The file was added to the dialog.*
+
+I've added the file. Does it make sense to you?
+
+**Response**
+
+Yes, the file you've provided makes perfect sense to me. It contains clear guidelines for structuring R code according to your preferences. Let me summarize the key points:
+
+1.  Comments should be preceded by two hash marks (##).
+
+2.  Package initialization:
+
+```         
+-    Standard packages should be loaded at the beginning using the `library()` function.
+
+-    A specific set of packages is recommended (devtools, tidyverse, ggplot2, dplyr, lubridate, gt).
+```
+
+3.  Special packages from GitHub/kimbridges:
+
+```         
+-    Several custom packages are mentioned (plainmaps, milestones, tinypedigree, sitemaps).
+
+-    If needed, these should be installed using `install_github()` and then loaded with `library()`.
+```
+
+4.  Data input preferences:
+
+```         
+-   The `read_csv()` function from dplyr is preferred for reading CSV files.
+
+-   A specific format for the `read_csv()` function is provided, with column names and data arranged clearly.
+
+-   When latitude and longitude are included, they should be abbreviated as "lat" and "lon".
+```
+
+5.  These guidelines provide a clear structure for organizing R code, from package management to data input. They emphasize readability and consistency in code structure.
+
+Is there anything specific about these guidelines you'd like me to elaborate on or any questions you have about implementing them?
+
+**Prompt**
+
+I'd like to try using the guidelines. How about creating some R code that will let me analyze the following data. Here is the narrative: """Johnstown has a population of 33,412 and Peteston has 25,212 people."""
+
+**Response**
+
+Certainly! I'll create some R code that follows the guidelines you provided to analyze the data about Johnstown and Peteston. I'll structure the code according to your preferences, including the package initialization and data input. Here's how we can approach this:
+
+```{r}
+
+## Load standard packages.
+library(tidyverse)     ## Many useful functions
+library(ggplot2)       ## Graphics functions
+library(dplyr)         ## Data crunching functions
+library(gt)            ## Tables
+
+## Data input.
+city_data <- read_csv(col_names=TRUE, file=
+            "city,      population
+             Johnstown, 33412
+             Peteston,  25212")
+
+## Basic analysis
+## Calculate total population
+total_population <- sum(city_data$population)
+
+## Calculate percentage of total for each city
+city_data <- city_data %>%
+  mutate(percentage = population / total_population * 100)
+
+## Create a summary table
+summary_table <- city_data %>%
+  mutate(percentage = round(percentage, 2)) %>%
+  gt() %>%
+  tab_header(title = "City Population Analysis") %>%
+  fmt_number(columns = c(population), decimals = 0) %>%
+  fmt_percent(columns = c(percentage), decimals = 2, scale_values = FALSE)
+
+## Create a bar plot
+population_plot <- ggplot(city_data, aes(x = city, y = population, fill = city)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = population), vjust = -0.5) +
+  labs(title = "Population Comparison", x = "City", y = "Population") +
+  theme_minimal()
+
+## Display results
+print(summary_table)
+print(population_plot)
+
+## Additional statistics
+## Calculate the difference in population
+population_difference <- max(city_data$population) - min(city_data$population)
+
+## Print additional insights
+cat("\nAdditional Insights:\n")
+cat("Total population of both cities:", total_population, "\n")
+cat("Population difference between cities:", population_difference, "\n")
+
+```
+
+This R code follows your guidelines and analyzes the population data for Johnstown and Peteston. Here's a breakdown of what the code does:
+
+1.  It loads the recommended packages (tidyverse, ggplot2, dplyr, and gt).
+2.  The data is input using `read_csv()` as per your preferences.
+3.  It performs basic analysis:
+    -   Calculates the total population.
+    -   Calculates the percentage of the total population for each city.
+4.  Creates a summary table using the `gt` package.
+5.  Generates a bar plot using `ggplot2` to visually compare the populations.
+6.  Calculates and prints additional insights, such as the total population and the difference between the two cities.
+
+This code provides a comprehensive analysis of the given data, including both tabular and graphical representations. It's structured in a way that's easy to read and modify if you want to add more cities or additional analyses.
+
+Would you like me to explain any part of this code in more detail or make any modifications?
+
+**Prompt**
+
+Can you suggest an improved way to structure the Artifact I provided earlier?
+
+**Response**
+
+Certainly, I'd be happy to suggest an improved structure for the artifact you provided earlier. Let's reorganize it to make it more cohesive and easier to follow.
+
+## R Language Guidelines
+
+## 1. General Formatting
+
+-   Comment lines and comments should be preceded by two hash marks (##).
+
+## 2. Package Management
+
+### 2.1 Standard Packages
+
+Initialize your R script by loading these standard packages:
+
+``` r
+## Load standard packages.
+library(devtools)      ## Load Github packages
+library(tidyverse)     ## Many useful functions
+library(ggplot2)       ## Graphics functions
+library(dplyr)         ## Data crunching functions
+library(lubridate)     ## Time functions
+library(gt)            ## Tables
+```
+
+### 2.2 Special Packages from GitHub/kimbridges
+
+The following packages are available from github/kimbridges:
+
+-   plainmaps \## Simple maps
+-   milestones \## Milestones and Bar-timelines
+-   tinypedigree \## Pedigree diagrams
+-   sitemaps \## Data-based, location maps
+
+To use these packages, include them in your initialization process:
+
+``` r
+## Load special libraries.
+install_github("kimbridges/milestones")
+library(milestones)    ## Milestones and Bar-timelines
+```
+
+## 3. Data Input
+
+### 3.1 CSV File Input
+
+Use the `read_csv` function from the dplyr package for inputting data from CSV files:
+
+``` r
+## Data input.
+data <- read_csv(col_names=TRUE, file=
+            "city,    lon,     lat
+             London,  0.1278,  51.5074
+             Paris,   2.3522,  48.8566")
+```
+
+### 3.2 Data Structure Guidelines
+
+-   Arrange data in columns with clear spacing for readability.
+-   Use double quotation marks (") at the start and end of CSV values.
+-   For geographic data, abbreviate latitude and longitude as "lat" and "lon".
+
+## 4. Best Practices
+
+-   Structure your R scripts in this order: package loading, data input, analysis.
+-   Use meaningful variable names and consistent formatting.
+-   Comment your code thoroughly, especially for complex operations.
+
+This improved structure offers several benefits:
+
+1.  **Hierarchical Organization**: The guidelines are now organized into main sections and subsections, making it easier to navigate and reference specific parts.
+
+2.  **Clearer Formatting**: The use of Markdown headers and code blocks improves readability and distinguishes between explanatory text and code examples.
+
+3.  **Consistent Structure**: Each section now follows a similar pattern, providing context, examples, and best practices where applicable.
+
+4.  **Added Best Practices**: A new section on general best practices has been added to reinforce good coding habits.
+
+5.  **Improved Readability**: The use of bullet points and numbered lists makes it easier to scan and understand the guidelines quickly.
+
+This structure maintains all the original content while presenting it in a more organized and user-friendly format. It should be easier for users to follow and implement these guidelines in their R coding projects.
+
+Would you like me to explain any part of this restructured guideline or make any further modifications?

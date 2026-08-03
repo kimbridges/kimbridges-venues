@@ -1,0 +1,273 @@
+# Test Data
+
+## Synthetic Tables
+
+The previous chapter focused on *analysis*: how structure can be detected, summarized, and interpreted once a table has been reordered. In practice, however, it is difficult to discuss analytical behavior without first having a clear understanding of the kinds of structure that may be present in a table. Empirical datasets rarely provide that clarity, because their underlying structure is only partially known and often confounded by sampling noise, incomplete coverage, or historical contingencies.
+
+For this reason, we introduce **synthetic tables**.
+
+Synthetic tables are not meant to replace empirical data; they exist to make structural assumptions visible.
+
+A synthetic table is constructed deliberately, with known properties. The location, size, and strength of structure are specified in advance, allowing us to observe how sorting algorithms and structural metrics respond under controlled conditions. This provides a reference point against which behavior observed in real datasets can later be evaluated.
+
+Importantly, “synthetic” does not mean arbitrary or unrealistic. The patterns used here are chosen because they correspond closely to structures commonly encountered in ecological and vegetation data. What is synthetic is not the *idea* of the structure, but the fact that it is introduced intentionally rather than inferred retrospectively.
+
+### Why Synthetic Tables Are Useful
+
+Synthetic tables serve three primary purposes in this workflow:
+
+1.  **Conceptual clarity**\
+    Because the structure is known in advance, the reader can focus on how that structure is revealed (or obscured) by different ordering and display choices.
+
+2.  **Method validation**\
+    Sorting functions and metrics can be tested against tables whose expected behavior is already understood. When a method fails, the failure is informative rather than ambiguous.
+
+3.  **Reusability**\
+    Once created, synthetic tables can be reused across chapters. The same table may appear first as a raw input, later as a reordered matrix, and later still as the basis for structural summaries or visual annotation.
+
+For this reason, the synthetic tables introduced here will be saved as CSV files and treated as fixtures for subsequent examples.
+
+### Canonical Structural Patterns
+
+In this chapter we focus on a small set of canonical patterns. These patterns are sufficient to illustrate most of the structural situations encountered in practice, while remaining simple enough to reason about directly.
+
+The synthetic tables constructed here fall into five broad categories:
+
+-   **Clean blocks**\
+    Discrete groups with little or no overlap.
+
+-   **Overlapping blocks**\
+    Groups that share a subset of rows or columns, reflecting partial similarity or transitional membership.
+
+-   **Background Noise**\
+    Regions that sit between blocks and cannot be unambiguously assigned to a single group.
+
+-   **Gradients**\
+    Ordered change along one axis, often corresponding to environmental or experimental gradients.
+
+Each pattern highlights different strengths and limitations of sorting strategies and structural metrics. Together, they form a compact but expressive test suite.
+
+### Scope of This Chapter
+
+At this stage, the emphasis is on **construction**, not interpretation. We will focus on:
+
+-   How synthetic tables are defined
+
+-   How their structure is specified
+
+-   How they are represented as tabular data
+
+Detailed analysis, comparison of metrics, and ecological interpretation will follow in later chapters, using these same tables as shared reference points.
+
+By the end of this chapter, we will have a small library of synthetic datasets that can be carried forward unchanged, providing continuity and reducing the cognitive load on the reader.
+
+### Design Principles for Synthetic Tables
+
+Synthetic tables are most useful when they are simple enough to be understood at a glance, yet rich enough to exhibit realistic structural behavior. The goal is not to exhaust the space of possible configurations, but to construct tables that clearly express specific structural ideas while remaining interpretable when reordered, summarized, or visualized.
+
+The design principles below guided the construction of all synthetic tables used in this document.
+
+#### 1. Structure Is Intentional, Not Emergent
+
+In empirical data, structure is inferred. In synthetic tables, structure is specified.
+
+Each synthetic table is designed around a small number of explicit structural elements—blocks, gradients, overlaps, or transitions. These elements are introduced deliberately, rather than arising as a by-product of random variation. Noise may be added, but only after the primary structure has been established.
+
+This distinction is essential. When a method succeeds or fails on a synthetic table, the reason for that behavior can be traced directly to known features of the design.
+
+#### 2. Table Size Should Be Large Enough to Behave Realistically
+
+Very small tables are useful for illustration but often behave differently from realistic datasets. Conversely, very large tables can obscure structure and distract from the core ideas being demonstrated.
+
+For most examples in this chapter and those that follow, tables are sized to resemble modest vegetation matrices—large enough to contain multiple structural elements, but small enough to be inspected directly. This balance allows readers to develop an intuitive sense of how structure appears both before and after reordering.
+
+#### 3. Contrast Is a Controlled Parameter
+
+Contrast refers to the difference in values between structured regions (such as blocks or gradient bands) and their background.
+
+In synthetic tables, contrast is treated as a design parameter rather than an accident of sampling. By holding structure constant and varying contrast, it becomes possible to explore questions such as:
+
+-   How strong must a signal be before it is reliably detected?
+
+-   Which metrics are sensitive to weak structure?
+
+-   At what point does noise overwhelm pattern?
+
+Later chapters will make explicit use of this property.
+
+#### 4. Overlap and Transition Are First-Class Features
+
+Ecological structure is rarely cleanly partitioned. Transitional zones, partial membership, and shared species are common, not exceptional.
+
+For this reason, overlapping blocks and transitional regions are treated as primary design features rather than complications. Synthetic tables include these features explicitly so that sorting and labeling methods are evaluated under conditions that resemble real ecological complexity.
+
+#### 5. Ordering Is Initially Arbitrary
+
+All synthetic tables are created in an **unordered** state. Any apparent structure in the initial presentation is accidental and should not be interpreted.
+
+This is an important discipline. By starting from an arbitrary ordering, the effect of reordering algorithms becomes unambiguous. Structure is revealed by the method, not assumed by the presentation.
+
+#### 6. Tables Are Designed for Reuse
+
+Each synthetic table is intended to serve multiple roles:
+
+-   As raw input
+
+-   As a reordered matrix
+
+-   As the basis for structural metrics
+
+-   As a reference example in explanatory text
+
+To support this reuse, tables are saved in a stable, external format (CSV) and referenced consistently across chapters. This allows the reader to recognize familiar examples and focus on new ideas rather than new data.
+
+This set of principles keeps the synthetic examples disciplined, interpretable, and extensible. With these constraints in place, we can now turn to the construction of specific synthetic patterns, beginning with the simplest case: a table composed of clean, non-overlapping blocks.
+
+## Data Tables
+
+### Clean Blocks
+
+Block-structured tables differ not only in the presence of coherent row–column groupings, but also in the *sharpness of the boundaries* between those groupings. In traditional Braun–Blanquet practice, this idea was expressed informally through expectations about how strongly a species was confined to a group of sites versus appearing outside it. You might recognize this in the literature with references to "90/10" or "70/30." In synthetic tables, boundary sharpness is treated as a controllable property of the data rather than an artifact of ordering. Later chapters return to this idea in a more quantitative way.
+
+When rendering larger synthetic tables for inspection, it is often useful to scale the entire table and to keep site labels short. The examples below use a reduced font size to preserve readability on the page.
+
+#### Block Table A
+
+```{r}
+## Analytical Workflow — setup
+
+## Packages
+library(tidyverse)
+library(gt)
+
+## Read data
+options(readr.show_col_types = FALSE)
+bb_raw <- readr::read_csv("data/bb_blocks_unordered_A.csv")
+
+## Display
+bb_raw %>%
+  gt(rowname_col = "species") %>%
+  tab_header(title = "Clean Block A") %>%
+  opt_row_striping() %>%
+  cols_align("center", everything()) %>%
+  sub_values(
+    columns = everything(),
+    values = 0,          # Target the specific value 0
+    replacement = " " ) %>%  # Replace with a blank
+  tab_options(table.font.size = px(12)) ## Entire table scaled
+  
+```
+
+#### Block Table B
+
+```{r}
+
+## Read data
+options(readr.show_col_types = FALSE)
+bb_raw <- readr::read_csv("data/bb_blocks_unordered_B.csv")
+
+## Display
+bb_raw %>%
+  gt(rowname_col = "species") %>%
+  tab_header(title = "Clean Block B") %>%
+  opt_row_striping() %>%
+  cols_align("center", everything()) %>%
+  sub_values(
+    columns = everything(),
+    values = 0,          # Target the specific value 0
+    replacement = " " ) %>%  # Replace with a blank
+  tab_options(table.font.size = px(12)) ## Entire table scaled
+
+```
+
+### Overlapping Blocks
+
+The clean block patterns above provide a useful baseline, but in practice blocks are often not disjoint. Species may occur in more than one group of sites, and sites may show characteristics of multiple blocks. The next canonical pattern introduces this kind of overlap.
+
+In this pattern, blocks remain recognizable, but some sites express characteristics of more than one block. This reflects a common situation in ecological data, where transitional or heterogeneous sites do not fit neatly into a single group. The table is presented unordered; later chapters explore how such overlap influences ordering and interpretation.
+
+```{r}
+
+## Set parameters
+
+data_source <- "data/bb_blocks_overlap_sites.csv"
+data_title  <- "Blocks Overlap Sites"
+
+# Read data
+options(readr.show_col_types = FALSE)
+bb_raw <- readr::read_csv(data_source)
+
+## Display
+bb_raw %>%
+  gt(rowname_col = "species") %>%
+  tab_header(title = data_title) %>%
+  opt_row_striping() %>%
+  cols_align("center", everything()) %>%
+  sub_values(
+    columns = everything(),
+    values = 0,          # Target the specific value 0
+    replacement = " " ) %>%  # Replace with a blank
+  tab_options(table.font.size = px(12)) ## Entire table scaled
+
+```
+
+### Background Noise
+
+In this pattern, clear block structure is present, but low-level background presence occurs widely across the table. This reflects situations where absence is no longer a reliable indicator of ecological separation.
+
+```{r}
+## Set parameters
+
+data_source <- "data/bb_blocks_background_noise.csv"
+data_title  <- "Blocks Background Noise"
+
+# Read data
+options(readr.show_col_types = FALSE)
+bb_raw <- readr::read_csv(data_source)
+
+## Display
+bb_raw %>%
+  gt(rowname_col = "species") %>%
+  tab_header(title = data_title,
+              subtitle = "Raw Data") %>%
+  opt_row_striping() %>%
+  cols_align("center", everything()) %>%
+  sub_values(
+    columns = everything(),
+    values = 0,          # Target the specific value 0
+    replacement = " " ) %>%  # Replace with a blank
+  tab_options(table.font.size = px(12)) ## Entire table scaled
+
+```
+
+### Gradients
+
+Gradients in the vegetation, if they exist, are generally due to either patterns in the environment or sampling design. Or, most likely, a combination of these two factors.
+
+The following table lists the species as though they are in alphabetical order. In contrast to earlier examples, sites are arranged in gradient order, such as increasing elevation.
+
+```{r}
+## Set parameters
+
+data_source <- "data/bb_gradient_unordered.csv"
+data_title  <- "Gradient Unordered"
+
+# Read data
+options(readr.show_col_types = FALSE)
+bb_raw <- readr::read_csv(data_source)
+
+## Display
+bb_raw %>%
+  gt(rowname_col = "species") %>%
+  tab_header(title = data_title,
+              subtitle = "Raw Data") %>%
+  opt_row_striping() %>%
+  cols_align("center", everything()) %>%
+  sub_values(
+    columns = everything(),
+    values = 0,          # Target the specific value 0
+    replacement = " " ) %>%  # Replace with a blank
+  tab_options(table.font.size = px(12)) ## Entire table scaled
+
+
+```

@@ -1,0 +1,110 @@
+# The Same Specimen, Two Names
+
+Here is the first of the two conflicts that give this book its spine, and it is the more tractable one: a record at odds with itself.
+
+Somewhere in the checklist is a plant that is really two plants — or rather, two names for one pressed specimen. A botanist gathered a single plant in 1980, pressed it, and it became one sheet in one museum. But that sheet entered the database twice, and the two entries disagree about what it is. Build a checklist without noticing, and the flora appears to hold two species where the forest held one. The extra species is not a discovery. It is the losing side of an argument about a single plant.
+
+```{r}
+#| label: setup-conflict
+#| message: false
+
+## --- Standard packages ---
+
+## data handling and graphics (dplyr, readr, ggplot2, ...)
+library(tidyverse)
+## formatted tables
+library(gt)
+
+## --- Package from github/kimbridges ---
+
+## install once with: install_github("kimbridges/checklistr")
+library(checklistr)
+
+## --- Options ---
+
+## suppress read_csv() column-type messages
+options(readr.show_col_types = FALSE)
+```
+
+## Why the herbarium holds the same sheet twice
+
+To see the disagreement you first have to understand how one sheet becomes two records. The specimens here belong to the Bishop Museum, and they reach GBIF under two institution codes — `BISH` and `BPBM` — which name the same herbarium. The museum's data flow to the aggregator by two paths, so the same catalog number, the same collector, the same collection arrives twice. Usually the two copies agree. When they were determined at different times, or by different hands, they sometimes do not.
+
+This is worth dwelling on, because it is not a Bishop Museum quirk. Any institution can send the same records to GBIF along two channels — a small herbarium with thin IT support might upload two versions of its database without ever realizing it — and wherever that happens, the duplicates can carry conflicting names. The phenomenon travels.
+
+There is a catch that makes these conflicts easy to miss. They are visible *only before* the duplicates are removed. Deduplication — the step that keeps counts honest — collapses the two entries into one and, with them, erases the disagreement. So the conflicts have to be caught first, on the raw records, before anything is cleaned away. `checklistr` does this with one call.
+
+```{r}
+#| label: detect-recipe
+#| eval: false
+
+## find sheets that carry two different names -- run on the RAW records,
+## before deduplication collapses the duplicates
+raw       <- fetch_specimens_gbif(-155.296, 19.437, r_km = 2,
+                                  taxon = "Tracheophyta", rank = "phylum")
+conflicts <- detect_det_conflicts(raw)
+```
+
+## Eight arguments the record is having with itself
+
+Run that over the Kīpuka Puaulu records and the herbarium turns out to be arguing with itself on eight sheets.
+
+```{r}
+#| label: conflict-table
+
+## the saved raw records (institutional double-entries intact)
+raw <- read_csv("data/kipuka_puaulu_specimens_raw.csv")
+
+## detect the conflicting determinations
+conflicts <- detect_det_conflicts(raw)
+
+## the botanist's reading of each conflict (verified by K. W. Bridges)
+kind <- tribble(
+  ~catalogNumber, ~kind,
+  "656211", "Spelling variant",
+  "656421", "Spelling variant",
+  "656286", "Taxonomic revision",
+  "656108", "Congeneric disagreement",
+  "656875", "Congeneric disagreement",
+  "668168", "Congeneric disagreement",
+  "770507", "Congeneric disagreement",
+  "656953", "Gross error"
+)
+
+conflicts |>
+  left_join(kind, by = "catalogNumber") |>
+  mutate(kind = factor(kind, levels = c("Spelling variant", "Taxonomic revision",
+                                        "Congeneric disagreement", "Gross error"))) |>
+  arrange(kind) |>
+  select(determinations, collector, year, kind) |>
+  gt(groupname_col = "kind") |>
+  cols_label(determinations = "The two names on the sheet",
+             collector = "Collector", year = "Year") |>
+  tab_style(style = cell_text(style = "italic"),
+            locations = cells_body(columns = determinations)) |>
+  tab_source_note("Each sheet is a single Bishop Museum specimen entered under both BISH and BPBM codes, with two different determinations. Grouped by the kind of disagreement.")
+```
+
+Eight is a small number, and that is the point: this chapter argues from *kind*, not from quantity. What matters is that the eight are not one problem. They are four.
+
+## Four kinds of disagreement
+
+Sort the conflicts by what actually went wrong and the record's eight arguments fall into four categories, each demanding a different response.
+
+Two are not disagreements at all. *Hypochaeris* against *Hypochoeris*, *illinoinensis* against *illinoensis* — these are the same names spelled two ways. No botanist disputes them; a good name-resolver should quietly fold them together. They are noise in the plumbing, and it is honest to admit that a better pipeline would dissolve them before a reader ever saw them.
+
+One is the record doing exactly what a record should. *Cardamine flexuosa* and *Cardamine occulta* are two determinations separated by a revision: what was once filed as the Asian *C. flexuosa* was later recognized as the segregate *C. occulta*. Both names were correct in their moment. The conflict is not an error but a fossil of changing knowledge — the herbarium preserving the history of its own understanding.
+
+Four are genuine questions of identity. *Cerastium holosteoides* or *C. glomeratum*; *Corylus americana* or *C. cornuta*; *Pyracantha angustifolia* or *P. koidzumii*; the two *Eriocapitella*. In each, two determinations reached different species within the same genus, and the record cannot tell you which is right. Only the physical sheet can, under an expert's eye. The flag marks the question; it does not answer it.
+
+And one is simply broken. *Ludwigia palustris* is in the evening-primrose family, Onagraceae; *Leptopetalum biflorum* is in the coffee family, Rubiaceae. No determination nuance puts those two names on one plant. This is a transcription or cataloging error, and the value of surfacing it is exactly that it cannot hide.
+
+## Phantoms in the count
+
+Notice what these eight sheets have in common beyond the double-entry. Nearly all are weedy, cultivated, or otherwise introduced plants, gathered in the 1979–80 survey. That is no accident. The survey's charge was to collect *everything*, and everything includes the ornamentals and roadside weeds of the residential edges — plants that had little to do with the native forest the botanists came for, and so received the least determination care. The natives that give Kīpuka Puaulu its name are determined confidently and do not appear here. The record wavers exactly where attention was thinnest.
+
+Their practical cost is inflation. Left unresolved, each conflict can seed a **phantom taxon** — a second name counted as a second species, padding the richness the last chapter already warned us to distrust. The `det_conflict` flag exists so a reader can hold these names at arm's length rather than banking them as diversity.
+
+But their real value is as a warning. Beside Hawaiʻi Volcanoes National Park, with its confidently determined native trees and a mere eight contested weeds, the problem is mild. Elsewhere it need not be. A flora assembled in a botanically messier place, from collections with less certain determinations and more tangled data pipelines, could carry these conflicts by the hundred — and every one is a small false species waiting to be counted. These eight are best read as models: not a crisis at Kīpuka Puaulu, but a map of where the trouble arises, so that the next reader knows where to look.
+
+This is the first flavor of expert disagreement, and the kinder one. A conflict of *identity* can usually be settled — pull the sheet, ask a specialist, and one name wins. The next chapter turns to a disagreement that pulling the sheet will not resolve: whether a plant is native to the place at all.

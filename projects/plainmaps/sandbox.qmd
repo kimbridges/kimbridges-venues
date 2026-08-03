@@ -1,0 +1,219 @@
+---
+title: "Sandbox"
+editor: visual
+---
+
+rgeoboundaries
+
+```{r}
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(tidyverse)
+library(sf)
+library(jsonlite)
+
+test <- ne_countries(scale= 10, 
+                     returnclass = "sf") |>
+ filter(su_a3 == "WLF")
+
+test_full <- st_geometry(test)
+
+ggplot() + 
+  labs(title = "Test: 10 Resolution") +
+  geom_sf(data=test_full) 
+
+```
+
+Whittaker Diagram
+
+From Claude 3 
+
+
+```{r}
+# Install and load the required libraries
+#install.packages("ggplot2")
+library(ggplot2)
+
+# Define the temperature and precipitation ranges
+temp_range <- seq(-15, 30, length.out = 100)
+precip_range <- seq(0, 400, length.out = 100)
+
+# Create a data frame with all combinations of temperature and precipitation
+data <- expand.grid(temp = temp_range, precip = precip_range)
+
+# Define the biome labels and their corresponding regions
+biomes <- list(
+  list("Tundra", data$temp < -5),
+  list("Boreal Forest", data$temp >= -5 & data$temp < 5 & data$precip > 50),
+  list("Temperate Rainforest", data$temp >= 5 & data$temp < 15 & data$precip > 200),
+  list("Temperate Seasonal Forest", data$temp >= 5 & data$temp < 15 & data$precip > 50 & data$precip <= 200),
+  list("Temperate Grassland/Desert", data$temp >= 5 & data$temp < 15 & data$precip <= 50),
+  list("Subtropical Desert", data$temp >= 15 & data$precip < 25),
+  list("Tropical Rainforest", data$temp >= 20 & data$precip > 200),
+  list("Tropical Seasonal Forest/Savanna", data$temp >= 20 & data$precip > 50 & data$precip <= 200),
+  list("Subtropical Rainforest", data$temp >= 15 & data$temp < 20 & data$precip > 200)
+)
+
+# Assign biome labels to the data frame
+data$biome <- "Other"
+for (biome in biomes) {
+  data$biome[biome[[2]]] <- biome[[1]]
+}
+
+# Create the Whittaker diagram using ggplot2
+diagram <- ggplot(data, aes(x = precip, y = temp, fill = biome)) +
+  geom_raster(alpha = 0.7) +
+  scale_fill_manual(values = c(
+    "Tundra" = "#B2B2FF",
+    "Boreal Forest" = "#8080FF",
+    "Temperate Rainforest" = "#4D4DFF",
+    "Temperate Seasonal Forest" = "#1A1AFF",
+    "Temperate Grassland/Desert" = "#E6E6E6",
+    "Subtropical Desert" = "#FFFF4D",
+    "Tropical Rainforest" = "#00994D",
+    "Tropical Seasonal Forest/Savanna" = "#80FF80",
+    "Subtropical Rainforest" = "#00CC66",
+    "Other" = "white"
+  )) +
+  labs(
+    title = "Whittaker Biome Diagram",
+    x = "Annual Precipitation (cm)",
+    y = "Average Annual Temperature (°C)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+# Display the diagram
+print(diagram)
+```
+
+This R script follows a similar approach to the Python program:
+
+1. We load the `ggplot2` library, which is used for creating the diagram.
+
+2. We define the temperature and precipitation ranges using `seq()` to create evenly spaced values.
+
+3. We create a data frame called `data` using `expand.grid()` to generate all combinations of temperature and precipitation values.
+
+4. We define a list of biomes, where each biome is represented by a list containing its label and the corresponding condition based on temperature and precipitation.
+
+5. We assign biome labels to the `data` data frame by iterating over the biomes and updating the `biome` column based on the conditions.
+
+6. We create the Whittaker diagram using `ggplot()`:
+   - We specify the `data` data frame and map the `precip` and `temp` columns to the x and y aesthetics, respectively.
+   - We use `geom_raster()` to create the raster plot and set the `alpha` parameter to control transparency.
+   - We use `scale_fill_manual()` to assign specific colors to each biome.
+   - We add labels for the title, x-axis, and y-axis using `labs()`.
+   - We customize the theme using `theme_minimal()` and set the legend position to the bottom.
+
+7. Finally, we display the diagram using `print()`.
+
+When you run this R script, it will generate a Whittaker diagram showing the distribution of biomes based on temperature and precipitation, similar to the Python program.
+
+
+## Periodogram
+
+```{r}
+
+library(TSA)
+library(readr)
+
+# Create a sample time series data
+ts_data <- read_csv(file="sandbox/KimPuzzle1.csv")
+
+ts_test <- ts_data$data3
+
+
+ts_test <- na.omit(ts_test)
+
+ts_test
+
+# Perform the periodogram analysis
+periodogram(ts_test)
+
+
+```
+WFOR package
+
+https://github.com/rogerhyam/wfor
+
+```{r}
+## Set an option for the read_csv function
+options(readr.show_col_types = FALSE) 
+
+library(devtools)
+##devtools::install_github("rogerhyam/wfor")
+library(wfor)
+library(readr)
+library(gt)
+
+##  WARNING: VERY LONG LIST!!!!!
+# auto match the Belgian Magnoliopsida test data
+##mags_example <- wfo_match_df_names(Belgian_Magnoliopsida_sp_ssp_var_2011, name_col="scientific_name", authors_col="authorship", interactive=FALSE)
+
+produce <- read_csv(file=
+    "Common_Name,Sci_Name,Author
+plum,Prunus domestica,L.
+lettuce,Lactuca sativa,L.
+chard,Beta vulgaris subsp. vulgaris,L.
+tomato,Solanum lycopersicum,L.
+orange,Citrus x sinensis,(L.) Osbeck
+celery,Apium graveolens,L.
+dragon fruit,Hylocereus undatus,(Haw.) Britton & Rose
+papaya,Carica papaya,L.
+langoustine,Nephrops norvegicus,(L.)
+raspberry,Rubus idaeus,L.
+cherimoya,Annona cherimola,Mill.")
+
+gt(produce)
+
+answer <- wfo_match_df_names(produce, name_col="Sci_Name", authors_col="Author", interactive=FALSE,
+                             fallback_to_genus = TRUE)
+
+answer
+
+wfo_stat_matches(answer)
+
+```
+
+O'ahu Botanical Gardens
+
+```{r}
+
+library(sitemaps)
+library(ggmap)
+
+data <- read_csv(file=
+  "garden
+    Ho'omaluhia Botanical Garden
+    Waimea Valley
+    Koko Crater Botanical Gardens
+    Foster Botanical Garden
+    Moanalua Gardens
+    Lili'uokalani Botanical Garden
+    Mānoa Heritage Center
+    Halawa Xeriscape Garden
+    Wahiawā Botanical Garden
+    Lyon Arboretum")
+
+## Geocode the locations.
+## Prepare the data.
+location <- paste0(data$garden,", Honolulu, Hawaii, USA") 
+
+## Get the coordinates from the location.
+coord <- geocode(location, output = "latlon")
+
+## Create an ID column.
+ID <- c(1:nrow(data))
+
+## Number & add the coordinates to the original data.
+data <- cbind(ID,data,coord)
+
+## Show the data table.
+gt(data) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5)
+
+
+
+```
+

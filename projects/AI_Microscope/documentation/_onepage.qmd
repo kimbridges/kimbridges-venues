@@ -1,0 +1,44 @@
+---
+title: "Preview & Review"
+subtitle: "Rebuilding the AI Microscope"
+author: "K. W. Bridges and Claude (Anthropic)"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    toc-location: left
+    number-sections: true
+    number-depth: 2
+    embed-resources: false
+    code-fold: true
+    code-summary: "Show the code"
+    theme: cosmo
+    fig-cap-location: bottom
+execute:
+  warning: false
+  error: false
+  message: false
+---
+
+{{< include index.qmd >}}
+
+{{< include too_early.qmd >}}
+
+{{< include constraints.qmd >}}
+
+{{< include rebuilding.qmd >}}
+
+{{< include tool_not_spy.qmd >}}
+
+{{< include honest.qmd >}}
+
+{{< include names.qmd >}}
+
+{{< include bookends.qmd >}}
+
+{{< include audio.qmd >}}
+
+{{< include taught.qmd >}}
+
+{{< include appendix.qmd >}}

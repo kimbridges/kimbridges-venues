@@ -1,0 +1,36 @@
+project:
+  type: book
+
+book:
+  title: "Braun Blanquet Tables"
+  author: "Kim Bridges"
+  date: "12/14/2025"
+  chapters:
+    - index.qmd
+    - Conceptual.Rmd
+    - Synthetic.Rmd
+    - Analytical.Rmd
+    - ordering_tables.qmd
+    - measuring_structure.qmd
+    - applying_order.qmd
+    - structure2classification.qmd
+    - using_structure.qmd
+    - preparing_bb_tables.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: journal
+    toc: true
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
+# This applies to ALL .qmd AND .Rmd files in the project
+execute:
+  warning: false      # Hide warnings
+  message: false      # Hide package loading messages
+  freeze: auto        # Don't re-render files unless they have changed
+

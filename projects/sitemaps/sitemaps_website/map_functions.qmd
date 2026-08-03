@@ -1,0 +1,59 @@
+---
+title: "Functions"
+---
+
+`Sitemaps` uses a set of custom functions and a few key functions from other R packages. The descriptions are minimal here. The following chapters provide a more in-depth discussion, along with examples, of the functions.
+
+## Custom Functions
+
+All of these functions work in conjunction with data and other tables. The functions assume that standard column names are being used[^1].
+
+[^1]: Yes, I know this is not the way things are usually done in R, but this requirement goes a long way in making the map-creation process accessible to novice programmers.
+
+For convenience, each of these functions begins with "site\_" and most end with a plural suffix.
+
+**site_cuts:** Divides quantitative data in a column into index values based on segmentation. There are a number of segmentation strategies. This is useful when you want to use a few colors to represent the data, such as elevation ranges or response values.
+
+**site_elevations:** Obtains the elevations for a set of locations. This uses the Google Maps API.
+
+**site_fans:** This function generates a special "fan shaped" symbol. The symbol show a direction and distance. This is useful for showing photo locations.
+
+**site_google_basemap:** This function creates basemaps using the Google Map services. The location and size of the basemap is determined by the (`lat`, `lon`) in your datatable. You can specify the type of map and suppress information layers.
+
+**site_hides:** The hide values are downloaded with this function. They will be used to suppress layer information when basemaps come from Google Maps.
+
+**site_labels:** The data in the names_table are used to add text labels to data locations (`lat`, `lon`). There are many style specifications that can be used with values either as table columns (when labels have different styles) or as a param value (for a constant style for all labels).
+
+**site_legend:** This is a rather complex function that builds lines with text or symbols and text. Use these lines to create a custom legend for a map.
+
+**site_names**: The names_table has text, location and style information for a names overlay applied to a basemap. Like points and labels, the style descriptions are either in table columns or used as `param`.
+
+**site_photos:** Photo EXIF data are retrieved with this function. This includes the geographic coordinates, file name, description, date and time.
+
+**site_points:** The datatable locations (`lat`, `lon`) are used to create a point layer for use with a basemap. Columns can be used to specify style features. There are a number of `param` that also control point styles.
+
+**site_scale:** Places a scale bar and text message in one of the four corners of a map. A number of parameters are available to control the appearance of the scale information.
+
+**site_styles:** This function downloads the default parameters for points, labels, names and a few other useful values.
+
+**site_textwraps:** Wraps the character strings in a text column by inserting "\\n" into the string. The value in the wrap column determines the maximum string length. Strings are broken at spaces so words are not divided. A column value of NA means to not break the string. Note that this is done more often using column specifications in data tables (label_text_wrap, name_text_wrap) or the equivalent column parameters (column$label_text_wrap, column$name_text_wrap).
+
+**site_legend:** Provides a simple toolkit using two tables to create a map legend. This is quite flexible and scales from simple to complex legends.
+
+## Other Key Functions
+
+These functions come from the `ggmap`, `ggplot2`, and `gt` packages.
+
+**register_google:** This function is used once each day to link your Google Map Key to your use of the Google Map services.
+
+**get_googlemap**: Retrieves a Google basemap when you provide a central location, `zoom` level and `maptype`. The location can be a placename or geographic coordinates. You can also selectively suppress information layers.
+
+**get_stamenmap:** Retrieves a Stamen basemap. You provide a bounding box (`left`, `bottom`, `right`, `top`), `zoom` level and `maptype`. You can get the bounding box from a placename by using the geocode function.
+
+**geocode:** A Google Maps service that uses a place name to retrieve geographic coordinates.
+
+**ggmap:** Plots a basemap (either Google or Stamen) with layers for points, labels and names. There is considerable control over the appearance as the `ggplot2` functions can generally be applied, such as a `theme`.
+
+**gt:** This function prints tables. You can enhance the table with a caption and footnotes.
+
+A number of other functions, primarily associated with data manipulation, are also used.

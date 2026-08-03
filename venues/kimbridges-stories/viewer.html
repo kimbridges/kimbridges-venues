@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Viewer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #1a1a2e;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .controls {
+            margin: 12px 0;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .controls button {
+            background: #16213e;
+            color: #e0e0e0;
+            border: 1px solid #0f3460;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: background 0.2s;
+        }
+        .controls button:hover { background: #0f3460; }
+        .controls button:disabled { opacity: 0.3; cursor: default; }
+        .page-info {
+            font-size: 0.9em;
+            color: #888;
+            min-width: 100px;
+            text-align: center;
+        }
+        .view-toggle { margin-left: 20px; }
+        .view-toggle button.active {
+            background: #0f3460;
+            border-color: #e94560;
+        }
+        .book-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2px;
+            background: #111;
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .book-container .spine {
+            width: 3px;
+            background: linear-gradient(to right, #333, #111, #333);
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .page-canvas { display: block; max-height: 80vh; }
+        .single-view .page-canvas { max-width: 90vw; }
+        .dual-view .page-canvas { max-width: 44vw; }
+        .page-slot {
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 100px;
+            min-height: 200px;
+        }
+        .page-slot.empty { visibility: hidden; }
+        .click-zone {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            cursor: pointer;
+            z-index: 3;
+        }
+        .click-zone.left { left: 0; }
+        .click-zone.right { right: 0; }
+        .click-zone:hover { background: rgba(255,255,255,0.02); }
+        .loading { color: #555; font-style: italic; padding: 40px; }
+        .error { color: #e94560; padding: 40px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button id="btn-prev">&larr; Previous</button>
+        <span class="page-info" id="page-info">Loading...</span>
+        <button id="btn-next">Next &rarr;</button>
+        <div class="view-toggle">
+            <button id="btn-single">Single Page</button>
+            <button id="btn-dual" class="active">Two-Page Spread</button>
+        </div>
+    </div>
+    <div class="book-container dual-view" id="book">
+        <div class="page-slot" id="slot-left"><span class="loading">Loading...</span></div>
+        <div class="spine" id="spine"></div>
+        <div class="page-slot" id="slot-right"></div>
+        <div class="click-zone left" id="click-left"></div>
+        <div class="click-zone right" id="click-right"></div>
+    </div>
+
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+            'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        // Get PDF filename from URL parameter
+        const params = new URLSearchParams(window.location.search);
+        const pdfFile = params.get('pdf');
+
+        if (!pdfFile) {
+            document.getElementById('slot-left').innerHTML =
+                '<span class="error">No PDF specified.</span>';
+        }
+
+        const PDF_PATH = 'pdfs/' + pdfFile;
+        let pdfDoc = null;
+        let currentSpread = 0;
+        let currentPage = 1;
+        let isDualView = true;
+        let rendering = false;
+        const SCALE = 1.5;
+
+        async function init() {
+            if (!pdfFile) return;
+            try {
+                pdfDoc = await pdfjsLib.getDocument(PDF_PATH).promise;
+                renderCurrent();
+            } catch (e) {
+                document.getElementById('slot-left').innerHTML =
+                    '<span class="error">Could not load PDF: ' + pdfFile + '</span>';
+            }
+        }
+
+        async function renderPage(pageNum, canvas) {
+            if (pageNum < 1 || pageNum > pdfDoc.numPages) return false;
+            const page = await pdfDoc.getPage(pageNum);
+            const viewport = page.getViewport({ scale: SCALE });
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            canvas.classList.add('page-canvas');
+            const ctx = canvas.getContext('2d');
+            await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+            return true;
+        }
+
+        async function renderCurrent() {
+            if (rendering) return;
+            rendering = true;
+
+            const slotLeft = document.getElementById('slot-left');
+            const slotRight = document.getElementById('slot-right');
+            const spine = document.getElementById('spine');
+            const book = document.getElementById('book');
+
+            slotLeft.innerHTML = '';
+            slotRight.innerHTML = '';
+
+            if (isDualView) {
+                book.className = 'book-container dual-view';
+                spine.style.display = 'block';
+                slotRight.style.display = 'flex';
+
+                let leftPage, rightPage;
+                if (currentSpread === 0) {
+                    leftPage = null;
+                    rightPage = 1;
+                } else {
+                    leftPage = currentSpread * 2;
+                    rightPage = currentSpread * 2 + 1;
+                }
+
+                if (leftPage) {
+                    const canvasL = document.createElement('canvas');
+                    await renderPage(leftPage, canvasL);
+                    slotLeft.appendChild(canvasL);
+                    slotLeft.classList.remove('empty');
+                } else {
+                    slotLeft.classList.add('empty');
+                }
+
+                if (rightPage && rightPage <= pdfDoc.numPages) {
+                    const canvasR = document.createElement('canvas');
+                    await renderPage(rightPage, canvasR);
+                    slotRight.appendChild(canvasR);
+                    slotRight.classList.remove('empty');
+                } else {
+                    slotRight.classList.add('empty');
+                }
+
+                const totalSpreads = Math.ceil(pdfDoc.numPages / 2);
+                const displayLeft = leftPage || '';
+                const displayRight = (rightPage && rightPage <= pdfDoc.numPages) ? rightPage : '';
+                const displayStr = leftPage ? `${displayLeft}\u2013${displayRight}` : `${displayRight}`;
+                document.getElementById('page-info').textContent =
+                    `${displayStr} of ${pdfDoc.numPages}`;
+
+                document.getElementById('btn-prev').disabled = (currentSpread === 0);
+                document.getElementById('btn-next').disabled = (rightPage >= pdfDoc.numPages);
+            } else {
+                book.className = 'book-container single-view';
+                spine.style.display = 'none';
+                slotRight.style.display = 'none';
+
+                const canvas = document.createElement('canvas');
+                await renderPage(currentPage, canvas);
+                slotLeft.appendChild(canvas);
+                slotLeft.classList.remove('empty');
+
+                document.getElementById('page-info').textContent =
+                    `${currentPage} of ${pdfDoc.numPages}`;
+                document.getElementById('btn-prev').disabled = (currentPage <= 1);
+                document.getElementById('btn-next').disabled = (currentPage >= pdfDoc.numPages);
+            }
+            rendering = false;
+        }
+
+        function goNext() {
+            if (isDualView) {
+                // Spread 0 = page 1 (cover alone), spread 1 = pages 2-3, etc.
+                // Last possible spread shows the final page(s)
+                const maxSpread = Math.ceil((pdfDoc.numPages - 1) / 2);
+                if (currentSpread < maxSpread) { currentSpread++; renderCurrent(); }
+            } else {
+                if (currentPage < pdfDoc.numPages) { currentPage++; renderCurrent(); }
+            }
+        }
+
+        function goPrev() {
+            if (isDualView) {
+                if (currentSpread > 0) { currentSpread--; renderCurrent(); }
+            } else {
+                if (currentPage > 1) { currentPage--; renderCurrent(); }
+            }
+        }
+
+        function setDualView() {
+            if (isDualView) return;
+            isDualView = true;
+            currentSpread = Math.floor((currentPage - 1) / 2);
+            document.getElementById('btn-dual').classList.add('active');
+            document.getElementById('btn-single').classList.remove('active');
+            renderCurrent();
+        }
+
+        function setSingleView() {
+            if (!isDualView) return;
+            isDualView = false;
+            currentPage = currentSpread === 0 ? 1 : currentSpread * 2;
+            document.getElementById('btn-single').classList.add('active');
+            document.getElementById('btn-dual').classList.remove('active');
+            renderCurrent();
+        }
+
+        document.getElementById('btn-next').addEventListener('click', goNext);
+        document.getElementById('btn-prev').addEventListener('click', goPrev);
+        document.getElementById('btn-dual').addEventListener('click', setDualView);
+        document.getElementById('btn-single').addEventListener('click', setSingleView);
+        document.getElementById('click-left').addEventListener('click', goPrev);
+        document.getElementById('click-right').addEventListener('click', goNext);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goNext(); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); goPrev(); }
+        });
+
+        init();
+    </script>
+</body>
+</html>

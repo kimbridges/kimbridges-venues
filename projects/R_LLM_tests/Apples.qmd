@@ -1,0 +1,244 @@
+---
+title: "Apples"
+format: html
+---
+
+You can't see something unless you have a concept for it.
+
+My goal here is to show you some generative AI concepts.
+
+This isn't a how-to-do-it manual. There are a few details that are left out, such as how to get a Google API key. That kind of information is found elsewhere. The focus here is on concepts. You will, however, see how you can do lots of useful things.
+
+Disclaimers & Background Stuff
+
+The R language is the computational foundation of what's done here. Other languages, such as Python, will work in a similar way. I just happen to prefer using R.
+
+The use of a Reproducible Document is an essential organizational tool. The documents interleave text and code "chunks." Periodically, the document is rendered. This formats the text, runs the code, and produces an illustrated document. These documents can have many sets of text and code chunks. Together, they build up the story.
+
+The RStudio environment is where the Reproducible Documents are created. If you know anything about the R language, you're likely familiar with RStudio.
+
+Anthropic's Claude is the main Large Language Model used here. Specifically, the Sonnet 3.5 version. I'm using it with a paid, Professional Plan.
+
+I'm using API keys from OpenAI and Google. I pay for these but usually get the services free as my use is minimal.
+
+Where We're Headed
+
+**Prompt**
+
+The traditional way to grow apples in the valley is to arrange the trees in a grid. Each tree grows into the normal, apple-tree shape. The experimental way involves plantings in closely spaced rows. Here, the trees are shaped by pruning and weaving, into long hedge-like rows. The experiment is to test the speed, expressed as apples/hour, at which harvesting can be done on these two differently-shaped orchards. Monica is in the traditional orchard. Millie is in the experimental orchard. We should call this run the "2 hour calibration test". Both apple harvesters are given two hours to collect apples. Monica's apple count is 592, while Millie collects 623 apples. I'd like to analyze these data using the R language.
+
+**Response** (Slightly edited)
+
+I'd be happy to help you analyze this apple harvesting experiment data using R. Let's create an R script to process the data and calculate the harvesting speeds for both methods.
+
+This R script analyzes the data from your apple harvesting experiment. Here's a breakdown of what the script does:
+
+1.  It defines the experiment parameters and results.
+2.  Calculates the harvesting speeds for both methods.
+3.  Prints detailed results for each method.
+4.  Compares the two methods, showing the absolute and percentage difference in speed.
+5.  Determines which method is faster.
+6.  Creates a simple bar plot to visualize the results.
+
+To run this script, you'll need R installed on your computer. You can copy this script into an R file (e.g., `apple_harvest_analysis.R`) and run it in an R environment or RStudio.
+
+The script will output the results in the console and generate a bar plot comparing the two methods.
+
+Would you like me to explain any part of the analysis in more detail or make any modifications to the script?
+
+```{r}
+# Apple Harvesting Experiment Analysis
+
+# Define the data
+test_name <- "2 hour calibration test"
+test_duration_hours <- 2
+
+traditional_harvester <- "Monica"
+traditional_apples <- 592
+
+experimental_harvester <- "Millie"
+experimental_apples <- 623
+
+# Calculate harvesting speeds (apples per hour)
+traditional_speed <- traditional_apples / test_duration_hours
+experimental_speed <- experimental_apples / test_duration_hours
+
+# Print results
+cat("Apple Harvesting Experiment:", test_name, "\n\n")
+
+cat("Traditional Method (", traditional_harvester, "):\n", sep="")
+cat("Total apples harvested:", traditional_apples, "\n")
+cat("Harvesting speed:", traditional_speed, "apples/hour\n\n")
+
+cat("Experimental Method (", experimental_harvester, "):\n", sep="")
+cat("Total apples harvested:", experimental_apples, "\n")
+cat("Harvesting speed:", experimental_speed, "apples/hour\n\n")
+
+# Calculate and print the difference
+speed_difference <- experimental_speed - traditional_speed
+percentage_difference <- (speed_difference / traditional_speed) * 100
+
+cat("Comparison:\n")
+cat("Absolute difference in speed:", speed_difference, "apples/hour\n")
+cat("Percentage difference:", round(percentage_difference, 2), "%\n")
+
+# Determine which method is faster
+if (experimental_speed > traditional_speed) {
+  cat("The experimental method is faster.\n")
+} else if (experimental_speed < traditional_speed) {
+  cat("The traditional method is faster.\n")
+} else {
+  cat("Both methods have the same speed.\n")
+}
+
+# Create a simple bar plot to visualize the results
+barplot(c(traditional_speed, experimental_speed), 
+        names.arg = c("Traditional", "Experimental"),
+        main = "Apple Harvesting Speed Comparison",
+        ylab = "Apples per Hour",
+        col = c("lightblue", "lightgreen"))
+```
+
+**Using the Artifact**
+
+**Prompt**
+
+Can you do the same analysis using the artifact I just loaded?
+
+**Response**
+
+Certainly, I'll update the R script to follow the guidelines provided in the document you've shared. I'll make adjustments to conform to the specified formatting, package management, and best practices.
+
+This updated R script follows the guidelines provided in the document. Here are the key changes and features:
+
+1.  Package loading: The script now loads the standard packages as specified in the guidelines.
+
+2.  Data input: The data is now input using read_csv with the format specified in the guidelines.
+
+3.  Table creation: The script uses gt() to create a well-formatted table with the following features:
+
+    -   A title and data source (including the current date)
+
+    -   Top-aligned cell content
+
+    -   Integer formatting for count data (apples and speed)
+
+    -   A footnote for the speed column to indicate the units
+
+4.  Bar chart: The bar chart now uses ggplot2 with the specified formatting:
+
+    -   Bar fill color is cornsilk3 with black outlines
+
+    -   The plot background is darkslategray3
+
+    -   Axis labels and values are black with size 12 font
+
+5.  Code structure: The script follows the recommended structure of package loading, data input, and then analysis.
+
+6.  Comments: The script includes comments to explain the purpose of each section.
+
+This script will produce a formatted table and a bar chart comparing the two apple harvesting methods. The analysis results are also printed to the console.
+
+To run this script, you'll need R installed on your computer along with the required packages. You can copy this script into an R file (e.g., apple_harvest_analysis.R) and run it in an R environment or RStudio.
+
+Would you like me to explain any part of the analysis in more detail or make any further modifications to the script?
+
+```{r}
+#| error: false
+#| warning: false
+
+## Load standard packages.
+library(devtools)      ## Load Github packages
+library(tidyverse)     ## Many useful functions
+library(ggplot2)       ## Graphics functions
+library(dplyr)         ## Data crunching functions
+library(lubridate)     ## Time functions
+library(gt)            ## Tables
+
+## Set an option for the read_csv function
+## This will suppress warning messages.
+options(readr.show_col_types = FALSE)
+
+## Define the data
+test_name <- "2 hour calibration test"
+test_duration_hours <- 2
+
+## Data input.
+data <- read_csv(col_names=TRUE, file=
+            "harvester, method,     apples
+             Monica,   traditional, 592
+             Millie,   experimental, 623")
+
+## Calculate harvesting speeds (apples per hour)
+data <- data %>%
+  mutate(speed = apples / test_duration_hours)
+
+## Initialize the identification information.
+table_title <- "Apple Harvesting Experiment Results"
+data_source <- paste0("Experimental data from ", test_name, " (", Sys.Date(), ")")
+
+## Create the table.
+table <- gt(data)  %>% 
+  tab_header(
+    title = table_title
+  ) %>%
+  tab_source_note(
+    source_note = data_source
+  ) %>%
+  tab_style(
+    style = cell_text(v_align="top"),
+    locations = cells_body()
+  ) %>%
+  fmt_number(
+    columns = c(apples, speed),
+    decimals = 0
+  ) %>%
+  cols_label(
+    harvester = "Harvester",
+    method = "Method",
+    apples = "Apples Harvested",
+    speed = "Harvesting Speed"
+  ) %>%
+  tab_footnote(
+    footnote = "Apples per hour",
+    locations = cells_column_labels(columns = speed)
+  )
+
+## Print the table
+table
+
+## Calculate the difference
+speed_difference <- data$speed[data$method == "experimental"] - 
+                    data$speed[data$method == "traditional"]
+percentage_difference <- (speed_difference / data$speed[data$method == "traditional"]) * 100
+
+## Print comparison results
+cat("\nComparison:\n")
+cat("Absolute difference in speed:", speed_difference, "apples/hour\n")
+cat("Percentage difference:", round(percentage_difference, 2), "%\n")
+
+## Determine which method is faster
+if (speed_difference > 0) {
+  cat("The experimental method is faster.\n")
+} else if (speed_difference < 0) {
+  cat("The traditional method is faster.\n")
+} else {
+  cat("Both methods have the same speed.\n")
+}
+
+## Create a bar plot to visualize the results
+ggplot(data, aes(x = method, y = speed, fill = method)) +
+  geom_bar(stat = "identity", color = "black") +
+  geom_text(aes(label = speed), vjust = -0.5, size = 4) +
+  scale_fill_manual(values = c("traditional" = "cornsilk3", "experimental" = "cornsilk3")) +
+  labs(title = "Apple Harvesting Speed Comparison",
+       x = "Method",
+       y = "Apples per Hour") +
+  theme_minimal() +
+  theme(
+    plot.background = element_rect(fill = "darkslategray3"),
+    axis.text = element_text(color = "black", size = 12),
+    axis.title = element_text(color = "black", size = 12),
+    legend.position = "none"
+  )
+```

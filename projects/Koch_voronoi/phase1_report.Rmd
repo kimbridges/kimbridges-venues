@@ -1,0 +1,104 @@
+---
+title: "Voronoi Tessellation Analysis — Phase 1"
+subtitle: "Sensitivity Testing with Simulated Data"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 2
+    number_sections: false
+    fig_caption: true
+    keep_tex: false
+header-includes:
+  - \usepackage{float}
+  - \floatplacement{figure}{H}
+  - \usepackage{booktabs}
+params:
+  results_file: "phase1_results.rds"
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(sf)
+library(kableExtra)
+
+all_results <- readRDS(params$results_file)
+source("voronoi_functions.R")
+```
+
+# Introduction
+
+This report presents the results of a Voronoi tessellation analysis
+using simulated data. **Anchor** points define Voronoi cells that
+partition the study area. **Sample** points are distributed across the
+area under various patterns (random, clustered, or mixed). For each
+cell, a Poisson test evaluates whether the observed number of samples
+differs significantly from the number expected under a uniform null
+hypothesis. A chi-squared goodness-of-fit test provides an overall
+assessment.
+
+The goal is to understand how different spatial patterns of sample
+points are detected by this methodology, building intuition for
+interpreting real-world data in Phase 2.
+
+------------------------------------------------------------------------
+
+```{r run-sections, results='asis'}
+for (i in seq_along(all_results)) {
+  current_run   <- all_results[[i]]
+  current_index <- i
+  cat(knitr::knit_child("_run_section.Rmd", envir = environment(), quiet = TRUE))
+}
+```
+
+# Summary Across Runs
+
+```{r summary-table}
+summary_df <- bind_rows(lapply(seq_along(all_results), function(i) {
+  r   <- all_results[[i]]
+  cs  <- r$stats$cell_stats %>% st_drop_geometry()
+  chi <- r$stats$chi_squared
+
+  tibble(
+    Run       = i,
+    Label     = r$params$label,
+    Anchors   = r$params$n_anchors,
+    Samples   = r$params$n_samples,
+    Mode      = r$params$sample_mode,
+    `Sig. Cells`  = sum(cs$significant),
+    `Total Cells` = nrow(cs),
+    `Chi² p`  = chi$p.value
+  )
+}))
+
+kable(summary_df, format = "latex", booktabs = TRUE, linesep = "",
+      digits = c(0, NA, 0, 0, NA, 0, 0, 4)) %>%
+  kable_styling(position = "center", latex_options = c("hold_position", "scale_down"),
+                full_width = FALSE)
+```
+
+```{r summary-interpretation, results='asis'}
+n_runs      <- length(all_results)
+any_sig     <- any(sapply(all_results, function(r) any(r$stats$cell_stats$significant)))
+clustered   <- sapply(all_results, function(r) r$params$sample_mode != "random")
+sig_counts  <- sapply(all_results, function(r) sum(r$stats$cell_stats$significant))
+
+cat("\n\n")
+if (any_sig) {
+  cat(sprintf("Across %d runs, significant cell-level departures were detected in %d run(s). ",
+              n_runs, sum(sig_counts > 0)))
+  if (any(clustered & sig_counts > 0)) {
+    cat("As expected, runs with clustered sample distributions tended to produce more significant cells, ")
+    cat("confirming that the methodology can detect spatial clustering.")
+  }
+} else {
+  cat(sprintf("Across all %d runs, no significant cell-level departures were detected, ",
+              n_runs))
+  cat("consistent with the null hypothesis of uniform sample distribution.")
+}
+cat("\n")
+```

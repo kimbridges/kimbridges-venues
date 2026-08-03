@@ -1,0 +1,8 @@
+---
+title: "Plainmaps"
+subtitle: "Simple, clean map creation for publications and presentations."
+categories: ["R", "Geography"]
+image: ../plainmaps/cover_with_text.jpg
+---
+
+[View Document](../plainmaps/){.btn .btn-primary}

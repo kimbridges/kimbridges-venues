@@ -1,0 +1,47 @@
+# What Seasonality Is For
+
+A coastal flower opens in the same week every spring. A warbler leaves its wintering ground and arrives north just as the insects hatch. A herd drops its calves in the narrow window when the grass is green and the predators are satisfied elsewhere. None of these is a coincidence, and none is a decision. Each is a living thing reading the season and acting on what it reads.
+
+This chapter is about why that reading matters, and what it's reading. The short version is that seasonality is the set of cues organisms use to keep time, and the cues differ in how much they're worth. Once you see seasonality that way, the rest of the document follows: the indices are ways of measuring the cues, the regimes are kinds of cue structure, and the maps show where each kind is found.
+
+## The cost of being out of phase
+
+Timing is under selection, and the selection is harsh. An organism that flowers before its pollinators are flying sets no seed. A bird that arrives after the flock has paired finds no mate. A breeding season that misses the green flush leaves the young without food. In each case the penalty isn't a small loss of efficiency; it's being left out of the next generation entirely. Over enough years, that's as strong a pressure as biology applies to anything.
+
+So organisms don't time their lives by luck. They time them by reading the environment, because the environment is the one clock every individual in a population can see at once. A shared signal lets a population converge on a shared schedule, and a shared schedule is what keeps the pollinators, the flock, and the green grass all present in the same week. Being on time is not a convenience. It's the difference between belonging to next year and not.
+
+## The cues and their dependability
+
+There are three signals a place can offer, and they aren't equal. They differ in strength, and they differ in how much you can trust them year to year. That difference in trust is the heart of the matter.
+
+Daylength is the most dependable of the three. The length of the day at a given latitude is set by astronomy, identical for every individual, and exactly the same this year as last. It's a perfect clock. Its weakness is geographic. Near the equator the day barely changes across the year, so the clock is there but it reads almost flat. Toward the poles the swing grows large, and the clock reads loud and clear.
+
+Temperature is strong nearly everywhere outside the tropics, and it's a fair predictor of the season. It is also a little noisy. A warm spell can arrive early or a cold snap late, so a temperature threshold is a good cue but not a flawless one. An organism keyed to temperature is mostly right and occasionally fooled.
+
+Rainfall is the least dependable of the three. In many dry regions the rains are so erratic that no clock can be set by them at all. An organism can't anticipate a rain that might come in March or might come in July or might not come; it can only respond once the water actually arrives. That distinction, between a cue you can plan by and a cue you can only react to, runs through everything that follows.
+
+A useful way to hold all this together is that a cue's worth is roughly its amplitude times its reliability. Amplitude is how loud the signal is, the size of the swing across the year. Reliability is how much you can trust it to repeat. A loud signal that lies is worth little, and so is a faithful signal too faint to hear. The good cues are the ones that are both large and dependable, and which cue earns that description changes from place to place.
+
+## Anticipatory and reactive cues
+
+The reliability difference sorts the cues into two kinds, and the two kinds produce two different ways of living through a year.
+
+Daylength and temperature are anticipatory. They forecast the season, so an organism can get ready in advance, swelling buds or laying down fat before the season it's preparing for has fully arrived. Life in a temperate place is full of this kind of preparation, because the cues there are trustworthy enough to act on before the fact.
+
+Rain in an arid place is reactive. There's nothing to forecast, so the strategy is to wait, and then move fast when the water comes. Desert plants that flower within days of a storm, and sit dormant for years between, are living reactively. Their phenology has no calendar because their cue has no schedule. They aren't keeping time badly; they're keeping time the only way their cue allows.
+
+This is why two deserts with nearly the same rainfall can feel like different worlds. What matters isn't how much rain falls but whether its arrival is regular enough to plan by, or erratic enough that only reaction will do.
+
+## Channels, and the cue-poor zone
+
+The temperature and rainfall measurements in this document are really measurements of cue types, and that lets us say something about how places differ. Where one cue fades, life falls back on another. In a place with little temperature seasonality you feel the year through the rain; where the rain is steady you feel it through the temperature. We'll call each of these a channel, and the central observation is that channels substitute for one another. A place rarely runs two strong, independent cues at once. Usually one channel carries the year.
+
+That framing predicts a particular kind of place: one where every channel is weak. The everwet equatorial core is exactly that. The temperature is flat across the year, the rain falls in every month, and the daylength barely moves. None of the three cues carries much signal, so it's a cue-poor zone. And that's just where tropical ecologists find the weakest and most staggered seasonal timing, with individuals of the same species flowering at scattered times rather than together. The biology and the indices are describing the same thing. A place with no strong cue is a place where life has no strong clock to synchronize to.
+
+## Why this is the document's lever
+
+There's one more reason to read seasonality as cue structure, and it's the reason the whale call mattered. The cues are coming apart.
+
+Warming moves temperature and rainfall. It does not move daylength, which is fixed by astronomy forever. So the cues that used to point at the same moment in the year are sliding out of register. An organism keyed to photoperiod still arrives on the old schedule, but the season it was keyed to has shifted underneath it. The result is phenological mismatch: the flower and its pollinator, the migrant and its food, drifting apart because they were reading different clocks and only some of the clocks can move.
+
+A map of which cues a place offers, and how reliable each one is, is therefore also a map of where mismatch is likely. The places most at risk are the ones where life is keyed to the single signal that cannot shift while everything around it does. That's the destination this document is sailing toward, and the last chapter returns to it. For now the point is simpler. Seasonality is the cue structure for the timing of life, and when the cues decouple, the timing fails.

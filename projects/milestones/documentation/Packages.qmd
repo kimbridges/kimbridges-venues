@@ -1,0 +1,51 @@
+# Packages
+
+Several packages are used in the examples. These need to be installed to your local computer. Then each package needs to be activated using the `library()` function.
+
+Most of the packages you will use are located on CRAN. Installing these packages can be done using RStudio's Install menu. The packages you will need are the following.
+
+-   tidyverse
+
+-   gt
+
+-   devtools
+
+## Installing the milestones package
+
+The `milestones` package introduced in this document is not available on CRAN. Instead, it is easily downloaded from GitHub.
+
+Before you can download `milestones` from GitHub, you need to activate the devtools package with a `library()` function. Then you can use the `install_github()` function to download the `milestones` package.
+
+The following code chunk shows how to do this.
+
+```{r}
+#| label: install
+#| warning: false
+#| error: false
+
+library(devtools)
+
+install_github("kimbridges/milestones")
+
+```
+
+Once all the required packages are installed on the local computer, this task doesn't need to be done again.
+
+Running the functions in the packages requires that each package is activated using the `library()` function. The following chunk activates all of the packages used in the examples.
+
+```{r}
+#| label: core
+
+## core packages
+library(tidyverse)
+library(gt)
+
+## specialty packages
+library(devtools)
+library(milestones)
+
+```
+
+## Using packages with chapters
+
+It is necessary to put the activation code (i.e., library functions) near the start of each chapter.

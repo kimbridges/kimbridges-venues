@@ -1,0 +1,39 @@
+project:
+  type: book
+  output-dir: _output
+  resources:
+    - audio/**
+
+book:
+  title: AI Podcasts
+  author: "K. W. Bridges"
+  subtitle: "Podcast Experiments with NotebookLM"
+  search: true
+  date: today
+  cover-image: podcast_cover.jpg
+  chapters:
+    - index.qmd
+    - Travel.qmd
+    - Scientific.qmd
+    - Code.qmd
+  navbar: 
+    logo: podcast_logo.jpg
+    
+toc: true
+number-sections: false
+
+execute: 
+  warning: false
+  error: false
+  message: false
+
+format:
+  html:
+    css: styles.css
+    code-fold: true
+    code-link: true
+    code-summary: "Show the code"
+  pdf:
+    toc: true
+
+editor: visual

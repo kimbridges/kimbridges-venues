@@ -1,0 +1,103 @@
+---
+title: "Tables and Maps"
+---
+
+The purpose of this document is to assist researchers who create reproducible documents for proposals, reports and publications. Many disciplines, such as ecology and many types of botany, benefit from showing the locations of their collections and field logistics. The visualization strategies described here aim to simplify the creation of maps for these data-driven activities.
+
+`Sitemaps` is an R package that helps you create data-driven maps. These maps are a combination of a basemap and layers which show things like sample locations and labels that identify key features.
+
+Although `sitemaps` is about maps, this document is about maps **and tables**. The two go together. Tables are basic elements in any data-driven study. Maps help with the visualization of table data. Therefore, expect to see a table with every map shown here, except the few maps used to show the different types of basemaps.
+
+## The Basic Three-step Process
+
+Building a map (and its corresponding table) is a three-step process. First, you prepare the map data in a table. Then the table data are used to create a basemap. Finally, the basemap and table data are combined to make the final map. This is shown in Figure X.
+
+Note clearly that the key to the map strategy is based on having data in a data table. Once that is done, you'll see that the code needed to produce a basemap and then overlay points and labels is quite straightforward. But first, you must have a properly constructed table.
+
+## Why Tables?
+
+`Sitemaps` uses two basic tables. (There are a few other table, such as color look up tables. These will be discussed later.)
+
+**Data Table:** This holds the descriptor (text) for points and labels, along with geographic information (either a place name or geographic coordinates). In addition, there may be style data to control the colors, size, thickness and other characteristics of the data points and labels. (This could have been called the "Point and Label Table," but that name is just too long.) Don't forget that the data table will likely contain other information about each observation.
+
+**Name Table:** This similar to the Data Table as it has text and location data. It also has style information that relates to the appearance of the text. The items in this table will be placed as a layer on the basemap, mostly serving as orientation and general reference. Think of the information in the Name Table as place names and style information that is used on the Base Map which is not related to the data points or data labels.
+
+Tables are a big focus of this documentation. However, there is little direct discussion of formatting tables. This is due, in part, to the great number of excellent table-making packages in R. All the examples in this document use `GT` to make tables as this is a very competent package. You'll likely have your own preference for making tables.
+
+What is shown, but is not discussed, are a number of useful `GT` (essential?) features that should be used when making tables in reproducible research documents. These include table captions, listing the data source, footnotes, and formatting. If you use `GT`, you'll likely recognize this code. If you're not a `GT` user, the quality of the examples obtained from very little specification may encourage you to try this package.
+
+## Column Values
+
+There is an extensive set of column values (they look like `column$point_size`). These values are an additional way to control the style of point, labels and names. Think of these values as columns in either the data table or name table that have a constant value. That is, a value that is the same for all the rows in the table. Column values have default values that generally provide style information that you don't need to change. But there are times when you will want to change a column value. You just need to use a standard assignment statement.
+
+Column values and table go together as you can use a separate column spcification to keep from having to create a table column and fill each row with the same value. This is a great simplification when using data--driven mapping.
+
+## An Important Strategy Note
+
+The key to using tables for making maps is to have a consistent system for naming the table columns. For example, geographic coordinates are always called "lat" and "lon". Note, these column names are always lower case, as are all of the other column names.
+
+This requirement for specific column names does not limit you in the creation of your primary data table. Use whatever names you want for your columns. When you prepare to make a map, you'll simply generate a new table with replacement names that convert your column names into the names required for mapping. You'll see that is a simple process.
+
+The key points: use tables and recognize the importance of standard column names.
+
+## Examples are Important
+
+This document is built around examples. There are a lot of pairs of tables and maps.
+
+The object has been to give you concrete ideas of things you can do.
+
+Data and visualization strategies come mostly from my own work and interests. I tried to avoid creating fake situations just to illustrate a coding technique or visualization style. Instead, I dug back into my research studies, past and present, to find typical examples.
+
+Many of the early examples rely on `sitemaps` functions that have not been described prior to their use. Trust that there will be documentation later.
+
+## Documentation Style Notes
+
+Each of the chapters is intended to stand alone. You should be able to run the code for a chapter without having to run the code for any other chapter. This means that there is some redundancy. For example each chapter has a Getting Started section that is used to invoke the libraries, activate the Google Map API and do a few standard data things.
+
+Another characteristic is always loading data with the `read_csv` function from the `readr` package. Bringing in data this way clearly shows the data structure. It may not be a "clever" way to load data, but it is consistent and easily understood. Furthermore, it is very easily adapted to loading data from a spreadsheet.
+
+The code is liberally loaded with comments. That may be tedious for an experienced R programmer. But it seems to me to be consistent to the careful, step by step, style encouraged by the use of reproducible documentation.
+
+## Google Maps Key
+
+Here's the rub for many people who want to use sitemaps. You must get a Google Maps Key.
+
+Google used to provide free access to its mapping services (e.g., basemaps, geocoding, elevations). In those past times, you didn't need to identify yourself.
+
+Now, you need to get a Key and this requires that you register with Google. This includes providing billing information. Fear not! It is not likely that you'll use enough of the Google services to actually incur any charges (unless you're running a commercial site or providing services to a huge user community). Personal or lab use is likely to be minimal on the Google scale of use.
+
+You do need to get your own key. Almost nothing shown here will work without you having a Google Map Key.
+
+Here is Google's guide on how to get your own key:
+
+<https://developers.google.com/maps/documentation/javascript/get-api-key>
+
+A good place to store your key so that it isn't seen as part of your code is in the Renviron file. You can open the file in RStudio for editing by using the following command in the Console.
+
+-  file.edit("~/.Renviron")
+
+Add a line to this file such as the following (substituting your api key for the api-key-here)
+
+- GGMAP_GOOGLE_API_KEY = "api-key-here"
+
+The code in the Getting Started section of each chapter shows how to use your stored api key.
+
+## A Fear of Big Numbers
+
+Here is a copy-and-paste of a latitude, longitude pair from Google Maps:
+
+`21.30226931334051, -157.8574047947668`
+
+Do you want to type all those values? I don't!
+
+First, note that Google Maps has given you wayyyy too much precision. **All you need are five decimal places.** That's about 1 m resolution. So the usable coordinates are:
+
+`21.30227, -157.85740`
+
+Even that looks pretty long.
+
+Now, recognize that you'll rarely need to type all these digits. You can do as I just did: copy-and-paste. Or you may use a some software to generate the coordinates.
+
+Please note: I didn't type out any of the coordinates for any of the examples shown in this document. I was able to copy-and-paste or generate all of the geographic coordinate values.
+
+Never fear. You, too, will probably never need to type out a lot of numbers if you think through the possible strategies. Instead, you'll likely be doing what I often do: mostly shortening the over-precise coordinates given by Google Maps to a more reasonable length.

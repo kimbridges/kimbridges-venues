@@ -1,0 +1,194 @@
+
+# Image Interpretation
+
+One of the big goals of this project is to use the power of the LLM to interpret images and create photo captions. The photo captions are then used to synthesize the day's activities.
+
+## Setup and Initialize
+
+The usual stuff that gets the libraries and data ready for use.
+
+```{r}
+#| label: SetupLLM
+
+## Standard Packages
+library(tidyverse)   ## Lots of useful stuff
+library(gt)          ## Make Tables
+library(ggplot2)     ## Create charts
+library(devtools)    ## Load packages from GitHub
+
+## Specialized libraries
+library(httr)        ## Send requests and receive responses
+library(jsonlite)    ## Handle the request formatting
+library(pdftools)    ## Handle PDF files
+library(base64enc)   ## Convert image files to base64 encoding
+library(googledrive) ## Download Google Doc files
+library(curl)        ## The force behind the httr functions
+
+## Get the accessOAI package (do this just once)
+## install_github("kimbridges/accessOAI")
+
+## Initialize the accessOAI library
+library(accessOAI)
+
+## Initialize some things that rarely change.
+LLM <- "gpt-4o"  
+LLM_alt <- "gpt-3.5-turbo" ## (text only)
+temp <- 1
+apiKey <- Sys.getenv("OPENAI_API_KEY")
+
+## Get Baseinfo (originates in photos chapter)
+baseinfo <- read.table("baseinfo.txt")
+source   <- baseinfo$source
+folder   <- baseinfo$folder
+thumbs_folder <- baseinfo$thumbs_folder
+files_folder  <- baseinfo$files_folder
+
+```
+
+## Create Photo Captions
+
+Here's where we're using the LLM to interpret each photo.
+
+```{r}
+#| label: makecaptions
+
+## Setup the request for the LLM.
+prompt <- "The input file in a photo taken during a trip as part of a set of photos documenting the day's activities. Each photo attempts to record either an activity or a location or both. Please create a caption for the photo. Don't include any comments in your response. Here is the location and time of the photo: "
+
+## Define the LLM role.
+role <- "You are a photo interpretation expert. You know how to extract information like the photo location, things in the scene, the overall weather or ambiance of the scene and other relevant facts. You try to limit your responses to things in which you have confidence and avoid speculation. If provided with a time, please convert it to a 12-hour clock and use this in your response."
+
+## Get information about the photos.
+file_location <- paste0(files_folder,"/photo_info.txt")
+data <- read.table(file = file_location)
+
+## Initializing the new element in the data frame.
+data$caption <- ""
+
+## Find out how many photos.
+n_photos <- nrow(data)
+
+## Get photo directory
+working_dir <- getwd()
+
+## Loop through the photos.
+for (i in 1:n_photos){
+
+  ## Build the photo name.
+  photo <- paste0(working_dir,"/",thumbs_folder,"/photo_",i,".png")
+
+  ## Build information to be used in the prompt.
+  hint <- paste0("location: ",data$location[i],
+               "  time: ", data$time[i])
+
+  ## Enhance the prompt.
+  full_prompt <- paste0(prompt, hint)
+
+  ## Reset the response.
+  response <- NULL
+  
+  ## Do the image analysis.
+  response <- analyzeIMG(analysis_image = photo,
+                       AI_role = role,
+                       analysis_prompt = full_prompt,
+                       LLM = LLM,
+                       apiKey = apiKey,
+                       connecttimeout = 90)
+  
+  ## Watch progress.
+  ## cat("photo",i,":",response,"\n\n")
+  
+  ## Add the caption to the data.
+  data$caption[i] <- response
+  
+  ## Pause five seconds.
+  Sys.sleep(3)
+
+} ## end photo loop
+
+## Save another temporary data file.
+file_location <- paste0(files_folder,"/photo_info.txt")
+write.table(data, file = file_location)
+
+```
+
+## Captions Table
+
+The captions can be seen in a table.
+
+```{r}
+#| label: captable
+
+## Get the data.
+file_location <- paste0(files_folder,"/photo_info.txt")
+data <- read.table(file = file_location)
+
+## Extract the photo number and the caption.
+cap_data <- data |>
+  select(number, caption)
+
+## Make the table.
+gt(cap_data) |>
+  tab_style( style = "vertical-align:top", 
+             locations = cells_body())
+
+```
+
+
+## Synthesize the Captions
+
+Here, the set of captions and data on the movement (time and distance) are put into a synthesized story about the day.
+
+The result is shown in the Synthesis Chapter.
+
+```{r}
+#| label: synthesis
+
+## Get the data.
+file_location <- paste0(files_folder,"/photo_info.txt")
+data <- read.table(file = file_location)
+
+## Figure out the number of entries.
+n_rows <- nrow(data)
+
+## Initialize the data.
+text_input <- ""
+
+## Create a table with structured info for each photo.
+for (i in 1:n_rows){
+  line1 <- paste("Photo number",i)
+  line2 <- paste("Location:", data$location[i])
+  line3 <- paste("Meters moved:", data$dist_meters[i])
+  line4 <- paste("Minutes since last move:",data$timespan[i])
+  line5 <- paste("Photo caption:", data$caption[i])
+  line6 <- "    "
+  
+  ## Add the current row to the table.
+  text_input <- c(text_input, line1, line2, 
+                  line3, line4, line5, line6)
+  } ## End for loop on data
+
+## Check progress.
+## text_input
+
+prompt <- "Create a description of the day's events based on the information in the file."
+  
+role <- "You are an expert at inferring daily activities of a person traveling from a log of their photos. The log has information for each photo including the location at which the photo was taken, the distance (in meters) moved from the previous photo location, the time (in minutes) between this and the previous photo, and the photo caption. You know how days are structured with meals and activities and you can aggregate similar events. You do not make up activities or events that are not part of the set of photos."
+
+## Do the analysis.
+  response <- analyzeTXT(analysis_text = text_input,
+                       AI_role = role,
+                       analysis_prompt = prompt,
+                       LLM = LLM,
+                       apiKey = apiKey,
+                       connecttimeout = 90)
+  
+  ## Check on progress.
+  ## cat(response)
+  
+    ## Save the results.
+  file_location <- paste0("full_story.txt")
+  write.table(response, file = file_location)
+  
+```
+

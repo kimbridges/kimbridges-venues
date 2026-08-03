@@ -1,0 +1,13 @@
+---
+title: "Cinque Terre Impressions"
+subtitle: "Five villages on Italy's steepest coast, and an experiment in photographic filtering."
+date: 2014-09-26
+categories: ["Travel", "Europe", "Photography", "Wine"]
+image: ../images/Cinque_Terre.jpg
+pdf: ../pdfs/Cinque_Terre.pdf
+---
+Two stories running together. The foreground one is a September 2014 trip to the five villages of Italy's Cinque Terre National Park, where the terrain is steep enough that houses stack on one another along ridgelines and river valleys. Behind it is an account of the photography: travelling light on a double red-eye meant leaving the DSLR at home and carrying a Sony QX100 mounted on a hiking pole, controlled from a tablet over WiFi -- two-person photography, one holding the camera ten feet up, the other working the controls. The images were processed with Topaz Simplify's Impressions Color filter, an experiment in capturing the look and feel of a place rather than recording it. The mural at the Riomaggiore station sets the theme: it is easy to be seduced by the ocean views and miss the generations of labour that built the terraces the villages actually depended on.
+
+Pages: 43
+
+<iframe src="../viewer.html?pdf=Cinque_Terre.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

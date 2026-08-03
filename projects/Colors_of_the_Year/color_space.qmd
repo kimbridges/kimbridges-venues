@@ -1,0 +1,246 @@
+# Color Space
+
+Colors are related to each other. We're all familiar with a color wheel. When you need more precision in seeing the relationship between colors, it's best to turn to a more quantitative visualization system. That's the goal here as we want to see the distribution of the colors of the years.
+
+As a follow-up, I put in the following request.
+
+> Let's ignore the split selections. I envision a diagram that is a three-sided chart. Each of the three axes is for a component of the R, G, B values of a color. Each of the colors can be placed in the chart, right? What we're looking for are areas of point concentration vs areas generally devoid of points. Can we try that?
+
+The response was as follows:
+
+Based on your request, I have generated a 3D scatter plot of the colors. I disregarded the "split" selections (like Pantone 2016/2021) and focused on the dominant single hues for each year and brand.
+
+The "Color Cube" Diagram I mapped the colors into a 3D Cartesian coordinate system:
+
+-   X-Axis: Red Intensity (0–255)
+-   Y-Axis: Green Intensity (0–255)
+-   Z-Axis: Blue Intensity (0–255)
+
+The resulting plot reveals exactly what you were looking for: distinct clusters of activity and massive voids where no "Color of the Year" dares to tread.
+
+*The code was given first in Python and I asked for it to be switched to R. All subsequent code was in R.*
+
+```{r}
+
+# Install package if you don't have it
+if (!require("scatterplot3d")) install.packages("scatterplot3d")
+
+library(scatterplot3d)
+
+# 1. Create the Dataset
+# Manually recreating the dataframe from the visual data points
+colors_df <- data.frame(
+  year = c(2026, 2026, 2026, 2026, 2026, 2026,
+           2025, 2025, 2025,
+           2024, 2024, 2024, 2024,
+           2023, 2023, 2023, 2023,
+           2022, 2022, 2022, 2022,
+           2021, 2021, 2021, 2021,
+           2020, 2020, 2020, 2020,
+           2019, 2019, 2019, 2019,
+           2018, 2018, 2018,
+           2017, 2017, 2017,
+           2016, 2016, 2016, 2016),
+  name = c("Cloud Dancer", "Silhouette", "Universal Khaki", "Hidden Gem", "Warm Eucalyptus", "Warm Mahogany",
+           "Mocha Mousse", "Cinnamon Slate", "Rumors",
+           "Peach Fuzz", "Blue Nova", "Upward", "Cracked Pepper",
+           "Viva Magenta", "Raspberry Blush", "Redend Point", "Blank Canvas",
+           "Very Peri", "October Mist", "Evergreen Fog", "Breezeway",
+           "Illuminating", "Ultimate Gray", "Urbane Bronze", "Aegean Teal",
+           "Classic Blue", "First Light", "Naval", "Back to Nature",
+           "Living Coral", "Metropolitan", "Cavern Clay", "Blueprint",
+           "Ultra Violet", "Caliente", "Oceanside",
+           "Greenery", "Shadow", "Poised Taupe",
+           "Rose Quartz", "Serenity", "Simply White", "Alabaster"),
+  hex = c("#F0EEE9", "#4A413C", "#BCA68E", "#6A867F", "#7A8B78", "#9D4A3C",
+          "#A47864", "#AA8C96", "#8A3324",
+          "#FFBE98", "#5B6C91", "#B4BEC3", "#4E5052",
+          "#BE3455", "#D25A46", "#AE8E7E", "#F0ECE2",
+          "#6667AB", "#A3AA9E", "#95978A", "#B8CBC0",
+          "#F5DF4D", "#939597", "#545E60", "#647882",
+          "#0F4C81", "#EBE1E1", "#2F3D4C", "#97A878",
+          "#FF6F61", "#AFB4B4", "#D1866A", "#4D6C8C",
+          "#5F4B8B", "#AF2D2D", "#195564",
+          "#88B04B", "#5F505F", "#8C827D",
+          "#F7CAC9", "#92A8D1", "#F3F4ED", "#EDEAE0")
+)
+
+# 2. Extract RGB values from HEX codes
+# Using col2rgb to get the matrix and transposing it to columns
+rgb_vals <- t(col2rgb(colors_df$hex))
+colors_df$R <- rgb_vals[, 1]
+colors_df$G <- rgb_vals[, 2]
+colors_df$B <- rgb_vals[, 3]
+
+# 3. Plotting with scatterplot3d
+# Adjust margins for better label visibility
+par(mar=c(5, 5, 5, 5))
+
+s3d <- scatterplot3d(
+  x = colors_df$R,
+  y = colors_df$G,
+  z = colors_df$B,
+  color = colors_df$hex,      # Use actual paint colors for the points
+  pch = 19,                   # Solid circle
+  cex.symbols = 2.5,          # Size of dots
+  
+  # Axes settings
+  xlim = c(0, 255),
+  ylim = c(0, 255),
+  zlim = c(0, 255),
+  xlab = "Red Intensity",
+  ylab = "Green Intensity",
+  zlab = "Blue Intensity",
+  
+  # visual tweaks
+  angle = 55,                 # Angle of view
+  grid = TRUE,
+  box = TRUE,
+  main = "The 'Color of the Year' Cube (2015-2026)"
+)
+
+# 4. Adding Drop Lines (stems) to anchor points to the floor
+# This helps visualization in 3D space
+s3d$points3d(colors_df$R, colors_df$G, colors_df$B, 
+             col = colors_df$hex, 
+             type = "h", # 'h' for vertical lines
+             pch = " "    # no character at the end of the line
+)
+
+# Optional: Add text labels for the year 2026
+data_2026 <- subset(colors_df, year == 2026)
+text_coords <- s3d$xyz.convert(data_2026$R, data_2026$G, data_2026$B)
+text(text_coords$x, text_coords$y, labels = data_2026$name, 
+     pos = 4, cex = 0.7, col = "black")
+```
+
+#### **Analysis of the "Color Space"**
+
+If you look at the distribution of points in this theoretical cube, three distinct areas emerge:
+
+#### **1. The "Safety" Cluster (The populated zone)**
+
+There is a dense cloud of points in the **High Value (Light)** and **Low Saturation (Grey/Beige)** corner.
+
+-   **Where is it?** High R, High G, High B (The "White" corner of the cube).
+
+-   **What is it?** This is the domain of "Off-Whites," "Cream," and "Pale Greys" (e.g., *Cloud Dancer*, *Simply White*, *Alabaster*). Paint companies love this area because it sells volume. It is the "safe" zone.
+
+#### **2. The "Biophilic" Band (The trend zone)**
+
+There is a ribbon of points moving through the middle of the cube, specifically leaning towards the Green and Red axes but staying "muddy" (lower saturation).
+
+-   **Where is it?** Mid-range R, Mid-range G, Low-Mid B.
+
+-   **What is it?** This is the "Earth Tone" trend (e.g., *Universal Khaki*, *Evergreen Fog*, *Redend Point*). These colors are never "pure"—they are always desaturated (pulled toward the center of the cube).
+
+#### **3. The "Forbidden" Voids (Devoid of points)**
+
+The most interesting part of this visualization is where the points *aren't*.
+
+-   **The "Cyan/Magenta/Yellow" Edges:** The extreme corners of the cube (e.g., Pure Red `255,0,0`, Pure Green `0,255,0`, Pure Blue `0,0,255`) are completely empty.
+
+    -   *Why?* "Color of the Year" is never a primary color. It is always a complex, mixed hue.
+
+-   **The "Dark" Corner (0,0,0):** While we are seeing deeper colors in 2026 (like *Silhouette*), true black is almost never chosen. The "dark" points are usually hovering around `50,50,50` (Charcoal), not `0,0,0`.
+
+-   **The "Cool" Void:** There is a notable lack of bright, saturated cool colors (Turquoise, Bright Purple, Electric Blue). Even when "Very Peri" (Purple) or "Classic Blue" were chosen, they were relatively muted compared to their "Neon" counterparts.
+
+#### **Conclusion**
+
+The "Color of the Year" selection process is essentially a game of **avoiding the edges of the RGB cube**. The goal is to find the "sweet spot" in the middle—complex, liveable colors—rather than the pure, mathematical extremes of the spectrum.
+
+## Ternary Plot: Revisualizing the color "cube"
+
+A ternary plot (three axis as a triangle) is used in some fields to look at the proportions of components. Each axis runs from zero to 100 percent.
+
+The following comments (above and below the plot) are from the AI engine.
+
+There is one critical concept to understand about Ternary plots: **They visualize ratios, not intensity.**
+
+-   In a Ternary plot, the values ($R, G, B$) are normalized so they sum to 100%.
+
+-   **The Result:** A bright white `(255, 255, 255)` and a middle grey `(128, 128, 128)` have the exact same ratio ($1:1:1$). They will land on the **exact same spot** (the dead center).
+
+-   **Why this is good for you:** This actually helps separate the "Neutrals" (center) from the "Saturated/Moody" colors (edges), regardless of how dark or light they are.
+
+```{r}
+
+# 1. Install and Load ggtern
+# Note: ggtern replaces some ggplot2 functions, so load it after ggplot2
+if (!require("ggtern")) install.packages("ggtern")
+library(ggplot2)
+library(ggtern)
+
+# 2. Setup the Data (Same as before)
+colors_df <- data.frame(
+  name = c("Cloud Dancer", "Silhouette", "Universal Khaki", "Hidden Gem", "Warm Eucalyptus", "Warm Mahogany",
+           "Mocha Mousse", "Cinnamon Slate", "Rumors",
+           "Peach Fuzz", "Blue Nova", "Upward", "Cracked Pepper",
+           "Viva Magenta", "Raspberry Blush", "Redend Point", "Blank Canvas",
+           "Very Peri", "October Mist", "Evergreen Fog", "Breezeway",
+           "Illuminating", "Ultimate Gray", "Urbane Bronze", "Aegean Teal",
+           "Classic Blue", "First Light", "Naval", "Back to Nature",
+           "Living Coral", "Metropolitan", "Cavern Clay", "Blueprint",
+           "Ultra Violet", "Caliente", "Oceanside",
+           "Greenery", "Shadow", "Poised Taupe",
+           "Rose Quartz", "Serenity", "Simply White", "Alabaster"),
+  hex = c("#F0EEE9", "#4A413C", "#BCA68E", "#6A867F", "#7A8B78", "#9D4A3C",
+          "#A47864", "#AA8C96", "#8A3324",
+          "#FFBE98", "#5B6C91", "#B4BEC3", "#4E5052",
+          "#BE3455", "#D25A46", "#AE8E7E", "#F0ECE2",
+          "#6667AB", "#A3AA9E", "#95978A", "#B8CBC0",
+          "#F5DF4D", "#939597", "#545E60", "#647882",
+          "#0F4C81", "#EBE1E1", "#2F3D4C", "#97A878",
+          "#FF6F61", "#AFB4B4", "#D1866A", "#4D6C8C",
+          "#5F4B8B", "#AF2D2D", "#195564",
+          "#88B04B", "#5F505F", "#8C827D",
+          "#F7CAC9", "#92A8D1", "#F3F4ED", "#EDEAE0")
+)
+
+# Extract RGB values
+rgb_vals <- t(col2rgb(colors_df$hex))
+colors_df$R <- rgb_vals[, 1]
+colors_df$G <- rgb_vals[, 2]
+colors_df$B <- rgb_vals[, 3]
+
+# 3. Generate the Ternary Plot
+# ggtern automatically normalizes the axes so they sum to 1 (or 100)
+plot <- ggtern(data = colors_df, aes(x = R, y = G, z = B)) +
+  
+  # Add the points
+  geom_point(aes(fill = hex), 
+             color = "black",    # Black outline makes lighter colors visible
+             shape = 21,         # Shape 21 allows for separate fill and stroke
+             size = 5, 
+             alpha = 0.9) +
+  
+  # Use the actual hex colors for the fill
+  scale_fill_identity() +
+  
+  # Customize the theme
+  theme_rgbw() +                 # A clean white theme
+  labs(title = "Chromaticity of 'Color of the Year' (2015-2026)",
+       subtitle = "Center = Neutral/Grey | Corners = Saturated",
+       x = "Red",
+       y = "Green",
+       z = "Blue") +
+  
+  # Add gridlines and arrows to help read the chart
+  theme(tern.axis.arrow.show = TRUE,
+        tern.axis.title.show = TRUE)
+
+# Print the plot
+print(plot)
+
+```
+
+#### What to look for in the result:
+
+1.  **The "Muddy Middle":** You will likely see a massive traffic jam in the center of the triangle. This confirms that even when brands choose "colors," they usually choose *desaturated* versions that lean toward grey/brown.
+
+2.  **The "Yellow/Blue" bias:** Look at how the points drift. You will likely see a drift toward the "Red-Green" axis (Yellows/Oranges/Browns) and the "Blue" corner, but very little activity in the "Green-Blue" (Cyan) or "Blue-Red" (Magenta) zones.
+
+3.  **The Voids:** The corners (tips of the triangle) represent pure neon Red, Green, and Blue. These areas should be completely empty.
+
+Since you are interested in "areas of point concentration," this view is arguably better than the 3D cube because it flattens the "light vs. dark" variable and focuses purely on the hue bias.

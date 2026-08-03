@@ -1,0 +1,175 @@
+---
+title: "functions"
+---
+```{r}
+## The queryGPT Function: Simple LLM queries.
+
+queryOAI <- function(prompt, 
+                    LLM,
+                    temperature,
+                    apiKey=apiKey,
+                    connecttimeout = 90) {
+  
+  response <- POST(
+    url = "https://api.openai.com/v1/chat/completions", 
+    config = httr::config(connecttimeout = connecttimeout), ## seconds: Avoid timeout
+    add_headers(Authorization = paste("Bearer", apiKey)),
+    content_type_json(),
+    encode = "json",
+    body = list(
+      model = modelName,
+      temperature = temperature,
+      messages = list(list(
+        role = "user", 
+        content = prompt
+      ))
+    )
+  )
+  
+  if(status_code(response)>200) {
+    stop(content(response))}
+  
+  ## Unpack the JSON information.
+  ## Trim the whitespace and other unnecessary text.
+  trimws(content(response)$choices[[1]]$message$content)
+  
+} ## End queryGPT function
+
+##############################################################
+
+## Extract text from a PDF.
+
+extractPDF <- function (pdf_path, 
+                        start_page = NULL, 
+                        end_page = NULL){
+
+## Extract the text from the PDF.
+extracted_text <- pdf_text(pdf_path)
+
+## Keep specific pages.
+
+## If the first page is not given, make it the first page.
+if (is.null(start_page)) {start_page <- 1}
+
+## Find the document length (in pages).
+n_pages <- length(extracted_text) ## Total number of pages extracted.
+
+## If the end page is not given, make it the last page.
+if (is.null(end_page)) {end_page <- n_pages}
+
+## Extract the range of pages (from the start to end pages).
+analysis_text <- extracted_text[start_page:end_page]
+
+return(analysis_text)
+} ## End function extractPDF
+
+##############################################################
+
+## Analyze the text from a PDF document (or other source) with the LLM.
+
+analyzeTXT <- function (analysis_text,
+                        AI_role,
+                        analysis_prompt,
+                        LLM,
+                        apiKey=apiKey,
+                        connecttimeout = 90){
+
+# Set the API endpoint for chat completions
+api_endpoint <- "https://api.openai.com/v1/chat/completions"
+
+## Clean text
+formatted_text <- analysis_text %>%
+  str_c(analysis_text, collapse = "\\n")
+
+# Construct the API request Body
+request_body <- list(
+  model = LLM,
+  messages = list(
+    list(role = "system", content = AI_role),
+    list(role = "user", content = str_c(analysis_prompt, formatted_text))
+  )
+)
+
+## Execute the POST request to the OpenAI API.
+api_response <- POST(
+  config = httr::config(connecttimeout = connecttimeout), ## seconds: Avoid timeout
+  url = api_endpoint,
+  body = request_body,
+  encode = "json" ,
+  add_headers("Authorization" = paste("Bearer", apiKey), 
+              "Content-Type" = "application/json"))
+
+## Process the response from the API.
+response_data <- content(api_response, "parsed")
+
+## Extract the summary from the API's response.
+api_summary <- response_data$choices[[1]]$message$content
+
+return(api_summary)
+
+} ## End function analyzeTXT
+
+##############################################################
+
+## Analyze an image with the LLM.
+
+analyzeIMG <- function (analysis_image,
+                        AI_role,
+                        analysis_prompt,
+                        LLM,
+                        apiKey=apiKey,
+                        connecttimeout = 90) {
+
+## Set the API endpoint for chat completions
+api_endpoint <- "https://api.openai.com/v1/chat/completions"
+
+## This handles images from the web (starting with "http") and
+## from locally stored files in a slightly different way. 
+
+## Find out the kind of image.
+prefix <- tolower(substr(analysis_image,1,4))
+
+## If this is an internet image, don't change it.
+if(prefix != "http"){
+  
+  ## Make JPG images base64.
+  txt_img <- base64enc::base64encode(analysis_image)
+  analysis_image <- paste0("data:image/jpeg;base64,", txt_img)
+  }  ## end prefix test
+
+## Build the API request.
+request_body <- list(
+  model = LLM,
+  messages = list(
+    list(role = "system", content = AI_role),
+    list(role = "user",   content = analysis_prompt),
+    list(role = "user", 
+         content = list(
+         list(type = "image_url", image_url = list(url = analysis_image))
+         ) ## content
+      ) ## list
+    ) ## messages
+  ) ## request_body
+
+## Execute the POST request to the OpenAI API.
+api_response <- POST(
+  config = httr::config(connecttimeout = connecttimeout), ## seconds: Avoid timeout
+  url = api_endpoint,
+  body = request_body,
+  encode = "json" ,
+  add_headers("Authorization" = paste("Bearer", apiKey), 
+              "Content-Type" = "application/json")
+  ) ## api_response
+
+## Process the response from the API.
+response_data <- content(api_response, "parsed")
+
+## Extract the summary from the API's response.
+api_summary <- response_data$choices[[1]]$message$content
+
+return(api_summary)
+
+} ## End function analyzeIMG
+
+```
+

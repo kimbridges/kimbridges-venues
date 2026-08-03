@@ -1,0 +1,32 @@
+# Appendix {.unnumbered}
+
+## Move Photos
+
+The goal is to move a set of photos for a day's activities from a cell phone (or, better, the mirrored set available on the cloud) to a folder on your local computer.
+
+This process begins by identifying the photo using [photos.google.com](https://photos.google.com) and moving the photos to be moved into a Album.
+
+Here are the steps:
+
+-   Click **Album.**
+-   Click **Create Album.**
+-   Give the album a **title.**
+-   Click **Select Photos.**
+-   Go through your collection and select the photos to download (click the **checkmark** in the corner). Click **Done** when finished.
+
+The Takeout process next involves Google packing the Album photos into a zip file that can be downloaded. If you have a lot of photos, this will involve multiple zip files. You need to unzip the files once the images are moved. There is some delay as Google does the file packing into the zip structure.
+
+Here are the steps:
+
+-   Go to [takeout.google.com](https://takeout.google.com).
+-   Click **Deselect all**.
+-   Scroll down to **Google Photos**.
+-   Put a **checkmark** in the box for Google Photos.
+-   Click on **All photo albums included**.
+-   Click **Deselect all**, then click to put a **checkmark** in the box for the album you want to move. Then click **OK** (upper right corner).
+-   Scroll all the way to the bottom and click on **Next Step**.
+-   Make sure you choose **Export once**. Then click on **Create export**.
+
+Finally, you'll get an email when the export is done. The email has instructions on what to do next. This involves a few **menu clicks**.
+
+The downloaded images will be in a `.zip` file in your download folder. You can **unzip** the file (right click on the name). Then you should **move** the photos to a separate named folder where you are running the R software.

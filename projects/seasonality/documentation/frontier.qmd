@@ -1,0 +1,79 @@
+# Limits and the Frontier
+
+The voyage has reached a real place. We took an accepted picture, the climate diagram, abstracted it into a handful of channels, gated the rainfall channel by the water balance, added a daylength channel that comes free from latitude, and sorted the world into cue regimes that hold up when mapped across four continents. That is a working construct, and it does what we asked of it: it redraws the climate geography you already knew as a map of the cues that time the living world.
+
+But it's a voyage, not a destination, and an honest account ends by saying where the ground is still soft. This chapter does three things. It names the gaps the maps already showed us. It points at the one missing piece that would turn this from a good construct into a real instrument. And it hands you the vehicle, because the most interesting places to sail are the ones we haven't been.
+
+```{r}
+#| label: setupfrontier
+#| message: false
+
+## install once with: remotes::install_github("kimbridges/seasonalityr")
+library(seasonalityr)
+library(tidyverse)
+```
+
+## The near edges
+
+Three of the framework's limits are close at hand, visible in the maps we just drew, and each has a clear repair.
+
+The first is a regime the scheme does not yet have. On the Australia and New Zealand map, a grey swath ran through the southeast, taking in Sydney, Melbourne, and the North Island of New Zealand. Those are mild, temperate, year-round-rain places, and at their middle latitudes the daylength swing is too small to trip the maritime threshold, so they fall through every branch of the rule and land in "mixed/other." This is the old temperate catch-all, the one corner the cue scheme leaves unnamed. It wants its own regime, a temperate-oceanic or mild category for places carried gently by all three channels at once and sharply by none. The fix is not deep; it's a branch we haven't written.
+
+The second is a seam. The rule treats the tropics and the extratropics differently, because the timing of the rain has to be read against the sun in one and against the calendar in the other, and the boundary is drawn at a hard line of 25 degrees. On the maps that hard line occasionally shows, a faint horizontal seam through an arid interior where nothing in the real climate actually changes at that latitude. The boundary is doing honest work, but a hard cutoff is the wrong tool for a gradual transition. It should be softened, or better, tied to a climatic quantity rather than a parallel of latitude.
+
+The third is a lumping. The winter-rain Mediterranean regime gathers together places with a genuine summer drought, like Rome and Los Angeles, and the milder dry-summer coasts that shade toward the merely oceanic. A single category covers a real range, from the parched Mediterranean to the soft Pacific Northwest. Splitting it by the depth of the summer drought would separate two ways of being winter-wet that an organism would experience very differently. And in the same spirit, the desert phase threshold that left the Mojave labeled "mixed" in Chapter 5 is a knob worth a careful turn. None of these is a flaw in the idea. They are the ordinary unfinished edges of a construct that works.
+
+## The missing axis
+
+The deeper limit is not an edge to be tidied. It's a whole dimension we have not measured, and it is the real frontier.
+
+Go back to the worth of a cue from the first chapter: a cue is worth roughly its amplitude times its reliability. Everything in this book has measured amplitude. How large is the temperature swing, how concentrated the rain, how wide the daylength range. We have built a careful map of which cues a place offers and how loud each one is. What we have not measured, at all, is reliability. Does the monsoon arrive on the same date every year, or does it wander by weeks? Is the wet season a dependable clock or a hopeful average? Our data cannot say, because WorldClim gives us the climatological mean, the typical year, and a mean has no year-to-year variation left in it. A dependable monsoon and a fickle one have the same average, and to us they look identical.
+
+This is the destination just over the horizon. Reliability needs year-by-year data, the kind that records each season as it actually fell, not the average of thirty of them. Datasets like CRU TS, ERA5, and CHELSA carry that history, and the same channels could be computed for each year and then asked not just how large a cue is but how faithfully it repeats. That would complete the spine. It would turn a map of cue availability into a map of cue dependability, which is what the biology has cared about all along. We have built the amplitude half of the instrument. The reliability half is the voyage's true destination, and it's left for the next leg.
+
+## Cues that decouple
+
+There is one more reason this matters now, and it returns us to the phone call that opened the book.
+
+The three channels are not changing together. Warming moves temperature and shifts the rains, but it does not, and cannot, move daylength, which is fixed by the geometry of the Earth and the Sun forever. So the cues that used to point at the same moment in the year are sliding out of register. An organism keyed to photoperiod still leaves on the old date, still flowers when the light says to, but the warmth and the rain it was synchronized with have moved. The flower opens and the pollinator is not yet flying. The migrant arrives and the food has already peaked. This is phenological mismatch, and it is the cost of keeping faith with a clock that cannot move while the others drift.
+
+A map of which cues a place offers, and how reliable each one is, is therefore also a map of where that mismatch is most likely. The places most exposed are the ones where life leans hardest on the single signal that cannot shift, the daylength-cued maritime coasts and the high latitudes where the photoperiod channel is loud and the others are quietly moving beneath it. That is what the whale call was, years before any of us had the words for it. A living calendar had begun to slip, and a stranger understood that someone needed to know. The framework in this book is, in the end, a way of drawing the map that stranger was pointing at.
+
+## Try the voyage yourself
+
+The vehicle is yours. Everything in this book is in one package, and it will point at any place on Earth you give it coordinates for. The most rewarding way to use it is the way the framework was built: run a transect, a line of places across a gradient, and watch the channels hand off from one to the next.
+
+Here is one to start with, Japan down to southern Taiwan, the monsoon mirror of the west-coast transect in Chapter 3.
+
+```{r}
+#| label: try-transect
+#| eval: false
+
+## bring your own line of places: name, a label, and coordinates
+japan_taiwan <- tibble(
+  name = c("Sapporo", "Tokyo", "Osaka", "Fukuoka", "Naha", "Taipei", "Kaohsiung"),
+  zone = "transect",
+  lat  = c(43.06, 35.68, 34.69, 33.59, 26.21, 25.03, 22.63),
+  lon  = c(141.35, 139.69, 135.50, 130.40, 127.68, 121.57, 120.30))
+
+## the same pipeline used throughout the book
+clim <- get_climate(japan_taiwan)
+idx  <- indices_table(clim) |>
+  left_join(select(japan_taiwan, name, lat), by = "name") |>
+  add_daylength()
+
+## the cue regime and phase at each step down the line
+classify_v2(idx) |>
+  arrange(desc(lat)) |>
+  select(name, regime, phase, cool_frac, SI)
+```
+
+Run it and you'll watch the temperature channel carry the year down the length of Japan, fade through a near-aseasonal subtropical middle at Naha and Taipei, and then flip hard into a sharp summer monsoon at Kaohsiung, all in seven cities. Two more lines are worth your time. For the equatorial trough, run a strip across South and Southeast Asia, from Mumbai and Bangkok through Kuala Lumpur and Singapore to Manila and Davao, and watch the strong monsoon collapse into the cue-poor everwet core and climb back out. For the grandest break of all, run a line up East Africa across the equator, from Cairo and Khartoum through Nairobi to Lusaka and Johannesburg, and watch the rains flip from one hemisphere's summer to the other's. Or leave the transects behind entirely and hand `regime_map_region()` a rectangle of your own, a continent we never mapped, and see what the rule makes of it.
+
+## The voyage
+
+We could have pushed on toward the destination. A fine-tuned model, every gap closed, the reliability axis built, the seams smoothed, a single polished instrument. We chose instead to document the voyage, because much of the worth of this kind of work is in the sailing, and because the results are already interesting enough that we can both see there is a destination just over the horizon. We have provided the vehicle, the code now gathered in `seasonalityr`, and a chart of how far we got. The rest of the journey is open.
+
+So I'll end where I began, with a stranger's phone call from Alaska, and a message that the whales had come back two days early. I didn't understand, then, why I needed to know. I think this book is my long answer. The timing of the living world is real, it can shift, and it is keyed to cues we can now map. When those cues come apart, things that have kept time together for a very long time begin to miss each other. That is worth being able to see. That is worth needing to know.
+
+Can you complete the voyage?

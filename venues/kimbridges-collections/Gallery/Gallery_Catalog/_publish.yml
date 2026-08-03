@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: 2b6c5a82-4dc0-4a2c-8301-04e136d1fd96
+      url: 'https://kim.quarto.pub/gallery-catalog'

@@ -1,0 +1,396 @@
+---
+project:
+  title: "Lists"
+  output-dir: _output
+  type: book
+
+book:
+  title: "List Data"
+  subtitle: "A simplified data entry strategy"
+  search: true
+  author: "K. W. Bridges"
+  date: today
+
+execute: 
+  warning: false
+  error: false
+  message: false
+
+format:
+  html:
+    css: styles.css
+    code-fold: true
+    code-summary: "Show the code"
+  pdf:
+    documentclass: report
+    margin-left: 30mm
+    margin-right: 30mm
+---
+
+# Lists
+
+We all make lists.
+
+How do you analyze them? Can you analyze them while still in the field?
+
+One of the biggest barriers may be getting the data into a digital format that's used by analysis programs. Usually, we just put the data in a spreadsheet.
+
+But, is there a more logical way (easier?) to enter list data?
+
+That's one thing we're going to examine here. We'll combine this with a test of using this data-entry format to run standard analyses of list data. Specifically, we'll look at data frequencies and plot dendrogram to show data patterns.
+
+## Getting started
+
+As with all R analyses, there are some initial steps that set up the environment.
+
+### Initialize Libraries
+
+First, we need initialize some libraries and themes. As always, you need to make sure the packages are installed on your computer.
+
+```{r}
+#| label: Initialize
+
+## Core Packages
+library(gt)
+library(gtExtras)
+library(tidyverse)
+
+## Special Packages
+library(ggdendro)
+
+## Special Formats
+## Format for dendro plots
+dendro_theme <- function(){
+  theme(
+    axis.title.y = element_blank(),
+    axis.text.y  = element_blank(),
+    axis.ticks.y = element_blank(),
+    # remove the vertical grid lines
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    # set the horizontal lines
+    panel.grid.major.x = element_line(linewidth=.3,
+                                      color="gray75"),
+    panel.grid.minor.x = element_line(linewidth=.3,
+                                      color="gray75"),
+    panel.background = element_rect(fill="lightsteelblue1",
+                                        color= "black"))
+}
+
+```
+
+### Focus on Functions
+
+A set of custom functions hides a lot of the computational details. This lets us focus on the workflow as we handle our data.
+
+These functions appear to be fairly robust within the general constraints of the sorts of analyses we're likely to run.
+
+Here are the functions:
+
+-   read_lists
+
+-   species_list
+
+-   species_freq_plot
+
+-   site_freq_plot
+
+-   data_to_2way
+
+-   species_dendrogram
+
+-   site_dendrogram
+
+Note that these steps look like workflow procedures. And, indeed, that's what they are. Each function is a basic analysis (or data modification) procedure. Using the steps is just a matter of cut-and-paste into R chunks (i.e., code windows) and then running everything.
+
+```{r}
+#| label: functions
+
+## This loads the functions
+source(file="C://My_Functions/lists/lists_functions.R")
+
+## To examine a function, simply type its name (without brackets)
+
+
+```
+
+## Consider the Data Structure
+
+Here is where things are very new!
+
+There are many ways to enter data into R for processing. Which works best often depends on the problem. Many of the "teaching" examples show a data-entry style that's easy for programming but quite difficult for the person supplying the data.
+
+If data entry is simple and intuitive, it's more likely that data files will be updated regularly. That's a goal with the approach shown here.
+
+The example we're using shows a (highly simplified) field sampling where vegetables in home gardens are listed for a series of farms.
+
+Here is the code for the data entry example:
+
+`data_rows <-`
+
+`"Farm1, Radish, Leek, Corn, Peas`
+
+`Farm2, Corn, Peas, Beans, Mint, Parsley`
+
+`Farm3, Beans, Peas`
+
+`Farm4, Corn, Leek, Peas, Mint, Beans`
+
+`Farm5, Corn, Peas, Beans"`
+
+This follows the standard generalization of species on sites. It's a common data structure. Here are a few other types of surveys that obtain data in the same structural form.
+
+-   Tree survey: plot, trees
+
+-   Market survey: date, produce
+
+### Enter the Data
+
+First, note that there is a data variable (data_source) that is used in both tables and charts to identify the source of the data used. It is a good practice to always maintain information relating to the origin of the data, even for "made up" examples.
+
+The next part is our major focus. Here, data are entered in rows in a simple assignment statement. There are a few things to note:
+
+-   All the rows are enclosed with quotation marks.
+
+-   The first item in each row identifies the row. It is a row name.
+
+-   The items in the row are separated with commas.
+
+-   There can be a variable number of items in each row.
+
+You should see that this is a very simple and intuitive format. In this example, it is as though you've visited a series of farms and noted what vegetables are growing in the home garden. A few farms grow only a few types of vegetables, while others grow more.
+
+In practice, you might want to use an abbreviation scheme so that all the entries for a row fit on a line. If you do that, it's pretty straightforward to expand the abbreviations to something that's easier to read and better for data confirmation.
+
+```{r}
+#| label: data
+
+## Establish the data source for reference
+data_source <- "Source: Extracted by Claude 3 (fake)."
+
+## Enter the data
+data_rows <-  
+"Johnson Farms, tomato, lettuce, celery, radish, carrot
+Sato Brothers, watermelon, yellow squash, pumpkin
+Bill and Petes Farm, apple, peach
+Marys Place,  kiwi, pomegranate, lime, lemon
+Walter and Sons, lettuce, tomato, carrot, pea, okra
+National Fruit, orange, lemon, lime
+Nakasone Farms, lettuce, chard, cabbage"
+
+```
+
+### Confirm the Data
+
+We need to read the original data (which is a text string) into a data structure. Data analyses require the use of a data structure (called a "data frame").
+
+A custom function (`read_lists`) does the work.
+
+The `gt` package is used to print out a neat data table for confirmation.
+
+```{r}
+#| label: process-input
+#| tbl-cap: Raw data from the farm survey
+
+## Get the data into a table format
+data <- read_lists(data_rows=data_rows)
+
+## Generate a raw data table
+gt(data) |>
+  opt_row_striping() |>
+  tab_source_note(
+    source_note = data_source)  |>
+  gt_add_divider(columns = "Site", 
+                  style = "solid",
+                  color = "gray88")
+
+```
+
+The data table mirrors the data entry. Unfortunately, it's pretty hard to interpret the data in this form. For example, it is difficult to see what vegetables have been seen on the farms.
+
+A custom function (`species_list`) takes our data and produces a list we can print with `gt`, our general table printer.
+
+At this point, it's not necessary to know how all the options work for `gt`. These lines, like `opt_row_striping`, are somewhat understandable when looking at the table this function produces.
+
+The important thing is that we get a neat table that shows us the vegetables encountered in the farm home gardens. It's here that we can confirm that there are no obvious data entry errors (e.g., miss typed names).
+
+```{r}
+#| label: table-reshape
+#| tbl-cap: Vegetable list
+
+## Create a species list
+Spp_list <- species_list(data=data)
+
+## Print the species list
+gt(Spp_list) |>
+  opt_row_striping() |>
+  tab_source_note(
+    source_note = data_source)  
+
+```
+
+## Analyze the Data
+
+It's useful to do basic analyses as soon as possible. What helps is to have a clear workflow. This is aided by having simple and logical steps that carry you though each phase of the analysis.
+
+Custom functions are used here to hide details that can confuse a novice. Fairly complex processes are used in the analyses, but they are not (and need not be) placed where they can be seen. Too much code can send the message, "this is too complex and it will take me too much time." Simple statements make the analyses clear. The processing is also aided by comment statements.
+
+### Frequency Charts
+
+Several graphics can be created at this point. The most basic is a frequency distribution of the values for either the rows of the table (in this case, Farms) or the columns (here, Vegetables). The frequency shows the number of vegetables per farm, or the number of farms with a particular vegetable.
+
+The first chart shows the frequency distribution of the number of vegetables grown on each farm. Note that it is possible to dig down into the statistics of the data distribution, such as the mean or median number of vegetables on each farm. But that goes beyond the basic data scanning that's more useful at this stage.
+
+```{r}
+#| label: species-freq
+#| fig-cap: Number of farms on which each vegetable was seen.
+
+## Generate a species frequency plot
+plot <- species_freq_plot(data=data,data_source=data_source)
+
+plot
+
+```
+
+The next chart shows the frequency distribution of the number of farms on which each vegetable is grown.
+
+```{r}
+#| label: site-freq
+#| fig-cap: Number of vegetables seen on each farm.
+
+## Generate a site frequency plot
+plot <- site_freq_plot(data=data, data_source=data_source)
+
+plot
+
+```
+
+### Two-way Table
+
+Further processing requires an additional reformatting of the data. What is produced is a wide version of the table. This becomes what is known as a "two-way table."
+
+Don't expect to do much interpretation of the data with the two-way table. It does have two uses. This format is needed for visualizations such as dendrograms. Also, it is possible to use the two-way table to check data details, especially during the interpretation of charts such as dendrograms.
+
+The data in this study are binary. Either a vegetable was or was not found on a farm. These two values are represented with 1 (found) or 0 (not found) in the two-way table.
+
+Note that presence/absence data are quite easy and quick to collect versus making counts of things like abundance. It is likely, therefore, that data will be collected for more sites.
+
+Binary data work quite well for the purpose of finding large patterns.
+
+This step uses the custom function `data_to_2way` to create the two-way table. The table is shown with `gt`. There is a vertical divider line in the table, created using the function `gt_add_divider`. This function comes from the `gtExtra` package.
+
+```{r}
+#| label: create-twoway
+#| tbl-cap: Vegetables seen on each farm.
+
+## Reformat the data to a two-way table
+data_2way <- data_to_2way(data=data)
+
+## Print table verification
+gt(data_2way) |>
+  opt_row_striping() |>
+  tab_source_note(
+    source_note = data_source)  |>
+  gt_add_divider(columns = "Species", 
+                  style = "solid",
+                  color = "gray88")
+```
+
+### Dendrograms
+
+These charts show a pattern of similarity by linking sites or species. The x-axis is the similarity measure, in this case a "dissimilarity" value. This is a metric in which sites linked (with vertical lines) near the zero end are very similar, while those linked at higher and higher values are less and less similar. Groups of similar sites get linked either to individual sites or other groups of sites. Ultimately, all sites are linked.
+
+The visual interpretation of a dendrogram is pretty straightforward. However, once should be cautious about interpreting how many clusters are formed as there are some subjective biases that cause us to "find" clusters when there may not be rigorous analytic justification.
+
+For the first dendrogram, the similarities are based on the species (i.e., vegetables).
+
+Here is the species (i.e., vegetable) dendrogram.
+
+```{r}
+#| label: species-similarity
+#| tbl-cap: Relationship of vegetables based on their occurrence on farms.
+
+plot <- species_dendrogram(data_2way=data_2way)
+
+plot
+```
+
+In general, it appear that there are three clusters. The closest relationship is beans and peas. In the limited sampling, these two vegetables are generally found on the same farms. This pair, beans and peas, is often associated with corn. Radish and leek are often found together but this pair is quite distinct in its occurrence on the farms compared to the other vegetables. Again, caution is advised due to the limited sampling.
+
+A similar analysis is done for the sites. Here, the pattern of the farm relationships is due to the occurrence of vegetables on each farm.
+
+```{r}
+#| label: site-similarity
+#| tbl-cap: Relationship of farms based on the occurrence of vegetables.
+
+plot <- site_dendrogram(data_2way=data_2way)
+
+plot
+
+```
+
+Farm1 is least alike the other farms relative to the vegetables in its home garden. If you go back to the two-way table, you see this farm is the only one without beans and the only one with radish. Farm2 and Farm4 are somewhat similar to each other as are Farm3 and Farm5, but for different reasons (hence separate clusters).
+
+## Review the Process
+
+This was, first and foremost, an experiment in a novel form of data entry using R. The basic analysis products (frequency diagrams, two-way table and dendrograms) were produced with only the input of the original data. This shows the the data form works.
+
+A set of custom functions allows the workflow to be expressed as a straightforward set of steps. Perhaps the only complexity comes in the code used to make the tables. Even then, there is little more than cut-and-paste needed to replicate this analysis elsewhere for the analysis of different data.
+
+A few notes of caution are in order.
+
+-   The code (especially the custom functions) has not be tested enough. It is likely that steps will be needed to make the analyses more robust.
+
+-   There is not much that can be done to customize the results produced by the custom functions. That can be added, if necessary. It seemed better to focus on the core issues at this point.
+
+The use of lists, such as those in the simple example used here, is probably very common. The types of analyses shown here, especially dendrograms, don't come under the umbrella of most "data analysis" courses or websites. Especially when the data are binary (presence/absence). Most "statistical" applications demand numbers. The bias is unfortunate as more people need to know about these "pattern finding" techniques.
+
+Is data entry important? Too many people put off the analysis of their data because data entry is a boring chore. That's unfortunate as data entry delays can lead to quality degradation and, in the worst case, project abandonment. The goal here is to match the form of data entry to the way people tend to collect data. This might help.
+
+## Appendix
+
+### Function: read_lists
+
+```{r}
+read_lists
+```
+
+### Function: species_list
+
+```{r}
+species_list
+```
+
+### Function: species_freq_plot
+
+```{r}
+species_freq_plot
+```
+
+### Function: site_freq_plot
+
+```{r}
+site_freq_plot
+```
+
+### Function: data_to_2way
+
+```{r}
+data_to_2way
+```
+
+### Function: species_dendrogram
+
+```{r}
+species_dendrogram
+```
+
+### Function: site_dendrogram
+
+```{r}
+site_dendrogram
+```
+
+------------------------------------------------------------------------
+
+These functions are stored locally for ease of access. They will be moved to GitHub sometime in the future.

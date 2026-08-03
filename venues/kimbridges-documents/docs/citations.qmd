@@ -1,0 +1,8 @@
+---
+title: "Citations"
+subtitle: "A guide to managing citations and references in Quarto documents."
+categories: ["Quarto", "Writing"]
+image: ../citations/citations_cover_art.png
+---
+
+[View Document](../citations/){.btn .btn-primary}

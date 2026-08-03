@@ -1,0 +1,190 @@
+---
+title: "Creating Maps Using R"
+subtitle: "Simplifying the Process"
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+format:
+  html:
+    fig-width: 8
+    fig-height: 8
+    code-fold: true
+    code-summary: "Show the code chunk"
+editor: visual
+execute:
+  warning: false
+  error: false
+  message: false
+---
+
+## Basic Map Parameters
+
+Let's be very clear about the design. Tables have virtually all the data needed to make a map. Maps are rendered by using data from the tables.
+
+The implication is that we need a table column for every component of a map. For example, you'll need a column that defines the font family for the labels and another column for the color of the line surrounding each data point. That makes a lot of columns.
+
+So, conceptually, that's what we need: one column for each map characteristic.
+
+In practice, we just need to enter data columns in tables when a map characteristic changes in the set of points, lines or names. If the value is constant, such as the point size, it doesn't need to be entered into a data table column.
+
+Instead, constants (each of which is called param here) is stored in a file with a default value. For example, `param$psize` (the point size param) has the default value of 2. Unless something is changed, all the points on the map will have a size of 2 units.
+
+The file of constants (the param file) is critical to the understanding and use of the functions.
+
+Each param variable controls one aspect of the map's point, label or name appearance. There are also a few param variables that handle the basemap characteristics.
+
+## Loading the Parameters
+
+The main function for parameter loading is `site_param()`. You use this by assigning the parameters to a variable. For convenience, the variable `param` is used in all the examples. the statement you use in a code chunk is:
+
+`param <- site_param()`
+
+You'll likely need to set the parameters before each of your maps.
+
+The parameters can be thought of as constant values, each one representing a column in your data table.
+
+Here's how it works. When you plot points, for example, your data table columns are compared to the param names. If you have used a column, for example `psize`, then your table value is used for the points on the map. Otherwise, the value stored as a param (e.g., `param$psize`) is used.
+
+There is also a set of parameters associated with the Google map feature layers. Specifically, these are parameters that are used to suppress the layers. Here is the way these are generally invoked.
+
+`hide <- site_google_hides()`
+
+## The Parameter List
+
+This is the standard parameter list. You could supply your own defaults using the same general format. Here, the parameters are reasonable assumptions for most people making a map.
+
+### Point Parameters
+
+Both point parameters and label parameters usually come from the **main data tabl**e. Where there is a constant value for a particular parameter, the value either uses the default (listed here as **value**) or it is set as a parameter value (e.g., `param$point_size <- 5`).
+
++-------------------------+----------+------------------------------------------+
+| param                   | value    | uses & values                            |
++=========================+==========+==========================================+
+| point_size              | 3        | point size                               |
++-------------------------+----------+------------------------------------------+
+| point_outline_color     | "black"  | point outline color                      |
++-------------------------+----------+------------------------------------------+
+| point_alpha             | 0.9      | overall transparency:\                   |
+|                         |          | 0= completely transparent\               |
+|                         |          | 1= no transparency                       |
++-------------------------+----------+------------------------------------------+
+| point_color             | "red"    | point color:\                            |
+|                         |          | color name, NA = transparent             |
++-------------------------+----------+------------------------------------------+
+| point_shape             | "circle" | point shape:\                            |
+|                         |          | circle, square, diamond, triangle, wedge |
++-------------------------+----------+------------------------------------------+
+| point_outline_thickness | 1        | point border thickness                   |
++-------------------------+----------+------------------------------------------+
+
+### Label Parameters
+
+Labels are often used to identify specific points. Like the point parameters, label parameters usually come from the **main data table**. Where there is a constant value for a particular parameter, the value either uses the default (listed here as **value**) or it is set as a parameter value (e.g., `param$lcolor <- "blue"`).
+
++------------------------+--------------------+-----------------------------------+
+| param                  | value              | uses & values                     |
++========================+====================+===================================+
+| label_text_size        | 4                  | text size                         |
++------------------------+--------------------+-----------------------------------+
+| label_text_color       | "black"            | text color                        |
++------------------------+--------------------+-----------------------------------+
+| label_alpha            | 0.9                | transparency\                     |
+|                        |                    | 0= completely transparent\        |
+|                        |                    | 1= no transparency                |
++------------------------+--------------------+-----------------------------------+
+| lable_corner_radius    | unit(0.3, "lines") | rounded corner radius             |
++------------------------+--------------------+-----------------------------------+
+| label_border_size      | 0.5                | label border size (mm)            |
++------------------------+--------------------+-----------------------------------+
+| label_background_color | "white"            | label background color            |
++------------------------+--------------------+-----------------------------------+
+| label_connector_color  | "red"              | line from point to label          |
++------------------------+--------------------+-----------------------------------+
+| label_connector_width  | 1                  | line width from label to point:\  |
+|                        |                    | NA= no line                       |
++------------------------+--------------------+-----------------------------------+
+| seed                   | 1002               | randomizes without a value        |
++------------------------+--------------------+-----------------------------------+
+| max_overlaps           | 20                 | how much tolerance of overlapping |
++------------------------+--------------------+-----------------------------------+
+| label_text_wrap        | NA \| max \| NA =  | length of the text:\              |
+|                        |                    | don't wrap                        |
++------------------------+--------------------+-----------------------------------+
+
+### Name Parameters
+
+Names are used to put text on the basemap for things like cities, regions, oceans, rivers, and lakes. Names are not enclosed in a box (like a label) so there is no background color. Names information generally comes from a **name** **table**.
+
++-----------------+----------+----------------------------------+
+| param           | value    | uses & values                    |
++=================+==========+==================================+
+| name_text_size  | 4        | text size                        |
++-----------------+----------+----------------------------------+
+| name_text_color | "black"  | text color                       |
++-----------------+----------+----------------------------------+
+| fontface        | "plain"  | font face:\                      |
+|                 |          | plain, italic, bold, bold.italic |
++-----------------+----------+----------------------------------+
+| family          | "sans"   | font family:\                    |
+|                 |          | sans, mono, serif                |
++-----------------+----------+----------------------------------+
+| angle           | 0        | type angle:\                     |
+|                 |          | negative is clockwise            |
++-----------------+----------+----------------------------------+
+| justify         | "center" | horizontal justification:\       |
+|                 |          | left, center, right              |
++-----------------+----------+----------------------------------+
+| name_text_wrap  | NA       | max length of the text:\         |
+|                 |          | NA = don't wrap                  |
++-----------------+----------+----------------------------------+
+
+### Legend Parameters
+
+| param | value | uses & values |
+|-------|-------|---------------|
+|       |       |               |
+|       |       |               |
+|       |       |               |
+|       |       |               |
+|       |       |               |
+|       |       |               |
+
+### Scale Parameters
+
+| param | value | uses & values |
+|-------|-------|---------------|
+|       |       |               |
+|       |       |               |
+|       |       |               |
+|       |       |               |
+|       |       |               |
+|       |       |               |
+
+### Google Map Parameters
+
++----------+---------------------+-------------------------------------+
+| param    | value               | uses & values                       |
++==========+=====================+=====================================+
+| gmaptype | "roadmap"           | map type:\                          |
+|          |                     | hybrid, satellite, roadmap, terrain |
++----------+---------------------+-------------------------------------+
+| mapscale | 2                   | size of the map:\                   |
+|          |                     | 1 or 2                              |
++----------+---------------------+-------------------------------------+
+| hide     | (equivalent of poi) |                                     |
++----------+---------------------+-------------------------------------+
+| margin   | 1.0                 | expand bounding box:\               |
+|          |                     | 0=points at margin or beyond        |
++----------+---------------------+-------------------------------------+
+
+### Stamen Map Parameters
+
++----------+-----------+------------------------------------------------------------------+
+| param    | value     | uses & values                                                    |
++==========+===========+==================================================================+
+| smaptype | "terrain" | map type:\                                                       |
+|          |           | terrain, terrain-background, watercolor, toner, toner-background |
++----------+-----------+------------------------------------------------------------------+
+| square   | FALSE     | TRUE forces a square bounding box                                |
++----------+-----------+------------------------------------------------------------------+

@@ -1,0 +1,693 @@
+---
+title: "Data Wrangling"
+
+---
+
+Wrangling is a strange term for the process of massaging data into the correct format. I guess that "wrangling" is a slang term in the information technology community that ignores the historical pejorative meaning. I'll leave wrangling here as most people will understand that we're not trying to distort or misuse data.
+
+There are two general goals of this section:
+
+-   Make the **column names** consistent with the requirements of the styles. For example, the column with label headers needs to be called "`text`."
+
+-   Create or **convert data into categories** so that the visualization is clear. An example is changing values in a numerical scale into ranges of values and applying a color to each range. This is the most complex of the three goals and it will be the subject of the most discussion.
+
+## Getting Started
+
+As usual, there are some tasks that need to be done. First, we'll load some libraries and get the Google Map key registered.
+
+```{r "libraries"}
+
+## Libraries
+library(readr)        ## Read in data
+library(ggmap)        ## Show maps, handle Google key
+library(ggplot2)      ## Build maps
+library(dplyr)        ## Data wrangling
+library(gt)           ## Tables
+library(sitemaps)     ## Functions to help build site maps
+library(parzer)       ## Convert HMS to digital coordinates
+library(jsonlite)     ## Process files using the JSON format
+library(httr)         ## Allow API calls
+
+## Initialize Google Map key; the key is stored in a Project directory.
+  My_Key <- read_file("P://Hot/Workflow/Workflow/keys/Google_Maps_API_Key.txt")
+
+## Test if Google Key is registered.
+if (!has_google_key()){
+
+  ## Register the Google Maps API Key.
+  register_google(key = My_Key, account_type = "standard")
+  } ## end Google Key test
+  
+```
+
+Now we can initialize some data, just as it has been done in the other chapters.
+
+```{r "setup"}
+
+## Use two functions from sitemaps to initialize parameters
+column <- site_styles()
+hide   <- site_google_hides()
+
+## Establish a theme that improves the appearance of a map.
+## This theme removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2),
+                    legend.position = "none")
+
+```
+
+And we're ready to go.
+
+## Column Names
+
+The point, label and name overlay information requires three columns of data: text, lon, and lat. Getting these columns named properly (both the words and lower-case type) is the first goal.
+
+The remaining columns follow the names used for the parameters that are loaded with the `site_styles()` function.
+
+There are two useful functions: `rename` and `rename_with` (both from the `dplyr` package). We'll use these in the following example. Be sure to check the code to see the process.
+
+The data we're using in this example comes from a quick survey in Hawaii Volcanoes National Park. There is an area, called the Puhimau Hotspot, that must have lava beneath the surface. The soil temperature has essentially eliminated the forest that had grown here. This is now a mostly bare area with remnant tree stumps, clumps of grass, and various plants growing close to the hot surface.
+
+```{r "puhimau"}
+#| label: tbl-puhimau
+#| tbl-cap: "Soil temperatures at the Puhimau Hotspot. Column names updated."
+
+## Read in the field data.
+puhimau <- read_csv(col_names = TRUE, file = 
+      "Site,  Lon,        Lat,        Temperature
+       1,    -155.251451,	19.389354,	140
+       2,    -155.251483,	19.388421,	125
+       3,    -155.249834,	19.389709,	165
+       4,    -155.248924,	19.389591,	180
+       5,    -155.248982,	19.388827,	102
+       6,    -155.248024,	19.389952,	 97
+       7,    -155.249994,	19.388816,	135
+       8,    -155.251831,	19.387395,	 95")
+
+## Rename the site column and shift all the column names to lowercase
+puhimau2 <- puhimau %>% 
+  dplyr::rename(text = Site) %>% 
+  dplyr::rename_with(tolower)
+
+gt(puhimau2) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5) %>% 
+  tab_source_note(source_note = "Data: 2017 field survey") %>% 
+  tab_footnote(footnote = "degrees F",
+      locations = cells_column_labels(columns = temperature))
+
+```
+
+Let's check this with a map.
+
+```{r "puhimauMap"}
+#| label: fig-puhimauMap
+#| fig-cap: "2017 Puhimau soil temperature survey sites."
+
+## Modify some default parameters.
+column$margin <- 0.1
+column$gmaptype <- "satellite"
+
+## Generate a basemap
+basemap <- site_google_basemap(datatable = puhimau2)
+
+## Show the map (with points & labels)
+ggmap(basemap) +
+  site_labels(datatable = puhimau2) +
+  site_points(datatable = puhimau2) +
+  simple_black_box
+
+```
+
+Everything looks OK. We'll see how to color code the temperature for each survey site i the next section.
+
+## Data as Categories
+
+Many types of data that we'll use for map symbolism come as categories. Examples include vegetation types (e.g., deciduous forest, desert), species (e.g., mouse, rat), and lodging (e.g., hotel, resort). Each category can be assigned a color and map symbols will show the distribution of the categories on the map.
+
+We need to convert quantitative values to categories to get the same visual power. We'll deal with this quantitative problem first, then look at representing data already divided into categories as different colors.
+
+### Categories from Quantitative Values
+
+::: callout-tip
+Converting quantitative values to categories is one of the most important tasks of data visualization with maps. Knowing how to use the `cut` function is an important skill. Applying the `cut` function is a critical behavior.
+:::
+
+First, we need to divide a column of quantitative values into segments. Usually, the number is segments is quite small. Perhaps between 3 and 5. This can be done in two ways.
+
+Perhaps the easiest and most common way is to choose a value for the number of segments. For example, you can use 3 to get a sequence of values divided into three equal parts from the smallest to the largest values.
+
+An alternative way is to consider the statistical properties of the data distribution. In this case, the soil temperatures. In this example, we'll use the site_cuts function to divide temperature into categories based on the mean and standard deviation of the set of temperature values. The bottom set is below 1 SD from the mean, the next goes to the mean, the next to 1 SD above the mean, and the final segment is above 1 SD above the mean. 
+
+The next step is to assign a color to each segment based on the index value created using the site_cuts function. The assignment is done with a color lookup table. 
+
+
+```{r "cuts"}
+#| label: tbl-cuts
+#| tbl-cap: "Soil temperatures divided into three ranges."
+
+## Here are the three parts of the cut.
+puhimau2$index <- site_cuts(quant_var = puhimau2$temperature, 
+                            cuttype = "statistical4")
+
+## Color codes for the temperature segments
+color_table <- read_csv(col_names = TRUE, file =
+  "index, point_color
+   1,     yellow   
+   2,     orange
+   3,     red
+   4,     black")  
+
+## Merge the colors into the data table
+puhimau2 <- merge(puhimau2, color_table, by = "index")
+
+## Print the table for confirmation
+gt(puhimau2) %>% 
+  tab_source_note(source_note = "Data: 2017 field survey") %>% 
+  tab_footnote(footnote = "degrees F",
+      locations = cells_column_labels(columns = temperature)) %>% 
+  tab_footnote(footnote = "Yellow=low, Orange=mid, Red=high , Black=very high temperature.",
+      locations = cells_column_labels(columns = point_color))
+```
+
+```{r "mapcuts"}
+#| label: fig-mapcuts
+#| fig-cap: "Yellow = lowest, Orange = mid, Red = high, Black = vert high temperatures."
+
+## Increase the size of the points.
+column$point_size <- 6
+
+## We can use the existing basemap.
+## Show the map (with points & labels)
+ggmap(basemap) +
+  site_labels(datatable = puhimau2) +
+  site_points(datatable = puhimau2) +
+  labs(caption="Key: yellow, orange, red, black; cooler to hotter") +
+  simple_black_box
+
+```
+
+## Converting descriptors to color values
+
+```{r "hvnp"}
+#| label: tbl-hvnp
+#| tbl-cap: "Research sites in Hawaii Volcanoes National Park."
+
+## Reinitialize the styles
+column <- site_styles()
+
+## Read the data from the Hawaii Volcanoes National Park.
+sites <- read_csv(col_names = TRUE, file = 
+  "location,         habitat,                  lat,      lon
+Kipuka Puaulu,       Upland Forest & Woodland, 19.43765, -155.30317
+Top of MLSR,         Upland Forest & Woodland, 19.49278, -155.38532
+Keamoku Flow,        Upland Forest & Woodland, 19.47638, -155.36552
+Thurston Lava Tube,  Rainforest,               19.41368, -155.23872
+`Ola`a Forest,       Rainforest,               19.46464, -155.24967
+Sulfur Banks,        Mid-elevation Woodland,   19.43278, -155.26224
+Southwest Rift Zone, Mid-elevation Woodland,   19.40136, -155.29409
+1974 Lava Flow,      Mid-elevation Woodland,   19.40056, -155.25574
+Puhimau Hot Spot,    Mid-elevation Woodland,   19.39007, -155.24783
+Observatory,         Mid-elevation Woodland,   19.41991, -155.28804")
+
+## Show the data table
+gt(sites) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5)
+```
+
+What we want to place on the map is a color-coded point with each color representing the habitat type.
+
+The first step is to make a table that relates the different habitats to the colors. Note that the column with the habitats must have the same name as the column for the habitats in the main table. We'll also use the column name `pfill` for the colors as this is the parameter name for the point color.
+
+Then it is just a matter of using the R base function `merge` to add the colors to the original table.
+
+```{r "ptcolors"}
+#| label: tbl-ptcolors
+#| tbl-cap: "Habitats color-coded for the research sites."
+
+## Lookup table
+lookup_list <- read_csv(col_names = TRUE, file = 
+     "habitat,                  point_color
+      Rainforest,               blue
+      Upland Forest & Woodland, brown
+      Mid-elevation Woodland,   green")
+
+## Merge into the data table
+sites <- merge(sites, lookup_list, by="habitat")
+
+gt(sites) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5)
+```
+
+We can check our progress with a map.
+
+Note that we need to change the name of the location column to text so this site identifier appears in the point labels.
+
+```{r "hvnpmap"}
+#| label: fig-hvnpmap
+#| fig-cap: "Key: Blue=Rainforest, Green=Mid-elevation Woodland, Brown=Upland forest & Woodland."
+
+## Specify a satellite basemap
+column$gmaptype <- "satellite"
+
+## Change the location to text
+sites2 <- sites %>% 
+  dplyr::rename(text = location)
+
+## Generate a basemap
+basemap <- site_google_basemap(datatable = sites2)
+
+## Show the map (with points & labels)
+ggmap(basemap) +
+  site_labels(datatable = sites2) +
+  site_points(datatable = sites2) +
+  labs(caption = "Key: point color designates habitat") +
+  simple_black_box
+
+```
+
+## Adding More Information
+
+Here, we're focused on making both the table and the map richer with the addition of information. There are several ways this can be done.
+
+### Typing New Columns
+
+If there is a data source with additional information, you might simply want to type the values into a new column in the original table. Because the code re-runs all the basic data manipulation steps, it is straight-forward to modify the original table and produce a fully updated version.
+
+### Data Services to Add Data
+
+It may be possible to use existing table data to generate additional information. For our HVNP research sites, we can use Google Maps to obtain the elevation at each location.
+
+The function we need, `map_elevation`, is another custom function in the `mapfunctions` package.
+
+The `get_elevation` function works on the `datatable`, just like most of the other `sitemaps` functions. This means that it is looking for table columns with the `lat` and `lon` names. The function adds a new column to the `datatable`, called `elevation`.
+
+We'll do a couple more things in this chunk: sort so the highest elevation sites are at the top of the table and create a color-code for the elevations. We'll be using this color-code as an outline around the data points.
+
+```{r "addelev"}
+#| label: tbl-addelev
+#| tbl-cap: "Elevations added to the research locations."
+
+## Add the elevation to the sites
+sites3 <- site_elevation(datatable=sites2, APIkey = My_Key)
+
+## Sort the sites with highest elevation at the top
+sites4 <- sites3 %>% 
+  arrange(desc(elevation))
+
+## Color code the elevation ranges (top and bottom half of the elevation range)
+sites4$index <- site_cuts(quant_var = sites4$elevation, 
+                          cuttype = "topbottom")
+
+## Color lookup table
+color_table <- read_csv(col_names = TRUE, file = 
+  "index,  point_outline_color
+   1,      blue
+   2,      cyan")
+
+## Merge colors into the data table
+sites4 <- merge(sites4, color_table, by = "index")
+
+## Show the sorted table
+gt(sites4) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5) %>% 
+  tab_style(style = cell_text(v_align = "top"),
+            locations = cells_body()) %>% 
+  tab_footnote(footnote = "Meters (from Google Maps)",
+      locations = cells_column_labels(columns = elevation)) 
+  
+```
+
+We're now ready to see the visualization of the data for the Hawaii Volcanoes National Park site.
+
+```{r "HVNP"}
+#| label: fig-hvnp
+#| fig-cap: "Elevation Key (rings): Cyan=Upper elevation, Pink=Mid-elevation  sites."
+
+column$point_outline_thickness <- 2
+
+## Show the map (with points & labels)
+ggmap(basemap) +
+  site_labels(datatable = sites4) +
+  site_points(datatable = sites4) +
+  simple_black_box
+
+```
+
+## Showing Less Data
+
+Sometimes, the data table has more values than you want to display on your map. Or, you have duplicated locations and you want to simplify the map without loosing the information value of the duplicated points.
+
+The data consolidation or reduction can be quite complex. The next section shows just one way this can be done that applies quite well to making maps.
+
+### Combining Rows
+
+The example used here is the fuel log for a Smart car used primarily for long-distance trips in the Lower48.
+
+![Creamsicle, the long-distance Smart car, parked in Wisconsin on a cold day.](creamsicle.jpg)
+
+Information about each fuel stop is recorded and typed into a spreadsheet. A portion of that spreadsheet is contained in the following code chunk. Note that a **lot** more information is collected at each fuel stop. This is just a convenient extract to show the problem and solution to excessive data overlap.
+
+```{r "fuel"}
+#| label: tbl-fuel
+#| tbl-cap: "Fuel information for Creamsicle (data subset)."
+
+## Resetting the parameters
+column <- site_styles()
+
+## Read the fuel log data
+fuel <- read_csv(col_names = TRUE, file = 
+    "Date,       City,            State,  Gallons
+     09/23/2021, Nixa,            MO,     6.000
+     09/23/2021, Garden City,     MO,     5.124
+     09/24/2021, Plattsburg,      MO,     4.033
+     09/25/2021, Lincoln,         NE,     3.799
+     09/25/2021, Gothensburg,     NE,     3.799
+     09/25/2021, Atwood,          CO,     6.270
+     09/26/2021, Arvada,          CO,     2.737
+     09/26/2021, Grand Junction,  CO,     5.766
+     09/27/2021, Salina,          UT,     5.213
+     09/27/2021, St George,       UT,     4.839
+     09/28/2021, Jean,            NV,     4.773
+     09/28/2021, Victorville,     CA,     5.274
+     10/15/2021, Torrance,        CA,     2.860
+     10/15/2021, Barstow,         CA,     3.610
+     10/15/2021, Searchlight,     NV,     4.824
+     10/16/2021, Ash Fork,        AZ,     4.742
+     10/16/2021, Sanders,         AZ,     4.869
+     10/17/2021, Albuquerque,     NM,     4.324
+     10/17/2021, Wagon Mound,     NM,     4.313
+     10/17/2021, Colorado Springs,CO,     5.138
+     10/18/2021, Colby,           KS,     4.356
+     10/19/2021, Kearney,         NE,     3.852
+     10/19/2021, Omaha,           NE,     4.396
+     10/20/2021, Des Moines,      IA,     3.280
+     10/20/2021, Anamosa,         IA,     4.261
+     10/22/2021, Madison,         WI,     4.239
+     10/28/2021, Sun Prairie,     WI,     4.309
+     11/07/2021, Madison,         WI,     4.159
+     11/13/2021, Sun Prairie,     WI,     3.700
+     11/16/2021, Sun Prairie,     WI,     1.881
+     11/20/2021, Sun Prairie,     WI,     3.458
+     11/26/2021, Sun Prairie,     WI,     4.168
+     12/01/2021, Sun Prairie,     WI,     1.813
+     12/07/2021, Sun Prairie,     WI,     4.271
+     12/14/2021, Sun Prairie,     WI,     2.636
+     12/20/2021, Sun Prairie,     WI,     3.444
+     12/30/2021, Sun Prairie,     WI,     4.084
+      1/18/2022, Sun Prairie,     WI,     1.751
+      1/18/2022, Mendota,         IL,     3.790
+      1/19/2022, Springfield,     IL,     5.357
+      1/20/2022, Shelbina,        MO,     4.685
+      1/21/2022, Kansas City,     MO,     5.182
+      1/21/2022, Junction City,   KS,     3.829
+      1/22/2022, Hays,            KS,     5.542
+      1/22/2022, Burlington,      CO,     4.795
+      1/23/2022, Colorado Springs,CO,     4.663
+      1/23/2022, Walsenburg,      CO,     2.633
+      1/23/2022, Questa,          NM,     2.514
+      1/24/2022, Grants,          NM,     5.698
+      1/25/2022, Flagstaff,       AZ,     5.256
+      1/26/2022, Williams,        AZ,     4.874
+      1/27/2022, Lake Havasu City,AZ,     3.318
+      1/27/2022, Indio,           CA,     4.311
+      2/02/2022, Alhambra,        CA,     4.818
+      5/20/2022, Torrance,        CA,     4.918
+      5/23/2022, Torrance,        CA,     3.552
+      5/29/2022, Bakersfield,     CA,     4.173
+      5/29/2022, Firebaugh,       CA,     5.219
+      5/30/2022, Williams,        CA,     5.627
+      5/30/2022, Mt Shasta,       CA,     5.558
+      5/31/2022, Roseburg,        OR,     5.577
+      6/08/2022, Veneta,          OR,     4.674
+      6/11/2022, Bandon,          OR,     4.329
+      6/12/2022, Klamath,         CA,     2.927
+      6/12/2022, Leggett,         CA,     4.200
+      6/13/2022, Bodega Bay,      CA,     2.887
+      6/13/2022, Santa Cruz,      CA,     2.714
+      6/14/2022, San Luis Obispo, CA,     5.287")
+
+
+## Geocode the locations
+fuel_loc <- geocode(paste0(fuel$City,", ",fuel$State),
+                    output = "latlon")
+fuel <- cbind(fuel,fuel_loc)
+
+## Output a confirmation table
+gt(fuel)
+
+```
+
+Use a preliminary map to check the fuel stop locations.
+
+```{r "loccheck2"}
+#| label: fig-loccheck2
+#| fig-cap: "Check of the fuel stop locations."
+
+## Use the City column for the label.
+fuel2 <- fuel %>% 
+  dplyr::rename(text = City)
+
+## Generate a basemap.
+basemap <- site_google_basemap(datatable = fuel2)
+
+## Show the map (with points)
+ggmap(basemap) +
+  site_points(datatable = fuel2) +
+  simple_black_box
+
+```
+
+The data cover a very wide area. To see the details, we can divide the data into two parts: West and East relative to some area in Kansas.
+
+```{r "divide"}
+#| label: fig-divide
+#| fig-cap: "Fuel locations for the East segment."
+
+## Choose a division line
+lon_divide <- -98.0
+
+## Separate out the sites to the east of the divide
+east_part <- fuel2 %>% 
+  filter(lon > lon_divide)
+
+## Create a basemap
+basemap_east <- site_google_basemap(datatable = east_part)
+
+## Plot the map
+ggmap(basemap_east) +
+  site_points(datatable = east_part) +
+  simple_black_box
+
+```
+
+Combine rows for the same city.
+
+Colors are used to highlight the locations where there were multiple fuel stop.
+
+```{r "samecity"}
+#| label: fig-loccheck
+#| fig-cap: "Labeled fuel location for the East segment."
+
+## Combine the City (as text) and State
+east_part$citystate <- paste0(east_part$text,", ",east_part$State)
+
+## Count duplicate locations (compresses the list)
+station_count <- as.data.frame(table(east_part$citystate))
+
+## Modify the column names
+station_count <- station_count %>% 
+  rename(station = Var1) %>% 
+  rename(freq = Freq)
+
+## Make the station name character
+station_count$station <- as.character(station_count$station)
+
+## Number each of the locations (not gas stations)
+station_count$text <- as.character(seq.int(nrow(station_count)))
+
+## Re-geocode just the remaining set of stations
+fuel_locs <- geocode(station_count$station, output="latlon")
+map_data  <- cbind(station_count,fuel_locs)
+
+## Add a column for the label color
+quant_variable <- map_data$freq
+set_of_colors  <- c("white","pink","red")
+map_data$label_background_color <- cut(quant_variable, 
+                                       breaks = c(0,1,2,100),
+                                       labels = set_of_colors)
+
+map_data$label_background_color<- as.character(map_data$label_background_color)
+
+## Expand the basemap a bit to accommodate the labels
+column$margin <- 0.1
+basemap_east <- site_google_basemap(datatable = map_data)
+
+## Plot the map
+ggmap(basemap_east) +
+  site_labels(datatable = map_data) +
+  site_points(datatable = map_data) +
+  simple_black_box
+
+```
+
+You can see that enough time was spent around the Madison, Wisconsin area to require quite a few fuel stops. The other stations were visited just once.
+
+A table gives the details appropriate to the map.
+
+```{r "easttable"}
+#| label: tbl-easttable
+#| tbl-cap: "Location and frequency of fuels stops in the east segment. Location are identified in Table 7."
+
+gt(map_data)  %>% 
+  cols_move_to_start(text) %>% 
+  cols_label(text="Ref", station="Location", freq="Frequency") %>% 
+  cols_hide(columns = c(lon, lat, label_background_color)) %>% 
+  tab_footnote(
+    footnote = "Locations in alphabetical, not temporal order.",
+    locations = cells_column_labels(columns = station)) 
+
+```
+### A More Complex Example
+
+Data points can have a number of properties that convey the characteristics of the data.
+
+First, let's get some data.
+
+```{r "UCsystem"}
+#| label: tbl-UCcampus
+#| tbl-cap: "Data for University of California campuses."
+
+## Reinitialize the parameters
+column <- site_styles()
+
+inst <- read_csv(col_names = TRUE, file = 
+     "Campus,       Acceptance, Undergrads, Aid,  Abbrev
+      Berkeley,     0.17,       29310,      0.63, UC
+      Davis,        0.42,       29379,      0.70, UCD
+      Irvine,       0.41,       27331,      0.68, UCI
+      Los Angeles,  0.18,       30873,      0.64, UCLA
+      Merced,       0.74,        6815,      0.92, UCM
+      Riverside,    0.66,       19799,      0.85, UCR
+      San Diego,    0.36,       28127,      0.56, UCSD
+      Santa Barbara,0.36,       21574,      0.70, UCSB
+      Santa Cruz,   0.58,       16962,      0.77, UCSC")
+     
+source <- "https://www.thoughtco.com/comparison-university-of-california-campuses-786974"
+
+gt(inst) %>% 
+  fmt_percent(columns=c(Acceptance, Aid), decimals=0) %>% 
+  fmt_number(columns=Undergrads, decimals=0, use_seps=TRUE) %>% 
+  tab_source_note(source_note=source)
+
+```
+
+Here are some data wrangling that needs to be done:
+
+-   Reset the default parameters.
+
+-   Get the geographic coordinates for each campus. Using the center of the city is good enough for the resolution of the map we'll produce.
+
+-   Scale the data values into categories.
+
+-   Specify a wider line around the data points.
+
+-   Make the column names compatible with those needed to make a map.
+
+Don't be concerned with how this is done here. There are methodology descriptions shown elsewhere. The goal is to demonstrate a more complex map, and that takes some data wrangling.
+
+```{r "UCwrangle"}
+
+## Add California to the campus cities.
+location <- paste0(inst$Campus,", California, USA") 
+
+## Get the coordinates from the location.
+coord <- coord <- geocode(location, output = "latlon")
+
+## Add the coordinates to the original location data.
+inst2 <- cbind(inst,coord)
+
+## Divide the Undergraduates (school size) into size categories.
+inst2$sindex <- site_cuts(quant_var = inst2$Undergrads, cuttype = "quartiles4")
+
+## Convert the index to a point size value; merge the size data into the data table
+size_lookup <- read_csv(col_names = TRUE, file =
+    "sindex, point_size
+     1,      3
+     2,      5
+     3,      7
+     4,      9")
+inst2 <- merge(inst2, size_lookup, by = "sindex")
+
+## Cut the Acceptance data into chunks
+inst2$aindex <- site_cuts(quant_var = inst2$Acceptance, 
+                          cuttype = "quartiles4")
+
+## Convert the index to a point color value; merge the color data into the data table
+color_lookup <- read_csv(col_names = TRUE, file =
+    "aindex, point_color
+     1,      red
+     2,      orange
+     3,      yellow
+     4,      green")
+inst2 <- merge(inst2, color_lookup, by = "aindex")
+
+## Cut the Financial Aid percentage into categories
+inst2$findex <- site_cuts(quant_var = inst2$Aid, 
+                          cuttype = "quartiles4")
+
+## Assign colors to the Aid categories; merge the aid colors into the data table
+color_lookup2 <- read_csv(col_names = TRUE, comment = "#", file =
+    "findex, point_outline_color
+     1,      black           # little aid
+     2,      gray60
+     3,      darkorchid2
+     4,      maroon1         # ample aid")
+inst2 <- merge(inst2, color_lookup2, by = "findex")
+
+## Change the stroke size (line around point).
+column$point_outline_thickness <- 3
+
+## Fix the names so they are standard column names to get labels.
+inst2 <- inst2 %>% 
+  dplyr::rename(text = Abbrev)
+
+gt(inst2) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5)
+```
+
+Now it is time to create the map.
+
+The coding is as follows:
+
+-   The size of the point indicates the number of undergraduates.
+
+-   The point color is the acceptance rate (green = high, yellow = medium, red = low).
+
+-   The point outline color is the fraction of students getting financial aid (blue = high, pink = medium, black = low).
+
+For example, UC (Berkeley) is a big campus it is hard to get into, and it gives relatively little financial aid. On the other hand, UCM (Merced) is a new campus that is small, relatively easy to get into, and offers more students financial aid.
+
+```{r "UCmap"}
+#| label: fig-UCmap
+#| fig-cap: "Properties of the University of California campuses."
+
+## Expand the map margins just a bit
+column$margin <- 0.1
+
+## Generate a basemap
+basemap <- site_google_basemap(datatable = inst2)
+
+## Show the map (with points & labels)
+ggmap(basemap) +
+  site_points(datatable = inst2) +
+  site_labels(datatable = inst2) +
+  simple_black_box
+
+```
+
+You should now see some of the potential available through the use of symbolism.
+
+Note that there are no changes to the labels, nor are there any names added to this plot. Exploration in the use of symbolism has just started.

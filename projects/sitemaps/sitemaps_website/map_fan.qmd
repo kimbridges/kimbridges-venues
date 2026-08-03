@@ -1,0 +1,354 @@
+---
+title: "Fan Symbols"
+---
+
+A "fan" is a graphic symbol that shows a location, direction and field width. Combined with the other graphic symbols, the fan places photos in a rich context on base maps.
+
+The basic information for a fan symbol is added to a basic data table or it can be in its own data table. This distinction is important as it is often possible to generate a data table from a set of photographs. The site_photos function builds a table with values you can use to create the fields necessary for the site_fans function. You'll see how this works in a few examples.
+
+Cellphones collect considerable data about photos being taken. These data values are stored in each photo's EXIF data which is part of a JPG (or JPEG) image. This shows an advantage of using cellphone photos to document sites. Many "regular" cameras do not store all of the information needed to create fan symbols.
+
+It is possible, although perhaps tedious, to add data if a set of photos doesn't have location, direction or view width information. In that case, the values used may be general approximation. These are often adequate for the sorts of maps produced with the sitemaps functions.
+
+## Getting Started
+
+We'll get started by doing our usual initialization.
+
+```{r "initialize"}
+library(geosphere)
+library(sitemaps)
+library(ggmap)
+library(ggplot2)
+library(readr)
+library(gt)
+library(dplyr)
+library(sp)           ## To make the SpatialPoints
+library(tibble)
+library(stringr)
+library(exifr)        ## Get photo EXIF data
+library(lubridate)    ## Handle dates
+library(stats)
+library(REAT)         ## Used to do the regression for the field of view
+library(exifr)        ## Photo EXIF data retrieval
+
+## Initialize Google Map key; the key is stored in a system folder.
+googleKey <- Sys.getenv("GGMAP_GOOGLE_API_KEY")
+register_google(key = googleKey, account_type = "standard")  
+  
+```
+
+A few more things are need before we begin.
+
+```{r "setup"}
+
+## Use two functions from sitemaps to initialize parameters
+column <- site_styles()
+hide   <- site_google_hides()
+
+## Establish a theme that improves the appearance of a map.
+## This theme removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2),
+                    legend.position = "none")
+```
+
+### Example: Map photos using default values
+
+This example shows the locations and direction information for a few photos taken with a cellphone at the National Arboretum (Washington, DC).
+
+All of the data (@tbl-defaulttest) for the map come from an EXIF extraction using the `site_photo` function. A few columns needed renaming so that they will plot using the `site_fans` and `site_labels` functions.
+
+The purpose of this example is to show the relative ease of providing a map with photo information with very little code.
+
+::: callout-warning
+The `dir` and `fov` data in the photo EXIF file **may not be accurate,** especially if the camera compass is not calibrated. It is possible to manually update the EXIF data using exiftool with the exiftool GUI software. Consult [exiftool.org](exiftool.org "Examine and modify EXIF data") for the software and editing information.
+:::
+
+```{r}
+#| label: tbl-defaulttest
+#| tbl-cap: "Image information for photos from the National Arboretum."
+
+## Reset the defaults
+column <- site_styles()
+
+## Photo folder
+folder <- "photos/NatArboretum"
+
+## Read the EXIF data
+exif_data <- site_photos(folder)
+
+## Print the data for confirmation
+gt(exif_data) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5) %>% 
+  fmt_number(columns = fov, decimals = 0) 
+
+```
+
+The photo file has been processed and returned relevant information. However, the site_photos function purposely returns column names that are not correct for processing with the site_fans function. This is done because it isn't always obvious which columns will be used and, quite possibly, how they should be modified before they are used.
+
+The next code chunk shows a simple renaming of the key columns and the production of a map (@fig-defaultmap) with the fan symbols.
+
+```{r}
+#| label: fig-defaultmap
+#| fig-cap: "Fan symbols for photos taken at the National Arboretum."
+#| 
+## Save a new dataset with column names updated so they are standard.
+exif_data2 <- exif_data %>% 
+  dplyr::rename(text            = description, 
+                fan_direction   = dir, 
+                fan_field_width = fov)
+
+## Adjust the basemap margin
+column$margin <- 0.8
+
+## Basemap
+basemap <- site_google_basemap(datatable = exif_data2)
+
+## Put on data points, labels and arms
+fan_test <- ggmap(basemap) +
+  site_fans(datatable   = exif_data2) +
+  site_points(datatable = exif_data2) +
+  site_labels(datatable = exif_data2) +
+  simple_black_box
+
+fan_test
+
+```
+
+### Example: Adding direction data to photo locations
+
+Some cell phones (and maybe cameras) provide both the direction (bearing) and view width (FOV) for each photo with this information saved in the EXIF data.
+
+This example, photo information only had the lat/lon data. This was copied into the data table. Reference to a Google Maps image provided an estimation of the direction each photo was taken. @tbl-huntphotos provides another test of the `sites_fan` function. 
+
+```{r}
+#| label: tbl-huntphotos
+#| tbl-cap: "Image information for photos from the Huntington Botanical Garden."
+
+## Reset the parameters
+column <- site_styles()
+
+## The data file with the photo direction information
+direction_data <- read_csv(col_names = TRUE, file =
+ "text, lat,       lon,         fan_direction
+103652, 34.126966, -118.110479,  85
+104012, 34.126753, -118.109852, 187
+104924, 34.126059, -118.110084, 309
+105052, 34.126086, -118.110165, 273
+105513, 34.125702, -118.110084, 160
+110451, 34.125009, -118.110411,  95
+110848, 34.125142, -118.110639,  25
+111201, 34.125277, -118.110960, 301")
+
+## Put out a table to confirm the EXIF data
+gt(direction_data) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5)
+```
+
+The data table already has the correct names for the site_fans and site_labels functions. Now it is time to do a plot on a satellite image (@fig-huntmap).
+
+The code chunk has a commented-out statement that shows how to get a PNG file with the map.
+
+```{r}
+#| label: fig-huntmap
+#| fig-cap: "Photos in the desert area at the Huntington Botanical Garden"
+#| 
+# ## Rename some columns to the standard names
+# photo_exif2 <- photo_exif %>% 
+#   dplyr::rename(text=number, fan_direction=dir, fan_field_width=fov)
+
+## Adjust some of the fan styles
+column$fan_alpha <- 0.4
+column$fan_arm_length <- 50
+column$margin <- 0.9
+
+## Assign a field width based on the camera information (lens length, etc)
+## This is the same for all the photos
+column$fan_field_width <- 48
+
+## Basemap
+column$gmaptype <- "satellite"
+basemap <- site_google_basemap(datatable = direction_data)
+
+## Put on data points, labels and arms
+plot_hunt <- ggmap(basemap) +
+  site_fans(datatable   = direction_data) +
+  site_points(datatable = direction_data) +
+  site_labels(datatable = direction_data) +
+  simple_black_box
+
+plot_hunt
+
+## ggsave(filename="Huntington_photolocs.png",plot=plot_hunt, width=8, height=8)
+
+```
+
+### Example: Fan symbols and point colors
+
+This example is a reminder that the other sitemap functions can be used with the fan symbols.
+
+We'll use `site_fans` function with the Puhimau map to show the locations, directions and field of view of each of the photos taken at this research site along with the a color code to indicate the temperature category. The analysis starts with just the location and temperature data (@tbl-parkdata).
+
+```{r}
+#| label: tbl-parkdata
+#| tbl-cap: "Surface soil temperature measurements at Puhimau Hot Spot."
+
+## Read in the field data.
+puhimau <- read_csv(col_names = TRUE, file = 
+      "Site,  Lon,        Lat,        Temperature, color
+       1,    -155.251451,	19.389354,	140,         red
+       2,    -155.251483,	19.388421,	125,         orange
+       3,    -155.249834,	19.389709,	165,         red
+       4,    -155.248924,	19.389591,	180,         red
+       5,    -155.248982,	19.388827,	102,         blue
+       6,    -155.248024,	19.389952,	 97,         blue
+       7,    -155.249994,	19.388816,	135,         orange
+       8,    -155.251831,	19.387395,	 95,         blue")
+
+## Rename the a few column and shift all the column names to lowercase
+puhimau2 <- puhimau %>% 
+  dplyr::rename(text = Site, point_color = color) %>% 
+  dplyr::rename_with(tolower)
+
+## Show the data in a table
+gt(puhimau2) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5) %>% 
+  tab_source_note(source_note = "Data: 2017 field survey") %>% 
+  tab_footnote(footnote = "degrees F",
+      locations = cells_column_labels(columns = temperature))
+
+```
+
+The next thing is to add some data specifically for the fans. The two key items are the fan_direction (bearing) of the photo and the fan_field_width (field of view).
+
+A new data table is constructed that has the fan information. The tables are merged with the column that is the same in both tables ("text"). As usual, it is a good idea to check that all is well (@tbl-fandata) before moving on.
+
+```{r}
+#| label: tbl-fandata
+#| tbl-cap: "Full data for the Puhimau photo locations."
+
+## Read the extra data about the photos
+photo_dir <- read_csv(col_names = TRUE, file = 
+  "text, fan_direction, fan_field_width
+   1,    45,        53
+   2,    75,        120
+   3,    210,       53
+   4,    160,       75
+   5,    10,        95
+   6,    190,       75
+   7,    45,        45
+   8,    25,        40")
+
+## Merge the two sets of data
+puhimau3 <- merge(puhimau2, 
+                        photo_dir, 
+                        by="text")  
+
+## Make a table to verify the data
+gt(puhimau3) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5)
+
+```
+
+We're now ready to place the fan symbols on the map (@fig-puhimaumap). Note that a few of the default values for the fan have been changed.
+
+```{r}
+#| label: fig-puhimaumap
+#| fig-cap: "Photo locations and view areas at Puhimau Hotspot."
+
+## Modify the arm characteristics & don't fill the fan
+column$fan_arm_length <- 80
+column$fan_arm_color  <- "red"
+column$fan_fill       <- FALSE
+
+## Modify the label connector color so that it isn't confused with the arms
+column$label_connector_color <- "white"
+
+## Obtain a basemap
+column$gmaptype <- "satellite"
+basemap <- site_google_basemap(datatable = puhimau3)
+
+## Put on data points, labels and fan arms
+puhi_map <- ggmap(basemap) +
+  site_fans(datatable = puhimau3) +
+  site_labels(datatable = puhimau3) +
+  site_points(datatable = puhimau3)
+
+puhi_map
+
+```
+
+## Calculating the Field of View
+
+The field of view of a camera, which is used as the `fan_field_width`, depends on the focal length of the lens and the sensor size. For the discussion here, let's assume we are working with full-frame (or equivalent) camera sensors.
+
+Data relating the field of view to the lens focal length is given at the www.nikonians.org/reviews/fov-tables website. The data from this website are used here to develop a function that can be used to calculate the field of view from the focal length.
+
+The function is:
+
+field of view \<- 1088.15264 \* focal_length \^ -0.95814
+
+The function works pretty well except as the shortest focal lengths. Nonetheless, this is probably adequate for the diagrams produced by site_fans.
+
+The code a function that can be used to calculate the horizontal field of view for any lens using the focal length (mm).
+
+```{r}
+#| label: fig-fovdata
+#| fig-cap: "Field of view for lenses with different focal lengths."
+
+## Field of View data
+fov <- read_csv(col_names = TRUE, file =
+"focal_length, horiz_fov
+ 13, 81.2
+ 17, 70.4
+ 24, 53.1
+ 35, 37.8
+ 50, 27.0
+ 85, 16.1
+ 90, 15.2
+100, 13.5
+135, 10.2
+200,  6.9
+400,  3.4
+600,  2.3
+800,  1.7")
+
+## Get the fit to several popular regression models
+parms <- curvefit(fov$focal_length, fov$horiz_fov, plot.curves = FALSE)
+
+## The power model works best
+parms  ## look at power model
+
+## Power model parameters
+fov$fit_fov <- 1088.15264*fov$focal_length^-0.95814
+
+## Check results with a table
+gt(fov)
+
+## Look at a plot
+ggplot(fov, aes(x=focal_length, y=horiz_fov)) +
+  geom_point() +
+  geom_line(aes(x=focal_length, y=fit_fov)) +
+  labs(x = "focal length (mm)",
+       y = "Field of View (degrees)")
+
+## Here is a function that can be used in some code
+field <- function(focal_len){
+  ## Field of View approximation
+  fit <- 1088.15264*focal_len^-0.95814
+  return(fit)
+} ## end function field
+
+## Test the function with a lens focal length
+focal_length <- 100
+field <- field(focal_length)
+
+test_result <- paste0("A lens with a focal length of ", focal_length, 
+                      " (mm) has an approximate field of view of ",
+                      round(field, digits=1)," (degrees).")
+cat(test_result)
+
+```

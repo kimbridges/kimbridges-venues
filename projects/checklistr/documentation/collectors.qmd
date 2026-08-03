@@ -1,0 +1,76 @@
+# Who Collected It, and When
+
+A checklist is made by people. Behind every record is a collector who stood in the forest on a particular day and gathered a plant. This chapter looks at who they were and when they came — because the pattern of their visits is the first thing the records reveal, and it shapes everything the checklist can and cannot say.
+
+At Kīpuka Puaulu the story has three acts: a sparse era of early botanists, a single intensive survey that dominates the record, and a scatter of modern visits. The names and dates are recovered from the herbarium labels themselves.
+
+```{r}
+#| label: setup-collectors
+#| message: false
+
+## --- Standard packages ---
+
+## data handling and graphics (dplyr, readr, ggplot2, ...)
+library(tidyverse)
+## formatted tables
+library(gt)
+
+## --- Package from github/kimbridges ---
+
+## install once with: install_github("kimbridges/checklistr")
+library(checklistr)
+
+## --- Options ---
+
+## suppress read_csv() column-type messages
+options(readr.show_col_types = FALSE)
+```
+
+## A century of visits, in one figure
+
+The records span more than a hundred years. Coloring each year's specimens by who collected them shows the shape of that century at a glance.
+
+```{r}
+#| label: collecting-history
+#| fig-cap: "Preserved specimens from Kīpuka Puaulu by year, colored by primary collector. The record is nearly flat for six decades, then a single tall column — the 1979–80 survey — towers over everything before or since."
+#| fig-width: 8
+#| fig-height: 5
+
+## the saved, deduplicated specimen records
+specimens <- read_csv("data/kipuka_puaulu_specimens_dedup.csv")
+
+## the collecting history, colored by primary collector
+plot_collecting_history(specimens, place = "Kīpuka Puaulu")
+```
+
+```{r}
+#| label: collector-stats
+#| include: false
+
+## numbers for the prose
+n_rec  <- nrow(specimens)
+n_coll <- n_distinct(specimens$collector)
+yr     <- range(specimens$year, na.rm = TRUE)
+contrib <- collector_contributions(specimens)
+top     <- contrib |> slice_max(total_taxa, n = 1)
+```
+
+The single tall column is the whole story in miniature. From 1911 to the late 1970s, `r n_rec` specimens accumulate a few at a time — an early botanist here, a passing collector there. Then, in 1979 and 1980, one survey adds more specimens than the previous six decades combined. After it, the record thins again to occasional modern visits. Across the whole span, `r n_coll` collectors are named, but they did not contribute equally.
+
+## The survey that made the list
+
+Look at the collectors individually and the dependence becomes concrete.
+
+```{r}
+#| label: collector-activity
+#| fig-cap: "Each collector's window of activity. Point size is the number of specimens; color is the number of distinct taxa. One collector — Cuddihy, in 1979–80 — is both the largest and the most taxon-rich point on the plot."
+#| fig-width: 8
+#| fig-height: 5
+
+## who collected, and when
+plot_collector_activity(specimens, place = "Kīpuka Puaulu")
+```
+
+The largest, brightest point belongs to a single collector working a single pair of years: **`r top$collector`**, whose 1979–80 effort alone accounts for `r top$total_taxa` of the checklist's taxa, `r top$unique_taxa` of them collected by no one else. The early names — Rock, Degener, Fosberg — are the discovery era, thin but historically deep (Degener's own records span nearly fifty years). The right side of the plot is the modern scatter: small collections, often a single day, adding a species or two.
+
+This is what "campaign-dependent" means. The checklist is not the settled product of a century of steady attention; it is, to a first approximation, the catalogue of what **one survey** found, lightly padded on either side. That has a direct consequence for the next chapters. The completeness estimate rests on that survey's thoroughness; the discovery curve's great leap *is* this column; and even the determination conflicts are mostly this survey's sheets, entered twice. Who collected, and when, is not background to the checklist. It is the checklist's foundation, and knowing its shape is the first step in reading the list honestly.

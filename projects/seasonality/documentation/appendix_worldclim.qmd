@@ -1,0 +1,112 @@
+# Retrieving WorldClim Data {.unnumbered}
+
+Every number in this document begins as monthly temperature and rainfall from **WorldClim**, a global climatology built from weather-station records and interpolated to a grid. Version 2.1 carries monthly normals averaged over 1970 to 2000: average temperature, minimum and maximum temperature, precipitation, and a few other variables. We use average temperature (`tavg`) and precipitation (`prec`). This appendix shows how `seasonalityr` retrieves them, so any site or region in the document can be reproduced from scratch, and so you can point the same tools at places of your own.
+
+```{r}
+#| label: setupappendix
+#| message: false
+
+## many useful functions (dplyr, ggplot2, readr, tibble)
+library(tidyverse)
+## formatted tables
+library(gt)
+## install once with: remotes::install_github("kimbridges/seasonalityr")
+library(seasonalityr)
+## suppress read_csv() column-type messages
+options(readr.show_col_types = FALSE)
+```
+
+## The retrieval function
+
+`get_climate()` does the whole job: it downloads the WorldClim rasters once, caches them, and extracts the twelve monthly values at each site's coordinates. The input is the part you supply yourself, and it is just a small table with one row per site and four columns. `name` is a label for the site. `zone` is your own grouping label, carried straight through to the output, where it is handy later for coloring or faceting. `lat` and `lon` are the coordinates in decimal degrees, with south and west written as negative numbers.
+
+To show how to bring your own sites, here are two that are nowhere in the package's bundled `cities`: Honolulu, where this is being written, and Reykjavik, near the cold end of the seasonality range. You build the table by hand. That is the whole trick: once it has those four columns, `get_climate()` will take it.
+
+```{r}
+#| label: usersites
+
+## a table of your own sites: one row each, the four required columns.
+## decimal degrees; south and west are negative.
+my_sites <- read_csv(
+  "name,       zone,      lat,     lon
+   Honolulu,   tropical,  21.31,  -157.86
+   Reykjavik,  subpolar,  64.13,   -21.90",
+  trim_ws = TRUE)
+
+my_sites |>
+  gt() |>
+  tab_header(title = "Your input: a site table you build by hand")
+```
+
+Then hand that table to `get_climate()`. The call is identical whether the sites are your own or the package's:
+
+```{r}
+#| label: getclimate
+#| eval: false
+
+## download once, cache, and extract the monthly normals at your sites
+clim <- get_climate(my_sites, res = 10)
+
+clim
+#> # A tibble: 24 x 5
+#>    name     zone     month  tavg  prec
+#>    <chr>    <chr>    <int> <dbl> <dbl>
+#>  1 Honolulu tropical     1  22.6   139
+#>  2 Honolulu tropical     2  22.7    78
+#>  3 Honolulu tropical     3  23.4    96
+#>  ...
+```
+
+The result has one row per site-month, carrying your `name` and `zone` through unchanged, ready for `compute_indices()` or `indices_table()`.
+
+## The download and the cache
+
+The first call to `get_climate()` downloads the global WorldClim layers through the `geodata` package. This is the one heavy step. At the default 10 arc-minute resolution the twelve temperature and twelve precipitation layers together are a modest download; at finer resolutions they grow quickly. The data is written under the `path` directory and reused on every later call, so the download happens only once.
+
+```{r}
+#| label: caching
+#| eval: false
+
+## send the cache somewhere durable so it survives between sessions
+clim <- get_climate(trio, res = 10, path = "wc_cache")
+```
+
+Leaving `path` at its default puts the cache in the session's temporary directory, which is cleared when R restarts. For repeated work, give it a real folder. The rasters land in `wc_cache/climate/wc2.1_10m/`, and `geodata` will find them there next time rather than downloading again.
+
+## Choosing a resolution
+
+WorldClim ships at several grid resolutions, named by the angular size of a cell: 10, 5, and 2.5 arc-minutes, and 30 arc-seconds. The `res` argument selects among them. Coarser grids are smaller and faster and are plenty for points spread across a continent; finer grids resolve coastlines, valleys, and rain shadows, at the cost of much larger downloads. The point work and the regional maps in this document use 10 arc-minutes throughout, which keeps the data manageable while still separating places a few tens of kilometers apart.
+
+## What WorldClim offers beyond temperature and rain
+
+This document uses only average temperature and precipitation, the two channels the climate diagram is built from. WorldClim 2.1 also serves monthly **minimum** and **maximum** temperature (`tmin`, `tmax`), along with solar radiation, wind, and water-vapor pressure. The minimum-temperature layers are what a true Walter-Lieth frost line needs, the marker for months that can freeze. Our warm-desert examples never use it, but a temperate or high-latitude site, the kind the document points toward in its closing chapter, could retrieve `tmin` the same way and add the frost story back.
+
+## How the bundled normals were made
+
+To keep the main chapters light, the desert trio's monthly normals were retrieved once and saved to a small file, `data/desert_trio_monthly.csv`, which Chapter 2 reads. That file was produced by the recipe below: retrieve, add a readable desert label and the moisture value `m = P - 2T`, round, and write.
+
+```{r}
+#| label: makecsv
+#| eval: false
+
+library(seasonalityr)
+library(dplyr)
+library(readr)
+
+trio <- dplyr::filter(cities, name %in% c("Las Vegas", "Tucson", "El Paso"))
+clim <- get_climate(trio, res = 10, path = "wc_cache")
+
+trio_csv <- clim |>
+  mutate(desert = recode(name,
+           "Las Vegas" = "Mojave (Las Vegas)",
+           "Tucson"    = "Sonoran (Tucson)",
+           "El Paso"   = "Chihuahuan (El Paso)"),
+         tavg = round(tavg, 2),
+         prec = round(prec),
+         m    = round(prec - (2 * tavg), 2)) |>
+  select(name, desert, month, tavg, prec, m)
+
+write_csv(trio_csv, "data/desert_trio_monthly.csv")
+```
+
+The same pattern produces the data behind any figure in the document. Pick sites, call `get_climate()`, compute the indices, and the rest follows.

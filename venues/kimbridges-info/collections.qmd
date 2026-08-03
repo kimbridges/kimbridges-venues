@@ -1,0 +1,8 @@
+---
+title: "Collections"
+subtitle: "Curated sets of work where one idea spawns the next"
+---
+
+Collections are larger projects that combine multiple media. Art, audio, video, and narrative are woven together around a single premise. Each collection documents the capabilities of AI at a specific point in time.
+
+[Enter the Collections site &rarr;](https://kimbridges-collections.netlify.app){.btn .btn-primary}

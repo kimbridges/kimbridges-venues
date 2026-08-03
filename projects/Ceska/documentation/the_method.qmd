@@ -1,0 +1,43 @@
+# The Method, Recovered
+
+This is the chapter where the rules come into the open. Everything so far has been about the idea of the two-way table and the story of recovering COENOS. Here is the method itself — the procedure that was locked in the binary, set down plainly enough to follow. It is a little more technical than the chapters before it, but only a little. There is no code yet; that is the next chapter. For now we just want to see the machine's reasoning in daylight.
+
+It will help to have one dataset in mind. Throughout, we will refer to a study of **18 relevés** — eighteen field plots — which is one of the examples that came with COENOS. The numbers below are the real thresholds the method uses for a study of that size.
+
+## Constancy
+
+Everything starts with a simple count. The **constancy** of a species is the number of relevés it occurs in. A species found in twelve of the eighteen plots has a constancy of twelve; one found in a single plot has a constancy of one.
+
+Constancy is the method's basic measure of how widespread a species is, and almost every decision that follows is made by comparing a species' constancy against a threshold. It is worth pausing on how little this uses. Constancy ignores cover — how much of a plot a species filled — and counts only presence. The bones of the pattern, as Chapter 1 put it, are in presence and absence, and constancy is the first thing the method reads from them.
+
+## The trim, as a rule
+
+Chapter 1 described setting aside the extremes — the species too common to distinguish anything and those too rare to mark a pattern. The method makes that idea exact, using constancy.
+
+A species is **too rare** if it occurs in fewer than three relevés. With one or two occurrences there is no distribution to share with other species, so these are pulled out and held for a footnote at the bottom of the table. A species is **too common** if it occurs in two-thirds or more of the relevés. In our eighteen-plot study, two-thirds is twelve, so any species present in twelve plots or more is ubiquitous: it cannot separate one kind of plot from another, because it is in nearly all of them. These are pulled out too, to sit below the table as constant companions.
+
+What remains — species present in at least three plots but in fewer than twelve — are the **eligible** species — the candidates from which the differential groups are built. Everything that follows works only on this middle band. The decision is the same one Chapter 1 called strange-but-intuitive, now stated as two numbers: below three, set aside; at two-thirds or above, set aside; the middle is where pattern can live.
+
+## When several species make a group
+
+The heart of the method is deciding when a set of species forms a group. Recall what a group is: several species whose presences and absences coincide — they occur together in one block of relevés and are mostly absent from the rest. The method turns "occur together" and "mostly absent from the rest" into a test with two halves.
+
+Picture a candidate group: a set of species, and the block of relevés they seem to favor. For the group to hold, two things must be true. First, every species in it must be **present in most of the block's relevés, and largely absent outside it**. A species that is in the block's plots but also scattered through all the others is not diagnostic of the block; it has to be concentrated inside and scarce outside. Second, every relevé in the block must **contain most of the group's species** — a plot that has only one or two of them does not really belong to the block.
+
+The words "most" and "largely absent" are set by two percentages — an inside percentage and an outside percentage. A species qualifies if it occurs in at least the inside percentage of the block's relevés and in no more than the outside percentage elsewhere. COENOS runs this test at three settings, from loose to strict: 40 and 10, then 50 and 20, then 66 and 33. A loose setting will gather broad groups; a strict one finds only the tightest. By trying all three, the method lets both the obvious patterns and the subtle ones appear.
+
+Finding such a group is a search, and here the recovered method parts ways with the original in a way worth admitting. COENOS *grew* its groups: it began each one from a single seed species and gathered the others that shared its distribution, and its restart files still record that seed and the number of passes it took — the very seed the Chapter 3 figure shows. But the growing rule leaned on a tie-break the authors never wrote down, and that was the one piece that did not survive. So `coenosr` reaches the same groups from the opposite direction: it *shrinks* to them. It begins with the whole block of eligible species and the relevés they occupy and repeatedly removes the least-connected species or relevé, paring the table down until what remains is a dense block that satisfies both halves of the test. A group needs at least four species to count; fewer than that is not a pattern worth marking. This shrinking search is the part that took the most care to get right, because the rule for "most" hides a small but real decision about rounding — whether forty percent of eighteen rounds up or down. Getting that decision right, against the program's own saved answers, was the difference between a table that nearly matched and one that matched.
+
+## Putting the table in order
+
+Forming the groups is half the work. The other half is arranging them — and the relevés beneath them — so the table reads as a clean diagonal rather than a jumble of blocks.
+
+COENOS does this with **reciprocal averaging**, an old and elegant idea. Give every relevé a provisional score. Now score each species by the average of the scores of the relevés it occurs in. Then turn around and re-score each relevé by the average of the scores of the species it contains. Repeat. The scores chase each other back and forth and quickly settle, and when they do, species that occur in similar relevés have ended up with similar scores, as have relevés that share similar species. Sort the species by their scores and the relevés by theirs, and the table falls into its diagonal. Related things have been pulled next to related things, by nothing more than repeated averaging.
+
+The ordering is what makes the sorted table legible. Without it you would have the right groups in a random arrangement; with it, the groups step down the page in order, each above the plots it characterizes.
+
+## The sorted table
+
+The finished table assembles in a fixed shape. The differential species groups come first, in the order reciprocal averaging gave them, each group a small block of species above a stripe of marks showing which relevés it defines. Below the groups sit the constant companions — the ubiquitous species set aside earlier — listed in order of decreasing constancy, because while they mark no single group they still describe the vegetation as a whole. At the very bottom, in a footnote, are the rare species, each with the one or two plots it appeared in, kept so that nothing is silently thrown away.
+
+That is the entire method: count constancy, set aside the extremes, grow groups by the inside-and-outside rule at three strictnesses, order everything by reciprocal averaging, and lay the result out groups-first. It is the procedure Ceska and Roemer made explicit in 1971 and compiled into COENOS in 1991 — and it is now, again, something you can read. The next chapter does it for real, in R, with `coenosr`.

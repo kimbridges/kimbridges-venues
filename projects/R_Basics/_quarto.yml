@@ -1,0 +1,33 @@
+project:
+  title: "R Basics"
+  output-dir: _output
+  type: book
+
+book:
+  title: "R Programming: Basics Made Simple"
+  subtitle: "Everyday code suggestions to speed programming"
+  author: "K. W. Bridges"
+  date: "7/21/2023"
+  cover-image: cover_art.png
+  chapters:
+    - index.qmd
+    - Documents.qmd
+    - Packages.qmd
+    - Input.qmd
+    - Dates.qmd
+    - Tables.qmd
+    - Biblio.qmd
+  navbar: 
+    logo: logo_art.png
+
+toc: true
+number-sections: true
+bibliography: references.bib 
+  
+format:
+  html:
+    css: styles.css
+  pdf:
+    documentclass: report
+    margin-left: 30mm
+    margin-right: 30mm

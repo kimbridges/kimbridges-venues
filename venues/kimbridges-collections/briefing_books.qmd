@@ -1,0 +1,216 @@
+---
+title: "The Briefing Books"
+subtitle: "What the herbarium record can tell you about a field site before you go."
+date: 2026-07-26
+categories: ["AI", "Science", "Botany"]
+image: Briefing_Books/images/briefing_books_card.png
+toc: false
+---
+
+![](Briefing_Books/images/briefing_books_card.png){.hero-image}
+
+A day in the field is expensive. Reaching a remote site can cost hundreds of dollars and consume most of the daylight. What you bring back depends almost entirely on what you knew before you left.
+
+A briefing book is what you read first. For one site, it assembles what the herbarium record already knows about that place. Which plants have been collected there. Who collected them, and when. What has not been touched in fifty years. What is protected and must not be collected at all. Where the coordinates can be trusted, and where they cannot.
+
+It is printed. That is a deliberate choice rather than a default. Paper goes into the field without a battery and survives being rained on. You can write on it. You can hand copies to colleagues before the trip, which reduces your baggage and gives each of them something concrete to carry.
+
+### Two directions at once
+
+Most collecting tools face forward. They help you plan the next trip.
+
+A briefing book faces both ways. Forward, it identifies targets: the easy wins worth grabbing as you pass them, the high-value material that is genuinely stale, the taxa that only certain collectors ever seem to find. Backward, it works on the record that already exists. Ambiguous localities that need resampling. Determination conflicts that a fresh collection would settle. Double entries. Digitization gaps.
+
+The backward-facing half is where the ethic lives. A century of collecting effort already sits on the shelves. Correcting and enriching that record, and returning the corrections to the institutions the specimens came from, is worth as much as adding to it.
+
+::: {.objective}
+**Objective:** Make a field day more productive by using the existing record to direct it, and make the existing record better by using the field day to correct it.
+:::
+
+::: {.collection-section}
+
+## One format, two answers
+
+Every briefing book runs the same spine. The place at several scopes. The master list of everything recorded there. Climate and site factors. Herbaria and collectors. Collecting targets. Contested identities. A one-page field card to carry.
+
+The format is uniform. The answers are not.
+
+The two covers say it plainly. Kīpuka Puaulu reads "data-driven specimen collection." ʻIliau Loop Trail reads "observe and report, data-driven specimen collection." The fifth report occupies the same slot in both books and changes its name between them: "Collecting Targets" at one site, "Observe · Report · Collect" at the other.
+
+Nothing in the template produced that difference. The conservation layer did. Six of the twenty-eight taxa recorded on the ʻIliau rim are native species listed as Endangered or Critically Endangered, including the ʻiliau itself, a Kauaʻi endemic in the silversword alliance. A site like that is a treasure house. The correct instruction is to photograph and report, not to collect, and the report leads with it.
+
+The first report diverges the same way. At Kīpuka Puaulu the site is defined by nested radii on gentle terrain. At ʻIliau Loop Trail the trail runs along a rim with a four-hundred-metre drop beside it, and radius is meaningless. Elevation is the discriminator. Thirty-one percent of the records that appear nearby on a map are down on the canyon floor and belong to a different place entirely.
+
+:::
+
+::: {.collection-section}
+
+## Kīpuka Puaulu
+
+![](Briefing_Books/images/cover_kipuka_puaulu.png){.section-image}
+
+A mesic montane forest kīpuka in Hawaiʻi Volcanoes National Park, at 1229 m. Within two kilometres of the loop-trail centre the record holds 224 voucher specimens covering 100 vascular taxa. The checklist roughly doubles from the sensu-stricto core to the wider scope, growing from 57 taxa within 500 m to 100 within 2 km, which makes scope a decision rather than a setting. To the west the outer radius annexes a second kīpuka, Kīpuka Kī, which is grazing-thinned and species-poorer.
+
+This is the older and messier of the two records, and that is what makes it useful. Thirty-nine percent of the records sit on coarse gazetteer coordinates. Determination conflicts are frequent enough to need their own report, presented with the specimen sheet scans and the character that would settle each one.
+
+::: {.objective}
+**Objective:** Build the model. Establish what a briefing book contains, using a site with a long, uneven, hundred-year collecting history.
+:::
+
+**The seven reports**
+
+1. The Place at Several Scopes — scope as a choice, the nested-radii map, sensu lato against sensu stricto
+2. The Checklist (Master List) — all 100 recorded taxa, and what is present but not yet in the record
+3. Climate & Site Factors — elevation, climate, substrate, the site on the Whittaker diagram
+4. Herbaria & Collectors — who holds the material and who collected it, for planning the herbarium visit
+5. Collecting Targets — easy wins and high-value targets, plus the protected do-not-collect list
+6. Contested Identities — determination conflicts, with the sheet scans and the character to settle each
+7. Field Card — the one-page, carry-in-field summary
+
+The field card is the piece that actually goes in the pocket. It is reproduced below.
+
+<iframe src="Briefing_Books/pdfs/kipuka_puaulu/Field_Card_Kipuka_Puaulu.pdf" width="100%" height="800px" style="border: 1px solid #ddd; border-radius: 6px;"></iframe>
+
+**Downloads**
+
+- [Briefing Book — Kīpuka Puaulu (PDF)](Briefing_Books/pdfs/Briefing_Book_Kipuka_Puaulu.pdf) — the bound book, 22 pages, 22 MB
+- [1. The Place at Several Scopes (PDF)](Briefing_Books/pdfs/kipuka_puaulu/R1_place_at_scales.pdf) — 1.5 MB
+- [2. The Checklist (PDF)](Briefing_Books/pdfs/kipuka_puaulu/R2_master_list.pdf) — 58 KB
+- [3. Climate & Site Factors (PDF)](Briefing_Books/pdfs/kipuka_puaulu/R7_climate_site.pdf) — 67 KB
+- [4. Herbaria & Collectors (PDF)](Briefing_Books/pdfs/kipuka_puaulu/R10_herbaria_collectors.pdf) — 139 KB
+- [5. Collecting Targets (PDF)](Briefing_Books/pdfs/kipuka_puaulu/R34_collecting_targets.pdf) — 159 KB
+- [6. Contested Identities (PDF)](Briefing_Books/pdfs/kipuka_puaulu/R5_contested_identities.pdf) — 19 MB, contains full-resolution sheet scans
+- [7. Field Card (PDF)](Briefing_Books/pdfs/kipuka_puaulu/Field_Card_Kipuka_Puaulu.pdf) — 61 KB
+
+:::
+
+::: {.collection-section}
+
+## ʻIliau Loop Trail
+
+![](Briefing_Books/images/cover_iliau_loop.png){.section-image}
+
+A short loop on the Waimea Canyon rim in Kokeʻe, Kauaʻi, at 886 m. The trailhead is nearly invisible at highway speed and there is almost no parking, which is one reason the site is under-collected relative to its interest.
+
+The rim holds 28 vascular taxa in the record. Six of them are native species listed as Endangered or Critically Endangered. The ʻiliau itself, *Wilkesia gymnoxiphium*, is a Kauaʻi endemic in the silversword alliance and gives the trail its name.
+
+The site is vertical, and that changes the analysis. A two-kilometre radius drawn on a map sweeps in records from the canyon floor nearly eight hundred metres below, which belong to an entirely different flora. Elevation replaces radius as the discriminator, and the rim is defined as anything at or above 700 m. That single decision came out of the written site preview, not out of the data.
+
+::: {.objective}
+**Objective:** Test whether the format transfers. Run a second site through the same chain and see what the site itself forces to change.
+:::
+
+**The seven reports**
+
+1. The Place — A Vertical Site — elevation, not radius, defines this rim site, and the canyon-floor confusion
+2. The Rim Checklist (Master List) — all 28 recorded rim taxa, and what is known but not yet in the record
+3. Climate & Site Factors — a warmer, drier canyon rim, the site on the Whittaker diagram
+4. Herbaria & Collectors — a modern, mainland-herbaria record, for planning the herbarium visit
+5. Observe · Report · Collect — the endangered treasures to photograph, and the few taxa to collect
+6. Contested Identities — why this modern record is clean, unlike Kīpuka Puaulu
+7. Field Card — the one-page, carry-in-field summary, observe-and-report first
+
+<iframe src="Briefing_Books/pdfs/iliau_loop/Field_Card_Iliau.pdf" width="100%" height="800px" style="border: 1px solid #ddd; border-radius: 6px;"></iframe>
+
+**Downloads**
+
+- [Briefing Book — ʻIliau Loop Trail (PDF)](Briefing_Books/pdfs/Briefing_Book_Iliau_Loop.pdf) — the bound book, 14 pages, 4.2 MB
+- [1. The Place — A Vertical Site (PDF)](Briefing_Books/pdfs/iliau_loop/R1_place_at_scales.pdf) — 1.8 MB
+- [2. The Rim Checklist (PDF)](Briefing_Books/pdfs/iliau_loop/R2_master_list.pdf) — 54 KB
+- [3. Climate & Site Factors (PDF)](Briefing_Books/pdfs/iliau_loop/R7_climate_site.pdf) — 145 KB
+- [4. Herbaria & Collectors (PDF)](Briefing_Books/pdfs/iliau_loop/R10_herbaria_collectors.pdf) — 107 KB
+- [5. Observe · Report · Collect (PDF)](Briefing_Books/pdfs/iliau_loop/R34_targets.pdf) — 62 KB
+- [6. Contested Identities (PDF)](Briefing_Books/pdfs/iliau_loop/R5_contested_identities.pdf) — 43 KB
+- [7. Field Card (PDF)](Briefing_Books/pdfs/iliau_loop/Field_Card_Iliau.pdf) — 62 KB
+
+:::
+
+::: {.collection-section}
+
+## What the engine does, and what it does not
+
+The briefing books ask more of the AI than the other projects here do, and the difference is worth naming.
+
+Earlier work on this site proceeded in steps. A person asked for something, saw it, and asked for the next thing. The briefing books are orchestrated instead. From a coordinate and a page of site knowledge, the engine runs the entire dependent chain without a person in the middle: pull the occurrence records, remove duplicates, join family and lifeform, fetch conservation status, pull climate data, extract an elevation for every record, generate every figure, typeset the tables to a fixed standard, lay out the pages, and bind the set into one document.
+
+That is the new capability. It is not the same as the AI deciding what is true.
+
+Direction stays human. Each site begins with a written preview: why this place, how you get in, what is known to be there, what matters culturally. That preview is short, and it carries enormous leverage. The elevation discriminator that reorganized the entire ʻIliau analysis came out of one observation about a trailhead that is nearly impossible to see at highway speed.
+
+::: {.objective}
+**Objective:** Demonstrate that current AI can carry a long, dependent analytical chain from minimal input to a finished document, while leaving the judgments that require field knowledge where they belong.
+:::
+
+The honest sequence is worth stating. Kīpuka Puaulu is where the model was built, and building it took many rounds of correction. ʻIliau Loop Trail is where the orchestration showed itself. The second book came out of the chain in one pass, and the review that followed produced refinements rather than repairs.
+
+:::
+
+::: {.collection-section}
+
+## More than you asked for
+
+Something else happens when a tool is handed to the engine rather than run on its own, and it is the part that surprised us.
+
+Early in the Kīpuka Puaulu work the job was routine. Pull the occurrence records for a coordinate near the site. The engine pulled them, and then said something nobody had asked for. The records formed a ring with an empty middle.
+
+No line of code checks whether points form a ring. Nobody would write that check, because until that moment nobody had a reason to. Every guard inside an ordinary tool is a failure somebody thought of in advance and wrote down.
+
+A ring with a hollow centre means the query is centred on the wrong place. Making that reading required someone who had walked the trail. The true centre of the loop is 19.44095 north, 155.30295 west, about eight hundred and fifty metres from where the query had been sitting.
+
+The fix went in during the same exchange. Re-centred, the two-kilometre radius returned 224 records and 100 taxa instead of 379 and 150, and a planted forestry trial fell outside the boundary as a bonus. That corrected count became the anchor for every report in the book.
+
+Two separate things are worth pulling out of that sequence. The engine volunteered an observation that was in nobody's specification, and which observation it volunteered depended entirely on what the data turned out to look like. Then the correction was acted on immediately, while the data was still loaded and the person who could interpret it was still in the room. Suggested future work is normally the least acted upon paragraph in any scientific report. Here the distance between noticing and fixing was one exchange.
+
+It matters that the map was cheap to make. Making a map used to be enough of a chore that you made one at the end, to illustrate a conclusion you had already reached. Now it is routine enough to make one at the start, just to look. If the map is expensive, no map gets made, the ring is never seen, and the eight hundred and fifty metre error propagates quietly into every page that follows.
+
+The same trait produces confident mistakes at exactly the same fluency. The engine also marked a specimen collected in 1929 as relocatable by GPS, which is impossible. Both statements arrived sounding equally reasonable. What improved is not the reliability of these observations. What changed is that they now cost almost nothing to produce, which makes them worth having as long as someone qualified reads every one of them. A stand-alone script would have returned the mis-centred 379 records without comment, and every report built on them would have been wrong in a way no error message would ever have surfaced.
+
+:::
+
+::: {.collection-section}
+
+## Honest data
+
+A record of a plant is not the plant. Most of what looks like information in an occurrence database is softer than it appears, and every briefing book says so where it matters.
+
+Staleness is a gap in collecting effort, not evidence of rarity. A tree fern last collected in 1971 reads as urgent and is in fact abundant along the trail.
+
+Coordinate precision is not locatability. Fine decimals on a specimen collected in 1929 are somebody's later best guess, because GPS did not exist. Every target carries one of three honest tiers instead: relocatable, search the vicinity, or general area only.
+
+The record is not the flora. The most conspicuous species at a site are routinely the ones nobody bothers to collect, precisely because they are everywhere. Uluhe, the ground fern that blankets whole slopes, has no voucher at Kīpuka Puaulu and twenty-three in the surrounding region. Each master list therefore carries a note on what is probably present but unrecorded, for the botanist to confirm or dismiss.
+
+:::
+
+::: {.collection-section}
+
+## The data behind the books
+
+These are the tables the reports were built from, exported as they stood when each book was bound.
+
+::: {.objective}
+**Objective:** Publish the working data, not just the conclusions, so a reader can check any number in the reports or take the site further.
+:::
+
+**Kīpuka Puaulu**
+
+- [Master list (CSV)](Briefing_Books/data/kipuka_puaulu_master_list.csv) — 100 taxa with family, lifeform, status, IUCN category, last collection year, and the role each plays in the briefing
+- [Target analysis (CSV)](Briefing_Books/data/kipuka_puaulu_target_analysis.csv) — the same 100 taxa with 18 fields, including record counts, collector counts, years since last collection, locatability tier, and the bucket each target falls into
+
+**ʻIliau Loop Trail**
+
+- [Rim checklist (CSV)](Briefing_Books/data/iliau_loop_rim_checklist.csv) — the 28 rim taxa with 21 fields, including rim record counts, regional counts, locatability, and conservation flags
+- [Specimen records (CSV)](Briefing_Books/data/iliau_loop_specimen_records.csv) — 65 deduplicated voucher records with collector, institution, date, coordinates, and the extracted elevation used to separate rim from canyon floor
+
+:::
+
+::: {.collection-section}
+
+## Working prototypes
+
+These two books have not been through expert field review. They are published here as prototypes, which is deliberate. A briefing book is only worth anything if it survives contact with someone who knows the site and the flora, and that judgment comes faster from a document people can open than from one waiting to be perfect.
+
+Comments are welcome, particularly on the report catalog, on anything that reads as false precision, and on what a working collector would want that is not here.
+
+Kīpuka Puaulu and ʻIliau Loop Trail are the first two sites. Others will follow in the same format.
+
+:::

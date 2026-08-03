@@ -1,0 +1,13 @@
+---
+title: "Impressions of Persian Buttercups"
+subtitle: "Ranunculus at The Flower Fields."
+date: 2016-03-04
+categories: ["Gardens", "Ranunculus"]
+image: ../images/Persian_Buttercups.jpg
+pdf: ../pdfs/Persian_Buttercups.pdf
+---
+The Flower Fields in Carlsbad highlight flowers of just thirteen colors. This essay explores variability in pink and white varieties.
+
+Pages: 33
+
+<iframe src="../viewer.html?pdf=Persian_Buttercups.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

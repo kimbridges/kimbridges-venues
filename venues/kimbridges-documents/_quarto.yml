@@ -1,0 +1,47 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - ai_microscope/**
+    - ai_podcasts/**
+    - checklistr/**
+    - citations/**
+    - coenosr/**
+    - colors/**
+    - flora/**
+    - gePoints/**
+    - lists/**
+    - llm_examples/**
+    - milestones/**
+    - pedigree/**
+    - photolocations/**
+    - plainmaps/**
+    - r_api/**
+    - r_basics/**
+    - seasonalityr/**
+    - sitemaps/**
+    - storylines/**
+    - using_an_llm/**
+    - vouchr/**
+    - whittakerr/**
+
+website:
+  title: "Kim Bridges — Documents"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Documents
+    right:
+      - icon: house
+        href: https://kimbridges.info
+        text: kimbridges.info
+      - icon: globe
+        href: https://www.kimbridges.com
+        text: kimbridges.com
+
+format:
+  html:
+    theme: cosmo
+    css: custom.css
+    toc: false
+    code-copy: true

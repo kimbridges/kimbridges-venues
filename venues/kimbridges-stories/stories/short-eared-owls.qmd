@@ -1,0 +1,13 @@
+---
+title: "Short-Eared Owls"
+subtitle: "Photographing some short-eared owls in Washington."
+date: 2026-04-28
+categories: ["Birds", "US"]
+image: ../images/Short-eared_Owls.jpg
+pdf: ../pdfs/Short-eared_Owls.pdf
+---
+We were lucky to find a few of these day-flying owls as we explored Washington State.
+
+Pages: 52
+
+<iframe src="../viewer.html?pdf=Short-eared_Owls.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

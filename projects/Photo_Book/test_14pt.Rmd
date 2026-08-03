@@ -1,0 +1,13 @@
+---
+documentclass: extarticle
+output: pdf_document
+fontsize: 20pt
+geometry: margin=0.75in
+header-includes:
+  - \pagestyle{empty}
+---
+
+# Test Header
+
+This should be 20pt text. Compare this to a normal 12pt document.
+

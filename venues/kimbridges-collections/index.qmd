@@ -1,0 +1,18 @@
+---
+title: "Collections"
+listing:
+  contents:
+    - gallery.qmd
+    - jones.qmd
+    - briefing_books.qmd
+  sort: "date desc"
+  type: grid
+  grid-columns: 3
+  image-height: auto
+  categories: true
+  fields: [image, title, subtitle, categories]
+  filter-ui: false
+  sort-ui: false
+---
+
+Curated sets of work where one idea spawns the next.

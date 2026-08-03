@@ -1,0 +1,13 @@
+---
+title: "Bloedel Reserve - Data Report"
+subtitle: "Examining the garden in context of other American botanical gardens."
+date: 2019-08-23
+categories: ["Data Analysis", "Gardens"]
+image: ../images/Bloedel_reserve_report.jpg
+pdf: ../pdfs/Bloedel_reserve_report.pdf
+---
+Deep analysis of data about the garden. This study shows the breadth and power of data mining using readily available resources.
+
+Pages: 99
+
+<iframe src="../viewer.html?pdf=Bloedel_reserve_report.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

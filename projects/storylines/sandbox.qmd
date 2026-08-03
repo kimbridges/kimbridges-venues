@@ -1,0 +1,24 @@
+Sandbox
+
+```{r}
+#| label: fig-test
+## How many sheets.
+sheets <- list.files(path="photos/day_03/files/", 
+                    pattern="*.png", 
+                    full.names=TRUE, 
+                    recursive=FALSE)
+
+n_sheets <- length(sheets)
+page_image <- sheets[1]
+
+img_test <- paste0("<< img = ",page_image, ">>\n\n")
+
+img_test
+
+
+
+
+
+```
+
+Here is the figure

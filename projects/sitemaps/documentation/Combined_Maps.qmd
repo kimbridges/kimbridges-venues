@@ -1,0 +1,251 @@
+---
+title: "Creating Maps Using R"
+subtitle: "Simplifying the Process"
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+format: 
+  html:
+    code-fold: true
+    code-summary: "Show the code chunk"
+editor: visual
+---
+
+# Inset Maps
+
+It is often necessary to show two maps, each at a different scale. One map gives a general orientation (e.g. a country perspective) and the other map provides a detailed view of a study site. Sometimes these maps can be combined in to a single graphic. 
+
+
+
+## General Setup & Initialization
+
+Load the needed libraries. Then activate the Google Maps API key. This key provides access to Google Maps. Since this is a pay service, the key is kept secret.
+
+The key registration needs to be done only once for an RStudio session. This is why the process is kept in a separate R chunk so we don't keep re-registering as we refine the maps.
+
+```{r "library"}
+#| warning: false 
+#| error: false 
+#| message: false
+
+## Libraries
+library(readr)         ## Read data
+library(ggmap)         ## Enhance and show maps
+library(cowplot)       ## Join maps
+library(ggplot2)       ## General graphics support
+library(dplyr)         ## Data manipulation
+library(gt)            ## Make tables
+library(ggrepel)       ## Automatic replacement of labels
+library(googlesheets4) ## Read Google sheets
+
+## Test if Google Key is registered
+if (!has_google_key()){
+
+  ## Initialize Google Map key; the is stored in a Project directory.
+  My_Key <- read_file("P://Hot/Workflow/Workflow/keys/Google_Maps_API_Key.txt")
+
+  ## Register the Google Maps API Key.
+  register_google(key = My_Key, account_type = "standard")
+  } ## end Google Key test
+
+```
+
+### Some useful code
+
+There are a few bits of code, such as the assignment of data to a variable, that make it easier to code.
+
+This is also where some useful functions reside. The functions are described elsewhere, but are located in this chunk for convenience.
+
+```{r "functions"}
+#| warning: false
+#| error: false
+#| message: false
+
+## Define a theme that removes the axis labels and 
+## puts a border around the map
+simple_black_box <- theme_void() +
+              theme(panel.border = 
+                      element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2))
+
+#######################################################
+## Google Maps style defaults
+## Use these to hide map layers
+no_poi        <- "feature:poi|element:labels|visibility:off"
+no_transit    <- "feature:transit|element:labels|visibility:off"
+no_water      <- "feature:water|element:labels|visibility:off"
+no_road       <- "feature:road|element:labels|visibility:off"
+no_landscape  <- "feature:landscape|element:labels|visibility:off"
+no_administrative <- "feature:administrative|element:labels|visibility:off"
+hide_all <- "feature:all|element:labels|visibility:off"
+
+#######################################################
+## Functions ##########################################
+
+##### bb_square #######################################
+
+bb_square <- function(bb){
+
+  ## Make a square boundary box
+
+  x_length <- max(c(abs(bb[[1]]),abs(bb[[3]]))) - min(c(abs(bb[[1]]),abs(bb[[3]])))
+  y_length <- max(c(abs(bb[[2]]),abs(bb[[4]]))) - min(c(abs(bb[[2]]),abs(bb[[4]])))
+
+  if (x_length < y_length){
+    half_diff <- (y_length - x_length) / 2
+    bb[[1]] <- bb[[1]] - half_diff
+    bb[[3]] <- bb[[3]] + half_diff
+  } else {
+    half_diff <- (x_length - y_length) / 2
+    bb[[2]] <- bb[[2]] - half_diff
+    bb[[4]] <- bb[[4]] + half_diff
+  }
+
+return(bb)
+} ## end function bb_square
+
+##### bb2google #######################################
+
+bb2google <- function(bb){
+  
+  ## The bounding box can be produced using make_bbox.
+  ## a bounding box has left, bottom, right, top coordinates.
+  ## This function finds the map center and zoom level
+  ## so these data can be used with a Google map request.
+  
+  ## This function assumes a square bounding box as input.
+  
+  ## Initialize
+  info <- NULL
+
+  ## Find the center point
+  center_lon <- ((bb[[3]]-bb[[1]])/2) + bb[[1]]
+  center_lat <- ((bb[[4]]-bb[[2]])/2) + bb[[2]]
+  ##info$center <- c(lon=center_lon, lat=center_lat)
+  info$lon <- center_lon
+  info$lat <- center_lat
+
+  ## Use the zoom scales to estimate the proper zoom level
+  zoom_scales <- c(180,90,45,22.5,11.25,5.625,2.813,1.406,0.703,0.352,0.176,0.088,0.044,0.022,0.011,0.005,0.003,0.001,0.0005)
+
+  bb_length <- bb[[3]] - bb[[1]]
+  info$zoom <- as.integer(which.min(zoom_scales > bb_length))
+
+  return(info) 
+
+}  ## end function bb2google
+
+```
+
+## Place an Overlay on a Country
+
+An ovelay makes the location and extent of a country stand out from the neighboring areas. This can be especially useful for general orientation.
+
+The `ggplot2` package includes some mapping functions. One of these is `map_data.` Use this to return an outline of a country. Other administrative levels, such as US States, can be used. That will be shown later.
+
+The map_data function not only returns the country outline, it also provides geographic coordinates that enable the overlay registration. These coordinates are called `long` and `lat` (a slight departure from the usual convention of `lon` and `lat`).
+
+```{r "combine"}
+#| warning: false
+#| error: false
+#| message: false
+#| results: false
+
+## Specify the area
+country <- "Costa Rica"
+zoom    <- 6
+
+## Get the Google Map which will be the basemap.
+basemap <- get_googlemap(center=country,
+                         zoom=zoom,
+                         maptype = "terrain",
+                         scale=2,
+                         style = hide_all) 
+
+## Get the overlay map that will highlight the area of interest.
+overlay <- map_data(map="world", region=country, interior = TRUE) 
+
+## Combine the two maps. Note: This source uses long,lat from
+## the map_data function and are part of the overlay data frame.
+combo_map <- ggmap(basemap) +
+  geom_polygon(data = overlay,
+               aes(x=long,y=lat,group=group),
+                 color = "black", ## Outline color
+                 line  = 2,       ## Outline thickness
+                 fill  = "wheat", ## Overlay color
+                 alpha = 0.5) +   ## Make it a "see through" overlay
+              labs(x="",y="") +
+              simple_black_box
+
+## Display the map.
+combo_map
+
+```
+
+
+## Building a Basemap with an Inset Locator Map
+
+
+```{r}
+#| warning: false
+#| error: false
+#| message: false
+
+## Get the data from a Google Sheet.
+bot_gardens <- range_speedread("1ZhRkINFnbqWknQJAXx7tA_yW1NgPUW_Ssr7MR2rI1CM",
+                               sheet = "prelim",
+                               show_col_types = FALSE)
+
+## Print a table for a quick data check
+gt(bot_gardens) %>% 
+  fmt_number(columns = c(2,3),decimals = 5)
+
+## Make sure the column names are all lowercase and separate out the data points
+names(bot_gardens) <- tolower(names(bot_gardens))
+garden_points <- bot_gardens %>% 
+  dplyr::select(lon,lat)
+
+## Build a square bounding box from the data points and get info for a Google Map
+garden_bb <- make_bbox(lon=garden_points$lon, lat=garden_points$lat, f=0.1)
+garden_square <- bb_square(garden_bb)
+garden_google <- bb2google(garden_square)
+
+## Create a Stamen basemap with data points
+## First get the Stamen map
+garden_map <- get_stamenmap(bbox = garden_square,
+                            maptype="terrain")
+                                 
+basemap <- ggmap(garden_map) + 
+    simple_black_box +
+    geom_point(aes(x = lon, y = lat, color = "red", size=1.0), 
+               data = garden_points) +
+    theme(legend.position = "none", aspect.ratio = 1.0) ## help prevent distortion
+
+## Get the Stamen map which will be the Inset map.
+insetmap <- get_map(location="Japan",
+                    zoom=6,
+                    source="stamen",
+                    maptype="terrain-background")
+
+## Create the Inset Map with a red box showing the area of the basemap
+inset <- ggmap(insetmap) + 
+    simple_black_box +
+    geom_rect(aes(xmin=garden_square[[1]],ymin=garden_square[[2]],xmax=garden_square[[3]],ymax=garden_square[[4]]),
+              color = "red",
+              size  = 1.0,
+              fill  = NA)
+
+## Combine the two maps
+gg_inset <- ggdraw() +
+  draw_plot(basemap) +
+  draw_plot(inset, x= 0.14, y=0.63, 
+            width = 0.35, height = 0.35, 
+            hjust=0, vjust = 0)
+ 
+## Show the combined maps
+gg_inset
+
+```
+

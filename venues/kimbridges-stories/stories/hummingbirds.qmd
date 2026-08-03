@@ -1,0 +1,13 @@
+---
+title: "Hummingbirds"
+subtitle: "Hummingbirds at the South Coast Botanical Garden."
+date: 2022-05-27
+categories: ["Birds", "Gardens"]
+image: ../images/Hummingbirds.jpg
+pdf: ../pdfs/Hummingbirds.pdf
+---
+This photo essay is based on testing the Sony Alpha-1 camera's bird eye-focus. This is an important upgrade that should change bird photography.
+
+Pages: 40
+
+<iframe src="../viewer.html?pdf=Hummingbirds.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

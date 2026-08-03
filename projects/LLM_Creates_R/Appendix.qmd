@@ -1,0 +1,255 @@
+execute:
+  eval: false
+
+# Appendix
+
+The following text files are the working copies of the Project Knowledge entries I use with Claude. I make frequent additions and changes to these files as Claude and I learn each others idiosyncrasies.
+
+### All Prompts
+
+Here is the information provided for all Claude prompts:
+
+Create custom R language code that has the following characteristics:
+
+1.  Uses two hash marks (##) at the start of each comment.
+
+2.  Uses comments in the code to describe each action.
+
+3.  Formats the code so it is straightforward to see the logical structure.
+
+Follow other rules provided in separate guideline documents.
+
+Carefully double-check to make sure all the guidelines, both here and in the other documents, are followed to the extent possible.
+
+## Guidelines
+
+### Input
+
+(input_guidelines.txt)
+
+1.  Data Input
+
+1.1 R chunk initialization. Initialize the R script by suppressing messages using this code:
+
+``` r
+#| error: false
+#| warning: false
+```
+
+1.2 The introductory code chunk should always include this code:
+
+``` r
+## Set read_csv function option to suppress warning messages.
+options(readr.show_col_types = FALSE)
+
+## Use the package for the read_csv function
+library(tidyverse)
+library(readr)
+```
+
+1.3 Create an easy to read input data table. Use the `read_csv` function from the readr package for inputting data. Here is an example.
+
+``` r
+## Data input.
+data <- read_csv(col_names=TRUE, file=
+            "city,    lon,     lat
+             London,  0.1278,  51.5074
+             Paris,   2.3522,  48.8566")
+```
+
+1.4 Arrange the data for easy viewing. Make sure there are spaces between the data values so that the columns are lined up.
+
+1.5 Save the input data as a CSV file unless otherwise specified. Use the write_csv function to write the data file for later use.
+
+### Bar Charts
+
+(bar_chart_guidelines.txt)
+
+1.  Bar Chart Formatting
+
+1.1 Bar outline. Each bar should have a black outline.
+
+1.2 Bar fill colors. When there is just one variable, use the single color "cornsilk3". When creating bar charts with multiple variables (e.g., categories or groups), use multiple colors with these rules:
+
+-   Use "cornsilk3" as the fill color for the bars of the first variable (i.e., single category).
+-   Use "darkgoldenrod2" as the fill color for the bars of the second variable (if applicable).
+-   Use "lightsalmon2" as the fill color for the bars of the third variable (if applicable), .
+-   When more than three variables being plotted, continue with a logical color progression that maintains readability and aesthetic appeal.
+
+1.3 Panel background color. The panel background should be darkslategray2.
+
+1.4 Axis labels and scale values. The axis labels and scale values should be black. The axis text and axis title should be size=12.
+
+1.5 Grid lines. Use y-axis grid lines and tick marks. Do not use x-axis grid lines. Use x-axis tick marks.
+
+1.6 Start and end of the y axis. Unless there are negative y values, the y axis should start at zero. There should be a small extension of the y axis at the top of the chart so the tallest bar does not hit the top.
+
+1.7 Source information. Identifying the data used in the chart should come from a source statement. If a source is not provided, use the term "dummy" as the source. Here is an example.
+
+``` r
+source <- "dummy"
+```
+
+Put the source data into the chart with the "labs(caption = source)" code.
+
+1.8 Box plot outliers. Don't show outlier points in any special way. Here is an example of the code to use:
+
+``` r
+geom_boxplot(outlier.shape = NA)
+```
+
+1.9 Box plot data points. Make the data points red. Make the data points size 3.
+
+### Tables
+
+(table_guidelines.txt)
+
+1.  gt Tables
+
+1.2 Use the gt() function in the gt package to create tables.
+
+1.2 Variables for the table title and data source. Use a variable for the table title and another variable for the data source. If a table title our data source is provided, replace the word "default"" with information that is provided. Otherwise create a table title and data source from the problem statement.
+
+``` r
+## Initialize the identification information.
+table_title <- "default"
+data_source <- "default"
+
+## Create the table.
+table <- gt(data) %>% 
+  tab_header(
+    title = table_title
+    ) %>% 
+  tab_source_note(
+    source_note = paste0("Source: ",data_source)
+  ) 
+```
+
+1.3 Add a date to the data_source. If requested, modify the data_source variable by adding the current date.
+
+``` r
+data_source <- paste0("Source: ",default," (",Sys.Date,")")
+```
+
+1.4 Align table content at the top of the cells. Include the following tab_style when creating a gt() table.
+
+``` r
+## Create the table.
+table <- gt(data) %>%
+  tab_style(
+    style = cell_text(v_align="top"),
+    locations = cells_body()
+    )
+```
+
+1.5 Stripe long tables. Use table row striping if the length of a table is more than 10 rows. If there is a request to stripe the rows of a table, do row striping. Include the following variable and addition to the gt() code if stripes are needed.
+
+``` r
+## Use table stripes
+table_stripes <- true
+
+## Create the table.
+table <- gt(data) %>% 
+  opt_row_striping(row_striping = table_stripes)
+```
+
+1.6 Put units in the table as footnotes. When a table column has units, these should be added to the table as a footnote and the units should not be included in the column header. The units in the footnote should be simple, such as "pounds", "miles/gallon", and "hectares". Do not surround the units with a statements like "Yield measured in buckets of apples harvested". Instead, give the units as "buckets" in this example.
+
+1.7 Show count data as integers. When values are counts, they should appear in the table as integers with no decimal values.
+
+1.8 Use standard date style formats. gt() tables have a special set of date and time formats. These should be used in the table formatting. A common date style value in gt() is "iso".
+
+1.9 Output the table properly. Do NOT use print(table) for output. Here is an example of how to output a table properly.
+
+``` r
+table <- gt(data)
+table
+```
+
+### Maps
+
+(map_guidelines.txt)
+
+1.  Maps
+
+1.1 Mapmaking packages. There are two mapmaking packages: plainmaps and sitemaps. Use the package specified in the prompt.
+
+1.2 Set some options and load the required libraries. Be sure to load the required libraries. Here is the code:
+
+``` r
+#| error: false
+#| warning: false
+
+library(devtools)
+library(ggplot2)
+library(dplyr)
+library(ggmap)
+library(gt)
+
+## Set an option for the read_csv function
+## This will suppress warning messages.
+options(readr.show_col_types = FALSE)
+```
+
+1.3 Get mapping packages from GitHub/kimbridges The following packages are available from github/kimbridges:
+
+-   plainmaps \## Simple maps
+-   sitemaps \## Data-based, location maps
+
+Include both packages in the initialization process. Here is the code:
+
+``` r
+## Load special libraries.
+install_github("kimbridges/plainmaps")
+install_github("kimbridges/sitemaps")
+
+library(plainmaps)
+library(sitemaps)
+```
+
+1.4 Making a map using either the sitemaps or plainmaps. If either the sitemaps or plainmaps package is loaded, include the following code to initialize the access key and establish some default values.
+
+``` r
+googleKey <- Sys.getenv("GGMAP_GOOGLE_API_KEY")
+register_google(key = googleKey, account_type = "standard")
+
+1.5 Store location data in a variable.
+The variable that stores location information, such as the labels 
+of locations, lat, and lon, should be called "data".
+
+1.6 Be sure there is a "group" variable.
+If the data to be mapped are stored in a variable named "data",
+then there needs to be a "data$group <- 1" added to the code
+after the data are input. 
+
+1.7 The name for the labels variable must always be "text".
+Here is an example.
+```r
+data <- read_csv(col_names=TRUE, file=
+            "text,    lon,     lat
+             London,  -0.1278, 51.5074
+             Paris,   2.3522,  48.8566")
+```
+
+1.8 Add a code for the two basic map themes. There is a "plain_background_theme" and an "island_background_theme". The code for the appropriate theme should be included in the R code.
+
+1.9 Add standard setup code for sitemaps and plainmaps. Use two functions from sitemaps to initialize parameters. Here is the code:
+
+``` r
+column <- site_styles()
+hide  <- site_google_hides()
+```
+
+1.10 Some simple theme elements improve the appearance of a map. The following theme element removes the axis labels and puts a border around the map. It also turns off the legend. Here is the code:
+
+``` r
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2),
+                    legend.position = "none")
+```
+
+1.11 Make sure the map coordinates are not distorted. The "coord_fixed()" function is generally necessary (except when very near the equator) to make sure there is minimal distortion.
+
+1.12 Use a new argument to control the linewidths. The `size` argument of `element_rect()` is deprecated. Use the `linewidth` argument instead.

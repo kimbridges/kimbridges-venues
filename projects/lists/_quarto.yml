@@ -1,0 +1,39 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "lists"
+  subtitle: "Finding pattern in the data you already collect"
+  author: "K. W. Bridges and Claude (Anthropic)"
+  date: today
+  cover-image: lists_cover.png
+  chapters:
+    - index.qmd
+    - getting_data_in.qmd
+    - first_look.qmd
+    - two_way_table.qmd
+    - measuring_similarity.qmd
+    - dendrogram.qmd
+    - choices.qmd
+    - metadata.qmd
+    - assessment_lines.qmd
+  appendices:
+    - function_reference.qmd
+  navbar:
+    logo: lists_logo.png
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    df-print: kable
+
+toc: true
+number-sections: true
+number-depth: 2
+
+execute:
+  warning: false
+  error: false
+  message: false

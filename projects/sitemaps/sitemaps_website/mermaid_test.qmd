@@ -1,0 +1,77 @@
+---
+title: "Mermaid"
+editor: visual
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+format:
+  html:
+    fig-width: 8
+    fig-height: 8
+    code-fold: true
+    code-summary: "Show the code chunk"
+---
+
+Mermaid Test
+
+```{r}
+#| label: fig-mermaid
+#| fig-cap: "Testing the Mermaid flowchart function."
+
+
+library(DiagrammeR)
+library(quarto)
+
+mermaid(diagram="
+graph LR;
+  A[Are coordinates in<br>the datatable?]
+  B(Copy & paste<br>from Google Maps)
+  D[Are values in<br>a decimal format?]
+  E(Run <i>parse</i> function)
+  F[Are lat & lon column<br>names in lower case?]
+  G(Use <i>dplyr</i> to<br>rename columns)
+  H(Datatable is<br>ready to use)
+    A-- yes -->D
+    A-- no -->B
+    B-->D
+    D-- yes -->F
+    D-- no -->E
+    E-->F
+    F-- no -->G
+    F-- yes -->H
+    G-->H")
+
+```
+
+```{mermaid}
+
+mermaid(diagram="
+  graph LR
+  
+  A[datatable]
+  B[basemap]
+  C[map render]
+  D(data: text, lon, lat)
+  J(style columns)
+  E(site_google_basemap)
+  F(ggmap)
+  G(site_points)
+  H(site_labels)
+  %% style A fill:#2c2,stroke:#000,stroke-width:4px
+  %% style B fill:#2c2,stroke:#000,stroke-width:4px
+  %% style C fill:#2c2,stroke:#000,stroke-width:4px
+  subgraph Basic Steps
+  A ==> E
+  B ==> F
+  D -.-> A
+  E -.-> B
+  J -.-> A
+  F -.-> C
+  G -.-> C
+  H -.-> C
+  A ==> G
+  A ==> H
+  end")
+
+```

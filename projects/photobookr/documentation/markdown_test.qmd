@@ -1,0 +1,28 @@
+---
+title: "test"
+format: html
+editor: visual
+---
+
+```{r}
+source("render_section_pdf.R")
+test_render("test_section.pdf")
+
+## Second test
+source("parse_book_markdown.R")
+sections <- parse_book_markdown("Garden.Rmd")
+render_section_pdf(sections[[1]], "statue_chapter.pdf")
+
+## Third test
+source("markdown_to_chapters.R")
+markdown_to_chapters("Garden.Rmd", clear_folder = TRUE)
+
+## Fourth test
+source("markdown_to_chapters.R")
+
+# Phone-friendly combo:
+markdown_to_chapters("Garden.Rmd", body_size = 12, font_family = "helvetica", clear_folder = TRUE)
+
+# Or try Bookman (very readable):
+markdown_to_chapters("Garden.Rmd", body_size = 17, font_family = "charter", clear_folder = TRUE)
+```

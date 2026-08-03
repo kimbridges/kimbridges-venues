@@ -1,0 +1,8 @@
+---
+title: "coenosr"
+subtitle: "Recovering traditional two-way table processing"
+categories: ["Ecology", "R", "Methods"]
+image: ../coenosr/coenosr_cover.png
+---
+
+[View Document](../coenosr/){.btn .btn-primary}

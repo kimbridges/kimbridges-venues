@@ -1,0 +1,268 @@
+---
+title: "Creating Maps Using R"
+subtitle: "Simplifying the Process"
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+format: 
+  html:
+    code-fold: true
+    code-summary: "Show the code chunk"
+editor: visual
+---
+
+# Tables & Maps
+
+Maps and data table go together. Think of the map as a visualization of the data table. Some information is best understood in a table. Maps provide a different perspective, even when they portray the save data values.
+
+A well-designed data table can simplify the map creation process. Such a data table can minimize the need for custom R code. This is particularly important to a person who doesn't create maps very often.
+
+There are two important tables used here:
+
+-   **Data Table:** Holds location coordinates and (optionally) information use to annotate the map with points and labels.
+
+-   **Name Table:** Holds location coordinates, text and text characteristics for words placed on a map.
+
+Data Columns used for Map Creation and Annotation
+
+## Basemap Names from Table Data
+
+You are likely to create basemaps without any location annotation. Then, you'll add names to locations that best suit the purpose of your map. This section describes a method of adding these names.
+
+Names on a map are used to identify the location of places (e.g., cities), features (e.g., rivers, roads), and points of interest (e.g., buildings, monuments). Generally, the name is placed on the map without a reference point.
+
+The basic structure of a name is the text (i.e., words to appear on the map) and the coordinate location. There are a number of enhancements which can be applied to the text. These are described in the following table.
+
+| feature | required | property                            | default                 |
+|---------------|---------------|--------------------------|-----------------|
+| text    | yes      | Words for the map                   | none                    |
+| lon     | yes      | longitude of the center of the text | none                    |
+| lat     | yes      | latitude of the center of the text  | none                    |
+| face    | no       | type face                           | (see suggestions below) |
+| points  | no       | type size (points)                  | 12                      |
+| style   | no       | roman or italics                    | roman                   |
+| color   | no       | type color                          | black                   |
+| angle   | no       | type angle in degrees clockwise     | 0 (horizontal)          |
+
+The feature names are very specific and used as column names in a table. Here are a few things to note.
+
+-   All the feature names are lower case as are any of the non-numeric values (except for text).
+
+-   Not all of the feature names need to be used. Only those names that are required (text, lon, lat) and any that require a value that is different than the default.
+
+Getting the Geographic Coordinates
+
+Perhaps the most difficult part of placing names is determining the geographic coordinates. This is simplified by using Google Maps with the following procedure that is used on a PC.
+
+-   Create a Google map that covers the location for a name.
+
+-   Right click on the location.
+
+-   Left click on the coordinates that appear at the top of the pop-up menu.
+
+-   Paste (CTRL-v) the coordinates into a data table or your R code.
+
+-   Separate the latitude and longitude by typing in a comma.
+
+-   Optionally, you may want to delete unnecessary precision by deleting all decimal digits beyond 5.
+
+Type Faces
+
+A Few Conventions
+
+-   Water bodies (lakes, oceans) are in blue with italics.
+
+-   Coastal features (e.g., bay, harbor) have the name over the water. Inland cities have their name over land.
+
+-   Rivers use an italics style and an angle that matches the direction of the river where the name is placed. The name should never be upside down. Avoid breaking the name into parts that span the river (i.e., above and below).
+
+-   Cities use a visual hierarcy with larger cities having a type size larger than smaller cities.
+
+-   Generally place area names so they are centered inside the area.
+
+There are a few limitations when using the table-technique. Specifically, you can't put a location dot to mark a spot. (You can do that with the data and labels table, however.)
+
+We'll deal with all of these points with some examples. First, let's get some setup done.
+
+## Setup & Defaults
+
+::: callout-important
+## Setup Information
+
+Each section has its own setup and default information. This allows each section to be run independently. The duplication of code is a small price to be paid for the independence and clarity achieved by this repetition.
+:::
+
+All use of Google maps requires the use of an API key. Getting this key is a one-time task. Store the key somewhere same and hidden from the outside.
+
+```{r "library"}
+#| warning: false
+#| error: false
+#| message: false
+#| code-fold: false
+
+## Libraries
+library(readr)   ## Read cvs data
+library(ggmap)   ## Display maps
+library(ggplot2) ## Plot workhorse
+library(gt)      ## Tables
+library(dplyr)   ## Data wrangling
+library(tidyverse) ## Data handling
+
+## Test if Google Key is registered
+if (!has_google_key()){
+
+  ## Initialize Google Map key; the is stored in a Project directory.
+  My_Key <- read_file("P://Hot/Workflow/Workflow/keys/Google_Maps_API_Key.txt")
+
+  ## Register the Google Maps API Key.
+  register_google(key = My_Key, account_type = "standard")
+  } ## end Google Key test
+
+```
+
+### Some useful code
+
+```{r "useful"}
+#| warning: false
+#| error: false
+#| message: false
+
+## Define a theme that removes the axis labels and 
+## puts a border around the map
+simple_black_box <- theme_void() +
+              theme(panel.border = 
+                      element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2))
+#################################################################
+##### LineWrapper ###############################################
+LineWrapper <- function(x,length=25){
+  
+  ## Wraps text with a default of 25 characters
+  sapply(lapply(x,strwrap,width=length),paste, collapse="\n")
+  
+} ## End of function LineWrapper
+
+#################################################################
+
+## Names defaults
+names_default          <- NULL       ## Needed to get started
+names_default$size     <- 14         ## text size
+names_default$color    <- "black"    ## text color
+names_default$fontface <- "plain"    ## alt: italics, bold
+names_default$family   <- "sans"     ## sans-serif typeface (likely Helvetica)
+names_default$angle    <- 0          ## negative is clockwise
+names_default$justified <- "center"  ## horizontal justification
+
+```
+
+hjust values are left, middle, and right. Default is middle.
+
+fontface values are plain, bold, italic, and bold.italic. Default is plain.
+
+Family values are serif, sans, and mono. Default is sans.
+
+```{r "base1"}
+#| warning: false
+#| error: false
+#| message: false
+#| label: tbl-mapnames
+#| tbl-cap: "Map names, locations and ancillary Information."
+
+## Data table
+names <- read_csv(col_names = TRUE, file =
+        "text,  lat,      lon,        justification, size, color, fontface,    family, angle
+        Kapaa,  22.09010, -159.32642, right,         10,   black, plain,        sans,    0
+        Kekaha, 21.97255, -159.71312, left,          10,   black, bold.italic,  serif,   0
+        Waimea, 22.08428, -159.65208, middle,        8,   yellow, italic,       serif,   -75
+ Pacific Ocean, 22.22703, -159.86879, left,          14,  blue,  italic,       mono,    0")
+
+gt(names)
+```
+
+```{r "base2"}
+#| warning: false
+#| error: false
+#| message: false
+#| 
+#| label: fig-basemap
+#| fig-cap: "Basemap with names."
+#| 
+## convert points to mm (used by ggplot2)
+names$size <- names$size * 0.36
+
+## Wrap long names
+names$text <- LineWrapper(names$text,length=10)
+
+basemap <- get_map(location="Kauai, Hawaii, USA",
+                zoom=10,
+                source="stamen",
+                maptype="terrain-background")
+
+demo_map <- ggmap(basemap) +
+  theme_void() +
+  geom_text(data=names, aes(label=text, x=lon, y=lat,
+                color=color,
+                size= size, 
+                fontface = fontface,
+                family = family,
+                hjust=justification,
+                angle = angle),
+                show.legend = FALSE) +
+  scale_color_identity() +
+  scale_size_identity()
+
+demo_map
+
+ggsave(filename = "demomap.png",plot = demo_map, width = 4.5, height = 4.5)
+                
+```
+
+### Make the code a function
+
+```{r "names"}
+
+map_names <- function(names_table, basemap, wrap=200, names_default=names_default){
+  
+  ## Fill in any missing columns with default values 
+  ## Thanks to Chris Umphlett on StackOverflow (5/3/2019)
+  names_table <- names_table %>% 
+  add_column(!!!names_default[!names(names_default) %in% names(.)])
+  
+## convert points to mm (used by ggplot2)
+##names_table$size <- names_table$size * 0.36
+
+## Wrap long names
+names_table$text <-  sapply(lapply(names_table$text,strwrap,width=wrap),paste, collapse="\n")
+
+## Put the name info on the basemap
+name_map <- ggmap(basemap) +
+  theme_void() +
+  geom_text(data=names_table, aes(label=text, x=lon, y=lat,
+                color=color,
+                size= size, 
+                fontface = fontface,
+                family = family,
+                hjust=justification,
+                angle = angle),
+                show.legend = FALSE) +
+  scale_color_identity() +
+  scale_size_identity()
+
+return(name_map)
+  
+} ## end function map_names
+
+```
+
+### Test the function
+
+```{r "funtest"}
+
+
+proper_map <- map_names(names_table = names, basemap = basemap, wrap=10, names_default=names_default)
+
+proper_map
+
+```

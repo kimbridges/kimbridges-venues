@@ -1,0 +1,17 @@
+---
+title: "Stuff"
+---
+
+Start the document with the RStudio New-Project, Quarto Book menu choices.
+
+A few specifications.
+
+"Cover" png image dimensions: 2550 x 3300 px
+
+"Thumbnail" png image dimensions: 125 x 125 px
+
+Created with OpenAI's DALL-E image creator. (A dusty old library with dramatic lighting, showcasing a wooden table filled with research papers, manuscripts and books. etc.)
+
+Insert image code into YAML
+
+**Need to put the API functions into GitHub**

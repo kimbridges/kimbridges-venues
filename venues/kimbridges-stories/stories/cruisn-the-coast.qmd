@@ -1,0 +1,13 @@
+---
+title: "Cruis'n the Coast"
+subtitle: "A Smart car trip up the West Coast."
+date: 2016-11-22
+categories: ["Travel", "California"]
+image: ../images/2016_Hwy_1_September.jpg
+pdf: ../pdfs/2016_Hwy_1_September.pdf
+---
+A drive in a Smart car from Southern California to Oregon along the coast. This became a trip down memory lane by revisiting places that were important in the past.
+
+Pages: 95
+
+<iframe src="../viewer.html?pdf=2016_Hwy_1_September.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

@@ -1,0 +1,102 @@
+# Quick Start
+
+The following discussion is intended to get you started using citations and notes in a simple way. This shows an alternative way to handle some of the tasks involved in writing a scientific publication. In addition, the procedures demonstrate the value of a Large Language Model as a key component in the overall process.
+
+## File Structure
+
+This may seem complex, as you use four files. In practice, however, it is quite simple.
+
+You build two files.
+
+**Manuscript file**: This is the document that you're writing. This file will have your text with codes indicating where citations are entered. It will also have a section at the end where the bibliography (references) are provided.
+
+**Google Doc file**: This is where you make notes and paste citations. You add to this file as you read the literature and decide that you want to use particular citations in your manuscript. Doing a cut-and-paste of bibliographic entries from the literature cited sections in publication PDFs is likely the most common way you'll create the information in this text file. This file is a Google Docs file as it more easily accessible, particularly if this is a collaborative project.
+
+There are two files that are created automatically.
+
+**notes.txt file**: This is generated on your local computer as the Google Docs format is converted into a .txt format. You can ignore this file as it is simply used in the process of getting the BibTex-format file.
+
+**references.bib file**: This file has the citations stored in the BibTex format. This file is created automatically by the AI LLM engine running in an R chunk. The information used to create this file comes from the `notes.txt` file. Markdown (or Quarto) is used inside RStudio as the source of references that are inserted into the text. The references that are used are also reformatted to create the References section of the manuscript.
+
+You can see the relationship between the files in this diagram.
+
+```{r}
+#| label: diagram
+
+library(DiagrammeR)
+
+## Flow chart showing the relationship of the files.
+
+# Create a node data frame.
+nodes <-
+  create_node_df(
+    n = 8,
+    type = "lower",
+    label = c("Google Doc", 
+              "drive_download", 
+              "text file", 
+              "ChatGPT API",
+              "BibTex file",
+              "markdown",
+              "text\ncitations",
+              "references"),
+    style = "filled",
+    color = "black", ## node outline
+    fillcolor = c("goldenrod3","white",
+                  "goldenrod3","white",
+                  "goldenrod3","white",
+                  "goldenrod3","goldenrod3"),
+    fontcolor = c("white","black",
+                  "white","black",
+                  "white","black",
+                  "white","white"),
+    shape = c("rectangle", "ellipse",
+              "rectangle", "ellipse",
+              "rectangle", "ellipse",
+              "rectangle", "rectangle"),
+    fontsize = c(14,14,14,14,14,14,12,12),
+    width = c(1.5,1.5,1.5,1.5,1.5,1.5,0.9,0.9),
+    height = 0.4)
+
+# Create an edge data frame.
+edges <-
+  create_edge_df(
+    from = c(1, 2, 3, 4, 5, 6, 6),
+      to = c(2, 3, 4, 5, 6, 7, 8),
+    rel = "requires",
+    color = c("red","red","black","black","forestgreen","forestgreen","forestgreen"))
+
+## Put the nodes and edges together into a flowchart.
+graph <-
+  create_graph(
+    nodes_df = nodes,
+    edges_df = edges) |>
+  set_node_attrs(
+    node_attr = "fontname",
+    values = "Helvetica") |>
+  set_edge_attrs(
+    edge_attr = "arrowsize",
+    values = 1)
+
+## Display the flowchart.
+graph |> render_graph(layout="tree")
+
+```
+
+## Code
+
+There is some program code to make all this happen.
+
+**\_quarto.yml file**: This file has some codes that control the appearance of your final document, along with a few housekeeping tasks. One of these tasks is providing the name of the file that holds your BibTex-formatted citations file (references.bib). This .yml file is created automatically when you start a new project as a Quarto Book.
+
+**control code**: There need to be some codes to run each of the steps in the process. This includes the statements that control the LLM activities.
+
+## Workflow
+
+Start by building a new project and specifying the project as a Quarto Book. It is good to create this project in a new directory. Making a new project creates many of the files you'll need.
+
+Update the information the in `_quarto.yml` file. There will already be some of the information needed. Update or add the fields shown below.
+
+Copy the contents of the setup code from the resources chapter to the head of the manuscript document. You'll run this code chunk periodically to update the references.bib file as you add more references to the Google Docs file.
+
+Codes are inserted to keep this from unnecessarily rerunning when and to hide this part of the document mechanics when the manuscript is stitched.

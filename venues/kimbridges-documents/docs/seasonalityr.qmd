@@ -1,0 +1,8 @@
+---
+title: "Seasonalityr"
+subtitle: "The cues that time the living world"
+categories: ["Ecology", "R", "Climate"]
+image: ../seasonalityr/seasonalityr_cover_art_text.png
+---
+
+[View Document](../seasonalityr/){.btn .btn-primary}

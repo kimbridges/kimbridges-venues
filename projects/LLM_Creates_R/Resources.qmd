@@ -1,0 +1,110 @@
+# Resources
+
+:::::: columns
+::: {.column width="50%"}
+Before we get started, it's useful to know that there are ways to fill in your understanding of the technology presented here.
+
+There are many resources available if you are just beginning your use of the R language, starting to use Quarto as a document markup system, or investigating the use of Large Language Models.
+
+The information here is just a starting point.
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+![](resources_cover.png)
+:::
+::::::
+
+### R Language
+
+There is an excellent text for the R language available through Amazon.
+
+-   Wickham, H., Çetinkaya-Rundel, M., and Grolemund, G. 2023. R for Data Science: Import, Tidy, Transform, Visualize, and Model Data, 2nd Edition, O'Reilly Media Inc. Sebastopol, CA.
+
+You can get the same book in an [on-line version](https://r4ds.hadley.nz/).
+
+There are many good R language tutorials on YouTube. You should probably use recent tutorials as the language changes (a bit) through time. More important, new functions keep getting added that fundamentally change the way people program in this language.
+
+Here are two YouTube sites that have a variety of videos about the R language and its use:
+
+-   [R Programming 101](https://www.youtube.com/@RProgramming101)
+
+-   [Equitable Equations](https://www.youtube.com/@EquitableEquations)
+
+You might note that these sites offer several quick overviews of R:
+
+-   [R programming in one hour - a crash course for beginners](https://www.youtube.com/watch?v=eR-XRSKsuR4)
+
+-   [R programming for ABSOLUTE beginners](https://www.youtube.com/watch?v=FY8BISK5DpM)
+
+-   [Learn R in 39 minutes](https://www.youtube.com/watch?v=yZ0bV2Afkjc)
+
+### Quarto & Reproducible Documents
+
+Markdown is a set of mark-up codes you insert into a plain text document to control document formatting. Quarto is an advanced version of Markdown.
+
+[Quarto](https://quarto.org/) is free to use and it runs inside the [RStudio desktop](https://posit.co/download/rstudio-desktop/) environment. An advantage of using Quarto (over Markdown) is an ability to see the text in "visual" mode (rendered) or "source" (plain text).
+
+Using Quarto inside R studio lets you create and render (to HTML, PDF or Word) documents that mix text and computations.
+
+If you are unfamiliar with Reproducible Documents, there are several YouTube videos that are worth watching:
+
+-   [Get started with Quarto](https://www.youtube.com/watch?v=_f3latmOhew)
+
+-   [Quarto for Academics](https://www.youtube.com/watch?v=EbAAmrB0luA)
+
+-   [Reproducible Manuscripts with Quarto](https://www.youtube.com/watch?v=BoiW9UWDLY0)
+
+The authoritative document on Quarto is the following on-line book:
+
+-   [Quarto Guide](https://quarto.org/docs/guide/)
+
+### Large Language Models
+
+[Anthropic](https://www.anthropic.com/) is the company that has developed a Large Language Model it calls "Claude." The specific version used here is *3.5 Sonnet*.
+
+### Shameless Self Promotion
+
+I've produced a number of Quarto Books that demonstrate R programming and the application of Large Language Models in the context of ethnobiology. These are all on-line at <https://kimbridges-documents.netlify.app>
+
+-   [Storylines](https://kimbridges-documents.netlify.app/storylines/) (Create a day's travel log from photos)
+-   [Citations](https://kimbridges-documents.netlify.app/citations/) (A LLM helps organize references)
+-   [Deconstructing a Flora](https://kimbridges-documents.netlify.app/flora/) (Experiments in Aiding the Research Process)
+-   [LLM-API-R](https://kimbridges-documents.netlify.app/r_api/) (Experiments in Aiding the Research Process)
+-   [Plainmaps](https://kimbridges-documents.netlify.app/plainmaps/) (Create maps with border outlines and add simple overlays)
+-   [Milestones & Bar-timelines](https://kimbridges-documents.netlify.app/milestones/) (Showing events on a timeline)
+-   [Pedigree Diagrams](https://kimbridges-documents.netlify.app/pedigree/) (Show family relationships and more)
+-   [R Programming: Basics Made Simple](https://kimbridges-documents.netlify.app/r_basics/) (Everyday code suggestions to speed programming)
+-   [Welcome to Sitemaps](https://kimbridges-documents.netlify.app/sitemaps/) (Make data-based maps)
+
+I compiled a fairly extensive set of test using various LLMs. Some of these tests might be interesting, particularly if you have not done much experimentation with the LLMs.
+
+-   [Experiments with LLMs](https://kimbridges-documents.netlify.app/llm_examples/) (Early tests on the utility of Large Language Models)
+
+### Putting It Together
+
+Here is the general procedure used to create the examples in this document.
+
+1.  Begin by opening Claude in a Window. Click on the Projects menu item (left side panel). If this is a new Project, fill out the various items. Once a Project is established, click-and-drag Project Knowledge files into the file area.
+
+2.  Open a new Quarto document in a Window that is running RStudio. Type in the text for the Claude prompt. Add an R chunk below the prompt text (use the +C icon at the top). Copy the prompt text.
+
+3.  Return to the Claude Window. Paste the prompt in the "How can I help you today?" area. Click the up-arrow to run the prompt.
+
+4.  Two output areas will appear. The left area is the response from Claude. There is a copy button at the bottom. Click this to copy the response text. (We'll return in a minute to get the other output.)
+
+5.  Go back to the RStudio document. Paste (CTRL-V) the text copied from Claude just below the Prompt and above the R chunk window.
+
+6.  Return to Claude and use the copy button at the bottom of the right area. This is the R code.
+
+7.  Go back to the RStudio document. Click inside the R chunk to place the cursor. Then copy the text (CTRL-V) into the chunk.
+
+8.  You can test the R code by clicking on the Run button at the top-right of the chunk window.
+
+This is the sequence of steps used to build an individual example.
+
+The final part of the process is to render the document. There is a render button at the top. Depending on how your document is setup, you'll get an HTML, PDF or Word document that combines the text, R code and the output from running the R code.
+
+Small, obvious modifications of this procedure are necessary when external data files are used.

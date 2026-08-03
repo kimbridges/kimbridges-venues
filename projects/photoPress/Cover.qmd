@@ -1,0 +1,21 @@
+---
+title: "Cover"
+format: html
+editor: visual
+---
+
+## Cover
+
+The cover consists of one or more pages that are placed at the start of the photo book.
+
+This will usually have the following pages.
+
+-   **Cover** photo with the book's title and author's name as a single page.
+
+-   **Copyright** information as a single page.
+
+-   **Introduction** as a single or multiple pages.
+
+All of this is bundled into a single pdf file.
+
+The name of the cover file can be anything as you identify this file in the code when the photoPress function is assembling the book.

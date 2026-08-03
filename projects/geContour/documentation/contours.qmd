@@ -1,0 +1,264 @@
+---
+title: "Contour Diagrams"
+format: html
+editor: visual
+---
+
+# Contour Diagrams
+
+Contour diagram are the 2D graphical display of data. Areas of equal value are represented by the same color.
+
+The patterns in contour diagrams are useful in many situations. Here, we're emphasizing the interpretation of data over landscapes. To do this, we do two things: create the contour display and then stretch it over a 3D landscape. The landscape model is Google Earth.
+
+Google Earth overlays, such as the contour display, require precise geographic positioning. This is difficult to do manually as you need to adjust the size, rotation and position of the overlay. This is nearly impossible without clear points in the contour diagram that match locations on the Google Earth basemap. The code here eliminates this problem. A file is created that automatically aligns with Google Earth.
+
+## Creating a Contour Diagram
+
+A contour diagram begins with a sparse set of locations, each represented by latitude and longitude (lat, lon) coordinates. A numerical values is associated with each location. Together, these data triplets, are interpolated on a dense grid of points that covers the area. The grid values are used to make the visual representation.
+
+This process allows for some adjustments by providing parameter values.
+
+-   **contour_breaks**: The number of contour breaks (default: 10).
+
+-   **fill_colors**: The palette colors for contour fills (default: viridis palette).
+
+-   **alpha**: Transparency of the contour fill colors (0-1; default: 0.7).
+
+-   **buffer_percent**: Buffer percentage to add around the data extent (default: 2). ***Working?***
+
+The role of these parameters will be shown in the examples.
+
+### Sparse Data
+
+You can create a contour diagram with as few as a dozen or so points. Obviously, the more data points, the better.
+
+The role of the interpolation is to make a continuous surface from the scattered points. There are different ways this can be done. Here, the options are called **Akima** and **Thin Plate Spline**.
+
+**Akima** interpolations use piecewise cubic polynomials. This emphasizes local points and a single outlier value won't dominate the surface. The result is a smooth surface that resembles one that you'd create by hand. You get expected results even when there are abrupt changes in data values.
+
+The **Thin Plate Spine** interpolation process emphasizes very smooth surfaces. The mathematics are based on the radial basis functions. This is more a global interpolation method so each point will have an influence on the entire surface. This is a preferred method when the smoothness of a surface is important.
+
+The code used here allow a choice of interpolation methods. The default is "akima" (vs. "tps").
+
+## Initialize Some Basic Things
+
+Some libraries are needed to run the examples that follow. They should already be installed.
+
+A Google Earth API license is included in this code. It is not needed for all of the examples. It is useful to have access to this API for tasks like geocoding (i.e., address name to geographic coordinates).
+
+```{r}
+#| label: Initialize
+#| message: false
+#| echo:    false
+#| warning: false
+
+## Basic Libraries that are usually loaded.
+library(tidyverse)   ## Lots of data tools
+library(dplyr)       ## Data manipulation
+library(readr)       ## CSV reading function
+library(gt)          ## Tables
+library(ggmap)       ## Access to Google Maps functions
+
+## Special Libraries that are required.
+library(devtools)    ## Access to GitHub resources
+library(zip)         ## Zip for Google Earth
+library(viridis)     ## Color palettes
+library(fields)      ## Lots of tools for spatial data
+
+## Load geContour.
+install_github("kimbridges/geContour")
+library(geContour)  ## Has the contour_to_google_earth function
+
+## Set read_csv function option to suppress warning messages.
+options(readr.show_col_types = FALSE)
+
+## Initialize Google Map key.
+## Optional unless the geocode function is used.
+
+  ## Test if the Google Key API is registered.
+  if (!has_google_key()){
+    cat("See the code for instructions on registering an API key.")
+    ## Register the Google Maps API Key.
+    ## This makes your Google Map API key permanent.
+    ## register_google(key = "[your key]", write = TRUE).
+    } ## end Google Key test
+
+
+```
+
+## Start with an Example
+
+This example uses the default conditions to create a contour map of test data. The area covers part of the Los Angeles basin in Southern California, USA. These are not real data. They do show the structure of the data, although the "id" is not essential. It's just a reminder that it is sometimes useful to have a tag to identify each data point.
+
+There are just three steps; read the data, print a table of the data, and generate three files. These files have similar contents but slightly different uses.
+
+*The comments below are for a Windows-based computer. They assume that the usual file type associations are being used.*
+
+**contour_overlay.png**: The overlay without the code needed for Google Earth overlays. You'll see this file displayed after this chunk is run. Double click on the file name and the contour diagram should open in an image viewer.
+
+**contour_overlay.KML**: Double click on this file name and you'll open Google Earth Pro and the overlay will be on the globe. *This uses the contour_overlay.png file, so both files must be together.*
+
+**contour_overlay.KMZ**: This is a zipped file that has both the contour image and the Google Earth code. Double click on the name and it will open Google Earth Pro and place the overlay on the globe. If you distribute your overlay for use with Google Earth, this is the likely the type of file you'll want to use.
+
+```{r}
+#| label: geContour test
+
+## Read the data.
+## Data must have lat, lon, value columns.
+data <- read_csv(col_names = TRUE, file =
+ "lat,      lon,       value, id
+  33.93006, -116.98778, 1627, P1
+  34.33064, -117.32223, 1344, P2
+  34.02718, -117.41113,  828, P3
+  34.40641, -116.80974, 1625, P4
+  34.45237, -117.38530,  876, P5
+  33.73644, -117.29549,  529, P6
+  34.12248, -117.57508, 1087, P7
+  34.41393, -117.48995,  944, P8
+  34.14114, -118.00842, 1575, P9
+  34.06529, -118.24990,  627, P10
+  34.46546, -116.86285, 1742, P11
+  34.06266, -116.96609, 2707, P12
+  34.24205, -117.32580, 1666, P13
+  34.15810, -117.14770, 2860, P14
+  33.78233, -118.45815,  647, P15
+  34.41985, -117.68774, 1310, P16
+  33.89687, -117.21061, 1398, P17
+  33.73364, -118.13210,  458, P18
+  33.96233, -117.95909,  753, P19
+  34.46360, -118.10623, 1778, P20") 
+
+## Create a table of the data.
+gt(data) |>
+  fmt_number(columns = c(lat,lon), decimals = 5) |>
+  tab_caption(caption = "Test Data") |>
+  tab_source_note(source_note="Data: fake test data")
+
+
+## Create interpolation, contour diagram and code for Google Earth.
+result <- contour_to_google_earth(data, 
+                       output_name = "contour_overlay",
+                       interpolate = TRUE,
+                       interp_method = "akima")
+
+## Show the contour diagram.
+print(result$plot)
+
+```
+
+There are a few important points to observe about this **Akima** interpolation.
+
+The distance the interpolation extends away from the data points is limited.
+
+## Check the Data
+
+Interpolation methodologies vary in their treatment of extreme values. It's good to look at the data to be sure that the contour results are consistent with the intent of the analysis.
+
+### Frequency distribution
+
+We'll use a simple violin plot to show the distribution of the values.
+
+```{r}
+#| label: Show data distribution
+
+p <- ggplot(data, aes(x=1,y=value)) +
+      geom_violin(fill = "lightblue", color = "black") +
+      geom_point(size=2) +
+      labs(title = "Data Distribution (Violin Plot)",
+           x = "") +
+      theme_minimal() +
+      theme(axis.text.x=element_blank())
+
+print(p)
+```
+
+You can see that there are two extreme values in the test data.
+
+We should know where they are located.
+
+### Identify extreme values
+
+We can a color for each data point to highlight any extreme values.
+
+The outlier criteria used here are two standard deviations above or below the mean value. The colors are assigned relative to these criteria.
+
+```{r}
+
+## Create a unique color for the extreme points.
+## Note: The ifelse function works on an entire vector.
+cutoff_high <- mean(data$value) + (2 * sd(data$value))
+cutoff_low  <- mean(data$value) - (2 * sd(data$value))
+data$color <- ifelse(data$value > cutoff_high, "red", "green")
+data$color <- ifelse(data$value < cutoff_low,  "red", data$color)
+
+gt(data)|>
+  fmt_number(columns = c(lat,lon), decimals = 5) |>
+  tab_caption(caption = "Test Data with Extremes Marked") |>
+  tab_source_note(source_note="Data: fake test data")
+
+```
+
+There are two rows with "red" color points. We need to see where they are.
+
+### Plot the values
+
+```{r}
+
+## Create the plot.
+extreme <- ggplot(data, aes(x=lon,y=lat,color=color)) +
+  geom_point(size=3.0) + 
+  scale_color_manual(values = c("green", "red")) +
+  theme_minimal()
+
+## Show the plot.
+print(extreme)
+```
+
+The extreme values are on the right side of the area.
+
+## Examine Some Options
+
+The alternative interpolations method, Thin Plate Spline, is used next.
+
+```{r}
+
+
+## Create interpolation, contour diagram and code for Google Earth.
+result <- contour_to_google_earth(data, 
+                            output_name = "contour_overlay",
+                            interpolate = TRUE,
+                            interp_method = "tps")
+
+## Show the contour diagram.
+print(result$plot)
+```
+
+Note that in the **Akima** interpolation, there wasn't a high area on the right side (where we've see there are two extreme points). This shows the relative insensitivity of the Akima interpolation to a few outliers.
+
+The **Thin Plate Spline** shows a peak on the right.
+
+### Change the appearance
+
+You will likely want to change the number of contour intervals (breaks) and control the color scale. These two parameters often go together.
+
+You can see how the number for `contour_breaks` matches the number of `fill_colors`.
+
+```{r}
+#| label: Modify breaks and colors
+
+## Create interpolation, contour diagram and code for Google Earth.
+result <- contour_to_google_earth(data, 
+                          output_name = "contour_overlay",
+                          interpolate = TRUE,
+                          contour_breaks = 5,
+                          fill_colors = c("lightgoldenrod2",
+                                          "gold",
+                                          "orange",
+                                          "chocolate",
+                                          "red"),
+                                  interp_method = "akima")
+
+## Show the contour diagram.
+print(result$plot)
+
+```

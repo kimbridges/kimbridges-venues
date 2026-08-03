@@ -1,0 +1,110 @@
+# Applying Ordering and Metrics
+
+The previous chapters introduced ordering and structural metrics as complementary tools for understanding Braun–Blanquet tables. This chapter illustrates how these tools are applied together in practice, using a small number of concrete steps.
+
+### A practical workflow
+
+Applying ordering and metrics to a Braun–Blanquet table is best approached as a short, iterative workflow rather than as a fixed pipeline. The steps below summarize a defensible sequence that can be adapted to a wide range of datasets.
+
+1.  **Read the table**\
+    Ensure that species and site labels reflect how the data were collected (e.g., alphabetical species names, sites in collection or gradient order).
+
+2.  **Decide whether site order is meaningful**\
+    If site order is arbitrary, block-oriented approaches are appropriate. If site order reflects an underlying gradient (e.g., elevation or distance), gradient-sensitive ordering should be considered.
+
+3.  **Apply an initial ordering**\
+    Begin with a simple ordering to establish a baseline view of the data.
+
+4.  **Inspect the ordered table**\
+    Use a consistent visualization so that differences reflect structure rather than display choices.
+
+5.  **Compute structural metrics**\
+    Quantify contrast, concentration, and robustness for the ordered table.
+
+6.  **Interpret results in context**\
+    Relate metric values back to the observed table structure and the assumptions implicit in the ordering.
+
+These steps are deliberately simple. The goal is not to automate interpretation, but to support it.
+
+### A compact example
+
+The following example illustrates this workflow using a single table with overlapping sites, where block structure is present but not disjoint.
+
+#### Reading the data
+
+```{r}
+library(bbstruct)
+library(gt)
+
+## Read the data
+bb_original_data <- bb_read_csv("data/bb_blocks_overlap_sites.csv")
+
+```
+
+At this stage, the table reflects only the original arrangement of species and sites. Any structure must be inferred from the values themselves.
+
+#### Applying an ordering
+
+Because sites overlap across blocks, a structure-sensitive ordering is appropriate. Here, a PCA-based ordering is used to emphasize shared patterns of variation.
+
+```{r}
+## Apply PCA ordering
+bb_ordered_data <- bb_reorder(
+  bb_original_data,
+  method = "pca"
+)
+```
+
+#### Viewing the ordered table
+
+```{r}
+## View the table
+bb_gt(
+  bb_ordered_data,
+  title = "Overlapping sites: PCA ordering"
+)
+
+
+```
+
+The ordered view reveals block structure with blurred boundaries. Sites that share characteristics of multiple blocks appear between core regions, and species are arranged according to covariance rather than overall frequency.
+
+#### Computing metrics
+
+```{r}
+## Compute structural metrics
+bb_metrics(bb_ordered_data)
+
+```
+
+The resulting values summarize different aspects of the observed structure. Some quantities, such as contrast, appear explicitly in the metrics output. Others, such as concentration, are reflected through related components that describe how values are distributed within the ordered table. Robustness is not represented by a single value; instead, it is assessed by comparing these summaries across alternative orderings of the same data.
+
+The metrics are shown here in their internal form. This representation exposes the full set of quantities available for interpretation and comparison. In later chapters, these values are summarized in more compact, presentation-oriented tables.
+
+### Interpreting results
+
+Ordering and metrics should be interpreted together. The ordered table shows where structure appears and how it is expressed; metrics provide a concise summary of that structure.
+
+In this example, moderate contrast indicates that separation among regions exists but is not sharp. Reduced concentration reflects the spread of values across overlapping sites. These results are consistent with a table in which blocks are present but partially shared.
+
+Importantly, these summaries do not replace inspection of the table. Instead, they support reasoning by making comparisons explicit and reproducible.
+
+### Common pitfalls
+
+Several common mistakes are worth noting:
+
+-   Relying on a single ordering method
+
+-   Treating metric values as definitive rather than descriptive
+
+-   Ignoring the effect of background noise on concentration
+
+-   Confusing visual clarity with ecological significance
+
+Avoiding these pitfalls requires returning repeatedly to the table itself and to the assumptions underlying each analytical choice.
+
+### Moving forward
+
+Ordering and metrics provide a structured way to explore Braun–Blanquet tables, but they are not an endpoint. Their value lies in supporting interpretation, comparison, and communication.
+
+In subsequent chapters, these tools are applied in more specialized contexts, including classification and ecological interpretation. The workflow introduced here provides a foundation for those applications without prescribing a single path forward.

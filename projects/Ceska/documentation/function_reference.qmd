@@ -1,0 +1,45 @@
+# Function Reference
+
+A compact list of the functions `coenosr` exports, grouped by the stage of the workflow. Every reader returns the same `coenos_rel` table, so the analysis and display functions accept the output of any of them.
+
+## Reading data in
+
+`read_rel(path, encoding = "latin1")`
+
+Read a COENOS `.REL` file. `path` is the file; `encoding` is passed to `readLines()` (the bundled data is `"latin1"`).
+
+`read_lists(path, present = "1", encoding = "latin1")`
+
+Read the ragged "site, then its species" form. `present` is the cover value given to a species listed without one (default `"1"`, matching the `1` of a presence/absence table).
+
+`read_2way(path, absent = c("0", "", "NA"), transpose = FALSE, encoding = "latin1", ...)`
+
+Read a wide species-by-sites matrix. `absent` lists the cell values read as absence; set `transpose = TRUE` if your rows are sites and columns are species. Further arguments pass to `read.csv()`.
+
+## Analysis
+
+`constancy(rel, sort = TRUE)`
+
+Count the relevés each species occupies. `sort = TRUE` (the default) returns them most-frequent first.
+
+`classify_species(rel)`
+
+Split the species by constancy into `rare` (fewer than 3 relevés), `ubiquitous` (two-thirds or more of the relevés), and the `eligible` middle — the candidates from which groups are formed.
+
+`form_groups(rel, x = 0.5, y = 0.2, min_species = 4, min_releves = 2)`
+
+Find the differential species groups among the eligible species. `x` is the inside threshold (a species' minimum within-block density) and `y` the outside threshold (the most outside relevés a group species may occupy); the default `0.5`/`0.2` is the 50/20 level. `min_species` and `min_releves` set the smallest group reported.
+
+`coenos_table(x, cover = TRUE, reflect = FALSE)`
+
+Arrange the sorted two-way table from the groups. `cover = TRUE` fills cells with the recorded cover value, `FALSE` with `"x"` for presence; `reflect` flips the ordering left-to-right.
+
+## Display
+
+`differential_table(x, include = "core")`
+
+Pull the sorted table out as a plain data frame. `include = "core"` (the default) gives the grouped species and their relevés; `"full"` gives the whole sorted table.
+
+`coenos_gt(x, include = "core", shorten = TRUE, title = NULL, subtitle = NULL)`
+
+Render the table with `gt`, the groups drawn as labelled sections. `shorten` abbreviates the relevé headers; `title` and `subtitle` add optional header text.

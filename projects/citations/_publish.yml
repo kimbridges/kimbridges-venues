@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: d31c350f-cde4-4de5-944a-0de38c83481a
+      url: 'https://kim.quarto.pub/citations'

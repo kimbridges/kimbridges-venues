@@ -1,0 +1,363 @@
+# Writing Assistance
+
+The LLMs are built for writing. There are a lot of aspects to writing. The examples here look into how this tool can be beneficial.
+
+## Dictation
+
+Creating a photo-essay is a practice we often follow during our travels. We do this for most of our big trips as a way to document what we\'ve seen and done for future reference. It also allows us to reflect on specific aspects of our trip in more detail (e.g. by closely examining the photos) and learn things that will improve our future travels. However, it can be a lot of work to record and document each day\'s activities, particularly with regards to the writing, typing, and editing process. This can sometimes lead to delays in completing our essays, which can be frustrating and lead to feelings of guilt over unfinished projects.
+
+This Dictation Test is an attempt to streamline the process of creating photo-essays by focusing on text entry and editing. The goal is to make it possible to produce essays in near real-time.
+
+The following experiment will test this approach. In the following text, comments and ChatGPT requests are given in bold, while ChatGPT responses are in normal font.
+
+**The following paragraph was dictated into a Samsung Tab S8+ tablet using the microphone in Google Docs. This is a made-up story created only for testing.**
+
+**As you can see, there are none of the usual sentence markers (e.g., commas, periods and caps).**
+
+We went from downtown Tokyo to Akihabara there we were looking for a camera store we needed to buy some memory for the Sony camera this is very expensive in the US but hopefully the yen to dollar conversion rate will make it less expensive in Japan once we had gotten that we were very hungry what\'s the best thing to do in Tokyo of course it\'s to seek out ramen so that was our next goal find a ramen shop we\'re not too particular as we\'re not ramen experts but we wanted something good or at least something typical of Japan so we walked for quite a few blocks looking at the advertisements in the windows looking at the plastic models on display in front of each restaurant it was after 20 minutes or so that we were getting pretty hungry and we decided that it was time to make a decision
+
+**The next thing to do was to clean up the text. ChatGPT was opened, "Please fix the following paragraph." was typed in and the Google Doc text was pasted following the request. Here is the result.**
+
+> We went from downtown Tokyo to Akihabara, where we were looking for a camera store to buy some memory for our Sony camera. This can be very expensive in the US, but we hoped the yen to dollar conversion rate would make it less expensive in Japan. Once we had gotten what we needed, we were very hungry and decided to seek out some ramen. We\'re not ramen experts, but we wanted something good or at least something typical of Japan. We walked for quite a few blocks, looking at the advertisements in the windows and the plastic models on display in front of each restaurant. After about 20 minutes, we were getting pretty hungry and decided it was time to make a decision.
+
+You can see that the changes were a bit more than an addition of punctuation. It smoothed out the story a bit, too. **What followed were a few additional prompts to ChatGPS, mostly asking for changes in the tense of the story.** These worked fine.
+
+**The last two steps asked for a conversion into past perfect tense, then a request to "improve the latest version."** The following text was the result.
+
+> We had just arrived in Akihabara, a neighborhood known for its electronics stores, and were on the hunt for a camera store to buy some memory for our Sony camera. We knew that this type of equipment could be very expensive in the United States, but we hoped that the favorable exchange rate between the yen and the dollar would make it more affordable in Japan. After we had found what we needed, we were famished and set our sights on finding a tasty bowl of ramen. Although we weren\'t experts on the subject, we wanted to try something authentic or at least representative of Japan. We walked for several blocks, taking in the sights and sounds of the bustling street and examining the plastic food displays and advertisements in the windows of various restaurants. It wasn\'t long before our stomachs began to growl, and we decided it was time to make a decision and choose a place to eat.
+
+This appears to be a remarkable way to gain efficiency when producing documents of this genre. Recall that this document was dictated on a tablet, there were a few simple cut-and-paste operations, and the few commands were given to ChatGPT.
+
+Here are a few observations:
+
+- The text needs some editing to fix the tense. The overall structure might be improved by breaking the narrative into paragraphs.
+
+- The story has been embellished. Is this a correct reflection of the situation?
+
+- The results seem to have more "energy" as some visceral emotions (e.g., "stomachs began to growl") have replaced fairly bland statements (e.g., "getting pretty hungry").
+
+This result shows there is considerable promise using a combination of dictation and AI-based editing as a way to produce the text for photo-essays in "near real time."
+
+## Association Index
+
+Some years ago, Marsh Fisher developed an "Association Index." He spent millions of dollars on this. It involved hiring professionals in many fields to list terms and phrases that are relevant in a particular domain. His product never took off as a commercial success even though it has great utility.
+
+The following tests whether ChatGPT can do the same sort of work as Fisher's Association Index.
+
+**What are words and phrases associated with the color orange?**
+
+> Here are some words and phrases that are commonly associated with the color orange:
+
+- Citrus
+
+- Warmth
+
+- Energy
+
+- Vibrancy
+
+- Enthusiasm
+
+- Creativity
+
+- Fun
+
+- Playful
+
+- Excitement
+
+- Halloween (as a complementary color to black)
+
+- Harvest
+
+- Autumn (as a color associated with the changing leaves)
+
+- Sunsets
+
+- Citrus fruits (e.g., oranges, tangerines, etc.)
+
+- Traffic cones (as a safety symbol)
+
+- Tiger (as a reference to the animal\'s stripes)
+
+- Basketball (as the color of the ball)
+
+- Fire (as a symbol of warmth and heat)
+
+- Spice (as a color associated with many spices, such as paprika, turmeric, etc.)
+
+> These are just a few examples, and the associations with the color orange can vary depending on cultural, historical, and personal contexts.
+
+Several other words were used as prompts. All of the tests gave acceptable results. The conclusion is that this is a pretty good substitute for the Fisher software (which is no longer available).
+
+## Bibliographic Information
+
+**WARNING: The citations in the responses below are likely (read: completely) to be completely wrong!** (tested: February 28, 2023)
+
+**What are some research papers describing ethnobotanical information for lowland Costa Rica?**
+
+> Here are some research papers that describe ethnobotanical information for lowland Costa Rica:
+
+1.  Gentry, A. H. (1982). Ethnobotany of the Rama of Nicaragua. Advances in Economic Botany, 1, 1-62.
+
+> This paper includes information on the ethnobotanical knowledge of the Rama people, who live in the southeastern region of Nicaragua and adjacent areas of Costa Rica.
+
+2.  Barrantes, R., & Rojas, J. (2008). Ethnobotany of the Huetar indigenous people of Costa Rica. Journal of ethnobiology and ethnomedicine, 4(1), 1-16.
+
+> This paper presents an ethnobotanical study of the Huetar people of Costa Rica, including information on their use of medicinal plants, food plants, and plants for other purposes.
+
+3.  Marín-Rodríguez, A., & Cedeño-Maldonado, A. (2011). Ethnobotanical survey of medicinal plants used by traditional healers in Trinidad and Tobago for gastrointestinal disorders. Journal of ethnopharmacology, 133(3), 776-784.
+
+> While this paper focuses on Trinidad and Tobago, it includes some information on the use of medicinal plants for gastrointestinal disorders by traditional healers in the Limón province of Costa Rica.
+
+4.  González, J. A., & Garcia-Barriuso, M. (2011). Knowledge and use of fungi by a mycophilic community in lowland Nicaragua. Economic Botany, 65(2), 121-133.
+
+> This paper includes information on the traditional knowledge and use of fungi by the Miskitu people, who live in the northeastern region of Nicaragua and adjacent areas of Costa Rica.
+
+5.  Van der Hammen, T., & Bernal, R. (2001). Pre-Columbian use of annatto (Bixa orellana L.) in the Caribbean region and the American tropics: archaeological and ethnobotanical evidence. Economic Botany, 55(4), 534-547.
+
+> This paper discusses the pre-Columbian use of annatto by indigenous peoples in the Caribbean region and the American tropics, including the lowland regions of Costa Rica.
+>
+> These are just a few examples of research papers that describe ethnobotanical information for lowland Costa Rica. There are many other studies available that explore the traditional uses of plants and fungi in this region.
+
+**What about papers on fungi?**
+
+> Here are some research papers that focus specifically on fungi in lowland Costa Rica:
+
+1.  Ovrebo, C. L., Lodge, D. J., & Carroll, G. C. (1997). Fungal diversity in the canopy of a neotropical forest: a case study from Monteverde, Costa Rica. Mycologia, 89(2), 198-211.
+
+> This paper describes the diversity of fungi found in the canopy of a neotropical forest in Monteverde, Costa Rica, including information on species richness, diversity, and distribution.
+
+2.  Mueller, G. M., & Schmit, J. P. (2007). Fungal biodiversity and ecology in the tropics: perspectives and opportunities. Mycologia, 99(2), 195-201.
+
+> While this paper is not specific to Costa Rica, it provides a broader perspective on fungal biodiversity and ecology in tropical regions, including the lowland areas of Costa Rica.
+
+3.  Bills, G. F., & Mueller, G. M. (2008). Biodiversity of fungi in Costa Rica: inventory, current knowledge, and conservation. Revista de biología tropical, 56(Suppl. 4), 15-38.
+
+> This paper provides an overview of the fungal biodiversity in Costa Rica, including information on the most commonly encountered groups of fungi, their ecological roles, and the conservation status of different fungal species.
+
+4.  Montoya, L., Leiva, G., & Erazo, S. (2012). Macrofungal diversity of Costa Rica: a review. Revista de biología tropical, 60(3), 1257-1274.
+
+> This paper provides a comprehensive review of the macrofungal diversity in Costa Rica, including information on the different types of habitats where fungi can be found, the ecological roles of different fungal groups, and the importance of fungi in the culture and economy of the country.
+
+5.  Cáceres, A., Hernández-Restrepo, M., & Guarro, J. (2016). Fungi from Costa Rica: the current status of their taxonomy and diversity. Mycosphere, 7(11), 1765-1794.
+
+> This paper provides an update on the taxonomy and diversity of fungi in Costa Rica, including information on the most commonly encountered groups of fungi, their distribution and habitat preferences, and the challenges associated with fungal taxonomy and identification.
+>
+> These are just a few examples of research papers that focus specifically on fungi in lowland Costa Rica. There are many other studies available that explore different aspects of fungal diversity, ecology, and conservation in this region.
+
+**Who are the indigenous people in this region?**
+
+> There are several indigenous groups that live in the lowland region of Costa Rica. Some of these groups include:
+
+1.  Bribri: The Bribri people are one of the largest indigenous groups in Costa Rica, and they live primarily in the southern part of the country, including the Talamanca region. They have a rich cultural heritage, including traditional agricultural practices, medicinal plant use, and storytelling.
+
+2.  Cabécar: The Cabécar people are the largest indigenous group in Costa Rica, and they live primarily in the eastern part of the country, including the Talamanca region. They have a unique language and cultural practices, including traditional agriculture, hunting, and fishing.
+
+3.  Guaymí: The Guaymí people live primarily in the southern part of Costa Rica, including the Osa Peninsula and the Golfito region. They have a rich cultural heritage that includes traditional crafts, music, and storytelling.
+
+4.  Boruca: The Boruca people live primarily in the southwestern part of Costa Rica, including the Puntarenas and Corredores regions. They have a strong tradition of mask making and weaving, and they are known for their elaborate Boruca masks.
+
+5.  Terraba: The Terraba people live primarily in the southern part of Costa Rica, including the Osa Peninsula and the Golfito region. They have a rich cultural heritage that includes traditional agriculture, medicinal plant use, and dance.
+
+> These are just a few examples of the indigenous groups that live in the lowland region of Costa Rica. There are many other groups, each with their own unique cultural practices and traditions.
+
+**Are there research studies on the Guaymí?**
+
+> Yes, there are research studies on the Guaymí people of Costa Rica. Here are a few examples:
+
+1.  Hernández-Aguilar, R. A., & Crewe, W. (2017). Traditional ecological knowledge and management practices of edible caterpillars in the Guaymí community of Costa Rica. Journal of ethnobiology and ethnomedicine, 13(1), 23.
+
+> This paper presents an ethnobiological study of the Guaymí people\'s traditional ecological knowledge and management practices related to the harvesting and consumption of edible caterpillars.
+
+2.  Paniagua-Zambrana, N. Y., López-Carretero, L., & Sánchez-Mata, D. (2021). Nutritional composition and fatty acid profile of some traditional foods consumed by the Guaymí indigenous community of Costa Rica. Journal of ethnobiology and ethnomedicine, 17(1), 22.
+
+> This study analyzes the nutritional composition and fatty acid profile of traditional foods consumed by the Guaymí community, including plantains, yams, beans, and other locally grown crops.
+
+3.  Nielsen, M. R., Bruun, T. B., Treue, T., & Meilby, H. (2012). Assessing the potential for community-based monitoring of forests using expert-based information: a case from the Guaymí people in the Talamanca region of Costa Rica. Ecology and Society, 17(4), 21.
+
+> This paper explores the potential for community-based monitoring of forests in the Guaymí community using expert-based information, including knowledge from local elders and leaders.
+
+4.  Romain, J. (2012). The cultural and spiritual values of forests in the indigenous communities of Talamanca, Costa Rica. Forests, Trees and Livelihoods, 21(3), 204-219.
+
+> This study examines the cultural and spiritual values of forests in the Guaymí community of Talamanca, including traditional beliefs about the role of forests in maintaining the balance between humans and nature.
+>
+> These are just a few examples of research studies on the Guaymí people of Costa Rica. There are many other studies available that explore different aspects of Guaymí culture, traditional knowledge, and natural resource management practices.
+
+**How large an area do the Guaymí people occupy?**
+
+> The Guaymí people are one of the largest indigenous groups in Costa Rica and Panama, and they occupy a wide geographic area that includes both countries. In Costa Rica, the Guaymí people live primarily in the southern part of the country, including the Osa Peninsula and the Golfito region, as well as in the Talamanca region along the border with Panama. In Panama, the Guaymí people live primarily in the western part of the country, in the provinces of Chiriquí, Bocas del Toro, and Veraguas.
+>
+> According to a report by the Costa Rican Ministry of Culture and Youth, the Guaymí people are estimated to number around 41,000 in Costa Rica, making them one of the largest indigenous groups in the country. However, the exact number of Guaymí people in both Costa Rica and Panama is difficult to determine due to factors such as migration, assimilation, and intermarriage with non-indigenous populations.
+
+## Citation Clean-up
+
+Making the format of bibliographic references consistent is a challenge for new researchers. The following example tests ChatGPT's ability to reformat a slightly messed up set of references.
+
+**Make the following set of bibliographic references consistent in terms of bibliographic citation style.**
+
+**Barrera, M., Castro, F. G., Strycker, L.A., Toobert, D.J. (2013). Cultural adaptations of behavioral health interventions: A progress report. J Consult Clin Psychol., 81(2):196‐205.**
+
+**Bernal, D. D. (1998). Using a Chicana feminist epistemology in educational research. Harvard Educ Rev. 68, 555--582.**
+
+**Benish, S. G., Quintana, S., and Wampold, B. E. (2011). Culturally adapted psychotherapy and the legitimacy of myth: A direct-comparison meta-analysis. Journal of Counseling Psychology, 58(3), 279--289.**
+
+**Bernal, G., Bonilla, J., and Bellido, C. (1995). Ecological validity and cultural sensitivity for outcome research: Issues for cultural adaptation and development of psychosocial treatments with Hispanics. Journal of Abnormal Child Psychology, 23, 67-82.**
+
+**Bernal, G., Jiménez-Chafey, M. I., and Domenech Rodríguez, M. M. (2009). Cultural adaptation of treatments: A resource for considering culture in evidence-based practice. Professional Psychology: Research and Practice, 40(4), 361--368.**
+
+**Botvin, G. J. (2004). Advancing prevention science and practice: Challenges, critical issues, and future directions. Prevention Science, 5, 69--72.**
+
+**Bourassa, S. C. (1988). Toward a theory of landscape aesthetics. Landscape and Urban Planning, 15, 241-252.**
+
+**Buckley, C., McCormack, B., Ryan, A. (2017). Working in a storied way---Narrative-based approaches to person-centred care and practice development in older adult residential care settings. J. of Clinical Nursing, 27(5-6): e858-e872.**
+
+**Cajete, G. (1994). Look to the mountain: An ecology of Indigenous education. Durango, CO: Kivaki Press.**
+
+**Castro F. G., Barrera, M., Martinez, C. R. (2004) The cultural adaptation of prevention interventions: Resolving tensions between fidelity and fit. Prevention Science. 5(1), 41--45.**
+
+**Castro, F. G., Barrera, M., Holleran Steiker, L. K. (2010). Issues and challenges in the design of culturally adapted evidence based interventions. Annu Rev Clin Psychol, 6, pp. 213-239.**
+
+**Chowdhary, N, Jotheeswaran, A. T., Nadkarni, A., Hollon, S. D., King5, M., Jordans, M. J. D.,Rahman, A., Verdeli, H., Araya, R. and Patel, V. (2013). The methods and outcomes of cultural adaptations of psychological treatments for depressive disorders: a systematic review. Psychological Medicine, 44(6):1-16.**
+
+**Cochran, P. A., Marshall, C. A., Garcia-Downing, C., Kendall, E., Cook, D., McCubbin, L., and Gover, R. M. (2008). Indigenous ways of knowing: implications for participatory research and community. American Journal of Public Health, 98(1), 22--27.**
+
+**Chavez-Korell, S., Benson-Flórez, G., Delgado Rendón, A., and Farías, R. (2014). Examining the relationships between physical functioning, ethnic identity, acculturation, familismo, and depressive symptoms for Latino older adults. The Counseling Psychologist. 42(2) 255--277.**
+
+**Datta, R. (2017). Traditional storytelling: An effective Indigenous research methodology and its implications for environmental research. AlterNative: An International Journal of Indigenous Peoples, 1(14), 35-44.**
+
+> Barrera, M., Castro, F. G., Strycker, L. A., & Toobert, D. J. (2013). Cultural adaptations of behavioral health interventions: A progress report. Journal of Consulting and Clinical Psychology, 81(2), 196-205.
+>
+> Bernal, D. D. (1998). Using a Chicana feminist epistemology in educational research. Harvard Educational Review, 68, 555-582.
+>
+> Benish, S. G., Quintana, S., & Wampold, B. E. (2011). Culturally adapted psychotherapy and the legitimacy of myth: A direct-comparison meta-analysis. Journal of Counseling Psychology, 58(3), 279-289.
+>
+> Bernal, G., Bonilla, J., & Bellido, C. (1995). Ecological validity and cultural sensitivity for outcome research: Issues for cultural adaptation and development of psychosocial treatments with Hispanics. Journal of Abnormal Child Psychology, 23, 67-82.
+>
+> Bernal, G., Jiménez-Chafey, M. I., & Domenech Rodríguez, M. M. (2009). Cultural adaptation of treatments: A resource for considering culture in evidence-based practice. Professional Psychology: Research and Practice, 40(4), 361-368.
+>
+> Botvin, G. J. (2004). Advancing prevention science and practice: Challenges, critical issues, and future directions. Prevention Science, 5, 69-72.
+>
+> Bourassa, S. C. (1988). Toward a theory of landscape aesthetics. Landscape and Urban Planning, 15, 241-252.
+>
+> Buckley, C., McCormack, B., & Ryan, A. (2017). Working in a storied way---Narrative-based approaches to person-centred care and practice development in older adult residential care settings. Journal of Clinical Nursing, 27(5-6), e858-e872.
+>
+> Cajete, G. (1994). Look to the mountain: An ecology of Indigenous education. Durango, CO: Kivaki Press.
+>
+> Castro, F. G., Barrera, M., & Martinez, C. R. (2004). The cultural adaptation of prevention interventions: Resolving tensions between fidelity and fit. Prevention Science, 5(1), 41-45.
+>
+> Castro, F. G., Barrera, M., & Holleran Steiker, L. K. (2010). Issues and challenges in the design of culturally adapted evidence-based interventions. Annual Review of Clinical Psychology, 6, 213-239.
+>
+> Chowdhary, N., Jotheeswaran, A. T., Nadkarni, A., Hollon, S. D., King, M., Jordans, M. J. D., Rahman, A., Verdeli, H., Araya, R., & Patel, V. (2013). The methods and outcomes of cultural adaptations of psychological treatments for depressive disorders: a systematic review. Psychological Medicine, 44(6), 1-16.
+>
+> Cochran, P. A., Marshall, C. A., Garcia-Downing, C., Kendall, E., Cook, D., McCubbin, L., & Gover, R. M. (2008). Indigenous ways of knowing: implications for participatory research and community. American Journal of Public Health, 98(1), 22-27.
+>
+> Chavez-Korell, S., Benson-Flórez, G., Delgado Rendón, A., & Farías, R. (2014). Examining the relationships between physical functioning, ethnic identity, acculturation, familismo, and depressive symptoms for Latino older adults. The Counseling Psychologist, 42(2), 255-277.
+>
+> Datta, R. (2017). Traditional storytelling: An effective Indigenous research methodology and its implications for environmental research. AlterNative: An International Journal of Indigenous Peoples, 14(1), 35-44.
+
+## BibTex Formatting
+
+The objective here is to get a bibliographic citation formatted so that it can be used in one of the citation library programs or processors. The BibTex format is pretty standard. But it is a pain to convert a citation to this format manually. This is a simple test to see if ChatGPT can handle the task.
+
+Here is the test citation that is pasted into the ChatGPT box:
+
+> Monson, C. M., Fredman, S. J., & Adair, K. C. (2008). Cognitive-behavioral conjoint therapy for post-traumatic stress disorder: Application to operation enduring and Iraqi freedom veterans. Journal of Clinical Psychology, 64, 958-971. [[https://doi:10.1002/jclp.20511]{.underline}](about:blank)
+
+**Make a BibTex format entry for the following bibliographic citation. Monson, C. M., Fredman, S. J., & Adair, K. C. (2008). Cognitive-behavioral conjoint therapy for post-traumatic stress disorder: Application to operation enduring and Iraqi freedom veterans. Journal of Clinical Psychology, 64, 958-971. [[https://doi:10.1002/jclp.20511]{.underline}](about:blank)**
+
+> Here\'s the BibTeX entry for the given citation:
+>
+> \@article{monson2008cognitive,
+>
+> title={Cognitive-behavioral conjoint therapy for post-traumatic stress disorder: Application to operation enduring and Iraqi freedom veterans},
+>
+> author={Monson, Candice M and Fredman, Steffany J and Adair, Kathryn C},
+>
+> journal={Journal of Clinical Psychology},
+>
+> volume={64},
+>
+> pages={958\--971},
+>
+> year={2008},
+>
+> url={https://doi.org/10.1002/jclp.20511},
+>
+> doi={10.1002/jclp.20511}
+>
+> }
+
+Note that the ChatGPT response placed the BibTex version in a code box with a copy button. That makes it easy to add the citation to a citation collection.
+
+## Difficult OCR
+
+Here is an image of the scanned document sent to ChatGPT-4. The original is 8.5x11 inches.
+
+![](images/image15.png){width="5.585811461067366in" height="7.223958880139983in"}
+
+**This is an old memo that was scanned. Can you do OCR on it and then produce a text document that resembles the original but has been corrected as best you are able?**
+
+> \-\-\-\--
+>
+> \[\... Some text not visible \...\]
+>
+> No change is contemplated in the upper division offerings in
+>
+> Greek and Latin (Classics) or Russian, which will remain
+>
+> as they are.
+>
+> \[\... Some text not visible \...\]
+>
+> LATIN (CLASSICS)
+>
+> 50-217. CLASSICAL CIVILIZATION \[\...\]
+>
+> A survey in English on the major aspects of Greek and Roman civilization
+>
+> with special attention to the influences on Western culture. The
+>
+> first semester is devoted to Greek civilization; the second to Roman.
+>
+> Students may enter the second semester. \[\...\]
+>
+> (Note: Offered 1955-56.)
+>
+> 260-261. CLASSICAL LITERATURE (3,2) \[\...\]
+>
+> The major writers of Greece and Rome in English translation.
+>
+> The first semester will be devoted to Greek literature; the second to
+>
+> Roman literature. Students may enter the second semester. \[\...\]
+>
+> with R50-217. \[\...\]
+>
+> (Offered once every alternate semester.)
+>
+> 299\. DIRECTED READING (2-4) 1st & 2nd.
+>
+> Prerequisite: Consent of Instructor. \[\...\]
+>
+> RUSSIAN
+>
+> 261\. NINETEENTH-CENTURY RUSSIAN NOVEL (2-4) 1st & 2nd.
+>
+> A survey of the great novels written in English translation,
+>
+> particularly Gogol, Goncharov, Turgenev, Dostoevsky, and Tolstoy. Emphasis is given
+>
+> to the political and social context.
+>
+> 299\. DIRECTED READING (4-8) 1st.
+>
+> Prerequisites: Consent of instructor. \[\...\]
+>
+> \-\-\-\--
+
+There were a few "creative" insertions made by ChatGPT. And there were a few places where text was missed.
+
+However, given the very poor quality of the original scanned document, the result is quite good.
+
+I tried a few modifications of the original request to ChatGPT, but the deficiencies remained. Someone better able to frame requests might improve on this text extraction.

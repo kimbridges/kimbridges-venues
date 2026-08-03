@@ -1,0 +1,409 @@
+# Data Input
+
+All of the input strategies build on the ideas that the data needs to be observable, entered as easily as possible, and checked and updated with minimal effort.
+
+Sometimes, the source of the data encourages a particular type of data entry. The quantity of data is important, too.
+
+One data are entered and verified, it is likely the data structure will be changed in some way. A simple modification would be the addition of a new column or two. A more extreme change would be making a "long" structure from one that is "wide" (something explained later).
+
+It is probably best to master a few basic strategies and stick to them. The reason is that there are a few gotcha things that can appear in your data structure if you make a slight change in your strategy. For example, one package can treat character strings as factors while a similar appearing package will keep strings as characters.
+
+## Data Frames and Tibbles
+
+Tibbles [@Muller2023] are a modern re-imagining of the data frame. Both of these structures hold data as rows and columns. A tibble is considered a more efficient and easier to use than a data frame, especially when working in the tidyverse ecosystem [@wickham2019welcome].
+
+As a result, data frames will be converted to tibbles in the examples shown here.
+
+```{r}
+#| label:   core
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Activate the Core Packages
+library(tidyverse) ## Brings in a core of useful functions
+library(gt)        ## Tables
+
+## Specialized Packages
+library(lubridate)     ## Date functions
+library(googlesheets4) ## Read Google Sheets
+library(Hmisc)         ## Comprehensive data summaries
+
+```
+
+## Input Strategies
+
+There are four basic input strategies shown here. Each is directed at a different input problem.
+
+### In-Code Table
+
+The structure of the data resembles a square table. Each column has a descriptive header. This is the favored strategy for smaller sets of data.
+
+The idea here is to use or emulate the structure of a CSV file inside the code.
+
+One benefit is having the data stored inside a code chunk where the data are close to the processing steps.
+
+This strategy works well when you don't have too much data (perhaps \< 50 observations). It is simple to use and allows early inspection of the data. The data are also easily updated either by adding new observation, adding a new variable (i.e., data column), or making a correction.
+
+```{r}
+#| label: internal
+#| message: false
+#| error: false
+
+## Read the data
+data <- read_csv(col_names = TRUE, file =
+      "Name,      Age, Gender
+       Jean Paul, 23,  male
+       Micah,     28,  male
+       Sarah,     24,  female
+       Rose,      26,  female")
+
+## Confirm the data
+data
+
+```
+
+There are a number of things to note.
+
+-   **read_csv:** This is part of the readr package.
+
+-   **Parameters:** The col_headers = TRUE and file = are likely to be the same for all you uses of read_csv.
+
+-   **Characters:** Character strings (like the names in the example) are kept as character and not converted into factors.
+
+-   **Parentheses & Quotation marks:** The data are part of the parameter stet for read_csv and therefore inside the parentheses. Quotation marks occur before and after the data. Data that come as character strings don't need to be enclosed in quotation marks unless there is an embedded comma.
+
+-   **Spacing:** You can use spaces with the data so that data columns line up with the headers.
+
+You can see that this is a simple and logical way to enter data.
+
+### In-Code Assignment as Vectors
+
+The data are arranged in rows (i.e., vectors), with each row having a header (i.e., column name) followed by the data values.
+
+This is the format shown in many R code examples. It is considered a poor choice here.
+
+Here, data are entered as concatenated strings.
+
+```{r}
+#| label: frame
+#| message: false
+#| error: false
+
+## Build the data frame
+data <- data.frame(
+   name   = c("Jean Paul", "Micah", "Sarah", "Rose"), 
+   age    = c(23,28,24,26),
+   gender = c("male","male","female","female"),
+   stringsAsFactors = FALSE)
+
+## Convert the data frame to a tibble
+data <- as_tibble(data)
+
+## Confirm the data
+data
+
+```
+
+There are a few things to note.
+
+-   **Shape:** The visual reminder that the data (i.e., tibble) is square is obscured by the vector structure. Generally, each of the vectors (i.e., columns) will need to be the same length.
+
+-   **Character strings:** Character strings need to be enclosed in quotation marks.
+
+-   **Data editing:** If there are quite a few data values, it's quite difficult to find places in the long strings of value where a correction (e.g., insertion of a dropped value) needs to be made.
+
+-   **Repeated values:** Lists of numbers (or other values) can be created quite easily. For example, a sequence number column can be created with code like this inserted with the other vectors:
+
+    seq = c(1:4),
+
+-   **Character vs Factor:** The `stringsAsFactors = FALSE` statement is generally desirable if some of the data are character variables. There seems to be a tendency to define character strings as factors if you don't use this statement.
+
+### External Spreadsheet
+
+This looks like an In-Code Table as it is a square table. The difference is that data are stored outside the R code.
+
+Entering data into an on-line spreadsheet, like Google Sheets, has an advantage of allowing access to other people working on a project.
+
+Spreadsheet data entry is often quite efficient with facilities like auto-complete.
+
+The example here uses Google Sheets. Getting access to a Google Sheet spreadsheet requires a bit of setup using Google Sheets (think: giving some permissions). Once done, you use the link that's provided. The link looks something like this (which is fake):
+
+```         
+ 1z-gPNmPE-_2cBiZgsVB84uRWWa5yWqmIrHxshlg8k7Y
+```
+
+You can store this link in a text file (named Glink.txt here) and then use the stored link by importing it with a `read_file` function.
+
+```{r}
+#| label: sheets
+#| message: false
+#| error: false
+
+## Retrieve the stored Google Sheet link
+link <- read_file("data/Glink.txt")
+
+## Read the Google Sheet contents
+data3 <- read_sheet(link)
+
+## Confirm the data
+data3
+
+```
+
+There are some ways to handle special situations.
+
+-   **Multiple Sheets:** If you have more than one spreadsheet in the set, modify the read_sheet as in the following example (to use sheet 2):
+
+    read_sheet(link, sheet = 2)
+
+-   **Specific Range of Cells:** This is important when you want to eliminate superfluous information like title rows and cells that have equations.
+
+If all of the values in a spreadsheet column are not the same type (e.g., number, character), the imported results may not be very satisfactory.
+
+Here is an example with a range trim:
+
+```         
+ read_sheet(link, range = "A1:C4")
+```
+
+### External CSV File
+
+This type of file has comma separated values (hence CSV). The file is stored somewhere on the computer, somewhere near (i.e., in the same folder structure as the R code) where they will be used.
+
+Usually, the first row consists of header names.
+
+Note that spreadsheets are often have their data saved in this format.
+
+There are a lot of good reasons to store data in a file that is outside the R code.
+
+-   **Imported data:** If you've been supplied with a CSV-formatted file, then you're likely going to keep the data external to the code.
+
+-   **Lots of data:** If you have hundreds of observations or more, it's probably good to keep the data in a separate file.
+
+-   **Data spans many columns:** If your data cover more real estate than fits on a line (e.g., \> 50 characters), it may be better to store the data in a separate file.
+
+-   **Data security:** You want to keep the data separate so that you are sure it won't be changed accidentally as you build analysis code. Also, there may be data in the file that you don't want other people to see.
+
+The following code chunk show how to read an external CSV file.
+
+```{r}
+#| label: external
+#| message: false
+#| error: false
+
+## Define the file location
+file_directory <- "data"
+
+## Define the file name
+file_name <- "external.csv"
+
+## Combine the location and name
+data_file <- paste0(file_directory,"/",file_name)
+
+## Read the data
+data <- read_csv(file = data_file)
+
+## Confirm the data
+data
+
+```
+
+## Entering Dates
+
+Dates can be a little tricky. Fortunately, there is Gromelund's [-@Grolemund2011] R package, `lubridate` , that is very helpful and quite straight forward to use [@Grolemund2021].
+
+In the following example, the dates (i.e., `Start`, `End`) are read as character variables. After data confirmation, the values are converted to date variables.
+
+Later on, a new variable is created (Months) using the `lubridate` functions `interval` and `time_period`. Note that there are several different values available for `time_period`, including `"days"`, `"weeks"` and `"years"`.
+
+```{r}
+#| label: dates
+#| message: false
+#| error: false
+
+## Read the data
+data <- read_csv(col_names = TRUE, file = 
+      "Name,      Start,     End
+       Jean Paul, 2021-4-15, 2022-7-13
+       Micah,     2019-2-7,  2021-12-31
+       Sarah,     2020-1-3,  2022-1-19
+       Rose,      2022-1-15, 2022-10-5")
+
+## Confirm the data
+data
+
+## Convert to dates
+data$Start <- ymd(data$Start)
+data$End   <- ymd(data$End)
+
+## Derive date-related values
+period      <- interval(data$Start,data$End)
+data$Months <- time_length(period,"months")
+data$Days   <- time_length(period,"days")
+
+## Confirm the data
+data
+
+```
+
+## Verifying the Data
+
+Each of the examples has a simple statement that prints at least the start of the data tibble. This provides a first look at how R has interpreted the data. The size of the tibble (e.g., A tibble: 4 x 3), characteristics of each column (e.g., \<chr\>, \<dbl\>) and the first rows of data.
+
+It is useful to do more.
+
+### Summary Function
+
+The summary statement does what is needed as it is simple and intuitive.
+
+```{r}
+#| label: summary
+#| message: false
+#| error: false
+#| warning: false
+
+data <- read_csv(col_names = TRUE, file = 
+    "Group, Season, Score
+     Alpha, Spring, 2
+     Alpha, Summer, 3
+     Alpha, Fall,   3
+     Beta,  Spring, 2
+     Beta,  Summer, 4
+     Beta,  Fall,   3
+     Beta,  Winter, 1")
+
+## Basic statistics of the data
+summary(data)
+
+```
+
+### Describe Function
+
+If you need more details, the `Hmisc` package (<https://hbiostat.org/R/Hmisc/>) has a `describe` function. This returns a much more comprehensive and statistically-oriented summary data.
+
+Here is an example applied to the data in the previous chunk.
+
+```{r}
+#| label: describe
+#| message: false
+#| error: false
+#| warning: false
+
+## Use the Hmisc Package function
+describe(data)
+
+```
+
+## Saving Data in a File
+
+Often, you do a lot of work to input and configure a set of data so that it can be used in R for analyses.
+
+There are cases where you're very unlikely to change the data and you don't want the "overhead" of running all the data configuration steps as you incrementally develop your analyses. This calls for generating an external version of your data. Such a data set is then easily entered into R for subsequent analyses.
+
+There are several format in which you can store a ***single*** tibble object (i.e., your data).
+
+### **RDS File**
+
+The `saveRDS` function lets you save data in a compressed form that maintains the data properties. This is an R-unique format that can't be used with other programs. You can only open the file using R.
+
+```{r}
+#| label: RDSout
+#| message: false
+#| error: false
+#| warning: false
+
+## Read some example data
+data <- read_csv(col_names = TRUE, file = "data/external.csv")
+
+## Save Data as an RDS file
+saveRDS(data,"data/Data_RDS.RDS")
+
+## Read the RDS file for confirmation
+stored_data <- readRDS("data/Data_RDS.RDS") 
+
+## Show the file contents
+stored_data
+
+```
+
+### **CSV File**
+
+The `write_csv` function creates a familiar CSV-formatted file. Data in this format can be shared with other people and used in other programs (e.g., Excel or Sheets)
+
+```{r}
+#| label: CSVout
+#| message: false
+#| error: false
+#| warning: false
+
+## Read some example data
+data <- read_csv(col_names = TRUE, file = "data/external.csv")
+
+## Save the data as a CSV file
+write_csv(data,"data/Data_CSV.CSV")
+
+## Read the CSV file for confirmation
+stored_data <- read_csv("data/Data_CSV.CSV")
+
+## Show the file contents
+stored_data
+
+```
+
+## Column Names
+
+There are times when you'll need to change the name of a column in your data. The `dplyr` package is very useful.
+
+### Renaming a Column
+
+Use the `dplyr` function \## Confirm the data
+
+data. In this example, we're changing the names of two columns.
+
+```{r}
+#| label: rename
+#| message: false
+#| error: false
+#| warning: false
+
+## Read the data
+data <- read_csv(col_names = TRUE, file = 
+     "Name,    Institution, Class
+      Jasmine, North High,  Freshman
+      Harriet, North High,  Senior
+      Milton,  South High,  Junior
+      Xavier,  South High,  Senior")
+
+## Rename two columns
+data <- data |> 
+  dplyr::rename(School = Institution) |> 
+  dplyr::rename(Student = Name)
+
+## Confirm the data
+data
+
+```
+
+### Shifting to Lower Case
+
+There is a dplyr function for this. The example shows how it works.
+
+```{r}
+#| label: shift
+#| message: false
+#| error: false
+#| warning: false
+
+## Use the data from the previous chunk
+
+## Shift all the column names to lowercase
+data <- data |> 
+  dplyr::rename_with(tolower)
+
+## Confirm the data
+data
+
+```
+
+**References**

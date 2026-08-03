@@ -1,0 +1,8 @@
+---
+title: "Bar Milestones"
+subtitle: "Milestones and bar-timelines for visualizing time-based data."
+categories: ["Data Analysis", "R"]
+image: ../milestones/cover_time_art.png
+---
+
+[View Document](../milestones/){.btn .btn-primary}

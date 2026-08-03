@@ -1,0 +1,13 @@
+---
+title: "A Weekend in Tokyo"
+subtitle: "A long weekend in Tokyo."
+date: 2020-04-25
+categories: ["Travel", "Food", "Japan", "Asia"]
+image: ../images/2020_Tokyo.jpg
+pdf: ../pdfs/2020_Tokyo.pdf
+---
+Our visit to Tokyo in January 2020 took us to new places and gave us one adventure that was 'off scale' exciting.
+
+Pages: 108
+
+<iframe src="../viewer.html?pdf=2020_Tokyo.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

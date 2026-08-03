@@ -1,0 +1,15 @@
+---
+title: "Documents"
+listing:
+  contents: docs
+  sort: "title asc"
+  type: grid
+  grid-columns: 3
+  image-height: auto
+  categories: true
+  fields: [image, title, subtitle, categories]
+  filter-ui: true
+  sort-ui: true
+---
+
+Quarto-based references, guides, and explorations.

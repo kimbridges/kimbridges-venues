@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "stories/*.qmd"
+    - "!underway/"
+  resources:
+    - pdfs/**
+    - viewer.html
+
+website:
+  title: "Kim Bridges — Stories"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Stories
+    right:
+      - icon: house
+        href: https://kimbridges.info
+        text: kimbridges.info
+      - icon: globe
+        href: https://www.kimbridges.com
+        text: kimbridges.com
+
+format:
+  html:
+    theme: cosmo
+    css: custom.css
+    toc: false
+    code-copy: true

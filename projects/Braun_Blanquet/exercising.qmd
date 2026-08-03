@@ -1,0 +1,99 @@
+# Exercising Braun-Blanquet Tables
+
+## Generating data for testing
+
+In the previous chapters, Braun–Blanquet tables were analyzed using real or illustrative data. In this chapter, we take a different approach: we generate tables with known structural properties and use them to exercise ordering, metrics, and presentation tools. The goal is not ecological realism, but controlled testing and understanding of behavior.
+
+### An easy start
+
+The code for generating blocks and gradients is easy when you use the default values. It's just one line of code; one version for blocks and a different one for gradients.
+
+Changing the random seed produces different realizations of the same underlying structure. This allows testing robustness of ordering and metrics without changing assumptions.
+
+Using defaults is a good place to start. Try different values for the `opti`.
+
+#### Blocks
+
+The following example generates a block-structured table with a small number of ubiquitous species, a controlled fraction of rare species, and strong within-block signal.
+
+```{r}
+
+library(bbstruct)
+library(gt)
+library(readr)
+library(bbSynth)
+
+## Create some block data
+raw_data <- bb_synth_blocks(seed = 222)
+
+## Create a BB table, reorder and print
+bb_tbl <- bb_from_raw_data(raw_data)
+bb_ord <- bb_reorder(bb_tbl, method = "pca", reorder_sites = TRUE)
+bb_gt(bb_ord) |> bb_gt_color(max_val = 7)
+
+## Produce the metrics
+bb_metrics_gt(bb_metrics_tbl(bb_tbl))
+
+```
+
+#### Gradients
+
+Gradients similarly control the distribution of species on sites. It is useful to use the `reorder_sites = FALSE` if you want to maintain the sites in the original order.
+
+```{r}
+## Create some block data
+raw_data <- bb_synth_gradient(seed = 23)
+
+## Create a BB table, reorder and print
+bb_tbl <- bb_from_raw_data(raw_data)
+bb_ord <- bb_reorder(bb_tbl, method = "pca", reorder_sites = FALSE)
+bb_gt(bb_ord) |> bb_gt_color(max_val = 7)
+
+## Produce the metrics
+bb_metrics_gt(bb_metrics_tbl(bb_tbl))
+```
+
+#### Controlling the structure
+
+The two functions in the `bbStruct` package build synthetic data. In some cases, specialized uses require a change in a few parameters. For example, trying a table with 35 sites (rather than the default 12). This is where the parameters come in.
+
+```{r}
+parms <- readr::read_csv(file=
+    "parameter, meaning, default
+  n_species, Number of species (rows), 20
+  n_sites, Number of sites (columns), 12
+  scale_max, Maximum ordinal value, 7
+  steepness, Controls turnover sharpness (higher -> narrower peaks), 1.0
+  plateau_frac, Fraction of non-rare species that are plateau-like, 0.25
+  disjunct_frac, Fraction of non-rare species that are disjunct (two peaks),  0.10
+  rare_frac, Fraction of rare species, 0.30
+  outlier_frac, Fraction of non-rare species with one extra outlier presence, 0.10
+  seed, Optional integer seed for reproducibility, 22
+  site_prefix, Site ID prefix, S
+  species_prefix, Species ID prefix, sp_
+  verbose, Diagnostic distribution data, FALSE")
+
+gt(parms) |>
+  tab_header(title="Parameter used with bbSynth")
+```
+
+Here is an example that generates a synthetic table with 35 sites and 35 species.
+
+Note that a parameter (`font_px = 8`) for `bb_gt` is used to reduce the text size.
+
+```{r}
+
+## Create some block data
+raw_data <- bb_synth_blocks(n_sites = 35, n_species=25, seed = 123)
+
+## Create a BB table, reorder and print
+bb_tbl <- bb_from_raw_data(raw_data)
+bb_ord <- bb_reorder(bb_tbl, method = "blind")
+bb_out <- bb_gt(bb_ord, font_px = 8)
+bb_out |> bb_gt_color(max_val = 7)
+
+```
+
+#### Perspective
+
+Synthetic tables are not a substitute for field data. Their value lies in making assumptions explicit and in revealing how analytical tools behave under controlled conditions.

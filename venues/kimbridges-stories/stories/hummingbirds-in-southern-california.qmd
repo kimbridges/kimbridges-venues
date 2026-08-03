@@ -1,0 +1,13 @@
+---
+title: "Hummingbirds in Southern California"
+subtitle: "Hummingbirds in 5 botanical gardens."
+date: 2023-06-22
+categories: ["Birds", "Gardens"]
+image: ../images/Hummers_in_SoCal.jpg
+pdf: ../pdfs/Hummers_in_SoCal.pdf
+---
+We spent five days to observe and photograph the natural behavior of hummingbirds. We discuss the challenges of getting compelling images.
+
+Pages: 117
+
+<iframe src="../viewer.html?pdf=Hummers_in_SoCal.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

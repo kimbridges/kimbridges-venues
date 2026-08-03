@@ -1,0 +1,15 @@
+# References {.unnumbered}
+
+The method, its lineage, and the work this package builds on.
+
+Braun-Blanquet, J. (1932). *Plant Sociology: The Study of Plant Communities.* Translated, revised, and edited by G. D. Fuller and H. S. Conard. McGraw-Hill, New York. — The foundational statement of the phytosociological method, and the route by which the two-way table entered the English-language literature.
+
+Ceska, A. & Roemer, H. (1971). A computer program for identifying species--relevé groups in vegetation studies. *Vegetatio* 23: 255--277. <https://doi.org/10.1007/BF02326664> — The method `coenosr` reconstructs, one of the earliest programs to automate Braun-Blanquet tablework. COENOS (1991) was the same authors' DOS realization of this method.
+
+Mueller-Dombois, D. & Ellenberg, H. (1974). *Aims and Methods of Vegetation Ecology.* John Wiley & Sons, New York. — The standard reference for the Braun-Blanquet method in English. Its account of the Ceska & Roemer algorithm — "a successive alternation of rules I and II" producing "a fairly close approximation of the hand-derived original" — fixed the description `coenosr` was built to. The bundled `ELLEN` example is Ellenberg's own Arrhenatheretum relevé data.
+
+Bruelheide, H. & Flintrop, T. (1994). Arranging phytosociological tables by species--relevé groups. *Journal of Vegetation Science* 5: 311--316. — The published density-block search at the heart of `form_groups()`, explicitly in the Ceska & Roemer lineage, and the source that distinguishes the "outside criterion" COENOS adds.
+
+R Core Team (2024). *R: A Language and Environment for Statistical Computing.* R Foundation for Statistical Computing, Vienna. <https://www.R-project.org/> — The language `coenosr` is written in.
+
+Bridges, K. W. & Claude (Anthropic) (2026). *coenosr: Reconstruction of the 1991 COENOS Braun-Blanquet Table-Sorting Method.* R package. <https://github.com/kimbridges/coenosr>

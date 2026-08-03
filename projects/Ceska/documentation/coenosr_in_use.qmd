@@ -1,0 +1,134 @@
+# coenosr in Use
+
+The previous chapter ended with a clean two-way table: species down the side, sites across the top, a mark in every cell where the two meet. It was correct, and it was unreadable — the occurrences scattered across the grid with no apparent order. This chapter is where the scatter becomes a pattern. We will run the whole COENOS pipeline on a real dataset, from raw table to sorted differential table, in a handful of named steps, and read the result the way a phytosociologist would.
+
+We use the Dieren data throughout — the eighteen-relevé Dutch coastal survey that anchored Chapter 4. It is bundled with the package, it is real, and it is the table the original COENOS program sorted, so at the end we can hold our result against the program's own.
+
+```{r}
+#| label: setup-use
+#| message: false
+
+## --- Standard packages ---
+
+## data wrangling and tidy reshaping
+library(tidyverse)
+## formatted tables
+library(gt)
+
+## --- Package from github/kimbridges ---
+
+## install once with: install_github("kimbridges/coenosr")
+library(coenosr)
+```
+
+## Read the table
+
+Every path in the last chapter ended at the same kind of object, so it does not matter that this one happens to be a COENOS file. We read it the same way we would read anything.
+
+```{r}
+#| label: read-dieren
+
+## a bundled COENOS dataset, read straight from the package
+rel <- read_rel(system.file("extdata", "DIEREN.REL", package = "coenosr"))
+```
+
+The Dieren survey holds `r nlevels(rel$species)` species across `r nlevels(rel$releve)` relevés — `r format(nrow(rel))` occurrences in all, which is to say the table is `r round(100 * (1 - nrow(rel) / (nlevels(rel$species) * nlevels(rel$releve))))`% empty. That emptiness is not a defect; it is the raw material. Pattern, when we find it, will be a few species that fill their share of the grid in the same places.
+
+## Constancy: the raw signal
+
+Before any sorting, the simplest question we can ask of a species is how often it occurs. That count is its *constancy*, and it is the quantity everything downstream is built from.
+
+```{r}
+#| label: constancy
+#| tbl-cap: "The most frequent species in the Dieren table."
+
+## how many relevés each species occurs in, most frequent first
+con <- constancy(rel, sort = TRUE)
+
+## the most frequent handful
+head(con, 8)
+```
+
+Read the top of that list and the shape of the data appears. A very few species occur almost everywhere; a great many occur once or twice. This long tail is typical of vegetation data, and it is exactly what the next step is built to exploit.
+
+## Set aside the extremes
+
+Here the method shows its point of view. `classify_species()` divides the species into three classes by constancy: the *rare*, occurring in fewer than three relevés; the *ubiquitous*, occurring in at least two-thirds; and the *eligible* middle. Only the middle is used to form groups.
+
+```{r}
+#| label: classify
+#| tbl-cap: "Dieren species split into the three constancy classes."
+
+## split species into rare / eligible / ubiquitous by constancy
+cl <- classify_species(rel)
+
+## how many fall in each class
+count(cl, status)
+```
+
+Of Dieren's `r nlevels(rel$species)` species, `r sum(cl$status == "rare")` are too rare to define anything and `r sum(cl$status == "ubiquitous")` is so widespread it cannot distinguish one relevé from another. They are set aside — not deleted, but held back from group formation and returned later as footnote and companion. The `r sum(cl$status == "eligible")` *eligible* species in the middle are the candidates, the only ones from which differential groups are built.
+
+This is the strategy Chapter 1 called strange-but-intuitive: ignore what is everywhere and what is nowhere, and look for pattern where pattern can live. It can feel wrong to someone trained to use every observation, but it is how a careful eye actually reads a table — a species on every plot tells you nothing about how the plots differ.
+
+## Form the differential groups
+
+Now the core of the method. `form_groups()` searches the eligible species for *differential groups* — sets of species that occur together in one block of relevés and are largely absent elsewhere. A group is a pattern: several species sharing a distribution.
+
+```{r}
+#| label: form-groups
+
+## find differential species groups among the eligible species
+groups <- form_groups(rel)
+
+## the groups, with their species and relevés
+groups
+```
+
+The engine implements the published density-block search of Bruelheide & Flintrop (1994) together with the *outside criterion* of Ceska & Roemer (1971). The search starts from the whole table of eligible species and repeatedly removes the species or relevé of lowest density until a dense block remains; the outside criterion then keeps only those species that are largely absent from the rest of the table, which is what makes a group *differential* rather than merely dense. The method is described in Chapter 4; what matters here is that it is deterministic, and that each group it returns is a set of species and the relevés they characterise.
+
+COENOS worked at three threshold levels in turn — written `40/10`, `50/20`, and `66/33` for the inside and outside percentages. `form_groups()` forms groups at one level; the default, `r paste0(formals(form_groups)$x * 100, "/", formals(form_groups)$y * 100)`, is the middle one. Pass `x` and `y` to tighten or loosen the criterion.
+
+## Assemble the sorted table
+
+The groups in hand, `coenos_table()` does the arranging. It orders the species by the group they belong to, orders the relevés so that those sharing a group stand together — by reciprocal averaging, the back-and-forth averaging of Chapter 4 — and gathers the ungrouped species below.
+
+```{r}
+#| label: coenos-table
+
+## arrange the sorted two-way table from the groups
+tab <- coenos_table(groups)
+
+## a coenos_table reports its own structure (its print method, kept as-is)
+print(tab)
+```
+
+That object holds the whole sorted table — all `r nlevels(rel$species)` species. The differential structure, though, lives in the grouped species and the relevés they occupy, so that is the part worth displaying. `differential_table()` pulls out exactly that: the grouped species, the relevés that belong to a group, and a label saying which group each species is in.
+
+```{r}
+#| label: differential-frame
+#| tbl-cap: "The differential core as a plain data frame (first rows and relevés)."
+
+## extract the display-ready differential core: grouped species and their relevés
+core <- differential_table(tab)
+
+## it is an ordinary data frame -- a group label, the species, then the relevés
+core[1:4, 1:6]
+```
+
+That is a plain data frame, so you can render it with whatever table tool you like — `gt`, `kableExtra`, `flextable`, or base R. For the common case, `coenos_gt()` does it in one call, drawing the groups as labelled row sections.
+
+```{r}
+#| label: differential-gt
+
+## render the differential table, groups as labelled sections
+coenos_gt(tab, title = "Dieren, sorted",
+          subtitle = "differential species groups across their relevés")
+```
+
+There is the pattern. Each block of species — Group 1, Group 2, Group 3 — fills its own block of relevés and leaves the rest of the row nearly empty. The diagonal staircase of filled cells is the thing the scattered table was hiding: communities of species that travel together, and the relevés that belong to each. Read down a group to see which species define it; read across the top to see which relevés it occupies. This is what COENOS was built to reveal, and it is what forty years of hand-sorted Braun-Blanquet tables were drawn to show.
+
+## Held against the original
+
+Because Dieren is one of the datasets COENOS itself sorted, we can do something unusual: check the reconstruction against the program's own output, which the package carries as a validation oracle. The strong, well-separated groups come back exactly — Group 3 here is the five-species cluster COENOS found, to the species. The larger and subtler groups come back closely but not identically, differing by a few species at the edges.
+
+That difference is not noise, and it is not a bug. It is the precise, bounded place where the recovery reaches its limit — where a decision COENOS made internally was never written down and did not survive in the compiled program. It is worth its own chapter, and it gets one next. For now the pipeline is complete: a raw, unreadable table has become a sorted differential table, end to end, in `coenosr`.

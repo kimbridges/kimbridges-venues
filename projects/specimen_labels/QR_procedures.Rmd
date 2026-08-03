@@ -1,0 +1,781 @@
+---
+title: "QR Procedures"
+author: "K. W. Bridges"
+date: "9/2/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE,echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<!--
+KEY HANDLING (added 2026-07-29)
+
+This file used to carry a Google Maps / Elevation API key as a literal string in
+two chunks. Both now read Sys.getenv("GGMAP_GOOGLE_API_KEY"), which is what
+site_extract() and the vouchr package have always used.
+
+Two things to know:
+
+1. This document sets echo = TRUE globally and renders to PDF. Anything written
+   as a literal in a chunk is printed into the rendered output. That is why a key
+   must never be a literal here, even in a private folder.
+
+2. Editing this file does NOT remove the old key from Google Drive revision
+   history. Only revoking the key at the provider actually neutralises it.
+
+The current derive stack is deliberately keyless -- site_extract() defaults to
+source = "aws", and Macrostrat, SSURGO and Nominatim need no key either. The
+Google path is a legacy fallback, so there may be nothing left that needs a key
+at all.
+-->
+
+# QR-Codes: Generation and Scanning
+
+This project has a set of chunks. Each chunk performs a specific task. Use the chunks one at a time to accomplish specific things.
+
+DON'T RUN THE WHOLE SET AT ONE TIME! Choose what you need to do.
+
+Chunk Directory
+
+-   **Init-Stuff:** Run this to initialize all the libraries needed for the chunks.
+-   **QR-Collector:** Creates images with collection IDs that are used as specimen labels.
+-   **QR-Species:** Creates images with species names. Use these to with \*\*QR-ID-exercise to complete an identification project.
+-   **Image--File-Listing:** Creates a list of file names for all images in a folder. Choose whether `.png` or `.jpg` files.
+-   **Photo-EXIF:** Builds a list of the photo files in a folder.
+-   **QR-Scan:** Initiates a scan, using Zbar, to find and decode the QR-Codes in a set of photos.
+-   **XML-Decode:** Extracts the file and QR-Code from the XML file created by Zbar.
+
+```{r Init-Stuff,echo=FALSE,warning=FALSE,error=FALSE}
+
+## Always run this first!
+
+library(qrcode)
+library(grid)
+library(gridExtra)
+library(gridtext)
+library(png)
+library(exiftoolr)
+library(gt)
+
+## You need to run install_exiftool() from the Console
+
+```
+
+## Generate QR-Codes
+
+The QR-Codes are created as images, with each images stored as a `.png` file in the base director. Images have a single line of text that is the same as the information in the QR-Code.
+
+There are two types of image files produced, each one processed in a separate chunk. The intent, in both cases, is to provide a QR-Code that will be photographed so that the camera's GPS location can be linked to either a voucher specimen or a set of photographs of a species.
+
+One set is for collector labels and its QR-Code contains the collector's ID and collection number. These images will eventually be printed on business-card stock, punched with a hole, and supplied with a short piece of string.
+
+The other set if for photo-location species identification. The QR-Code has a species name (i.e., scientific name). In practice, each species on a site checklist will have a QR-Code printed on a sheet of paper. Other information will also be on the paper, such as the plant Family, Stature/Life Form, and Common Names. These QR-Codes are photographed to associate species with locations.
+
+### Q-Collector: Create QR-Codes for Specimen Labels
+
+The following information is supplied.
+
+-   Collector name or code
+-   Starting collection number
+-   Number of labels needed
+-   Name of a PDF file for the labels (each labels is a page in this file)
+
+The chunk produces just a single PDF file. You print this file with a laser printer, specifying ten labels in two columns. Business card stock (such as Avery 5371)
+
+```{r QR-Collector,echo=FALSE,warning=FALSE,error=FALSE}
+
+## This version is for collector label QR-Codes.
+## The chunk generates labeled QR codes as png files. These images are put in the base directory.
+
+collector   <- "KWB:"   ## QR Code header
+coll_number <- 1239     ## Starting number of the QR codes
+QR_number   <- 10       ## The number of QR codes needed
+
+last_coll_number <- coll_number + QR_number -1
+PDF_file <- "Collection_labels.pdf" ## The PDF file for the labels
+
+for (i in seq(coll_number, last_coll_number, 1)){
+
+  code    <- paste(collector,i)
+  QR_name <- paste0("temp_qr_",i,".png")
+
+  png(QR_name)
+  qrcode_gen(code)
+  dev.off()
+
+  img       <- rasterGrob(as.raster(readPNG(QR_name)), interpolate=FALSE)
+  ID_number <- textGrob(code,gp=gpar(fontsize=48,font=2))
+
+  png(QR_name)
+  grid.arrange(img,top=ID_number)
+  dev.off()
+ 
+  }  ## End of loop for number of labels
+
+## Put all the images in a single file as separate PDF pages
+
+pdf(PDF_file,paper="USr")
+for (i in coll_number:last_coll_number) {
+    QR_name <- paste0("temp_qr_",i,".png")
+    img <-  rasterGrob(as.raster(readPNG(QR_name)), interpolate=FALSE)
+    grid.arrange(img)
+    }
+ dev.off()
+
+## Get rid of the temporary files
+
+sapply(paste0("temp_qr_", coll_number:last_coll_number, ".png"), unlink)
+```
+
+### QR-Species: Build Pages for Species Photography
+
+This chunk creates content for a species-photography exercise.
+
+The objective is to produce sheets of paper, each with a combination of a QR-Code with a species name and a set of ancillary information that helps in identifying the species in the field.
+
+The input consists of these elements.
+
+-   **Species Checklist:** Names of all the plant species found in the study area.
+-   **Plant Information:**
+-   **Plant Family**
+-   **Species Code** (usually a four letter abbreviation of the genus and species)
+-   **Common Names** (local names)
+-   **Stature/Life Form**
+-   **Distribution Status** (endemic, indigeneous, naturalized, invasive, etc.)
+
+All these elements come from a `.csv` file, such as one created in a spreadsheet.
+
+> Species, Family, SpeciesCode, CommonNames, Stature, Distribution
+
+The output is a `.pdf` file for each species.
+
+Combine all the `.pdf` files into a single file. Print this larger file. Pages are designed to be folded and laminated.
+
+```{r QR-species,echo=FALSE,warning=FALSE,error=FALSE}
+
+## This chunk creates species QR-Code images. The code is the species name.
+## Input is a species list.
+
+checklist <- read.csv(file="Checklist.csv", header=TRUE, stringsAsFactor = FALSE, fileEncoding="UTF-8")
+
+species_number <- length(checklist)
+
+## Create QR-Code for each species on the checklist
+## Put the species name above the QR-Code
+
+for (i in seq(1,species_number, 1)){
+
+Spp_ID <- checklist$species[i]
+QR_name <- paste0("Spp_QR_",i,".png")
+
+png(QR_name)
+qrcode_gen(Spp_ID)
+dev.off()
+
+img <-  rasterGrob(as.raster(readPNG(QR_name)), interpolate=FALSE)
+Spp_info <- textGrob(Spp_ID,gp=gpar(fontsize=36,font=2))
+
+png(QR_name)
+grid.arrange(img,top=Spp_info)
+dev.off()
+
+}
+
+## Create info listing from data about each species on the checklist
+
+for (i in seq(1,species_number,1)){
+
+line[1] <- paste("<i>",checklist$species[i],"</i><br>")
+line[2] <- paste("Family:",checklist$family[i],"<br>")
+line[3] <- paste("Abbreviation:",checklist$abbrev[i],"<br>")
+line[4] <- paste("Common Name:",checklist$common[i],"<br>")
+line[5] <- paste("Stature:",checklist$stature[i],"<br>")
+line[6] <- paste("Distribution:",checklist$distribution[i])
+
+Spp_string <- paste(line[1],line[2],line[3],line[4],line[5],line[6])
+
+## This is a neat box with the information
+
+g <- textbox_grob(
+  Spp_string,
+  x = unit(0.5, "npc"), y = unit(0.7, "npc"), halign = 0, valign = 1,
+  gp = gpar(fontsize = 24),
+  box_gp = gpar(col = "black", fill = "lightgray"),
+  r = unit(5, "pt"),
+  padding = unit(c(10, 10, 10, 10), "pt"),
+  margin = unit(c(0, 10, 0, 10), "pt")
+)
+ # grid.newpage()  ## Debug: Prints the box
+ # grid.draw(g)    ## Debug: Prints the box (check color, size)
+
+## Output the QR-Code (top) and the species information (bottom) in separate PDF files (one for each species)
+
+out_info <- paste0("Spp_Sheet_",i,".pdf")
+QR_name <- paste0("Spp_QR_",i,".png")
+img <-  rasterGrob(as.raster(readPNG(QR_name)), interpolate=FALSE)
+
+pdf(out_info)
+grid.arrange(img,g)
+dev.off()
+
+}
+```
+
+\newpage
+
+## Image File Utilities
+
+## Image-File-Listing: Create a List of Photo Files
+
+Hint: It might be possible to run the Zbarimg commands using the following general structure:
+
+shell.exec("\\\\network\\path\\file.bat")
+
+The info can be sent to a file where it is picked up back in R.
+
+\newpage
+
+```{r Image-File-Listing,echo=FALSE,warning=FALSE,error=FALSE }
+
+## This chunk generates a list of file names that end in "jpg" or "png" from all the files in the folder on the file path.
+## The "files_list" can be used in other chunks.
+
+files_path <- "Photos/Healer_species"
+files_pattern <- "*.jpg"
+
+files_list <- list.files(files_path,files_pattern)
+
+length(files_list)
+files_list
+
+```
+
+## Photo-EXIF: Obtain Location and Image Date
+
+## Function to get the Google elevations
+
+###### THIS IS NOT USED
+
+```{r}
+
+## <script src="https://gist.github.com/italo-goncalves/1a69523306d580ace8026fab17aec784.js"></script>
+get_Google_Elevation <- function(lat, long, key){
+        # packages
+        require(httr)
+        require(jsonlite)
+        require(dplyr)
+        
+        # setup
+        Ndata <- length(lat)
+        base_int <- 40 # max roughly 40 data points per request
+        Ncells <- ceiling(Ndata/base_int) 
+        baseURL <- "https://maps.googleapis.com/maps/api/elevation/json?locations="
+        
+        # conversion to character vector
+        lat_long_str <- character(Ncells)
+        for (i in 1:(Ncells-1)){
+                lat_long_str[i] <- 
+                        paste(lat[((i-1)*base_int+1):(i*base_int)],
+                              long[((i-1)*base_int+1):(i*base_int)],
+                              sep = ",", collapse = "|")
+        }
+        lat_long_str[Ncells] <- paste(lat[-(1:(i*base_int))],
+                                  long[-(1:(i*base_int))],
+                                  sep = ",", collapse = "|")
+        
+        # request to Google Elevation API
+        elev <- data.frame()
+        for (i in 1:Ncells){
+                # Sys.sleep(0.1)  # pause
+                url <- paste0(baseURL,lat_long_str[i],"&key=",key)
+                tryCatch({
+                        json <- fromJSON(
+                                content(GET(url), as = "text"), 
+                                simplifyDataFrame = T)
+                        cat("Request",i,"of",Ncells,
+                            "- Status =",json$status,"\n")
+                        if(json$status == "OK"){
+                                gdata <- as.data.frame(json$results)
+                                gdata <- tbl_df(data.frame(gdata$location, 
+                                                           gdata$elevation, 
+                                                           gdata$resolution))
+                                elev <- bind_rows(elev, gdata)
+                        }
+                }, 
+                error = function(e) cat("Error during request", i)
+                )
+        }
+        
+        # end
+        colnames(elev) <- c("latitude","longitude","elevation","resolution")
+        return(elev)
+}
+```
+
+## Process as much as possible from photo info
+
+```{r Photo-EXIF, echo=FALSE,warning=FALSE,error=FALSE}
+
+library(lubridate)
+library(ggmap)
+library(googleway)
+library(readtext)
+library(httr)
+library(dplyr)
+library(jsonlite)
+library(exiftoolr)
+
+## This chunk reads EXIF data from JPG files. 
+## Specifically, the location and date of the photo.
+
+## This requires photos loaded from the camera
+## (not saved from photos.google.com)
+
+qr_photo   <- "IMG_20200126_092948_K.jpg"
+photo_exif <- exif_read(qr_photo)
+
+photo_exif$GPSLatitude
+photo_exif$GPSLatitudeRef
+photo_exif$GPSLongitude
+photo_exif$GPSLongitudeRef
+photo_exif$DateTimeOriginal
+
+## Store the location in easy-to-use variables
+in_lat <- photo_exif$GPSLatitude
+in_lon <- photo_exif$GPSLongitude
+
+in_lat_list <- list(in_lat)
+in_lon_list <- list(in_lon)
+
+in_location <- c(in_lon, in_lat)
+in_loc_df <- data.frame(lat=in_lat,lon=in_lon)
+
+## Process the date and time
+in_date <- as.Date(substring(photo_exif$DateTimeOriginal,1,10),"%Y:%m:%d")
+
+lub_str   <- ymd_hms(photo_exif$DateTimeOriginal) 
+in_hour   <- hour(lub_str)
+in_minute <- minute(lub_str)
+
+## Get the name of the place
+key4 <- Sys.getenv("GGMAP_GOOGLE_API_KEY")   ## 2026-07-29: was a hard-coded literal here.
+
+##my_g_key <- as.data.frame(readtext("key/Google_Maps_API_Key.txt"))
+register_google(key4)
+
+place_name       <- revgeocode(in_location,output = "all")
+loc_temp         <- place_name$results
+in_location_name <- unname(unlist(loc_temp[1])[29])
+
+## Site Elevation
+
+##### Doesn't Like KEY
+
+
+# set_key(key=key4)
+# 
+# google_keys()
+# 
+# google_map(location=in_location,zoom=6,key=my_g_key,width=4,height=4)
+# 
+# in_elevation <- google_elevation(in_loc_df,simplify = TRUE)
+# in_elevation
+
+#in_elevation <- get_Google_Elevation(lat = in_lat_list,long = in_lon_list, key = key4)
+
+## NEW TRY -- from Google, using HTTR
+
+library(httr)      ## JSON functions
+library(jsonlite)  ## Decode JSON strings
+
+in_lat <- format(round(in_lat,6), nsmall = 6)
+in_lon <- format(round(in_lon,6), nsmall = 6)
+
+##############################################################################
+
+my_elevation_function <- function(lat,lon){
+
+g_base <- "https://maps.googleapis.com/maps/api/elevation/json?"
+g_key  <- Sys.getenv("GGMAP_GOOGLE_API_KEY")  ## 2026-07-29: was a hard-coded literal here.
+g_locs <- paste0("locations=",lat,",",lon)
+
+g_string <- paste0(g_base,g_locs,"&key=",g_key)
+
+g_return <- httr::GET(g_string)
+g_data   <- httr::content(g_return,"text")
+
+## Resolution is the max distance from which the point elevation was interpolated
+
+elev_data    <- jsonlite::fromJSON(g_data)  
+elev_results <- elev_data$results
+# elev_results$elevation
+# elev_results$location
+# elev_results$resolution
+
+return(elev_results)
+} ## end my_elevation_function
+
+###################################################################################
+
+```
+
+## Slope
+
+Make a 3 x 3 grid based on the lat,long point at the center.
+
+Evaluate the resolution of each point to see if there is overlap of the max interpolation distances.
+
+```{r}
+
+library(geosphere) ## Spherical trigonometry
+library(cimir)     ## To get compass points
+library(raster)    ## Some of the raster calcs, like slope
+
+## Flower Fields, generally west slope
+place  <- "Flower Fields"
+in_lon <- -117.319254
+in_lat <- 33.128982
+  
+## Lombard Street, San Francisco, generally east facing slope
+place  <- "Lombard Street"
+in_lon <- -122.418957
+in_lat <- 37.802111
+  
+## Mt Fuji, South facing slope
+place  <- "Mt Fuji"
+in_lon <- 138.730496
+in_lat <- 35.355235
+
+## Koko Crater Test Location
+place  <- "Koko Crater"
+in_lon <- -157.68687
+in_lat <-   21.28164
+
+```
+
+```{r}
+
+## Set a size (in decimal degrees) for the distance between points.
+spacing <- 0.0002
+
+## Add the spacing distance to the original latitude
+in_lat_n <- as.numeric(in_lat)
+in_lon_n <- as.numeric(in_lon)
+
+## S-N (Bottom to Top)
+lat1 <- in_lat_n - spacing
+lat2 <- in_lat_n
+lat3 <- in_lat_n + spacing
+
+## W-E (Left to Right)
+lon1 <- in_lon_n - spacing
+lon2 <- in_lon_n 
+lon3 <- in_lon_n + spacing
+
+## Get the distance between the points (meters)
+line_lon <- rbind(c(lon1,lat1), c(lon2,lat1))
+d_lon    <- geosphere::lengthLine(line_lon)
+
+line_lat <- rbind(c(lon1,lat1), c(lon1,lat2))
+d_lat    <- geosphere::lengthLine(line_lat)
+
+
+## Get the nine elevations and resolution distance
+point1 <- my_elevation_function(lat=lat1,lon=lon1)
+point2 <- my_elevation_function(lat=lat1,lon=lon2)
+point3 <- my_elevation_function(lat=lat1,lon=lon3)
+point4 <- my_elevation_function(lat=lat2,lon=lon1)
+point5 <- my_elevation_function(lat=lat2,lon=lon2)
+point6 <- my_elevation_function(lat=lat2,lon=lon3)
+point7 <- my_elevation_function(lat=lat3,lon=lon1)
+point8 <- my_elevation_function(lat=lat3,lon=lon2)
+point9 <- my_elevation_function(lat=lat3,lon=lon3)
+
+point1_e <- point1$elevation
+point2_e <- point2$elevation
+point3_e <- point3$elevation
+point4_e <- point4$elevation
+point5_e <- point5$elevation
+point6_e <- point6$elevation
+point7_e <- point7$elevation
+point8_e <- point8$elevation
+point9_e <- point9$elevation
+
+points_e <- c(point1_e,point2_e,point3_e,point4_e,point5_e,point6_e,point7_e,point8_e,point9_e)
+
+lats <- c(lat1,lat1,lat1,lat2,lat2,lat2,lat3,lat3,lat3)
+lons <- c(lon1,lon2,lon3,lon1,lon2,lon3,lon1,lon2,lon3)
+
+elev_all <- cbind(lats,lons,points_e) ##,points_r)
+elev_all <- as.data.frame(elev_all)
+
+c_plot <- ggplot(elev_all,aes(x=lons,y=lats,z=points_e)) +
+  geom_contour_filled() +
+  geom_point() +
+  ggtitle(place)
+
+c_plot
+
+in_resolution <- point5$resolution
+
+ggsave(c_plot, file="site_elevation.png")
+
+```
+
+## Keep working on slope
+
+```{r}
+
+## https://rpubs.com/ncifuentess/592696  == this had very helpful code 
+
+## Create a raster from the nine elevation points (here, it is blank)
+xy <- raster(ncols=3,nrows=3, xmn = lon1, xmx = lon3, ymn = lat1, ymx = lat3)
+
+## Get the data into the right form (as a data frame with the longitudes and latitudes as columns)
+loc_data    <- cbind(lons,lats)
+loc_data_df <- data.frame(loc_data)
+
+## Convert the locations to the raster
+xy_raster <- rasterize(loc_data,xy)
+
+## The order of the points had to be changed to accommodate the way the raster stores data
+mod_points_e <- c(point7_e,point8_e,point9_e,point4_e,point5_e,point6_e,point1_e,point2_e,point3_e)
+
+## Add the elevations to the raster
+values(xy_raster) <- mod_points_e
+
+## Plot the raster for confirmation
+plot(xy_raster, main=place)
+
+## Calculate the slope
+slope = terrain(xy_raster, opt="slope", unit="degrees", neighbors=8)
+
+## Note that the aspect and flow direction calculations using terrain don't seem to work properly
+
+## Aspect calculation - doing it directly from the data
+dzdx <- ((point9_e + 2*point6_e + point3_e) - (point7_e + 2*point4_e + point1_e)) / 8
+dzdy <- ((point1_e + 2*point2_e + point3_e) - (point7_e + 2*point8_e + point9_e)) / 8
+raw_aspect <- 57.29578 * atan2(dzdy,-dzdx)
+
+## Aspect conversion to degrees
+if (raw_aspect < 0){
+  aspect <- 90.0 - raw_aspect
+  } else if (raw_aspect > 90.0) {
+  aspect <- 360.0 - raw_aspect + 90.0
+  } else {
+  aspect <- 90.0 - raw_aspect
+  }
+
+## Calculate the Terrain Roughness Index (TRI)
+TRI <- terrain(xy_raster, opt="TRI", neighbors=8)
+
+## The elevation statistics for the analysis area
+in_min  <- focal(xy_raster, fun=min, w=matrix(1,nrow=3, ncol=3))
+in_max  <- focal(xy_raster, fun=max, w=matrix(1,nrow=3, ncol=3))
+in_mean <- focal(xy_raster, fun=mean, w=matrix(1,nrow=3, ncol=3))
+
+in_min  <- in_min[2,2]
+in_max  <- in_max[2,2]
+in_mean <- in_mean[2,2]
+
+## Prepare data for the water direction calculation
+in_min_char   <- as.character(format(round(in_min,  4),nsmall=4))
+points_e_char <- as.character(format(round(points_e,4),nsmall=4))
+
+## Find the lowest bin compass point direction
+lowest_bin <- grep(in_min_char,points_e_char)
+bin_dir    <- c("SW","S","SE","W","C","E","NW","N","NE")
+flow_dir   <- bin_dir[lowest_bin]
+
+## Format the values (note: this converts the value to a character string)
+round_elevation <- format(round(point5_e,1),nsmall=1)
+in_slope        <- format(round(slope[2,2],0),nsmall = 0)
+in_TRI          <- format(round(TRI[2,2],1),nsmall = 1)
+in_res          <- format(round(in_resolution,0),nsmall = 0)
+in_asp          <- as.numeric(format(round(aspect,0),nsmall=0))
+in_asp_points   <- cimis_degrees_to_compass(in_asp)
+in_mean_char    <- format(round(in_mean,1),nsmall=1)
+in_min_char     <- format(round(in_min,1),nsmall=1)
+in_max_char     <- format(round(in_max,1),nsmall=1)
+d_lon_char      <- format(round(d_lon,1),nsmall=1)
+d_lat_char      <- format(round(d_lat,1),nsmall=1)
+
+## Initialize line keeper
+line <- NULL
+
+## Report the results
+line[1] <- paste0("The elevation of ",place," is ",round_elevation," m.")
+line[2] <- paste0("The calculations are based on a local area grid ",d_lon_char," m N-S by ",d_lat_char," m E-W.")
+line[3] <- paste0("The site's elevation matrix resolution is ",in_res," m.")
+line[4] <- paste0("The slope is ",in_slope ," degrees.")
+line[5] <- paste0("The aspect of the slope is ",in_asp," degrees (",in_asp_points,").")
+line[6] <- paste0("The site's Terrain Roughness Index (TRI) is ",in_TRI,".")
+line[7] <- paste0("The mean elevation of the site's local area is ",in_mean_char," m.")
+line[8] <- paste0("The highest point of the site's local area is ",in_max_char," m and the lowest ",in_min_char," m.")
+line[9] <- paste0("The water flow direction from the central location is ",flow_dir,".")
+
+line <- data.frame(line)
+
+site_info <- gt(line) |>
+  cols_label(line="Site Information")
+
+gtsave(site_info, filename = "site_info_table.png")
+
+```
+
+## Map the location
+
+```{r}
+## Library
+library(readr)
+library(ggmap)
+library(ggplot2)
+library(grid)
+library(pdftools)
+
+## Initialize Google Map key; the is stored in a Project directory.
+My_Key <- read_file("P://Hot/Workflow/Workflow/keys/Google_Maps_API_Key.txt")
+## Register the Google Maps API Key.
+register_google(key = My_Key, account_type = "standard")
+
+lonlat     <- c(in_lon_n,in_lat_n)
+map_source <- "google"   ## alternatives: google and stamen
+
+## Site Map
+zoom      <- 20
+map_type  <- "satellite"
+map1 <- get_map(location = lonlat, zoom = zoom, maptype = map_type, source = map_source)
+
+## Plot the site map
+m1 <- ggmap(map1) +
+  theme_void() +
+  theme(panel.border = element_rect(color ="white", fill=NA, size=2)) +
+  geom_point(data = loc_data_df, aes(x = lons, y = lats),color="white",size=4) +
+  ggtitle(place)
+
+m1
+
+ggsave(m1,file="site_satellite.png")
+
+## Area Map
+zoom      <- 16
+map_type  <- "hybrid"
+map2 <- get_map(location = lonlat, zoom = zoom, maptype = map_type, source = map_source)
+
+## Plot the site map
+m2 <- ggmap(map2) +
+  theme_void() +
+  theme(panel.border = element_rect(color ="white", fill=NA, size=2)) +
+  geom_point(data = loc_data_df[5,], aes(x = lons, y = lats),color="white",size=4) +
+  ggtitle(place)
+
+m2
+
+ggsave(m2,file="site_hybrid.png")
+
+
+```
+
+## Aspect the hard way
+
+```{r}
+
+## Aspect calculation
+dzdx <- ((point9_e + 2*point6_e + point3_e) - (point7_e + 2*point4_e + point1_e)) / 8
+dzdy <- ((point1_e + 2*point2_e + point3_e) - (point7_e + 2*point8_e + point9_e)) / 8
+raw_aspect <- 57.29578 * atan2(dzdy,-dzdx)
+
+## Aspect conversion to degrees
+if (raw_aspect < 0){
+  aspect <- 90.0 - raw_aspect
+  } else if (raw_aspect > 90.0) {
+  aspect <- 360.0 - raw_aspect + 90.0
+  } else {
+  aspect <- 90.0 - raw_aspect
+  }
+
+## Round the direction and get the compass point equivalent
+in_asp <- as.numeric(format(round(aspect,0),nsmall=0))
+in_asp_points <- cimis_degrees_to_compass(in_asp)
+
+paste0("Now, it appears that the aspect for ",place," is ",in_asp," degrees (",in_asp_points,").")
+
+
+
+```
+
+## QR-Scan: Scan images with QR-Codes
+
+The utility ZBAR is used for the scanning. This is a program loaded on the Windows computer which is invoked with a command line.
+
+Get ZBAR for Windows at: <https://zbar.sourceforge.net/download.html>
+
+Then you install ZBAR on you Windows machine.
+
+Here, this process is adapted by creating a .BAT file with a set of ZBAR commands. This .bat file is submitted to the command line for processing.
+
+> zbarimg --raw temp_qr_file.png
+
+Here is a good way to run this utility:
+
+> zbarimg --xml \*.png \> QR.xml
+
+NOTE
+
+Hint: It might be possible to run the Zbarimg commands using the following general structure:
+
+shell.exec("\\\\network\\path\\file.bat")
+
+The info can be sent to a file where it is picked up back in R.
+
+The xml file has both the file name and the QR Code information!
+
+The XML-decode chunk decodes the XML file contents, returning the file names and, if found, the QR-Code.
+
+This is used with both the Collector Label QR-Codes and the Species QR-Codes.
+
+```{r QR-Scan, echo=FALSE,warning=FALSE,error=FALSE}
+
+## This chunk uses a system call to run the Zbar utility program.
+
+
+```
+
+```{r XML-Decode, echo=FALSE,warning=FALSE,error=FALSE}
+
+library(stringr)
+
+## Decode the data in the XML file generated by the ZBAR utility.
+
+XML_file <- "QR.xml"
+
+doc = readLines(XML_file)
+
+for (i in seq(1,length(doc),1)){
+
+match <- str_detect(doc[i],".png")
+if (match == TRUE) {
+  ## print(doc[i])
+  str_len <- nchar(doc[i])
+  file_name <- substr(doc[i],15,str_len-2)
+  ## print(file_name)
+}  ## end png match
+
+match <- str_detect(doc[i],"DATA")
+if (match == TRUE){
+  ## print(doc[i])
+  str_len <- nchar(doc[i])
+  code_string <- substr(doc[i],51,str_len-19)
+  file_line<- paste0(file_name,", ",code_string)
+  
+  ######
+  ## This info could be spooled to a file
+  ######
+  print(file_line)
+  }  ## end DATA match
+
+}  ## end for loop
+
+```

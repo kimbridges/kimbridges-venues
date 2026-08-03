@@ -1,0 +1,189 @@
+---
+title: "Creating Maps Using R"
+subtitle: "Simplifying the Process"
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+format:
+  html:
+    fig-width: 8
+    fig-height: 8
+    code-fold: true
+    code-summary: "Show the code chunk"
+editor: visual
+execute:
+  warning: false
+  error: false
+  message: false
+---
+
+# Names
+
+Names and basemaps go together. The names add important orientation information to the basemap.
+
+Names come from a file, just like points and labels. The file has columns that provide the text for the name, the location coordinates and (generally) format information that controls the appearance of the text. As you've seen with points and labels, there is a set of param values that are used as defaults if you don't otherwise specify values in the names table.
+
+## Getting Started
+
+As usual, there are some tasks that need to be done. First, we'll load some libraries and get the Google Map key registered.
+
+```{r "libraries"}
+
+## Libraries
+library(readr)        ## Read in data
+library(stringr)      ## Wrap text strings
+library(ggmap)        ## Show maps, handle Google key
+library(ggplot2)      ## Build maps
+library(dplyr)        ## Data wrangling
+library(gt)           ## Tables
+library(sitemaps)     ## Functions to help build site maps
+library(parzer)       ## Convert HMS to digital coordinates
+
+## Initialize Google Map key; the key is stored in a Project directory.
+  My_Key <- read_file("P://Hot/Workflow/Workflow/keys/Google_Maps_API_Key.txt")
+
+## Test if Google Key is registered
+if (!has_google_key()){
+
+  ## Register the Google Maps API Key.
+  register_google(key = My_Key, account_type = "standard")
+  } ## end Google Key test
+  
+```
+
+Now we can initialize some data.
+
+```{r "setup"}
+
+## Use two functions from sitemaps to initialize parameters.
+column <- site_styles()
+hide  <- site_google_hides()
+
+## Establish a theme that improves the appearance of a map.
+## This theme removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2),
+                    legend.position = "none")
+
+```
+
+And we're ready to go.
+
+## Names Table
+
+It's good to start with an example. Let's begin with a simple basemap.
+
+Usually, we will use the distribution of data (points and labels) to determine the extent of the basemap. Since this map won't have any data, we'll use a standard way to locate and scale Google Maps: specify the center coordinates and choose an appropriate zoom value.
+
+You may need to try a few different values to get this right. But remember, you usually won't be making a basemap this way.
+
+Here, the center value was obtained by looking at a Google Maps display on a desktop computer. Right clicking on the desired center location gave the needed coordinate values. These were copied and pasted into the code shown here.
+
+You might also note that the `style` parameter is used with `ggmap`'s `get_googlemap` function. The `hide$all` parameter removes the information layers that Google places on the map. This gives us a "clean" map on which we can place our own names.
+
+```{r "harborbase"}
+#| label: fig-harborbase
+#| fig-cap: "Google Maps basemaps of Honolulu Harbor."
+
+center <- c(lon = -157.86672, lat = 21.30440)
+zoom   <- 15
+
+harbor <- get_googlemap(center = center,
+                  zoom = zoom,
+                  style = hide$all)
+
+ggmap(harbor) + 
+  simple_black_box
+
+```
+
+The next step is to create a set of names in a table. The names have characteristics, specified with data in the table columns, that control the location and appearance of the name.
+
+There are other name characteristics. These will be discussed later. This set is enough to show the basic requirements for adding names to basemaps.
+
+```{r "nametable"}
+#| label: tbl-nametable
+#| tbl-cap: "The names table for the basemap of Downtown Honolulu."
+
+## Names, locations and characteristics
+name_table <- read_csv(col_names = TRUE, file =
+ "text,            lat,      lon,        fontface,  name_text_size, angle, name_text_wrap
+  Honolulu Harbor, 21.30469, -157.86819, italic,    6,               0,     9
+  Sand Island,     21.30622, -157.87696, plain,     6,               0,     9
+  Downtown,        21.30836, -157.86007, plain,     6,               0,     NA
+  Kaka`ako,        21.29868, -157.86393, plain,     6,               0,     NA
+  Pacific Ocean,   21.29714, -157.87574, italic,    6,               0,     9
+  Nu`uanu Stream,  21.31385, -157.86202, italic,    4,              25,     NA")
+
+gt(name_table) %>% 
+   fmt_number(columns = c(lat,lon), decimals = 5)
+
+```
+
+Finally, we can apply the names to the basemap.
+
+Note that some of the names, like "Pacific Ocean," are too long to fit into the appropriate space. The `site_textwraps` function comes to the rescue. Each name can be adjusted into multiple lines, with the `wrap` parameter controlling the maximum text length. The text is broken between words. The `NA` designation means that the text should not be broken.
+
+```{r "basemapnames"}
+#| label: fig-basemapnames
+#| fig-cap: "Honolulu Harbor with place names."
+
+column$name_textsize <- 4
+
+ggmap(harbor) +
+  site_names(datatable = name_table) +
+  simple_black_box
+
+```
+
+You can see many of the style features on the Honolulu Harbor basemap.
+
+## Conventions for Name Styles
+
+Cartographers have some style conventions that apply to the way place names appear on maps. Here are a few of those that are used most widely (expressed in terms of the parameter values that are available).
+
+-   Oceans, lakes and rivers use `italic` `fontface`. Locations on land use the `plain` `fontface`.
+
+-   River names are at an `angle` so the name runs parallel to the river course.
+
+-   Names are never upside down.
+
+-   Names for places on land should be placed on land. The names for coastal locations (e.g., a harbor or seaside community) should be placed over water.
+
+-   Area names should be in the center of the region. Nearby names should not be lined up (e.g., on the same horizontal line).
+
+-   There should be a clear association of the names with the features.
+
+-   Readability is important.
+
+## Parameters Used with Names
+
+The following table lists the parameter controls (i.e., column names) available for names.
+
+**text:** The word(s) to be placed on the basemap. This value must be provided.
+
+**lat, lon:** Geographic coordinates to anchor the text. Note that `justify` controls the position of the text relative to this anchor point. These two values must be provided.
+
+**name_text_size:** This is the size of the text. The default is 4.
+
+**name_text_color:** The color of the text. Ordinarily you'll use one of the named colors (e.g., "black", "blue"). Black is the default color. The color term in a name table should not be enclosed in quotation marks.
+
+**fontface:** The text can be `plain`, `italic`, `bold` or `bold.italic`. `Plain` is the default.
+
+**family:** The simple way to use this is to use one of `sans`, `mono`, or `serif`. `Sans` is the default.
+
+**angle:** Type is normally horizontal (value = 0). There are times when you need to specify the angle to align a name to a river or to fit a name into a tight location (e.g., an irregularly shaped lake).
+
+**justify:** This specifies where the text will be horizontally aligned relative to the geographic coordinates. The default is centered. The values are `left`, `right,` and `center.`
+
+**name_text_wrap:** Multi-word names (e.g., Pacific Ocean, Honolulu Harbor) often need to be wrapped to multiple lines. Values in the `wrap` column determine if the text should not be wrapped (value = NA) or the maximum length of the name before wrapping is done (e.g., 9). This is used in conjunction with the `site_textwraps` function. The default is NA (don't wrap). If you specify `param$name_text_wrap <- 9`, all the names (i.e., text) will be wrapped. Note, like other parameters, you can apply a single value for all wraps or use selective control with column `(wrap`) values in the name table.
+
+## Using Names
+
+It's important to remember that the file for points and label information is separate from the names information file. The two files have a similar structure (e.g., `text`, `lat`, `lon` plus style columns).
+
+Applying the names is best imagined as a layering process. The basemap comes first, then points and labels are layered on top. Finally, the name layer is added.

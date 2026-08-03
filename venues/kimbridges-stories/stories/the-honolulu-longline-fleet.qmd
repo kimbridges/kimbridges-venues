@@ -1,0 +1,13 @@
+---
+title: "The Honolulu Longline Fleet"
+subtitle: "The Honolulu fleet of longline fishing boats."
+date: 2018-07-30
+categories: ["Data Analysis", "Hawaii"]
+image: ../images/The_Honolulu_Longline_Fleet.jpg
+pdf: ../pdfs/The_Honolulu_Longline_Fleet.pdf
+---
+This essay describes the fleet of 135 fishing boats setting longlines for ahi tuna. The study uses Marine Traffic data and demonstrates how much information can be retrieved from online resources.
+
+Pages: 72
+
+<iframe src="../viewer.html?pdf=The_Honolulu_Longline_Fleet.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

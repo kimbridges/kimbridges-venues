@@ -1,0 +1,123 @@
+---
+title: "Creating Maps Using R"
+subtitle: "Simplifying the Process"
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+format: 
+  html:
+    code-fold: true
+    code-summary: "Show the code chunk"
+editor: visual
+---
+
+# Maps and Data Tables
+
+This is a brief guide to help you make maps for reports and publications. These are intended to be practical maps. The kind that show where research is conducted. They will also document sample locations.
+
+The context for these maps is generally intended to be a **reproducible document**. Put simply, this is a manuscript that contains the data, analysis and visualization methodology, and the text with data tables and graphics. This is a documentation methodology that supports incremental additions and improvements. It is also open for inspection. Collaboration is encouraged.
+
+There are many documents that describe how to use the R language to create a map. These are great resources. However, adapting the code for your own use is often difficult.
+
+My research requires the use of maps. I don't make maps very often. When I need a map, I find myself relearning the workflow. It's a tedious process that often slows me down at a time when there are pressures from deadlines.
+
+I figured that there must be a better way. The answer came with the realization that most, if not all, of the customization needed to make a map can be done with data tables. Moreover, a simple map might need only a simple table. When faced with a more complex requirement, just use a larger data table. With this approach, you just need reference to the names of the columns and the acceptable values that control the map properties.
+
+Let's look at an example. How about pizza in NYC?
+
+We'll do this in several steps. The first is to set up some libraries with useful function. This step also invokes a license key to use Google maps API. (Setting up the key is discussed later.)
+
+
+
+```{r initialize}
+
+## Libraries
+library(readr)   ## Read cvs data
+library(ggmap)   ## Display maps
+library(ggplot2) ## Plot workhorse
+library(ggrepel) ## Adjust labels to avoid overlap    
+library(gt)      ## Tables
+library(dplyr)   ## Data wrangling
+library(tidyverse) ## Data handling
+
+## Test if Google Key is registered
+if (!has_google_key()){
+
+  ## Initialize Google Map key; the is stored in a Project directory.
+  My_Key <- read_file("P://Hot/Workflow/Workflow/keys/Google_Maps_API_Key.txt")
+
+  ## Register the Google Maps API Key.
+  register_google(key = My_Key, account_type = "standard")
+  } ## end Google Key test
+
+```
+
+The data are from the `ny.eater.com` website. Only the places in lower Manhattan are used here.
+
+I was possible to copy and past this information. Only a little editing was done. Note that since all the locations are in NYC, this information is simply added to the address.
+
+```{r pizzadata}
+#| results: false
+
+pizza_places <- read_csv(col_names = TRUE, file = 
+       "text,                                       address,               established
+       NY Pizza Suprema,               413 8th Ave.,        1964
+       John's of Bleecker Street,      278 Bleecker St., 1929
+       Joe's Pizza,                            7 Carmine St.,     1975
+       Motorino,                                349 E 12th St.,     NA
+       Famous Ben's Pizza,             177 Spring St.,     1979
+       Una Pizza Napoletana,          175 Orchard St.,  1966
+       Lombardi's Coal Oven Pizza, 32 Spring St.,      1905 
+       Scarr's Pizza,                         22 Orchard St.,    2016
+       Kesté,                                     77 Fulton St.,       2009 ")
+
+## Add the city to the address
+pizza_places$address <- paste0(pizza_places$address,", New York City, NY")
+
+## Get the geographic coordinates for each address
+pizza_coord <- geocode(location = pizza_places$address)
+
+## Add the coordinates to the datatable
+pizza_places <- cbind(pizza_places,pizza_coord)
+
+```
+We can print the data table for verification. It's always a good idea to look at the table so you can check your data. Tables let you scan columns for consistency.
+
+```{r "tableout"}
+#| label: tbl-pizzadata
+#| tbl-cap: "Pizza locations in Lower Manhattan, NYC, NY."
+
+## Output the data table
+gt(pizza_places)
+
+```
+
+The next step get a working map. We'll supply a Zoom level here. Later, you'll see ways to get the Zoom level automatically from your data points.
+
+```{r mapout}
+#| label: fig-pizzamap
+#| fig-cap: "Pizza in Lower Manhattan, NYC, NY."
+
+## Get the basemap
+pizza_map <- site_google_map(pizza_places)
+
+## Put the data points and labels on the basemap
+pizza <- ggmap(pizza_map) +
+  geom_point(data=pizza_places) +
+  geom_label_repel(data=pizza_places) +
+  theme(legend.position = "none")
+
+## Show the map  
+pizza
+
+```
+
+
+There are quite a few problems with this map. Even if it is just for orientation, it isn't very good. But, it can be improved!
+
+Improving the map, and this goes for all maps of this type, requires the addition of more code. Simplification of the map makes the code more complex. And that's where map making can get tedious if you don't do it very often.
+
+The approach taken here is two fold. Present the R code in an incremental fashion to show how it is adapted to the map-making process. Then bind the code into a function that allows a straightforward creation of an annotated map. It is the use of this function, along with a data table, that simplifies the map-making process.
+
+What's important now is for you to see that it is possible to mix data and R code with the manuscript text. That's what you can do with your own research reports. You can imagine how easy it is to add a new pizza location or delete one that should not be in this set. The data table and map are remade with no further work.

@@ -1,0 +1,281 @@
+# Data on Google Earth
+
+## Using Google Earth
+
+Google Earth is a well-seasoned product that shows the Earth as a globe. There are two versions. One is a application ([https://earth.google.com](https://earth.google.com/)) you can use with a web browser. The other is a stand-alone program (Google Earth Pro) that runs on a desktop computer. For the purposes here, these function in similar ways so they won't be distinguished. the examples shown here are from the stand-alone program.
+
+What you get with Google Earth is a detailed map. Interactivity is the general goal. Spin the globe. Or type a location in the search box and the globe will spin to the correct location for you.
+
+You can zoom in and out to see a realistic view of the terrain or get an overview of the entire landscape. The resolution can be astounding. Individual trees are often visible. This isn't perfect. Some places are still shown in fairly low resolution. There are even a few places where the images have been modified to obscure the landscape or structures; sensitive government sites are an example.
+
+Most places have good terrain relief. This means you can see the landscape in 3D. In some areas, this goes farther with very detailed 3D imagery of builds and trees. Check this out for major cities. Warning: using Google Earth is very addictive.
+
+Overall, Google Earth is a fantastic resource as a basemap. But the utility goes beyond that.
+
+### Google Earth Layers
+
+There are a number of data ***layers*** that you can activate. Boundaries, place names, roads, and important buildings are some of the most obvious additions.
+
+Many institutions have developed interesting and useful Google Earth overlays. Exploring these is beyond the scope of this project.
+
+What we can do here is help you add your own location placemarks to Google Earth. While you can manually add points, for example, here we'll explore how to add data using R code. The resulting KML file can be used in Google Earth.
+
+## The Basic Protocol
+
+The *goal* is to create a file with the location data in the KML format. An example of the code used to plot two points shown in the Appendix. You provide this file to Google Earth and your data points will show up on the map.
+
+### Initialize the environment
+
+As usual, you need to start with some initialization code.
+
+```{r}
+#| error: false
+#| warning: false
+
+## Standard Libraries
+library(devtools)  ## Load GitHub Libraries
+library(dplyr)     ## Handles data grubbing
+library(readr)     ## The read_csv function
+library(stringr)   ## String functions
+library(gt)        ## Excellent tables
+library(ggmap)     ## Google maps functions (optional)
+
+## Special Libraries
+library(xml2)      ## Handle the JSON for the KML
+library(magick)    ## Convert PDF file to PNG image
+
+## Load and initialize the gePoints package
+install_github("kimbridges/gePoints")
+library(gePoints)  ## Has the create_KLM function
+
+## Set read_csv function option to suppress warning messages
+options(readr.show_col_types = FALSE)
+
+## Initialize Google Map key.
+## Optional unless the geocode function is used.
+
+  ## Test if Google Key is registered
+  if (!has_google_key()){
+    cat("See the code for instructions on registering an API key.")
+    ## Register the Google Maps API Key.
+    ## This makes your Google Map API key permanent
+    ## register_google(key = "[your key]", write = TRUE)
+    } ## end Google Key test
+```
+
+### Work only with place names
+
+You start with a table that lists, at a *minimum*, names of the locations you want marked on Google Earth. This assumes that some program (e.g., Google Maps) can find the locations and add the geographic coordinates. There is a **geocode** function in the **ggmap** package; this requires a Google API key to use. An alternative is to make an API call to an LLM service (e.g., **ChatGPT**).
+
+Here we show coordinates retrieved from a reverse geocode lookup.
+
+```{r}
+#| label: Just names
+#| error: false
+#| warning: false
+
+## Assumption: Google API key has been initialized
+
+## Read locations.
+data_table <- read_csv(col_names = TRUE, file = 
+ "text   
+  Kapa`a
+  Lihue
+  Kalaheo
+  Wailua")
+
+## Show the data.
+gt(data_table) |>
+  tab_source_note(source_note="Only names provided")
+```
+
+The `ggmap` package provides a `geocode` function to look up coordinates using place names. If the name is ambiguous, you might need to concatenate more location information (e.g., city, state or country name).
+
+```{r}
+#| label: Geocode for coordinates
+#| error: false
+#| warning: false
+#| 
+## Get the geographic coordinates.
+## NOTE: Requires a Google API key.
+data_table2 <- geocode(data_table$text, output = "latlon")
+
+## Combine the places with the coordinates.
+data_table <- cbind(data_table, data_table2)
+
+## Show the data.
+gt(data_table) |>
+  fmt_number(columns = c(lat,lon), decimals = 5) |>
+  tab_source_note(source_note="Coordinates: Google reverse geocode")
+```
+
+### Handle user-supplied coordinates
+
+Otherwise, the *minimal* set of data should have a place name (for identification) and geographic coordinates. These data can be specified in a table. Note the column names are important and those shown below should be used.
+
+-   **text**: This is the place name
+
+-   **lat**: The latitude, in decimal degrees (usually 5 decimal digits max)
+
+-   **lon**: The longitude, in decimal degrees (usually 5 decimal digits max)
+
+```{r}
+#| label: Coordinates supplied
+#| error: false
+#| warning: false
+
+## Read the data.
+data_table <- read_csv(col_names = TRUE, file = 
+     "text,       lat,      lon
+      Anchor 1,   11.13471, 166.36452
+      Anchor 2,   11.13539, 166.43146
+      Camp,       11.11479, 166.52640
+      Passage 1,  11.13155, 166.32497
+      Passage 2,  11.12538, 166.35348")
+
+## Show the data in a table.
+gt(data_table) |> 
+  fmt_number(columns = c(lat,lon), decimals = 5)|>
+  tab_source_note(source_note="Coordinates: User supplied")
+```
+
+### Create the KML file
+
+The next step is to generate a KML-format file with the location information. We'll use the data from the previous chunk.
+
+```{r}
+#| label: Create KML file
+#| error: false
+#| warning: false
+
+create_kml(data = data_table, output_file = "test_file_1.kml" )
+
+```
+
+### Use the KML file with Google Earth
+
+The file with the KML code is located on your computer using the name supplied (or the default file "locations.kml").
+
+Open Google Earth, either as an application on a computer (Google Earth Pro) or by using the web-based version (https://earth.google.com).
+
+#### Load the file to the computer application
+
+Simple click the File menu and choose Open ... and select your file from your local disk with the file browser.
+
+#### Load the file to the web-based application
+
+Click on the + NEW button and then, under the Local KML files, choose Open local KML file. A file browser opens and you can choose the file to be loaded.
+
+You can use Google Earth as an interactive tool.
+
+### Save a map from Google Earth Pro
+
+It doesn't appear that the web-based version of Google Earth lets you create prints (e.g., PDF files with the map). You can do a screen-print of the monitor as an alternative.
+
+Use Google Earth Pro's File menu and choose the Print function. Several panels will be exposed that let you choose what overlay information you want on the map. The process, once begun, is self-explanatory.
+
+### Convert the PDF to a PNG format
+
+This is an optional step, shown here mostly as a convenience.
+
+This routine takes a PDF file generated in Google Earth Pro and converts it to a PNG-format file. You can include the PNG image in documents.
+
+Note that you use the base_name without the ".pdf" on the end.
+
+```{r}
+#| label: Convert PDF to PNG
+#| error: false
+#| warning: false
+
+## Use the PDF file name
+base_name <- "test_file_1"
+
+## Create a magick-image from the PDF
+magick_file <- magick::image_read_pdf(paste0(base_name,".pdf"))
+
+## Save as a png file
+image_write(magick_file, path = paste0(base_name,".png"), 
+            format = "png")
+
+```
+
+![](test_file_1.png)
+
+## Create Custom Styles & Add Information
+
+### Icon styles
+
+There are two icon styles: pushpin and paddle. There icons are used to mark locations. Here are some examples. The default is a red pushpin.
+
+![Example pushpin (pink, purple, red) and paddle (blue, lightblue, red) icons](paddles_pushpins.png){fig-align="center" width="474"}
+
+### Icon colors
+
+There is a limited (but useful) set of colors for the pushpin and paddle icons. Note that there is *no* orange pushpin. Red is the default color for both the pushpin and paddle icons.
+
+| Color     | pushpin | paddle |
+|-----------|:-------:|:------:|
+| red       |  **x**  | **x**  |
+| blue      |  **x**  | **x**  |
+| lightblue |  **x**  | **x**  |
+| green     |  **x**  | **x**  |
+| yellow    |  **x**  | **x**  |
+| pink      |  **x**  | **x**  |
+| purple    |  **x**  | **x**  |
+| white     |  **x**  | **x**  |
+| orange    |         | **x**  |
+
+### Additional information
+
+Each location mark can have a pop-up note that has information. This can be a useful field that helps explain why the location is important.
+
+The information field is just another column in the data table. It is called "`comment`".
+
+```{r}
+# Example 1: Using a predefined data frame
+locations <- data.frame(
+  text = c("New York City", "Paris", "Sydney"),
+  lat = c(40.7484, 48.8584, -33.8568),
+  lon = c(-73.9857, 2.2945, 151.2153),
+  comment = c("Empire State Bldg", "Eiffel Tower", "Opera House"),
+  color = c("yellow", "green", "lightblue"),
+  symbol = c("pushpin", "paddle", "paddle"),
+  symbol_scale = c(1.2, 1.5, 1.0),
+  text_color = c("Yellow", "Green", "Orange"),
+  text_scale = c(1.0, 1.2, 0.8)
+)
+
+# Create KML file with all styling options
+create_kml(locations, "fully_styled_locations.kml")
+
+# Example 2: Using minimal required data
+minimal_locations <- data.frame(
+  text = c("New York City", "Paris", "Sydney"),
+  lat = c(40.7484, 48.8584, -33.8568),
+  lon = c(-73.9857, 2.2945, 151.2153)
+)
+
+# Create KML file with default styling
+create_kml(minimal_locations, "basic_locations.kml")
+
+# Example 3: Reading from a CSV file
+# First, create a sample CSV file
+write.csv(minimal_locations, "locations.csv", row.names = FALSE)
+
+# Then read and create KML
+csv_locations <- read_csv("locations.csv")
+create_kml(csv_locations, "csv_locations.kml")
+
+# Example 4: Custom styling for specific locations
+custom_locations <- data.frame(
+  text = c("Mountain Peak", "Lake", "Forest"),
+  lat = c(45.8324, 41.9027, 39.7392),
+  lon = c(-110.3784, -87.6224, -104.9903),
+  comment = c("High altitude point", "Waterfront", "Dense vegetation"),
+  color = c("red", "blue", "green"),  # Using colors that match the locations
+  symbol = c("paddle", "paddle", "paddle"),
+  symbol_scale = c(1.5, 1.3, 1.3)  # Larger symbols for better visibility
+)
+
+create_kml(custom_locations, "custom_styled_locations.kml")
+```

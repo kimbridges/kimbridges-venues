@@ -1,0 +1,13 @@
+---
+title: "Hummingbirds in the Garden"
+subtitle: "Hummingbirds at the Huntington Botanical Garden."
+date: 2023-05-19
+categories: ["Birds", "Gardens"]
+image: ../images/Hummers_in_the_Garden.jpg
+pdf: ../pdfs/Hummers_in_the_Garden.pdf
+---
+A short photo essay about the hummingbirds at the Huntington Library, Gallery and Botanical Garden.
+
+Pages: 21
+
+<iframe src="../viewer.html?pdf=Hummers_in_the_Garden.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

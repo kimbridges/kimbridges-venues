@@ -1,0 +1,13 @@
+---
+title: "On Viewing Some Old Buildings in Honolulu"
+subtitle: "Buildings in Honolulu's Capitol District."
+date: 2016-02-04
+categories: ["Hawaii"]
+image: ../images/On_Viewing_Old_Buildings.jpg
+pdf: ../pdfs/On_Viewing_Old_Buildings.pdf
+---
+A study of 24 buildings and monuments in Honolulu's Capitol District. The discussion includes the construction features, history, and significant landscaping plants. Digital processing is evocative of an earlier era.
+
+Pages: 107
+
+<iframe src="../viewer.html?pdf=On_Viewing_Old_Buildings.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

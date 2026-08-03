@@ -1,0 +1,215 @@
+---
+title: "backup"
+---
+
+```{r}
+# Required libraries
+library(devtools)  # For GitHub packages
+library(readr)     # CSV handling
+library(gt)        # Table formatting
+library(xml2)      # XML/KML processing
+library(rlang)     # For the %||% operator
+
+# Suppress CSV column type messages
+options(readr.show_col_types = FALSE)
+
+#' Convert common color names to ABGR format used in KML
+#' @param color_name A string containing the color name
+#' @return ABGR color code as string
+get_abgr_color <- function(color_name) {
+  color_map <- list(
+    "red"    = "ff0000ff",
+    "blue"   = "ffff0000",
+    "green"  = "ff00ff00",
+    "yellow" = "ff00ffff",
+    "purple" = "ffff00ff",
+    "white"  = "ffffffff",
+    "black"  = "ff000000",
+    "orange" = "ff0080ff",
+    "pink"   = "ffff00ff",
+    "gray"   = "ff808080"
+  )
+  
+  return(color_map[[tolower(color_name)]])
+}
+
+#' Generate Google Maps icon URL based on color and symbol type
+#' @param color Color name for the icon
+#' @param symbol_type Either "pushpin" or "paddle"
+#' @return Complete URL for the icon
+get_icon_url <- function(color, symbol_type) {
+  # Define color mappings for different symbol types
+  symbol_colors <- list(
+    pushpin = list(
+      "white" = "wht",
+      "blue"  = "blue",
+      "green" = "grn",
+      "yellow" = "ylw",
+      "purple" = "purple",
+      "lightblue" = "ltblu",
+      "pink" = "pink",
+      "red" = "red"
+    ),
+    paddle = list(
+      "white" = "wht",
+      "blue" = "blu",
+      "lightblue" = "ltblu",
+      "green" = "grn",
+      "yellow" = "ylw",
+      "purple" = "purple",
+      "orange" = "org",
+      "pink" = "pink",
+      "red" = "red"
+    )
+  )
+  
+  # Select appropriate color mapping
+  color_map <- if (tolower(symbol_type) == "paddle") {
+    symbol_colors$paddle
+  } else {
+    symbol_colors$pushpin
+  }
+  
+  # Get color code or default to red
+  color_code <- color_map[[tolower(color)]] %||% "red"
+  
+  # Build icon URL
+  base_url <- "http://maps.google.com/mapfiles/kml/"
+  if (tolower(symbol_type) == "paddle") {
+    return(paste0(base_url, "paddle/", color_code, "-circle.png"))
+  } else {
+    return(paste0(base_url, "pushpin/", color_code, "-pushpin.png"))
+  }
+}
+
+#' Create a KML file from location data
+#' @param data Dataframe containing location data
+#' @param output_file Output KML filename
+#' @return None, writes KML file to disk
+create_kml <- function(data, output_file = "locations.kml") {
+  # Set default styling values if not provided
+  default_styles <- list(
+    symbol = "pushpin",
+    symbol_scale = 1.2,
+    text_color = "white",
+    text_scale = 1.0,
+    color = "red"
+  )
+  
+  # Apply defaults where missing
+  for (style in names(default_styles)) {
+    if (!style %in% names(data)) {
+      data[[style]] <- default_styles[[style]]
+    }
+  }
+  
+  # Create KML document structure
+  kml <- xml_new_root("kml", xmlns = "http://www.opengis.net/kml/2.2")
+  doc <- xml_add_child(kml, "Document")
+  
+  # Generate unique styles
+  styles <- create_styles(data, doc)
+  
+  # Add placemarks
+  add_placemarks(data, doc, styles)
+  
+  # Write KML file
+  xml2::write_xml(kml, output_file)
+  message("KML file created successfully: ", output_file)
+}
+
+#' Create styles for KML markers
+#' @param data Dataframe with style information
+#' @param doc XML document node
+#' @return List mapping style keys to style IDs
+create_styles <- function(data, doc) {
+  style_map <- list()
+  style_counter <- 1
+  
+  for (i in seq_len(nrow(data))) {
+    style_key <- paste(
+      data$color[i],
+      data$symbol[i],
+      data$symbol_scale[i],
+      data$text_color[i],
+      data$text_scale[i],
+      sep = "_"
+    )
+    
+    if (!style_key %in% names(style_map)) {
+      style_id <- paste0("style", style_counter)
+      style_map[[style_key]] <- style_id
+      style_counter <- style_counter + 1
+      
+      add_style_to_doc(doc, style_id, data[i, ])
+    }
+  }
+  
+  return(style_map)
+}
+
+#' Add a style definition to the KML document
+#' @param doc XML document node
+#' @param style_id Style identifier
+#' @param style_data Single row of data with style information
+add_style_to_doc <- function(doc, style_id, style_data) {
+  style <- xml_add_child(doc, "Style", id = style_id)
+  
+  # Icon style
+  icon_style <- xml_add_child(style, "IconStyle")
+  xml_add_child(icon_style, "scale", as.character(style_data$symbol_scale))
+  icon <- xml_add_child(icon_style, "Icon")
+  xml_add_child(icon, "href", 
+                get_icon_url(style_data$color, style_data$symbol))
+  
+  # Label style
+  label_style <- xml_add_child(style, "LabelStyle")
+  xml_add_child(label_style, "scale", as.character(style_data$text_scale))
+  xml_add_child(label_style, "color", get_abgr_color(style_data$text_color))
+}
+
+#' Add placemarks to the KML document
+#' @param data Dataframe with location data
+#' @param doc XML document node
+#' @param styles Style mapping list
+add_placemarks <- function(data, doc, styles) {
+  for (i in seq_len(nrow(data))) {
+    placemark <- xml_add_child(doc, "Placemark")
+    xml_add_child(placemark, "name", data$place_name[i])
+    
+    # Add style reference
+    style_key <- paste(
+      data$color[i],
+      data$symbol[i],
+      data$symbol_scale[i],
+      data$text_color[i],
+      data$text_scale[i],
+      sep = "_"
+    )
+    xml_add_child(placemark, "styleUrl", paste0("#", styles[[style_key]]))
+    
+    # Add description if available
+    if ("description" %in% names(data)) {
+      xml_add_child(placemark, "description", data$description[i])
+    }
+    
+    # Add coordinates
+    point <- xml_add_child(placemark, "Point")
+    coords <- sprintf("%f,%f,0", data$longitude[i], data$latitude[i])
+    xml_add_child(point, "coordinates", coords)
+  }
+}
+
+# Example usage:
+locations <- data.frame(
+  place_name = c("New York City", "Paris", "Sydney"),
+  latitude = c(40.7484, 48.8584, -33.8568),
+  longitude = c(-73.9857, 2.2945, 151.2153),
+  description = c("Empire State Bldg", "Eiffel Tower", "Opera House"),
+  color = c("yellow", "green", "lightblue"),
+  symbol = c("pushpin", "paddle", "paddle"),
+  symbol_scale = c(1.2, 1.5, 1.0),
+  text_color = c("Yellow", "Green", "Orange"),
+  text_scale = c(1.0, 1.2, 0.8)
+)
+```

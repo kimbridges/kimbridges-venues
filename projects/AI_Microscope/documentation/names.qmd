@@ -1,0 +1,43 @@
+# The names
+
+Say this out loud, right now, before you read another word: *Hibiscadelphus giffardianus.*
+
+Most people won't. They'll look at it, feel the small flinch that a long unfamiliar name produces, and read on. That flinch is the subject of this chapter. It's the first wall a beginner meets in botany. And it has nothing to do with leaves. It's the fear of saying a name wrong in front of someone. I've watched it stop more students than any hard concept ever did.
+
+## Cecil Johnson's friend
+
+I learned how to get past that wall from Cecil Johnson, one of my first biology teachers. His trick was social, not technical. He taught us to meet a scientific name the way you meet a person. You introduce it. "This is my good friend, *Hibiscadelphus giffardianus.*" Say it like that, as an introduction, and something loosens. The name stops being a test you might fail and becomes someone you know. I still do it. I still challenge people to say *Hibiscadelphus giffardianus*, and I still watch the same thing happen, the flinch, then the grin when they get through it.
+
+What Cecil understood is that the barrier was never in the material. Nobody is afraid of a word. They're afraid of sounding foolish. Once you see that the wall is emotional and not intellectual, you know what the tool has to do. It doesn't have to make the student smarter. It has to make the names less frightening.
+
+## Pronunciation is friction
+
+There's a word I use for this, borrowed from the rest of my work. Friction. Pronunciation is friction. It's a small resistance on every single scientific name or foreign term. And it's almost never described as a barrier, which is exactly why it does so much damage. Nobody writes "afraid to say the words" on a course evaluation. The student just quietly disengages.
+
+And it scales. A leaf cross section has a dozen terms. A single Hawaiian forest like Kīpuka Puaulu has around a hundred names waiting for you. A medical vocabulary has thousands. Every one of them carries that little tax, and the taxes add up until a curious person decides the subject isn't for them. Lower the friction and the curiosity that was there all along gets through. That's the whole job.
+
+## The term explorer
+
+So the rebuilt microscope has a small panel that does for every term what Cecil did by hand. You pick a tissue and you get three things. You get to hear it. A button says the name aloud, so you never have to guess and never have to be the first one in the room to try it. You get a plain-English gloss, a sentence that says what the thing actually is, without the textbook throat-clearing. And you get where the name came from.
+
+![The term explorer, open on xylem at high power. Say it speaks the name. The gloss says what the thing is in plain words. The roots line says where the word came from, which is what makes the next long name easier than the last one.](figures/aim_5_xylem_40x.png){#fig-term-card width=45% fig-align="center"}
+
+This is the 1989 reach, finally delivered. We wrote back then that the system would pronounce the names and show their meanings. Now it does. Out loud. On demand. And it took none of the fighting it would have taken then.
+
+## Roots as a master key
+
+The etymology is the part I'd defend hardest, because it isn't decoration. It's the most efficient thing in the whole tool.
+
+A scientific name looks arbitrary until you see inside it, and then it stops. *Xylem* is just the Greek word for wood, and xylem is the woody, water-carrying tissue. *Palisade* is a fence of stakes, and the palisade parenchyma cells stand in a tight upright row exactly like a stockade. The name was a description all along. Nobody told you, so you memorized it as noise.
+
+The real power shows up with shared roots. Learn that *-enchyma* marks a kind of tissue, and then learn a handful of prefixes, and four hard words fall open at once. *Parenchyma* is the ordinary ground tissue. *Sclerenchyma* is the hard tissue, from the Greek for hard. *Collenchyma* is the flexible one, from the word for glue. *Chlorenchyma* is the green, photosynthetic one. That's not four things to memorize. It's one ending and four prefixes, and once you have them you can often guess a word you've never seen. *Epidermis* is just "upon the skin." The roots are a master key. Give a student the key and you've handed them a way to read the whole vocabulary, instead of a longer list to swallow.
+
+## The machine's own accent
+
+Behind the friendly panel there's a quieter piece of engineering, and it taught me something I didn't expect.
+
+Some names the voice says perfectly on its own. Some it stumbles on. So there's a hidden field, one the student never sees, where I can spell a difficult name out in a phonetic notation the voice engine understands. This tells the program exactly how to say that one. The rule I settled on is to fix only what's broken. Most names are left alone. Only the ones the machine actually mangles get a correction. *Syringa*, the lilac our slide, was left alone because the plain reading sounded better to my ear than one crafted with a phonetic description. This was probably some difference between how the word settled in American and British mouths. The phonetic fix was worse than the thing it tried to fix. So there wasn't a fix applied.
+
+And here's the choice I made deliberately, against my own engineering instinct. The tool says each name fresh every time. Live. That means it comes out a little different from one saying to the next. That's the way the engine works. I could have frozen the pronunciation with a carefully-crafted phonetic description. That would serve the same perfect audio forever. I didn't. And I won't. Because if the overall pronunciation is correct, the small variation is true. A name doesn't have one sacred sound. It lives in mouths, and mouths differ. A student who hears it said three slightly different ways learns the thing that matters more than any single reading: that there's no oracle that says you must get it exactly right. There never was. Just say it. Say it like you're introducing a friend.
+
+That friendliness with the words is something a student can build before they ever sit down at a real microscope. Which is where this tool is really meant to live, and where the next chapter takes it.

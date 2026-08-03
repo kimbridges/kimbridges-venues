@@ -1,0 +1,47 @@
+---
+title: "A Concrete Walkthrough: Block-Structured Tables"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{A Concrete Walkthrough: Block-Structured Tables}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(bbstruct)
+
+## Data Input
+
+bb0 <- bb_read_csv(system.file(
+  "extdata", "example_block.csv", package = "bbstruct"
+))
+bb_validate(bb0)
+
+## Reordering
+
+res <- bb_reorder(bb0)
+met <- bb_metrics(res)
+met$contrast
+met$adjacent_col_smoothness
+
+## Diagnostics
+
+bb_metrics(res)
+
+## Species Groups
+
+bb_species_groups(res)
+
+## Site Groups
+
+bb_site_groups(res)
+
+## Column Blocks
+
+bb_column_blocks(res)
+
+

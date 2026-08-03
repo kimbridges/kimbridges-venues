@@ -1,0 +1,60 @@
+
+# Check the Workflow
+
+```{r}
+library(timelinesr)
+
+## 1. IDENTIFY LOCATIONS
+timeline_json <- "Timelines/hvnp_timeline.json"
+photo_folder  <- "Test_Photos/"
+
+## 2. INGEST THE TIMELINE
+
+timeline <- timelinesr::read_timeline("Timelines/hvnp_timeline.json")
+
+## 3. FUSE TIMELINE DATA
+track <- timelinesr::fuse_layers(timeline, max_accuracy = 1000)
+
+## 4. LOAD PHOTOS 
+photos <- timelinesr::get_photo_timestamps(photo_folder) 
+
+## 5. GET THE TIMELINE-PHOTO MATCH
+tagged <- timelinesr::geotag_photos(track, photos)
+
+## 6. CHECK THE RESULTS
+head(tagged,20)
+
+## 7. WRITE LOCATIONS TO THE PHOTOS 
+## timelinesr::write_geotags(tagged)
+
+## 8. VISUALIZE ON A MAP
+timelinesr::visualize_geotags(tagged)
+
+####################################
+
+library(timelinesr)
+
+## 0. IDENTIFY LOCATIONS
+timeline_json <- "Timelines/hvnp_timeline.json"
+photo_folder  <- "Test_Photos/"
+voronoi_places <- "HVNP_photo_places.csv"
+
+# 1. Fuse and Clean
+timeline <- timelinesr::read_timeline(timeline_json)
+track_raw <- timelinesr::fuse_layers(timeline, max_accuracy = 20)
+track_clean <- timelinesr::clean_track(track_raw)
+
+# 2. Extract Photos
+photos <- timelinesr::get_photo_timestamps(photo_folder)
+
+# 3. Geotag (TIGHTEN THE GAP TO 15 MINUTES!)
+tagged <- timelinesr::geotag_photos(track_clean, photos, max_gap_mins = 15)
+
+# 4. Apply Hybrid Assignment (Pass in the track_clean as the 2nd argument)
+tagged_final <- timelinesr::assign_places(tagged, track_clean, voronoi_places)
+
+# 5. Map it!
+timelinesr::visualize_geotags(tagged_final)
+ 
+```
+

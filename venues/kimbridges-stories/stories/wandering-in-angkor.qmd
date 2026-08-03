@@ -1,0 +1,13 @@
+---
+title: "Wandering in Angkor"
+subtitle: "Understanding Cambodia's Siem Reap."
+date: 2017-10-11
+categories: ["Travel", "Asia"]
+image: ../images/2016_Wandering_in_Angkor.jpg
+pdf: ../pdfs/2016_Wandering_in_Angkor.pdf
+---
+A trip to Cambodia's Siem Reap was more than viewing the ancient temples of Angkor Wat. This was an exploration of both the early and modern periods.
+
+Pages: 101
+
+<iframe src="../viewer.html?pdf=2016_Wandering_in_Angkor.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

@@ -1,0 +1,44 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "coenosr"
+  subtitle: "Recovering traditional two-way table processing"
+  author: "K. W. Bridges and Claude (Anthropic)"
+  date: today
+  cover-image: coenosr_cover.png
+  chapters:
+    - index.qmd
+    - two_way_table.qmd
+    - coenos_1991.qmd
+    - reading_a_dead_program.qmd
+    - the_method.qmd
+    - getting_data_in.qmd
+    - coenosr_in_use.qmd
+    - a_clear_point_of_view.qmd
+    - the_reason_for_groups.qmd
+    - a_place_in_the_toolkit.qmd
+  appendices:
+    - function_reference.qmd
+    - references.qmd
+  navbar:
+    logo: coenosr_icon.png
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    embed-resources: false
+    df-print: kable
+
+editor: visual
+
+toc: true
+number-sections: true
+number-depth: 2
+
+execute:
+  warning: false
+  error: false
+  message: false

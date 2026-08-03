@@ -1,0 +1,57 @@
+# Function reference {.unnumbered}
+
+Every chapter draws on the **[listsr](https://github.com/kimbridges/listsr)** package, loaded with `library(listsr)` at the top of each. The functions are deliberately few and each does one job, so the whole workflow — read a ragged list, look at it, lay it flat, measure it, draw the tree, cut it by a rule — is a short chain of named steps. They are collected here for reference, in the order the book uses them. `listsr` carries its own imports; the chapters additionally load the **tidyverse** and **gt** for the data wrangling and tables shown alongside.
+
+## Reading and shaping a list
+
+`read_lists(data_rows)`
+: Read ragged `"Site, item, item, …"` text — one site per line, any number of items — into a wide data frame with a `Site` column and `item1 … itemN`. Whitespace is stripped once, at read time.
+
+`to_long(data)`
+: Turn the wide frame into tidy long form, one row per item-in-a-site, dropping the empty ragged cells.
+
+`item_list(data)`
+: The distinct items seen across all sites, sorted — a quick confirmation that the list read in as intended.
+
+`data_to_2way(data)`
+: The binary two-way table: items as rows, sites as columns, `1` for present and `0` for absent. The pivot point of the whole analysis.
+
+## A first look
+
+`item_freq_plot(data, caption = NULL)`
+: A bar scan of how many sites carry each item — the common items and the rare ones.
+
+`site_freq_plot(data, caption = NULL)`
+: A bar scan of how many items each site holds — the rich sites and the sparse ones.
+
+`two_way_plot(data_2way, caption = NULL)`
+: The two-way table drawn as a picture: a filled cell for present, blank for absent, so the structure (and the emptiness) is visible at a glance.
+
+## Measuring similarity
+
+`dissimilarity(data_2way, what = c("item", "site"), method = "binary")`
+: Pairwise dissimilarities between items (default) or between sites, from the two-way table. The default `"binary"` distance is the Jaccard measure: `0` for identical lists, `1` for nothing in common. Returns a `dist` object — the matrix the rest of the analysis rests on.
+
+`dissimilarity_plot(d, caption = NULL)`
+: The dissimilarity matrix as a heatmap, paler where two things are more alike, with the numbers printed in the cells.
+
+## Drawing and shaping the tree
+
+`dendrogram_plot(d, linkage = "average", caption = NULL)`
+: A dendrogram drawn from a dissimilarity object, with the linkage rule given explicitly. The honest default is average (UPGMA) linkage.
+
+`make_dendrogram(data_2way, what, dist_method = "binary", linkage = "average", caption = NULL)`
+: Convenience: table to tree in one call, chaining `dissimilarity()` into `dendrogram_plot()`.
+
+`dendro_theme()`
+: The shared ggplot theme used by the dendrogram functions (clean leaf axis, light gridded dissimilarity axis).
+
+## Linking metadata
+
+`dendrogram_meta_plot(d, info, by, key, linkage = "average", extra = NULL, palette = NULL, caption = NULL)`
+: A dendrogram whose leaves are coloured by an *external* metadata column. `info` is a separate table holding the metadata; `by` names the column that matches the leaf labels; `key` names the column to colour by; `extra` optionally prints a second field in parentheses after each label; `palette` takes a named colour vector.
+
+## Assessment lines
+
+`recruit_heights(hc)`
+: For a fitted `hclust` tree, the dissimilarity at which each site is first recruited into any cluster — its *recruitment height*. A large value marks a variable, atypical site; the most variable site is the one that sets the assessment line. Returned high to low.

@@ -1,0 +1,13 @@
+---
+title: "Some Birds of the Tofino Shores"
+subtitle: "Tofino's shoreline, on Vancouver Island, hosts many birds."
+date: 2023-11-04
+categories: ["Birds", "Travel", "Canada"]
+image: ../images/Tofino_Birds.jpg
+pdf: ../pdfs/Tofino_Birds.pdf
+---
+Tofino is on Vancouver Island's west coast. The rugged shoreline hosts many birds, resident and migratory. This study documents some of these species by displaying their natural behaviors.
+
+Pages: 91
+
+<iframe src="../viewer.html?pdf=Tofino_Birds.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

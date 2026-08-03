@@ -1,0 +1,824 @@
+---
+title: "Kinship Visualization"
+author: "K. W. Bridges"
+date: '2022-04-25'
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+
+```{r}
+#| label: core
+
+
+## Core packages
+library(tidyverse)  ## Data wrangling
+library(gt)         ## Great tables
+
+## Specialized packages
+library(kinship2)   ## Create and plot pedigree diagrams
+library(R.devices)  ## Capture plots (whew!! This is a big "trick.")
+library(ggrepel)    ## Used to caption legends
+library(patchwork)  ## Assemble graphic elements (e.g., pedigree + legend)
+library(ggimage)    ## Read PNG images
+library(magick)     ## Useful image manipulation
+
+```
+
+## Pedigree Diagrams Using `kinship2`
+
+The basic purpose of a pedigree diagram is to show the relationships between people (or other sexually reporducing organisms). This is a straightforward task for simple sets of relationships.
+
+The R package `kinship2` is the key. It uses a basic set of information to draw the pedigree diagram. The `kinship2` package does much more than produce the relationship visualization. Here, however, we're focusing just on the diagrams that are created using the package.
+
+For more information on `kinship2`: <https://cran.r-project.org/package=kinship2>
+
+## Basic data structures
+
+The following five columns are, essentially, the minimal data structure. The names of the fields are pretty standard for a pedigree chart.
+
+-   ID: Use a person's name
+-   dad: Person's name
+-   mom: Person's name
+-   gender: As `male`, `female` or `NA` or coded as (1=male, 2=female, 0=NA)
+-   status: Code as living=0 or dead=1 (dead is shown as a diagonal line across the symbol)
+
+### A few data rules
+
+Most pedigree diagrams will involve creating a straightforward data file.
+
+-   Each individual is a row in the data structure.
+
+-   The order of the rows is not important.
+
+-   When an individual's parents are not known, code each parent as NA (or 0).
+
+-   Adding a spouse when there are no children requires special handling (shown later).
+
+The data table can contain information besides the required columns. Indeed, most data tables will be rich with supplemental data that will help in the interpretation of the data, just as the pedigree diagram add to the value by representing relationships in the data.
+
+```{r}
+#| label: basic
+
+## Basic data (status: 1=dead, 0=alive)
+data <- read_csv(col_names = TRUE, show_col_types=FALSE, file=
+    "ID,    dad,  mom,  gender, status, born
+     John,  NA,   NA,   male,   1,      1902     
+     Mary,  NA,   NA,   female, 1,      1904      
+     Bill,  John, Mary, male,   0,      1928     
+     Hank,  John, Mary, male,   1,      1930      
+     Andy,  John, Mary, male,   0,      1933      
+     Ruth,  NA,   NA,   female, 0,      1935      
+     Jane,  Andy, Ruth, female, 0,      1958")
+
+## Print a table
+gt(data) |>
+  tab_footnote(
+    footnote = "status: alive = 0; dead = 1",
+    locations = cells_column_labels(columns=status)) |>
+  tab_source_note(source_note="Source: Demonstration data")
+
+## Generate and plot the pedigree data structure (without no-children couples)
+tiny_pedigree(data=data)
+
+## Save the diagram as a PNG file (in the figures directory)
+devEval("png", 
+        filename="basic_test.png", 
+        width=7.5, units="in", res=300,
+        {tiny_pedigree(data=data)})
+
+```
+
+Saving the pedigree diagram as a separate image is optional.
+
+## Relationships Without Children
+
+The basic pedigree diagram is the starting point for this example. Here, the spouses of siblings `Hiroshi` and `Takashi` are added. One of these (`Hiroshi`), like sibling `Fumiko`, has a child. The other (`Takashi`) doesn't have a child. Handling the "childless" sibling requires a different data structure.
+
+Each couple without children needs to have a special set of relationship information.
+
+First, make sure that all individuals are included in the basic data. Each person in the pedigree must have a data row.
+
+Then, add a new data structure that has two fields (`id1`, `id2`). In the examples, this is named "pair" as this represents a couple (i.e., pair of individuals) who don't have children.
+
+The set of relationship data is added to the basic pedigree data in the `tiny_pedigree` function using the `links` parameter.
+
+```{r}
+#| label: nochildren
+
+## Basic data (all people must be listed)
+data <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+    "ID,     dad,      mom,     gender,   status 
+     Genji,   NA,      NA,      male,     1     
+     Shizuko, NA,      NA,      female,   1      
+     Hiroshi, Genji,   Shizuko, male,     0     
+     Takashi, Genji,   Shizuko, male,     1      
+     Osamu,   Genji,   Shizuko, male,     0      
+     Akari,   NA,      NA,      female,   0      
+     Fumiko,  Osamu,   Akari,   female,   0
+     Yui,     NA,      NA,      female,   0
+     Shota,   Hiroshi, Yui,     male,     0
+     Sakura,  NA,      NA,      female,   0")
+
+## Relationships without children
+links <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+                     "id1,  id2
+                      Takashi, Sakura")
+
+# Print a table
+gt(data) |>
+  tab_footnote(
+    footnote = "status: alive = 0; dead = 1",
+    locations = cells_column_labels(columns=status)) |>
+  tab_source_note(source_note="Source: Demonstration data")
+
+## Generate and plot the pedigree data structure 
+## This version includes "no-children" couples (i.e., links)
+tiny_pedigree(data=data, links=links)
+
+```
+
+### Long names
+
+A real set of data will, most likely, use peoples' names. The result might be crowding of the pedigree diagram. One solution is to split the names onto multiple lines.
+
+Splitting a name uses the code for `\\n` to create a new line. This can't always be coded directly into the data as it may affect the reading of the data lines. Instead, some code inside `tiny_pedigree` is used to replace each blank space with the new line code. You control the use of this functionality with the `fold` parameter. If `fold=TRUE` (which is the default), the long names are divided with parts of the name put on separate lines. If `fold=FALSE`, the names are put on a single line. This is applied to all names.
+
+### Scaling the chart information
+
+You can control the size of the symbols and identifying labels.
+
+-   `symbolsize`: Use this to make the symbol larger (\>1) or smaller (\<1).
+-   `textsize`: The text is scaled with values \<1 to make the text smaller.
+
+```{r}
+#| label: names
+
+## Basic data
+data <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+    "ID,                 dad,           mom,         gender, status 
+     William Jones,      NA,            NA,          male,   1     
+     Mary White,         NA,            NA,          female, 1      
+     Frank Jones,        William Jones, Mary White,  male,   0     
+     Mike Jones,         William Jones, Mary White,  male,   1   
+     Peter Jones,        William Jones, Mary White,  male,   0     
+     Carol Smith,        NA,            NA,          female, 0      
+     LaVerne Jones,      Peter Jones,   Carol Smith, female, 0
+     Karen Brown,        NA,            NA,          female, 0
+     Samuel Jones-Brown, Frank Jones,   Karen Brown, male,   0
+     Susan Hanford,      NA,            NA,          female, 0")
+
+## Relationships without children
+links <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+                     "id1,        id2
+                      Mike Jones, Susan Hanford")
+
+# Print a table
+gt(data) |>
+  tab_footnote(
+    footnote = "status: alive = 0; dead = 1",
+    locations = cells_column_labels(columns=status)) |>
+  tab_source_note(source_note="Source: Demonstration data")
+
+## Generate the pedigree chart
+tiny_pedigree(data=data, links=links, fold=TRUE, symbolsize=0.4, textsize=1.1)
+
+```
+
+## Generalizing the Use of a Pedigree
+
+The previous pedigree diagrams show basic relationships (symbols connected with lines), each person's gender (square vs circle) and whether a person is dead (diagonal strike through) or alive.
+
+But *much* more information can be conveyed in the diagram about each individual.
+
+The `tiny_pedigree` function permits several ways it can be "customized." This is best introduced with a few examples.
+
+Note that the additional visualization features are data driven. You re-purpose existing data fields and add additional places to store information. This information gets integrated into `tiny_pedigree` using existing linkages.
+
+### Symbolism
+
+There are three columns of information that help control the symbolism, besides the gender column.
+
+**status:** A binary column value used to put a slash diagonally through the symbol. `TRUE` or `1` generates the slash. This column is often used to indicated if someone is alive or dead. However, this is not the only possible use. For example, the value in the `status` column might indicate whether or not you have interviewed a person.
+
+**color:** The `color` column holds a color name for each symbol outline and, if `hilite` is `TRUE` (or `1`), the fill color for the symbol. The colors can be used to draw attention to one or a few individuals. Or groups of individuals that share some characteristic can be grouped by color. The default color is "black."
+
+**hilite:** This column controls whether or not the symbols should be filled with the color. To use a color other than the default, make sure there is a color name in the `color` column and a `1` (or `TRUE`) in the `hilite` column. If NA is used in the `hilite` column, a question mark is placed inside the symbol.
+
+Note that the symbolism used in the pedigree diagram needs to be explained somewhere. Except for simple symbolism, it's likely the description will be in accompanying text.
+
+The following example has the data input in two sets. The sets are merged. This strategy makes it easier to show (and edit) the input data.
+
+Note that the application of symbolism to a pedigree diagram is just a matter of using one or a few table columns. One the data table is created, it is quite straightforward to generate a pedigree diagram.
+
+```{r}
+#| label: maxsymbolism
+
+## Family relationship
+family <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+    "ID,                 dad,           mom
+     William Jones,      NA,            NA     
+     Mary White,         NA,            NA     
+     Frank Jones,        William Jones, Mary White
+     Mike Jones,         William Jones, Mary White
+     Peter Jones,        William Jones, Mary White
+     Carol Smith,        NA,            NA  
+     LaVerne Jones,      Peter Jones,   Carol Smith
+     Karen Brown,        NA,            NA
+     Samuel Jones-Brown, Frank Jones,   Karen Brown
+     Susan Hanford,      NA,            NA")
+
+## Info about the family members
+info <- read_csv(col_names = TRUE, file=
+    "ID,                gender, status, color,    hilite
+     William Jones,      1,     0,      red,      1   
+     Mary White,         2,     0,      black,    NA      
+     Frank Jones,        1,     1,      blue,     1        
+     Mike Jones,         1,     0,      red,      1     
+     Peter Jones,        1,     0,      black,    0      
+     Carol Smith,        2,     0,      red,      1      
+     LaVerne Jones,      2,     1,      seagreen, 1    
+     Karen Brown,        2,     1,      purple,   1   
+     Samuel Jones-Brown, 1,     1,      blue,     1    
+     Susan Hanford,      2,     0,      red,      1")
+
+## Merge the data
+## This results in sorting by ID
+data <- merge(family, info, by = "ID")
+
+## Create a table
+gt(data)|>
+  tab_footnote(
+    footnote = "status: interviewed = 0; not interviewed = 1",
+    locations = cells_column_labels(columns=status)) |>
+  tab_source_note(source_note="Source: Demonstration data")
+
+## Relationships without children
+links <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+                     "id1,        id2
+                      Mike Jones, Susan Hanford")
+
+## Generate the pedigree data structure (with no-children couples)
+tiny_pedigree(data=data, links=links, symbolsize=0.8)
+
+```
+
+\newpage
+
+## Creating a Key
+
+A key is needed to explain the color and segment conventions.
+
+The `kinship2` package has a built-in legend capability, but this isn't very effective for the more general use of the package. Instead, custom diagrams are created for the purpose of identifying the symbolic notation.
+
+The symbol segmentation is handled with a pie-shaped diagram with labels identifying the role of each segment. The color of the symbol use colored boxes with identifying names inside.
+
+The construction of the pie and box diagrams is a bit complicated. However, the use of this code is very straightforward as these are data-driven procedures. The only adjustment is likely the size of the label text.
+
+### Symbol segments
+
+The symbol, whether it is a circle or square, is filled with from one to four segments. Each segment can be empty, filled or have a small question mark.
+
+The order of the segments is the same whether they are inside a square or circle. Therefore, the key only uses a circle (i.e., pie-shape) to show the value of each segment. (It is way easier to produce!)
+
+The symbols can come in many different colors, but that isn't related specifically to the value associated with the segments as all the segments for an individual are shown in the same color. This means that the legend for the symbol segments can be a neutral color, like gray or black.
+
+There will be some scaling adjustment needed, especially with the text, when the legend is combined with the pedigree diagram.
+
+```{r segments}
+
+## Each of the affected variables needs to have a name assigned. 
+## The list below can be from one to four items.
+
+## Read information to create the legend (as segments of a pie)
+## The size should be the same value for each segment
+pie <- read_csv(col_names = TRUE, file = 
+                  "name,     size, fill
+                   teacher,     1, black
+                   lawyer,      1, black
+                   farmer,      1, black
+                   housewife,   1, black")
+
+## Calculate the position of each label
+pie <- pie %>% 
+  mutate(csum = rev(cumsum(rev(size))), 
+         pos = size/2 + lead(csum, 1),
+         pos = if_else(is.na(pos), size/2, pos))
+
+## Generate the legend
+legend <- ggplot(pie, aes(x="", y=size), fill=fill) +
+  geom_bar(stat="identity", 
+           width=1,           ## width of lines inside the pie
+           color = "gray",    ## color of lines inside the pie
+           show.legend = FALSE) +
+  coord_polar("y", start=0) +  ## pie shape
+  geom_label_repel(data = pie,
+                   aes(y = pos, label = name),
+                       size = 3.0,          ## label text size
+                       segment.color = "gray", ## connector line color
+                       segment.size  = 0.8,    ## connector line width
+                       nudge_x = 1, 
+                       show.legend = FALSE, 
+                       fill = "white") +    ## label background
+  ggtitle("Key") +
+  theme_void()
+
+legend
+
+```
+
+\newpage
+
+### Symbol colors
+
+The symbol for each individual in a pedigree can be a unique color. The entire symbol (i.e., all the segments and the surrounding line) are shown in a single color. You can't make each segment a different color.
+
+The color matching to a name is done here with colored boxes, one for each color. Inside each box is the name associated with the color.
+
+As with the symbol segment key, the procedure looks complicated. But this, too, is simply data driven. As with symbol segments, there may need to be an adjustment of the text size.
+
+```{r strike}
+
+## Make boxes with adjacent labels (fill with colors)
+boxes <- read_csv(col_names = TRUE, file =
+                    "name,         color
+                     conservative, red
+                     independent,  purple
+                     liberal,      blue
+                     green,        seagreen")
+
+## Calculate the box corners
+col_number <- length(boxes$name)
+x1 <- rep(1, times=col_number)
+x2 <- rep(2, times=col_number)
+y1max <- (2*col_number) -1
+y1 <- seq(1, y1max, by=2)
+y2max <- (2*col_number)
+y2 <- seq(2, y2max, by=2)
+
+## Put data into a data structure
+d=data.frame(x1, x2, y1, y2,
+             r=boxes$name,
+             t=boxes$color)
+
+## Generate the plot
+box <- ggplot()+
+geom_rect(data=d, 
+          mapping=aes(xmin=x1, xmax=x2, ymin=y1, ymax=y2),
+          fill=d$t, 
+          color="black", 
+          alpha=1.0,
+          show.legend = FALSE) +
+geom_text(data=d, 
+          aes(x=x1+(x2-x1)/2, y=y1+(y2-y1)/2, label=r), 
+          size=4,
+          color="white") +
+  theme_void()
+  
+## Plot the boxes
+box
+
+```
+
+\newpage
+
+### Assembling the pedigree and key
+
+The `patchwork` package provides some very flexible ways to format the pieces of the pedigree for use as a final diagram.
+
+Some adjustment is required to get a balance in the size of each pedigree element. There are likely adjustments needed in the size of the labels.
+
+The resulting diagram shows the type of complexity that can be achieved using the `kinship2` package.
+
+### Saving the pedigree diagram
+
+The `R.devices` package was used earlier to save the pedigree diagram when it was plotted using the `kinship2` plot function. That introduced some (necessary) complexity.
+
+Here, it is possible to use the `ggsave` function. This is much more straightforward and, likely, less error prone.
+
+```{r assembly}
+
+## Use patchwork to arrange the three components
+
+## Retrieve the pedigree image
+p <- image_read2("P://Hot/kinship/pedigree_jones.png")
+
+## Provide a patchwork layout guide
+layout <- "
+AAAAAAA#BB
+AAAAAAA#BB
+AAAAAAA#CC
+"
+
+## Composite the pedigree and the key
+p_out <- image_ggplot(p) + legend + box + plot_layout(design = layout)
+
+## Generate the output
+p_out
+
+## Save the output as a PNG file
+ggsave(filename="P:/Hot/kinship/pedigree_jones_all.png",
+       plot=p_out,
+       width=7.5, 
+       height=6, 
+       units = "in")
+
+```
+
+\newpage
+
+## Calling Attention to Specific Individuals
+
+The previous example was complicated. Most pedigrees don't need to use very many categories of information. Highlighting a few specific individuals is adequate.
+
+Here, we focus on modify the standard symbolism with two, data driven additions: color and solid fill.
+
+`color`: This will color the line surrounding the symbol. It is also be the color of the filled pattern inside the symbol, if the `affected` value indicates filling.
+
+`affected`: This controls pattern inside the symbol. The default is empty. Note that in the following example, there are two values for `affected`. One is for the left side of the symbol, the other for the right side. You can use only one of these, if desired. Apparently, up to four columns of `affected` can be used. The following values can be used:
+
+-   0 = empty
+-   1 = filled
+-   NA = "?"
+
+```{r color}
+## Basic data
+data <- read_csv(col_names = TRUE, file=
+    "ID,                 dad,           mom,         gender, status, color,      affected 
+     William Jones,      NA,            NA,          male,   1,      black,      NA     
+     Mary Jones,         NA,            NA,          female, 1,      blue,       1      
+     Frank Jones,        William Jones, Mary Jones,  male,   0,      black,      0     
+     John Jones,         William Jones, Mary Jones,  male,   1,      black,      0   
+     Peter Jones,        William Jones, Mary Jones,  male,   0,      olivedrab,  1     
+     Carol Jones,        NA,            NA,          female, 0,      blue,       1      
+     LaVerne Jones,      Peter Jones,   Carol Jones, female, 0,      black,      0
+     Karen Brown,        NA,            NA,          female, 0,      black,      0
+     Samuel Jones-Brown, Frank Jones,   Karen Brown, male,   0,      olivedrab,  1
+     Susan Hanford,      NA,            NA,          female, 0,      black,      NA")
+
+## Relationships without children
+links <- read_csv(col_names = TRUE, file=
+                     "id1,        id2,            code
+                      John Jones, Susan Hanford,  4")
+
+## Put in a line break to stack the names
+data$ID   <- gsub(" ","\n",data$ID)
+data$dad  <- gsub(" ","\n",data$dad)
+data$mom  <- gsub(" ","\n",data$mom)
+links$id1 <- gsub(" ","\n",links$id1)
+links$id2 <- gsub(" ","\n",links$id2)
+
+## Generate the pedigree data structure (with no-children couples)
+ped <- pedigree(id=data$ID, 
+                dadid=data$dad, 
+                momid=data$mom, 
+                sex=data$sex,
+                status = data$status,
+                relation = links)
+
+## Plot the pedigree chart
+plot(ped,
+     cex = 0.8,
+     symbolsize = 1.2,
+     col = data$color,
+     affected = data$affected) 
+
+
+```
+
+\newpage
+
+## More About Symbolism
+
+The default values for the symbols is to have different *shade patterns* for each segment. The examples shown so far have used solid segments.
+
+Here, we'll look at the shade pattern alternatives.
+
+The following pedigree diagram uses a mixture of values for the `affected` parameter. Colors can vary, too. The colors in this example are all set to "black" as shading is generally used when printing will be done in black and white.
+
+Note that the shade comes from two properties, the density of the lines and the angle of the lines. These properties are controlled independently.
+
+Each segment has a set combination of line density and angle. This can't differ between individuals.
+
+```{r shade1}
+
+data <- read_csv(col_names = TRUE, file=
+    "ID,    dad,  mom, sex,    status, color,  aff1, aff2, aff3, aff4
+     One,   NA,   NA,  male,   1,      black,   0,    NA,   1,    1
+     Two,   NA,   NA,  female, 1,      black,   NA,   NA,   1,    0
+     Three, One,  Two, male,   0,      black,   0,    1,    0,    1
+     Four,  One,  Two, male,   0,      black,   0,    1,    0,    0
+     Five,  One,  Two, male,   0,      black,   1,    1,    NA,   1
+     Six,   NA,   NA,  female, 0,      black,   NA,   0,    1,    NA
+     Seven, Five, Six, female, 0,      black,   1,    0,    NA,   NA")
+
+## Print a table
+flextable(data) %>% 
+  autofit()
+
+## Generate the pedigree data structure (with no-children couples)
+ped <- pedigree(id=data$ID, 
+                dadid=data$dad, 
+                momid=data$mom, 
+                sex=data$sex,
+                status = data$status)
+
+## Plot the pedigree chart using default shade values
+plot(ped, 
+     cex=0.8, 
+     col=data$color, 
+     symbolsize = 2.5, 
+     affected =cbind(data$aff1, data$aff2, data$aff3, data$aff4))   
+
+```
+
+\newpage
+
+### Controlling the shade pattern
+
+The two elements making up the shade pattern are shown below.
+
+These tables have the default density values (used, successively for the four affected variables)
+
+Line spacing (default)
+
+| value |   line spacing |
+|------:|---------------:|
+|    -1 |          solid |
+|    35 | medium density |
+|    65 | densely spaced |
+|    20 |  widely spaced |
+
+Line angle (default)
+
+| value |     line pattern |
+|------:|-----------------:|
+|    90 |         vertical |
+|    65 | steeply inclined |
+|    40 |  nearly diagonal |
+|     0 |       horizontal |
+
+These values are changed with a parameter in the `kinship2` plot parameter. This is seen in the next example where the previous data are used. Only the plotting parameters are changed.
+
+```{r shade2}
+
+## Plot the pedigree chart using modified shade values
+plot(ped, 
+     cex        = 0.8, 
+     col        = data$color, 
+     symbolsize = 2.5,
+     density    = c(30, 40, 40, 30),  ## line spacing
+     angle      = c(90, 45, -45, 0),  ## line angle
+     affected   = cbind(data$aff1, data$aff2, data$aff3, data$aff4))  
+
+```
+
+```{r }
+
+
+```
+
+\newpage
+
+## Parting Thoughts
+
+The `kinship2` package is likely very useful to people who handle complex problems involving pedigree information. It is nice that a non-specialist can use this package for simple problems without too much difficulty.
+
+Having a pedigree display program in R is important. This allows an individual to stay within the R-universe and to integrate pedigree information with other tabular and visualization activities. `kinship2` fills most of this requirement.
+
+### Limitations
+
+It's not obvious how to modify the width of the lines in the plot. Therefore, things like all the connector lines are very thin.
+
+The plotting should be more compatible with the standards used in `ggplot2`. That would be a very handy simplification. A work-around was found, so this is not really a limitation.
+
+### Gratitude
+
+The authors of `kinship2` and the contributors to the development of this package need to be thanked for their contribution.
+
+-   Jason P. Sinnwell
+-   Terry M. Therneau
+-   Elizabeth J. Atkinson
+-   Daniel J. Schaid
+-   Carly Mester
+
+## Software Versions
+
+-   `kinship2` (1.8.5)
+-   `tidyverse` (1.3.1)
+-   `flextable` (0.6.7)
+-   `ftExtra` (0.2.0)
+-   `R.devices` (2.17.0)
+-   `ggrepel` (0.9.1)
+-   `patchwork` (1.1.1)
+-   `ggimage` (0.2.8)
+-   `magick` (2.7.2)
+
+The CRAN page for `kinship2` is found at <https://cran.r-project.org/package=kinship2>
+
+\newpage
+
+## A Wrapper Experiment
+
+Sometimes, you just want to do the minimal work to get a pedigree diagram. What can you do?
+
+If you name the fields in your data with standard names, you can create some good, basic results.
+
+Here are the field names (case sensitive) for basic relationship data:
+
+-   ID (required)
+-   dad (required)
+-   mom (required)
+-   gender (required)
+-   status (optional, if not used, assumed value is 0=no strike through)
+-   color (optional, if not used, assumed value is "black")
+-   fill (optional, if not used, assumed value is 0=no fill)
+
+links data, as before, requires exact field names. Here, the `code` field is optional.
+
+```{r wrap}
+
+tiny_pedigree <- function(data, links=NULL, 
+                   fold=TRUE, 
+                   symbolsize=1.8, 
+                   textsize=0.8){
+  
+## Convert all the data fields to lowercase
+names(data) <- tolower(names(data))
+
+## Rename from old or alternative notation
+if("status" %in% colnames(data)) {data$stroke <- data$status}
+if("dead" %in% colnames(data))   {data$stroke <- data$dead}
+if("fill"   %in% colnames(data)) {data$hilite <- data$fill}
+if("sex"    %in% colnames(data)) {data$gender <- data$sex}
+if("father" %in% colnames(data)) {data$dad    <- data$father}
+if("mother" %in% colnames(data)) {data$mom    <- data$mother}
+if("highlight" %in% colnames(data)) {data$hilite <- data$highlight}
+
+
+  
+## Check the data fields; add the default values if not present
+"%!in%" <- Negate("%in%") ## create the operator  
+if("color"  %!in% colnames(data)) {data$color  <- "black"}
+if("stroke" %!in% colnames(data)) {data$stroke <- 0}
+if("hilite" %!in% colnames(data)) {data$hilite <- 0}
+
+## Convert yes/no to binary values
+data$affected <- NULL
+data$hilite <- tolower(as.character(data$hilite))
+data$affected <- case_when(
+  data$hilite == "yes"   ~ 1,
+  data$hilite == "no"    ~ 0,
+  data$hilite == "true"  ~ 1,
+  data$hilite == "false" ~ 0,
+  data$hilite == "1"     ~ 1,
+  data$hilite == "0"     ~ 0)
+
+
+data$status   <- NULL
+data$stroke <- tolower(as.character(data$stroke))
+data$status <- case_when(
+  data$stroke == "yes"   ~ 1,
+  data$stroke == "no"    ~ 0,
+  data$stroke == "true"  ~ 1,
+  data$stroke == "false" ~ 0,
+  data$stroke == "1"     ~ 1,
+  data$stroke == "0"     ~ 0)
+
+## Put in a line break to stack the names
+if(isTRUE(fold)){  
+   data$id   <- gsub(" ","\n",data$id)
+   data$dad  <- gsub(" ","\n",data$dad)
+   data$mom  <- gsub(" ","\n",data$mom)}
+if(isTRUE(fold)&&!is.null(links)){
+   ## Make sure the id1 and id2 are lower case
+   names(links) <- tolower(names(links))
+   links$id1 <- gsub(" ","\n",links$id1)
+   links$id2 <- gsub(" ","\n",links$id2)
+}
+
+## Generate the pedigree data structure (without no-children couples)
+if(is.null(links)){ped <- pedigree(id = data$id, 
+                dadid    = data$dad, 
+                momid    = data$mom, 
+                sex      = data$gender,
+                status   = data$status)} else {
+
+## Generate the pedigree data structure (with no-children couples)
+## Create the code (4 for spouse)
+links$code <- 4
+## Make sure the id1 and id2 are lower case
+names(links) <- tolower(names(links))
+## Process the pedigree
+ped <- pedigree(id       = data$id, 
+                dadid    = data$dad, 
+                momid    = data$mom, 
+                sex      = data$gender,
+                status   = data$status,
+                relation = links) }
+
+## Number of rows
+n <- nrow(data)
+
+## Plot the pedigree chart
+plot(ped,
+     cex        = textsize,
+     symbolsize = symbolsize,
+     col        = data$color,
+     density    = c(-1, -1, -1, -1), ## all sections solid!
+     affected   = data$affected)
+
+  } ## End function tiny_pedigree
+
+```
+
+### Test the Function
+
+```{r}
+#| label: test
+
+## Basic data 1
+data1 <- read_csv(col_names = TRUE, file=
+    "ID,                 dad,           mom,         gender,    status, color,      fill
+     William Jones,      NA,            NA,          male,   1,      black,      NA     
+     Mary Jones,         NA,            NA,          female, 1,      blue,       1      
+     Frank Jones,        William Jones, Mary Jones,  male,   0,      black,      0     
+     John Jones,         William Jones, Mary Jones,  male,   1,      black,      0   
+     Peter Jones,        William Jones, Mary Jones,  male,   0,      olivedrab,  1     
+     Carol Jones,        NA,            NA,          female, 0,      blue,       1      
+     LaVerne Jones,      Peter Jones,   Carol Jones, female, 0,      black,      0
+     Karen Brown,        NA,            NA,          female, 0,      black,      0
+     Samuel Jones-Brown, Frank Jones,   Karen Brown, male,   0,      olivedrab,  1
+     Susan Hanford,      NA,            NA,          female, 0,      black,      NA")
+
+## Basic data 2
+data2 <- read_csv(col_names = TRUE, file=
+    "ID,    dad,  mom, gender 
+     One,   NA,   NA,  male   
+     Two,   NA,   NA,  female      
+     Three, One,  Two, male     
+     Four,  One,  Two, male      
+     Five,  One,  Two, male      
+     Six,   NA,   NA,  female      
+     Seven, Five, Six, female
+     Eight, NA,   NA,  female
+     Nine , NA,   NA,  male")
+
+## Relationships without children
+links1 <- read_csv(col_names = TRUE, file=
+                     "id1,        id2
+                      John Jones, Susan Hanford")
+
+links2 <- read_csv(col_names = TRUE, file=
+                     "id1,        id2
+                      Eight,      Four
+                      Nine,       Seven")
+
+## Generate the pedigree chart
+
+## All couples have children
+tiny_pedigree(data=data2)
+tiny_pedigree(data=data1, symbolsize=2,   fold=FALSE)
+tiny_pedigree(data=data1, symbolsize=0.8, fold=TRUE)
+
+## With childless couples
+tiny_pedigree(data=data1, links=links1, symbolsize=1.5)
+tiny_pedigree(data=data2, links=links2)
+
+```
+
+## Bridges
+
+```{r bridges}
+
+data <- read_csv(col_names = TRUE, file=
+    "ID,                     dad,                    mom,                     sex,    born, died
+    Charles Wentworth,       NA,                     NA,                      male,   1648, 1780
+    Amariah Wentworth,       Charles Wentworth,      Bethiah Fenno,           male,   1719, 1799
+    Bethiah Fenno,           NA,                     NA,                      female, 1692, 1780      
+    Rebecca Shepard,         NA,                     NA,                      female, 1723, 1791
+    Elijah Wentworth,        Amariah Wentworth,      Rebecca Shepard,         male,   1775, 1810
+    Elijah S. Estes,         NA,                     NA,                      male,   1814, 1887
+    Zebiah Walker Wentworth, Elijah Wentworth,       Lucy Walker,             female, 1810, 1887
+    Lucy Walker,             NA,                     NA,                      female, NA,   NA
+    Mary Adeline Palmer,     NA,                     NA,                      female, 1848, 1918
+    Lorenzo Langston Estes,  Elijah S. Estes,        Zebiah Walker Wentworth, male,   1839, 1909
+    Addie Estes,             Lorenzo Langston Estes, Mary Adeline Palmer,     female, NA,   NA
+    Charles A. Bridges,      NA,                     NA,                      male,   1877, NA
+    Charles L. Bridges,      Charles A. Bridges,     Addie Estes,             male,   1912, 2001
+    Mary Jane Bridges,       Burr Anderson,          Lulu Anderson,           female, 1912, 2016
+    Burr Anderson,           NA,                     NA,                      male,   NA,   NA
+    Lulu Anderson,           NA,                     NA,                      female, NA,   NA
+    Thomas Bridges,          Charles L. Bridges,     Mary Jane Bridges,       male,   1938, NA
+    Kent Bridges,            Charles L. Bridges,     Mary Jane Bridges,       male,   1941, NA")
+
+flextable(data) %>% 
+  autofit()
+    
+tiny_pedigree(data, symbolsize=1, cex= 0.4, fold=FALSE)
+```

@@ -1,0 +1,61 @@
+# Packages and APIs
+
+You need to do some basic preparation if you are going to create plain maps such as those shown here. These are tasks that you're likely to do just a single time. Once done, you won't need to return to doing these steps, except on rare occasions.
+
+## Installing Packages
+
+Use of the R language encourages the use of functions. Most of the functions you're likely to use come from **packages** written by other people. Most often, the packages are stored in a library like CRAN.
+
+You are, most likely, working within the RStudio interface. To install a package from the CRAN repository, click on the Install button and type the name of the package into the menu. This is simple and quick. The result is the package loaded onto your computer's disk system in a location that's available to R.
+
+There are a few useful packages that are not available in the CRAN repository. You can install these from their Github repositories using code such as the following:
+
+`library(devtools)`
+
+`install_github("kimbridges/sitemaps")`
+
+The `sitemaps` package is used extensively in this document.
+
+Once the package is installed (i.e., loaded onto your local computer), you can activate it with the `library()` command, such as:
+
+`library(sitemaps)`
+
+The package described in this document is installed and activated the same way as others loaded from github.
+
+`install_github("kimbridges/plainmaps")`
+
+`library(plainmaps)`
+
+Remember, you only need to install a package once. When you need to use the functions in a package, you must do an activation with the `library()` function.
+
+## For convenience, each section of this document has an Initialization section. All the library statements that are needed for the functions used in the section are contained in this set of initialization statements.
+
+## Google Map API
+
+An API is the mechanism you use to connect your R program to an external data source. There are a few "rules" you need to know:
+
+-   You must register and obtain a specific "key" that you can use to identify yourself when your program uses the Google Map resources.
+
+-   Be sure to store your Google Map API key in a safe place that is secure. You don't want other people to have access to your key.
+
+-   The use of an API key sometimes requires payments for services. In many cases, this is a very small amount as you will make few data requests. However, large (or even huge) activity, could result in considerable costs. For example, requesting a half-million maps per month using the Google Map API would cost about \$3,000 monthly. Don't worry! Currently, you can request 28,500 Google maps per month with no charge. *The important thing is you need to register your credit card to obtain an API key, even if you don't expect to incur any cost*.
+
+-   The process of requesting a Google Maps API key are beyond the scope of this document. Check the Google site for information. It isn't complicated and you're likely to only need to do it once.
+
+There is a process of storing your API keys so that they are hidden both in storage and use.
+
+Store your API key as follows:
+
+`library(ggmap)`
+
+`## This makes your Google Map API key permanent`
+
+`register_google(key = "[your key]", write = TRUE)`
+
+Here are two recommendations:
+
+-   Put in the above code (replacing \[your key\] with the long text string you get from Google) into a chunk of R code. Run this chunk. Then delete the chunk. *Don't leave code with your API key where other people will see it.*
+
+-   Periodically, get a new API key and retire the old key. You can get rid of your Google Maps API key with the following code from package `ggmap`:
+
+`scrub_key("key=d_5iD")`

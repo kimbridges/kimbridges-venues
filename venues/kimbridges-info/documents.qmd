@@ -1,0 +1,8 @@
+---
+title: "Documents"
+subtitle: "Technical guides, R packages, and Quarto books"
+---
+
+Rendered HTML documents covering R programming, geographic analysis, cartography, and research methods. Each document is a self-contained reference.
+
+[Enter the Documents site &rarr;](https://kimbridges-documents.netlify.app){.btn .btn-primary}

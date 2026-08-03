@@ -1,0 +1,307 @@
+# Vegetation Profile System - Data Entry and Transect Reader
+# Simple workflow from field data to profile diagram
+
+library(ggplot2)
+library(dplyr)
+library(readr)
+
+# Source the rendering system
+source('vegetation_profile_core.R')
+source('branching_refined.R')
+source('vegetation_v3.R')
+source('vegetation_terrain.R')
+
+options(readr.show_col_types = FALSE)
+
+# =============================================================================
+# READ_TRANSECT FUNCTION
+# =============================================================================
+
+#' Read and process transect data into a plottable profile
+#' 
+#' Takes three inline CSV tables (species lookup, vegetation data, terrain)
+#' and produces a complete profile ready for plotting.
+#' 
+#' @param species_lookup Data frame with columns: species_code, growth_form, 
+#'        crown_shape, branching, trunk_ratio
+#' @param veg_data Data frame with columns: x, species_code, height, crown_width
+#' @param terrain_data Data frame with columns: x, elevation
+#' @param branch_iterations L-system iterations for branching detail (default 2)
+#' @param seed Random seed for reproducible rendering
+#' @return List with profile object and the joined data for reference
+read_transect <- function(species_lookup, 
+                          veg_data, 
+                          terrain_data,
+                          branch_iterations = 2,
+                          seed = 42) {
+  
+  # Create terrain
+  terrain <- make_terrain(
+    x = terrain_data$x,
+    elevation = terrain_data$elevation,
+    method = if(nrow(terrain_data) >= 4) "spline" else "linear"
+  )
+  
+  # Join vegetation data to species lookup
+  veg_joined <- veg_data %>%
+    left_join(species_lookup, by = "species_code") %>%
+    mutate(
+      # Calculate trunk height from ratio (NA for shrubs/grass)
+      trunk_height = ifelse(!is.na(trunk_ratio), height * trunk_ratio, NA),
+      # Crown height is remainder
+      crown_height = ifelse(!is.na(trunk_ratio), height - trunk_height, height)
+    )
+  
+  # Check for unmatched species
+  unmatched <- veg_joined %>% filter(is.na(growth_form))
+  if (nrow(unmatched) > 0) {
+    warning("Unmatched species codes: ", 
+            paste(unique(unmatched$species_code), collapse = ", "))
+  }
+  
+  # Separate by growth form
+  trees <- veg_joined %>% filter(growth_form %in% c("tree", "conifer"))
+  shrubs <- veg_joined %>% filter(growth_form == "shrub")
+  grasses <- veg_joined %>% filter(growth_form == "grass")
+  
+  # Build tree specification lists
+  tree_specs <- lapply(1:nrow(trees), function(i) {
+    row <- trees[i, ]
+    list(
+      x = row$x,
+      height = row$height,
+      trunk_height = row$trunk_height,
+      crown_width = row$crown_width,
+      crown_shape = row$crown_shape,
+      branching_strategy = row$branching,
+      branch_iterations = branch_iterations,
+      show_leader = TRUE,
+      seed = seed + i
+    )
+  })
+  
+ # Build shrub specification lists
+  shrub_specs <- lapply(1:nrow(shrubs), function(i) {
+    row <- shrubs[i, ]
+    list(
+      x = row$x,
+      width = row$crown_width,
+      height = row$height,
+      n_stems = sample(3:5, 1),  # Random stem count
+      branch_iterations = branch_iterations,
+      seed = seed + 100 + i
+    )
+  })
+  
+  # Grass x positions
+  grass_x <- if (nrow(grasses) > 0) grasses$x else NULL
+  
+  # Handle empty lists
+  if (length(tree_specs) == 0) tree_specs <- list()
+  if (length(shrub_specs) == 0) shrub_specs <- list()
+  
+  # Build the profile
+  profile <- build_profile(
+    terrain = terrain,
+    trees = tree_specs,
+    shrubs = shrub_specs,
+    grass_x = grass_x,
+    grass_seed = seed + 200
+  )
+  
+  # Return profile and joined data for reference
+  list(
+    profile = profile,
+    data = veg_joined,
+    terrain = terrain
+  )
+}
+
+
+#' Quick plot function for transect results
+#' 
+#' @param transect_result Output from read_transect()
+#' @param title Plot title
+#' @param subtitle Plot subtitle
+#' @param ... Additional arguments passed to plot_profile()
+plot_transect <- function(transect_result, 
+                          title = "Vegetation Profile",
+                          subtitle = NULL,
+                          ...) {
+  plot_profile(transect_result$profile, title = title, subtitle = subtitle, ...)
+}
+
+
+# =============================================================================
+# EXAMPLE: COMPLETE WORKFLOW
+# =============================================================================
+
+example_transect <- function() {
+  
+  # ----- SPECIES LOOKUP TABLE -----
+  # Defines how each species/type is drawn
+  # This would typically be defined once and reused across projects
+  
+  species_lookup <- read_csv(
+    "species_code, growth_form, crown_shape,   branching,  trunk_ratio
+     oak,          tree,        elliptical,    radial,     0.35
+     maple,        tree,        elliptical,    radial,     0.40
+     beech,        tree,        elliptical,    whorled,    0.38
+     pine,         conifer,     conical,       conifer,    0.22
+     spruce,       conifer,     conical,       conifer,    0.18
+     fir,          conifer,     conical,       conifer,    0.20
+     acacia,       tree,        flat_topped,   whorled,    0.55
+     eucalyptus,   tree,        elliptical,    scattered,  0.45
+     hazel,        shrub,       shrub,         scattered,  NA
+     willow_shrub, shrub,       shrub,         scattered,  NA
+     rhododendron, shrub,       shrub,         scattered,  NA
+     grass,        grass,       grass,         NA,         NA
+     sedge,        grass,       grass,         NA,         NA
+     fern,         grass,       grass,         NA,         NA")
+  
+  
+  # ----- FIELD DATA -----
+  # What you actually record on the transect
+  # x = distance along transect (meters)
+  # height = total height (meters)
+  # crown_width = estimated crown diameter (meters)
+  
+  veg_data <- read_csv(
+    "x,    species_code,  height,  crown_width
+     3,    grass,         0.4,     0.4
+     6,    oak,           11,      7
+     9,    grass,         0.5,     0.5
+     14,   hazel,         2.8,     2.5
+     18,   pine,          13,      4.5
+     22,   grass,         0.3,     0.3
+     26,   rhododendron,  2.2,     2.8
+     30,   maple,         9,       6
+     35,   spruce,        12,      4
+     38,   grass,         0.4,     0.4
+     42,   fir,           10,      3.5")
+  
+  
+  # ----- TERRAIN DATA -----
+  # Elevation control points along transect
+  # Can be surveyed or estimated
+  
+  terrain_data <- read_csv(
+    "x,    elevation
+     0,    0
+     15,   1.5
+     25,   3
+     35,   2.5
+     45,   4")
+  
+  
+  # ----- PROCESS AND PLOT -----
+  
+  result <- read_transect(
+    species_lookup = species_lookup,
+    veg_data = veg_data,
+    terrain_data = terrain_data,
+    branch_iterations = 2,
+    seed = 42
+  )
+  
+  plot_transect(
+    result,
+    title = "Example Belt Transect",
+    subtitle = "Mixed woodland with shrub understory"
+  )
+}
+
+
+# Simpler example with minimal data
+minimal_example <- function() {
+  
+  # Minimal species lookup - just the basics
+  species_lookup <- read_csv(
+    "species_code, growth_form, crown_shape,  branching, trunk_ratio
+     tree_broad,   tree,        elliptical,   radial,    0.35
+     tree_conifer, conifer,     conical,      conifer,   0.20
+     shrub,        shrub,       shrub,        scattered, NA
+     grass,        grass,       grass,        NA,        NA")
+  
+  # Simple field data using generic codes
+  veg_data <- read_csv(
+    "x,    species_code,   height,  crown_width
+     5,    tree_broad,     10,      6
+     12,   shrub,          2.5,     2
+     18,   tree_conifer,   12,      4
+     22,   grass,          0.4,     0.4
+     28,   tree_broad,     8,       5
+     35,   tree_conifer,   9,       3.5")
+  
+  # Flat terrain
+  terrain_data <- read_csv(
+    "x,    elevation
+     0,    0
+     40,   0")
+  
+  result <- read_transect(species_lookup, veg_data, terrain_data)
+  
+  plot_transect(result, 
+                title = "Minimal Example",
+                subtitle = "Using generic growth form codes")
+}
+
+
+# Ridge transect example
+ridge_example <- function() {
+  
+  species_lookup <- read_csv(
+    "species_code, growth_form, crown_shape,  branching, trunk_ratio
+     oak,          tree,        elliptical,   radial,    0.35
+     pine,         conifer,     conical,      conifer,   0.22
+     juniper,      conifer,     conical,      conifer,   0.15
+     hazel,        shrub,       shrub,        scattered, NA
+     heather,      shrub,       shrub,        scattered, NA
+     grass,        grass,       grass,        NA,        NA")
+  
+  # Vegetation changes with elevation
+  veg_data <- read_csv(
+    "x,    species_code,  height,  crown_width
+     4,    oak,           12,      8
+     8,    grass,         0.5,     0.5
+     12,   hazel,         2.5,     2
+     16,   pine,          11,      4.5
+     22,   heather,       1.2,     1.5
+     26,   juniper,       4,       2
+     30,   grass,         0.3,     0.3
+     34,   juniper,       5,       2.5
+     38,   heather,       1,       1.2
+     42,   pine,          10,      4
+     48,   hazel,         2.8,     2.5
+     52,   oak,           11,      7
+     56,   grass,         0.5,     0.5")
+  
+  # Ridge terrain profile
+  terrain_data <- read_csv(
+    "x,    elevation
+     0,    0
+     15,   3
+     30,   6
+     45,   3
+     60,   0")
+  
+  result <- read_transect(species_lookup, veg_data, terrain_data, seed = 123)
+  
+  plot_transect(result,
+                title = "Ridge Transect",
+                subtitle = "Oak woodland → Pine → Exposed ridge (juniper/heather) → Pine → Oak woodland")
+}
+
+
+# =============================================================================
+# RUN EXAMPLES
+# =============================================================================
+
+cat("Running example transect...\n")
+print(example_transect())
+
+cat("\nRunning minimal example...\n")
+print(minimal_example())
+
+cat("\nRunning ridge example...\n")
+print(ridge_example())

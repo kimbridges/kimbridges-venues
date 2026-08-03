@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: b957c0c9-58dd-49fe-a5f1-9d69d4dab7ab
+      url: 'https://kim.quarto.pub/llm-api-r'

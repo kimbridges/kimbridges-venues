@@ -1,0 +1,8 @@
+---
+title: "gePoints"
+subtitle: "Adding points and labels to a Google Earth map."
+categories: ["Maps", "Data Visualization"]
+image: ../gePoints/gePoints_image.jpg
+---
+
+[View Document](../gePoints/){.btn .btn-primary}

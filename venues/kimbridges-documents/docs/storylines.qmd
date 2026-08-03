@@ -1,0 +1,8 @@
+---
+title: "Storylines"
+subtitle: "Building narrative structures for data-driven stories."
+categories: ["Writing", "Data Analysis"]
+image: ../storylines/storylines_cover_art_text.png
+---
+
+[View Document](../storylines/){.btn .btn-primary}

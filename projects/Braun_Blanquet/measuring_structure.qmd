@@ -1,0 +1,299 @@
+# Measuring Structure in Braun-Blanquet Tables
+
+## Why Ordering Is Not Enough
+
+Ordering makes structure visible, but visibility alone is not sufficient for analysis. As the previous chapter showed, different ordering strategies reveal different aspects of the same table. Blind ordering highlights differences in overall frequency, while structure-sensitive methods such as PCA emphasize shared patterns of variation. Both perspectives are informative, yet neither provides a complete description of the table’s structure.
+
+This raises an immediate problem. Visual inspection is powerful, but it is also subjective. Two readers may interpret the same ordered table differently, and the same table may appear more or less structured depending on the ordering method used. Even within a single ordering, it can be difficult to articulate *how strong* a pattern is, *how clearly* blocks are separated, or *how robust* a pattern appears when assumptions are relaxed.
+
+In addition, visual comparisons do not scale well. As multiple tables are examined—across sites, studies, or alternative reorderings—it becomes increasingly difficult to reason consistently about differences in structure using appearance alone. Statements such as “this table looks more block-like” or “the gradient seems weaker here” are intuitive but imprecise.
+
+For these reasons, ordering should be understood as a necessary but incomplete step. It reveals structure, but it does not describe it quantitatively. To move beyond visual inspection, we need measures that summarize key structural properties of ordered tables in a reproducible and comparable way.
+
+The purpose of this chapter is to introduce such measures. These structural metrics do not replace ordering, nor do they eliminate the need for interpretation. Instead, they provide a common language for describing patterns that ordering makes visible—allowing comparisons across tables, across ordering methods, and across different kinds of structure.
+
+## What We Mean by “Structure”
+
+Before introducing specific metrics, it is important to clarify what is meant by *structure* in the context of Braun–Blanquet tables. Structure is not a single property, nor is it reducible to a particular visual pattern. Instead, it refers to a collection of related features that describe how species and sites are organized relative to one another in an ordered table.
+
+At a broad level, structure concerns **how strongly patterns depart from randomness or uniformity**. In a highly structured table, species and sites are arranged in a way that reveals coherent groupings, gradients, or transitions. In a weakly structured table, such patterns are faint, ambiguous, or unstable.
+
+Several aspects of structure are particularly relevant for Braun–Blanquet tables.
+
+### Contrast
+
+Contrast describes the degree to which values differ between regions of the table. In block-structured tables, contrast is expressed as a difference between values inside a block and those outside it. High contrast corresponds to clear separation, while low contrast produces blurred boundaries. In gradient tables, contrast appears as a steady change in values along an ordered axis rather than as discrete separation.
+
+Contrast is central to why ordering works at all: without sufficient contrast, no rearrangement of rows and columns will make structure visible.
+
+### Concentration
+
+Concentration refers to how tightly values are clustered within particular regions of the table. In a block-structured table, strong concentration means that most nonzero values are confined to well-defined blocks, with relatively few values appearing elsewhere.
+
+A simple way to think about concentration is to imagine two tables with the same contrast. In both tables, values inside a block are high and values outside are low. In the first table, nearly all of the nonzero values occur within the blocks themselves. In the second table, many small values are scattered outside the blocks, even though the block interiors remain strong. Both tables may exhibit similar contrast at block boundaries, but the first has much higher concentration.
+
+In practical terms, concentration captures the difference between a table where structure is localized and one where structure is diluted by background presence. Tables with high concentration tend to look “clean,” while tables with lower concentration appear cluttered, even when underlying blocks or gradients are still present.
+
+Concentration differs from contrast. A table may show strong contrast at boundaries but weak concentration if values are widely scattered within blocks. Conversely, values may be highly concentrated but exhibit only modest contrast with surrounding regions.
+
+### Continuity and Discreteness
+
+Some tables exhibit **discrete structure**, where species and sites can be grouped into relatively well-defined units. Others exhibit **continuous structure**, where patterns change gradually and no sharp boundaries exist. Gradients are the most obvious example of continuous structure, but transitional or overlapping blocks also lie along this continuum.
+
+Distinguishing between discrete and continuous structure is important because different ordering strategies and metrics respond differently to each. Metrics that are effective for detecting blocks may behave poorly when applied to gradients, and vice versa.
+
+### Robustness
+
+Robustness describes the stability of structure under changes in ordering method or minor perturbations of the data. A robust pattern remains recognizable across reasonable reorderings; a fragile pattern appears only under specific arrangements or disappears when assumptions are relaxed.
+
+Robustness is especially important when interpreting complex tables. A visually striking pattern that depends on a single ordering strategy may be less meaningful than a weaker pattern that persists across multiple views.
+
+### Structure as a multi-dimensional concept
+
+These aspects—contrast, concentration, continuity, and robustness—are interrelated but not identical. No single metric captures all of them simultaneously. Instead, different metrics emphasize different dimensions of structure.
+
+The goal of the metrics introduced in this chapter is not to collapse structure into a single number, but to provide complementary summaries that support reasoning about ordered tables. Used together, they help formalize what ordering reveals and make comparisons more explicit and reproducible.
+
+## Introducing Structural Metrics
+
+The concepts introduced in the previous section—contrast, concentration, continuity, and robustness—provide a qualitative vocabulary for describing structure in ordered Braun–Blanquet tables. To move beyond visual inspection, these ideas must be translated into **quantities** that can be computed, compared, and reported.
+
+Structural metrics serve this purpose. Each metric summarizes a specific aspect of structure that ordering makes visible. Importantly, these metrics do not operate on raw, unordered tables. They are defined with respect to an **ordered view** of the data, and their interpretation depends on how the table has been arranged.
+
+In this sense, ordering and measurement are complementary. Ordering reveals patterns; metrics describe them.
+
+### What structural metrics do
+
+Structural metrics are descriptive rather than inferential. They do not test hypotheses or assign statistical significance. Instead, they provide numerical summaries that help answer questions such as:
+
+-   How strongly separated are regions of the table?
+
+-   How localized are nonzero values?
+
+-   Does the table behave more like a set of discrete blocks or a continuous gradient
+
+-   How much does the apparent structure change under different reorderings?
+
+These questions arise naturally once ordering has been applied, but they cannot be answered reliably by visual inspection alone.
+
+### Multiple metrics, multiple perspectives
+
+Because structure is multi-dimensional, no single metric is sufficient. Metrics that emphasize contrast may be insensitive to background noise. Metrics that summarize concentration may behave similarly for blocks and gradients. Metrics that respond well to discrete structure may perform poorly for continuous patterns.
+
+For this reason, the metrics introduced here are intended to be used **in combination**, not as substitutes for one another. Each highlights a particular structural feature, and their joint behavior provides a more complete description than any individual value.
+
+This approach mirrors the use of multiple ordering strategies in the previous chapter. Just as different reorderings reveal different aspects of structure, different metrics quantify different properties of the same ordered table.
+
+### Metrics and canonical patterns
+
+The canonical tables developed earlier—clean blocks, overlapping sites, background noise, and gradients—provide a controlled context for exploring metric behavior. Because these tables were constructed to emphasize specific structural features, they allow metrics to be interpreted in relation to known patterns rather than in isolation.
+
+In the sections that follow, metrics are introduced incrementally and examined across these canonical patterns. The emphasis remains on interpretation: understanding what each metric captures, how it responds to different kinds of structure, and where its limitations lie.
+
+## Measuring Contrast
+
+Among the aspects of structure introduced earlier, **contrast** is the most direct bridge between visual impression and quantitative description. Contrast captures the extent to which values inside prominent regions of an ordered table differ from values outside those regions.
+
+In a clean block-structured table, contrast corresponds to the intuitive notion of “inside versus outside”: high values concentrated within blocks and low values elsewhere. When contrast is strong, block boundaries are visually sharp. When contrast is weak, boundaries blur and structure becomes difficult to distinguish from background variation.
+
+### Contrast as a table property
+
+Contrast is not a property of individual species or sites. It is a property of the **table as a whole**, evaluated with respect to an ordered view. The same table can exhibit different levels of contrast depending on how it is ordered, which reinforces the point made earlier: contrast depends on both data and arrangement.
+
+At a conceptual level, contrast measures the **difference in typical values** between regions that appear structurally important and those that do not. In block-structured tables, these regions correspond to block interiors and exteriors. In gradient tables, contrast reflects the degree of change along the gradient rather than discrete separation.
+
+### Computing contrast
+
+While the exact implementation may vary, contrast metrics generally follow the same logic:
+
+1.  Identify regions of the ordered table that represent structural “signal” (for example, contiguous areas of higher values).
+
+2.  Compare values inside these regions to values outside them.
+
+3.  Summarize the difference using a single numerical measure.
+
+In practice, this comparison may be based on differences in means, proportions, or other summary statistics computed over selected regions of the table. The important point is not the specific formula, but the interpretation: **higher contrast corresponds to clearer separation**, while lower contrast indicates weaker or more diffuse structure.
+
+### Contrast across canonical patterns
+
+Examining contrast across the canonical tables highlights how this metric behaves under different structural assumptions.
+
+-   **Clean Blocks (A and B)**\
+    Clean blocks exhibit high contrast, particularly when boundaries are sharp. In the softer version, contrast decreases as values begin to leak outside block interiors, even though the overall block pattern remains recognizable.
+
+-   **Overlapping Sites**\
+    Overlap reduces contrast without eliminating structure. Sites that participate in more than one block contribute values to multiple regions, lowering the inside–outside difference. Contrast captures this effect directly.
+
+-   **Blocks with Background Noise**\
+    Background presence reduces contrast by elevating values outside block interiors. Even when blocks are still visible after ordering, contrast values decline as noise increases.
+
+-   **Gradients**\
+    In gradient tables, contrast behaves differently. Rather than measuring separation between regions, it reflects the overall magnitude of change along the ordered axis. Gradients may exhibit moderate contrast even in the absence of discrete blocks.
+
+These behaviors illustrate an important point: contrast is sensitive to **how structure is expressed**, not just whether structure exists.
+
+### Interpretation and limitations
+
+Contrast is powerful because it aligns closely with visual intuition. Tables that “look” strongly structured tend to have high contrast, while those that appear diffuse or cluttered have lower contrast. This makes contrast a natural first metric to introduce.
+
+At the same time, contrast has limitations. It does not distinguish between discrete and continuous structure, and it may respond similarly to very different underlying patterns. Two tables with similar contrast values may look quite different, especially if one is block-structured and the other gradient-like.
+
+For these reasons, contrast should be interpreted as **one dimension of structure**, not as a comprehensive measure. Its primary role is to quantify separation, not to classify structure or assess robustness.
+
+## Measuring Concentration
+
+While contrast describes how sharply values differ between regions of an ordered table, **concentration** describes how tightly values are localized within those regions. Together, contrast and concentration capture two complementary aspects of structure: separation and localization.
+
+A table may exhibit strong contrast but weak concentration, or vice versa. Distinguishing between these cases is essential for understanding why some tables appear clean and others cluttered, even when boundaries are visible.
+
+### Concentration as localization
+
+Concentration measures the extent to which nonzero or higher values are confined to relatively small regions of the table. In a highly concentrated table, most of the signal is localized: values cluster within blocks or along a narrow portion of a gradient. In a weakly concentrated table, values are more widely dispersed, even if they retain some association with particular sites or species.
+
+Conceptually, concentration answers a different question than contrast. Rather than asking *how different* values are inside and outside regions of interest, concentration asks *how much of the table* participates in the structure.
+
+### Computing concentration
+
+As with contrast, the specific implementation of concentration may vary, but the underlying logic is consistent:
+
+1.  Identify regions of the ordered table associated with structural signal.
+
+2.  Assess how much of the total nonzero or high-valued content is contained within those regions.
+
+3.  Summarize this localization as a single numerical measure.
+
+In practice, concentration metrics often compare the distribution of values across the table to a more uniform or diffuse reference. High concentration corresponds to signal confined to relatively few cells or regions; low concentration indicates that values are spread broadly.
+
+### Concentration across canonical patterns
+
+Examining concentration across the canonical tables highlights how it captures aspects of structure that contrast alone cannot.
+
+-   **Clean Blocks (A and B)**\
+    Clean blocks exhibit high concentration, particularly when block interiors contain most of the nonzero values. As boundaries soften, concentration decreases even if contrast remains moderate.
+
+-   **Overlapping Sites**\
+    Overlap reduces concentration by spreading values across multiple regions. Even when contrast is sufficient to reveal block structure, concentration declines as signal is shared among overlapping sites.
+
+-   **Blocks with Background Noise**\
+    Background noise has a pronounced effect on concentration. Low-level values scattered outside block interiors dilute localization, often reducing concentration more sharply than contrast.
+
+-   **Gradients**\
+    Gradients typically exhibit lower concentration than clean blocks, because signal is distributed across a larger portion of the table. However, gradients with narrow or plateau-like responses may still show moderate concentration.
+
+These patterns help explain why some tables appear visually cluttered despite having recognizable structure. Concentration captures this clutter directly.
+
+### Interpretation and limitations
+
+Concentration is especially useful for distinguishing between structure that is **focused** and structure that is **diffuse**. Tables with similar contrast values may differ substantially in concentration, leading to different visual impressions and different analytical challenges.
+
+However, concentration does not indicate where structure occurs or whether it is discrete or continuous. A table may be highly concentrated but organized as a gradient rather than as blocks. As with contrast, concentration should therefore be interpreted as one dimension of structure, not as a complete description.
+
+## Measuring Continuity and Discreteness
+
+Contrast and concentration describe how strongly and how locally structure is expressed in an ordered table. However, they do not distinguish between **discrete** and **continuous** forms of structure. This distinction is especially important for Braun–Blanquet tables, which may represent sharply defined communities, gradual environmental gradients, or mixtures of both.
+
+### Discrete structure
+
+Discrete structure is characterized by relatively well-defined groupings of species and sites. In such tables, transitions between regions are abrupt, and boundaries—while not always perfectly sharp—are conceptually meaningful. Clean block-structured tables are the clearest example of discrete structure, but overlapping blocks also fall within this category when group membership is partial rather than continuous.
+
+In discrete structures, ordering tends to produce recognizable blocks or clusters. Contrast and concentration are often high, and small changes in ordering typically do not alter the overall pattern substantially.
+
+### Continuous structure
+
+Continuous structure arises when species and sites vary gradually along one or more underlying dimensions. Gradients are the most familiar example. In these tables, no single boundary cleanly separates one region from another. Instead, patterns change smoothly, and intermediate states are expected.
+
+In continuous structures, ordering reveals trends rather than partitions. Contrast may still be present, but it reflects change along an axis rather than separation between regions. Concentration is often lower, because signal is distributed across a larger portion of the table.
+
+### Mixed and transitional cases
+
+Many real tables fall between these two extremes. Overlapping sites, background noise, and transitional communities all blur the distinction between discrete and continuous structure. In such cases, ordering may reveal both localized groupings and gradual transitions, depending on the method used.
+
+Recognizing whether structure is primarily discrete, primarily continuous, or mixed is essential for interpreting both ordered tables and the metrics derived from them. Metrics that perform well for discrete blocks may behave very differently when applied to gradients, and vice versa.
+
+### Why this distinction matters
+
+The distinction between continuity and discreteness helps explain why different ordering strategies emphasize different aspects of the same data. It also clarifies why no single metric can fully characterize structure across all tables.
+
+In the next section, this distinction becomes central. Robustness depends not only on how strong structure appears, but on whether that structure reflects discrete groupings, continuous variation, or a mixture of both.
+
+## Measuring Robustness
+
+Contrast and concentration describe important aspects of structure in an ordered table, but they do not address a crucial question: **how stable is that structure?** Robustness captures the extent to which apparent structure persists under reasonable changes in ordering or perspective.
+
+A pattern that appears only under a specific ordering method, or that changes dramatically when the table is rearranged slightly, is less informative than a pattern that remains recognizable across multiple views. Robustness provides a way to formalize this distinction.
+
+### Robustness as stability across orderings
+
+Robustness measures how sensitive structural summaries are to changes in ordering strategy. If contrast and concentration values remain similar across different reorderings of the same table, the underlying structure can be considered robust. If these values vary widely, the structure may be fragile or highly dependent on specific assumptions.
+
+Conceptually, robustness answers the question: *Would a different, reasonable way of looking at this table tell a very different story?*
+
+This perspective is especially important in Braun–Blanquet analysis, where multiple orderings are often plausible and no single arrangement can be regarded as definitive.
+
+### Computing robustness
+
+Robustness is not measured from a single ordered table. Instead, it is assessed by comparing structural metrics across multiple orderings of the same data. In practice, this involves:
+
+1.  Applying more than one ordering method to the same table.
+
+2.  Computing structural metrics for each ordered view.
+
+3.  Assessing how much these metric values vary.
+
+Small variation indicates robust structure; large variation suggests that the structure depends strongly on how the table is arranged.
+
+Importantly, robustness does not require that all orderings look identical. Rather, it requires that key structural summaries remain broadly consistent.
+
+### Robustness across canonical patterns
+
+Robustness behaves differently across the canonical tables, reinforcing its role as a distinct dimension of structure.
+
+-   **Clean Blocks (A and B)**\
+    Clean blocks tend to be highly robust. Even when ordering methods differ, contrast and concentration values remain relatively stable, reflecting strong underlying structure.
+
+-   **Overlapping Sites**\
+    Overlap reduces robustness. Different ordering methods emphasize different aspects of the table, leading to greater variation in structural metrics.
+
+-   **Blocks with Background Noise**\
+    Background noise often reduces robustness further. While structure may still be visible, its quantitative description becomes more sensitive to ordering choices.
+
+-   **Gradients**\
+    Gradients typically show robustness with respect to gradient-sensitive orderings but low robustness when block-oriented orderings are applied. This asymmetry highlights the importance of matching ordering strategy to structure.
+
+### Interpretation and limitations
+
+Robustness should not be interpreted as a measure of “correctness.” A pattern may be fragile yet ecologically meaningful, particularly in transitional or heterogeneous systems. Conversely, highly robust patterns may reflect strong but oversimplified structure.
+
+Instead, robustness provides context. It helps distinguish between structure that is intrinsic to the data and structure that emerges only under particular analytical choices.
+
+## Bringing the Metrics Together
+
+The metrics introduced in this chapter—contrast, concentration, continuity/discreteness, and robustness—describe complementary aspects of structure in ordered Braun–Blanquet tables. No single metric is sufficient on its own, and none should be interpreted in isolation. Instead, meaningful interpretation arises from their **joint behavior** across different tables and ordering strategies.
+
+Contrast captures separation. Concentration captures localization. Continuity and discreteness describe the form that structure takes, while robustness describes its stability under alternative views. Together, these dimensions provide a structured way to reason about patterns that ordering makes visible.
+
+### Comparing canonical patterns
+
+Examining the canonical tables through this lens highlights how different kinds of structure produce distinct metric signatures.
+
+Clean block-structured tables typically exhibit high contrast, high concentration, and high robustness. Structure is localized, boundaries are relatively sharp, and different reasonable orderings tend to produce similar summaries.
+
+Tables with overlapping sites retain moderate contrast but show reduced concentration and robustness. Structure remains present, but it is shared across regions, making boundaries less stable and interpretations more sensitive to ordering strategy.
+
+Tables with background noise often show reduced concentration even when contrast remains moderate. Localization is diluted by scattered low-level presence, and robustness may decline as noise increases.
+
+Gradient tables differ more fundamentally. Contrast reflects change along an axis rather than separation between regions, concentration is often lower, and robustness depends strongly on whether ordering methods are aligned with the underlying gradient. Applying block-oriented methods to gradients typically produces unstable or misleading summaries.
+
+These patterns reinforce an important point: **similar-looking tables may differ structurally, and different structures may require different analytical perspectives**.
+
+### What the metrics provide—and what they do not
+
+The metrics presented here do not replace ordering, nor do they eliminate the need for interpretation. They provide a common language for describing what ordering reveals and for comparing structure across tables and methods.
+
+At the same time, metrics do not establish correctness, ecological validity, or statistical significance. They summarize structure; they do not explain its causes. Their value lies in supporting reasoning, not in delivering final answers.
+
+### From description to analysis
+
+With these tools in place, it becomes possible to move beyond visual inspection while retaining the insights that ordering provides. Metrics allow patterns to be compared, sensitivities to be explored, and assumptions to be made explicit.
+
+The next step is to consider how these descriptive measures fit into broader analytical workflows—how they interact with classification, interpretation, and ecological reasoning. That transition marks the move from describing structure to analyzing it.

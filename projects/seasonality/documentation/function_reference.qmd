@@ -1,0 +1,119 @@
+# Function Reference {.unnumbered}
+
+This appendix lists every exported function in `seasonalityr`, grouped by where it falls in the workflow: retrieve the climate, compute the indices, add the daylength channel, classify into regimes, and plot or map. Most of the document's code uses these functions, but a reader who never loads the package would otherwise have no single place to see the whole toolkit. That is what this page is for.
+
+The package is installed once from GitHub and loaded like any other.
+
+```{r}
+#| label: install
+#| eval: false
+
+## install once
+remotes::install_github("kimbridges/seasonalityr")
+
+## then, each session
+library(seasonalityr)
+```
+
+The internal thresholds that the classifier uses (the rainfall-seasonality floor, the aridity and temperature cut-points, the 25-degree tropical line) are not exported as functions; they are fixed constants inside the package, and they are described where they matter in Chapters 4 and 5.
+
+## Retrieve the climate
+
+**`get_climate(cities, res = 10, path = file.path(tempdir(), "wc_cache"))`**
+
+Downloads WorldClim monthly normals once, caches them, and extracts the twelve monthly values at each site. Returns a tidy tibble with one row per site-month (`name`, `zone`, `month`, `tavg`, `prec`).
+
+- `cities` — a data frame of sites with columns `name`, `zone`, `lat`, `lon`.
+- `res` — WorldClim resolution in arc-minutes (10, 5, 2.5, or 0.5; default 10).
+- `path` — cache directory for the downloaded rasters. Defaults to the session's temporary directory; set a real folder to keep the cache between sessions.
+
+See the appendix [Retrieving WorldClim Data](appendix_worldclim.qmd) for the full retrieval story.
+
+## Compute the indices
+
+**`compute_indices(P, T)`**
+
+Computes the seasonality indices for a single site from its twelve monthly values. Returns a one-row tibble.
+
+- `P` — numeric length-12 vector of monthly precipitation (mm).
+- `T` — numeric length-12 vector of monthly mean temperature (°C).
+- *Returns* — `Tamp` (temperature seasonality), `SI` (rainfall seasonality), `cool_frac` (fraction of rain in the six coldest months), `bimod` (gated two-pulse rainfall index), `totP` (annual rainfall), `m_mean` (mean water balance, P − 2T).
+
+**`indices_table(clim)`**
+
+Runs `compute_indices()` across many sites at once. Returns one row of indices per site.
+
+- `clim` — a tidy climate tibble from `get_climate()`.
+
+## The daylength channel
+
+**`daylength_hours(lat_deg, doy)`**
+
+Hours of daylight for a latitude and day of the year, computed from astronomy alone (vectorised over latitude).
+
+- `lat_deg` — latitude in degrees.
+- `doy` — day of year (1–365).
+
+**`daylength_channel(lat)`**
+
+Summarizes the daylength channel at one latitude. Returns a list with `daylamp` (half the annual photoperiod range, in hours, near zero at the equator and large toward the poles) and `peak_month` (the month of the longest day).
+
+- `lat` — latitude in degrees.
+
+**`add_daylength(d)`**
+
+Appends the daylength channel to a table of indices, using each row's latitude. Returns `d` with `daylamp` and `dl_peakmon` columns added.
+
+- `d` — a data frame of indices that includes a `lat` column.
+
+## Classify into cue regimes
+
+**`classify_v2(d)`**
+
+Assigns each site a cue regime by the stated rule: gate the rainfall channel on the water balance, read the temperature and daylength channel strengths, and combine. Returns `d` with `rain_mode`, `phase`, and `regime` columns added.
+
+- `d` — an indices table carrying `m_mean`, `totP`, `SI`, `Tamp`, `daylamp`, `cool_frac`, `bimod`, and `lat` (that is, the output of `indices_table()` plus `add_daylength()` and a `lat` column).
+
+**`regime_palette()`**
+
+Returns the regime color palette: a named character vector of colorblind-safe (Okabe-Ito based) colors, one per regime. Used by the plotting functions, and available for your own figures.
+
+## Plot and map
+
+**`plot_channel(idx, file = NULL)`**
+
+The temperature-versus-rainfall channel scatter: each site a point, colored by rain phase, sized by annual rainfall. Returns a `ggplot` object.
+
+- `idx` — an indices table from `indices_table()`.
+- `file` — optional path to save a PNG; if `NULL`, the plot is only returned.
+
+**`plot_regime_map(d, file = NULL)`**
+
+The three-channel scatter: temperature on the x axis, rainfall on the y, daylength as point size, regime as color. Despite the name this is a scatter in channel space, not a geographic map. Returns a `ggplot` object.
+
+- `d` — a classified indices table (the output of `classify_v2()`).
+- `file` — optional path to save a PNG.
+
+**`compute_regime_grid(xmin, xmax, ymin, ymax, res = 10, path = file.path(tempdir(), "wc_cache"))`**
+
+The engine behind the geographic maps: crops cached WorldClim to an extent, computes the indices and daylength for every land cell, and classifies each one. Returns a data frame with `x`, `y`, `regime`.
+
+- `xmin`, `xmax`, `ymin`, `ymax` — the extent in degrees of longitude and latitude.
+- `res`, `path` — as in `get_climate()`.
+
+**`regime_map_region(xmin, xmax, ymin, ymax, title, file, anchors = NULL, res = 10, path = file.path(tempdir(), "wc_cache"), width = 10, height = 10)`**
+
+Computes a regional grid and draws it as a finished map with labeled city anchors. Saves a PNG and, invisibly, returns a list with the grid (`mapdf`), the `plot`, and the regime `counts`.
+
+- `xmin`, `xmax`, `ymin`, `ymax` — the extent in degrees.
+- `title` — the plot title.
+- `file` — path to save the PNG.
+- `anchors` — optional data frame of labeled sites (`name`, `lat`, `lon`).
+- `res`, `path` — passed through to `compute_regime_grid()`.
+- `width`, `height` — PNG size in inches.
+
+## Bundled data
+
+**`cities`**
+
+The validation set used throughout the document: a data frame of 21 cities with columns `name`, `zone`, `lat`, and `lon`, spanning the Southwest desert trio, equatorial, tropical, Mediterranean, continental, and high-latitude anchors. Load it with `data(cities)` after attaching the package.

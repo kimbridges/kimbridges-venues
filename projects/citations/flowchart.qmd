@@ -1,0 +1,63 @@
+---
+title: "diagram"
+---
+
+```{r}
+
+# Create a node data frame
+nodes_1 <-
+  create_node_df(
+    n = 8,
+    type = "lower",
+    label = c("Google Doc", 
+              "drive_download", 
+              "text file", 
+              "ChatGPT API",
+              "BibTex file",
+              "markdown",
+              "text\ncitations",
+              "references"),
+    style = "filled",
+    color = "black", ## node outline
+    fillcolor = c("goldenrod3","white",
+                  "goldenrod3","white",
+                  "goldenrod3","white",
+                  "goldenrod3","goldenrod3"),
+    fontcolor = c("white","black",
+                  "white","black",
+                  "white","black",
+                  "white","white"),
+    shape = c("rectangle", "ellipse",
+              "rectangle", "ellipse",
+              "rectangle", "ellipse",
+              "rectangle", "rectangle"),
+    fontsize = c(14,14,14,14,14,14,12,12),
+    width = c(1.5,1.5,1.5,1.5,1.5,1.5, 0.9, 0.9),
+    height = 0.4)
+
+# Inspect the `nodes_1` NDF
+##nodes_1
+
+# Create an edge data frame
+edges_1 <-
+  create_edge_df(
+    from = c(1, 2, 3, 4, 5, 6, 6),
+      to = c(2, 3, 4, 5, 6, 7, 8),
+    rel = "requires",
+    color = c("red","red","black","black","forestgreen","forestgreen","forestgreen"))
+
+##edges_1
+
+graph <-
+  create_graph(
+    nodes_df = nodes_1,
+    edges_df = edges_1) %>%
+  set_node_attrs(
+    node_attr = "fontname",
+    values = "Helvetica") %>%
+  set_edge_attrs(
+    edge_attr = "arrowsize",
+    values = 1)
+
+graph %>% render_graph(layout="tree")
+```

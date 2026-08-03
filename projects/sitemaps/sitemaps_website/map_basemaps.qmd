@@ -1,0 +1,198 @@
+---
+title: "Basemaps"
+---
+
+Getting an appropriate basemap is an essential first step in the map making process. The examples shown in this gallery show some of the variety you can get by using fairly simple R code.
+
+Later, you'll see that the specification of a basemap is made easier by using some functions. Here, we're only focused on the general appearance of the basemaps. These examples will help you decide what type of basemap will best suit your project.
+
+## Setup & Defaults
+
+::: callout-important
+### Setup Information
+
+Each section has its own setup and default information. This allows each section to be run independently. The duplication of code is a small price to be paid for the independence and clarity achieved by this repetition.
+:::
+
+All use of Google maps requires the use of an API key. Getting this key is a one-time task. Store the key somewhere same and hidden from the outside.
+
+Registering the Google Key needs to be done once each session.
+
+```{r}
+
+## Libraries
+library(readr)
+library(ggmap)
+library(ggplot2)
+library(sitemaps)
+
+## Initialize Google Map key; the key is stored in a system folder.
+googleKey <- Sys.getenv("GGMAP_GOOGLE_API_KEY")
+register_google(key = googleKey, account_type = "standard")  
+
+```
+
+### Some Required and Useful Code
+
+It is essential to include the code to set the parameters (`site_styles()`) and the Google Map hide codes (`site_google_hides()`).
+
+This code block also defines a simple `theme` that removes the geographic coordinates from the map borders, places a black line around the map, and suppresses a default legend.
+
+```{r}
+
+## Read in all the parameters
+column <- site_styles()
+hide   <- site_google_hides()
+
+#################################################################
+
+## Define a theme that removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2),
+                    legend.position = "none")
+
+```
+
+## Google Basemaps
+
+The **Google** basemaps have annotations on top. There are ways to selectively limit the annotation. This capability is discussed later along with a few other features that make these maps more useful.
+
+|              |                                |
+|--------------|--------------------------------|
+| **Map Type** | **Appearance**                 |
+| roadmap      | Street map                     |
+| terrain      | Shaded relief map              |
+| satellite    | Satellite image                |
+| hybrid       | Satellite image and street map |
+
+Here are a few examples that show some of the types of base maps. Note that the theme ("`simple_black_box`"), defined earlier, is used to simplify these maps.
+
+```{r}
+#| label: fig-google1
+#| fig-cap: "Oahu, Hawaii as a roadmap."
+
+map2 <- get_map(location = "Island of Oahu, Hawaii, USA", 
+                zoom=10, 
+                source="google",
+                maptype="roadmap")
+
+ggmap(map2) + simple_black_box
+
+```
+
+```{r}
+#| label: fig-google2
+#| fig-cap: "Oahu, Hawaii as a terrain map."
+
+map3 <- get_map(location = "Island of Oahu, Hawaii, USA", 
+                zoom=10, 
+                source="google",
+                maptype="terrain")
+
+ggmap(map3) + simple_black_box
+
+```
+
+```{r}
+#| label: fig-google3
+#| fig-cap: "Oahu, Hawaii as a satellite map."
+
+map5 <- get_map(location = "Island of Oahu, Hawaii, USA", 
+                zoom=10, 
+                source="google",
+                maptype="satellite")
+
+ggmap(map5) + simple_black_box
+
+```
+
+```{r}
+#| label: fig-google4
+#| fig-cap: "Oahu, Hawaii as a hybrid map."
+
+map1 <- get_map(location = "Island of Oahu, Hawaii, USA", 
+                zoom=10, 
+                source="google",
+                maptype="hybrid")
+
+ggmap(map1) + simple_black_box
+
+```
+
+## Google Map Simplifications
+
+It is possible to "hide" different layers of annotations on Google Maps. This example (@fig-gsimple), which shows the `hide$all` parameter is just one possibility. See the *Google Maps Simplified* section for examples of alternative layer hiding.
+
+```{r}
+#| label: fig-gsimple
+#| fig-cap: "Oahu, Hawaii as a terrain map with layers hidden."
+#| 
+map <- get_googlemap(center = "Island of Oahu, Hawaii, USA", 
+                zoom=10, 
+                source="google",
+                maptype="terrain",
+                style=hide$all)
+
+ggmap(map) + simple_black_box
+
+```
+
+## Scale Differences with Google Maps
+
+The large property shown in this example (@fig-scale1) houses the Huntington Library, Art Gallery and Botanical Garden. Zooming out, you see the surrounding neighborhood (@fig-scale2) and, with even more zoom, the city is shown (@fig-scale3) next to the adjacent mountains. Finally (@fig-scale4) you see much of the Los Angeles basin. The original site is now too small to be seen.
+
+```{r}
+#| label: fig-scale1
+#| fig-cap: "Southern California at zoom = 16 on a terrain map."
+
+map10 <- get_map(location = c(lon=-118.11418, lat=34.12839),
+                zoom=16,
+                source="google",
+                maptype="terrain")
+
+ggmap(map10) + simple_black_box
+
+```
+
+```{r}
+#| label: fig-scale2
+#| fig-cap: "Southern California at zoom = 14 on a terrain map."
+
+map11 <- get_map(location = c(lon=-118.11418, lat=34.12839),
+                zoom=14,
+                source="google",
+                maptype="terrain")
+
+ggmap(map11) + simple_black_box
+
+```
+
+```{r}
+#| label: fig-scale3
+#| fig-cap: "Southern California at zoom = 12 on a terrain map."
+
+map12 <- get_map(location = c(lon=-118.11418, lat=34.12839),
+                zoom=12,
+                source="google",
+                maptype="terrain")
+
+ggmap(map12) + simple_black_box
+
+```
+
+```{r}
+#| label: fig-scale4
+#| fig-cap: "Southern California at zoom = 10 on a terrain map."
+
+map13 <- get_map(location = c(lon=-118.11418, lat=34.12839),
+                zoom=10,
+                source="google",
+                maptype="terrain")
+
+ggmap(map13) + simple_black_box
+
+```
+

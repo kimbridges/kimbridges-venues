@@ -1,0 +1,41 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Preview & Review"
+  subtitle: "Rebuilding the AI Microscope"
+  author: "K. W. Bridges and Claude (Anthropic)"
+  date: today
+  cover-image: ai_microscope_cover_art_text.png
+  chapters:
+    - index.qmd
+    - too_early.qmd
+    - constraints.qmd
+    - rebuilding.qmd
+    - tool_not_spy.qmd
+    - honest.qmd
+    - names.qmd
+    - bookends.qmd
+    - audio.qmd
+    - taught.qmd
+    - appendix.qmd
+  navbar:
+    logo: ai_microscope_logo_art.png
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    embed-resources: false
+
+editor: visual
+
+toc: true
+number-sections: true
+number-depth: 2
+
+execute:
+  warning: false
+  error: false
+  message: false

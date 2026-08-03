@@ -1,0 +1,160 @@
+# Ordering Braun-Blanquet Tables
+
+The canonical tables developed in the previous chapter provide controlled examples against which ordering behavior can be examined.
+
+This chapter is about making structure visible, not about measuring it.
+
+## Ordering Braun–Blanquet Tables
+
+Raw Braun–Blanquet tables are rarely interpretable in the order in which data are collected. Ordering is therefore not a cosmetic step applied at the end of an analysis, but an analytical operation that makes latent structure visible. The goal of this chapter is not to identify a single “best” ordering, but to demonstrate how different kinds of structure respond to ordering, and why ordering must be understood as part of the analytical workflow rather than as a presentation choice.
+
+The canonical tables developed in the previous chapter provide controlled examples against which ordering behavior can be examined.
+
+### Ordering as an analytical operation
+
+In the Braun–Blanquet tradition, tables were ordered manually through iterative inspection. Species and sites were rearranged repeatedly until coherent patterns emerged. This process was slow, subjective, and difficult to reproduce, but it reflected an important insight: **structure is revealed through arrangement.** Ordering does not create structure; it exposes structure that is already present in the data.
+
+In computational implementations, this same idea is formalized. Rows (species) and columns (sites) are reordered according to explicit criteria, producing a new view of the table while leaving the underlying data unchanged. The purpose of ordering is not classification or clustering, but re-expression: placing similar rows and columns near one another so that patterns can be seen.
+
+Two points are worth emphasizing at the outset. First, ordering always operates on both dimensions of the table: species and sites. Second, different ordering strategies emphasize different kinds of structure. A method that works well for discrete blocks may perform poorly for gradients, and vice versa. No single ordering method is universally appropriate.
+
+### What ordering does—and does not—do
+
+Ordering rearranges rows and columns but does not alter the values in the table. It is therefore distinct from transformation, normalization, or smoothing. Ordering also differs from clustering. While clustering assigns rows or columns to groups, ordering simply places them in sequence. Adjacent items may appear similar, but no explicit group membership is implied.
+
+Because ordering produces a visual arrangement, it is tempting to treat an ordered table as a final result. This is a mistake. Ordering reveals structure, but it does not measure its strength, stability, or statistical support. Those questions are addressed later, using explicit metrics. In this chapter, the emphasis remains on visibility and behavior, not evaluation.
+
+### A reproducible ordering workflow
+
+In this book, ordering is carried out using the `bbstruct` package. Tables are first read into a standardized internal representation, and ordering is applied through a single function call. The result includes both the reordered table and the explicit row and column permutations used to create it. This design preserves the original data while making each ordering step transparent and reproducible.
+
+Throughout this chapter, the same basic workflow is repeated:
+
+1.  Read a canonical table.
+
+2.  Apply an ordering method.
+
+3.  Inspect the resulting ordered view.
+
+By keeping the workflow consistent, differences in outcome can be attributed to differences in table structure and ordering method, rather than to changes in procedure.
+
+### A note on expectations
+
+The examples that follow are deliberately simple. They are not intended to demonstrate optimal ordering for every situation, nor to exhaust the range of possible methods. Instead, they are meant to establish intuition. In some cases, ordering will work very well. In others, it will struggle or reveal ambiguity. Both outcomes are informative.
+
+The chapter begins with clean block-structured tables, where ordering behavior is easiest to interpret. More challenging structures—overlapping blocks, background noise, and gradients—are then introduced to illustrate how ordering responds as assumptions are relaxed.
+
+## Ordering a Clean Block Table
+
+We begin with the simplest canonical structure: a table composed of **clean blocks**, where most species are strongly associated with a particular group of sites. This example provides a baseline for understanding how ordering behaves when structure is strong and assumptions are largely satisfied.
+
+The table is presented in its original, unordered form. Species are listed as though alphabetically, and sites appear in collection order. No structural information is encoded in the arrangement.
+
+### Reading the table
+
+```{r}
+library(bbstruct)
+library(gt)
+
+## Read the raw data as a BB table
+bb_original_data <- bb_read_csv("data/bb_blocks_unordered_A.csv")
+
+
+```
+
+At this stage, the table reflects only the order in which data were recorded. Although block structure is present in the values, it is not visually apparent.
+
+### Applying a blind ordering
+
+We first apply a blind ordering method. This approach uses only the numerical patterns in the table and does not rely on any prior knowledge about block membership.
+
+```{r}
+
+## Reorder the rows and columns
+bb_resorted_data <- bb_reorder(
+  bb_original_data,
+  method = "blind"
+)
+
+```
+
+The result contains a reordered version of the table, along with the explicit row and column permutations used to construct it.
+
+### Viewing the ordered table
+
+```{r}
+
+## Show the reordered table
+bb_gt(bb_resorted_data,
+  title = "Clean blocks (A): blind ordering",
+  subtitle = "Zeros blanked to emphasize structure"
+)
+
+```
+
+### Interpretation
+
+This blind ordering separates ubiquitous and rare species very clearly, but it does not necessarily organize the differential species into coherent blocks.
+
+It should be noted at this point that blind ordering is sensitive to differences in overall species frequency. In many empirical datasets, such differences arise naturally from uneven sampling across habitats. In the balanced synthetic example used here, differential species have similar marginal frequencies, and blind ordering therefore does not separate them into blocks.
+
+More structure-sensitive methods are introduced below.
+
+## Ordering a Table with Overlapping Sites
+
+The next canonical example introduces **overlapping sites**, where most sites belong clearly to a single block, but some express characteristics of more than one block. This situation is common in ecological data, particularly where ecotones, transitional habitats, or mixed conditions occur.
+
+As before, the table is presented unordered. Species appear as though listed alphabetically, and sites appear in collection order. Any structure must be inferred from the data values.
+
+### Reading the table
+
+```{r}
+library(bbstruct)
+library(gt)
+
+## Read the overlapping-sites table
+bb_original_data <- bb_read_csv("data/bb_blocks_overlap_sites.csv")
+
+```
+
+In this table, block structure is present, but it is not disjoint. Some sites contain substantial signal from more than one block, making the structure more ambiguous than in the clean block example.
+
+### Applying a structure-sensitive ordering
+
+Because overlapping sites blur block boundaries, a simple blind ordering is often insufficient. Here we use a PCA-based ordering, which emphasizes continuous structure and shared variance across the table.
+
+```{r}
+
+## Reorder using PCA
+bb_resorted_data <- bb_reorder(
+  bb_original_data,
+  method = "pca"
+)
+
+
+```
+
+This ordering does not attempt to assign sites or species to discrete groups. Instead, it arranges rows and columns along dominant axes of variation.
+
+### Viewing the ordered table
+
+```{r}
+
+bb_gt(
+  bb_resorted_data,
+  title = "Overlapping sites: PCA ordering",
+  subtitle = "Zeros blanked to emphasize overlapping structure"
+)
+
+
+```
+
+### Interpretation
+
+After PCA ordering, the dominant structure in the table becomes visible as a sequence of sites and associated species aligned along a common axis of variation. Core blocks are still apparent, but sites with overlapping characteristics appear between them, and species are arranged according to shared patterns of variation rather than simple frequency.
+
+Unlike blind ordering, PCA ordering does not explicitly separate ubiquitous or rare species. Instead, it emphasizes covariance structure, revealing overlap and continuity where block boundaries are blurred. This behavior is appropriate for tables in which site membership is not disjoint.
+
+At this point, it's natural to ask whether these different perspectives can be combined. Blind ordering highlights differences in overall frequency, while PCA ordering emphasizes shared patterns of variation. Each reveals aspects of structure that the other obscures.
+
+Rather than resolving this tension here, it is important to recognize that ordering is inherently viewpoint-dependent. Different ordering strategies expose different structural features of the same data. Bringing these perspectives together requires moving beyond ordering alone and toward explicit measures of structure, stability, and contrast. These issues are taken up in subsequent chapters.

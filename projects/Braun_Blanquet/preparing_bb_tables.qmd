@@ -1,0 +1,591 @@
+# Preparing Braun–Blanquet Tables in Practice
+
+The preceding chapters focused on understanding structure in Braun–Blanquet tables—how it is revealed by ordering, described by metrics, and interpreted ecologically. This chapter shifts emphasis from description to practice. Its purpose is to show how these ideas are applied to real data in a coherent and repeatable way.
+
+The focus here is not on introducing new methods, but on bringing together tools that have already appeared throughout the book. In particular, this chapter addresses a common gap for readers who are not specialists: how to move from raw data to usable Braun–Blanquet tables, ordered views, structural summaries, and, when appropriate, labeled outputs.
+
+Rather than presenting a fixed pipeline, the chapter emphasizes preparation and iteration. Braun–Blanquet analysis is inherently interactive. Tables are assembled, viewed, reordered, summarized, and revised. The steps shown here are intended to support that process, not to automate it.
+
+The examples in this chapter use a consistent workflow and a small number of functions. Presentation details, such as table formatting and annotation, are handled through simple wrappers so that attention can remain on the structure of the data rather than on software mechanics.
+
+By the end of the chapter, the reader should be able to:
+
+-   prepare a Braun–Blanquet table from their own data,
+
+-   generate ordered views suitable for inspection,
+
+-   compute and examine structural metrics,
+
+-   and produce a clear, interpretable table that reflects analytical judgment.
+
+## What Your Data Must Look Like
+
+Braun–Blanquet analysis operates on a **species × site table** in which rows represent species, columns represent sites (or releves), and cell values represent presence or abundance. Before ordering, metrics, or classification can be applied, the data must be arranged in this basic form.
+
+This requirement is simpler than it may sound. Many ecological datasets already meet it, or can be converted with minimal effort.
+
+### Table structure
+
+At minimum, the table should have:
+
+-   **One row per species**\
+    Species names should be unique and consistently formatted. The order of species rows does not carry analytical meaning.
+
+-   **One column per site**\
+    Site columns should represent individual samples or releves. The order of site columns may reflect collection order or an environmental gradient, depending on context.
+
+-   **Numeric values in cells**\
+    Values represent species occurrence or abundance. Zero indicates absence.
+
+A simplified example is shown below.
+
+### Stage 1: Read and inspect the raw data
+
+There are two general styles for entering your data into the analysis stream: embedded data or an external data file.
+
+The first example shows how embedded data are read and a simple table is printed.
+
+```{r}
+library(readr)
+library(gt)
+library(bbstruct)
+
+## Read the data table
+options(readr.show_col_types = FALSE)
+raw_data <- readr::read_csv(file=
+        "species,  site_01,  site_02,  site_03
+         sp_A,       3,        0,        1
+         sp_B,       0,        2,        0
+         sp_C,       1,        1,        4")
+
+## Print the table
+gt(raw_data) |>
+  tab_header(title="Raw Data Table")
+
+```
+
+This style of input is convenient as the data are clearly seen in the code and the values are organized in a way that mimics the data collection.
+
+As a matter of good practice, it is useful to inspect the raw table before applying any ordering or metrics. This initial view helps confirm that the data have been read correctly and provides a baseline for later comparisons.
+
+Many users will assemble their initial tables in a spreadsheet and export them as CSV files. This workflow is fully supported, provided the file contains a species column followed by site columns with numeric values.
+
+The following example, showing the use of an external file, is nearly identical to the previous one. Both are equally valid ways to store and access data.
+
+```{r}
+
+library(readr)
+library(gt)
+
+## Read data from a CSV file exported from a spreadsheet
+options(readr.show_col_types = FALSE)
+raw_data <- readr::read_csv(file="data/my_data.csv")
+
+## Print the table
+gt(raw_data) |>
+  tab_header(title="Raw Data Table")
+
+```
+
+When data originate in a spreadsheet, it is good practice to inspect the raw table after reading it into the analysis environment. Just as with the embedded data, this step confirms that species names, site columns, and numeric values have been interpreted correctly.
+
+#### Species names as abbreviations
+
+In practice, short species codes are often preferable for table work. It is common to use several letters each from the genus and species. This approach preserves readability while retaining full taxonomic information.
+
+A separate table that gives the abbreviations along with the species names gives the needed translation. The table can also provide the full species name along with the authority and the appropriate classification unit (e.g., family name). These are often necessary additions to the documentation.
+
+As has been discussed before, species labels should function as identifiers, not as sources of analytical information.
+
+#### Number of sites
+
+While Braun–Blanquet methods do not impose formal limits on the number of sites, practical considerations matter. Tables with fewer than roughly a dozen sites often provide limited structural resolution. Tables with twenty to thirty sites are common and generally manageable. Larger tables can be informative, but quickly become difficult to inspect, annotate, and present, particularly in printed form.
+
+The appropriate number of sites is ultimately determined by research design and ecological context. However, analysts should be aware that interpretability and presentation impose practical constraints that influence how tables are constructed and used.
+
+#### Acceptable value ranges
+
+Braun–Blanquet tables are flexible with respect to value scale. Common choices include:
+
+-   **Presence/absence** (0/1)
+
+-   **Ordinal abundance scales** (e.g., 0–4, 0–5)
+
+-   **Counts or cover estimates**, provided zeros indicate absence
+
+The methods used in this book assume only that:
+
+-   larger values indicate stronger presence, and
+
+-   zero represents absence.
+
+No normalization or transformation is required at this stage.
+
+#### Handling zeros and missing values
+
+Zeros are a fundamental part of Braun–Blanquet tables and should be retained as explicit values. Missing values, if present, should be handled carefully. In most cases, missing observations should be converted to zeros only if absence is certain; otherwise, it may be preferable to exclude affected species or sites prior to analysis.
+
+For clarity and reproducibility, it is best to avoid implicit missing values.
+
+#### Labels and naming conventions
+
+Species and site labels are treated as identifiers, not as analytical variables. They may reflect alphabetical order, collection order, or other practical considerations.
+
+It is important that:
+
+-   species names do not encode structure,
+
+-   site names are unique,
+
+-   and any grouping or classification labels are added *after* ordering and interpretation, not embedded in the raw data.
+
+### Stage 2: Convert to a Braun–Blanquet table format
+
+The function `bb_from_raw_data()` converts an inspected table of raw data into a Braun–Blanquet table format. This step applies structural validation, but it does not perform any analysis. No ordering, metrics, or classification are applied at this stage.
+
+Here is an example of the use of the `bb_from_raw_data()` function in the context of the first two stages of processing the data.
+
+```{r}
+
+library(readr)
+library(gt)
+library(bbstruct)
+
+## Stage 1: read and inspect the raw data
+raw_data <- readr::read_csv(file=
+  "species, site_01, site_02, site_03
+   sp_A,         3,       0,       1
+   sp_B,         0,       2,       0
+   sp_C,         1,       1,       4"
+   )
+
+## create a simple table
+gt(raw_data)
+
+## Stage 2: convert to Braun-Blanquet table format
+bb_table <- bb_from_raw_data(raw_data)
+
+
+```
+
+#### Error Checking
+
+A key feature of `bb_from_raw_data()` is that it performs extensive error checking. This is intentional. The function is designed to fail early if the input data do not meet the basic requirements of a Braun–Blanquet table. Doing so prevents subtle problems from propagating into later stages of the analysis.
+
+Common checks include:
+
+-   verifying that species identifiers are present, unique, and non-missing,
+
+-   ensuring that site columns contain numeric values,
+
+-   confirming that zeros are explicit rather than implicit, and
+
+-   detecting duplicated or malformed site names.
+
+If an error occurs at this stage, it usually indicates a formatting or data-entry issue that should be corrected before proceeding. In practice, resolving these errors early leads to a much smoother analytical workflow later on.
+
+#### Understanding error messages
+
+For example, the following input contains a non-numeric value in a site column:
+
+```{r}
+
+## Read some bad data
+raw_data_bad <- readr::read_csv(file =
+  "species, site_01, site_02
+   sp_A,         3,       x
+   sp_B,         0,       2"
+)
+
+## Attempt to create a bb structure using the bad data
+## Running the following line will cause an error
+## bb_from_raw_data(raw_data_bad)
+
+```
+
+Running this code produces an error indicating which site column contains invalid values. This behavior is intentional: the function stops rather than guessing how to interpret the data.
+
+Users are encouraged to correct such issues in the raw data and rerun the conversion step before moving on.
+
+#### Why this matters
+
+By separating **data inspection** (Stage 1) from **format conversion** (Stage 2), the workflow makes explicit where assumptions are introduced. Once data have been successfully converted to a Braun–Blanquet table format, subsequent steps—ordering, metrics, and interpretation—can proceed with confidence that the underlying structure is sound.
+
+### Stage 3: Create an Ordered View of the Table
+
+Once the data have been successfully converted into a Braun–Blanquet table format, the next step is to **create an ordered view**. Ordering rearranges species and sites to make structural patterns visible, but it does not alter the underlying data.
+
+At this stage, the goal is **inspection**, not classification. Ordering provides a first opportunity to see whether the table exhibits block-like structure, overlap, background noise, or gradients.
+
+The small example above is sufficient for demonstrating input and validation. To make ordering behavior visible, we now use a slightly larger table.
+
+#### Choosing an ordering method
+
+Two ordering strategies are commonly useful at this point:
+
+-   **Blind ordering** (`method = "blind"`)\
+    Blind ordering uses overall frequency patterns in the table and provides a simple baseline view. It is often effective for revealing strong block structure and for separating very common and very rare species.
+
+-   **PCA-based ordering** (`method = "pca"`)\
+    PCA ordering emphasizes shared variation across sites and is particularly useful when structure is continuous or overlapping, such as in gradient studies.
+
+In practice, it is often informative to try both methods and compare the resulting views.
+
+#### Applying an ordering
+
+```{r}
+
+## Example data for demonstrating ordering
+
+## Stage 1: 
+raw_data <- readr::read_csv(file =
+"species, site_01, site_02, site_03, site_04, site_05, site_06
+ sp_A,        3,       2,       0,       0,       0,       0
+ sp_B,        2,       3,       1,       0,       0,       0
+ sp_C,        0,       1,       2,       3,       1,       0
+ sp_D,        0,       0,       1,       2,       3,       2
+ sp_E,        0,       0,       0,       1,       2,       3
+ sp_F,        1,       0,       0,       0,       1,       2"
+)
+
+## Inspect raw data
+gt(raw_data)
+
+## Stage 2: convert to Braun-Blanquet table format
+bb_table <- bb_from_raw_data(raw_data)
+
+## Stage 3: reorder the table (baseline view)
+bb_ordered <- bb_reorder(bb_table, method = "blind")
+
+
+```
+
+#### Inspecting the ordered table
+
+```{r}
+
+## Produce a table that is reordered
+bb_gt(
+  bb_ordered,
+  title = "Stage 3: Ordered table (Blind)"
+)
+
+```
+
+The ordered table should be inspected visually. At this point, the analyst should look for broad structural features rather than fine detail: the presence of blocks, gradual transitions, or diffuse patterns.
+
+If the table is expected to reflect a gradient or overlapping structure, an alternative ordering can be applied:
+
+```{r}
+
+## Alternative ordering for gradient or overlapping structure
+bb_ordered <- bb_reorder(bb_table, method = "pca")
+
+## Produce a table that is reordered
+bb_gt(
+  bb_ordered,
+  title = "Stage 3: Ordered table (PCA ordering)"
+)
+
+```
+
+**Note (site order and gradients):** PCA ordering typically reorders both sites and species to reveal dominant patterns of variation. In many gradient studies, however, site order is meaningful *a priori* (for example, increasing elevation). In such cases it is often useful to keep sites fixed and reorder species only.
+
+It is possible to maintain the order of the sites in the raw data while still doing a PCA reordering of the species. This is shown in the next example using the same data as above.
+
+```{r}
+
+## Alternative: keep site order fixed 
+##    (e.g., when sites are already in gradient order)
+
+bb_ordered <- bb_reorder(
+  bb_table,
+  method = "pca",
+  reorder_sites = FALSE
+)
+
+## Produce a table that is reordered
+bb_gt(
+  bb_ordered,
+  title = "Stage 3: Ordered table (PCA ordering; sites fixed)"
+)
+
+```
+
+#### Interpreting the result
+
+Ordering does not determine how the table should be interpreted, but it constrains what interpretations are reasonable. Clear block structure supports classification; blurred or continuous structure suggests transitional or gradient-based interpretation.
+
+At this stage, no structural metrics are computed and no groups are assigned. The purpose of ordering here is simply to **make structure visible** so that subsequent steps can be applied appropriately.
+
+### Stage 4: Compute Structural Metrics
+
+With an ordered view of the table in hand, the next step is to **summarize structure quantitatively**. Structural metrics provide a way to describe what ordering reveals, making comparisons explicit and reproducible.
+
+At this stage, metrics are used **exploratorily**. They do not replace visual inspection, nor do they determine interpretation. Instead, they support reasoning by capturing different aspects of structure—such as separation, localization, continuity, and stability—in numerical form.
+
+#### Computing metrics for an ordered table
+
+Structural metrics are computed from an ordered Braun–Blanquet table. The same table may yield different metric values under different orderings, which is why metrics and ordering are best used together.
+
+```{r}
+
+## Stage 4: compute structural metrics
+metrics <- bb_metrics(bb_ordered)
+
+metrics
+
+```
+
+The metrics are shown here in their **internal form**. This representation exposes the full set of quantities available for interpretation and comparison. In later chapters, these values are summarized in more compact, presentation-oriented tables.
+
+#### How to read the output
+
+The metrics output is best understood as a **collection of structural descriptors**, rather than as a checklist of named measures.
+
+-   Some quantities (such as contrast-related values) appear explicitly.
+
+-   Other aspects (such as concentration) are reflected through related components that describe how values are distributed within the ordered table.
+
+-   Robustness is not represented by a single value; it is assessed by comparing metric values across alternative orderings of the same data.
+
+This design is intentional. Structure in two-way tables is multi-dimensional, and no single number captures it fully.
+
+#### Using metrics responsibly
+
+Metrics are most informative when used comparatively:
+
+-   comparing the same table under different orderings,
+
+-   comparing similar tables across sites or time, or
+
+-   comparing canonical patterns (e.g., blocks versus gradients).
+
+For example, computing metrics after:
+
+-   blind ordering,
+
+-   PCA ordering with sites reordered, and
+
+-   PCA ordering with sites fixed,
+
+can reveal which aspects of structure are sensitive to ordering choices and which are stable.
+
+```{r}
+
+## Example: compare metrics across orderings
+m_blind <- bb_metrics(bb_reorder(bb_table, method = "blind"))
+m_pca   <- bb_metrics(bb_reorder(bb_table, method = "pca"))
+m_pca_fixed <- bb_metrics(
+  bb_reorder(bb_table, method = "pca", reorder_sites = FALSE)
+)
+
+```
+
+Interpreting differences among these summaries helps distinguish:
+
+-   strong versus fragile structure,
+
+-   discrete versus continuous organization, and
+
+-   patterns that are robust from those that depend on specific analytical choices.
+
+#### What metrics do—and do not—do
+
+Structural metrics support interpretation; they do not determine it. High contrast or concentration does not guarantee ecological significance, and low values do not imply lack of structure. Metrics describe *how* structure is expressed, not *why* it exists.
+
+For this reason, metrics should always be interpreted in the context of the ordered table, the study design, and the ecological questions being asked.
+
+### Interpreting Structural Metrics
+
+The structural metrics introduced in the previous section do not come with absolute scales or universal thresholds. There is no single value that defines “strong” or “weak” structure, nor a cutoff that separates meaningful patterns from noise. This is intentional.
+
+These metrics are **contextual descriptors**, not scores to be optimized.
+
+#### Relative, not absolute interpretation
+
+Structural metrics are best interpreted **relatively**, not absolutely. Their primary value lies in comparison:
+
+-   comparing the same table under different orderings,
+
+-   comparing similar tables across sites or time, or
+
+-   comparing different canonical patterns.
+
+For example, a contrast value is meaningful when considered alongside other contrast values computed under different assumptions or for different tables. A higher value indicates greater separation *relative to the alternative*, not greater structure in some absolute sense.
+
+### Directionality and interpretation
+
+Although the metrics are not scaled, they are **directional**. In general:
+
+-   higher contrast values indicate sharper separation,
+
+-   higher concentration-related values indicate greater localization of signal,
+
+-   greater stability of values across orderings indicates greater robustness.
+
+The precise numeric ranges are less important than **how values change** when assumptions change. When a metric increases or decreases in response to a different ordering, it indicates sensitivity to structure or to analytical choices.
+
+#### Why no fixed scale is provided
+
+Providing fixed scales or thresholds would imply a level of generality that is not warranted. Structural expression in Braun–Blanquet tables depends on:
+
+-   the number of species and sites,
+
+-   the abundance scale used,
+
+-   the degree of overlap or noise, and
+
+-   the underlying ecological context.
+
+A single scale cannot capture these differences without obscuring important variation.
+
+Instead, the metrics are designed to support **comparative reasoning**. They answer questions like:
+
+-   *Is structure stronger here than there?*
+
+-   *Does this ordering emphasize separation more than that one?*
+
+-   *Which aspects of structure are stable, and which are sensitive?*
+
+#### Metrics as part of an interpretive loop
+
+Metrics should be read alongside the ordered table that produced them. Visual inspection provides context; metrics provide precision. Neither replaces the other.
+
+In practice, analysts move back and forth:
+
+1.  Inspect an ordered table.
+
+2.  Examine the associated metrics.
+
+3.  Compare across alternative orderings or tables.
+
+4.  Refine interpretation accordingly.
+
+This iterative use is a feature, not a limitation. It reflects the multi-dimensional nature of structure in two-way tables.
+
+Stage 5:
+
+```{r}
+metrics_tbl <- bb_metrics_tbl(bb_table)
+
+bb_metrics_gt(
+  metrics_tbl,
+  title = "Stage 5: Structural metrics (comparison across orderings)"
+)
+
+```
+
+### Stage 6: Annotate and Present the Table
+
+At this point, the table has been validated (Stage 2), ordered (Stage 3), and summarized with structural metrics (Stages 4–5). Stage 6 focuses on **presentation and annotation**—turning the ordered table into a form suitable for communication.
+
+Annotation is an interpretive step. It does not change the data. Instead, it adds structure for the reader by attaching labels to regions of the table (site groups, species groups, transitional zones) and by providing standard descriptive elements such as a title, subtitle, and source note.
+
+Two principles are important:
+
+-   **Annotation should be explicit and reproducible.** Labels should be applied through code so the table can be regenerated consistently.
+
+-   **Annotation should reflect judgment.** Group labels summarize interpretation; they are not “discovered automatically” by the table.
+
+#### A minimal annotation workflow
+
+The examples below use `gt` to add common elements to an already ordered table.
+
+#### Stage 6 code pattern
+
+**6.1 Start from the ordered `bb_tbl`**
+
+```{r}
+
+library(gt)
+
+## Convert the ordered bb table to a gt object (still modifiable)
+gt_tbl <- bb_gt(
+  bb_ordered,
+  title = "Ordered Braun–Blanquet table",
+  subtitle = "Stage 6: annotated presentation"
+)
+
+```
+
+**6.2 Add a source note (recommended)**
+
+```{r}
+
+gt_tbl <- gt_tbl %>%
+  tab_source_note(source_note = "Source: Example data (replace with study citation and date).")
+
+
+```
+
+**6.3 Add site-group labels (column spanners)**
+
+This is the most common BB-style annotation: labeling **groups of sites** across contiguous column blocks.
+
+```{r}
+
+gt_tbl <- gt_tbl %>%
+  tab_spanner(label = "Site Group 1", columns = c(site_01, site_02)) %>%
+  tab_spanner(label = "Site Group 2", columns = c(site_03, site_04)) %>%
+  tab_spanner(label = "Site Group 3", columns = c(site_05, site_06))
+
+
+```
+
+(Adjust the column sets to match your interpretation.)
+
+**6.4 Add species-group labels (row groups)**
+
+If you have identified groups of species, you can label them as row groups. This is optional, but often useful.
+
+```{r}
+gt_tbl <- gt_tbl %>%
+  tab_row_group(label = "Species Group A", rows = 1:2) %>%
+  tab_row_group(label = "Species Group B", rows = 3:4) %>%
+  tab_row_group(label = "Species Group C", rows = 5:6)
+
+
+```
+
+In practice, you will usually define those row indices using the row names (species IDs) rather than fixed row numbers once the table is stable.
+
+**6.5 Add interpretive footnotes (optional but powerful)**
+
+```{r}
+
+gt_tbl <- gt_tbl %>%
+  tab_footnote(
+    footnote = "Group labels summarize interpretation after ordering and inspection.",
+    locations = cells_title(groups = "title")
+  )
+
+
+```
+
+**6.6 Print the final annotated table**
+
+```{r}
+
+gt_tbl
+
+
+```
+
+**6.7 Save the table as a PDF file (optional)**
+
+```{r}
+
+gtsave(gt_tbl, filename = "ordered_bb_table.pdf")
+
+```
+
+#### A small but important note for readers
+
+When using PCA ordering, site order may be either:
+
+-   allowed to change to reveal a dominant axis, or
+
+-   held fixed to preserve a known gradient design.
+
+In annotated tables, **site-group labels should reflect the chosen ordering** and the ecological intent. If sites are fixed (e.g., increasing elevation), spanners may represent zones along the gradient rather than discrete “communities.”

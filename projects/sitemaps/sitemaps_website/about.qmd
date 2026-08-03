@@ -1,0 +1,37 @@
+---
+title: "About Sitemaps"
+---
+
+## Objective
+
+This site was created for the express purpose of aiding people who build reproducible documents. Mostly, these are researchers who need a few maps but are otherwise more concerned with other aspects of the research and data analysis.
+
+## Guiding Design Choices
+
+The premise is that tables are an intuitive way to specify map style information. In addition, there should be simple and consistent ways to default style parameters without having to enter a lot of data into a table. This is the origin of the column specification where the name of a style column in a data table (e.g., `point_color)` is the same as a constant value that is used when all the mapped items are the same (e.g., `column$point_color`).
+
+The column names have been made to be more descriptive than those used in `ggplot`. The point_color seems to be easier to remember than `fill`. There are many more examples possible.
+
+The other simplification is the use of the location data to center and provide the extent of the basemap. Otherwise, it is a pretty tedious task to figure out the properties needed to create a basemap that is properly scaled to the data.
+
+## Current Status
+
+The basic functions were developed to the extent that they can be tested using real situations. At some point there will need to be some "bulletproofing" of the code.
+
+It is generally believed that the basic functions are now present in the `sitemaps` package. Extensions into other realms of mapping are not anticipated. This is not a GIS system!
+
+The scale of the maps is generally intended to be local and regional. A more sophisticated approach is likely needed to maps that cover very large areas, especially if they have lots of data.
+
+The `site_photos` function has been tested with recent Android cellphone photos. They seem to work OK. iPhone testing has not been done and the use of this function is at your own risk.
+
+### Acknowledgements
+
+The R community, especially R Studio, make all of this possible. Most of what has been done in this package is little more than to place existing functions in a wrapper. There are two special packages needing recognition.
+
+**ggplot2:** This code underlies practically everything done here. It is not just the code; the philosophy is also the key. Think "layers."
+
+**ggmaps:** This excellent package provides support for much of what's done here. To learn more about the origin of ggmaps, visit:
+
+<https://journal.r-project.org/archive/2013-1/kahle-wickham.pdf>
+
+A big thank-you goes to Chris Umphlett for some code posted on StackOverflow (5/3/2019) that solved a basic problem of creating a table-drive map system.

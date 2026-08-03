@@ -1,0 +1,8 @@
+---
+title: "R Programming: Basics Made Simple"
+subtitle: "A practical introduction to R programming fundamentals."
+categories: ["R", "Programming"]
+image: ../r_basics/cover_art.png
+---
+
+[View Document](../r_basics/){.btn .btn-primary}

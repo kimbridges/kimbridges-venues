@@ -1,0 +1,219 @@
+---
+title: "Getting Started"
+subtitle: "Simplifying the Process"
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+format:
+  html:
+    fig-width: 8
+    fig-height: 8
+    code-fold: true
+    code-summary: "Show the code chunk"
+editor: visual
+execute:
+  warning: false
+  error: false
+  message: false
+---
+
+Let's jump in and make a map before we discuss the map-making process.
+
+What is emphasized here is demonstrating how we can get an adequate map with as little difficulty as possible.
+
+
+
+## General Setup & Initialization
+
+We need to load some R packages and initialize these as libraries. Table @tbl-library lists the basic R packages that we'll use. There are other packages that you'll need later. For now, we'll focus on this basic set. 
+
+The next step is to activate the Google Maps API key. This key provides access to Google Maps. 
+
+The key registration needs to be done only once for an RStudio session. This is why the process is kept in a separate R chunk so we don't keep re-registering as we refine the maps.
+
+```{r "library"}
+#| label: tbl-library
+#| tbl-cap: "Basic R packages for sitemaps."
+
+## Basic Packages
+library(readr)         ## Read in data
+library(ggmap)      ## Show maps, handle Google key
+library(dplyr)         ## Data wrangling
+library(gt)              ## Tables
+library(ggplot2)     ## Build maps
+library(sitemaps)  ## Functions to help build site maps
+
+## Build a table of the key R packages
+packages <- read_csv(column_headers = TRUE, file =
+  "package,  function
+   readr,    Read in CSV data in a convenient format
+   ggmap,    Help build basemaps, display maps and handle the Google Map key
+   dplyr,    Data wrangling
+   gt,       Table maker
+   ggplot2,  The key to building layered maps
+   tibble,   ?
+   sitemaps, A set of functions that use table data to build data-based maps")
+
+## Print out the package information
+gt(packages)
+
+## Initialize Google Map key; the key is stored in a Project directory.
+  My_Key <- read_file("P://Hot/Workflow/Workflow/keys/Google_Maps_API_Key.txt")
+
+## Test if Google Key is registered
+if (!has_google_key()){
+
+  ## Register the Google Maps API Key.
+  register_google(key = My_Key, account_type = "standard")
+  } ## end Google Key test
+  
+```
+
+There is also some setup code that needs to be loaded. This is another pretty much standard code block that you'll need.
+
+What you're doing is initializing a lot of standard parameters that control details of the appearance of the maps.
+
+```{r "paramload"}
+
+## Use two functions from sitemaps to initialize parameters
+column <- site_styles()
+hide   <- site_google_hides()
+
+## Establish a theme that improves the appearance of a map.
+## This theme removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2),
+                    legend.position = "none")
+
+```
+It is always a good idea to test a package before going into it too deeply. That's what we'll do here.
+
+Our test is a simple map problem: locate the benchmark monuments near downtown Honolulu. A benchmark is a carefully surveyed point. These are reference marks for other surveys. The monument consists of a metal plate on which you'll find information about the location. The benchmark system also has on-line information that provides more details.
+
+For us, this survey system is handy as the locations of the benchmarks can be copied from an on-line listing.
+
+## Step 1: Preparing the Data Table
+
+The data for our map come as a set of comma-separated values (CSV). This is a handy format that is widely used. The read_csv function from the readr package makes the data into a data frame.
+
+Our data frame has quite a bit of information. That's expected as tables are often used to store relevant data for each of the observations. 
+
+Note that in the data in the code chunk looks a bit messy. That's because the data were cut and pasted from the on-line file ... no typing. Printing out the data (Table @tbl-benchmark) show the values more neatly. 
+
+As noted before, there is a lot of data in the table. This is useful for the person using the benchmark data. Here, we're focused on just three columns: Ref, Lat, and Lon.
+
+Having the proper column names is essential. In order to use the data in our data table, we need to make the following changes:
+
+-   `Ref` needs to be made into `text` so that it will appear in a data-point label.
+
+-   `Lat` and `Lon` need to be shifted to lower case.
+
+We'll make these two changes with the `dplyr::rename` function.
+
+```{r "loadbenchmarks"}
+#| label: tbl-benchmark
+#| tbl-cap: "Raw data for downtown Honolulu benchmarks."
+
+## Read in the data
+benchmarks <- read_csv(col_names = TRUE, file = 
+    "Ref,Designation,Lat,Lon,Agency,Substrate,Alt-Name,MLLW,MHW
+1, 161 2340 BM 8,    21.30519,-157.86397,USGS, Concrete bulkhead,B.M. ELV. 8.06 FEET,2.573,2.134
+2, 161 2340 TIDAL 2, 21.30553,-157.85983,HGSD, Stone pilaster base,161 2340 TIDAL 2,5.185,4.746
+3, 161 2340 TIDAL 11,21.30575,-157.86389,USCGS,Concrete foundation,NO 11 1925,1.836,1.397
+4, 161 2340 TIDAL 12,21.30631,-157.86036,USCGS,Concrete floor,NO 12 1925,3.992,3.552
+5, 161 2340 TIDAL 13,21.30569,-157.85792,USCGS,Concrete floor,NO 13 1925,6.064,5.625
+6, 161 2340 TIDAL 14,21.30681,-157.85903,USCGS,Concrete balustrade,NO 14 1925,5.495,5.055
+7, NO 20 1960,       21.30333,-157.86467,USCGS,Concrete pier,NO 20 1960,1.892,1.453
+8, NO 21 1964,       21.30383,-157.86367,USCGS,Concrete bulkhead,NO 21 1964,2.293,1.853
+9, GSL 2340 1987,    21.30392,-157.86289,NGS,  Concrete pier,GSL 2340 1987,1.872,1.433
+10,2340 A 1983,      21.30458,-157.86342,NOS,  Stainless steel rod,2340 A 1983,1.962,1.522
+11,2340 B 1983,      21.30670,-157.86700,NOS,  Concrete foundation,2340 B 1983,2.706,2.267
+12,2340 C 1983,      21.30542,-157.86061,NOS,  Stainless steel rod,2340 C 1983,2.979,2.539
+13,161 2340 GPS Bolt,21.30333,-157.86453,HSLC, Metal mast,161 2340 GPS Bolt,5.297,4.858") 
+
+## Show the data table
+benchmarks %>% 
+  gt() %>% 
+  fmt_number(columns = c(Lat,Lon), decimals = 5) %>% 
+  tab_style(style = cell_text(v_align = "top"),
+            locations = cells_body()) %>% 
+  tab_source_note(source_note = "Data: https://tidesandcurrents.noaa.gov/benchmarks.html?id=1612340")
+
+## Substitute the column names & shift all to lowercase
+benchmarks2 <- benchmarks %>% 
+  dplyr::rename(text = Ref) %>% 
+  dplyr::rename_with(tolower)
+
+```
+## Step 2: Build the Basemap
+
+We need a basemap that covers the area with the data locations. The site_google_basemap uses the coordinate information (lat, lon) in the data table to center the basemap and to scale it to the correct size.
+
+Getting the basemap is the next step. Usually, you don't need to look at this map. But we'll show it here as Figure @fig-basemap.
+
+```{r "basemap"}
+#| label: fig-basemap
+#| fig-cap: "Benchmarks in Downtown Honolulu."
+
+## Adjust a style column value
+column$margin <- 0.1
+
+## Generate a basemap
+basemap <- site_google_basemap(datatable = benchmarks2)
+
+```
+## Step 3: Overlaying Points and Labels
+
+The final step is to place point markers at each of the benchmark locations. We also want to label each point with a label so we can tie the location back to the data table.
+
+The result is shown in Figure @fig-benchmark.
+
+```{r "benchmap"}
+#| label: fig-benchmap
+#| fig-cap: "Benchmarks in Downtown Honolulu."
+
+## Show the map (with points & labels)
+ggmap(basemap) +
+  site_points(datatable = benchmarks2) +
+  site_labels(datatable = benchmarks2) +
+  simple_black_box
+
+```
+
+At this point, you should have confidence that the system is producing maps.
+
+In terms of workflow, note that there was some data wrangling needed to get the column names correct. A style parameter also needed to be modified. But after that, getting a basemap and an overlay with points and labels was quite straightforward. So the more complex part had to do with getting the data table configured. Producing the map was almost cut-and-paste.
+
+But there was that one parameter change. That was important. In a moment, we'll look more closely at how the basic map parameters work. First, we need to see an example of more complex map symbolism.
+
+## In Summary
+
+Consider that the table gives you the details. The map shows not only the geographic locations, but you can also see relationships inherent in the data. Maps and tables fit together well, each bringing a complementary strength to the relationship.
+
+Maps can be simple or complex. Manipulation of the symbolism features involves adding columns to the data table. Most of the effort is in getting the data in order.
+
+## A Bit More About R Packages
+
+There are quite a few R packages that are useful, sometimes essential, for the map-making process. These are shown in Table @tbl-extralib.
+
+These packages will be highlighted in the descriptions of the `sitemaps` functions that require their use.
+
+```{r "extralib"}
+#| label: tbl-extralib
+#| tbl-cap: "Additional R packages used with sitemaps."
+
+morelibs <- read_csv(column_headers = TRUE, file =
+  "Package, Use
+   geosphere, Distance and direction calculations
+   sp, Spatial point data structure conversion and processing
+   parzer, Convert HMS to digital coordinates
+   jsonlite, Process files using the JSON format
+   httr, Allow API calls")
+
+gt(morelibs)
+
+```

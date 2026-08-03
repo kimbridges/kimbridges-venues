@@ -1,0 +1,27 @@
+---
+title: "Following"
+---
+
+A curated collection of people, tools, topics, and resources of current interest. Updated periodically as interests evolve.
+
+*Virtually all of the following links are pay walled.*
+
+## Substack
+
+* [Heather Cox Richardson](https://substack.com/@heathercoxrichardson?): Letters from an American
+
+* [Nate B. Jones](https://substack.com/@natesnewsletter)
+
+* [Paul Krugman](https://substack.com/@paulkrugman?)
+
+## News & Newsletters
+
+* [The New York Times](https://www.nytimes.com/)
+
+* [The New Yorker](https://newyorker.com/)
+
+* [Flowing Data](https://flowingdata.com/)
+
+## Websites
+
+* [Society for Ethnobotany](https://ethnobotany.org/)

@@ -1,0 +1,387 @@
+# Complex Interactions
+
+## Exam Creation & Grading
+
+The first part deals with creating the exam. In this case, exam questions are "fill in the blank" sentences. The second part uses the exam that was created and grades an answer sheet in which the answers have been written by hand. This required an intermediate step of printing the exam, filling it in and scanning the completed exam.
+
+***Part 1: Creating a Fill-in-the-blank Exam***
+
+**User**
+
+Create a test consisting of five fill in the blank questions on the topic of \"The History of Evolutionary Thought\".
+
+**Run instructions‍**
+
+You are a university professor who teaches biology classes. You like to give exams where a student must answer questions by filling in a missing blank in a sentence. The answers should always be a single word.
+
+> **Fill In Blank**
+>
+> Certainly! Here are five fill-in-the-blank questions focusing on the history of evolutionary thought:
+
+1.  \_\_\_\_\_\_\_\_\_\_ was a naturalist who developed the theory of natural selection independently of Charles Darwin. (Answer: Alfred Russel Wallace)
+
+2.  The book \"On the Origin of Species,\" which outlines the theory of evolution by natural selection, was published by Charles Darwin in the year \_\_\_\_\_\_\_\_\_\_. (Answer: 1859)
+
+3.  Prior to Darwin, the theory of \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_, proposed by Jean-Baptiste Lamarck, suggested that organisms could pass on traits acquired during their lifetime to their offspring. (Answer: inheritance of acquired characteristics or Lamarckism)
+
+4.  \_\_\_\_\_\_\_\_\_\_ is known for his concept of catastrophism, which influenced early thoughts on the Earth\'s geological history before the idea of uniformitarianism took a stronger hold. (Answer: Georges Cuvier)
+
+5.  The ancient Greek philosopher \_\_\_\_\_\_\_\_\_\_ proposed an early version of evolutionary thought, suggesting that life formed from non-living matter and that complex forms of life evolved from simpler forms. (Answer: Anaximander)
+
+***Part 2: Grading the Exam***
+
+As described earlier, the intention was to print the exam, fill in the answers, and scan the exam with OCR. Unfortunately, the OCR couldn't be done with this version of ChatGPT. Adobe Acrobat, which does OCR, couldn't handle the cursive script answers. Rather than stopping, the answers were typed and a text document was produced. This document was submitted for grading.
+
+***Note that no answers were provided for the grading process. ChatGPT was required to determine the correct answer. Also, the "missing" term is not identified in the answers.***
+
+**User**
+
+The following text is the result of a scan and OCR of a student\'s test. Please grade the answers. Here is the text to use: \"\"\"Exam 1: History of Evolutionary Thought
+
+- Wallace was a naturalist who developed the theory of natural selection independently of Charles Darwin.
+
+  The book \"On the Origin of Species,\" which outlines the theory of evolution by natural selection, was published by Charles Darwin in the year 1859
+
+  Prior to Darwin, the theory of inher. of acquired char. proposed by Jean-Baptiste Lamarck, suggested that organisms could pass on traits acquired during their lifetime to their offspring.
+
+  Cuvier is known for his concept of catastrophism, which influenced early thoughts on the Earth\'s geological history before the idea of uniformitarianism took a stronger hold.
+
+  The ancient Greek philosopher Plato proposed an early version of evolutionary thought, suggesting that life formed from non-living matter and that complex forms of life evolved from simpler forms.\"\"\"
+
+**Run instructions‍**
+
+You are a teaching assistant at a university. Your job requires you to grade exams for \"The History of Evolutionary Thought\" course. Exams are the \"fill in the blank\" type. Usually, a single word is sufficient for a correct answer. Your task requires you to mark each question and, when possible, comment on wrong answers in a way that it might help the student learn the subject.
+
+> **Exam Grader**
+>
+> Exam 1: History of Evolutionary Thought
+
+1.  Wallace was a naturalist who developed the theory of natural selection independently of Charles Darwin.
+
+    - Correct.
+
+2.  The book \"On the Origin of Species,\" which outlines the theory of evolution by natural selection, was published by Charles Darwin in the year 1859.
+
+    - Correct.
+
+3.  Prior to Darwin, the theory of inher. of acquired char. proposed by Jean-Baptiste Lamarck, suggested that organisms could pass on traits acquired during their lifetime to their offspring.
+
+    - Correct.
+
+4.  Cuvier is known for his concept of catastrophism, which influenced early thoughts on the Earth\'s geological history before the idea of uniformitarianism took a stronger hold.
+
+    - Correct.
+
+5.  The ancient Greek philosopher Plato proposed an early version of evolutionary thought, suggesting that life formed from non-living matter and that complex forms of life evolved from simpler forms.
+
+    - Incorrect. Plato actually proposed a concept called the \"Theory of Forms,\" suggesting that non-material abstract forms (or ideas) were the truest reality. He didn\'t advocate an evolutionary process where life formed from non-living matter or that complex forms of life evolved from simpler forms. Instead, it was another ancient Greek philosopher, Anaximander, who might be credited with early evolutionary thought along those lines. Please revisit this topic to better understand the distinctions between the ideas of various ancient philosophers regarding the origins and development of life.
+
+***Part 3: Reexamining OCR***
+
+The filled-in exam is shown on the following page. The answers provided for several tests:
+
+- Will the OCR incorporate the written answer into the text?
+
+- Will cursive writing be recognized?
+
+- Will the number answer be recognized as a proper number?
+
+- Will abbreviations be recognized properly?
+
+![](images/image5.png){width="6.5in" height="5.777777777777778in"}
+
+The OCR of this document used ChatGPT 4. The result is the following text:
+
+Exam 1: History of Evolutionary Thought
+
+- Wallace was a naturalist who developed the theory of natural selection independently of Charles Darwin.
+
+  The book \"On the Origin of Species,\" which outlines the theory of evolution by natural selection, was published by Charles Darwin in the year 1859.
+
+  Prior to Darwin, the theory of when. of acquired char, proposed by Jean-Baptiste Lamarck, suggested that organisms could pass on traits acquired during their lifetime to their offspring.
+
+  Cuvier is known for his concept of catastrophism, which influenced early thoughts on the Earth\'s geological history before the idea of uniformitarianism took a stronger hold.
+
+  The ancient Greek philosopher Plato proposed an early version of evolutionary thought, suggesting that life formed from non-living matter and that complex forms of life evolved from simpler forms.
+
+The only flaw was the abbreviated text (see line starting "Prior to Darwin"). If you look at the exam sheet (previous page), you'll see that the writing overlapped words on the lower line (suggested that) but these were properly recovered in the OCR.
+
+This is quite promising as the format of the OCR result matches the one used for grading. There might be a way to do the OCR from the version of ChatGPT which uses the Assistant. That's another situation to be examined and, possibly, resolved.
+
+## Essay Exams
+
+The goal here is to determine if ChatGPT can grade exam questions that are long written answers (often called "essay exam questions").
+
+Here is the stepwise approach:
+
+1.  An exam question is asked to determine the quality and comprehensiveness of GPT's answer.
+
+2.  The ChatGPT response is examined to make sure it is OK.
+
+3.  If it is OK, ChatGPT is asked to create a grading rubric.
+
+4.  The grading rubric is entered into a ChatGPT Assistant profile so it will be used in the exam grading.
+
+5.  The original exam question is slightly adjusted to better match the ChatGPT answers and rubric and a simulated student response is created and submitted to ChatGPT for grading.
+
+***Step 1: The exam question.***
+
+What is the evidence for the cause of the extinctions about 65 million years ago?
+
+***Step 2: ChatGPT's answer***
+
+> The cause of the mass extinctions around 65 million years ago, marking the end of the Cretaceous period and leading to the demise of the dinosaurs, is a well-studied topic in paleontology and geology. The prevailing evidence supports the hypothesis that a catastrophic asteroid impact, along with subsequent volcanic activity, played a significant role. Here are the key points of evidence:
+>
+> **Chicxulub Crater:** A massive crater in the Yucatán Peninsula, Mexico, known as the Chicxulub Crater, is a primary piece of evidence. It is dated to around the same time as the extinction event. The crater, measuring about 150 kilometers in diameter, is consistent with an asteroid or comet impact.
+>
+> **Iridium Layer:** A global layer of sediment rich in the element iridium, which is rare on Earth\'s surface but common in asteroids, was discovered in geological strata dating to the boundary of the Cretaceous-Paleogene (K-Pg) periods. This layer suggests a massive influx of extraterrestrial material.
+>
+> **Shocked Quartz and Spherules:** Unique forms of quartz that are formed under high-pressure conditions, as well as tiny spherules of rock that would have been ejected into the atmosphere by the impact, have been found in the same boundary layer. These are indicative of a large impact event.
+>
+> **Global Fires and Soot:** Evidence of widespread fires, including soot and charred plant remains in the K-Pg boundary layer, suggests that the impact would have ignited fires around the globe, contributing to the extinction through habitat destruction and atmospheric changes.
+>
+> **Climate Change:** The impact would have thrown massive amounts of dust and aerosols into the atmosphere, leading to a \"nuclear winter\" effect with drastically reduced sunlight. This would have disrupted photosynthesis and led to a collapse of food chains.
+>
+> **Deccan Traps Volcanism:** In addition to the asteroid impact, there\'s evidence of significant volcanic activity in what is now India (the Deccan Traps) around the same time. This would have contributed to the environmental stress through volcanic gases affecting the climate and acidifying oceans.
+>
+> **Fossil Record:** The fossil record shows a sharp decline in biodiversity at the K-Pg boundary, consistent with a rapid, catastrophic event rather than a slow decline over time.
+>
+> These pieces of evidence collectively support the theory that the asteroid impact, possibly compounded by volcanic activity, led to a rapid and dramatic change in the Earth\'s environment, causing the mass extinction event at the end of the Cretaceous period. This theory is widely accepted in the scientific community, although research continues to refine the understanding of the event\'s specific dynamics and consequences.
+
+***Step 3: Create a grading rubric***
+
+This is not shown here. Instead, it is shown in the next step with the creation of the instructions for a ChatGPT Assistant.
+
+***Step 4: Entering the grading rubric into a ChatGPT Assistant***
+
+This was done with a few small additions (e.g., how to report the results). The resulting rubric is shown in the **Run instructions**.
+
+***Step 5: The student answer and the grading***
+
+**User**
+
+The following text is to be graded: \"\"\" The Cretaceous-Paleogene Extinction Event, occurring approximately 65 million years ago, is most famously known for the extinction of the dinosaurs. However, this event also led to the demise of numerous other species, including various marine animals and plants.
+
+The primary evidence supporting the asteroid impact hypothesis is the global iridium layer found in geological strata. This element is rare on Earth but abundant in asteroids, suggesting an extraterrestrial origin. The Chicxulub crater in Mexico is widely accepted as the impact site. The consequences of this impact likely included the ejection of massive amounts of dust and debris into the atmosphere, significantly reducing sunlight penetration and causing drastic climatic changes, akin to a \"nuclear winter.\"
+
+Volcanic activity also played a role in this extinction event. The Deccan Traps in India experienced extensive volcanic eruptions, releasing large quantities of gases and particulates into the atmosphere. These emissions would have contributed to the blocking of sunlight and further climatic alterations.
+
+Another aspect of this event is ocean acidification, potentially exacerbated by the impact and volcanic activities. The introduction of sulfuric acid and other substances into the oceans would have had deleterious effects on marine life, particularly organisms with calcium carbonate shells.
+
+In summary, the Cretaceous-Paleogene Extinction Event resulted in widespread extinctions and ecosystem changes. The primary mechanisms for these alterations appear to be the combined effects of an asteroid impact and significant volcanic activity, leading to climate change and ocean acidification. However, it is essential to note that other factors might have also contributed to this event.\"\"\"
+
+**Run instructions**
+
+‍You are a teaching assistant who grades written exam questions for the Biology Department at a research university. Your specific responsibility is the exams for the Evolution course.
+
+You use a grading rubric to determine how many points a student earns for each question.
+
+\### Grading Rubric for the question \"Provide the major results, evidence and mechanisms for the Cretaceous-Paleogene Extinction Event\".
+
+\*\*Total Points: 100\*\*
+
+1\. \*\*Identification of the Event (20 points)\*\*
+
+\- Correctly identifies the time period of the event (5 points)
+
+\- States that it marked the end of the dinosaurs (5 points)
+
+\- Describes it as a mass extinction event (10 points)
+
+2\. \*\*Asteroid Impact Evidence (20 points)\*\*
+
+\- Mentions the Chicxulub Crater (5 points)
+
+\- Describes the presence of an iridium layer (5 points)
+
+\- Recognizes shocked quartz and spherules as evidence (5 points)
+
+\- Discusses evidence of global fires and soot (5 points)
+
+3\. \*\*Volcanic Activity (15 points)\*\*
+
+\- References the Deccan Traps volcanism (5 points)
+
+\- Explains how volcanic activity could have contributed to the extinction (10 points)
+
+4\. \*\*Environmental and Climatic Consequences (20 points)\*\*
+
+\- Describes the \"nuclear winter\" effect (5 points)
+
+\- Explains the impact on photosynthesis and food chains (5 points)
+
+\- Discusses potential climate and atmospheric changes (10 points)
+
+5\. \*\*Fossil Record Analysis (15 points)\*\*
+
+\- References the fossil record showing a decline in biodiversity (5 points)
+
+\- Explains how the fossil record supports the rapid extinction theory (10 points)
+
+6\. \*\*Clarity and Coherence of Response (10 points)\*\*
+
+\- Answers are well-organized and coherent (5 points)
+
+\- Use of appropriate scientific terminology (5 points)
+
+7\. \*\*Bonus Points (up to 5 extra points)\*\*
+
+\- Demonstrates critical thinking or includes additional relevant information (e.g., discussing ongoing research or alternative theories)
+
+\*\*Scoring Guidelines:\*\*
+
+\- Full points are awarded for complete and accurate answers.
+
+\- Partial points are given for incomplete but partially correct answers.
+
+\- Points are deducted for inaccuracies or irrelevant information.
+
+\- Bonus points are awarded at the discretion of the grader for exceptional work.
+
+\*\*Score Reporting Format:\*\*
+
+\- List the number of points for each of the 7 parts of the rubric.
+
+\- Sum the scores for the 7 parts to get the Total Score.
+
+> **Written Exam Grader**
+>
+> Score Breakdown:
+
+- Identification of the Event (20 points)
+
+  - Correctly identifies the time period of the event: 5 points
+
+    States that it marked the end of the dinosaurs: 5 points
+
+    Describes it as a mass extinction event: 10 points
+
+  Asteroid Impact Evidence (20 points)
+
+  - Mentions the Chicxulub Crater: 5 points
+
+    Describes the presence of an iridium layer: 5 points
+
+    Recognizes shocked quartz and spherules as evidence: 0 points (not mentioned)
+
+    Discusses evidence of global fires and soot: 0 points (not mentioned)
+
+  Volcanic Activity (15 points)
+
+  - References the Deccan Traps volcanism: 5 points
+
+    Explains how volcanic activity could have contributed to the extinction: 10 points
+
+  Environmental and Climatic Consequences (20 points)
+
+  - Describes the \"nuclear winter\" effect: 5 points
+
+    Explains the impact on photosynthesis and food chains: 0 points (not explicitly mentioned)
+
+    Discusses potential climate and atmospheric changes: 10 points (discussed as \"drastic climatic changes\")
+
+  Fossil Record Analysis (15 points)
+
+  - References the fossil record showing a decline in biodiversity: 0 points (fossil record not mentioned)
+
+    Explains how the fossil record supports the rapid extinction theory: 0 points (no explanation provided)
+
+  Clarity and Coherence of Response (10 points)
+
+  - Answers are well-organized and coherent: 5 points
+
+    Use of appropriate scientific terminology: 5 points
+
+  Bonus Points (up to 5 extra points)
+
+  - Discusses ocean acidification, which is a relevant additional aspect: 3 points (critical thinking, additional relevant information)
+
+> Total Score:
+
+- Identification of the Event: 20 points
+
+  Asteroid Impact Evidence: 10 points
+
+  Volcanic Activity: 15 points
+
+  Environmental and Climatic Consequences: 15 points
+
+  Fossil Record Analysis: 0 points
+
+  Clarity and Coherence of Response: 10 points
+
+  Bonus Points: 3 points
+
+> Total Score: 73/100
+
+## Testing Comprehension
+
+University students in small classes are often given a reading assignment. In class, the instructor asks specific questions to determine if the students understand (and remember) the main points of the assignment. This ChatGPT test is used to create the questions that might be asked in class.
+
+**User**
+
+Create a list of questions to test a student\'s comprehension of the following text: \"\"\"The Ethnobiologist\'s Dilemma
+
+How do we open the pages of walking encyclopedias, be they New Guinea tribesmen or car mechanics?
+
+\"Listen, I already told you. The reason I said your VW didn\'t start was its solenoid was no good. Like I said, what the solenoid does is \.... OK, forget it, you don\'t need to understand it. All you have to know is I fixed it and you owe me \$203.67 and you can drive it again.\"
+
+My car mechanic must have seen my eyes glaze over, just as I had seen my physiology students\' eyes glaze over when I tried to explain osmotic diuresis to them in my lecture that same morning last month. It\'s humiliating to feel like an ignoramus, as I do about cars. At least I feel OK in my own areas of scientific expertise. So do most other scientists in their specialty: scientists are generally the experts who know more about their subject matter than do any other people. But there\'s one science in which this usual directional flow of information is often stood on its head. That\'s the branch of cultural anthropology termed ethnobiology \-- the study of how people from different cultures perceive and classify animals and plants.
+
+In my column in the April 1989 issue I described how many New Guinea tribesmen are walking encyclopedias of facts about locally occurring species. This month\'s piece is about the cruel dilemma that arises when these walking encyclopedias are quizzed by an ethnobiologist, or even by a professional ornithologist na\'ive about New Guinea birds, as I was when I began working in New Guinea twenty-five years ago. I\'ll mainly discuss birds, but similar issues arise with classifications of other species. I eventually realized that the ethnobiologist\'s dilemma illustrates the frustrations that all of us face in everyday life, whenever we have to quiz experts like our doctor or car mechanic.
+
+***\[Most of the text has been removed. You can find it in Jared Diamond's* The Ethnobotanist's Dilemma, *Natural History, June 1989.\]***
+
+For instance, the starter on my 1961 VW Beetle broke down not just last month but many times before that. One mechanic after another fixed it but would not explain the problem and how I could avoid it. The mechanics undoubtedly saw that I am as ignorant about cars as Ralph Bulmer was about rocks, and that I could not understand their explanation. The bad service that I continue to get is my own fault for not practicing what I preach to ethnobiologists: I never took the trouble to study a VW manual. Similarly, consumer advocates are now urging us that if we want to get good care from our doctors, we have to be willing to spend some time reading up on our own health problems.
+
+Thus, I see the ethnobiologist\'s dilemma as a metaphor for much of modern life. To them that already understand, more knowledge will be freely given. To the rest of us dolts, it\'s a struggle.\"\"\"
+
+**Run instructions**‍
+
+Your role is to create questions that test a student\'s comprehension of a body of text. These are university students so they are expected to find and interpret the finer points of the text. You limit yourself to providing five questions that cover the general breadth of the text. You are not looking for facts as much as an understanding of the general lessons put forward in the text.
+
+> **Comprehension Tester**
+
+1.  Based on the text, can you explain the \"ethnobiologist\'s dilemma\" and why it is named as such?
+
+2.  How does the author contrast the experiences of ethnobiologists with those of other scientists?
+
+3.  In what ways do the methods of collecting bird names in ethnobiological research reflect broader challenges faced by people when trying to understand expert knowledge in other areas of life?
+
+4.  What specific examples from the text demonstrate the difficulties in relying solely on bird pictures or specimens for gathering accurate ethnobiological information?
+
+5.  Discuss how the author\'s personal encounters with New Guinea tribesmen influenced his approach to ethnobiology and the conclusions he draws about effective communication with experts in any field.
+
+**User**
+
+Can you create a grading rubric for the third question? It should have a total of ten points.
+
+> **Comprehension Tester**
+>
+> Grading Rubric for Question 3: \"In what ways do the methods of collecting bird names in ethnobiological research reflect broader challenges faced by people when trying to understand expert knowledge in other areas of life?\"
+
+- **Full Understanding** (9-10 points): The student thoroughly explains how the challenges of ethnobiological methods, such as using pictures, specimens, or walking through the jungle, parallel issues encountered outside of ethnobiology, such as grasping complex information from experts like doctors or mechanics. They should mention the importance of context, the limitations of one\'s own understanding when posing questions, and the need for the inquirer to have some foundational knowledge to facilitate effective communication.
+
+  **Good Understanding** (7-8 points): The student provides a clear explanation of the parallels between ethnobiological research methods and general expert communication challenges. They should describe some specific issues such as the difficulty of interpreting information out of context or the need for common language or knowledge base, but may not comprehensively cover all aspects of the broader implications.
+
+  **Moderate Understanding** (5-6 points): The student makes general connections between ethnobiological research methods and difficulties in understanding expert knowledge in other fields. They identify at least one or two key factors such as context or foundational knowledge but fail to elaborate on how these factors interplay or do not cover the breadth of the challenges mentioned in the text.
+
+  **Limited Understanding** (3-4 points): The student shows a basic recognition that there are parallels but provides a vague or incomplete connection between ethnobiological research methods and broader communication challenges. Discussion lacks depth or specific references to situations outside ethnobiology.
+
+  **Minimal Understanding** (1-2 points): The student struggles to identify or articulate how ethnobiological research methods are indicative of broader challenges in understanding expert knowledge. The response may be off-topic, overly generalized, or missing a meaningful connection to the main point of the question.
+
+  **No Understanding** (0 points): The student does not address the question or the response is entirely unrelated to the content or intent of the question. There is no mention or understanding of the ethnobiological methods or how they reflect general expert communication challenges.
+
+**User**
+
+Please use this grading rubric for the following student answer: \"\"\"People who collect bird names need to have an expert who can reliably do identification. The challenge in this and other fields is that there aren\'t very many experts who can help. Native people use different names than us. That\'s the same problem when you talk to other people who tell you things in technical languages. Auto mechanics have their own language, for example. Before you can understand anything you need to become an expert yourself.\"\"\"
+
+> **Comprehension Tester**
+>
+> Using the provided grading rubric, the student\'s answer would be evaluated as follows:
+
+- The student touches on the need for expertise in identification (paralleling the need for foundational knowledge), which relates to the broader concept of understanding expert communication. However, the student\'s answer lacks depth and does not fully explain the complexities, such as the importance of context, specific methods like using pictures and specimens, and how these challenges manifest in other areas of life beyond expert terminology.
+
+  The answer acknowledges the language barrier issue but does not expand on the connection between ethnobiology and communication with non-experts outside of this field.
+
+> Based on the rubric, this response would fall under \"Limited Understanding\" with a score of 3-4 points. The student has a basic recognition of the parallels (expert identification and technical language) but provides an incomplete connection without addressing other key elements such as context or the broader communication challenges detailed in the text.

@@ -1,0 +1,121 @@
+# Trip Log
+
+Purpose
+
+Make a log of the photos taken using an Android phone. This log can be used in several ways.
+
+Show the route taken on a map.
+
+Add location information to other photos taken at about the same time.
+
+Analyze the route based on the positions along the route.
+
+```{r}
+#| label: Initialize
+#| message: false
+#| echo:    false
+#| warning: false
+
+library(exifr)
+library(dplyr)
+library(xml2)
+
+# --- Configuration ---
+folder_path <- "Kyoto_1" # **CHANGE THIS to your actual folder path**
+output_gpx_file <- "photo_track.gpx" # Name of your output GPX file
+
+# --- 1. Extract EXIF Data ---
+cat("Extracting EXIF data from photos...\n")
+
+# Get a list of all image files (adjust patterns if you have other formats like .png)
+image_files <- list.files(
+  path = folder_path,
+  pattern = "\\.jpg$|\\.jpeg$|\\.heic$", # Common image extensions
+  full.names = TRUE,
+  recursive = TRUE # Set to TRUE if you have subfolders
+)
+
+if (length(image_files) == 0) {
+  stop("No image files found in the specified folder. Please check the 'folder_path' and 'pattern'.")
+}
+
+# Read EXIF data. We specifically want GPS and time information.
+# Common tags: GPSLatitude, GPSLongitude, GPSAltitude, DateTimeOriginal, CreateDate
+# Google Photos often stores location data in GPSLatitude/Longitude.
+# DateTimeOriginal is usually the shot time.
+exif_data <- read_exif(
+  path = image_files,
+  tags = c("SourceFile", "DateTimeOriginal", "GPSLatitude", "GPSLongitude", "GPSAltitude"),
+  quiet = TRUE # Set to FALSE for more verbose output from ExifTool
+)
+
+cat("EXIF data extraction complete. Found data for", nrow(exif_data), "images.\n")
+
+# --- 2. Process and Clean Data ---
+
+# Filter out rows that don't have essential GPS data
+gps_data <- exif_data %>%
+  filter(!is.na(GPSLatitude) & !is.na(GPSLongitude)) %>%
+  # Handle different time tags if DateTimeOriginal is missing
+  mutate(time = coalesce(DateTimeOriginal)) %>%
+  filter(!is.na(time)) %>%
+  # Convert time to POSIXct for proper sorting and GPX format
+  mutate(time = as.POSIXct(time, format = "%Y:%m:%d %H:%M:%S", tz = "UTC")) %>%
+  # Sort by time to create a chronological track
+  arrange(time) %>%
+  # Select only the columns needed for GPX
+  select(time, GPSLatitude, GPSLongitude, GPSAltitude)
+
+if (nrow(gps_data) == 0) {
+  stop("No photos with valid GPS and time data found. Cannot create a GPX track.")
+}
+
+cat("Found", nrow(gps_data), "photos with valid GPS and time data.\n")
+
+# --- 3. Create GPX XML Structure ---
+
+cat("Creating GPX file...\n")
+
+# Start building the GPX XML structure
+gpx_root <- xml_new_root("gpx",
+                         version = "1.1",
+                         creator = "R-Photo-to-GPX-Converter",
+                         namespaces = c(
+                           gpx = "http://www.topografix.com/GPX/1/1",
+                           xsi = "http://www.w3.org/2001/XMLSchema-instance",
+                           "xsi:schemaLocation" = "http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd"
+                         ))
+
+# Add a track element
+track_node <- xml_add_child(gpx_root, "trk")
+xml_add_child(track_node, "name", "Google Photos Track")
+xml_add_child(track_node, "desc", "GPS track generated from Google Photos EXIF data")
+
+# Add a track segment
+trackseg_node <- xml_add_child(track_node, "trkseg")
+
+# Iterate through each row of the processed data and add track points
+for (i in 1:nrow(gps_data)) {
+  trkpt_node <- xml_add_child(trackseg_node, "trkpt",
+                              lat = as.character(gps_data$GPSLatitude[i]),
+                              lon = as.character(gps_data$GPSLongitude[i]))
+
+  # Add elevation if available
+  if (!is.na(gps_data$GPSAltitude[i])) {
+    xml_add_child(trkpt_node, "ele", as.character(round(gps_data$GPSAltitude[i], 2))) # Round elevation for cleaner output
+  }
+
+  # Add time in ISO 8601 format (required for GPX)
+  # Format as "YYYY-MM-DDTHH:MM:SSZ" (Z indicates UTC)
+  xml_add_child(trkpt_node, "time", format(gps_data$time[i], format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"))
+}
+
+# --- 4. Write the GPX File ---
+write_xml(gpx_root, file = output_gpx_file, options = c("format", "no_declaration")) # Use 'format' for pretty printing
+
+cat("\nGPX file '", output_gpx_file, "' created successfully!\n", sep = "")
+cat("You can now import this GPX file into mapping software or view it on a GPS device.\n")
+
+# Optional: View the first few rows of the extracted GPS data
+print(head(gps_data))
+```

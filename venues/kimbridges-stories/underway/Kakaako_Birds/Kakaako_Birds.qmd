@@ -1,0 +1,68 @@
+# Creating Stories
+
+The objective is to build illustrated stories efficiently. Some formatting is sacrificed in order to have a system that allows incremental story creation.
+
+A story is a combination of words and images. The two are closely related. Here, the relationship consists of blocks of text, where each block ordinarily is followed by one or more pictures. Each text block has a header, much as a chapter title. Each image (usually a photo) has EXIF data that matches this header. This is how images are tied to text blocks. A story is a series to text blocks and their positioned pictures.
+
+A story also has a cover and front material.
+
+This text-block and image combination provides both an automatic assembly function and a guide to how to create a story.
+
+## Setup
+
+### The Story Folder
+
+A story lives in a folder. It is best to begin a story by establishing this home location.
+
+A story is created from a set of files. It is best to understand the overall structure of where the files are created, edited and stored. At the end, an R routine (photobookr) puts all the pieces together as a PDF. The PDF is then used directly or uploaded to a website (e.g., kimbridges.info).
+
+### Create & Load Folders
+
+There are two folders that hold the pictures and story text. You need to create these folders and put the appropriate materials in them.
+
+- Images: Each of the pictures to be used goes in this folder. The name can be changed by editing the config.yaml file.
+
+- Stories: Either a set of stories as PDF files, or a single markdown file. The name of this folder can be changed by editing the config.yaml file.
+
+### Load a Cover PDF
+
+There is usually a cover for the book. This includes a cover proper, as well as an inside copyright page and a few pages for an introduction (e.g., Preface).
+
+This PDF file is in the main folder.
+
+There are several things to note.
+
+- The name of the cover PDF file is specified in the config.yaml.
+
+- The code in the config.yaml can be changed if there is no cover PDF file.
+
+- If the text is a markdown file, the cover can simply be materials at the beginning of the markdown text.
+
+### File Setup
+
+Some code must be run to setup the project. This step does three things:
+
+- Links you to the photobookr library.
+
+- Loads some needed packages. Run this if they are not already loaded.
+
+- Runs the code to add the config.yaml file to this project.
+
+```{r}
+
+## Link to the photobookr package
+library(photobookr)
+
+## If this is a new installation, run the following code
+## photobookr_setup()
+
+## Create the config.yaml file
+photobookr_example_config()
+
+```
+
+### Edit the config.yaml File
+
+There are several fields that need to be edited. These should be obvious as there are comments in this file.
+
+The config.yaml can be edited in the RStudio editor.

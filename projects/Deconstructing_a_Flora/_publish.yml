@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: eaa10721-f1e6-4713-a1ad-c51abe319409
+      url: 'https://kim.quarto.pub/deconstructing-a-flora'

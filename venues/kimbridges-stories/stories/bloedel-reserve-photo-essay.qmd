@@ -1,0 +1,13 @@
+---
+title: "Bloedel Reserve - Photo Essay"
+subtitle: "Our first visit to the Bloedel Reserve."
+date: 2019-09-19
+categories: ["Travel", "Gardens", "US"]
+image: ../images/Bloedel_visit_2015.jpg
+pdf: ../pdfs/Bloedel_visit_2015.pdf
+---
+We visited the Bloedel Reserve on Bainbridge Island near Seattle. This is a first-impressions overview of this outstanding botanical garden.
+
+Pages: 32
+
+<iframe src="../viewer.html?pdf=Bloedel_visit_2015.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

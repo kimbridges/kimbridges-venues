@@ -1,0 +1,88 @@
+# Getting the data in
+
+Every analysis has to start somewhere, and for a list it usually starts where it stalls. You have a notebook page, or a phone full of photographs, and between that and any picture of the pattern sits the dullest step of all: typing it into some form a program will accept. That step is where good intentions go to die. So it is worth getting right, and getting it right here means making it small.
+
+The trick is to enter the data the way you actually gathered it. Nobody collects a list as a neat rectangle. You move through the world one place at a time — you stand at a stall, or in a garden — and you say what is there. So that is how we will type it: one line per place, the place named first, then whatever it held, separated by commas. The lines need not be the same length, because no two places hold the same things, and that is exactly as it should be.
+
+```{r}
+#| label: setup
+#| message: false
+
+## data wrangling, tables, and dendrograms
+library(tidyverse)
+library(gt)
+library(ggdendro)
+
+## the listsr package: the list -> tree + assessment-line toolkit
+library(listsr)
+```
+
+## The ragged form
+
+Our running example is a small fish market: seven stalls, each selling its own short list of fish and shellfish. Here is the whole of it, typed exactly as you might from your photographs — one stall per line, its name first, then what it sold.
+
+```
+Stall1, Mussels, Crab, Lobster, Shrimp, Oysters, Clams
+Stall2, Clams, Mussels, Shrimp, Crab
+Stall3, Oysters, Crab, Lobster, Clams
+Stall4, Mackerel, Cod, Tuna, Snapper, Salmon
+Stall5, Snapper, Tuna, Salmon
+Stall6, Salmon, Mackerel, Tuna
+Stall7, Snapper, Clams, Shrimp, Tuna
+```
+
+Notice what this asks of you, which is almost nothing. The rows are different lengths — one stall sold six things, another only three — and you do not pad them or line them up. You do not decide in advance what the columns are. You just name a place and list what was there. It is the same shape whether the places are stalls and the things are fish, or the places are gardens and the things are vegetables, or the places are friends and the things are the books on their shelves.
+
+In R, that block of text is a single piece of data, held between quotation marks.
+
+```{r}
+#| label: data
+
+## a note on where the data came from, carried onto every table and chart
+data_source <- "Source: a fish-market toy (a designed example)."
+
+## the data, typed one stall per line
+data_rows <-
+"Stall1, Mussels, Crab, Lobster, Shrimp, Oysters, Clams
+ Stall2, Clams, Mussels, Shrimp, Crab
+ Stall3, Oysters, Crab, Lobster, Clams
+ Stall4, Mackerel, Cod, Tuna, Snapper, Salmon
+ Stall5, Snapper, Tuna, Salmon
+ Stall6, Salmon, Mackerel, Tuna
+ Stall7, Snapper, Clams, Shrimp, Tuna"
+```
+
+## Reading it in
+
+One function turns that text into a table. `read_lists()` reads the block, takes the first thing on each line as the name of the place, and lays the rest out in order, padding the short rows with blanks so the whole thing becomes a tidy rectangle.
+
+```{r}
+#| label: read
+#| tbl-cap: "The fish market, read in. Each stall is a row; the blanks are simply the stalls that sold fewer things."
+
+## read the ragged text into a table
+fish <- read_lists(data_rows)
+
+gt(fish) |>
+  sub_missing(missing_text = "") |>
+  tab_source_note(data_source)
+```
+
+The table mirrors what you typed, and that is the point: you can read it straight back against your photographs and catch a slip before it costs you anything — a stall in the wrong row, an item left off. The column names (`item1`, `item2`, …) are just positions on the line; they carry no meaning of their own, which is why a stall that sold fewer things simply has blanks at the end.
+
+## Confirming what you read
+
+The table is good for checking stalls one at a time, but awkward for one job: seeing the full cast of items, each named once. A typo hides easily in a wide table — a stray `Shrmp`, a `clams` that should be `Clams` — and it will quietly become its own separate item later. So before going on, we pull out the distinct items and sort them.
+
+```{r}
+#| label: items
+#| tbl-cap: "Every item the market sold, each listed once. Read it for typos and stray capitals before going further."
+
+## the distinct items, sorted
+gt(item_list(fish)) |>
+  tab_source_note(data_source)
+```
+
+Eleven items, alphabetical, each appearing once. If two near-duplicates showed up here — `Mussels` and `Mussel`, say — this is where you would catch them, with a one-character fix, rather than chasing a phantom cluster three chapters from now.
+
+That is the whole of data entry: a block of comma-separated lines, one reader, and two quick tables to confirm it. Nothing about it is particular to fish — markets, gardens, menus, and bookshelves all come in the same door. With the data in and checked, the next chapter takes the first quick look at what it holds.

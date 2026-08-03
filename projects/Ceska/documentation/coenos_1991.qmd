@@ -1,0 +1,33 @@
+# COENOS, 1991
+
+The two-way table came before the computer. For most of its history, sorting one was work done by hand — patient, physical work. This chapter is about the program that mechanized it, the people who designed the method behind it, and the way that program came to need rescuing. It is a short history, but it sets the stakes for everything that follows.
+
+![The long arc of one method: published by Ceska and Roemer in 1971, realised as the DOS program COENOS in 1991, its source then lost for decades while the program still ran, and rebuilt as coenosr in 2026. The spacing is to scale, so the lost stretch is as long as it truly was.](figures/coenos_timeline.svg)
+
+## The labor of the table
+
+The two-way table belongs to the Braun-Blanquet tradition of vegetation study, named for Josias Braun-Blanquet, who formalized the relevé and the tabular comparison of relevés in the early twentieth century. The approach reached the English-speaking world chiefly through Mueller-Dombois and Ellenberg's *Aims and Methods of Vegetation Ecology* (1974), still the standard reference for the technique.
+
+In that tradition, sorting a table was done with scissors and patience. A botanist would write the raw table out, then cut it into strips — one species per strip — and shuffle the strips on a desk, trying arrangements, looking for the order in which related species came together and the diagnostic blocks appeared. Relevés were reordered the same way. It could take days. The skill of it was real and hard to transmit: knowing which species to set aside, which coincidences mattered, when a block was a block. Most of that judgment lived in the hands and eyes of people who had done it many times. It was never fully written down, because for a long time there was nowhere to write it down except in prose about how to hold the scissors.
+
+## A method made mechanical
+
+The obvious thing to want was a computer that could do the shuffling. By the late 1960s, ecologists were beginning to build such programs, and one of the earliest was the work of Adolf Ceska and Hans Roemer. In 1971 they published a computer program for identifying species-relevé groups in vegetation studies — a method, as they put it, built directly on the principles of Braun-Blanquet tablework (Ceska & Roemer 1971, *Vegetatio* 23: 255–277).
+
+Their contribution was to make the hand-sorter's judgment explicit enough for a machine. The trimming of the ubiquitous and the rare; the rule for when a set of species counts as a group, stated as frequencies of occurrence inside and outside a block of relevés; the ordering of the resulting groups so the table reads as a diagonal — these were turned from tacit skill into a definite procedure. The first version ran in the way programs of that era ran, on a mainframe, fed by cards. The method was sound; the access was not. A method that takes a day on a desk and an afternoon at a card-punch is still, in practice, expert work.
+
+## The program
+
+COENOS is the descendant of that 1971 method, brought to the personal computer. Written by Ceska and Roemer and compiled in Turbo Pascal, it ran on DOS — the operating system of the ordinary 1990s office machine — with the keyboard-and-text-screen interface of its time. Where the early program was a batch job, COENOS was interactive. You could watch it work.
+
+Its sequence was the method made visible. It read a file of relevés. It set aside the species too common or too rare to be diagnostic. It formed candidate species groups by testing, for each, how concentrated its species were inside a block of relevés and how absent they were outside — the inside-and-outside frequency rule, run at three different strictnesses. It ordered the groups by reciprocal averaging, the technique that pulls a table toward its diagonal. And then it handed the result back to the user, who could grab a group on the screen, move it, and re-sort by hand — the scissors-and-desk craft preserved as a final, optional step. When you were satisfied, COENOS could save the sorted table for instant reload. Those saved files, as it turned out, would matter a great deal later.
+
+For its users, COENOS did in minutes what had taken days, and it carried the Ceska-Roemer method to anyone with a PC. For a stretch of years it was simply the tool you used to sort a Braun-Blanquet table.
+
+## A program you can run but not read
+
+And then, slowly, it became a relic. The machines it was built for were retired. The operating system moved on. The source code — the Turbo Pascal that *was* the method, the only fully explicit statement of those rules — was lost. What survived was the compiled executable, a few example datasets, and the tables the program had once produced from them.
+
+This is a peculiar kind of survival. The executable still runs, under an emulator that pretends to be a 1990s DOS machine. Feed it a dataset and it sorts the table, exactly as before. But it will not tell you how. The rules are in there, compiled into a binary, doing their work behind the screen, and there is no longer any way to read them out. The method that Ceska and Roemer made explicit in 1971, and encoded in COENOS in 1991, had gone implicit again — locked inside a program that could demonstrate it endlessly but never explain it.
+
+A method in that state is one accident away from gone. The executable could stop running on the next emulator change. The example files — and it is unlikely many copies still exist — could be deleted by someone clearing old disks, with no idea what they were. Recovering the method while the program still ran and the examples were still here to check against is the subject of the rest of this document. The next chapter is where the recovery begins: with the discovery that the program's own leftovers had been quietly holding the answer all along.

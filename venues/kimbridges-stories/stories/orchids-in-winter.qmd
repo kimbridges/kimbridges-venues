@@ -1,0 +1,13 @@
+---
+title: "Orchids in Winter"
+subtitle: "New York Botanical Garden annual orchid show."
+date: 2018-04-20
+categories: ["Gardens"]
+image: ../images/Orchids_in_Winter.jpg
+pdf: ../pdfs/Orchids_in_Winter.pdf
+---
+With a focus on the NYBG annual orchid show, this study includes a history of botanical gardens and conservatories. Orchids provide the link to Victorian era technology.
+
+Pages: 76
+
+<iframe src="../viewer.html?pdf=Orchids_in_Winter.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

@@ -1,0 +1,146 @@
+# From Structure to Classification
+
+Ordering and metrics reveal structure in Braun–Blanquet tables, but they do not, by themselves, produce classifications. Classification is a distinct analytical step: it involves deciding when patterns in a table are sufficiently coherent, stable, and interpretable to justify defining groups of species, sites, or both.
+
+This distinction is essential. Ordering makes structure visible; metrics describe aspects of that structure. Classification assigns meaning to it. Conflating these steps risks treating numerical procedures as if they automatically determine ecological categories.
+
+In the Braun–Blanquet tradition, classification was never purely mechanical. Tables were ordered, inspected, reordered, and discussed before groups were recognized. Decisions about classification reflected both table structure and ecological judgment. Modern computational tools support this process by making structure and its properties explicit, but they do not remove the need for interpretation.
+
+This chapter examines how ordering and metrics can **inform** classification decisions without dictating them. Using the canonical patterns developed earlier, we consider when classification is straightforward, when it becomes ambiguous, and when it may be inappropriate altogether. The emphasis is not on producing classifications, but on understanding the conditions under which classification is defensible.
+
+## What Classification Means in the Braun–Blanquet Context
+
+In the Braun–Blanquet tradition, classification is the process of identifying recurring ecological units—such as plant communities or site types—based on patterns observed in vegetation tables. These units are not defined solely by numerical similarity, but by a combination of structural coherence and ecological interpretation.
+
+Historically, classification emerged through careful table work. Species and sites were ordered to reveal structure, and groups were recognized when patterns appeared consistent and meaningful. This process was iterative and interpretive. Importantly, classification was not assumed to be an automatic outcome of ordering; it was a decision made after structure had been examined and discussed.
+
+Modern computational approaches change how tables are ordered and summarized, but they do not change the underlying logic of classification. Ordering algorithms and structural metrics can make patterns more explicit and reproducible, but they do not determine where boundaries *ought* to be drawn. Classification remains an interpretive step, informed by structure but guided by ecological reasoning.
+
+It is therefore useful to distinguish clearly between **revealing structure** and **defining groups**. A table may show strong structure without supporting a clear classification, as in the case of continuous gradients. Conversely, a table with moderate structure may still support classification if patterns are stable and ecologically interpretable.
+
+In the sections that follow, classification is treated as a decision that builds on ordering and metrics. The emphasis is on understanding when classification is well supported, when it is ambiguous, and when it should be avoided.
+
+## Classification When Blocks Are Clear
+
+Classification is most straightforward when block structure is strong and unambiguous. In such cases, ordering reveals well-defined regions of the table in which species and sites are tightly associated, boundaries are relatively sharp, and structural metrics support the visual impression.
+
+Clean block-structured tables illustrate this situation. After ordering, species associated with the same group of sites appear together, and sites belonging to the same block form contiguous columns. Contrast and concentration are typically high, indicating strong separation and localization of values. Robustness is also high: different reasonable orderings tend to produce similar views of the table.
+
+Under these conditions, classification is supported by multiple lines of evidence. The table structure is visually clear, quantitative summaries are consistent, and alternative orderings do not substantially alter the interpretation. Defining groups of sites or species in such tables is therefore relatively low-risk.
+
+Even in these favorable cases, however, classification is not purely mechanical. Decisions about where to place boundaries—such as whether to split a block into subgroups or to treat marginal species as members—still require judgment. Structural metrics can indicate that separation is strong, but they do not specify how finely groups should be divided.
+
+It is also important to recognize that clean blocks often arise under conditions of uneven sampling or strong ecological separation. As discussed earlier, frequency-based ordering methods tend to perform well in such situations precisely because marginal differences align with structural differences. This reinforces, rather than diminishes, the need to interpret classifications in light of how the data were collected.
+
+In practice, when block structure is clear, classification can proceed with confidence, provided that the assumptions underlying the ordering and metrics are understood. These cases represent the idealized end of the spectrum against which more complex situations can be compared.
+
+## Classification with Overlap and Noise
+
+When sites overlap or background noise is present, classification becomes more difficult. Ordering may still reveal recognizable structure, but boundaries are less clear, and the evidence supporting any particular grouping is weaker than in the clean block case.
+
+In tables with overlapping sites, some sites express substantial characteristics of more than one block. These sites often appear between core regions after ordering, and their placement may shift depending on the ordering method used. Structural metrics typically reflect this ambiguity: contrast and concentration are reduced, and robustness declines as different orderings emphasize different aspects of the table.
+
+Under these conditions, classification should be approached cautiously. Assigning overlapping sites to a single group may oversimplify the structure, while creating additional groups to accommodate them may introduce artificial distinctions. In practice, such sites are often best interpreted as **transitional**, rather than as clear members of any one class.
+
+Background noise further complicates classification. Low-level presence scattered throughout the table reduces concentration and blurs boundaries, even when block structure remains visible. Species that occur sporadically outside their primary region may weaken the apparent separation between groups without fundamentally altering ecological relationships. Metrics help make this effect explicit, but they do not resolve it.
+
+In both cases—overlap and noise—classification remains possible, but it is less definitive. Groups may be identified, but their boundaries should be regarded as provisional, and membership may be partial or context-dependent. Importantly, different reasonable orderings may support slightly different classifications, underscoring the need to treat classification as a judgment informed by structure rather than as a mechanical outcome.
+
+These situations are common in real datasets. Transitional habitats, ecotones, disturbance gradients, and heterogeneous sampling all produce tables where overlap and noise are unavoidable. Recognizing these conditions, and adjusting classification expectations accordingly, is an essential part of responsible analysis.
+
+## When Classification May Be Inappropriate
+
+Not all Braun–Blanquet tables support meaningful classification. In particular, tables dominated by continuous structure—such as strong environmental gradients—may resist partitioning into discrete groups altogether.
+
+In gradient-dominated tables, ordering reveals smooth transitions rather than well-defined blocks. Species replace one another gradually, and sites differ along a continuum rather than forming separable units. Structural metrics often reflect this pattern: contrast may be moderate, concentration tends to be low, and robustness varies depending on whether ordering methods are aligned with the underlying gradient.
+
+In such cases, attempting to impose discrete classes can be misleading. Artificial boundaries may divide what is ecologically continuous, creating groups that reflect analytical convenience rather than natural organization. Different reasonable orderings may suggest different partitions, none of which are strongly supported.
+
+This does not mean that gradient tables lack structure. On the contrary, gradients often represent some of the most ecologically meaningful patterns in vegetation data. However, their structure is better described in terms of direction, rate of change, and species turnover than in terms of membership in discrete groups.
+
+Recognizing when classification is inappropriate is therefore an important analytical outcome. Choosing *not* to classify a table can be a defensible and informative decision, particularly when structure is continuous and boundaries are weak or unstable.
+
+This perspective aligns with the broader theme of this book: methods should be matched to structure, not the other way around. Classification is one possible response to structure, but it is not an obligation.
+
+## What Classification Looks Like in Practice
+
+Up to this point, classification has been discussed as a decision informed by table structure, ordering behavior, and structural metrics. It is now useful to show how such a decision is expressed in practice within the Braun–Blanquet framework.
+
+In contrast to many clustering-based approaches, Braun–Blanquet classification is not typically represented by dendrograms or distance matrices. Instead, classification is embodied directly in the **table itself**, through the labeling of groups of species and groups of sites. A classified table is an ordered table in which coherent regions have been identified and named.
+
+In practical terms, this often takes the form of annotations that indicate site groups, species groups, or both. These labels summarize interpretive judgments made after ordering and inspection. They do not emerge automatically from the table; they are applied once structure is judged to be sufficiently clear, stable, and ecologically meaningful.
+
+Importantly, the act of labeling groups does not eliminate ambiguity. Transitional sites may be noted as such, marginal species may be treated cautiously, and alternative classifications may remain plausible. The classified table represents a *working interpretation*, not a final truth.
+
+This way of expressing classification reflects the iterative nature of Braun–Blanquet analysis. Tables are ordered, inspected, discussed, and revised. Classification emerges gradually, supported by structure and metrics but guided by ecological understanding and sampling context.
+
+Seen in this light, classification is not the endpoint of analysis, but a **summary of insight gained**. It captures what ordering and metrics have revealed, while remaining open to refinement as new data or perspectives are introduced.
+
+The table below illustrates how classification is expressed in practice. After ordering and interpretation, groups of sites and species are labeled directly in the table. These labels summarize an interpretive judgment; they are not produced automatically by the methods discussed here. The details of the table annotation are not important here; the goal is simply to show the form that a classified table takes.
+
+```{r}
+library(readr)
+library(gt)
+
+## Read in an ordered table
+options(readr.show_col_types = FALSE)
+bb_ordered <- readr::read_csv("data/bb_blocks_ordered.csv")
+
+## Create the ordered table
+ordered_table <- bb_ordered %>%
+  gt(rowname_col = "species") %>%
+  sub_values(
+    columns = everything(),
+    values = 0,
+    replacement = " "
+  ) %>%
+  tab_header(title = "Braun–Blanquet Table After Ordering") %>%
+  opt_row_striping() %>%
+  cols_align("center", everything())
+
+## Add row groups to the ordered table
+row_groups_table <- ordered_table %>%
+  tab_header(title = "Braun–Blanquet Table With Classification") %>%
+  tab_row_group(label = "Ungrouped species", rows = 12:16) %>%   ## optional, later
+  tab_row_group(label = "Group 3", rows = 8:11) %>%
+  tab_row_group(label = "Group 2", rows = 6:7) %>%
+  tab_row_group(label = "Group 1", rows = 3:5) %>%
+  tab_row_group(label = "Ubiquitous species", rows = 1:2) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_row_groups()
+  ) %>%
+  opt_row_striping() %>%
+  cols_align("center", everything())
+
+## Add column groups to the row grouped table
+r_and_g_table <- row_groups_table %>%
+  ## Column (site) blocks
+  tab_spanner(
+    label   = "Site Group 1",
+    columns = c(site_02, site_01, site_04, site_03, site_06, site_05)
+  ) %>%
+  tab_spanner(
+    label   = "Site Group 2",
+    columns = c(site_07, site_08, site_10, site_09, site_11, site_12)
+  ) %>%
+  tab_spanner(
+    label   = "Site Group 3",
+    columns = c(site_10, site_09, site_11, site_12)
+  ) %>%
+  ## Optional: make the spanner labels bold
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_spanners()
+  ) 
+
+## Show the table with classification
+r_and_g_table
+
+```
+
+### Closing the chapter
+
+This chapter has shown how classification builds on structure rather than replacing it. Clean blocks support confident classification, overlap and noise call for caution, and gradients may resist classification altogether. When classification is applied, it is expressed through labeled tables that make interpretive decisions explicit.
+
+The chapters that follow return to specific applications and contexts, where these ideas are used to support ecological interpretation, comparison across studies, and synthesis. The principles developed here—matching methods to structure and treating classification as judgment—remain central throughout.

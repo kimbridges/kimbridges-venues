@@ -1,0 +1,334 @@
+---
+title: "Air Temperature Cycles and Maple Sap Production"
+subtitle: "Cold/Warm Periodicity Analysis"
+author: "Climate Analysis System"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    theme: flatly
+    code_folding: hide
+    fig_width: 10
+    fig_height: 6
+params:
+  site_name: "Eugene, Oregon, USA"
+  station_id: "USW00024221"
+  threshold: 32
+  minimum_start: 2
+  minimum_end: 1
+  sweep_from: 28
+  sweep_to: 34
+  sweep_by: 2
+  use_synthetic: FALSE
+  data_start_year: 2013
+  data_end_year: 2024
+  data_file: NULL
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE, warning = FALSE, message = FALSE,
+  fig.align = "center"
+)
+
+# Load project modules
+source("R/data_acquisition.R")
+source("R/analysis_core.R")
+source("R/statistics.R")
+source("R/visualization.R")
+
+library(knitr)
+library(kableExtra)
+```
+
+# Introduction
+
+This report analyzes cold and warm temperature cycling at **`r params$site_name`** to characterize patterns relevant to maple sap production. The analysis examines daily minimum air temperatures to identify cold seasons, quantify cold and warm stretches within those seasons, and test whether the observed patterns depart from randomness.
+
+**Analysis Parameters:**
+
+| Parameter | Value |
+|:----------|:------|
+| Site | `r params$site_name` |
+| Threshold Temperature | `r params$threshold` °F |
+| Minimum Start | `r params$minimum_start` consecutive cold days |
+| Minimum End | `r params$minimum_end` consecutive cold days |
+| Threshold Sweep | `r params$sweep_from` °F to `r params$sweep_to` °F by `r params$sweep_by` °F |
+
+# Data Acquisition
+
+```{r data-acquisition}
+if (params$use_synthetic) {
+  cat("Using synthetic data calibrated to", params$site_name, "conditions.\n")
+  df <- generate_synthetic_data(
+    start_year = params$data_start_year,
+    end_year   = params$data_end_year
+  )
+} else if (!is.null(params$data_file)) {
+  cat("Reading data from file:", params$data_file, "\n")
+  df <- read_ghcn_csv(params$data_file)
+} else {
+  # For live NOAA fetch, set your token here or via environment variable
+  token <- Sys.getenv("NOAA_TOKEN")
+  if (nchar(token) == 0) stop("Set NOAA_TOKEN environment variable for live data fetch.")
+  df <- fetch_ghcn_daily(
+    station_id = params$station_id,
+    start_date = paste0(params$data_start_year, "-01-01"),
+    end_date   = paste0(params$data_end_year, "-12-31"),
+    token      = token
+  )
+}
+
+cat("Data range:", as.character(min(df$date)), "to", as.character(max(df$date)), "\n")
+cat("Total records:", nrow(df), "\n")
+cat("Missing dates:", 
+    as.integer(max(df$date) - min(df$date)) + 1 - nrow(df), "\n")
+```
+
+```{r data-overview, fig.height=4}
+ggplot(df, aes(x = date, y = tmin)) +
+  geom_line(alpha = 0.4, color = "grey40", linewidth = 0.3) +
+  geom_hline(yintercept = params$threshold, color = warm_color, 
+             linetype = "dashed", linewidth = 0.8) +
+  annotate("text", x = min(df$date) + 60, y = params$threshold + 2,
+           label = paste("Threshold:", params$threshold, "°F"),
+           color = warm_color, hjust = 0, size = 3.5) +
+  labs(title = paste("Daily Minimum Temperature —", params$site_name),
+       x = "Date", y = "Temperature (°F)") +
+  theme_minimal()
+```
+
+# Primary Analysis (Threshold = `r params$threshold` °F)
+
+```{r primary-analysis}
+result <- run_site_analysis(df, params$threshold, params$minimum_start, params$minimum_end)
+cat("Cold seasons identified:", nrow(result$annual_summary), "\n")
+```
+
+## Cold Season Summary
+
+```{r season-table}
+result$annual_summary %>%
+  mutate(
+    start_date = format(start_date, "%b %d, %Y"),
+    end_date   = format(end_date, "%b %d, %Y")
+  ) %>%
+  kable(
+    col.names = c("Season", "Start", "End", "Length (d)",
+                   "N Cold", "Min", "Max", "Mean",
+                   "N Warm", "Min", "Max", "Mean"),
+    caption = paste("Annual cold season summary at", params$threshold, "°F threshold"),
+    digits = 1, align = "c"
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "condensed"), full_width = FALSE) %>%
+  add_header_above(c(" " = 4, "Cold Stretches" = 4, "Warm Stretches" = 4))
+```
+
+## Excluded Events
+
+Cold days occurring before the qualifying start cluster or after the qualifying end cluster are excluded from the cold season. These are logged here.
+
+```{r excluded-events}
+if (nrow(result$excluded) > 0) {
+  result$excluded %>%
+    mutate(
+      start_date = format(start_date, "%b %d, %Y"),
+      end_date   = format(end_date, "%Y")
+    ) %>%
+    kable(
+      col.names = c("Reason", "Start", "End", "Duration (d)", "Season"),
+      caption = "Excluded cold-day events"
+    ) %>%
+    kable_styling(bootstrap_options = c("striped", "condensed"), full_width = FALSE)
+} else {
+  cat("No cold-day events were excluded by the minimum start/end criteria.\n")
+}
+```
+
+## Season Stripe Plots
+
+Each row represents one cold season. Blue tiles are cold days; red tiles are warm days. This visualization reveals the internal structure of freeze/thaw cycling.
+
+```{r stripe-plot, fig.height=8}
+plot_all_seasons_stripes(result)
+```
+
+## Annual Trends
+
+```{r annual-trends, fig.height=10}
+plot_annual_trends(result)
+```
+
+## Stretch Length Distributions
+
+```{r stretch-distributions}
+plot_stretch_distributions(result)
+```
+
+# Statistical Analysis
+
+```{r compute-statistics}
+stats_by_season <- list()
+for (i in seq_len(nrow(result$seasons))) {
+  s <- result$seasons[i, ]
+  sdata <- s$season_data[[1]]
+  sd <- result$stretch_details[[s$season_label]]
+  stats_by_season[[s$season_label]] <- run_season_statistics(sdata, sd)
+}
+```
+
+## Runs Test
+
+The Wald-Wolfowitz runs test evaluates whether the sequence of cold and warm days within each cold season departs from randomness. Fewer runs than expected indicates clustering (persistence); more runs indicates alternation.
+
+```{r runs-test-table}
+runs_rows <- list()
+for (sname in names(stats_by_season)) {
+  rt <- stats_by_season[[sname]]$runs_test
+  runs_rows[[sname]] <- tibble(
+    Season       = sname,
+    `N Cold`     = rt$n_cold,
+    `N Warm`     = rt$n_warm,
+    `Obs Runs`   = rt$n_runs,
+    `Exp Runs`   = rt$expected_runs,
+    `Z`          = rt$z_stat,
+    `p-value`    = rt$p_value,
+    Interpretation = rt$interpretation
+  )
+}
+
+bind_rows(runs_rows) %>%
+  kable(caption = "Runs test results by cold season", digits = 3) %>%
+  kable_styling(bootstrap_options = c("striped", "condensed"), full_width = FALSE)
+```
+
+## Markov Transition Analysis
+
+Transition probabilities describe the likelihood of moving from one day type to another. For sap flow, the cold→warm and warm→cold transitions are of particular biological interest as they represent the freeze/thaw events that drive sap pressure.
+
+```{r markov-table}
+markov_rows <- list()
+for (sname in names(stats_by_season)) {
+  mkv <- stats_by_season[[sname]]$markov$summary
+  mkv$Season <- sname
+  markov_rows[[sname]] <- mkv
+}
+
+bind_rows(markov_rows) %>%
+  select(Season, transition, count, probability) %>%
+  pivot_wider(names_from = transition, values_from = c(count, probability)) %>%
+  kable(caption = "Markov transition counts and probabilities by season", digits = 3) %>%
+  kable_styling(bootstrap_options = c("striped", "condensed"), full_width = FALSE)
+```
+
+```{r markov-plot, fig.height=5}
+plot_markov_trends(stats_by_season, result$threshold)
+```
+
+## Joint Distribution of Stretch Pairs
+
+The following heatmap shows how frequently a cold stretch of length *X* is followed by a warm stretch of length *Y*. This captures the cycling structure most directly relevant to sap production.
+
+```{r pair-heatmap}
+plot_stretch_pair_heatmap(result, stats_by_season)
+```
+
+# Threshold Sensitivity Sweep
+
+The analysis is repeated across a range of threshold temperatures to assess how sensitive the results are to the threshold definition.
+
+```{r threshold-sweep}
+thresholds <- seq(params$sweep_from, params$sweep_to, by = params$sweep_by)
+cat("Sweeping thresholds:", paste(thresholds, collapse = ", "), "°F\n")
+
+sweep_results <- run_threshold_sweep(df, thresholds, params$minimum_start, params$minimum_end)
+```
+
+```{r sweep-summary-table}
+sweep_summary <- list()
+for (tname in names(sweep_results)) {
+  res <- sweep_results[[tname]]
+  if (nrow(res$annual_summary) > 0) {
+    sweep_summary[[tname]] <- tibble(
+      Threshold              = res$threshold,
+      `Mean Season Length`   = round(mean(res$annual_summary$season_length), 1),
+      `Mean # Cold Stretches` = round(mean(res$annual_summary$n_cold_stretches), 1),
+      `Mean # Warm Stretches` = round(mean(res$annual_summary$n_warm_stretches), 1),
+      `Mean Cold Stretch Len` = round(mean(res$annual_summary$cold_mean_length, na.rm = TRUE), 1),
+      `Mean Warm Stretch Len` = round(mean(res$annual_summary$warm_mean_length, na.rm = TRUE), 1)
+    )
+  }
+}
+
+bind_rows(sweep_summary) %>%
+  kable(caption = "Summary measures across threshold temperatures (averaged over all seasons)") %>%
+  kable_styling(bootstrap_options = c("striped", "condensed"), full_width = FALSE)
+```
+
+```{r sweep-plot, fig.height=8}
+plot_threshold_sensitivity(sweep_results)
+```
+
+# Summary and Interpretation
+
+```{r auto-interpretation, results='asis'}
+# Generate data-driven interpretive summary
+if (nrow(result$annual_summary) > 0) {
+  as <- result$annual_summary
+  
+  cat("## Key Findings\n\n")
+  
+  cat(sprintf(
+    "Over the %d cold seasons analyzed at a %d°F threshold:\n\n",
+    nrow(as), params$threshold
+  ))
+  
+  cat(sprintf(
+    "- **Cold season length** ranged from %d to %d days (mean %.0f days).\n",
+    min(as$season_length), max(as$season_length), mean(as$season_length)
+  ))
+  
+  cat(sprintf(
+    "- **Cold stretches** per season ranged from %d to %d (mean %.1f), with mean lengths of %.1f to %.1f days.\n",
+    min(as$n_cold_stretches), max(as$n_cold_stretches), mean(as$n_cold_stretches),
+    min(as$cold_mean_length), max(as$cold_mean_length)
+  ))
+  
+  cat(sprintf(
+    "- **Warm stretches** per season ranged from %d to %d (mean %.1f), with mean lengths of %.1f to %.1f days.\n",
+    min(as$n_warm_stretches), max(as$n_warm_stretches), mean(as$n_warm_stretches),
+    min(as$warm_mean_length, na.rm=T), max(as$warm_mean_length, na.rm=T)
+  ))
+  
+  # Runs test summary
+  n_sig <- sum(sapply(stats_by_season, function(s) {
+    p <- s$runs_test$p_value
+    if (is.na(p)) FALSE else p < 0.05
+  }))
+  
+  cat(sprintf(
+    "\n**Runs test**: %d of %d seasons showed statistically significant departure from randomness (p < 0.05), ",
+    n_sig, length(stats_by_season)
+  ))
+  
+  if (n_sig > length(stats_by_season) / 2) {
+    cat("suggesting that cold/warm day sequences tend to cluster rather than alternate randomly. This is consistent with weather persistence (frontal systems) and supports the premise that structured cycling patterns exist.\n\n")
+  } else {
+    cat("suggesting that the cold/warm sequences at this site and threshold are largely consistent with a random pattern. This does not preclude biological relevance but indicates the cycling lacks strong temporal structure.\n\n")
+  }
+  
+  cat("**Threshold sensitivity**: As the threshold temperature increases, cold seasons lengthen and the number of stretches generally increases, providing more freeze/thaw cycles relevant to sap flow. The sensitivity sweep helps identify the threshold at which cycling structure is most pronounced for this site.\n\n")
+  
+  cat("## Next Steps\n\n")
+  cat("1. Replace synthetic data with actual GHCN-Daily records for Eugene, OR.\n")
+  cat("2. Repeat the analysis for additional sites along the WA-OR transect.\n")
+  cat("3. Compare key indices (season length, stretch counts, transition probabilities) across the geographic gradient.\n")
+  cat("4. Assess year-to-year variability at nearby stations to evaluate local dependability.\n")
+}
+```
+
+---
+
+*Report generated on `r Sys.Date()` by the Cold/Warm Temperature Analysis System.*

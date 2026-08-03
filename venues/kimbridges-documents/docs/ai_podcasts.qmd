@@ -1,0 +1,8 @@
+---
+title: "AI Podcasts"
+subtitle: "Podcast experiments with NotebookLM — travel, science, and code."
+categories: ["AI", "Audio"]
+image: ../ai_podcasts/podcast_cover.jpg
+---
+
+[View Document](../ai_podcasts/){.btn .btn-primary}

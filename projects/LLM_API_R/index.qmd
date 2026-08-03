@@ -1,0 +1,15 @@
+# Preface {.unnumbered}
+
+The chapters focus on explorations where modern technology is applied to traditional research problems.
+
+A combination of three technologies is used. A **Large Language Model** (Claude 3) is used to parse data and add supplemental information. **API calls** are used to retrieve additional information and resources from data suppliers. The **R programming language** weaves everything together and provides the computation power to create the tables and chart. Equally important is the use of R in the context of a *reproducible document*, such as `quarto`.
+
+A key to developing this code has been the `ClaudeR` package. Find out about this package at:
+
+`https://github.com/yrvelez/claudeR`
+
+## Cautionary Note
+
+The code shown in the examples has **not been tested** to see if it is robust (or, in some cases, even if it is correct).
+
+***These are all early, tests-of-concept studies.***

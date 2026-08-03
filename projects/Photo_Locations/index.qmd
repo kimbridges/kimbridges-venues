@@ -1,0 +1,13 @@
+# Preface {.unnumbered}
+
+The purpose is to use location data captured using an Android phone to add locations to photos.
+
+Cell phone routinely add location data to photos. So, why is the software described here necessary? Sony cameras, and maybe other brands, don't have GPS or other location features. The result is photos taken with any reference to the location at which each image was recorded.
+
+Android phones record locations periodically, if the location feature is enabled. The data collected by the phone has adequate resolution to mark photo sites. However, the data are on the phone and not on the off-phone camera. The procedures given here are used to move the data and end up with camera images with EXIF data that includes the latitude and longitude of the photos.
+
+This sound simple. It isn't. But the software presented here does the heavy-lifting part with the result that there is a straightforward workflow to get location-enhanced photos.
+
+### Acknowledgements
+
+The software was developed in collaboration with Google Gemini 3 Pro. The `json` file structure was particularly challenging. This project would not have been possible without the help of Gemini.

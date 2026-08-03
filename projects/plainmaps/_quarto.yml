@@ -1,0 +1,44 @@
+project:
+  title: "plainmaps"
+  output-dir: _output
+  type: book
+
+book:
+  title: "Plainmaps"
+  subtitle: "Create maps with border outlines and add simple overlays"
+  search: true
+  author: "K. W. Bridges"
+  date: today
+  cover-image: Cover_with_text.jpg
+  chapters:
+    - index.qmd
+    - Introduction.qmd
+    - Packages.qmd
+    - Themes.qmd
+    - Borders.qmd
+    - International.qmd
+    - Shapefiles.qmd
+    - Overlays.qmd
+    - Choropleth.qmd
+    - Sitemaps.qmd
+  navbar: 
+    logo: plain_maps_logo.jpg
+
+toc: true
+number-sections: true
+
+execute: 
+  warning: false
+  error: false
+  message: false
+
+format:
+  html:
+    css: styles.css
+    code-fold: true
+    code-summary: "Show the code"
+  pdf:
+    documentclass: report
+    margin-left: 30mm
+    margin-right: 30mm
+

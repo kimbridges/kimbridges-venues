@@ -1,0 +1,157 @@
+---
+title: "Creating Maps Using R"
+subtitle: "Simplifying the Process"
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+format:
+  html:
+    fig-width: 8
+    fig-height: 8
+    code-fold: true
+    code-summary: "Show the code chunk"
+editor: visual
+execute:
+  warning: false
+  error: false
+  message: false
+---
+
+# Google Map Simplification
+
+Google provides great maps. They are detailed and often updated. This mapping service provides an almost singular source needed for most routine mapping.
+
+However, sometimes the Google maps provide too much information. You want a simple, uncluttered basemap. Google provides a map with names of businesses, landmarks, street names, and more. Can you get rid of these information layers?
+
+The answer is "yes." For the most part, you can control what information appears on a Google map.
+
+### General Setup & Initialization
+
+As usual, we'll load the needed libraries. Then activate the Google Maps API key. This key provides access to Google Maps. Since this is a pay service, the key is kept secret.
+
+The key registration needs to be done only once for an RStudio session. This is why the process is kept in a separate R chunk so we don't keep re-registering as we refine the maps.
+
+```{r "libraries"}
+
+## Libraries
+library(readr)        ## Read in data
+library(ggmap)        ## Show maps, handle Google key
+library(ggplot2)      ## Build maps
+library(dplyr)        ## Data wrangling
+library(gt)           ## Tables
+library(sitemaps)     ## Functions to help build maps
+library(parzer)       ## Convert HMS to digital coordinates
+
+## Initialize Google Map key; the is stored in a Project directory.
+  My_Key <- read_file("P://Hot/Workflow/Workflow/keys/Google_Maps_API_Key.txt")
+
+## Test if Google Key is registered
+if (!has_google_key()){
+
+  ## Register the Google Maps API Key.
+  register_google(key = My_Key, account_type = "standard")
+  } ## end Google Key test
+  
+```
+
+### Some useful code
+
+There are a few bits of code that make it easier to build site maps. This section of code should be put at the start of any document so that the useful data values are available.
+
+```{r "setup"}
+
+## Use two functions from mapfunctions to initialize parameters
+column <- site_styles()
+hide   <- site_google_hides()
+
+## Establish a theme that improves the appearance of a map
+## Define a theme that removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2),
+                    legend.position = "none")
+
+```
+
+## Icon and Label Removal
+
+Icon and label removal will be shown here using the `ggmap`'s `get_googlemap` function. Note that this is not how we'll generally build maps, unless they are simply basemaps. Later, we'll build basemaps using data locations and it will be easier to specify how the Google Map layers are suppressed.
+
+***Now, focus not so much on the code, but how Google Maps basemaps change as you remove information layers.***
+
+First, we'll create a regional map without country names.
+
+```{r "noNames"}
+#| label: fig-noNamesn
+#| fig-cap: "Map of Europe with the country name layer removed."
+
+## Create a Google map.
+clean_map <- get_map(location = "Europe", 
+                           zoom = 4,
+                           source = "google",
+                           scale = 2,
+                           style = hide$country)
+
+## Show the map
+ggmap(clean_map) + simple_black_box
+
+```
+
+This basemap still has the names of major cities. These, along with all administrative (country, city, province and neighborhood) names can be hidden using a value stored as: `hide$administrative`.
+
+Here is a list of the style codes stored in the Useful Code chunk.
+
+| Hide Value            | Function                                                                                     |
+|-----------------------|----------------------------------------------------------------------------------------------|
+| `hide$poi`            | Hide businesses, schools, park, emergency services, churches and similar points of interest. |
+| `hide$transit`        | Hide airports, transit lines and stops, bus and rail stops and stations                      |
+| `hide$water`          | Hide water bodies.                                                                           |
+| `hide$road`           | Hide highways and local roads.                                                               |
+| `hide$andscape`       | Hide man-made and natural features.                                                          |
+| `hide$administrative` | Hide country, city, province and neighborhood names.                                         |
+| `hide$all`            | Hide everything.                                                                             |
+
+We can apply this same strategy to a city map to get it without business icons and names. At this scale, several dozen markers and labels are hidden, including restaurants, churches, government buildings and auto dealers. These "features" are known as "points of interest" (poi). Let's hide them.
+
+```{r "noIcons"}
+#| label: fig-noIcons
+#| fig-cap: "Honolulu roadmap without points of interest."
+
+clean_map <- get_map(location = "Honolulu", 
+                           zoom = 16,
+                           scale = 2,
+                           source = "google",
+                           maptype = "roadmap",
+                           style = hide$poi)
+
+ggmap(clean_map) + simple_black_box
+
+```
+
+You can hide other layers. A useful list of the layers is shown on a Google website:
+
+    https://developers.google.com/maps/documentation/javascript/style-reference
+
+Basically, you can hide six different layers. Each layer has finer control. This was demonstrated earlier with the `hide:country` example where just the country names were hidden. Hiding an entire layer is what you'll usually do. If you want finer control, check the reference above.
+
+Remember that using the style information hides the icons and labels. If you use `hide$road`, for example, you still get roads drawn on several of the map types, but the roads are not labeled with an icon.
+
+You can hide multiple layers. The following example shows hides two layers (poi and transit). You can also use the `hide$all` to get a map free of icons and labels.
+
+```{r "multiple"}
+#| label: fig-multiple
+#| fig-cap: "Hiding multiple layers (poi, transit) on a Chicago map."
+
+clean_map <- get_map(location = "Chicago", 
+                           zoom = 13,
+                           source = "google",
+                           maptype = "terrain",
+                           scale = 2,
+                           style = c(hide$poi,hide$transit))
+
+ggmap(clean_map) + simple_black_box
+
+```

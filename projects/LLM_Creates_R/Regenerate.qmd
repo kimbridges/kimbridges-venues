@@ -1,0 +1,178 @@
+# Regenerate
+
+:::::: columns
+::: {.column width="50%"}
+There might be times when you need to rebuild a chart. It might be something you created and you've lost the original data. Or it might be someone else's work and you want to integrate their results with your charting style.
+
+How do you get the data values?
+
+LLMs can process images. In some cases, they can figure out data values from simple charts.
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+![](recycle_cover.png)
+:::
+::::::
+
+### Bar Chart Example
+
+The following bar chart is from one of my 1982 publications [@mcmillan82]. The original chart was created on a pen plotter. The data are no longer available.
+
+The goal is to recreate this chart using the specifications stored with Claude.
+
+**Prompt**
+
+I need to extract the data from this chart. Can you help?
+
+![Original Chart](1982_McMillan_etal_figure3.png)
+
+**Prompt**
+
+I'd like the data retrieved from this diagram. Then, using the Project knowledge guidelines, I would like a table of the data and a bar chart that is in the same general format as the original diagram. Please double check the use of the guidelines.
+
+**Response**
+
+Certainly, I'll retrieve the data from the diagram, create a table, and then produce a bar chart following the provided guidelines. Let's go through this step-by-step.
+
+First, let's extract the data from the image:
+
+```{r}
+#| error: false
+#| warning: false
+
+## Set read_csv function option to suppress warning messages.
+options(readr.show_col_types = FALSE)
+
+## Use the package for the read_csv function
+library(tidyverse)
+library(readr)
+
+## Data input.
+data <- read_csv(col_names=TRUE, file=
+            "elongation_range,    percentage
+             0,                   38
+             1-5,                 22
+             6-10,                18
+             11-15,               13
+             16-20,               3
+             21-25,               1
+             26-30,               1")
+
+## Write the data to a CSV file for later use
+write_csv(data, "seedling_elongation_data.csv")
+
+## Display the data
+data
+
+```
+
+Now, let's create a table using the gt package as specified in the guidelines:
+
+```{r}
+## Load required libraries
+library(gt)
+
+## Initialize the identification information.
+table_title <- "Hypocotyl-Plumule Elongation in Seedlings"
+data_source <- "Image data"
+
+## Create the table.
+table <- gt(data) %>% 
+  tab_header(
+    title = table_title
+  ) %>% 
+  tab_source_note(
+    source_note = paste0("Source: ", data_source)
+  ) %>%
+  tab_style(
+    style = cell_text(v_align="top"),
+    locations = cells_body()
+  ) %>%
+  fmt_number(
+    columns = percentage,
+    decimals = 0
+  ) %>%
+  cols_label(
+    elongation_range = "Elongation Range (mm)",
+    percentage = "Percentage of Seedlings"
+  ) %>%
+  tab_footnote(
+    footnote = "mm",
+    locations = cells_column_labels(columns = elongation_range)
+  )
+
+## Output the table
+table
+
+```
+
+Now, let's create a bar chart using ggplot2, following the guidelines provided:
+
+```{r}
+## Load required libraries
+library(ggplot2)
+
+## Set the source
+source <- "Image data"
+
+## Create the bar chart
+ggplot(data, aes(x = elongation_range, y = percentage)) +
+  geom_bar(stat = "identity", fill = "cornsilk3", color = "black") +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "darkslategray2"),
+    axis.text = element_text(color = "black", size = 12),
+    axis.title = element_text(color = "black", size = 12),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank()
+  ) +
+  scale_y_continuous(
+    limits = c(0, max(data$percentage) * 1.1),
+    expand = c(0, 0)
+  ) +
+  labs(
+    x = "Hypocotyl-Plumule Elongation (mm)",
+    y = "% of Seedlings",
+    caption = source
+  )
+
+```
+
+I've followed the guidelines provided in the documents to create the data input, table, and bar chart. Here's a summary of how I adhered to the guidelines:
+
+1.  Data Input:
+    -   Used the specified R chunk initialization.
+    -   Used read_csv for data input and write_csv to save the data.
+    -   Arranged the data for easy viewing.
+2.  Table:
+    -   Used the gt() function to create the table.
+    -   Created variables for the table title and data source.
+    -   Aligned table content at the top of the cells.
+    -   Added units (mm) as a footnote.
+    -   Formatted the percentage column as integers.
+3.  Bar Chart:
+    -   Used "cornsilk3" as the fill color for the bars.
+    -   Set the panel background to darkslategray2.
+    -   Made axis labels and scale values black with size 12.
+    -   Used y-axis grid lines and removed x-axis grid lines.
+    -   Started the y-axis at zero with a small extension at the top.
+    -   Added the source information as a caption.
+
+These implementations should closely match the original diagram while adhering to the provided guidelines. If you need any modifications or have any questions, please let me know.
+
+### Observations
+
+There are a few small modifications that would help the results.
+
+-   Modifying the source note so it references the publication, rather than "Image data."
+
+-   Removing the units (mm) from the column heading in the table.
+
+-   Adding "*Cymodocea*" to the title instead of just "Seedlings."
+
+Each of these changes is quite straightforward in the R code.
+
+Overall, this regeneration example worked quite well.

@@ -1,0 +1,284 @@
+---
+title: "Kinship"
+author: "K. W. Bridges"
+date: '2022-04-20'
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+## Kinship Setup
+
+The goal is to draw pedigree diagrams of families. The data are incomplete but the results show the promise of this system.
+
+This is a simple use of the tool.
+
+```{r libraries}
+library(kinship2)   ## Generate pedigree diagrams
+library(tidyverse)  ## Data wrangling
+library(flextable)  ## Make good tables
+library(ftExtra)    ## Allows markdown code inside a flextable
+```
+
+## Furumoto Family Line
+
+
+```{r furumoto}
+
+related <- read_csv(col_names = TRUE, file=
+    "ID,               father,           mother,          sex,    status
+     Kunichi Furumoto, NA,               NA,              male,   1
+     Kiyo Furumoto,    NA,               NA,              female, 1
+     Howard Furumoto,  Kunichi Furumoto, Kiyo Furumoto,   male,   1
+     Hirui Furumoto,   Kunichi Furumoto, Kiyo Furumoto,   female, 1
+     Hisano Fujiwara,  Kunichi Furumoto, Kiyo Furumoto,   female, 1
+     Myra Yamachi,     George Fujiwara,  Hisano Fujiwara, female, 0
+     Warren Fujiwara,  George Fujiwara,  Hisano Fujiwara, male,   1
+     George Fujiwara,  NA,               NA,              male,   1
+     Urako Sameshima,  Unknown,          Kiyo Furumoto,   female, 0
+     Betty,            Unknown,          Kiyo Furumoto,   female, 0
+     Unknown,          NA,               NA,              male,   1
+     David Yamachi,    NA,               NA,              male,   1")
+
+## The following is done to plot couples who have no children
+rel_pairs <- read_csv(col_names = TRUE, file=
+                     "id1,         id2,           code
+                     Myra Yamachi, David Yamachi, 4")
+
+## Print a table
+flextable(related) %>% 
+  autofit()
+
+## Put in a line break to stack the names
+related$ID     <- gsub(" ","\n",related$ID)
+related$father <- gsub(" ","\n",related$father)
+related$mother <- gsub(" ","\n",related$mother)
+rel_pairs$id1  <- gsub(" ","\n",rel_pairs$id1)
+rel_pairs$id2  <- gsub(" ","\n",rel_pairs$id2)
+
+## Generate the pedigree data structure (with no-children couples)
+pedAll <- pedigree(id=related$ID, dadid=related$father, 
+                   momid=related$mother, sex=related$sex,
+                   status = related$status,
+                   relation = rel_pairs)
+
+## Plot the genealogy chart
+plot(pedAll, cex=.7)
+
+
+
+```
+
+\newpage
+## Kawahara Family Line
+
+```{r kawahara}
+
+related <- read_csv(col_names = TRUE, file=
+    "ID,                father,           mother,            sex,    status
+     Herbert Kawahara,  NA,               NA,                male,   0
+     Hideko Kawahara,   NA,               NA,                female, 1
+     Pharm Kawahara,    Herbert Kawahara, Hideko Kawahara,      male,   0
+     Nancy Kawahara,    NA,               NA,                female, 0
+     Candy Kawahara,    Herbert Kawahara, Hideko Kawahara,      female, 0
+     Debbie Kawahara,   Herbert Kawahara, Hideko Kawahara,      female, 0
+     Neil Nagata,       NA,               NA,                male,   0
+     Female Kawahara,   Herbert Kawahara, Hideko Kawahara,      female, 0
+     Coleen Nakashima,  Herbert Kawahara, Hideko Kawahara,      female, 0
+     Terry Nakashima,   Jason Nakashima,  Elanore Nakashima, male,   0
+     Cory Nakashima,    Terry Nakashima,  Coleen Nakashima,  male,   0
+     Karen Nakashima,   Terry Nakashima,  Coleen Nakashima,  female, 0
+     Jason Nakashima,   NA,               NA,                male,   1
+     Elanore Nakashima, NA,               NA,                female, 1
+     Sharon Dennison,   Jason Nakashima,  Elanore Nakashima, female, 0
+     Alisa Dennison,    Dad Dennison,     Sharon Dennison,   female, 0
+     Dad Dennison,      NA,               NA,                male,   0")
+
+## The following is done to plot couples who have no children (code=4)
+rel_pairs <- read_csv(col_names = TRUE, file=
+                     "id1,           id2,             code
+                     Pharm Kawahara, Nancy Kawahara,  4
+                     Neil Nagata,    Debbie Kawahara, 4")
+
+## Put in a line break to stack the names
+related$ID     <- gsub(" ","\n",related$ID)
+related$father <- gsub(" ","\n",related$father)
+related$mother <- gsub(" ","\n",related$mother)
+rel_pairs$id1  <- gsub(" ","\n",rel_pairs$id1)
+rel_pairs$id2  <- gsub(" ","\n",rel_pairs$id2)
+
+## Generate the pedigree data structure (with no-children couples)
+pedAll <- pedigree(id=related$ID, dadid=related$father, 
+                   momid=related$mother, sex=related$sex,
+                   status = related$status,
+                   relation = rel_pairs)
+
+
+## Plot the genealogy chart
+plot(pedAll, cex=0.7)
+
+
+```
+
+\newpage
+## Furumoto Family Tree
+
+
+```{r furumto2}
+
+related <- read_csv(col_names = TRUE, file=
+    "ID,                father,           mother,            sex,    status
+     Howard Furumoto,      NA,               NA,          male,   1
+     Viola Furumoto,       NA,               NA,          female, 1
+     William Furumoto, Howard Furumoto, Viola Furumoto,   male, 0
+     Alice Furumoto,   Howard Furumoto, Viola Furumoto,   female, 1
+     Wesley Furumoto,  Howard Furumoto, Viola Furumoto,   male, 0
+     David Furumoto,   Howard Furumoto, Viola Furumoto,   male, 0
+     Nancy Furumoto,   Howard Furumoto, Viola Furumoto,   female, 0 
+     Kimo Furumoto,    Howard Furumoto, Viola Furumoto,   male, 0
+     Edward Furumoto,  Howard Furumoto, Viola Furumoto,   male, 0
+     Claudia Furumoto, NA,              NA,               female, 0
+     Karen Furumoto,   NA,              NA,               female, 1
+     Mom2 Furumoto,    NA,              NA,               female, 0
+     Laurie Furumoto,  NA,              NA,               female, 0
+     Michael Dawson,   NA,              NA,               male, 0
+     Michiko Furumoto, NA,              NA,               female, 0
+     Linda Leyrer,     NA,              NA,               female, 0
+     Kim Bridges,      NA,              NA,               male, 0
+     Angel Kawahara,   William Furumoto, Claudia Furumoto,    female, 0
+     Jolene Furumoto,  William Furumoto, Claudia Furumoto,    female, 0
+     Pono Furumoto,    Wesley Furumoto,  Karen Furumoto,  male, 0
+     Gabriel Furumoto, Wesley Furumoto,  Mom2 Furumoto,   male, 0
+     Sokah Furumoto,   Wesley Furumoto,  Laurie Furumoto, female, 0
+     Jessie Furumoto,  Edward Furumoto, Michiko Furumoto, male, 0
+     Nalani Furumoto,  Kimo Furumoto,   Linda Leyrer,     female, 0
+     Leilani Dawson,   Michael Dawson,  Alice Furumoto,   female, 0
+     Sefu Dawson,      Michael Dawson,  Alice Furumoto,   male, 0
+     Eric Sasmore,     NA,              NA,               male, 0
+     Scott Kawahara,   NA,              NA,               male, 0
+     Shane Kawahara,   Scott Kawahara,  Angel Kawahara,   male, 0
+     Skyler Kawahara,  Scott Kawahara,  Angel Kawahara,   female, 0
+     Dad,              NA,              NA,               male, 0
+     Dysen Furumoto,   Dad,             Jolene Furumoto,  male, 0
+     Jordyn Furumoto,  Dad,             Jolene Furumoto,  female, 0
+     Laura Roe,        NA,              NA,               female, 0
+     Salem Dawson,     Sefu Dawson,     Laura Roe,        male, 0
+     Mom3,             NA,              NA,               female, 0
+     Christopher Furumoto, Gabriel Furumoto, Mom3,        male, 0
+     Vik Furumoto,     NA,              NA,               female, 0")
+
+rel_pairs <- read_csv(col_names = TRUE, file=
+                     "id1,           id2,             code
+                     Kim Bridges, Nancy Furumoto,  4
+                     Eric Sasmore, Leilani Dawson, 4
+                     Jessie Furumoto, Vik Furumoto, 4")
+
+## Put in a line break to stack the names
+related$ID     <- gsub(" ","\n",related$ID)
+related$father <- gsub(" ","\n",related$father)
+related$mother <- gsub(" ","\n",related$mother)
+rel_pairs$id1  <- gsub(" ","\n",rel_pairs$id1)
+rel_pairs$id2  <- gsub(" ","\n",rel_pairs$id2)
+
+## Generate the pedigree data structure (with no-children couples)
+pedAll <- pedigree(id=related$ID, dadid=related$father, 
+                   momid=related$mother, sex=related$sex,
+                   status = related$status,
+                   relation = rel_pairs)
+
+
+## Plot the genealogy chart
+plot(pedAll, cex=0.5)     
+
+```
+
+\newpage
+## Sorakubo Family Tree
+
+```{r sorakubo}
+
+related <- read_csv(col_names = TRUE, file=
+    "ID,                father,           mother,            sex,    status
+     Dad Sorakubo, NA, NA, male, 1
+     Kunichi Furumoto, NA, NA, male, 1
+     Kiyo Furumoto, NA, NA, female, 1
+     Satayoshi Furumoto, Dad Sorakubo, Kiyo Furumoto,  male,   1
+     Shigeo Sorakubo,  Dad Sorakubo, Kiyo Furumoto,    male,   1
+     Howard Furumoto, Kunichi Furumoto, Kiyo Furumoto, male, 1
+     Hirui Furumoto, Kunichi Furumoto, Kiyo Furumoto, female, 1 
+     Hisano Fujiwara, Kunichi Furumoto, Kiyo Furumoto, female, 1
+     George Fujiwara, NA, NA, male, 1
+     Mom Sorakubo, NA, NA, female, 1
+     Carol Sorakubo, NA, NA, female, 0
+     Clyde Sorakubo, Satayoshi Furumoto, Mom Sorakubo, male, 1
+     Jane Sorakubo, Satayoshi Furumoto, Mom Sorakubo, female, 0
+     Karen Sorakubo, Clyde Sorakubo, Carol Sorakubo, female, 0
+     Amy Sorakubo, Clyde Sorakubo, Carol Sorakubo, female, 1 
+     Kiyoko Sorakubo, NA, NA, female, 1
+     Michael Sorakubo, Shigeo Sorakubo, Kiyoko Sorakubo, male, 0
+     Wendy Sorakubo, NA, NA, female, 0")
+
+rel_pairs <- read_csv(col_names = TRUE, file=
+                     "id1,           id2,             code
+                     Michael Sorakubo, Wendy Sorakubo,  4")
+
+## Put in a line break to stack the names
+related$ID     <- gsub(" ","\n",related$ID)
+related$father <- gsub(" ","\n",related$father)
+related$mother <- gsub(" ","\n",related$mother)
+rel_pairs$id1  <- gsub(" ","\n",rel_pairs$id1)
+rel_pairs$id2  <- gsub(" ","\n",rel_pairs$id2)
+
+## Generate the pedigree data structure (with no-children couples)
+pedAll <- pedigree(id=related$ID, dadid=related$father, 
+                   momid=related$mother, sex=related$sex,
+                   status = related$status,
+                   relation = rel_pairs)
+
+
+## Plot the genealogy chart
+plot(pedAll, cex=0.5)     
+
+     
+     
+     
+
+
+```
+
+\newpage
+## Akasaki Family Tree
+
+```{r akasaki}
+
+related <- read_csv(col_names = TRUE, file=
+    "ID,                father,           mother,            sex,    status
+     George Akasaki, NA, NA, male, 1
+     Sachiko Akasaki, NA, NA, female, 1
+     Guy Akasaki, George Akasaki, Sachiko Akasaki, male, 0
+     Jesse Akasaki, George Akasaki, Sachiko Akasaki, male, 0
+     Gary Akasaki, George Akasaki, Sachiko Akasaki, male, 0
+     Mom Akasaki, NA, NA, female, 0
+     LV-house Girl, Gary Akasaki, Mom Akasaki, female, 0")
+
+## Put in a line break to stack the names
+related$ID     <- gsub(" ","\n",related$ID)
+related$father <- gsub(" ","\n",related$father)
+related$mother <- gsub(" ","\n",related$mother)
+
+## Generate the pedigree data structure (with no-children couples)
+pedAll <- pedigree(id=related$ID, dadid=related$father, 
+                   momid=related$mother, sex=related$sex,
+                   status = related$status)
+
+
+## Plot the genealogy chart
+plot(pedAll, cex=0.5)     
+
+
+```
+

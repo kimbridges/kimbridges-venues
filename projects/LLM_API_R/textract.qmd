@@ -1,0 +1,49 @@
+---
+title: "textract"
+format: html
+editor: visual
+---
+
+Textract
+
+Check:
+
+https://github.com/paws-r/paws/blob/main/examples/textract.R
+
+for more info
+
+This is the way to use S3 buckets
+
+https://www.gormanalysis.com/blog/connecting-to-aws-s3-with-r/
+
+Another thing to examine -- a simplification???
+
+https://stackoverflow.com/questions/69073007/textract-in-r-paws-without-s3object
+
+```{r}
+
+library(paws)
+
+access_key <- "1TXA3KNZD81SF7JZTB02"
+
+Sys.setenv("AWS_ACCESS_KEY_ID" = access_key)
+
+result <- textract$detect_document_text(Document = list(Bytes="Expedition_label.jpg"))
+
+result <- textract_analyze_document(
+  Document = "Expedition_label.jpg")
+```
+
+Textract doesn't seem to work .... sigh...
+
+Back to tesseract
+
+```{r}
+library(tesseract)
+eng <- tesseract("eng")
+text <- tesseract::ocr("Expedition_label.jpg", engine = eng)
+cat(text)
+
+```
+
+Yuck!

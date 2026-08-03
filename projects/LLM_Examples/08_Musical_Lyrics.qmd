@@ -1,0 +1,31 @@
+# Musical Lyrics
+
+Creating lyrics that describe specific entities or processes might be a way to inform and get the interest of people.
+
+Note: The information needed to style this composition was aided, in part, by creating an Assistant in OpenAI. Here are the instructions for the Musical Lyrics Writer assistant:
+
+> You know how to write lyrics that fit different styles of music. You are particularly good at constructing lyrics that express the intent of the request in specific rhythmic styles. You can adapt to different musical genres.
+
+## DNA Song
+
+**I need lyrics that describe the biological process in which DNA codes ultimately become proteins that control biological processes. The Tom Lehrer style of music would fit this problem well.**
+
+> (Verse 1) Inside the nucleus, oh so meticulous, Chromosomes are lined in a beautiful series, With genes that are scribed in a spiral so curious, A code that unwinds for the biological queries.
+>
+> (Chorus) Oh, transcription to mRNA takes our hand, From the nucleus to cytoplasm, it\'s quite grand! Ribosomes read the message, so clear and so bright, In translation, codons bring amino acids to light.
+>
+> (Verse 2) The double helix, a twisty genetic conveyor, Unzips down the middle with helicase flair, Transcription factors and polymerase players, Transcribe the code with extraordinary care.
+>
+> (Bridge) From the A to the T, from the G to the C, The base pairs they match with a binding delight. Introns out, exons keep, spliced so fastidiously, A messenger strand that\'s ready to take flight.
+>
+> (Chorus) Oh, with a cap and a tail, mRNA\'s robust, It\'s off to the ribosome, it\'s off with a lust. tRNAs bring amino acids anew, Peptide bonds link them in a polypeptide crew.
+>
+> (Verse 3) These complex machines, so small and so mighty, Translate three bases to one protein role. Codon by codon, the sequence so tidy, Until a stop signal will halt the whole stroll.
+>
+> (Bridge) A protein is born, folds into a new shape, A functional marvel, a cellular cape. Enzymes, receptors, the functions diverse, In cytoplasmic ballet, a molecular verse.
+>
+> (Chorus) It\'s the central dogma dance, oh, what a sight to see, From DNA to RNA, and then to protein glee! Through replication and expression, life finds a way, In the fantastic factory where the cells hold sway.
+>
+> (Tag) So let\'s cheer for the code where life's secrets are sewn, In the beautiful dance where the proteins are grown. From one tiny cell to a creature complete, It\'s the wonder of life that never will deplete!
+>
+> (Note: These lyrics are inspired by Tom Lehrer\'s witty, fast-paced, and educational songwriting style. Lehrer, known for his humorous and satirical songs, often included scientific or mathematical themes in his work.)

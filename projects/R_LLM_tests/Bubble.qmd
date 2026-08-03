@@ -1,0 +1,16 @@
+---
+title: "Bubble"
+format: html
+---
+
+Bubble Sheets
+
+Prompt
+
+Here is another filled in bubble sheet. This time, the squares above the ID area have the ID number written out. The bubbles below correspond to the written numbers. Can you analyze this bubble sheet?
+
+![Original Chart](Scan_sheet_filled3.png)
+
+Response
+
+ID,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11,Q12,Q13,Q14 27631,B,A,D,C,A,B,D,A,C,A,C,A,B,A

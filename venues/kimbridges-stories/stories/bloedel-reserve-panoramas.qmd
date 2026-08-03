@@ -1,0 +1,13 @@
+---
+title: "Bloedel Reserve - Panoramas"
+subtitle: "Panoramic images of Bloedel Reserve."
+date: 2019-09-06
+categories: ["Photography", "Gardens", "Travel", "US"]
+image: ../images/Bloedel_panoramas.jpg
+pdf: ../pdfs/Bloedel_panoramas.pdf
+---
+This is a study to test if panoramic images of Bloedel Reserve giving a broader, more inclusive overview than standard photos.
+
+Pages: 44
+
+<iframe src="../viewer.html?pdf=Bloedel_panoramas.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

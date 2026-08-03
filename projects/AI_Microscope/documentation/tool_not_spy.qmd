@@ -1,0 +1,41 @@
+# A tool, not a spy
+
+Everything in this book so far has been about things getting easier. The storage. The machines. The wire. The canned words. One thing went the other way. The philosophy got harder to keep.
+
+The philosophy is a single phrase I've used since the first page. A tool, not a spy**.**
+
+In 1989 it was easy to honor, because the machines were too weak to spy even if we'd wanted them to. Today the machines are strong enough to do anything. The whole industry around educational software leans hard toward watching the student. So the thing that used to come for free now has to be chosen, deliberately, again and again. This chapter is about choosing it.
+
+## A calculator, not a proctor
+
+Think about how you use a calculator, or a dictionary. You reach for it when you want it. It answers. It keeps no record of the questions you asked. It never decides you've asked too many. It never tells anyone you were unsure. You are completely in charge of it. That's the relationship the AI Microscope was built to have with a student. Reach for it. Get help. Put it down. Nobody's watching. Nothing is being scored.
+
+A lot of modern learning software works the opposite way. It watches where you click, times how long you hesitate, logs what you got wrong, and reports all of it somewhere. Some of that is well meant. But a student who knows they're being measured behaves like someone being measured. They get careful. They stop poking around. They stop being willing to be wrong. But that's the exact state in which people learn the most. A tool you can be freely wrong in front of is a different instrument from one that's keeping score, even when they show you the same picture. We wanted the first kind, in 1989 and now.
+
+![A wrong answer, handled. The tool says where the crosshair actually landed, names that tissue anyway, and points the student back toward the one they were looking for. Nothing is scored and nothing is recorded.](figures/aim_7_not_quite.png){#fig-not-quite width=45% fig-align="center"}
+
+## The review as a test
+
+Partway through the rebuild, Dr. Will McClatchey looked the thing over. He's a botanist, and a sharp one, and his review was positive. He also did what a good reviewer does. He suggested ways to make it more.
+
+A review like that is a test, though not the kind it appears to be. It isn't testing whether the suggestions are clever. They usually are. It's testing whether you know what your own thing is. You know it well enough to tell which improvements would deepen it and which would quietly turn it into something else. Some of Will's ideas made the tool more true to itself. One of them, showing the same tissues across several different species, was exactly right. And we took it, because seeing xylem do the same job in three species is the whole lesson about why structure matters. Others pointed somewhere I didn't want to go. Sorting the suggestions was the work.
+
+## What we turned down
+
+I turned down two suggestions. And the turning down is where the philosophy actually lives.
+
+The first was to make it a game. Games are engaging, and engagement is the word everyone reaches for now. But a game gets judged as a game. It brings scores, and winning, and losing. The moment you add those you've told the student that the point is to beat something. But the point was never to beat anything. The point was to get curious about a leaf. A game would have buried that under a leaderboard.
+
+The second was to add grading. Have the software quiz the student and mark the answers. This is the single most fashionable move in educational technology right now; automating the assessment. And it's the exact thing the philosophy forbids. Quizzing is the stressful part of doing a lab, not the helpful part. Worse, it turns the tool into the spy. The instant the microscope starts keeping score, it stops being a calculator you trust. It becomes a proctor you perform for. So I said no. It wasn't hard to say no. It was the easiest call in the project, once you know what the thing is.
+
+Saying no is underrated. Anyone can list their values. But you find out what they actually are by what you refuse, when refusing costs you something attractive.
+
+## What we kept
+
+It would be easy to read this discussion as a fear of features. So here's the counterweight. We did add something that, at a glance, looks like scoring. Each tissue in the menu shows how much of the leaf it takes up. Palisade parenchyma is abundant. Cuticle is a sliver.
+
+But look at what that number is for. It doesn't tell you how well you did. It tells you whether the thing you're hunting for is easy or hard to find, so you don't waste ten minutes searching a slide for a tissue that occupies one percent of it. It respects your time. That's a feature that serves the student, and it passes the same test the game and the quiz failed. The ethic was never against adding things. It was a filter, and a strict one: does this help the student, on the student's terms, or does it start to watch them.
+
+Everything we built had to go through that filter. The tool stayed a tool because we kept choosing, feature by feature, not to let it become a spy.
+
+There's a companion to trust that this chapter hasn't touched yet. A tool you can be wrong in front of has to be a tool that's right. It's no good being unwatched if the thing is quietly feeding you nonsense. So the next question is honesty, and it turned out to be harder than it sounds.

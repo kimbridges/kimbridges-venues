@@ -1,0 +1,36 @@
+project:
+  output-dir: _output
+  type: book
+
+book:
+  title: "Deconstructing a Flora"
+  subtitle: "Experiments in Aiding the Research Process"
+  search: true
+  author: "K. W. Bridges"
+  date: today
+  cover-image: herbarium.jpg
+  chapters:
+    - index.qmd
+    - Introduction.qmd
+    - Seagrass.qmd
+  navbar: 
+    logo: herbarium_logo.png
+
+toc: false
+number-sections: true
+
+execute: 
+  warning: false
+  error: false
+  message: false
+
+format:
+  html:
+    css: styles.css
+    code-fold: true
+    code-summary: "Show the code"
+  pdf:
+    documentclass: report
+    margin-left: 30mm
+    margin-right: 30mm
+    

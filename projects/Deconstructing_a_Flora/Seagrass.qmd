@@ -1,0 +1,474 @@
+# Herbarium Specimen References
+
+This is a simple test of whether the use of a Large Language Model (e.g., Claude 3) can help organize botanical research materials. Here, we're deconstructing the herbarium specimen data. The goal is to add visualizations that make the terse text into something that is more usable.
+
+## Source
+
+The starting materials are two pages (252-253) from C. den Hartog's 1970 book, The Sea-grasses of the World, North-Holland Publishing Company, Amsterdam.
+
+The distribution of *Halophila ovata* is given in the text.
+
+![den Hartog, page 252](den_Hartog_230.pdf){width="703" height="88"}
+
+![den Hartog, page 253](den_Hartog_231.pdf)
+
+## Initialize Libraries and Data
+
+```{r}
+#| label:   initialize
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Standard Libraries
+library(tidyverse)
+library(gt)
+library(gtExtras)
+
+## Map Libraries
+library(sitemaps)
+library(ggmap)
+
+## Useful Libraries
+library(lubridate)
+library(stringr)
+
+## LLM Libraries
+library(claudeR)
+
+## Test if Google Key is registered
+if (!has_google_key()){
+
+  ## Register the Google Maps API Key.
+  register_google(key = My_Key, account_type = "standard")
+  } ## end Google Key test
+
+claude_key <- Sys.getenv("ANTHROPIC_API_KEY")
+
+## Use two functions from sitemaps to initialize columneters
+column <- site_styles()
+hide  <- site_google_hides()
+
+```
+
+## Start with the OCR Text
+
+This is the manually cleaned-up results from the OCR text produced by Adobe Acrobat. There are still some errors in the text.
+
+```{r}
+#| label:   data-to-claude
+#| message: false
+#| echo:    true
+#| warning: false
+
+"KENYA. Lamu, mud-fiats north-west of the town, exposed at low tides, locally extremely common and dense,female fl., fr., 1-7-1965, Mrs. F.M. Isaac A 21 (L). Mokowe, mud-flats in front of mangrove swamp, 30-6-1965, Mrs. F. M. Isaac A 100 (L). - Gazi, south of Ukunda, on mud-flats, uncovered at exceptionally low spring tides only, 11-12-1965, Mrs. F. M. Isaac A 116 (L).
+INDIA. Pamban, October 1922, M. O. P. Iyengar 133 B (BM). 
+THAILAND. Rawi, Satut, growing in sand, just exposed at low tide, together with Halodule uninervis, 13-1-1928, A. F. G. Kerr 14035 (BM).
+HoNG KoNG. Cowloon Bay, on sandy bottom at ca. 2 m depth, Harland 282 (K).
+PHILIPPINES. Luzon: Manila Bay, fr., May 1892, A. Loher 1595 (K, C, P); fl., fr., April 1905, E. D. Merrill 4112 (P, K, L, SYD); Malate Beach, fr., 8-5-1910, C. B. Robinson 9899 (C, P, L, BO); fr., March 1912, E. D. Merrill 1098 (C, U, WRSL). Albay Province, Albay Gulf, near Lubas Point, on sandy mud with Halimeda, below low-tide mark, 18-5-1958, M. Doty &, G. T. Velasquez 16848 (L, HAW). - Cebu: Mactan Island, together with Halophila ovalis and Halodule uninervis, January-February
+1875, Moseley (BM).
+MALAYAN PENINSULA. Singapore: Blakang Mati, 1892, Ridley 3780 (C, BM,
+SING). Ponssol, on sandy mud, exposed at low tide, 5-2-1914, Holttum (SING). Labrador, 21-3-1928, Holttum (SING). Tandjong Behala Kuda, Pulau Pawai, sandy bottom, at half-tide level, growing with Halodule uninervis, 14-3-1950, J. Sinclair 38894 (SING, L). Pasir Laba, in a pure stand in a bed of Halophila ovalis, in the low eulittoral on mud, 27-12-1965, H. M. Burkill 3897 (L).
+INDONESIA. Riouw Archipelago: Pulau Penyangat, 8-11-1930, Md. Nur 24603
+(SING). - Java: Pasir Poetih, 27-8-1961, H. F. Neubauer 1601 (L). - Lesser Sunda Islands: Flores, near Bari, 12-7-1847, Zollinger 3334 (Type of Lemnopsis minor, P, L, BM, U); Bima, together with narrow-leaved Halodule uninervis, Zollinger 3431 (P). - Celebes: Salayer, Zollinger (L). - Moluccas: Amboina., October 1874, O. Beccari 11828 (L).
+MARIANNE ISLANDS. Exact locality unknown, fl., Gaudichaud (Type, P, L). - Guam, Cocos Lagoon, Summer 1952, K. O. Emery 10699 (AHFH). Mana Bay
+opposite Ypan, on east coast, inside barrier reef, in lagoon at ½-2 m depth, on sandy silty bottom, with scattered Enhalus acoroides, Caulerpa, Padina and other algae, 15-4-1962, B. O. Stone 4063 (L, HAW). - Saipan Island, in lagoon, 22-8-1952, N. 0. Bunker & R. Ocampo (AHFH).
+WESTERN AusTRALIA. Carnarvon, Babbage Island, in creek through the mangrove swamp, 16-9-1967, 0. den Hartog 560 (L); on tidal flats and in creeks in front of the mangrove-swamp SW.of Carnarvon, 17-9-1967, 0. den Hartog 581 (L). Port Hedland, in small pools in the intertidal belt, on muddy bottom, 18-9-1967, O. den Hartog 588 (L).
+QUEENSLAND. Thursday Island, a few specimens at low-water mark, 12-11-1967, 0. den Hartog 1016 (L); in very shallow, muddy littoral pools along the NE. side of the island, 12-11-1967, 0. den Hartog 1026 (L). Townsville, between Cape Pallarenda and Shelly Beach, in soft mud at half-tide level, 5-10-1967, 0. den Hartog 743 (L); Townsville, Cleveland Bay, flats of Crocodile Creek, 13-10-1967, 0. den Hartog 797 (L).
+NEW CALEDONIA. Noumea, on the mud-flats, just below low-water mark, er and !j! fl., fr., April 1869, B. Balansa 1525 (P); Anse Vata near Noumea, in 1-2 m of water, 5-2-1960, M. Angot (L, HAW). Ouano (La Foa District), abundant, er fl., 20-1-1961, H. S. McKee 8229 (K). "
+
+```
+
+## Decipher with Claude
+
+The text in the previous chunk was fed to Claude 3 in an **interactive session**. The goal was to get a cleaned up file with the data arranged in useful categories. It took a few tries. Here are the prompts. (Along the way, Claude 3 was asked to put the results in a CSV-format table. This table was examined in R to check the progress. These "checking" steps are not shown here.)
+
+-   The file lists the locations of herbarium specimens. These are arranged by country. Can you make a table that has columns for the levels of location, notes on habitat, collector's name, date of collection, collection number and herbarium?
+
+-   Can you divide the location column into city and location?
+
+-   Here is a hint. The date is usually in the day-month-year format. The collector almost always has a number (sometimes with a letter or two) identifying the collection number. Can you look at the table that you just produced and do some adjustments?
+
+-   If there is a name in the Date column, it probably means that the information that should be in the Specific Location or Habitat has spilled over into the following columns. Also, the Herbarium is usually a single letter, a few letters or several short letter strings separated by commas. Can you look at the table again, still keeping it in a CSV format?
+
+The result is the file loaded in the following chunk.
+
+Experience with this interactive session gives strong hints about how to craft a query that can be used with the API, thereby skipping the interactive phase and making this more a "production" system.
+
+```{r}
+#| label:   data-from-claude
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Create a stub for titles used in the output products.
+title <- "*Halophila ovata*"
+
+## Identify the source for use with output products.
+source <- "Den Hartog (1970) p 252-253"
+
+## Paste in the results of the interactive Clause 3 session.
+data <- read_csv(file = 
+    "Country,City/Region,Specific Location,Habitat,Collection Number,Collector,Date,Herbarium
+Kenya,Lamu,Mud-flats NW of town,Exposed at low tides locally common,A 21,Mrs. F.M. Isaac,01-07-1965,L
+Kenya,Mokowe,Mud-flats,In front of mangrove swamp,A 100,Mrs. F.M. Isaac,30-06-1965,L
+Kenya,Gazi,South of Ukunda,On mud-flats uncovered at low spring tides,A 116,Mrs. F.M. Isaac,11-12-1965,L
+India,Pamban,-,-,133 B,M.O.P. Iyengar,10-1922,BM
+Thailand,Rawi,Satut,In sand exposed at low tide with Halodule uninervis,14035,A.F.G. Kerr,13-01-1928,BM
+Hong Kong,Kowloon Bay,-,Sandy bottom at ca. 2 m depth,282,Harland,-,K
+Philippines,Luzon,Manila Bay,-,1595,A. Loker,05-1892,'K,C,P'
+Philippines,Luzon,Manila Bay,-,4112,E.D. Merrill,04-1905,'P,K,L,SYD'
+Philippines,Manila,Malate Beach,-,9899,C.B. Robinson,08-05-1910,'C,P,L,BO'
+Philippines,Manila,-,-,1098,E.D. Merrill,03-1912,'C,U,WRSL'
+Philippines,Albay Province,Albay Gulf near Lubas Point,Sandy mud with Halimeda below low-tide,16848,M. Doty & G.T. Velasquez,18-05-1958,'L,HAW'
+Philippines,Cebu,Mactan Island,With Halophila ovalis and Halodule uninervis,-,Moseley,01-1875,BM
+Malayan Peninsula,Singapore,Blakang Mati,-,3780,Ridley,1892,'C,BM,SING'
+Malayan Peninsula,Singapore,Ponggol,Sandy mud exposed at low tide,-,Holttum,05-02-1914,SING
+Malayan Peninsula,Singapore,Labrador,-,-,Holttum,21-03-1928,SING
+Malayan Peninsula,Singapore,Tandjong Behala Kuda Pulau Pawai,Sandy bottom half-tide level with Halodule uninervis,38894,J. Sinclair,14-03-1950,'SING,L'
+Malayan Peninsula,Singapore,Pasir Laba,Pure stand in Halophila ovalis bed low eulittoral on mud,3897,H.M. Burkill,27-12-1965,L
+Indonesia,Riouw Archipelago,Pulau Penyengat,-,24603,Md. Nur,08-11-1930,SING
+Indonesia,Java,Pasir Poetih,-,1601,H.F. Neubauer,27-08-1961,L
+Indonesia,Lesser Sunda Islands,Flores near Bari,-,3334 (Type),Zollinger,12-07-1847,'P,L,BM,U'
+Indonesia,Lesser Sunda Islands,Bima,With narrow-leaved Halodule uninervis,3431,Zollinger,-,P
+Indonesia,Celebes,Salayer,-,-,Zollinger,-,L
+Indonesia,Moluccas,Amboina,-,11828,O. Beccari,10-1874,L
+Marianne Islands,-,Exact locality unknown,-,- (Type),Gaudichaud,-,'P,L'
+Marianne Islands,Guam,Cocos Lagoon,-,10699,K.O. Emery,1952,AHFH
+Marianne Islands,Guam,Mana Bay,Inside barrier reef 0.5-2 m sandy-silty bottom,4063,B.C. Stone,15-04-1962,'L,HAW'
+Marianne Islands,Saipan Island,In lagoon,-,-,N.C. Bunker & R. Ocampo,22-08-1952,AHFH
+Western Australia,Carnarvon,Babbage Island,In creek through mangrove swamp,560,C. den Hartog,16-09-1967,L
+Western Australia,Carnarvon,SW of Carnarvon,Tidal flats and creeks in front of mangrove swamp,581,C. den Hartog,17-09-1967,L
+Western Australia,Port Hedland,-,Small pools in intertidal belt muddy bottom,588,C. den Hartog,18-09-1967,L
+Queensland,Thursday Island,-,Few specimens at low-water mark,1016,C. den Hartog,12-11-1967,L
+Queensland,Thursday Island,NE side,Very shallow muddy littoral pools,1026,C. den Hartog,12-11-1967,L
+Queensland,Townsville,Cape Pallarenda to Shelly Beach,Soft mud at half-tide level,743,C. den Hartog,05-10-1967,L
+Queensland,Townsville,Cleveland Bay Crocodile Creek flats,-,797,C. den Hartog,13-10-1967,L
+New Caledonia,Noumea,Mud-flats,Just below low-water mark,1525,B. Balansa,04-1869,P
+New Caledonia,Noumea,Anse Vata,In 1-2 m of water,-,M. Angot,05-02-1960,'L,HAW'
+New Caledonia,Ouano (La Foa District),-,Abundant,8229,H.S. McKee,20-01-1961,K")
+
+## Add a column to identify the rows.
+data$text <- c(1:nrow(data))
+
+## Print a data confirmation table.
+gt(data) |>
+  tab_caption(caption = md(title)) |>
+  tab_style(
+    cell_text(v_align="top"),
+    locations = cells_body()) |>
+  tab_source_note(
+    source_note = source)
+
+```
+
+## Visualize the Locations
+
+The location data need to be simplified by having just one row for each location. The geographic coordinates need to be added in order to make the map.
+
+This chunk configures the data so that it can be used with a Claude 3 query.
+
+```{r}
+#| label:   location-data
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Extract just the rows needed and simplify the names.
+loc <- data |>
+  select(text,Country,`City/Region`) |>
+  rename(city = `City/Region`)
+
+## Confirm the extraction.
+## gt(loc)
+
+## Create the simplified block of data.
+out <- with(loc, sprintf(paste(text, Country, city, "\n",
+    sep = ', ', collapse = ' ')))
+
+```
+
+The next chunk uses Claude 3 to do the simplification and add the geographic coordinates.
+
+The result of Claude 3 processing is written to a file. This is because there are periods of high-demand on the LLM. The result is a time-out due to a slow response to the API request. This, in turn, stops the following steps from running. By doing this step as a separate chunk and storing the result, the rest of the data flow works as expected.
+
+This "storage strategy" is likely just a short-term problem.
+
+```{r}
+#| label:   claude-request
+#| message: false
+#| echo:    true
+#| warning: false
+#| eval: false ######## "false" stops the processing of this step
+
+## Create the request for Claude 3.
+request <- "The attached text has three fields in each row. These are the number, country, and city. The locations need to be consolidated so there are no rows with duplicates of country and city. Then, each row needs to have the geographic coordinates of the place as separate lat and lon columns. Please return the result only as a CSV table (with header names) and without any comments. Here is the text: "
+
+## Put the request together with the data.
+query <- paste0(request,out)
+
+## Send the request.
+response <- claudeR(prompt = list(list(role = "user", 
+                                       content = query)), 
+                    model = "claude-3-opus-20240229", 
+                    max_tokens =2000)
+
+## Read the data table returned by Claude 3.
+simple_loc <- read_csv(file=response)
+
+## Store the results
+write_csv(simple_loc, file = "temp/claude_response.csv")
+
+```
+
+The response is processed in the next chunk.
+
+Note that the stored file is used (as explained in the previous chunk).
+
+```{r}
+#| label:   print-response
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Read the stored response
+simple_loc <- read_csv(file="temp/claude_response.csv")
+
+## Process the response.
+new_title <- paste0(title, "Distribution")
+
+## Print a table to confirm the data.
+gt(simple_loc) |>
+  tab_caption(caption = md(new_title)) |>
+  tab_style(
+    cell_text(v_align="top"),
+    locations = cells_body()) |>
+  tab_source_note(
+    source_note = source)
+
+```
+
+## Plot the distribution
+
+Seeing the distribution of the collection sites is an important step in understanding the species.
+
+Note that having the column names match the requirements in the sitemaps package makes this step straightforward.
+
+The points are not labeled as there isn't enough room.
+
+```{r}
+#| label:   plot-distribution
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Create a basemap
+basemap <- site_google_basemap(datatable = simple_loc)
+
+## Plot the map.
+## Note: No labels as there are too many points.
+ggmap(basemap) +
+  site_points(datatable = simple_loc)
+
+```
+
+## List the Collectors
+
+The history of specimen collection provides a fascinating view of the people involved in adding to our knowledge of this species and when they did their work.
+
+```{r}
+#| label:   collectors
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Extract the year from the date.
+collectors <- data |>
+  mutate(year = str_sub(Date, start= -4)) |>
+  select(Collector, year)
+
+## Get rid of duplicates (collector + date).
+simplified_collectors <- unique(collectors)
+
+## Sort by year.
+simplified_collectors <- simplified_collectors |>
+  arrange(year)
+
+## Show the results
+new_title <- paste0(title," Collectors")
+
+gt(simplified_collectors) |>
+  tab_caption(caption = md(new_title)) |>
+  tab_style(
+    cell_text(v_align="top"),
+    locations = cells_body()) |>
+  tab_source_note(
+    source_note = source)
+```
+
+## List the Herbarium Collections
+
+This listing will show where the specimens are stored.
+
+As done earlier, this chunk is run separately and the result is stored in a file. This is the work-around for use when the system is heavily loaded and a response is not received before a time-out.
+
+```{r}
+#| label:   herbaria
+#| message: false
+#| echo:    true
+#| warning: false
+#| eval: false   ### "false" means don't run
+
+## Extract the relevant data
+herb_data <- data |>
+  mutate(year = str_sub(Date, start= -4)) |>
+  rename(number = `Collection Number`) |>
+  select(Collector, number, year, Herbarium)
+
+## Create the simplified block of data.
+out <- with(herb_data, sprintf(paste(
+                       Collector,number,year,Herbarium,"\n",
+                       sep = ', ',
+                       collapse = ' ')))
+
+request <- "The text to process contains columns for the Collector, number, year, and Herbarium. The herbarium column may be a single item or a set of items separated with commas. The goal is to have one row in a table for each item. A set of items means that duplicate collections were placed in different herbaria. This means that additional rows need to be put in the table with each repeating the Collector, number, year and herbarium for each specimen. Please create a table in CSV format and return the result with column headers and without any comments. Here is the text to process: "
+
+## Put the request together with the data.
+query <- paste0(request,out)
+
+## Send the request.
+response <- claudeR(prompt = list(list(role = "user", 
+                                       content = query)), 
+                    model = "claude-3-opus-20240229", 
+                    max_tokens =3000,
+                    api_key = claude_key)
+
+## Read the data table returned by Claude 3.
+herb_list <- read_csv(file=response)
+
+## Write table for temporary storage
+write_csv(herb_list,file="temp/herbarium_data.csv")
+
+```
+
+Get a list of herbaria so that the abbreviations can be changed to full herbarium names.
+
+```{r}
+#| label:   list-herb
+#| message: false
+#| echo:    true
+#| warning: false
+
+herb <- read_csv(file="herbarium_names.csv")
+
+new_title <- "Herbaria with seagrass specimens"
+source2 <- "den Hartog (1970) p 7-8."
+
+## Put out a table for reference
+gt(herb)|>
+  tab_caption(caption = md(new_title)) |>
+  tab_style(
+    cell_text(v_align="top"),
+    locations = cells_body()) |>
+  tab_source_note(
+    source_note = source2)
+
+```
+
+The list is processed in the following chunk.
+
+Here is a list of specimens, organized by Herbarium.
+
+```{r}
+#| label:   specimens-held
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Read the stored data.
+specimens <- read_csv(file="temp/herbarium_data.csv")
+
+## Merge with the herbarium names
+complete <- merge(specimens, herb, by="Herbarium")
+
+complete <- complete |>
+  group_by(Name) |>
+  dplyr::arrange(year) |>
+  select(Collector, number, year)
+
+## Show the results
+new_title <- paste0(title," Herbarium Collections")
+
+gt(complete, groupname_col = "Name") |>
+  tab_caption(caption = md(new_title)) |>
+  tab_style(
+  style = cell_text(weight = "bold"),
+  locations = cells_row_groups()) |>
+  tab_style(
+    cell_text(v_align="top"),
+    locations = cells_body()) |>
+  tab_source_note(
+    source_note = source)
+
+```
+
+## Consolidate the Habitat Comments
+
+Even though most of the comments are brief, they may offer some insight into the habitat of the species.
+
+Here, again, the results are read into a file to avoid problems of a busy server.
+
+```{r}
+#| label:   habitat-consolidate
+#| message: false
+#| echo:    true
+#| warning: false
+#| eval: false ###### "false" means don't run
+
+habitat_comments <- data |>
+  dplyr::select(Habitat)
+
+## Create the simplified block of data.
+out <- with(habitat_comments, sprintf(paste(
+                       Habitat,"\n",
+                       sep = ', ',
+                       collapse = ' ')))
+
+request <- "Many of the specimens contain comments about habitat of the seagrass species. Can you use just these comments and synthesize some general statements about the habitat? This overview should be arranged as regular sentences and paragraphs. Here is the text to process: "
+
+## Put the request together with the data.
+query <- paste0(request,out)
+
+
+## Send the request.
+response <- claudeR(prompt = list(list(role = "user", 
+                                       content = query)), 
+                    model = "claude-3-opus-20240229", 
+                    max_tokens =3000,
+                    api_key = claude_key)
+
+writeLines(response, "temp/habitat_response.txt")
+
+```
+
+Read and print the response.
+
+```{r}
+#| label:   habitat-print
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Read the data returned by Claude 3.
+Habitats <- readLines("temp/habitat_response.txt")
+
+Habitats <- data.frame(Habitats)
+
+new_title <- paste0(title," Habitat Synthesis")
+
+library(gt)
+## Print the response in a neat format.
+gt(Habitats)|>
+  tab_caption(caption = md(new_title))
+
+```

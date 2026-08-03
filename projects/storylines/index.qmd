@@ -1,0 +1,21 @@
+# Preface {.unnumbered}
+
+Keeping track of daily activities while traveling or working on-site can be a challenge. Tiredness and distractions often make traditional journaling a low priority.
+
+Imagine a simpler way:
+
+1.  **Snap:** Take photos throughout your day using your smartphone.
+
+2.  **Store:** Move these photos to a designated folder on your computer.
+
+3.  **Visualize:** Run a quick code script, specifying only the folder name. Here is where all the magic happens.
+
+The result? A set of visual summaries and narratives that bring your day to life.
+
+This prototype demonstrates the potential of this minimal-effort approach. While not perfect, the results are promising.
+
+This approach is, in part, about harnessing the power of Large Language Models (LLMs) to unlock the hidden stories in our data. By crafting roles and prompts for these tools, we're discovering new ways to leverage their power to transform photos into a useful narrative.
+
+This isn't just a story about LLMs. R-coded procedures and API calls to Google Maps add to the overall story.
+
+Different facets of the procedure are shown in the chapters. A "production" tool will look quite different. That will come only after we gain experience and better adapt the code to our needs.

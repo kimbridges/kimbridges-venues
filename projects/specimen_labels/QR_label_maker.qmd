@@ -1,0 +1,74 @@
+---
+title: "Try_2"
+format: html
+editor: visual
+---
+
+QR Code Generator
+
+This is an updated version to produce Collector QR tags.
+
+------------------------------------------------------------------------
+
+```{r}
+library(qrcode)
+library(grid)
+library(gridExtra)
+library(gridtext)
+library(png)
+library(tidyverse)
+
+```
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+```{r}
+## This version is for collector label QR-Codes.
+## The chunk generates labeled QR codes as png files. These images are put in the base directory.
+
+collector   <- "KWB:"   ## QR Code header
+coll_number <- 111      ## Starting number of the QR codes
+QR_number   <- 4        ## The number of QR codes needed
+
+last_coll_number <- coll_number + QR_number -1
+PDF_file <- "Collection_labels.pdf" ## The PDF file for the labels
+
+for (i in seq(coll_number, last_coll_number, 1)){
+
+  code    <- paste(collector,i)
+  QR_name <- paste0("temp_qr_",i,".png")
+
+  png(QR_name)
+  plot(qr_code(code, ecl="M"))
+  dev.off()
+  
+
+  img       <- rasterGrob(as.raster(readPNG(QR_name)), interpolate=FALSE)
+  ID_number <- textGrob(code,gp=gpar(fontsize=48,font=2))
+
+  png(QR_name)
+  grid.arrange(img,top=ID_number)
+  dev.off()
+ 
+  }  ## End of loop for number of labels
+
+## Put all the images in a single file as separate PDF pages
+
+pdf(PDF_file,paper="USr")
+for (i in coll_number:last_coll_number) {
+    QR_name <- paste0("temp_qr_",i,".png")
+    img <-  rasterGrob(as.raster(readPNG(QR_name)), interpolate=FALSE)
+    grid.arrange(img)
+    }
+ dev.off()
+
+## Get rid of the temporary files
+
+##sapply(paste0("temp_qr_", coll_number:last_coll_number, ".png"), unlink)
+```
+
+```{r}
+1 + 1
+```

@@ -1,0 +1,134 @@
+
+
+```{r}
+## Suppress messages
+#| error: false
+#| warning: false
+
+## Load required libraries
+library(tidyverse)
+library(readr)
+library(gt)
+
+## Set read_csv function option to suppress warning messages
+options(readr.show_col_types = FALSE)
+
+## Data input
+data <- read_csv(col_names = TRUE, file =
+"Common Name,    Scientific Name,         Conservation Status
+Black Crowned Crane, Balearica pavonina,    Vulnerable
+Black-necked Crane,  Grus nigricollis,      Near Threatened
+Blue Crane,          Anthropoides paradiseus, Vulnerable
+Brolga,              Antigone rubicunda,    Least Concern
+Demoiselle Crane,    Anthropoides virgo,    Least Concern
+Eurasian Crane,      Grus grus,             Least Concern
+Grey Crowned Crane,  Balearica regulorum,   Endangered
+Hooded Crane,        Grus monacha,          Vulnerable
+Red-crowned Crane,   Grus japonensis,       Endangered
+Sandhill Crane,      Antigone canadensis,   Least Concern
+Sarus Crane,         Antigone antigone,     Vulnerable
+Siberian Crane,      Leucogeranus leucogeranus, Critically Endangered
+Wattled Crane,       Bugeranus carunculatus, Vulnerable
+White-naped Crane,   Antigone vipio,        Vulnerable
+Whooping Crane,      Grus americana,        Endangered")
+
+## Initialize the identification information
+table_title <- "Crane Species and Their Conservation Status"
+data_source <- "Internet"
+
+## Create the table
+table <- gt(data) %>%
+  tab_header(
+    title = table_title
+  ) %>%
+  tab_source_note(
+    source_note = paste0("Source: ", data_source)
+  ) %>%
+  tab_style(
+    style = cell_text(v_align = "top"),
+    locations = cells_body()
+  ) %>%
+  fmt_markdown(columns = "Scientific Name") %>%
+  cols_label(
+    `Scientific Name` = md("**Scientific Name**")
+  ) %>%
+  text_transform(
+    locations = cells_body(columns = "Scientific Name"),
+    fn = function(x) paste0("*", x, "*")
+  )
+
+## Use table stripes
+table <- table %>%
+  opt_row_striping(row_striping = TRUE)
+
+## Output the table
+table
+```
+Bar Chart
+
+```{r}
+## Suppress messages
+#| error: false
+#| warning: false
+
+## Load required libraries
+library(tidyverse)
+library(readr)
+library(ggplot2)
+
+## Set read_csv function option to suppress warning messages
+options(readr.show_col_types = FALSE)
+
+## Data input
+data <- read_csv(col_names = TRUE, file =
+"Common Name,    Scientific Name,         Conservation Status
+Black Crowned Crane, Balearica pavonina,    Vulnerable
+Black-necked Crane,  Grus nigricollis,      Near Threatened
+Blue Crane,          Anthropoides paradiseus, Vulnerable
+Brolga,              Antigone rubicunda,    Least Concern
+Demoiselle Crane,    Anthropoides virgo,    Least Concern
+Eurasian Crane,      Grus grus,             Least Concern
+Grey Crowned Crane,  Balearica regulorum,   Endangered
+Hooded Crane,        Grus monacha,          Vulnerable
+Red-crowned Crane,   Grus japonensis,       Endangered
+Sandhill Crane,      Antigone canadensis,   Least Concern
+Sarus Crane,         Antigone antigone,     Vulnerable
+Siberian Crane,      Leucogeranus leucogeranus, Critically Endangered
+Wattled Crane,       Bugeranus carunculatus, Vulnerable
+White-naped Crane,   Antigone vipio,        Vulnerable
+Whooping Crane,      Grus americana,        Endangered")
+
+## Prepare data for plotting
+status_counts <- data %>%
+  count(`Conservation Status`) %>%
+  mutate(`Conservation Status` = factor(`Conservation Status`, 
+                                        levels = c("Critically Endangered", "Endangered", "Vulnerable", "Near Threatened", "Least Concern")))
+
+## Set source information
+source <- "Internet Data"
+
+## Create the bar chart
+bar_out <- ggplot(status_counts, aes(x = `Conservation Status`, y = n)) +
+  geom_bar(stat = "identity", fill = "cornsilk3", color = "black") +
+  labs(title = "Frequency of Conservation Status for Crane Species",
+       x = "Conservation Status",
+       y = "Number of Species",
+       caption = source) +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "darkslategray2"),
+    axis.text = element_text(color = "black", size = 12),
+    axis.title = element_text(color = "black", size = 12),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_line(color = "black")
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+bar_out
+
+## Save the plot (optional)
+ggsave(plot = bar_out, file = "crane_conservation_status.png")
+
+```
+

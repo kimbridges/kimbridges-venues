@@ -1,0 +1,147 @@
+---
+title: "site_param_show"
+format: html
+editor: visual
+---
+
+This shows the styles and their values.
+
+It is an exploration of the techniques needed.
+
+```{r}
+
+library(dplyr)
+library(sitemaps)
+library(tidyr)
+library(tibble)
+library(gt)
+library(readr)
+
+## Use two functions from sitemaps to initialize columns
+column <- site_styles()
+hide   <- site_google_hides()
+
+
+
+
+```
+
+Get the column items into a printed list.
+
+```{r}
+
+
+un_column <- unlist(column)
+
+head(un_column)
+
+  df_un_column <- data.frame(un_column)
+  colnames(df_un_column) <- c("value")
+
+  
+df_un_column <- tibble::rownames_to_column(df_un_column, "column")
+
+gt(df_un_column)
+```
+
+Descriptions
+
+```{r}
+
+param_info <- read_csv(col_names = TRUE, file = 
+"number, group,column,                     default,     basicinfo
+ 1,  point,    point_alpha,                0.9,         point transparency
+ 2,  point,    point_color,                red,         inside color
+ 3,  point,    point_outline_color,        black,       outside border color
+ 4,  point,    point_outline_thickness,    1,           border thickness
+ 5,  point,    point_shape,                circle,      circle (symbol 21)
+ 6,  point,    point_size,                 3,           symbol size
+
+ 7,  label,    label_alpha,                0.9,         transparency
+ 8,  label,    label_background_color,     white,       label background color 
+ 9,  label,    label_connector_color,      red,         line from point to label
+ 10, label,    label_connector_thickness,  1
+ 11, label,    label_corner_radius,        unit(0.3, 'lines'), rounded corner radius 
+ 12, label,    label_outline_thickness,    0.5,         label border size (mm)
+ 13, label,    label_text_color,           black,       text color
+ 14, label,    label_text_size,            4,           text size
+ 15, label,    label_text_wrap,            NA,          whether or where to wrap the text
+ 16, label,    seed,                       1002,        randomizes without a value
+
+ 17,  name,    angle,                      0,           negative is clockwise
+ 18,  name,    family,                     sans,        sans-serif typeface (likely Helvetica)
+ 19,  name,    fontface,                   plain,       alt: italics, bold
+ 20,  name,    justify,                    center,      horizontal justification
+ 21,  name,    name_text_color,            black,       text color
+ 22,  name,    name_text_size,             4,           text size
+ 23,  name,    name_text_wrap,             NA,          whether or where to wrap the text
+
+ 24,  legend,  leg_attribute,              NA,          text for the header line
+ 25,  legend,  leg_header_face,            plain,       font face for the header lines
+ 26,  legend,  leg_header_text_size,       12,          point size for the header text
+ 27,  legend,  leg_meanng_face,            plain,       font face for the point meanings
+ 28,  legend,  leg_meaning_text_size,      12,          point size for the meaning text
+ 29,  legend,  leg_outline_color,          black,       point outline color
+ 30,  legend,  leg_outline_thickness,      0,           point outline thickness
+ 31,  legend,  leg_point_color,            black,       point color
+ 32,  legend,  leg_point_shape,            circle,      point shape
+ 33,  legend,  leg_point_size,             3,           point size
+
+ 34,  scale,   metric,                     TRUE,        FALSE for English (ft, miles); TRUE for metric (m, km)
+ 35,  scale,   scale_anchor,               lr,          anchor points for scale line (ur, ul, ll, lr)
+ 36,  scale,   scale_line_color,           black,       scale bar color
+ 37,  scale,   scale_line_thickness,       2,           thickness of the scale bar
+ 38,  scale,   scale_margin,               0.1,         percent of the width to leave as a margin
+ 39,  scale,   scale_text_color,           black,       dimension and unit text color
+ 40,  scale,   scale_text_size,            4,           size of the text with the dimension and unit
+ 41,  scale,   scale_width,                0.20,        use about this percent of the width for the scale bar
+
+ 42,  gmaps,   gmaptype,                   roadmap
+ 43,  gmaps,   hide,                       hide_poi,    hide poi
+ 44,  gmaps,   mapscale,                   2,           max available
+ 45,  gmaps,   margin,                     0,           expand bounding box (0=points at margin)
+
+ 46,  smaps,   smaptype,                   terrain
+ 47,  smaps,   square,                      ALSE,       TRUE forces a square bounding box")
+
+gt(param_info)
+```
+
+
+```{r}
+
+param_info %>% 
+  gt(rowname_col = "grp") %>%
+  tab_row_group(
+    label = "label",
+    rows = group == "label"
+  ) %>%
+  tab_row_group(
+    label = "point",
+    rows = group == "point"
+  ) %>% 
+  tab_row_group(
+    label = "name",
+    rows = group == "name"
+  ) %>% 
+  tab_row_group(
+    label = "legend",
+    rows = group == "legend"
+  ) %>% 
+  tab_row_group(
+    label = "scale",
+    rows = group == "scale"
+  ) %>% 
+  tab_row_group(
+    label = "gmaps",
+    rows = group == "gmaps"
+  ) %>% 
+  tab_row_group(
+    label = "smaps",
+    rows = group == "smaps"
+  ) %>% 
+  cols_hide(columns = c(group))
+  
+
+```
+

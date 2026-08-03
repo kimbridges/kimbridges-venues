@@ -1,0 +1,41 @@
+# Teaching the machine to be honest
+
+The last chapter ended on a promise: a tool you can be wrong in front of has to be a tool that's right. This chapter is about the time the tool wasn't right, and what it took to fix that.
+
+The old version of the rebuilt microscope had a quiet dishonesty in it. Point anywhere on the leaf, and it named a tissue. Anywhere. It always had an answer, delivered with the same confidence whether the answer was solid or invented. That sounds like a feature. It's actually the problem. A tool that never says "I don't know" isn't confident. It's just unable to tell the truth about its own limits.
+
+## The map beneath
+
+Recall how the microscope reads a leaf. Under the picture sits a hidden map, painted so each tissue has its own color. You point, the machine reads the color at that spot, and the color tells it the tissue. The whole thing depends on one quiet agreement: the colors on the map have to be the colors the machine confidently interprets.
+
+That agreement was broken in the rebuild. And in an interesting way. The list of colors the code searched for had not been measured from the map. It was a two-step process. First, the map was painted with colors, and each color represented the tissue at each pixel. It's was a pretty map, full of brown, yellow and gold. Blues ranged from deep blue through aqua. The second step was the color key. This was a simple list of colors, like gold and blue, along with the corresponding tissue. To make use of this list, specific color values, the data used for interpretation, were generated from the names of the colors. Notice the problem. A tissue was described as "blue," and that description was turned into a single very specific numeric code for blue. This let the machine look for the blue as a value. The trouble is that the color map had a range of blues among its pixels. The interpreted code for blue was not among them. The key and the lock had been made separately. They didn't fit. And, at first, that wasn't obvious. But I had a suspicion.
+
+## What the numbers said
+
+Here's where the modern environment earned its keep. I could just check.
+
+A clean categorical map would hold about a dozen colors, one per tissue. This one held 359,791 distinct colors. It wasn't a set of labeled regions at all. It was a blended, smeared image that had been shrunk with its colors averaged together, so the boundaries between tissues were bands of in-between shades that belonged to no tissue. Of the ten tissues the code was hunting for, five pointed at colors that were likely not in the image. Phloem's blue was the clearest case. The nearest blue on the map was so far from the blue the code wanted that you could say plainly there was no blue there at all. And more than a third of the colored pixels were being matched to the nearest label whether or not that label fit, because the code had no way to say "none of these." It forced a guess every time.
+
+![The map, measured. A categorical map should carry exactly one color inside each tissue's region. The old map carried tens of thousands. Phloem's region held 28,412 shades across 34,036 pixels, so there was no single blue in there for any key to match, whatever blue the code had been cut to look for.](figures/aim_9_color_smear.svg){#fig-smear width=100% fig-align="center" .column-body-outset}
+
+I'll be up front about my own honesty here, since that's the chapter's subject. The very first reading was harsher than the truth. It called five tissues phantoms, and a closer look found that two of them had small, real regions after all, once the smear was cleaned away and I stopped lumping them together. So the machine wasn't the only thing that had overclaimed. The map was corrected. We corrected ourselves. Both corrections were the same move: look again, and believe the measurement over the story.
+
+## Teaching it to say "I don't know"
+
+The fix had two halves. First, a clean map, one flat color per tissue, no smears, built so a color either is a tissue's exact color or it isn't. Part of that map I repainted by hand, because two tissues had been given colors so close that even a machine programmed to distinguish a range of colors would confuse them. So I pulled them apart into a brown and a gold nobody could mix up. Second, and this is the part that matters, the machine was taught to match exactly and to admit when it can't. Land on a color that belongs to a tissue, and you get the tissue. Land on a smear, or a cell wall, or an air space the map doesn't classify, and instead of the nearest lucky guess, you get "unclassified." Click above the leaf entirely, off into the mounting medium, and it tells you that you're outside the section, rather than naming a tissue that isn't there.
+
+![The rebuilt map. One flat color per tissue, no blending, no in-between shades. A color either belongs to a tissue or it belongs to nothing, and the machine is allowed to say so.](figures/aim_4_tissue_map.png){#fig-tissue-map width=45% fig-align="center"}
+
+That word, unclassified, is the whole chapter in one label. It's the machine admitting the edge of what it knows. A tool earns trust not by always having an answer but by being straight about when it doesn't. The abundance number sits inside this same honesty. It tells you a tissue fills a lot of the leaf or very little of it, so you know whether you're hunting for something common or something rare. It's a fact about the leaf, offered to help you look. It is never a fact about you.
+
+![The same map laid over the micrograph at 65 percent. The student controls the slider, so the labels can be turned up when they are lost and turned down when they want to look at the tissue itself.](figures/aim_3_overlay_65.png){#fig-overlay width=45% fig-align="center"}
+
+![What the abundance number is made of. The midrib ground tissue fills more than two fifths of the section and the cuticle barely one percent, so the same click takes very different amounts of hunting depending on what you are after. Sclerenchyma is missing because the rebuilt map found no region for it.](figures/aim_10_abundance.svg){#fig-abundance width=100% fig-align="center" .column-body-outset}
+
+## An afternoon
+
+The part that still strikes me is how fast it went. Finding the flaw, measuring a third of a million colors, proving that five labels pointed at nothing, rebuilding the map, and rewriting how the machine reads it. It happened in an afternoon. I didn't have to get a grant. I didn't need a new lab. I didn't have to spend a year. Just an afternoon sitting at my computer.
+
+That is the thesis of this whole book, shrunk down to a single sitting. In 1989 this dishonesty could have hidden in the system forever, because we had no cheap way to interrogate it. The richer environment didn't only let me build the tool. It let me catch the tool lying and make it honest before dinner. Feeling the constraints lift is one thing when it means a bigger picture loads faster. It's another thing entirely when it means the truth is suddenly within reach.
+
+There's one more kind of honesty the tool owes a student, and it's the one it's most likely to get wrong: how to say a name it has never heard. That's where we go next.

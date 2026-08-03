@@ -1,0 +1,307 @@
+---
+title: "Creating Maps Using R"
+subtitle: "Simplifying the Process"
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+format:
+  html:
+    fig-width: 8
+    fig-height: 8
+    code-fold: true
+    code-summary: "Show the code chunk"
+editor: visual
+execute:
+  warning: false
+  error: false
+  message: false
+---
+
+# Map Legend
+
+Many maps require a legend to link the graphic notation associated with plotting symbols (e.g., points) to categories of information (e.g., meanings of the different point colors). The map legend is where this linkage is made.
+
+Most map systems automatically generate a legend. That's not done here as the types of maps produced using the `site_maps` functions require a more custom approach.
+
+The challenge has been to create a way that is straightforward and consistent with the data structure philosophy and procedures used elsewhere in this mapping system.
+
+The solution has been to put data into tables, supplemented by the use of the stored column style data.
+
+## Getting Started
+
+As usual, there are some tasks that need to be done. First, we'll load some libraries and get the Google Map key registered.
+
+```{r "initialize"}
+
+library(sitemaps)
+library(ggmap)
+library(ggplot2)
+library(readr)
+library(gt)       ## tables
+library(ggh4x)    ## used here to tighten up the legend spacing
+
+## Initialize Google Map key; the key is stored in a Project directory.
+  My_Key <- read_file("P://Hot/Workflow/Workflow/keys/Google_Maps_API_Key.txt")
+
+## Test if Google Key is registered.
+if (!has_google_key()){
+
+  ## Register the Google Maps API Key.
+  register_google(key = My_Key, account_type = "standard")
+  } ## end Google Key test
+  
+
+```
+
+Then we do some usual setup things.
+
+```{r "setup"}
+
+## Use two functions from sitemaps to initialize style values
+column <- site_styles()
+hide   <- site_google_hides()
+
+## Establish a theme that improves the appearance of a map.
+## This theme removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2),
+                    legend.position = "none")
+
+```
+
+## Creating a Map Legend
+
+Think of the legend as a series of rows. Some rows had a header with a pair of values; the point attribute (e.g., point color) and the other the meaning (e.g., school location). The other rows have paired symbols (e.g., brown point) and meanings (e.g., rural) for all the attribute values.
+
+The header is organized by numbering the rows. The top of the legend starts with row 1.
+
+Each row is specified in one of two tables. Text-only rows are in the Header Table. The rows with map points (with their specific characteristics) are given in the Points Table.
+
+Each of these two tables has very specific requirements for column headers.
+
+## Header Attributes
+
+The headers are important as these are the rows of text that provide the explanations for categories of data. Other than providing information on where each row of text goes, along with the text itself, there is little formatting required.
+
++----------------------+---------------+---------------------------------------------+
+| column name          | value\        | use & meaning                               |
+|                      | (default)     |                                             |
++======================+===============+=============================================+
+| number               | *number*      | row of the legend                           |
++----------------------+---------------+---------------------------------------------+
+| leg_attribute        | *text*        | text for the row                            |
++----------------------+---------------+---------------------------------------------+
+| leg_header_face      | "plain"       | font face: plain, bold, italic, bold.italic |
++----------------------+---------------+---------------------------------------------+
+| leg_header_text_size | 12            | point size of the attribute text            |
++----------------------+---------------+---------------------------------------------+
+
+## Focus on Points
+
+The symbolism of the point attributes (e.g., color and size) need to be explained to the map viewer. Perhaps the most common way to do this, especially with complex symbolism, is with a map legend.
+
+A map legend shows each of the point attributed and the values for each one. For example, there may be different point color point for rural (brown) and urban (green) schools. The legend will show the two colors and tag each one with the appropriate value (rural or urban). There will likely be a group header that defines this symbolism (e.g., location).
+
+There are a few attributes for labels that might be distinguished with a legend. At this stage, however, we'll keep the focus just on points and their attributes.
+
+## Point Attributes
+
+The list of `column` give us the set of possible point attributes used in `sitemaps`. (`point_alpha` is not in this list as it is unlikely you'll use this as a point attribute carrying information.)
+
++-----------------------+--------------+----------------------------------------------+
+| column name           | value\       | uses & values                                |
+|                       | (default)    |                                              |
++=======================+==============+==============================================+
+| number                | *number*     | row of the legend                            |
++-----------------------+--------------+----------------------------------------------+
+| leg_point_size        | 3            | point size                                   |
++-----------------------+--------------+----------------------------------------------+
+| leg_outline_color     | "black"      | point outline color                          |
++-----------------------+--------------+----------------------------------------------+
+| leg_point_color       | "red"        | point color:\                                |
+|                       |              | color name, NA = transparent                 |
++-----------------------+--------------+----------------------------------------------+
+| leg_point_shape       | "circle"     | point shape:\                                |
+|                       |              | circle, square, diamond, triangle, wedge     |
++-----------------------+--------------+----------------------------------------------+
+| leg_outline_thickness | 1            | point border thickness                       |
++-----------------------+--------------+----------------------------------------------+
+| leg_meaning_face      | "plain"      | font faces: plain, bold, italic, bold.italic |
++-----------------------+--------------+----------------------------------------------+
+| leg_meaning_text_size | 12           | point size for the meaning text              |
++-----------------------+--------------+----------------------------------------------+
+| leg_meaning           | *text*       | text describing the specific legend symbol   |
++-----------------------+--------------+----------------------------------------------+
+
+You'll see how this works in an several examples.
+
+## A Complex Example
+
+First, we need to specify the data for the legend. We'll use two tables to create the map legend.
+
+```{r "complexlegend"}
+
+## Create the legend so the table details can be shown in the proper context
+
+## Column constant value overrides
+column$leg_header_text_size <- 16  ## All header rows the same font size
+column$leg_point_text_size <- 14  ## All point text the same font size
+
+## Header table
+h_table <- read_csv(col_names=TRUE, show_col_types=FALSE, file= 
+       "number, leg_attribute,                  leg_header_face
+        1,      Legend,                         bold
+        2,      Point Color: School Location,   plain
+        5,      Point Size: School Size,        plain
+        9,      Outline Color: Dominant Sport,  plain")
+
+## Point attribute table
+p_table <- read_csv(col_names=TRUE, show_col_types=FALSE, file= 
+ "number, leg_point_size, leg_point_color, leg_outline_thickness, leg_outline_color, leg_meaning
+   3,     6,         brown,      0,           brown,    rural
+   4,     6,         green,      0,           green,    urban
+   6,     3,         black,      0,           black,    small
+   7,     6,         black,      0,           black,    medium
+   8,     9,         black,      0,           black,    large
+   10,    6,         NA,         3,           red,      football
+   11,    6,         NA,         3,           yellow,   basketball")
+
+l_plot <- site_legend(h_table = h_table, p_table = p_table)
+
+```
+
+### Header table
+
+The header table has data values, plus a formatting options. Here is an example.
+
+```{r "header"}
+#| label: tbl-header
+#| tbl-cap: "Header data and styles for the header table (h_table)."
+
+gt(h_table)
+
+```
+
+The size of the header lines is given as a column value since all of the lines must be the same size. Why this is true is a mystery. Here, it doesn't make much difference. Here is how these lines are given as a `column`.
+
+`column$leg_header_size <- 12`
+
+The size for the header lines is in points.
+
+### Point table
+
+Recall that the point table provides for a lot of data to define the symbolism of each of the map points. Like the other tables, the column names are important.
+
+The row numbers are not continuous. Spaces in the sequence allow the insertion of header lines (see the numbering of the table above)
+
+The values in the table show the combinations needed to create the map symbol, along with a text column for the meaning of the particular value highlighted in the row. If a value for a column is the same for all rows, then you can use a column value. In this example, the symbol shape is a `circle` for all the rows so the following column is used.
+
+`column$leg_point_shape <- "circle"`
+
+The values in this point attribute table are adjusted to demonstrate the visual property of the point. A few values are neutral (NA) so nothing is shown. In other places, black points or lines are used so a color won't confuse the attribute being demonstrated.
+
+The key to success is to make sure that the names of the table columns are correct. This is a bit of a tedious exercise, but spending a bit of time by verifying the column names pays great dividends. You have full control over the appearance, including the order, of the information in the legend.
+
+The Point Table can quite complex as there are a number of symbols that need to be demonstrated and explained. Here is the `Point Table`.
+
+```{r "points"}
+#| label: tbl-points
+#| tbl-cap: "Point data and styles for the point table (p_table)."
+
+gt(p_table)
+
+```
+
+Finally, running these two tables with the `site_legend` function gets us a legend.
+
+```{r "legend"}
+#| label: fig-legend
+#| fig-cap: "A complex legend."
+
+l_plot
+
+```
+
+This a relatively big legend. Most map legends will likely be less complex.
+
+## Simple Example
+
+Here is an example of a small legend. There are still two tables, one for headers and the other for points. In this example, the default values are used for most of the style columns.
+
+```{r "tinylegend"}
+
+## Make large symbols
+column$leg_point_size <- 7
+
+## Header Table
+header_info <- read_csv(col_names = TRUE, show_col_types=FALSE, file=  
+     "number,    leg_attribute
+     1,          Location Confidence")
+
+## Point Table
+point_info <- read_csv(col_names=TRUE, show_col_types=FALSE, file= 
+ "number, leg_point_color, leg_meaning
+  2,      black,          highly questionable
+  3,      blue,           interpreted from narrative
+  4,      orange,         likely close
+  5,      green,          well trusted")
+
+## Generate the Legend
+l_plot2 <- site_legend(h_table = header_info, p_table = point_info)
+
+```
+
+Here is the very simple Heading Table.
+
+```{r "htable"}
+#| label: tbl-htable
+#| tbl-cap: "Header data and styles for the header table (h_table)."
+
+gt(h_table)
+
+```
+
+Now, the similarly simple Point Table.
+
+```{r "ptable"}
+#| label: tbl-ptable
+#| tbl-cap: "Point data and styles for the point table (p_table)."
+
+gt(p_table)
+
+```
+
+Finally, the simple Map Legend.
+
+```{r "maplegend2"}
+#| label: fig-maplegend2
+#| fig-cap: "A simple legend."
+
+l_plot2
+
+```
+
+## Interlude: The ggh4x package
+
+The `ggh4x` package has some useful functions that extend the power of `ggplot2`. Here, ggh4x is used to control the size of the plot to "tighten up" the list of legend rows.
+
+```{r "ggh4xtest"}
+#| label: fig-ggh4xtest
+#| fig-cap: "A complex legend tightened up with ggh4x."
+
+l_plot + force_panelsizes(rows = unit(4, "in"), cols = unit(5, "in"))
+
+```
+
+```{r "ggh4xtest2"}
+#| label: fig-ggh4xtest2
+#| fig-cap: "A simple legend tightened up with ggh4x."
+
+l_plot2 + force_panelsizes(rows = unit(2, "in"), cols = unit(5, "in"))
+```
+
+## Combining a Map and a Legend

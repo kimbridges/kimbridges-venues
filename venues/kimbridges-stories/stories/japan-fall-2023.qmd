@@ -1,0 +1,13 @@
+---
+title: "Japan, Fall 2023"
+subtitle: "Tokyo, Kyoto, and day trips to nearby cities."
+date: 2023-11-01
+categories: ["Travel", "Japan", "Asia"]
+image: ../images/2023_Japan_Story.jpg
+pdf: ../pdfs/2023_Japan_Story.pdf
+---
+The trip took place in the Fall, 2023. We visited Tokyo and Kyoto and enjoyed some day trips to nearby cities. This telling is the written narrative only — the photographs have not been added yet.
+
+Pages: 59
+
+<iframe src="../viewer.html?pdf=2023_Japan_Story.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

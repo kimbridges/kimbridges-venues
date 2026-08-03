@@ -1,0 +1,318 @@
+# Handling Dates
+
+Date information is common. Often, getting dates into R for processing requires special attention.
+
+The following sections overview some of the techniques, using several important packages, to get date variables into a proper format.
+
+## Common Date Formats
+
+Usually, you'll have dates written with all of the information (year, month, and day) placed together.
+
+### Notational Variations
+
+There are a few notational differences to the components.
+
+-   **Day:** is always an integer number (15).
+-   **Month:** either an integer number (1), an abbreviation (JAN), or the full month name (January). Note that sometime, people have used Roman numerals for the date. Those can be converted to a number and used in the functions.
+-   **Year:** either a two digit number (20) or a four digit number (2020).
+
+### Component Order
+
+Besides these notational differences, the order in which the values are supplied can vary. Here are two common variations.
+
+-   **dmy:** this is often done in the US (1-15-2020.
+-   **ymd:** the format generally used in the rest of the world (2020-1-15).
+
+### Separating Symbols
+
+There are several different symbols used to separate the three parts of the date. Here are two of the most common styles.
+
+-   **minus symbol:** a minus or short-dash symbol (2020-1-15).
+-   **slash symbol:** a "forward" slash (2020/1/15).
+-   **blank space:** just a single blank space (2020 1 15).
+
+The important thing is consistency. With all of the dates given in the same order (e.g., ymd, mdy), it is possible to convert them from a character string to a true R `date` value.
+
+```{r}
+#| label:   core
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Activate the Core Packages
+library(tidyverse) ## Brings in a core of useful functions
+library(gt)        ## Tables
+
+## Specialized Packages
+library(webshot2)  ## Output PNG or PDF files from gt
+library(gtExtras)  ## gt table formatting and highlighting
+library(RcppBDT)   ## Used for the getNthDayOfWeek function
+library(timeDate)  ## Used for the Easter function
+
+```
+
+## Recode with Lubridate
+
+You will almost always need to convert data input values of dates into a proper `Date` data format.
+
+R has a data type of `date`. The data used in all the timeline functions requires that the date values be in this `date` data type. Note that inside R, values of the `Date` data type are stored as the number of days from January 1, 1970. This is just an internal anchor that allows R to do the proper calculations and formatting.
+
+The R library `lubridate` has functions that convert text and numeric representations of dates into true `Date` values.
+
+Example are shown in the next few `chunks`.
+
+Note that the dates in the example data are a mixture of formats. The important thing is that the ***order*** of the date elements (month, day, and year) are consistent.
+
+### Converting data input
+
+The following `chunk` uses the `tidyverse` function `read_csv` to input some example data.
+
+Note that all of the `raw_date` values are converted to the same format (Ymd). The `date` column holds `Date` values. This is possible because all the date components are in the same order (year, month, day).
+
+```{r}
+#| label: dates1
+#| tbl-cap: "Various formats entered as ymd"
+
+## Read data in a data frame format using the CSV reader.
+## All the date values are in the same order (ymd).
+x1 <- read_csv(col_names = TRUE, show_col_types = FALSE, file =
+             "raw_date,       comment
+              2020-3-15,      standard Ymd with dashes
+              2020/4/2,       slash delimeters
+              2021 5 16,      blank delimeters
+              2021-dec-30,    month abbrev
+              20 July 15,     year abbrev and month name")
+
+## Convert from text to the Date data type.
+x1$date <- ymd(x1$raw_date)
+
+## Print a neat table.
+gt(x1) |>
+  tab_source_note(source_note = "Source: Example data")
+
+```
+
+### Additional date format challenges
+
+This set of data, which also has format challenges, is arranged in a month, day, year (`mdy`) format. The result of the processing is a data frame with a proper date variable (`date`).
+
+```{r}
+#| label: dates2
+#| tbl-cap: "Various formats entered as mdy"
+
+## Read data in a tibble format using tribble.
+## The order of elements (month, day, year) is the same in each row.
+x2 <- read_csv(col_names = TRUE, show_col_types = FALSE, file = 
+  "raw_date,           comment
+  2/15/22,             slash separators
+  2-15-2022,           minus-sign separators
+  Feb 15 2022,         month abbrev and blank separators
+  February 15 2022,    full month name
+  Feb 15 22,           two-digit year
+  sep 1 22,            three letter month
+  sept 2 22,           four letter month")
+
+## Use lubridate mdy function to convert to the Date data type.
+x2$date <- mdy(x2$raw_date)
+
+## Print a neat table.
+gt(x2)|>
+  tab_source_note(source_note = "Source: Example data")
+
+```
+
+## Roman numerals
+
+Some researchers try to avoid the ambiguity of months versus days by using a Roman numeral for the month. This notation can be converted as shown in the following example.
+
+
+```{r}
+#| label: roman1
+#| tbl-cap: "Dates entered with months as Roman numerals"
+
+## Roman numeral entry for months.
+x3 <- read_csv(col_names = TRUE, show_col_types = FALSE, file = 
+  "day, rmonth, year
+  15,   X,      2020
+  1,    VI,     2020
+  12,   I,      2020")
+
+## Convert Roman numeral to numeric, 
+## paste parts together, and convert to a date.
+x3$date <- dmy(paste(x3$day,
+                     as.numeric(as.roman((x3$rmonth))),
+                     x3$year))
+
+## Print the results in a neat table.
+gt(x3) |>
+  tab_source_note(source_note = "Source: Example data")
+
+```
+
+This conversion test assumed that each of the date components is in a separate variable. That's not always the case. It is possible to do some programming to account for other formats, but let's just give the problem to ChatGPT (or, likely, any of the other large-language models).
+
+Note that the data are really messy. There is a variety of delimeters. Several dates are only two digits for the year.
+
+Here is the ChatGPT-4 request.
+
+> `Here are some dates that are in the format of day, month and year. The month is Roman numerals. Make these dates into numeric values in the format "y-m-d", please. Here are the dates:`
+>
+> `25XII1947`
+>
+> `5V2012`
+>
+> `12 VIII 87`
+>
+> `8 iv 2022`
+>
+> `11-VI-77`
+
+I then asked for the result as a CSV table. That's entered into the following code chunk.
+
+```{r}
+#| label: roman2
+#| tbl-cap: "Messy dates with Roman numerals"
+
+roman_test <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+        "before,     after
+         25XII1947,  1947-12-25
+         5V2012,     2012-05-05
+         12 VIII 87, 1987-08-12
+         8 iv 2022,  2022-04-08
+         11-VI-77,   1977-06-11")
+
+gt(roman_test) |>
+  tab_source_note(source_note = "Source: Example data")
+
+```
+
+This might be a demonstration that large-language models can have considerable utility in rescuing data that are messy.
+
+### Putting pieces of the date together
+
+A previous example (the first with Roman numerals) shows how to put separate values for the day, month and year together to form a date. It is simply a combination of pasting the three variables together and then converting the resulting string to the `Date` type with one of the `lumbridate` functions.
+
+### Reordering the data
+
+Sometimes you need to do some wrangling to get the pieces you need and then arrange the dates in the proper format.
+
+**Each date entry must be a separate row in the data frame.**
+
+An example shows how this can be done. This is a fairly complex problem as several things are being done.
+
+Here are some things to note.
+
+-   There are nine events in the data. They are arranged as three rows.
+-   The year is separate from each event's date. The two values need to be combined.
+-   The events (and their dates) need to be made into a data frame that has one event per row.
+-   The `year` is an important element as it can be used to group events later.
+
+```{r}
+#| label: dates4A
+#| tbl-cap: "Data needing to have the arrangement changed"
+
+## Read the data.
+x4 <- read_csv(col_names = TRUE, show_col_types = FALSE, file = 
+  "year, planning,  event,      review
+  2017,  March 23,  April 25,   May 30
+  2018,  January 4, February 9, February 25
+  2019,  April 17,  May 12,     June 20")
+
+## Show the original data in a table.
+gt(x4) |>
+  tab_source_note(source_note = "Source: Example data")
+
+```
+
+### Reconfigure the data
+
+The date data come from different columns. Each date is a different event. All this must be brought together and reformatted.
+
+The `dplyr` package provides the tools for manipulating the data.
+
+-   The `mutate` function creates new variables (columns).
+-   The `pivot_longer` function shifts data from columns to rows.
+-   The `rename` function gives columns new names.
+-   The `select` function keeps just the named columns.
+
+```{r}
+#| label: dates4B
+#| tbl-cap: "Reconfigured data (version 1)"
+
+## Wrangle using data from the previous chunk.
+x4_new <- x4 %>% 
+  ## combine cols, make proper dates
+  mutate(planning = ymd(paste(year,planning))) %>%      
+  mutate(event    = ymd(paste(year,event))) %>% 
+  mutate(review   = ymd(paste(year,review))) %>% 
+  ## Reconfigure cols to rows
+  pivot_longer(cols= c(planning, event, review)) %>% 
+  ## Rename the columns
+  rename(Event  = name, Date = value)
+
+## Show the newly formatted data.
+gt(x4_new) |>
+  tab_source_note(source_note = "Source: Example data")
+```
+
+```{r}
+#| label: ReconfigAlt
+#| tbl-cap: "Reconfigured data (version 2)"
+
+## Alternative table presentation
+gt(x4_new,
+  groupname_col = "year")|>
+  tab_source_note(source_note = "Source: Example data")
+
+```
+
+## Calculate Holidays
+
+Sometimes, it's useful to have a way to calculate the date of a holiday for a future (or, maybe, past) date. There are two functions that accomplish this task.
+
+-   getNthDayOfWeek
+-   Easter
+
+These functions come from the libraries `RcppBDT` and `timeDat`e. The other functions come from `lubridate`, part of the `tidyverse` package.
+
+```{r}
+#| label: CalculatedDates
+#| tbl-cap: "Calculated dates (year = 2024)"
+
+## Set a year for the calculations
+yr <- 2024
+
+## Dates are not yet known, so they are entered as NA
+date_table <- read_csv(col_names=TRUE, show_col_types=FALSE, file= 
+    "Holiday,          Rule,                  date
+     Hawaii Statehood, Third Friday in August, NA
+     Memorial Day,     Last Monday in May,     NA
+     Easter Sunday,    Complex definition,     NA
+     Good Friday,      Two days before Easter, NA")
+
+## Hawaii Statehood Day (3rd Friday in August)
+hawaii_statehood <- getNthDayOfWeek(third, Fri, 8, yr)
+date_table$date[1] <- as.character(hawaii_statehood)
+
+## Memorial day is the Last Monday in May
+## There isn't a "last" option for this function (must calculate)
+mon5 <- getNthDayOfWeek(fifth, Mon, 5, yr)
+
+if(mon5 < 23){memorial_day <- 
+  getNthDayOfWeek(sixth, Mon, 5, yr)} else {memorial_day <- mon5}
+
+date_table$date[2] <- as.character(memorial_day)
+
+## Easter Sunday
+easter_sunday <- as.Date(Easter(yr))
+date_table$date[3] <- as.character(easter_sunday)
+
+## Good Friday
+good_friday <- as.Date(easter_sunday - 2)
+date_table$date[4] <- as.character(good_friday)
+
+## Put the results in a table
+gt(date_table) |>
+  tab_source_note(source_note = "Source: Rule calculations")
+
+```

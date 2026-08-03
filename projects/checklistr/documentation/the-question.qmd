@@ -1,0 +1,126 @@
+# The Casual Question
+
+The question that began this is easy to ask. Walking a familiar trail, wanting a list of what grows along it — where would that list come from?
+
+Kīpuka Puaulu is a good place to try. It is a small kīpuka — an island of older forest surrounded by younger lava flows — on the flank of Mauna Loa, in Hawaiʻi Volcanoes National Park. It has long been known for its native trees, and for a hau kuahiwi, *Hibiscadelphus giffardianus*, first described from this very forest. If any Hawaiian forest has been thoroughly written down, it is this one.
+
+The writing-down lives in herbaria. This chapter gathers those records for a two-kilometre circle around the trail and turns them into a checklist. The steps are few, and the result looks like an answer. Whether it *is* one is the subject of the rest of the book.
+
+```{r}
+#| label: setup-question
+#| message: false
+
+## --- Standard packages ---
+
+## data handling and graphics (dplyr, readr, ggplot2, ...)
+library(tidyverse)
+## formatted tables
+library(gt)
+
+## --- Package from github/kimbridges ---
+
+## install once with: install_github("kimbridges/checklistr")
+library(checklistr)
+
+## --- Options ---
+
+## suppress read_csv() column-type messages
+options(readr.show_col_types = FALSE)
+```
+
+## The records
+
+A herbarium record is a pressed plant with a label. The label carries a name, the person who collected it, the date, the place, and the institution that keeps the sheet. Multiply that by a century of botanists and you have the raw material for a flora — scattered across the world's collections, and now catalogued in databases a laptop can reach.
+
+Those databases are pooled by GBIF — the Global Biodiversity Information Facility — an international, open aggregator that gathers digitized specimen and observation records from thousands of institutions into a single index anyone can query. What `checklistr` retrieves are its *preserved-specimen* records: the herbarium sheets, now reachable from a laptop.
+
+That reach is worth pausing on. Before these records were digitized — and long before GBIF consolidated them — seeing a specimen meant one of two things: requesting a loan and waiting for the sheet to arrive by mail, or travelling to the herbarium yourself. I once had to visit the Central National Herbarium near Kolkata to see specimens I needed, and what should have been a simple errand became, that day, genuinely dangerous — for reasons that are not important here. During the COVID-19 closures I tried to reach several of the large US herbaria and found them, understandably, off limits. For me, a digital record is more than a convenience. The aggregation is not tidiness; it is what makes the specimens reachable at all.
+
+`checklistr` makes that reach a single call. It asks GBIF for every vascular-plant specimen collected within two kilometres of a point.
+
+```{r}
+#| label: fetch-recipe
+#| eval: false
+
+## retrieve preserved-specimen (herbarium) records for a 2 km circle
+## around the Kipuka Puaulu loop trail; all vascular plants
+records <- fetch_specimens_gbif(lon   = -155.296,
+                                lat   =   19.437,
+                                r_km  =    2,
+                                taxon = "Tracheophyta",
+                                rank  = "phylum")
+```
+
+The records that come back are saved for this document, so the pages render without waiting on the network. Here is what a few of them look like — each a plant, a person, a year, a collection.
+
+```{r}
+#| label: show-records
+
+## read the saved records (the result of the fetch above)
+records <- read_csv("data/kipuka_puaulu_specimens_dedup.csv")
+
+## show a handful, with the fields that make a record a record
+records |>
+  select(any_of(c("species", "recordedBy", "year", "institutionCode"))) |>
+  slice_head(n = 6) |>
+  gt()
+```
+
+Every row is a real event: someone stood in this forest, on a known day, and gathered that plant. The checklist we are about to build is assembled entirely from events like these.
+
+## From records to a checklist
+
+Going from a pile of records to a list of species takes a few steps. Names have to be resolved to accepted species, because a plant may have been filed under several names over the years. Duplicate records — the same specimen entered more than once — have to be removed, so the counts mean something. And to make the list *useful*, rather than merely correct, each species is given a growth form, so trees can be told from herbs.
+
+`checklistr` does this as one pipeline.
+
+```{r}
+#| label: build-recipe
+#| eval: false
+
+## resolve names, deduplicate, flag determination conflicts,
+## and assemble the accepted-species checklist
+checklist <- records |>
+  add_primary_collector() |>
+  build_checklist()
+
+## add growth form (trees, shrubs, herbs, graminoids, ferns)
+growthform <- gift_growthform(cache = "gift_growthform.rds")
+checklist  <- add_lifeform(checklist, growthform)
+```
+
+The saved output of that pipeline is the checklist itself. It sorts the forest into a familiar shape.
+
+```{r}
+#| label: checklist-shape
+
+## read the assembled checklist (the saved output of the pipeline above)
+checklist <- read_csv("data/kipuka_puaulu_checklist_generated.csv")
+
+## the shape of the flora, by growth form
+checklist |>
+  count(lifeform, name = "taxa") |>
+  arrange(desc(taxa)) |>
+  gt()
+```
+
+The pipeline turns a century of records into a checklist of `r nrow(checklist)` taxa. A sample of the native trees — the frame the forest is built on — shows how ordinary the result looks.
+
+```{r}
+#| label: native-trees
+
+## the native trees: the canopy and understory framework
+checklist |>
+  filter(lifeform == "tree", wagner_status %in% c("E", "I")) |>
+  select(accepted_name, family, n_records) |>
+  slice_head(n = 8) |>
+  gt()
+```
+
+## What we have made
+
+Read that table quickly and it is exactly what was asked for: the plants that grow here, ready to jog a memory on the trail. *Acacia koa*. *Metrosideros polymorpha*. The names a botanist walking the loop would want at hand.
+
+But look again at how it was built. Every name was resolved against a shifting taxonomy. Every count depended on a judgment about which records were duplicates. Every row rests on someone having collected the plant, at some time, and on that specimen surviving and being catalogued — and on no one having collected the plants that are missing. The list is not a fact about the forest. It is a reconstruction, assembled from evidence, and every entry is a claim.
+
+The chapters that follow take those claims apart, one kind at a time — who made the record, and when; what the map of the records reveals about scale; how complete the reconstruction is; where it contradicts itself; and where the experts who built it disagree. A checklist, it turns out, is an argument. This one is a good place to start reading it.

@@ -1,0 +1,8 @@
+---
+title: "Deconstructing a Flora"
+subtitle: "Examining the structure and language of botanical floras."
+categories: ["Botany", "Research"]
+image: ../flora/herbarium.jpg
+---
+
+[View Document](../flora/){.btn .btn-primary}

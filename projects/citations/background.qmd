@@ -1,0 +1,169 @@
+# Background
+
+```{r}
+#| label: Setup
+#| include: false ## Don't show in the rendered version
+
+## Standard Libraries
+library(tidyverse)  ## Lots of useful functions
+library(gt)         ## Create tables
+library(gtExtras)   ## Add a few useful functions to gt
+library(ggplot2)    ## Create charts
+library(devtools)   ## Load packages from GitHub
+
+## Specialized libraries
+library(openai)      ## 
+library(httr)        ## Send requests and receive responses
+library(jsonlite)    ## Handle the request formatting
+library(pdftools)    ## Handle PDF files
+library(base64enc)   ## Convert image files to base64 encoding
+library(googledrive) ## Download Google Doc files
+library(curl)        ## The force behind the httr functions
+library(DiagrammeR)  ## Make flowchart diagrams
+
+## Get the accessOAI package (do this just once)
+## install_github("kimbridges/accessOAI")
+
+## Initialize the accessOAI library
+library(accessOAI)
+
+## Initialize some things that rarely change.
+LLM <- "gpt-4o"  
+LLM_alt <- "gpt-3.5-turbo" ## (text only)
+temp <- 1
+apiKey <- Sys.getenv("OPENAI_API_KEY")
+
+```
+
+```{r}
+#| label: OpenAI
+#| eval: false
+
+## This chunk is used to process the Google Doc file to
+## create the references.bib file.
+
+## Run this chunk when the Google Docs file is updated.
+
+## Download the Google Drive file.
+drive_download("notes.txt",type = "txt", overwrite = TRUE)
+
+## Read a multiline file with basic citations.
+data <- readLines("notes.txt", warn = FALSE)
+
+## Give instructions on what to do.
+prompt <- "The input file has bibliographic citations, along with some comment lines. Some of the bibliographic citations reference web pages. Include these. Ignore the comment lines. Convert the bibliographic citations into a standard BibTex format. If possible, include the DOI data. Don't include any comments in your response."
+
+## Define the LLM role.
+role <- "You are a bibliographic expert. You know the various formats that are used in the scientific literature. You are able to convert from one format to another. You can also find the DOI data and abstracts for an entry."
+
+## Enhance the bibliographic citation.
+response <- analyzeTXT(analysis_text = data,
+                       AI_role = role,
+                       analysis_prompt = prompt,
+                       LLM = LLM,
+                       apiKey = apiKey,
+                       connecttimeout = 90)
+
+## Rebuild the references.bib file.
+cat(response, file="references.bib", append = FALSE)
+
+```
+
+Including appropriate citations in a study is essential for several reasons:
+
+-   Other research studies are acknowledged and, in doing so, the contributions of those authors are recognized.
+
+-   Background information from other studies is made more accessible. This may also reduce the unnecessary repetition of key information, such as a measurement methodology.
+
+-   The citations establish that you are positioning you research within the existing body of knowledge. You are showing that you are adding a unique contribution to the work of other people.
+
+This is restated in the Author Instructions for Economic Botany [@society2024author] with the following advice:
+
+> The function of references is to facilitate the reader's understanding of the key elements of the paper by allowing them to follow up on important or unusual methods, studies or findings that are central to the current arguments set out in the manuscript.
+
+## How many citations are needed?
+
+Including citations requires a balance. Loading lots of redundant links to the literature, or including citations that are peripheral to the topic, reduces the value of the citations. Good advice: choose wisely.
+
+-   Use approximately the same number of citations as peer-reviewed publications in your field.
+
+-   Place emphasis on citing current research.
+
+Here is an example for a recent issue (2023) of a specific journal (Economic Botany). This provides some general guidance for people publishing in this journal.
+
+```{r}
+#| label: "EconBot Analysis"
+
+## Number of citation for articles in Economic Botany.
+## Volume 77 (2023)
+data <- data.frame(refs=c(78,68,52,77,61,25,
+                          45,62,68,63,41,97,
+                          32,63,49,84,58,40,
+                          91,72,84,82,38),
+                   year=2023)
+
+stats <- summary(data$refs)
+## names(stats)
+
+median_citations <- round(stats[[3]],1)
+max_citations <- stats[[6]]
+min_citations <- stats[[1]]
+
+ggplot(data, aes(x=year, y=refs)) +
+  geom_boxplot(line=1.1) +
+  geom_dotplot(binaxis="y", stackdir="center", dotsize=1) +
+  labs(x="",y="Number of Citations",
+       title="Economic Botany v77 (2023)") +
+  theme_bw() +
+  coord_equal(ratio = .02) +
+  theme(axis.text.x=element_blank(), 
+        axis.ticks.x=element_blank(),
+        panel.grid = element_blank())
+
+```
+
+The research papers in this volume of this journal show the typical number of citations in peer-reviewed publications in the discipline of ethnobotany. The median number of citations is `r median_citations` and the range is from `r min_citations` to `r max_citations` citations per paper.
+
+## Format Citations Properly
+
+Journal editors are quite passionate about citations. A new author is well advised to read a journal editor's advice [@mcclatchey2006improving] about citations .
+
+@orr2023accelerating offer this advice:
+
+> In particular, some prospective authors fail to apply the correct formatting to in-text references and the bibliography at the end of their manuscript, even when explicitly reminded during pre-review revision. Manuscripts cannot be sent out for peer review until references are properly formatted. It is up to authors to avoid this common delay.
+
+Using software to manage and format citations will result in a consistent appearance and an exact match between the citations used in the text and those included in the References section.
+
+## Citation Management Software
+
+There are a number of software packages that help researchers manage citations. Several popular programs are free, such as Zotero [@vanhecke2008zotero] and Mendeley [@reiswig2010mendeley]. Other programs, such as EndNote [@gotschall2021endnote] require a purchase for desktop computer use but offer a free on-line version.
+
+Learning and maintaining citation management software may require a considerable investment in time. This could interrupt the momentum of a research project.
+
+The comprehensive management packages is the tendency to create huge citation libraries. Such a collection might span the width of a researcher's interests. While that may appear desirable, this can result in the shifting the researcher's focus away from problem in an attempt to make the citation collection "complete." There is a seduction that comes with the collecting of citations.
+
+Citation management systems are basically database systems. This means they have a structure into which the data (here, citation elements) fit. While it is generally possible to add comments to each stored citation, these comments are not very useful as you develop the overall strategy of what citations to use.
+
+The alternative is free-format notes that include citation annotations.
+
+Here is an example.
+
+```{r}
+#| label: showtext
+
+## Read a multi-line file with basic citations.
+data <- readLines("notes_partial.txt")
+
+data <- data.frame(data)
+
+rows <- nrow(data)
+
+gt(data) |> 
+  tab_caption(caption = "notes.txt (partial)") |>
+  tab_options(column_labels.hidden = TRUE) |>
+  tab_style(style=cell_borders(style = "hidden",
+                               sides = "all"),
+            locations = cells_body()) |>
+  gtExtras::gt_highlight_rows(rows = seq(1:rows), fill = "grey90",font_weight = NULL)
+
+```

@@ -1,0 +1,8 @@
+---
+title: "Experiments with LLMs"
+subtitle: "Early tests on the utility of Large Language Models, January 2024."
+categories: ["AI", "Methods", "Research"]
+image: ../llm_examples/LLM_Examples_cover.jpg
+---
+
+[View Document](../llm_examples/){.btn .btn-primary}

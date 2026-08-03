@@ -1,0 +1,8 @@
+---
+title: "Pedigree Diagrams"
+subtitle: "Creating pedigree and lineage diagrams in R."
+categories: ["R", "Data Analysis"]
+image: ../pedigree/cover_ped_art.png
+---
+
+[View Document](../pedigree/){.btn .btn-primary}

@@ -1,0 +1,40 @@
+project:
+  title: "Pedigree"
+  output-dir: _output
+  type: book
+
+book:
+  title: "Pedigree Diagrams"
+  subtitle: "Show family relationships and more"
+  search: true
+  author: "K. W. Bridges"
+  date: today
+  cover-image: cover_ped_art.png
+  chapters:
+    - index.qmd
+    - Introduction.qmd
+    - Enhancements.qmd
+    - Examples.qmd
+    - Thoughts.qmd
+    - Functions.qmd
+  navbar: 
+    logo: logo_ped_art.png
+
+toc: true
+number-sections: true
+
+execute: 
+  warning: false
+  error: false
+  message: false
+
+format:
+  html:
+    css: styles.css
+    code-fold: true
+    code-summary: "Show the code"
+  pdf:
+    documentclass: report
+    margin-left: 30mm
+    margin-right: 30mm
+

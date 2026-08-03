@@ -1,0 +1,10 @@
+---
+title: "Stories"
+subtitle: "Narratives from the field and the road"
+---
+
+Lots of stories spanning five decades of travel and research. Each is a short illustrated narrative presented as a flipbook.
+
+Topics range from stories of travel adventures in Japan, to California flower collections, and to bird photography.
+
+[Enter the Stories site &rarr;](https://kimbridges-stories.netlify.app){.btn .btn-primary}

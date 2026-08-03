@@ -1,0 +1,137 @@
+# Plainmaps
+
+:::::: columns
+::: {.column width="50%"}
+Maps are an integral part of most field research studies. They appear in proposals, progress reports and final publications.
+
+Creating a good map is, most often, a challenge. A quick survey of the ethnobiological literature shows many substandard maps, in spite of the efforts of the journal editors.
+
+Mapmaking can be an impediment to the timely reporting of the research.
+
+An R-based product (called "Plainmaps") is an attempt to simplify the process.
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+![](maps_cover2.jpg)
+:::
+::::::
+
+### Plainmaps
+
+The [Plainmaps document](https://kimbridges-documents.netlify.app/plainmaps/) is a fairly long (77 page) PDF. This document provides a lot of examples on how to use a few custom functions to create a class of maps using R. These are fairly simple maps (think: country or state borders; no roads).
+
+Although every attempt was made to simplify the creation of maps, it still takes some effort to learn and follow the Plainmaps instructions.
+
+### LLM Plus Plainmaps
+
+We're going to test a new Project; we'll name it "R Mapmaker."
+
+The premise is that it's possible to load the Plainmaps PDF as Project Knowledge. Supplement this with a few guidelines (map_guidelines.txt, input_guidelines.txt). Then make a simple request to generate a map.
+
+*Let's see if it can be that simple.*
+
+**Prompt**
+
+I have added three files as Project Knowledge. Please use these files to make a map using the Plainmaps style of coding. I need a regional map that shows Nairobi, Mombasa and Kampala. Make sure that there is enough room around the map so the place names are not cut off.
+
+**Response**
+
+Certainly! I'll create a regional map showing Nairobi, Mombasa, and Kampala using the Plainmaps style of coding. I'll follow the guidelines provided and ensure there's enough room for the place names. Here's the R code to create the map.
+
+This code creates a regional map showing Nairobi, Mombasa, and Kampala using the Plainmaps style of coding. Here's a breakdown of what the code does:
+
+1.  It sets up the environment by loading necessary libraries and initializing the Google Maps API key.
+2.  It installs and loads the plainmaps and sitemaps packages from GitHub.
+3.  It initializes sitemaps parameters and creates a simple black box theme for the map.
+4.  It inputs the city data for Nairobi, Mombasa, and Kampala.
+5.  It extracts the country borders for Kenya and Uganda using the map_data function.
+6.  It creates a base map with the country borders using ggplot2.
+7.  It adds the city points and labels using sitemaps functions.
+8.  It adjusts the map projection using coord_fixed to minimize distortion.
+9.  It applies the simple black box theme and adds a margin around the plot to ensure labels aren't cut off.
+
+This code follows the guidelines provided, using appropriate comments, formatting, and the recommended functions from the plainmaps and sitemaps packages. The resulting map should show the three cities within their regional context, with enough room around the edges to display the place names clearly.
+
+```{r}
+#| error: false
+#| warning: false
+
+## Set read_csv function option to suppress warning messages
+options(readr.show_col_types = FALSE)
+
+## Load required libraries
+library(tidyverse)
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(ggmap)
+library(gt)
+library(devtools)
+
+## Install and load special libraries
+install_github("kimbridges/plainmaps")
+install_github("kimbridges/sitemaps")
+library(plainmaps)
+library(sitemaps)
+
+## Initialize Google Maps API key
+googleKey <- Sys.getenv("GGMAP_GOOGLE_API_KEY")
+register_google(key = googleKey, account_type = "standard")
+
+## Initialize sitemaps parameters
+column <- site_styles()
+hide <- site_google_hides()
+
+## Create a simple black box theme
+simple_black_box <- theme_void() +
+  theme(panel.border = element_rect(color = "black", 
+                                    fill = NA, 
+                                    linewidth = 2),
+        legend.position = "none")
+
+## Input city data
+data <- read_csv(col_names = TRUE, file = "
+text,      lon,      lat
+Nairobi,   36.8219,  -1.2921
+Mombasa,   39.6682,  -4.0435
+Kampala,   32.5825,   0.3476
+")
+
+## Add group variable to data
+data$group <- 1
+
+## Extract country borders for Kenya and Uganda
+kenya <- map_data("world", region = "Kenya")
+uganda <- map_data("world", region = "Uganda")
+
+## Create the base map
+base_map <- ggplot() +
+  geom_polygon(data = kenya, aes(x = long, y = lat, group = group), 
+               fill = "lightyellow", color = "gray50", linewidth = 0.5) +
+  geom_polygon(data = uganda, aes(x = long, y = lat, group = group), 
+               fill = "lightgreen", color = "gray50", linewidth = 0.5)
+
+## Add cities and labels to the map
+final_map <- base_map +
+  site_points(datatable = data) +
+  site_labels(datatable = data) +
+  coord_fixed(1.1) +
+  simple_black_box +
+  theme(plot.margin = margin(20, 20, 20, 20, "pt"))  ## Add margin for labels
+
+## Display the map
+print(final_map)
+
+
+```
+
+### A Few Observations
+
+Claude did pretty well with this challenge.
+
+It's likely that [other documents](https://kimbridges-documents.netlify.app/) containing R language guidelines can be used to simplify the learning process and improve the quality of the code produced by the LLM.
+
+The [Plainmaps document](https://kimbridges-documents.netlify.app/plainmaps/) was written for people to understand. It is not structured for a Large Language Model. It's likely that performance will improve if this document is organized in a way that is more appropriate for a LLM.

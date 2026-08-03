@@ -1,0 +1,206 @@
+# Getting Your Data In
+
+Every analysis begins with data entry, and it is the step we talk about least. A method is only as good as the table it starts from, and most mistakes that matter are made before any sorting happens — a species miscoded, a column shifted, a presence lost. This chapter is about getting a two-way table into `coenosr` cleanly, in whatever form your data already takes, and confirming it is right before you go on.
+
+`coenosr` accepts three forms of input, and they all arrive at the same place: a tidy table of which species occur in which sites, ready for everything that follows. We will read each form, then look at the one habit worth building — displaying what you just read — and finish with a small but real problem, choosing good abbreviations for species names.
+
+```{r}
+#| label: setup-input
+#| message: false
+
+## --- Standard packages ---
+
+## data wrangling and tidy reshaping
+library(tidyverse)
+## formatted tables
+library(gt)
+
+## --- Package from github/kimbridges ---
+
+## install once with: install_github("kimbridges/coenosr")
+library(coenosr)
+```
+
+## Three forms, one destination
+
+Data about what occurs where tends to arrive in one of three shapes. You may have a **list per site** — each site followed by the species found there. You may have a **wide table** — species down the rows, sites across the columns, a value in each cell. Or, if you are working with old vegetation studies, you may have a **COENOS file** in the original `.REL` format. `coenosr` has a reader for each: `read_lists()`, `read_2way()`, and `read_rel()`. Each returns the same kind of object, so once your data is in, the path forward is identical no matter where it came from.
+
+We will use a small example throughout: fifteen species across ten sites, small enough to see whole.
+
+## The ragged form: as you collect it
+
+The most natural way to record this data is one line per site: name the site, then list what is there. This is how a field survey actually happens — you stand in a plot and call out the species, perhaps into a recorder, and a line of the file is one plot's worth of names. The lines are not the same length, because each site has its own species, and that is fine.
+
+The example file looks like this:
+
+```         
+1,G,M,R,A,L,C,P
+2,S,K,V,B,H,R,L,C,P
+3,G,M,R,A,F,L,C,P
+...
+```
+
+`read_lists()` reads it. The first item on each line is the site; the rest are its species.
+
+```{r}
+#| label: read-ragged
+
+## read the "site, then its species" form
+rel <- read_lists("data/simple_10x15_simplified.txt")
+
+## look at the first few occurrences (its own coenos_rel summary, kept as-is)
+print(head(rel))
+```
+
+The result is a long table with one row per species-in-a-site. This dataset has `r nlevels(rel$releve)` sites and `r nlevels(rel$species)` species. Absence is simply unrecorded — a site lists only what was present — which keeps the file short and matches how the data was gathered.
+
+If your records carry cover values — how much of each plot a species filled — write them right after the species name, and `read_lists()` will pick them up automatically:
+
+```         
+1, G 1, M +, R 4, A 5, L +, C 2, P 1
+```
+
+A trailing Braun-Blanquet symbol (`+`, `R`) or a digit is read as the cover; anything else is part of the species name. The same function reads both styles, so you do not choose a reader based on whether you happened to record cover.
+
+## The wide form: the spreadsheet
+
+If your data is already a rectangle — species in rows, sites in columns, a `1` or a cover value where a species occurs and a `0` or blank where it does not — that is the form `read_2way()` expects. It is the shape most people reach for in a spreadsheet, and it is the literal two-way table.
+
+```{r}
+#| label: read-wide
+
+## read the wide species-by-sites matrix
+rel_wide <- read_2way("data/simple_10x15_input.txt")
+
+## the two readers produce the same data
+same_data <- setequal(paste(rel$releve, rel$species),
+                       paste(rel_wide$releve, rel_wide$species))
+```
+
+The wide file and the list file describe the same survey, and `coenosr` confirms it: reading them gives the same set of occurrences (`r same_data`). Use whichever form your data is already in.
+
+## COENOS files
+
+For the original 1991 data, `read_rel()` reads the COENOS `.REL` format directly. The package bundles a few historical examples; you are unlikely to have your own, but if you are reviving an old study, this is the door.
+
+A `.REL` file has a simple shape. Each relevé opens with its name on a line of its own, then one line per species: a short code — four letters of the genus and four of the species — followed by a cover value, either a number or a Braun-Blanquet symbol like `+`. A lone `$` closes the relevé, and the next one begins. The first relevé of the Dieren file looks like this:
+
+```
+BILL01
+CARE LYNG 5
+ELEO PALU 2
+JUNC ARCT 2
+SCIR ACUT 2
+LILA OCCI +
+CENT MINI +
+TRIG MARI +
+TILL AQUA +
+ISOE MARI +
+ELAT TRIA +
+$
+```
+
+The examples in this book show only the opening of each file; the bundled datasets hold many more relevés. You can read any of them in full with `read_rel()` and look at the result, or open the `.REL` in a text editor to see the whole thing.
+
+```{r}
+#| label: read-rel
+
+## a bundled COENOS file, read straight from the package
+dieren <- read_rel(system.file("extdata", "DIEREN.REL", package = "coenosr"))
+```
+
+That file holds `r nlevels(dieren$species)` species across `r nlevels(dieren$releve)` relevés — a real coastal vegetation survey, in the format the program used.
+
+## Confirm what you read
+
+Here is the one habit worth keeping for every dataset you ever read: **display it immediately.** A reader that runs without error has not promised you the data is right, only that it could parse the file. The way to check a two-way table is to look at it as a two-way table.
+
+Our internal form is long — one row per occurrence — which is ideal for computing but not for reading. So we pivot it back to the wide, human-shaped table. This is a good moment for the rectangular-minded reader: the long form and the wide form hold the same data, and `tidyr::pivot_wider()` turns one into the other.
+
+```{r}
+#| label: confirm-table
+
+## pivot the long table back to a wide species-by-sites view
+two_way <- rel |>
+  pivot_wider(names_from  = releve,   # sites become columns
+              values_from = cover,    # the cell value
+              values_fill = "")       # absent cells left blank
+
+## show it as a table
+two_way |> gt()
+```
+
+There it is: species down the side, sites across the top, a mark where a species occurs and a blank where it does not. Most of the table is empty, exactly as a two-way table should be. Read across a row to see where a species was found; read down a column to see what grew in a site. If something is wrong — a species in the wrong place, a column that should not be empty — you will see it here, before it costs you anything. This is also, not incidentally, the *unsorted* table: the scatter that the next chapter will sort into pattern.
+
+## Names and abbreviations
+
+Real data needs names, and names raise a practical problem worth a moment. The analysis works with short codes — `G`, `L`, `C` in our toy data — because long names will not fit across a table. But a code like `G` means nothing on its own. Somewhere you need a key from each code to its full name, and for living things the full name is a Latin binomial, ideally with its naming authority.
+
+To make this concrete, picture a different kind of two-way table: a survey of farmers' markets, where the "species" are produce and a site is a market that sells them. Here is a names table for a few of the items.
+
+```{r}
+#| label: names-table
+
+## read the names key: common name, genus, species, variety, author
+produce <- read.csv("data/produce_names.csv", stringsAsFactors = FALSE)
+
+## build the scientific name as markdown: *italic binomial* then roman author.
+## the asterisks mark italics; fmt_markdown() renders them per cell, which lets
+## the binomial be italic while the author stays upright -- in one cell.
+produce$scientific <- paste0("*", produce$genus, " ", produce$species, "* ",
+                             produce$author)
+
+produce |>
+  select(common, scientific) |>
+  gt() |>
+  fmt_markdown(columns = scientific) |>   # the trick: render the per-cell markdown
+  cols_label(common = "Produce", scientific = "Scientific name")
+```
+
+The display detail is worth keeping. A binomial is set in italics and its author is not, and the two have to share one table cell. The way to do it is to write the cell as Markdown — asterisks around the binomial, the author left plain — and let `gt::fmt_markdown()` render it. The italics fall on the binomial alone.
+
+Now the codes. The traditional COENOS convention builds a code from the first four letters of the genus and the first four of the species. For most of our produce that gives a clean, unique code:
+
+```{r}
+#| label: abbreviations
+
+## four letters of genus + four of species
+ab4 <- function(a, b) {
+  paste0(toupper(substr(a, 1, 4)), toupper(substr(b, 1, 4)))
+}
+
+## apply the convention
+produce$code4 <- ab4(produce$genus, produce$species)
+
+produce |>
+  select(common, genus, species, code4) |>
+  gt() |>
+  cols_label(common = "Produce", genus = "Genus", species = "Species",
+             code4 = "Code (genus + species)")
+```
+
+Read down the codes and a problem appears. Broccoli, cabbage, and cauliflower are all *Brassica oleracea* — three different market items, but one biological species — so the convention hands all three the same code, `BRASOLER`. The mechanical rule has collided.
+
+This is the ordinary fate of any naming scheme: sooner or later the world hands it something it cannot tell apart, and you make a judgment. Here the judgment is easy. The three differ by variety — the Italica, Capitata, and Botrytis cultivar groups — so when the species cannot separate them, reach for what can:
+
+```{r}
+#| label: abbreviations-fixed
+
+## when the species collides, code from genus + variety instead
+produce$code <- ifelse(produce$variety == "",
+                       ab4(produce$genus, produce$species),  # the usual case
+                       ab4(produce$genus, produce$variety))  # the collision fix
+
+produce |>
+  select(common, genus, species, variety, code) |>
+  gt() |>
+  sub_missing(missing_text = "") |>
+  cols_label(common = "Produce", genus = "Genus", species = "Species",
+             variety = "Variety", code = "Code")
+```
+
+`BRASITAL`, `BRASCAPI`, `BRASBOTR` — distinct again. The point is not the particular fix but the habit: a coding convention is a convention, not a law, and a few minutes spent giving every item a clear, unique code is repaid every time you read the table afterward.
+
+## Onward
+
+Your data is in, in whatever form it arrived, and you have looked at it and confirmed it is what you meant. That is the unglamorous work that everything else rests on. With a clean table in hand, the next chapter turns to what `coenosr` was built to do: set aside the extremes, find the species that share a distribution, and sort the scatter into a readable two-way table.

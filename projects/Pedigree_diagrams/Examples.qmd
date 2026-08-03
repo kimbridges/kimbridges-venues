@@ -1,0 +1,346 @@
+# Examples
+
+The examples show some challenges, work-around, and exploitation of the features of both the `tiny_pedigree` function and `gt` tables.
+
+Initialize the needed packages.
+
+```{r}
+#| label: core
+
+## Activate the Core Packages
+library(tidyverse) ## Brings in a core of useful functions
+library(gt)        ## Tables
+
+## special libraries
+library(kinship2)  ## Core package to calculate and plot
+library(R.devices) ## External plot files (e.g., PNG)
+
+source("Functions.R", local=TRUE)
+
+```
+
+## Eight Generations
+
+There are a lot of individuals to fit on this pedigree diagram. Perhaps too many as the typesize, in particular, must be very small.
+
+Note that there is an interaction between the `typesize` and `fold` parameters. Folding the names doesn't help.
+
+Warning: row (generation) spacing seems to be disrupted at the lowest row in a many-generation diagram if there are several individuals at the lowest level.
+
+```{r}
+
+
+data <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+ "ID, dad, mom, gender, born, died
+ Charles Wentworth, NA, NA, male, 1648, 1780
+ Amariah Wentworth, Charles Wentworth, Bethiah Fenno, male, 1719, 1799
+ Bethiah Fenno, NA, NA, female, 1692, 1780 
+ Rebecca Shepard, NA, NA, female, 1723, 1791
+ Elijah Wentworth, Amariah Wentworth, Rebecca Shepard, male, 1775, 1810
+ Elijah S. Estes, NA, NA, male, 1814, 1887
+ Zebiah Walker Wentworth, Elijah Wentworth, Lucy Walker, female, 1810, 1887
+ Lucy Walker, NA, NA, female, NA, NA
+ Mary Adeline Palmer, NA, NA, female, 1848, 1918
+ Lorenzo Langston Estes, Elijah S. Estes, Zebiah Walker Wentworth, male, 1839, 1909
+ Addie Estes, Lorenzo Langston Estes, Mary Adeline Palmer, female, NA, NA
+ Charles A. Bridges, NA, NA, male, 1877, NA
+ Charles L. Bridges, Charles A. Bridges, Addie Estes, male, 1912, 2001
+ Mary Jane Bridges, NA, NA, female, 1912, 2016
+ Thomas Bridges, Charles L. Bridges, Mary Jane Bridges, male, 1938, NA
+ Kent Bridges, Charles L. Bridges, Mary Jane Bridges, male, 1941, NA")
+
+## Assign or calculate enhancements
+data$hilite <- TRUE
+data <- data |>
+ mutate(color = case_when(
+ gender == "female" ~ "lightblue",
+ gender == "male" ~ "lightsalmon1"))
+
+## Create a presentation table
+gt(data) |>
+ cols_hide(columns = c(dad, mom, gender, hilite, color)) |>
+ tab_source_note(source_note="Source: Bridges family documents")
+
+tiny_pedigree(data=data, textsize=0.5, symbolsize=0.8, fold=FALSE)
+
+```
+
+Breaking the pedigree into smaller sets is a way around some of the limitations seen in the last pedigree diagram.
+
+```{r}
+#| label: twoparts
+
+## Divide the data into two halves
+
+## First Half
+data1 <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+ "ID, dad, mom, gender, born, died
+ Charles Wentworth, NA, NA, male, 1648, 1780
+ Amariah Wentworth, Charles Wentworth, Bethiah Fenno, male, 1719, 1799
+ Bethiah Fenno, NA, NA, female, 1692, 1780 
+ Rebecca Shepard, NA, NA, female, 1723, 1791
+ Elijah Wentworth, Amariah Wentworth, Rebecca Shepard, male, 1775, 1810
+ Elijah S. Estes, NA, NA, male, 1814, 1887
+ Zebiah Walker Wentworth, Elijah Wentworth, Lucy Walker, female, 1810, 1887
+ Lucy Walker, NA, NA, female, NA, NA
+ Lorenzo Langston Estes, Elijah S. Estes, Zebiah Walker Wentworth, male, 1839, 1909")
+
+## Second Half
+data2 <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+ "ID, dad, mom, gender, born, died
+ Mary Adeline Palmer, NA, NA, female, 1848, 1918
+ Lorenzo Langston Estes, NA, NA, male, 1839, 1909
+ Addie Estes, Lorenzo Langston Estes, Mary Adeline Palmer, female, NA, NA
+ Charles A. Bridges, NA, NA, male, 1877, NA
+ Charles L. Bridges, Charles A. Bridges, Addie Estes, male, 1912, 2001
+ Mary Jane Bridges, NA, NA, female, 1912, 2016
+ Thomas Bridges, Charles L. Bridges, Mary Jane Bridges, male, 1938, NA
+ Kent Bridges, Charles L. Bridges, Mary Jane Bridges, male, 1941, NA")
+
+## Assign or calculate enhancements to the first half
+data1$hilite <- TRUE
+data1 <- data1 |>
+ mutate(color = case_when(
+ gender == "female" ~ "lightblue",
+ gender == "male" ~ "lightsalmon1"))
+
+## Generate a pedigree from the first half
+tiny_pedigree(data=data1, symbolsize=1.1, fold=FALSE)
+
+## Assign or calculate enhancements to the second half
+data2$hilite <- TRUE
+data2 <- data2 |>
+ mutate(color = case_when(
+ gender == "female" ~ "lightblue",
+ gender == "male" ~ "lightsalmon1"))
+
+## Generate a pedigree from the second half
+tiny_pedigree(data=data2, textsize=0.6, symbolsize=1.1, fold=FALSE)
+
+## Join (row bind) the two halves
+## The first two lines of second half are not needed
+data <- rbind(data1, data2[3:nrow(data2),])
+
+## Create a presentation table
+gt(data) |>
+ cols_hide(columns=c(dad, mom, gender, hilite, color)) |>
+ tab_source_note(source_note="Source: Bridges family documents")
+
+```
+
+## Interpretive information
+
+You can use the color coding to provide information that is ***not*** related to the demographic properties of the data.
+
+In the following example, research progress is noted on the pedigree diagram with a color code (green means already interviewed).
+
+```{r}
+#| label: very-simple
+
+## Read the basic data (all people are listed)
+data <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+ "ID, dad, mom, gender, interviewed 
+ Genji, NA, NA, male, no 
+ Shizuko, NA, NA, female, yes
+ Hiroshi, Genji, Shizuko, male, no 
+ Takashi, Genji, Shizuko, male, yes 
+ Osamu, Genji, Shizuko, male, yes 
+ Akari, NA, NA, female, no 
+ Fumiko, Osamu, Akari, female, no
+ Yui, NA, NA, female, yes
+ Shota, Hiroshi, Yui, male, no
+ Sakura, NA, NA, female, yes")
+
+## Read links for people without children
+links <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+  "id1, id2
+  Takashi, Sakura")
+
+## Print a presenttion table
+gt(data) |>
+ sub_missing(missing_text = "") |>
+ cols_hide(columns=c(gender)) |>
+ tab_source_note(source_note="Source: Example data")
+
+## Calculate and assign column properties
+data <- data |>
+ mutate(color = case_when(
+ interviewed == "yes" ~ "lightgreen",
+ interviewed == "no" ~ "gray85")) |>
+ mutate(hilite = TRUE)
+
+## Generate and plot the pedigree structure 
+## You need to use the link parameter for "no-children" couples
+tiny_pedigree(data=data, links=links)
+
+```
+
+## Family with lots of children
+
+This is an example of the complexity when there are quite a few children. The software seems to handle this number of individuals, but it is likely close to the limit.
+
+```{r}
+data <- read_csv(col_names = TRUE, show_col_types=FALSE, file=
+ "ID, father, mother, sex, status
+ Howard, NA, NA, male, 1
+ Viola, NA, NA, female, 1
+ William, Howard, Viola, male, 0
+ Alice, Howard, Viola, female, 1
+ Wesley, Howard, Viola, male, 0
+ David, Howard, Viola, male, 0
+ Nancy, Howard, Viola, female, 0 
+ Kimo, Howard, Viola, male, 0
+ Edward, Howard, Viola, male, 0
+ Claudia, NA, NA, female, 0
+ Karen, NA, NA, female, 1
+ Ayesha, NA, NA, female, 0
+ Laurie, NA, NA, female, 0
+ Michael, NA, NA, male, 0
+ Michiko, NA, NA, female, 0
+ Linda, NA, NA, female, 0
+ Kim, NA, NA, male, 0
+ Angel, William, Claudia, female, 0
+ Jolene, William, Claudia, female, 0
+ Pono, Wesley, Karen, male, 0
+ Gabriel, Wesley, Ayesha, male, 0
+ Sokah, Wesley, Laurie, female, 0
+ Jessie, Edward, Michiko, male, 0
+ Nalani, Kimo, Linda, female, 0
+ Leilani, Michael, Alice, female, 0
+ Sefu, Michael, Alice, male, 0
+ Eric, NA, NA, male, 0
+ Scott, NA, NA, male, 0
+ Shane, Scott, Angel, male, 0
+ Skyler, Scott, Angel, female, 0
+ Kalani, NA, NA, male, 0
+ Dysen, Kalani, Jolene, male, 0
+ Jordyn, Kalani, Jolene, female, 0
+ Laura, NA, NA, female, 0
+ Salem, Sefu, Laura, male, 0
+ Jennifer, NA, NA, female, 0
+ Christopher, Gabriel, Jennifer, male, 0
+ Vik, NA, NA, female, 0")
+
+## Links for individuals without children
+links <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+  "id1, id2
+  Kim, Nancy
+  Eric, Leilani
+  Jessie, Vik")
+
+## Generate a presentation table
+gt(data) |>
+ cols_hide(columns=c(sex, status)) |>
+ sub_missing(missing_text = "") |>
+ tab_source_note(source_note="Source: Furumoto family data")
+
+## Generate the pedigree data structure (with no-children couples)
+tiny_pedigree(data=data, links=links, 
+ symbolsize=0.8, textsize = 0.4, fold=FALSE)
+
+```
+
+## A complex family
+
+```{r}
+
+## Read the data
+data <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+ "ID, dad, mom, gender, dead
+ Yuji Sorakubo, NA, NA, male, 1
+ Kunichi Furumoto, NA, NA, male, 1
+ Kiyo Sorakubo, NA, NA, female, 1
+ Ayako Sorakubo, Yuji Sorakubo, Kiyo Sorakubo, female, 1
+ Satayoshi Furumoto, Yuji Sorakubo, Kiyo Sorakubo, male, 1
+ Shigeo Sorakubo, Yuji Sorakubo, Kiyo Sorakubo, male, 1
+ Howard Furumoto, Kunichi Furumoto, Kiyo Sorakubo, male, 1
+ Hirui Furumoto, Kunichi Furumoto, Kiyo Sorakubo, female, 1 
+ Hisano Fujiwara, Kunichi Furumoto, Kiyo Sorakubo, female, 1
+ George Fujiwara, NA, NA, male, 1
+ Mom Sorakubo, NA, NA, female, 1
+ Carol Sorakubo, NA, NA, female, 0
+ Clyde Sorakubo, Satayoshi Furumoto, Mom Sorakubo, male, 1
+ Jane Sorakubo, Satayoshi Furumoto, Mom Sorakubo, female, 0
+ Karen Sorakubo, Clyde Sorakubo, Carol Sorakubo, female, 0
+ Amy Sorakubo, Clyde Sorakubo, Carol Sorakubo, female, 1 
+ Kiyoko Sorakubo, NA, NA, female, 1
+ Michael Sorakubo, Shigeo Sorakubo, Kiyoko Sorakubo, male, 0
+ Wendy Sorakubo, NA, NA, female, 0
+ Myra Yamachi, George Fujiwara, Hisano Fujiwara, male, 0
+ David Yamachi, NA, NA, male, 1")
+
+## Links for the individuals without children
+links <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+  "id1, id2
+  Michael Sorakubo, Wendy Sorakubo
+  Myra Yamachi, David Yamachi")
+
+## Create a presentation table
+gt(data) |>
+ cols_hide(columns=c(gender, dead)) |>
+ sub_missing(missing_text = "") |>
+ tab_source_note(source_note="Source: Furumoto family data")
+
+## Color all the symbols 
+data$color <- "gray85"
+data$hilite <- TRUE
+
+## Modify the color of a specific row
+data$color[7] <- "pink"
+
+## Generate the plot the pedigree
+tiny_pedigree(data=data, links=links,
+              textsize = 0.7,
+              symbolsize = 0.8)
+
+```
+
+## Two families combined
+
+```{r}
+
+## Read the data
+data <- read_csv(col_names = TRUE, show_col_types=FALSE, file=
+ "ID, father, mother, sex, status
+ Herbert Kawahara, NA, NA, male, 1
+ Hideko Kawahara, NA, NA, female, 1
+ Brian Kawahara, Herbert Kawahara, Hideko Kawahara, male, 0
+ Nancy Kawahara, NA, NA, female, 0
+ Candy Kawahara, Herbert Kawahara, Hideko Kawahara, female, 0
+ Debbie Kawahara, Herbert Kawahara, Hideko Kawahara, female, 0
+ Neil Nagata, NA, NA, male, 0
+ Doreen Kawahara, Herbert Kawahara, Hideko Kawahara, female, 0
+ Ayako Sorakubo, NA, NA, female, 1
+ Jinpachi Nakashima, NA, NA, male, 1
+ Colleen Kawahara, Herbert Kawahara, Hideko Kawahara, female, 0
+ Kevin Nakashima, Jason Nakashima, Eleanor Oyama, male, 0
+ Terry Nakashima, Jason Nakashima, Eleanor Oyama, male, 0
+ Cory Nakashima, Terry Nakashima, Colleen Kawahara, male, 0
+ Karen Nakashima, Terry Nakashima, Colleen Kawahara, female, 0
+ Jason Nakashima, Jinpachi Nakashima, Ayako Sorakubo, male, 1
+ Sachiko Nakashima,  Jinpachi Nakashima, Ayako Sorakubo, female, 1
+ Jerry Nakashima, Jinpachi Nakashima, Ayako Sorakubo, male, 1
+ Eleanor Oyama, NA, NA, female, 1
+ Sharon Nakashima, Jason Nakashima, Eleanor Oyama, female, 0
+ Alyssa Denison, David Denison, Sharon Nakashima, female, 0
+ Kellianne Denison, David Denison, Sharon Nakashima, female, 0
+ Christopher Denison, David Denison, Sharon Nakashima, male, 0
+ David Denison, NA, NA, male, 0")
+
+## Links for married individuals with no children
+links <- read_csv(col_names=TRUE, show_col_types=FALSE, file=
+  "id1, id2
+  Brian Kawahara, Nancy Kawahara
+  Neil Nagata, Debbie Kawahara")
+
+## Create a presentation table
+gt(data) |>
+ cols_hide(columns=c(sex, status)) |>
+ sub_missing(missing_text = "") |>
+ tab_source_note(source_note="Source: Kawahara family data")
+
+## Generate and plot the pedigree diagram
+tiny_pedigree(data = data, links = links,
+              symbolsize = 0.8,
+              textsize = 0.6)
+```

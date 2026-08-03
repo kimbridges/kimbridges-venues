@@ -1,0 +1,13 @@
+---
+title: "Hummingbirds in Winter"
+subtitle: "Hummingbirds in Southern California botanical gardens."
+date: 2024-08-08
+categories: ["Birds", "Gardens"]
+image: ../images/Hummers_in_Winter.jpg
+pdf: ../pdfs/Hummers_in_Winter.pdf
+---
+A January 2024 visit to find hummingbirds. This study focuses on hummingbird interactions with flowers.
+
+Pages: 52
+
+<iframe src="../viewer.html?pdf=Hummers_in_Winter.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

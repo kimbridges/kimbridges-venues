@@ -1,0 +1,39 @@
+# Reading a Dead Program
+
+How do you recover a method from a program you cannot read? You have a sealed box. It takes data in and puts a sorted table out, reliably, every time. Somewhere inside are the rules, but the box will not open. This chapter is about how the rules came out anyway. It is the heart of the project, and it turns on a small piece of luck: the program had been keeping notes, and the notes survived.
+
+## What survived
+
+When COENOS was set aside, four kinds of thing were left behind together.
+
+There was the program itself — the compiled executable, which still ran under an emulator but could not be read. There were a few example datasets, the relevé files COENOS took as input. There were the sorted tables the program had once produced from those datasets, saved as plain text. And there were the program's restart files: small files COENOS wrote so that a finished, hand-tuned table could be reloaded in an instant rather than re-sorted from scratch.
+
+The first of these — the unreadable executable — is the obstacle. The other three are the opening. Inputs, outputs, and the program's own saved state: that is more than it sounds.
+
+## A Rosetta Stone
+
+A worked example is a powerful thing when you are trying to recover a rule. You have the data that went in. You have the answer that came out. Any rule you propose can be tested: run it on the input, and see whether it reproduces the known output. A guess that matches is supported; a guess that fails is wrong, and often the *way* it fails tells you what to fix.
+
+The example datasets and their sorted tables were exactly this kind of resource — a Rosetta Stone for the method. We could form a hypothesis about how COENOS decided something, apply it to a dataset whose sorted table we already had, and check. Not "does this seem reasonable," but "does this give the answer the program gave." With three datasets to work from, a rule that reproduced all three was very likely the real one.
+
+This alone would have been enough to recover a great deal. But the restart files turned out to hold something better.
+
+## The program's own notes
+
+COENOS saved a restart file so it would not have to redo work. To reload a sorted table instantly, the file had to contain not just the picture of the table but the *solution behind it* — which species the program had judged too common or too rare, which species it had gathered into which groups, the order it had put them in, and more. The file was, in effect, the program's own written record of its reasoning, kept for its own convenience.
+
+That record was never meant for us. It was a working file, internal, the kind of thing a program writes and a user never sees. But it survived, and reading it was like finding the margin notes of someone long gone. Here was the program stating, plainly, the answers to the very questions we were trying to ask: not only *what* the sorted table looked like, but *why* it looked that way — which species were diagnostic, which were companions, which formed a group together, where each group started. The method had left a confession in its own filing.
+
+![One group's record from a COENOS restart file, decoded. The program saved how it formed each group — the level, the seed species, the number of passes — and the members that resulted. Notes a machine wrote for its own convenience, read back across the years.](figures/coenos_s00_message.svg)
+
+There is something quietly moving in this. The authors wrote COENOS to save themselves and their colleagues the labor of the table. To do that, the program had to write down its reasoning in a form it could read back. Decades later, that same record — written for a machine's convenience, never for posterity — is what let the reasoning be recovered. A note kept for the most practical of reasons became a message across the years.
+
+## Checking against the original
+
+Having the program's own solution changed the standard we could hold the reconstruction to.
+
+It is one thing to write R that produces a plausible sorted table. It is another to write R that produces *the same* table COENOS would, in the same order, with the same species in the same groups. The restart files made the second possible. Every rule we recovered could be checked, not against our judgment of what looked right, but against what the program had actually done — species by species, group by group. When the reconstruction and the original agreed on all of it, the rule was not merely reasonable; it was the rule.
+
+This discipline shapes the whole package. Its tests do not ask whether `coenosr` runs. They ask whether `coenosr` matches COENOS. That is a higher bar, and it is the right one for a reconstruction, because the goal was never to write a new table-sorter. It was to recover an existing one, faithfully, and to be able to prove the fidelity.
+
+With the inputs, the outputs, and the program's own notes in hand, the rules could finally be read back out. The next chapter sets them down in the open — the method that was locked in the binary, written plainly enough to read.

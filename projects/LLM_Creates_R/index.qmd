@@ -1,0 +1,55 @@
+# Preface {.unnumbered}
+
+My goal here is to show you some *generative AI concepts*.
+
+This isn't a how-to-do-it manual. There are a few details that are left out, such as how to get a Google API key. That kind of information is found elsewhere. The focus here is on *concepts*. You will, however, see how you can do lots of useful things.
+
+The examples showing the application of generative AI, the output from a Large Language Model, come from the field of ethnobiology (*sensu lato*). Hopefully, the situations I describe recall the types of research problems that practitioners in this field encounter.
+
+There a several key things to note as they are threads running through the entire document.
+
+-   A Large Language Model (LLM) excels at taking disorganized text and organizing it in a way that is useful for analyses.
+
+-   The R language is a useful tool. It is a critical computational engine.
+
+-   Graphic output (i.e., charts, maps) are generally a necessary complement to text and numerical results.
+
+-   The results of an LLM working on data, creating R code, and producing interpreted results often exceed what's expected.
+
+### Disclaimers & Software
+
+The R language is the computational foundation of what's done here. Other languages, such as Python, will work in a similar way. I just happen to prefer using R.
+
+The use of a Reproducible Document is an essential organizational tool. The documents interleave text and code "chunks." Periodically, the document is rendered. This formats the text, runs the code, and produces an illustrated document. These documents can have many sets of text and code chunks. Together, they build up the story.
+
+This document is built as a Reproducible Document. The historical start for this style of writing is generally attributed to @knuth84 in seminal paper on what he called literate programming.
+
+The RStudio environment is where the Reproducible Documents are created. If you know anything about the R language, you're likely familiar with RStudio. Quarto is the markup language.
+
+Anthropic's Claude is the main Large Language Model used here. Specifically, the Sonnet 3.5 version. I'm using it with a paid, Professional Plan.
+
+I use an API key from Google [@googleapi] when I need their map services. To do this, I'm required to have a paid account (separate from an email account). In practice, I get the services free as my use is minimal. You don't need your own API key unless you're making maps.
+
+All the scenarios and data are fictitious[^index-1], unless otherwise noted. This is done on purpose. I consider it valuable to know how to structure your data and have analysis protocols ready *and practiced* before doing fieldwork.
+
+[^index-1]: No real data were harmed or killed in these exercises. A few near-dead, real data points were resuscitated although their long term viability is not assured.
+
+### This can be Dangerous
+
+Sometimes, an LLM will produce things that are wrong. ***You always need to check the results.***
+
+There is an important reason that R code is requested as part of the LLM results. You can trust the R-produced computations.
+
+There's a second reason regarding danger. You're likely to see things here that upend your concepts of how to do data analysis. This might be upsetting, especially if you've spent a lot of time learning stuff that's now handled by a Large Language Model.
+
+### Where We're Headed
+
+Many researchers find themselves in a bind. On the one hand, they are told that ethnobiological research should be quantitative [@orr23]. On the other hand, they don't have time (or a way) to learn a language like R to do quantitative analyses. Even if they've learned R, it may require a substantial effort to become reacquainted with the details of the language between infrequent uses.
+
+This document shows there's a solution to this dilemma. And it's a pretty simple solution.
+
+An LLM can make pretty decent R code for many of the types of analyses that apply to ethnobiological problems. Basically, you just state the problem in English.
+
+There is even more. LLM technology provides an opportunity to build files of "standards" that will be followed (generally) in the creation of the R code. This means that you can develop a personal style that makes your charts and tables consistent, within and between documents.
+
+Dig into the examples. You'll see for yourself.

@@ -1,0 +1,62 @@
+# Intelligent Documents
+
+The document is the container that holds text and R code. As a generic term, this is called a "markdown document." Here, we're using Quarto as the engine to handle the combined text and computation tasks.
+
+Keeping data and analysis code together with descriptive text is an important strategy. Mostly, they style of writing maintains a tight linkage between the elements so that a change in the data, for example, will be automatically reflected in the analysis charts and tables. Often, text values will change, too.
+
+Contrast this style with using Microsoft Word and Excel. With that combination, the data and analyses are in Excel. Values, tables and charts are transferred by copying from Excel to Word. There is no automatic linkage. Therefore, the Word document can become out of date quite easily.
+
+## Quarto Structure
+
+Quarto and RStudio go hand in hand. The editing window in RStudio lets you creat a document by typing text and inserting code blocks (called "chunks") into the text. You see this combination, text with data and analyses, together. Periodically, you'll render the document and, if you choose, the code chunks disappear. Only the text, tables and graphics remain in a formatted document.
+
+There are several levels of organizational complexity that should be considered.
+
+**Single File:** All the materials are in a single Quarto file. This includes the text, data, analyses, tables and charts. This is where most people start. It is a simple and logical document. Text headers divide sections of the document. There is little need to consider the storage of materials. It's just one file, most likely on a narrowly focused topic.
+
+**Complex Project:** There are multiple files needed as this project has multiple sources of data, analyses serve different purposes, and reports look at different aspects of the problem. Here, an RStudio project is used and there are multiple Quarto files. There is also a need for an underlying structure to how things are stored on the computer disk. For example, a project directory that holds folders for the data, final graphics, special R code, and other things. Each of the Quarto files can be rendered separately and the entire set can be rendered together as a large, complex document. This document is such a project as it is composed of several individual Quarto files which, eventually, will be rendered as a single document.
+
+**Multi-Project System:** A large research undertaking (e.g., dissertation research) will likely require a number of projects, each addressing different facets of the overall effort. One project might be concerned with the data. It would focus on data entry, verification, reconfiguration, and other tasks that lead to one or more stored sets of data ready for analysis. There are likely several analysis projects, each looking at different data or tackling different analytic approaches. Each of these projects is likely large enough to require a set of separate files. Finally, there are the formal report projects where content is drawn from the products of the data and analytic projects. These might be dissertation chapters or a set of scientific publications. The underlying file system is likely to be quite complex.
+
+It is important to plan ahead. Each form of organization is based on Quarto files. It is the size and complexity that differs.
+
+The focus here is on the mid-sized organization; it is a complex project.
+
+## Tying the Document Together
+
+Each of the Quarto files can be rendered to a document. This is because each files has all the resources it requires. That makes it handy during development.
+
+Once all the individual files are complete, they are rendered to a single larger document by stitching the files together.
+
+There are two requirements for stitching a multi-chapter document.
+
+An `index.qmd` file. This is the starting file in the set. Use it for things like an Introduction or Preface.
+
+A YAML entry with file names. This entry goes in a special file (\_quarto.yml). The entry looks like this.
+
+```         
+book: 
+  title: "R Basics" 
+  author: "K. W. Bridges" 
+  date: "4/18/2023" 
+  chapters: 
+    - index.qmd 
+    - Documents.qmd 
+    - Packages.qmd 
+    - Input.qmd 
+    - Dates.qmd
+    - Tables.qmd 
+    - Biblio.qmd
+```
+
+Use the terminal command `quarto render` to initiate the stitching process.
+
+## Saving to quarto.org
+
+If you establish an account on `quarto.org`, you can save your quarto document on this website.
+
+The terminal command to publish a quarto document to `quarto.org` is `quarto publish`.
+
+Note that there is a commercial publishing company with the website `quarto.com`. That is not the same place!
+
+**References**

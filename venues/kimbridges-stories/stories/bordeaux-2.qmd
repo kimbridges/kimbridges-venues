@@ -1,0 +1,13 @@
+---
+title: "Bordeaux 2"
+subtitle: "The second part of the Bordeaux expedition."
+date: 2023-02-01
+categories: ["Travel", "Food", "Wine", "Europe"]
+image: ../images/Bordeaux_2.jpg
+pdf: ../pdfs/Bordeaux_2.pdf
+---
+The story continues the adventures of the 'Bordeaux 9' as they traveled from Bordeaux down the French coast to San Sebastian. More famous places, great food, and wine.
+
+Pages: 88
+
+<iframe src="../viewer.html?pdf=Bordeaux_2.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

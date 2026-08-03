@@ -1,0 +1,27 @@
+# Observations
+
+Both the text-file citation strategy and the API-based routines to leverage the OpenAI power were developed as rapid prototypes. This means that there are likely some changes needed to make the procedures more robust and the code conform to more professional standards.
+
+The important thing is that shortcomings are discovered through use. That's where things are at present.
+
+## Known Shortcomings
+
+The use of Google Docs has not been generalized. The name of the Doc file at present must be "`notes.txt`" (unless changed in the code). A more generalized approach to file naming is needed.
+
+The `analyzeTXT` function relies on httr functions. These need to be updated to the httr2 functions. This may help with timeouts.
+
+It might be useful to build the doc-to-bibtex process into a function.
+
+## Hints on Uses
+
+**Use Multiple BibTex Files:** It is probably best to keep the Google Doc note files relatively small. To do this, it is possible to use multiple BibTex files. Here is a line from the `.yml` file that shows how to do this.
+
+`bibliography: [references.bib, vita.bib]`
+
+This implies that there are two files that will be combined when you do a citation insertion in the markdown file using RStudio.
+
+**Make Sets of References:** Consider running the doc-to-bibtex routine on you Vita to produce a bibtex-formatted version of your publications. This way you won't have to repeat these if you use some of them as citations in your current manuscript.
+
+A set of citations commonly used in your methods sections could be created as a separate bibtex-format file.
+
+**Preserve Momentum:** Save time and frustration when projects get interrupted. By documenting your thoughts and citations directly in your Google Doc, you can easily pick up where you left off without retracing your steps.

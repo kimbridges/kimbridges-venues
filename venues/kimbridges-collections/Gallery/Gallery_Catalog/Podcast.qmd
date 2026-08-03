@@ -1,0 +1,42 @@
+# NotebookLM Podcast
+
+## Product
+
+Please note: This is an intermediate product, ***not*** a final version.
+
+<audio controls>
+  <source src="../audio/2_Gallery_Catalog_audio.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+## Process
+
+It seemed like a natural next step to make the Gallery Catalog into a podcast. [AI podcasts](https://kimbridges-documents.netlify.app/ai_podcasts/ "View the AI Podcasts document") were completed for a number of documents about the same time the catalog was finished. Why not try this with the catalog?
+
+## NotebookLM
+
+Google's NotebookLM was the obvious tool to use when creating a podcast. The conversation between two individuals is a good fit for the topic.
+
+### Overcoming a limitation
+
+The early version of Google's NotebookLM wasn't able to process images. To compensate for this deficiency, the image files of the artwork and artist "photos" were given to Google's Gemini LLM for interpretation. Here is an example of the AI description of the gallery owner, Hortense Knight-Brown.
+
+> In this image, an elegant older woman is standing indoors, exuding an air of grace and sophistication. She has silver-gray hair, styled in soft, voluminous waves. Her expression is calm and confident, with a gentle smile. She is wearing a richly textured, patterned jacket over a neutral-toned blouse, paired with intricate, matching jewelry—a large statement necklace and earrings that suggest a taste for classic, refined fashion. The background appears to be a well-decorated room, possibly an art-filled or historical interior, with warm lighting that enhances the stately and cultured atmosphere.
+
+Similarly, the AI generated description of Tad Nakamura's painting "Mixed Results" was very detailed.
+
+> This *ikebana*-style still life image features a striking yet minimalist floral arrangement. The focal point is a single sunflower, rendered in soft, muted tones, perhaps in shades of gray or beige, giving it a more subdued, monochromatic appearance than the typical vibrant yellow associated with sunflowers. The flower is displayed in a rounded, textured vase that sits at the center of the composition, with another smaller, matching bowl beside it.
+>
+> The sunflower’s petals are delicately layered, curling slightly outward, and the center of the flower is dark and textured, which contrasts with the soft lighting illuminating the scene. Its thick stem and large, lobed leaves add structure to the arrangement. The leaves are stylized with deep, broad lobes, giving them a bold presence that complements the flower's geometric symmetry. Their dark, matte tone adds a sense of solidity to the composition, anchoring the more delicate aspects of the flower.
+>
+> The vase and bowl are made of a rough, stone-like material, which provides an earthy, tactile quality to the arrangement. The shapes are organic and rounded, further enhancing the natural, harmonious aesthetic. The lighting is carefully controlled, casting soft shadows that give depth to the scene. The light appears to come from a single source on the left, accentuating the textures of the leaves, the petals, and the pottery while leaving the background in darkness, creating a contemplative mood.
+>
+> The overall color palette is muted and monochromatic, emphasizing form, texture, and the careful balance of elements typical in *ikebana* arrangements. The simplicity of the composition, combined with the natural shapes of the sunflower and leaves, gives the image a serene, meditative quality, inviting the viewer to appreciate the subtle beauty of nature within the restrained elegance of the arrangement.
+
+## Using NotebookLM
+
+The files with the art and artwork descriptions, the Gallery Catalog PDF file, along with several descriptive files describing the creation of the catalog, were provided to NotebookLM. Mixing multiple files is a good feature of this AI program as it lets you add some direction and depth to the podcast.
+
+The podcast that was produced is a reasonable description and discussion of the Gallery Catalog.
+
+But is it good enough?

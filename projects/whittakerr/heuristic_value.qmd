@@ -1,0 +1,213 @@
+# Heuristic Value
+
+Heuristic value is a quiet phrase for an important idea. A
+thing has heuristic value if it leads to something else. A
+good idea is one that produces more good ideas; a good
+question is one that opens further questions; a good
+instrument is one that, once in hand, shows you the next
+thing to build. The word keeps its origin close to the
+surface — it comes from the Greek *heuriskein*, to discover.
+A heuristic is not a thing that is true. It is a thing that
+generates.
+
+By that measure, the Whittaker diagram has had heuristic
+value from the day Whittaker first drew it. The capacity to
+lead somewhere was always in it: two axes, temperature and
+precipitation; a scatter of biomes arranged in the climate
+space they occupy; and a claim, made visible, that the
+living cover of the world is organized, and that the
+organizing variables are few. Any ecologist who studied it
+could feel the pull of the next question. What lies on the
+boundaries? Where would this particular place fall? What
+does the diagram predict, and is the prediction right?
+
+And yet, for decades, that value stayed almost entirely
+*potential*. The pull was real, and there was very little
+one could do about it. To place a point on the diagram you
+needed its temperature and its precipitation, and
+trustworthy climate figures for an arbitrary spot on the
+Earth were not easy to come by. To turn the diagram into a
+map you needed to classify thousands of points and draw the
+result, and that was a labor measured in careers, not
+afternoons. The diagram could be looked at, taught from,
+nodded at, argued with — a modest and genuine value as an
+object of thought. But it could not, in any working sense,
+be *used*. The instrument existed; the means to pick it up
+did not.
+
+This chapter is about what changed, and — just as much —
+about what did not. The diagram did not change. What changed
+was our ability to act on it.
+
+## From assent to use
+
+What changed was not the diagram. It was everything around
+it.
+
+Three things arrived, more or less together. The first was
+data: climate records for the whole surface of the Earth,
+gridded finely enough that any point — a ridge in Kenya, a
+valley on Oahu, a coordinate chosen at random — could be
+given a temperature and a precipitation without a field
+season. The second was computation: the ability to classify
+not one point but a million, and to do it in the time it
+takes to pour a cup of coffee. The third is the toolkit this
+document has built: a small set of functions that put the
+first two within reach of anyone who can write a line of R.
+Not one of these is the diagram. Together, they are the
+means to pick it up.
+
+And once it was picked up, the diagram began to lead — which
+is the test of a heuristic, and the test it had waited
+decades to be given. A biome map built from temperature and
+precipitation alone — two numbers, and never once the
+elevation of anything — was draped over the bare Earth and
+fit the mountains and the Rift it had never been shown.
+Places turned up on the diagram somewhere their reputation
+would not have put them. Maps drawn from climate disagreed
+with the vegetation standing on the ground, and the
+disagreements were not errors to be smoothed away but
+findings: they pointed at fire, at history, at the human
+hand. Each of these is somewhere the diagram led, and we
+could follow only because the diagram had become usable.
+
+Underneath all of it is a single act, repeated: naming.
+Whittaker named the biomes, and the names made them
+comparable. MacMahon named the functional groups, and the
+names made the structure of a desert's fauna visible. The
+toolkit's central function is called, simply, `name_biome()`.
+You cannot study, compare, or verify a thing you have not
+named, and the diagram is, before it is anything else, a
+scheme for naming. That is the quiet engine of the whole
+document.
+
+For years, we have looked at the Whittaker diagram and said,
+mostly, "OK. That looks right." And then moved on. Now we
+can actually use the diagram. That is a satisfying step
+forward — and it is exactly the moment a potential heuristic
+becomes a realized one. The change is small to state and
+large to live through: from assent to use.
+
+## The lines are ours
+
+Here is the warning that comes with the gift. A heuristic
+that has been realized — that genuinely works, that
+genuinely leads — is, for that very reason, easy to believe
+too much.
+
+Look again at what this document has drawn. Whittaker's
+diagram is a set of polygons, and polygons have edges. The
+biome map is a field of colors, and colors meet at borders.
+`name_biome()` returns one name, cleanly, with no hesitation
+in its voice. Every one of those lines is a convenience. We
+drew them; the Earth did not. The Transitions chapter said
+this once already, at the scale of a single boundary: what
+looks like a line is a zone, and the zone has width. The
+point holds for the whole scheme. A classification is
+scaffolding — indispensable for getting the work done, and
+not the building.
+
+The sharper form of the warning is this: the lines do not
+merely simplify, they hide. What falls between two named
+categories tends to fall out of view entirely — it has no
+name, no color of its own, no row in the table. And the
+places in between are not the dull parts of the map. They
+are the most alive: the ecotones, where this document's own
+Transitions chapter located the richest ground. They are
+also the most exposed, because a changing climate does its
+work precisely there, carrying places across the boundaries
+we drew. The categorical view, used carelessly, makes the
+most vibrant and most vulnerable parts of the living world
+the hardest to see. That is not a reason to abandon the
+lines. It is a reason to remember whose they are.
+
+## What it leads to next
+
+A realized heuristic does not come to rest. That is what
+the word means: a thing that leads, leads onward, and a
+tool that has begun to generate findings will keep
+generating them for as long as someone is willing to
+follow. So the proper close of this document is not a
+summary. It is a direction.
+
+The direction is the in-between — the very ground the
+previous section warned was being hidden. Turn the warning
+over and it becomes a program. Consider the bird
+photographers, who know this ground without needing a
+theory of it. They go where two biomes meet, because that
+is where the birds are. A bird at the meeting of a forest
+and a grassland has not two places to meet its needs but
+three: the forest, the grassland, and the transition
+itself, which carries structure and resources belonging to
+neither neighbor and to the edge alone. The edge is not a
+thinner version of the forest or a richer version of the
+grassland. It is a third thing. The photographers have
+known this for as long as there have been long lenses;
+ecology calls it the edge effect; the document's own
+toolkit has, so far, no name for it at all.
+
+And naming, this document has argued from its first pages,
+is the prerequisite of study. Whittaker named the biomes
+and made them comparable; MacMahon named the functional
+groups and made a desert's structure legible. You study
+what you can name. The ecotones, in the Whittaker scheme,
+are precisely the un-named things — the polygon edges, the
+borders between colors, lines drawn with no width and so
+with nothing inside them to study. The remedy is not to
+stop drawing lines. It is to extend the naming to the
+lines themselves. And there is a tractable way to begin:
+every edge of the Whittaker diagram, every place two biome
+polygons touch, is a specific kind of ecotone —
+forest-to-grassland, desert-to-shrubland, and so on through
+a finite list. Name those, and the transitions become
+countable, mappable, and verifiable in exactly the way the
+nine biomes already are.
+
+That this can be done is not a hope. It has been done.
+Will McClatchey told me about a society in the Solomon
+Islands whose classification of its own landscape names
+the ecotones first and treats the biome interiors as the
+leftover ground between them. It is the
+Whittaker scheme turned exactly inside out: the edges are
+the categories, and the cores are the borders. A people to
+whom the diversity of their land mattered built their
+naming around the in-between, because that is where the
+life they cared about was densest. The warning of the
+previous section is, in their hands, no longer a warning.
+It is a demonstration that the map can be drawn the other
+way.
+
+A future version of the toolkit could draw it that way
+too. It is not hard to imagine the cartographic inverse of
+`map_biomes()`: a function that colors the transitions and
+leaves the interiors blank — a map on which the in-between
+is the figure and the biomes are the ground. That is a
+direction, not a promise. But it is exactly the kind of
+direction a realized heuristic is meant to produce.
+
+## The close
+
+The diagram that Whittaker drew sat for most of a lifetime
+with its value held in reserve. The potential was always
+there; the means to spend it were not. This document has
+been, from one end to the other, the spending of it — the
+climate data, the computation, the small set of functions,
+and the findings that followed once the diagram could
+finally be picked up and used. The potential has been made
+real. That is the step this document set out to take, and
+it has been taken.
+
+But a realized heuristic is not a finished one. The whole
+point of the word is that it keeps leading, and a tool that
+has begun to generate questions does not stop generating
+them because a document has reached its last chapter. What
+has been built here is not a conclusion. It is an
+instrument, and instruments are for the next thing.
+
+So this is not a door closing. It is a hand pointing. The
+biomes — the named interiors, the nine clear categories —
+have been classified, mapped, draped, and verified. The
+frontier that remains is the in-between: richer than the
+categories, more vulnerable than the categories, and still,
+for now, un-named. Maybe the next thing to look at more
+seriously are the things in between.

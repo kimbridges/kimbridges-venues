@@ -1,0 +1,12 @@
+
+# Time
+
+### Camera & Cellphone Time
+
+They must match. Cellphones used GPS time so it generally resets to the local time when you travel. You need to make sure that this is done as there may be a setup value that needs to be corrected.
+
+Equally important is to set the time on the camera. Make sure that the cellphone and camera date and time are nearly identical.
+
+If you forget to change the camera time (which does happen), you can do this after the fact with several desktop computer programs. For Windows, [Bulk Rename Utility](https://www.bulkrenameutility.co.uk/) has a time adjustment function. You can also use [Photo Mechanic](https://home.camerabits.com/) to do this.
+
+

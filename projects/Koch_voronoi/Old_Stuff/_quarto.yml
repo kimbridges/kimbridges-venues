@@ -1,0 +1,34 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Koch Voronoi"
+  subtitle: "Testing infection proximity to anchor points"
+  author: "Kim Bridges"
+  date: today
+  chapters:
+    - index.qmd
+    - Basic.qmd
+  
+toc: true
+number-sections: false
+
+execute:
+  warning: false
+  error: false
+  message: false
+
+format:
+  html:
+    css: styles.css
+    code-fold: true
+    code-summary: "Show the code"
+    theme: cosmo
+  pdf:
+    documentclass: report
+    margin-left: 30mm
+    margin-right: 30mm
+
+editor: visual
+

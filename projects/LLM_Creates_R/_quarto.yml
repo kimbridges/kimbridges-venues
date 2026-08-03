@@ -1,0 +1,50 @@
+project:
+  type: book
+
+book:
+  title: "Using an LLM to Create R Code"
+  author: "Kim Bridges"
+  subtitle: "Simplify Data Entry and Analysis with AI"
+  search: true
+  date: today
+  cover-image: LLM2R_cover.png
+  chapters:
+    - index.qmd
+    - Resources.qmd
+    - intro.qmd
+    - Projects.qmd
+    - Gathering.qmd
+    - Complex_Data.qmd
+    - Bar_charts.qmd
+    - Demographics.qmd
+    - Point_centered.qmd
+    - Regenerate.qmd
+    - Plainmaps.qmd
+    - Observations.qmd
+    - references.qmd
+    - Appendix.qmd
+  navbar: 
+    logo: LLM2R_logo.png
+    
+toc: true
+number-sections: false
+
+execute: 
+  warning: false
+  error: false
+  message: false
+
+bibliography: references.bib
+
+format:
+  html:
+    css: styles.css
+    code-fold: true
+    code-link: true
+    code-summary: "Show the code"
+  pdf:
+    toc: true
+
+editor: visual
+
+

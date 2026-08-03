@@ -1,0 +1,13 @@
+---
+title: "Wading Birds of Black Point Wildlife Drive"
+subtitle: "Merritt Island National Wildlife Refuge in Florida."
+date: 2020-03-12
+categories: ["Birds"]
+image: ../images/Merritt_Island.jpg
+pdf: ../pdfs/Merritt_Island.pdf
+---
+The focus of this study is on the seven mile road between estuaries and impoundments. The emphasis is on the birds in this wildlife refuge.
+
+Pages: 139
+
+<iframe src="../viewer.html?pdf=Merritt_Island.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

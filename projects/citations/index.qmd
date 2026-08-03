@@ -1,0 +1,15 @@
+# Preface {.unnumbered}
+
+This publication joins a growing collection of Quarto documents that explore R-based technology for research scientists. These working papers often introduce new R functions or, as in this case, delve into the practical application of a specific function to address a particular research challenge.
+
+## Linkages Using a LLM
+
+Handling data as a file in one system and analyzing the data in another system can have some benefits. For example, Google Docs excels in allowing shared editing. Similarly, R language processing provides computational power to analyze data and format results.
+
+The goal here is to demonstrate a link the two systems, Google Docs and RStudio, so they function in supportive roles. The "glue" we'll use is OpenAI's ChatGPT, one of the Large Language Models (LLM). This linkage is seamless because of the utility of the ChatGPT API handling text activities.
+
+## Use Case
+
+The use case demonstrated here is the handling of bibliographic citations and their use in a publication. This is a common task for scientists as they prepare a manuscript for publication. The objective is to find the set of references to other studies that support the manuscript under development. This part of the research workflow is sometimes inefficient and error prone. The approach shown here attempts to streamline the process.
+
+The Quick Start chapter outlines the requirements to get started and defines a simple workflow for the efficient and effective use of citations.

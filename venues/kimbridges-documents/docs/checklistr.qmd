@@ -1,0 +1,9 @@
+---
+title: "checklistr"
+subtitle: "A Checklist Is an Argument — reconstructing a flora from herbarium records"
+categories: ["Ecology", "R", "Methods"]
+image: ../checklistr/checklistr_cover_image.jpg
+---
+
+[View Document](../checklistr/){.btn .btn-primary}
+

@@ -1,0 +1,37 @@
+---
+title: "Creating a Podcast"
+---
+
+## Background
+
+A podcast is an audio file, most likely available on-line.
+
+The podcast content is often a monologue by a host dealing with a specific topic. Sometimes, there is a dialog where the audio is a conversation between two people.
+
+Hearing content can be convenient. There are times and places where viewing web pages is not a good idea, such as when you're driving a car. Instead, listening to a podcast is a good alternative in this situation, not unlike playing music on the car's radio.
+
+A successful podcast engages the listener. This requires a good subject, an interesting dialog, and a dynamic presentation.
+
+Creating a good podcast can be a challenge. A serious challenge.
+
+*AI comes to the rescue!* At least, that's the premise.
+
+## NotebookLM
+
+You can combine files in an AI application called "[NotebookLM](https://notebooklm.google/)." The files can be documents (e.g., PDF files), YouTube videos, websites and more. NotebookLM can summarize the contents and discover the linkages. It's a general tool for helping a person organize and understand a body of information.
+
+One of the NotebookLM tools creates a summary in the form of a dialog between two people. This is an audio file. Think: podcast.
+
+Using a Large Language Model to create a script that's a summary of file contents isn't unique to NotebookLM. Other LLMs can do this with the proper instructions. The script can then be run through a text-to-speech engine to get an audio file. This may required further processing to create a dialog. What's good about NotebookLM is that all of this is done with a simple click. It's easy.
+
+## A Few Caveats
+
+Google's Gemini (version 1.5) Large Language Model was the technology behind these examples using NotebookLM.
+
+All of the podcasts were created between September 15 and 18, 2024, a few days after NotebookLM was released for public use. Since then, the Gemini processing that analyzes the files has gotten better. The code that creates the dialog has likely improved, too. Treat these examples as documentation of the beginning of this podcast-generation technology.
+
+There is a bias in these podcasts based on only using text documents. The LLM technology has gotten very adept at handling images. That wasn't tested here.
+
+Where possible, links are included that allow straightforward retrieval and viewing of the documents on which the podcasts are based. In a few cases, this has not been possible due to copyright restrictions.
+
+There were some errors in the Notebook-produced podcasts. These were not edited out of the audio presentations given here. This is a known limitation that has been addressed elsewhere.

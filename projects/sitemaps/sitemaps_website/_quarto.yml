@@ -1,0 +1,46 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Sitemaps"
+  subtitle: "Put points and labels on basemaps with R"
+  author: "K. W. Bridges"
+  date: today
+  cover-image: sitemaps_cover.png
+  chapters:
+    - index.qmd
+    - about.qmd
+    - getting_started.qmd
+    - tables_and_maps.qmd
+    - data_wrangling.qmd
+    - map_coordinates.qmd
+    - map_basemaps.qmd
+    - Google_Simple.qmd
+    - map_points.qmd
+    - map_names.qmd
+    - map_cuts.qmd
+    - map_fan.qmd
+    - map_functions.qmd
+  navbar: 
+    logo: sitemaps_cover_thumbnail.png
+
+format:
+  html:
+    embed-resources: false
+    fig-width: 8
+    fig-height: 8
+    code-fold: true
+    code-summary: "Show the code chunk"
+
+    
+editor: visual
+
+toc: true
+number-sections: true
+number-depth: 2
+    
+execute:
+  warning: false
+  error: false
+  message: false

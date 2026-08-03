@@ -1,0 +1,16 @@
+
+# Why Plainmaps?
+
+There are times when a simple background map is needed. Such maps often reference well-known geographic entities such as countries and states.
+
+Fortunately, there are generally adequate basemap outlines available for use with R. This means that you are unlikely to have to trace a map outline to create something you need.
+
+Be warned that there are several packages (as well as built-in capabilities) that provide similar services. Some of the functions you'll encounter with Internet searches use approaches that are now a bit outmoded.
+
+I focus in this document on the use of boundary data from mapdata and use the functionality of GGPLOT2 to create the maps. Data overlays are done with Sitemaps functions.
+
+There might be instances when you need to use a shapefile for the boundary data. This is the case for Hawai`i (and Alaska) where the US boundaries tend to omit these two non-contiguous states or the boundaries are too generalized to be useful for maps with a local focus. For these situations, there is an example where shapefiles are used.
+
+The plain maps lend themselves to situations where colored areas represent data values. These are called choropleth maps. A few examples are shown here.
+
+The package title "Plainmaps" reflects the content of this document. What's shown here is a simple version of what's possible using R to create maps. Often, that's all you need. If you need more, this is, at the least, a starting point in your quest.

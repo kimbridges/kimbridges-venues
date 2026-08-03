@@ -1,0 +1,17 @@
+# Capture Once, Project Two Views
+
+Come back from a day in the field and see what you're holding. Two collections, and they match. One is physical: a set of collected specimens, each with its own numbered tag. The other is on your phone: a set of photographs, one for each of those tags. The number is the pair between them. Every specimen has its picture, and every picture knows its specimen.
+
+Nothing more has to happen in the field. The reading waits for the desk, for a screen and a keyboard and the time you didn't have on the slope. That's on purpose. The fiddly part of turning a collection into records is exactly the part you want to do dry, warm, and unhurried, and none of it was lost by waiting, because the photograph kept everything.
+
+So take one of the photographs. The software reads every card in the frame and turns the picture back into the words the cards carried: the number, the life form, the flowering state, whatever you laid down. It reads the coordinate pair and the time the phone wrote into the file. And from that pair it looks up the things the landscape fixes, the elevation, the slope, the aspect, the name of the place. Set side by side, these make one record: everything known about one specimen, gathered in a single structured place.
+
+That record is what the whole system exists to make. Not a label, and not a log, but the record they both come from. Everything up to now, the cards, the phone, the coordinate pair, was in service of building it cleanly. Everything after is a matter of what you choose to do with it.
+
+One view of the record is the label. It already holds every field a label needs: the collector and the number, the locality, the coordinates, the derived elevation and slope and aspect, the observed fields, the date. A label, though, is really its data. A well-established herbarium would rather receive those fields as a file, in the shared Darwin Core terms every herbarium reads, and print the label itself on its own archival paper. One not set up for that can render a provisional label from the same record and use it as it is. The projection is the record; the printing is a choice. One record, one specimen, one label.
+
+The other thing you do is add a row to the field log. The same record, laid out as a single line in a table, becomes one entry in the account of the whole trip. Gather the rows from every photograph and you have the log: the collection ordered in time and space, the artifact that used to go missing.
+
+Notice that the label and the log were not written one from the other, and neither was written from memory. They're two views of the same record, and that is the quiet thing this whole design is for. In the old way the label was copied from the notes and the log reconstructed after the fact, and every copy was a chance to drift. A number written down wrong, a date misremembered, and the two accounts of one plant slowly disagree, with no way to tell which is right. When both are just projections of a single capture, that whole family of error has nowhere to live. Two views, one truth.
+
+This is the shape of the system, and its name is plain: capture once, project two views. What remains is to fill in the two halves the record leans on, what the cards should carry and how they're chosen, and how a coordinate pair becomes elevation and slope and place. Those are the next chapters. The record is built. Now we furnish it.

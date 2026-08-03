@@ -1,0 +1,25 @@
+---
+title: "Workflow"
+format: html
+editor: visual
+---
+
+```{r}
+library(photobookr)
+
+# First time only
+photobookr_setup()
+
+# Create config template
+photobookr_example_config()
+
+# Create chapters from markdown
+markdown_to_chapters("book_text.md", body_size = 17, font_family = "helvetica")
+
+# Build the book
+build_book()
+
+# Optionally build map
+build_map()
+
+```

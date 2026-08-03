@@ -1,0 +1,13 @@
+/* Story listing thumbnails — show full cover, no cropping */
+.card-img-top {
+  object-fit: contain !important;
+  background-color: #f8f8f8 !important;
+  max-height: 400px;
+}
+
+/* Profile image on landing page */
+.profile-image {
+  max-width: 280px;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}

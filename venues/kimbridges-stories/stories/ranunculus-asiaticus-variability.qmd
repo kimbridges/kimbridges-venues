@@ -1,0 +1,13 @@
+---
+title: "Ranunculus asiaticus variability"
+subtitle: "Analysis of the decrease in Ranunculus varieties."
+date: 2015-07-29
+categories: ["Research", "Ranunculus"]
+image: ../images/Ranunculus_talk_BRIT.jpg
+pdf: ../pdfs/Ranunculus_talk_BRIT.pdf
+---
+A talk at the Botanical Research Institute of Texas discussing the immense decrease in Ranunculus variety availability. This includes a discussion of how technology might prevent loss of plant variety information.
+
+Pages: 62
+
+<iframe src="../viewer.html?pdf=Ranunculus_talk_BRIT.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

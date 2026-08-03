@@ -1,0 +1,46 @@
+# Preface {.unnumbered}
+
+![](images/image10.png){width=70%}
+
+*Cover art: OpenAI's DALL-E was used to create the image on the cover.*
+
+---
+
+*Early tests on the utility of Large Language Models*
+
+K. W. Bridges
+
+2024 © K. W. Bridges · [www.kimbridges.com](http://www.kimbridges.com)
+
+**Version 4: January 1, 2024**
+
+## Please Note
+
+This is a very preliminary document that will be updated as more work is done. Some of the tests, viewed nearly a year after they were done, now seem to be relatively unsophisticated uses of the technology. Nonetheless, the examples posted here serve as reminders, and to a certain extent landmarks, in the quest to understand this new technology.
+
+The best use of the LLM technology often involves the use of several steps where there is a sequential refinement of the questions and responses. That strategy is not used in most of the examples given here. As a result, this document fails to serve as a good model for crafting questions using LLMs and the quality of the answers is likely to be poorer than might otherwise be possible by using a better query strategy.
+
+In general, the quality of the answers is not evaluated. There may be some areas where there are hallucinations that have not been flagged.
+
+## The experiments
+
+A series of experiments were done with OpenAI's ChatGPT starting in January, 2023. A few of the earliest tests used version 3.5 while most used version 4. Google's Bard was released with the addition of Gemini in December, 2023. Some examples using this alternative LLM were starting at this date. The Bard questions are prefaced with the word ***Bard.***
+
+::: callout-note
+## About this edition
+
+A faithful conversion of the January 2024 Google Doc into Quarto, made in August 2026.
+**The text has not been revised or reorganised** — the experiments, the commentary and
+the caveats above are exactly as written at the time. The document is a record of what
+early LLM testing looked like, and editing it now would spoil that.
+
+Throughout, **bold text marks the prompts and comments**; the LLM responses follow in
+normal type.
+
+Three things were dropped in conversion, all of them print-era furniture: the duplicated
+title block from the Doc's cover page, a repeated cover-art credit, and the sentence
+"Use the Table of Contents to jump to an example of interest" — this edition has a live
+sidebar. Nothing of substance was removed. The 130-page PDF of record is kept alongside
+the source in `Projects/LLM_Examples/pdfs/`.
+:::
+

@@ -1,0 +1,65 @@
+---
+title: "Regression"
+format: html
+---
+
+# Regression
+
+### Linear Regression
+
+Prompt
+
+I have two sets of numbers that are related. For each observation there is an Input value and a corresponding Output value. I need to run a regression analysis using R code on these data. It is important to have a probability value and its interpretation, the r-squared value, and the line's equation. I need to see the chart for this and prefer that it is created using ggplot2. Can you provide the R code?
+
+```{r}
+# Load required libraries
+library(ggplot2)
+
+# Create example data (replace this with your actual data)
+input <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+output <- c(2, 4, 5, 4, 5, 7, 8, 9, 10, 12)
+data <- data.frame(Input = input, Output = output)
+
+# Perform linear regression
+model <- lm(Output ~ Input, data = data)
+
+# Get summary statistics
+summary_stats <- summary(model)
+
+# Extract key values
+p_value <- summary_stats$coefficients[2, 4]
+r_squared <- summary_stats$r.squared
+intercept <- coef(model)[1]
+slope <- coef(model)[2]
+
+# Create the plot using ggplot2
+plot <- ggplot(data, aes(x = Input, y = Output)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  labs(title = "Regression Analysis",
+       x = "Input",
+       y = "Output") +
+  theme_minimal() +
+  annotate("text", x = min(data$Input), y = max(data$Output),
+           label = paste("p-value =", round(p_value, 4), "\n",
+                         "R-squared =", round(r_squared, 4), "\n",
+                         "y =", round(slope, 2), "x +", round(intercept, 2)),
+           hjust = 0, vjust = 1)
+
+# Print results
+cat("Regression Results:\n")
+cat("p-value:", p_value, "\n")
+cat("R-squared:", r_squared, "\n")
+cat("Line equation: y =", slope, "x +", intercept, "\n\n")
+
+# Display the plot
+print(plot)
+
+# Interpretation of p-value
+cat("Interpretation of p-value:\n")
+if (p_value < 0.05) {
+  cat("The relationship between Input and Output is statistically significant (p < 0.05).\n")
+} else {
+  cat("The relationship between Input and Output is not statistically significant (p >= 0.05).\n")
+}
+```

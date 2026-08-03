@@ -1,0 +1,13 @@
+---
+title: "2023 Hawaiian Lei Contest"
+subtitle: "Lei Day celebration in Honolulu."
+date: 2023-07-12
+categories: ["Culture", "Hawaii"]
+image: ../images/Lei_Contest.jpg
+pdf: ../pdfs/Lei_Contest.pdf
+---
+This documents the popular annual Lei Day celebration on May 1st. The top three winning lei in each category are shown along with a deep analysis of the plants used to make the lei.
+
+Pages: 80
+
+<iframe src="../viewer.html?pdf=Lei_Contest.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

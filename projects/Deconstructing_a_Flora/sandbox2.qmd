@@ -1,0 +1,104 @@
+---
+title: "Clean_Up"
+format: html
+---
+
+# Cleaning Up a Language Model Request
+
+(As I recall, that's what the following code was supposed to do.)
+
+```{r}
+library(gt)
+library(tidyverse)
+library(webshot)
+
+## Read the data
+
+data <- read_csv(col_names = TRUE, file =
+          ' "Location","Specific Location","Description","Date","Collector","Number","Herbarium"
+"Western Australia","Carnarvon, mouth of the Gascoyne River","Washed ashore","15-9-1967","a. den Hartog","540","L"
+"Western Australia","South-west of Carnarvon, in mangrove creek","Forming a belt in front of the Avicennia pneumatophores, on rather soft, sandy mud","16-9-1967","a. den Hartog","556","L"
+"Western Australia","Carnarvon, in mangrove creek on Babbage Island","","16-9-1967","o. den Hartog","559","L"
+"Western Australia","Carnarvon, Shark Bay","Interspersed in the Posidonia australis meadows","17-9-1967","o. den Hartog","567","L"
+"Queensland","Thursday Island","On coral sand, low-littoral","11-11-1967","o. den Hartog","1007","L"
+"Queensland","North-eastern side of Thursday Island","Very narrow-leaved form, in the middle part of the eulittoral belt on firm sand and mud as well as in shallow depressions","12-11-1967","a. den Hartog","1025","L"
+"Queensland","Cairns, Yule Point","On compact mud, below low-water mark","1-11-1967","o. den Hartog","943","L"
+"Queensland","Cairns, Double Island","Very common on muddy and sandy substrata","30-10-1967","a. den Hartog","918","L"
+"Queensland","Green Island near Cairns","On sand bank about low-tide mark","17-8-1963","S. T. Blake","22086","K"
+"Queensland","Green Island near Cairns","Very common on coral sand","29-10-1967","o. den Hartog","908","L"
+"Queensland","Townsville, between Cape Pallarenda and Shelly Beach","On eulittoral mud-flat","5-10-1967","o. den Hartog","739","L"
+"Queensland","Townsville, Magnetic Island, Cockle Bay","In muddy sand on dead reef platform","5-10-1967","o. den Hartog","727","L"
+"Queensland","Sandy beach of Cockle Bay","Narrow-leaved specimens in the intertidal belt, fr. in sublittoral","5-10-1967","o. den Hartog","732","L" ' )
+
+table <- gt(data)%>% 
+  tab_style(style=cell_text(v_align="top"),
+            locations = cells_body(columns = everything()))
+
+gtsave(table,"flora.png")
+```
+
+Lat/Lon from Claude
+
+```{r}
+
+library(sitemaps)
+library(ggmap)
+## Test if Google Key is registered
+if (!has_google_key()){
+
+  ## Register the Google Maps API Key.
+  register_google(key = My_Key, account_type = "standard")
+  } ## end Google Key test
+
+## Use two functions from sitemaps to initialize columneters
+column <- site_styles()
+hide  <- site_google_hides()
+
+data <- read_csv(file=
+  '"City","Locale","Latitude","Longitude"
+"Carnarvon","mouth of the Gascoyne River; South-west of Carnarvon, in mangrove creek; in mangrove creek on Babbage Island; Shark Bay",-24.884420,113.657227
+"Thursday Island","Thursday Island; North-eastern side of Thursday Island",-10.579210,142.220030
+"Cairns","Yule Point; Double Island; Green Island near Cairns",-16.758333,145.780537
+"Townsville","between Cape Pallarenda and Shelly Beach; Magnetic Island, Cockle Bay; Sandy beach of Cockle Bay",-19.194181,146.792386')
+
+data <- data |>
+  mutate(text = c(1:nrow(data))) |>
+  rename(lat = Latitude, lon = Longitude)
+
+gt(data)
+
+```
+
+Plot the data
+
+```{r}
+
+basemap <- site_google_basemap(datatable = data)
+
+## Plot the map
+## Note the layering of the points and labels
+ggmap(basemap) +
+  site_points(datatable = data) +
+  site_labels(datatable = data)
+
+```
+
+Claude 2
+
+```{r}
+
+
+
+response <- claudeR(prompt = query, 
+                    model = "claude-2", 
+                    max_tokens = 3000)
+
+output <- read_csv(file = response)
+
+gt(output)
+
+response
+
+
+```
+

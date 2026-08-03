@@ -1,0 +1,78 @@
+# Plainmaps
+
+The Plainmaps document (kim.quarto.pub/plainmaps) is a fairly long (77 page) PDF. This document provides a lot of examples on how to use some custom functions to create a class of maps using R. These are fairly simple maps (think: country or state borders). Although every attempt was made to simplify the creation of maps, it still takes some effort to learn and follow the instructions.
+
+### An Alternative Approach
+
+It is possible to provide a Large Language Model the document with Plainmaps instructions. Add a few Guidelines (mostly simple instructions in English). Then make a simple request.
+
+*It can be that simple.*
+
+Here is an example using Anthropic's Claude (3.5 Sonnet).
+
+**Prompt**
+
+I have added two files as artifacts. Please use these artifacts to make a map using the Plainmaps style of coding. I need a regional map that shows Nairobi, Mombasa and Kampala.
+
+**Response**
+
+```{r}
+
+## Load required libraries
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(mapdata)
+library(plainmaps)
+library(sitemaps)
+
+## Initialize defaults for Sitemaps
+column <- site_styles()
+hide <- site_google_hides()
+
+## Define the theme
+plain_background_theme <- theme(
+  panel.border = element_blank(),
+  panel.grid = element_blank(),
+  panel.background = element_blank(),
+  axis.text = element_blank(),
+  axis.ticks = element_blank(),
+  axis.title = element_blank()
+)
+
+## Define the cities data
+cities <- read_csv(col_names = TRUE, file = "
+text,lat,lon
+Nairobi,-1.2921,36.8219
+Mombasa,-4.0435,39.6682
+Kampala,0.3476,32.5825
+")
+
+## Add the required group column
+cities$group <- 1
+
+## Extract the map data for the region
+east_africa <- map_data("world", region = c("Kenya", "Uganda", "Tanzania"))
+
+## Create the base map
+east_africa_map <- ggplot(data = east_africa, aes(x = long, y = lat, group = group)) +
+  geom_polygon(fill = "darkseagreen3", color = "black", size = 0.5) +
+  coord_fixed(1.3) +
+  plain_background_theme
+
+## Add cities to the map
+final_map <- east_africa_map +
+  site_points(datatable = cities) +
+  site_labels(datatable = cities)
+
+## Display the map
+final_map
+```
+
+### A Few Observations
+
+The Plainmaps document was written for people to understand. It was not structured for a Large Language Model. It is likely that performance will be improved if the document is organized in a way that is more appropriate for a LLM.
+
+There is likely to be some inconsistency in creating maps this way. As usual, it may take several prompts to get what's needed. You may even need to start afresh.
+
+Claude doesn't always follow all the instructions. Example: there should have been some message suppressing included in the code.

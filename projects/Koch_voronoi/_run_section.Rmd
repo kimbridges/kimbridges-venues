@@ -1,0 +1,30 @@
+
+
+# Run `r current_index`: `r current_run$params$label`
+
+## Input Parameters
+
+```{r, echo=FALSE}
+display_param_table(current_run)
+```
+
+## Voronoi Plot
+
+```{r, echo=FALSE, fig.width=7, fig.height=6.5, fig.pos='H', out.width='90%', fig.align='center'}
+print(current_run$plot)
+```
+
+## Cell Statistics
+
+```{r, echo=FALSE}
+display_stats_table(current_run)
+```
+
+## Interpretation
+
+```{r, echo=FALSE, results='asis'}
+cat(current_run$interpretation)
+```
+
+\newpage
+

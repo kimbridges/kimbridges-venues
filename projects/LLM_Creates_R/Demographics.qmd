@@ -1,0 +1,376 @@
+# The Discovery Process
+
+::: columns
+::: {.column width="50%"}
+Many studies collect basic demographic data relating to the people in the study area. Often, this is information about participants who are interviewed. Similarly, data on the people and the way they fit into the community can be collected. This can lead to more informed discussions.
+
+In this scenario, simple narrative statements were recorded based on descriptive comments made by a senior farmer as he described the other farmers who were gathered for a meeting.
+
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+![](family_cover.png)
+:::
+:::
+
+The goal here is to begin the data extraction and interpretation process. Obviously, more summary data can be extracted from the narratives. This is just a start.
+
+**Input Data**
+
+Two files are supplied. One has narrative data about the farmers and the other contains a few statements that help interpret the data.
+
+**farmers.txt** (excerpt)
+
+> John grows soybeans on just 10 acres. He's single and works at the factory as a senior manager. He goes along with the traditional farming techniques as he mostly contracts out the work to other people. He's 60 years old.
+>
+> Philip believes it is easier to grow mustard on his 40 acres than soybeans, his previous crop. He uses traditional methods. He's 41 and is married with 1 child. He's a college graduate and he works at the factory.
+>
+> Ben learned about organic farming in college and he's applying this knowledge to successfully grow soybeans on his 50 acre farm. He and his wife have 3 children. He is 39.
+>
+> Richard is a high-school dropout. None the less, he's a talented farmer as he grows soybeans on his organic-certified farm. He says he barely supports himself on 30 acres. He has no wife or children. He's 53.
+>
+> Don is known locally as the "mustard king" as he was the first farmer to grow this crop in the area. He's 59 and has a wife and 2 children. After graduating from the local high school, he took over the family's 60 acres as his father was seriously ill. There were no organic methods when he started and he's seen no reason to change his farming methods.
+
+**farmers_guidelines.txt**
+
+> Here are some rules to help interpret the data:
+>
+> -   If factory work is not explicitly stated, assume they don't work at the factory.
+> -   College and University are equivalent and can be called "Tertiary".
+> -   Call high school completion "Secondary".
+> -   Call high school dropout "Primary".
+> -   Someone who did not complete college and is not a high-school dropout is a high-school graduate (i.e., "Secondary").
+> -   The order for education is "Primary", "Secondary" and "Tertiary".
+
+**Project Files**
+
+There are three project files. The contents of these files are shown in the Appendix.
+
+-   input_guidelines.txt
+
+-   bar_chart_guidelines.txt
+
+-   table_guidelines.txt
+
+**Custom Instructions**
+
+> Create custom R language code that has the following characteristics:
+>
+> 1.  Uses two hash marks (##) at the start of each comment.
+>
+> 2.  Uses comments in the code to describe each action.
+>
+> 3.  Formats the code so it is straightforward to see the logical structure.
+>
+> Follow other rules provided in separate guideline documents.
+>
+> Carefully double-check to make sure all the guidelines, both here and in the other documents, are followed to the extent possible.
+
+**Prompt**
+
+Extract the data from the "farmers" narrative and then create a formal table showing the input data. The data source is "test data". Use the "farmers_guidelines" to help with the interpretation. Carefully follow the "input_guidelines" and "table_guidelines", double checking to make sure you've got them right.
+
+**Response**
+Certainly, I'll extract the data from the farmers narrative, create a formal table, and follow the provided guidelines. Let's start by creating the input data table and then we'll format it using the gt package.
+
+```{r}
+#| error: false
+#| warning: false
+
+## Set read_csv function option to suppress warning messages.
+options(readr.show_col_types = FALSE)
+
+## Use the package for the read_csv function
+library(tidyverse)
+library(readr)
+
+## Data input.
+data <- read_csv(col_names=TRUE, file=
+"name,  age, marital_status, children, education,   farm_size, crop,     organic, factory_work
+Bill,   62,  married,        2,        Secondary,   128,       corn,     no,      no
+Harry,  23,  single,         0,        Tertiary,    5,         mustard,  yes,     yes
+Fred,   52,  single,         0,        Tertiary,    180,       corn,     no,      no
+Sam,    34,  married,        5,        Secondary,   45,        soybeans, yes,     yes
+Jim,    51,  married,        2,        Secondary,   50,        corn,     yes,     no
+Frank,  29,  married,        1,        Tertiary,    30,        soybeans, yes,     yes
+Carl,   73,  widower,        2,        Secondary,   300,       corn,     no,      no
+Pete,   33,  married,        3,        Secondary,   40,        mustard,  no,      no
+John,   60,  single,         0,        Secondary,   10,        soybeans, no,      yes
+Philip, 41,  married,        1,        Tertiary,    40,        mustard,  no,      yes
+Ben,    39,  married,        3,        Tertiary,    50,        soybeans, yes,     no
+Richard,53,  single,         0,        Primary,     30,        soybeans, yes,     no
+Don,    59,  married,        2,        Secondary,   60,        mustard,  no,      no
+James,  51,  married,        4,        Tertiary,    3,         soybeans, no,      yes
+Chris,  43,  married,        2,        Secondary,   23,        corn,     no,      yes
+Bob,    56,  divorced,       3,        Tertiary,    40,        soybeans, no,      no
+Joe,    64,  married,        2,        Secondary,   120,       soybeans, yes,     no
+Max,    32,  married,        0,        Tertiary,    30,        corn,     no,      yes
+Dave,   36,  married,        4,        Tertiary,    10,        corn,     yes,     yes
+Erik,   29,  single,         0,        Tertiary,    30,        soybeans, yes,     no
+Ed,     81,  single,         0,        Secondary,   50,        soybeans, no,      no
+Roger,  53,  married,        3,        Secondary,   60,        corn,     yes,     no")
+
+## Save the input data as a CSV file
+write_csv(data, "farmers_data.csv")
+
+## Display the data
+data
+```
+
+Now, let's create a formal table using the gt package, following the table guidelines:
+
+
+
+```{r}
+## Load required libraries
+library(gt)
+library(tidyverse)
+
+## Initialize the identification information.
+table_title <- "Farmers' Characteristics and Farming Practices"
+data_source <- paste0("Source: test data (", Sys.Date(), ")")
+
+## Use table stripes
+table_stripes <- TRUE
+
+## Create the table.
+table <- gt(data) %>%
+  tab_header(
+    title = table_title
+  ) %>%
+  tab_source_note(
+    source_note = data_source
+  ) %>%
+  tab_style(
+    style = cell_text(v_align = "top"),
+    locations = cells_body()
+  ) %>%
+  opt_row_striping(row_striping = table_stripes) %>%
+  cols_label(
+    marital_status = "Marital Status",
+    farm_size = "Farm Size",
+    factory_work = "Factory Work"
+  ) %>%
+  fmt_number(
+    columns = c(age, children, farm_size),
+    decimals = 0
+  ) %>%
+  cols_align(
+    align = "left",
+    columns = everything()
+  ) %>%
+  tab_footnote(
+    footnote = "In acres",
+    locations = cells_column_labels(columns = farm_size)
+  )
+
+## Output the table
+table
+```
+
+**Prompt**
+
+Please use the saved data and make bar charts for the following data: distribution of crop types, distribution of farmer ages, distribution of farm sizes. Be sure to follow the "bar_chart_guidelines" and double check that they are followed.
+
+**Response**
+
+Certainly! I'll create bar charts for the distribution of crop types, farmer ages, and farm sizes using the saved data. I'll make sure to follow the bar chart guidelines provided.
+
+First, let's load the necessary libraries and the saved data:
+
+I've created an artifact containing the R code to generate the three requested bar charts using the saved data. Let's go through how this code adheres to the bar chart guidelines:
+
+1. Bar outline: Each bar has a black outline (color = "black" in geom_bar()).
+
+2. Bar fill colors: We use "cornsilk3" as the fill color for all bars, as each chart represents a single variable.
+
+3. Panel background color: The panel background is set to darkslategray2 (panel.background = element_rect(fill = "darkslategray2")).
+
+4. Axis labels and scale values: The axis labels and scale values are set to black and size 12 (axis.text = element_text(size = 12, color = "black"), axis.title = element_text(size = 12, color = "black")).
+
+5. Grid lines: We use y-axis grid lines (default in theme_minimal()) and removed x-axis grid lines (panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank()).
+
+6. Start and end of the y axis: The y-axis starts at zero (default behavior) and has a small extension at the top (scale_y_continuous(expand = expansion(mult = c(0, 0.1)))).
+
+7. Source information: We've added the source information as a caption for each chart (caption = source).
+
+8. Box plot outliers: This guideline is not applicable to these bar charts.
+
+9. Box plot data points: This guideline is not applicable to these bar charts.
+
+These bar charts provide a clear visualization of the distribution of crop types, farmer ages, and farm sizes in the dataset. The charts are consistent in style and follow the provided guidelines.
+
+Is there anything you'd like me to modify or explain further about these bar charts?
+
+```{r}
+#| error: false
+#| warning: false
+
+## Load required libraries
+library(tidyverse)
+library(ggplot2)
+
+## Read the saved CSV file
+data <- read_csv("farmers_data.csv")
+
+## Set the source information
+source <- "Source: test data"
+
+## 1. Distribution of crop types
+crop_distribution <- data %>%
+  count(crop) %>%
+  ggplot(aes(x = crop, y = n, fill = "cornsilk3")) +
+  geom_bar(stat = "identity", color = "black") +
+  geom_text(aes(label = n), vjust = -0.5, size = 4) +
+  scale_fill_manual(values = "cornsilk3") +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "darkslategray2"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    axis.text = element_text(size = 12, color = "black"),
+    axis.title = element_text(size = 12, color = "black")
+  ) +
+  labs(
+    title = "Distribution of Crop Types",
+    x = "Crop",
+    y = "Count",
+    caption = source
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  guides(fill = "none")
+
+print(crop_distribution)
+
+## 2. Distribution of farmer ages
+age_bins <- cut(data$age, breaks = seq(20, 90, by = 10))
+
+age_distribution <- data %>%
+  count(age_group = age_bins) %>%
+  ggplot(aes(x = age_group, y = n, fill = "cornsilk3")) +
+  geom_bar(stat = "identity", color = "black") +
+  geom_text(aes(label = n), vjust = -0.5, size = 4) +
+  scale_fill_manual(values = "cornsilk3") +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "darkslategray2"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    axis.text = element_text(size = 12, color = "black"),
+    axis.title = element_text(size = 12, color = "black")
+  ) +
+  labs(
+    title = "Distribution of Farmer Ages",
+    x = "Age Group",
+    y = "Count",
+    caption = source
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  guides(fill = "none")
+
+print(age_distribution)
+
+## 3. Distribution of farm sizes
+size_bins <- cut(data$farm_size, breaks = c(0, 10, 50, 100, 200, 300))
+
+size_distribution <- data %>%
+  count(size_group = size_bins) %>%
+  ggplot(aes(x = size_group, y = n, fill = "cornsilk3")) +
+  geom_bar(stat = "identity", color = "black") +
+  geom_text(aes(label = n), vjust = -0.5, size = 4) +
+  scale_fill_manual(values = "cornsilk3") +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "darkslategray2"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    axis.text = element_text(size = 12, color = "black"),
+    axis.title = element_text(size = 12, color = "black")
+  ) +
+  labs(
+    title = "Distribution of Farm Sizes",
+    x = "Farm Size (acres)",
+    y = "Count",
+    caption = source
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  guides(fill = "none")
+
+print(size_distribution)
+```
+
+**Prompt**
+
+Very good. Please use the saved data to create a box plot of the farm size for each of the crops. As before, be sure to use the "bar_chart_guidelines" and double check that they are being used.
+
+**Response**
+
+Certainly! I'll create a box plot of the farm size for each of the crops using the saved data, following the bar chart guidelines. Although these guidelines were primarily designed for bar charts, we'll adapt them as best we can for the box plot.
+
+Now, let's go through how this code adheres to the bar chart guidelines, adapting them for our box plot:
+
+1. Bar outline: We've used a black outline for the boxes (color = "black" in geom_boxplot()).
+
+2. Bar fill colors: We've used different colors for each crop type, starting with "cornsilk3" for the first category, then "darkgoldenrod2", "lightsalmon2", and "lightblue" for the remaining categories.
+
+3. Panel background color: The panel background is set to darkslategray2 (panel.background = element_rect(fill = "darkslategray2")).
+
+4. Axis labels and scale values: The axis labels and scale values are set to black and size 12 (axis.text = element_text(size = 12, color = "black"), axis.title = element_text(size = 12, color = "black")).
+
+5. Grid lines: We use y-axis grid lines (default in theme_minimal()) and removed x-axis grid lines (panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank()).
+
+6. Start and end of the y axis: The y-axis starts at zero (default behavior) and has a small extension at the top (scale_y_continuous(expand = expansion(mult = c(0, 0.1)))).
+
+7. Source information: We've added the source information as a caption for the chart, including the current date (caption = source).
+
+8. Box plot outliers: As per the guidelines, we've set outlier.shape = NA to not show outliers in any special way.
+
+9. Box plot data points: We've added individual data points using geom_jitter(), colored them red, and set their size to 3, as specified in the guidelines.
+
+This box plot provides a clear visualization of the farm size distribution for each crop type in the dataset. The plot is consistent with the style of the previous bar charts and follows the provided guidelines as closely as possible, adapting them for a box plot format.
+
+Is there anything you'd like me to modify or explain further about this box plot?
+
+
+```{r}
+#| error: false
+#| warning: false
+
+## Load required libraries
+library(tidyverse)
+library(ggplot2)
+
+## Read the saved CSV file
+data <- read_csv("farmers_data.csv")
+
+## Set the source information
+source <- paste0("Source: test data (", Sys.Date(), ")")
+
+## Create the box plot
+farm_size_boxplot <- ggplot(data, aes(x = crop, y = farm_size, fill = crop)) +
+  geom_boxplot(outlier.shape = NA, color = "black") +
+  geom_jitter(color = "red", size = 3, width = 0.2) +
+  scale_fill_manual(values = c("cornsilk3", "darkgoldenrod2", "lightsalmon2", "lightblue")) +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "darkslategray2"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    axis.text = element_text(size = 12, color = "black"),
+    axis.title = element_text(size = 12, color = "black"),
+    legend.position = "none"
+  ) +
+  labs(
+    title = "Farm Size Distribution by Crop Type",
+    x = "Crop",
+    y = "Farm Size",
+    caption = source
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+## Output the plot
+print(farm_size_boxplot)
+```

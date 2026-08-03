@@ -1,0 +1,13 @@
+---
+title: "Bright Spots in Winter"
+subtitle: "Ethnobotanical sleuthing on NYC streets."
+date: 2026-04-28
+categories: ["Culture", "US"]
+image: ../images/Bright_Spots_in_Winter.jpg
+pdf: ../pdfs/Bright_Spots_in_Winter.pdf
+---
+We looked for evidence of how NYC residents respond to the harshness of winter. Our suspicion was that these urban dwellers use flowers.
+
+Pages: 36
+
+<iframe src="../viewer.html?pdf=Bright_Spots_in_Winter.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

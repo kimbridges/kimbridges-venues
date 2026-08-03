@@ -1,0 +1,254 @@
+---
+title: "Herbarium Label OCR test"
+author: "K. W. Bridges"
+date: "3/11/2024"
+
+execute: 
+  warning: false
+  error: false
+  message: false
+  
+output: pdf_document
+---
+
+## Strategy
+
+Herbarium specimens hold lots of useful information. The goal here is to extract some of the information as simply as possible and to display the results with useful visualizations.
+
+The images of the herbarium sheets in this example are named with the Herbarium's ID code (plus the file type ".jpg"). In a more comprehensive test, the code here would access the Herbarium's record to obtain the species identification. That is not done here.
+
+The focus is only on the extraction and visualization of the specimen locations.
+
+The strategy is to use of set of images in a folder. The software will read the specimen labels and, if possible, extract the geographic coordinates. The location data will then be used to plot the collection locations.
+
+The only input required for this process is the name of the folder holding the herbarium specimens.
+
+In a real-world application, there may need to be some slight modification of default values to get an optimal map. This is a minor task.
+
+The analysis can be extended much further by enhancing the locations with data from external databases. Example include:
+
+-   Elevation, slope and aspect of the collection site.
+
+-   Annual temperature and precipitation from nearby government climate stations.
+
+-   Solar radiation budget for the collection sites.
+
+These "add on" enhancements are not shown here. However, many of the context-supplementing attributes are demonstrated in other software modules.
+
+### Initialize Packages and Data
+
+There are a number of packages required to run the analyses. These are initialized here. In addition, some data are loaded to serve as default parameters for some of the functions.
+
+***Note that a Google Maps API is required to use the code.***
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, error = FALSE)
+
+library(magick)     ## Image handling routines
+library(tesseract)  ## OCR support
+library(here)       ## File locations made easy
+library(stringr)    ## String functions
+library(readr)      ## File input and output
+library(gt)         ## Table output
+library(sitemaps)   ## Map site data
+library(dplyr)      ## Useful functions
+library(ggplot2)    ## Basic plotting tools
+library(ggmap)      ## Create maps
+library(exifr)      ## Read and write EXIF data in image files
+
+## Use the Google API key (stored locally)
+api_key <- google_key()
+register_google(key = api_key)
+
+## Use two functions from sitemaps to initialize column values
+column <- site_styles()
+hide   <- site_google_hides()
+
+## Establish a theme that improves the appearance of a map.
+## this theme removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill      = NA, 
+                                   linewidth = 2),
+                    legend.position = "none")
+
+```
+
+### Special Functions
+
+The "label_coord" function carries out a set of tasks. It starts with the name of the image file.
+
+1.  Read an image file based on the name that is supplied.
+
+2.  Crop the image to retain only the lower right corner.
+
+3.  Perform OCR on the text in the image.
+
+4.  Extract the location coordinates based on finding the string "Lat" in the OCR data.
+
+5.  Return the lat and lon to the calling routine.
+
+The use of a specific string (in this case "Lat") works in this example as this is commonly used by this herbarium in their specimen labels. This part of the function can be enhanced to recognize other structural features to location the geographic coordinates. That addition is beyond the scope of this example.
+
+```{r}
+
+#### FUNCTION label_coord ###################################
+
+## The sheet parameter is the name of the image to be analyzed.
+label_coord <- function(sheet){
+  
+## Read the labels in the lower right corner
+## and retrieve the geographic coordinates.
+
+## Get all the info about the image (including height and width).
+sheet_info <- image_info(sheet)
+
+## Divide the image into quarters.
+half_wide <- round((sheet_info$width/2),0)
+half_high <- round((sheet_info$height/2),0)
+
+## Crop the image to the lower right quarter.
+crop_info <- paste0(half_wide,"x",half_high,"+",half_wide,"+",half_high)
+cropped <- image_crop(sheet,crop_info)
+
+## OCR the remaining quarter (this area should have the label).
+cropped_ocr <- image_ocr(cropped)
+
+## Find the location of the coordinates.
+start_loc <- as.data.frame(str_locate(cropped_ocr,"Lat/"))
+
+## Extract the label text that contains all the coordinate info.
+rough_area <- str_sub(cropped_ocr,start_loc$start,start_loc$start+40)
+
+## Get the geographic coordinates by processing the data string.
+lat_info  <- as.data.frame(str_locate(rough_area," "))
+lat_start <- lat_info$start + 1
+lat_info  <- as.data.frame(str_locate(rough_area,","))
+lat_end   <- lat_info$start - 1
+lat       <- str_sub(rough_area,lat_start,lat_end)
+
+lon_start <- lat_end + 3
+## The match below is unusual, but it is used to match the "\n"
+lon_info  <- as.data.frame(str_locate(rough_area,"\r?\n")) 
+lon_end   <- lon_info$end - 1
+lon       <- str_sub(rough_area,lon_start,lon_end)
+
+## Make sure that periods (not commas) are used.
+lat <- sub(",",".",lat)
+lon <- sub(",",".",lon)
+
+coord <- NULL
+coord$lat <- lat
+coord$lon <- lon
+
+return (coord)
+
+} ## End function label_coord
+
+####################################################################
+```
+
+## Extract the Coordinates
+
+This routine goes though the images, one at a time, and extracts the coordinates from the label information.
+
+The locations are accumulated in a data structure as the sheets are processed. At the end, the data are written to an external file and a table is printed.
+
+Some of the processing is unique to the herbarium providing the samples, such as the naming of the images and the coding of the specimen IDs. This can be generalized but is a task beyond the scope of this demonstration.
+
+```{r}
+knitr::opts_chunk$set(warning = FALSE)
+
+## Initialize with the folder name.
+image_folder <- "Herbarium"
+
+###################################################################
+
+## Get a list of all the files in the folder.
+files <- list.files(path=here(image_folder), 
+                    pattern="*.jpg", 
+                    full.names=TRUE, 
+                    recursive=FALSE)
+
+## Count the photos in the image folder.
+no_files <- length(files)
+
+## Prepare a place to store the coordinate data.
+out_coord <- data.frame()
+
+## Process each of the images, one at a time.
+for (i in 1:no_files){
+  
+  ## Prepare the label from the file name (which is the inventory number).
+  pos_ext <- data.frame(str_locate(files[i],".jpg"))
+  PTBG_id <- str_sub(files[i],pos_ext$start-7,pos_ext$start-1)
+  PTBG_id <- sub("^0","",PTBG_id) ## removes the leading zero
+  PTBG_id <- sub("^0","",PTBG_id)
+  
+  ## Here is where the heavy lifting is done.
+  sheet  <- image_read(files[i])
+  coords <- label_coord(sheet)
+    
+  ## Prepare the dataframe.
+  df        <- data.frame(coords)
+  df$label  <- PTBG_id
+  
+  ## Add the data frame to the building set of rows.
+  out_coord <- rbind(out_coord,df)
+
+  } ## End of for loop
+
+## Prepare a name for the file which will store the locations.
+image_coord <- paste0(image_folder,".csv")
+
+## Write the data into the same folder as the images.
+write_csv(file=here(image_folder,image_coord),
+          out_coord,
+          col_names=TRUE)
+
+## Convert coordinates to numeric values.
+out_coord$lat <- as.numeric(out_coord$lat)
+out_coord$lon <- as.numeric(out_coord$lon)
+
+gt(out_coord) |>
+  tab_header(title=image_folder) |>
+  fmt_number(columns = c(lat,lon), decimals = 5) |> 
+  tab_source_note(source_note = "Data: Extracted from herbarium sheets")
+
+```
+
+## Visualize the Locations on a Map
+
+It is useful to see the locations of the herbarium specimens on a map. The sitemap functions make this process quite straightforward.
+
+Note that the name of the data field holding information for the label must be "text". Also, the column\$margin value was changed so the basemap will show a slightly larger area than is needed to plot all the locations.
+
+```{r}
+
+## Use the "out_coord" data from the previous step.
+
+## Rename the label to "text" for the mapping program.
+map_coord <- out_coord |>
+  dplyr::rename(text = label)
+
+## Adjust by slightly expanding the basemap area.
+column$margin <- 0.8
+
+## Create the basemap from the distribution of the data.
+base_map <- site_google_basemap(datatable = map_coord)
+
+## Plot the basemap with data points and labels.
+ggmap(base_map) +
+  site_points(datatable = map_coord) +
+  site_labels(datatable = map_coord)
+
+```
+
+## Additional Tasks
+
+A set of ancillary information (such as elevation and climate) was suggested earlier as data that can be attached to each herbarium image. This might detract from the general purpose of this code so it is not pursued here.
+
+In contrast, as a narrow and likely useful task, it is possible to write the coordinate locations back into the image files. In addition, the locations can be used for a "reserve lookup" to get the name(s) of the locations. These, too, can be added to each image in the file.
+
+Some care is required as the herbarium images may already have the locations and place names embedded in the image EXIF data.

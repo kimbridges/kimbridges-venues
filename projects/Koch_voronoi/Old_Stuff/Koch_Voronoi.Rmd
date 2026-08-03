@@ -1,0 +1,648 @@
+---
+title: Voronoi Analyses
+---
+
+# An Experimental Study
+
+**Initial Build: September 2024**
+
+Kim Bridges & Tom Koch
+
+This is a project with two objectives. The first is to explore a problem of spatial aggregation. The second objective to explore the utility of an (early) AI LLM to help with code generation and result interpretation for spatial analyses.
+
+The runs shown here were produced during two sessions. At the start, ChatGPT 4o was used as the LLM. Later, the o1-Preview version was used (it was made available to the public only hours earlier).
+
+All of the interaction has been given as requests (i.e., simple statements in English) by the authors. The comments and code were produced by the LLM. In one case, a small code hint was provided by the authors.
+
+## Part 1: Creating & Mapping the Data
+
+The first part gets to the goal of showing a test set of anchors and sample points. This is followed by the generation of Voronoi polygons and sample-point counts in each polygon. Doing this is, in itself, a significant accomplishment.
+
+The Prompt-Response dialog is not shown in this part. The resulting code speaks for itself.
+
+### The Data Points
+
+**Anchor Points:** This is a small set of randomly-derived over-dispersed points.
+
+**Sample Points:** This is a large number of randomly dispersed points.
+
+#### Generate anchor points
+
+All the packages and libraries needed for this project are initialized in this first step.
+
+A new function (`generate_overdispersed_points`) is used to create point locations. This function includes a test to make sure that none of the points are too close to each other.
+
+```{r}
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Install and load the necessary packages for Part 1
+if (!require(deldir)) install.packages("deldir")
+if (!require(sp)) install.packages("sp")
+library(deldir)
+library(sp)
+library(tidyverse)
+
+## Set the dimensions of the area and the number of points
+seed <- 674  ## For reproducibility
+n_points <- 5
+area_size <- 10
+min_distance <- 2  ## Minimum distance between points
+
+## Set the seed for random number generation
+set.seed(seed) 
+seed_notice <- paste("Source: seed",seed)
+
+## Function to generate random points with a minimum distance
+generate_overdispersed_points <- function(n, area_size, min_distance) {
+  points <- tibble(x = numeric(0), y = numeric(0))
+  
+  while (nrow(points) < n) {
+    new_point <- tibble(x = runif(1, 0, area_size), y = runif(1, 0, area_size))
+    
+    ## Calculate the distance from the new point to all existing points
+    if (nrow(points) == 0 || all(dist(rbind(points, new_point))[-1] >= min_distance)) {
+      points <- bind_rows(points, new_point)
+    }
+  }
+  
+  return(points)
+}
+
+## Generate the points
+vtest_anchors <- generate_overdispersed_points(n_points, area_size, min_distance)
+
+## Save the points to a CSV file
+write_csv(vtest_anchors, "vtest_anchors.csv")
+
+## Plot the points using ggplot2
+ggplot(vtest_anchors, aes(x = x, y = y)) +
+  geom_point(size = 4, color = "blue") +
+  xlim(0, area_size) + ylim(0, area_size) +
+  theme_minimal() +
+  labs(title = "Overdispersed Points in a 10x10 Area",
+       x = "X Coordinate", y = "Y Coordinate")
+
+```
+
+#### Generate sample points
+
+The sample points are randomly distributed.
+
+```{r}
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Generate 50 random sample points in the 10x10 area
+set.seed(123)  ## For reproducibility
+n_samples <- 50
+
+## Generate random sample points within the 10x10 area
+vtest_samples <- tibble(
+  x = runif(n_samples, 0, area_size),
+  y = runif(n_samples, 0, area_size)
+)
+
+## Save the sample points to a CSV file
+write_csv(vtest_samples, "vtest_samples.csv")
+
+## Plot both the anchors (in red) and samples (in black)
+ggplot() +
+  ## Plot the anchors
+  geom_point(data = vtest_anchors, aes(x = x, y = y), size = 4, color = "red") +
+  ## Plot the samples
+  geom_point(data = vtest_samples, aes(x = x, y = y), size = 2, color = "black") +
+  xlim(0, area_size) + ylim(0, area_size) +
+  theme_minimal() +
+  labs(title = "Anchors (red) and Samples (black) in a 10x10 Area",
+       x = "X Coordinate", y = "Y Coordinate")
+
+
+```
+
+### Create Voronoi polygons
+
+A Voronoi polygon is the region around an anchor point that contains all locations closer to that anchor than to any other anchor. Its boundaries extend outward until they meet boundaries from neighboring regions doing the same, giving each anchor its full area of closest influence. This divides up the area into cells.
+
+A Voronoi polygon is like a neighborhood drawn so that, for everyone inside it, the neighborhood drug store (its anchor point) is closer than any other drug store.
+
+```{r}
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Compute the Voronoi tessellation based on the anchor points
+voronoi_result <- deldir(vtest_anchors$x, vtest_anchors$y, rw = c(0, area_size, 0, area_size))
+
+## Extract the Voronoi edges (polygon boundaries)
+voronoi_edges <- voronoi_result$dirsgs
+
+## Convert Voronoi edges to a data frame for plotting
+voronoi_df <- tibble(
+  x1 = voronoi_edges$x1, y1 = voronoi_edges$y1,
+  x2 = voronoi_edges$x2, y2 = voronoi_edges$y2
+)
+
+## Plot the Voronoi polygons, anchor points (red), and sample points (black)
+ggplot() +
+  ## Plot the Voronoi edges
+  geom_segment(data = voronoi_df, aes(x = x1, y = y1, xend = x2, yend = y2), color = "blue") +
+  ## Plot the anchor points
+  geom_point(data = vtest_anchors, aes(x = x, y = y), size = 4, color = "red") +
+  ## Plot the sample points
+  geom_point(data = vtest_samples, aes(x = x, y = y), size = 2, color = "black") +
+  xlim(0, area_size) + ylim(0, area_size) +
+  theme_minimal() +
+  labs(title = "Voronoi Tessellation with Anchors (red) and Samples (black)",
+       x = "X Coordinate", y = "Y Coordinate")
+
+```
+
+### Count the sample points inside the polygons
+
+Note: There were a number of problems encountered while solving this problem. This is where the suggestion to use the point.in.polygon function was suggested by an author.
+
+```{r}
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Extract Voronoi tiles as polygons
+voronoi_tiles <- tile.list(voronoi_result)
+
+## Function to close the polygon (first point == last point)
+close_polygon <- function(x, y) {
+  if (x[1] != x[length(x)] || y[1] != y[length(y)]) {
+    x <- c(x, x[1])
+    y <- c(y, y[1])
+  }
+  return(list(cbind(x, y)))
+}
+
+## Convert Voronoi tiles to polygons, ensuring they are closed
+voronoi_polygons <- lapply(voronoi_tiles, function(tile) {
+  close_polygon(tile$x, tile$y)
+})
+
+## Function to check which polygon contains each sample point
+get_polygon_for_sample <- function(sample_x, sample_y, voronoi_polygons) {
+  for (i in seq_along(voronoi_polygons)) {
+    polygon <- voronoi_polygons[[i]][[1]]
+    inside <- point.in.polygon(sample_x, sample_y, polygon[,1], polygon[,2])
+    if (inside == 1) {  ## The point is inside this polygon
+      return(i)  ## Return the index of the polygon
+    }
+  }
+  return(NA)  ## If no polygon contains the point, return NA
+}
+
+## Apply the function to all sample points
+vtest_samples$polygon <- mapply(get_polygon_for_sample, vtest_samples$x, vtest_samples$y, MoreArgs = list(voronoi_polygons = voronoi_polygons))
+
+## Count the number of sample points in each Voronoi polygon
+polygon_counts <- vtest_samples %>%
+  group_by(polygon) %>%
+  summarize(count = n()) %>%
+  right_join(tibble(polygon = seq_along(voronoi_polygons)), by = "polygon") %>%
+  replace_na(list(count = 0))
+
+## Add the count to each Voronoi polygon for labeling
+voronoi_labels <- tibble(
+  polygon = seq_along(voronoi_polygons),
+  x = sapply(voronoi_polygons, function(polygon) mean(polygon[[1]][,1])),
+  y = sapply(voronoi_polygons, function(polygon) mean(polygon[[1]][,2])),
+  count = polygon_counts$count
+)
+
+## Plot the Voronoi polygons, anchor points (red), sample points (black), and count labels
+ggplot() +
+  ## Plot the Voronoi polygons
+  geom_polygon(data = do.call(rbind, lapply(seq_along(voronoi_polygons), function(i) {
+    tibble(
+      x = voronoi_polygons[[i]][[1]][,1],
+      y = voronoi_polygons[[i]][[1]][,2],
+      polygon = i
+    )
+  })), aes(x = x, y = y, group = polygon), fill = NA, color = "blue") +
+  ## Plot the anchor points
+  geom_point(data = vtest_anchors, aes(x = x, y = y), color = "red", size = 4) +
+  ## Plot the sample points
+  geom_point(data = vtest_samples, aes(x = x, y = y), color = "black", size = 2) +
+  ## Add the count labels inside each polygon
+  geom_text(data = voronoi_labels, aes(x = x, y = y, label = count), color = "blue", size = 5) +
+  theme_minimal() +
+  labs(title = "Voronoi Tessellation with Sample Counts",
+       x = "X Coordinate", y = "Y Coordinate")
+
+
+```
+
+## Part 2: Follow-up with ChatGPT o1-Preview
+
+> Important note: The code chunks originally given below sometimes had errors when they were run. The errors were reported to ChatGPT and new code was produced. In a few cases, this took several tries before the code chunk would run. Only the "fixed" code is shown here. The extensive messages explaining why the error occurred and the nature of the code fix are not shown here.
+
+### Prompt (to o1-preview)
+
+This has been very good so far. Thanks! This code relates to the epidemiological problem of having potential sites of infection (the anchors) and known locations of people showing the symptoms of the infection (sample points). The goal is to find the most likely, if any, sites of infection. With this in mind, can you suggest the next steps in the analysis?
+
+### Response
+
+You're welcome! Given the epidemiological context where the anchors represent potential sites of infection and the sample points represent locations of symptomatic individuals, the goal is to identify the most likely infection sources among the potential sites.
+
+**Next Steps in the Analysis:**
+
+*Statistical Testing for Elevated Counts:*
+
+-   Objective: Determine if the number of symptomatic individuals within each Voronoi polygon is significantly higher than expected under the assumption of random distribution.
+
+-   Approach: Use a Poisson or binomial test to compare observed counts with expected counts.
+
+*Spatial* *Cluster Detection:*
+
+-   Objective: Identify clusters of symptomatic cases that are spatially associated with specific anchors.
+
+-   Approach: Use spatial scan statistics (e.g., Kulldorff's scan statistic) to detect clusters.
+
+-   Tools: Packages like SpatialEpi, smerc, or rsatscan.
+
+*Spatial Point Pattern Analysis:*
+
+-   Objective: Assess whether symptomatic cases are clustered around certain anchors more than expected by chance.
+
+-   Approach: Use Ripley's K-function or pair correlation function.
+
+-   Tools: spatstat package.
+
+*Risk Surface Estimation:*
+
+-   Objective: Create a continuous risk surface to visualize areas of higher infection risk.
+
+-   Approach: Use kernel density estimation or geographically weighted regression.
+
+-   Tools: spatstat, gwmodel packages.
+
+*Regression Modeling:*
+
+-   Objective: Model the relationship between the distance to anchors and the probability of infection.
+
+-   Approach: Use logistic regression or Poisson regression.
+
+-   Tools: glm() function in base R, lme4 package for mixed-effects models.
+
+*Bayesian Spatial Modeling:*
+
+-   Objective: Incorporate spatial dependence and uncertainty in the analysis.
+
+-   Approach: Use Bayesian hierarchical models.
+
+-   Tools: R-INLA, spBayes packages.
+
+**Implementing the Next Steps:**
+
+Let's focus on a few of these steps with code examples.
+
+### 1. Poisson Test for Elevated Counts.
+
+We can perform a Poisson test to see if the number of cases in each Voronoi polygon is higher than expected under a homogeneous Poisson process.
+
+```{r}
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Install and load the necessary packages for Part 2
+if (!require(deldir)) install.packages("deldir")
+if (!require(sf)) install.packages("sf")
+if (!require(smerc)) install.packages("smerc")
+if (!require(spatstat)) install.packages("spatstat")
+library(deldir)
+library(sf)
+library(smerc)
+library(spatstat)
+library(tidyverse)
+library(gt)
+
+## Calculate the total area of the study region
+total_area <- area_size * area_size  # Should be 100 for a 10x10 area
+
+## Convert Voronoi tiles to sf polygons with appropriate CRS
+voronoi_sf <- st_sf(
+  ID = sapply(voronoi_tiles, function(tile) tile$ptNum),
+  geometry = st_sfc(lapply(voronoi_tiles, function(tile) {
+    st_polygon(close_polygon(tile$x, tile$y))
+  }), crs = st_crs(NA))  # Use st_crs(NA) for a missing CRS
+)
+
+## Compute area of each polygon
+voronoi_sf$area <- st_area(voronoi_sf)
+
+## Calculate expected number of cases per polygon under null hypothesis
+total_cases <- nrow(vtest_samples)  # Total number of sample points (e.g., 50)
+expected_density <- total_cases / total_area  # Cases per unit area
+voronoi_sf$expected_cases <- as.numeric(voronoi_sf$area) * expected_density
+
+## Merge observed counts from previous steps
+# Assuming 'polygon_counts' data frame contains 'polygon' and 'count' columns
+voronoi_sf$observed_cases <- polygon_counts$count
+
+## Perform Poisson tests
+voronoi_sf$p_value <- mapply(function(observed, area) {
+  poisson.test(x = observed, T = as.numeric(area), r = expected_density)$p.value
+}, observed = voronoi_sf$observed_cases, area = voronoi_sf$area)
+
+## Identify significant polygons (e.g., p-value < 0.05)
+voronoi_sf$significant <- voronoi_sf$p_value < 0.05
+
+voronoi_table <- as.data.frame(voronoi_sf) |>
+  dplyr::select(ID,area,expected_cases,
+                observed_cases,p_value,significant)
+
+gt(voronoi_table) |>
+  ## Title on the table
+  tab_header(
+    title = "Poisson Test ")|>
+  ## Source Information
+  tab_source_note(
+    source_note = seed_notice) |>
+  ## Positioning data in the cells
+  ## Format the values
+  fmt_number(columns = c(area,expected_cases), decimals = 1) |>
+  fmt_number(columns = p_value, decimals = 3)
+
+```
+
+#### Response (continued)
+
+Interpretation:
+
+-   Polygons with significant = TRUE have a higher number of cases than expected under the null hypothesis, suggesting they might be associated with infection sites.
+
+-   Be cautious with multiple testing; consider adjusting p-values using methods like Bonferroni correction.
+
+### 2. Spatial Cluster Detection
+
+This test uses the smerc Package. Specifically, we'll apply Kulldorff's spatial scan statistic to detect clusters.
+
+```{r}
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Prepare data for scan test
+
+## Create centroids of Voronoi polygons
+voronoi_sf$centroid <- st_centroid(voronoi_sf$geometry)
+
+## Extract coordinates
+coords <- st_coordinates(voronoi_sf$centroid)
+
+## Create cases and population vectors
+cases <- voronoi_sf$observed_cases
+population <- voronoi_sf$expected_cases  # Use expected cases as proxy for population
+
+## Ensure that 'cases' and 'population' are numeric vectors
+cases <- as.numeric(cases)
+population <- as.numeric(population)
+
+## Run spatial scan statistic (remove 'lonlat' argument)
+scan_result <- smerc::scan.test(
+  coords = coords,
+  cases = cases,
+  pop = population,
+  nsim = 999,
+  alpha = 0.05
+  )
+
+## Print summary of clusters
+summary(scan_result)
+
+## Plot the most likely cluster
+plot(scan_result, xlim=c(0,area_size),ylim=c(0,area_size))
+
+```
+
+#### Response (continued)
+
+Interpretation:
+
+-   Clusters identified by the scan test indicate areas with a higher concentration of cases than expected.
+
+-   The most likely cluster may correspond to the most probable infection source.
+
+### 3. Spatial Point Pattern Analysis
+
+This analysis uses the spatstat package. We'll analyze the spatial distribution of sample points relative to anchors.
+
+```{r}
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Combine anchors and samples into one data frame with a 'type' column
+combined_data <- rbind(
+  data.frame(x = vtest_anchors$x, y = vtest_anchors$y, type = "anchor"),
+  data.frame(x = vtest_samples$x, y = vtest_samples$y, type = "sample"))
+
+## Define the observation window
+window <- owin(xrange = c(0, area_size), yrange = c(0, area_size))
+
+## Convert to a multitype point pattern
+combined_ppp <- spatstat.geom::ppp(
+  x = combined_data$x,
+  y = combined_data$y,
+  window = window,
+  marks = as.factor(combined_data$type)
+)
+
+## Compute cross K-function from anchors to samples
+cross_k <- spatstat.explore::Kcross(combined_ppp, i = "anchor", j = "sample")
+
+## Plot the cross K-function
+plot(cross_k, main = "Cross K-function between Anchors and Samples")
+
+#### ADDED AS A SUGGESTION DURING THE CORRECTION PROCESS #####
+
+## Compute cross K-function with simulation envelopes
+envelope_result <- spatstat.explore::envelope(
+  combined_ppp,
+  fun = Kcross,
+  i = "anchor",
+  j = "sample",
+  nsim = 999,
+  correction = "Ripley",
+  verbose = FALSE
+)
+
+## Plot the envelope
+plot(envelope_result, main = "Cross K-function with Simulation Envelopes")
+
+
+```
+
+### Response (continued)
+
+Interpretation:
+
+-   If the cross K-function is above the theoretical expectation, it suggests clustering of sample points around anchors.
+
+-   Statistical envelopes can be computed to assess significance.
+
+### 4. Regression Modeling
+
+We can model the probability of being a case based on the distance to the nearest anchor.
+
+```{r}
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Calculate distances from samples to nearest anchor
+samples_coords <- cbind(vtest_samples$x, vtest_samples$y)
+anchors_coords <- cbind(vtest_anchors$x, vtest_anchors$y)
+
+distances <- apply(samples_coords, 1, function(sample) {
+  min(spDistsN1(anchors_coords, sample))
+})
+
+vtest_samples$distance_to_anchor <- distances
+
+## Assuming we have data on non-cases (controls), which we don't in this example.
+## For illustration, let's create some control points
+n_controls <- 50
+control_points <- tibble(
+  x = runif(n_controls, 0, area_size),
+  y = runif(n_controls, 0, area_size),
+  case = 0
+)
+
+## Combine cases and controls
+cases <- vtest_samples %>% mutate(case = 1)
+controls <- control_points
+combined_data <- bind_rows(cases, controls)
+
+## Calculate distances for controls
+control_distances <- apply(cbind(controls$x, controls$y), 1, function(sample) {
+  min(spDistsN1(anchors_coords, sample))
+})
+combined_data$distance_to_anchor <- c(distances, control_distances)
+
+## Logistic regression
+model <- glm(case ~ distance_to_anchor, data = combined_data, family = binomial())
+
+## Summary of the model
+summary(model)
+
+
+```
+
+#### Response (continued)
+
+Interpretation:
+
+-   The regression coefficient for distance_to_anchor indicates how the distance to the nearest anchor affects the odds of being a case.
+
+-   A negative coefficient suggests that closer proximity to an anchor increases the risk of infection.
+
+**Considerations and Recommendations:**
+
+-   Data Quality: Ensure that the locations of symptomatic individuals (sample points) are accurately recorded.
+
+-   Population at Risk: Incorporate the underlying population distribution if available. Areas with more people might naturally have more cases.
+
+-   Multiple Testing Correction: When performing multiple statistical tests, adjust p-values to control for Type I error.
+
+-   Spatial Autocorrelation: Account for spatial autocorrelation in the data, which can affect statistical inference.
+
+-   Temporal Dynamics: If temporal data are available, consider spatiotemporal analysis to see how the infection spreads over time.
+
+-   Visualization: Use interactive maps (e.g., with leaflet package) to explore the spatial relationships more intuitively.
+
+**Additional Resources:**
+
+*Books:*
+
+-   Applied Spatial Data Analysis with R by Bivand, Pebesma, and Gómez-Rubio.
+
+-   Spatial Epidemiology: Methods and Applications by Elliott et al.
+
+*R Packages Documentation:*
+
+-   spatstat: Spatstat Package
+
+-   smerc: smerc Package
+
+**Example Workflow for Cluster Detection:**
+
+*Data Preparation:*
+
+-   Collect and clean data on symptomatic individuals and potential infection sites.
+
+-   Geocode addresses if necessary to obtain spatial coordinates.
+
+*Exploratory Data Analysis:*
+
+-   Plot the data to visualize spatial distributions.
+
+-   Calculate summary statistics.
+
+*Spatial Autocorrelation Analysis:*
+
+-   Compute Moran's I or Geary's C to assess overall spatial autocorrelation.
+
+*Cluster Detection:*
+
+-   Apply spatial scan statistics to detect clusters.
+
+-   Use SaTScan software or R packages that implement scan statistics.
+
+*Modeling:*
+
+-   Build regression models to quantify the relationship between proximity to anchors and infection risk.
+
+-   Consider spatial regression models if spatial autocorrelation is significant.
+
+*Validation and Sensitivity Analysis:*
+
+-   Validate findings using subsets of data or alternative methods.
+
+-   Conduct sensitivity analyses to assess robustness.
+
+*Interpretation and Reporting:*
+
+-   Interpret results in the context of epidemiological relevance.
+
+-   Prepare reports with visualizations and statistical summaries.
+
+*Ethical and Practical Considerations:*
+
+-   Privacy: Ensure that individual privacy is maintained, especially when dealing with health data.
+
+-   Biases: Be aware of potential biases in data collection, such as underreporting in certain areas.
+
+-   Collaboration: Work with epidemiologists and public health officials to interpret findings appropriately.
+
+By following these steps and utilizing the suggested methods, you can advance your analysis to identify the most likely sites of infection among the potential sites (anchors). This will help in understanding the spatial dynamics of the infection and inform targeted public health interventions.
+
+## Part 3: Assessment
+
+The first part went smoothly, except for the anticipated problem of counting sample points inside the polygons. The fix was quite straightforward as this problem had been encountered before in a different context.
+
+It was ChatGPT's suggestion to put the sample-point counts inside the polygons. That was unexpected.
+
+Overall, the results of the first part was satisfying.
+
+The second part asked ChatGPT to take the initiative. The new model (01-Preview) is known for doing deeper planning. It did not disappoint.
+
+A series of five analysis approaches were outlined. Four of these were provided with code and interpretation guidelines.
+
+The depth and breadth of the analysis suggestions were unanticipated.
+
+It did take some interaction with the LLM to get all the code to run. Whether it is running properly has not been tested. But the framework to do the testing is in place as the entire process is now running with randomly generated data. That means that multiple runs are possible simply by re-running the code.
+
+Further verification is anticipated when specially designed sets of data are used.
+
+It is only after this testing that a full evaluation of the code is possible.
+
+Right now, things look pretty good.

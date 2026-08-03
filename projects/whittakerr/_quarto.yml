@@ -1,0 +1,47 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Whittakerr"
+  subtitle: "Putting the Whittaker biome diagram to work"
+  author:
+    - "K. W. Bridges"
+    - "Claude (Anthropic)"
+  date: today
+  cover-image: whittakerr_cover_art_text.png
+  chapters:
+    - index.qmd
+    - history.qmd
+    - what_is_a_biome.qmd
+    - scale.qmd
+    - getting_started.qmd
+    - retrieving_climate_data.qmd
+    - basic_whittaker_diagrams.qmd
+    - color.qmd
+    - retrieving_biome_information.qmd
+    - biome_characteristics.qmd
+    - transitions.qmd
+    - build_a_map.qmd
+    - beyond_a_map.qmd
+    - draped_on_topography.qmd
+    - heuristic_value.qmd
+  navbar:
+    logo: whittakerr_logo_art.png
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    embed-resources: false
+
+editor: visual
+
+toc: true
+number-sections: true
+number-depth: 2
+
+execute:
+  warning: false
+  error: false
+  message: false

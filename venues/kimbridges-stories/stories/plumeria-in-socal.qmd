@@ -1,0 +1,13 @@
+---
+title: "Plumeria in SoCal"
+subtitle: "Plumeria at the LA County Arboretum."
+date: 2025-01-30
+categories: ["Plumeria", "Gardens"]
+image: ../images/SoCal_Plumeria.jpg
+pdf: ../pdfs/SoCal_Plumeria.pdf
+---
+A beautiful grove of plumeria trees at this unlikely location. There are lots of varieties in this diverse collection. This is one of the few places in the lower-48 to find this species.
+
+Pages: 64
+
+<iframe src="../viewer.html?pdf=SoCal_Plumeria.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

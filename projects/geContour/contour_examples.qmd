@@ -1,0 +1,154 @@
+---
+title: "Contour_examples"
+format: html
+editor: visual
+---
+
+Examples
+
+Initialize
+
+```{r}
+#| label: Initialize
+#| message: false
+#| echo:    false
+#| warning: false
+
+## Basic Libraries that are usually loaded.
+library(tidyverse)   ## Lots of data tools
+library(dplyr)       ## Data manipulation
+library(readr)       ## CSV reading function
+library(gt)          ## Tables
+library(ggmap)       ## Access to Google Maps functions
+
+## Special Libraries that are required.
+library(devtools)    ## Access to GitHub resources
+library(zip)         ## Zip for Google Earth
+library(viridis)     ## Color palettes
+library(fields)      ## Lots of tools for spatial data
+library(gtExtras)    ## gt table formatting and highlighting
+
+## Special Libraries for gePoints
+library(xml2)      ## Handle the JSON for the KML
+library(magick)    ## Convert PDF file to PNG image
+
+## Load and initialize the gePoints package
+install_github("kimbridges/gePoints")
+library(gePoints)  ## Has the create_KLM function
+
+
+## Load geContour.
+install_github("kimbridges/geContour")
+library(geContour)  ## Has the contour_to_google_earth function
+
+## Set read_csv function option to suppress warning messages.
+options(readr.show_col_types = FALSE)
+
+## Initialize Google Map key.
+## Optional unless the geocode function is used.
+
+  ## Test if the Google Key API is registered.
+  if (!has_google_key()){
+    cat("See the code for instructions on registering an API key.")
+    ## Register the Google Maps API Key.
+    ## This makes your Google Map API key permanent.
+    ## register_google(key = "[your key]", write = TRUE).
+    } ## end Google Key test
+
+
+```
+
+Thai Data
+
+```{r}
+#| label: Thai data
+
+data <- read_csv(col_names = TRUE, file =
+    "text,        value, lat,     lon
+Dong Bang,         250, 14.8823, 102.6329
+Hai,               380, 17.9889, 102.6373
+Huai Bang,         325, 15.4573, 101.9337
+Khan Bo,           200, 16.5481, 102.9853
+Kho Khieo,         160, 16.8266, 101.6587
+Khok Phon Yang,     90, 16.1852, 103.2980
+Khon Khwang,       230, 15.7382, 103.5614
+Kut Prao,          240, 16.4521, 102.8306
+Lao,               100, 17.9757, 102.6331
+Maung khang,       110, 17.1579, 104.1476
+Na Bo,             190, 17.7522, 102.7247
+Non Udom,          125, 15.2310, 104.8690
+Nong Kung Yai,      55, 16.0382, 103.2981
+Nong Paen,         150, 16.7333, 102.8500
+Phak Top,          105, 16.9450, 103.9646
+Phon Thong,        160, 16.3297, 103.9711
+Phu Chae,          180, 16.7899, 101.6587
+Pla Lo,            110, 16.8743, 100.2657
+Pla Lo Noi,         95, 16.8876, 100.2743
+Tat Phon Phai,     145, 16.7411, 103.4151
+That (Tad Patana), 215, 17.5076, 102.8126")
+
+## Show the data
+gt(data) |>
+  fmt_number(columns = c(lat,lon), decimals = 4) |>
+  tab_caption(caption = "Species Reported") |>
+  tab_source_note(source_note="Data: Phuthai Survey 2006") |>
+  ## Shade alternate rows
+  gt_theme_guardian() |>
+  cols_label(text = "Village",
+             value = "Mean Number")
+
+
+```
+
+Show the Points
+
+```{r}
+#| label: Create KML file
+#| error: false
+#| warning: false
+
+data$symbol       <- "paddle"
+data$symbol_scale <- 1.2
+data$text_scale   <- 1.0
+
+create_kml(data = data, 
+           output_file = "puthai_points.kml" )
+
+```
+
+Contour Diagram
+
+```{r}
+#| label: Contour diagram
+
+result <- contour_to_google_earth(data, 
+                     output_name = "puthai_overlay",
+                     interpolate = TRUE,
+                     contour_breaks = 5,
+                     fill_colors = c("lightgoldenrod2",
+                                     "gold",
+                                     "orange",
+                                     "chocolate",
+                                     "red"),
+                     interp_method = "akima",
+                     interp_grid_res = 50,
+                     buffer_percent = 50)
+
+## Show the contour diagram.
+print(result$plot)
+
+```
+
+
+Show points
+
+```{r}
+
+pts <- ggplot(data, aes(x=lon, y=lat)) +
+  geom_point() +
+  coord_equal()
+
+print(pts)
+
+```
+

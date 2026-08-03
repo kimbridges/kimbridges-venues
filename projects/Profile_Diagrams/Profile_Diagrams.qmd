@@ -1,0 +1,772 @@
+---
+title: "Profile_Diagrams"
+---
+
+## 
+
+```{r}
+library(ggplot2)
+library(ggforce)
+library(gt)
+
+# --- 1. SETUP PARAMETERS ---
+slope_percent <- 15  # Change this to 0 for flat, -10 for downhill, etc.
+transect_length <- 30
+
+# --- 2a. CREATE DATA ---
+veg_data <- data.frame(
+  ID = c("A", "B", "C", "D", "E"),
+  Species = c("Quercus rubra", "Acer saccharum", "Fagus grandifolia", 
+              "Pinus strobus", "Cornus florida"),
+  Distance = c(5.0, 12.0, 15.0, 22.0, 26.0),
+  Height = c(22.0, 18.0, 6.0, 28.0, 4.0),       
+  CrownStart = c(12.0, 9.0, 2.0, 18.0, 1.5),    
+  CrownWidth = c(10.0, 7.0, 4.0, 8.0, 3.5),     
+  Type = c("Broadleaf", "Broadleaf", "Broadleaf", "Conifer", "Shrub")
+)
+
+# --- 2b. PRINT THE DATA TABLE
+gt(veg_data) |>
+  tab_options(table.font.size = px(12))
+
+# --- 3. CALCULATE GEOMETRY (THE "SLOPE MATH") ---
+
+# A. Calculate the ground elevation at the specific location of each tree
+# Formula: Elevation = Distance * (Slope / 100)
+veg_data$GroundElevation <- veg_data$Distance * (slope_percent / 100)
+
+# B. Calculate tree geometry relative to that ground elevation
+veg_data$radius_x <- veg_data$CrownWidth / 2
+veg_data$height_crown <- veg_data$Height - veg_data$CrownStart
+veg_data$radius_y <- veg_data$height_crown / 2
+
+# C. The Center Y must now account for the GroundElevation
+veg_data$center_y <- veg_data$GroundElevation + veg_data$CrownStart + veg_data$radius_y
+
+# --- 4. PREPARE GROUND POLYGON ---
+# To make it look like a soil profile, we define a polygon for the ground
+ground_df <- data.frame(
+  x = c(0, transect_length, transect_length, 0),
+  y = c(0, 
+        transect_length * (slope_percent/100), 
+        -5, -5) # The -5 creates the thickness of the "soil" layer
+)
+
+# --- 5. PLOTTING ---
+ggplot() +
+  # Layer 1: The Soil Profile (Drawn first so trees stand ON TOP of it)
+  geom_polygon(data = ground_df, aes(x = x, y = y), 
+               fill = "bisque4", alpha = 0.5) +
+  
+  # Layer 2: The Slope Line (The surface)
+  geom_segment(aes(x = 0, y = 0, 
+                   xend = transect_length, 
+                   yend = transect_length * (slope_percent/100)),
+               linewidth = 1, color = "darkgreen") +
+
+  # Layer 3: The Trunks 
+  # Note: y starts at GroundElevation, not 0
+  geom_segment(data = veg_data,
+               aes(x = Distance, xend = Distance, 
+                   y = GroundElevation, 
+                   yend = GroundElevation + CrownStart), 
+               linewidth = 1.2, color = "chocolate4") +
+  
+  # Layer 4: The Crowns
+  geom_ellipse(data = veg_data,
+               aes(x0 = Distance, y0 = center_y, 
+                   a = radius_x, b = radius_y, 
+                   fill = Type, angle = 0), 
+               alpha = 0.8, color = "black") +
+  
+  # Layer 5: Labels
+  # Note: y is shifted up by GroundElevation
+  geom_text(data = veg_data,
+            aes(x = Distance, 
+                y = GroundElevation + Height + 1, 
+                label = ID), 
+            fontface = "bold") +
+  
+  # Scales and Themes
+  scale_fill_manual(values = c("Broadleaf" = "forestgreen", 
+                               "Conifer" = "darkolivegreen", 
+                               "Shrub" = "chartreuse3")) +
+  coord_fixed(ratio = 1) + 
+  theme_minimal() +
+  labs(title = paste0("Vegetation Profile Diagram (", slope_percent, "% Slope)"),
+       x = "Distance along transect (m)",
+       y = "Elevation / Height (m)") +
+  theme(panel.grid.minor = element_blank())
+```
+
+## Adding canopy shapes
+
+```{r}
+library(ggplot2)
+library(ggforce)
+library(dplyr) # We need dplyr for easy data filtering
+library(gt)
+
+# --- 1. SETUP PARAMETERS ---
+slope_percent <- 15
+transect_length <- 30
+
+# --- 2a. CREATE DATA ---
+veg_data <- data.frame(
+  ID = c("A", "B", "C", "D", "E"),
+  Species = c("Quercus rubra", "Acer saccharum", "Fagus grandifolia", 
+              "Pinus strobus", "Cornus florida"),
+  Distance = c(5.0, 12.0, 15.0, 22.0, 26.0),
+  Height = c(22.0, 18.0, 6.0, 28.0, 4.0),       
+  CrownStart = c(12.0, 9.0, 2.0, 18.0, 1.5),    
+  CrownWidth = c(10.0, 7.0, 4.0, 8.0, 3.5),     
+  Type = c("Broadleaf", "Broadleaf", "Broadleaf", "Conifer", "Shrub")
+)
+
+# --- 2b. SHOW DATA
+gt(veg_data) |>
+  tab_options(table.font.size = px(12))
+
+# --- 3. CALCULATE GEOMETRY ---
+# Ground Elevation
+veg_data$GroundElevation <- veg_data$Distance * (slope_percent / 100)
+
+# Geometry for Ellipses (Broadleaves/Shrubs)
+veg_data$radius_x <- veg_data$CrownWidth / 2
+veg_data$height_crown <- veg_data$Height - veg_data$CrownStart
+veg_data$radius_y <- veg_data$height_crown / 2
+veg_data$center_y <- veg_data$GroundElevation + veg_data$CrownStart + veg_data$radius_y
+
+# --- 4. SEPARATE DATA STREAMS ---
+broadleaves <- subset(veg_data, Type %in% c("Broadleaf", "Shrub"))
+conifers    <- subset(veg_data, Type == "Conifer")
+
+# --- 5. CREATE TRIANGLES FOR CONIFERS ---
+# We need to construct a data frame of vertices (3 points per tree)
+# Because geom_polygon draws 'connect-the-dots'
+conifer_polys <- do.call(rbind, lapply(1:nrow(conifers), function(i) {
+  row <- conifers[i,]
+  data.frame(
+    ID = row$ID,
+    Type = row$Type,
+    # The 3 X-coordinates: Left Corner, Top Peak, Right Corner
+    x = c(row$Distance - row$radius_x, 
+          row$Distance, 
+          row$Distance + row$radius_x),
+    # The 3 Y-coordinates: Bottom, Top, Bottom
+    y = c(row$GroundElevation + row$CrownStart, 
+          row$GroundElevation + row$Height, 
+          row$GroundElevation + row$CrownStart)
+  )
+}))
+
+# --- 6. PREPARE GROUND POLYGON ---
+ground_df <- data.frame(
+  x = c(0, transect_length, transect_length, 0),
+  y = c(0, transect_length * (slope_percent/100), -5, -5)
+)
+
+# --- 7. PLOTTING ---
+ggplot() +
+  # A. The Soil
+  geom_polygon(data = ground_df, aes(x = x, y = y), 
+               fill = "bisque4", alpha = 0.5) +
+  geom_segment(aes(x = 0, y = 0, xend = transect_length, 
+                   yend = transect_length * (slope_percent/100)),
+               linewidth = 1, color = "darkgreen") +
+
+  # B. All Trunks (Lines are the same for everyone)
+  geom_segment(data = veg_data,
+               aes(x = Distance, xend = Distance, 
+                   y = GroundElevation, 
+                   yend = GroundElevation + CrownStart), 
+               linewidth = 1.2, color = "chocolate4") +
+  
+  # C. Broadleaf Crowns (ELLIPSES)
+  geom_ellipse(data = broadleaves,
+               aes(x0 = Distance, y0 = center_y, 
+                   a = radius_x, b = radius_y, 
+                   fill = Type, angle = 0), 
+               alpha = 0.8, color = "black") +
+  
+  # D. Conifer Crowns (TRIANGLES / POLYGONS)
+  geom_polygon(data = conifer_polys,
+               aes(x = x, y = y, group = ID, fill = Type),
+               alpha = 0.9, color = "black") +
+  
+  # E. Labels
+  geom_text(data = veg_data,
+            aes(x = Distance, y = GroundElevation + Height + 1, label = ID), 
+            fontface = "bold") +
+  
+  # Styling
+  scale_fill_manual(values = c("Broadleaf" = "forestgreen", 
+                               "Conifer" = "darkolivegreen", 
+                               "Shrub" = "chartreuse3")) +
+  coord_fixed(ratio = 1) + 
+  theme_minimal() +
+  labs(title = "Vegetation Profile: Mixed Shapes",
+       x = "Distance (m)", y = "Elevation (m)") +
+  theme(panel.grid.minor = element_blank())
+
+```
+
+## Realistic Vegetation Shapes
+
+Using rphylopic adds a layer of visual polish by using real biological silhouettes.
+
+However, as suspected, it comes with a trade-off: Data Fidelity vs. Visual Aesthetics.
+
+The Issue: A silhouette has a fixed "aspect ratio" (width vs. height). If you tell R to make the tree 20m tall, rphylopic will automatically calculate the width to keep the image from looking stretched. This means you cannot control both Height and Crown Width simultaneously. You lose the ability to show that a specific oak is "short and fat" while another is "tall and skinny."
+
+```{r}
+library(ggplot2)
+library(rphylopic) # install.packages("rphylopic")
+
+# --- 1. SETUP PARAMETERS ---
+slope_percent <- 15
+transect_length <- 30
+
+# --- 2. CREATE DATA ---
+veg_data <- data.frame(
+  ID = c("A", "B", "C", "D", "E"),
+  Species_Name = c("Quercus", "Acer", "Fagus", "Pinus", "Cornus"), 
+  # Note: I shortened names to Genus to ensure better matches in the database
+  Distance = c(5.0, 12.0, 15.0, 22.0, 26.0),
+  Height = c(22.0, 18.0, 6.0, 28.0, 4.0),
+  CrownStart = c(12.0, 9.0, 2.0, 18.0, 1.5)
+)
+
+# --- 3. FETCH UUIDs (The "Magic" Step) ---
+# We loop through our species names to get a unique image ID for each from PhyloPic
+# This might take a few seconds to run as it queries the web.
+veg_data$uuid <- sapply(veg_data$Species_Name, function(x) {
+  get_uuid(name = x, n = 1)
+})
+
+# --- 4. CALCULATE GEOMETRY (SLOPE) ---
+veg_data$GroundElevation <- veg_data$Distance * (slope_percent / 100)
+
+# We need the CENTER of the image for plotting. 
+# Phylopic draws from the center, so we place the center at:
+# Ground Elevation + Half the Tree Height
+veg_data$center_y <- veg_data$GroundElevation + (veg_data$Height / 2)
+
+
+# --- 5. PREPARE GROUND POLYGON ---
+ground_df <- data.frame(
+  x = c(0, transect_length, transect_length, 0),
+  y = c(0, transect_length * (slope_percent/100), -5, -5)
+)
+
+# --- 6. PLOTTING ---
+ggplot() +
+  # A. The Soil (Same as before)
+  geom_polygon(data = ground_df, aes(x = x, y = y), 
+               fill = "bisque4", alpha = 0.5) +
+  geom_segment(aes(x = 0, y = 0, xend = transect_length, 
+                   yend = transect_length * (slope_percent/100)),
+               linewidth = 1, color = "darkgreen") +
+
+  # B. The PhyloPic Silhouettes
+  geom_phylopic(data = veg_data,
+                aes(x = Distance,      # X location
+                    y = center_y,      # Center Y location
+                    uuid = uuid,       # The image ID we fetched
+                    height = Height),  # Scale the image by Height
+                fill = "darkolivegreen",
+                color = "transparent") +
+  
+  # C. Labels
+  geom_text(data = veg_data,
+            aes(x = Distance, y = GroundElevation + Height + 2, label = ID), 
+            fontface = "bold") +
+
+  # Styling
+  coord_fixed(ratio = 1) + 
+  theme_minimal() +
+  labs(title = "Vegetation Profile: PhyloPic Silhouettes",
+       subtitle = "Note: Crown Width is determined by the image aspect ratio, not field data.",
+       x = "Distance (m)", y = "Elevation (m)") +
+  theme(panel.grid.minor = element_blank())
+
+```
+
+## A different approach
+
+You are hitting on the exact limitation of using pre-made images like rphylopic: they don't stretch well.
+
+The solution is to use Parametric Polygons.Instead of downloading an image, we define a "shape" mathematically (like a connect-the-dots drawing) relative to a $0$ to $1$ scale. Then, for each tree in your data, we multiply that shape by your specific CrownWidth and CrownHeight. This allows a 20m tall, 2m wide Cypress to look tall and skinny, and a 5m tall, 10m wide Oak to look short and fat, while both retaining a "tree" look.Here is a complete R solution that defines three "Generic Shapes" (Conifer, Broadleaf, and Shrub) and scales them perfectly to your field data.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+# --- 1. DEFINE THE GENERIC SHAPES (Normalized 0 to 1) ---
+# Think of these as stencils. x is -0.5 to 0.5 (width), y is 0 to 1 (height).
+
+# Shape A: The "Sawtooth" Conifer
+shape_conifer <- data.frame(
+  x_norm = c(0, 0.5, 0.2, 0.4, 0.15, 0.3, 0, -0.3, -0.15, -0.4, -0.2, -0.5, 0),
+  y_norm = c(1, 0.1, 0.1, 0.35, 0.35, 0.6, 0.6, 0.6, 0.35, 0.35, 0.1, 0.1, 1),
+  shape_id = "Conifer"
+)
+
+# Shape B: The "Cloud" Broadleaf (Approximated by an octagon for simplicity)
+# You could add more points to make it rounder
+shape_broadleaf <- data.frame(
+  x_norm = c(0, 0.35, 0.5, 0.35, 0, -0.35, -0.5, -0.35, 0),
+  y_norm = c(1, 0.85, 0.5, 0.15, 0, 0.15, 0.5, 0.85, 1),
+  shape_id = "Broadleaf"
+)
+
+# Shape C: The "Dome" Shrub
+shape_shrub <- data.frame(
+  x_norm = c(-0.5, -0.4, -0.2, 0, 0.2, 0.4, 0.5, 0.5, -0.5),
+  y_norm = c(0, 0.5, 0.8, 1, 0.8, 0.5, 0, 0, 0),
+  shape_id = "Shrub"
+)
+
+# Combine into a dictionary
+shape_dictionary <- rbind(shape_conifer, shape_broadleaf, shape_shrub)
+
+# --- 2. THE FIELD DATA ---
+slope_percent <- 15
+transect_length <- 30
+
+veg_data <- data.frame(
+  ID = c("A", "B", "C", "D", "E"),
+  # Note: The 'Type' here must match the 'shape_id' in step 1
+  Type = c("Broadleaf", "Broadleaf", "Broadleaf", "Conifer", "Shrub"), 
+  Distance = c(5.0, 12.0, 15.0, 22.0, 26.0),
+  Height = c(22.0, 18.0, 6.0, 28.0, 4.0),       
+  CrownStart = c(12.0, 9.0, 2.0, 18.0, 0.5), # Shrub starts near ground    
+  CrownWidth = c(10.0, 7.0, 4.0, 8.0, 3.5)
+)
+
+# --- 3. THE "STRETCHING" ENGINE ---
+# This loop applies the stencil to every single tree in your list
+
+plot_polygons <- list() # Empty list to store our shapes
+
+for(i in 1:nrow(veg_data)) {
+  tree <- veg_data[i, ]
+  
+  # 1. Get the Ground Elevation (Slope Logic)
+  ground_z <- tree$Distance * (slope_percent / 100)
+  
+  # 2. Get the correct shape stencil
+  stencil <- subset(shape_dictionary, shape_id == tree$Type)
+  
+  # 3. Scale the Stencil (The Magic Step)
+  # New X = Center + (Stencil_X * Real_Width)
+  # New Y = Crown_Bottom + (Stencil_Y * Real_Crown_Height)
+  
+  crown_height <- tree$Height - tree$CrownStart
+  
+  stencil$x_final <- tree$Distance + (stencil$x_norm * tree$CrownWidth)
+  stencil$y_final <- (ground_z + tree$CrownStart) + (stencil$y_norm * crown_height)
+  
+  # 4. Add Tree ID for grouping
+  stencil$TreeID <- tree$ID
+  stencil$FillColor <- tree$Type
+  
+  # 5. Store it
+  plot_polygons[[i]] <- stencil
+}
+
+# Combine all trees into one big drawing table
+all_shapes <- do.call(rbind, plot_polygons)
+
+
+# --- 4. PLOTTING ---
+# Ground Polygon for context
+ground_df <- data.frame(
+  x = c(0, transect_length, transect_length, 0),
+  y = c(0, transect_length * (slope_percent/100), -5, -5)
+)
+
+ggplot() +
+  # A. The Soil
+  geom_polygon(data = ground_df, aes(x = x, y = y), 
+               fill = "bisque4", alpha = 0.5) +
+  geom_segment(aes(x = 0, y = 0, xend = transect_length, 
+                   yend = transect_length * (slope_percent/100)),
+               linewidth = 1, color = "darkgreen") +
+
+  # B. The Trunks 
+  # (Calculated on the fly: From Ground to CrownStart)
+  geom_segment(data = veg_data,
+               aes(x = Distance, xend = Distance, 
+                   y = Distance * (slope_percent/100), 
+                   yend = (Distance * (slope_percent/100)) + CrownStart), 
+               linewidth = 1.2, color = "chocolate4") +
+  
+  # C. The Custom Shapes
+  geom_polygon(data = all_shapes,
+               aes(x = x_final, y = y_final, group = TreeID, fill = FillColor),
+               alpha = 0.9, color = "black") +
+  
+  # D. Labels
+  geom_text(data = veg_data,
+            aes(x = Distance, 
+                y = (Distance * (slope_percent/100)) + Height + 1, 
+                label = ID), 
+            fontface = "bold") +
+  
+  # E. Styling
+  scale_fill_manual(values = c("Broadleaf" = "forestgreen", 
+                               "Conifer" = "darkolivegreen", 
+                               "Shrub" = "chartreuse3")) +
+  coord_fixed(ratio = 1) + 
+  theme_minimal() +
+  labs(title = "Vegetation Profile: Parametric Shapes",
+       subtitle = "Shapes adapt to exact Crown Width and Height dimensions",
+       x = "Distance (m)", y = "Elevation (m)") +
+  theme(panel.grid.minor = element_blank())
+```
+
+### Defining the "stencil" shape
+
+A "stencil" in this context is just a data frame of X and Y coordinates that `ggplot` connects in order. You can have as few as 3 points (a triangle) or as many as 1,000 (a smooth, complex silhouette).
+
+Here is the logic for creating your own:
+
+### 1. The Coordinate System
+
+To make the math work, we define every shape in a **Normalized Space**:
+
+-   **X-axis:** ranges from **-0.5 to 0.5**. (0 is the trunk center).
+
+-   **Y-axis:** ranges from **0 to 1**. (0 is the bottom of the crown, 1 is the top).
+
+When the code runs, it multiplies these numbers by your actual field data:
+
+-   `x_norm * CrownWidth` $\rightarrow$ stretches it horizontally.
+
+-   `y_norm * CrownHeight` $\rightarrow$ stretches it vertically.
+
+### 2. Example: Creating a "Palm Tree" Shape
+
+Since you are in Honolulu and mentioned *Plumeria* and tropical views in previous interactions, you might actually need a shape that isn't a temperate blob.
+
+A palm tree crown is distinct: it has no foliage at the bottom, spreads wide at the top, and often droops.
+
+**The "Connect-the-Dots" Logic:**
+
+1.  Start at the bottom center (trunk connection): `(0, 0)`
+
+2.  Go out to the right frond tip: `(0.5, 0.5)`
+
+3.  Go up to the top right: `(0.2, 0.9)`
+
+4.  Top center: `(0, 1)`
+
+5.  Top left: `(-0.2, 0.9)`
+
+6.  Left frond tip: `(-0.5, 0.5)`
+
+7.  Return to center: `(0, 0)`
+
+```{r}
+# Define the new shape
+shape_palm <- data.frame(
+  x_norm = c(0, 0.5, 0.4, 0.2, 0, -0.2, -0.4, -0.5, 0),
+  y_norm = c(0, 0.5, 0.8, 0.95, 1, 0.95, 0.8, 0.5, 0),
+  shape_id = "Palm"
+)
+
+# Add it to your existing dictionary
+shape_dictionary <- rbind(shape_dictionary, shape_palm)
+```
+
+### 3. Creating Complex Asymmetrical Trees
+
+You don't have to be symmetrical. If you are studying wind-swept vegetation (like krummholz on a mountain or coastal trees), you can define a shape that leans entirely to one side.
+
+-   **Standard Tree:** X goes from -0.5 to 0.5.
+
+-   **Wind-Swept Tree:** X could go from 0.0 to 1.0 (all foliage is downwind of the trunk).
+
+### 4. Tips for Drawing Your Own
+
+If you want to digitize a specific tree architecture (like the *Plumeria* or a specific tiered Conifer):
+
+1.  **Sketch it on graph paper.** Draw a box 10 units high by 10 units wide.
+
+2.  **Draw your tree** inside the box.
+
+3.  **Read the coordinates.** Divide them by 10 to get your 0.0–1.0 values.
+
+4.  **Enter them into R.**
+
+Would you like the code snippet for a **"Wind-Swept"** shape (useful for coastal profiles) or perhaps a specific shape for the **Plumeria** (broad, flat-topped, open branching)?
+
+Here is the code for a **"Wind-Swept"** (or "Flag Tree") shape.
+
+This is particularly useful for coastal ecology or high-altitude sites where prevailing winds strip the foliage from the windward side, leaving the branches growing almost entirely in one direction (the "downwind" side).
+
+### The Coordinate Logic
+
+```{r}
+# Shape D: The "Wind-Swept" Tree (Flag form)
+# Assumes wind is blowing from Left to Right
+shape_windswept <- data.frame(
+  x_norm = c(0, 0.6, 0.9, 0.7, 0.2, -0.1, 0),
+  y_norm = c(0, 0.1, 0.4, 0.8, 1.0, 0.6, 0),
+  shape_id = "WindSwept"
+)
+
+# Add this to your existing dictionary
+# shape_dictionary <- rbind(shape_conifer, shape_broadleaf, shape_shrub, shape_windswept)
+```
+
+Notice how the X-coordinates are heavily skewed. Instead of balancing from `-0.5` to `0.5`, they push way out to `0.9` on the right (downwind) and barely touch `-0.1` on the left (windward).
+
+### How to use it in your data
+
+When you label a tree as "WindSwept" in your data table, the code will stretch this shape. However, because we skewed the X-coordinates, the "center" of the tree (where the trunk hits the canopy) will appear on the *left* edge of the foliage, accurately mimicking a tree leaning away from the wind.
+
+```{r}
+# Example Data Entry for a coastal pine
+# ID = "F", Type = "WindSwept", Distance = 10, CrownWidth = 6 ...
+
+```
+
+**One final tip for this shape:** If your wind blows the *other* way (Right to Left), you don't need a new shape. You can just multiply the `CrownWidth` by `-1` in your loop, or flip the `x_norm` values in the dataframe by adding a minus sign (`-x_norm`).
+
+## Shape Library
+
+It is a smart way to work. Instead of pasting those long coordinate lists into every new script, you can just "load" your library once and start plotting.
+
+Here are the two best ways to save your shape library in R.
+
+### Option 1: The "Load and Go" Method (`.RData`)
+
+This is the easiest method. It saves the object `shape_dictionary` to a file. When you load the file later, the object `shape_dictionary` magically appears in your environment with that exact name.
+
+**Step A: Save the library (Run this once)**
+
+```{r}
+# Assumes you have already run the code to create 'shape_dictionary' save(shape_dictionary, file = "MyTreeShapes.RData") 
+```
+
+**Step B: Use it in a new script**
+
+{r}
+
+```         
+# Start a fresh script for a new site 
+load("MyTreeShapes.RData")  
+
+# Check if it's there 
+head(shape_dictionary)  
+```
+
+### Option 2: The "Renameable" Method (`.rds`)
+
+Many R programmers prefer this method because it lets you assign the data to a *new* name when you load it. This is useful if you want to call it `shapes` in one script and `stencils` in another.
+
+**Step A: Save the library**
+
+```{r}
+saveRDS(shape_dictionary, file = "MyTreeShapes.rds") 
+```
+
+**Step B: Use it in a new script**
+
+```{r}
+# You must assign it to a variable 
+my_stencils <- readRDS("MyTreeShapes.rds") 
+```
+
+### A Final Tip on Organization
+
+Since you are using R for creative projects (like your expense analysis or this ecology work), I recommend creating a dedicated folder on your computer like `~/R_Assets/`.
+
+Put this `.RData` file there. Then, no matter what project folder you are working in, you can load your shapes like this:
+
+```{r}
+load("~/R_Assets/MyTreeShapes.RData") 
+```
+
+## Gold Master Version
+
+```{r}
+# ==============================================================================
+# VEGETATION PROFILE DIAGRAMMER (GOLD MASTER)
+# Author: Kim & Gemini
+# Date: December 2025
+# Description: Generates scalable profile diagrams with custom tree shapes
+#              adapted to specific field measurements (Height & Crown Width).
+# ==============================================================================
+
+library(ggplot2)
+library(dplyr)
+
+# ==============================================================================
+# PART 1: THE SHAPE STENCIL LIBRARY
+# Coordinates are normalized: X (-0.5 to 0.5) and Y (0 to 1)
+# ==============================================================================
+
+# 1. Conifer (Sawtooth)
+shape_conifer <- data.frame(
+  x_norm = c(0, 0.5, 0.2, 0.4, 0.15, 0.3, 0, -0.3, -0.15, -0.4, -0.2, -0.5, 0),
+  y_norm = c(1, 0.1, 0.1, 0.35, 0.35, 0.6, 0.6, 0.6, 0.35, 0.35, 0.1, 0.1, 1),
+  shape_id = "Conifer"
+)
+
+# 2. Broadleaf (Rounded/Octagon)
+shape_broadleaf <- data.frame(
+  x_norm = c(0, 0.35, 0.5, 0.35, 0, -0.35, -0.5, -0.35, 0),
+  y_norm = c(1, 0.85, 0.5, 0.15, 0, 0.15, 0.5, 0.85, 1),
+  shape_id = "Broadleaf"
+)
+
+# 3. Shrub (Dome)
+shape_shrub <- data.frame(
+  x_norm = c(-0.5, -0.4, -0.2, 0, 0.2, 0.4, 0.5, 0.5, -0.5),
+  y_norm = c(0, 0.5, 0.8, 1, 0.8, 0.5, 0, 0, 0),
+  shape_id = "Shrub"
+)
+
+# 4. Palm (V-Shape with top foliage)
+shape_palm <- data.frame(
+  x_norm = c(0, 0.5, 0.4, 0.2, 0, -0.2, -0.4, -0.5, 0),
+  y_norm = c(0, 0.5, 0.8, 0.95, 1, 0.95, 0.8, 0.5, 0),
+  shape_id = "Palm"
+)
+
+# 5. Wind-Swept (Asymmetrical / Flag Tree)
+# Note: Skewed X-coordinates (0 to 0.9) to simulate downwind growth
+shape_windswept <- data.frame(
+  x_norm = c(0, 0.6, 0.9, 0.7, 0.2, -0.1, 0),
+  y_norm = c(0, 0.1, 0.4, 0.8, 1.0, 0.6, 0),
+  shape_id = "WindSwept"
+)
+
+# Combine into one Master Dictionary
+shape_dictionary <- rbind(shape_conifer, shape_broadleaf, shape_shrub, 
+                          shape_palm, shape_windswept)
+
+
+# ==============================================================================
+# PART 2: FIELD DATA INPUT
+# ==============================================================================
+
+# Site Parameters
+slope_percent <- 15    # Set to 0 for flat ground
+transect_length <- 35
+
+# The Tree List
+veg_data <- data.frame(
+  ID = c("A", "B", "C", "D", "E", "F"),
+  Species = c("Quercus", "Acer", "Fagus", "Pinus", "Coco", "Juniperus"),
+  Type = c("Broadleaf", "Broadleaf", "Broadleaf", "Conifer", "Palm", "WindSwept"), 
+  Distance = c(5.0, 12.0, 15.0, 22.0, 28.0, 32.0),
+  Height = c(22.0, 18.0, 6.0, 28.0, 15.0, 8.0),       
+  CrownStart = c(12.0, 9.0, 2.0, 18.0, 12.0, 1.0),    
+  CrownWidth = c(10.0, 7.0, 4.0, 8.0, 6.0, 5.0)
+)
+
+
+# ==============================================================================
+# PART 3: THE GEOMETRY ENGINE (Slope + Shape Stretching)
+# ==============================================================================
+
+plot_polygons <- list()
+
+for(i in 1:nrow(veg_data)) {
+  tree <- veg_data[i, ]
+  
+  # A. Calculate Ground Elevation based on Slope
+  ground_z <- tree$Distance * (slope_percent / 100)
+  
+  # B. Retrieve the correct Stencil
+  stencil <- subset(shape_dictionary, shape_id == tree$Type)
+  
+  # C. Parametric Stretching
+  # Crown Height is the vertical space available for the shape
+  crown_h <- tree$Height - tree$CrownStart
+  
+  # Transform X: Center Point + (NormalizedShape * Width)
+  stencil$x_final <- tree$Distance + (stencil$x_norm * tree$CrownWidth)
+  
+  # Transform Y: (Ground + CrownStart) + (NormalizedShape * CrownHeight)
+  stencil$y_final <- (ground_z + tree$CrownStart) + (stencil$y_norm * crown_h)
+  
+  # D. Metadata for Plotting
+  stencil$TreeID <- tree$ID
+  stencil$FillColor <- tree$Type
+  
+  plot_polygons[[i]] <- stencil
+}
+
+# Consolidate all polygons into one table
+all_shapes <- do.call(rbind, plot_polygons)
+
+# Create Ground Polygon (for the soil profile)
+ground_df <- data.frame(
+  x = c(0, transect_length, transect_length, 0),
+  y = c(0, transect_length * (slope_percent/100), -5, -5)
+)
+
+
+# ==============================================================================
+# PART 4: RENDERING
+# ==============================================================================
+
+ggplot() +
+  # 1. Soil Layer
+  geom_polygon(data = ground_df, aes(x = x, y = y), 
+               fill = "bisque4", alpha = 0.5) +
+  geom_segment(aes(x = 0, y = 0, xend = transect_length, 
+                   yend = transect_length * (slope_percent/100)),
+               linewidth = 1, color = "darkgreen") +
+
+  # 2. Trunks (Computed on the fly relative to slope)
+  geom_segment(data = veg_data,
+               aes(x = Distance, xend = Distance, 
+                   y = Distance * (slope_percent/100), 
+                   yend = (Distance * (slope_percent/100)) + CrownStart), 
+               linewidth = 1.2, color = "chocolate4") +
+  
+  # 3. Canopies (The Custom Polygons)
+  geom_polygon(data = all_shapes,
+               aes(x = x_final, y = y_final, group = TreeID, fill = FillColor),
+               alpha = 0.9, color = "black") +
+  
+  # 4. Labels
+  geom_text(data = veg_data,
+            aes(x = Distance, 
+                y = (Distance * (slope_percent/100)) + Height + 1.5, 
+                label = ID), 
+            fontface = "bold") +
+  
+  # 5. Styling & colors
+  scale_fill_manual(values = c("Broadleaf" = "forestgreen", 
+                               "Conifer" = "darkolivegreen", 
+                               "Shrub" = "chartreuse",
+                               "Palm" = "gold3",
+                               "WindSwept" = "darkcyan")) +
+  coord_fixed(ratio = 1) + 
+  theme_minimal() +
+  labs(title = "Vegetation Profile Diagram",
+       subtitle = paste0("Slope: ", slope_percent, "% | Parametric Shapes"),
+       x = "Distance (m)", y = "Elevation (m)") +
+  theme(panel.grid.minor = element_blank())
+
+
+# ==============================================================================
+# PART 5: SAVE LIBRARY (Optional)
+# Uncomment the line below to save your shapes for future projects
+# ==============================================================================
+# save(shape_dictionary, file = "Kim_Tree_Shapes.RData")
+
+```
+
+### Final Recommendations for You
+
+1.  **Testing:** Run the script as-is first. You should see a nice lineup including the new **WindSwept** juniper on the far right and a **Palm** near the end.
+
+2.  **Saving:** Once you are happy with the `shape_dictionary`, run that last commented-out line (`save(...)`). Then, for your next project, you can delete "Part 1" entirely and just use `load("Kim_Tree_Shapes.RData")`.

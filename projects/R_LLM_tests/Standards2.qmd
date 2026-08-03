@@ -1,0 +1,198 @@
+# Results Generation
+
+The goal is to test the possibility of Claude interpreting the data much as would be done in a Results section of a paper.
+
+This is being done with R as I can envision that there may be a need to modify the data. After a data change (in the R code), it should be possible to rerun the chunk and get an updated "Results" text.
+
+In this example, there are two chunks. The important part is only in the second chunk, as the data are completely reanalyzed. A small amount of code modification would correct this and make the two-chunk system function in a step-wise fashion.
+
+Note that an artifact is being used to help with the formatting, etc.
+
+**Prompt**
+
+I need the R code to input some data and create a table. Besides the table, I'd like to know the basic statistics about the ages of the people. Here is the data: """Bill is 39 years old, married and has four children. Fred is single and is 21 years old. Mary is married and has 2 children. She is 29. Jane has four kids and is 32. Sam is 42 and has one adult child. There are four children from Kyle's marriage. He's 37. I'd like the source of the data to say "test data" and date-stamp it. The title should be "Demographic Data"."""
+
+**Response**
+
+```{r}
+#| error: false
+#| warning: false
+
+## Load standard packages.
+library(tidyverse)     ## Many useful functions
+library(gt)            ## Tables
+
+## Set an option for the read_csv function
+## This will suppress warning messages.
+options(readr.show_col_types = FALSE)
+
+## Data input.
+data <- read_csv(col_names=TRUE, file=
+            "name,  age, marital_status, children
+             Bill,  39,  married,        4
+             Fred,  21,  single,         0
+             Mary,  29,  married,        2
+             Jane,  32,  married,        4
+             Sam,   42,  married,        1
+             Kyle,  37,  married,        4")
+
+## Initialize the identification information.
+table_title <- "Demographic Data"
+data_source <- paste0("Source: test data (", Sys.Date(), ")")
+
+## Create the table.
+table <- gt(data) %>% 
+  tab_header(
+    title = table_title
+  ) %>% 
+  tab_source_note(
+    source_note = data_source
+  ) %>%
+  tab_style(
+    style = cell_text(v_align="top"),
+    locations = cells_body()
+  ) %>%
+  fmt_integer(
+    columns = c(age, children)
+  )
+
+## Display the table
+table
+
+## Calculate basic statistics about ages
+age_stats <- data %>%
+  summarise(
+    mean_age = mean(age),
+    median_age = median(age),
+    min_age = min(age),
+    max_age = max(age),
+    sd_age = sd(age)
+  )
+
+## Assemble the statistical output
+text_out <- paste0("Age Statistics:\n")
+text_out <- paste0(text_out, "Mean age: ", round(age_stats$mean_age, 2), " years\n")
+text_out <- paste0(text_out, "Median age: ", age_stats$median_age, " years\n")
+text_out <- paste0(text_out, "Youngest age: ", age_stats$min_age, " years\n")
+text_out <- paste0(text_out, "Oldest age: ", age_stats$max_age, " years\n")
+text_out <- paste0(text_out, "Standard deviation of age: ", round(age_stats$sd_age, 2), " years\n")
+
+## Print the statistical output
+cat(text_out)
+```
+
+**Prompt**
+
+Can you take the table and text_out variables and use these to create an interpretive narrative? I'd like this done with R code.
+
+**Response**
+
+String wrap added
+
+```{r}
+#| error: false
+#| warning: false
+
+## Load standard packages.
+library(tidyverse)     ## Many useful functions
+library(gt)            ## Tables
+
+## Set an option for the read_csv function
+## This will suppress warning messages.
+options(readr.show_col_types = FALSE)
+
+## Data input.
+data <- read_csv(col_names=TRUE, file=
+            "name,  age, marital_status, children
+             Bill,  39,  married,        4
+             Fred,  21,  single,         0
+             Mary,  29,  married,        2
+             Jane,  32,  married,        4
+             Sam,   42,  married,        1
+             Kyle,  37,  married,        4")
+
+## Initialize the identification information.
+table_title <- "Demographic Data"
+data_source <- paste0("Source: test data (", Sys.Date(), ")")
+
+## Create the table.
+table <- gt(data) %>% 
+  tab_header(
+    title = table_title
+  ) %>% 
+  tab_source_note(
+    source_note = data_source
+  ) %>%
+  tab_style(
+    style = cell_text(v_align="top"),
+    locations = cells_body()
+  ) %>%
+  fmt_integer(
+    columns = c(age, children)
+  )
+
+## Display the table
+table
+
+## Calculate basic statistics about ages
+age_stats <- data %>%
+  summarise(
+    mean_age = mean(age),
+    median_age = median(age),
+    min_age = min(age),
+    max_age = max(age),
+    sd_age = sd(age)
+  )
+
+## Assemble the statistical output
+text_out <- paste0("Age Statistics:\n")
+text_out <- paste0(text_out, "Mean age: ", round(age_stats$mean_age, 2), " years\n")
+text_out <- paste0(text_out, "Median age: ", age_stats$median_age, " years\n")
+text_out <- paste0(text_out, "Youngest age: ", age_stats$min_age, " years\n")
+text_out <- paste0(text_out, "Oldest age: ", age_stats$max_age, " years\n")
+text_out <- paste0(text_out, "Standard deviation of age: ", round(age_stats$sd_age, 2), " years\n")
+
+## Print the statistical output
+cat(text_out)
+
+## Create interpretive narrative with line wrapping
+create_narrative <- function(data, age_stats, width = 80) {
+  total_people <- nrow(data)
+  married_count <- sum(data$marital_status == "married")
+  single_count <- sum(data$marital_status == "single")
+  total_children <- sum(data$children)
+  
+  people_with_children <- data %>% filter(children > 0)
+  avg_children <- mean(people_with_children$children)
+  
+  youngest <- data %>% filter(age == min(age)) %>% pull(name)
+  oldest <- data %>% filter(age == max(age)) %>% pull(name)
+  
+  narrative <- c(
+    "Demographic Analysis:",
+    "",
+    paste("Our sample consists of", total_people, "individuals with diverse demographic characteristics.",
+          "The majority (", married_count, "out of", total_people, ") are married, while", single_count, "is single.",
+          "Collectively, they have", total_children, "children, with an average of", round(avg_children, 1),
+          "children among those who are parents."),
+    "",
+    "Age distribution:",
+    paste("The ages in our sample range from", age_stats$min_age, "to", age_stats$max_age, "years old.",
+          youngest, "is the youngest at", age_stats$min_age, "years old, while", oldest, "is the oldest at", age_stats$max_age, "years old.",
+          "The average age is", round(age_stats$mean_age, 1), "years, with a median of", age_stats$median_age, "years.",
+          "The standard deviation of", round(age_stats$sd_age, 1), "years indicates a moderate spread in ages."),
+    "",
+    paste("This sample provides a snapshot of a group with varied family sizes and a wide age range,",
+          "offering insights into different life stages and family structures within the group.")
+  )
+  
+  # Wrap each paragraph to the specified width
+  wrapped_narrative <- sapply(narrative, function(para) paste(strwrap(para, width = width), collapse = "\n"))
+  
+  return(paste(wrapped_narrative, collapse = "\n"))
+}
+
+## Generate and print the narrative
+narrative <- create_narrative(data, age_stats)
+cat(narrative)
+```

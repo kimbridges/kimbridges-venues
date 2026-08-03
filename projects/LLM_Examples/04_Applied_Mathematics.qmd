@@ -1,0 +1,119 @@
+# Applied Mathematics
+
+The LLMs are supposed to be quite good at doing mathematical problems.
+
+## Field Area Calculation
+
+**I am measuring the area of a field. Each of my steps is 19 inches. I start by walking 118 steps toward 42 degrees. I then turn and go 208 steps toward 354 degrees. I turn again toward 261 degrees and walk 125 steps. I then return to the starting point by walking 197 steps. What is the area of the field in square feet?**
+
+> The problem describes a polygon that has four sides with the lengths of 118, 208, 125, and 197 steps each. We know that each step is 19 inches. However, calculating the area of this polygon is a bit more complex because we don\'t have right angles at each turn. Instead, we are given directions in degrees which are not simple right angles. Therefore, we can\'t simply calculate the area as a rectangle, for example.
+>
+> Given the nature of the problem, it\'s most feasible to approach it using the law of cosines to calculate the lengths of the diagonals and then using Heron\'s formula to calculate the areas of the resulting triangles.
+>
+> First, we need to convert the length of each side from steps to feet (since there are 12 inches in a foot).
+>
+> 118 steps \* 19 inches/step / 12 inches/foot = 186.5 feet
+>
+> 208 steps \* 19 inches/step / 12 inches/foot = 327.33 feet
+>
+> 125 steps \* 19 inches/step / 12 inches/foot = 196.875 feet
+>
+> 197 steps \* 19 inches/step / 12 inches/foot = 310.42 feet
+>
+> Second, we need to convert the angles to the one between adjacent sides:
+>
+> Angle 1 (between sides of 186.5 and 327.33 feet) = 42 degrees
+>
+> Angle 2 (between sides of 327.33 and 196.875 feet) = 312 degrees (since 354 - 42 = 312 degrees)
+>
+> Angle 3 (between sides of 196.875 and 310.42 feet) = 93 degrees (since 354 - 261 = 93 degrees)
+>
+> Angle 4 (between sides of 310.42 and 186.5 feet) = 217 degrees (since 261 - 42 = 217 degrees)
+>
+> Note: You can get these angles by subtracting each given direction from the next one. If the result is negative, add 360 until you get a positive result.
+>
+> Next, we will use the law of cosines to calculate the diagonals:
+>
+> Diagonal 1 (between vertices of sides 186.5 and 196.875 feet) = sqrt(186.5\^2 + 196.875\^2 - 2186.5196.875\*cos(312 degrees))
+>
+> Diagonal 2 (between vertices of sides 327.33 and 310.42 feet) = sqrt(327.33\^2 + 310.42\^2 - 2327.33310.42\*cos(93 degrees))
+>
+> After getting the lengths of the diagonals, you can split the polygon into two triangles and use Heron\'s formula to find the area of each triangle. Heron\'s formula is used to calculate the area of a triangle when you know the lengths of all three sides:
+>
+> Let a, b, c be the sides of the triangle and s be the semi-perimeter of the triangle. Then the area of the triangle is given by the formula:
+>
+> Area = sqrt\[s\*(s - a)(s - b)(s - c)\],
+>
+> where s = (a + b + c)/2.
+>
+> Perform these steps for both triangles and add the areas to get the total area of the polygon.
+>
+> Note: Make sure you use the correct units and convert degrees to radians when using trigonometric functions in most programming languages and calculators.
+
+**Can you do the calculations?**
+
+> Certainly, let\'s perform the calculations based on the information given.
+>
+> First, we have already converted the length of each side from steps to feet:
+>
+> 118 steps \* 19 inches/step / 12 inches/foot = 186.5 feet
+>
+> 208 steps \* 19 inches/step / 12 inches/foot = 327.33 feet
+>
+> 125 steps \* 19 inches/step / 12 inches/foot = 196.875 feet
+>
+> 197 steps \* 19 inches/step / 12 inches/foot = 310.42 feet
+>
+> And the angles between the adjacent sides:
+>
+> Angle 1 (between sides of 186.5 and 327.33 feet) = 42 degrees
+>
+> Angle 2 (between sides of 327.33 and 196.875 feet) = 312 degrees
+>
+> Angle 3 (between sides of 196.875 and 310.42 feet) = 93 degrees
+>
+> Angle 4 (between sides of 310.42 and 186.5 feet) = 217 degrees
+>
+> Remember, the cosine function in most programming languages and calculators use radians instead of degrees, so we need to convert these angles to radians. We use the conversion factor π/180.
+>
+> 42 degrees = 0.733 radians
+>
+> 312 degrees = 5.445 radians
+>
+> 93 degrees = 1.623 radians
+>
+> 217 degrees = 3.784 radians
+>
+> Next, let\'s calculate the diagonals using the law of cosines:
+>
+> Diagonal 1 (between vertices of sides 186.5 and 196.875 feet) = sqrt(186.5\^2 + 196.875\^2 - 2186.5196.875\*cos(5.445 radians)) ≈ 241.69 feet
+>
+> Diagonal 2 (between vertices of sides 327.33 and 310.42 feet) = sqrt(327.33\^2 + 310.42\^2 - 2327.33310.42\*cos(1.623 radians)) ≈ 368.66 feet
+>
+> Now, we have two triangles to find the area of:
+>
+> Triangle 1 (sides: 186.5, 196.875, and 241.69 feet)
+>
+> Triangle 2 (sides: 327.33, 310.42, and 368.66 feet)
+>
+> Let\'s use Heron\'s formula to calculate the area of each triangle.
+>
+> Triangle 1:
+>
+> s1 = (186.5 + 196.875 + 241.69) / 2 = 312.5325 feet
+>
+> Area1 = sqrt\[s1\*(s1 - 186.5)(s1 - 196.875)(s1 - 241.69)\] ≈ 17413.55 square feet
+>
+> Triangle 2:
+>
+> s2 = (327.33 + 310.42 + 368.66) / 2 = 503.205 feet
+>
+> Area2 = sqrt\[s2\*(s2 - 327.33)(s2 - 310.42)(s2 - 368.66)\] ≈ 48165.77 square feet
+>
+> Finally, let\'s add the two areas together to get the total area of the polygon:
+>
+> Total area = Area1 + Area2 = 17413.55 + 48165.77 = 65579.32 square feet.
+>
+> So, the approximate area of the field is 65579.32 square feet.
+
+A "back of the envelope" calculation indicates that this looks like a valid answer.

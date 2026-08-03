@@ -1,0 +1,65 @@
+## Workflow
+
+## Photo Metadata
+
+Metadata are the fields of information stored in a JPG file that record properties of the image, such as when it was taken, the type of camera, lens length. We can add additional descriptive information to the metadata.
+
+There are several useful metadata fields that need to be added to each photo.
+
+-   **Title:** What the image is about.
+
+-   **Event:** A category that anchors a set of photos. These may be a date, activity, or subject.
+
+-   **Location:** The place the photo was taken.
+
+-   **City:** The city in which the photo was taken.
+
+-   **Longitude and Latitude:** The geographic coordinates of the photo location. Sometimes, such as with a cell phone, these are automatically recorded.
+
+## Adding or Modifying Metadata
+
+```{r}
+source("metadata_to_csv.R")
+source("csv_to_metadata.R")
+
+# Step 1: Extract
+metadata_to_csv("Keepers", proof_format = "both")
+
+# Step 2: Edit metadata.csv using the proof sheet for reference
+
+# Step 3: Preview changes
+## csv_to_metadata("metadata.csv", "Keepers", dry_run = TRUE)
+
+# Step 4: Apply changes
+csv_to_metadata("metadata.csv", "Keepers")
+```
+
+## Functions
+
+**metadata_to_csv.R** — The extraction function:
+
+-   Scans all JPGs in a folder, sorted alphabetically
+
+-   Extracts: Event, Description, Location, City, GPSLatitude, GPSLongitude
+
+-   Writes `metadata.csv` with a Row column for easy reference
+
+-   Generates proof sheet in PDF, HTML, or both
+
+-   PDF: 2×3 grid with row number, thumbnail, filename, and current Event
+
+-   HTML: Same layout but thumbnails are clickable links to full-size images
+
+**csv_to_metadata.R** — The apply function:
+
+-   Reads the edited CSV
+
+-   Matches rows to files by FileName
+
+-   Creates backup subfolder (`originals_backup`) before any writes
+
+-   Empty cells = no change (existing metadata preserved)
+
+-   Has `dry_run = TRUE` option to preview what would change
+
+-   Uses exiftoolr to write to standard IPTC/XMP fields

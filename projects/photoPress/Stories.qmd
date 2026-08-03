@@ -1,0 +1,19 @@
+---
+title: "Stories"
+format: html
+editor: visual
+---
+
+# Stories
+
+Stories are the pages that organize the photo book into chapter-like sections. Each story is one or more pages of text that has been saved as a PDF file.
+
+## Events: The Key to Organization
+
+Each story PDF is given a name that is the same as a name used for an Event in the photo EXIF data.
+
+The story page will be at the start of a section in the photo book. It's like a chapter. All the photos that have the Event with a value that's the same as the name of the story page will be placed after the story page.
+
+Events categorize the photos. Story pages share the Event name and are used to provide an overview that introduces the photos.
+
+An Example

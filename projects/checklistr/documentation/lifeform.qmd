@@ -1,0 +1,95 @@
+# What Grows There
+
+A bare list of names is hard to read. A flora becomes legible when it is sorted into kinds — the trees that make the canopy, the shrubs beneath them, the ferns and herbs of the floor, the grasses and sedges of the openings. Growth form is the field that does this sorting, and it is the one field a checklist most wants that the herbarium record does not carry.
+
+It has to be fetched from elsewhere — a global trait database — and stitched to the checklist. This chapter does that, sorts the flora of Kīpuka Puaulu into its growth forms, and reads one ecological signal straight off the result. It also stays honest: growth form is a *typical* habit, and some plants refuse to hold still.
+
+```{r}
+#| label: setup-lifeform
+#| message: false
+
+## --- Standard packages ---
+
+## data handling and graphics (dplyr, readr, ggplot2, ...)
+library(tidyverse)
+## formatted tables
+library(gt)
+
+## --- Package from github/kimbridges ---
+
+## install once with: install_github("kimbridges/checklistr")
+library(checklistr)
+
+## --- Options ---
+
+## suppress read_csv() column-type messages
+options(readr.show_col_types = FALSE)
+```
+
+## The shape of the flora
+
+Sorted by growth form, the checklist takes on a familiar silhouette.
+
+```{r}
+#| label: lifeform-composition
+#| fig-cap: "The flora of Kīpuka Puaulu by growth form. A tree-framed mesic forest: a strong woody canopy, a deep herbaceous and fern-rich understory, grasses and sedges in the openings."
+#| fig-width: 7
+#| fig-height: 4
+
+## the generated checklist, growth form already assigned
+checklist <- read_csv("data/kipuka_puaulu_checklist_generated.csv")
+
+## count taxa per growth form and plot
+checklist |>
+  count(lifeform, name = "taxa") |>
+  mutate(lifeform = fct_reorder(lifeform, taxa)) |>
+  ggplot(aes(taxa, lifeform)) +
+  geom_col(fill = "#0072B2", width = 0.7) +
+  geom_text(aes(label = taxa), hjust = -0.3, size = 3.5) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.1))) +
+  labs(x = "taxa", y = NULL) +
+  theme_minimal(base_size = 11) +
+  theme(panel.grid.major.y = element_blank())
+```
+
+```{r}
+#| label: lifeform-stats
+#| include: false
+
+n_taxa   <- nrow(checklist)
+n_fern   <- sum(checklist$lifeform == "fern")
+pct_fern <- round(100 * n_fern / n_taxa)
+n_tree   <- sum(checklist$lifeform == "tree")
+```
+
+The profile reads as what Kīpuka Puaulu is: a mesic forest built on a woody frame. Trees are the largest single class (`r n_tree` taxa), the canopy the whole kīpuka is named for. Beneath them, herbs and ferns together make a deep understory, and grasses and sedges fill the light gaps. This is the payoff of the growth-form field — five numbers turn a list of `r n_taxa` names into a picture of a forest's structure.
+
+## Where the growth form comes from
+
+The herbarium label does not record whether a plant is a tree or a herb, so `checklistr` fetches growth form from GIFT, the global trait database, and falls back to botanical clade when GIFT has no entry for a species. Crucially, it records *how* each assignment was made, in a `lifeform_source` column.
+
+```{r}
+#| label: lifeform-source
+
+## how each growth-form assignment was made
+checklist |>
+  count(lifeform_source, name = "taxa") |>
+  arrange(desc(taxa)) |>
+  mutate(meaning = recode(lifeform_source,
+    "gift-species" = "matched a species in GIFT",
+    "gift-genus"   = "inferred from the genus in GIFT",
+    "clade"        = "assigned from botanical clade (e.g. ferns, grasses)")) |>
+  gt() |>
+  cols_label(lifeform_source = "source", taxa = "taxa", meaning = "meaning") |>
+  tab_source_note("Every growth-form value carries its provenance, so a reader can weight a direct species match differently from a clade-level fallback.")
+```
+
+This provenance is not bookkeeping for its own sake. A growth form matched to the exact species in GIFT is a stronger claim than one inferred from the genus, which is stronger than one assigned from clade alone. The ferns are the clearest case: GIFT's growth-form trait is built for seed plants, so nearly every fern here is labeled "fern" from its clade rather than from a trait record. Showing that in the table lets a reader trust the woody-plant assignments while knowing the ferns were sorted by a coarser rule.
+
+## An honest word about "typical"
+
+Growth form is a *habit*, not a fixed fact, and the forest's own signature tree makes the point. *Metrosideros polymorpha* — ʻōhiʻa — is called a tree here, and usually is one. But *polymorpha* is named for its plasticity: the same species grows as a towering canopy tree in wet forest and as a knee-high shrub on fresh lava or in bog. A single growth-form label cannot capture that range; it records the plant's usual habit in a place like this one. The field is a useful simplification, and worth using as long as its nature as a simplification is not forgotten.
+
+## One signal to carry forward
+
+Even a coarse growth-form profile carries ecological information. Ferns are `r pct_fern`% of the flora here — a substantial fraction, and a mark of a moist, shaded forest, since ferns depend on humidity and free water to reproduce. That single number becomes a probe in the next island chapter, where a drier site is expected to show a thinner fern layer. Growth form does more than make the list legible; it turns the checklist into something that can be *compared* from place to place.

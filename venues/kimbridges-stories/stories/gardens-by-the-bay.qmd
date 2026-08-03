@@ -1,0 +1,13 @@
+---
+title: "Gardens by the Bay"
+subtitle: "Two botanical venues in Singapore."
+date: 2015-11-04
+categories: ["Travel", "Gardens", "Singapore", "Asia"]
+image: ../images/Gardens_by_the_Bay.jpg
+pdf: ../pdfs/Gardens_by_the_Bay.pdf
+---
+We visited the Cloud Forest with world's tallest indoor waterfall, and Flower Dome, world's largest free-standing greenhouse.
+
+Pages: 78
+
+<iframe src="../viewer.html?pdf=Gardens_by_the_Bay.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

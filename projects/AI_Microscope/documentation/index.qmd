@@ -1,0 +1,23 @@
+# Preface {.unnumbered}
+
+::: callout-note
+## Try it first
+
+The rebuilt AI Microscope is running at [aimicroscope.netlify.app](https://aimicroscope.netlify.app/). It opens in any browser, on a phone or a desktop. Nothing to install, nothing to sign in to. Five minutes with the thing itself will make the rest of this document read better.
+:::
+
+In 1989, four of us wrote a paper about a piece of teaching software. We called it the AI Microscope. A student would sit at a screen, look at a slide of plant tissue, point at what they saw, and be told what it was. Not quizzed. Not graded. Simply told. The machine was a patient lab partner. It helped you look, and then it got out of the way.
+
+That was the idea, and I still think it was a good one. The trouble was the year. In 1989, a single microscope image ate most of a megabyte, and a megabyte was a lot to ask. The reasoning ran on one kind of computer and the pictures on another, wired together with a serial cable. The words the program spoke were canned. So a strong idea sat on top of hardware that could barely hold it up.
+
+One line in that old paper has stayed with me. We wrote that the system would pronounce the names of things and show what the names meant. In 1989, that was mostly a wish. A machine could not really say *Hibiscadelphus giffardianus*, and it certainly could not say it well. The feature was right. The tools were not. It's an old pattern, and one I've watched my whole career. The concept arrives first, and then you wait for the world to catch up.
+
+Thirty-seven years later, the world caught up. This document is what happened when I went back and rebuilt the AI Microscope with the tools it had been waiting for. A browser instead of a wired pair of machines. A few dollars of cloud service instead of a room of hardware. And a voice that can, at last, say *Hibiscadelphus giffardianus* out loud, and tell you the name honors a botanist named Giffard.
+
+I want to be clear about what this is and isn't. It is not a product, and it is not a manual. It's the account of an exploration: what it feels like to carry one good idea across thirty-seven years and watch the old constraints fall away, one by one. Some of the story is technical, and I've tried to make that part honest, including the afternoon I spent finding out that the program was quietly guessing at colors it could not actually tell apart. Most of the story is about a way of thinking that had to survive the move. A tool, not a spy. Help offered, never demanded. The student in charge.
+
+A word about how it got built, because the how is part of the point. I didn't do it alone, and I didn't do it with a single collaborator. The first was Gemini. It looked at the old paper and said, in effect, yes, this can be done. It built a light version quickly, and that mattered, because it proved the thing was alive. But the light version couldn't really carry the 1989 goals. A second pass, still with Gemini, got closer without getting there. The deeper work, the kind that makes a simulation honest enough to teach from, needed tools that weren't yet in reach. Moving to Claude put them in reach, and that's when the real progress came. Each collaborator brought something the last one didn't, and the handoff between them felt less like a switch than like growth. So the byline names two of us, Bridges and Claude. The fuller truth is that a machine helped me at every step, and more than one machine did the work.
+
+Two kinds of reader might find something here. One is learning plant anatomy, meeting these long names for the first time, and wondering why they should have to. The other is teaching that student, and wondering whether a thing like this belongs anywhere near a real lab. My answer to both runs through the whole document, so I'll only sketch it now. The tool doesn't replace the lab. It sits on either side of it, a preview before and a review after, and it takes away the one moment of the lab that everyone dreads. That's the promise in the title.
+
+So we'll begin where the whole thing began, at a screen in 1989, with a good idea and not quite enough machine to run it on. And we'll end back at that same screen, with a student finally able to hear the name of the plant tissue in front of them, said aloud, and know what it means.

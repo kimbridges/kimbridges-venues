@@ -1,0 +1,8 @@
+---
+title: "Photo Locations"
+subtitle: "Moving cellphone location logs to photo EXIF data."
+categories: ["Maps", "Data Grubbing", "Photos"]
+image: ../photolocations/timelinesr_cover.png
+---
+
+[View Document](../photolocations/){.btn .btn-primary}

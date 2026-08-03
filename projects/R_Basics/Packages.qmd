@@ -1,0 +1,102 @@
+# Packages & Libraries
+
+The power of R comes from packages. A package is the repository of a set of functions, sometimes numbering into many dozen which provide useful computations.
+
+Usually, packages are written and maintained by other people. Many of these computational gems provide core capabilities to R. In some cases, it is hard to imagine using R without first loading a few of these packages.
+
+Advanced R uses often create their own packages. These packages generally consist of new or adapted functions that more specifically pertain to the interests and needs of the individual.
+
+A package created elsewhere must first be loaded before it can be used. The loading basically brings the package from some Internet storage service (e.g., CRAN or GIT) and stores the code locally on your computer. Once stored, you use the package without a need for Internet access.
+
+## Package Updates
+
+Packages can be updated by the developers and maintenance teams. Often, you'll need to update your locally-stored version of the package so it is compatible with another package. Note that most packages rely on code from other packages. New features are added, for example, and these changes ripple through the packages that depend on the other packages.
+
+R Studio provides a tool for updating packages. It generally works. Sometimes, you may need to remove a package and re-install a fresh new (updated) version. R Studio supports package removal (Packages tab, X at the end of the row listing the package - just beyond the Version column.)
+
+## Installed Packages
+
+It is assumed that all the packages that you'll be using are already installed. If this is not true, just use the R Studio Install button and specify the name of the needed package. This gives you easy access to all the CRAN packages.
+
+There are a few cases where a needed package is not stored on CRAN. In this situation, you're probably given instructions on how to load the package using an alternative mechanism.
+
+## The Library Function
+
+If you make much use of R, you'll likely have loaded many packages. There are also a lot of packages that are automatically loaded when you install R. The result is that you have a lot of code available on your computer. In practice, you'll only need some of that for any particular project. That's why you enable just the few packages you'll need by specifying the package names with a library function.
+
+You must use the library function for each package before you can use the package. Where you place the library function is a matter of personal preference.
+
+-   **Dispersed Strategy:** You can place a library function for a particular package inside code blocks just prior to the use of a function from the package.
+
+-   **Consolidate Strategy:** Gathering all of the library functions as the first code chunk serves as a kind of initialization phase. This is the strategy advocated here.
+
+## Core Packages
+
+There are a few packages that are useful in most of the programming you'll be doing in R. People differ, of course, in what packages they use as their "core" set.
+
+It is useful to identify a set of core packages and to make a code chunk that loads these with the library function. This code chunk can be copied to the start of any new project.
+
+### Minimal Example
+
+Base R provides a lot of functionality. In practice, a few packages expand the power of the Base or provide alternative ways to accomplish analysis tasks.
+
+Which supplemental packages are used is a matter of personal choice.
+
+To make R programming more efficient, there are a few packages that should always be loaded as the tasks they support are used in virtually every R chunk. For example, in this core there is support for reading and manipulating data along with getting good tables.
+
+```{r}
+#| label:   small-core
+#| echo:    true
+#| warning: false
+#| message: false
+
+## Activate the Core Packages
+library(tidyverse) ## Brings in a core of useful functions
+library(gt)        ## Tables
+
+```
+
+Bringing in tidyverse **automatically** actually activates a number of useful packages. These are known as the "core tidyverse." They are:
+
+-   **ggplot2**: A very basic graphics package.
+
+-   **dplyr**: Data manipulation
+
+-   **tidyr**: Organize data
+
+-   **readr**: Read data with good parsing
+
+-   **purr**: Functional programming support
+
+-   **tibble**: Tools for this modern data frame structure
+
+-   **stringr**: Functions for strings
+
+-   **forcats**: Factor tools (categorical variables)
+
+There are even more packages. Check the website (<https://www.tidyverse.org/packages/>).
+
+## Specialized Packages
+
+This is where the analytic tasks get support from packages that provide functions specific functions. Unless you're working in this domain, you are not likely to need these packages. This specificity can be seen in the examples.
+
+The library functions in these examples would be added to an appropriate set of core packages (see above).
+
+### Mapping
+
+Making maps that show data locations is a specialized task. A small set of additional packages provides the support for a wide variety of mapping options.
+
+```{r}
+#| label:   map-core
+#| echo:    true
+#| warning: false
+#| message: false
+
+## Activate the useful map packages
+library(sitemaps) ## Plot points, labels on a map
+library(ggmap)    ## Show maps, handle Google key
+library(parzer)   ## HMS to digital coordinates
+
+```
+
+Two important packages, `ggplot2` and `stringr`, are activated when you activate `tidyverse`.

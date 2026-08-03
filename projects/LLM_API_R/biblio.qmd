@@ -1,0 +1,114 @@
+---
+title: "Build Biblio"
+format: html
+editor: visual
+bibliography: example_bib.bib  
+---
+
+## Build a Bibliography
+
+**NOTE: MOVE THE FILES TO A NEW PROJECT!!!!!**
+
+There are a lot of choices when it comes to building a bibliography. Here, the process is kept simple and focuses on creating a bibliography for a single publication or report.
+
+There isn't any special package used, such as Zotera.
+
+## Background Information
+
+A bibliographic file holds all the citations that will be used. In general, citations that won't be used are not included in this file. There will be from twenty to fifty citations for a typical scientific paper.
+
+The bibliographic file name extension is ".bib". You'll use this file name in the YAML header.
+
+All the citations are formatted according to the BibTex rules. Essentially, this is a deconstruction of the citation into the key parts with each part given a standard label (e.g., author or title).
+
+The first line of each citation in the bibliography file begins with "@article{" followed by an author name, year and a word from the title. This text (e.g., bridges2005complementing) is used as the citation reference. The reference is placed in the text. Rendering formats this properly and moves the full citation to the list of references at the end of the paper.
+
+RStudio provides a convenient way to select and insert citations. There are two ways to begin:
+
+-   Use the Visual mode and click on the Insert button. Then Choose Citation.
+
+-   Enter a "\@".
+
+In either case, a box will appear with the list of bibliographic entries in the bibliography file. Click on the one you want to use and it will be inserted.
+
+## Creating the Bibliographic File
+
+Let's make an assumption.
+
+You are preparing your paper. Part of this process involves reading articles that are pertinent to your research. Many of the articles are research papers or reports. You also find information in some websites.
+
+How about using a text file inside RStudio as a place to keep notes on the items you think should be used as references in your paper. You can add more than citations to this file.
+
+Here is a simple example.
+
+> Overview papers --------------------------
+>
+> Berkes, F., 1999. Sacred Ecology: Traditional Ecological Knowledge and Resource
+>
+> Management. Taylor and Francis, Ann Arbor, MI.
+>
+> Bridges, K.W., McClatchey, W., 2005. Complementing PABITRA high-island studies
+>
+> by examining terrestrial plant diversity on atolls. Pacific Science 59, 261--272.
+>
+> Theory -----------------------------------
+>
+> Holling, C.S., 1973. Resilience and stability of ecological systems. Annual Review of
+>
+> Ecology and Systematics 4, 1--23.
+
+We'll be using the parsing power of ChatGPT to extract the citations and leave behind the comments (used here for organization).
+
+Note: Uses functions from other chapters.
+
+Clean-up: Used for Testing
+
+```{r}
+
+## Delete the bibliographic file.
+
+file.remove("P://Emerging/GPT/example_bib.bib")
+
+```
+
+Handle multiple citations in a text file.
+
+```{r}
+
+
+## Read a multi-line file with basic citations.
+data <- readLines("P://Emerging/GPT/new_citations.txt")
+
+## Give instructions on what to do.
+prompt <- "The input file has bibliographic citations, along with some comment lines. Ignore the comment lines. Convert the bibliographic citations into a standard BibTex format. If possible, include the DOI data. If you find an abstract for an article, include it as well. Don't include any comments in your response."
+
+## Define the LLM role.
+role <- "You are a bibliographic expert. You know the various formats that are used in the scientific literature. You are able to convert from one format to another. You can also find the DOI data and abstracts for an entry."
+
+## Enhance the bibliographic citation.
+response <- response <- analyzeTXT(analysis_text = data,
+                       AI_role = role,
+                       analysis_prompt = prompt,
+                       LLM = LLM_alt)
+
+## Check to see what was added.
+## cat(response)
+
+## Get rid of extra characters and the start and end.
+## response_clean <- substr(response,11,9999)
+## response_clean <- chartr("`", " ", response_clean)
+
+response
+
+## Append the result to a file.
+cat(response, file="P://Emerging/GPT/example_bib.bib", append = TRUE)
+
+```
+
+Now we can insert a citation [@bridges2005complementing]. Here is another @bridges2005complementing citation. [bridges2005complementing; @colwell2004interpolating].
+
+The following should render the bibliography.\
+\# References
+
+::: {#refs}
+:::

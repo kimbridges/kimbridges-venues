@@ -1,0 +1,109 @@
+# Resources
+
+## The Use Case
+
+The Background chapter explores a practical use case: converting unstructured text in a Google Doc into a BibTeX file compatible with RStudio. This integration simplifies the process of inserting and managing citations within markdown documents, offering a streamlined workflow for researchers.
+
+This section describes some activities that need to be done in preparation for the use case.
+
+## General Disclaimer
+
+This is early exploratory work. There are likely a lot of "gocha" situations. Also, this was developed using the Windows 11 environment; other platforms may behave differently.
+
+## API Keys
+
+You need to get the API key from the data supplier. For example, OpenAI provides keys to clients who meet a set of requirements, such as having a paid account.
+
+***It is necessary to have your own OpenAI API key to run the functions.***
+
+### Store the API Key
+
+It is important to keep the `OpenAI API key` secret, especially if the use of the key cost money to use (as most do).
+
+Generally, API keys are store in a system file on the local computer. This is convenient and quite easy to do.
+
+It is often said that you use the command `Sys.putenv()` to store the key. Here, it is recommended that you use the following command inside a R chunk:
+
+`file.edit("~/.Renviron")`
+
+This opens up the Renviron file so that you can edit the entries inside a RStudio tab.
+
+The format is:
+
+`KEY1 = keyvalue1 KEY2 = keyvalue2`
+
+Here is an example (with a fake key value):
+
+`OPENAI_API_KEY = 3Y8jPQ34v772I24Lk9`
+
+### Access the API Key
+
+Once you save the Renviron file, ***you must restart RStudio***. This refreshes the file and you can access the key value with the following R statement:
+
+`ChatAPI_key <- Sys.getenv("OPENAI_API_KEY")`
+
+## Setup the Libraries
+
+There is a set of libraries that provide the functions needed to handle the citation processing. These are listed, along with a few default values, in this code chunk.
+
+```{r}
+#| label: Setup
+
+## Standard Libraries
+library(tidyverse)  ## Lots of useful functions
+library(gt)         ## Create tables
+library(gtExtras)   ## Add a few useful functions to gt
+library(ggplot2)    ## Create charts
+library(devtools)   ## Load packages from GitHub
+
+## Specialized libraries
+library(openai)      ## 
+library(httr)        ## Send requests and receive responses
+library(jsonlite)    ## Handle the request formatting
+library(pdftools)    ## Handle PDF files
+library(base64enc)   ## Convert image files to base64 encoding
+library(googledrive) ## Download Google Doc files
+library(curl)        ## The force behind the httr functions
+library(DiagrammeR)  ## Make flowchart diagrams
+
+## Get the accessOAI package (do this just once)
+## install_github("kimbridges/accessOAI")
+
+## Initialize the accessOAI library
+library(accessOAI)
+
+## Initialize some things that rarely change.
+LLM <- "gpt-4o"  
+LLM_alt <- "gpt-3.5-turbo" ## (text only)
+temp <- 1
+apiKey <- Sys.getenv("OPENAI_API_KEY")
+
+```
+
+## The analyzeTXT function
+
+The `analyzeTXT` function is part of the `accessOAI` package. This function is used to send a body of text (here, the free-form citation notes) and then to analyze this text by behaving with specific skills using a set of directions.
+
+There are three character strings that are basic to this function:
+
+**data:** This defines the location of a text file to be used for processing. In the example used here, this is a local file called "`notes.txt`".
+
+**role:** The LLM (i.e., ChatGPT) can be asked to play a specific role. This emphasizes how it should approach a request. Here is how the LLM is instructed in this example:
+
+> You are a bibliographic expert. You know the various formats that are used in the scientific literature. You are able to convert from one format to another. You can also find the DOI data and abstracts for an entry.
+
+**prompt:** You want the LLM to do some specific tasks within the scope defined by the role. Here is where you formulate the task. The following text is used in this example:
+
+> The input file has bibliographic citations, along with some comment lines. Some of the bibliographic citations reference web pages. Include these. Ignore the comment lines. Convert the bibliographic citations into a standard BibTex format. If possible, include the DOI data. Don't include any comments in your response.
+
+These three character strings, along with some technical jargon and formatting keywords are sent to the OpenAI server using the `POST` command. The response is filtered and saved as the `references.bib` file.
+
+Note that this three-element structure (data, role and prompt) is very general. Many useful and interesting things can be done by customizing these character strings.
+
+## drive_download Function
+
+The `drive_download` function is part of the `googledrive` package. The purpose is to download files from Google Drive (in the cloud) to the local drive. The native Google file types (Docs, Sheets and Slides) are supported.
+
+The download converts the Docs format to a `.txt` format file.
+
+This is a key step in the process of creating the BibTex file as the text file can be used by the OpenAI API for data extraction and formatting.

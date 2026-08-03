@@ -1,0 +1,8 @@
+---
+title: "LLM-API-R"
+subtitle: "Connecting R to large language model APIs for data analysis."
+categories: ["R", "AI"]
+image: ../r_api/farm_stand_image.jpg
+---
+
+[View Document](../r_api/){.btn .btn-primary}

@@ -1,0 +1,13 @@
+---
+title: "Flower Fields - Diversity"
+subtitle: "A photo essay on diversity in Ranunculus."
+date: 2018-04-12
+categories: ["Gardens", "Ranunculus"]
+image: ../images/Flower_Fields_2017.jpg
+pdf: ../pdfs/Flower_Fields_2017.pdf
+---
+A photo essay that showcases the genetic diversity of Ranunculus in the Flower Fields in Carlsbad, California.
+
+Pages: 64
+
+<iframe src="../viewer.html?pdf=Flower_Fields_2017.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

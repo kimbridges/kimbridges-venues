@@ -1,0 +1,47 @@
+---
+title: "Welcome to Sitemaps"
+---
+
+The sitemaps package is a set of R function that help you make data-based maps. Usually, you'll be placing points and labels on a basemap.
+
+The goal of this package, and its data-structuring philosophy, is to simplify the map-making process of occasional map creators. The structure of building a map fits within the approach of reproducible documents. For many research disciplines, maps are useful for site planning and data interpretation. The sitemap functions aid in both these activities.
+
+::: callout-warning
+**This website is under intensive development**. Please excuse missing materials. Also, some documentation is out of date due to some last minute design simplifications.
+:::
+
+## The Few Caveats
+
+**Using sitemaps requires you to have a Google Maps API Key.** Yes, this is a bit of a pain to establish. The good news is that the cost of using Google Maps for some vital tasks is generally free. That is, the volume of your work is unlikely to take you beyond the generous free quota for Google services.
+
+**The sitemaps package is not on CRAN.** This means you'll need to load it from Github.
+
+Here is how to do the installation using Rstudio.
+
+`library(devtools)`
+
+`install_github("kimbridges/sitemaps")`
+
+**This is a work in progress.** Understood?
+
+## Good News
+
+You'll rarely need to type the long (!) number of digits for geographic coordinates. At least that is the experience gained in doing all of the examples in this website. There wasn't a single case where the location (e.g., 21.30241, -157.85753) was typed. You'll see the "tricks" in the Coordinates section.
+
+Data structuring for maps is mostly a data-organization task. Once you have your locations, labels and style information in a datatable, the remaining steps are mostly simple cut-and-paste activities.
+
+The style specifications for the map elements are pretty self-explanatory. Entering these, such as a datatable column labeled "point_color" with color names, provides an understandable way to view the data before the map is created. Tables are wonderful tools to visualization. Sitemaps makes a lot of use of tables.
+
+There are a lot of real-world examples. Virtually every example comes from past or present research activities, travel experiences or general question-answering. The code is available by clicking the "Show the code chunk" button. There are a lot of comments in the code.
+
+There is considerable variety in the examples but each generally follows the same process. If you've figured out how one of the maps is created, you'll see that it is easy to understand the other examples.
+
+## Getting Started
+
+Look at the tabs and you'll see quite a few sections that describe the map-making process and demonstrate the functions in sitemaps.
+
+Each tab has R code that is self-contained. That should make it straightforward to copy and adapt the code to your needs. Each example is basically self-contained (except for the preamble setup code at the start).
+
+::: callout-tip
+Remember that you do need a Google Maps API Key for some of the main functions. Once you have your own key and have linked it using the `register_google` function, you're good to go.
+:::

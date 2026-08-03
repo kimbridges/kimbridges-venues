@@ -1,0 +1,7 @@
+# Introduction
+
+There is a wealth of information in a typical flora. Species are described. Classification systems are proposed. Behind it all has been the examination of specimens. The specimens are the "hard data."
+
+Specimens are curated in herbaria. Species descriptions refer to specimens in these herbaria.
+
+The purpose here is to "deconstruct" some of the information from a printed flora. Often, it is possible to use modern visualization tools to help enrich a flora's terse style.

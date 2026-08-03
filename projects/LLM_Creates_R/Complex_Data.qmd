@@ -1,0 +1,184 @@
+# Complex Data
+
+:::::: columns
+::: {.column width="50%"}
+There are a lot of situations where the data you want to record mixes up what we usually call "data," with comments that help explain the "data." It seems like a good practice to keep these two sorts of information together. You'll see how that is done in the transcript shown later.
+
+An LLM does the separation. The "data" are analyzed using R code and the narrative explanations are synthesized and summarized by the LLM.
+
+Not only does this procedure same time and effort, it provides for better data integration.
+
+This example shows the power of an LLM in configuring data.
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+![](interview_cover.jpg)
+:::
+::::::
+
+### **Transcript Analysis**
+
+**Setup**
+
+The objective is to determine the demographics and training of healers in several communities. After each interview, the researchers dictates the information from the interview. The transcription of a few interviews shows the analysis process. Here is the transcript that is used.
+
+> This is the second of my interviews with healers. As before, I want to anonymize my data so I am going to refer to my informants by their code names, like healer 12. What I'm dictating is a combination of the healers responses to my questionnaire as well as my paraphrasing of their comments.
+>
+> Healer 11 is a man. He's 62 years old and he's been working as a professional healer for 35 years. He is the senior person at this temple. He was trained as an apprentice and doesn't have any formal certificates issued by the government. He thinks the certificate program is a good step in helping traditional healers get the professional recognition they deserve. He hasn't gone through the program as he feels it's too late for him to spend time doing it. He is a member of the dominant ethnic group. He is single as he feels that marriage would distract from his calling as a traditional healer.
+>
+> Healer 12 is a woman. She is fairly new to this profession. She just celebrated her 31st birthday. Her journey to learning the traditional healing skills was through a government-sponsored educational program. She spent four years taking classes and working as an assistant in a temple. Her family encouraged her throughout this program by providing financial support. She got married two years ago. He doesn't have any children. She is culturally an outsider as she if from a minor ethnic group.
+>
+> Healer 13 is a 45 year old man. He was one of the first to use the government certification program. He's very satisfied with the training he got as his patients have told him that he's been giving them good treatments. He's been helping people for 20 years after an earlier career as a shop keeper. He has been married for nearly 25 years and has four children. His salary, although modest, was enough to support his family. His children are now on their own. His family belongs to the ethnic majority.
+>
+> Healer 14 is quite young to be a healer. She's just 21 years old. She entered the government training program when she was 16 as her family recognized her talents and interests in working with plants. It appears to be a good fit as she got some high marks in her training program. She has just started, in the past year, working as the primary healer in a minor temple that mostly serves the ethnic minorities. This fits her well as she is also an ethnic minority. She says that she's too busy to have a boyfriend.
+
+**Prompt**
+
+Can you organize the data in the interviews? There are two kinds of data; categorical things and free-form narratives. I need the R code to analyze the categorical information and I'd like an interpretive summary of the narratives. An artifact file is included to give formatting guidance for the R code.
+
+**Response**
+
+Certainly! I'll organize the data from the interviews, provide R code to analyze the categorical information, and give you an interpretive summary of the narratives. Let's start with organizing the data and then move on to the analysis.
+
+First, let's organize the categorical data:
+
+```{r}
+#| error: false
+#| warning: false
+
+## Load standard packages.
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(gt)
+
+## Set an option for the read_csv function
+options(readr.show_col_types = FALSE)
+
+## Data input.
+data <- read_csv(col_names=TRUE, file="
+healer_id, gender, age, years_experience, training_method, ethnicity, marital_status
+11, male, 62, 35, apprentice, majority, single
+12, female, 31, 4, government_program, minority, married
+13, male, 45, 20, government_program, majority, married
+14, female, 21, 1, government_program, minority, single
+")
+
+## Create a table to display the data
+table <- gt(data) %>%
+  tab_header(
+    title = "Healer Interview Data"
+  ) %>%
+  tab_source_note(
+    source_note = paste0("Source: Healer interviews (", Sys.Date(), ")")
+  ) %>%
+  tab_style(
+    style = cell_text(v_align="top"),
+    locations = cells_body()
+  ) %>%
+  opt_row_striping(row_striping = TRUE)
+
+## Display the table
+table
+
+## Basic analysis
+summary_stats <- data %>%
+  summarize(
+    avg_age = mean(age),
+    avg_experience = mean(years_experience),
+    pct_government_trained = mean(training_method == "government_program") * 100,
+    pct_majority_ethnicity = mean(ethnicity == "majority") * 100,
+    pct_married = mean(marital_status == "married") * 100
+  )
+
+## Create a summary table
+summary_table <- gt(summary_stats) %>%
+  tab_header(
+    title = "Summary Statistics of Healer Data"
+  ) %>%
+  fmt_number(
+    columns = c(avg_age, avg_experience),
+    decimals = 1
+  ) %>%
+  fmt_percent(
+    columns = c(pct_government_trained, pct_majority_ethnicity, pct_married),
+    scale_values = FALSE,
+    decimals = 1
+  ) %>%
+  tab_source_note(
+    source_note = paste0("Source: Analyzed healer interview data (", Sys.Date(), ")")
+  )
+
+## Display the summary table
+summary_table
+
+## Bar chart of ages
+ggplot(data, aes(x = healer_id, y = age)) +
+  geom_bar(stat = "identity", fill = "cornsilk3", color = "black") +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "darkslategray3"),
+    axis.text = element_text(size = 12, color = "black"),
+    axis.title = element_text(size = 12, color = "black"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank()
+  ) +
+  labs(title = "Age Distribution of Healers", x = "Healer ID", y = "Age")
+
+## Assemble the interpretive lines
+text_out <- paste0("The average age of the healers is ", round(summary_stats$avg_age, 1), " years.\n")
+text_out <- paste0(text_out, "The average years of experience is ", round(summary_stats$avg_experience, 1), " years.\n")
+text_out <- paste0(text_out, round(summary_stats$pct_government_trained, 1), "% of healers were trained through government programs.\n")
+text_out <- paste0(text_out, round(summary_stats$pct_majority_ethnicity, 1), "% of healers belong to the majority ethnicity.\n")
+text_out <- paste0(text_out, round(summary_stats$pct_married, 1), "% of healers are married.\n")
+
+## Print the interpretive lines
+cat(text_out)  ## "cat" was added
+```
+
+Now, let's provide an interpretive summary of the narratives:
+
+The interviews provide insights into four healers with diverse backgrounds and experiences:
+
+1.  Healer 11 (62-year-old male):
+    -   Most experienced (35 years) and senior at his temple
+    -   Trained through apprenticeship, not government certification
+    -   Supports government certification but feels it's too late for him
+    -   Single, believing marriage would distract from his calling
+    -   Belongs to the dominant ethnic group
+2.  Healer 12 (31-year-old female):
+    -   Relatively new to the profession
+    -   Trained through a government-sponsored program (4 years)
+    -   Recently married (2 years ago), no children
+    -   From a minor ethnic group, culturally an outsider
+3.  Healer 13 (45-year-old male):
+    -   20 years of experience, former shopkeeper
+    -   One of the first to use government certification
+    -   Satisfied with his training and patient feedback
+    -   Married for 25 years with four grown children
+    -   Belongs to the ethnic majority
+4.  Healer 14 (21-year-old female):
+    -   Youngest healer, just starting her career
+    -   Entered government training at 16, recognized for her talents
+    -   Works in a minor temple serving ethnic minorities
+    -   Also from an ethnic minority background
+    -   Single, focused on her career
+
+Key observations:
+
+1.  There's a significant age range (21-62) among the healers, suggesting a mix of traditional and modern approaches.
+
+2.  The government certification program is becoming increasingly important, with younger healers more likely to have formal training.
+
+3.  Ethnic diversity is present, with both majority and minority healers represented.
+
+4.  Family situations vary, from single individuals focused on their calling to those balancing family life with their profession.
+
+5.  Career paths differ, with some starting young and others transitioning from different professions.
+
+6.  There seems to be a trend towards professionalization of traditional healing, with government programs playing a significant role.
+
+This diverse group of healers represents a profession in transition, balancing traditional practices with modern certification and training methods. The interviews highlight the various paths individuals take to become healers and the different ways they approach their calling.

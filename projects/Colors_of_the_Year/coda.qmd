@@ -1,0 +1,15 @@
+## Coda
+
+There is something about the speed with which these analyses were done that made it practical and fun. Practical as I didn't get bogged down writing code. Fun because I was getting new insight at each stage. Research is supposed to generate both answers and new questions. That's exactly what happened here.
+
+There was a small glitch. For some unknown reason, the 2015 data (just four companies) was not included in the data. This small error can be corrected. But this version ignores it as the goal was to finish a complete document within one day and the small amount of additional data wouldn't add much to the overall analysis.
+
+The AI engine provided more than code. It brought information (it came up with the names for the colors). It also brought insight, such as suggesting the use of a dendrogram. I wouldn't have thought of that even though I am well acquainted with dendrograms. The analogies, especially prevalent in the last few sections, were contributed by the AI engine. They are most helpful.
+
+Is what was done here useful? I think that an interior designer would benefit from the analytic results. This might be especially true for someone entering the field of interior design. More broadly, the set of analyses shows that you can use unconventional input (an illustration) and apply a wide variety of quantitative methodologies to gain insight.
+
+For me, this exploration has strengthened my understanding of the value of collaboration with an AI engine. It has also sharpened my skills needed to work with AI engines. That's been a personal achievement.
+
+The R language code that was produced is quite specific to this analysis. There wasn't an attempt to make the code into a product that's useful for a variety of analyses. Instead, this has been an *exploration* of a broad question. Getting insight has required the production of code that's tailored to specific questions that, in the aggregate, address the original query. ***View this exercise as a process, not a product.***
+
+And, I must say it again, this was a lot of fun.

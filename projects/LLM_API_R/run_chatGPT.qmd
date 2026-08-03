@@ -1,0 +1,537 @@
+---
+title: "Run GPT"
+format: html
+editor: visual
+---
+
+# Using the ChatGPT API 
+
+The purpose is to test if there is a simple way within R to ask questions and retrieve answers from ChatGPT from inside a programming framework, specifically a reproducible document.
+
+## Initialize Libraries & Defaults
+
+```{r}
+
+## Standard Libraries
+library(gt)         ## Tables
+library(tidyverse)  ##
+library(stringr)
+
+## Specialized libraries
+library(openai)     ## 
+library(httr)       ## Used for ChatGPT
+library(jsonlite)   ## Used for ChatGPT
+library(pdftools)   ## Handling PDF files
+library(base64enc)  ## Converts JPG file to base64 encoding
+
+## Initialize some things that rarely change
+LLM <- "gpt-4o"  
+LLM_alt <- "gpt-3.5-turbo" ## (text only)
+temp <- 1
+apiKey <- Sys.getenv("OPENAI_API_KEY")
+
+
+```
+
+## Define the Functions
+
+There are four functions defined here.
+
+-   **queryGPT**: This lets you ask questions using the LLM and its knowledge. You can add some of your own text and ask questions that are limited to your text. (There is no "assistant-like" role specified with this function. For that, see the `analyzeTXT` function.)
+
+-   **extractPDF**: This function retrieves pages of text from a PDF file. Unlike the other functions, this one doesn't use the `ChatGPT API`. It is included here as a helper function that is specifically useful to prepare input for the `analyzePDF` function.
+
+-   **analyzeTXT**: This uses the LLM to analyze text that is supplied, such as the text from `extractPDF`. This function uses the assistant-like capability (how should the system act) along with a specific request about what the analysis should do.
+
+-   **analyzeIMG**: An image (pdf, png) is extracted from the internet or uploaded from a local file. The image is interpreted using specific instructions. Like analyzeTXT, this function uses the two inputs for the system role and the objective of the analysis.
+
+### A little background
+
+A `chatGPT` function was defined by Deepanshu Bhalla. Here is a link to the code: <https://www.listendata.com/2023/05/chatgpt-in-r.html>
+
+We are indebted to Deepanshu for his work in making this code available.
+
+Here, we're changing the function's name to `queryGPT` to emphasize that this function is used to get specific answers to questions (i.e., queries).
+
+The text extraction and LLM analysis functions are based on code provided in this article: https://tilburg.ai/2024/04/how-to-interact-with-papers-using-the-openai-api-in-r/
+
+The code was modified quite a bit. We thank the staff at Tilburg University for sharing the code that's gotten this effort started.
+
+The image analysis function (`analyzeIMG`) borrows heavily on the other functions for code.
+
+```{r}
+
+## The queryGPT Function: Simple LLM queries.
+
+queryGPT <- function(prompt, 
+                    modelName,
+                    temperature,
+                    apiKey) {
+  
+  if(nchar(apiKey)<1) {
+    apiKey <- readline("Paste your ChatGPT API key here: ")
+    Sys.setenv(chatGPT_API_KEY = apiKey)}
+  
+  response <- POST(
+    url = "https://api.openai.com/v1/chat/completions", 
+    add_headers(Authorization = paste("Bearer", apiKey)),
+    content_type_json(),
+    encode = "json",
+    body = list(
+      model = modelName,
+      temperature = temperature,
+      messages = list(list(
+        role = "user", 
+        content = prompt
+      ))
+    )
+  )
+  
+  if(status_code(response)>200) {
+    stop(content(response))}
+  
+  trimws(content(response)$choices[[1]]$message$content)
+  
+} ## End queryGPT function
+
+##############################################################
+
+## Extract text from a PDF.
+
+extractPDF <- function (pdf_path, 
+                        start_page = NULL, 
+                        end_page = NULL){
+
+## Assign the ChatGPT API key.
+## OPENAI_API_KEY <- API_key
+
+## Extract the text from the PDF.
+extracted_text <- pdf_text(pdf_path)
+
+## Keep specific pages.
+
+## If the first page is not given, make it the first page.
+if (is.null(start_page)) {start_page <- 1}
+
+## Find the document length (in pages).
+n_pages <- length(extracted_text) ## Total number of pages extracted.
+
+## If the end page is not given, make it the last page.
+if (is.null(end_page)) {end_page <- n_pages}
+
+## Extract the range of pages (from the start to end pages).
+analysis_text <- extracted_text[start_page:end_page]
+
+return(analysis_text)
+} ## End function extractPDF
+
+##############################################################
+
+## Analyze the text from a PDF document (or other source) with the LLM.
+
+analyzeTXT <- function (analysis_text,
+                        AI_role,
+                        analysis_prompt,
+                        LLM){
+
+# Set the API endpoint for chat completions
+api_endpoint <- "https://api.openai.com/v1/chat/completions"
+
+## Clean text
+formatted_text <- analysis_text %>%
+  str_c(analysis_text, collapse = "\\n")
+
+# Construct the API request Body
+request_body <- list(
+  model = LLM,
+  messages = list(
+    list(role = "system", content = AI_role),
+    list(role = "user", content = str_c(analysis_prompt, formatted_text))
+  )
+)
+
+## Execute the POST request to the OpenAI API.
+api_response <- POST(
+  url = api_endpoint,
+  body = request_body,
+  encode = "json" ,
+  add_headers("Authorization" = paste("Bearer", apiKey), 
+              "Content-Type" = "application/json"))
+
+## Process the response from the API.
+response_data <- content(api_response, "parsed")
+
+## Extract the summary from the API's response.
+api_summary <- response_data$choices[[1]]$message$content
+
+return(api_summary)
+
+} ## End function analyzeTXT
+
+##############################################################
+
+## Analyze an image with the LLM.
+
+analyzeIMG <- function (analysis_image,
+                        AI_role,
+                        analysis_prompt,
+                        LLM) {
+
+## Set the API endpoint for chat completions
+api_endpoint <- "https://api.openai.com/v1/chat/completions"
+
+## This handles images from the web (starting with "http") and
+## from locally stored files in a slightly different way. 
+
+## Find out the kind of image.
+prefix <- tolower(substr(analysis_image,1,4))
+
+## If this is an internet image, don't change it.
+if(prefix != "http"){
+  
+  ## Make JPG images base64.
+  txt_img <- base64enc::base64encode(analysis_image)
+  analysis_image <- paste0("data:image/jpeg;base64,", txt_img)
+  }  ## end prefix test
+
+## Build the API request.
+request_body <- list(
+  model = LLM,
+  messages = list(
+    list(role = "system", content = AI_role),
+    list(role = "user",   content = analysis_prompt),
+    list(role = "user", 
+         content = list(
+         list(type = "image_url", image_url = list(url = analysis_image))
+         ) ## content
+      ) ## list
+    ) ## messages
+  ) ## request_body
+
+## Execute the POST request to the OpenAI API.
+api_response <- POST(
+  url = api_endpoint,
+  body = request_body,
+  encode = "json" ,
+  add_headers("Authorization" = paste("Bearer", apiKey), 
+              "Content-Type" = "application/json")
+  ) ## api_response
+
+## Process the response from the API.
+response_data <- content(api_response, "parsed")
+
+## Extract the summary from the API's response.
+api_summary <- response_data$choices[[1]]$message$content
+
+return(api_summary)
+
+} ## End function analyzeIMG
+
+```
+
+## Test the queryGPT Function
+
+```{r}
+
+## Tests of the queryGPT function
+
+cat(queryGPT(prompt = "What is the square of 29",
+             modelName = LLM_alt,
+             temperature = temp,
+             apiKey = API_key))
+
+#################################################################
+
+cat(queryGPT(prompt = "Who wrote the Gettysburg Address?",
+             modelName = LLM_alt,
+             temperature = temp,
+             apiKey = API_key))
+
+#################################################################
+
+query <- "Please return the lat and lon for Los Angeles and Chicago in a CSV format without any comments."
+
+response <- queryGPT(prompt = query,
+                     modelName = LLM,
+                     temperature = temp,
+                     apiKey = API_key)
+cat(response)
+
+#################################################################
+
+query <- "The text is from a very messy OCR of a label on an herbarium sheet. I am interested in the name of the species, which is generally near the top of the text, and other relevant information as long as there can be a category attached to it, such as elevation. Here is the text: ###3 PY A \ : % a
+2 aS i]
+, t wy wa 1]
+— Pe 4 SS lf : 5 No ,
+> ea xX, a
+a a7
+K , iy ~~ ll s ky
+e . 4! Y AA i = < =f J 7 .
+y -) ant . }
+A
+AX wt
+\ SS
+PLANTS OF THE HAWAIIAN ISLANDS 282
+Wilkesia gymnoxiphium A. Gray
+ASTERACEAE
+Ut ee KAUAI Waimea District
+inetd ted Iliau Nature Loop Disturbed Acacia koa, Dodonaea, Leptecophylla
+shrubland. Acacia koa, Andropogon glomeratus, Conyza sp.,
+Dianella sandwicensis, Dodonaea viscosa, Eucalyptus sp., Lantana
+camara, Metrosideros polymorpha, Plantago lanceolata, Polygala
+N paniculata, Psidium cattl
+Bulk collection from ~56 individuals. Plant height from individuals
+sampled ranged from 0.5-3m.
+Lat/Long: 22.051459, -159.659675
+Elevation: 890 m
+Dustin Wolkis DMW1253 08 JUL 2020
+Kelli Nicole Jones, Catherine Davenport photo
+NATIONAL TROPICAL BOTANICAL GARDEN HERBARIUM (PTBG) af
+a aes ie National Tropicals
+a Botanical Garden
+9 10 Herbarium
+pyright reserved (PTBG)###"
+
+response <- queryGPT(prompt = query,
+                     modelName = LLM,
+                     temperature = temp,
+                     apiKey = API_key)
+cat(response)
+
+#################################################################
+
+query <- "I have a list of plants growing in Hawaii that needs some fixing as a few of the names appear to be garbled. Please try to correct the following species names. "
+
+data <- "Acacia koa, Andropogon glomeratus, Conyza sp., Dianella sandwicensis, Dodonaea viscosa, Eucalyptus sp., Lantana camara, Metrosideros polymorpha, Plantago lanceolata, Polygala paniculata, Psidium cattle"
+
+## Put the strings together.
+combined_text <- query %>%
+  str_c(data, collapse = "\\n")
+
+## Do the work.
+response <- queryGPT(prompt = combined_text,
+                     modelName = LLM,
+                     temperature = temp,
+                     apiKey = API_key)
+
+## Show the result.
+cat(response)
+
+```
+
+## Test the PDF Text Functions
+
+There are two phases.
+
+-   Extract the text from some pages of a PDF file.
+
+-   Run a LLM query on the extracted text.
+
+There is an assumption that the PDF file has text (i.e., OCR was run on a scanned file or the PDF was constructed from text). If this is not true, you need to run an alternative process.
+
+The PDF can be stored locally. In this case, provide a full path to the location of the file.
+
+```{r}
+
+## Extract the text from the PDF.
+
+## Define the location of the PDF document.
+pdf_path <- "P://Emerging/GPT/2008_Choo__The_Giving_Tree.pdf"
+
+## Define the range of pages to be extracted.
+start_page <- 5
+end_page   <- 7
+
+## Run the extraction.
+extracted_text <- extractPDF (pdf_path, 
+                        start_page = start_page, 
+                        end_page = end_page)
+
+## Do the LLM analysis.
+
+## Define the LLM role and desired information.
+AI_role         <- "You are an smart, eager to help and precise assistant."
+analysis_prompt <- "What are some facts about plumeria that are found in the text that is supplied? "
+
+## Run the LLM on the text from the PDF.
+LLM_result <- analyzeTXT (analysis_text = extracted_text,
+                          AI_role = AI_role,
+                          analysis_prompt = analysis_prompt,
+                          LLM = LLM)
+
+## Show the result.
+cat(LLM_result)
+
+```
+
+## Test the Image Analysis Function
+
+This analysis uses images that are retrieved using a URL (to a website) or an image from a locally stored folder.
+
+Website images are referenced with the full URL. Similarly, local images have a complete path name.
+
+The analysis is based on two properties:
+
+**AI_role**: This is where you define the role that is to be used by the LLM. This can vary from being very general (e.g., "You report general features of the image.") to highly specific (e.g., "You are a color expert and use detailed color terms in your descriptions.").
+
+**analysis_prompt**: This is where you say what you want done.
+
+Test 1: An image from a website.
+
+```{r}
+
+## Provide a link to the image.
+image_URL <- "https://upload.wikimedia.org/wikipedia/commons/8/82/Giant_Panda_Tai_Shan.JPG"
+
+## Define the role and analysis objective.
+AI_role <- "You are an expert at identifying animal species and their behaviors."
+analysis_prompt <- "What is the animal and what is it doing?"
+
+## Run the analysis.
+LLM_result <- analyzeIMG(analysis_image = image_URL,
+                        AI_role = AI_role,
+                        analysis_prompt = analysis_prompt,
+                        LLM = LLM) 
+
+cat(LLM_result)
+
+```
+
+Test 2: A JPG image from a stored file.
+
+```{r}
+
+## Provide a link to the image.
+image_URL <- "P:/Emerging/GPT/farm_stand_image.jpg"
+
+## Define the role and analysis objective.
+AI_role <- "You are an expert at identifying scenes."
+analysis_prompt <- "What is the primary message in this image?"
+
+## Run the analysis.
+LLM_result <- analyzeIMG(analysis_image = image_URL,
+                        AI_role = AI_role,
+                        analysis_prompt = analysis_prompt,
+                        LLM = LLM) 
+
+cat(LLM_result)
+```
+
+Test 3: A PNG image that is stored locally.
+
+```{r}
+
+## Provide a link to the image.
+image_URL <- "P:/Emerging/GPT/bars1.png"
+
+## Define the role and analysis objective.
+AI_role <- "You are an expert at identifying different types of scientific visualizations."
+analysis_prompt <- "What general type of chart is in this image and can you tell me anything about it?"
+
+## Run the analysis.
+LLM_result <- analyzeIMG(analysis_image = image_URL,
+                        AI_role = AI_role,
+                        analysis_prompt = analysis_prompt,
+                        LLM = LLM) 
+
+cat(LLM_result)
+
+```
+
+Test 4: Convert a PNG image to a CSV table.
+
+```{r}
+
+## Provide a link to the image.
+image_URL <- "P:/Emerging/GPT/Weather_table1.png"
+
+## Define the role and analysis objective.
+AI_role <- "You are an expert at reading data tables and extracting the values for all the variables."
+analysis_prompt <- "Please convert this table into a basic CSV format that has headers for each of the data columns. There should be no comments."
+
+## Run the analysis.
+LLM_result <- analyzeIMG(analysis_image = image_URL,
+                        AI_role = AI_role,
+                        analysis_prompt = analysis_prompt,
+                        LLM = LLM) 
+
+
+## Remove unnecessary header info.
+LLM_result_clean <- substr(LLM_result,8,99999)
+## Remove unnecessary trailer info.
+LLM_result_clean <- chartr("`", " ", LLM_result_clean)
+
+## Put the data into a data frame.
+data <- read_csv(LLM_result_clean)
+
+## Generate a table of the results.
+gt(data)
+
+```
+
+
+Read a table
+
+This table was cut-and-pasted from the source and saved as a text file.
+
+Duarte, J., Mantilla, A. & Castaño, F. Diversity of Plant Uses by a Farming Community of Northwestern Colombia: a Quantitative Approach. Econ Bot 77, 153–168 (2023). https://doi.org/10.1007/s12231-023-09574-x
+
+```{r}
+
+source <- "Source: Duarte et al (2023)"
+title  <- str_to_title("THE 20 MOST IMPORTANT USEFUL PLANT SPECIES ACCORDING TO THE QUANTITATIVE CALCULATIONS.")
+
+data <- readLines("P://Emerging/GPT/Table_2.txt")
+role <- "You know how to construct basic data tables from poorly formatted text files. You can build the column headers and arrange the values for each column."
+prompt <- "Use the file to create a proper data table in the CSV format. Do not include any comments in your response."
+
+## Do the work.
+response <- analyzeTXT(analysis_text = data,
+                       AI_role = role,
+                       analysis_prompt = prompt,
+                       LLM = LLM)
+
+## Trim the extra characters off the start and end.
+response_clean <- substr(response,8,9999)
+response_clean <- chartr("`", " ", response_clean)
+
+## Create a data frame.
+response_clean <- read_csv(file=response_clean)
+
+## Make a table.
+gt(response_clean) |>
+  tab_caption(caption = title) |>
+  tab_source_note(source_note = source)
+
+```
+
+The table can be made more useful with the addition of common and family names.
+
+```{r}
+
+## Enhance the table.
+new_data <- response_clean
+data <- list(new_data)
+role <- "You know the common names for lots of plant species found around the world. You can convert scientific names into common names used in English speaking countries. You are also good with plant family names."
+prompt <- "Add columns to the table with the common and family names for the species. Make this in CSV format without comments. Keep the original column names."
+
+## Do the work.
+response <- analyzeTXT(analysis_text = data,
+                       AI_role = role,
+                       analysis_prompt = prompt,
+                       LLM = LLM)
+
+## Get rid of extra characters and the start and end.
+response_clean <- substr(response,8,9999)
+response_clean <- chartr("`", " ", response_clean)
+
+## Make the result into a data frame.
+response_clean <- read_csv(file=response_clean)
+
+## Create the table.
+gt(response_clean)|>
+  tab_caption(caption = title) |>
+  tab_source_note(source_note = source)
+
+```
+

@@ -1,0 +1,37 @@
+# Rebuilding, to feel the constraints lift
+
+Thirty-seven years later, I built it again.
+
+I want to be careful about why. Because the why is the whole point. And it's easy to mistake.
+
+I did not rebuild the AI Microscope to ship a product. There are good microscope simulators in the world already, and I wasn't trying to add one. I rebuilt it to find out what the idea would feel like with the walls gone. Every constraint in the last chapter was a limit of 1989, not a limit of the idea. So the experiment was simple. Take the same idea. Set it down inside today's technology. Watch what happens to each of those old walls. The result I was after wasn't an app. It was the experience of the constraints lifting.
+
+They lifted.
+
+## One page
+
+The two machines and the wire are gone. The whole thing is now a single page in a web browser, written in the ordinary languages of the web. Eyes and brain, the graphics and the tutor, live in the same place now. There's no serial cable because there's nothing to bridge. The seam that ran through the middle of the 1989 system simply isn't there.
+
+Storage went the same way. The digital slide that we could barely afford to keep is now a file that loads without my noticing. A library of them would be no trouble at all. And the machine it all runs on is not an expensive workstation donated by a research lab. It's a phone. The thing that once took two costly computers and a cable now sits in a student's pocket. It runs when they tap it. I don't think I fully believed that until I watched it happen.
+
+![The whole tool in one frame. Controls at the top, the slide in the middle, the tutor's words and the term card below. It fits on a phone because there is nothing else to fit.](figures/aim_2_interface.png){#fig-interface width=45% fig-align="center"}
+
+## The new machines behind the glass
+
+In 1989, the intelligence in the system was a Prolog tutor we wrote by hand. Today, the "brains" are built from several services, each doing a job we could only fake before.
+
+To start with, one of them, from OpenAI, drew the first color map beneath the leaf, the hidden layer that turns a point into a tissue. Another, Gemini, did two things: it wrote most of the app itself, and it phrases the narration as the student moves, so the words are composed in the moment instead of pulled from a fixed shelf. And a third, ElevenLabs, speaks. Not the stiff, pre-recorded name of 1989, but a real voice that can say *Hibiscadelphus giffardianus* and make it sound like a person saying it. Finally, Anthropic's Claude shaped the tool in ways that clarified the design and code. Four tools, each making a significant contribution.
+
+Set that against the old walls and the trade is plain. Canned words became generated words. A frozen voice became a speaking one. The help that used to be written entirely in advance can now be shaped, a little, to the student in front of the screen. Each of these deserves its own chapter later, and each has its own catch, which I won't hide. For now the point is only that the walls that stopped us in 1989 are the walls that fell.
+
+## Process, not product
+
+The app works. It's live. You can use it.
+
+But I keep saying that isn't the point, and I mean it.
+
+The point is the process. What I wanted, and what I got, was the feeling of carrying one unchanged idea across thirty-seven years and watching the ground shift under it. In 1989, I knew what I wanted and fought the machine for every inch of it. In 2026, I asked for the same things and the machine mostly just gave them to me. That gap, felt from the inside, is the real subject of this book. The app is the evidence. The experience is the finding.
+
+This is also why I'm writing it down rather than only shipping a product. A polished product would say, here is a tool, use it. The document says something more useful: here is what it's like when a good idea finally meets tools equal to it. That's a thing worth knowing, and it's a thing you can only learn by doing it. And paying attention while you do.
+
+One thing did not lift, though, and it was never supposed to. The philosophy. A tool, not a spy. Everything got easier except the part that had to stay exactly as it was, and holding onto that while everything else changed turned out to be its own kind of work. That's the next chapter.

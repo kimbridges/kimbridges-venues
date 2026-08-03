@@ -1,0 +1,27 @@
+# Colors of the Year
+
+## Preface
+
+We're all being subjected to a lot of data these days. I enjoy that (yes, it's crazy). I especially enjoy seeing data when there is a clear story that helps explain what's happening. Sometimes, however, you just get data without the story. And that's where we start this exploration.
+
+The "Colors of the Year" diagram was, for me, one of the "just data" presentation. As someone interested in analyzing data, I wondered if I could use one of the current, top rated AI engines to help me understand the data. My engine of choice for this project is **Google's Gemini 3 Pro**. When I say "AI engine," it means this specific LLM.
+
+As you'll see in the loosely structured discussion below, I was able to use Gemini to dig deeper and deeper into the meaning of the patches of color. I believe that we went well beyond the original question.
+
+This is another in a continuing series of explorations of AI technology.
+
+#### Disclaimer
+
+This was a quick exercise that was not carefully planned. In the early stages, the AI engine didn't know the identify (company) for some of the sets of colors (I had removed that information from the diagram). The result may be some slight mix-up in the discussion. The missing data problem was corrected for subsequent analyses.
+
+The discussion doesn't always highlight what I've written versus text from the AI engine. That's mostly a limitation of my editing. My goal was to complete this exercise in a reasonable (one day) time span.
+
+## The Starting Point
+
+There is an annual color of the year declared by each of the major paint manufacturing companies, along with Pantone, the company that provides the system for color standards (particularly naming colors).
+
+The following figure shows the presentation by Voronoi featured in the Visual Capitalist (January 1, 2026; www.visualcapitalist.com). This is the figure on which everything else is based.
+
+![](images/Voronoi_colors_of_the_year.jpg)
+
+I asked "This is a table of paint colors selected as the color of the year. Each column is a different source (i.e., paint company). The rows are labeled as the year of the selection. What are some generalizations about colors and whether there are any trends in the choices?" (I later when back at identified the companies; the AI engine guesses were mostly correct.)

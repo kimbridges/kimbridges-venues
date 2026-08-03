@@ -1,0 +1,281 @@
+---
+title: "Contours"
+format: html
+editor: visual
+---
+
+# Contours on Google Earth
+
+## Introduction
+
+The purpose is to interpret data points to a surface as a contour diagram. This diagram is then placed over the Google Earth landscape.
+
+Google Earth provides some needed services for visualizations. Perhaps most important is the terrain model of the surface of the planet. Placing data on the terrain often gives important insight.
+
+Contour diagrams are a way to visualize interpolated data.
+
+## Start with a Contour Diagram
+
+Here is a tiny example that works.
+
+```{r}
+# Install if needed: install.packages("akima")
+library(ggplot2)
+library(readr)
+library(akima)
+
+## Get the data.
+## Data must have lat, lon, value columns.
+data <- read_csv(col_names = TRUE, file =
+ "lat,      lon,       value, id
+  33.93006, -116.98778, 1627, P1
+  34.33064, -117.32223, 1344, P2
+  34.02718, -117.41113,  828, P3
+  34.40641, -116.80974, 1625, P4
+  34.45237, -117.38530,  876, P5
+  33.73644, -117.29549,  529, P6
+  34.12248, -117.57508, 1087, P7
+  34.41393, -117.48995,  944, P8
+  34.14114, -118.00842, 1575, P9
+  34.06529, -118.24990,  627, P10
+  34.46546, -116.86285, 1742, P11
+  34.06266, -116.96609, 2707, P12
+  34.24205, -117.32580, 1666, P13
+  34.15810, -117.14770, 2860, P14
+  33.78233, -118.45815,  647, P15
+  34.41985, -117.68774, 1310, P16
+  33.89687, -117.21061, 1398, P17
+  33.73364, -118.13210,  458, P18
+  33.96233, -117.95909,  753, P19
+  34.46360, -118.10623, 1778, P20")  
+
+## Interpolate onto a regular grid.
+## Make 100x100 grid covering the lon & lat extents of the data.
+grid_res <- 100
+interp_result <- with(data,
+  akima::interp(
+    x = lon,
+    y = lat,
+    z = value,
+    xo = seq(min(lon), max(lon), length.out = grid_res),
+    yo = seq(min(lat), max(lat), length.out = grid_res),
+    linear = TRUE,     # linear or spline interpolation
+    extrap = FALSE     # Don't extrapolate beyond data range
+  )
+)
+
+## Convert interpolation result to a data frame for ggplot.
+interp_data <- data.frame(
+  lon   = rep(interp_result$x, each = grid_res),
+  lat   = rep(interp_result$y, times = grid_res),
+  value = as.vector(interp_result$z)
+)
+
+## Remove any NAs (locations that couldn't be interpolated).
+interp_data <- na.omit(interp_data)
+
+## Plot the interpolated data as a filled contour diagram with a point overlay
+combined_plot <- ggplot(interp_data, aes(x = lon, y = lat, z = value)) +
+  geom_contour_filled(bins = 10) +
+  geom_point(data = data, aes(x = lon, y = lat, z = value),size = 2, color = "red") +
+  coord_fixed() +
+  labs(title = "Interpolated Filled Contour",
+       x = "Longitude", y = "Latitude")
+
+print(combined_plot)
+
+```
+
+## Create Overlays for Google Earth
+
+Here, we'll switch to the contour_to_earth function in the geContour package.
+
+### Demo
+
+```{r}
+# Demo of the improved contour-to-earth package with Akima interpolation
+# Source the improved contour-to-earth functions
+## source("contour_to_earth.R")
+
+## Load geContour.
+install_github("kimbridges/geContour")
+library(geContour)  ## Has the contour_to_google_earth function
+
+# Load required libraries
+library(ggplot2)
+
+# Load or generate the sparse data
+if (file.exists("socal_sparse_data.csv")) {
+  socal_data <- read.csv("socal_sparse_data.csv")
+  ## Confirm data
+  gt(socal_data)|>
+  tab_source_note(source_note="Test data")
+} else {
+  # Generate sample sparse data (20 points)
+  set.seed(123)
+  n_points <- 20
+  
+  # Generate random coordinates for Southern California
+  socal_data <- data.frame(
+    lat = runif(n_points, 33.7, 34.5),
+    lon = runif(n_points, -118.5, -116.8)
+  )
+  
+  # Generate values based on location (simulating elevation)
+  socal_data$value <- sapply(1:nrow(socal_data), function(i) {
+    lat <- socal_data$lat[i]
+    lon <- socal_data$lon[i]
+    
+    # San Gabriel Mountains peak around 34.3, -118.0
+    san_gabriel <- 2000 * exp(-((lat - 34.3)^2 + (lon - (-118.0))^2) * 15)
+    
+    # San Bernardino Mountains peak around 34.2, -117.0
+    san_bernardino <- 2500 * exp(-((lat - 34.2)^2 + (lon - (-117.0))^2) * 12)
+    
+    # LA Basin depression around 34.0, -118.25
+    la_basin <- -800 * exp(-((lat - 34.0)^2 + (lon - (-118.25))^2) * 10)
+    
+    # Add some random noise
+    noise <- rnorm(1, mean = 0, sd = 200)
+    
+    # Combine all features
+    elevation <- san_gabriel + san_bernardino + la_basin + noise
+    
+    # Normalize to a reasonable range
+    return(max(0, round(elevation + 800)))
+  })
+  
+  # Add point IDs
+  socal_data$id <- paste0("P", 1:nrow(socal_data))
+}
+
+# Print the sparse data
+cat("Using sparse data with", nrow(socal_data), "points:\n")
+print(head(socal_data))
+
+# Display the data distribution
+cat("\nData distribution:\n")
+cat("  Latitude range:", min(socal_data$lat), "to", max(socal_data$lat), "\n")
+cat("  Longitude range:", min(socal_data$lon), "to", max(socal_data$lon), "\n")
+cat("  Value range:", min(socal_data$value), "to", max(socal_data$value), "\n")
+
+# Create a scatter plot to visualize the raw data points
+scatter_plot <- ggplot(socal_data, aes(x = lon, y = lat, color = value)) +
+  geom_point(size = 3) +
+  geom_text(aes(label = id), hjust = -0.3, vjust = -0.3, size = 3) +
+  scale_color_viridis_c() +
+  coord_fixed() +
+  theme_minimal() +
+  labs(
+    title = "Raw Data Points",
+    subtitle = paste(nrow(socal_data), "scattered points in Southern California"),
+    x = "Longitude",
+    y = "Latitude",
+    color = "Value"
+  )
+
+# Display the scatter plot
+print(scatter_plot)
+
+# Create a comparison of different interpolation methods
+
+# 1. No interpolation (raw data)
+raw_contour <- create_contour_plot(
+  data = socal_data,
+  contour_breaks = 8,
+  interpolate = FALSE,
+  title = "No Interpolation (Raw Data)"
+)
+
+# 2. Akima interpolation (default)
+akima_contour <- create_contour_plot(
+  data = socal_data,
+  contour_breaks = 8,
+  interpolate = TRUE,
+  interp_method = "akima",
+  interp_grid_res = 100,
+  title = "Akima Interpolation"
+)
+
+# 3. Thin Plate Spline interpolation (TPS)
+tps_contour <- create_contour_plot(
+  data = socal_data,
+  contour_breaks = 8,
+  interpolate = TRUE,
+  interp_method = "tps",
+  interp_grid_res = 100,
+  title = "Thin Plate Spline Interpolation"
+)
+
+# Display the interpolation comparison
+print(raw_contour)
+print(akima_contour)
+print(tps_contour)
+
+# Create Google Earth overlays with the improved functions
+
+# Using Akima interpolation (recommended for sparse data)
+akima_result <- contour_to_google_earth(
+  data = socal_data,
+  output_name = "socal_akima_contour",
+  contour_breaks = 8,
+  alpha = 0.7,
+  buffer_percent = 1,
+  include_legend = TRUE,
+  create_kmz = TRUE,
+  interpolate = TRUE,
+  interp_method = "akima",
+  interp_grid_res = 100
+)
+
+# Using Thin Plate Spline interpolation (alternative)
+tps_result <- contour_to_google_earth(
+  data = socal_data,
+  output_name = "socal_tps_contour",
+  contour_breaks = 8,
+  alpha = 0.7,
+  buffer_percent = 1,
+  include_legend = TRUE,
+  create_kmz = TRUE,
+  interpolate = TRUE,
+  interp_method = "tps",
+  interp_grid_res = 100
+)
+
+# Create a custom color palette that might be suitable for elevation
+terrain_colors <- colorRampPalette(c("darkgreen", "green", "greenyellow", 
+                                    "yellow", "orange", "red", "darkred"))(8)
+
+# Create a version with a custom color palette (good for elevation data)
+custom_result <- contour_to_google_earth(
+  data = socal_data,
+  output_name = "socal_custom_colors",
+  contour_breaks = 8,
+  fill_colors = terrain_colors,
+  alpha = 0.7,
+  buffer_percent = 1,
+  include_legend = TRUE,
+  create_kmz = TRUE,
+  interpolate = TRUE,
+  interp_method = "akima"
+)
+
+# Display results and instructions
+cat("\nGoogle Earth overlay files created:\n")
+cat("\n1. Akima Interpolation:\n")
+cat("   - KML:", akima_result$kml, "\n")
+cat("   - KMZ:", akima_result$kmz, "\n")
+cat("\n2. Thin Plate Spline Interpolation:\n")
+cat("   - KML:", tps_result$kml, "\n")
+cat("   - KMZ:", tps_result$kmz, "\n")
+cat("\n3. Custom Color Palette (Akima Interpolation):\n")
+cat("   - KML:", custom_result$kml, "\n")
+cat("   - KMZ:", custom_result$kmz, "\n")
+
+cat("\nTo use in Google Earth Pro:\n")
+cat("1. Open Google Earth Pro\n")
+cat("2. Go to File > Open...\n")
+cat("3. Select any of the KMZ files to view the contour overlay\n")
+cat("4. For best results with sparse data, use the Akima interpolation version\n")
+
+```

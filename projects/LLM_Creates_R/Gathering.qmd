@@ -1,0 +1,254 @@
+# Data Gathering
+
+::: columns
+::: {.column width="50%"}
+The process of getting data is more than the collection of some numbers. You need a sound methodology, permissions to collect data, and technologies you can use to bring information into the digital realm. That's what this section is about.
+
+Large Language Models can help at each stage of the data gathering process. It's good to get assistance (read: Ask an LLM), even when you're familiar with a particular aspect of the process.
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+![](snowball_cover.png)
+:::
+:::
+
+### Methodology Example: Snowball Sampling
+
+Snowball sampling, a chain- referral method of recruiting people to participate in a research study, is a commonly applied methodology in ethnobotanical research. The test here is to get information about this technique and to obtain specific advice on the process of gaining permission to use this sampling method in an actual research program.
+
+#### The Snowball Sampling Method
+
+We'll start by reviewing this methodology.
+
+**Prompt**
+
+I am an ethnobotanist. I want to do a snowball sampling in a village. Can you explain the methodology, along with any pitfalls regarding this technique?
+
+**Response**
+
+As an ethnobotanist planning to use snowball sampling in a village, you're employing a useful but nuanced technique. Let me explain the methodology and highlight some potential pitfalls:
+
+Methodology:
+
+1.  Initial contact: Begin by identifying and interviewing a small group of individuals who meet your study criteria (e.g., knowledgeable about local plants and their uses).
+
+2.  Referrals: Ask these initial participants to recommend other potential subjects who also meet the criteria.
+
+3.  Expansion: Interview the referred individuals and ask them for further referrals.
+
+4.  Repeat: Continue this process until you reach theoretical saturation (no new information is emerging) or until you've met your sample size goals.
+
+5.  Documentation: Throughout the process, carefully document the referral chains and relationships between participants.
+
+Potential pitfalls:
+
+1.  Sampling bias: Snowball sampling can lead to a homogeneous sample, as people tend to associate with others similar to themselves. This may result in underrepresentation of certain groups or perspectives within the community.
+
+2.  Overrepresentation of social networks: You might end up with a sample that reflects a particular social network rather than the broader community.
+
+3.  Gatekeeping: Initial contacts may intentionally or unintentionally direct you towards or away from certain individuals, potentially skewing your results.
+
+4.  Ethical concerns: In small communities, maintaining anonymity can be challenging, as participants may be able to identify each other through the referral chains.
+
+5.  Volunteer bias: Those who agree to participate may have different characteristics from those who decline, potentially affecting the representativeness of your sample.
+
+6.  Difficulty in verifying eligibility: You may have less control over ensuring that referred individuals truly meet your study criteria.
+
+7.  Overreliance on social connections: Some community members with valuable knowledge might be overlooked if they're not well-connected socially.
+
+8.  Power dynamics: Be aware of local hierarchies and power structures that might influence who gets referred and who doesn't.
+
+9.  Limited sample size control: The final sample size can be unpredictable, as it depends on the referral process.
+
+10. Potential for coercion: Participants might feel pressured to take part if referred by someone in a position of authority or respect within the community.
+
+To mitigate these pitfalls, consider: - Using multiple initial contact points from diverse backgrounds - Clearly defining and consistently applying your inclusion criteria - Combining snowball sampling with other techniques for a more comprehensive approach - Being transparent about the sampling process in your research documentation
+
+Would you like me to elaborate on any specific aspect of snowball sampling or its application in ethnobotanical research?
+
+### Research Permission
+
+An Institutional Review Board (IRB) is a key organization in research that involves people. Ethnobiological research almost always requires interaction with people. Therefore, the research must conform to the guidelines and procedures of the IRB.
+
+The IRB's role is to do the following:
+
+-   Evaluate both the potential risks and benefits of the proposed research.
+
+-   Ensure that proper informed consent is obtained from the research participants.
+
+-   Review the research design and the methodology proposed to carry out the project.
+
+-   Monitor the ongoing research to ensure that the study is complying with ethical guidelines.
+
+**Prompt**
+
+How can I describe my use of the Snowball sampling technique in a way that an Institutional Review Board (IRB) will understand and approve of the research?
+
+**Response**
+
+To describe your use of the Snowball sampling technique in a way that an Institutional Review Board (IRB) will understand and approve, consider the following points:
+
+1.  Define the technique: Start by clearly explaining what Snowball sampling is - a non-probability sampling method where existing study participants recruit future participants from among their acquaintances.
+
+2.  Justify its use: Explain why this method is appropriate for your specific research. It's often used when studying hidden or hard-to-reach populations, or when the research topic is sensitive.
+
+3.  Outline the process:
+
+    -   Describe how you'll identify and recruit initial participants
+    -   Explain how these participants will refer others
+    -   Specify any limits on the number of referrals per participant
+    -   Detail how many "waves" of referrals you plan to have
+
+4.  Address ethical concerns:
+
+    -   Confidentiality: Explain how you'll maintain confidentiality, especially since participants may know each other
+    -   Voluntary participation: Emphasize that referred individuals are under no obligation to participate
+    -   Coercion: Describe measures to prevent participants from feeling pressured to refer others
+
+5.  Discuss potential biases:
+
+    -   Acknowledge that the sample may not be representative of the entire population
+    -   Explain how you plan to mitigate or account for potential biases in your analysis
+
+6.  Detail safeguards:
+
+    -   Describe procedures for obtaining informed consent from all participants
+    -   Explain how you'll protect participants' privacy and data
+
+7.  Recruitment materials:
+
+    -   Provide scripts or materials that participants will use when referring others
+    -   Ensure these materials are clear, non-coercive, and IRB-approved
+
+8.  Data management:
+
+    -   Explain how you'll manage and secure the data, especially any identifying information
+
+9.  Benefits and risks:
+
+    -   Clearly state the potential benefits of using this method for your research
+    -   Acknowledge any risks to participants and how you'll minimize them
+
+10. Alternatives considered:
+
+    -   Mention other sampling methods you considered and why Snowball sampling is the most appropriate for your study
+
+By addressing these points, you'll demonstrate to the IRB that you've thoroughly considered the ethical implications and methodological challenges of Snowball sampling. This comprehensive approach should help in gaining IRB approval for your research.
+
+Would you like me to elaborate on any specific aspect of describing Snowball sampling to an IRB?
+
+### Informed Consent
+
+Informed consent is a critical (and essential) element in the research process. Research participants must clearly understand why and how the research is being conducted.
+
+**Prompt**
+
+Can you draft a statement that I can show to participants that will inform them so that I can get their consent for participation?
+
+**Response** (edited for brevity)
+
+Remember to use clear, simple language throughout the form to ensure participants can easily understand what they're agreeing to. You may also want to have your IRB review this consent form before finalizing it.
+
+> ## Informed Consent Form for \[Study Name\]
+>
+> ### Introduction
+>
+> You are invited to participate in a research study conducted by \[Researcher Name\] from \[Institution Name\]. This study aims to \[brief description of study purpose\].
+>
+> ### Study Procedures
+>
+> If you agree to participate:
+>
+> 1.  You will be asked to \[describe main activities, e.g., complete a survey, participate in an interview\].
+>
+> 2.  This will take approximately \[estimated time commitment\].
+>
+> 3.  You may be asked to refer other potential participants to this study.
+>
+> ### Snowball Sampling
+>
+> This study uses a method called "snowball sampling." If you choose to participate:
+>
+> -   You may be asked to suggest other potential participants who meet the study criteria.
+> -   You are not required to provide referrals, and there is no penalty for not doing so.
+> -   If you do refer someone, please do not pressure them to participate.
+> -   We will not tell your referrals that you suggested them.
+>
+> ### Risks and Benefits
+>
+> -   Risks: \[Describe any potential risks, e.g., discomfort discussing sensitive topics, time inconvenience\]
+> -   Benefits: \[Describe any direct benefits or potential societal benefits\]
+>
+> ### Confidentiality
+>
+> -   Your responses will be kept confidential.
+> -   Data will be stored securely \[describe security measures\].
+> -   In publications, we will not include information that could identify you.
+>
+> ### Voluntary Participation
+>
+> -   Your participation is voluntary.
+> -   You can withdraw at any time without penalty.
+> -   You can skip any questions you don't want to answer.
+>
+> ### Questions or Concerns
+>
+> If you have questions about this research, please contact:
+>
+> \[Researcher Name\] at \[contact information\]
+>
+> For questions about your rights as a research participant, contact \[IRB contact information\]
+>
+> ### Consent
+>
+> By signing below, you indicate that you:
+>
+> -   Have read and understood this form
+> -   Are at least 18 years old
+> -   Voluntarily agree to participate
+>
+> Name: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Signature: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Date: \_\_\_\_\_\_\_\_\_\_
+>
+> \[Researcher Signature\]\
+> \[Researcher Name, Title\]\
+> \[Date\]
+
+### Sample Size Advice
+
+**Prompt**
+
+How many people should I interview in a typical reconnaissance study?
+
+**Response**
+
+The number of people to interview in a typical reconnaissance study can vary depending on several factors. Here's some guidance on determining an appropriate sample size:
+
+1.  Purpose of the study: Reconnaissance studies are typically exploratory in nature, aiming to gather initial insights rather than make definitive conclusions.
+
+2.  Saturation point: In qualitative research, the concept of "saturation" is often used. This refers to the point at which additional interviews do not yield new themes or insights.
+
+3.  Typical range: For a reconnaissance study, a sample size of 10-30 interviews is often considered adequate. However, this can vary.
+
+4.  Factors influencing sample size:
+
+    -   Homogeneity of the population
+    -   Complexity of the research question
+    -   Available resources (time, budget)
+    -   Accessibility of participants
+
+5.  Minimum threshold: Some researchers suggest a minimum of 6-10 interviews for very small-scale projects.
+
+6.  Maximum threshold: Beyond 30-40 interviews, the law of diminishing returns often applies in qualitative research.
+
+7.  Flexibility: It's often beneficial to start with a target range (e.g., 15-20) and be prepared to adjust based on the data you're collecting.
+
+8.  Quality over quantity: In-depth interviews with fewer, well-selected participants can often provide more valuable insights than a larger number of superficial interviews.
+
+9.  Justification: Whatever number you choose, be prepared to justify it based on your research goals and methodological approach.
+
+Remember, the goal of a reconnaissance study is to gain initial insights and direction, not to achieve statistical significance or generalizability. The quality and depth of the interviews are often more important than the quantity.
+
+Would you like me to elaborate on any aspect of sample size determination for reconnaissance studies?

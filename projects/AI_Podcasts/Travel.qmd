@@ -1,0 +1,53 @@
+# Travel Podcasts
+
+We write documents that detail the activities of many of our trips. Generally, we add photos to the narrative. This makes for a rich compendium of information about each of the adventures. These documents serve as reminders of the past and guides for future travel.
+
+## In Search of Wine
+
+A small group of people, mostly from Southern California, made two trips to taste the wine and explore the wineries of two areas: Napa Valley and Bordeaux. Both trips were arranged by the participants; these were not "tours" in the usual sense.
+
+There was a lot of overlap between people on the two trips. Subsequent to these trips, the travelers have gotten together on a few occasions. The group calls itself "The Bordeaux Nine."
+
+Each of the trips resulted in a detailed illustrated booklet. The illustrated versions are on the stories site; links are given below. Click a link to read the story.
+
+These stories aren't just about the wine. These people like to eat, too.
+
+### Napa Valley
+
+**Finding Fine Wine** ([read the story](https://kimbridges-stories.netlify.app/stories/finding-fine-wine.html)) is the story of the Napa Valley trip.
+
+None of us were new to seeing this California wine region. We knew that we wanted to go some special places and to have experiences unlike those on commercial "wine tours." We fulfilled these expectations.
+
+Podcast:
+
+<audio controls>
+  <source src="audio/Finding_Fine_Wine.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+### France & Spain
+
+The success of the Napa explorations prompted the organization of a trip to France. There, the Bordeaux Nine went through all the major wine regions in Bordeaux (Bordeaux 1: [read the story](https://kimbridges-stories.netlify.app/stories/bordeaux.html)) and then traveled south to San Sebastian for more adventures (Bordeaux 2: [read the story](https://kimbridges-stories.netlify.app/stories/bordeaux-2.html)).
+
+Podcasts:
+
+<audio controls>
+  <source src="audio/Bordeaux_1.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<audio controls>
+  <source src="audio/Bordeaux_2.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+## Japan Travel Adventures
+
+This podcast is based on the text of a travel narrative ([read the story](https://kimbridges-stories.netlify.app/stories/japan-fall-2023.html)). The trip took place in the Fall, 2023. We visited Tokyo and Kyoto and enjoyed some day trips to nearby cities.
+
+Podcast:
+
+<audio controls>
+  <source src="audio/Japan_Fall_2023.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>

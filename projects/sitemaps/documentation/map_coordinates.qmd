@@ -1,0 +1,295 @@
+---
+title: "Creating Maps Using R"
+subtitle: "Simplifying the Process"
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+format:
+  html:
+    fig-width: 8
+    fig-height: 8
+    code-fold: true
+    code-summary: "Show the code chunk"
+editor: visual
+execute:
+  warning: false
+  error: false
+  message: false
+---
+
+## Getting Locations
+
+Placing data points, labels and names on a map requires the specification of location information. Generally, we thing of using geographic coordinates, like latitude and longitude. These values work, but they are often hard to get and tedious to enter. Ahhh. So many digits to type.
+
+::: callout-important
+Avoid retyping coordinate data to the maximum extent possible. Download the values or do a copy-paste.
+:::
+
+First, lets set up the libraries and setup code.
+
+```{r "libraries"}
+
+## Libraries
+library(readr)        ## Read in data
+library(ggmap)        ## Show maps, handle Google key
+library(ggplot2)      ## Build maps
+library(dplyr)        ## General data wrangling
+library(gt)           ## Tables
+library(sitemaps)     ## Functions to help build site maps
+library(parzer)       ## Convert HMS to digital coordinates
+library(lubridate)    ## Handle times and dates in wonderful ways
+library(exifr)        ## Get photo EXIF data
+library(stats)        ## Help to initialize files
+library(tibble)       ## Add columns function
+
+## Initialize Google Map key; the key is stored in a Project directory.
+  My_Key <- read_file("P://Hot/Workflow/Workflow/keys/Google_Maps_API_Key.txt")
+
+## Test if Google Key is registered
+if (!has_google_key()){
+
+  ## Register the Google Maps API Key.
+  register_google(key = My_Key, account_type = "standard")
+  } ## end Google Key test
+  
+```
+
+The standard setup code chunk follows.
+
+```{r "setup"}
+
+## Use two functions from sitemaps to initialize parameters
+column <- site_styles()
+hide  <- site_google_hides()
+
+## Establish a theme that improves the appearance of a map.
+## This theme removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2),
+                    legend.position = "none")
+
+```
+
+### Latitude & Longitude Formats
+
+Most newer publications use a digital (i.e., ddd.ddddd) representation of each geographic coordinate. Many places you find data will use this format. If you are recording your own data values, for example with a cell-phone, you should use this digital format.
+
+The functions used here almost always use the decimal digits format.
+
+But sometimes, you get data in the hours, minutes and seconds format (hh mm ss). To make matter worse, this format comes with a number of variations.
+
+Never fear! There are ways to read a whole variety of formats and convert them to the decimal format.
+
+```{r "parse"}
+#| label: tbl-parse
+#| tbl-cap: "Different formats converted to the digital format."
+
+## Note that there are subtle differences between the 
+## single and double quote marks.
+landmarks <- read_csv(col_names = TRUE, file = 
+        "alat,            alon,           name
+        48°51′29.6″N,     2°17′40.2″E,    Eiffel Tower
+        48°52′25.67″N,    2°17′42.04″E,   Arc de Triomphe
+        48.8530°N,        2.3498°E,       Notre-Dame de Paris
+        48.88686,         2.34303,        Sacré-Cœur
+        48° 51′ 39.07″ N, 2° 20′ 8.92″ E, Louvre Palace
+        48:51:36 N,       2:19:35 E,      Musée d'Orsay
+        48 51 19 N,       2 20 42 E,      Sainte-Chapelle")
+
+## Convert the coordinates.
+landmarks = landmarks %>%
+  mutate(lon = parzer::parse_lon(alon),
+         lat = parzer::parse_lat(alat))
+
+## Print a table with the data.
+gt(landmarks) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5)
+
+```
+
+You should see from this example that most of the coordinate formats can be converted with the use of the `parzer` functions.
+
+Making sure your data are in a digital format is one of the first steps in data wrangling.
+
+## Getting Geographic Coordinates
+
+There are quite a few strategies. Which one works for you depends on your problem. The following are some suggestions.
+
+You need to use the decimal values for all the coordinates (e.g., 42.35681, not the HMS format 42^∘^ 21' 24.516"). However, if you only have values with the HMS format, you can wrangle these into the decimal format (shown in the Data Wrangling section).
+
+Five decimal digits is enough precision. This corresponds to values close to 1 meter resolution.
+
+### Copy From Existing Digital Sources
+
+You can often find digital location using Internet resources. Wikipedia, for example, frequently lists the geographic coordinates of places for which there is an article. This is often in small type in the upper right hand corner.
+
+Remember that you should try to copy and paste instead of retyping the values.
+
+### Geocode Place Names & Addresses
+
+If you have buildings (e.g., residences, institutions, businesses) as your locations, you can do a reverse geocode to get the coordinates. This works surprisingly well for many locations around the world.
+
+If you're interested in finding a place, you might check the website `geonames.org`. It currently has more than eleven million place names in its worldwide database.
+
+::: callout-note
+The `geocode` function requires the use of a `Google Maps key`. It is the same key you use for making Google Maps.
+:::
+
+```{r "places"}
+#| label: tbl-addresses
+#| tbl-cap: "Locations with place names."
+
+## Reset the parameters
+param <- site_param()
+
+## Read the data
+inst <- read_csv(col_names = TRUE, file = 
+    "place,                   city,      country
+    玉川大学教育博物館,       Tokyo,     Japan
+    Chelsea Physic Garden,    London,    England
+    Royal Botanical Garden,   Kolkata,   India
+    University of Cape Town,  Cape Town, Union of South Africa
+    北京植物园,               Beijing,   PRC")
+
+## Combine the location information.
+location <- paste0(inst$place,", ",inst$city, ", ", inst$country) 
+
+## Get the coordinates from the location.
+coord <- geocode(location, output = "latlon")
+
+## Add the coordinates to the original location data.
+inst <- cbind(inst,coord)
+
+gt(inst) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5)
+```
+
+### Locations from Google Maps
+
+Running Google Maps helps you get the needed information for all these location requirements. If you use this strategy, you'll quickly find the data you need and you will never need to write down and type all the location numbers.
+
+-   Locate the area on Google Maps in a browser.
+
+-   Get the coordinates of a point (either a central location or corner) by right-clicking a location point.
+
+-   The point coordinates appear at the top of a pop-up menu.
+
+-   Left-click on the coordinates values and they will be put in the copy buffer.
+
+-   Paste the coordinates into the R code chunk with `CTRL-V`.
+
+Note that the order of the coordinates given by Google is Latitude, Longitude. The mapping done here requires it the other way around (Lon,Lat). See the warning below.
+
+##### 
+
+::: callout-warning
+When you provide data for Google Maps, you need to give the coordinates in the proper order. **Longitude** always comes **first** in the specifications.
+
+An easy way to remember this is that the corners are given as (x,y) pairs (aka "Cartesian coordinates"). The **longitude is x** and **latitude is y**.
+
+When you retrieve values from a Google map, the coordinates are given in the (latitude, longitude) order and, therefore, the values need to be transposed.
+:::
+
+### On Site Recording: GPS Software & Photo Metadata
+
+You can collect location coordinateswhen you collect field data. There are many apps that use a phone's GPS capabilities.
+
+A generally overlooked alternative is to simply take a photo at the point you want to record the location. You probably want to Include some message in the image (e.g., "site 22"). If your camera is set to record the location in the photo metadata, you can use software to extract the values inside your R code.
+
+Here is an example that reads all the photos in a folder and retrieves the location coordinates.
+
+```{r "photos"}
+#| label: tbl-photos
+#| tbl-cap: "Information from the JPG images at the Puhimau Hot Spot."
+
+## Reset the parameters
+column <- site_styles()
+
+## Retrieve the EXIF data from the JPG photos in the folder
+photo_table <- site_photos("photos/HotSpot")
+
+## Put out a table to confirm the EXIF data
+gt(photo_table) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5)
+
+```
+
+We can now show where the photos were taken with a map based on a satellite image.
+
+```{r photomap}
+#| label: fig-photomap
+#| fig-cap: "Puhimau Hot Spot photo sites."
+
+## Make a text column from the photo number
+photo_table$text <- as.character(photo_table$number)
+
+## Use a satellite image for the basemap
+column$gmaptype <- "satellite"
+
+## Build the basemap
+basemap <- site_google_basemap(datatable = photo_table)
+
+## Create the map
+image1 <- ggmap(basemap) +
+  site_labels(datatable = photo_table) +
+  site_points(datatable = photo_table, styles = column) +
+  simple_black_box
+
+image1
+
+ggsave(filename="puhimau_photos.png",plot=image1, width=8, height=8)
+  
+```
+
+
+
+### Location & Zoom
+
+The first task is to define the extent of the map (i.e., the area it will show).
+
+There are three methods to provide the area shown by the map. Two use a center point and a size indicator. The other uses corner of the area (called a "bounding box").
+
++--------------------------+-------------------------------------------------------+----------------------------------------------------------+
+| Method                   | Data                                                  | Example                                                  |
++==========================+=======================================================+==========================================================+
+| Address\                 | Street address + Zoom level                           | location \<- "17 Milk St, Boston, MA"\                   |
+| (used as the map center) |                                                       | zoom \<- 11                                              |
++--------------------------+-------------------------------------------------------+----------------------------------------------------------+
+| Coordinates\             | (longitude,latitude) decimal coordinates + Zoom level | location \<- c(-71.05846, 42.35681),\                    |
+| (used as the map center) |                                                       | zoom \<- 11                                              |
++--------------------------+-------------------------------------------------------+----------------------------------------------------------+
+| Bounding Box\            | (left,bottom,right,top) decimal coordinates           | location \<- c(-71.12360, 42.31573, -71.00903, 42.39974) |
+| (the "Corners")          |                                                       |                                                          |
++--------------------------+-------------------------------------------------------+----------------------------------------------------------+
+
+Here are some general notes about supplying values for location and zoom.
+
+#### Address
+
+The address is used to center the map. Generally, it doesn't need to be too precise.
+
+A specific street address (like the example) works in most cases. Sometimes you can use a well-known landmark (e.g., Eiffel Tower) along with the city, or even the name of a business or institution (with enough additional information that the address is not ambiguous).
+
+#### Coordinates
+
+#### Zoom Levels
+
+Two of the map area strategies use a Zoom level. The table below shows how the scale, which runs from 1 to 21 controls the area of the map. In practice, you'll need to try a Zoom level value or two to get your map sized properly. If this proves to be difficult, you might want to consider the bounding-box alternative.
+
++--------+-------------------------------------------------------------+
+| Zoom   | Level of Detail                                             |
++========+=============================================================+
+| 1      | World view                                                  |
++--------+-------------------------------------------------------------+
+| 5      | Continents or Landmass                                      |
++--------+-------------------------------------------------------------+
+| 10     | City details emerge                                         |
++--------+-------------------------------------------------------------+
+| 15     | City streets become visible                                 |
++--------+-------------------------------------------------------------+
+| 20     | Individual buildings are seen                               |
++--------+-------------------------------------------------------------+

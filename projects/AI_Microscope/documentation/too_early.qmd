@@ -1,0 +1,43 @@
+# The idea that was too early
+
+Reading leaf anatomy can be a boring assignment in a botany lab. I can say that plainly, because I encountered years of getting vibes from students who did it. You sit at a microscope. You bring a stained slice of leaf into focus. You find the palisade parenchyma layer, the spongy parenchyma, the xylem, and you name them. Then you draw them. Label the drawing. Hope you got it right.
+
+Most students learn the parts. Fewer of them ever learn why the parts are shaped the way they are. And that's the thing worth knowing.
+
+In 1989, four of us tried to fix that. Stephen Itoga led it. Lawrence Frederick, Richard Uyeda, and I filled it out. We described a piece of software in the *Journal of Educational Technology Systems*, and we called it the AI Microscope. The name was a promise. It said the machine would do more than show you a picture. It would help you understand what you were looking at, the way a good teacher standing at your shoulder would.
+
+The idea was right. I still believe that. The problem, as this chapter will show and the next will explain, was the year.
+
+## A microscope without a microscope
+
+Start with the microscope part, because that came first. The program put an image of a slide on the screen and let you use it like the real instrument. You moved the field of view. You changed magnification, from low power up to high. You hunted for the structure you wanted, the same hunt you'd do at the bench, minus the eyestrain and the fiddling as you kept the slide on the stage.
+
+Underneath the picture sat a second image you never saw. It was a map, painted so that each tissue had its own color. When you pointed at a spot on the leaf, the program looked up the color at that spot on the hidden map. That color told it what tissue you'd found. Point at the palisade parenchyma, and it knew you meant palisade parenchyma. This one trick, a color map beneath the image, is the mechanical heart of the whole thing. It was true in 1989, and it's still true in the version running today.
+
+So the student pointed, and the machine answered. Not with a grade. With a name. And with help.
+
+## The AI in the microscope
+
+The help is where the "AI" came in. It's worth being precise about what that meant in 1989. It did not mean what it means now. Then, it meant an expert system: a body of knowledge and a set of rules, written so a machine could reason over them. Our expert system was written in Prolog, a language built for exactly that kind of logic. Behind the glass of the simulated microscope sat a tutor made of rules, ready to say something useful about whatever tissue you'd landed on.
+
+That was the ambition packed into the name. Not a slideshow with captions. A microscope with someone knowledgeable behind it, waiting to be asked.
+
+## A tool, not a spy
+
+Here is the part I care about most, and the part that had to survive everything that came later. The AI Microscope was built to help, and only to help. It did not test you. It did not grade you. It did not keep a record of your mistakes to hand to anyone. You were in charge of it, the way you're in charge of a dictionary or a calculator. You reached for it when you wanted it. It answered. It did not judge you for asking.
+
+That sounds modest. It isn't.
+
+A great deal of teaching software, then and now, is built the other way around. Built to watch. And measure. And report. We chose the opposite on purpose. A tool that helps you look is a different kind of thing from one that checks whether you looked. We wanted the first kind. The name for the ethic, which I'll use through the rest of this document, is a tool, not a spy.
+
+## What the paper reached for
+
+The paper described more than we could fully build, which is the honest signature of an idea ahead of its hardware. Three reaches stand out.
+
+The first was the voice. We wrote that the system would pronounce the scientific names out loud. Names are the wall a beginner hits first, and hearing one said is worth more than seeing it spelled. In 1989, a machine could barely manage this, and not well, but we put it in the design because it was right.
+
+The second was meaning. A name like *palisade parenchyma* or *xylem* is not a random label. It carries its own small explanation, if you know where the word came from. The system was meant to show that, to put the origin of a name beside the name, so the word stopped being arbitrary.
+
+The third was the balance of picture and word. We leaned on images and kept the text short. A stack of small cards rather than a page of prose. Show the thing. Say a little. Let the student look. A textbook does the opposite. And we were trying not to be a textbook.
+
+Voiced names, meanings shown, pictures over prose. Read that list today and none of it seems remarkable. Read it as a specification for a computer in 1989, and every line of it was a stretch. The idea was not too clever. It was too early.

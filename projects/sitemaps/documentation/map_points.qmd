@@ -1,0 +1,493 @@
+---
+title: "Creating Maps Using R"
+subtitle: "Simplifying the Process"
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+format:
+  html:
+    fig-width: 8
+    fig-height: 8
+    code-fold: true
+    code-summary: "Show the code chunk"
+editor: visual
+execute:
+  warning: false
+  error: false
+  message: false
+---
+
+# Points and Labels
+
+These are, in a way, the key elements in the map-making process. Most of the tasks focus on these two elements.
+
+Point and label information is stored in a table. This is called the `datatable` in many of the examples. At a minimum, this table consists of geographic coordinates (`lat`, `lon`) and, most likely, `text` for the labels. The rest of the `datatable` is optional as there are default values for all of the style variables.
+
+Getting a good display of data depends on having a correct set of basic data (`text`, `lat`, `lon`) and adding table columns or adjusting `column` values.
+
+## Getting Started
+
+There are the usual tasks that need to be done to get started. These include loading some libraries and getting the Google Map key registered.
+
+```{r "libraries"}
+
+## Libraries
+library(readr)        ## Read in data
+library(stringr)      ## Wrap text strings
+library(ggmap)        ## Show maps, handle Google key
+library(ggplot2)      ## Build maps
+library(dplyr)        ## Data wrangling
+library(gt)           ## Tables
+library(sitemaps)     ## Functions to help build site maps
+library(parzer)       ## Convert HMS to digital coordinates
+
+## Initialize Google Map key; this key is stored in a Project directory.
+  My_Key <- read_file("P://Hot/Workflow/Workflow/keys/Google_Maps_API_Key.txt")
+
+## Test if Google Key is registered
+if (!has_google_key()){
+
+  ## Register the Google Maps API Key.
+  register_google(key = My_Key, account_type = "standard")
+  } ## end Google Key test
+  
+```
+
+The next step is to initialize some data. This is another of the standard startup tasks.
+
+```{r "setup"}
+
+## Use two functions from sitemaps to initialize columneters
+column <- site_styles()
+hide  <- site_google_hides()
+
+## Establish a theme that improves the appearance of a map.
+## this theme removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2),
+                    legend.position = "none")
+
+```
+
+With these steps done, we're ready to go.
+
+## Points, Labels, Symbols & Names
+
+Usually, you'll have all the point and label information in a single file. Most of the examples have called this the `datatable` file.
+
+Think simple for a moment. There are times when you'll only have points to be mapped. That means you only need to have two columns: the Geographic coordinates specified in `lat` and `lon` columns. (Reminder: these column names are always lower case. If your columns are not in lower case, you'll need to use the `rename` function to make the change.)
+
+Even though you have simple data points, you can add complexity with attributes like `point_color` (the color of the point).
+
+Now, consider more complexity. Generally, you'll want to label the data points. That's why the combination of `map_points` and `map_labels` generally occur together.
+
+We can get even more complex. Note that not all data points need a label. Entering NA in the text column will keep a label from appearing at a point. Instead, we might use a data point as a symbol to imply additional meaning even without a label.
+
+Finally, we can
+
+Here is an example.
+
+```{r "transects"}
+#| label: tbl-transects
+#| tbl-cap: "Ailinginae Atoll islets with transects."
+
+## Read the data table
+transects <- read_csv(col_names = TRUE, file =
+  "islet,   species, l_w, lat,      lon     
+   Sifo,       22,   1.9, 11.14306, 166.29062
+   Mogiri,     14,   6.6, 11.12511, 166.34009
+   Enibuk,     19,   3,   11.12566, 166.36090
+   Eniuetakku, 11,   6,   11.12388, 166.37375
+   Ribouri,    18,   7.2, 11.11881, 166.40379
+   Kuobuen,    12,   8,   11.12347, 166.42182
+   Knox,       24,   1.5, 11.11685, 166.52790")
+
+## Color the transect points red
+transects$point_color <- "red"
+
+## check the data table
+gt(transects) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5) %>% 
+  tab_source_note(source_note = "Data: 2002 field survey") %>% 
+  tab_footnote(footnote = "length/width",
+      locations = cells_column_labels(columns = l_w))
+
+```
+
+A second point and label table gives some of the logistics locations. Note that there are symbols associated with each location. The purpose of this set of data is to plot the symbol, not the text (which is NA).
+
+The symbols are coded by shape and color.
+
+```{r "logistics"}
+#| label: tbl-logistics
+#| tbl-cap: "Ailinginae Atoll logistics locations."
+
+logistics <- read_csv(col_names = TRUE, file = 
+     "feature,   point_shape, point_size, lat,      lon,       text, point_color
+      Anchor 1,  diamond,     3,          11.13471, 166.36452, NA,   cyan
+      Anchor 2,  diamond,     3,          11.13539, 166.43146, NA,   cyan
+      Camp,      triangle,    2,          11.11479, 166.52640, NA,   green
+      Passage,   square,      3,          11.13155, 166.32497, NA,   yellow
+      Passage,   square,      3,          11.12538, 166.35348, NA,   yellow")
+
+gt(logistics) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5)
+
+```
+
+A few place names will help with the general understanding of the map.
+
+```{r "nametable"}
+#| label: tbl-nametable
+#| tbl-cap: "Ailinginae Atoll place names."
+
+## Place names 
+places <- read_csv(col_names = TRUE, file = 
+     "text,             lat,      lon,       name_text_color, name_text_size, fontface
+      Ailinginae Atoll, 11.23222, 166.39685, white,           6,              plain
+      Pacific Ocean,    11.31781, 166.39846, white,           4,              italic")
+
+gt(places) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5)
+
+```
+
+Finally, we can use the data tables and create a map. A satellite basemap is appropriate for this uninhabited atoll in the Marshall Islands.
+
+The transect points are used to define the extent of the basemap.
+
+Then a series of layers is added. The islet labels indicate where there were transects. Symbols (square, triangle, diamond) indicate field trip logistics information. Finally, a few names help give overall orientation for the map.
+
+```{r "expedition"}
+#| label: fig-expedition
+#| fig-cap: "2002 Ailinginae Atoll expedition sites."
+
+## Rename the islet column in the transects table
+transects2 <- transects %>% 
+  dplyr::rename(text = islet)
+
+## Adjust a column style
+column$point_outline_thickness <- 1
+
+## Create a basemap
+column$gmaptype <- "satellite"
+
+basemap <- site_google_basemap(datatable = transects2)
+## Plot the map
+## Note the layering of the points and labels
+ggmap(basemap) +
+  site_points(datatable = transects2) +
+  site_labels(datatable = transects2) +
+  site_points(datatable = logistics) +
+  site_names(datatable =  places) +
+  simple_black_box +
+  labs(caption = 
+         "key: diamond=anchorage, square=passage, triangle=camp")
+
+```
+
+The layering of the points, labels and symbols keeps information from being hidden.
+
+Many of the ggplot2 options can be used to enhance the map. Here, a `caption` is used to provide a key to the map symbols.
+
+Overall, the map serves as a reference to the data in the tables.
+
+## Complex Points
+
+The starting data are fairly simple. Just a ranking of high schools, along with the number of students in each school. The schools in the data table are listed by name.
+
+Geocoding works to get the geographic coordinates for each school.
+
+Two groupings are done next: one color codes the schools by their `rank` and the other grouping is for the size of each school (`students`).
+
+The two quantitative variables (`rank`, `students`) are cut into segments, each with a different strategy. The `rank` is divided into three groups using the R base `cut` function. The `students` variable is segmented using the `site_cuts` function based on the `quartiles4` strategy (divide into nearly four equal-sized groups). The `site_cuts` function works in connection with a look-up table. In this case, the index value produced by the `site_cuts` function is used to assign a point size value (`point_size`). The point size is then merged into the data table. (Details of the `site_cuts` function are given in the Cuts chapter.)
+
+A table shows the results of the data manipulation.
+
+Note that the columneters (`column`) are reset before doing anything else.
+
+```{r "complex"}
+#| label: tbl-complex
+#| tbl-cap: "Top 10 High Schools in Honolulu."
+
+## Reset all the columneters
+column <- site_styles()
+
+## Basic data from the website
+high_school <- read_csv(col_names = TRUE, file = 
+   "rank, school,     students
+       1, Roosevelt,  1448
+       2, Kaiser,     1174
+       3, Kalani,     1435
+       4, Moanalua,   1996
+       5, Kalaheo,     814
+       6, Mililani,   2599
+       7, Pearl City, 1584
+       8, McKinley,   1599
+       9, Radford,    1159
+      10, Aiea,        985")
+
+
+## Data: https://www.usnews.com/education/best-high-schools/hawaii/rankings/honolulu-hi-46520
+
+## Geocode the locations
+location <- geocode(location = paste0(high_school$school,
+                    " High School, Honolulu, HI"), output = "latlon")
+high_school <- cbind(high_school, location)
+
+## Divide the high schools into ranks (cuts=2 is three groups)
+high_school$rindex <- site_cuts(quant_var = high_school$rank,
+                                cuttype = "breaks", 
+                                cuts = 3)
+## Lookup table for colors
+color_table <- read_csv(col_names = TRUE, comment = "#", file = 
+    "rindex,   point_color
+     1,        green  # highest rank
+     2,        cyan
+     3,        orange # lowest rank")
+
+## Merge the colors into the data table
+high_school <- merge(high_school, color_table, by = "rindex")
+
+## Divide the high schools by school size (students)
+high_school$sindex <- site_cuts(quant_var = high_school$students,
+                                cuttype = "quartiles4")
+## Lookup table for size
+size_table <- read_csv(col_names = TRUE, comment = "#", file = 
+    "sindex,   point_size
+     1,        3   # smallest school
+     2,        5
+     3,        7
+     4,        9   # largest school")
+
+## Merge size into the data table
+high_school <- merge(high_school, size_table, by = "sindex")
+
+## Print the data table
+gt(high_school) %>% 
+  fmt_number(columns = c(lat,lon), decimals = 5) %>% 
+  tab_source_note(source_note = "Data: www.usnews.com (2022)")
+
+```
+
+The data table is now almost ready for plotting.
+
+The school column needs to be changed to text so it will be used in a label.
+
+A few columneters are changed to meet the needs of this particular map.
+
+```{r "mapschools"}
+#| label: fig-mapschools
+#| fig-cap: "Top 10 Honolulu Public High Schools (2022)."
+
+## Rename the school column as text 
+high_school2 <- high_school %>% 
+  dplyr::rename(text = school)
+
+## Change a columneter
+column$point_outline_thickness <- 1.5 
+
+basemap <- site_google_basemap(datatable = high_school2)
+
+## Plot the map
+## Note the layering of the points and labels
+ggmap(basemap) +
+  site_points(datatable = high_school2) +
+  site_labels(datatable = high_school2) +
+  simple_black_box +
+  labs(caption = 
+         "key: green=top, cyan=middle, orange=bottom\n  Point size: students") 
+
+```
+
+## Symbols and Transparency
+
+Each year, sampling is done at Kaloko Beach in four plots. Each species is identified along with its relative abundance. A map is a good way to orient researcher so they can find the tiny permanent markers that delimit each sample plot.
+
+Here, the square symbol is used to mark the plot boundaries (about 30m on a side). The inside of the symbol is made transparent with the `NA` specification for `point_color`. Note that the line from each label to the sample square has also been eliminated with the `NA` value for `label_connector_size`.
+
+This plot has minimal information in the data table. Instead, there have been many changes to the columneters to control the appearance of the points and labels.
+
+```{r "usymbols"}
+#| label: fig-usymbols
+#| fig-cap: "Permanent plot locations for vegetation sampling at Kaloko Beach."
+
+## Reinitialize the columns
+column <- site_styles()
+
+## Read the data
+sample_plots <- read_csv(col_names = TRUE, file = 
+        "text, lat,      lon
+         1,    21.29361, -157.66083
+         2,    21.29264, -157.66102
+         3,    21.29342, -157.65953
+         4,    21.29303, -157.65889")
+
+sample_names <- read_csv(col_names = TRUE, file = 
+        "text,         lat,      lon,        name_text_color, name_text_size
+         Kaloko Beach, 21.29226, -157.65990, white,           4")
+
+## Set some columneters
+column$margin                   <- 0
+column$gmaptype                 <- "satellite"
+column$point_color              <- NA
+column$point_size               <- 7
+column$point_shape              <- "square"
+column$point_outline_color      <- "white"
+column$point_outline_thickness  <- 1.5
+column$label_connector_width    <- NA
+
+## Basemap
+basemap <- site_google_basemap(datatable = sample_plots)
+## Plot the map
+## Note the layering of the points and labels
+ggmap(basemap) +
+  site_labels(datatable = sample_plots) +
+  site_points(datatable = sample_plots) +
+  site_names(datatable  = sample_names) +
+  simple_black_box
+
+```
+
+## Colored Labels
+
+The next example shows how colored labels can group labels by their similar function. Here, a simple campus director shows important office locations along with a few places that are important for logistics (parking, food).
+
+The data table is used just for labels. There is no need to data points on this map.
+
+A simplified version of the data table is printed as the geographic coordinates and columneter information are useful only for making the map.
+
+```{r colorlabs}
+#| label: tbl-colorlabs
+#| tbl-cap: "Office and logistics information for PCSU visitors."
+
+## Reinitialize column styles
+column <- site_styles()
+
+## Read data
+campus <- read_csv(col_names = TRUE, file = 
+ "office,          lat,      lon,        room,           label_background_color
+  Botany faculty,  21.30161, -157.81524, St John Bldg,   honeydew
+  Botany Office,   21.30041, -157.81675, Edmondson 216,  lightyellow
+  PCSU Office,     21.30173, -157.81555, St John 408,    lightyellow
+  Biology faculty, 21.30043, -157.81485, Life Sci Bldg,  honeydew
+  Parking,         21.30156, -157.81442, E-W Rd Parking, lightcyan
+  Food Services,   21.30097, -157.81577, Paradise Palms, linen")
+
+campus2 <- campus %>% 
+  dplyr::select(office, room)
+
+gt(campus2) %>% 
+  tab_footnote(footnote = "Check building directory",
+           locations = cells_body(columns = 2, rows = c(1,4))) %>% 
+  tab_footnote(footnote = "Replaces Henke Hall",
+           locations = cells_body(columns = 2, rows = 4))
+
+```
+
+Now it is time for the map. As usual, a few small changes are made to the columneters. The `office` column is changed to `text` so that this will become the words on the label.
+
+```{r "campusmap"}
+#| label: fig-camputmap
+#| fig-cap: "Information for visitors to the Pacific Cooperative Studies Unit at the University of Hawaii at Manoa."
+
+## Change a few columneters
+column$label_connector_color    <- "white"
+column$point_outline_thickness  <- 3
+column$margin                   <- 0
+column$gmaptype                 <- "hybrid"
+
+## Rename office to text 
+campus3 <- campus %>% 
+  dplyr::rename(text = office)
+
+## Create the basemap
+basemap <- site_google_basemap(datatable = campus3)
+## Plot the map
+ggmap(basemap) +
+  site_labels(datatable = campus3) +
+  simple_black_box
+
+```
+
+## Big Area
+
+The next map was used for planning a West Coast driving trip. The `text` entries are the dates we stay in each city (i.e., "O 26" is October, 26). The trip begins and ends in Torrance, California.
+
+Note that a table is produced that gives driving information such as the number of miles to be driven and the time this is expected to take. That's a standard part of our trip planning.
+
+Once we are sure the data are correct, we'll make a map.
+
+```{r "tripdata"}
+#| label: tbl-tripdata
+#| tbl-cap: "Locations for the 2022 West Coast trip."
+
+trip <- read_csv(col_names = TRUE, file = 
+  "text,	   city,           state, miles, hours, comment	
+   O 26,	  Torrance,        CA,    NA,    NA, Myra	
+   O 27,	  Lake San Marcos, CA,    107, 1:52, to Safari Park
+   O 28-30,	La Quinta,       CA,    105, 2:22, Teresa & Richard	
+   O 31,	  Torrance,        CA,    140, 2:59, Myra	
+   N 1,	    Morro Bay,       CA,    212, 3:33, The Landing	
+   N 2,	    Napa,            CA,    266, 4:17, Cabernet House B&B
+   N 3-4,	  Trinidad,        CA,    268, 4:59, View Crest Lodge
+   N 5-6,	  Eugene,          OR,    280, 5:15, Will & Valerie	
+   N 7,	    Aberdeen,        WA,    297, 5:52, Best Western Plus
+   N 8-15,	Port Angeles,    WA,    166, 3:16, Fir Cottage
+   N 16,    Seattle,         WA,     78, 2:34, Hampton Inn
+   N 17-23,	Mt. Vernon,      WA,     55, 0:53, 1901 Farmhouse	
+   N 24,	  Eugene,          OR,    311, 4:52, Lanzarotta B$B	
+   N 25,	  Redding,         CA,    315, 4:52, Hampton Inn	
+   N 26,	  Paso Robles,     CA,    403, 6:14, Holiday Inn Express	
+   N 27-28,	Torrance,        CA,    229, 3:47, Myra")
+
+## Check the data
+trip$hours <- as.character(trip$hours)
+gt(trip) %>% 
+  fmt_time(columns = hours, time_style = "hm")
+```
+
+Now we can generate the map.
+
+The labels on the map show the dates we'll be at each location. The locations of the points gives us an idea of the distances and the general part of the country we'll traverse.
+
+During the trip we rely on Google maps for navigation. This map is more for general planning. It is also useful as a communication tool as we discuss our trip with other people.
+
+Saving the map as an image ("`png`") lets us store the map on a mobile device so it is available for easy, off-network use.
+
+Two adjustments were made from the default `column` values. The margin for the map needed to be changed to get the full West Coast shown. The `label_text_size` needed to be reduced so that label overlap wouldn't be a problem (especially in Southern California) when the map was view while developing the code. However, the saved map didn't have a problem with the larger type size. These are pretty standard issues that come up during the map creation process.
+
+```{r "maptrip"}
+#| label: fig-maptrip
+#| fig-cap: "Overnight locations for the West Coast trip."
+
+## Geocode the locations
+location <- geocode(location = paste0(trip$city, ", ", trip$state), 
+                    output = "latlon")
+trip <- cbind(trip, location)
+
+## Adjust the basemap coverage
+column$margin <- 0.8
+
+## Generate the basemap
+basemap <- site_google_basemap(trip)
+
+## Adjust labels
+column$label_text_size <- 4
+
+## Put the points and labels on the basemap
+trip_map <- ggmap(basemap) +
+  site_points(trip) +
+  site_labels(trip) +
+  simple_black_box
+
+trip_map
+
+ggsave(filename="Tripmap_West_Coast_2022.png",
+       plot=trip_map,
+       width=8, height=8)
+```

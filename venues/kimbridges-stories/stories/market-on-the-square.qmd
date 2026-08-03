@@ -1,0 +1,13 @@
+---
+title: "Market on the Square"
+subtitle: "Saturday market in Madison, Wisconsin."
+date: 2018-06-24
+categories: ["Travel", "Ethnobiology", "US"]
+image: ../images/Square.jpg
+pdf: ../pdfs/Square.pdf
+---
+Farmers selling produce, cheese, baked goods, flowers and foliage. This photo essay links rural and urban cultures.
+
+Pages: 50
+
+<iframe src="../viewer.html?pdf=Square.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

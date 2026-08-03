@@ -1,0 +1,659 @@
+
+# Climate
+
+Published reports of field studies increasing require basic data on the climate of the study area. Much of the needed information is available from on-line data sources.
+
+The routines in this section attempt to simplify the process of data extraction while maximizing the information gained from the data.
+
+## WHO Climate Station Data
+
+There is a set of observation stations that record the daily weather. This is the WHO Climate Station Network.
+
+:::{.callout-note}
+Note: This WHO observation network may not be the best one, for a number of reasons. However, the purpose of this report is to do a feasibility study of the output from a general climate data provider. If the products developed here have utility, the switch to a different data provider, if necessary, should be straightforward.
+:::
+
+The purpose of this section is to show what stations are nearby a desired location, extract a period of data from a selected station, and then present visualizations and data that characterize the climate for the station.
+
+In general, you only need to specify the geographic coordinates of a location. Defaults will select the nearest station, extract three years of daily values and present the results.
+
+A map of the nearby observation stations is provided, along with some basic station information (e.g., elevation) just in case an alternative station is needed.
+
+Similarly, the observation period can be changed. Warning: Be careful to choose a fairly short time interval (e.g., 5 years maximum) as *daily* data are extracted from the WMO database. An extended period will take a significantly long time to run and place unnecessary stress on the WHO server.
+
+## Library and Data Initialization
+
+### Caution
+
+The code for these routines is not optimized as there are some on-going development efforts.
+
+```{r}
+#| label:   core-climate
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Standard packages
+library(tidyverse)  ## Handle data
+library(lubridate)  ## Handle date formats
+library(gt)         ## Create well-formatted tables
+
+## Specialized packages for maps
+## install_github("kimbridges/sitemaps")
+library(sitemaps)   ## Loaded separately
+library(ggmap)      ## Basemaps and Google Map key assistance
+library(tidygeocoder) ## Used to reverse geocode to get country
+
+## Specialized packages
+## install_github("bczernecki/climate")
+library(climate)   ## Support for meteo_ogimet
+library(climaemet) ## Draws the Walter-Lieth climate diagrams
+library(plotbiomes) ## Whittaker diagram
+library(sp)        ## Point in polygon function
+
+## API keys
+## API keys are stored.
+
+column <- site_styles()
+hide   <- site_google_hides()
+
+## Establish a theme that improves the appearance of a map.
+## This theme removes the axis labels and 
+## puts a border around the map. No legend.
+simple_black_box <- theme_void() +
+              theme(panel.border = element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2),
+                    legend.position = "none")
+
+```
+
+## Find the Climate Data Stations
+
+The data come mostly from detailed records kept at airports and other significant government weather stations. In recent years, all of the data collection is automated. The source used here (ogimet.com) posts hourly data within about a day of its collection. We're not using very recent data here, but this fact might be important in some study.
+
+There are about 8,000 data collection stations. While there are many remote locations without nearby stations, the coverage is probably adequate for general uses. This is especially true in areas where the environmental gradients are shallow. Steep gradients are generally found associated with mountains.
+
+The stations are grouped by country. That means it may be necessary to examine several adjacent countries to get a set of useful stations.
+
+### WHO Station Locations
+
+Here is the general strategy.
+
+-   Enter the longitude and latitude of a location that is central to your collections, or is a location in which you have a special interest. You can get this from Google Maps. Simply right click on a map location, left click on the geographic coordinates at the top of the pop-up window, then paste into your R code.
+-   If your point is near a country border, you may want to enter a list of the countries that are in the general region. The default is to show only the stations in the country of your chosen location. If you enter a country name that has a blank in the middle (e.g., French Guiana or United Kingdom), you may need to put a plus sign instead of the blank (e.g., French+Guiana or United+Kingdom). Also, there are a few countries (e.g., Cambodia) that don't have any entries.
+
+If you want to search the database manually, go to [ogimet.com](ogimet.com "Access to the WHO Weather Station data").
+
+Here, you just put a location and let the system do the search. You get a list of the nearest 10 WMO stations and some useful characteristics of each station.
+
+### Special Case: USA
+
+USA stations should modify the code and use `nearest_stations_nooa` (*sic*) function to extract the nearest station locations.
+
+For all of the Hawaii stations, center on Honolulu and use
+
+`ns = nearest_stations_nooa(country = "UNITED STATES", point = c(-158,21), no_of_stations = 90, add_map = TRUE)`
+
+The lack of the `+` in the country above seems to be OK.
+
+## Enter Data Values
+
+Here is where you enter the data. Note again that you probably only want to put in values for the lat and lon. Use decimal degrees.
+
+There is usually no need to change any of the optional values, even though they look strange (e.g., stations \<- 0). This is because this is the way that the use of default values is detected.
+
+```{r}
+#| label:   data
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Required parameters. 
+## The location is all that is required to get info about WMO stations.
+ 
+lon  <- 105.1
+lat  <- 10 
+
+## Optional parameters ########################################
+## ONLY CHANGE THESE IF YOU NEED A VALUE THAT IS NOT DEFAULT
+
+## Add a country list.
+## Example: country_list <- "Vietnam"  or <- c("Guatemala","Belize")
+country_list <- ""
+
+## Name the location of the (lat,lon) point. 
+## The format is 'text <- "put a name here"'.
+## Defaults to the area obtained with a reverse geocode.
+text <- NULL
+
+## Change the number of nearby climate stations (default=10).
+stations <- 0
+
+## Change the number of years of climate data (default = 3).
+years <- 0
+
+## Change the climate station numbe.
+## (defaults to the closest station).
+station_number <- NULL
+
+## Run weather data extraction from oligmet?
+## This is a slow process; don't repeat unless necessary (<- "no").
+## ORDINARILY THIS SHOULD BE LEFT AS "yes".
+run_extraction <- "yes"
+
+```
+
+## Nearby Stations Located
+
+The following chunks run without any changes or further input. Just leave the code alone and do run the chunk.
+
+```{r}
+#| label:   find-stations
+#| message: false
+#| echo:    true
+#| warning: false
+
+## From here on, the processing is automatic when the chunks are run.
+
+## Process the data #################################
+
+## Create a data frame for the central location
+central_location <- data.frame(lon, lat)
+
+## Find the country name.
+if(country_list == "") { ## Capture the country from the coordinates
+  loc_info <- revgeocode(c(lon=central_location$lon,
+                           lat=central_location$lat))
+  country_list <- sapply(strsplit(loc_info, ", ", 
+                             fixed=TRUE), 
+                    tail, 1)
+  } ## end country_list test
+
+cat("Full info about the site: ", loc_info,"\n\n")
+
+## Extract the region fields
+region <- sapply(strsplit(loc_info, ", ", fixed=TRUE), tail, 3)
+region <- paste0(region[1],", ",region[2])
+
+## Assign a site text instead of NULL.
+if(is.null(text)){
+  text <- region
+  } ## end text check
+central_location$text <- text
+
+## Use a default for the number of stations if not specified.
+if(stations == 0){stations <- 10}
+
+## Apply the default for the number of years if not specified.
+if(years == 0){years <- 3}
+
+## Format a table header.
+caption_info <- paste0("WMO Climate Stations centered on (", 
+                  central_location$lat, ",",
+                  central_location$lon,")")
+
+## Get the nearby WMO stations.
+ns <- NULL
+ns = nearest_stations_ogimet(country = country_list, 
+                             point   = c(central_location$lon,
+                                         central_location$lat), 
+                             no_of_stations = stations, 
+                             add_map = FALSE)
+## Rename some columns.
+station_info <- ns |>
+  dplyr::rename(station = wmo_id)     |>
+  dplyr::rename(city = station_names)
+  
+## Generate a table of the station information.
+gt(station_info) |>
+  ## Caption the table
+  tab_caption(caption = caption_info) |>
+  ## Fix the column labels
+  cols_label(
+    lat = "lat",
+    lon = "lon",
+    alt = "elevation",
+    distance = "distance") |>
+  ## Format the numeric columns
+  fmt_number(columns = c(lat, lon), decimals = 4) |>
+  fmt_number(columns = distance, decimals = 1) |>
+  ## Source Information
+  tab_source_note(
+    source_note = "Source: Extracted using ogimet") |> 
+  ## Footnotes
+  tab_footnote(
+    footnote = "m ASL",
+    locations = cells_column_labels(columns=alt)) |>
+  tab_footnote(
+    footnote = "km from central location",
+    locations = cells_column_labels(columns=distance))
+
+## If not specified, assign the station number to
+## the first one (closest).
+if(is.null(station_number)){station_number <- station_info$station[1]}
+
+## Delete all the stations except for the station_number entry.
+station_info_one <- station_info |>
+  filter(station == station_number)
+
+```
+
+Visualizing the locations may help.
+
+## Plot the Station Locations
+
+```{r}
+#| label:   map-stations
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Use the data from the previous chunk.
+
+## Reset the map defaults.
+column <- site_styles()
+
+## Rename the station column to meet the map requirement.
+s_info <- station_info |>
+  dplyr::rename(text = station)
+
+## Build the basemap.
+basemap <- site_google_basemap(datatable = s_info)
+
+## Overlay the map with data points.
+## Show the map (with points & labels)
+station_map <- ggmap(basemap) +
+  site_labels(datatable = s_info) +
+  site_points(datatable = s_info) +
+  simple_black_box
+
+## Change the point color.
+column$point_color <- "green"
+
+## Overlay the central location using the new color.
+station_map <- station_map +
+  site_labels(datatable = central_location) +
+  site_points(datatable = central_location)
+
+## Show the map
+station_map
+
+```
+
+It is a good idea to examine the list of WHO Weather Stations and the map with their locations with the question of whether the first one listed (it should be closest to the geographic coordinates you supplied) is the best one to use. Here are a few considerations:
+
+-   **Elevation:** Is your location about the same elevation as the first station?
+
+-   **Distance:** Are there other stations that are about the same distance that might be better in terms of data availability or reliability?
+
+-   **Data Quality:** Are there reasons to suspect the quality of the data? (Later, there will be an evaluation of the amount of missing data.)
+
+You can override the default station assignment (i.e., closest station) by providing a station number in the Data Input section and rerunning the code.
+
+## Extract the Climate Data
+
+The data period begins and ends on year boundaries. The end is always the year prior to the current year.
+
+The data are extracted from the database though the facilities of the `climate` package. This service is greatly appreciated.
+
+As noted earlier, at this point, running the chunk does everything automatically.
+
+```{r}
+#| label:   extract-data
+#| message: false
+#| echo:    false ## otherwise lots of unnecessary lines
+#| warning: false
+
+## Initialize starting information.
+end_year <- as.integer(format(Sys.Date(), "%Y")) - 1
+begin_year <- end_year - years
+
+begin <- paste0(begin_year,"-01-01")
+end <- paste0(end_year,"-12-31")
+
+##############################################################
+
+## Calculate date info.
+start_date <- as.Date(begin,"%Y-%m-%d")
+end_date   <- as.Date(end,"%Y-%m-%d")
+begin_yr   <- as.character(year(start_date))
+end_yr     <- as.character(year(end_date))
+yearspan   <- round(as.numeric(difftime(end_date, start_date, unit="weeks")/52.25),0)
+period_name <- paste0(begin_yr,"-",end_yr)
+
+## Get the Daily values for the station.
+## NOTE: This is a slow step getting data from a remote server.
+##       Keep the year span relatively short.
+## Three years is good; certainly less than 10 years.
+
+## Test if it is necessary.
+if(run_extraction == "yes") {
+   daily_entire <- meteo_ogimet(interval = "daily", 
+                                date = c(start_date,end_date), 
+                                station = station_number)
+   } ## end run test
+
+## Use just the daily temperature values and the rainfall.
+daily_weather <- daily_entire |>
+     select(Date,TemperatureCMax,TemperatureCAvg,
+            TemperatureCMin,Precmm)
+
+```
+
+## Test for Missing Data
+
+Even well run recording station miss data. Hopefully, the station you want to use doesn't miss too much data.
+
+The following chunk counts the frequency of missing data for the basic daily values.
+
+```{r}
+#| label:   missing-data
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Determine the missing data.
+
+## Daily values are in the daily_weather variable.
+measure <- NULL
+measure[1] <- "Max Temperature"
+measure[2] <- "Min Temperature"
+measure[3] <- "Average Temperature"
+measure[4] <- "Precipitation"
+
+days <- NULL
+days[1] <- sum(is.na(daily_weather$TemperatureCMax))
+days[2] <- sum(is.na(daily_weather$TemperatureCMin))
+days[3] <- sum(is.na(daily_weather$TemperatureCAvg))
+days[4] <- sum(is.na(daily_weather$Precmm))
+
+days_of_record <- nrow(daily_weather)
+
+percent <- NULL
+percent[1] <- (days[1]/days_of_record) * 100
+percent[2] <- (days[2]/days_of_record) * 100
+percent[3] <- (days[3]/days_of_record) * 100
+percent[4] <- (days[4]/days_of_record) * 100
+
+missing_table <- data.frame(measure, days, percent)
+
+gt(missing_table) |>
+tab_header(title = paste0("Station: ",
+                             station_info_one$station,
+                             " (",
+                             station_info_one$city,
+                             ")"),
+           subtitle = "Missing data over the entire period") |>
+fmt_number(columns = percent, decimals = 1)
+
+```
+
+Missing precipitation data may be due to the lack of precipitation on a day.
+
+## Climate Summaries
+
+It is useful to view the data with different time scales.
+
+```{r}
+#| label:   summaries
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Summarize for the entire period.
+mean_temp_c_stats <- summary(daily_weather$TemperatureCAvg)
+mean_temp_c_annual <- as.numeric(mean_temp_c_stats[3])
+tot_ppt_amt <- as.numeric(sum(daily_weather$Precmm, na.rm = TRUE))
+tot_ppt_annual <- tot_ppt_amt/years
+
+## Summarize the data in two ways:
+##     monthly averages over the span of years (monthly_summary)
+##     monthly values over the span of years (monthly_trend)
+
+## Create a new variable so summaries are done by months (irrespective of years)
+daily_weather <- daily_weather %>%
+  mutate(month_number = as.integer(format(Date, "%m")),
+         year_number  = as.integer(format(Date, "%Y")),
+         yr_mo        = (paste0(year_number,"-",month.abb[month_number])),
+         yr_mo2       = as.Date(paste0(yr_mo,"-01"),"%Y-%b-%d"))
+
+monthly_summary <- daily_weather %>% 
+  group_by(month_number) %>% 
+  summarise(m_avg_temp    = mean(TemperatureCAvg, na.rm=TRUE),
+            m_avgmin_temp = mean(TemperatureCMin, na.rm=TRUE),
+            m_minmin_temp = min(TemperatureCMin,  na.rm=TRUE),
+            m_avgmax_temp = mean(TemperatureCMax, na.rm=TRUE),
+            m_avgrain_tot = sum(Precmm, na.rm=TRUE)/yearspan)
+
+overall <- monthly_summary %>% 
+  summarize(avg_temp    = mean(m_avg_temp),
+            avgmin_temp = mean(m_avgmin_temp),
+            minmin_temp = mean(m_minmin_temp),
+            avgmax_temp = mean(m_avgmax_temp),
+            avgrain_tot = mean(m_avgrain_tot))
+
+monthly_trend <- daily_weather %>%
+  group_by(yr_mo2) %>% 
+  summarize(m_avg_temp    = mean(TemperatureCAvg, na.rm=TRUE),
+            m_avgmin_temp = mean(TemperatureCMin, na.rm=TRUE),
+            m_avgmax_temp = mean(TemperatureCMax, na.rm=TRUE),
+            m_rain_tot    = sum(Precmm, na.rm=TRUE)) %>% 
+  mutate(month_count  = 1:n())
+
+year_averages <- daily_weather %>% 
+  group_by(year_number) %>% 
+  summarize(y_avg_temp    = mean(TemperatureCAvg, na.rm=TRUE),
+            y_avgmin_temp = mean(TemperatureCMin, na.rm=TRUE),
+            y_avgmax_temp = mean(TemperatureCMax, na.rm=TRUE),
+            y_avgrain_tot = sum(Precmm, na.rm=TRUE))
+ 
+## Plot the data
+place <- paste0(station_number, " (",station_info_one$city,")")
+
+## Create the plot.
+monthly_summary_rain <- ggplot(monthly_summary) +
+  geom_bar(stat = "identity", aes(x=month_number,y=m_avgrain_tot), fill="lightblue", color="black") +
+  xlab("Month") +
+  ylab("Precipitation (mm)") +
+  ggtitle(paste0(place,": Precipitation, ",
+                 period_name,", (red line = annual mean)\n")) +
+  geom_hline(yintercept=overall$avgrain_tot, color="red") +
+  scale_x_discrete(limits=factor(1:12),
+                   labels=c("J","F","M","A","M","J","J","A","S","O","N","D"))
+
+## Show the plot.
+monthly_summary_rain
+
+## Create the plot.
+monthly_summary_temp <- ggplot(monthly_summary) +
+# geom_line(aes(x=month_number,y=m_minmin_temp), size=1.5, color="cyan") +
+  geom_line(aes(x=month_number,y=m_avgmin_temp), size=1.5, color="blue") +
+  geom_line(aes(x=month_number,y=m_avg_temp), size=1.5, color="black") +
+  geom_line(aes(x=month_number,y=m_avgmax_temp), size=1.5, color="red") +
+  xlab("Month") +
+  ylab("Temperature (C)") +
+  ggtitle(paste0(place,": Temperatures, ",
+                 period_name,", (mean daily high, mean, low)\n")) +
+  scale_x_discrete(limits=factor(1:12),
+                   labels=c("J","F","M","A","M","J","J","A","S","O","N","D"))
+
+## Show the plot.
+monthly_summary_temp
+
+## PROJECT: MAKE THE X AXIS MONTH NAMES AND YEARS
+
+monthly_trend_rain <- ggplot(monthly_trend) +
+geom_bar(stat = "identity", aes(x=month_count,y=m_rain_tot), fill="lightblue", color="black") +
+  xlab("Month Number") +
+  ylab("Precipitation (mm)") +
+  ggtitle(paste0(place,": Precipitation, ",period_name,"\n")) 
+
+monthly_trend_rain
+
+```
+
+## Climate Diagram
+
+```{r}
+#| label:   climate-diagram
+#| message: false
+#| echo:    true
+#| warning: false
+
+## Create a climate diagram.
+
+## Organize and name the data in a standard way.
+climate_data <- monthly_summary %>% 
+  select(m_avgrain_tot,m_avgmax_temp,
+         m_avgmin_temp,m_minmin_temp) %>% 
+  rename(Ppt=m_avgrain_tot,
+         Tmax=m_avgmax_temp,
+         Tmin=m_avgmin_temp,
+         Coldest=m_minmin_temp)
+
+## Transpose the data.
+climate_data_transposed <- as.matrix(t(climate_data))
+
+## This is a ggplot2 version of the diagwl function.
+c_diag <- ggclimat_walter_lieth(climate_data_transposed, 
+                      mlab = "en", 
+                      est = place, 
+                      alt = station_info_one$alt, 
+                      per = period_name, 
+                      p3line = FALSE)
+## Show the plot.
+c_diag
+
+## Save plot in a file.
+ggsave(plot = c_diag, filename = "clim_diag.png")
+
+```
+
+## Biome Analysis
+
+These functions determine the biome name and plot the location on a Whittaker diagram.
+
+```{r}
+#| label:   biome
+#| message: false
+#| echo:    true
+#| warning: false
+
+############################################################
+
+name_biome <- function(mean_temp_c, total_ppt_mm){
+  
+  ## Retrieves the biome name from the temp and prec.
+
+  ## requires dplyr, plotbiomes, sp  
+  
+  biome_id <- NULL
+  
+  ## Extract biome names.
+  id <- unique(Whittaker_biomes$biome_id)
+  biome_id[id] <- unique(Whittaker_biomes$biome)
+
+  ## Initialize the name (case: outside the diagram).
+  biome_name <- "unknown"
+
+  ## Look inside each boundary for the point.
+  for(i in 1:9){
+    ## Isolate one of the boundary polygons (i.e., biome).
+    boundary <- Whittaker_biomes |>
+      filter(Whittaker_biomes$biome_id == i)
+    ## Test if the data point is inside the polygon.
+    inside <- point.in.polygon(mean_temp_c,
+                               total_ppt_mm,
+                               boundary$temp_c,
+                               boundary$precp_cm,
+                               mode.checked = FALSE) 
+  
+  ## If the point is inside, get the biome name.
+  if(inside == 1){biome_name <- biome_id[i]}
+  } ## End of boundary loop
+  
+  return(biome_name)
+
+  } ## End function name_biome
+
+################################################################
+
+plot_biomes <- function(mean_temp_c = NULL,
+                        total_ppt_mm = NULL,
+                        source = NULL,
+                        label = NULL){
+  
+  ## If no data points are given (e.g., mean_temp_c, total_ppt_mm),
+  ##  you get just a basic plot of the Whittaker biomes.
+  
+  ## Required libraries: ggplot, plotbiomes
+
+  ## Create the base plot.
+  W_plot <- ggplot() +
+    ## Create the biome polygons.
+    geom_polygon(data = Whittaker_biomes,
+                 aes(x    = temp_c,
+                     y    = precp_cm,
+                     fill = biome),
+                 # adjust polygon borders
+                 colour = "gray98",
+                 size   = 1) +
+    ## Add axis labels.
+    labs(x="Annual Mean Temperature (C)",
+         y="Total Annual Precipitation (mm)") +
+    ## Use a better color scheme.
+    scale_fill_manual(name   = "Whittaker biomes",
+                      breaks = names(Ricklefs_colors),
+                      labels = names(Ricklefs_colors),
+                      values = Ricklefs_colors) +
+    theme_bw()
+
+  ## Add data points if climate data are supplied.  
+  if(!is.null(mean_temp_c)) {
+    W_plot <- W_plot +
+      geom_point(aes(x = mean_temp_c, y = total_ppt_mm),
+                 size   = 3,
+                 shape  = 21,
+                 color  = "white", 
+                 fill   = "black",
+                 stroke = 0.7,
+                 alpha  = 1.0) 
+    } ## End of data point addition
+  
+  ## Add label if label data are supplied.  
+  if(!is.null(label)) {
+    W_plot <- W_plot +
+      geom_label(aes(x = mean_temp_c, 
+                     y = total_ppt_mm,
+                     label = label),
+                 color  = "white", 
+                 fill   = "black",
+                 alpha  = 1.0,
+                 hjust = 0, 
+                 nudge_x = 1.0)  
+    } ## End of label addition
+  
+  ## Add caption at bottom if source is specified.
+  if(!is.null(source)){
+     W_plot <- W_plot +
+       labs(caption = source)
+  } ## End caption addition
+  
+  return(W_plot)
+  
+  } ## End function plot_biomes
+
+################################################################
+
+## Obtain the name of the biome.
+name <- name_biome(mean_temp_c = mean_temp_c_annual, 
+                   total_ppt_mm = tot_ppt_annual/10)
+
+paste0("The biome is: ",name,"\n")
+
+## Plot just the biomes with a data point showing location.
+plot_biomes(mean_temp_c = mean_temp_c_annual, 
+            total_ppt_mm = tot_ppt_annual/10)
+
+```

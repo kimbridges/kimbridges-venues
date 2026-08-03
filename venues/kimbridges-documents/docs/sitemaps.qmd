@@ -1,0 +1,8 @@
+---
+title: "Sitemaps"
+subtitle: "Adding points and labels to basemaps using R."
+categories: ["Maps", "Data Visualization"]
+image: ../sitemaps/sitemaps_cover.png
+---
+
+[View Document](../sitemaps/){.btn .btn-primary}

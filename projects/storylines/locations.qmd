@@ -1,0 +1,130 @@
+# Location & Time
+
+The values calculated here are derivatives from data in the individual photos. Specifically, the distance and time between images is calculated here.
+
+The distance and time lapse between photos will be used later to do things like group the images.
+
+```{r}
+#| label: setuploc
+
+## Standard Packages
+library(devtools)      ## Load github packages
+library(tidyverse)     ## Many useful functions
+library(ggplot2)       ## Graphics functions
+library(dplyr)         ## Data crunching functions
+library(lubridate)     ## Time functions
+library(gt)            ## Tables
+
+## Specialized Packages
+library(geosphere)     ## Geographic calculations
+
+## Packages from github/kimbridges
+## install_github("kimbridges/milestones")
+library(milestones)    ## Milestones and Bar-timelines
+
+## Initialize defaults
+column <- lolli_styles()
+
+## Get Baseinfo (originates in photos chapter)
+baseinfo <- read.table("baseinfo.txt")
+source   <- baseinfo$source
+folder   <- baseinfo$folder
+thumbs_folder <- baseinfo$thumbs_folder
+files_folder  <- baseinfo$files_folder
+
+```
+
+## Calculate Distances & Times
+
+Here is where the main calculations are done. There aren't any surprises here. The distances are calculated from the latitude and longitudes. They are "straight line" distances, not driving distances.
+
+```{r}
+#| label: calcdist
+
+## Get the stored table_info
+file_location <- paste0(files_folder,"/photo_info.txt")
+data <- read.table(file = file_location)
+
+## Get the distances between photos
+data$dist_meters[1] <- 0.0
+
+for(i in 2:nrow(data)){
+    ## Isolate the origin & destination.
+    origin <- c(data$lon[i-1],data$lat[i-1])
+    destination <- c(data$lon[i],data$lat[i])
+    ## Calculate the distance.
+    distance <- distm(origin, 
+                      destination, 
+                      fun=distHaversine)
+    ## Save the distance.
+    data$dist_meters[i] <- round(distance,digits = 1)
+    ## Convert meter to miles.
+    ## dist_miles <- distance * 0.000621371
+    ## data$dist_miles[[i]] <- round(dist_miles,digits = 0)
+    } ## end for loop
+
+## Get the time between photos
+data$timespan[i] <- 0.0
+
+for(i in 2:nrow(data)){
+    ## Isolate the previous & current times.
+    previous_time <- (paste0(data$time[i-1],":00"))
+    current_time  <- (paste0(data$time[i],":00"))
+    
+    span <- parse_date_time(previous_time, "%T") %--%
+            parse_date_time(current_time, "%T")
+    
+    ## Save the interval.
+    data$timespan[i] <- round(span/60,digits = 1)
+    } ## end for loop
+
+table3 <- data |>
+  select(number,time,dist_meters,timespan)
+
+gt(table3)
+
+## Save the updated data.
+file_location <- paste0(files_folder,"/photo_info.txt")
+write.table(data, file = file_location)
+
+```
+
+## Show Photo Times
+
+A milestone chart shows when during the day each of the photos was taken. This might give some insight into whether parts of the day were missed, if there is excessive clumping of the photos and other things that might need attention.
+
+```{r}
+#| label: milestones
+
+## Get the information.
+file_location <- paste0(files_folder,"/photo_info.txt")
+data <- read.table(file = file_location)
+
+## Get the date.
+photodate <- data$date[1]
+
+## Make the data table for milestones.
+data$datetime = paste(data$date,data$time) 
+
+## Build the full date + time variable.
+data$newdate <- parse_date_time(data$datetime, 
+                                "ymd HM", tz="")
+
+## Configure a data subset with proper variable names.
+data <- data |>
+  rename(event = number) |>
+  select(event, newdate) |>
+  rename(date = newdate)
+
+## Make a confirmation table.
+gt(data) |>
+   tab_source_note(source_note=source)
+
+## Add source info to the milestones chart.
+column$source_info  <- source
+column$title <- photodate
+
+## Make a milestones chart.
+milestones(datatable = data, styles = column) 
+
+```

@@ -1,0 +1,10 @@
+# Code Generation
+
+A document, called **Using an LLM to Create R Code** ([read it here](https://kimbridges-documents.netlify.app/using_an_llm/)), was created to show how simple statements in English can create R code that will input and analyze data. The target audience is researchers in the general field of ethnobiology, although the technology applies to a much wider field of science.
+
+<audio controls>
+  <source src="audio/LLM_to_R_Code.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+This is a relatively long podcast (25:36). It's included here as a contrast to the shorter podcasts. Is it too long? Does it need to be this long to handle the material?

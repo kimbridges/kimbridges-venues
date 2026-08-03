@@ -1,0 +1,39 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Gallery Catalog"
+  author: "K. W. Bridges"
+  subtitle: "AI Meets the Art World"
+  search: true
+  date: today
+  cover-image: Gallery_cover.jpg
+  chapters:
+    - index.qmd
+    - Stage.qmd
+    - Podcast.qmd
+    - Claude1.qmd
+    - Claude2.qmd
+    - Coda.qmd
+  navbar: 
+    logo: gallery_logo.jpg
+    
+toc: true
+number-sections: false
+
+execute: 
+  warning: false
+  error: false
+  message: false
+
+format:
+  html:
+    css: styles.css
+    code-fold: true
+    code-link: true
+    code-summary: "Show the code"
+  pdf:
+    toc: true
+
+editor: visual

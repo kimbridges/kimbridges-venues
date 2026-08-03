@@ -1,0 +1,59 @@
+---
+title: "Bar Chart"
+format: html
+editor: visual
+---
+
+Bar Chart
+
+```{r}
+# Load ggplot2 package
+library(ggplot2)
+
+# Data
+categories <- c("Housing", "Food", "Transportation", "Internet", "Entertainment")
+values <- c(238, 154, 453, 121, 228)
+
+# Create a data frame
+data <- data.frame(Category = categories, Revenue = values)
+
+# Define colors
+colors <- c("yellow", "yellow", "lightgreen", "yellow", "yellow")
+
+# Create the bar chart
+ggplot(data, aes(x = Category, y = Revenue, fill = Category)) +
+  geom_bar(stat = "identity", color = "black", show.legend = FALSE) +
+  scale_fill_manual(values = colors) +
+  labs(y = "Revenue ($)", x = "") +
+  theme_minimal()
+
+ggsave("bars1.png", width=6, height=6)
+
+```
+
+Using the Factor "fix"
+
+```{r}
+# Load ggplot2 package
+library(ggplot2)
+
+# Data
+categories <- c("Housing", "Food", "Transportation", "Internet", "Entertainment")
+values <- c(238, 154, 453, 121, 228)
+
+# Create a data frame
+data <- data.frame(Category = factor(categories, levels = categories), Revenue = values)
+
+# Define colors
+colors <- c("yellow", "yellow", "lightgreen", "yellow", "yellow")
+
+# Create the bar chart
+ggplot(data, aes(x = Category, y = Revenue, fill = Category)) +
+  geom_bar(stat = "identity", color = "black", show.legend = FALSE) +
+  scale_fill_manual(values = colors) +
+  labs(y = "Revenue ($)", x = "") +
+  theme_minimal()
+
+ggsave("bars2.png", width=6, height=6)
+
+```

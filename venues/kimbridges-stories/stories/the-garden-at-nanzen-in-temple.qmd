@@ -1,0 +1,13 @@
+---
+title: "The Garden at Nanzen-in Temple"
+subtitle: "A garden in a Zen Buddhist Temple in Kyoto."
+date: 2017-12-18
+categories: ["Travel", "Japan", "Gardens", "Asia"]
+image: ../images/The_Garden_at_Nanzen-in_Temple.jpg
+pdf: ../pdfs/The_Garden_at_Nanzen-in_Temple.pdf
+---
+Photo essay about a beautiful garden in the Nanzen-ji temple in Kyoto. This place has spectacular fall foliage. It is a small gem worth visiting.
+
+Pages: 36
+
+<iframe src="../viewer.html?pdf=The_Garden_at_Nanzen-in_Temple.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

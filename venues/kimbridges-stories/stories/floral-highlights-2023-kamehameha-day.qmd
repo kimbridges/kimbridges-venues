@@ -1,0 +1,13 @@
+---
+title: "Floral Highlights - 2023 Kamehameha Day"
+subtitle: "Annual parade in Honolulu with pau riders, horses, and flowers."
+date: 2023-06-29
+categories: ["Culture", "Hawaii"]
+image: ../images/Floral_Parade.jpg
+pdf: ../pdfs/Floral_Parade.pdf
+---
+Each island is represented by pau riders with floral adornments reflecting traditional island colors. This is a unique display of floral artistry.
+
+Pages: 116
+
+<iframe src="../viewer.html?pdf=Floral_Parade.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

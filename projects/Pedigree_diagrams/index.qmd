@@ -1,0 +1,9 @@
+# Preface
+
+Pedigree diagrams show the relationships between people (or other sexually reproducing organisms). This kind of diagram is a basic tool used to visualize many aspects of a family structure.
+
+The goal of the `tiny_pedigree` function is to provide a convenient way to generate a basic pedigree diagram. This capability is intended to fit inside the *intelligent document* framework.
+
+The `tiny_pedigree` function is a wrapper for the `pedigree` function found in the large `kinship2` package. This means that `kinship2` will need to be installed and placed in a library.
+
+The table-oriented input strategy, with friendly column names, should make the use of `tiny_pedigree` fairly straightforward, even for users who only need this graphic tool occasionally.

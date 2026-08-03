@@ -1,0 +1,803 @@
+---
+title: "Creating Maps Using R"
+subtitle: "Simplifying the Process"
+title-block-banner: true
+author: "K. W. Bridges"
+date: last-modified
+date-format: long
+format: 
+  html:
+    code-fold: true
+    code-summary: "Show the code chunk"
+editor: visual
+execute:
+  warning: false
+  error: false
+  message: false
+---
+
+# Introducing Map-Data Tables
+
+The goal of this section is to show that you can create a basemap based on values in a map-data table. This is often a simplification in the overall process of generating a map. Each column in the table controls an attribute of the map creation process.
+
+Here, the intent is to show fairly simple R code that accomplishes this goal as establishing a good basemap is generally an early objective in the workflow.
+
+## Workflow
+
+Understanding the workflow is essential to how this simplified approach to map making works.
+
+The usual programming process in creating a map is to do a step-wise refinement. The steps are in order. You run them from the first to the last. Here, refinement consists of modifying the data table that is read at the start of the workflow. Refinements consist of modifying values in columns or, more likely, adding new columns to the data table. Then the entire rendering process is run again.
+
+The conceptual model here is that you begin with a minimal data table, perhaps as small as two columns, one for each of the geographic coordinates (i.e., lat, lon). Default values, called "constants," generally act like additional table columns. The result of your values plus the constant values provides enough information to make a first-generation map.
+
+You'll likely find this first-generation map to be inadequate. You fix this by changing the table, or modifying one of the other constants, and rerun your code. Most likely, this will produce a more appropriate map. Sometimes you change your data table by typing values in a new column. Other times, some R code will change the table for you. Generally, you'll need to repeat the table modification and code re-run several times.
+
+The focus is on a data table storing the map characteristics. This provides very clear documentation of the map.
+
+## General Setup & Initialization
+
+The first step is to load a set of needed libraries.
+
+Then we'll activate the Google Maps API key. This key provides access to Google Maps. Since this is a pay service, the key is kept secret. The key registration needs to be done only once for an RStudio session. There is code here to check if the registration has been done. This way we don't keep re-registering as we refine the maps.
+
+If you don't have a Google Map API key, check the Appendix for information on how to proceed.
+
+```{r "library"}
+#| warning: false
+#| error: false
+#| message: false
+
+## Libraries
+library(readr)    ## Read data, especially CVS-like data
+library(stringr)  ## Handle strings
+library(tibble)   ## Add column function
+library(ggmap)
+library(ggplot2)
+library(gt)       ## Create tables
+library(ggrepel)  ## Automatic replacement of labels
+
+## Test if Google Key is registered
+if (!has_google_key()){
+
+  ## Initialize Google Map key; the is stored in a Project directory.
+  My_Key <- read_file("P://Hot/Workflow/Workflow/keys/Google_Maps_API_Key.txt")
+
+  ## Register the Google Maps API Key.
+  register_google(key = My_Key, account_type = "standard")
+  } ## end Google Key test
+
+```
+
+## Useful Code, Constants and Functions
+
+There are a few bits of code, such as the assignment of data to a variable, that make it easier to code.
+
+You'll soon see that constants are table values that are the same for each map point. For example, if the constant color is set to "red," then all the map points will be that color unless there is a table column that specifies other colors. This will be clearer in the examples that follow. For now, you just need to know that there is a constant value for each of the permissible map-table columns.
+
+### Data Point & Label Constants
+
+### Name Constants
+
+Names on a map are used to identify the location of places (e.g., cities), features (e.g., rivers, roads), and points of interest (e.g., buildings, monuments). Generally, the name is placed on the map without a reference point.
+
+You'll add names to locations that best suit the purpose of your map. This section lists the names constants. You'll see how these are used in the next section.
+
+The name constants are used in a data table that is separate from the map-data table (which has point and label information).
+
+The basic structure of a name is the text (i.e., words to appear on the map) and the coordinate location. There are a number of enhancements which can be applied to the text. These are described in the following table.
+
+| Constant | Required? | Function                          | constant value |
+|----------|-----------|-----------------------------------|----------------|
+| text     | yes       | Words for the map                 | none           |
+| lon      | yes       | longitude specification           | none           |
+| lat      | yes       | latitude specification            | none           |
+| justify  | no        | Location relative to the lat, lon | center         |
+| face     | no        | Type face                         | plain          |
+| family   | no        | Font family                       | sans           |
+| points   | no        | Type size (kinda points)          | 14             |
+| style    | no        | Roman or Italics                  | roman          |
+| color    | no        | Type color                        | black          |
+| angle    | no        | Type angle in degrees clockwise   | 0 (horizontal) |
+
+```{r "constants"}
+#| warning: false
+#| error: false
+#| message: false
+
+#################################################################
+## Label constants
+## Note: "lines" is a unit of measure for some dimensions (default)
+label_constant       <- NULL          ## Needed to get started
+label_constant$size  <- 4             ## text size        
+label_constant$color <- "black"       ## text color
+label_constant$alpha <- 0.9           ## transparency
+label_constant$label.r <- unit(0.3, "lines") ## rounded corner radius 
+label_constant$label.size    <- 0.5   ## label border size (mm)
+label_constant$fill    <- "white"     ## label background color
+#label_constant$box_padding <- 0.8     ## from point location
+#label_constant$point.padding <- 0     ## space around point
+label_constant$segment.color <- "red" ## line from point to label
+label_constant$segment.size  <- 1
+label_constant$seed          <- 1002  ## randomizes without a value 
+label_constant$max.overlaps  <- 20    ## how much tolerance of overlapping
+
+#################################################################
+## Point constants
+point_constant <- NULL                ## Needed to get started
+point_constant$size   <- 3            ## symbols size
+point_constant$color  <- "black"      ## outside border
+point_constant$alpha  <- 0.9          ## point transparency
+point_constant$fill   <- "red"        ## inside color
+point_constant$shape  <- "circle"     ## circle (symbol 21)
+point_constant$stroke <- 1            ## border thickness
+
+#################################################################
+## Names constants
+names_constant          <- NULL       ## Needed to get started
+names_constant$size     <- 14         ## text size
+names_constant$color    <- "black"    ## text color
+names_constant$fontface <- "plain"    ## alt: italics, bold
+names_constant$family   <- "sans"     ## sans-serif typeface (likely Helvetica)
+names_constant$angle    <- 0          ## negative is clockwise
+names_constant$justify  <- "center"  ## horizontal justification
+
+
+#################################################################
+## Google Maps style constants
+## Use these to hide map layers
+no_poi        <- "feature:poi|element:labels|visibility:off"
+no_transit    <- "feature:transit|element:labels|visibility:off"
+no_water      <- "feature:water|element:labels|visibility:off"
+no_road       <- "feature:road|element:labels|visibility:off"
+no_roads      <- "feature:road|element:labels|visibility:off"
+no_landscape  <- "feature:landscape|element:labels|visibility:off"
+no_administrative <- "feature:administrative|element:labels|visibility:off"
+hide_all      <- "feature:all|element:labels|visibility:off"
+
+#################################################################
+## Google Maps constants
+gmap_constant           <- NA   ## required to make this work
+gmap_constant$maptype   <- "roadmap"
+gmap_constant$mapscale  <- 2    ## Max available
+gmap_constant$mapstyle  <- no_poi
+gmap_constant$margin    <- 1.0  ## expand bounding box (0=points at margin)
+
+#################################################################
+## Stamen Maps constants
+smap_constant         <- NA     ## required to make this work
+smap_constant$maptype <- "terrain"
+smap_constant$square  <- FALSE  ## TRUE forces a square bounding box
+smap_constant$margin  <- 1.0    ## expand bounding box (0=points at margin)
+
+#################################################################
+
+## Define a theme that removes the axis labels and 
+## puts a border around the map
+simple_black_box <- theme_void() +
+              theme(panel.border = 
+                      element_rect(color = "black", 
+                                   fill=NA, 
+                                   size=2))
+
+```
+
+### Functions
+
+This is also where the most general and useful functions reside. The functions are described elsewhere, but are located in this chunk for convenience so we can get started.
+
+Additional functions are used in other sections. They are added to the code there.
+
+| Function            | Purpose                                                                                                                    | Package | Input                               |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------|---------|-------------------------------------|
+| read_file           | Reads a file's content into a variable.                                                                                    | readr   | File name                           |
+| has_google_key      | Test if the Google Map key is active for this session.                                                                     | ggmap   |                                     |
+| register_google     | Register a personal Google Map key.                                                                                        | ggmap   | Google Map key string.              |
+| address2coordinates | Convert street addresses to lat, lon coordinates.                                                                          | custom  | Addresses                           |
+| LineWrapper         | Wraps text strings by inserting a "\\\\N" without breaking words. The length parameter controls the maximum string length. | custom  | Text, length                        |
+| gt                  | Makes tables.                                                                                                              | gt      | Table data; plus many options       |
+| make_bbox           | Get the bounding box from the data coordinates.                                                                            | ggmap   | Coordinates; expansion value        |
+| bb2google           | Finds the map center (lat,lon) and zoom level.                                                                             | custom  | Bounding box                        |
+| bb_square           | Makes a bounding box square by expanding coordinates.                                                                      | custom  | Bounding box                        |
+| get_googlemap       | Retrieves a basemap from the Google servers.                                                                               | ggmap   |                                     |
+| get_stamenmap       | Retrieve a basemap from the Stamen serverss.                                                                               | ggmap   |                                     |
+| ggsave              | Saves a table or map as a PNG or PDF file.                                                                                 | ggplot2 | File name, source name, dimensions. |
+| getGeoDetails       | Get lat, lon from addresses.                                                                                               | custom  | Address                             |
+| map_names           | Places text on the map.                                                                                                    | custom  | Text and location.                  |
+| map_points          | Places point symbols on the map.                                                                                           | custom  | Location.                           |
+| map_labels          | Places labels on the map and connects to points with a line.                                                               | custom  | Text and location.                  |
+
+```{r "functions"}
+#| warning: false
+#| error: false
+#| message: false
+
+#################################################################
+## Functions ##########################################
+
+##### LineWrapper ###############################################
+LineWrapper <- function(x,length=25){
+  
+  ## Wraps text with a default of 25 characters
+  sapply(lapply(x,strwrap,width=length),paste, collapse="\n")
+  
+} ## End of function LineWrapper
+
+##### bb_square #######################################
+
+bb_square <- function(bb){
+
+  ## Make a square boundary box
+
+  x_length <- max(c(abs(bb[[1]]),abs(bb[[3]]))) - min(c(abs(bb[[1]]),abs(bb[[3]])))
+  y_length <- max(c(abs(bb[[2]]),abs(bb[[4]]))) - min(c(abs(bb[[2]]),abs(bb[[4]])))
+
+  if (x_length < y_length){
+    half_diff <- (y_length - x_length) / 2
+    bb[[1]] <- bb[[1]] - half_diff
+    bb[[3]] <- bb[[3]] + half_diff
+  } else {
+    half_diff <- (x_length - y_length) / 2
+    bb[[2]] <- bb[[2]] - half_diff
+    bb[[4]] <- bb[[4]] + half_diff
+  }
+
+return(bb)
+} ## end function bb_square
+
+##### bb2google #######################################
+
+bb2google <- function(bb){
+  
+  ## The bounding box can be produced using make_bbox.
+  ## A bounding box has left, bottom, right, top coordinates.
+  ## This function finds the map center and zoom level
+  ## so these data can be used with a Google map request.
+  
+  ## This function assumes a square bounding box as input.
+  
+  ## Initialize
+  info <- NULL
+
+  ## Find the center point
+  center_lon <- ((bb[[3]]-bb[[1]])/2) + bb[[1]]
+  center_lat <- ((bb[[4]]-bb[[2]])/2) + bb[[2]]
+  info$center <- c(center_lon, center_lat)
+
+  ## Use the zoom scales to estimate the proper zoom level
+  zoom_scales <- c(180,90,45,22.5,11.25,5.625,2.813,1.406,0.703,0.352,0.176,0.088,0.044,0.022,0.011,0.005,0.003,0.001,0.0005)
+
+  bb_length <- bb[[3]] - bb[[1]]
+  info$zoom <- as.integer(which.min(zoom_scales > bb_length))
+
+  return(info) 
+
+}  ## end function bb2google
+
+##### FUNCTION getGeoDetails ####################################
+
+getGeoDetails <- function(address){   
+   
+## Function for extracting lat,long & accuracy from an address. 
+## Based on code by Shane Lynn 10/10/2013  
+  
+  ## Geocode function to query google servers
+   geo_reply <- geocode(location=address, 
+                        output='all', 
+                        messaging=TRUE, 
+                        override_limit=FALSE)
+   ## Extract the bits that we need from the returned list
+   answer <- data.frame(lat=NA, lon=NA, 
+                        accuracy=NA, 
+                        formatted_address=NA, 
+                        address_type=NA, 
+                        status=NA)
+   answer$status <- geo_reply$status
+   
+   ## Return NAs if there isn't a match
+   if (geo_reply$status != "OK"){
+       return(answer)
+   }   
+   ## Else, extract fields into a dataframe
+   answer$lat <- geo_reply$results[[1]]$geometry$location$lat
+   answer$lon <- geo_reply$results[[1]]$geometry$location$lng   
+   if (length(geo_reply$results[[1]]$types) > 0){
+       answer$accuracy <- geo_reply$results[[1]]$types[[1]]
+   }
+   answer$address_type <- paste(geo_reply$results[[1]]$types,
+                                collapse=",")
+   answer$formatted_address <-
+          geo_reply$results[[1]]$formatted_address
+   
+   return(answer)
+   
+}  ## End function getGeoDetails
+
+##### FUNCTION map_names ##########################################
+
+map_names <- function(names,names_default=names_default){
+  
+  ## Add labels to a map (used inside ggmap)
+
+  ## Fill in any missing columns with default values 
+  ## Thanks to Chris Umphlett on StackOverflow (5/3/2019)
+  names <- names %>% 
+  add_column(!!!names_default[!names(names_default) %in% names(.)])
+  
+  names$text <- str_replace(names$text,"%%","\n")
+
+  ## Generate the labels
+  geom_text(data = names,
+            aes(x = lon, y = lat, 
+                label = text),
+                size          = names$size, 
+                color         = names$color, 
+                fontface      = names$fontface,
+                angle         = names$angle) 
+
+  } ## End function map_names
+
+##### FUNCTION map_points ########################################
+
+map_points <- function(points, points_default=point_constant){
+  
+  ## Add points to a map (used inside ggmap)
+
+  ## Fill in any missing columns with default values 
+  ## Thanks to Chris Umphlett on StackOverflow (5/3/2019)
+  points <- points %>% 
+  add_column(!!!points_default[!names(points_default) %in% names(.)])
+
+  ## Note the following convention for symbol shapes.
+  ## You can use circle, square, diamond, triangle,& wedge.
+  ## These are mapped to pch 21-25.
+  
+  points$shape <- sub("circle",  "21",points$shape)
+  points$shape <- sub("square",  "22",points$shape)
+  points$shape <- sub("diamond", "23",points$shape)
+  points$shape <- sub("triangle","24",points$shape)
+  points$shape <- sub("wedge",   "25",points$shape)
+  
+  points$shape <- as.numeric(points$shape)
+
+  ## Generate the labels
+  geom_point(data = points,
+             aes(x = lon, y = lat),
+                  size          = points$size, 
+                  color         = points$color,              
+                  alpha         = points$alpha,                 
+                  fill          = points$fill,
+                  shape         = points$shape,
+                  stroke        = points$stroke)
+  
+} ## End Function map_points
+
+##### FUNCTION map_labels #######################################
+
+map_labels <- function(labels,labels_default=label_constant){
+  
+  ## Add labels to a map (used inside ggmap)
+
+  ## Fill in any missing columns with default values 
+  ## Thanks to Chris Umphlett on StackOverflow (5/3/2019)
+  labels <- labels %>% 
+  add_column(!!!labels_default[!names(labels_default) %in% names(.)])
+
+  ## Generate the labels
+  geom_label_repel(data = labels,
+             aes(x = lon, y = lat, 
+                 label = text),
+                  size          = labels$size, 
+                  color         = labels$color,              
+                  alpha         = labels$alpha,                 
+                  label.r       = labels$label.r,
+                  label.size    = labels$label.size,
+                  fill          = labels$fill,
+                  box.padding   = 0.8,
+                  #point.padding = labels$point.padding,
+                  segment.color = labels$segment.color,
+                  segment.size  = labels$segment.size,
+                  min.segment.length = 0.01, 
+                  seed          = labels$seed) 
+
+  } ## End function map_labels
+
+##### FUNCTION make_google_basemap ###################################
+## Use data to center and scale a Google basemap.
+## Google basemaps are always square.
+
+make_google_basemap <- function(maptable,map_constants=gmap_constant){
+
+## Get a bounding box
+bb <- make_bbox(lon=maptable$lon, lat = maptable$lat, f=map_constants$margin)
+
+## Use the bounding box to get the center and zoom for a Google map
+center_zoom <- bb2google(bb)
+
+## Get the Google Map
+basemap <- get_googlemap(center    = center_zoom$center,
+                           zoom    = center_zoom$zoom,
+                           maptype = map_constants$maptype,
+                           scale   = map_constants$mapscale,
+                           style   = map_constants$mapstyle)
+
+return(basemap)
+} ## end function make_google_basemap
+
+##### FUNCTION make_stamen_basemap ###################################
+## Use data to get a bounding box for a stamen basemap.
+## A "constant" parameter will force the basemap to be square.
+
+make_stamen_basemap <- function(maptable,map_constants=smap_constant){
+
+## Get a bounding box
+bb <- make_bbox(lon=maptable$lon, lat = maptable$lat, f=map_constants$margin)
+
+## Make bounding box square, if requested
+if(map_constants$square){
+  bb <- bb_square(bb)
+}
+
+## Get the Stamen Map
+basemap <- get_stamenmap(bbox = c(left=bb[[1]], bottom=bb[[2]], right=bb[[3]], top=bb[[4]]),
+              maptype = map_constants$maptype)
+
+return(basemap)
+} ## end function make_stamen_basemap
+
+```
+
+### Getting a Lot from a Little
+
+What is shown here in a series of steps (each a separate chunk) should actually be seen as a revision of the same data table, with the code being run again each time the table is modified. This can't be shown as operations on a single chunk, except perhaps with a video. Use your imagination to see this as sequential modifications of a single data table in one chunk, not as changes to a series of similar tables in a series to chunks.
+
+### A Small Data Table
+
+Pizza. In New York City. What a treat.
+
+We've used the website `ny.eater.com` to gather a list of suggested places to eat pizza that aren't too far from our hotel. That's our starting point.
+
+```{r "PizzaData"}
+#| warning: false
+#| error: false
+#| message: false
+#| label: tbl-PizzaData
+#| tbl-cap: "Suggested place to eat pizza in New York City"
+
+## Raw Data
+pizza_places <- read_csv(col_names = TRUE, file = 
+       "venue,                      address,          established
+       NY Pizza Suprema,            413 8th Ave.,     1964
+       John's of Bleecker Street,   278 Bleecker St., 1929
+       Joe's Pizza,                 7 Carmine St.,    1975
+       Motorino,                    349 E 12th St.,   NA
+       Famous Ben's Pizza,          177 Spring St.,   1979
+       Una Pizza Napoletana,        175 Orchard St.,  1966
+       Lombardi's Coal Oven Pizza,  32 Spring St.,    1905 
+       Scarr's Pizza,               22 Orchard St.,   2016
+       Kesté,                       77 Fulton St.,    2009 ")
+
+gt(pizza_places)
+
+```
+
+Step 2: Visualize the locations
+
+```{r "firstlook"}
+#| warning: false
+#| error: false
+#| message: false
+#| label: fig-firstlook
+#| fig-cap: "First draft of the map."
+
+## Add geographic coordinates to the table using the addresses
+map_coords <- geocode(paste0(pizza_places$address,", New York City, NY"),output="latlon")
+pizza_places <- cbind(pizza_places,map_coords)
+
+## Show the update table
+gt(pizza_places)
+
+## Create a basemap
+basemap <- make_google_basemap(maptable = pizza_places, map_constants=gmap_constant)
+
+## Show the map.
+ggmap(basemap) +
+  map_points(pizza_places, points_default = point_constant)
+
+```
+
+Step 3: Add rating information to the table
+
+The rating of each venue can be used to color code each location point. This will give a quick visual hint of where the best (and lesser) pizza establishments are located.
+
+```{r "reviews"}
+#| warning: false
+#| error: false
+#| message: false
+#| label: tbl-reviews
+#| tbl-cap: "Suggested place to eat pizza in New York City"
+
+## Rating is added to the raw table
+pizza_places <- read_csv(col_names = TRUE, file = 
+  "venue,                      address,          established, rating
+   NY Pizza Suprema,            413 8th Ave.,     1964,        4.5
+   John's of Bleecker Street,   278 Bleecker St., 1929,        4.5
+   Joe's Pizza,                 7 Carmine St.,    1975,        4.5
+   Motorino,                    349 E 12th St.,   NA,          4.5
+   Famous Ben's Pizza,          177 Spring St.,   1979,        4.5
+   Una Pizza Napoletana,        175 Orchard St.,  1966,        3.5
+   Lombardi's Coal Oven Pizza,  32 Spring St.,    1905,        4.0 
+   Scarr's Pizza,               22 Orchard St.,   2016,        4.5
+   Kesté,                       77 Fulton St.,    2009,        4.0 ")
+
+## Add geographic coordinates to the table using the addresses
+map_coords <- geocode(paste0(pizza_places$address,", New York City, NY"),output="latlon")
+pizza_places <- cbind(pizza_places,map_coords)
+
+pp_index <- as.integer(cut(pizza_places$rating, breaks = c(4.5,4.0,3.5,0)))
+color_list <- c("red","yellow","green")
+pizza_places$fill <- color_list[pp_index]
+
+gt(pizza_places)
+
+
+```
+
+Show the map with colored ratings.
+
+```{r "secondlook"}
+#| warning: false
+#| error: false
+#| message: false
+#| label: fig-secondlook
+#| fig-cap: "Second draft of the map."
+
+## Create a basemap
+basemap <- make_google_basemap(maptable = pizza_places, map_constants=gmap_constant)
+
+## Show the map.
+ggmap(basemap) +
+  map_points(pizza_places, points_default = point_constant)
+
+```
+
+Step 3: Add labels to identify the venues.
+
+We can use the existing table because here we're going to extract information to make a new column.
+
+The first word of each venue name can serve as a relatively short label. We can extract the first word and make it into a column that has the name text. This identifies it as a label.
+
+```{r "labels"}
+#| warning: false
+#| error: false
+#| message: false
+#| label: fig-labels
+#| fig-cap: "Third draft of the map."
+
+
+## Create the label text
+pizza_places$text <- word(pizza_places$venue, 1)
+
+## Use the same basemap
+
+## Show the map.
+ggmap(basemap) +
+  map_points(pizza_places, points_default = point_constant) +
+  map_labels(pizza_places, labels_default = label_constant)
+
+
+
+```
+
+## Beagle Voyage
+
+This tests a world-wide pattern of locations.
+
+```{r "BeagleData"}
+#| warning: false
+#| error: false
+#| message: false
+#| label: tbl-beagle
+#| tbl-cap: "Voyage of the Beagle"
+
+beagle_data <- read_csv(col_names = TRUE, file = 
+    "month,   year, location
+     Dec,     1831, Plymouth, England
+     Jan,     1832, Canary Islands
+     Jan,     1832, Cape Verde Islands
+     Feb,     1832, Salvador, Brazil
+     Apr,     1832, Rio de Janeiro
+     Sep,     1832, Punta Alta
+     Dec,     1832, Tierra del Fuego
+     Mar,     1833, Falkland Islands
+     Aug,     1833, Rio Negro, Argentina
+     Jun,     1834, Strait of Magellan
+     Jan,     1835, Chiloé
+     Feb,     1835, Valdivia
+     Mar,     1835, Valparaiso, Chile
+     Sep-Oct, 1835, Galápagos
+     Jan,     1836, Sydney
+     Apr,     1836, Cocos Islands
+     Apr-May, 1836, Mauritius
+     May-Jun, 1836, Cape of Good Hope
+     Aug,     1836, Bahia
+     Oct,     1836, Falmouth, England")                  
+
+gt(beagle_data)
+
+```
+
+### Process the Beagle Data
+
+```{r "BeagleTrip"}
+#| warning: false
+#| error: false
+#| message: false
+
+map_coords <- geocode(beagle_data$location,output="latlon")
+beagle_stops <- cbind(beagle_data,map_coords)
+
+## Show the update table
+gt(beagle_stops)
+
+```
+
+### Show Points at each Stop
+
+```{r "BeagleStops"}
+
+## Create a basemap
+basemap <- make_google_basemap(maptable = beagle_stops, map_constants=gmap_constant)
+
+year_index <- as.integer(cut(beagle_stops$year, breaks = c(1830,1831,1832,1833,1834,1835,1836)))
+color_list <- c("blue","green","yellow","orange","red","purple")
+beagle_stops$fill <- color_list[year_index]
+
+## Show the map.
+bs <- ggmap(basemap) +
+  map_points(points = beagle_stops, points_default = point_constant) 
+
+bs
+
+##ggsave(filename = "beagle_stops.png",plot = bs, width=7.5)
+
+```
+
+## Testing
+
+The goal here is to test the addition of data points and labels to a basemap. This shows some of the differences between using Stamen and Google maps. It also introduces the use of the "repel" capability that keeps labels from overlapping.
+
+Note that a table-driven approach will be used in an upcoming chapter that further simplifies much of the customization of data that is placed on the top of a basemap.
+
+### Data Table
+
+Basemaps often have data placed on top. Sometimes this comes automatically with the Stamen and Google basemaps. Other times, overlays are added explicitly. We use data points to mark locations, labels to link information locations, and text names to identify regions and landmarks.
+
+A simple data table, based on herbarium specimen locations is used to test and demonstrate the use of data to determine the extent of a basemap.
+
+```{r "data"}
+#| warning: false
+#| error: false
+#| message: false
+
+## Read the data
+wilkesia <- read_csv(col_names = TRUE, file =
+    "lat,lon,text,specimen 
+      22.051685,-159.659765,A,PTBG61720
+      22.124296,-159.695804,B,PTBG68650
+      22.124296,-159.695804,C,PTBG68651
+      22.124296,-159.695804,D,PTBG68652
+      22.124296,-159.695804,E,PTBG68653
+      22.141675,-159.687880,F,PTBG68661
+      22.051685,-159.659765,G,PTBG78297_a
+      22.051459,-159.659675,H,PTBG78356_a")
+
+## Make a table
+gt(wilkesia) %>% 
+  tab_header(
+    title = md("_Wilkesia_ Specimens from the NTBG Herbarium")) %>%
+  tab_source_note("Data obtained by OCR from specimen images.")
+  
+
+```
+
+## Bounding Boxes Created from the Data
+
+The basic goal is to create a bounding box from the data. This bounding box is then used to generate a basemap. Here, we'll also show the data locations.
+
+There are many situations where it is better to calculate a bounding box from the data values, rather than figuring out the extent of the basemap in other ways.
+
+The following examples show two approaches to using data values.
+
+### Stamen Maps from Data
+
+The first example shows the creation of a Stamen map. This is chosen because Stamen maps allow the specification of a bounding box (without a Zoom level). This is not directly possible with Google maps (but a work-around is shown later).
+
+It should be noted here that the data points are labeled using the `text` column from the data table. The `geom_label_repel` function is used to keep the labels from overlapping. This is one of a pair of functions (geom_label_repel and geom_name_repel) that work the same way. More information about these very useful functions is given later. They also can be quite complex. To learn more about them, check the examples at: <https://ggrepel.slowkow.com/articles/examples.html>.
+
+```{r "bounding"}
+#| warning: false
+#| error: false
+#| message: false
+
+## Use the data locations to determine the bounding box
+wilkesia_box <- make_bbox(lon=wilkesia$lon, lat=wilkesia$lat, f=1.0)
+
+## Get a Stamen map
+wilkesia_map <- get_map(location=wilkesia_box,
+                        source = "stamen",
+                        maptype = "terrain-background")
+
+## Generate the map
+ggmap(wilkesia_map) + 
+    simple_black_box +
+    geom_point(aes(x = lon, y = lat, color = "red"), 
+               data = wilkesia) +
+    geom_label_repel(data = wilkesia,
+                   aes(x = lon, y = lat, label = text),
+                   box.padding = 1.1) +
+    theme(legend.position = "none")
+
+```
+
+The bounding box has created a narrow map. As a result, the labels are kinda stuck on each other. This makes it is hard to see the data points.
+
+A custom functions, `bb_square`, is used to adjust the bounding box coordinates to produce a square map.
+
+```{r "square"}
+#| warning: false
+#| error: false
+#| message: false
+
+## Make the bounding box square
+b_square <- bb_square(wilkesia_box)
+
+## Generate the map
+wilkesia_map2 <- get_stamenmap(bbox=b_square,
+                               maptype = "terrain")
+## Show the map
+ggmap(wilkesia_map2) + simple_black_box +
+      geom_point(aes(x = lon, y = lat, color = "red"), 
+                 data = wilkesia) +
+      geom_label_repel(data = wilkesia,
+                   aes(x = lon, y = lat, label = text),
+                   box.padding = 1.1) +
+      theme(legend.position = "none")
+```
+
+Making the bounding box square has allowed the labels to spread out. Now, each data point is clearly labeled. Several data points are overlapping as specimens were collected at the same location.
+
+### Google Maps from Data
+
+Bounding boxes don't work directly in Google Maps. Instead, you need a map center and zoom level.
+
+Getting the map center is a simple calculation based on bounding box coordinates. Finding the Zoom level isn't as easy. Fortunately, it is possible to build a function that does these calculations. This is the `bb2google` function.
+
+There are several characteristics of Google maps worth noting:
+
+-   Google basemaps are square.
+
+-   The size of a Google basemap depends on the Zoom level. These are discrete levels so there is only coarse control over the exact dimensions of the basemap.
+
+The limitations of using Google maps are balanced by the different types of maps that are available and, to a certain extent, by controls over display details.
+
+```{r gApproach}
+#| warning: false
+#| error: false
+#| message: false
+
+map_info <- bb2google(b_square)
+
+wilkesia_map3 <- get_map(location = map_info$center,
+                 zoom = map_info$zoom,
+                 source = "google",
+                 maptype = "hybrid")
+
+ggmap(wilkesia_map3) + simple_black_box +
+      geom_point(aes(x = lon, y = lat, color = "red"), 
+                 data = wilkesia, alpha = .5) +
+      geom_label_repel(data = wilkesia,
+                   aes(x = lon, y = lat, label = text),
+                   box.padding = 1.1) +
+      theme(legend.position = "none")
+
+```
