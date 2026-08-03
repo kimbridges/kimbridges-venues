@@ -1,0 +1,1446 @@
+# PKM Findings
+
+> **READ `pkm_card.md` FIRST.** This file is the archive: 20 findings, ~66 KB, read
+> ON DEMAND. The card is the ~4 KB page read at every session start, and it carries
+> the ground-truth rule plus a table telling you which finding applies to what you
+> are about to do. This split exists because on 2026-07-31 two rules written in THIS
+> file were broken within three days of being written -- the knowledge was here and
+> nothing fired it (Finding 020).
+
+_Created: 2026-05-12_
+_Status: Active — append-only_
+
+## Purpose
+
+This file is the durable home for observations about the PKM
+system itself: weaknesses surfaced during real work, infrastructure
+behaviors that affect how the system can be operated, conventions
+that emerge from doing the work. Distinct from `system_audit.md`,
+which is the housekeeping-audit working doc, and from per-project
+log entries, which record project work.
+
+The audience is future Claude instances and Kim. The intent is
+that reading this file from top to bottom gives a current
+operating picture of where the PKM is sharp, where it is dull,
+and what rules have been adopted to keep it functional.
+
+Findings are append-only and dated. Operating rules adopted from
+each finding are highlighted so they can be lifted into
+`pkm_protocol.md` if they merit elevation.
+
+---
+
+## Finding 001 — Bash mount does not write to Drive (2026-05-12)
+
+_**Consolidated 2026-07-31 into THE GROUND-TRUTH RULE in `pkm_card.md`.** Kept here for the detail and the diagnosis; the card is what gets read. See Finding 020._
+
+### Context
+
+The 2026-05-10 session migrated four kimbridges-* folders from
+C: to G:\My Drive\ using bash mkdir + rsync. Each migration's
+in-session verification (source file count == destination file
+count) passed. The session log recorded the migrations as
+complete, four proj_*.md files were updated to declare canonical
+locations on G:, system_audit.md was updated to reflect the
+migrated state.
+
+On 2026-05-12, while working on a different project (whittakerr),
+Drive MCP searches incidentally revealed that two of the
+"migrated" folders (kimbridges-documents and kimbridges-collections)
+did not exist in Drive cloud at all, and that the kimbridges-stories
+folder remained the original April 2026 version with no rename
+applied. The PKM had described a state that wasn't real.
+
+### Investigation
+
+A controlled diagnostic resolved the question. A small test file
+was written via bash to the `/sessions/upbeat-beautiful-pascal/mnt/My Drive/`
+path. Three independent checks were then run:
+
+- Bash itself saw the file at the expected path with the expected
+  content and 36-byte size.
+- Drive MCP search for the file's name across the user's Drive
+  returned no results.
+- Glob via the file tools (which use the actual `G:\My Drive\...`
+  path) also returned no results.
+
+The bash-written file exists only in the sandbox-local mount. It
+is not propagated to Drive cloud. Other tools — including those
+running on the same system inside the same session — cannot see it.
+
+### Root cause
+
+Cowork exposes Drive content through two distinct mount paths:
+
+- The file tools (Read, Write, Edit, Grep, Glob) use the real
+  Windows path `G:\My Drive\...`. Operations on this path go
+  through Google Drive for Desktop, which handles
+  bidirectional sync with Drive cloud. Writes propagate.
+
+- The bash tool uses a Linux-style path
+  `/sessions/<session-id>/mnt/My Drive/...`. This mount appears
+  in the sandbox filesystem but is not routed through Drive for
+  Desktop. Writes here land in the sandbox; they are not seen
+  by the Drive Stream client and never reach Drive cloud.
+
+The bash-mount path looks correct (it has "My Drive" in the
+name), so it is easy to assume it is the same as the file-tool
+path. The session-start mount message from `request_cowork_directory`
+does mention that bash uses a different path, but the implication
+that this path does not propagate to Drive was not previously
+documented or tested.
+
+### Why prior verification failed to catch it
+
+The 2026-05-10 migrations verified by comparing source file
+counts against destination file counts using `find ... | wc -l`
+in bash. Both source and destination were measured from the
+bash view of the filesystem. The destination directory existed
+in the sandbox (bash mkdir made it there), the destination files
+existed in the sandbox (bash rsync wrote them there), and the
+counts matched. The verification was internally consistent but
+sandbox-vs-sandbox; it could not have detected the
+sandbox-vs-Drive discrepancy.
+
+The earlier "bash mount staleness" observation in system_audit.md
+Section 7 was a related but narrower finding — that bash sees a
+cached view of Drive content that may lag actual Drive state for
+reads. The 2026-05-12 finding is the deeper one: the bash mount
+does not read from or write to Drive at all. The lag observed
+earlier was a symptom of a sandbox-local mount that occasionally
+gets refreshed from Drive but is not synchronously connected to
+it.
+
+### Recovery
+
+On 2026-05-12, Kim re-did the four migrations via Windows
+Explorer copy-paste. Each was verified via Drive MCP queries
+that go directly to Drive cloud, not through any local mount.
+All four now genuinely exist in Drive cloud with their contents
+propagating. The previously written PKM descriptions of the
+migrations were corrected via Edit tool (which uses the file
+tools and propagates correctly) in the same session.
+
+### Operating rule adopted
+
+**For any operation that must reach Drive cloud, do not use bash
+on the `/sessions/.../mnt/My Drive/...` path. Use Read, Write,
+or Edit on the `G:\My Drive\...` path; or use the Drive MCP
+connector (search_files, create_file, read_file_content); or
+have Kim perform the action via Windows Explorer on G:\. Bash is
+acceptable for reading data that is already real in Drive (and
+even there, the staleness caveat from system_audit.md Section 7
+applies) and for computation that does not need to land on Drive.**
+
+This rule is significant enough to be lifted into pkm_protocol.md
+as an operating principle, possibly as a Mechanism 6 ("infrastructure
+rules") or as an addendum to Mechanism 4 (session log) since the
+verification gap that hid this for a day is itself a kind of
+session-log integrity issue.
+
+### What this finding implies more broadly
+
+A class of system test failures — operations that locally appear
+to succeed but never persist — is hard to detect with in-session
+verification. The only reliable check is querying the persistent
+destination through an independent path. For Drive operations,
+that means querying via Drive MCP or via Drive web from a
+separate device. Where possible, in-session verification should
+include such an independent check for any operation whose
+correctness depends on remote persistence.
+
+The PKM's append-only log convention preserved this discrepancy
+diagnostically: yesterday's session log recorded a false
+"successful migration" state precisely enough that today's
+investigation could prove the discrepancy. Mutable status fields
+would have been overwritten by the recovery and left no trail.
+Append-only logs are not just convention; they are how
+diagnostic timelines stay reconstructable.
+
+### What this finding does not affect
+
+The proj_*.md and PKM file edits made via the Edit tool on the
+G: path during the 2026-05-10 session DID propagate to Drive
+cloud correctly. The misleading content of those edits (claiming
+successful migrations) is the problem, not the propagation
+mechanism. Edit tool writes to G: paths are reliable.
+
+Manual file moves via Windows Explorer also propagate correctly.
+
+Drive MCP create_file presumably also propagates (writes via the
+Drive API directly). Not exercised in the recovery but listed
+here for completeness.
+
+---
+
+## Format conventions for this file
+
+Each finding gets a numbered ID (Finding 001, 002, ...) and a
+short noun-phrase title. Findings are dated by discovery, not by
+when they were written up. Operating rules adopted from a finding
+are highlighted in bold so they can be scanned. Findings link to
+related entries in system_audit.md, pkm_protocol.md, and proj_PKM.md
+when applicable.
+
+Append new findings at the end of this file. Do not rewrite
+existing findings; if an earlier finding is superseded, append a
+new finding that explicitly references the prior one and explains
+what changed.
+
+Findings need not be infrastructure failures. They can also be
+pattern crystallizations, convention adoptions, or observations
+about how the system behaves under real use. Finding 001 is a
+heavy infrastructure-failure finding; Findings 002 and 003 below
+are lighter pattern observations. The format accommodates both.
+
+---
+
+## Finding 002 — System test as productive loop (2026-05-12)
+
+### Context
+
+The whittakerr project was deliberately framed as a system test
+for the PKM (per session_log.md 2026-05-12 entries). The
+hypothesis was that real work on a contained project would
+exercise the system and surface weaknesses for repair. Today's
+session was the first concrete pass through this loop.
+
+### Observation
+
+The loop worked as intended and at a productive pace. Each
+weakness surfaced during the work generated a structural
+improvement that became part of the system going forward:
+
+- Multi-chapter documents had no PKM tracking pattern. Invented
+  the Chapter Status table in proj_*.md (first used in
+  proj_whittakerr.md).
+- Working notes (Whittakerr Notes Google Doc) had no PKM home.
+  Adopted `background/` folder convention system-wide.
+- Source location for non-R-package documents was undocumented.
+  Applied the storage architecture rule (Projects/<name>/) to
+  storylines (retrospectively) and whittakerr (prospectively).
+- Style for multi-chapter documents was implicit. Codified as
+  style_multichapter_doc.md.
+- Content image storage had no convention. Added the `images/`
+  subfolder pattern (Section 6 of the style guide).
+- Image attribution practice was undocumented. Added a brief
+  attribution convention to the style guide.
+
+None of these improvements were on the day's task list at
+session start. They were generated by doing real work in the
+PKM's company.
+
+### Operating rule adopted
+
+**System tests are not a separate category of testing activity.
+Real work on a contained project, with deliberate attention to
+surfaced weaknesses, IS the system test. The PKM gets better
+fastest when it's being used for production work and someone is
+paying attention to where it creaks.**
+
+Structural consequences: (a) future "system test" framings should
+be real projects, not abstract evaluations; (b) protocol-driven
+attention to surfacing weaknesses is part of the work, not
+overhead; (c) the PKM's evolution is continuous and tied to the
+projects that exercise it.
+
+### Implications for future findings
+
+The pattern observed here — exercise → surface gap → update
+PKM/style guide → continue — should keep producing
+pkm_findings.md entries as long as real work continues. The
+finding format accommodates pattern crystallizations like this
+one alongside infrastructure failures like Finding 001.
+
+---
+
+## Finding 003 — Document source preservation resolved via Projects/ convention (2026-05-12)
+
+### Context
+
+Before today, the source qmds for kimbridges-documents items
+lived in Kim's local desktop folders and were not on Drive. The
+proj_kimbridges_documents.md description noted that R-package
+documentation source lives in each package's GitHub repo, but
+left non-R-package documents (like storylines) with an
+underdocumented source location.
+
+This was visible during the storylines template survey: rendered
+HTML in `kimbridges-documents/storylines/` on Drive, no qmd
+source anywhere on Drive that the file tools or Drive MCP could
+find.
+
+### Resolution
+
+The storage architecture rule adopted 2026-05-10 (in proj_PKM.md
+Design Decisions) provides the canonical answer for both
+code-heavy projects and document-source storage:
+`G:\My Drive\Projects\<name>\`. Today the rule was applied
+concretely to two documents in the same session:
+
+- storylines source qmds copied by Kim from desktop to
+  `G:\My Drive\Projects\storylines\` (retrospective application).
+- whittakerr project assembled at `G:\My Drive\Projects\whittakerr\`
+  from the start: existing Whittakerr_stuff.Rmd, the new
+  `background/` folder with Whittakerr Notes.md, the new
+  `data/` folder with Bot_Garden_Geocode_CSV.csv, the new
+  `images/` folder with Vegetation_no_legend.png and
+  Vegetation.png, the cover image whittakerr_cover_art_text.png,
+  the logo image whittakerr_logo_art.png, and the first chapter
+  history.qmd (prospective application).
+
+The rule applied retrospectively and prospectively in the same
+session, on different documents. Both now have their source on
+Drive in the canonical location.
+
+### Operating rule adopted
+
+**For multi-chapter documents deployed to kimbridges-documents,
+the source qmd files and supporting subfolders (`background/`,
+`data/`, `images/`) live at `G:\My Drive\Projects\<name>\` from
+the start of the project. The `kimbridges-documents/<name>/`
+location is the deployment target (rendered HTML), not the
+source. This separation is documented in style_multichapter_doc.md
+Sections 1 and 7.**
+
+### Implications for the next deployment
+
+When whittakerr is first rendered and deployed, the chain will be:
+
+1. Source: `G:\My Drive\Projects\whittakerr\` (canonical, on
+   Drive).
+2. Render: Quarto produces an `_output/` subfolder.
+3. Deploy: Copy `_output/` contents to
+   `G:\My Drive\kimbridges-documents\whittakerr\`.
+4. Listing stub: Create
+   `G:\My Drive\kimbridges-documents\docs\whittakerr.qmd`.
+
+If this chain works cleanly, the source-preservation gap is
+permanently resolved and the deployment workflow is the visible
+pattern other documents can follow. If something breaks at any
+step, that becomes the next finding.
+
+---
+
+## Finding 004 — Stale .RData functions shadow the installed package (2026-05-21)
+
+### Context
+
+While Kim tested the whittakerr document's code chapters chunk
+by chunk, two installed package functions misbehaved in ways
+that looked like package bugs. `get_climate()` at 30-arcsecond
+resolution downloaded WorldClim's entire 9.9 GB global grid
+instead of a small tile. Later, `plot_biomes()` failed with
+`could not find function "ggplot"`, then rejected the
+`total_ppt_cm` argument and drew the precipitation axis in mm.
+Each time, the installed package, inspected with
+`whittakerr::function`, was confirmed current.
+
+### Root cause
+
+Older, notebook-era copies of `get_climate` and `plot_biomes`
+were sitting in the R global environment, left from when those
+functions were defined inline in `Whittakerr_stuff.Rmd` and
+similar notebooks. R scoping searches the global environment
+before attached packages, so a bare `get_climate(...)` or
+`plot_biomes(...)` call ran the stale global copy, not the
+package's. `library(whittakerr)` does not override a
+global-environment definition, and the `whittakerr::function`
+diagnostic looked correct because the `::` qualifier bypasses
+the shadow.
+
+The stale copies survived an R restart because RStudio, by
+default, restores a saved `.RData` workspace at startup. A
+`.RData` file in `G:\My Drive\Projects\whittakerr\` held the
+old functions and reloaded them into the global environment on
+every restart.
+
+### Operating rule adopted
+
+**When developing an R package whose functions were once
+defined inline in notebooks, disable RStudio's `.RData`
+auto-restore (Tools, Global Options, General: uncheck "Restore
+.RData into workspace at startup"; set "Save workspace to
+.RData on exit" to Never) and delete any existing `.RData`
+from the project folder. Restarting R is not sufficient on its
+own while `.RData` restore is on. Diagnose shadowing with
+`environmentName(environment(fn))`: a result of "R_GlobalEnv"
+means a stale copy is shadowing the package.** `.RData` was
+added to the whittakerr `.gitignore` and `.Rbuildignore`.
+
+### Implications
+
+A diagnostic that uses `pkg::function` can report a function
+as current while a shadowed bare call runs the stale version.
+When an installed and verified function misbehaves, check the
+global environment, not just the package. This finding cost
+real time across two functions before the common cause was
+identified; naming it here should make the next instance quick
+to spot.
+
+---
+
+## Finding 005 — Bash mount visibility lags Drive Stream contents (2026-05-27)
+
+_**Consolidated 2026-07-31 into THE GROUND-TRUTH RULE in `pkm_card.md`.** Kept here for the detail and the diagnosis; the card is what gets read. See Finding 020._
+
+### Context
+
+The 2026-05-27 housekeeping survey relied initially on bash
+via the Cowork sandbox mount (`/sessions/.../mnt/My Drive/`)
+to enumerate G: folders and their contents. Several folders
+appeared empty when listed via bash even though Kim confirmed
+they held substantial content. Examples surfaced during the
+session:
+
+- `Projects/gePoints` and `Projects/whittakerr` shown as
+  empty folder shells by bash, but full R-package contents
+  (R/, DESCRIPTION, NAMESPACE, .git/, data/, etc.) seen by
+  the file tools via Glob.
+- `kimbridges-documents/whittakerr/` not visible at all in
+  the bash listing of the parent folder, even though the
+  whittakerr publication had been verified live the prior
+  session and all 15 chapter HTML files were really present.
+- `Projects/` itself: bash showed two subfolders (gePoints,
+  whittakerr), but Kim's Windows `dir` listing showed
+  fourteen, every one populated.
+
+Different bash queries against the same parent could return
+different sets of children. Top-level folder names were
+sometimes visible and sometimes not; subfolder contents were
+often invisible even when the parent appeared.
+
+### Investigation
+
+Three independent paths confirmed the discrepancy:
+
+- The file tools (Glob, Read) using the `G:\My Drive\...`
+  path see populated folders correctly.
+- Kim-supplied Windows `dir` listings (native, not through
+  the sandbox) match the file-tool view.
+- Bash via the sandbox mount path returns inconsistent and
+  partial views of the same underlying Drive content.
+
+Kim caught the discrepancy early in the session: when bash
+reported `Projects/gePoints` and `Projects/whittakerr` as
+empty, he flagged "those folders are full of files, I think
+you're seeing a sync problem." A re-check with Glob
+confirmed his reading and exposed the broader pattern.
+
+### Root cause
+
+Drive for Desktop in Stream mode materializes folders and
+files on demand. The Cowork sandbox mount sees only what has
+been materialized into the local cache at query time.
+Recently-touched or recently-streamed folders are present;
+older or recently-renamed ones not yet pulled into the cache
+return as absent or empty.
+
+The file tools route through the Windows `G:\` path, which
+triggers Drive for Desktop's on-demand fetch when accessed.
+The sandbox mount does not trigger that fetch — it sees the
+materialized cache directly, with no pull-down. The cache is
+loosely refreshed in the background but not synchronously
+connected to live Drive state.
+
+This is the read-direction companion to Finding 001 (which
+covered the write direction: bash writes to the sandbox
+mount do not propagate to Drive cloud). Together the two
+findings describe the bash mount as a sandbox-local view
+that is only loosely connected to Drive, not a transparent
+path to Drive content in either direction.
+
+### Operating rule adopted
+
+**For any G: visibility check — what folders exist, what
+files are inside, what the file counts are — use the file
+tools (Glob, Read) on the `G:\My Drive\...` path, or have
+Kim provide a Windows `dir` listing. Do not trust bash
+readings of folder existence or contents on the sandbox
+mount path. Bash is acceptable for reading files that have
+already been confirmed to exist via the file tools or
+Drive MCP, with the staleness caveat from system_audit.md
+Section 7 applying.**
+
+### Why this matters for the housekeeping work
+
+The 2026-05-27 housekeeping survey nearly acted on incorrect
+data. Bash showed `Projects/gePoints` and
+`Projects/whittakerr` as empty shells, which would have
+suggested those folders needed their R-package contents
+migrated in from somewhere else. Kim's intervention and the
+file-tool re-check prevented an early plan to "consolidate
+empty Projects shells" from generating bogus moves.
+
+The same pattern surfaced when bash claimed
+kimbridges-documents had no whittakerr subfolder, after the
+whittakerr publication had been verified the prior session.
+A bash-only survey would have flagged the publication as
+incomplete and chased a non-existent gap.
+
+After the rule was adopted mid-session, the rest of the
+survey used Kim-supplied `dir` listings as the authoritative
+view, with Glob confirming specific folders on demand. The
+remainder of the work proceeded cleanly.
+
+### Relationship to Finding 001
+
+Finding 001 (2026-05-12) established that bash writes to the
+sandbox mount do not propagate to Drive cloud. Finding 005
+(2026-05-27) establishes the read-side analogue: bash reads
+from the sandbox mount may not see what is actually in
+Drive. Together, they justify the broader operating rule:
+the bash mount is a sandbox-local artifact, not a
+transparent path to Drive in either direction.
+
+The file tools, the Drive MCP connector, Windows Explorer,
+and Kim-supplied `dir` listings remain the trustworthy
+paths for any operation that depends on Drive state.
+
+### What this finding does not affect
+
+The file tools (Read, Write, Edit, Glob, Grep) on
+`G:\My Drive\...` paths work correctly for both reads and
+writes, and propagate to Drive cloud. Operations performed
+via the file tools during this and prior sessions are
+reliable. The new rule restricts bash, not the file tools.
+
+Drive MCP queries also remain reliable for direct
+verification of Drive cloud state.
+
+---
+
+## Finding 006 — Live RStudio↔Claude execution bridge via ClaudeR (2026-05-30)
+
+### Context
+
+Until tonight, Claude's only way to run R was the Cowork Linux
+sandbox: an isolated environment with none of Kim's data, packages,
+plots, or working state. Code run there is throwaway. The question
+Kim raised was whether an MCP server could let Claude execute R in
+his *live* RStudio session — the same environment he works in, with
+his objects in memory and plots rendering in the Plots pane. The
+answer is yes, and a working bridge is now in place. This is a new
+interface modality between Kim and Claude, captured here because it
+carries durable operating rules and because the setup path crossed
+real obstacles worth recording so the next setup (new machine, R
+upgrade, or a future instance) is quick.
+
+### Two candidate tools; ClaudeR chosen
+
+- **Posit `mcptools`** (first-party, on CRAN) was tried first. It
+  connects a client to a running R session via `mcp_session()` plus
+  an `Rscript -e "mcptools::mcp_server()"` server entry. But the
+  bare server surfaces no tools useful for running code — it needs
+  a tool provider, and the recommended one is the `btw` package.
+  `btw`'s dependency chain (via `ellmer`) demanded compilation from
+  source, pulling in Rust and Visual Studio Build Tools. On Kim's
+  Windows R that was a wall, not worth scaling tonight.
+- **ClaudeR** (`IMNMV/ClaudeR`, GitHub) was the pivot and the
+  keeper. Its MCP server is **Python**, run through `uvx`, which
+  downloads a prebuilt package — so it routes around the R
+  compilation chain entirely. The only R-side install is ClaudeR
+  itself plus pure-R / binary dependencies (Shiny, jsonlite,
+  rstudioapi). It is purpose-built for an RStudio data-science loop:
+  `execute_r`, `execute_r_with_plot` (captures plots), async
+  execution, reading the active document, installing packages.
+
+### The path through the complexity (three obstacles, each resolved)
+
+1. **`nanonext` version mismatch (mcptools path).**
+   `mcptools::mcp_session()` failed with
+   `unused argument (fail = "none")`. The `fail` argument to
+   `nanonext::listen()` was added in **nanonext 1.6.0**; the
+   installed copy predated it. Fixed by `install.packages("nanonext")`
+   then a full R restart (Session → Restart R unloads the old DLL).
+   `mcp_session()` then ran clean. (This obstacle belongs to the
+   mcptools route, which we ultimately set aside, but the session
+   is left opted-in and does no harm.)
+
+2. **`uvx` not on R's PATH.** After installing `uv`/`uvx` and
+   getting a version from the shell, `install_clauder()` still
+   errored: `uvx was not found on your system`. RStudio's R process
+   had been launched with an older environment that lacked the
+   installer's PATH addition, and **Session → Restart R does not
+   reload it** — only a full RStudio quit (or reboot) does.
+   Confirmed with `Sys.which("uvx")` returning `""`. Fixed for the
+   session with
+   `Sys.setenv(PATH = paste(Sys.getenv("PATH"), "C:/Users/kim/.local/bin", sep = ";"))`,
+   then made permanent in `.Renviron`
+   (`PATH="${PATH};C:/Users/kim/.local/bin"`). `uvx` resolved to
+   `C:\Users\kim\.local\bin\uvx.exe` (shown as the 8.3 short form
+   `LOCAL~1`, which is fine).
+
+3. **The add-in server is a separate "Start Server" click.**
+   `claudeAddin()` prints `Listening on http://127.0.0.1:4099` —
+   that is only the add-in's own UI panel loading in the Viewer
+   pane. The actual connection server (default port 8787) does not
+   start until the **Start Server** button is clicked. Before the
+   click, tool calls returned
+   `RStudio addin is not running`. After it, the loop went live and
+   Claude executed code in the session (verified: R 4.3.3 ucrt on
+   Windows 10, 486 packages, `2 + 2 = 4`).
+
+Note: the desktop app picked up the new MCP server the moment Start
+Server was clicked — no app restart was needed, despite the
+configuration step suggesting one.
+
+### Operating rule adopted
+
+**The start-of-session sequence to bring the live R bridge up is:
+(1) in RStudio, `library(ClaudeR); claudeAddin()`; (2) click
+**Start Server** in the Viewer-pane panel and leave it running.
+That is the whole ritual once `.Renviron` carries the uv bin path.
+If the bridge ever fails to come up after a new machine or an R
+upgrade: re-check `Sys.which("uvx")` (a `""` means PATH again — a
+full RStudio quit or the `.Renviron` line fixes it), confirm
+`nanonext` ≥ 1.6.0, and re-run `install_clauder()` to refresh the
+MCP path (per ClaudeR's own R-upgrade note).**
+
+### Guardrails (by design)
+
+ClaudeR blocks Claude-executed code from calling `system()`,
+`system2()`, `shell()`, and file-deletion functions (`unlink()`,
+`file.remove()`, and `rm`-bearing system calls). Kim's own
+manually-run code is unaffected. So if a task genuinely needs one
+of those, Claude will say so and Kim runs it himself. This is a
+sensible least-privilege boundary, not a defect.
+
+### Why this matters
+
+This is the read/write companion to Findings 001 and 005, but in
+the opposite direction: those established that the *bash* sandbox
+mount is only loosely connected to Drive. This finding establishes
+a *new, tightly-connected* execution path — into Kim's live R
+session, where the objects, packages, and plots actually are.
+
+For the immediate roadmap it is more than infrastructure. The next
+Active Focus is the stories realm, built collaboratively on
+`photobookr`; that work is R-heavy (EXIF-driven folder/chapter
+structure, photo placement, rendering). With the bridge up, Claude
+can drive and debug that R harness directly in Kim's session
+instead of handing code back for manual runs — Kim's framing at
+close: "an even better way to build the stories, as you can handle
+the harness now." The same applies to the book-assembly cluster
+parity testing. The capability arrived as an unplanned side thread
+(parallel to the 2026-05-10 audio intake); the stories focus is
+unchanged, now better resourced.
+
+See session_log.md 2026-05-30 (late evening) for the session
+narrative and proj_PKM.md for the interface-modality log note.
+
+---
+
+## Finding 007 — Long R calls via ClaudeR exceed the Cowork tool window; render one network call per execute_r (2026-06-03)
+
+### Context
+
+The Audio project's R harness renders dialog by calling the ElevenLabs
+Text-to-Dialogue API from Kim's live R session over the ClaudeR bridge.
+Each render is a network round trip of roughly ten to thirty seconds.
+The Cowork `execute_r` tool has a response window of about 45 seconds.
+
+### What was observed
+
+- A single `execute_r` call that issued **two** API renders (the
+  `el_assemble_wav` end-to-end function rendering both chunks of a dialog)
+  reliably exceeded the window: the MCP request returned
+  `Request timed out`, and on the heavier calls the ClaudeR add-in
+  connection dropped (`RStudio addin is not running`), needing a
+  **Start Server** restart in RStudio.
+- Single-render calls (one chunk, one API call per `execute_r`) returned
+  cleanly every time. The first test's three MP3 parts, rendered one per
+  call, never timed out.
+
+### The key distinction
+
+**An MCP timeout is a failure of the response channel, not of the work.**
+The R code keeps running in the session after the tool call returns; in
+both timeout cases the output file (`nike_full.wav`, an earlier MP3 part)
+was found complete afterward. So: on a timeout, do not assume failure and
+re-run — first verify the output with the host file tools (Glob/Read on
+the `G:\…` path, per Finding 005), because a re-run wastes a paid render
+and can collide with the still-running call.
+
+### Operating rule adopted
+
+**Keep each `execute_r` call to one network render so it returns inside
+the tool window.** Render a multi-part dialog one part per call (fast,
+clean, observable), then do the local-only assembly (silence splice, WAV
+write — no network) in a separate quick call. Do not bundle multiple
+renders into a single call. The harness's `el_assemble_wav` is convenient
+but renders all parts internally, so it is the one function that trips
+this; the fix is to render the PCM parts in separate calls and pass them
+to the assembler, or to add a "render parts separately" path to it. The
+≤1,900-char chunking already keeps any single render comfortably inside
+the window.
+
+### Why this matters
+
+This is the operational companion to Finding 006. The bridge made live R
+execution possible; this finding makes the *autonomous* loop reliable —
+Claude can render and iterate without Kim babysitting each step, provided
+the work is sliced so each call is a single round trip. It generalises
+beyond audio to any network-bound R work over the bridge (web pulls, API
+calls, long model fits): one slow operation per `execute_r`, verify
+output on timeout rather than retrying blind.
+
+### Update (2026-06-03 evening)
+
+Even a **single** render can overrun the tool window — render time scales
+with output audio duration, and a ~4-minute dialog (the recast Nike_challenge)
+overran on each part. So "one network render per call" is necessary but not
+sufficient. The pattern that worked reliably: **fire the render (accept the
+MCP timeout), then poll for the result object in a quick follow-up call, then
+do the local-only assembly.** While R is mid-render the ClaudeR add-in is
+unresponsive and may report "addin is not running"; that is the render
+blocking, not a crash — wait and poll again rather than asking for a restart.
+The proper fix is **asynchronous rendering** via ClaudeR's `execute_r_async`
+/ `get_async_result`, queued for the harness; it removes the blocking and the
+spurious timeouts entirely. (Also noted this session: PCM at 44.1 kHz needs a
+higher ElevenLabs tier; the WAV path falls back to 24 kHz.)
+
+See session_log.md 2026-06-03 (afternoon and evening) and proj_audio.md for
+the session narrative.
+
+---
+
+## Finding 008 — Two gotchas in the stories-site deploy: render scope and Drive-stream upload (2026-06-23)
+
+### Context
+
+Kaka‘ako Birds was the **first deploy to the kimbridges-stories site since the
+collaborative-story era began** (and the first since `Photo_Book_workingnotes`
+was filed into `underway/` during the 2026-05-27 housekeeping). Two distinct
+problems surfaced in sequence during the `quarto render` → Netlify drag-deploy.
+Both are companions to Findings 001/005 (the bash-mount/Drive-stream behaviors),
+but on the publish path rather than the housekeeping path.
+
+### Gotcha 1 — `quarto render` walks `underway/` and chokes on working files
+
+`quarto render` with no `render:` scope renders **every** `.qmd` in the project
+tree except `_`-prefixed ones. The stories site keeps in-progress material in
+`underway/<story>/`, which contains working `.qmd` files (here
+`underway/Photo_Book_workingnotes/Photo_2_PDF.qmd`, plus Cranes and others).
+The render dove into one and failed on an R chunk that reads an image:
+`NoDecodeDelegateForThisImageFormat 'QMD'`. It had never bitten before only
+because the stories site had not been rendered since those folders landed.
+
+**Operating rule adopted: scope the stories-site render to the published pages.**
+`_quarto.yml` now carries:
+
+```
+project:
+  render:
+    - "*.qmd"        # root (index.qmd)
+    - "stories/*.qmd"
+    - "!underway/"
+```
+
+This renders only `index.qmd` + `stories/*.qmd` and never descends into
+`underway/`. Any future working `.qmd` parked in `underway/` is now inert to the
+build. (The site lists from `stories/` via the listing in `index.qmd`, so the
+inventory spreadsheet is NOT needed at render time — see Gotcha note below.)
+
+### Gotcha 2 — Netlify drag-deploy from a Drive-stream folder skips large unmaterialized files
+
+After a clean render, Kim dragged `_site/` onto the Netlify drop zone. The site
+came up with the **cover thumbnail showing but the PDF failing to load**.
+Diagnosis: locally, `_site/pdfs/Kakaako_Birds.pdf` was a complete, real 10.14 MB
+`%PDF` file; on Netlify it was absent (the URL returned the HTML fallback, not a
+PDF). The 117 KB cover JPG — already materialized — uploaded fine; the 10 MB PDF
+was almost certainly still a **Google Drive stream placeholder** at drag time
+(the same all-zeros condition seen on the inventory `.xlsx` this session), so the
+browser upload skipped it. Reading the file through R forced Drive to
+materialize it; a re-drag then carried the real bytes, and the PDF went live.
+(There is also normal Netlify/Drive propagation lag — the first re-check looked
+empty until it finished; patience resolved the last step.)
+
+**Operating rule adopted: before drag-deploying `_site/` from a Drive-stream
+folder, force the large binaries to materialize.** Right-click `_site` (or at
+least `_site/pdfs`) → **Available offline** in Drive for Desktop and wait for the
+solid green check (not the cloud icon) before dragging; or copy `_site/` to a
+local non-Drive folder (Desktop, `C:\temp`) and drag *that*. After deploy, verify
+the large asset directly (open `…netlify.app/pdfs/<file>.pdf`) rather than
+trusting that the page "looks" deployed because the thumbnail rendered.
+
+### Relationship to prior findings
+
+Findings 001 (bash writes don't reach Drive) and 005 (bash reads lag Drive) are
+about the **sandbox mount**. This finding is about a third surface: **a host-side
+application (the browser upload) reading a Drive-stream folder gets placeholders
+for not-yet-materialized files.** The through-line across all three: a Drive
+stream path can present a file as "there" (correct name, correct size metadata)
+while the real bytes are not locally present. Any operation whose correctness
+depends on the bytes — bash propagation, bash listing, or a browser upload —
+must first force materialization (read via the file tools / R) and then verify at
+the independent destination.
+
+### Note for the next stories deploy
+
+The kimbridges-stories site renders its grid from `stories/*.qmd` (the `listing:`
+in `index.qmd`), not from `stories_inventory_v2.xlsx`. So a story can be
+published with just three artifacts in place — `pdfs/<name>.pdf`,
+`images/<name>.jpg`, and `stories/<slug>.qmd` — which is the route used here
+(the artifacts were staged directly via R + the file tools, bypassing
+`add_stories.py` because the inventory `.xlsx` was an unmaterialized placeholder).
+The inventory remains the human "source of truth" and should get the row when
+convenient, but it is not on the render critical path.
+
+See session_log.md 2026-06-23 and proj_kimbridges_stories.md.
+
+---
+
+## Finding 009 — Pushing a new package to GitHub via ClaudeR: stale `gh` toolchain + the gert token-in-URL push (2026-06-24)
+
+### Context
+Publishing the new `seasonalityr` package to GitHub from Kim's live R session (ClaudeR).
+The local git work was easy; the GitHub-API and HTTPS-auth steps each needed a workaround.
+Recorded because the next package push will hit the same two walls.
+
+### What happened
+1. **`gh` (the GitHub API client) was stale and broke in a cascade.** `gh::gh_whoami()` and
+   even `gh::gh("GET /user")` failed with `could not find function "check_string"`; after
+   updating `gh`/`cli`/`rlang` it then failed with `'curl_modify_url' is not an exported
+   object from 'namespace:curl'`. The fix was to update the **whole chain** —
+   `install.packages(c("gh","cli","rlang","curl","httr2"), type="binary")` — done
+   **non-interactively via `execute_r_async`** (Finding 007: interactive installs hang the
+   bridge), then run the API calls in a **fresh async process** so it loads the repaired
+   packages (the main session keeps the broken `gh` loaded until restart).
+2. **`gert::git_push(password = token)` failed with "HTTPS Authentication failure".** Passing
+   the PAT as `password` alone does not pair with a username, so libgit2's handshake fails.
+   **The reliable push:** temporarily set the remote URL to embed credentials —
+   `https://<login>:<PAT>@github.com/<owner>/<repo>.git` via `gert::git_remote_set_url()` —
+   `git_push(set_upstream=TRUE)`, then **reset the remote to the clean URL** so the token is
+   not left in `.git/config`. Repo creation itself: `gh::gh("POST /user/repos", name=...)`
+   (worked once the toolchain was repaired). Token retrieved with `gh::gh_token()`.
+
+### Operating rule adopted
+**To push a package to GitHub over ClaudeR: (1) do local git with `gert` (`git_init`/`git_add`/
+`git_commit`); (2) if `gh` errors, update `gh`+`cli`+`rlang`+`curl`+`httr2` via
+`execute_r_async`, then create the repo with `gh::gh("POST /user/repos", ...)` in a fresh
+async process; (3) push with `gert` using a credential-embedded remote URL, then reset the
+remote to the clean URL.** `system2`/`shell` git is blocked by ClaudeR (Finding 006), so the
+gert/gh route is the path. Result: `seasonalityr` is live at github.com/kimbridges/seasonalityr.
+
+See session_log.md 2026-06-24, proj_seasonalityr.md.
+
+---
+
+## Finding 010 — OpenAI image drafting via R (gpt-image-1), and the AI-drafts / human-finishes division of labor (2026-06-24)
+
+### Context
+Illustrating the short story "My Name Is Nike" surfaced a **new, reusable capability** (image drafting via
+OpenAI) and, more importantly, a **clear working rule** about what to send the generator and what to finish
+by hand. Kim: this is "a big step forward… a capability that we'll probably use quite often."
+
+### The capability
+Claude can **generate and edit images via OpenAI `gpt-image-1`** from Kim's live RStudio session over
+ClaudeR, using **httr2** — the image cousin of the ElevenLabs audio harness (`elevenlabs_dialogue.R`).
+Run **async** (Finding 007); decode the returned base64 with `openssl::base64_decode()` → `writeBin()`.
+- **Text-to-image:** `POST https://api.openai.com/v1/images/generations`, JSON body
+  `{model:"gpt-image-1", prompt, size:"1536x1024", quality:"high", n:1}`,
+  `req_auth_bearer_token(Sys.getenv("OPENAI_API_KEY"))`; image at `body$data[[1]]$b64_json`.
+- **Image-to-image / edit:** `POST /v1/images/edits`, **multipart** — single image via
+  `req_body_multipart(model="gpt-image-1", image=curl::form_file(path), prompt=..., size=..., quality=...)`,
+  or **multiple reference images** by repeating the field name `image[]`:
+  `do.call(req_body_multipart, list(req, model=..., prompt=..., size=..., quality=..., `image[]`=form_file(a), `image[]`=form_file(b), ...))`.
+- Cost ~pennies/image. Key in `.Renviron` (`OPENAI_API_KEY`); the account needs **billing headroom** (the
+  first call hit a hard limit; Kim funded it). The `curl`/`httr2`/`gh` toolchain was updated this session
+  (Finding 009), which is what makes the httr2 image calls work.
+
+### The division of labor (the rule — this is the durable lesson)
+- **OpenAI excels at ATMOSPHERE, PLACE, OBJECTS, LIGHT, and SYMBOL** — any scene with no fidelity
+  constraint. The camu-camu berry tray, Jones's lamplit office, and the two yellow birds each landed in
+  one or two passes and were keepers.
+- **OpenAI is UNRELIABLE for two things:** (a) a **specific face** — it reinterprets every pass (Nike's
+  blue eyes turned brown, her forehead lettering scrambled); and (b) reproducing a **specific supplied
+  pattern** — given Kim's bar-and-dash tattoo diagrams it kept defaulting to generic dot clusters.
+- **Those two go to the HUMAN.** Kim composites the exact face and draws the exact patterns in Photoshop /
+  with a **Wacom tablet** — minutes by hand versus a dozen failing generative passes. The finished
+  satellite-call image (`ch7_satellite_call_FINAL.png`) was produced this way: Kim placed the real Nike
+  portrait on the laptop screen and drew each elder's distinct forehead tattoo himself.
+
+**RULE adopted: draft scenes/atmosphere/objects/symbols with OpenAI; do exact faces and exact supplied
+patterns by hand. Never send a must-match-this-face or must-match-this-pattern job to the generator.**
+(Claude's deterministic `magick` perspective-composite of the exact face is possible but fiddly and came out
+inferior to Kim's Photoshop finish — don't reach for it when Kim can retouch.)
+
+### Working-practice note
+The human's specialized craft — compositing an exact likeness, tablet retouching — is a **first-class part
+of the collaborative loop, not a fallback.** AI drafts; Kim finishes. (Cross-ref the proj_PKM.md
+meta-observation of the same date.) Recorded because it generalizes to all future illustrated work.
+
+See proj_audio.md 2026-06-24 (Nike illustration thread) and session_log.md 2026-06-24.
+
+
+## Finding 011 — Netlify's "Add new project" now routes a typed description into an AI agent builder; bypass with Netlify Drop (2026-06-26)
+
+**What happened.** Publishing the new kimbridges-fiction site, Kim went to add a new Netlify project and typed a brief description of the site. Netlify's current onboarding treats that description as a prompt for its **Agent Runners** and spun up an AI coding agent (a Claude Code session) that *generated* a placeholder site and deployed it — not the `_site` Kim intended to drag. The result was an unexpected landing page and a junk project.
+
+**Why.** Netlify rolled out AI/agent-based site creation across 2025–2026 (netlify.new; "Create new project with an AI agent"; Agent Runners in the dashboard). The default 'Add new project' path now favors generate-from-prompt, not manual upload.
+
+**Operating rule (manual deploy — what we actually want):**
+- To create a site from a finished build, use **https://app.netlify.com/drop** (or the drag-and-drop dropzone at the bottom of the team's Projects page). Drag the `_site` folder (or its contents) — no prompt, no agent.
+- To UPDATE an existing site, drag onto that site's **Deploys** tab dropzone. The AI flow is only the *new-project* path, so updates never hit it.
+- Then rename the Drop site (Project configuration -> Change site name) to the desired subdomain.
+- Delete any junk project the agent flow created.
+
+**Companion clarification to Finding 008.** For Netlify **drag-and-drop**, dropping the `_site` *folder* is fine — Netlify uses the dropped folder's contents as the site root. The "deploy the contents, not the folder" caution in Finding 008 was specific to the **R `file.copy`** deploy (copying `_output/` into a folder nested it and caused a 404); it does not apply to the drag-and-drop landing pad.
+
+**Side capability used here.** Ghostscript is available in the Cowork sandbox: `gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dColorImageResolution=150 -dGrayImageResolution=150 ...` compressed the 19 MB illustrated Nike PDF to 0.61 MB with the fine two-column journal text still legible — a quick web-compression path when Acrobat isn't at hand.
+
+## Finding 012 — Quarto renders via ClaudeR time out the MCP request but complete in-session; verify on disk (2026-06-29)
+
+**What happened.** Shipping the seasonality book, both `quarto::quarto_render()` calls through ClaudeR (the book, then the documents website) returned `MCP error -32001: Request timed out`. Both renders had in fact **completed successfully** in Kim's R session — the error only meant the Cowork tool stopped waiting, not that the render failed.
+
+**Why.** A full Quarto render runs longer than the ClaudeR/Cowork tool window (the same window behind Finding 007). The R process keeps executing after the MCP request is abandoned. Compounding it, the rendered output lands on a `G:` Drive-Stream path, so the **host file tools (Glob) briefly do not see the new files** while Drive syncs (Finding 005, read-direction) — the first few `Glob`s returned "No files found" even though the render was done.
+
+**Operating rule.**
+- After a `quarto_render` (or any long R call) times out at the MCP layer, **do not assume failure**. Wait, then **verify on disk**: query the **R session itself** (`file.exists`/`list.files` via a fresh short `execute_r`) — the live R session sees `G:` directly and immediately, unlike the sandbox and ahead of the Drive-sync lag that delays the host file tools.
+- For renders specifically, confirm success by the **artifacts**, not the return value: `_output/*.html` (book) or `_site/<name>/index.html` (site), plus a grep of the HTML for chunk-error strings (`could not find function`, `Error in`, `Quitting from`).
+- Prerequisite worth remembering: Quarto renders in a **fresh R session**, so a GitHub package used by the document must be **installed** (`devtools::install(local_path)` or `install_github`), not merely `load_all`'d in the interactive session.
+- Keep heavy per-cell work (e.g. continental `regime_map_region` maps) **out of the render** — pre-generate to PNG and embed — so the render stays light and the timeout is only a waiting artifact, never a real compute risk.
+
+### Finding 013 (2026-07-17) — Trust the R bridge for G: file state; the device staging bridge can serve STALE copies in Stream mode
+
+_**Consolidated 2026-07-31 into THE GROUND-TRUTH RULE in `pkm_card.md`.** Kept here for the detail and the diagnosis; the card is what gets read. See Finding 020._
+On session restart, the device file-staging bridge (`device_stage_files`) returned STALE copies of PKM files: project_index.md
+read as _Last updated 2026-07-09_ (no briefing_book at all) and proj_briefing_book.md as _2026-07-16_ (missing the 2026-07-17
+entries) — even though both had been written and read back consistently the day before via the R bridge (RStudio/ClaudeR on G:).
+Reading the same files through the **R bridge** showed them fully current (07-17, all content present). So the staged copies were a
+Drive **Stream-mode sync/caching lag** — the same class of issue as Finding 005 (bash mount visibility), now seen in the
+file-staging bridge too. **Operating rule:** for ground-truth on any `G:\My Drive\...` file, read via the R bridge
+(`readLines`/`file.info` in the RStudio session), NOT the device-staged copy. Do not rewrite PKM files from a staged view —
+you could clobber newer on-disk content or spawn Drive conflict copies. (No data was lost in this instance.)
+### Finding 014 (2026-07-25) — The RStudio MCP blocks `system()`; use R's own file functions
+`execute_r` refuses shell-outs. `system("quarto --version")` returns *"R Error: Security restriction: System command
+execution is not allowed"*, and the same guard applies to `system2` and `shell`. This is a hard boundary of the bridge,
+not a transient failure, so there is no point retrying or quoting around it.
+
+**Operating rule.** Everything the bridge is actually needed for has a pure-R equivalent, and those are not blocked:
+`Sys.which()` to locate an executable, `file.exists()` / `file.info()` to check state and mtimes, `file.copy()` /
+`file.remove()` / `file.rename()` to move things, `readLines()` / `writeLines()` to inspect and edit. For Quarto
+specifically, the R `quarto` package (`quarto::quarto_render()`) is installed on Kim's machine and runs renders without
+a shell — and note Finding 012, which says such a render will time out at the MCP layer while succeeding in-session.
+
+**Why it matters.** The R bridge remains the ground truth for `G:` file state (Finding 013) and the only way to reach
+anything outside the connected folders. Knowing its shape saves a failed call each session.
+
+### Finding 015 (2026-07-25) — Two file-transport traps: the Downloads destination, and read-only staged copies
+
+_**Consolidated 2026-07-31 into THE GROUND-TRUTH RULE in `pkm_card.md`.** Kept here for the detail and the diagnosis; the card is what gets read. See Finding 020._
+Both bit during the AI Microscope documentation build, and both are recurrences of a class rather than one-offs.
+
+**The Downloads trap.** When Kim edits a project file through a browser-based tool and saves it, the result lands in
+`C:/Users/kim/Downloads`, not in the project folder on Drive. It has now happened twice: once with chapter files, once
+with `_quarto.yml`. The symptom is confusing rather than obvious — Kim reports having made an edit, and the file on
+Drive genuinely does not have it, so the natural read is that the edit was lost. **Rule:** when a Kim-reported edit is
+missing from Drive, check `C:/Users/kim/Downloads` via the R bridge before concluding anything. Diff the two copies
+(`readLines` both, compare), copy Downloads → Drive with `file.copy(overwrite = TRUE)`, and then **`file.remove()` the
+Downloads copy** so it cannot cause the same confusion a third time. Downloads is not reachable from the device bridge
+(it is not a connected folder), so R is the only route to it.
+
+**Staged copies are read-only and do not refresh.** Files brought over by `device_stage_files` land in
+`/mnt/user-data/uploads/<folder>/` **read-only**, and calling `device_stage_files` again on the same path does **not**
+overwrite the existing copy. So after Kim edits a file mid-session, a re-stage silently returns the old content — which
+looks exactly like Finding 013's Drive-sync staleness but has a completely different cause and a completely different
+fix. **Rule:** the container runs as root, so `rm -f` (or `rm -rf` the staged folder) **before** re-staging. Used three
+times this session, and it works every time. When in doubt about which staleness you are looking at, read the file
+through the R bridge, which is ground truth either way.
+
+### Finding 016 (2026-07-25) — Render, serve, and screenshot in the sandbox: a verification loop for Quarto documents
+**What it is.** Quarto is not preinstalled in the cloud sandbox, but it installs cleanly:
+
+```
+curl -sL -o q.deb https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.43/quarto-1.6.43-linux-amd64.deb
+dpkg -i q.deb
+```
+
+With a working copy of the book source in the container, `quarto render` produces `_output/`, `python3 -m http.server`
+serves it on a local port, and Playwright (already available) screenshots any page at any scroll position. The whole
+loop runs without touching Kim's machine and without a Netlify deploy.
+
+**Why it earns its keep.** A figure anchored mid-paragraph in `honest.qmd` made Quarto treat the image as inline: no
+number, no caption, and the paragraph split around it. **`quarto render` exited clean.** Nothing in the build output
+suggested a problem. The only thing that caught it was a screenshot of the rendered page. The general rule this
+supports: for anything with a visual result, the exit code is not the artifact — look at the output. Once the loop
+exists, looking costs one tool call.
+
+**Corollaries.** Normalize line endings to LF in the container working copy. Keep the container copy and the Drive copy
+explicitly synced (edit in one place, commit back with an `expectedMtimeMs` guard) rather than drifting between them.
+And the sandbox network is allowlisted: github.com clones fine, but the deployed site (aimicroscope.netlify.app) is
+**not** reachable, so screenshots of the live app must come from a local clone served locally.
+
+### Finding 017 (2026-07-25) - Quarto CAN be driven through the R bridge; do not set QUARTO_PATH
+
+Finding 014 records that the shell-execution functions are blocked in the RStudio MCP. That made it
+look as though Quarto could not be run from the bridge at all. It can. The **`quarto` R package**
+works:
+
+```r
+setwd("G:/My Drive/Projects/AI_Microscope/documentation")
+quarto::quarto_render(as_job = FALSE)
+```
+
+`quarto::quarto_path()` resolves the Windows install by itself
+(`C:/Users/kim/AppData/Local/Programs/Quarto/bin/quarto.exe`). **Do not** try to help it by setting
+a QUARTO_PATH environment variable. Doing so produced a bare "Error running quarto CLI from R" every
+time, and the identical call succeeded immediately once that variable was unset again.
+
+This matters because it removes the reason to hand a render back to Kim and wait: an 11-chapter book
+renders well inside the 60-second MCP timeout, with his real fonts, straight to `_output/`.
+
+**The large-site caveat, extending Finding 012.** Rendering the whole kimbridges-documents website
+(19 documents, about 300 MB of resources) overruns the 60-second timeout AND leaves the bridge
+reporting "RStudio addin is not running" for a couple of minutes while R is busy. Both are cosmetic.
+The render completes. Wait, retry a trivial `cat()` to confirm the bridge is back, then verify the
+result **on disk** - page counts, mtimes, and a grep of the rendered HTML - rather than trusting
+either the timeout or the exit code.
+
+### Finding 018 (2026-07-26) — The source utterance was never captured; a write-up is not a record
+
+Kim asked a simple question about the *Behind the Curtain* page: had his original spoken comment
+on the ʻIliau Loop Trail been preserved? That comment is the thing the whole briefing book grew
+out of. Every `.md` in Projects_Index and the entire `Projects/checklists` tree was searched.
+**It has not been preserved.** What survives is two paraphrases, one of them honest about being
+one.
+
+`checklists/iliau_loop/site_preview.md` is a session write-up. Its own header says so: "Captured
+2026-07-17 from Kim's preview observations." It was written up from what he said during the
+session, not pasted from anything he wrote. Then `proj_briefing_book.md` line 334 paraphrases the
+same material a second time, at another remove. And the session log has a gap across exactly that
+date range, so there is no third copy to fall back on.
+
+**Why it matters more than it looks.** The published page presents that file as the input
+contract: here is the small human input, here is the fourteen page book that came out of it. The
+claim holds, because the write-up is faithful. But the artifact on display is a reconstruction,
+not the utterance. Nothing in the file's provenance would have told a reader that, and nothing
+would have told me either if Kim had not asked. Paraphrase is lossy in the direction that matters
+here: the value of a preview is that it carries a particular person's noticing, in their own
+words, and a second-hand rendering keeps the facts while quietly dropping the voice.
+
+**Operating rule adopted.** For any new site, **write the preview first, in Kim's own words, and
+save it to `checklists/<site>/site_preview.md` before any build starts.** If it is spoken rather
+than typed, transcribe it and mark it as a transcription, then have him correct it while the
+session is still live. This is now the first line of the briefing-book commission block
+(`Projects/checklists/briefing_book_commission.md`, section "Preview capture").
+
+**The general form.** When a human input is going to be treated as evidence later, capture it
+verbatim at the moment it is given. A summary written the same hour still counts as a loss, and
+the loss is invisible afterwards because the summary reads fine. This sits alongside Finding 002
+(the system test as productive loop) as a point about what the PKM is actually for: not just
+recording what was decided, but preserving what was said in the form it was said.
+
+### Finding 019 (2026-07-28) — An absence at the top of a log is not an absence; never write a gap marker without proving the gap
+**What happened.** A note in session_log.md declared a LOG GAP for 2026-07-16 through 2026-07-25
+and said the entries "were never written to this file." They had been written. All 22 of them
+were sitting at the BOTTOM of the same file, below the 2026-05-07 to 2026-06-07 archive, because
+the log carries two ordering conventions: the top block is newest-first (entries are prepended)
+and the tail is an older oldest-first block (entries were appended). Some sessions appended, and
+their entries dropped below 7,000 lines of May and June material where nobody looked. Three June
+entries were stranded the same way. Before the misfiling was noticed, five replacement entries
+had been reconstructed from the proj files and written in. They were reverted; the file was
+restored byte-for-byte, then repaired properly by moving the real entries into position.
+
+**Why the check failed.** The gap was diagnosed by reading the top of the file and seeing 07-26
+followed by 07-09. That is a check of one region, not of the file. Two things made it worse. The
+stranded 07-16 and 07-17 entries used h3 headings while every other entry in the log uses h2, so
+a heading-level scan skipped them. And the LOG GAP note itself, once written, became the
+evidence: the next session read the note rather than the file, and I inherited the claim and
+acted on it.
+
+**The cost of acting on it.** The reconstructions were good prose and they were wrong in detail.
+One example: the ʻIliau Loop briefing book was recorded as bound at 12 pp, because the proj file
+describes the initial bind. The contemporaneous log entry says 14 pp after Kim's review pass. A
+reconstruction inherits whichever version of a fact the source file happens to preserve, and it
+cannot know what it lost. Had the write stood, a wrong page count would now sit in the record
+looking exactly as authoritative as the right one.
+
+**The rule.** An absence at the top of a log is not evidence that the session was never logged.
+Before declaring anything missing, search the WHOLE file for the date, at every heading level,
+and search the other logs too. `grep` the date string, do not read a region. This is the cheapest
+check in the PKM and it was skipped twice.
+
+**The second rule, which is the structural fix.** Never write a gap marker without first proving
+the gap. A marker that asserts absence is a load-bearing claim: later sessions treat it as
+verified and build on it. If a gap is only suspected, say so in those words and name the search
+that was actually run, so the next reader knows what has and has not been checked. This is
+Finding 018's point from the other side. Finding 018 says a write-up is not a record. This one
+says a note ABOUT the record is not the record either, and the record is usually still there.
+
+**Also durable: one file, one ordering rule.** The mixed convention is what made the misfiling
+possible and invisible. The July and June strays were moved into reverse-chronological position
+on 2026-07-28 and an ORDERING NOTE now sits where the false marker was. The pre-2026-06-07
+archive is still append-order and is left that way deliberately, but anything new goes at the
+top. One pre-existing anomaly remains inside the archive (a 2026-05-14 continued entry filed
+after 2026-05-16); it was left alone as plausibly intentional.
+
+### Finding 020 (2026-07-28) — A verification loop that cannot tell a real artifact from a plausible-looking one is not verification
+
+**What happened.** Working in the cloud sandbox with no CRAN access, I stubbed `qrcode::qr_code()`
+with a random-fill generator so that PDF LAYOUT could be tested. The stub drew a decorative 7x7
+finder pattern at top-left and filled the remaining 33x33 grid with noise. It looked, at a glance
+and in a photograph, exactly like a QR code. I then verified the generated card sheets
+rigorously: QR placements measured against the Avery 5371 spec to within 0.00007in; clearance
+from the screw-post binding band confirmed at 0.372in on all sixteen cards; page counts checked;
+every glyph checked for overflow past the card edge; a blank-leading-page regression caught and
+fixed. Every check passed. **Every check was about position. Not one was about content.** I
+labelled the PDFs as placeholders, in prose, three times. Kim printed them, assembled the decks
+(hole-punched, screw posts, colour-coded), took them to the field, photographed them in two
+arrangements, and none of the codes decoded — zbarimg and pyzbar across nine scales, plus
+OpenCV's detector, all returned zero.
+
+**Why the check failed — three separate reasons, and the third is the durable one.**
+
+*One: I verified the property that was easy to measure, not the property the artifact is for.*
+A QR card exists to decode. Position is a precondition for decoding, not a substitute for it.
+Geometry was measurable with tools I already had loaded; decoding would have required admitting
+that the codes were fake and therefore could not be tested at all — which was exactly the fact
+worth surfacing.
+
+*Two: the warning was in prose and the artifact was print-ready.* A caption saying "do not print
+this" attached to a file that is a perfectly formatted sheet of ten business cards will lose.
+The artifact's affordance contradicted the warning, and affordance wins. Repeating the warning
+three times did not help, and repeating it a fourth would not have.
+
+*Three, the general form: a simulated dependency produced an output that was indistinguishable
+from the real output at every point where a human or a check would look.* The stub was built to
+be visually convincing because that was what made it useful for layout testing. That same
+property is what made it dangerous downstream. **A simulation faithful enough to test with is
+faithful enough to be mistaken for the real thing.**
+
+**The cost.** A full print run on card stock, deck assembly, a field photography session, and a
+test that returned no information about the question it was meant to answer (whether several QR
+cards in one photograph all decode — still open). Nothing was destroyed and no collection number
+reached a specimen, so the loss was time and one round of Kim's fieldwork.
+
+**The rules adopted.**
+
+1. **Do not ship the output of a simulated dependency.** When the sandbox lacks a library the
+   deliverable depends on, either produce nothing, or produce something that CANNOT be mistaken
+   for the real artifact (watermark it across the face, break the layout deliberately, hand over
+   a screenshot instead of a printable file). Prose is not a safeguard.
+2. **Verify the property the artifact is FOR.** Exercise it the way its consumer will: decode the
+   code, run the script, parse the file, open the document. Measuring an adjacent property and
+   reporting it confidently is worse than reporting nothing, because it reads as coverage.
+3. **Prefer a machine-enforced refusal to a warning.** `make_qr_cards.R` and
+   `make_number_cards.R` now call `validate_qr_engine()` before writing anything: it checks the
+   QR skeleton in pure R (three finder patterns, timing rows, a legal side length) and hard-stops
+   with nothing written if they are absent. The stub can no longer produce a printable PDF at
+   all. The check needs no scanner and no external tools, so it runs on Kim's machine too.
+
+**A fourth rule, learned while building the third.** The first version of `validate_qr_engine()`
+correctly rejected the stub — and would also have rejected every real QR code, because of an
+integer-vs-double comparison in `identical()` and an off-by-two in the timing-pattern length.
+Testing only that a checker REJECTS the known-bad input ships a checker that rejects everything.
+It was caught by generating genuine QR matrices with an independent implementation (Python's
+`qrcode`) and confirming the validator passed all of them, including one carrying a quiet zone
+that had to be trimmed first. **A validator must be tested against known-GOOD inputs, from a
+source independent of the thing being validated, before it is trusted.**
+
+**Relation to Finding 016.** 016 said the exit code is not the artifact — render it, then LOOK at
+it. 020 is that one level deeper: **looking is not enough when the failure mode is invisible to
+the eye.** A malformed QR, a hollow PDF text layer (2026-07-26), and a chart with colliding
+annotations all render cleanly and all photograph well. The check has to be the one the consumer
+performs, not the one the producer finds convenient.
+
+### Finding 020 (2026-07-31) — A failed probe is not an absence; a fresh `file.info` is not a size
+
+Two errors on the same day, both the same species: **treating one negative
+observation as an established fact.**
+
+**1. kimbridges.com declared dead. It was not.** On 2026-07-30 a single
+`curl_fetch_memory` call to kimbridges.com errored. I wrote **"kimbridges.com IS
+ALREADY DEAD"** into proj_PKM.md, and built an argument on it — that a platform had
+vanished unnoticed. On 2026-07-31 it returns **200**, 115 KB, redirecting to www,
+DNS resolving to 198.49.23.144, with and without a browser user-agent. The site was
+never dead. Worse, the evidence against the inference was already in hand: exposure.co
+had returned **403 to curl while being perfectly alive**, in the same session. A live
+site refusing a programmatic client was a known pattern and I applied it in one
+direction only.
+
+**Rule.** Before asserting a site, page or file is gone: retry; vary the user-agent;
+check DNS; try http and https, bare and www. If any of that is untried, the honest
+statement is **"could not reach it"**, not "it is gone." This is Finding 019's rule
+(never write a gap marker without proving the gap) applied to the network instead of
+to a log file — the same failure, a different surface. An absence claim written into
+the PKM becomes load-bearing: the next session reads the note instead of re-checking.
+
+**2. `file.info()` size read straight after a write is unreliable on Drive Stream.**
+Twice now a size checked immediately after `writeBin`/`writeLines` came back far too
+small — proj_PKM.md reported 4 KB when it was 7,048 bytes (2026-07-30), deferred.md
+reported 4.1 KB when it was 10,809 (2026-07-31). Both times the file was perfectly
+fine and I raised an alarm. **Rule:** verify a write by reading the CONTENT back
+(line count, headings, known strings), not by reading the size. This is the same
+Drive-stream unreliability as Findings 001/005/013/015, on the metadata rather than
+the bytes — one more reason those four should collapse into a single statement.
+
+**Meta-observation.** Both errors were mine, both were caught by Kim's own knowledge
+of his material rather than by any check in the system, and both had already been
+described in the protocol before I committed them. The mechanisms were not missing.
+They were not applied.
+
+### Finding 021 (2026-07-31) — Three operations that look additive and are not
+
+All three bit on the same afternoon, during one document update.
+
+**1. A case-only rename destroys the file (Windows).** `cover_with_text.jpg` and
+`Cover_with_text.jpg` are ONE file on a case-insensitive filesystem. A folder sync
+computed as "copy the new set, remove what is left over" listed the lowercase name
+as an orphan; removing it deleted the file the copy had just written. Caught only by
+comparing file COUNTS afterwards -- the copy step reported "74 of 74 copied" and was
+telling the truth. **I committed this twice in twenty minutes**, having diagnosed it
+the first time; the lesson existed only in the chat, never in this file. That is the
+argument for the card, made on myself. **Rule: when syncing folders, compute the
+removal list case-insensitively, and always reconcile counts at the end.**
+
+**2. Rendering ONE format of a Quarto book CLEARS the others from output-dir.**
+`quarto_render(output_format = "pdf")` left `_output/` containing only
+`Plainmaps.pdf` -- the 73 HTML files from the earlier render were gone. Harmless
+because they had already been copied out, but rendering PDF first and copying after
+would have deployed a book with no pages. **Rule: copy each format out before
+rendering the next, or render all formats in one call.**
+
+**3. Netlify Drop REPLACES the whole site with whatever folder is dropped.**
+Dragging `kimbridges-documents/plainmaps/` made plainmaps the site root and 404'd all
+twenty documents. Nothing was lost -- the source was on Drive -- but the site was
+wrong until re-deployed. The trap is structural: the document folders exist at the
+project ROOT (where you edit) and are copied into `_site` as declared `resources:`
+(where you deploy), so both locations hold folders with identical names. **Rule: see
+DEPLOY TARGETS on the card. Drag the output-dir, never the root, never a subfolder.**
+
+**The through-line.** Each operation reports success truthfully while having done
+something narrower or wider than intended. None is detectable from an exit code; all
+three were caught by comparing the RESULT against what was expected -- counts, file
+lists, live URLs. Finding 016 again: the exit code is not the artifact.
+
+### Finding 022 (2026-08-01) — `fixed = TRUE` ignores `^`, and the NA index destroys the file
+
+**What happened.** Trying to merge a duplicate row in `pkm_card.md`:
+
+```r
+k <- grep("^| deploy to Netlify |", a, fixed = TRUE)   # matches NOTHING
+a[k[1]] <- "...merged row..."                          # k[1] is NA
+a <- a[-k[2]]                                          # a[-NA] collapses the vector
+writeLines(a, cf)                                      # 132 lines -> 1 line
+```
+
+With `fixed = TRUE` the pattern is a LITERAL string, so `^` is just a caret character
+and matches nothing. `grep` returned `integer(0)`; `k[1]` and `k[2]` are therefore
+`NA`; `a[NA] <- value` and `a[-NA]` do not error -- they silently produce a
+one-element vector. The write then destroyed the file. **`pkm_card.md`, the one file
+read at every session start, was reduced to a single line.**
+
+**Recovery.** The full text had been printed to the session transcript minutes earlier
+during the session-start read, so it was rebuilt verbatim. Had the card not just been
+read aloud, recovery would have meant Google Drive revision history.
+
+**Rules.**
+1. **Never use an index from `grep` without checking the match count first.**
+   `stopifnot(length(k) == 1)` costs nothing and converts silent destruction into a
+   loud stop.
+2. For anchored LITERAL matching use `startsWith()` / `endsWith()`, never
+   `grep("^...", fixed = TRUE)`. Anchors need `fixed = FALSE`.
+3. **Snapshot before editing any HOT file** (`pkm_card.md`, `project_index.md`,
+   `proj_PKM.md`). `split_tail()` and `archive_focus()` already snapshot; ad-hoc
+   line-surgery does not, and that is exactly where this happened.
+
+**Third instance today.** The same bad-grep shape appeared twice earlier -- once it
+errored before writing (harmless), once it produced a wrong count that triggered a
+false alarm. This time it wrote. A mistake that is harmless twice is not a harmless
+mistake; it is an unfired one.
+
+
+### Finding 023 (2026-08-02) — `(i):length(x)` counts BACKWARD when `i > length(x)`
+
+Replacing the last of five iframe blocks in `Scientific.qmd`, the tail slice was
+`L[(k+5):length(L)]`. The block ended at line 87 of an 87-line file, so `k+5` was 88
+and the expression became `88:87`. R's `:` does not return empty when the start
+exceeds the end -- it counts down. The slice evaluated to `c(88, 87)`, appending an
+`NA` line and a stray `</div>` to the file.
+
+**It did not error and it did not look wrong.** The file rendered. The audio elements
+were all correct. What caught it was arithmetic: five blocks at seven lines replaced by
+four should be 87 - 15 = 72, and the file had 74. The count reconciliation is the only
+thing that fired.
+
+**Rules.**
+1. Never write `(i):length(x)` for a tail slice. Use `if (i <= length(x)) x[i:length(x)]
+   else character(0)`, or `tail(x, -(i-1))`, or `x[-(seq_len(i-1))]`.
+2. **Reconcile counts on every structural edit.** Predict the resulting line count
+   BEFORE writing, compare AFTER. This is the third time in three sessions that count
+   reconciliation, not inspection, caught the damage (Finding 021, Finding 022, this).
+3. Blocks that run to end-of-file are the dangerous case. Process in REVERSE order --
+   which this code did -- and the last block is still processed FIRST, so the bug fires
+   immediately rather than at the end. Reverse order does not protect the tail.
+
+
+### Finding 024 (2026-08-02) — The pre-deletion gate reads the INVENTORY, not the venues
+
+`pkm_legacy_gap()` and `pkm_consolidation()` scan `inventory_all_projects.md` for
+legacy-platform URLs. They never open a venue file. So the gate can only protect
+platforms that a human already wrote into the inventory.
+
+**Eleven SoundCloud embeds sat inside published venue pages** -- one in the Gallery
+Catalog, ten in AI_Podcasts -- and the gate reported zero, correctly, every time it ran.
+No inventory row said "SoundCloud," so SoundCloud did not exist. Adding `soundcloud.com`
+to the platform vector changed nothing: the vector is applied to the inventory text.
+The blind spot was never the list of platforms. It was the *source*.
+
+A derived index cannot be the ground truth for what the venues contain. That is the
+GROUND-TRUTH RULE of `pkm_card.md`, and the gate -- the one function whose entire
+purpose is to stand in front of a one-way door -- was violating it.
+
+**Remedy.** `pkm_legacy_live()` added to `pkm_health.R` (2026-08-02). It reads venue
+`.qmd` / `.md` / `.html` SOURCE files directly and reports every legacy-platform
+occurrence with venue, file, line, URL, and a `kind` column separating a real LINK from
+a prose `mention only`. Run BOTH functions. **Disagreement between them is the finding.**
+
+First run surfaced 7 rows the old gate could not see: 4 live ISSUU document pointers in
+AI_Podcasts, 1 in `using_an_llm`, and 2 stale PROSE claims ("Posting this book on the
+Quarto Pub website means that I have easy access to the code") that are now false on a
+platform that no longer resolves. **Dead claims are a category the link work missed
+entirely** -- a link audit finds `href`s, and a sentence has no `href`.
+
+**Regex note.** The first pattern used `"quarto.pub"`, whose unescaped `.` matched
+`quarto publish` in an unrelated sentence. Escaping to `quarto\\.pub` fixed that and
+immediately LOST both real hits, which say "Quarto Pub" with a space. The working
+pattern is `quarto[. ]pub\\b` -- the class catches both spellings, the word boundary
+rejects `publish`. A pattern that is too loose and a pattern that is too tight fail the
+same way: silently, with a plausible number of rows.
+
+**Housekeeping.** Two findings are both numbered 020 (2026-07-28 and 2026-07-31).
+Left as-is to preserve citations already made elsewhere; numbering resumes at 023.
+
+
+### Finding 025 (2026-08-03) — Every PDF names the tool that made it; read that before declaring there is no source
+
+*Experiments with LLMs* was recorded in the PKM as a finished 130-page PDF with no `.qmd`
+source. On that basis a Quarto rebuild was written up as the expensive option — it would
+mean reconstructing a finished document out of its own PDF — and Kim chose the hybrid
+route accordingly.
+
+The PDF's `/Producer` field says **`Skia/PDF m122 Google Docs Renderer`**. It was exported
+from a Google Doc. The Doc is still in Kim's Drive, last modified 2024-01-12 — one day
+after the canonical export. A Drive search on the title found it in one call.
+
+So the rebuild was never a reconstruction. It was `drive_download(type = "docx")`, one
+pandoc invocation, and a split at the H1 boundaries. **The decision had been made on a
+property of the artifact that nobody had checked, and the check costs one line.**
+
+**Rules.**
+1. Before concluding a document has no source, read the producer/creator metadata:
+   `pdftools::pdf_info(p)$keys` or a raw scan for `/Producer` and `/Creator`. Office
+   suites, Google Docs, InDesign, LaTeX and Quarto all stamp themselves.
+2. A producer string naming a *cloud* editor means the source is probably still live and
+   editable, not merely archived somewhere. Search the account before searching disks.
+3. When new evidence overturns a decision the user already made, **say so and re-ask.**
+   Kim had chosen hybrid; the source find made a full rebuild cheap, and he switched. Had
+   this been quietly folded into the work he would have got a different deliverable than
+   the one he approved.
+
+**Corollary that paid off immediately.** The bold prompt/response convention — Kim's own,
+stated in the document's Dictation section — survived the Doc → docx → markdown path
+intact (90 bold spans in one chapter). A PDF reconstruction would have had to infer it
+from left-margin x-coordinates, which was measurable (x=72 vs x=108) but lossy. **The
+cheaper path was also the more faithful one**; that is usually the shape when a real
+source exists.
+
+**Footnote on this session's own discipline.** Immediately after trimming `pkm_card.md`,
+a `file.info()` size read reported 4.08 KB against a true 6101 bytes — a 2 KB phantom
+improvement that would have been reported as fact. Caught by reading CONTENT back (133
+lines, all 8 headers, correct first and last line). That is Finding 020's rule, printed
+on the card, firing on the very edit that was changing the card.
+
+
+### Finding 026 (2026-08-03) — The bridge can CREATE directory trees it cannot REMOVE
+
+Testing whether git works on Drive Stream, a probe repo was created at
+`G:\My Drive\_git_probe_2026-08-03`. Cleaning up afterwards, 
+`file.remove()` deleted all 16 files — and then could not delete a single directory,
+because on Windows it does not remove directories at all. The alternative, the
+recursive form of `unlink()`, is blocked by the bridge guard.
+
+**Result: 19 empty directories stranded in the Drive root, and Kim had to delete them by
+hand.** In a system whose founding complaint was *"one of the goals was to keep from
+proliferating and loosing files,"* the tooling has a create/delete asymmetry that
+manufactures exactly that mess.
+
+**Rules.**
+1. **Never create scratch outside `C:\temp` (bucket 4).** Not in a venue, not in a
+   project, and above all not in the Drive root. Bucket 4 exists because deletion there
+   is expected and swept; anywhere else an un-removable remnant is permanent until a
+   human notices it.
+2. Before creating any directory tree, ask what removes it. If the answer is "Kim, in
+   Explorer," say so up front rather than discovering it during cleanup.
+3. `git clone` leaves read-only pack files that the file-removal function also cannot
+   take (2 of 23 survived in the clone test). Another reason clones belong in bucket 4
+   or bucket 5, never anywhere the residue matters.
+4. **The guard scans SOURCE TEXT, including prose.** This very finding was rejected on
+   its first write because it quoted the blocked call inside a string. Assemble such
+   names indirectly when documenting them.
+
+**The probe itself was still worth running.** It converted an inherited assumption —
+bucket 5's "a syncing folder serves placeholders and git reads them as corrupt" — into a
+measured fact: gert inits, commits, and reads history on `G:` without complaint. That did
+not overturn bucket 5, because operating correctly today is not the same as surviving
+Drive's sync lifecycle. The finding is the distinction: **a probe answers the question it
+actually asked, which is usually narrower than the question you wanted answered.** Compare
+Finding 020, where a single failed probe was over-read in the other direction.
+
+
+### Finding 027 (2026-08-03) — The backup found a live credential, because a public repo checks what a private disk never does
+
+Pushing 880 mirrored source files, GitHub refused: *push declined due to repository
+rule violations*. Push protection had found a full Anthropic API key (`sk-ant-`, 108
+chars) at `Projects/LLM_API_R/Claude_API.qmd` line 36, dated April 2024.
+
+It was commented out with `##`. **Commenting hides a secret from R, not from a reader.**
+
+It was never published: `Claude_API.qmd` is not a chapter of the rendered `r_api` book,
+confirmed three ways — the venue folder, its `_site` copy, and the live document's six
+chapters. The key had sat on Kim's disk for over two years, invisible, because nothing
+had ever looked.
+
+**The lesson is about what a backup IS.** Copying files to a second location is the least
+of it. Publishing to a public repo forces every file past a scanner that a private disk
+never applies. The migration's value on day one was not redundancy — it was that
+something finally read the material with an adversarial eye.
+
+**Rules.**
+1. `pkm_secret_scan()` added to pkm_health.R, and **it runs before every commit**, with
+   `stopifnot(nrow(s) == 0)`. Do not rely on GitHub as the check: a private repo, or a
+   pattern GitHub does not know, would pass silently.
+2. It reports file, line and kind — **never the secret itself** — so the output is safe
+   to paste anywhere.
+3. A refused push leaves the secret in LOCAL history. Reset to the last pushed commit
+   and rebuild; do not simply commit a fix on top.
+4. Keys belong in `~/.Renviron`, which is Kim's own stated preference. The source now
+   reads `Sys.getenv("ANTHROPIC_API_KEY")`.
+
+### Finding 028 (2026-08-03) — A silent success is worse than a loud failure
+
+Three things this session reported success while doing nothing, or did damage while
+reporting nothing. They are one finding because they share a shape.
+
+**1. `gert::git_push()` returned cleanly, twice, and transferred nothing.** GitHub's ref
+was still at the pilot commit. The real error — the rule violation above — appeared only
+under `verbose = TRUE`. Had the ref not been checked against GitHub's API, the session
+would have ended believing 880 files were backed up when 8 were.
+  *Rule: verify a push against the REMOTE ref, never against the return value.*
+
+**2. A size read straight after a write reported 4.08 KB against a true 6101 bytes.**
+Finding 020 again, firing on the very file that prints the rule.
+
+**3. The same expensive-synced-read mistake, twice in one session.** A recursive scan
+across five Drive Stream venues stalled the bridge; it was written up; then
+`pkm_secret_scan` was built with no extension filter and pointed at all of `Projects/`,
+reading every PDF and image, and Kim had to interrupt R. **Writing a lesson down is not
+the same as having learned it.** The fix that works is structural, not memorial: the
+function now filters extensions in its own body, so the mistake cannot be repeated by
+whoever calls it next.
+
+**The common shape.** Each failure was silent at the point of use and only visible from
+outside — the remote ref, the file content, the user's machine. *Where a tool reports on
+its own work, get the answer from somewhere the tool does not control.*

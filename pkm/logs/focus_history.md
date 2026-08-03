@@ -1,0 +1,1109 @@
+# Focus History and Change Log
+_Split from project_index.md on 2026-07-28._
+
+The historical tail of `project_index.md`: every superseded Active Focus block
+(newest first) followed by the full dated Change Log. Content is verbatim -- the
+split moved bytes, it did not edit them. Live dashboard: `../project_index.md`.
+
+---
+
+## Superseded Active Focus blocks
+
+<!-- superseded 2026-07-31 -->
+**Active Focus (2026-07-31, close): "PKM" -- TIER 3 DELIVERED. The system now has a TRIGGER.** Six items written. **NEW `pkm_card.md` (4.1 KB), read FIRST at every session start** (Mechanism 2 now reads three files): the single GROUND-TRUTH RULE consolidating Findings 001/005/013/015 -- a `G:` path can report a correct name and size while the bytes are absent, stale or unmaterialised, every surface but the R bridge can be lied to, verify writes by reading CONTENT never size -- plus a SITUATION-TO-FINDING table, the absence-claim rule, the four surfaces with their limits and grant asymmetries, and the five storage buckets. **Buckets 4 and 5 answer the question deferred in May:** build scratch at `C:\temp\<name>_<date>` with the retention half the rule never had, and git clones at `C:\repos\<name>` (not Drive, not OneDrive -- syncing folders serve placeholders git reads as corrupt). **Mechanism 5 gained items 9-11:** close small remainders, account for off-Drive writes, and run `pkm_health()` -- where a claim can be checked by the tool, the tools answer is the record. **Budget model split HOT/PROJECT/REFERENCE** -- pkm_findings was miscategorised, not oversized. 17 of 17 verification checks pass. **Session-start 44.5 KB, from 184.4 on Monday.** **NEXT, in order:** (1) **the consolidation migration** -- 0 of 5 venues is a git repo, so the source for all 79 works exists only on Drive; source-only lean repos, pilot = kimbridges-fiction; (2) move `~\Documents\ai_microscope` to `C:\repos\` and set core.autocrlf; (3) delete the 224 MB of bucket-4 scratch in `C:\temp` now that both deploys are verified; (4) split proj_seasonality and proj_audio (one command each); (5) proj_checklists is 10 days behind its code. **Also open:** Quarto Pub, hflip and Exposure are all clear for account deletion whenever Kim wants.
+
+<!-- superseded 2026-07-31 -->
+**Active Focus (2026-07-31): "PKM" -- the two LOST STORIES are recovered and LIVE; the gate is closed; TIER 3 is next.** *Cinque Terre Impressions* (43 pp) and *The Washington Monument* (23 pp), the only two of 58 legacy pages with no venue equivalent, were rebuilt by Kim in InDesign and published to kimbridges-stories (51 -> 53 stories). **Verified after deploy: 79/79 works rendered AND live (HTTP 200), 0 reconciliation failures, PRE-DELETION GATE 0.** Quarto Pub, hflip and Exposure are all clear for account deletion. **kimbridges.com is NOT among them** -- a 07-30 claim that it was dead was WRONG (see Finding 020); it is alive and Kim is keeping it as his personal/professional site, separate from .info, with residual story links logged to deferred.md. **TWO ERRORS BY CLAUDE today, both already covered by existing rules** -- an absence asserted from one failed probe (Finding 019, written three days earlier) and a false alarm from a stale Drive-stream file size (Findings 001/005/013/015). The mechanisms were not missing; they were not applied. **NEXT = TIER 3, now six items:** storage bucket 4 (build scratch + retention) and bucket 5 (git working clones); the surfaces-and-permissions map; Mechanism 5 amendments (close small remainders, account for off-Drive writes, run pkm_health); collapse Findings 001/005/013/015 into one ground-truth rule; decide pkm_findings.md budget vs remedy (65.9 KB, no Log heading); and **give pkm_findings.md a TRIGGER**, on deferred.md-s own principle that the trigger is the mechanism, not the list. **Also queued:** the consolidation migration (0 of 5 venues is a git repo; pilot = kimbridges-fiction); proj_checklists.md 10 days behind its code; proj_seasonality and proj_audio slightly over budget and splittable.
+
+<!-- superseded 2026-07-31 -->
+**Active Focus (2026-07-30, close): "PKM" -- TIER 2 DELIVERED; next up is a SHORT CONTENT DETOUR, then Tier 3.** `pkm_health.R` is built, filed and proven: seven diagnostics (works register, source -> _site -> live reconciliation, `_Log:` pointer verification, drift on Active projects, size budgets, consolidation tracking, and the legacy pre-deletion gate) plus three snapshot-verified remedies. First run: **77 of 77 works render locally AND return HTTP 200 live, zero reconciliation failures** -- the pre-consolidation backup-vs-website worry is resolved and now provably so. Remedies fired: session_log 603.8 -> 105.8 KB, proj_specimen_labels 143.6 -> 17.1 KB, focus block 49.3 -> 1.5 KB. **Session-start 184.4 KB (Monday) -> ~35 KB.** **THE FIND: two TRUE LOST STORIES** -- *The Washington Monument* and *Cinque Terre*, Exposure photo essays with no venue equivalent; and **kimbridges.com is already dead**, unnoticed until today. Kim has recovered photos, text and a reference PDF for both. **NEXT SESSION (Kim, ahead of Tier 3): move the two stories components into kimbridges-stories, then reconstruct both as PDFs.** Then close the gate MECHANICALLY -- run `pkm_health()` and confirm the Exposure gap reads 0 before any account is deleted. **THEN TIER 3:** storage buckets 4 and 5, the surfaces-and-permissions map, Mechanism 5 amendments (including a step that runs pkm_health), and Findings 001/005/013/015 collapsed into one ground-truth rule. **Separately queued:** the consolidation migration (0 of 5 venues is a git repo; pilot = kimbridges-fiction), proj_checklists.md is 10 days behind its code, and pkm_findings.md is over budget with no Log heading -- it needs a different remedy or an honest budget.
+
+<!-- superseded 2026-07-30 -->
+**Active Focus (2026-07-30): "PKM" -- TIER 2 DELIVERED: `pkm_health.R`.** Five diagnostics (generate the works register; reconcile source -> _site -> live; verify `_Log:` pointers and find orphans; flag drift on Active projects; enforce size budgets) plus three snapshot-verified remedies (`split_tail`, `archive_focus`, `split_session_log`), each of which restores from its snapshot if losslessness fails. **FIRST RUN: 77 of 77 works render locally AND return HTTP 200 live -- zero reconciliation failures.** The pre-consolidation backup-vs-website mismatch is resolved, and now provably so rather than assumed. Counts corrected: **77 works** (documents 20, stories 51, collections 4, fiction 2), not the 83 estimated on 07-28 -- the 7 extra sit in `underway/` and `updates/` and are correctly excluded. Remedies fired today: session_log.md 603.8 -> 105.8 KB (133 entries archived), proj_specimen_labels.md 143.6 -> 17.1 KB (47 entries), and this focus block archived. Lesson logged: the bridge timed out three times because `file.info` over Drive Stream is expensive -- scoping drift to Active projects fixed it and made the check more meaningful. **NEXT = TIER 3:** storage bucket 4 (build scratch + a retention rule) and bucket 5 (git working clones); the surfaces-and-permissions map; Mechanism 5 amendments; and collapsing Findings 001/005/013/015 into one ground-truth rule. **Also queued:** proj_checklists.md is 10 days behind its code; `Projects/R_LLM_tests/_book` is named in Locations but was never rendered; C:\temp still holds 226 MB of regenerable _site folders.
+
+<!-- superseded 2026-07-30 -->
+**Active Focus (2026-07-29): CLOSED -- "specimen_labels" is PUBLISHED.** *Voucher Labels* went live at https://kimbridges-documents.netlify.app/vouchr/ on 2026-07-29, the twentieth document in the collection and the companion to the `vouchr` package. Status set **Complete / Not applicable** per the briefing_book precedent (a pending review does not hold a deployed project Active). **No new Active Focus is asserted** -- to be confirmed at the next session-start; **PKM Tier 2 (`pkm_health.R`) is the standing candidate**, having been queued behind this work since 07-28. **★ MECHANISM 6 (Deferred Work) adopted today**, and all of specimen_labels' leftovers moved into `deferred.md` rather than left to muddy the active lists. *The dated segments below record how the production pass got here; they are history now, and belong in `logs/focus_history.md` at the next split.* PRIOR: the cards print, decode, and are now DESCRIBED CORRECTLY. The chapters have been reconciled with the upgraded printing (see SESSION CLOSE 2026-07-29 at the end of this block, which is the current state); what remains is figures from the real photos, the Appendix, the logo, the title and the read-through, then deploy. The dated segments below run oldest-first and record how it got here.** Kim arrived with the illustration materials gathered and one physical blocker: the QR codes on the printed decks needed to move "about 1 inch to the right." It was **two independent defects**, and the gap between them is the lesson. **(1) Sheet alignment:** `make_qr_cards.R` laid cards out with `marrangeGrob` across the whole page -- ten equal **4.25 x 2.20** cells, where real Avery 5371 cards are **3.5 x 2.0** inside a 0.75in side margin. Cell centres 2.125/6.375in vs true centres 2.500/6.000in: **0.375in off in OPPOSITE directions per column**, so no single nudge could have worked. Rewritten to per-card viewports at true Avery positions; measured on the rendered PDF at 2.4999/5.9999in. **(2) Binding clearance -- the one that actually mattered:** 0.375in did not match Kim's measured ~1in, and **that mismatch was the signal**. Asked instead of assumed: the decks pivot on a **left screw post** and the fanned stack occludes ~1.5in, clipping a centred QR (left edge at 1.18in, inside the band). New **`bind_left`** reserves it -- QR left edge now 1.872in, **0.372in clear**, verified on all 16 cards. **★ DURABLE LESSON: when the measured symptom does not match the computed defect, the diagnosis is incomplete.** Fix 1 was real, shipped, and would not have solved Kim's problem; flagging the 0.375-vs-1.0 discrepancy in the hand-off is what produced the right second question. `bind_left` (a fact about the BINDING) is kept deliberately separate from `x_offset`/`y_offset` (a fact about the PRINTER). **NEW: `make_number_cards.R`** -- the collection-number identity cards, with three decisions taken from the project's own files rather than invented: **no binding band** (design_notes: identity cards live loose in a business-card holder because you *detach* them onto the specimen); **number BESIDE the QR, not above** -- removing the band alone would NOT have enlarged the code, since the QR is sized by its middle band's *height*, not card width; alongside, it runs the full content height at **1.76in square, 2.4x the area**, which is right because design_notes names the number card the **graceful-degradation floor** ("the non-negotiable minimum is the number card + the photo"); and payload **`Number: KWB 1243`**, exactly what `reader_assembler.R`'s `parse_cards()` already expects. **NEW: `number_cards_ledger.csv`** -- records every issued number and refuses a reissue, because a collection number used twice is unrepairable (two specimens, one key). **KWB 1243-1252 printed** (Kim asked for "12 to fill just one page"; the sheet holds 10, and his one-page intent was read as the binding constraint -- confirmed correct). **Dependency reduction:** `make_qr_cards.R` dropped `gridExtra`/`readr`/`tidyr`/`purrr` -- now **base R + `grid` + `qrcode`** only, so both makers are package-ready for `vouchr`. **Two regressions caught by measuring the rendered PDF, not by reading source** (cf. Finding 016 -- the exit code is not the artifact): the narrower zone broke two existing deck labels ("Abundant Flowers", "Scattered Flowers"), fixed with auto-shrink plus a `safety=0.96` factor because rendered glyphs ran ~3% wider than `grobWidth` reported; and the header pre-scan opened the device, leaving a blank leading page. Kim: *"This solved the problem perfectly"* / *"those printed perfectly."* **SESSION PAUSED -- Kim is doing the FIELD PHOTOGRAPHY**, which supplies the raw material the remaining figures need. **★ ON RESUME (Kim's stated next task):** update code + documentation to reflect the upgraded printing -- fold both makers into **`vouchr`**, then reconcile the documentation chapters, since the **binding-clearance constraint is a design finding** (a physical affordance reaching back into the layout), not merely a bug fix. Then the production pass proper: figures from the real field photos, the function-reference Appendix, provisional-label image, cover + logo, the title, read-through, deploy. Still open: rotate the hardcoded Google key in `QR_procedures.Rmd`; seed the number ledger from the historical KWB series.  **[UPDATE 2026-07-28 (cont.) -- THE PRINTED CARDS DO NOT DECODE.]** Kim photographed the assembled decks in two arrangements to test the founding claim (several QR cards in ONE frame all decode): **zero codes read in both -- and the test is INCONCLUSIVE, not negative, because the cards never carried data.** Cause is Claude's: with no CRAN in the sandbox, `qrcode::qr_code()` was STUBBED with a random-fill generator so PDF layout could be tested, and **Kim printed those placeholder PDFs**. Every code shows one finder pattern at top-left and none at top-right or bottom-left; a real QR has three. Labelled as placeholders in prose three times -- not a safeguard against a print-ready sheet of business cards. **★ FINDING 020:** *a verification loop that cannot tell a real artifact from a plausible-looking one is not verification* -- every check run measured POSITION (placements to 0.00007in, 0.372in clearance, page counts, glyph overflow), none measured CONTENT; Finding 016 one level deeper (render then LOOK is not enough when the failure is invisible to the eye). **FIX SHIPPED:** `validate_qr_engine()` checks the QR skeleton in pure R (three finder patterns, timing rows, legal side length) and **hard-stops with nothing written**; verified it blocks the stub and passes genuine codes. **A fourth rule from building it:** the first validator would have rejected every REAL code too (integer-vs-double `identical()`; off-by-two timing run) -- **a validator must be proved against known-GOOD inputs from an independent source.** Ledger reset; **KWB 1243-1252 reprintable** (no number reached a specimen). **★ THE EXPERIMENT REMAINS OPEN** -- reprint from real `qrcode` on Kim's machine, rebuild, re-shoot.  **[UPDATE 2026-07-28 (cont. 2) -- ★★ END-TO-END PROVEN.]** Kim reprinted from the real `qrcode` engine, reassembled the decks and photographed them: **6 QR cards in ONE frame all decode** (Example_1 6/6 raw; Example_2 5/6 raw and 6/6 with one Otsu pass; One_deck 1/1 -- the binding-clearance proof shot). The 2026-06-29 two-code test now holds at six, on a phone. **★ FIRST REAL HERBARIUM LABEL + FIELD-LOG ROW produced from a real field photograph, with no transcription anywhere in the chain.** Running the assembler for real surfaced a bug the photos could not: the deck writes `Collected by:` while the code looked for `Collectors`, so the label read `Collector: NA` -- fixed by widening aliases, not by reprinting cards (Finding 020's rule paying off the day it was written). **Kim's decision: `Determined by` is a FIRST-CLASS field**, not an observation -- an observation is what the collector saw; a determination is who asserted the identification. **Kim's assessment of the physical system captured verbatim in `design_notes.md`:** the bill of materials IS the argument (printer, Avery stock, punch, screw posts, report covers); "having the categories makes decisions quick" is the FIELD-side payoff, distinct from no-transcription (the LAB-side one); and **the hard part is deck DESIGN -- deliberately not prescriptive: "Choose the content for the purpose of the collection."**  **[UPDATE 2026-07-28 (cont. 3) — vouchr v0.1.0 PUSHED.]** The day's rewritten makers and reader are folded into the package and live at github.com/kimbridges/vouchr (`0ad01e1`, 18 files, +1141/-96): true Avery geometry, `bind_left`, `make_number_cards()` + ledger, `qr_calibration_sheet()`, `validate_qr_engine()`, collector aliases and first-class `determined_by`. **Imports 6→5** — gridExtra/readr/tidyr/purrr all belonged to the old card maker alone. Exports 21→25, tests 8→21, check 0/0/1 on Kim's machine. **A bug caught by a test expected to PASS:** `check_template()` accepted a 4in card on a 3.5in pitch — cards would overlap while the sheet-extent check passed, since 0.75+3.5+4 = 8.25 fits inside 8.5. **★ INTAKE GAP CLOSED: `proj_vouchr.md` created.** vouchr has been a public package since 2026-07-02 with no proj file and no index row, while every sibling document+package pair (checklists/checklistr, lists/listsr, seasonality/seasonalityr, Ceska/coenosr) carries two — the same shape as the founding Jones gap that Mechanism 1 exists to prevent. **Next: the documentation reconciliation.**  **[SESSION CLOSE 2026-07-28 (cont. 4) — DOCUMENTATION OPENED.]** The blank-slate discovery is now a **BOOK-LEVEL claim under one name: “the answer is already in the cabinets”** — native to the book, since the Introduction opens on Linnaeus’s cabinet and closes on “the sheet in the cabinet.” Stated in `index.qmd` (framed as a DISCOVERY), promised by name in `decks.qmd` **with the distance marked** (“the chapter after next” — the cheap repair for the promise-to-delivery gap), delivered under the same name in `discovering-decks.qmd`. Checked before assuming a gap: the argument already existed and was well made; **what was missing was emphasis, placement and a NAME.** No chapter reorder — the `derive.qmd` handoff is well built. **A plain error fixed:** `discovering-decks.qmd` credited “the last chapter” when the promise is two chapters back. **Phenology deck corrected to YELLOW** in both `decks.qmd` and `design_notes.md` — the SECOND drift today between the built object and the written description, so the printing reconciliation should audit every physical claim in `decks.qmd` against the decks in hand. **★ OPEN QUESTION #1 (naming) CLOSED** after 2026-06-29: package `vouchr`, folder/PKM `specimen_labels`, **book title deferred to the read-through** — recorded as a decision with the cost figures (68 of 101 references are archived text that stays verbatim). **⚠ Kim is shooting the COVER now — watch the title coupling:** `_quarto.yml` reserves `vouchr_cover_art_text.png` and still reads the placeholder `title: "vouchr"`, and on the AI_Microscope cover the title was set into the art and had to be reshot. **★ RESUME: reconcile the chapters with the upgraded printing** (binding clearance is a design finding, not a bug fix; `One_deck.jpg` is its figure), then the production pass — figures from the real photos, Appendix, provisional-label image, logo, title, read-through, deploy. **[SESSION CLOSE 2026-07-29 — DOCUMENTATION RECONCILED WITH THE PRINTING; ★ A CLEARANCE NUMBER THAT MEASURED THE WRONG THING.]** The resume item is done: the binding constraint is now written into `decks.qmd` as a **design finding, not a bug fix**, with `One_deck.jpg` as its figure. The physical-claims audit turned up **four** drifts, not the two expected. **(1) ★ The recorded clearance measured the wrong thing.** `One_deck.jpg` was measured directly, scaled off the card's known 3.5×2.0in edges (621.6 px/in, agreeing on both axes to 0.2%): QR right edge **3.013in** vs 3.008in predicted, so the layout verifies — but the cover's occluding edge sits at **1.804in**, **0.30in PAST the 1.5in `bind_left` reserve**, so the QR cleared it by **0.127in and not the 0.372in in the record**. The 0.372in was always clearance against the *assumption*, never the *cover*; the punched hole measures **0.788in** where `punch_x` draws 0.375in. **★ THE RULE, one level past Finding 020: a verified number must name what it was measured AGAINST** — "0.372in clear" and "0.127in clear" are both true of the same deck, and only one is about the object. Kim: correct the record, leave the code (cards print and decode; widening `bind_left` costs QR size); corrected in BOTH copies of `make_qr_cards.R`, comments only. **(2) A FOURTH CARD KIND.** Example_1 decodes six cards and two fit none of the three kinds the chapter named — `Collected by` (teal) and `Determined by` (purple), both built as bound decks. Adopted **identity / attribution / observation / comment**, attribution earning its place on a HANDLING argument: **its value does not change from plant to plant** (identity and observation change per specimen; attribution changes per trip). The 07-28 first-class-determination decision arriving in the prose. **(3) THE PRINTED DECKS ARE NOT THE DECKS IN `decks/`.** Artifact chain, not inference: the printed kit came from **`QR_field_notes.csv`** (→ `QR_field_notes_cards.pdf` 16:56 HST 07-28, shipped as `vouchr/inst/extdata/`), and every Example_1 payload is in it — including `Abundant Flowers` / `Scattered Flowers`, the two labels that broke the narrowed zone. Two disagreeing phenology decks had coexisted for a month, and `decks/` has **no Abundance deck** though the kit has one. Kim: the printed set is canonical so figures match the photographs; `deck_universal.csv` phenology replaced with **the superseded five values recorded verbatim in `design_notes.md`** (Finding 019 — the edit overwrote a discovery output). **(4) THE COLOUR SCHEME WAS ONE-SIXTH DOCUMENTED** — yellow phenology, grey abundance, pink life form, teal collectors, purple determination, in a project arguing you find the deck by colour before you read a word; all five recorded, named in `decks.qmd` **as one collector's choices, not a standard**. *Unresolved, flagged not guessed:* the chapter claimed "a colored cover top and bottom"; the second cover reads white and the photos cannot settle it, so it now claims nothing about the back. **★ THE COVER ART LANDED MID-SESSION AND THE TITLE IS FREE:** `voucher_cover_art_text.png` + `voucher_logo_art.png` written 10:41 HST, filenames `voucher_*` where `_quarto.yml` reserved `vouchr_*`, and **despite the "_text" in the name the art carries NO baked-in title** — the AI_Microscope reshoot risk does not apply. Assets copied into `documentation/images/`, `cover-image` wired; `title:` still the placeholder. **⚠ INFRASTRUCTURE — session_log.md was not rewritten at first, and the stated reason was wrong; see the correction in the 2026-07-29 (cont.) segment below.** **★ RESUME: the production pass** — figures from the real field photos (Example_1 is the multi-card-decode figure the `mechanisms.qmd` and `closing-the-loop.qmd` placeholders want), function-reference Appendix, provisional-label image, logo, **the title and the read-through**, deploy. Confirm the cover-backing colour; decide whether `decks/` carries the Abundance deck and whether discovery outputs and the working printed deck are one file or two labelled ones; commit the vouchr comment fix.  **[UPDATE 2026-07-29 (cont.) — ★ TITLE SETTLED: "Voucher Labels"; A FALSE-READING FAILURE MODE NAMED.]** Kim: *"properly descriptive and it spans the vouchr package and the label writeup."* **Open Question #1 (naming) now FULLY closed** — package `vouchr` · folder/PKM `specimen_labels` · book **Voucher Labels**. The cover-art files were already `voucher_*`, so this morning's apparent filename mismatch resolves itself; nothing renamed, nothing reshot. **The cover-backing question answered, and the original chapter claim was right** — matching covers front AND back, plus **a blank card inside each**, for protection *and* **to block a QR showing through stock that is not fully opaque**; the white surface measured in `One_deck.jpg` was that blank card. **★ THAT CLOSES A FAILURE MODE THE BOOK HAD NEVER NAMED:** every robustness argument here is about **losing** a reading, answered by redundancy; show-through is **gaining one that was never chosen**, and it is worse because **redundancy recovers what was lost and does nothing about what was never true** — a lost reading announces itself, a false one does not. **Finding 020's shape a THIRD time** (stubbed QR engine → clearance measured against the wrong reference → a code that decodes correctly and means nothing), and Kim's fix is the right kind: **designed out, not detected**. Written into `decks.qmd` and `on-fragility.qmd`. **The determination card does TWO jobs** (Kim): assigns responsibility while collecting, *and* arrives pre-filled so nobody retypes the determiner at assembly — the field-side/lab-side double payoff again. **Abundance mismatch: KEEP it, LABEL the files** — the mismatch IS the book's thesis in the filesystem (`decks/*.csv` are `discover_decks()` output; `QR_field_notes.csv` is one collector's kit), so the defect was never the mismatch but that nothing said which was which. **`decks/README.md` created** (provenance + the two expected differences + the rule: do not reconcile contents, keep provenance legible), and **`deck_universal.csv` RESTORED** to its five phenophase values: the BOOK uses the printed vocabulary so figures match the photos, the FILES each keep what they are. ★ *Process note:* the morning's decision bundled two decisions under one label, and the tell was that applying it required destroying a discovery output and recording the loss. **★ RESUME unchanged: the production pass** — figures from the real photos, provisional label, logo, read-through, deploy; commit the vouchr comment fix. **Appendix DONE.**  **★ CORRECTION, same session — the "session_log instability" was mostly MY measurement error.** Earlier in this session I declined to rewrite `session_log.md` and recorded that three stagings of the unchanged file returned three different byte counts (558,005 / 568,620 / 571,014) and two heading counts. That conclusion was wrong, and the record is corrected here rather than quietly amended. What actually happened: **(a)** the "558,005" figure was a **character** count compared against **byte** counts -- the file holds 3,354 multi-byte UTF-8 characters (571,014 bytes vs 567,660 chars), so the two figures were never commensurable; **(b)** the "568,620" read was **my own already-edited local copy**, because `device_stage_files` does not overwrite a staged file that already exists -- so what I took for an independent fetch was a re-read of my own output; **(c)** the "two heading counts" were that same copy with my entry inserted **twice**. **One thing was real:** the very first read WAS short -- 558,011 chars against the true 567,660, about 9,600 characters missing -- so a first-access partial read on a Drive Stream-mode placeholder does happen, and committing an edit built on it would have destroyed those characters. The caution was right; the evidence I gave for it was not. **Three genuinely independent fetches now agree byte-for-byte** (571,014 bytes, 147 `##` headings, matching Drive's own metadata size), so this entry was written straight into `session_log.md` and the standalone hand-off file is no longer needed. **★ THE LESSON, which is Finding 020 turned back on my own verification: a check that compares two quantities in different units is not a check.** Today's other rule was *a verified number must name what it was measured against*; this adds *and in what unit*. Both failures have the same shape -- a verification loop that could not tell a real discrepancy from an artifact of its own measurement. **Operational rule for the PKM, worth carrying into the Tier-3 surfaces map: to force a genuinely fresh read over the device bridge, delete the local staged copy first. Staging alone may hand back the cached file, which makes a "second opinion" no opinion at all.**  **★ ALSO: `proj_specimen_labels.md` is overdue the 07-28 LOG SPLIT.** It is now ~116KB with its log still in-file, while proj_PKM / whittakerr / AI_Microscope / briefing_book all moved theirs to `logs/` with a `_Log:` pointer. Kim raised the `logs/` folder while asking where the session entry belonged (it belonged in `session_log.md` -- system-wide connective tissue, distinct from the per-project log already appended to `proj_specimen_labels.md`), and the instinct was right about the folder, just early. Queued as housekeeping.  **★ THE FUNCTION-REFERENCE APPENDIX IS WRITTEN (2026-07-29 cont. 2).** `appendix.qmd` replaced its stub with a full reference to `vouchr` 0.1.0, built from the roxygen docs rather than from memory, in five groups in use-order: **printing the cards** (`make_qr_cards`, `make_number_cards`, `qr_calibration_sheet`, `validate_qr_engine`, `avery_5371`) · **reading the photograph** (`read_photo`, `decode_qr`, `read_exif`, `parse_cards`) · **deriving the site** (`site_extract`, `site_place`, `site_geology`, `site_soil`, `site_substrate`, `site_hillshade`, `deg_to_compass`) · **assembling the record and its two views** (`assemble_record`, `read_capture`, `make_label`, `make_log_row`) · **discovering the decks** (`fetch_records`, `first_collector`, `signature_features`, `discover_decks`, `signature_heatmap`). **Completeness was checked mechanically, not by eye:** the five groups account for 5+4+7+4+5 = **25**, and a script cross-checked the documented entries against `NAMESPACE` -- nothing missing, nothing duplicated, nothing invented. That check is the point, given the day's other lessons; a reference is exactly the kind of artifact that looks complete while quietly omitting three functions. The prose carries the *reasons* alongside the parameters where a reason exists -- why `bind_left` is kept apart from `x_offset`, why `analysis_scale_m` is a parameter and not a constant, why `ledger` refuses a reissue, why substrate is derived rather than carded, why `determined_by` is lifted out of the observations -- so the appendix reads as a statement of what the system is made of rather than a wall of signatures. Also documented: the two outside tools and the single step each is needed for (Python pyzbar/OpenCV via reticulate for decoding, `exiftool` for EXIF), since R has no maintained QR *decoder*.  **★ THE HARDCODED GOOGLE KEY: ASSESSED, SOURCE CLEANED, PROVIDER ACTION IS KIM'S (2026-07-29 cont. 3).** Kim asked whether the key had actually been exposed or whether rotating is precautionary. Checked rather than assumed. **No evidence of exposure:** the key appears in exactly ONE file (`QR_procedures.Rmd`, twice -- a ggmap `register_google()` call and an Elevation API call, same literal); **it is NOT in the public `vouchr` repo** -- both copies of `site_extract.R` read `Sys.getenv("GGMAP_GOOGLE_API_KEY")` and always have; **`specimen_labels` is not a git repo at all**, so it was never pushed anywhere; **Drive permissions show a single entry -- Kim as owner -- on the file, on `specimen_labels`, and on the parent `Projects` folder**, so no link-sharing and no other principals; the document was **never published** (nothing QR- or label-related among the 19 live documents, and `Site_Extract.pdf` from the same era is image-only with no key text); and a Drive full-text search for the key prefix returns nothing. So **rotating is precautionary on the available evidence.** **★ TWO THINGS THAT MATTER MORE THAN ROTATING.** (1) **Editing the file does NOT remove the key from Google Drive revision history** -- Drive keeps prior versions, so only revoking at the provider actually neutralises the literal. The source edit prevents recurrence; it is not cleanup. (2) **The right action is probably DELETE, not rotate.** Nothing current needs a Google key: `site_extract()` defaults to `source = "aws"`, and Macrostrat, SSURGO and Nominatim are keyless -- the Google path is a legacy fallback, and the book's equity argument IS the keyless stack. Deleting is strictly safer than rotating, and a fresh restricted key takes minutes if the fallback is ever wanted. **The one exposure question no file check can answer** -- whether the key was ever called from somewhere unexpected, or pasted into mail, a screenshot, the retired D: mirror, or the `P://` path still referenced at line 617 -- lives in the Google Cloud console's usage metrics and restriction settings. That is worth a look either way. **DONE HERE:** both literals replaced with `Sys.getenv("GGMAP_GOOGLE_API_KEY")`, CRLF endings preserved, and a comment block added recording why a literal was dangerous even in a private folder -- **the document sets `echo = TRUE` globally and renders to PDF, so any literal in a chunk prints into the rendered output.** That, not the folder's privacy, was the real hazard.  **★ LIVE WORKED EXAMPLES RUN ON KIM'S MACHINE (2026-07-29 cont. 4).** Four of the five chapter placeholders now have real output in `documentation/images/`, each verified by content and not by exit code. **⚠ FIRST, THE NEAR MISS: the INSTALLED `vouchr` was 0.0.0.9000 with 21 exports** -- the build from BEFORE the 07-28 rebuild. Its `make_qr_cards()` was the old `marrangeGrob` version with no `bind_left`, and `validate_qr_engine()` did not exist in it. Running the deck-sheet example against that library would have rendered a perfectly plausible sheet showing **exactly the geometry the chapter says was wrong**, with no guard to stop it. Reinstalled from source -> 0.1.0, 25 exports, `bind_left` present, and `validate_qr_engine()` passes against the real `qrcode` engine. ★ **The rule: a documented version and an installed version are different facts.** Check which one is loaded before trusting any figure it produces -- Finding 020 again, at the library level. **(1) DECK SHEET** (`deck_sheet.png`, plus `deck_sheet_guides.png` showing card outlines, the reserved band and the punch mark -- the better book figure since it makes the binding argument visible). Verified independently: page is 8.5 x 11in, the ten QR centres sit within **0.02in** of the true Avery clear-zone centres (3.19 / 6.69in x; 1.5 to 9.5in y), and **10 of 10 codes decode from the rendered sheet** -- position AND content both measured. **(2) END TO END** on `Example_1.jpg`: **6/6 codes** decode (confirming the 07-28 claim), EXIF read, site derived, record assembled, label and log row produced. `Determined by` lands correctly as a first-class field. **(3) DERIVE** on the project's own Kilauea coordinate (19.435731, -155.336334, taken from `reader_assembler.R`'s example rather than invented): elevation **1344.1 m**, slope **4 deg**, aspect **99 deg (E)**, roughness 1.6 m, native resolution 4.4 m at a 31 m analysis scale; bedrock **Kau Basalt, lava flows, 0-2.588 Ma** (Macrostrat); soil **Andisols, Haa-Keamoku complex** (SSURGO). **This reproduces the 2026-07-01 recorded result exactly and matches `derive.qmd`'s prose word for word** -- "a gentle, east-facing slope, high up, on young basalt, over the ash soils that weather there." Hillshade with the collection point marked saved as `derive_hillshade.png`. **(4) DISCOVER DECKS** from the cached CSV: 1,144 records, 20 collectors at >=10 specimens, 4 clusters. **All four archetypes reproduce**, including the one I first thought had not: cluster 4 is `uehana` = *"Shea Uehana (ORCID...)"*, all 14 records `institutionCode = NEON`, signature templated to **1.00 across the board with `coll_number` 0.00 and `phenology` 0.00** -- precisely the "machine" archetype as described. I reported it missing before checking; the check is what corrected me. Describers (identified_by 0.96, tax_content 0.43), place-recorders (eco_content 0.88, identified_by 0.08 -- self-determined), terse (Dawson at 0.00 on every feature). **Phenology confirmed as the universal gap: 17 of 20 collectors at zero, mean occupancy 3.4%.** Heatmap saved; its first render had the x-axis labels colliding with the title, fixed by moving them to the bottom. **★ THREE DEFECTS FOUND WHILE DOING THIS, worth carrying.** (a) **`discover_decks()` cluster numbering is inconsistent**: the plot re-numbers clusters for display, so `dd$clusters` / `dd$profiles` call the terse group 1 and the machine 4, while the figure labels them 4 and 1 -- the two most distinctive archetypes, swapped. The book is safe because `discovering-decks.qmd` NAMES the archetypes instead of numbering them, but anyone cross-referencing the object against the figure will mislabel them. A vouchr bug. (b) **`metrosideros_US_1985_2026_fulldwc.csv` has 27 columns, not the 161 the GBIF pull returned** -- "fulldwc" is a misnomer; the analysis reproduces for the 12 existing signature features, but adding a feature requires re-pulling. (c) `file.info()$size` immediately after writing to G: reports a stale value (4096 bytes for files that are really 57-227 KB) -- Drive Stream write buffering, which is why every figure here was verified by staging it back and looking at it. **★ THE ONE BLOCKED EXAMPLE, and it is an honesty question, not a technical one.** `Example_1.jpg`'s EXIF puts it at **21.30219, -157.85729 -- Honolulu**, and the derived record reads "Hawaii Capital Historic District, Honolulu County", elevation **2 m**, slope **0 deg**, Makiki clay loam. The pipeline is perfect; the provenance is a bench test on a couch. But `closing-the-loop.qmd` introduces this photograph with *"It was taken in the field"* and `discovering-decks.qmd` ends on *"one photograph on a slope"*. **Not done and not to be done: pairing these real decoded cards with the Kilauea coordinate to make it look like a field collection.** That is the placeholder-QR failure in a new costume -- a plausible artifact that no check would catch. Kim to choose between an honest caption (which would also demonstrate the urban reverse-geocode fix and SSURGO working in a city) and waiting for a real field frame.  **★ ALL FIVE WORKED EXAMPLES NOW LIVE IN THE CHAPTERS (2026-07-29 cont. 5).** Kim ruled on the provenance question: **honest caption, and make a virtue of it.** **`closing-the-loop.qmd`** now names where the frame was actually taken, in the book's own voice -- a bench run at home, on a couch, not a collection -- and says why the honest version is shown: *"I could have quietly swapped in a coordinate from a real ohia forest and the output would have looked more like the argument I have been making, and I would rather show you the honest one, because a system you cannot audit is not a system you should trust."* The chapter then turns the limitation into a demonstration: **the urban record is the one run that exercises the compose-from-reliable-levels reverse-geocode fix**, and SSURGO is as sure of a Honolulu clay loam as of volcanic ash. "The machinery does not know it is indoors." Live chunks for decode -> EXIF -> substrate -> label -> log row, plus `Example_1.jpg` as the input figure. **`discovering-decks.qmd`**: the heatmap in place with a door-caption, plus a short read-the-figure-first paragraph; and its closing line **"one photograph on a slope" -> "a single photograph of a handful of cards"**, since the slope was never in evidence. **`derive.qmd`**: live `site_extract()` + `site_substrate()` on the Kilauea pair, and a hillshade figure whose caption says the relief is subtle *because it is a four-degree slope, not a cliff* -- the figure agreeing with the number rather than flattering it. **`the-workflow.qmd`**: the deck CSV as a table, the guides sheet as the rendered-output figure (chosen over the plain sheet because the grey band makes the binding argument visible), and the folder pass. **★ A FALSE CLAIM CAUGHT BY RUNNING THE CHUNK RATHER THAN TRUSTING THE PROSE.** I wrote that the two frames "agree on all seventeen fields." Verified: there are **sixteen** fields, and they do **not** all agree. Fourteen are identical -- every card value, the coordinate to the last digit (0 m separation), and every derived value; the two that differ are the **file name**, which must, and the **timestamp, by eight seconds**. Corrected to say exactly that, which is a better sentence anyway: *"two independent readings that disagree about nothing that matters."* The near miss is the point -- a plausible round number, written from memory of what the run ought to have produced, one verification away from entering the book. **Third instance today of the same discipline paying off** (stale installed package, wrong measurement reference, invented field count). **Also confirmed:** `decode_qr()` gets **6/6 on BOTH frames**, better than the "5/6 raw, 6/6 with one Otsu pass" recorded on 07-28 -- the packaged reader does the multiple passes internally, so the improvement is the packaging, not the camera. All chunk paths were tested from `documentation/` (Quarto's execute-dir for a book project) and every figure asset resolves. **NOT YET DONE: a full `quarto render`** -- `system2()` is blocked from this bridge, so the chunks were verified individually rather than by rendering the book. Kim should render once before deploying.  **★ FULL BOOK RENDER DONE AND VERIFIED (2026-07-29 cont. 6) -- correcting the "not yet done" note above.** The earlier entry recorded that a full `quarto render` had NOT been run because `system2()` is blocked from the r-studio bridge. **It is done.** `quarto::quarto_render()` works from the bridge (the R package does not trip the system-command restriction), and the whole book built: 13 chapters, quarto CLI 1.8.27. **Verified by inspecting the artifacts, not the timestamps:** title reads **Voucher Labels**; every live chunk's output is present in the HTML (`Phenology: No Flowers`, `Number: KWB 1243`, `Det.: KW Bridges`, the Honolulu locality, Makiki / Inceptisols / Honolulu Volcanics, 1344 m, Kau Basalt, Andisols); both tables rendered; all four figures resolve and ship into `_output/images/` plus a generated `derive_files/` for the live hillshade; and **a sweep of all 13 pages for leaked R errors and warnings comes back clean.** **★ WHY KIM WAS STUCK, worth keeping as a workflow fact:** rendering a book means rendering the **project directory**, not a file -- `quarto::quarto_render("<dir>")`. Rendering a single chapter `.qmd` builds it standalone with no TOC, no cross-references and no site, which is what "doing a file at a time isn't working" was. Root cause: **there is no `.Rproj` anywhere under `specimen_labels`**, so RStudio never offers the Build pane's "Render Book" button. Creating one in `documentation/` would restore the button. **Confirmed harmless:** a book project renders only the files listed under `chapters:`, so the superseded `limits.qmd` stub in the project directory is NOT published -- checked against `_output`, which contains exactly the 13 chapter pages and no `limits.html`. No config change needed. **FOUR PLACEHOLDERS REMAIN**, all in chapters untouched today, and they pass through as HTML comments (invisible to readers, still in the source): `mechanisms.qmd` wants the single-card "Life Form: Tree" scan-returns-plain-text demo and a cards-laid-out-flat shot; `field-log.qmd` wants the collection-points-on-hillshade map and the canopy-physiognomy figure. **The first two are reachable now** (a one-row deck through `make_qr_cards()`; `Example_2.jpg` for the layout, keeping `Example_1` unique to the closing chapter). **The two field-log figures are genuinely blocked** on material that does not exist yet: a day with several real collections, and a canopy image to read.  **★ KIM'S THREE NEW PHOTOGRAPHS WIRED IN; LOGO SETTLED; RENDER CLEAN (2026-07-29 cont. 7).** `Tree_card.jpg` -> `mechanisms.qmd` as the scan-returns-plain-text demo (it decodes to `Life Form: Tree`, checked). `Example_2.jpg` -> `mechanisms.qmd` as the cards-laid-out-flat figure, keeping `Example_1` unique to the closing chapter. **`Deck_spread_out.jpg` -> `decks.qmd`, and it is the best figure in the chapter**: cover, blank card, four life-form cards, blank card, cover -- the construction Kim described, and it lands directly beneath the paragraph about why the blank cards are there. `Decks_and_specimen_card.jpg` -> `decks.qmd` as the kit-as-carried figure (five closed decks + the number card), which also carries the bill-of-materials argument visually. **★ THE LOGO QUESTION IS ANSWERED BY TEST, NOT BY GUESS.** I had left it off because `navbar.logo` is not a documented book-level option. **`book: sidebar: logo:` DOES work** -- rendered, referenced in `index.html`, and shipped to `_output/images/`. Kim's regenerated 250x250 `voucher_logo_art.png` is in place. Full re-render: 13 pages, error sweep clean, the only remaining placeholder comments are `field-log.qmd`'s two. **★ A COLOUR MEASUREMENT WORTH KEEPING, AND A QUESTION.** The five cover colours are consistent across three independent frames -- yellow hue 40-45 deg, green 170-175, purple 292-296, silver sat 0.06-0.08, pink 346-353 -- so `decks.qmd`'s scheme holds, except that "gray for abundance" is more accurately **silver** (it is metallic). **But `Deck_spread_out.jpg`'s covers measure RGB(70,11,5), value 0.27, against RGB(187,46,63) at value 0.73 for the same life-form cover in `Tree_card.jpg`** -- same red hue family, a third the brightness. The white cards in both frames are exposed comparably, so it is not the lighting. **Most likely explanation, and it is Kim's own:** the covers "are not completely opaque," so a black backing reads through and darkens them, while a pale surface does not. If so the figure demonstrates the very translucency that motivates the blank cards, and the caption now says exactly that. **Written so it does not name the colour, pending Kim's confirmation** -- the third time today a colour claim has needed checking rather than asserting. **⚠ `photos/kipuka_puaulu/` DOES NOT CONTAIN KIPUKA PUAULU PHOTOGRAPHS.** Kim mentioned he is working on that set. The folder currently holds three files -- `PXL_20260729_0444*.RAW-01.jpg` -- which are **byte-identical (MD5-matched) to `Example_1.jpg`, `Example_2.jpg` and `One_deck.jpg`**: the card photographs taken at his house on 07-28 at 18:44-18:46 HST, EXIF **21.30219, -157.85729 (Honolulu)**, not 19.435 / -155.30 (Hawaii Volcanoes NP). Presumably a staging folder not yet populated, or a mis-copy. **Flagged rather than used:** building a "Kipuka Puaulu collecting sites" map out of three frames shot on a couch in Honolulu is precisely the failure this project keeps catching, and it would have been invisible in the finished figure. **★ PLANNING NOTE FOR WHEN THE REAL SET ARRIVES.** Kim: *"these were not taken with decks (no specimen collection in the National Park without a permit), they do show site locations where I'd likely have taken a sample."* So the field-log map must NOT imply collections -- **no permit means no specimens, therefore no collection numbers.** Framed honestly it is arguably a BETTER figure for that chapter than a real collection would be: it shows the spatial layer of a field log built from photographs alone, and it exercises the chapter's own **absence-as-information** argument -- where a collector went and where they did not -- without ever claiming a specimen was taken.  **★ THE KIPUKA PUAULU FIGURES ARE IN; ONE PLACEHOLDER LEFT IN THE WHOLE BOOK (2026-07-29 cont. 8).** Kim supplied nine photographs in `photos/kipuka_puaulu/` -- **genuine this time**, verified before use: EXIF puts them at 19.4246 to 19.4442 N, -155.3034 to -155.2766 W, taken 2026-03-06 between 12:04 and 13:11 HST, centroid 477 m from the kipuka, and none matching the Honolulu card frames that had been sitting in that folder earlier. **Nine photographs, eight distinct GPS fixes** (two are the same fix 16 seconds apart); seven fall within 60 m of one another, and two lie 1.5 km SSE and 2.8 km E. **TWO FIGURES BUILT, at the two scales `field-log.qmd` asks for.** `fieldlog_sites.png` -- the eight fixes on a hillshade with 20 m contours and a scale bar, over a 3 km frame, DEM fetched at ~9 m and reprojected to UTM 5N. `fieldlog_region.png` -- the same points as one dot on a 40 km frame with the Kilauea caldera (3.9 km SE), the crater chain, and the shoreline taken as the zero contour of the same elevation record. Per-site derived values also computed for reference: elevations 1202-1247 m, slopes 0-8 deg, aspects SSW to ESE. **★ THE HONEST FRAMING IS IN THE PROSE, NOT BURIED IN A CAPTION.** Kim: no collecting in a national park without a permit, so these are places he *would* have sampled. The chapter now says so in its own voice before the figure -- "there are no specimens behind these points and no collection numbers, and everything else on the map is exactly what a real day would have produced" -- which is the same move as the closing-the-loop bench-run disclosure. **It is arguably a BETTER figure than a real collection would have been**, because it proves the spatial layer is built from photographs alone, and the empty middle of the frame exercises the chapter's own absence-as-information argument. **TWO SELF-CAUGHT DEFECTS while building them.** (a) First draft of the regional map put the label "Pacific" on green **land** -- I had positioned it by eye from the plot margins. Fixed by computing the centroid of the cells below zero and placing the label there: **when a label can be derived from the data, deriving it beats eyeballing it.** (b) The first site map had labels 1/2/3/5 illegibly overlapping, because those fixes are 0 to 58 m apart; fixed with leader lines to offset labels, and the coincident pair is now stated in the title ("nine photographs, eight fixes") rather than hidden. **RENDER: 13 pages, error sweep clean, both figures shipped.** **ONE placeholder remains in the entire book** -- `field-log.qmd` line 23, the canopy-physiognomy figure, which needs a canopy or satellite raster for the site plus a blind physiognomic reading of it. Per design_notes (2026-06-30), the cheap DSM-DTM difference **saturates over tall closed forest** and reported 8 m for a stand near 20 m at this very kipuka, so that route is a detector and not a measure; the Meta/WRI 1 m GEDI-calibrated product streams keyless from open AWS and gave 15.8 m here, and is the right source if the figure is built.  **★★ THE CANOPY FIGURE IS BUILT AND THE BOOK HAS NO PLACEHOLDERS LEFT (2026-07-29 cont. 9).** **The Meta/WRI 1 m GEDI-calibrated canopy map came down keyless, exactly as design_notes (2026-06-30) said it would:** `tiles.geojson` (56,145 tiles) -> the quadkey containing the kipuka centroid (`022300033`) -> `chm/022300033.tif` via `/vsicurl`, a 65,536 x 65,536 raster at 1.19 m in EPSG:3857, cropped over the fixes in seconds. No key, no account, no package beyond `terra` and `sf`. **★ REPRODUCTION CHECK PASSED TO A TENTH OF A METRE.** design_notes recorded Meta 1 m at Kipuka Puaulu as **15.8 m, mean within 45 m**. Recomputed per-site today: site 5 gives **15.7 m**. The 06-30 measurement is reproduced almost exactly, which also identifies which of the nine fixes it corresponds to. **THE DERIVED PHYSIOGNOMY.** Around the seven wooded fixes the canopy runs mostly **12-16 m with emergents to 23 m** (per-site means within 45 m 9.5-15.7 m; 95th percentiles 16-21 m; maxima 18-23 m), and about **a quarter of that ground stands below 2 m** -- gaps, glades and grass. **★ AND A GENUINELY NEW RESULT: the canopy layer recovers what a KIPUKA IS, from the coordinate alone.** Over the wider 3.8 x 3.1 km window **72% of the surface is under 2 m and the median is 0**, while inside the cluster the median is **10 m with 49% over 10 m** -- an island of old forest standing in younger lava, which is the definition of the word, read off a raster by a machine that was told nothing but a latitude and longitude. The two outlying fixes are outside the forest and the map says so: site 4 reads **0.1 m (99% open)** and site 8 **1.9 m (65% open)**. Their earlier terrain results now make sense too -- site 8's slope 0 deg and roughness 0.1 m are open ground, not a measurement error. **★ KIM'S GROUND PHOTOGRAPH IS THE CHECK, NOT THE FIGURE -- and he agreed with the argument.** He offered `PXL_20260306_220723260.jpg` for the canopy placeholder. Declined for that role on principle: the placeholder and the 2026-07-03 illustration convention both specify an image **fetched by the coordinate**, because the whole point of the physiognomy figure is that the description is DERIVED -- collection-spanning, attention-free, obtainable by someone who was never there. A ground photograph is an **observation**, costing exactly the field attention the derive argument exists to save, so using it there would have quietly inverted the book's central derive-vs-observe partition. It also carries no scale, so any height read off it would be a guess, against the standing rule that a derived value must carry its scale, source and limits. **Used instead as ground truth beside the derived map, which is the stronger figure and is native to this project's history:** Kipuka Puaulu is the exact site where DSM-DTM was caught reporting **8 m for a stand near 20 m**, and what caught it was Kim having walked in it. The chapter now re-enacts that finding -- derived reading, then the honest paragraph about why a derived value is worth only its check, then the photograph -- and the new map puts the tallest stems at 23 m, the answer that agrees with the ground. **TWO FIGURE DEFECTS SELF-CAUGHT:** the first render produced a **40-entry discrete legend** (unusable; switched to a continuous ramp), and the cluster label was **clipped off the frame edge**. **★★ MILESTONE: `<!-- FIGURE` and `<!-- WORKED EXAMPLE` counts across all 13 rendered pages are now ZERO.** Render clean, 15 image assets shipping. **★ A PATTERN THE READ-THROUGH SHOULD WATCH.** The book now carries **three explicit honest-provenance disclosures** -- the Honolulu bench run in `closing-the-loop.qmd`, the no-permit candidate sites in `field-log.qmd`, and the derived-versus-checked canopy pair. Kim: *"it would have been better to have an actual data point, but given the circumstances, let's see what we can do with demonstrations that include honest explanations."* Each disclosure is individually right and they are the book's integrity on display; **read together they could start to sound apologetic, and that is a tone question for the read-through, not a factual one.** The fix if it reads that way is to vary the register, not to remove the disclosures.  **★ DEPLOY PREPARED AND STAGED; THE DRAG-DROP IS KIM'S AND HAS NOT HAPPENED YET (2026-07-29 cont. 10).** Kim called it a wrap and chose to proceed without a further read-through, having approved the acknowledgements explicitly. **Slug decided: `vouchr`** -- on the precedent that companion-package documents take the package name (whittakerr, coenosr, checklistr, lists, gePoints), and matching ai_microscope where the card reads one thing ("Preview & Review") and the folder another. So the card reads **Voucher Labels** and the URL will be `kimbridges-documents.netlify.app/vouchr/`. **Steps 2-5 of the documented Deployment Workflow are DONE, each verified rather than assumed:** **(2)** `_output/` **contents** copied from R into a fresh `kimbridges-documents/vouchr/` (18 of 18 items; `index.html` at the folder root; **explicitly checked for the coenosr nesting slip -- no stray `_output/`**; 14 pages, 24 MB), plus the cover placed at the folder root as `vouchr_cover_art_text.png` to match the `<name>_cover_art_text.png` convention. **(3)** Listing stub `docs/vouchr.qmd` written -- title "Voucher Labels", subtitle from the book, categories Botany / Methods / R, image and View-Document link both confirmed to resolve. **(4)** `vouchr/**` inserted into `_quarto.yml` `resources:` in alphabetical position between `using_an_llm` and `whittakerr`. **★ The file is CRLF and was edited in BINARY to preserve that** -- byte delta exactly the 17 bytes of the inserted line, because `writeLines()` on Windows would have rewritten every ending in the file. Same trap as session_log.md this morning. **(5)** Collection site rendered (Finding 017 behaviour as recorded: overruns the bridge timeout, completes normally). **PRE-DEPLOY CHECKS, both passes of the 2026-07-25 routine:** every local `src=` in every page walked against disk -- **211 references, 0 missing** -- run once on `_output/` and again on the copied `vouchr/` folder, since the copy is the artifact that actually ships; 0 broken local `href=`. Then the built site verified: the **Voucher Labels card is on the index (20 cards, was 19)**, its cover path resolves, its link resolves to `_site/vouchr/index.html`, and the built book is confirmed to be the CURRENT build (title "Voucher Labels", the "already in the cabinets" claim, the logo asset, and the acknowledgements page with Nancy Furumoto in it). `_site` is **327.7 MB**, consistent with the ~300 MB recorded for this collection. **⚠ NOT YET PUBLISHED. STATUS IS STAGED.** Step 6 -- dragging the whole `_site` folder onto the **existing** `kimbridges-documents` tile's Deploys tab -- is Kim's, and there is no path to Netlify from this session. Recorded as staged rather than live **on purpose**: claiming publication before the artifact is public would be the same class of error as the 8 m canopy and the 0.372 in clearance. **The known trap, from the whittakerr deploy: "Add new project" creates a standalone site instead of updating this one.** Click into the existing tile first. **ON PUBLICATION, the following need updating and are deliberately left undone until then:** `proj_kimbridges_documents.md` (19 -> 20 documents, new log entry); `proj_specimen_labels.md` and `proj_vouchr.md` (Status, and the deployed URL); `project_index.md` (the specimen_labels row and the Active Focus, which can then close); `inventory_all_projects.md`. Also still open and unrelated to the deploy: the **uncommitted comment fix in `vouchr/R/make_qr_cards.R`**, the **`discover_decks()` cluster-numbering swap**, deleting the Google key, and the `proj_specimen_labels.md` log split.  **PKM Tier 2** (build `pkm_health.R`) and **Tier 3** (storage buckets 4-5, surfaces-and-permissions map, protocol amendments) remain queued behind this.
+
+<!-- superseded 2026-07-28: the PKM Tier 1 review closed and specimen_labels took the focus, exactly as this block predicted. Retained verbatim. -->
+**Active Focus (2026-07-28): "PKM" -- a structural review of the system itself; TIER 1 COMPLETE.** Diagnosed the drift Kim noticed as ONE hole: every containment rule in the PKM is Drive-scoped, but the ClaudeR bridge (2026-05-30) arrived twenty days AFTER the storage architecture (2026-05-10) and can write anywhere on the machine. Also found a CATEGORY ERROR -- the PKM has one entity type but the work has four (venue / infrastructure / project / work); 83 published works exist and only ~21 have a record, and the founding Jones gap was a level-4 work misfiled as a level-3 project. Rule adopted: *a proj file tracks work IN PROGRESS; a generated register tracks work that EXISTS* -- a work earns a proj file on DEVELOPMENT, not publication. Kim's status rules adopted: deployed means no longer Active, and a pending external review does NOT hold a project Active unless he says so. **Tier 1 executed:** session-start cost cut from 184.4 KB to 26.3 KB (86%, ~40,500 tokens/session) by splitting the historical tails out of project_index.md and four proj files into `logs/`; verified lossless against a byte-matched snapshot in Projects_Index_archive_2026-07-28. AI_Microscope + briefing_book set Complete; the five kimbridges_* files set to the new **Standing** status. **NEXT (2026-07-29): specimen_labels is the expected focus** -- Kim has the parts, buys printer cartridges tomorrow; the remaining work is the production pass (figures from his real field photos, the function-reference appendix, provisional-label image, cover/logo, the title, read-through, deploy). **PKM Tier 2** = build `pkm_health.R` (generate the works register / reconcile source -> _site -> live / verify pointers / flag drift); **Tier 3** = storage buckets 4-5, the surfaces-and-permissions map, protocol amendments. Rain from Wednesday.
+
+<!-- superseded 2026-07-28: PKM structural review became the focus -->
+**Active Focus (2026-07-26): "kimbridges_collections" — DELIVERED and CLOSED the same day it was opened. The site-wide *Behind the Curtain* methods page is LIVE at kimbridges-collections.netlify.app/behind_the_curtain.html.** Six sections plus one subsection: (1) three divisions of labour — Gallery stepwise/multi-engine/Photoshop finish, Jones as a pipeline with the person at both ends, Briefing Books orchestrated — read as a sequence in which each collection hands more of the middle to the engine and keeps both ends; (2) THE INPUT CONTRACT, with `checklists/iliau_loop/site_preview.md` printed in full and four of its sentences traced into the finished book (parking → access paragraph + cover landmarks; elevation → the whole rim vs canyon-floor analysis; silversword → significance on page one; old tī → ethnobotanical note); (3) THE CHAIN FIGURE, `Behind_the_Curtain/images/briefing_chain.svg`, built by `Behind_the_Curtain/chain_fig.R` — four stages, person solid-orange at top and bottom, engine dotted-blue between, a bracket labelled "no person in between"; Okabe-Ito, nothing carried by colour alone; (4) WHAT IT IS MADE OF — checklistr as the occurrence engine (joint person+AI authorship noted), vouchr::site_extract for terrain, whittakerr against WorldClim for climate, elevatr for the per-record elevation, and Esri tiles stated as a constraint because OSM returns blank; (4a) THE STANDING INSTRUCTION — the commission block printed verbatim as a second `.input-doc` panel; (5) four constraints that shaped the form (R only because the bridge blocks shell commands, print not scroll, no retroactive improvement of old Gallery work, the working data ships with the conclusions); (6) WHAT STAYS HUMAN, closing on Diamond's dilemma and the twenty percent the tool hands back. **KIM'S THREE CORRECTIONS during the build drove the final shape.** A garbled opening sentence (fixed). A question about whether his original spoken ʻIliau observations survived (THEY DID NOT — see the finding below). And "how would I actually run a new site?", which he expected the page to answer — that produced the commission block, and on seeing it he asked for it to go on the page too. **NEW ARTIFACT: `Projects/checklists/briefing_book_commission.md` (3922 bytes, CRLF)** — the paragraph to hand Claude to start a new site: package list, report catalog, the codified type standard, the three honesty rules, the naming rule, and a slot where the site preview goes. Its last two sections ("What this block does not do" and "Preview capture") are PKM-ONLY and deliberately not published. **DECISIONS (Kim):** no reproducibility-gap admission on the public page, asked and confirmed twice — the page instead carries one honest sentence, that the block is an instruction to a person and an engine and does not run on its own; and the verbatim panel KEEPS his working shorthand "Kīpuka (R1)" rather than expanding it, because the block is presented as the raw file. **FINDING 018 — the preview was never captured in Kim's own words.** `site_preview.md` is a session write-up made from his spoken observations on 2026-07-17 (its own header says so), and the raw wording is gone with that conversation; the proj_briefing_book.md log at line 333 paraphrases it a second time. Searched every .md in Projects_Index and the whole checklists tree to confirm. **STANDING RULE GOING FORWARD: write the site preview in Kim's own words and save it BEFORE any build starts.** This is now the closing section of the commission block. **TECHNICAL:** new `.input-doc` CSS class (bordered wrapping panel, added to custom.css); navbar-left entry and `Behind_the_Curtain/images/**` registered in `_quarto.yml`; deliberately NOT in `index.qmd`'s listing because it is a methods page, not a collection; deployed from `C:\temp\_site_20260726` — a DATED folder, because the R bridge blocks recursive deletes and overwriting the old `C:\temp\_site` would have carried yesterday's leftovers along (98 files, 112.1 MB, every size verified byte for byte). **HOUSEKEEPING CLOSED:** `_backup_concept_80pct_tool_20260726.md` deleted; `_stamp_test.pdf` deleted too — the lock had released overnight, so it never needed Kim after all. Projects_Index now has no underscore-prefixed leftovers. **NEXT FOCUS UNDECIDED — ask at session start.** Live candidates: **briefing_book** (Kim is talking to Dr. McClatchey now; the expert critique the publication deliberately did not wait for is finally happening, and his feedback lands on two published prototypes rather than a draft); the **checklistr driver** that would take a centre, a radius and a preview file and emit the report set, which is the durable fix for everything the commission block works around; and the **AI_Microscope shelf** (audio round two, the parked image downsize, publishing `_onepage.html`), with the app still frozen pending the plant-anatomist review.
+
+
+<!-- superseded 2026-07-26 (same day): the Behind the Curtain page is BUILT, RENDERED, DEPLOYED and LIVE. The focus block below is retained for the build detail. kimbridges_collections returns to Active / Ready with four pages: three collections plus the methods page. -->
+**Active Focus (2026-07-26): "kimbridges_collections" -- a site-wide BEHIND THE CURTAIN page; opened the day after two projects went live on the same day.** On **2026-07-25** two projects published. **AI_Microscope**: the document *Preview & Review* went LIVE at https://kimbridges-documents.netlify.app/ai_microscope/ (the nineteenth document; app deliberately frozen pending the plant-anatomist review). **briefing_book**: **The Briefing Books** went LIVE at https://kimbridges-collections.netlify.app/briefing_books.html as the **third collection** (Gallery, Jones, Briefing Books), carrying both bound books (Kīpuka Puaulu 22 pp, ʻIliau Loop Trail 14 pp), the individual facet reports as separate PDFs, and the checklist CSVs. Decisions that shipped with it: **Collection, not Document** (a collection needs no uniform pattern, though these books *do* share a format, so new sites drop in without a rewrite); the introduction's spine is **ORCHESTRATION** -- the other projects were stepwise, the briefing books hand the whole dependent chain to the engine, which runs from a coordinate plus a paragraph of site knowledge to an assembled document, and Kim reads that as "a new and different skill demonstration"; and **working prototypes** published ahead of Dr. McClatchey's critique, because getting them out for review beats polish. **The R1 correction:** page 2's caption ("the nine nominal points hold 52% of all records", derived from the mis-centred `r1_points.rds`) became "the nominal points hold 39% of all records", reusing page 1's already-verified figure on the identity that the nominal points ARE the coarse-coordinate points -- which drops an unverifiable count without asserting anything new. The first repair was a `qpdf` overlay stamp that looked perfect and was **hollow**: `pdf_text` still returned the old number underneath, so copy/paste, search, screen readers and any AI ingesting the PDF would still get 52%. It was discarded for a **pikepdf content-stream edit** that replaces the `Tj` string in place, keeping the original font and metrics. **Lesson: a visual fix that leaves the old text underneath is not a fix.** Also landed: the **Diamond citation** CONFIRMED (Jared Diamond, "The Ethnobiologist's Dilemma," *Natural History* 6/89, June 1989, pp. 26, 28, 30) and folded into `concept_80pct_tool.md`, whose sharpening is that Diamond's informant THROTTLES on perceived competence while **the engine has no throttle**; and a sixth friction category named, **follow-up (iteration) friction** -- the gap between noticing something and being able to chase it, which the 80% tool closes because the flag and the means arrive in the same exchange. **THE NEW FOCUS: a Behind the Curtain page** for kimbridges-collections -- **site-wide** (Gallery, Jones, Briefing Books), NOT a section on briefing_books.qmd. Approved depth (Kim, 2026-07-25): **the input contract** (the ʻIliau `site_preview.md` printed verbatim beside the 14-page book it produced -- that document plus a coordinate is the entire human-authored input), **a chain figure** (Okabe-Ito, SVG), and **the constraints that shaped the form** (R-native because the bridge blocks shell commands; PDF as a friction choice; full-resolution scans kept because the scans are the evidence for the determination conflicts). Explicitly **EXCLUDED**: the reproducibility-gap admission -- that R1 has no build script and needed content-stream surgery stays off the public page. proj_kimbridges_collections.md has wanted this page in its Next Steps since May. Detail there and in proj_briefing_book.md.
+
+<!-- superseded 2026-07-26: AI_Microscope is delivered -- the document PUBLISHED 2026-07-25 as the nineteenth on kimbridges-documents. Focus readiness Blocked; the only open dependency is the external plant-anatomist review, with the app deliberately frozen. Optional and unblocked: audio round 2, the image downsize, publishing the one-page edition. Block retained below for context. -->
+**Active Focus (2026-07-22): "AI_Microscope" — documenting a browser reconstruction of the 1989 AI Microscope; a NEW project taken up during the briefing_book hold.** Kim rebuilt the 1989 *AI Microscope* learning environment (Itoga, Bridges, Frederick & Uyeda 1989 — Kim is a co-author) as a web app with Gemini (Kim did design + testing; Gemini coded); live at https://aimicroscope.netlify.app/. Decision this session: **document it HERE with Claude** (documentation = the PKM/Claude lane; cross-document consistency with checklistr), not with Gemini where it was built. Before any writing, ran a full **security + infrastructure pass** (Kim's "first concern"): both API keys were hardcoded in the public deploy — moved off the client into two Netlify serverless functions (`narrate`=Gemini, `speak`=ElevenLabs) that read Netlify env vars; both keys rotated; the site connected to **github.com/kimbridges/ai_microscope** for continuous deployment (repo now the single source of truth); a `botanical_lore.json` validator + GitHub Action added so bad content edits can't silently ship. Keys protected, app working, an orderly edit→commit→validate→auto-deploy loop in place. **[UPDATE 2026-07-22 (later): direction changed — AUDIT before document.]** Will McClatchey's review came back positive (multi-image ACCEPTED; game + grading REJECTED — a game gets judged as a game, grading = surveillance; a supportive tool is the identity). Guiding thesis captured (ai_microscope_ideas.md): this is an *exploration of the process* of moving a strong 1989 teaching idea to today's leading-edge tech, **not** product-building. Kim opened a code audit; first probe (quantified, `color_audit.png`) found the identification substrate broken — the color map has 359,791 colours (not categorical), **5 of 10 tissue anchors are phantom** (no matching region; phloem's blue 204 away), 39% of pixels force-assigned. **Recode DONE + DEPLOYED (commit b0bd6bc):** identification is now **manifest-driven** (per-slide `slide_syringa.json`: tissue → exact colour → derived %), **exact-match** (honest "unclassified", never forced), **% abundance in the dropdown** (findability hint — palisade 4.6 / spongy 6.8 / midrib 14.1 / xylem 2.6); interim 4-clean-tissue mask. Local git clone now at `~/Documents/ai_microscope` (pushed via R/gert). **[UPDATE 2026-07-22 (cont.): TISSUE LAYER COMPLETE.]** Rebuilt from 4→**9 tissues** (cuticle, upper epidermis, palisade, spongy, midrib, bundle sheath, phloem, xylem, lower epidermis). Fixed the % denominator (excluded the ~44% exterior auto-fill → leaf-footprint %); added a **micrograph↔map overlay slider** (registration verified "just right"); made the mask a **solid ID layer** (fill walls/air to nearest tissue — it's ID-only, not shown); Kim did a **Photoshop pass** (recoloured bundle sheath clear of the gold upper-epidermis, added lower epidermis + cuticle) which Claude snapped to palette + solid-filled; marked an **"outside the section"** category; wrote + approved **midrib + bundle-sheath lore** — all nine speak, validator fully green. Honest correction logged: the earlier "5 phantom tissues" was overstated (phloem/upper epidermis were real but small). **[UPDATE 2026-07-22 (cont. 2): AUDIO = the showcase direction; TERM EXPLORER added.]** Reframed audio as the showcase (reviving the 1989 "names pronounced + meanings shown"). Pronunciation reframed as **FRICTION** (scales to the ~100 Kīpuka names; a whole chapter planned; anchor story = Cecil Johnson's "this is my good friend, *Hibiscadelphus giffardianus*"). Empirical ElevenLabs test (proj_audio.md): **IPA phoneme tags work on turbo v2, not flash v2.5** → sparse IPA-override approach. **Built + deployed the term explorer** — a per-tissue card with a **Say-it** button (turbo v2 + optional IPA), a plain-English **gloss**, and **etymology/roots** (lore extended; glosses/etymologies first-pass for Kim to refine). **NEXT TASK (Kim, if the feature reviews OK): the deferred top-to-bottom AUDIT** (efficiency/API-dependence — now settled as live-on-purpose; live-LLM; multi-image extensibility; maintainability), + the small audio intro, then the document. Full detail + log in proj_AI_Microscope.md. **[UPDATE 2026-07-22 (cont. 3): AUDIT DONE; app FEATURE-COMPLETE.]** Term explorer confirmed ("excellent addition"). Ran the top-to-bottom audit (report `AI_Microscope_audit.md`); deployed the agreed fixes — audio management (newest-wins, no overlap), a **slide-picker + `slides.json`** (scaffolds future root/stem/species; one slide now), **calibrated aspect-safe magnification** (one `cropGeometry` helper), honest relabels, a11y touches. Gemini polish KEPT (Kim's call). Added a **launch audio intro** (Kim's welcome, stored in `slides.json` as data) and relabeled the toggle **"Before the lab — preview" / "After the lab — review."** **Additional perspective (Kim): the "BOOKENDS" pedagogy** — the sim is a friction-free PREVIEW before the real lab and a consolidating REVIEW after (remove friction + induce review); the *why* of the tool and a spine for the document. **The app is feature-complete as a tool.** NEXT: Kim to choose — **audio round 2** (pronunciation dictionary / CMU / UK-US / seed variability fix) or open the **DOCUMENT**. **[UPDATE 2026-07-24: DOCUMENT DRAFTED — the project's purpose.]** Drafted **"Preview & Review"** end-to-end with Claude: **Preface + 9 chapters** in the checklistr multichapter-Quarto house style (first-person, joint byline, → kimbridges-documents), all in `AI_Microscope\documentation\` and **Kim-approved on read** (light voice edits pending). Arc: 1989 idea too early → the era's constraints → the 2026 rebuild (process-not-product) → a-tool-not-a-spy → teaching the color map to be honest → the names (pronunciation as friction, term explorer, kept variability) → the bookends (preview/review win-win) → audio + the frontier → what the rebuild taught (closes the circle to the 1989 screen). Two mid-session additions folded in: the **touch-in/audio-out asymmetry as a PRIVACY rationale** (Ch.8 — output via earbuds is private; voice input goes public, re-introducing friction) and **"the art of teaching is knowing what not to teach"** (Kim's students Crawley & Westoby → kim_association_index **Theme 13**; Ch.9). The old "seed variability fix" is **superseded** — run-to-run pronunciation variability is now a **KEPT FEATURE**. REMAINING (tomorrow): the **Appendix**, **figures**, a **cover photo + logo** (Kim), then the **Quarto scaffold + deploy** to kimbridges-documents. **[UPDATE 2026-07-25: BOOK ASSEMBLED — Appendix, cover + logo, Quarto scaffold, figures.]** The **Appendix** ("How it's built") is drafted — the argument that almost nothing a student sees is code, it is data: `slides.json` (launch intro stored as DATA), the per-slide manifest (`"match": "exact"`, `pct_basis` written into the file), `botanical_lore.json` (eight fields, `say` kept separate from `proper_name`), then keys-on-the-server, the validator, and how to add a slide. Kim made the **cover** (`ai_microscope_cover_art_text.png`, 850×1000 — a phone in a dorm room showing the leaf section, title set in the art) and a 250×250 **logo**; he caught his own title error on the first pass and reshot it, and shortened the subtitle to *Rebuilding the AI Microscope*. The **Quarto book scaffold** (`_quarto.yml`) is written and the book **renders clean end-to-end** before further content work, per the checklistr pattern. **Seven screenshot figures** are placed with numbered captions (interface, a wrong answer handled, tissue map, 65% overlay, term card, review stage, splash), captured with Playwright against the app served locally; Kim: "the figures are well placed and the captions do the work. **No text references are needed**" — so the prose carries no `@fig-` cross-references by decision. A **callout at the top of the Preface** links the live simulator. One bug worth remembering: a figure anchored mid-paragraph rendered inline with no caption and a clean `quarto render` exit code — caught only by screenshotting the output (now Finding 016). Three infrastructure lessons logged as **Findings 014–016**. **REMAINING:** the data figures (color_audit and friends), an optional image downsize (~12 MB of screenshots displayed at ~340 px), then the **deploy to kimbridges-documents**. The app stays **frozen** pending the plant-anatomist review. **[UPDATE 2026-07-25 (cont.): PUBLISHED - the project's purpose is delivered.]** Three **data figures** built in R on Kim's machine from `documentation/aim_figs.R` (kept as a deliverable): storage cost per slide 1989-2026 on a log scale (Ch.2), distinct colours found inside each tissue's region of the old blended map (Ch.5, phloem 28,412 shades across 34,036 pixels - the chapter's argument made visible), and tissue abundance as a share of the leaf footprint (Ch.5). Okabe-Ito, never colour alone, SVG. The proposed pronunciation before/after figure was **cancelled by Kim**. Two annotation collisions were caught only by generating PNG proofs and looking at them (Finding 016 again: the exit code is not the artifact). Kim's one criticism produced a reusable rule: the charts looked "pushed to the left," because `.column-page` widens the container but leaves a natural-width SVG flush left and `fig-align="center"` cannot fix it - **`.column-body-outset` plus `width=100%`** does, verified by measuring the rendered DOM at three viewport widths (now in style_multichapter_doc.md Section 6). One prose change at Kim's request: Ch.5 now reads "colors that were **likely** not in the image," closing the chapter's last overclaim. A **one-page continuous edition** (`_onepage.qmd`) was also built but is not deployed. **The document is LIVE at https://kimbridges-documents.netlify.app/ai_microscope/ - the nineteenth document on the site** (folder `ai_microscope/`, stub `docs/ai-microscope.qmd`, categories AI / Botany / Design; Kim drag-deployed to the EXISTING tile). Kim: "Perfect! It worked nicely. The charts center well. The document is on-line!!!!" **Finding 017** logged: `quarto::quarto_render()` works through the R bridge despite the shell-execution block, so renders need not be handed back; do not set QUARTO_PATH. **Focus readiness Ready -> BLOCKED:** everything asked for is delivered; the only open dependency is the external plant-anatomist review, with the app deliberately frozen until it lands. Optional and unblocked: audio round 2, the image downsize, publishing the one-page edition.
+
+<!-- superseded 2026-07-26: the briefing_book HOLD IS LIFTED -- The Briefing Books PUBLISHED 2026-07-25 to kimbridges-collections without waiting further on Dr. McClatchey's critique (prototypes out for review beats polish). The project stays the field-botany umbrella, now Active / Ready. Its Active Focus block is retained below for context. -->
+**Active Focus (2026-07-16, evening): "briefing_book" — a program for DATA-DRIVEN SPECIMEN COLLECTION; the umbrella over the field-botany cluster.** The reopened checklists work (time & phenology layer -> conflict-sheet online scans -> a design conversation) reframed into a new umbrella project, **briefing_book** (proj_briefing_book.md). Primary deliverable: a READ-BEFORE artifact structured as a per-site **COLLECTION of PDF reports** (not one document) — PDFs chosen deliberately: field-friendly, hand-shareable to colleagues, baggage-reducing, a concrete gift from the expedition (a friction + reciprocity choice). **Two-facing purpose:** optimize NEW collections (targets / easy wins / findability / decks / nested-radii maps) AND strengthen PAST ones (resample ambiguous localities; resolve det-conflicts — now desk-resolvable via BISH scans; dedup; **repatriate** corrected data to Bishop/NTBG/HAVO/place). **Method-spine = FRICTION** in all its forms (attention/cost/omission/access/knowledge), staged before/during/after the field day; **ethic = RECIPROCITY** (respect prior effort; give data back). Modular **report catalog** (universal: place-at-scales, scope-aware checklist, easy wins, high-value targets, contested IDs, findability+limits; conditional: climate/site factors=site_extract, recommended decks=deck_discovery, repatriation packet, collecting history). This is the PARENT that makes checklists/checklistr, specimen_labels/vouchr, site_extract, deck_discovery one body of work. **START: Kīpuka Puaulu** — prototype ONE report first as proof (Kim to pick: R1 scope-map foundation vs R3+R4 targets). Full framing in proj_briefing_book.md; design detail in `checklists\briefing_book_ideas.md`; substrate already exists in `checklists\kipuka_puaulu\`. **SESSION CLOSE 2026-07-16:** FOUR prototype reports built for Kīpuka Puaulu — R1 (place/scope), R3+R4 (targets, with a reusable IUCN-via-GBIF conservation layer), R5 (contested identities, embedded scans), R10 (herbaria & collectors, the herbarium-visit companion). House style settled (multi-page, hint-rich with family+lifeform, honest, larger type). Corrected site centre 19.44095/-155.30295. Kim's real HAVO trip (postponed 2 wks by illness, now recovering) is exactly what these serve. RESUME: R7 (site_extract) / retrofit type on R1,R3+R4,R5 / package the report-emitter. Full detail in proj_briefing_book.md. [2026-07-17: R7 added (5 reports); type standard codified; **cross_project_updates.md** started as the backport list — briefing_book is a test/demo bed for earlier tools.] [SESSION CLOSE 2026-07-17: R7 + Field Card built; Kīpuka set COMPLETE (5 reports + card). NEXT (tomorrow): retrofit type on R1/R3+R4/R5, BIND the site briefing book (cover+TOC), then a second site (ʻIliau Loop, dry contrast). See proj_briefing_book.md.] [2026-07-17 SESSION CLOSE: TWO briefing books done (Kīpuka Puaulu 18pp; ʻIliau Loop 14pp). Added R2 Master List to the catalog; naming rule (Kīpuka Puaulu, never 'Kīpuka'); Santalum gap finding. ★ NEXT SESSION STARTING TASK = the KĪPUKA PUAULU UPDATE: naming pass + add R2 master list + R1 voucher label + re-bind. Details in proj_briefing_book.md.] [STATUS 2026-07-17: TWO complete briefing books (Kīpuka Puaulu 22pp; ʻIliau Loop 14pp) — full model proven on two contrasting sites. **ON HOLD pending Dr. McClatchey's critique (Sunday)**; next week fold into checklistr. Focus readiness: Blocked. Full status block in proj_briefing_book.md.]
+
+<!-- superseded 2026-07-16 (evening): the checklists design-thread block below was elevated into the briefing_book umbrella project (see block above). Retained for context. -->
+**Active Focus (2026-07-16): "checklists" REOPENED — expanding the published checklist engine with new analytical lenses. First aspect: a TIME & PHENOLOGY layer over dated specimen records.** The `checklistr` package + book *"A Checklist Is an Argument"* shipped 2026-07-09 (both live); Kim reopened the work to expand it, and — of four candidate directions (new data dimensions / sites / engine features / sources) — chose the **time & phenology layer** first. Built live in RStudio (r-studio/ClaudeR, `library(checklistr)`): **`kipuka_puaulu/time_tools.R`** — `specimen_phenology()` (collection-month distributions + an honest collecting-calendar confound diagnostic) and `specimen_recency()` (per-taxon first/last year, span, gap; native/alien first-DETECTION curves), plus `plot_phenology`/`plot_arrival_curve`/`plot_recency_segments`. Verified on the canonical Kipuka pull (379 raw -> 268 institution-deduped, 150 species). **Two honest findings, both reinforcing the book's "measures the collecting, not the flora" thesis:** (1) the aggregate month signal is a *calendar of visits, not of flowering* — the 1979-80 survey (42% of records) collected Jan/Aug/Sep/Oct and NOTHING in Mar/Apr, vs Mar/Apr peaks every other year; calendar concentration r=0.10, 63% singletons, only **4 taxa** collected enough to attempt phenology and those campaign-dominated. (2) **first detection != arrival** — 76% of alien first-detections (34/45) land in the single 1979-80 survey (weeds present earlier, just uncollected); earliest record = **Rock 1911 *Psychotria hawaiiensis*** (native, matches prior verification); a "possible loss" list of 8 discovery-era single-record native ferns (re-survey targets, not confirmed losses). Figures `fig_phenology_calendar.png` / `fig_arrival_curve.png` / `fig_recency_segments.png` in `kipuka_puaulu/`. Full state in **proj_checklists.md** (2026-07-16). **Next (Kim to steer):** fold `time_tools` into `checklistr`; run the lenses on ʻIliau (dry, modern-collector) for a two-site contrast; or another expansion aspect (iDigBio 2nd aggregator; conservation status + selectable basemaps; third gradient site). **PAUSED 2026-07-16 (a NEW DOOR):** the conflict-scan work opened two linked concepts, captured in `checklists/briefing_book_ideas.md`: (1) spatial *sensu lato/stricto* via NESTED RADII (kīpuka-core / 500 m / 2 km) + rich map symbolism; (2) a PROCEDURAL 'briefing book' checklist (vs the occurrence checklist) — a memory prosthesis for an expensive field day, 6-chapter architecture (place-at-scales, scope-aware list, easy wins, high-value targets, contested IDs, findability+limits), two registers (read-before doc + field card / vouchr deck), honest staleness≠rarity caveat. Also this session: all 4 conflict-sheet SCANS are imaged on BISH → the 3 real det-conflicts are now DESK-resolvable (diagnostics in `kipuka_puaulu/conflict_diagnostics.md`). **RESUME:** Kim to say which register is primary + his thoughts; then design/build.
+
+<!-- superseded 2026-07-16: checklist work REOPENED as Active Focus for expansion (see block above). The 2026-07-05 → 2026-07-09 block below (checklistr + book, COMPLETE & PUBLISHED) is retained for context. -->
+**Active Focus (2026-07-05): "checklists" — NEW project: regional plant checklists from herbarium records.** A reusable capability — given a place (point+radius or polygon), pull preserved-specimen records (GBIF first; iDigBio / Bishop Museum later), normalize verbatim determinations to accepted species, collapse synonyms/infraspecific names, assign biogeographic status, and emit a clean, auditable checklist for field studies. Follows the explore→package→describe arc (lists→listsr, seasonality→seasonalityr). **First worked site: Kīpuka Puaulu (HAVO).** From a GBIF query (preserved specimens, Plantae, 2 km around 19.437 N / 155.296 W; 385 records, accessed 2026-07-05) → **157 vascular taxa** (150 species + 7 genus-level) + 4 mosses: **85 native** (49 endemic, 36 indigenous), 57 naturalized, 12 planted/cultivated (a legacy forestry-trial cluster — redwood, cypresses, pines, pecan, walnut, chestnut — near the kīpuka), 3 uncertain. BISH/BPBM supplied 224/385 specimens; the endemic *Hibiscadelphus giffardianus* (type locality = Kīpuka Puaulu) is present, confirming aim. Build is reproducible (`build_checklist.py`) and self-checking (`verify.py`: cleaned list reconciles to all 385 raw GBIF names, 0 missing/0 mismatch). Files in `Projects\checklists\kipuka_puaulu\`; full state in **proj_checklists.md**. Opened in a session running on **Opus 4.8** (the Fable 5 trial planned in proj_PKM.md 2026-07-02 has NOT yet occurred — an earlier draft here wrongly attributed this session to Fable 5; Kim caught it, corrected 2026-07-05); the **R server (r-studio/ClaudeR) is now enabled** for the generalization + live-verification steps ahead. **Open / next:** Kim spot-checks the status/taxonomy calls (esp. `?`-flagged names + the *Castanea dentata* planting-vs-mislabel question); decide the generalization target (an `rgbif`-based `checklist_from_gbif()` with backbone/WCVP synonym resolution + a Hawai‘i status table); optional 500 m core-only contrast run; optional specimen-level pull (collector/date/catalog/coords) for mapping + phenology. Sibling project: **specimen_labels/vouchr** (same herbarium-record substrate, opposite end of the collecting workflow). **Progress 2026-07-05 (cont.):** built a live-in-RStudio **specimen-level layer** (`collector_tools.R`) — collector-profile + collecting-timeline lenses over the flowering-plant records (1911–2024; three eras: Rock/Degener/Fosberg discovery → 1979–80 HAVO survey blitz → scattered modern), verified against known history (Rock 1911; Baker-1975 dual-*Hibiscadelphus* corroborates the outplanting note). Then made **dedup an explicit early tool** (`dedup_specimens()`): **BISH & BPBM are both Bishop Museum** and systematically double-entered — raw 249 → 167 flowering-plant specimens, Cuddihy 99 → 50; honest `*_dedup.png` figures replace the raw ones Kim sent McClatchey. Also found 8 single-sheet BISH-vs-BPBM determination conflicts (flag for the checklist layer). **Focus readiness promoted Exploring → Ready** (Kim to confirm). **RESUME:** `source(collector_tools.R)` + its worked example; then carry the determination-conflict flag into the checklist, add species-accumulation + collector×taxa lenses, then generalize toward `checklistr`. **Progress 2026-07-05 (cont. 3, after a break):** formal session-start run; **carried the determination-conflict flag into the checklist** — `detect_det_conflicts()` added to the toolkit, `det_conflict`/`det_conflict_note` columns added to the checklist (7 taxa flagged: 5 doubtful, 2 review). Of the 8 same-sheet BISH-vs-BPBM conflicts, 4 are benign and **3 put two real taxa on one sheet** (*Ludwigia*/*Hedyotis*, 2×*Corylus*, 2×*Pyracantha*) — each likely a phantom taxon in the facet checklist; which name is right needs the physical Bishop sheets. **Progress 2026-07-05 (cont. 4 & 5): all four specimen-level lenses now built.** Species-accumulation (discovery curve + Chao1/Chao2/jackknife completeness): **64% of taxa are singletons**, curve still climbing at 100 collecting events, ~30–60% complete — with two honest caveats (herbarium collecting inflates estimators; GBIF ≠ the flora, so it flags digitization gaps). Collector×taxa: specialist botanists skew native, the 1979–80 survey captured the invaded state (Anderson = the planted trials); **79% of taxa collected by one collector; Cuddihy uniquely contributed ~42** — a thin, campaign-dependent record. Toolkit (`collector_tools.R`) now covers fetch, collector-consolidation (+ Jr/Sr suffix fix), dedup, determination-conflict detection, collector/date lenses, accumulation/completeness, and collector×taxa. **Progress 2026-07-05 (cont. 6): `checklistr` R package scaffolded** (new project, proj_checklistr.md) — the tested tools packaged (18 exported fns, 7 modules, roxygen docs, testthat); built live in RStudio, **R CMD check 0/0/1, 24 tests pass**. The checklist *build* step itself is not yet in the package (still `build_checklist.py`). **Next: run checklistr on a few contrasting locations** (Kim's goal — a wetter/drier or better/worse-collected site) for comparison; then generalize the checklist build and push to GitHub. Ran a first contrast site (**ʻIliau Loop, Kauaʻi** — dry, mainland-herbaria-held, modern Ken Wood collecting, 0 conflicts; vs Kīpuka's mesic/Bishop/1980-survey) which validated `checklistr` on a genuinely different flora. **RESUME TOMORROW (2026-07-05 close):** the **checklist BUILD** — generalize `build_checklist.py` into `checklist_from_gbif()` (GBIF-backbone/WCVP synonym resolution + status lookup + det_conflict flagging) so a checklist can be *generated* for any site, not hand-built; that's the missing keystone. Kim is also contemplating a **Quarto document** (the casual-question→package→two-site-contrast story). **Progress 2026-07-06: KEYSTONE done — `build_checklist()` + `add_lifeform()`.** A checklist is now GENERATED for any site (names via GBIF backbone → 150 accepted species at Kīpuka, exact match to the hand-built list; dedup; det_conflict; lifeform via GIFT trait 1.2.1 + clade/genus fallback = fern/graminoid/tree/shrub/herb at 100% coverage, source-tracked). Generated checklists saved for Kīpuka + ʻIliau; ecological signal already (dry ʻIliau has fewer ferns). GIFT installed + cached (async, after the sync pull dropped the bridge → full RStudio restart). testthat 24/24; 23 exported fns. **`add_status()` mechanism built (2026-07-06):** status = species×place relation, so a pluggable regional overlay (no baked-in table) — proven on the curated Hawai‘i statuses (85% match; the 15% gap = GBIF-vs-Wagner accepted-name differences). Generated Kīpuka checklist now carries all fields (name/family/class/n_records/det_conflict/lifeform/status). **Global status default DONE (2026-07-06):** `status_gift()` (GIFT Hawai‘i lists → endemic/indigenous/introduced) + a `name_backbone_checklist` crosswalk (POWO was Cloudflare-blocked). **Verification payoff:** GIFT vs the curated Wagner authority agree 87% on Kīpuka; the 14 disagreements cluster into two failure modes of the global source — it under-calls fern endemism and mis-flags pantropical natives (e.g. *Dodonaea*) as introduced — i.e. the disagreements point a specialist at exactly the taxa needing a regional eye. The checklist is now fully GENERATABLE with every field. 25 exported fns, tests 24/24. Small refinements + full R CMD check re-run remain; then GitHub + Quarto doc. **RESUME NEXT (Kim's stated goal, 2026-07-06 close):** clear the small refinements (a disagreement-flag helper in `add_status`; firm up the name crosswalk; cache-name fix; **re-run the full R CMD check**) and **push `checklistr` to GitHub** — then get into the **Quarto document** with the coding + GitHub business behind us. Doc spine idea (Kim): *conflict = where experts disagree* — the det_conflict and status-disagreement fields as a map of contested botanical knowledge; plus the honest-data + digitization-gap themes. **Progress 2026-07-08: coding + GitHub DONE.** Cleared the refinements — a **disagreement flag** folded into `add_status()` (`verify_against=`/`status_agree`; *Dodonaea* correctly flags the Wagner-vs-GIFT disagreement), `crosswalk_gbif()`, the `status_gift()` cache fix — **full R CMD check 0/0/1** (run as async job past the bridge timeout), and **pushed to GitHub: https://github.com/kimbridges/checklistr** (public; `data-raw/` ignored). 26 exported fns, tests green. **The engine is feature-complete, checked, and public — coding/GitHub behind us. Quarto document UNDERWAY (2026-07-08): "A Checklist Is an Argument"** — conceptual-base-dominant; in `checklistr/documentation/`, → kimbridges-documents. Spine: *conflict = where experts disagree* (record-vs-itself + authorities-vs-each-other) + the scale point (herbarium = taxonomic accumulation over a region, not a point census; the map makes it legible) + honest-data/digitization-gap themes. **Preface drafted + APPROVED** — Kim gave it its origin story (decades walking the Kīpuka loop teaching students the names; memory now faded; reaching for a checklist that doesn't exist for a *particular* place — the real "why") + the "two readers" theme. `doc_plan.md` holds the 9-chapter scaffold. **RESUME (doc drafting):** scaffold chapter stubs + appendix so it renders; copy cached data → `documentation/data/`; ideation files for scale/conflict/status; then draft chapter-by-chapter (Kim reviews each). Coding + GitHub done (checklistr live, 0/0/1). Both checklists + checklistr: Active / Ready. Full state in proj_checklists.md + proj_checklistr.md. **Progress 2026-07-08 (evening) — doc drafting well underway; 4 chapters drafted + Kim-approved, book renders 11/11.** Propagated the approved chapter template to all stubs (book renders end-to-end, offline). Drafted and read-approved: **Preface**; **Ch.1 The Casual Question** — now defines GBIF on first use and carries **Kim's herbarium-access story** (the life-threatening Central National Herbarium visit near Kolkata; the COVID-era US-herbaria closures) as the human reason digital records are "more than a convenience"; **Ch.3 The Question of Scale** (conceptual) — Kim's first-person voice; taxonomic-vs-ecological collecting; a **live static street-basemap specimen map** (maptiles/tidyterra; 164 records → 36 locations, one nominal locality holding 34) + the georeferencing-artifact caveat as its own paragraph; **Ch.4 How Complete Is It?** (conceptual) — lead with Chao1's seductive **45% complete / ~355 species**, overturned by the **discovery curve** (creep → 1979–80 survey spike → flat tail); reframe (Kim's pick): an abundance estimator on herbarium data **measures the collecting, not the flora** — a diagnostic of collecting *mode* that *varies by place* (not a universal verdict; ethnobotanical corpora would read ecological); **Ch.5 The Same Specimen, Two Names** (conceptual) — det-conflict = the herbarium contradicting itself via **BISH/BPBM double-entry** (generalized past Bishop — any thin-IT herbarium can double-submit; visible only pre-dedup); **8 conflicts sorted into 4 kinds** (Kim verified the botany): spelling / revision / congeneric disagreement / gross error (*Ludwigia* Onagraceae vs *Leptopetalum* Rubiaceae); phantom taxa; the weed-cluster ("collect everything" contract → residential weeds least-determined) as a cautionary map of where trouble arises — mild at HVNP, serious elsewhere. Ideation files: `background/chapter_scale|completeness|conflict_ideas.md`; Kim's ethnobotanical-collections extension banked in `background/source_stories.md` for the frontier chapter. New doc data: `specimens_geo.csv`, `specimens_raw.csv`, `kipuka_basemap.tif`; maptiles + tidyterra installed. **RESUME (2026-07-08 evening close — Kim not 100%, a cold; paused for the day):** Kim reads **Ch.5**; then draft **Ch.7 Status** (the deeper "experts disagree"; GIFT-vs-Wagner 87% / 14-disagreements payoff; needs an ideation file first) + the mechanical chapters (collectors, lifeform, two-islands, limits, appendix), then cover/logo art + deploy to kimbridges-documents. checklistr + checklists: Active / Ready. **★ COMPLETE & PUBLISHED (2026-07-09) — focus slot now OPEN.** Finished the book: **Ch.7 Status** (GIFT-vs-Wagner 87%; the 14 disagreements split into Kind A = global-source blind spot / Kind B = genuine biogeographic debate — Kim verified; ferns the fault line, botanical + cultural; *Dodonaea* opens), the **knowledge-engine** keystone (aggregation is not just access but a way to sharpen species knowledge; NTBG/institutions as a third audience), the five mechanical chapters (Collectors, Lifeform, Two Islands + the **ʻIliau street-basemap map**, Limits, Appendix), and the **cover + logo** (Kim's trail photo + a Claude-built legible checklist card, composited via Kim's OpenAI tool). **Joint byline restored** (*K. W. Bridges and Claude, Anthropic*). **Deployed LIVE: https://kimbridges-documents.netlify.app/checklistr/** (package already live at github.com/kimbridges/checklistr). Both `checklists` (exploration) and `checklistr` (package + document) set **Complete / Not applicable** (posted-on-website Complete rule). Full narrative in session_log.md (2026-07-09); state in proj_checklistr.md + proj_checklists.md. **Next Active Focus: Kim to choose.**
+
+<!-- superseded 2026-07-05: specimen_labels focus retained below for context -->
+**Active Focus (2026-07-02): "specimen_labels" — `vouchr` is R CMD check-CLEAN (0/0/1) and LIVE on GitHub; now writing the package-then-describe DOCUMENT. Quarto scaffold built (`specimen_labels\documentation\`, renders clean); **Introduction + Chapters 2–4 drafted and committed** (`index.qmd` Linnaeus opening; `field-capture-system.qmd` the three things + ID tag; `mechanics.qmd` the phone as integrator + QR reveal + photograph the CARDS keyed by number, not the specimen; `capture-once.qmd` one record → label + log, "two views, one truth"; `decks.qmd` the filter, three families, facet+value-set, path-not-destination; `derive.qmd` the fixed half from the coordinate pair, scale/source/limits honesty, works-backwards; `discovering-decks.qmd` the deck-discovery method; `closing-the-loop.qmd` the whole system on one photo); **label reframed as Darwin Core DATA** (print optional; provisional-label fallback = equity); **three new chapters** — "The Workflow" (after Purpose), a fragility chapter "How It Holds Up," and **"The Field Log" as the closing challenge** (folds in the old "Limits and the Frontier"; the circle closes — the log goes from lost in the Intro to the frontier at the end); "coordinate pair" doc-wide; joint authorship. Tail: Purpose · The Workflow · How It Holds Up · The Field Log · Appendix (12 ch + appendix, renders clean). **★ ALL 12 CHAPTERS DRAFTED & COMMITTED (2026-07-03)** — Intro + 2–12, book renders clean, no narrative stubs. Finale "The Field Log" closes the circle to Linnaeus' Sweden and ends on the question "What will you make of them?"; new "caption as door" figure convention. **★ Remaining (production pass):** wire live worked examples + figures, the function-reference Appendix, a provisional-label image, cover/logo art, the document title, a read-through, then deploy to kimbridges-documents.**
+A field-capture system for botanical collecting: photograph a set of QR-coded cards, keyed by the specimen's
+collection number (the specimen itself stays bagged), at the moment of collection so that **one small act yields
+two co-equal products with no transcription** — the **herbarium label** and an **archivable field log**. Category data rides on **modular, discipline-specific decks of QR cards**
+(phenology, size, …); the controlled vocabularies are the **creative heart**. Validated this session: a reader can
+extract **each** of several QR codes from a single photo (the two-QR demo image was exactly that test), which is
+what makes the multi-card decks possible. Architecture: **capture once, project two views** (label = one record;
+log = all records, so they can't disagree). The 2020 prototype `QR_procedures.Rmd` is a chunk toolbox (QR
+generation, EXIF, terrain, ZBar scan) — prototype-level, with dependency drift and a **hardcoded Google API key to
+rotate before any sharing**. **Open:** a broader project/package name (the folder name undersells it), the
+**deck + encoding-scheme design** (the heart), and the terrain-scope boundary (overlaps gePoints/geContour).
+Full concept in **proj_specimen_labels.md**; informal design narrative in
+`Projects\specimen_labels\design_notes.md`. **Progress 2026-06-29:** the **deck-driven maker is built**
+(`make_qr_cards.R`, verified live; `qrcode` 0.3.0 installed; `QR_field_notes_cards.pdf` produced), the
+**encoding scheme is settled** (self-describing `Field: value`, `ecl="H"`, no codebook), and the **design
+foundations are captured** — the **interleave** method (code + informal writing together), the **friction
+trade + graceful-degradation floor** (number card + photo is the non-negotiable minimum; decks are optional
+enrichment), the **three deck families** (identity / observation / free-text) with the **screw-post + card-holder
+handling design**, the **deck-count filter**, and the **"why QR?" hurdle** (we hold/photograph text, not scan a
+link) as the document's opening move. **Progress 2026-06-30 (Track B label-field survey):** measured **field occupancy** on GBIF genus *Metrosideros*
+(PreservedSpecimen, 18,895 records; n=182 sample) — data + notes in `Projects\specimen_labels\label_survey\`.
+All sources share **Darwin Core**, so occupancy (not schema) is the question. Spine (name/collector/date/
+catalog/institution) >90%; coordinates 73%; **phenology only 3%**; `habitat` is a catch-all (~18% noise, ~24% a
+jammed template). Two principles crystallized: **geography needs no cards** (GPS + reverse-geocode gives the
+place hierarchy — derive it), and — from Kim's `Site_Extract.pdf` (Koko Crater terrain from name + lat/long) —
+the **derive-vs-observe partition**: every field is either derivable from coordinates + reference layers
+(place, physiography, geology/soil, climate → compute, never card) or must be observed at the plant (phenology,
+phenotype, community, disturbance, human metadata → the only thing the **decks** carry). This resolves the
+terrain-scope open question (`Site_Extract` = the derive engine). **Progress 2026-06-30 (cont.):** built that
+derive engine — **`site_extract.R`** extracted from the 2020 prototype, cleaned (`raster`→`terra`, key→env var,
+dead code gone) and **verified live in RStudio**: reproduces `Site_Extract.pdf` exactly and `site_report()`
+regenerates all four figures; a second site (Mt Fuji) matched Kim's aspect annotation. **Progress 2026-06-30 (cont. 2):**
+did the DEM upgrade — **`site_extract.R` v2** with a **source switch** (`aws` default: elevatr terrain tiles,
+free/keyless/global, auto-fine over the US via 3DEP/lidar; `google` legacy fallback) and **analysis-scale-as-a-
+metres-parameter** (a live head-to-head showed the old 3×3 *overestimated* slope 40°→~31°, and roughness is
+scale-dependent). Verified live (Koko, Fuji). Also named a **second kind of friction — attention friction**:
+fixed site variables are overlooked in the crowded field moment, so deriving them in post-processing protects
+attention for the ephemeral observation-only data (→ `design_notes.md`). **Progress 2026-06-30 (cont. 3):** tested whether **canopy height is derivable from a
+coordinate** (DSM − DTM, extending derive-vs-observe into vegetation structure). Set up an **OpenTopography key**
+(`OPENTOPO_KEY`, unlocks `alos`/`cop30`/`fabdem`). ALOS − 3DEP at three Kīlauea sites (grassland control 0.6 m ✓,
+mid ʻōhiʻa forest 7.5 m ✓, but **tall Kīpuka Puaulu 8.0 m — the method saturates over tall closed canopy**). So
+the cheap difference is a canopy *detector*, not a tall-canopy *measure*; a GEDI product (ETH 10 m / Meta 1 m) is
+the right tool for a real value. (Verification: Kim's ground truth caught the ceiling.) **Cross-check done (cont. 4):**
+against the **Meta/WRI 1 m GEDI-calibrated canopy** (streamed keyless from open AWS via `/vsicurl`), Kīpuka
+Puaulu reads **15.8 m** vs the DSM−DTM's saturated 8.0 m (grassland 0, ʻōhiʻa edge 4.3 both agree) — **ceiling
+confirmed**; use a GEDI product for any real canopy field. Also crystallized **physiognomy as a derived,
+collection-spanning habitat variable** and the **three variable axes** (derive/observe · per-specimen/
+collection-spanning · label-summary/field-note-detail). **Progress 2026-07-01 (collector-signature decks → the deck-DISCOVERY
+methodology):** on a `rgbif` full-DwC pull (US *Metrosideros*, 1985–2026, n=1,144), consolidated 413 collector
+strings → 126 primary collectors, computed each one's field-signature, and clustered → **four archetypes from the
+data alone** (taxonomic describers / ecological place-recorders / terse / machine-NEON; phenology near-zero across
+all → a cross-cutting deck). **The reframe (Kim, the key point):** the deliverable is **a methodology for
+*discovering* what decks are needed** (scope a DwC pull → consolidate collectors → cluster field-signatures →
+clusters = discipline deck-profiles; universal gaps = cross-cutting decks), not a prescribed deck list — general,
+self-updating, transmissible; deck design from opinion → measurement. Formalized as **`deck_discovery.R`**
+(`discover_decks()`, one call; validated on *Metrosideros*, heatmap figure saved to `label_survey/`); two friction
+anecdotes banked in `design_notes.md` (161-column voucher spreadsheet; 1970s instrument kit = the derive engine).
+**Method VALIDATED on a second taxon** — kudzu (*Pueraria montana*, n=911)
+gave *different* archetypes (taxonomic-describer gone; a georeferencing/monitoring stream appeared; phenology
+recorded; records sparser) — proving it adapts to the community, not a *Metrosideros* one-off. Both heatmaps in
+`label_survey/`. Then made the decks **concrete** — sharpened
+content features so taxonomic vs ecological separate cleanly, wrote deck files (`decks/deck_universal|taxonomist|
+ecologist.csv` in the make_qr_cards format; `deck_taxonomist_proof.pdf` rendered), and ran a **two-taxa stress
+test** (Metrosideros + kudzu): facets generalize (site-level, collection-spanning) but value-sets are local
+(substrate lava terms fail on the mainland) → a deck = **facet (generalizes) + value-set (local)**; the facet
+whose values break (substrate) is the one to **derive** from a geology/soil map, not card. **"Discovering decks"
+complete for now.** Substrate derive **built** into `site_extract`
+(`site_geology` Macrostrat + `site_soil` SSURGO/SoilGrids + `site_substrate`; verified). **Big-picture step-back
+(2026-07-01):** the project is a rethinking of field-data capture around the friction thesis — three built pillars
+(**Capture** QR decks / **Derive** `site_extract` / **Discover** `deck_discovery`) + one missing keystone. **Kim's
+decisions:** name deferred; deliverable = **package-then-describe** as a **single complex document**; **priority =
+build the reader/assembler** (close the loop; docs after the system is assembled). **Reader/assembler core BUILT + verified**
+(`reader_assembler.R`: cards + coordinate + time → ONE record → a herbarium **label** + a field-**log row**, both
+from the same record; spatial context all derived from the coordinate, only observation fields from cards). **The
+system is now assembled end-to-end** (Capture → Derive → assemble → two products). **Reader/assembler LAST MILE done (2026-07-02):** on a real
+phone photo of 4 cards, `read_photo()` ran the whole pipeline — decode (UNION of pyzbar + OpenCV; no single
+decoder got >3/4) + EXIF (exiftoolr, GPS+time) → derive → **herbarium label + field-log row, fully automatic**.
+The full capture→derive→assemble loop is demonstrated end-to-end. Installed opencv-python + pyzbar in the
+r-reticulate venv. **First-pass R package `vouchr` BUILT + loads** (2026-07-02):
+`G:\My Drive\Projects\vouchr\` — DESCRIPTION / NAMESPACE / LICENSE / README / `R/` (the 4 modules); Kim's calls:
+name `vouchr`, all deps required; `pkgload::load_all()` succeeds, `read_capture()` runs under the namespace. Also
+fixed the urban reverse-geocode (`site_place` composes reliable admin levels) and settled the decoder (reticulate
++ pyzbar/OpenCV, since ZBar isn't on CRAN); captured the founding **data-equity motivation** (appendix). **Second pass done (2026-07-02):**
+`vouchr` is **functionally clean, tested, loadable** — import audit (no missing imports; NSE notes silenced via
+`globals.R`), all non-ASCII folded to ASCII, MIT `LICENSE.md`, a passing testthat suite. **★ Remaining:** a
+focused **docs pass** (roxygen `@export`/param tags on every function → man pages; note: don't run `roxygenise()`
+before tags exist or it clobbers the hand-written NAMESPACE), then **GitHub**, then the single **package-then-
+describe document**. **Other pending:** re-add map figures; why-QR demos; card-value refinement; legacy-enrichment
+batch (#20). **Other pending:** re-add map figures; why-QR demos; kudzu
+variety signal; the name; card-value refinement; legacy-enrichment batch (task #20).
+
+<!-- superseded 2026-06-29 "OPEN" note retained below for context -->
+**Active Focus (2026-06-29): OPEN — to be chosen next session. The previous focus, "seasonality," is COMPLETE & PUBLISHED.**
+The seasonality book and its companion package `seasonalityr` shipped 2026-06-29 and are live at
+https://kimbridges-documents.netlify.app/seasonalityr/ (package: github.com/kimbridges/seasonalityr). Both
+`proj_seasonality.md` and `proj_seasonalityr.md` are marked Complete. The detail below is retained as the
+completion record.
+
+**seasonality (COMPLETE 2026-06-29) — book + package shipped.**
+The Quarto book in `Projects\seasonality\documentation\` is drafted end to end against `library(seasonalityr)`,
+**every chunk live-verified in RStudio (ClaudeR)**. Chapters, all Kim-approved on read: Preface (whale-call +
+voyage), Ch.1 the spine ("What Seasonality Is For"), Ch.2 climate diagram + **our own modern Walter-Lieth
+diagram** (no `climatol` dep) with a Rome temperate baseline and the Helmut Lieth story, Ch.3 the three channels
+(**daylength** + `plot_channel` + west-coast transect + cue-poor keystone), Ch.4 aridity / **water balance m**
+(Kim's favorite), Ch.5 the cue regimes (`classify_v2`; 21 cities → 9 regimes; desert trio = one regime, three
+phases), Ch.6 **Mapping the Regimes** (four maps regenerated via `regime_map_region()`: NA, NW Europe, East/SE
+Asia, Australia/NZ; the temperate-oceanic gap shown honestly), Ch.7 **Limits and the Frontier** (the honest
+close: gaps, the deferred reliability axis, the climate-change decoupling lever, a "try a transect yourself"
+invitation, the whale-call bookend, "Can you complete the voyage?"). **SHIPPED 2026-06-29:** cover/logo wired into `_quarto.yml`, full Quarto render clean on the first pass (10 pages,
+all figures, 4 embedded maps, no chunk errors), deployed to kimbridges-documents (rendered `_output` →
+`seasonalityr/`, listing stub + resources registered, site re-rendered, Netlify push), verified live and perfect.
+Open refinements (temperate-oceanic regime, 25° seam, Med-vs-oceanic, reliability axis, phase polish) are named
+in the book's closing chapter as future work, not blockers. Full completion record in `proj_seasonality.md`
+(2026-06-29) + `session_log.md`.
+
+<!-- superseded 2026-06-24 focus retained for context -->
+**Active Focus (2026-06-24): "seasonality" — classification BUILT and mapped; now entering the documentation phase.**
+The cue-regime construct is mature and validated. A **daylength (photoperiod) channel** (free, from latitude)
+joined temperature and rainfall; the **v2 classifier** gates the rainfall channel on the **water balance
+m = mean(P−2T)** (aridity = rain vs evaporative demand, not raw total), which reunites the SW desert trio under
+**reactive-rain (arid desert)** — phase-distinct (Mojave winter / Chihuahuan summer / Sonoran bimodal) —
+unifies the Mediterranean (LA+Rome), isolates hyper-arid (Cairo), and gives oceanic high-latitudes their own
+**daylength-cued (maritime)** regime. **Four validated continental maps** (W. North America, NW Europe, East/SE
+Asia, Australia/NZ) reproduce established climate geography *as cue structure* — highlights: Europe's oceanic
+Atlantic seaboard as daylength-maritime, Asia's **everwet equatorial cue-poor core** (the spine's keystone),
+and the **Darwin→Adelaide transect** across the concentric Australian continent. The companion package
+**`seasonalityr`** is built, checked (0/0/1, testthat 11/11), and **live on GitHub**
+(github.com/kimbridges/seasonalityr). **Decision:** the deliverable is a **Quarto document + the package**,
+**documenting the current state**, with open refinements named as honest future work (temperate-oceanic gap;
+25° tropical/extratropical seam; Mediterranean-vs-oceanic split; the deferred **reliability/interannual axis**
+and its climate-change payoff — cue decoupling). Kim added a **voyage framing** ("the fun is in the voyage… a
+destination just over the horizon… can you complete the voyage?"), held verbatim in `documentation/doc_plan.md`.
+**RESUME NEXT SESSION:** draft the document against `library(seasonalityr)` — Preface + Ch.1 on the spine and
+the voyage framing — per the plan/outline/figure-manifest in `documentation/doc_plan.md`. Files in
+`Projects\seasonality\` + `Projects\seasonalityr\`; full state in `proj_seasonality.md`, `proj_seasonalityr.md`,
+and `documentation/doc_plan.md`. (Paused before drafting — Kim's call, after a very large two-project session.)
+
+<!-- superseded Active Focus blocks retained below for context -->
+**Active Focus (2026-06-18, superseded): "seasonality" — transformed by its spine: seasonality as the *cue structure for biological synchronization*.**
+A place's seasonality is the set of **cues organisms use to synchronize life cycles** (flowering,
+migration, breeding); being out of phase is a steep genetic cost. A cue's worth ≈ **amplitude ×
+reliability**, running from **daylength** (perfect, universal at a latitude) through **temperature** to
+**rainfall/soil-moisture** (least reliable, often a *trigger* not a *predictor*). Our temperature/rainfall
+**channels are cue types**; channel substitution = cue substitution; the equatorial everwet core is a
+**cue-poor zone**. The day's arc: sandbox concept → built + validated the **WorldClim harness**
+(`seasonality_harness.R`: geodata point-extraction → indices Tamp, SI, cool_frac, gated bimod, totP, m) →
+**four transects** (west coast = Mediterranean→monsoon phase flip; Japan↔California = west/east-coast
+asymmetry; SE-Asia E–W strip = regime structure intrinsic to rainfall; East Africa = cross-equator
+hemisphere flip + equatorial bimodal hump). Central reading: seasonality is **regimes with breaks**, and
+the breaks are the type boundaries. Phase measure settled per zone (cool-season fraction in the
+extratropics; solar/calendar in the tropics). **Climate-change lever:** warming shifts temperature/rain
+while daylength is fixed → cue **decoupling / phenological mismatch**. Origin: Kim's Alaska whale-call
+story (kept verbatim in `proj_seasonality.md` → "The spine"). **RESUME NEXT SESSION:** build the
+**classification as cue regimes** (temperature-/rainfall-/daylength-cued, cue-poor) — adding an explicit
+**daylength** channel (free, from latitude) and a **reliability/interannual** axis (needs year-by-year
+data beyond WorldClim) — then map it. Files in `Projects\seasonality\`; full state in `proj_seasonality.md`.
+
+<!-- superseded Active Focus blocks retained below for context -->
+**Active Focus (2026-06-16): "lists" — PUBLISHED end to end (document live + `listsr` package shipped); the focus slot is open.**
+A stand-alone, hands-on document running ONE workflow (ragged list entry → frequencies → two-way table →
+similarity matrix → dendrogram → assessment-line groups → linked metadata), reframing "what to do with
+data" into "careful experimental design is what gets real value from data" and recurring the
+coenosr/whittakerr theme (groups are reproducible **constructs, not proofs**; they link to metadata).
+**Full spine drafted and verified live:** Preface · Getting the data in · A first look · The two-way
+table · Measuring similarity · The dendrogram · The choices that shape a tree · **Linking metadata**
+(stall communities corroborate the tree — cut into three, the groups *are* the three heritages; Cod the
+lone imported item cuts across) · **Assessment lines** (on Kim's real **Madison, WI produce** data:
+the most-variable-month rule gives four data-seasons — spring as the calendar has it, winter stretched,
+summer shrunk, a distinct harvest peak; fresh/storage metadata gradient confirms; plus an "order is not
+similarity" note on dendrogram rotation). A **function-reference appendix** and a **source
+acknowledgment** (thespruceeats.com) are in. **Engine extracted into a new R package, `listsr`**
+(proj_listsr.md): the list→tree pipeline + the assessment-line method (`recruit_heights()`,
+`assessment_cut()`), MIT, testthat 19/19, installed + checked + **pushed to github.com/kimbridges/listsr**.
+**DELIVERED 2026-06-16:** chapters wired to `library(listsr)`; Kim's careful read-through passed ("the
+arguments hold; the balance is just right"); the only fixes were three previews that still described the
+old paired-replicate design (→ most-variable-site rule); cover + navbar logo added (both authors
+credited). **LIVE at https://kimbridges-documents.netlify.app/lists/** (sixteenth document; deploy used
+the new R-`file.copy` of `_output/` contents — no nesting, "a very clean procedure now"). Companion
+package **listsr** live at github.com/kimbridges/listsr. Files in `Projects\lists\` + `Projects\listsr\`;
+full state in `proj_lists.md` + `proj_listsr.md`. **Focus slot OPEN — Kim to choose next.** Optional,
+for later: a listsr vignette **that points readers to the published document** (not a duplicate).
+**Dropped 2026-06-16:** the early-1970s dendrogram story and a navbar-logo crop (logo fits as is).
+(Kaka‘ako Birds remains queued — photo updates + rebuild + deploy to the Stories site.)
+
+<!-- superseded Active Focus blocks retained below for context -->
+**Active Focus (2026-06-15, earlier — queued): Kaka‘ako Birds — resuming to finish and deploy.**
+With coenosr shipped (see the superseded block below), Kim returns to the parked photo book **"The
+Birds Around Kaka‘ako."** The park trigger is met: **Dr. McClatchey's read came back positive** — he
+asked whether it was a subtle nudge to do the same for where he lives in Oregon (Kim: "Of course!"),
+a sign it landed as place-and-people rather than a field guide. Remaining work is Kim's: **update a few
+bird photos**, rebuild with `build_kakaako_book()`, then **deploy to the Stories section** of
+kimbridges-stories. Tracked in `proj_kimbridges_stories.md` (2026-06-15 log) and the book's
+`book_manifest.md`. ("My Name Is Nike" is resting a few days — a possible later move to the stories
+site. coenosr is fully done; the Ch 9 first-person enrichment was dropped as unneeded. The
+grouping→mapping idea will surface naturally inside the Braun-Blanquet cluster projects, whose purpose
+was vegetation units from the start — no notes propagated, per Kim.)
+
+<!-- superseded Active Focus blocks retained below for context -->
+**Active Focus (2026-06-15, earlier — coenosr PUBLISHED, project complete): Ceska / COENOS — infographic set for the
+coenosr story-document COMPLETE in draft (six figures).** Kim's direction: weave **infographics into the chapters**
+(several, one job each, consistent visual language, sparing text, colorblind-inclusive
+color) to support multiple learning modalities — reflecting Kim's strong preference for
+illustrating technical documents (now `kim_association_index.md` Master Theme 12;
+conventions in `style_multichapter_doc.md` §6). **Six figures DONE** in `Ceska\documentation\figures\`
+(all verified on Drive): `coenos_sort` (anchor scatter→diagonal), `coenos_trim` (set-aside-the-extremes),
+`coenos_timeline` (1971→1991→lost→2026), `coenos_sparsity` ("absence is data"), `coenos_s00_message`
+(the authors' notes in the decoded `.S00`), `coenos_honesty` (chain of approximations). Shared
+Okabe-Ito palette, CVD-safe; green `#009E73` = "kept/recovered". Kim approved each.
+**Figures placed (2026-06-15): the book is figure-complete.** All six SVGs inserted into their
+chapters (sparsity→Ch1, timeline→Ch2, .S00→Ch3, sort→Ch5, honesty→Ch7, trim→Ch8), each matched to the
+chapter's dataset; mapping in `Ceska\documentation\doc_notes.md`. The Ch8 worked example is now **wired to live coenosr** (`classify_species()` /
+`form_groups()`), verified in Kim's RStudio (ClaudeR) — all numbers reproduce exactly, chapter is
+fully reproducible. **Full document rendered cleanly (2026-06-15);** Kim read it end-to-end ("overall
+wonderful"). **Read-through fixes round 1 done (2026-06-15):** rewrote §4.3 grow→shrink (with an honest
+COENOS-grew-from-seeds sentence); applied a slight toy-data modification (remove F from market 1, add
+R to market 2) for realistic variability — two clean 5-species groups still recover, figures
+`coenos_sort`/`coenos_trim` regenerated, Ch 5/8 prose updated. **Read-through fixes round 2 done (2026-06-15):** unified terminology on "eligible" (Ch 1 bridge to
+the tradition's "differential"; Ch 4/8 aligned); added a .REL structure example (Ch 5); added a
+function-reference appendix (`function_reference.qmd`). **coenosr package bundle synced** to the
+modified toy (`inst/extdata/simple_10x15_*`); `devtools::test()` green (97 pass). **PUBLISHED (2026-06-15): the coenosr document is LIVE** at
+https://kimbridges-documents.netlify.app/coenosr/ — the fifteenth document in the collection (cover,
+all chapters, six figures, and the function-reference appendix in place). The coenosr package's
+updated toy data is pushed to GitHub. **The Ceska / COENOS "lost technology" recovery is now fully
+delivered end to end:** the faithful R engine (coenosr on GitHub) and the companion book (live). One
+deploy gotcha (copy the *contents* of `_output/`, not the folder — nesting caused a 404 + missing
+cover) is now recorded in proj_kimbridges_documents.md. **The Active Focus slot is open — Kim to
+choose next.** Optional leftovers: Ch 9 first-person enrichment; "My Name Is Nike" could also go to
+the stories site (Dr. McClatchey's review was warm). (Note: `getting_data_in.qmd` had reverted via the
+RStudio visual editor and was re-applied — if open in RStudio, close/refresh it.) **[UPDATE 2026-07-26: PRINT EDITION — the recovery reaches Adolf Ceska.]** Kim asked for a PDF of the coenosr document to **post to Adolf**, who is not answering email or checking Facebook. Chosen by Kim: **match the published site**, **print and post**, **no cover note** (his to write). Built **wholly in the cloud sandbox from the live site** — the R bridge was down and the coenosr source folder is not connected, so the Quarto/LaTeX route was out; the published site proved a sufficient source, a pattern worth reusing. **47 pages, US Letter**, full-bleed cover, colophon, a **contents page with real page numbers** (two-pass render: hidden 1px markers → pypdf reads the landing pages → numbers injected → front and body merged, which also keeps numbers off the front matter), all web addresses spelled out for paper. Three defects were caught by **rasterizing and looking**, none by exit code (Finding 016, again): an **inset cover** (fixed with its own zero-margin page), **collapsed code-fold blocks** that would have printed the code invisible (forced `<details>` open; body 40 → 44 pages, the measure of what was nearly lost), and one **right-clipped R line** from Quarto's `overflow: auto` (fixed, then verified by a pixel scan of the right margin across all 46 text pages — zero ink). Kim trial-printed it: "the pages work and the layout preserves the intent." **The principle Kim named, and the reason it is logged:** the work should respect the people who made the contribution and deliver in a form **they** can accept — a deliverable is not delivered until it reaches the person in the form that person can receive.
+**New chapter drafted (2026-06-15): "The Reason for Groups"** (`the_reason_for_groups.qmd`, wired
+after "A Clear Point of View"; personal close renumbers to Ch 9). Grew out of Kim's **grouping**
+discussion: what the groups are *for* — the table is stripped to find structure, the groups are where
+ancillary knowledge re-attaches; the keystone is **"Reproducible, Not Proven"** (group-derived stats
+can't validate the groups, but independent external data can corroborate them — the full scientific
+loop). New data `data/market_info.csv`. **Awaits Kim's read + a live render (ClaudeR)** where the
+literal group/essential vectors get wired to live `coenos_table()`/`classify_species()` calls. Sketch,
+decisions, and R follow-ups in `Ceska\documentation\doc_notes.md`. The rest of the document state is unchanged
+from 2026-06-12: `coenosr` complete on GitHub (testthat 97/97, check 0/0/1); story-document
+(Preface + 8 chapters + references) COMPLETE in draft; still open, all Kim's call — full
+render + read-through, optional Ch8/Ch2 first-person enrichment, a few coding details, the
+Netlify deploy. Figure plan + candidates in `Ceska\documentation\doc_notes.md`. Session
+record: session_log.md 2026-06-14. (Audio / Nike_challenge stands complete-in-draft, review
+reminder 2026-06-27.)
+
+<!-- superseded Active Focus blocks retained below for context -->
+**Active Focus (2026-06-13, earlier): Audio / Nike_challenge — the Nike_challenge
+test dialog became a written short story, "My Name Is Nike" (8 chapters, COMPLETE in
+draft).** Trigger: Dr. McClatchey, reviewing the rendered audio, made no comment on
+the audio (it sounded normal — the TTS emotion test effectively passed) and instead
+asked for "the next chapter of the story." Decision: write it, and as **written
+prose, not a TTS script** (audio is proven; the interest now is the efficiency of the
+written word, cf. "Orbits"). Eight chapters drafted chapter-by-chapter (close third,
+past tense, two-year provisional-PhD arc) by reconciling three assets: the audio
+office-confrontation, the "Nike and the Miracle Plant" PDF, and Kim's new yellow-name
+research-design storyline. Verification pass clean (design defensible; Mead/Freeman
+accurate and undecided; camu-camu botany correct; continuity fixed to a two-year
+clock). Saved at `Projects\Audio\Nike_challenge\Nike_story.md`; **kept in the Audio
+folder for now**, location revisit (Audio vs kimbridges-stories) after review. Kim
+sends it to Dr. McClatchey for reactions; **review reminder set for 2026-06-27.**
+**Next-session startup task (Kim):** reflect on the lessons learned — likely
+PKM-level meta-observations (a test becoming a story; the audio→written-word pivot).
+Ceska/COENOS is **parked** for a day or two and remains Active+Ready to resume
+(coenosr story-document complete in draft, awaiting Kim's read-through + Netlify
+deploy; state in `Ceska\documentation\doc_notes.md` and the superseded block below).
+Session record: session_log.md 2026-06-13.
+
+<!-- superseded Active Focus blocks retained below for context -->
+**Active Focus (2026-06-12, earlier — Ceska parked): Ceska / COENOS — the coenosr story-document
+is COMPLETE in draft; awaiting Kim's full read-through + Netlify deploy.** The
+"lost technology" recovery has fully succeeded on both fronts. **Package:** the
+`coenosr` engine is complete and on GitHub
+(https://github.com/kimbridges/coenosr; `remotes::install_github("kimbridges/coenosr")`)
+— `read_rel`/`read_lists`/`read_2way`, `constancy`, `classify_species`,
+`form_groups` (Bruelheide density-masking + Ceska-Roemer outside criterion),
+`coenos_table` (asterisk-RA ordering), `differential_table` + `coenos_gt`
+(display). **testthat 97/97; check 0/0/1.** Group formation was cracked via the
+published literature (Bruelheide & Flintrop 1994, found from Kim's M-D&E lead):
+strong groups recover exactly, subtler ones approximately — the residual is the
+lost binary's unpublished tie-break, honestly documented. **Document** (in
+`Ceska\documentation\`, kimbridges-documents style): **Preface + 8 chapters +
+references, all drafted.** 1 The Two-Way Table; 2 COENOS 1991; 3 Reading a Dead
+Program; 4 The Method Recovered; 5 Getting Your Data In; 6 coenosr in Use (live
+pipeline → sorted gt table); 7 A Clear Point of View (purpose + the honest, live
+fidelity check vs the .S00 oracle); 8 A Place in the Toolkit (Kim's first-person
+close — dendrograms, sharing a lab with Dieter Mueller-Dombois, COENOS lost and
+recovered; celebrates the joint human-AI authorship). Method by **Ceska & Roemer**
+(1971; English ref Mueller-Dombois & Ellenberg 1974; engine lineage Bruelheide &
+Flintrop 1994). Convention this session: `df-print: kable` formats plain-frame
+outputs, package print methods wrapped in `print()`. **REMAINING (all Kim's call,
+nothing blocking):** (1) Kim renders the full book and reads it end-to-end;
+(2) optional — enrich the Ch8 personal section and the Ch2 hand-sorting first-person
+slot; (3) the "few coding details" Kim wanted to revisit; (4) deploy to
+kimbridges-documents.netlify.app (manual Netlify drag-deploy workflow). Resumption
+detail + spine in `Ceska\documentation\doc_notes.md`. Session records:
+session_log.md 2026-06-12.
+<!-- superseded Active Focus blocks retained below for context -->
+**(2026-06-11, earlier — reconstruction & package build):** The
+1991 COENOS Braun-Blanquet table-sorting program is being revived as an R
+program ("lost technology" recovery). Approach: **spec first**. Day one
+read and decoded the full resource set (HELP.CNS, the `.REL` inputs, the
+`*_table` outputs, the `.S00` restart files; DIEREN/ELLEN/SET1) and produced
+an implementation-ready **algorithm & format specification** at
+`G:\My Drive\Projects\Ceska\reconstruction\COENOS_algorithm_spec.md` (claims
+tagged [DOC]/[OBS]/[OPEN]). Two findings: the `.S00` files are a
+machine-readable validation oracle (the DIEREN relevé-ordering vector matches
+the printed column order exactly), and the iterative group-growth loop (spec
+§4.2) is the single hard reverse-engineering target — everything else is
+documented or standard. proj_Ceska.md promoted Reference → Active / Ready.
+**All three `.S00` files decoded (2026-06-11)** — DIEREN, ELLEN, SET1 now
+machine-readable validation oracles (`reconstruction/*_s00_species.csv`); the
+per-species role codes reproduce the stored group memberships exactly and the
+−3 counts match the printed footnotes (64/25/12). Four spec open-questions
+resolved: body/footnote = constancy < 3; the super-companion ceiling =
+⌊2n/3⌋; multiple groups per X/Y level; `.S00` semantics. **The reconstruction
+is now a real package: `coenosr`** (new proj_coenosr.md) — standalone, MIT,
+at `Projects\coenosr`; `read_rel()` + `constancy()` shipped and validated live
+(testthat 22/22; DIEREN+ELLEN constancies match the oracles exactly;
+`devtools::check()` 0/0/1). **Critical path now:** trim/classify, then the
+group-growth engine `form_groups()` (spec §4.2) + RA ordering (§5). Ceska is the
+ground-truth/validation backbone of the Braun-Blanquet cluster
+(bbstruct/bbSynth/Braun_Blanquet). Session records: session_log.md 2026-06-11.
+<!-- superseded Active Focus blocks retained below for context -->
+**(2026-06-07):** **Kakaako_Birds — FINISHED as a distributable
+book, now PARKED.** "The Birds Around Kaka‘ako" — 115-pp photo-integrated PDF
+(new cover + copyright page, title/author block above the Preface, 17-pt type,
+all 20 chapters `reviewed`, two-page spreads fixed); Acrobat-compressed to
+~9.2 MB for sharing. Kim's verdict: "a super product." **PARKED — revisit in
+~1–2 weeks:** Kim gets Dr. McClatchey's read (external review) and does a
+photo-polish pass (tie images more tightly to the storyline), then **deploys it
+to the Stories section of the website**. Rebuild anytime with
+`build_kakaako_book()` (edit `Stories/*.md` → run; see book_manifest.md top).
+Claude's queued photobookr work: clickable bookmarks, spread parity-padding,
+resample/sharpen (proj_photobookr.md). With Kakaako_Birds parked, the **next
+Active Focus is open** — candidates: another story in the stories realm, the
+photobookr enhancements, or the long-queued PKM deep review of the whittakerr-
+era meta-observations. Session records: session_log.md 2026-06-07.
+<!-- superseded Active Focus blocks retained below for context -->
+**(2026-06-06, evening):** The **stories realm** — the
+**Kakaako_Birds book is BUILT, photos and all.** photobookr was rebuilt +
+installed to fit the new `#`-chapter/`##`-subsection narrative (splits on `#`;
+xelatex for Hawaiian glyphs; punctuation-insensitive Event match), and the first
+full **`Kakaako_Birds_Book.pdf`** assembled — 98 pp, cover + 20 chapters + 59
+Event-matched photos + `_2W` spreads (Acrobat compression: 840 MB → 9.2 MB). A
+one-call build wrapper, **`build_kakaako_book.R`**, now folds manuscript
+re-assembly into the build, so the workflow is simply: **edit `Stories/*.md` →
+`build_kakaako_book()`** (re-assembles, renders at 17 pt, builds). The rebuild
+command is recorded at the top of the Kakaako_Birds `book_manifest.md`. **Next —
+Kim:** an editing pass to live with the book (cover copyright page; spread filler
+photos for parity; light text sharpening), all of which flow into the next
+build, then Acrobat. **Next — Claude:** add clickable chapter bookmarks to
+photobookr (then: spread parity-padding, image resample/sharpen as future
+enhancements — see proj_photobookr.md). The day's larger result (Kim): not just
+a book draft but an established collaborative writing method AND the tooling
+rebuilt to fit it. Session records: session_log.md 2026-06-06 (and continued).
+<!-- superseded Active Focus blocks retained below for context -->
+**(2026-06-06, earlier):** Kakaako_Birds assembled into a manuscript + 23-pp
+text PDF draft; decision taken to rebuild photobookr to fit the new structure.
+**(2026-06-05):** The **Kakaako_Birds book is COMPLETE in draft at 19 species**
+(kimbridges-stories/underway/), all verified, each anchored in
+something Kim has seen or heard. Built on the collaborative
+story-generation strategy (markdown source, PDFs as build outputs,
+one file per chapter, per-chapter background notes, a stage-keyed
+`book_manifest.md` — stories do **not** clone proj_*.md — the EXIF
+identifier as the stable image-join key, thematic heads as image
+anchors, inline `[V: Kim]`/`[V: lit]`/`[V: lead]` tags stripped at
+build). The book is reframed as **urban birds of Honolulu: ~14
+introduced + 5 native** ("nearly two dozen"), with a native closing
+section (white tern, ‘auku‘u, kōlea + ‘akekeke, koloa) and an
+arrival-vector spine from a Polynesian vector "0" (the moa, ~1,000
+yrs ago) through six Western-era vectors — introduced birds mirroring
+the immigrants who carried them, natives mirroring the place. Its
+defining method (Kim): talking about the birds is talking about
+ourselves — no taxonomic descriptions; every chapter a story of the
+bird's relationship with people and place. **Next session (production):**
+the reorder + in-chapter cross-reference pass; write the front
+matter/preface (well-resourced in front_matter_notes.md); rework the
+White Tern finale for the native section; and wire up the photobookr
+markdown→PDF assembly (via ClaudeR — Finding 006; EXIF reads through
+the live R session per Finding 005; fill the manifest's active-image
+counts). Photo follow-ups: Red Junglefowl short; koloa hybrid-purity
+provenance; out-of-region placeholder swaps. Full strategy in
+proj_kimbridges_stories.md; session record in session_log.md
+(2026-06-04 and 2026-06-05). (Also still queued: book-assembly cluster
+work and the PKM deep review of the whittakerr-era meta-observations.)
+
+Remaining housekeeping work tracked in priorities.md: the
+PDF_archive review, summary listings for Projects/ and
+kimbridges-*, the deferred C: deletions handled one verification
+gate at a time, and a small set of cleanup items
+(milestones_bars documentation migration into Projects_Archive,
+proj_audio.md Locations update when Kim adds files,
+proj_milestones.md update once milestones_bars is fully merged).
+
+**Whittakerr (preserved focus context).** Live at
+https://kimbridges-documents.netlify.app/whittakerr/, package
+v0.2.0 on GitHub, fifteen chapters complete. The eight
+working-practice meta-observations queued from the whittakerr
+work remain pending a focused PKM deep review. Full whittakerr
+history in the Change Log below from 2026-05-12 through
+2026-05-25 (continued).
+
+
+## Change Log
+### 2026-07-28 (the log gap that was not a gap -- session_log.md ordering repaired; FINDING 019)
+**PKM maintenance session.** The open question from 2026-07-26 -- whether to backfill the
+session-log gap for 2026-07-16 through 2026-07-25 -- is closed, and the answer turned out to be
+that there was no gap. The entries existed. All 22 of them had been APPENDED to the bottom of
+session_log.md, below the 2026-05-07 to 2026-06-07 archive, instead of prepended at the top. The
+file carries two ordering conventions and some sessions used the older one, which dropped their
+entries 7,000 lines down where nobody looked.
+
+**A backfill was written and then reverted.** Working from the LOG GAP marker as if it were
+verified, five synthesis-weight entries were reconstructed from proj_briefing_book.md,
+proj_checklists.md and proj_AI_Microscope.md and written into the log. The misfiled originals
+were found immediately afterwards during verification, while checking heading order.
+session_log.md was restored byte-for-byte to its prior state (9275 lines, 536499 bytes) before
+any repair was attempted. The reconstructions had already introduced one factual error: the
+ʻIliau Loop briefing book recorded as 12 pp, where the contemporaneous entry says 14 pp after
+Kim's review pass.
+
+**The repair, Kim's chosen scope.** All 22 July entries plus three stranded June entries (06-25
+evening close and the two 06-26 entries) were moved into reverse-chronological position in the
+top block. Content is verbatim -- verified line-for-line against the pre-repair file -- with only
+two changes: the h3 headings in the 07-16 and 07-17 runs were promoted to h2 to match every other
+entry in the log, and the blank-line and rule separators were normalized. The false LOG GAP
+comment was replaced with an ORDERING NOTE recording what actually happened and carrying the
+standing check.
+
+**Result.** session_log.md is 9269 lines / 536821 bytes. The top block is now 91 entries running
+strictly newest-first from 2026-07-26 back to 2026-06-07, with no date out of order. The
+pre-2026-06-07 archive below the rule stays in append order deliberately; new entries go at the
+top. One pre-existing anomaly was found inside the archive (a 2026-05-14 continued entry filed
+after 2026-05-16) and left alone as plausibly intentional.
+
+**FINDING 019 written** -- an absence at the top of a log is not an absence, and never write a
+gap marker without proving the gap. A marker asserting absence becomes load-bearing: the next
+session reads the note instead of the file and builds on it, which is exactly what happened here.
+The rule is to grep the whole file for the date at every heading level rather than reading a
+region, and if a gap is only suspected, to say so and name the search that was actually run. It
+is Finding 018 from the other side: a write-up is not a record, and a note about the record is
+not the record either.
+
+**NEXT FOCUS still undecided.** The three candidates from 2026-07-26 stand unchanged:
+**briefing_book** (Kim has now met Dr. McClatchey), the **checklistr driver** that would take a
+centre, a radius and a preview file and emit the report set, and the **AI_Microscope shelf**
+(audio round two with the pronunciation dictionary, the parked image downsize, publishing
+`_onepage.html`), with the app still frozen pending the plant-anatomist review.
+
+### 2026-07-26 (BEHIND THE CURTAIN published -- the site-wide methods page, and the commission block)
+**kimbridges_collections** published *Behind the Curtain*, a site-wide methods page, at
+https://kimbridges-collections.netlify.app/behind_the_curtain.html. The site now carries **four
+pages**: the three collections (Gallery, Jones, The Briefing Books) plus this one. It is a
+methods page, not a collection, so it sits in the navbar and is deliberately **not** in the index
+listing. The focus was opened and closed the same day.
+
+The page runs six sections. *Three divisions of labour* frames Gallery, Jones and the Briefing
+Books as a sequence in which each collection hands more of the middle to the engine. *The input
+contract* reproduces `checklists/iliau_loop/site_preview.md` verbatim in a `.input-doc` panel and
+traces four sentences from it into the finished book (parking to the access paragraph, elevation
+to the georeferencing analysis, silversword to significance on page one, the old planted ti to
+the ethnobotanical note). *The chain* carries a new SVG built by
+`Behind_the_Curtain/chain_fig.R`, four stages, person solid orange at top and bottom, engine
+dotted blue in the middle. *What it is made of* names the real toolchain. *The constraints that
+shaped the form* gives four: one language, print not scroll, no retroactive improvement, and the
+working data ships with the conclusions. *What stays human* closes on Diamond's ethnobiologist's
+dilemma and the 80 percent tool.
+
+**Kim's factual correction, made in the other direction.** He assumed vouchr was the main
+briefing-book package. It is not. **`checklistr` is the engine** (26 exports: build_checklist,
+fetch_specimens_gbif, dedup_specimens, crosswalk_gbif, detect_det_conflicts, richness_estimate,
+species_discovery, the plot_* family, map_specimens, status_gift, gift_growthform and the
+collector functions). Its DESCRIPTION lists Kim Bridges and "Claude (Anthropic; collaborative
+development)" as joint authors. **vouchr** contributes only `site_extract` and the terrain and
+substrate helpers for R7. **whittakerr** with WorldClim does the biome placement, **elevatr**
+does per-record elevation (that is what enabled the rim versus canyon-floor split), Esri topo
+tiles do every basemap, and **qpdf** binds.
+
+**New artifact: `Projects/checklists/briefing_book_commission.md`** (3922 bytes). Kim asked,
+bluntly, whether there was a paragraph he could hand to Claude that would produce a new briefing
+book. There is no stored driver script, so this is the answer instead. The block names the
+packages and functions, the report set (R1, R2, R3+R4, R5, R7, R10 and the field card), the qpdf
+binding, the full codified type standard, the Okabe-Ito rules, the three honesty rules (staleness
+is not rarity; coordinate precision is not locatability, in three tiers; the record is not the
+flora), the naming rule, and ends with `[paste site_preview.md here]`. The block itself is now
+**published on the page** as *The standing instruction*, at Kim's request. Two sections of the
+PKM file were held back from publication: "What this block does not do" and "Preview capture".
+
+**FINDING 018 -- the preview was never captured in Kim's own words.** He asked whether his
+initial spoken comment on the iliau Loop Trail had been preserved. It has not. Every `.md` in
+Projects_Index and the whole `checklists` tree was searched. `site_preview.md` is a session
+write-up (its own header says "Captured 2026-07-17 from Kim's preview observations"), and
+proj_briefing_book.md line 334 paraphrases the same material a second time. The session log has a
+gap across exactly that date range. So the input-contract section shows a faithful
+reconstruction, not the original utterance. **Standing rule from here: for any new site, write
+the preview first, in Kim's own words, and save it before any build starts.** This was told to
+Kim directly rather than papered over.
+
+Kim's three corrections were applied. The garbled opening of *The input contract* ("A claim that
+small an input produces") was fixed to "a small input". A self-caught inaccuracy went with it:
+once the commission block became a published artifact, the claim that the engine received "a
+coordinate and the file below. Nothing else." was no longer true, so it was rewritten to name
+both inputs and point down the page. Two publish decisions were put to Kim and answered: **add
+the standing-instruction section with no reproducibility-gap admission**, and **leave the
+verbatim panel verbatim**, which means Kim's own "Kipuka" shorthand stays as he wrote it even
+though the naming rule forbids it in new prose.
+
+Technical: `custom.css` grew a `.input-doc` rule (93 to 115 lines, LF); `_quarto.yml` gained
+`Behind_the_Curtain/images/**` under resources and the navbar entry, with the anchor **re-grepped
+between the two appends** because the first insertion shifted the index. Final page: **165 lines,
+15700 bytes, LF only**, 6 h2 plus 1 h3, 9 fenced divs balanced. Verified structurally rather than
+visually, because the Chrome bridge rejects `file://` URLs. Deployed from a **dated** staging
+folder, `C:\temp\_site_20260726`, 98 files and 112.1 MB, every byte size checked against `_site`
+first. The folder is dated because the R bridge blocks recursive deletes, so overwriting the old
+`C:\temp\_site` would have dragged stale files along (Finding 008 gotcha 2). Housekeeping closed:
+`_backup_concept_80pct_tool_20260726.md` and `_stamp_test.pdf` are both deleted.
+
+**Next focus undecided.** Three candidates stand: **briefing_book** (Kim went from this session
+to a conversation with Dr. McClatchey, whose critique the project is on hold for); the
+**checklistr driver** that would take a centre, a radius and a preview file and emit the report
+set, which is the natural sequel to the commission block; and the **AI_Microscope shelf** (audio
+round two with the pronunciation dictionary, the parked image downsize, publishing
+`_onepage.html`), with the app still frozen pending the plant-anatomist review.
+
+### 2026-07-25 (TWO PUBLICATIONS IN ONE DAY — the AI Microscope document and The Briefing Books collection)
+The website took two projects on the same day. **AI_Microscope** shipped the document *Preview &
+Review* to https://kimbridges-documents.netlify.app/ai_microscope/ as the nineteenth document
+(see the 2026-07-25 detail in proj_AI_Microscope.md). **briefing_book** shipped **The Briefing
+Books** to https://kimbridges-collections.netlify.app/briefing_books.html as the **third
+collection** on kimbridges-collections, alongside Gallery and Jones. The collection carries the
+two bound books (Kīpuka Puaulu 22 pp, ʻIliau Loop Trail 14 pp), every facet report as its own
+PDF, and the checklist CSVs -- 23 assets in all, each registered in `_quarto.yml` under
+`resources:` so the render copies them into `_site`.
+
+The hold came off deliberately. The books had been waiting on Dr. McClatchey's critique; Kim's
+call was that getting working prototypes out for review beats polish, and the site itself is now
+the way to reach other reviewers. The introduction was written around **orchestration**: the
+other projects were stepwise, while the briefing books hand the entire dependent chain to the
+engine, which goes from a coordinate plus a paragraph of site knowledge to an assembled document.
+Kim: "Orchestrating a whole series of steps, as is done in the briefing books, is a new and
+different skill demonstration." Structurally it is a series -- new sites drop in without a
+rewrite.
+
+One correction shipped with it, and it is the durable lesson. R1's page-2 caption read "the nine
+nominal points hold 52% of all records", a number derived from the mis-centred `r1_points.rds`.
+It was rewritten to "the nominal points hold 39% of all records", reusing page 1's
+already-verified figure on the identity that the nominal points ARE the coarse-coordinate points,
+which removes an unverifiable count without asserting anything new. The first repair was a `qpdf`
+overlay stamp; it rendered perfectly and was **hollow**, because `pdf_text` still returned 52%
+underneath -- so copy/paste, search, screen readers and any AI reading the PDF would have kept
+the wrong number, on a site whose subject is AI reading documents. It was discarded for a
+**pikepdf content-stream edit** replacing the `Tj` string in place, original font and metrics
+intact, page 1 pixel-identical. **A visual fix that leaves the old text underneath is not a
+fix.**
+
+Two concept advances were logged the same day. The **Diamond citation** is CONFIRMED from the
+scan (Jared Diamond, "The Ethnobiologist's Dilemma," *Natural History* 6/89, June 1989, pp. 26,
+28, 30) and now anchors `concept_80pct_tool.md`; the sharpening is that Diamond's informant
+THROTTLES on perceived competence while **the engine has no throttle**. And a sixth friction
+category was named, **follow-up (iteration) friction** -- the gap between noticing something and
+being able to chase it, which the 80% tool closes by delivering the flag and the means in the
+same exchange, while the context is still loaded.
+
+Known and not blocking: R1's page-2 scope table says **224 records**, and that figure cannot be
+reproduced from any surviving file (`r1_points.rds` gives 193, `r34_targets.rds` 207, the
+specimens CSV 107). Nothing in the report states the map's record total, so it is invisible to a
+reader, and the 100-taxa figure is corroborated three ways. Worth resolving whenever R1 is
+rebuilt from a saved coordinate table. Logged in proj_briefing_book.md.
+
+### 2026-07-05 (checklistr package scaffolded — new project)
+Late in the same long session, the tested specimen-level tools from `checklists` were packaged
+into a new R package **checklistr** (proj_checklistr.md), following the explore→package arc
+(lists→listsr, seasonality→seasonalityr). Built live in RStudio: DESCRIPTION/LICENSE/README, 7
+R/ modules with roxygen, package doc + globals, a testthat suite; **R CMD check 0/0/1** (the one
+note is the environment clock), **24 tests pass**, `load_all()` runs the full Kīpuka Puaulu
+pipeline. 18 exported functions (fetch, collector consolidation, dedup, determination-conflict
+detection, and the four lenses). The checklist *build* itself is not yet in the package. Intake
+protocol exercised (proj_checklistr.md created; Active R Projects row added; Active Focus pointer
++ session_log updated). Next: run it on contrasting locations. See proj_checklistr.md.
+
+### 2026-07-05 (checklists intake — new project opened; Active Focus switched)
+New project opened in a session running on **Opus 4.8**. (Correction 2026-07-05: an earlier draft of this entry attributed the session to the planned Fable 5 trial from proj_PKM.md 2026-07-02; that was my error — Kim caught it, and the Fable 5 trial has not yet occurred.)
+Kim asked for a plant checklist of the Kīpuka Puaulu region (HAVO), ideally from herbarium records.
+Built from GBIF preserved-specimen records (2 km radius; 385 records → **157 vascular taxa** + 4 mosses;
+**85 native** — 49 endemic, 36 indigenous). Result and the general "good checklist for field studies"
+need were strong enough that Kim decided to log it as a PKM project and make it the **Active Focus**,
+framed as a **general capability** (herbarium records → regional checklist) with Kīpuka Puaulu as the
+first worked site. Intake protocol exercised: `proj_checklists.md` created; Active R Projects row added;
+Active Focus pointer switched checklists ← specimen_labels (specimen_labels stays Active, production pass
+unfinished); this Change Log + session_log entries added. Deliverables written to
+`G:\My Drive\Projects\checklists\kipuka_puaulu\` via the file tools (not bash, per Finding 001).
+Reproducibility/verification built in (`build_checklist.py` + `verify.py`; reconciles to all 385 raw
+names, 0 missing/0 mismatch); Kim's local knowledge of the kīpuka is the second, stronger check still to
+run. The **R server (r-studio/ClaudeR) was enabled** this session, noted for the generalization and
+live-verification steps. See proj_checklists.md and session_log.md 2026-07-05.
+
+### 2026-06-29 (specimen_labels intake — new project opened)
+New exploration opened the same day the seasonality book shipped. Kim brought a 2020 prototype
+(`QR_procedures.Rmd`) plus a demo image in a new `Projects\specimen_labels` folder and we worked through a
+**concept conversation** (look + discuss; no building). The spine: a frictionless **field-capture system** where
+photographing QR-coded cards at the collection site yields **two co-equal products** — the herbarium label and an
+archivable field log — with no transcription. Category data rides on **modular, discipline-specific decks of QR
+cards** (the controlled vocabularies are the creative heart). Pivotal validation Kim supplied: a reader extracts
+**each** of several QR codes from one photo (the two-QR demo image was that test), which makes the multi-card
+decks possible. Architecture named: **capture once, project two views**. Intake protocol exercised:
+`proj_specimen_labels.md` created (full concept), Active R Projects row added, Active Focus pointer set to
+specimen_labels (Active / **Exploring**). Flagged: a **hardcoded Google API key** in the prototype to rotate
+before any sharing; a **broader name** wanted. See proj_specimen_labels.md and session_log.md 2026-06-29.
+
+### 2026-06-23 (Kaka‘ako Birds published to the Stories site)
+The parked collaborative photo-book **"The Birds Around Kaka‘ako"** shipped:
+rerendered with Kim's swapped photos (125 pp), Acrobat-compressed to 10.14 MB,
+and deployed to kimbridges-stories.netlify.app as the 51st story. Published by
+staging the three site artifacts directly (`pdfs/Kakaako_Birds.pdf`,
+`images/Kakaako_Birds.jpg`, `stories/the-birds-around-kakaako.qmd`), since the
+site lists from `stories/*.qmd` rather than the inventory xlsx. Two deploy gotchas
+resolved and recorded as **pkm_findings.md Finding 008** (quarto rendering
+`underway/`; Netlify drag skipping the unmaterialized PDF). Active Focus is
+unchanged — it **returns to seasonality** (Kaka‘ako was a queued side-pickup, now
+done). See proj_kimbridges_stories.md and book_manifest.md (2026-06-23).
+
+### 2026-06-13 (Nike_challenge becomes a written short story)
+Session redirected: Ceska parked a day or two; Audio / Nike_challenge resumed. Dr.
+McClatchey's review of the rendered audio (no comment on the audio = the TTS emotion
+test effectively passed) asked instead for "the next chapter of the story." Result: a
+complete 8-chapter literary short story, **"My Name Is Nike"**
+(`Projects\Audio\Nike_challenge\Nike_story.md`), written as prose rather than a TTS
+script — reconciling the audio confrontation, the "Nike and the Miracle Plant" PDF,
+and Kim's yellow-name research-design storyline. Independent verification pass clean;
+two-year-timeline continuity fixed. Kept in the Audio folder for now (revisit after
+review). Review reminder 2026-06-27; lessons-learned reflection queued for next
+session startup. Active Focus pointer updated. See session_log.md 2026-06-13 and
+proj_audio.md.
+
+### 2026-06-11 (later — coenosr package created)
+The COENOS reconstruction became a real, distributable R package, **coenosr**
+(new proj_coenosr.md; intake protocol exercised). Kim's call: build it for
+others, not just as our test. Standalone (validation backbone of the BB
+cluster, not folded into bbstruct), MIT licensed, at `G:\My Drive\Projects\coenosr`.
+Shipped `read_rel()` (+ `constancy()`, a print method); developed and validated
+live in Kim's RStudio via the r-studio/ClaudeR bridge — testthat 22/22, exact
+constancy match vs the DIEREN and ELLEN oracles, `devtools::check()` 0 errors /
+0 warnings / 1 benign note. Example data + the three oracle CSVs bundled in
+`inst/extdata`. Active R Projects row added. Active Focus pointer updated.
+GitHub push pending (Kim). See session_log.md and proj_coenosr.md.
+
+### 2026-06-11
+Ceska promoted to Active Focus — the open focus slot (vacant since
+Kakaako_Birds parked 2026-06-07) is filled. Kim opened a new project: revive
+the 1991 COENOS Braun-Blanquet table-sorting program as R ("lost technology"
+recovery). Spec-first approach chosen. Full resource set read and decoded
+(HELP.CNS, `.REL` inputs, `*_table` outputs, `.S00` restart files; DIEREN,
+ELLEN, SET1) and an implementation-ready algorithm & format specification
+written at `Projects\Ceska\reconstruction\COENOS_algorithm_spec.md`.
+proj_Ceska.md Status changed Reference → Active, Focus readiness Not
+applicable → Ready; Current Status, Key Files, Next Steps, and Log updated.
+Ceska row in Active R Projects updated (type now
+"Historical-software reconstruction"). Key findings: the `.S00` files are a
+machine-readable validation oracle; the iterative group-growth loop is the
+one hard reverse-engineering target. See session_log.md 2026-06-11 and
+proj_Ceska.md.
+
+### 2026-06-10
+Travel System intake. Standalone system designed and created at
+G:\My Drive\Travel (deliberately outside the PKM; proj_Travel.md
+is the pointer). Planning-first design; trip lifecycle Brewing →
+Planning → Booked → Underway → Taken; Gmail/Calendar integration
+adopted with the trip file canonical. Two trips filed: Big Island
+July 2026 (Booked), Australia + New Zealand 2027 (Planning).
+Related existing projects noted: Trip_Log, storylines,
+Photo_Locations, timelinesr. Row added to System Projects.
+Active Focus unchanged (open since Kakaako_Birds parked).
+
+### 2026-04-05
+Initial draft created from Projects document.
+
+### 2026-04-14
+Index rebuilt to reflect current state. Merged milestones entries.
+Added new projects: labelextractr, whittakerr, photobookr,
+photothumbsr, accessOAI, citations. Separated "not yet filed"
+projects into their own section. Updated all statuses.
+
+### 2026-05-07
+Major update. Added Website Projects section with four new entries:
+kimbridges-info (hub), kimbridges-stories, kimbridges-documents,
+kimbridges-collections. All four sites live on Netlify. Separated
+Active Projects into Website Projects, Active R Projects, and System
+Projects. PKM status updated for Opus 4.7 transition.
+
+### 2026-05-07 (Opus 4.7 — protocol adoption)
+PKM Operating Protocol adopted (five mechanisms; see pkm_protocol.md).
+Active Focus pointer added to top of this file. Added Jones
+Collection row to Website Projects after discovering the gap: the
+collection had been published 2026-05-05 without a proj_*.md file.
+proj_jones_collection.md created. proj_kimbridges_collections.md
+updated. PKM status updated to reflect protocol adoption and
+completed transition.
+
+### 2026-05-10
+Audio project added per Intake Protocol exercise after ElevenLabs
+MCP smoke testing. proj_audio.md created and placed in Active R
+Projects (R API code anticipated for future batch operations).
+Active Focus deliberately unchanged — housekeeping audit and
+priorities.md remain the strategic priority; audio is a contained
+side thread. Session log entry recording the full sequence.
+
+### 2026-05-12
+Whittakerr system-test exercise surfaced a major infrastructure
+finding: the bash mount in Cowork is sandbox-local and does not
+write to Drive cloud. Yesterday's bash-rsync migrations of the
+four kimbridges-* folders had appeared to succeed locally but
+never propagated to Drive. Recovery executed in this session via
+Windows Explorer copy-paste, with all four migrations now
+genuinely on Drive (verified via Drive MCP). PKM corrections
+landed in all four proj_kimbridges_*.md files, system_audit.md
+Sections 3/7/9, proj_PKM.md, and session_log.md. New file
+pkm_findings.md created as the durable home for system-test
+findings; Finding 001 is the bash-mount discovery with an
+adopted operating rule. Active Focus block refreshed to reflect
+current reality (the Mirror→Stream switch and migrations are now
+historical fact rather than "eventually"). Background folder
+convention introduced for project working notes (used first in
+Projects/whittakerr/background/).
+
+### 2026-05-17
+Active Focus shifted from housekeeping audit (2026-05-12 focus,
+now deferred) to whittakerr, reflecting the de-facto active
+engagement since 2026-05-13. The whittakerr row in Active R
+Projects updated: type changed from "R tool" to "R tool +
+Quarto Document"; status changed from "Code runs; needs
+packaging" to "Mapping toolkit complete; chapter drafting next."
+Whittakerr's 2026-05-17 reframing — mapping as goal not add-on;
+3D Overlay promoted to standalone chapter with orographic-
+verification rationale — is the catalyst for elevating the
+project to Active Focus. Cross-machine continuity test passed
+in the same session (laptop → desktop transition; PKM state
+carried across without loss).
+
+### 2026-05-18
+First substantive chapter prose drafting day. What Is a Biome?
+chapter drafted in full (~2,440 words, six sections); Preface
+created (`index.qmd`, ~580 words) landing the document's
+verification thesis; History chapter linking sentence added.
+The day's substantive reframing: the document's central work
+is the subjective-to-objective transition — taking Whittaker's
+categories from expert hand-drawing to algorithmic verification
+using modern climate data and computing. This is sharper than
+the 2026-05-17 mapping-as-goal reframing and now sits above it
+as the document's stated thesis. Style observations from the
+drafting session added to `kim_association_index.md` (sentence-
+level prose preferences plus a collaborator note on framing-
+emerges-from-drafting). Sixth meta-observation from the
+whittakerr work named in proj_PKM.md: purpose-finding happens
+after capability lands.
+
+### 2026-05-18 (continued)
+Second substantive chapter prose block in the same day. Scale
+chapter drafted end-to-end (~2,830 words, seven sections plus
+the cartographic-vs-ecological sidebar table). Three
+conceptual chapters now drafted total (Preface, What Is a
+Biome?, Scale). Packaging decision settled (Option D): whittakerr
+becomes an installable R package at `kimbridges/whittakerr` on
+GitHub, with the Document as demonstrator. Sitemaps document
+reviewed via Chrome MCP (the page is client-rendered Quarto
+and WebFetch returned a shell); install pattern confirmed;
+Sitemaps dropped as a whittakerr dependency. User-guide-
+dominant vs conceptual-base-dominant distinction added to
+`style_multichapter_doc.md` as a sub-distinction within
+document-mode. Next phase: Kim's read-through of drafted
+chapters, then packaging work, then technical chapters
+drafting against `library(whittakerr)`.
+
+### 2026-05-20
+whittakerr packaged as an installable R package and published
+to GitHub at `kimbridges/whittakerr`. Full packaging session:
+created the package skeleton (DESCRIPTION, NAMESPACE,
+.Rbuildignore, roxygen2 conversion of all functions, bundled
+data via usethis::use_data); diagnosed and fixed the
+data/-directory auto-source bug (R packages source any .R
+file in data/); reorganized the data/ directory so it
+contains only package data, with source CSVs in data-raw/,
+the gardens dataset in inst/extdata/, and the WorldClim/GADM
+caches moved to cache/; package passes R CMD check (0 errors,
+0 warnings, 1 benign timestamp note); pushed to GitHub;
+verified the public install path via a fresh-session round
+trip. The whittakerr Active R Projects row updated: type
+"R package + Quarto Document", status "Package on GitHub; 3
+conceptual chapters drafted; technical chapters next." The
+packaging phase is complete; the document's technical
+chapters can now draft against `library(whittakerr)`.
+
+### 2026-05-20 (continued)
+Technical-chapter drafting begun. Getting Started chapter
+drafted in full; Retrieving Climate Data partially drafted
+(intro, WorldClim background, setup, two worked examples;
+30-second / CMIP6-future / Botanical Gardens examples
+remain). Four code-style conventions settled at the start of
+the code-heavy chapters and captured in
+`style_multichapter_doc.md` Section 4 (comments-ahead-of-code,
+message suppression, the show_col_types option, sequential
+steps over nested calls). `get_climate()` enhanced with a
+`worldclim_tile` branch for 30-arcsecond resolution; package
+re-checked, re-installed, and re-pushed. Decision: keep the
+full botanical-gardens dataset in the repository, described
+modestly in the documentation.
+
+### 2026-05-21
+Retrieving Climate Data chapter completed. The three remaining
+sections of `retrieving_climate_data.qmd` drafted: a
+finer-resolution example (one leeward-Oahu point retrieved at
+2.5 arc-minutes and at 30 arc-seconds, compared in a table); a
+future-climate example (the three Pacific-coast cities under a
+CMIP6 projection, shown against the historical baseline); and
+a larger example (the 65 California botanical gardens read
+from the bundled CSV and retrieved in one call). At Kim's
+request the future-climate section gained a short
+GCM/SSP/period explanation, with citations to where the
+models' and pathways' differences are discussed (Eyring et
+al. 2016; Riahi et al. 2017; IPCC AR6 WG1 2021). Six chapters
+now fully drafted; the whittakerr row in Active R Projects
+updated. Render-test of the finished chapter is Kim's to run;
+the next technical chapters are Basic Whittaker Diagrams and
+Retrieving Biome Information.
+
+### 2026-05-21 (continued)
+After a short break, the Retrieving Climate Data chapter was
+verified chunk by chunk. The 30-second example briefly
+appeared to trigger a 9.9 GB download; the cause was an old
+`get_climate` shadowing the installed package in the R global
+environment, not a package fault. The clean re-run fetched an
+8.1 MB tile. Two more code-style conventions settled and
+recorded in `style_multichapter_doc.md` — gt unit footnotes
+and output-labeling discipline — and applied to the chapter.
+Kim's lifelong readability hallmark, with the David Goodall
+FORTRAN-versus-PL/I story, recorded in
+`kim_association_index.md` as Master Theme 11.
+
+Later the same day, after a dinner break: the Basic Whittaker
+Diagrams chapter was drafted (`basic_whittaker_diagrams.qmd`),
+and the Colors chapter was confirmed as a standalone chapter
+placed immediately after it. Seven chapters now drafted; the
+next technical chapter is Colors.
+
+Later still, the Color chapter was opened: titled "Color:
+more than decoration", its conceptual framework settled (the
+spine is the tension between a palette being informative and
+being useful), and its conceptual half drafted in `color.qmd`.
+The demonstrative half is package development, queued for the
+next session. Also recorded: pkm_findings.md Finding 004, on
+stale `.RData`-restored functions shadowing the installed
+package.
+
+### 2026-05-22
+Color chapter, demonstrative half: the palette toolkit built
+and verified. `biome_palettes` and a `palette` argument on
+`plot_biomes()`; the palette set complete — ricklefs, cvd,
+grayscale, and a custom palette tuned for the Oregon biome
+map — plus the ability to pass a user-supplied palette. Three
+conceptual additions recorded in the colors ideation file:
+separation as a finite budget, the palette tied to purpose,
+and the diagram-versus-map design shift. The full rebuild
+passed clean. Next: `plot_biome_map()` palette support, then
+the comparison figure and the demonstrative-half prose.
+
+### 2026-05-22 (continued)
+Color chapter demonstrative work extended onto the map.
+`plot_biome_map()` gained a `palette` argument, a `file`
+argument for reliable PNG export, a `points` overlay with
+per-point styling, and a `biome_labels` toggle. `map_biomes()`
+now records cells outside the Whittaker envelope as a distinct
+"Outside Whittaker range" category in fixed gray, separating
+unclassified land from out-of-region area. New exported
+function `biome_composition()` returns each biome's area and
+percentage share, shown as a horizontal bar chart. The
+package now exports eight functions and bundles three
+datasets; the rebuild passed clean after a terra DLL
+reinstall. All capabilities verified on the Oregon map. PKM
+updated; session closed for a break. Next: the Color
+chapter's multi-palette comparison figure and the
+demonstrative-half prose.
+
+### 2026-05-22 (Color chapter completed)
+The Color chapter was finished, its conceptual and
+demonstrative halves both. A figure-layout convention was
+settled (one figure per page width, stacked, never side by
+side) and recorded in `style_multichapter_doc.md` Section 4.
+A new bundled dataset, `biome_abbrev`, carries a consistent
+CamelCase abbreviation for each biome; `plot_biomes()` gained
+a `biome_labels` argument and `plot_biome_map()` switched its
+labels to the abbreviations. The demonstrative half of
+`color.qmd` was drafted in three sections (the candidate
+palettes, a second channel, a map is a harder problem),
+closing as a gateway to the Mapping chapter. The package now
+exports eight functions and bundles four datasets; eight
+chapters of the document are fully drafted. A forward idea
+for the Mapping chapter was captured: points and labels on a
+map are anchors that tie a reader's experience of a region to
+the abstraction of the biome map.
+
+### 2026-05-22 (continued)
+Four more chapters drafted: Retrieving Biome Information,
+Transitions, Roles Not Rosters (the chapter formerly "Biome
+Characteristics"), and Build a Map. The single Mapping Biomes
+chapter was split in two, Build a Map and Beyond a Map, on
+the make-versus-interpret seam. Two new ideation files:
+chapter_biome_characteristics_ideas.md and
+chapter_concluding_ideas.md for the document's closing
+chapter. `map_biomes()` gained a CMIP6 future-climate
+`scenario` argument. The recurring terra breakage was run
+down — the development loop is `devtools::load_all()`, not
+install — and a real bug in `plot_biome_map()`'s
+category-color assignment was found and fixed. Twelve
+chapters of the document now drafted; three remain. A
+seventh whittakerr meta-observation recorded in proj_PKM.md:
+redundant representations as a verification asset.
+
+### 2026-05-23
+Beyond a Map drafted — the thirteenth whittakerr chapter and
+the second of the split Mapping pair. Built on Kenya rather
+than the Oahu/Oregon examples the ideation file anticipated:
+an unfamiliar country makes the chapter's case — a biome map
+is an abstraction, anchors make it legible — land as true
+rather than merely stated. Five sections, closing on the
+argument that a biome map is an argument, not a fact.
+whittakerr packaged and pushed to GitHub as 0.2.0, clearing
+the pending `scenario` argument and `plot_biome_map()` color
+fix. Two document chapters remain (Biomes on the Earth, the
+concluding chapter).
+
+### 2026-05-24
+Draped on Topography drafted — the fourteenth whittakerr
+chapter and the last substantive one. The 3D-overlay
+chapter: the Kenya biome map exported to KML via
+`export_biome_kml()` and draped over Google Earth's terrain,
+a topographic verification of a classifier that never saw
+elevation. Seven blocks, opening on Kim's drive into the
+Great Rift Valley and closing the document's classification
+→ mapping → verification arc. Kim made the Google Earth
+figures; a downloadable Kenya KML is offered to the reader.
+One chapter remains — the concluding chapter, Kim's proposed
+title "Heuristic Value"; once it is drafted the document is
+complete in draft.
+
+### 2026-05-24 (continued)
+Heuristic Value drafted — the fifteenth and final whittakerr
+chapter, the document's concluding reflection. Reflective
+prose, no code. Its spine: the distinction between the
+Whittaker diagram's potential heuristic value (present from
+the day it was drawn, but locked for decades by sparse
+climate data and hand cartography) and the realized value
+the toolkit unlocks. An opening and four sections — the
+opening, From assent to use, The lines are ours, What it
+leads to next, The close — ending on Kim's line, pointing
+past the document's own edge to the in-between. With it
+drafted, the whittakerr Quarto Document is complete in
+draft (fifteen chapters). What remains is production:
+illustrations for the early chapters, a full Quarto render,
+the `_quarto.yml` scaffold, and deployment to
+kimbridges-documents.
+
+### 2026-05-25
+Cleanup day, and the first full render. The whittakerr
+document's deferred production details cleared in one
+session: the Scale chapter's "Oahu at two resolutions"
+section reworked (a generated Oahu 2.5′ map disagreed with
+the prose and forced a sharper grain-versus-feature-size
+argument), its scale table converted to `gt()`, and its
+stale chapter references fixed; the clean Whittaker diagram
+placed in the Preface; the `_quarto.yml` book scaffold
+created (title "Whittakerr," subtitle "Putting the
+Whittaker biome diagram to work"). The first
+`quarto preview` render built all fifteen chapters; four
+missing images were generated or placed, and the document
+now renders intact. What remains is deployment to
+kimbridges-documents.
+
+### 2026-05-25 (continued)
+Whittakerr published — fourteenth document in the
+kimbridges-documents collection, live at
+https://kimbridges-documents.netlify.app/whittakerr/. The
+deploy itself caught a Netlify-dashboard gotcha: "Add new
+project" creates a standalone site rather than updating an
+existing one; the right path is to click the existing site
+tile first, then drag `_site/` onto its Deploys tab. The
+full workflow is now documented in
+`proj_kimbridges_documents.md` (new Deployment Workflow
+section) and summarized in `style_multichapter_doc.md`
+Section 7. Three same-day side-changes shipped with the
+deploy: the Solomon Islands attribution credited to Will
+McClatchey, the author field updated to a co-authored list
+(K. W. Bridges and Claude (Anthropic)), and a new Preface
+paragraph crediting the plotbiomes R package
+(valentinitnelav).
+
+### 2026-05-27 (housekeeping — Desktop consolidation)
+Housekeeping Active Focus reactivated. Two days of work
+described in detail in session_log.md 2026-05-27 entry:
+~24 Desktop folders consolidated to their canonical G:
+locations (15 to Projects/, 6 to kimbridges-stories/
+underway/, 3 to kimbridges-collections/), 8 Desktop folders
+deleted as duplicates or empty, Koch_voronoi_pgm renamed
+to Koch_voronoi to match the PKM. Finding 005 surfaced
+mid-session (bash sync visibility) and was captured the
+next day in pkm_findings.md. priorities.md created as the
+ordered handoff document for the remaining housekeeping
+work.
+
+### 2026-05-28 (housekeeping — PKM catch-up)
+PKM documentation caught up to the 2026-05-27 physical
+consolidation. 16 new proj_*.md created for the projects
+filed into G:\Projects\ during the prior session: photoPress,
+Photo_Book, bbstruct, bbSynth, Braun_Blanquet, thinnr,
+Profile_Diagrams, Colors_of_the_Year, LLM_Creates_R, sumo,
+Temperature_Patterns, R_Basics, R_LLM_tests, Trip_Log,
+Scripting_Discovery, timelinesr. proj_photobookr.md updated
+with the book-assembly cluster relationship (photoPress +
+Photo_Book + photobookr). proj_kimbridges_stories.md updated
+with the six new underway/ entries (San_Juan_Island,
+Photo_Book_workingnotes, Cranes, Kakaako_Birds,
+Kakaako_Buildings, Kauai_Birds) plus the underway/ convention.
+proj_kimbridges_collections.md updated with the three new
+working subfolders (Gallery/Gallery_Catalog,
+Gallery/Tad_Adventures, Jones/Jones_analysis).
+pkm_findings.md gained Finding 005 (bash sync visibility —
+companion to Finding 001). All "Projects Referenced but Not
+Yet Filed" entries resolved: R_Basics, R_LLM_tests,
+Scripting_Discovery, Trip_Log, timelinesr filed as their own
+Projects; San_Juan_Island moved to stories/underway/;
+Loglines deleted as duplicate 2026-05-27; Storylines already
+in Active R Projects. The "Not Yet Filed" section is retired.
+Tom Koch / Cranes dormant row removed (mix-up; Cranes is its
+own underway story). Active Focus block refreshed to reflect
+the housekeeping work; two project clusters explicitly
+documented (book assembly: photoPress + Photo_Book +
+photobookr; Braun-Blanquet: bbstruct + bbSynth +
+Braun_Blanquet) and a likely third (LLM + R: LLM_Creates_R +
+R_LLM_tests) noted for confirmation. Remaining housekeeping
+items tracked in priorities.md.
+
+### 2026-05-30 (Status / Focus-readiness back-fill; Paused + Tags added; five documents recovered)
+The Status / Focus-readiness fields are now back-filled across the
+entire proj_*.md collection (previously only proj_milestones.md
+carried them). Template gained a **Paused** status (deliberately
+suspended awaiting a known trigger; distinct from Dormant) and an
+optional **Tags** field (work-type markers: *finishing*, *update*).
+Adopted the rule that any project posted on the kimbridges-documents
+site is **Complete** — determined from the live site's 14-document
+index — which removes the need for a separate archive. Complete by
+this rule: jones_collection, gePoints, citations, whittakerr,
+storylines, Colors_of_the_Year, LLM_Creates_R, R_Basics (plus
+milestones, already Complete). Five posted documents that had no
+project file were recovered by Kim and filed:
+proj_Deconstructing_a_Flora, proj_Pedigree_diagrams,
+proj_Photo_Locations, proj_Plainmaps, proj_LLM_API_R (added to
+Active R Projects above). Findings: timelinesr needs documentation
+of its own (Photo Locations was embedded in it and extracted);
+accessOAI is NOT the posted LLM-API-R (it is an earlier, separate
+tool, now Paused); folder/slug/proj-name mismatches flagged for a
+rename pass (priorities.md item 6). papers and zundert_2025 rows
+removed (no files existed). Full detail in proj_PKM.md and
+session_log.md (2026-05-30).

@@ -5,6 +5,7 @@ Source-of-record mirror for Kim Bridges' published work.
 ```
 venues/    the five publication sites' own source  (197 files)
 projects/  the source behind the published work    (683 files)
+pkm/       the PKM itself — index, findings, logs   ( 87 files)
 ```
 
 ## What this is
@@ -20,6 +21,17 @@ Before 2026-08-03 the source for all 79 published works existed in exactly one p
 Google Drive. No version history, no second copy. That is the same single-point-of-
 failure a four-session migration had just finished removing from *other people's*
 platforms — so leaving it in place on Kim's own storage made no sense.
+
+## Why the PKM is here too
+
+`pkm/` mirrors `G:\My Drive\Projects_Index` — `pkm_health.R`, every `proj_*.md`, the
+findings file, the session log and its archive. Two megabytes, and the most
+irreplaceable material in the repository: the venues and projects can be re-read from
+their own files, but nothing else records *why* a decision was made, what was tried and
+rejected, or which mistakes have already been paid for once.
+
+Backing up the work and not the index would leave a future reader with the artifacts
+and no map.
 
 ## Why the venues are not enough on their own
 
