@@ -158,6 +158,17 @@ report of file instability on 2026-07-29.
 **TASK — Collapse Findings 001/005/013/015** into one statement of the
 ground-truth rule instead of four partial ones. Already carried in Tier 3.
 
+**TASK — `pkm_backup()` undercounts the tracked total in its commit message.**
+Observed 2026-08-11: the message read `Backup refresh: 8 changed of 969 tracked` while
+`git_ls()` reported **971** tracked files. The count is taken BEFORE new files are staged,
+so it undercounts by exactly the number of additions. Nothing is lost — both new files
+(`ideas_three_documents.md`, `logs/priorities_history.md`) were verified present in
+`C:/repos/kimbridges-venues/pkm/`. **The hazard is interpretive:** a future session
+comparing the message against an expected count would conclude a file had not been backed
+up, and that is an absence claim built on a stale number — the shape of Finding 019, and
+the reason Finding 028 says verify against the server rather than the report. Fix: count
+after staging. *Raised by Claude, 2026-08-11.* *Occasion:* the next edit to pkm_health.R.
+
 ---
 
 ## kimbridges-stories
