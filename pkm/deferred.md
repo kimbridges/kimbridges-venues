@@ -274,7 +274,15 @@ and the AI_Microscope appendix, which describes keys-on-the-server. *Occasion:* 
 link-repointing pass. **Kim's standing instruction: these links get CORRECTED, not
 ignored.**
 
-## ISSUU — an account Kim deleted that is still serving three documents
+## ISSUU -- CLOSED 2026-08-11. Retained as record; see the closure note below.
+
+**CLOSED 2026-08-11 (Kim).** Every story once on ISSUU has been moved to the current
+site. VERIFIED, not accepted: all four booklets are published stories with PDF, cover
+and page in place -- `finding-fine-wine`, `bordeaux`, `bordeaux-2`, `japan-fall-2023`.
+`Projects/AI_Podcasts/Travel.qmd` contains **ZERO** mentions of ISSUU, so the four
+pointers AND the L11 prose claim are already gone. Nothing is at risk on that platform
+and nothing points at it. The recovery, repointing and prose tasks are all closed.
+The detail below is kept per the WON'T-DO rule -- reasons preserved, not deleted.
 
 **Corrected 2026-08-02 (same day) after probing all five URLs.** The section below
 originally recorded two guesses as fact. Both were wrong; Kim supplied the history and
@@ -320,8 +328,8 @@ Kim notes the 2023 Japan one is filed with the **photo archive for that trip**, 
 the writing — so the others are likely filed the same way, by trip rather than by
 project. Ask Kim per document rather than searching blind.
 
-**`bordeaux_2` has no known source.** 404 on ISSUU, no local PDF found. This is the
-one real gap. It is the second Bordeaux podcast's companion document.
+**CORRECTED 2026-08-11 -- `bordeaux_2` DOES have a source and is PUBLISHED.** The claim below was wrong. `kimbridges-stories/pdfs/Bordeaux_2.pdf` and `images/Bordeaux_2.jpg` are present and deployed to `_site`, and `stories/bordeaux-2.qmd` exists. An absence was asserted without being proved -- Finding 019 again. Superseded text kept: ~~
+one real gap. It is the second Bordeaux podcast's companion document.~~
 
 **Prose to fix in the same pass:** Travel.qmd L11 tells readers the booklets "are
 available on an ISSUU website." False for two of them today and false for all of them
@@ -381,9 +389,9 @@ already staged when that story was published.
 | ~~`2023_Japan_Story`~~ | **RESOLVED 2026-08-02** — published as `japan-fall-2023` |
 | `LLM_Examples` | rescued to `Projects/LLM_Examples/`; going to documents instead |
 | `Catalog` | presumably the Gallery Catalog, which lives in collections — likely a stray |
-| `Ranunculus_Impressions` | **unknown — appears nowhere else in the PKM** |
-| `Selective_Focus` | **unknown — appears nowhere else in the PKM** |
-| `Smart_Car` | **unknown — appears nowhere else in the PKM** |
+| ~~`Ranunculus_Impressions`~~ | **CLOSED 2026-08-11 (Kim) -- a DUPLICATE.** The real stories are live as `ranunculus-at-flower-fields` and `ranunculus-asiaticus-variability`. Stray cover; not a missing story. |
+| `Selective_Focus` | **SOURCE FOUND 2026-08-11 -- `underway/Selective_Focus/Selective_Focus.pdf`** (2.9 MB, 2026-04-17), cover already in `images/`. Unpublished. **HIGH PRIORITY (Kim).** Genuinely quick. |
+| `Smart_Car` | **SOURCE FOUND 2026-08-11 -- and it is NOT a story.** `underway/Smart_car/` holds nine files incl. a full project charter (`README.md`, 2026-05-08): *TwoRed 75,000 Miles Celebration*, a five-chapter reproducible Quarto book. **HIGH PRIORITY (Kim), but needs re-filing as a PROJECT** -- no `proj_*.md`, no index row. |
 
 The last three are the interesting ones: a cover image means Kim once had a story in
 mind and got far enough to choose the picture. Ask him what they were before assuming

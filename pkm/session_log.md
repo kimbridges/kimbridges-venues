@@ -11,6 +11,113 @@ Mechanism 4.
 
 ---
 
+## 2026-08-11 -- RESTART AFTER A WEEK AWAY; the resumption pointer rebuilt, two lost stories found, three new documents captured
+
+**Active focus at start:** PKM (2026-08-03 close). **At close:** PKM -- restart complete.
+Kim back from the mainland after his brother's heart attack; recovering, moved to rehab.
+Deliberately a light session: *talk and capture*.
+
+### The file that could not answer its own question
+
+Eight days of gap, and `priorities.md` -- the designated resumption pointer -- was dated
+2026-07-09 with its own first entry reading "freshen this file." Kim chose the restart
+over the backlog.
+
+**The diagnosis was not staleness, it was duplication.** The file restated item text that
+also lived in `deferred.md`, so pruning anything meant editing two places, so nothing was
+pruned. Rebuilt with the missing rule written into it: **`priorities.md` holds the ORDER,
+`deferred.md` holds the DETAIL.** One line per item, pointing at the file that carries it.
+Superseded file preserved verbatim at `logs/priorities_history.md` -- the same split the
+logs took on 2026-07-28.
+
+### Two corrections against the record, both mine
+
+Opening the session I told Kim the April-2024 Anthropic key still needed revoking and the
+hflip deadline was looming. **Both wrong.** The key was revoked 2026-08-03 and the two
+hflip links were repointed 2026-08-02 -- I read the stale "Next up" line in `proj_PKM.md`
+instead of `deferred.md`, which tracks them. The Active Focus block is a summary, not a
+tracker; when the two disagree the tracking file wins.
+
+### The orphan covers were not orphans
+
+Kim resolved the three from memory -- `Ranunculus_Impressions` a duplicate, the other two
+real but unprocessed, and he expected to have to go looking for the source materials.
+**He did not.** A scan of the venues found both already staged under
+`kimbridges-stories/underway/`, covers already in `images/`, neither published.
+
+- **Selective_Focus** -- one 2.9 MB PDF, 2026-04-17. Genuinely quick, as Kim predicted.
+- **Smart_Car** -- **not a story.** Nine files including a `README.md` project charter
+  from 2026-05-08: *TwoRed 75,000 Miles Celebration*, a five-chapter reproducible Quarto
+  book arguing from ~300 fill-ups, a time-zone-adjusted crossing log and topographic
+  extremes that a Smart car is not an urban-commuter-only vehicle. `sf`, `tidygeocoder`,
+  `elevatr`, `gt`. **No `proj_*.md`, no index row** -- an intake gap of the Jones/vouchr
+  shape, dormant three months with its next two steps already specified.
+
+Kim's assumption that both would be quick holds for one and not the other, which is the
+useful half of the finding.
+
+### ISSUU closed -- and the record was worse than the reality
+
+Kim: every story once on ISSUU has been moved. **Verified rather than accepted.** All four
+booklets are published stories with PDF, cover and page. `Travel.qmd` has **zero** ISSUU
+mentions -- the four pointers and the L11 prose claim are already gone, so the open item
+on the AI_Podcasts index row was stale and is struck.
+
+**And `deferred.md` recorded `bordeaux_2` as "no known source... the one real gap." That
+was false** -- `pdfs/Bordeaux_2.pdf`, `images/Bordeaux_2.jpg` and `stories/bordeaux-2.qmd`
+all exist and are deployed. **Finding 019 committed again: an absence asserted without
+being proved, which the next session would have read as established.** Corrected in place,
+superseded text struck rather than deleted.
+
+### The capture -- three documents
+
+Kim's thinking from the flight, and the stated goal of the day: *document the thoughts.*
+`ideas_three_documents.md` created. **Working titles:** *Baselines, Deviations & Spans*;
+*Maps with Tiles*; *Measurements Require Categories*. Unified by **"you don't see
+something unless you have a concept of it."** Prior work (Tom Koch tessellations, Will
+McClatchey low-temperature spans) is related but explicitly **not** the basis of either
+document.
+
+Offered in response: the three are one claim in three registers -- categories frame WHAT,
+tiles frame WHERE, baselines frame HOW MUCH. Five open problems recorded, including a
+title collision (*map tiles* means XYZ/slippy-map tiles to any technical reader) and the
+discovery-order-versus-exposition-order question.
+
+**Kim's rulings:** three documents (open to further analysis), outlines first, NOT written
+at once, reuse the existing packages rather than reinventing.
+
+### ★ The inverse, promoted
+
+The point offered was that Kim's thesis has an equally true and more interesting inverse:
+**a concept also makes you see what is not there, and stops you seeing the alternatives** --
+lens and blinder in the same act -- and that without it the trilogy reads as an
+advertisement for concepts.
+
+**Kim promoted it past the document it was raised for:** *"That's the kind of thread that's
+needed in everything we do. It relates, in a vague way, to the way a scientist tries to
+disprove things."*
+
+That makes it a candidate for a PKM-level principle sitting beside the absence-claims rule
+on the card -- *never assert something is missing without proving it* is the same instinct
+applied to evidence; this is it applied to concepts. **Deliberately not acted on
+unilaterally** (the card has a hard 6 KB budget). Recorded in `ideas_three_documents.md`
+for Kim's decision.
+
+Worth noting the day's own irony: the session committed Finding 019 twice in the record
+and corrected both, while capturing a principle about attacking your own claims.
+
+### Housekeeping
+
+Two files written today came back **LF** while every pre-existing PKM file is **CRLF**.
+Normalised, with the byte delta verified as exactly one per line (+185 and +136) -- the
+check the CRLF hazard note asks for. Edits to the large files went through a read-detect-
+write helper that preserves the original ending; backups first at
+`C:\temp\pkm_edits_20260811`.
+
+**Files:** `priorities.md` rebuilt; `logs/priorities_history.md` created;
+`ideas_three_documents.md` created; `deferred.md`, `project_index.md` and this log updated.
+
+
 ## 2026-08-03 -- EXPERIMENTS WITH LLMS CONVERTED AND PUBLISHED; the last legacy link closed
 
 **Active focus at start:** PKM, legacy cleanup effectively done, *Experiments with LLMs*
