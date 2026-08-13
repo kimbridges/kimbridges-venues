@@ -1450,3 +1450,116 @@ whoever calls it next.
 **The common shape.** Each failure was silent at the point of use and only visible from
 outside — the remote ref, the file content, the user's machine. *Where a tool reports on
 its own work, get the answer from somewhere the tool does not control.*
+
+---
+
+### Finding 029 (2026-08-12) — The assistant's session clock is UTC; the PKM records Honolulu local, and the gap is silent
+
+**What happened.** Every dated line written in the 2026-08-12 session initially read
+**2026-08-13**. Five files were affected -- `session_log.md`, `priorities.md`,
+`project_index.md`, `logs/focus_history.md`, `proj_kimbridges_stories.md` -- plus a
+bucket-4 scratch folder named `kimbridges-stories_20260813`. Kim's machine read
+**2026-08-12 19:20 HST** throughout.
+
+**Why it happens, and why it will keep happening.** The assistant's environment supplies
+a date in its session header. That date is **UTC**. Honolulu is UTC-10 and does not
+observe daylight saving, so **from 14:00 HST onward the supplied date is a full day
+ahead, every single day.** Kim works evenings often enough that this is not an edge case;
+it is the default condition for a majority of working hours. The supplied value is never
+malformed, never obviously wrong, and never prompts a check -- it is simply, silently,
+tomorrow.
+
+**Mechanism 4 already covered this.** *Dates and times are HONOLULU LOCAL* was written
+into `pkm_protocol.md` on 2026-07-28, after exactly this mismatch was found in the
+`2026-07-28 (evening)` session entry. The rule was read at session start on 2026-08-12
+and did not fire. **This is Finding 020's shape a third time: a rule that lives in a file
+read once is not a mechanism.**
+
+**What caught it.** Not the rule, and not any human review -- **`pkm_health()`**. Its
+generated report is stamped from the machine clock (*Generated 2026-08-12 19:19*) and
+landed in the file directly beneath entries headed the 13th. The tool that reads a real
+clock is the only participant in the session that could not be fooled, because it was the
+only one not taking the date on trust.
+
+**The rule.** Before writing any date into the PKM, take it from the R bridge:
+
+```r
+format(Sys.time(), "%Y-%m-%d")   # ground truth: Kim's machine, Pacific/Honolulu
+```
+
+Never from the assistant's environment header. This applies to log headings,
+`_Last updated:` fields, Active Focus blocks, `### YYYY-MM-DD` log entries, and
+`C:\temp\<name>_<date>` scratch folder names alike. On the card as the **write a date**
+row.
+
+**A second lesson, from the repair.** The correction touched
+`proj_kimbridges_stories.md` (459 bare LF against 21 CRLF) and `logs/focus_history.md`
+(1108 CRLF against 1 bare LF) -- **both genuinely mixed**, and both would have been
+silently normalised by a `readLines` / `writeLines` round trip, burying 14 real date
+corrections in ~1,500 lines of invisible line-ending churn. The fix was a same-length
+substitution over `rawToChar` → `gsub(fixed = TRUE)` → `charToRaw`, proved lossless by
+asserting `identical(charToRaw(s), b)` on the round trip **before** editing, then
+checking that the byte delta and both line-ending counts were exactly zero after.
+**Prove the round trip is lossless on the untouched file first; then the post-edit delta
+means something.**
+
+**And a third, noticed in the same pass.** `file.info()` on the freshly-written
+`pkm_card.md` returned exactly **4096 bytes** -- a suspiciously round block size -- while
+`readBin` returned the true **6158**. A 4 KB reading would have made the card look 2 KB
+under budget and invited padding it. The ground-truth rule holds: **`readBin` for size,
+content for verification, `file.info()` for neither** (Finding 020).
+
+---
+
+### Finding 030 (2026-08-12) — A guard that only PRINTS is not a guard; `regexpr` returning -1 silently duplicates a file
+
+**What happened.** An edit to `priorities.md` meant to replace one section used
+`regexpr()` to find a start and an end marker, then spliced with `substr()`. The end
+marker did not match -- I had written `"...not a missing story.**"` while the file has no
+trailing `**`, and the sentence is line-wrapped besides. `regexpr` returned **-1**.
+
+`substr(s, -1 + nchar(endm), nchar(s))` does not error. It silently becomes
+`substr(s, 65, nchar(s))` -- **nearly the whole file** -- so the write produced
+`prefix + replacement + almost-the-entire-original`. `priorities.md` went from 12,824 to
+15,848 bytes with two `## Purpose` sections, two `### 1.` sections, and a seam splitting a
+word in the header.
+
+**The damning part: the check was already there and already printed the answer.**
+
+```
+start found: TRUE   end found: FALSE   ordered: FALSE
+```
+
+That line was emitted **in the same call that then went ahead and wrote the file.** The
+information was not missing. It was printed to a log nobody was blocking on. **Finding 022
+says "ALWAYS check the match count before using the index" -- and the check ran. What was
+missing was that the check had no teeth.**
+
+**The rule.** A precondition must **halt execution**, not report. Use `stopifnot()`:
+
+```r
+i <- regexpr(start, s, fixed = TRUE)
+j <- regexpr(endm,  s, fixed = TRUE)
+stopifnot(i > 0, j > 0, j > i)     # halts. cat() does not.
+```
+
+This is the same structural-over-memorial lesson as Finding 028's third item: the fix that
+works is one the next caller cannot skip.
+
+**Prefer line indices to string boundaries for section surgery.** The successful retry
+replaced lines `i:(j-1)` located by anchored `grep("^### 1\\. ")`, with `stopifnot` on both
+the match counts and their order, plus a positive assertion that the expected table rows sat
+where predicted. Markdown sections have unambiguous line-level boundaries; their prose
+wraps, gains and loses emphasis markers, and is a poor thing to pattern-match on.
+
+**Recovery, and why it was possible.** The damage was deterministic:
+`P + new + orig[65..end]`. The original was reconstructed as
+`substr(current, 1, 64) + orig[65..end]` and confirmed at **exactly 12,824 bytes**, then
+the one damaged header line was repaired by name. **Structure, not size, is what proved it
+clean** -- `## Purpose` back to one occurrence, `### 1.` back to one, the full heading list
+matching. A size check alone would have accepted several wrong answers.
+
+**Standing caution.** The PKM has no version control (`proj_PKM.md`, Locations); recovery
+leaned on Drive revision history being unnecessary because the corruption was reversible in
+memory. **A destructive splice is not always reversible.** Read before write, assert before
+write, and verify structure after.

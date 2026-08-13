@@ -3,10 +3,10 @@
 _The one page read at EVERY session start. Created 2026-07-31 (Tier 3)._
 _Budget: 6 KB. If it outgrows that, the surplus belongs in pkm_findings.md._
 
-Full detail lives in `pkm_findings.md` (Findings 001-028). This card exists because
+Full detail lives in `pkm_findings.md` (Findings 001-029). This card exists because
 that file passed 66 KB with **nothing firing it** -- rules were broken days after being
 written (020). *The trigger is the mechanism, not the list.*
-Full detail lives in `pkm_findings.md` (Findings 001-028). This card exists because
+
 ---
 
 ## THE GROUND-TRUTH RULE
@@ -32,6 +32,7 @@ headings, known strings), never by reading size.
 
 | If you are about to... | read |
 |---|---|
+| **write a date** | **029 -- HONOLULU LOCAL.** The session clock is UTC. `format(Sys.time(), "%Y-%m-%d")` |
 | say a file, page, entry or site is MISSING or GONE | **018, 019, 020** |
 | trust any read of a `G:` file | the ground-truth rule above |
 | verify a write you just made | 020 |

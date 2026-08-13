@@ -1,6 +1,6 @@
 # Priorities
 _Created: 2026-05-27_
-_Last updated: 2026-08-12 — Selective Focus published; item 1.1 closed_
+_Last updated: 2026-08-12 — Selective Focus published; Smart_Car filed and lowered; section 1 closed_
 _Log: logs/priorities_history.md_
 
 ## Purpose
@@ -27,37 +27,33 @@ Kim returned 2026-08-11 from a week on the mainland (family — brother's heart
 attack, now recovering in rehab). Last working session was 2026-08-03. Nothing
 below is on a deadline.
 
-### 1. ★ HIGH PRIORITY — the unprocessed stories
+### 1. ✓ CLOSED — the two unprocessed stories
 
-Kim's call, 2026-08-11. **Both sets of source material were already in the
-PKM** — no search needed. Located under `kimbridges-stories/underway/`, with
-cover images already staged in `images/`. **1.1 published 2026-08-12; only
-Smart_Car remains, and it is not a story.**
+**Both resolved 2026-08-12. Kept as the record, not as work.**
 
-| # | Item | State |
+| # | Item | Outcome |
 |---|---|---|
-| 1.1 | **Selective_Focus** — ~~`underway/Selective_Focus/`~~ | **✔ PUBLISHED 2026-08-12** as *Selective Focus with Focus Stacking* (`/stories/selective-focus-with-focus-stacking.html`). Kim revised it to **v2** first — equipment section rebuilt around his current lens collection. 35 pp. Rendered and staged; awaiting his Netlify drag. |
-| 1.2 | **Smart_Car** — `underway/Smart_car/`, nine files. | **NOT quick — this is a project, not a story.** See below. |
+| 1.1 | **Selective_Focus** | **✓ PUBLISHED 2026-08-12** as *Selective Focus with Focus Stacking* (`/stories/selective-focus-with-focus-stacking.html`). Kim revised it to **v2** first — equipment section rebuilt around his current lens collection. 35 pp. Rendered and staged; awaiting his Netlify drag. |
+| 1.2 | **Smart_Car** | **✓ FILED AS A PROJECT 2026-08-12**, not a story — and reframed. `proj_Smart_Car.md` + index row + 20.6 MB moved to `Projects\Smart_Car` (bucket 2). Set **Active + Blocked**. |
 
-**Smart_Car is mis-scoped as a story and needs re-filing.** `README.md`
-(2026-05-08) is a full project charter: *TwoRed 75,000 Miles Celebration*, a
-data-rich reproducible **Quarto book**, five chapters, R with `dplyr`/`sf`/
-`tidygeocoder`/`elevatr`/`gt`/`ggplot2`. Thesis: refute the assumption that a
-Smart car is an urban-commuter-only vehicle, using ~300 fill-ups, the 4th
-Crossing time-zone-adjusted log, and topographic extremes (Mount Evans, Death
-Valley). Assets present: `Smart_Car.docx` (10.5 MB), `Smart_Car.pptx` (2016),
-`TwoRed_fuel_June_2014.xlsx`, `2016 Fourth Crossing Analysis.xlsx`,
-`Smart_Car.pdf` (the master dictionary), two photographs.
+**Smart_Car: Kim reframed it 2026-08-12 from one car to FOUR.** Sixteen years of Smart
+ownership, two still owned, deepest data on the first (TwoRed). The thesis is unchanged and
+stronger — not one exceptional car on one exceptional journey, but a sustained choice made
+again three times.
 
-It has **no `proj_*.md` and no index row** — an intake gap of the same shape as
-Jones and vouchr. Charter written 2026-05-08, dormant since. Its two "next
-immediate steps" are already specified: the ingestion script that assigns an
-`Expedition_ID` to every fill-up, and the Chapter 1 geocoded constellation map.
+**Why it left the priority list instead of topping it.** The largest section of the source
+material is the Arctic Circle Challenge, **already a posted story** — so what remains is data,
+not narrative, and three of the four cars have no machine-readable data at all yet. Kim will
+recover it from paperwork in miscellaneous time. **Blocked, findable, and honest about why** is
+a better state than sitting at the top of a list nobody can act on.
 
-**Ranunculus_Impressions — CLOSED 2026-08-11 (Kim): a duplicate.** The real
-stories are live as `ranunculus-at-flower-fields` and
-`ranunculus-asiaticus-variability`. `images/Ranunculus_Impressions.jpg` is a
-stray cover; delete it or leave it, but it is not a missing story.
+**Reading the data rather than the charter corrected three of its claims** — the Gas Log runs
+2010-2017 not to June 2014, the odometer tops out at **71,181 not 75,000**, and the Trip Log is
+7 rows not a dataset. Filed in `deferred.md` → Smart_Car rather than carried forward as fact.
+
+**Ranunculus_Impressions — CLOSED 2026-08-11 (Kim): a duplicate.** The real stories are live as
+`ranunculus-at-flower-fields` and `ranunculus-asiaticus-variability`.
+`images/Ranunculus_Impressions.jpg` is a stray cover; not a missing story.
 
 ### 2. Claude can do
 

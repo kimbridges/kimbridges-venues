@@ -133,6 +133,58 @@ and misleading on paper.
 
 ---
 
+## Smart_Car
+
+_Section opened 2026-08-12 when the project was filed. Everything here is BLOCKED on the
+first item; nothing else can start until Kim has the data._
+
+**TASK — recover the paperwork and data for Smart cars 2, 3 and 4.** Kim, 
+2026-08-12. This is the whole blocker and it is deliberately unscheduled: he will do it in
+miscellaneous time rather than in a focused session. Today the other three cars exist in the
+record as **one line of text** (`data/leased_smart.txt`: *March 22, 2014: Leased Two4Two
+(Smart Pure)*) and two photographs. The four-car framing cannot be written until this lands.
+What would help most, roughly in order: purchase/lease dates and models, odometer readings at
+handover, and any fuel or service records that survived.
+
+**TASK — resolve 71,181 vs 75,000.** The 2026-05-08 charter titled the project *TwoRed
+75,000 Miles Celebration*. The Gas Log's odometer column tops out at **71,181** on its last
+fill-up. Either the car ran ~4,000 miles past the last recorded fill, or the title was always
+an approximation. **Do not print either number until this is settled at source.** Cheap to
+answer the moment Kim is in the paperwork anyway.
+
+**TASK — rename `TwoRed_fuel_June_2014.xlsx`.** The Gas Log inside it runs to **2017-05-22**,
+nearly three years past the date in the filename. Deferred rather than done: renaming a data
+file is a forward-pointer change and Kim should confirm the name, not inherit one from me.
+
+**TASK — normalise the State column before claiming any count.** 52 distinct values across
+293 fill-ups, against the charter's "49 states and 10 provinces". Some are provinces, and the
+`Canada2014` sheet is separate again. One pass with a lookup table when the ingestion script
+is written.
+
+**TASK — unit-normalise the Canada2014 sheet.** 24 rows in litres and Canadian dollars, in a
+file otherwise in gallons and US dollars. The charter did not mention this sheet at all.
+
+**TASK — remove the superseded copy at
+`kimbridges-stories/underway/Smart_car/`.** Kim's hand: neither the device bridge nor the R
+bridge deletes. Only after he is satisfied the `Projects/Smart_Car` copy is good. Nine files,
+20.6 MB, verified byte-identical on the copy.
+
+**CONDITIONAL — if anyone proposes embedding the Arctic Circle Challenge as a chapter.** The
+answer is already decided: NO. Kim ruled 2026-08-12 that it is cross-referenced, never re-told.
+It is a published story (77 pp) at `/stories/the-arctic-circle-challenge.html`; embedding it
+would put identical content at two URLs and make the generated works register misreport what
+is published where. The charter's Chapter 5 said to embed it by iframe — **that charter is the
+likely source of the proposal, and it is superseded.** Use its DATA in the analysis chapters;
+link the narrative.
+
+**CONDITIONAL — if the fleet data never turns up.** The fallback is the original one-car
+scope, which the existing data DOES support: 293 fill-ups, 2010-2017, 52 states/provinces, and
+a clean Fourth Crossing subset. **This is a real document either way** — the reframing raises
+the ceiling, it does not gate the floor. Worth knowing before anyone concludes the project is
+dead for want of paperwork.
+
+---
+
 ## kimbridges-documents
 
 **TASK — Check `inventory_of_sources.txt` at the site root.**

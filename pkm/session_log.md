@@ -11,7 +11,7 @@ Mechanism 4.
 
 ---
 
-## 2026-08-12 -- SELECTIVE FOCUS PUBLISHED as a v2; the quick story was quick, and the revision is the reason it matters
+## 2026-08-12 -- SELECTIVE FOCUS PUBLISHED as a v2; SMART_CAR FILED AND REFRAMED TO FOUR CARS; two findings written from my own errors
 
 **Active focus at start:** PKM (2026-08-11 close). **At close:** PKM -- item 1.1 of the
 resumption pointer closed. Kim confirmed the focus himself: Selective_Focus.
@@ -94,6 +94,69 @@ files.** All 55 PDFs spot-checked for a real `%PDF-` header including the five l
    when complete; I copied rather than moved, since neither the device bridge nor the R
    bridge deletes. Same leftover shape as `underway/2023_Japan_Story/`, already on the
    housekeeping list.
+
+### SMART_CAR FILED AND LOWERED — and reframed from one car to four
+
+Kim confirmed the 2026-08-11 reading that Smart_Car is a document, not a story, **and gave
+the reason from the source material itself: the largest section is the Arctic Circle
+Challenge, which is already a posted story.** What is left is data, not narrative.
+
+**Then he reframed the scope.** Four Smart cars, sixteen years, two still owned, deepest
+data on the first (TwoRed). The charter's thesis survives and gets stronger -- not one
+exceptional car on one exceptional journey, but a choice made again three times.
+
+**Three rulings recorded:** the fleet is the subject; the Arctic Circle Challenge is
+**cross-referenced, never re-told** (superseding the charter's embed-by-iframe Chapter 5,
+which would have put identical content at two URLs and made the works register lie); and the
+project reads **Active + Blocked**, not Ready, with the blocker named as his own paperwork
+recovery, to be done in miscellaneous time.
+
+**Intake done:** `proj_Smart_Car.md` (8.9 KB) with a Statement of Intentions section written
+so a cold session knows what was decided and what was deliberately left open; index row
+added; a `Smart_Car` section opened in `deferred.md` with six TASK and two CONDITIONAL
+entries. Nine files moved to `Projects/Smart_Car` under `data/`, `source/`, `images/` --
+**all nine byte-identical, 20.56 MB both sides.** The charter is kept verbatim as
+`source/charter_2026-05-08.md`, historical record rather than instruction.
+
+**★ READING THE DATA CORRECTED THE CHARTER ON THREE POINTS.** The charter was written from
+memory; nobody had opened the spreadsheets since.
+
+| Claim | Reality |
+|---|---|
+| "nearly 300 fill-ups" to June 2014 | 293 fill-ups, but the range is **2010-07-23 to 2017-05-22** -- the filename understates it by nearly three years |
+| "75,000 miles" | odometer tops out at **71,181**; the number in the title is not in the data |
+| "precise daily driving intervals" | the *Trip Log* sheet is **7 rows** |
+
+Also unmentioned by the charter: a `Canada2014` sheet, 24 rows in **litres and Canadian
+dollars**. The one claim that held up exactly was the Fourth Crossing file, which is genuinely
+the cleanest asset -- `time_zone`, `activity_time`, `corrected_hrs` already derived.
+
+**None of it was carried forward as fact.** All three went to `deferred.md` as TASKs with
+the honest state written in, and the project file carries a *What the data ACTUALLY contains*
+table. **Do not print 75,000 until it is sourced.**
+
+### ★ A GUARD THAT ONLY PRINTS IS NOT A GUARD — I corrupted priorities.md and recovered it
+
+Replacing section 1 of `priorities.md` by string boundaries, the end marker did not match:
+I searched for `"...not a missing story.**"` and the file has no trailing `**`. `regexpr`
+returned **-1**, `substr(s, -1 + 66, ...)` silently became `substr(s, 65, ...)`, and the
+write produced prefix + replacement + **almost the entire original file** -- 12,824 to 15,848
+bytes, two `## Purpose` sections, two `### 1.` sections, a word split at the seam.
+
+**The precondition check was already written, already ran, and already printed
+`end found: FALSE` -- in the same call that then wrote the file.** The information was not
+missing; it had no teeth. **Finding 030** written: a precondition must `stopifnot()`, not
+`cat()`. Same structural-over-memorial shape as Finding 028.
+
+Recovered exactly -- the damage was deterministic, so the original was reconstructed and
+confirmed at **12,824 bytes**, then the one damaged header line repaired by name.
+**Structure proved it clean, not size:** `## Purpose` back to one, `### 1.` back to one, full
+heading list matching. The retry used anchored `grep` on line indices with `stopifnot` on the
+match counts AND their order. **Markdown sections have unambiguous line boundaries; their
+prose does not.**
+
+Worth stating plainly: **the PKM has no version control.** This was recoverable in memory.
+A destructive splice will not always be.
 
 ### ★ THE SESSION DATE WAS WRONG, AND MECHANISM 4 ALREADY SAID SO
 

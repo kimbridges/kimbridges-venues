@@ -1,15 +1,15 @@
 # PKM Health Report
-_Generated 2026-08-12 19:19 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-08-12 19:52 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
 - **Works registered:** 83
-- **Works failing reconciliation:** 1 (source -> _site -> live)
+- **Works failing reconciliation:** 0 (source -> _site -> live)
 - **Rendered pages with no source:** 0
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 4
 - **Files over size budget:** 2
-- **Active Focus block:** 2.6 KB (budget 6)
+- **Active Focus block:** 4 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 6
 - **Legacy pages awaiting account deletion:** 58
@@ -17,9 +17,7 @@ _Generated 2026-08-12 19:19 by pkm_health.R. Regenerate; do not edit._
 
 ## Reconciliation failures
 
-| venue | slug | rendered | live |
-|---|---|---|---|
-| stories | selective-focus-with-focus-stacking | TRUE | 404 |
+None.
 
 ## Rendered without source
 
@@ -45,7 +43,7 @@ None.
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 2.6 | 6 | -3.4 |
+| 8 | 4 | 6 | -2 |
 
 ## Venues without a source repo
 
@@ -72,7 +70,7 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| kimbridges-stories_20260813 |  0.0 | 591 | FALSE |
+| kimbridges-stories_20260812 |  0.0 | 591 | FALSE |
 | _site | 17.9 | 112 | TRUE |
 | _site_20260726 | 17.2 | 112 | TRUE |
 | pkm_edits_20260811 |  1.4 |   0 | FALSE |
@@ -93,4 +91,4 @@ None.
 None.
 
 ---
-_Ran in 101.6 s._
+_Ran in 74 s._
