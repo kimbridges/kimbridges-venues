@@ -135,24 +135,32 @@ and misleading on paper.
 
 ## Smart_Car
 
-_Section opened 2026-08-12 when the project was filed. Everything here is BLOCKED on the
-first item; nothing else can start until Kim has the data._
+_Section opened 2026-08-12 when the project was filed; the fleet roster and Kim's
+analysis intentions were added the same day. Everything here is BLOCKED on the first two
+items._
 
-**TASK — recover the paperwork and data for Smart cars 2, 3 and 4.** Kim, 
-2026-08-12. This is the whole blocker and it is deliberately unscheduled: he will do it in
-miscellaneous time rather than in a focused session. Today the other three cars exist in the
-record as **one line of text** (`data/leased_smart.txt`: *March 22, 2014: Leased Two4Two
-(Smart Pure)*) and two photographs. The four-car framing cannot be written until this lands.
-What would help most, roughly in order: purchase/lease dates and models, odometer readings at
-handover, and any fuel or service records that survived.
+**TASK — locate the CREAMSICLE cross-country data.** Kim, 2026-08-12. **The highest-value
+gap in the project.** Creamsicle (2016 Smart, white/orange) was driven across the country
+several times and Kim says he has substantial data on it. Finding those files turns this from
+one documented car plus three anecdotes into **two analytical spines**. Until then the fleet
+framing is narrative rather than quantitative. Unscheduled by his choice.
 
-**TASK — resolve 71,181 vs 75,000.** The 2026-05-08 charter titled the project *TwoRed
-75,000 Miles Celebration*. The Gas Log's odometer column tops out at **71,181** on its last
-fill-up. Either the car ran ~4,000 miles past the last recorded fill, or the title was always
-an approximation. **Do not print either number until this is settled at source.** Cheap to
-answer the moment Kim is in the paperwork anyway.
+**TASK — top up the TwoRed fuel log to ~75,000.** Kim, 2026-08-12, his own framing:
+*I need to update the fuel logs so that things are properly filled in.* The Gas Log stops at
+71,181; the car went to about 20 miles short of 75,000. The missing stretch is real driving
+with no records entered.
 
-**TASK — rename `TwoRed_fuel_June_2014.xlsx`.** The Gas Log inside it runs to **2017-05-22**,
+**TASK — whatever exists for Two4Two and Bordeaux.** Lower value, recorded so it is not
+mistaken for an oversight. Two4Two was a **lease from 2014-03-22** (Smart Pure, ICE) and was
+short; Bordeaux (2018, electric) is deliberately outside the statistics by Kim's ruling of
+2026-08-12. Neither is expected to carry much.
+
+**✓ CLOSED 2026-08-12 — the 71,181 vs 75,000 question.** Kim: TwoRed is **about 20 miles
+short of 75,000**. The log stopped before the car did; the charter's title was right and the
+open question rested on the spreadsheet alone. **Kept per the WON'T-DO rule for the reason,
+not the answer: a dataset ending is not the same as the thing it measures ending.**
+
+**TASK — rename `TwoRed_fuel_June_2014.xlsx`.** The Gas Log inside runs to **2017-05-22**,
 nearly three years past the date in the filename. Deferred rather than done: renaming a data
 file is a forward-pointer change and Kim should confirm the name, not inherit one from me.
 
@@ -164,24 +172,39 @@ is written.
 **TASK — unit-normalise the Canada2014 sheet.** 24 rows in litres and Canadian dollars, in a
 file otherwise in gallons and US dollars. The charter did not mention this sheet at all.
 
-**TASK — remove the superseded copy at
-`kimbridges-stories/underway/Smart_car/`.** Kim's hand: neither the device bridge nor the R
-bridge deletes. Only after he is satisfied the `Projects/Smart_Car` copy is good. Nine files,
-20.6 MB, verified byte-identical on the copy.
+**TASK — remove the superseded copy at `kimbridges-stories/underway/Smart_car/`.** Kim's
+hand: neither the device bridge nor the R bridge deletes. Only after he is satisfied the
+`Projects/Smart_Car` copy is good. Nine files, 20.6 MB, verified byte-identical on the copy.
+
+**★ CONDITIONAL — BEFORE ANY CREAMSICLE CHAPTER GOES PUBLIC.** Kim, 2026-08-12:
+**the reason that car was bought is NOT FOR PUBLICATION.** It was purchased so the family
+could help Nancy's brother David through a **double lung transplant**; the car was later sold
+to David. That is a third party's medical history. It is recorded here, once, so a future
+session understands why a fourth Smart appeared and does not go digging for the reason.
+**The public text says the car was bought to help family, and stops there.** Do not
+paraphrase toward the detail and do not use it as a chapter hook. If it ever goes in, that is
+Kim and David's decision together, not an editorial one.
+
+**CONDITIONAL — if any Smart_Car output is about to be named `bordeaux`.** **NO.** Two
+published stories already hold `/stories/bordeaux` and `/stories/bordeaux-2` (the wine
+booklets). Rule adopted 2026-08-12: the car keeps its name in PROSE, but no slug,
+filename, figure, data file or deploy path may take a `bordeaux*` form. A deploy that
+shadowed a live story is exactly the failure this prevents, and folder/slug/name drift is
+already a known root cause — `priorities.md` item 3.5.
 
 **CONDITIONAL — if anyone proposes embedding the Arctic Circle Challenge as a chapter.** The
-answer is already decided: NO. Kim ruled 2026-08-12 that it is cross-referenced, never re-told.
-It is a published story (77 pp) at `/stories/the-arctic-circle-challenge.html`; embedding it
-would put identical content at two URLs and make the generated works register misreport what
-is published where. The charter's Chapter 5 said to embed it by iframe — **that charter is the
-likely source of the proposal, and it is superseded.** Use its DATA in the analysis chapters;
-link the narrative.
+answer is already decided: NO. Kim ruled 2026-08-12 that it is cross-referenced, never
+re-told. It is a published story (77 pp) at `/stories/the-arctic-circle-challenge.html`;
+embedding it would put identical content at two URLs and make the generated works register
+misreport what is published where. The charter's Chapter 5 said to embed it by iframe —
+**that charter is the likely source of the proposal, and it is superseded.** Use its DATA in
+the analysis chapters; link the narrative.
 
-**CONDITIONAL — if the fleet data never turns up.** The fallback is the original one-car
-scope, which the existing data DOES support: 293 fill-ups, 2010-2017, 52 states/provinces, and
-a clean Fourth Crossing subset. **This is a real document either way** — the reframing raises
-the ceiling, it does not gate the floor. Worth knowing before anyone concludes the project is
-dead for want of paperwork.
+**CONDITIONAL — if the Creamsicle data never turns up.** The fallback is the one-car scope,
+which the existing data DOES support: 293 fill-ups, 2010-2017, 52 states/provinces, and a
+clean Fourth Crossing subset. **This is a real document either way** — the fleet framing
+raises the ceiling, it does not gate the floor. Worth knowing before anyone concludes the
+project is dead for want of paperwork.
 
 ---
 

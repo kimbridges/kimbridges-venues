@@ -135,6 +135,65 @@ the cleanest asset -- `time_zone`, `activity_time`, `corrected_hrs` already deri
 the honest state written in, and the project file carries a *What the data ACTUALLY contains*
 table. **Do not print 75,000 until it is sourced.**
 
+### ★ THE FLEET IS NAMED — and the 75,000-mile question closes the way I did not expect
+
+Kim gave the roster the same day, unprompted, and it reshapes the project again.
+
+| # | Name | Year / model | Power | Status |
+|---|---|---|---|---|
+| 1 | **TwoRed** | 2010 Smart Passion | ICE | Owned |
+| 2 | **Two4Two** | Smart Pure | ICE | Leased 2014-03-22, returned |
+| 3 | **Creamsicle** | 2016, white/orange | ICE | Sold to family |
+| 4 | **Bordeaux** | 2018 | **Electric** | Owned |
+
+**★ The 75,000-mile discrepancy was MINE, not the charter's.** TwoRed is **about 20 miles
+short of 75,000**. The Gas Log's 71,181 is where the *log* stops, not where the *car*
+stopped. I had filed it as an open question — *the number in the title is not in the data* —
+on the strength of the spreadsheet alone. **A dataset ending is not the same as the thing it
+measures ending**, and I had inverted which of the two was authoritative. The charter was
+right. Closed in `deferred.md` with the reason kept rather than the answer, per the WON'T-DO
+rule.
+
+Kim is updating the fuel logs to fill in the missing stretch.
+
+**★ CREAMSICLE CHANGES THE SHAPE OF THE PROJECT.** He has substantial data from driving it
+across the country several times — in his words, enough to *complement* TwoRed. So this is
+**not one documented car plus three anecdotes; it is two analytical spines bracketing a lease
+and an EV.** The binding constraint has correspondingly narrowed: no longer *find out what
+the cars were* but **find the Creamsicle files.** That is now the top item in the project's
+deferred section.
+
+**Kim's analysis intentions, recorded:** fuel costs, daily driving distances, average speeds,
+with graphics. Plus **photographs of the cars in interesting places as a first-class element
+** — which is also the natural join to `Photo_Locations` and `timelinesr`, since a geotagged
+photo and a geocoded fuel stop are the same kind of record.
+
+**THREE RULINGS, all of which foreclose a plausible future mistake.**
+
+1. **Creamsicle's purchase reason is NOT FOR PUBLICATION.** The car was bought so the family
+   could help Nancy's brother David through a double lung transplant, and was later sold to
+   him. **That is a third party's medical history.** It is recorded once in `deferred.md` so
+   a future session understands why a fourth Smart appeared and stops digging; the public
+   text says the car was bought to help family, and stops there. Kim chose *record it, keep
+   it private* over omitting it entirely — the reason matters to the project, the detail is
+   not the project's to tell.
+2. **`Bordeaux` is a name collision.** The 2018 electric car shares its name with two
+   published stories, `/stories/bordeaux` and `/stories/bordeaux-2` (the wine booklets).
+   **The car keeps the name in prose; no Smart_Car slug, filename, figure, data file or
+   deploy path may take a `bordeaux*` form.** Caught before any output existed, which is the
+   only cheap moment. Slug/folder/name drift is already a known root cause — item 3.5.
+3. **ICE and EV stay SEPARATE.** Statistics across the three gas cars; Bordeaux described
+   qualitatively. A common $/mile axis spanning gasoline and electricity was offered and
+   **declined** — it would force a comparison the charging data may not support.
+
+`proj_Smart_Car.md` gained *The fleet* and *Intended analysis*; Blockers, Next Steps and the
+data table were rewritten to match. The deferred section went from 6 TASK / 2 CONDITIONAL to
+**7 TASK / 4 CONDITIONAL / 1 CLOSED**.
+
+**Also confirmed:** Kim dragged Selective Focus to Netlify. Verified independently before he
+mentioned it — all four URLs 200, the PDF serving at exactly 3,137,779 bytes, and
+`pkm_health()` reconciliation back to **0 failures** across 83 works.
+
 ### ★ A GUARD THAT ONLY PRINTS IS NOT A GUARD — I corrupted priorities.md and recovered it
 
 Replacing section 1 of `priorities.md` by string boundaries, the end marker did not match:

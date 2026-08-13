@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-08-12 19:52 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-08-12 20:15 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -9,7 +9,7 @@ _Generated 2026-08-12 19:52 by pkm_health.R. Regenerate; do not edit._
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 4
 - **Files over size budget:** 2
-- **Active Focus block:** 4 KB (budget 6)
+- **Active Focus block:** 5.5 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 6
 - **Legacy pages awaiting account deletion:** 58
@@ -43,7 +43,7 @@ None.
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 4 | 6 | -2 |
+| 8 | 5.5 | 6 | -0.5 |
 
 ## Venues without a source repo
 
@@ -91,4 +91,4 @@ None.
 None.
 
 ---
-_Ran in 74 s._
+_Ran in 62.4 s._
