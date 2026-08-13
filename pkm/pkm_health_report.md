@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-08-12 20:15 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-08-12 20:22 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -73,7 +73,7 @@ None.
 | kimbridges-stories_20260812 |  0.0 | 591 | FALSE |
 | _site | 17.9 | 112 | TRUE |
 | _site_20260726 | 17.2 | 112 | TRUE |
-| pkm_edits_20260811 |  1.4 |   0 | FALSE |
+| pkm_edits_20260811 |  1.5 |   0 | FALSE |
 | pkm_snapshots | 10.0 |   0 | FALSE |
 | venuemirror_clone_2026-08-03 | 10.2 |   0 | FALSE |
 
@@ -91,4 +91,4 @@ None.
 None.
 
 ---
-_Ran in 62.4 s._
+_Ran in 57.6 s._

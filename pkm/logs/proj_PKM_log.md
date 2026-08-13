@@ -898,3 +898,57 @@ the record either.
 the misfiling was noticed, and reverted. One had already gone wrong: the ʻIliau Loop briefing book recorded at 12 pp,
 the figure proj_briefing_book.md preserves, where the contemporaneous log entry says 14 pp after Kim's review. A
 reconstruction inherits whichever version of a fact its source happens to keep, and cannot know what it lost.
+
+### 2026-08-12 (the card gains a date rule; Findings 029 and 030, both written from my own errors)
+
+**Kim's ask:** *make a card line for the date problem. It seems to creep in too often.*
+
+**The mechanism.** The assistant's environment supplies a date in its session header, and
+that date is **UTC**. Honolulu is UTC-10 with no daylight saving, so **from 14:00 HST onward
+the supplied date is a full day ahead — every day.** Kim works evenings often, so this is
+the default condition for a large share of working hours, not an edge case. The value is
+never malformed and never prompts a check. It is simply, silently, tomorrow.
+
+**It fired on 2026-08-12 itself:** every dated line written that session initially read the
+13th, across five files plus a bucket-4 scratch folder name. **Mechanism 4 had said *dates
+are HONOLULU LOCAL* since 2026-07-28, was read at session start, and did not fire.**
+`pkm_health()` caught it — its report is stamped from the machine clock and landed directly
+beneath entries dated a day later. **The only participant that could not be fooled was the
+one not taking the date on trust.**
+
+**A BUDGET DECISION, worth recording because the card is designed to force it.** The first
+version of the row ran the card to 6.28 KB against its hard 6 KB budget — which
+`pkm_budget()` enforces and would have flagged. Rather than quietly exceed it, the card's
+own rule was applied: **trigger on the card, surplus to `pkm_findings.md`.** The row was cut
+to 108 bytes pointing at **Finding 029**, which carries the diagnosis. Card now sits at
+**6158 bytes = 6.0 KB**, exactly at budget and unflagged. A stray duplicated line at the top
+of the card, present since it was created, was removed in the same pass.
+
+**★ The 6 KB budget did its job precisely as designed** — it did not prevent a needed rule,
+it forced the rule to be *stated at card length* and the reasoning to go where reasoning
+belongs. A soft budget would have absorbed 300 bytes without complaint, and then the next
+300.
+
+**Finding 030, from a second error the same session.** Replacing a section of
+`priorities.md` by string boundaries, the end marker did not match; `regexpr` returned -1;
+`substr(s, -1 + 66, ...)` silently became `substr(s, 65, ...)`; and the write produced
+**prefix + replacement + almost the entire original file** — 12,824 to 15,848 bytes, two
+`## Purpose` sections, a word split at the seam. **The precondition check was already
+written, already ran, and already printed `end found: FALSE` in the same call that then
+wrote the file.** The information was not missing; it had no teeth.
+
+Rule: **a precondition must `stopifnot()`, not `cat()`.** And prefer LINE INDICES to string
+boundaries for section surgery — markdown sections have unambiguous line boundaries; their
+prose wraps and gains emphasis markers and is a poor thing to pattern-match on.
+
+Recovered exactly: the damage was deterministic, the original reconstructed and confirmed at
+**12,824 bytes**, then one damaged header line repaired by name. **Structure proved it clean,
+not size** — `## Purpose` back to one occurrence, `### 1.` back to one, full heading list
+matching. A size check alone would have accepted several wrong answers.
+
+**Both guards then earned their keep within the hour.** Two later edits were HALTED by
+`stopifnot` — once because I misremembered my own wording, once because an em-dash is three
+bytes and a `..` pattern spans two. Both would have been silent corruptions that morning.
+
+**Standing caution restated.** The PKM has no version control. Today's corruption was
+reversible in memory. **A destructive splice will not always be.**

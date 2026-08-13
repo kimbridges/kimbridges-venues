@@ -1,5 +1,5 @@
 # PROJECT: PKM System
-_Last updated: 2026-08-03_
+_Last updated: 2026-08-12_
 _Status: Active_
 _Focus readiness: Ready_
 _Log: logs/proj_PKM_log.md_
