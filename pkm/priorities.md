@@ -1,6 +1,6 @@
 # Priorities
 _Created: 2026-05-27_
-_Last updated: 2026-08-11 — rebuilt as a working resumption pointer after eight weeks of drift_
+_Last updated: 2026-08-12 — Selective Focus published; item 1.1 closed_
 _Log: logs/priorities_history.md_
 
 ## Purpose
@@ -27,16 +27,16 @@ Kim returned 2026-08-11 from a week on the mainland (family — brother's heart
 attack, now recovering in rehab). Last working session was 2026-08-03. Nothing
 below is on a deadline.
 
-### 1. ★ HIGH PRIORITY — the two unprocessed stories
+### 1. ★ HIGH PRIORITY — the unprocessed stories
 
 Kim's call, 2026-08-11. **Both sets of source material were already in the
 PKM** — no search needed. Located under `kimbridges-stories/underway/`, with
-cover images already staged in `images/`. Neither is published (no `.qmd`, no
-PDF in the venue).
+cover images already staged in `images/`. **1.1 published 2026-08-12; only
+Smart_Car remains, and it is not a story.**
 
 | # | Item | State |
 |---|---|---|
-| 1.1 | **Selective_Focus** — `underway/Selective_Focus/Selective_Focus.pdf`, 2.9 MB, 2026-04-17. Cover `images/Selective_Focus.jpg` in place. | **Genuinely quick.** One PDF, the three-artifact stories pattern, ready to assemble. |
+| 1.1 | **Selective_Focus** — ~~`underway/Selective_Focus/`~~ | **✔ PUBLISHED 2026-08-12** as *Selective Focus with Focus Stacking* (`/stories/selective-focus-with-focus-stacking.html`). Kim revised it to **v2** first — equipment section rebuilt around his current lens collection. 35 pp. Rendered and staged; awaiting his Netlify drag. |
 | 1.2 | **Smart_Car** — `underway/Smart_car/`, nine files. | **NOT quick — this is a project, not a story.** See below. |
 
 **Smart_Car is mis-scoped as a story and needs re-filing.** `README.md`
@@ -134,6 +134,24 @@ writing; parallel ideation but staged production).
   (proj_PKM log, 2026-05-15 → 05-23). Its own session.
 - **photoPress / photobookr / Photo_Book cluster consolidation** — once enough
   examples have run through photobookr to prove parity with Photo_Book.
+
+---
+
+## Closed 2026-08-12
+
+**Selective_Focus — PUBLISHED**, and not as the file that was sitting there.
+Kim found the original materials in his photos archive, judged the story
+*interesting and somewhat useful*, and rewrote the useful half: the equipment
+section now reflects his current lens collection (Sony 50-150mm f/2 GM against
+the 90mm macro), plus a computer promoted to essential field gear, a seven-step
+camera setup in memory slot 3, and the focus-and-pad method for placing near
+focus. Published from `Selective_Focus_v2_compressed.pdf`; the venue copy drops
+the working suffix. Dated 2026-08-12 so it sorts as new work.
+
+**Two drifts found in passing, both still open.** `stories_inventory_v2.xlsx`
+is stale — last written 2026-06-23, missing three stories added by hand since,
+so the README's claim that it is the source of truth is no longer accurate.
+And `underway/Selective_Focus/` still holds both PDFs; neither bridge deletes.
 
 ---
 

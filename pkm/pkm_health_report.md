@@ -1,23 +1,25 @@
 # PKM Health Report
-_Generated 2026-08-11 09:24 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-08-12 19:19 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
-- **Works registered:** 82
-- **Works failing reconciliation:** 0 (source -> _site -> live)
+- **Works registered:** 83
+- **Works failing reconciliation:** 1 (source -> _site -> live)
 - **Rendered pages with no source:** 0
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 4
 - **Files over size budget:** 2
-- **Active Focus block:** 2.2 KB (budget 6)
+- **Active Focus block:** 2.6 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 6
 - **Legacy pages awaiting account deletion:** 58
-- **Build scratch in C:/temp:** 5 folder(s), 224 MB
+- **Build scratch in C:/temp:** 6 folder(s), 815 MB
 
 ## Reconciliation failures
 
-None.
+| venue | slug | rendered | live |
+|---|---|---|---|
+| stories | selective-focus-with-focus-stacking | TRUE | 404 |
 
 ## Rendered without source
 
@@ -43,7 +45,7 @@ None.
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 2.2 | 6 | -3.8 |
+| 8 | 2.6 | 6 | -3.4 |
 
 ## Venues without a source repo
 
@@ -70,11 +72,12 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| _site | 16.5 | 112 | TRUE |
-| _site_20260726 | 15.8 | 112 | TRUE |
-| pkm_edits_20260811 |  0.0 |   0 | FALSE |
-| pkm_snapshots |  8.5 |   0 | FALSE |
-| venuemirror_clone_2026-08-03 |  8.7 |   0 | FALSE |
+| kimbridges-stories_20260813 |  0.0 | 591 | FALSE |
+| _site | 17.9 | 112 | TRUE |
+| _site_20260726 | 17.2 | 112 | TRUE |
+| pkm_edits_20260811 |  1.4 |   0 | FALSE |
+| pkm_snapshots | 10.0 |   0 | FALSE |
+| venuemirror_clone_2026-08-03 | 10.2 |   0 | FALSE |
 
 ## Legacy pages by platform
 
@@ -90,4 +93,4 @@ None.
 None.
 
 ---
-_Ran in 58.4 s._
+_Ran in 101.6 s._

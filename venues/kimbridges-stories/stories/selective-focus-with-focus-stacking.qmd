@@ -1,0 +1,13 @@
+---
+title: "Selective Focus with Focus Stacking"
+subtitle: "Ongoing notes on focus bracketing and stacking with the Sony A7RV."
+date: 2026-08-12
+categories: ["Photography", "Hawaii", "Gardens"]
+image: ../images/Selective_Focus.jpg
+pdf: ../pdfs/Selective_Focus.pdf
+---
+An open set of working notes, begun in May 2023 and revised in August 2026. The usual reason to stack a set of focus-bracketed images is to make a photograph sharp from near to far. This document pursues the opposite: using a stack to hold a small subject in focus while the background stays soft. I call that selective focus. The field test was in Hawai`i Volcanoes National Park, on seven plants whose flowers had defeated earlier attempts -- *Scaevola kilaueae*, *Isachne distichophylla*, *Ceodes umbellifera*, *Hibiscadelphus giffardianus*, *Pipturus albidus*, *Alyxia stellata* and *Metrosideros polymorpha*. Each result is annotated with the aperture and stack size that produced it, and with what should have been done differently. Wind, low light under closed canopy, and the sheer three-dimensionality of a branching inflorescence turned out to matter more than the technique itself. The 2026 revision rebuilds the equipment half around a changed lens collection -- the Sony 50-150mm f/2 GM as an alternative to the 90mm macro -- and adds the seven-step setup that puts focus bracketing one dial-click away, along with a "focus-and-pad" method for placing the near focus point in the field.
+
+Pages: 35
+
+<iframe src="../viewer.html?pdf=Selective_Focus.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

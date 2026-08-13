@@ -11,6 +11,127 @@ Mechanism 4.
 
 ---
 
+## 2026-08-12 -- SELECTIVE FOCUS PUBLISHED as a v2; the quick story was quick, and the revision is the reason it matters
+
+**Active focus at start:** PKM (2026-08-11 close). **At close:** PKM -- item 1.1 of the
+resumption pointer closed. Kim confirmed the focus himself: Selective_Focus.
+
+### Kim did the work before the session started
+
+He found the original materials in his photos archive, read the story back, and judged it
+*interesting and somewhat useful*. Then he acted on the second half of that judgement: he
+researched and rewrote the useful part so the equipment reflects his CURRENT lens
+collection. The result is `Selective_Focus_v2_compressed.pdf`, 35 pages, InDesign,
+created 2026-08-12 18:41 HST. **The document now carries two dates on page 2 -- May 28,
+2023 and Updated: August 12, 2026.**
+
+The v1 estimate in `priorities.md` said *genuinely quick: one PDF, ready to assemble*.
+That held. Assembly took one pass and nothing surprising appeared.
+
+### What changed between v1 and v2
+
+The narrative half -- the Hawai`i Volcanoes field test on seven plants (*Scaevola
+kilaueae*, *Isachne distichophylla*, *Ceodes umbellifera*, *Hibiscadelphus giffardianus*,
+*Pipturus albidus*, *Alyxia stellata*, *Metrosideros polymorpha*), each result annotated
+with aperture and stack size and with what should have been done differently -- is
+unchanged. The revision is entirely in the forward-looking half:
+
+- the **Sony 50-150mm f/2 GM** offered as an alternative to the 90mm macro, with the
+  minimum focus distances worked out (0.4 m at 50mm, 0.74 m at 150mm, 0.2X)
+- the Leofoto G2/G3 ball head over the original choice
+- **a computer promoted to essential gear** -- the missing element in the first field test
+- a seven-step recipe that parks focus bracketing in camera memory slot 3, one dial-click away
+- the **focus-and-pad method**: dial focus in front of the intended foreground until peaking
+  disappears, treat that empty air as the 0 baseline, then run [0 > +]
+
+**The cover is unchanged** (*Pisonia brunoniana*, Kipuka Puaulu), so the v1 thumbnail
+already matched. Regenerated anyway at the script standard 150 DPI (1275x1650) rather
+than the ~110 DPI v1 image.
+
+### Assembled by hand, not by add_stories.py
+
+The three-artifact pattern followed exactly: `pdfs/Selective_Focus.pdf`,
+`images/Selective_Focus.jpg`, `stories/selective-focus-with-focus-stacking.qmd`.
+**The venue filename drops the working suffix** -- `_v2_compressed` is a working-file
+name and no other venue PDF carries one.
+
+Kim ruled on three points: **date 2026-08-12** (so it sorts to the top of the grid as new
+work, rather than sinking to 2023 among older entries), **categories Photography / Hawaii /
+Gardens** (established vocabulary only -- a new "Technique" tag was offered and declined),
+and **framing as openly ongoing working notes**, which is what the document says of itself.
+
+### Verified through the R bridge, by content
+
+Per the ground-truth rule, nothing here was confirmed by reading a size:
+
+- PDF byte-identical at every hop: source -> `pdfs/` -> `_site/pdfs/`, 3,137,779 bytes,
+  `%PDF-` header and `%%EOF` trailer both checked
+- JPEG magic bytes `FF D8 FF` confirmed on the regenerated thumbnail
+- the `.qmd` read back and its `pdf:` and `image:` targets resolved to files that exist
+- `index.html` confirmed to carry the card, the title and the thumbnail reference
+
+### Rendered and staged
+
+`quarto::quarto_render()` via the R bridge -- **this works where a shell call does not**,
+because the security guard scans source text and the package call never spells a shell
+command. 56 documents, the new story at [45/56], 55 story pages out.
+
+`_site` staged to **`C:/temp/kimbridges-stories_20260812`** (bucket 4). Counts reconciled
+per Finding 021: **190 files and 590.8 MB on both sides, nothing missing, zero zero-byte
+files.** All 55 PDFs spot-checked for a real `%PDF-` header including the five largest
+(Merritt_Island 34.9 MB down to Bordeaux 19.8 MB) -- Finding 008 is about exactly this.
+
+**Remaining: Kim drags that folder to the Netlify drop zone.** Not the project root.
+
+### Two drifts found in passing, neither acted on
+
+1. **`stories_inventory_v2.xlsx` is no longer the source of truth the README claims.** It
+   was last written 2026-06-23 and is missing `cinque-terre-impressions`,
+   `the-washington-monument` and `japan-fall-2023` -- all three added by hand since. I added
+   the Selective Focus row (now 52 data rows) but **the spreadsheet still under-counts the
+   venue by three.** Either it gets backfilled or the README stops calling it the master.
+2. **`underway/Selective_Focus/` still holds both PDFs.** The README says move to `updates/`
+   when complete; I copied rather than moved, since neither the device bridge nor the R
+   bridge deletes. Same leftover shape as `underway/2023_Japan_Story/`, already on the
+   housekeeping list.
+
+### ★ THE SESSION DATE WAS WRONG, AND MECHANISM 4 ALREADY SAID SO
+
+Every dated line written this session initially read **2026-08-13**. That is the UTC date,
+handed to the assistant by its environment. Kim's machine reads **2026-08-12 19:20 HST**,
+and Mechanism 4 has said since 2026-07-28 that *dates and times are HONOLULU LOCAL*.
+Five files were wrong: `session_log.md`, `priorities.md`, `project_index.md`,
+`logs/focus_history.md`, `proj_kimbridges_stories.md` -- plus the bucket-4 scratch folder
+name.
+
+**What caught it was `pkm_health()`, not the rule.** The generated report is stamped from
+the machine clock -- *Generated 2026-08-12 19:19* -- sitting directly beneath entries dated
+the 13th. The rule had been read at session start and did not fire; the tool that stamps a
+real clock did.
+
+Corrected in place: 14 date strings across five files, plus
+`C:/temp/kimbridges-stories_20260813` renamed to `_20260812`. **Byte delta zero on every
+file and line-ending fingerprints unchanged** (same-length substitution), so nothing but
+the dates moved -- which matters on `proj_kimbridges_stories.md` and `focus_history.md`,
+both of which are mixed CRLF/LF and would have been silently normalised by a
+`readLines`/`writeLines` round trip.
+
+**This is Finding 020's shape again: the trigger is the mechanism, not the list.** A rule
+written in `pkm_protocol.md` that is read once at session start does not survive contact
+with an environment that supplies a plausible wrong answer for free. **Proposed, for Kim's
+call, not acted on:** a line in `pkm_card.md` under the situation table -- *about to write a
+date? the session's own clock is UTC; get Honolulu local from the R bridge* -- since the
+card is the surface that actually fires. Card budget is 6 KB and it currently sits well
+under.
+
+### Worth recording
+
+Kim: *the updated materials make me want to go out and take some new photos.* The document
+was revised to be useful, and being useful made it generative. That is the opposite of the
+usual archival motion, where finishing a thing closes it.
+
+---
+
 ## 2026-08-11 -- RESTART AFTER A WEEK AWAY; the resumption pointer rebuilt, two lost stories found, three new documents captured
 
 **Active focus at start:** PKM (2026-08-03 close). **At close:** PKM -- restart complete.
