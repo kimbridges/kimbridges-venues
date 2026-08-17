@@ -11,6 +11,134 @@ Mechanism 4.
 
 ---
 
+## 2026-08-16 -- THE CREAMSICLE DATA IS FOUND, AND IT WAS NEVER A FILE; Smart_Car unblocked
+
+**Active focus at start:** PKM (2026-08-12 close). **At close:** Smart_Car -- Active / Ready,
+Blockers NONE. Kim redirected the focus at session open and named the target himself.
+
+### The finding, and why it is a method finding before it is a data finding
+
+`deferred.md` had carried **locate the CREAMSICLE cross-country data** as the highest-value gap in
+the project since 2026-08-12. It was discharged in a single search. **The reason it had held is
+worth more than the data: every prior sweep was a FILESYSTEM sweep, and a Google-native document
+has no bytes on disk.** `list.files()` over all of `G:\My Drive` returned the stubs and they looked
+like nothing -- `file.info()` reported `Final Creamsicle Logs.gsheet` at **176 bytes** and
+`readBin()` on the same path returned **0**. That is the card's GROUND-TRUTH RULE firing exactly as
+written: a `G:` path can report a correct name and size while the bytes are absent. The Google
+Drive connector read straight through it. **Rule filed: before filing anything as missing, search
+the Drive API by TITLE.** An on-disk sweep is not a search of Kim's material; it is a search of one
+surface of it.
+
+**★ Kim had spent the two days before this session working the Creamsicle material up himself,**
+and said so mid-session. `Final Creamsicle Logs` carries a modification stamp of **19:48 HST, four
+minutes before the session opened.** The PKM was carrying the item as blocked-on-Kim while Kim was
+actively finishing it -- a reminder that a `deferred.md` entry records a decision, not a live state.
+
+### What was found
+
+| Asset | Kind | Content |
+|---|---|---|
+| `Final Creamsicle Logs` | Sheet, multi-tab | fuel log 2021-09-23 to 2023-09-27 (odo 30,290->51,345), BC fill-ups **already in litres and CAD**; a daily trip log per trip to 2024-10-20 with times, Miles, Duration, **Stop**, Adj_Duration, Miles/Hour |
+| `Creamsicle` | Doc | **a drafted 9-trip narrative, ~4,500 words** -- purchase 2021-09-15, $11,999, Modern Motorcars, Nixa MO; 453 ForTwo "Edition #1", 0.9L turbo triple, 89 hp, six-speed |
+| `Creamsicle_July_Fuel_Log_update` | Sheet | Jan-Jul 2024, odo 52,656->55,743, **with LATITUDE and LONGITUDE** |
+| `Creamsicle Inventory` | Doc | Jun 2023 packing manifest; its checklists document the logs' provenance |
+
+**28,697 miles, 1,123 days, 9,845 mi/yr, 18 states + Canada.**
+
+**★ THE REVERSAL.** TwoRed's Trip Log is **7 rows** -- recorded on 2026-08-12 as "a fragment, not a
+dataset". **Creamsicle's is the real one.** The average-speeds analysis Kim named as an intention
+is the readiest in the project, and it lives on the car the PKM had filed as the gap. The fleet
+framing is now **quantitative rather than narrative** -- which is what 2026-08-12 said would settle it.
+
+### Two side findings, neither looked for
+
+**`TwoFer Gas Log`** -- car #2's record, where the PKM had "one line of text": 7 fill-ups,
+2014-03-22 (dealer, odo 0) to 2015-01-10, **1,209 miles, every one in Honolulu.** The dealer date
+matches the lease date already in the file, which is what identifies it. **Kim ruled BOTH names
+were used** -- `Two4Two` canonical in prose, `TwoFer` recorded as the log's title so a future
+session does not "correct" one into the other. **★ It sharpens the thesis rather than padding it:
+the one car that WAS a pure urban commuter is the one that was leased and given back.**
+
+**`TwoRed_fuel`** -- a distinct, richer TwoRed sheet: cumulative cost, $/mile, MPG-last-5, and
+**ambient temperature in the Notes** ("64F @ 2:25PM"), plus a trip tab with start/end temperatures
+and odometers. Its own summary block reads 141 fill-ups / 34,098 miles -- **deeper on the early
+years, not longer.** Read it before topping up the log.
+
+### One hypothesis raised and killed by data
+
+2016 is Creamsicle's model year, so `2016_Fourth_Crossing_Analysis.xlsx` was a plausible
+Creamsicle asset. **It is TwoRed's.** The odometer opens at **58,214 in May 2016** -- inside
+TwoRed's trajectory, and five years before Creamsicle was bought at 30,290. **Settled by odometer
+continuity, not by filename**, which is the same move that corrected the charter on 2026-08-12.
+
+### Not claimed
+
+No Creamsicle fill-ups past **2024-07-02** appeared in the read, though trip legs run to
+**2024-10-20**. Filed in `deferred.md` as an OPEN QUESTION, **not as an absence** -- the Sheet is
+multi-tab and the read may have been partial. Findings 018/019/020 all point the same way.
+
+### Raised, not acted on
+
+The narrative doc is now a **publication candidate**, which activates the 2026-08-12 conditional.
+Kim's own Origin Story describes the caregiving situation in some detail while never naming the
+diagnosis -- further than "bought to help family, and stops there". **That is Kim's call and
+David's, not an editorial one**, which is what the conditional says. Flagged and left alone.
+
+### Kim's six rulings, and the two that changed the project
+
+**1. The fleet splits 2x2 by DISTANCE ROLE, not powertrain.** TwoRed + Creamsicle are the
+long-distance subject; Two4Two/TwoFer + Bordeaux are Honolulu short-haul and deliberately minor.
+It cuts across the ICE/EV axis it supersedes and matches how the data was generated. **★ It makes
+the thesis more honest and therefore stronger: two of the four WERE urban commuters. The claim
+becomes that the same owner ran the same marque both ways for sixteen years, and the Honolulu
+pair is the CONTROL that makes the contrast measurable rather than asserted.**
+
+**2. `TwoRed_fuel_June_2014` IS the last fuel log.** Kim logged fuel only while a car was doing
+long trips. **★ So the log stopping at 71,181 against an odometer near 75,000 is not missing data
+-- it is the project's SCOPE BOUNDARY showing up inside its own record.** The PKM had carried it
+as a gap since 2026-08-12. Supersedes his earlier "I need to update the fuel logs": later ruling wins.
+
+**3. Origin Story: ADJUDICATED and closed.** Neither person nor condition is given away.
+
+**4. The doc's countries/states ending is BY DESIGN** -- a reminder that place analysis is coming.
+**The open question raised earlier the same day is closed, and declining to call it an absence was
+the right call.** Two absence-shaped things surfaced today; neither was an absence.
+
+**5. Spreadsheet cleanup.** The fuel tab interleaves totals and averages INSIDE the data region.
+Principle: separate DATA from DERIVED, before the ingestion script rather than after.
+
+**6. The photo layer landed, and it joins.** 38 files, 35 with GPS, 2021-09-23 to 2024-10-22 --
+full ownership plus two days. **`DateTimeOriginal` is LOCAL and `OffsetTimeOriginal` carries the
+zone; the logs are local clock time; so the join needs NO timezone reconstruction** -- precisely
+the correction `2016_Fourth_Crossing_Analysis.xlsx` built a whole column for. **Validated on the
+first record: photo 11:42, first fill-up 11:45 Nixa MO.** 8 of 9 trips covered; T2 blank, not
+claimed as absent. `two_smarts.jpg` -> `Creamsicle_profile.jpg` per Kim; the deleted 439 KB
+`creamsicle.jpg` survives in `kimbridges-stories\underway\Smart_car\`, **so the superseded copy
+`deferred.md` wants deleted is currently the backstop.**
+
+**Newly weakest part, named rather than inherited:** the chapter architecture.
+
+### Context -- Hurricane Lala
+
+Hawai`i was narrowly missed but damaged across all islands: nearly **200,000 homes without power**,
+bridges washed out, communities isolated. Kim and Nancy were prepared, are safe, and their
+apartment near downtown Honolulu kept power. He had been reluctant to use the computer at all in
+case it dropped, which is why this session was closed deliberately and the writes were sequenced
+by value. Recovery expected to begin 2026-08-17. **Recorded because it explains the shape of the
+next few sessions.**
+
+### Files written
+
+`proj_Smart_Car.md` (Ready; Blockers NONE), `deferred.md` (Creamsicle CLOSED, Two4Two/TwoFer
+PARTLY CLOSED, four new entries), `project_index.md` (new Active Focus + row; the 2026-08-12 block
+moved to `logs/focus_history.md`, **delta 5,692 bytes = block + wrapper exactly**, verbatim
+confirmed), and this entry. All writes made through the R bridge in **binary**, and every one
+verified by CONTENT -- CRLF preserved, zero LF-only lines introduced, heading and row counts
+re-counted after the write. The replace helper **refused a no-op edit mid-session** (match count 0
+where 1 was required) rather than silently doing nothing -- Finding 030 working as intended.
+
+---
+
 ## 2026-08-12 -- SELECTIVE FOCUS PUBLISHED as a v2; SMART_CAR FILED AND REFRAMED TO FOUR CARS; two findings written from my own errors
 
 **Active focus at start:** PKM (2026-08-11 close). **At close:** PKM -- item 1.1 of the

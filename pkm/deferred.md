@@ -139,18 +139,42 @@ _Section opened 2026-08-12 when the project was filed; the fleet roster and Kim'
 analysis intentions were added the same day. Everything here is BLOCKED on the first two
 items._
 
-**TASK — locate the CREAMSICLE cross-country data.** Kim, 2026-08-12. **The highest-value
+**✓ CLOSED 2026-08-16 — locate the CREAMSICLE cross-country data. FOUND.** It is Google-native
+(`Final Creamsicle Logs` Sheet, multi-tab: fuel + a daily trip log per trip; `Creamsicle` Doc, the
+9-trip narrative; `Creamsicle_July_Fuel_Log_update` with lat/long; `Creamsicle Inventory`).
+**Kept per the WON'T-DO rule for the REASON, not the answer: a filesystem sweep cannot see a
+Google-native document.** `G:` reported the stub at 176 bytes and `readBin` returned 0. The task
+sat open for months because every search was the wrong KIND of search, not because the data was
+hard to find. **Before filing anything as missing, search the Drive API by title.**
+**★ Kim had spent the two days before 2026-08-16 working this material up himself.**
+
+_Superseded:_ **TASK — locate the CREAMSICLE cross-country data.** Kim, 2026-08-12. **The highest-value
 gap in the project.** Creamsicle (2016 Smart, white/orange) was driven across the country
 several times and Kim says he has substantial data on it. Finding those files turns this from
 one documented car plus three anecdotes into **two analytical spines**. Until then the fleet
 framing is narrative rather than quantitative. Unscheduled by his choice.
 
-**TASK — top up the TwoRed fuel log to ~75,000.** Kim, 2026-08-12, his own framing:
+**✓ CLOSED 2026-08-16 — top up the TwoRed fuel log to ~75,000. NOT A GAP; A SCOPE BOUNDARY.**
+Kim: `TwoRed_fuel_June_2014` **IS** the last fuel log. He logged fuel while the car was used
+primarily for long trips; Honolulu trips are all short, the receipts exist, and they add nothing
+to a document about long-trip performance. **Kept per the WON'T-DO rule for the reason: the log
+stopping at 71,181 while the car reached ~75,000 is the project's own scope showing up in its
+record.** Cite *log miles* and *odometer miles* as distinct quantities; do not reconcile them.
+**This supersedes his 2026-08-12 phrasing ("I need to update the fuel logs") -- later ruling wins.**
+
+_Superseded:_ **TASK — top up the TwoRed fuel log to ~75,000.** Kim, 2026-08-12, his own framing:
 *I need to update the fuel logs so that things are properly filled in.* The Gas Log stops at
 71,181; the car went to about 20 miles short of 75,000. The missing stretch is real driving
 with no records entered.
 
-**TASK — whatever exists for Two4Two and Bordeaux.** Lower value, recorded so it is not
+**✓ PARTLY CLOSED 2026-08-16 — Two4Two/TwoFer HAS a record.** `TwoFer Gas Log` (Sheet):
+7 fill-ups, 2014-03-22 (dealer, odo 0) to 2015-01-10, **1,209 miles, every one in Honolulu.**
+**Naming ruled by Kim 2026-08-16: BOTH were used — `Two4Two` is canonical in prose, `TwoFer` is
+the log's title. Recorded so a future session does not "correct" one into the other.**
+**★ Worth keeping: this does not pad the fleet thesis, it sharpens it — the one car that WAS a
+pure urban commuter is the one that was leased and given back.** Bordeaux remains uninventoried.
+
+_Superseded:_ **TASK — whatever exists for Two4Two and Bordeaux.** Lower value, recorded so it is not
 mistaken for an oversight. Two4Two was a **lease from 2014-03-22** (Smart Pure, ICE) and was
 short; Bordeaux (2018, electric) is deliberately outside the statistics by Kim's ruling of
 2026-08-12. Neither is expected to carry much.
@@ -159,6 +183,52 @@ short; Bordeaux (2018, electric) is deliberately outside the statistics by Kim's
 short of 75,000**. The log stopped before the car did; the charter's title was right and the
 open question rested on the spreadsheet alone. **Kept per the WON'T-DO rule for the reason,
 not the answer: a dataset ending is not the same as the thing it measures ending.**
+
+**TASK — clean up `Final Creamsicle Logs`.** Kim, 2026-08-16, his own account: calculations were
+put "here and there" so figures could go into the story. Concretely, the fuel tab **interleaves
+per-trip totals and averages INSIDE the data region**, so a naive read ingests summary rows as
+fill-ups. **The cleanup principle: separate DATA from DERIVED** — raw rows in one tab, computed
+summaries generated in R. Do this before the ingestion script, not after.
+
+**TASK — build the photo-to-log join.** `images/Creamsicle/` holds 37 geotagged, timestamped
+photos. **`DateTimeOriginal` is LOCAL with `OffsetTimeOriginal` carrying the zone, and the logs
+are in local clock time — so the join needs no timezone reconstruction.** Validated on the first
+record: photo 11:42, first fill-up 11:45 Nixa MO, 2021-09-23. Natural home is `Photo_Locations` /
+`timelinesr` per the standing reuse rule.
+
+**TASK — the T2 photo blank.** No photos for LA->Madison, Oct 2021 (the solo run Kim describes as
+pushing his daily limits). **NOT an absence claim** — they may be elsewhere or never taken. Ask
+Kim before writing that trip without illustration.
+
+**TASK — redesign the chapter architecture.** The one in `proj_Smart_Car.md` was written for one
+car and one trip and is now the weakest part of the project. Candidates: the 2x2 role split as the
+top frame; the two long-distance cars as parallel spines rather than primary-plus-supplements.
+
+**TASK — settle the Trip 9 fill-up records.** The Creamsicle trip log carries legs through
+**2024-10-20** (the delivery run to Wisconsin), but no fill-ups past **2024-07-02** appeared in
+the 2026-08-16 read. **This is NOT an absence claim** — the sheet has multiple tabs and the read
+may have been partial. Open the Sheet tab by tab before concluding either way (Findings 018-020).
+
+**TASK — check `TwoRed_fuel` (the live Sheet) before topping up the TwoRed log.** It is a
+DIFFERENT and richer record than the exported `TwoRed_fuel_June_2014.xlsx`: cumulative cost,
+$/mile, MPG-last-5, and **ambient temperature in the Notes** ("64F @ 2:25PM"), plus a trip tab
+with start/end temperatures and odometers. Its own summary block reads 141 fill-ups / 34,098
+miles, so it looks DEEPER on the early years rather than LONGER. Read it before writing ingestion.
+
+**TASK — read `Projects\Photo_Mapping\Fuel_Analysis.Rmd` (2022) before writing new code.** It
+predates this project and was written against the fuel data. Kim's standing reuse rule applies.
+
+**✓ CLOSED 2026-08-16 — ADJUDICATED BY KIM.** He is content with the Origin Story as written:
+it gives away neither the person nor the condition, which he judges within the spirit of
+confidentiality. **Do not re-raise this and do not re-derive the detail.** The 2026-08-12
+conditional stands for any FUTURE text; this specific draft is cleared.
+
+_Superseded (raised same day):_ **★ CONDITIONAL — the Creamsicle narrative doc is now a PUBLICATION CANDIDATE, so the
+not-for-publication line needs Kim's eye, not mine.** The Origin Story describes the caregiving
+situation in some detail — two full-time helpers for several months, a clean environment, strict
+dietary rules — while never naming the diagnosis. That is further than "bought to help family,
+and stops there", and it is **Kim's own drafting**, so it is an editorial call for him and David,
+exactly as the 2026-08-12 conditional says. Raised 2026-08-16; NOT acted on.
 
 **TASK — rename `TwoRed_fuel_June_2014.xlsx`.** The Gas Log inside runs to **2017-05-22**,
 nearly three years past the date in the filename. Deferred rather than done: renaming a data
