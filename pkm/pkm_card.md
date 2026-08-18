@@ -34,19 +34,17 @@ headings, known strings), never by reading size.
 |---|---|
 | **write a date** | **029 -- HONOLULU LOCAL.** The session clock is UTC. `format(Sys.time(), "%Y-%m-%d")` |
 | say a file, page, entry or site is MISSING or GONE | **018, 019, 020** |
-| trust any read of a `G:` file | the ground-truth rule above |
 | verify a write you just made | 020 |
 | render Quarto | 012, 016, 017 |
 | deploy to Netlify | **DEPLOY TARGETS below** -- drag output-dir, never the root; then 008, 011 |
-| use git through the bridge | 009, 014 |
-| run anything shell-like through the bridge | 014 |
+| use git, or run anything shell-like, via the bridge | 009, 014 |
 | open a project for real work | that project's section in `deferred.md` |
 | add a new project, venue or work | `template.md` field definitions |
-| rename a file or folder | update FORWARD pointers, leave HISTORICAL records |
 | sync or mirror two folders | 021 -- reconcile COUNTS after; case-only renames delete |
 | render one format of a book | 021 -- it clears the other formats from output-dir |
 | write a `grep` to locate a line | 022 -- `fixed=TRUE` ignores `^`; ALWAYS check the match count before using the index |
 | push, or trust a tool's "success" | **028** -- verify against the REMOTE, not the return value |
+| **see a TIMEOUT, or check that a job ran** | **031** -- a bridge timeout is NOT a failure; READ the function, then check the artifact it actually writes |
 | commit anything to a repo | **027** -- `pkm_secret_scan()` first, with `stopifnot` |
 | create a folder or scratch tree | **026** -- `C:\temp` ONLY; the bridge cannot rmdir |
 | conclude a document has NO SOURCE | **025** -- read the PDF's producer string first |

@@ -1563,3 +1563,44 @@ matching. A size check alone would have accepted several wrong answers.
 leaned on Drive revision history being unnecessary because the corruption was reversible in
 memory. **A destructive splice is not always reversible.** Read before write, assert before
 write, and verify structure after.
+
+
+---
+
+## Finding 031 (2026-08-17) — A bridge TIMEOUT is not a job failure, and checking the wrong artifact is not verification
+
+**What happened.** At the close of 2026-08-16 I called `pkm_backup()`. The MCP bridge returned
+`timed out after 60s`. I then looked for a `Projects_Index_archive_2026-08-16` folder, found none,
+checked a second time, and reported to Kim that **the backup had not completed** -- describing the
+double-check as care.
+
+**What was actually true.** `pkm_backup()` had finished. Commit **`0bcd812c8d`**, 2026-08-16 20:42,
+*Backup refresh: 5 changed of 972 tracked* -- the five files written that evening. Working tree
+clean. GitHub's `refs/heads/main` equals local HEAD. **It committed AND pushed.**
+
+**Two independent errors, either of which alone would have produced the false report.**
+
+**1. A timeout on the bridge says nothing about the R process.** The MCP call has a 60-second
+limit; the background R process keeps running to completion. **Never infer failure from a timeout.**
+Go and look at the artifact, or run the job with `execute_r_async` so completion is observable.
+
+**2. I verified against an artifact the tool does not produce.** `pkm_backup()` refreshes the git
+mirror at `C:\repos\kimbridges-venues` and pushes to GitHub. It **does not** create
+`Projects_Index_archive_*` folders -- those are Tier-3 pre-split snapshots from 2026-07-28/31 and
+have nothing to do with backup. The folder I checked was real; it simply was not this function's
+output. **Finding 020 warns that a loop which cannot tell a real artifact from a plausible-looking
+one is not verification. This is its sibling and it is nastier, because the artifact WAS real.**
+
+**Rule. Before verifying a function's result, READ THE FUNCTION and name the artifact it actually
+writes.** Four lines of `pkm_health.R` would have prevented the whole thing. For anything that
+commits or pushes, the artifact is the **remote ref** (Finding 028), not a folder, not a return
+value, and not the absence of an error.
+
+**★ The part worth keeping.** This was committed in the same session whose log entry reads *verify
+against the REMOTE, not the return value*. **The rule was not merely known, it was being written
+down at the time, and it still did not fire.** That is the exact failure mode `pkm_card.md` exists
+for (Finding 020): knowing a rule is not the same as having a trigger for it. The card gains a row.
+
+**Cost.** Kim ended a hurricane day believing his PKM had gone 16 days without a backup, during an
+active recovery, when in fact it had been backed up and pushed minutes earlier. **A false absence
+is not a neutral error: it spends the reader's trust and their attention at the worst moment.**

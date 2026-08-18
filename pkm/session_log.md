@@ -11,6 +11,56 @@ Mechanism 4.
 
 ---
 
+## 2026-08-17 -- THE BACKUP HAD RUN ALL ALONG; Finding 031; health check clean on every axis that matters
+
+**Active focus at start:** Smart_Car (2026-08-16 close). **At close:** unchanged -- the day opened
+on the two items carried over, and they took it. Hurricane Lala cleanup underway across the islands.
+
+### The correction, and it is mine
+
+**I told Kim at the close of 2026-08-16 that `pkm_backup()` had not completed and that the PKM had
+gone 16 days without a backup. That was FALSE.** It had committed **`0bcd812c8d`** at 20:42 --
+*Backup refresh: 5 changed of 972 tracked*, exactly the five files written that evening -- and
+**pushed**: GitHub's `refs/heads/main` equals local HEAD, working tree clean.
+
+Two errors stacked. **(1) I read a 60-second BRIDGE timeout as a job failure.** The R process keeps
+running; today's `pkm_health()` took **100.8 s** and completed fine when run with
+`execute_r_async`. **(2) I verified against an artifact `pkm_backup()` does not produce** -- I looked
+for a `Projects_Index_archive_2026-08-16` folder. Those are Tier-3 pre-split snapshots. The function
+refreshes the git mirror at `C:\repos\kimbridges-venues` and pushes. **Four lines of `pkm_health.R`
+would have told me that, and I did not read them.**
+
+**★ Written up as Finding 031, and the part that earns its place: this happened in the same session
+whose own log entry says *verify against the REMOTE, not the return value*. The rule was not just
+known, it was being written down at the time, and it still did not fire.** That is exactly the gap
+`pkm_card.md` exists to close (Finding 020), so the card gains a row: *see a TIMEOUT, or check that
+a job ran -> 031*. **Cost: Kim ended a hurricane day believing his system was unbacked during an
+active recovery. A false absence is not a neutral error.**
+
+### Health check -- first run since 2026-08-12
+
+**Clean on every axis that matters.** 83 works registered, **0 reconciliation failures**, 0 rendered
+pages without source, 0 broken `_Log:` pointers, 0 orphaned logs, and the **pre-deletion gate is
+clear** -- 58 legacy pages, none without a venue equivalent.
+
+**Flagged, with two of them my own doing:**
+
+| Flag | Detail |
+|---|---|
+| **Active Focus 6.5 KB / 6** | **mine** -- yesterday's block, written long and then extended |
+| **`pkm_card.md` 6.2 KB / 6** | **mine** -- the 031 row; the card's own rule says surplus goes to `pkm_findings.md` |
+| Drift, 4 | `proj_checklists` code 10 days newer; `proj_audio` renders/ and `proj_R_LLM_tests/_book` not found |
+| Over budget, 2 | `proj_seasonality` 51.6/45, `proj_audio` 47.3/45 -- both splittable |
+| Repo/clone mismatches, 6 | unchanged since 2026-08-03; still open |
+| Build scratch past 14 days, 2 | `pkm_snapshots`, `venuemirror_clone_2026-08-03` -- both 0 MB |
+
+**★ One flag is EXPECTED and must not be "fixed": *Venues without a source repo, 5 of 5*.** That is
+the consolidation migration's design decision 1 -- *a mirror, not repos-in-venues* -- taken because
+putting `.git` on `G:` violates bucket 5. **The check reports a condition the system deliberately
+chose.** Recorded here so a future session does not helpfully repair it.
+
+---
+
 ## 2026-08-16 -- THE CREAMSICLE DATA IS FOUND, AND IT WAS NEVER A FILE; Smart_Car unblocked
 
 **Active focus at start:** PKM (2026-08-12 close). **At close:** Smart_Car -- Active / Ready,
