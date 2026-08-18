@@ -37,6 +37,90 @@ known, it was being written down at the time, and it still did not fire.** That 
 a job ran -> 031*. **Cost: Kim ended a hurricane day believing his system was unbacked during an
 active recovery. A false absence is not a neutral error.**
 
+### The paper trip logs -- the gap closes, and the method scales
+
+Kim scanned `2011_TwoRed_travel_and_fuel_log_June.pdf` into the data folder and asked whether I
+could read it. **Four handwritten pages, fuel log above, trip log below. The trip half had never
+been typed** -- exactly the gap that made TwoRed's Trip Log *a fragment, not a dataset* on 08-12.
+**Transcribed: 15 legs, 4,635 driving miles, odometer 13,689 -> 18,789**, into
+`data/TwoRed_2011_StLouis_trip_log.csv`.
+
+**★ The odometer is a free QC gate.** 12 of 14 written distances agree with the odometer delta
+within 2.5 mi. One disagreement was MINE -- I read 298.7 where the odometer implied 289; re-read as
+289.7 it falls in line. **The data corrected the transcriber.** The other (7/04, 392.1 written vs
+397) is unresolved and flagged in the file. **This is what makes bulk transcription of the remaining
+sheets trustworthy: every leg self-checks.**
+
+**★ THE FUEL AUDIT -- the finding is a DISTINCTION, not four corrections.** `gallons x $/gal = cost`
+fails on 4 of 23 rows in the 2011 window. The paper splits them cleanly: **San Marcos (3.000 typed
+for 3.999) and Ash Fork (7.624 typed for 7.264) are TRANSCRIPTION errors the scan repairs**;
+**Ludlow and Spring TX are wrong on the paper too -- FIELD errors predating the spreadsheet.**
+So the scans are not just more data: **they let a typing slip be told apart from a pump-side mistake,
+and only the first kind is safely fixable.** Neither applied -- editing Kim's data is his call.
+
+### The gazetteer, the audit families, and the errata scaffold
+
+Kim added `All_gas_stations_csv.csv` (212 stops, all geocoded, matching the `Locations` sheet
+row-for-row) and a `Fuel_and_Trip_Logs/` folder -- **15 scanned PDFs, 2010-2017, 4.9 MB**, one
+byte-identical duplicate, md5-checked.
+
+**★ THREE AUDIT FAMILIES, NEARLY DISJOINT.** Arithmetic (`gal x $/gal = cost`), economy (implied
+MPG), geography (straight line vs odometer). 21 arithmetic suspects, 15 geographic, **2 in common**.
+**One test finds one error CLASS; a clean arithmetic pass says nothing about the geography.**
+The join itself is a fourth test -- it surfaced `Lake San Marcos, Callifornia` with no test written.
+
+**★ FOUR 'IMPOSSIBLE' LEGS ARE NOT ERRORS -- THEY ARE FERRIES.** Bellingham -> Haines Junction
+(1,018 straight-line miles against 160 on the odometer) and Homer -> Lakewood (1,455 vs 336) are the
+**Alaska Marine Highway**; two more are the **Newfoundland ferry**. The car crossed water while the
+odometer stood still. **The test found both great water crossings of the record on its own.**
+
+**★★ KIM'S GMAPS CHECKS PRODUCED THE BEST RULE OF THE DAY: A ROAD DISTANCE CANNOT BE SHORTER THAN
+THE STRAIGHT LINE.** Where GMaps falls below the great-circle, the COORDINATE or the city NAME is
+wrong -- not the odometer. Ratios of 0.61 / 0.75 / 0.69 became **1.21 / 1.08 / 1.18** with the real
+towns. **In three of four cases the odometer was right and the geography was wrong.** Deming is New
+Mexico (Kim's own 311-mile figure is the NM distance); `Bessemer` was geocoded 100 miles off; and
+`Waynesboro` was really **Waynesburg**, which Kim identified himself.
+
+**The scaffold built and agreed:** `TwoRed_log_errata.csv` (11), `TwoRed_gazetteer_errata.csv` (4),
+`TwoRed_leg_distances.csv` (292 legs with `distance_basis`). **Corrections are a DERIVED LAYER --
+the xlsx and the gazetteer are untouched.** Impossible legs 15 -> 10, of which 4 are ferries.
+**Defensible headline, reproducible from the file: 69,689 miles over 285 measured legs; 2.1% of
+distance disputed and excluded; 97.9% resting on undisputed odometer readings.**
+
+**★ THE LINE: reconstruct DISTANCES, never ODOMETER READINGS.** A distance is an estimate; an
+odometer value is a claim about what the car said, and inventing one poisons the MPG on both sides.
+Kim: *documenting the procedure rather than inventing data.*
+
+**★★ AND AT CLOSE, KIM GAVE THE ERRORS A MECHANISM:** *there were lines waiting for fuel and it was
+important to record quickly and vacate the fuel stall. And forgetting to record a fill-up? That can
+happen, too.* **This reframes the entire audit from a defect list into a description of field
+conditions.** Missing rows are the PREDICTED failure of the method, not an anomaly. **A record kept
+sixteen years under queue pressure with ~2% of distance disputed is a strong result, and saying so
+plainly is what makes the honest review credible instead of defensive.**
+
+**Corroboration, carefully labelled.** The 3-bar habit Kim adopted at Deming shows mean fill falling
+from 87.7% of tank to 70.6% -- **but n=5 before the change, so it is corroboration, not evidence.**
+What is solid: **290 miles on that tank, 7.119 gal taken (82% of 8.7), 38.1 MPG then current --
+about 41 miles of range left.**
+
+### ★ Kim: the scope boundary is FRACTAL
+
+The 465-mile gap between logged legs and odometer is city driving. *We're laser focused on the long
+drives, not the city stuff.* **The same rule runs at three levels -- which cars are logged, which
+years of a car are logged, which miles of a trip are logged -- and excludes the same thing every
+time.** Filed in `proj_Smart_Car.md` as an analysis rule: **the gaps are DEFINITIONAL, not missing.
+Never impute them.** A record that omits city miles is the artefact of someone who thought only
+long-distance driving worth recording -- which is the document's whole argument. **The absences
+carry the thesis.**
+
+**Two more from Kim.** A **complete set** of TwoRed trip logs likely exists -- that would make TwoRed
+a true parallel spine rather than a fuel record with a fragment. And **temperature recording was
+dropped** as not worth the effort, so it is a **bounded early subset**, not a column through the
+record. Creamsicle has none at all.
+
+**⚠ Method trap logged:** Creamsicle's mph is net of stop time, TwoRed's paper mph is gross.
+Naive comparison makes Creamsicle faster by construction.
+
 ### Health check -- first run since 2026-08-12
 
 **Clean on every axis that matters.** 83 works registered, **0 reconciliation failures**, 0 rendered

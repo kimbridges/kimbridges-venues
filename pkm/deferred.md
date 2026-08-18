@@ -184,6 +184,102 @@ short of 75,000**. The log stopped before the car did; the charter's title was r
 open question rested on the spreadsheet alone. **Kept per the WON'T-DO rule for the reason,
 not the answer: a dataset ending is not the same as the thing it measures ending.**
 
+**★★ KIM 2026-08-17 — THE ERRORS HAVE A MECHANISM, AND IT IS NOT CARELESSNESS.** His words at
+close: *there were lines waiting for fuel and it was important to record quickly and vacate the
+fuel stall. And forgetting to record a fill-up? That can happen, too.* **This converts the whole
+audit from a list of defects into a description of FIELD CONDITIONS.** Consequences that should
+shape the write-up rather than sit in a footnote:
+- **Category B (missing fill-ups, detected as impossibly high MPG) is EXPECTED, not anomalous.**
+  A forgotten entry under queue pressure is the predicted failure of this collection method.
+- **Digit slips cluster where haste does.** A number written standing at a pump with cars waiting
+  is a different measurement instrument from one written at a desk.
+- **Say so in the document.** A record kept for sixteen years under those conditions with ~2% of
+  distance disputed is a STRONG result. **Stating the mechanism is what makes the honest review
+  credible rather than defensive** -- Kim: *if there are data problems, it is fully understandable.*
+
+**★ TASK — the 3-bar rule as a testable behaviour change.** Kim adopted a habit at Deming on
+2010-09-20 after nearly running dry: refill at 3 of 8 bars, never below 2. **Mean fill fell from
+87.7% of tank (n=5) to 70.6% (n=286).** **n=5 is FAR too small for a claim -- this is corroboration,
+not evidence, and must be labelled as such.** Retest properly once more early data exists.
+**★ What IS solid and belongs in the document, fully sourced: he ran 290 miles on that tank, took
+7.119 gal (82% of 8.7), and at his then-current 38.1 MPG had roughly 41 MILES OF RANGE LEFT.**
+
+**TASK — Charlton MA -> Austinburg OH remains UNRESOLVED.** GMaps 365 falls BELOW the 457 straight
+line, which is impossible, and both coordinates check out. Kim is re-checking the endpoints. **Do
+not resolve this by picking whichever number looks nicest.**
+
+**★ KIM'S RULING 2026-08-17 — TRIP LOGGING STARTED LATER THAN FUEL LOGGING. DO NOT BACKFILL.**
+His words: he *didn't do trip logging right at the start; that got added later*, he could probably
+reconstruct approximations, but **better to treat it as a limitation of the data collection that we
+improved as we went along.** **So: establish the ONSET DATE of trip logging from the scans and
+record it; treat pre-onset trips as FUEL-ONLY; never estimate a leg that was not written down.**
+**★ Analytical consequence, and it must be stated wherever early and late trips are compared: the
+INSTRUMENT changed over the record, not just the car.** An early trip with no legs is not a quieter
+trip. And Creamsicle's logging is the MATURE form of the method -- so TwoRed-early vs Creamsicle
+differences are partly method, not behaviour. This is the same shape as the temperature ruling.
+
+**TASK — fix the gazetteer, not the fuel log, for two mis-geocodes.** `All_gas_stations_csv.csv`
+(212 stops, all with coordinates; matches the `Locations` sheet row-for-row). **`Deming` is recorded
+as ARIZONA in the fuel log and is in NEW MEXICO** -- that one IS a fuel-log error. **`Big Springs,
+Texas` is really `Big Spring` (no s)** and appears to have geocoded to Nebraska -- that one is a
+gazetteer error. **Decide per case which side is wrong before editing either.**
+
+**TASK — raise the gazetteer join rate above 81.5%.** 47 distinct locations unmatched. At least one
+is a plain misspelling in the fuel log (`Lake San Marcos, Callifornia`). Others are simply absent
+from the 212. **The join failure list is itself a typo detector -- work it before geocoding anything new.**
+
+**TASK — 15 scanned logs inventoried 2026-08-17** in `data/Fuel_and_Trip_Logs/`, 4.9 MB, 2010-2017.
+**One duplicate:** `2011_TwoRed_travel_and_fuel_log_June.pdf` is byte-identical in `data/` and in the
+subfolder (md5-checked); the `proj` Key Files entry points at the `data/` copy. **Watch:**
+`2011_TwoRed_fuel_and_trip_log_STL.pdf` is a DIFFERENT document by md5 but the June sheets are headed
+*2011 St. Louis Trip* -- **check for repeated legs before merging them.** Also note
+`2016_TwoRed_fuel_missing_page.pdf`, which Kim named himself and which may close a category-B gap.
+
+**★ TASK — transcribe the REST of the TwoRed paper trip logs.** Kim, 2026-08-17: he likely has a
+**complete set**. The 2011 St. Louis Trip is done (`data/TwoRed_2011_StLouis_trip_log.csv`, 15 legs).
+**This is the highest-value open item in the project** -- it converts TwoRed from a fuel spine with a
+7-row trip fragment into a true parallel spine to Creamsicle, which is what makes the comparison real.
+**Method proven and cheap: the odometer delta cross-checks every written distance**, so errors surface
+automatically (it already corrected one of my own readings). Workflow: Kim scans -> transcribe ->
+odometer QC -> one CSV per trip -> flag, never silently smooth, anything that fails.
+
+**✓ DONE 2026-08-17 — two PROVEN transcription errors fixed in `TwoRed_fuel_June_2014.xlsx`,
+on Kim's instruction, snapshot first.** Method kept because it generalises: the workbook has **175
+formula cells** and four sheets with drawings, so rewriting it with a package risked losing structure.
+Instead the `.xlsx` was **unzipped, two `<v>` values edited in `sheet1.xml`, and re-zipped**
+(`zip::zip`, `mode = "mirror"` -- `cherry-pick` FLATTENS paths and produces a file Excel cannot open,
+and `list.files()` omits `_rels/.rels` unless `all.files = TRUE`; both bit me once each).
+**Verified by a cell-by-cell diff of all four sheets against the snapshot: exactly 2 differences,
+the two intended.** Dimensions preserved (296x20, 212x5, 7x10, 24x13); the arithmetic audit re-run
+on the live file now fails only the 2 field errors. Snapshot at
+`C:\temp\smartcar_fuelfix_20260817\` (bucket 4 -- delete once Kim is satisfied).
+**File is smaller (56,263 vs 58,588 bytes) purely from recompression; content verified cell-wise.**
+
+_Superseded:_ **TASK — fix two PROVEN transcription errors.** Not applied: editing
+Kim's data file is his call. **2011-06-23 San Marcos: `$/gal` reads 3.000, paper says 3.999** (8.101 x
+3.999 = 32.40 against the 32.48 recorded; 8.101 x 3.000 = 24.30, impossible). **2011-06-25 Ash Fork:
+`Gallons` reads 7.624, paper says 7.264** (7.264 x 4.199 = 30.50 exactly, the recorded cost). Both are
+digit-level slips made while typing, and both change derived MPG for that fill.
+
+**TASK — two FIELD errors that the paper does NOT resolve.** 2011-06-25 Ludlow (6.319 x 4.599 = 29.06
+vs 29.86 recorded) and 2011-07-02 Spring TX (7.889 x 3.679 = 29.02 vs 26.88 recorded). **Wrong on the
+paper too, so they predate the spreadsheet.** Settle from a receipt (`2011` scans may exist) or leave
+flagged. **Do not 'correct' them by back-solving -- that invents a number.**
+
+**★ TASK — run the arithmetic audit across the WHOLE fuel log, not just 2011.** The `gallons x $/gal
+= cost` test found 4 bad rows in a 23-row window. **293 fill-ups have never been checked this way.**
+Cheap, and it partitions into transcription vs field errors wherever a scan exists.
+
+**⚠ CONDITIONAL — before ANY TwoRed-vs-Creamsicle speed comparison.** Creamsicle's `Miles/Hour` is
+computed after subtracting `Stop` time; the TwoRed paper sheets have **no stop column**, so TwoRed mph
+is GROSS. **Naive comparison makes Creamsicle faster by construction.** Use Creamsicle's raw
+`Duration`. Verified against its Nixa->Kansas City leg (209.4 mi / 3.00 adj hrs = 69.8).
+
+**TASK — establish when TwoRed temperature recording STOPPED.** Kim, 2026-08-17: it was dropped as
+not worth the effort at departure and arrival. **Temperature is therefore a bounded early subset, not
+a column running through the record.** Determine the cut-off from the sheets as they arrive; do not
+assume one, and do not scope a thermal analysis beyond it. Creamsicle has no temperature at all.
+
 **TASK — clean up `Final Creamsicle Logs`.** Kim, 2026-08-16, his own account: calculations were
 put "here and there" so figures could go into the story. Concretely, the fuel tab **interleaves
 per-trip totals and averages INSIDE the data region**, so a naive read ingests summary rows as

@@ -102,6 +102,97 @@ that the SAME owner ran the SAME marque both ways for sixteen years, and only th
 half was worth logging. **The Honolulu pair is not filler; it is the control that makes the
 contrast measurable instead of asserted.**
 
+## ★ THE SCOPE BOUNDARY IS FRACTAL (2026-08-17)
+
+The same rule operates at three levels of the data, and at every level the excluded thing is the
+same: **city driving.**
+
+| Level | Logged | Not logged |
+|---|---|---|
+| **Fleet** | TwoRed, Creamsicle | Two4Two/TwoFer, Bordeaux -- the Honolulu cars |
+| **Car** | TwoRed while it was doing long trips | the Honolulu years; `TwoRed_fuel_June_2014` IS the last log |
+| **Trip** | 15 legs, 4,635 mi (2011 St. Louis Trip) | **465 mi, 9%** -- local driving in St Louis, Moab, Fort Worth |
+
+Kim, 2026-08-17: *we're laser focused on the long drives, not the city stuff.*
+
+**★ CONSEQUENCE, AND IT IS A RULE FOR THE ANALYSIS: these gaps are DEFINITIONAL, NOT MISSING DATA.**
+Never impute them, never fill them, never caveat them as incompleteness. **The dataset's absences
+encode the thesis** -- a record that omits city miles is the artefact of a person who considered
+only long-distance driving worth recording, which is precisely what the document argues a Smart
+was used for. A completeness check that flags these has misunderstood the project.
+
+## ★ THREE AUDIT FAMILIES, AND THEY ARE NEARLY DISJOINT (2026-08-17)
+
+**The single most useful methodological result so far.** Two independent tests were run over all
+292 TwoRed fill-ups. **They overlap on only 2 rows out of 34.**
+
+| Test | Catches | Blind to |
+|---|---|---|
+| **Arithmetic** -- `gallons x $/gal = cost` | typed digits in price, gallons, cost | city, state, date, odometer |
+| **Economy** -- implied MPG per leg | partial fills; **MISSING rows** (MPG too high) | anything self-consistent |
+| **Geographic** -- straight-line vs odometer | wrong city/state, mis-geocodes, **odometer digits** | errors that stay on the route |
+
+**Rule: one test finds one error CLASS. A clean pass on the arithmetic says nothing about the
+geography.** 21 arithmetic suspects, 15 geographic, **2 in common, 31 distinct rows needing a scan.**
+
+### ★ The geographic test, and the thing it found that is not an error
+
+If the straight-line distance between consecutive fill-ups **exceeds** the odometer change, the leg
+is impossible -- you cannot drive less than the straight line. 15 legs fail. **They fall into three
+kinds, and the third is a feature of the record rather than a fault in it:**
+
+- **4 GEOCODE errors, from 2 cities.** **`Deming` is logged as ARIZONA; Deming is in NEW MEXICO**
+  (twice, 2010 and 2014). **`Big Springs, Texas`** is mis-placed -- the town is **Big Spring**, no `s`,
+  and the gazetteer appears to have taken it to Big Springs, Nebraska (twice, 2010 and 2012).
+- **7 ODOMETER suspects** -- straight line exceeds the recorded distance with no other explanation.
+  **This is exactly the error class the arithmetic test cannot see.** Needs the scans.
+- **★ 4 FERRY LEGS -- NOT ERRORS.** Bellingham WA -> Haines Junction YT (1,018 straight-line miles
+  against 160 on the odometer) and Homer AK -> Lakewood WA (1,455 vs 336) are the **Alaska Marine
+  Highway**; Sydney Mines NS -> Corner Brook NL and Port aux Basques NL -> Aulac NB are the
+  **Newfoundland ferry**. **The car crossed water while the odometer stood still.** The test detected
+  both great water crossings of the TwoRed record automatically. **Do not 'correct' these** -- and
+  they are worth the document: getting a Smart to Alaska and Newfoundland involved boats.
+
+**A fourth, free test: the JOIN ITSELF.** Matching fill-ups to the gazetteer fails on 47 distinct
+locations, one of which is **`Lake San Marcos, Callifornia`** -- a spelling error surfaced with no
+test written for it.
+
+## ★ THE ERRATA ARCHITECTURE, AND THE RULE THAT DRIVES IT (2026-08-17)
+
+**Nothing is ever overwritten. Corrections live beside the sources and are applied as a DERIVED
+LAYER at read time.** Three files in `data/`:
+
+| File | Holds |
+|---|---|
+| `TwoRed_log_errata.csv` | 11 corrections to the FUEL LOG, each with basis, evidence and status |
+| `TwoRed_gazetteer_errata.csv` | 4 corrections to the COORDINATES -- a different artefact, different fixes |
+| `TwoRed_leg_distances.csv` | all 292 legs with `distance_basis` (measured / disputed / unresolved) and `distance_source` |
+
+**★ THE ADJUDICATION RULE, and it came from Kim's own GMaps checks: A ROAD DISTANCE CAN NEVER BE
+SHORTER THAN THE STRAIGHT LINE. So when GMaps comes in BELOW the great-circle, the COORDINATE (or
+the city name behind it) is wrong -- not the odometer.** That one test says which END to fix, and
+it is automatable. Applied to Kim's four checks, ratios of 0.61 / 0.75 / 0.69 -- all physically
+impossible -- became **1.21 / 1.08 / 1.18** once the real towns were used. **In three of four cases
+the odometer had been right all along.**
+
+**★ THE LINE THAT MUST NOT BE CROSSED: reconstruct DISTANCES, never ODOMETER READINGS.** A distance
+is an estimate and can be labelled one. An odometer value is a claim about what the car said, and
+inventing one propagates a false measurement into the MPG of the fills on either side. Where the
+reading was never written (Waynesburg PA, 2010-11-07) the odometer stays **blank** and the distance
+carries GMaps 227 as `reconstructed`. Kim, 2026-08-17: *documenting the procedure rather than
+inventing data.*
+
+**GMaps is a DATED INSTRUMENT** -- recorded as `gmaps_2026`, because 2026 roads are not 2010 roads.
+Same discipline as the temperature and trip-log-onset rulings.
+
+**Impossible legs 15 -> 10 after corrections; 4 of those are the ferries, so 6 are genuinely open.**
+Big Spring TX improved from ratio 0.37 to 0.83 -- still impossible, so it has graduated from
+geocoding artefact to real odometer suspect.
+
+**★ THE DEFENSIBLE HEADLINE, reproducible from the file rather than asserted:**
+**69,689 miles across 285 measured legs. 1,488 miles (2.1%) sit in disputed legs and are excluded.
+97.9% of the logged distance rests on undisputed odometer readings.** This tightens as scans arrive.
+
 ## Intended analysis
 
 _Kim, 2026-08-12._ Statistics with graphics, on:
@@ -225,7 +316,14 @@ charter and is provisional -- it was written for one car.
   Locations (212), Trip Log (7), Canada2014 (24, metric). The foundational dataset.
 - `data/2016_Fourth_Crossing_Analysis.xlsx` — 35 rows, time-zone-corrected activity time.
   The cleanest asset.
-- `data/leased_smart.txt` — one line, the only record of car #2 so far.
+- `data/leased_smart.txt` — one line. **Superseded as car #2's record by the `TwoFer Gas Log` Sheet.**
+- **`data/2011_TwoRed_travel_and_fuel_log_June.pdf` — NEW 2026-08-17.** Kim's scanned field sheets,
+  4 pages, 380 KB. Top half fuel log, bottom half trip log; the fuel half was typed up years ago,
+  **the trip half never was.** This is the 2011 St. Louis Trip.
+- **`data/TwoRed_2011_StLouis_trip_log.csv` — NEW 2026-08-17, transcribed from the scans.** 15 legs,
+  2011-06-24 to 07-19, Lake San Marcos -> St Louis -> Lake San Marcos. Carries start/end time, city and
+  **temperature at BOTH ends**, odometer at both ends, the written distance, the odometer delta, the
+  timezone shift, elapsed hours and **GROSS** mph, plus per-row notes on every uncertain reading.
 - `source/Smart_Car_master_dictionary.pdf` — expedition names, dates, geographic targets.
 - `source/Smart_Car.docx` — 10.3 MB. Largest section is the Arctic Circle Challenge,
   which is already published; treat as a quarry, not a draft.
@@ -303,6 +401,50 @@ his choice, in miscellaneous time.
 
 ---
 ## Log
+### 2026-08-17 (the paper trip logs; the fractal scope boundary; a fuel-log audit)
+
+**Kim scanned a set of 2011 field sheets and asked whether I could read them. I can.** Four pages,
+handwritten, fuel log above and trip log below. **The trip half had never been typed** -- which is
+the exact gap that made TwoRed's Trip Log "7 rows, a fragment not a dataset" on 2026-08-12.
+
+**Transcribed: 15 legs, 4,635 driving miles, odometer 13,689 -> 18,789.** Written to
+`data/TwoRed_2011_StLouis_trip_log.csv`.
+
+**★ The odometer is a free QC gate, and it works.** 12 of 14 written distances match the odometer
+delta within 2.5 mi. Of the two that did not: 7/05 read as 298.7 against an odometer delta of 289
+-- **re-read as 289.7, and the odometer corrected my transcription**; 7/04 remains 392.1 written
+against 397, unresolved and flagged in the file rather than smoothed. **This matters for scale:
+every leg self-checks, so bulk transcription of the remaining sheets is trustworthy rather than
+OCR-and-hope.**
+
+**★ THE FUEL AUDIT, and the finding is the DISTINCTION not the fixes.** Testing whether
+`gallons x $/gal` reproduces the recorded cost failed on 4 of 23 rows in the 2011 window. **The paper
+splits them into two kinds:** 6/23 San Marcos ($/gal typed **3.000**, paper says **3.999**) and 6/25
+Ash Fork (gallons typed **7.624**, paper says **7.264**, which reproduces the cost exactly, and the
+paper itself shows the total struck and corrected) are **TRANSCRIPTION errors the scans repair**.
+6/25 Ludlow and 7/02 Spring TX are **inconsistent on the paper too -- FIELD errors that predate the
+spreadsheet** and can only be settled from a receipt, or left flagged. **The scans do not merely add
+data; they let a transcription error be told apart from a field error.** Neither fix applied yet --
+editing Kim's data file is his call.
+
+**★ KIM: THE SCOPE BOUNDARY IS FRACTAL.** The 4,635 logged miles against 5,100 odometer miles is
+city driving, and *we're laser focused on the long drives, not the city stuff*. **The same rule
+appears at fleet, car and trip level, excluding the same thing each time -- so the gaps are
+DEFINITIONAL, not missing.** See the section above; it is now an analysis rule.
+
+**KIM: a complete set of TwoRed trip logs likely exists.** If so, TwoRed stops being a fuel spine
+with a 7-row fragment and becomes a **true parallel spine to Creamsicle**.
+
+**KIM: temperature recording was DROPPED** -- not worth the effort against everything else happening
+at departure and arrival. **So temperature is a BOUNDED EARLY SUBSET of the TwoRed record, not a
+column that runs through it.** Scope any thermal analysis to the years that carry it; establish the
+cut-off from the sheets as they arrive rather than assuming one.
+
+**⚠ METHOD TRAP for the TwoRed-vs-Creamsicle comparison.** Creamsicle's `Miles/Hour` is computed
+**after** subtracting a `Stop` column; the TwoRed paper sheets have no stop column, so their mph is
+**gross**. Verified on Creamsicle's Nixa->Kansas City leg. **Compared naively, Creamsicle wins by
+construction.** Use Creamsicle's raw `Duration` for any speed comparison.
+
 ### 2026-08-16 (Kim's rulings, second half of session)
 
 **Context: Hurricane Lala.** Hawai`i was narrowly missed but damaged across all islands -- nearly

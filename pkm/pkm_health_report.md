@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-08-17 16:20 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-08-17 21:07 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -9,11 +9,11 @@ _Generated 2026-08-17 16:20 by pkm_health.R. Regenerate; do not edit._
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 4
 - **Files over size budget:** 2
-- **Active Focus block:** 3.4 KB (budget 6)
+- **Active Focus block:** 5.5 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 6
 - **Legacy pages awaiting account deletion:** 58
-- **Build scratch in C:/temp:** 4 folder(s), 0 MB
+- **Build scratch in C:/temp:** 5 folder(s), 0 MB
 
 ## Reconciliation failures
 
@@ -43,7 +43,7 @@ None.
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 3.4 | 6 | -2.6 |
+| 8 | 5.5 | 6 | -0.5 |
 
 ## Venues without a source repo
 
@@ -70,10 +70,11 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| pkm_edits_20260811 |  6.3 | 0 | FALSE |
-| pkm_snapshots | 14.8 | 0 | TRUE |
-| timelapse |  3.7 | 0 | FALSE |
-| venuemirror_clone_2026-08-03 | 15.0 | 0 | TRUE |
+| pkm_edits_20260811 |  6.5 | 0 | FALSE |
+| pkm_snapshots | 15.0 | 0 | TRUE |
+| smartcar_fuelfix_20260817 |  0.2 | 0 | FALSE |
+| timelapse |  3.9 | 0 | FALSE |
+| venuemirror_clone_2026-08-03 | 15.2 | 0 | TRUE |
 
 ## Legacy pages by platform
 
@@ -89,4 +90,4 @@ None.
 None.
 
 ---
-_Ran in 59.2 s._
+_Ran in 67.4 s._
