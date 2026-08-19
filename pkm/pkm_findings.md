@@ -1673,3 +1673,31 @@ are NOT the mechanism: **0<->8 scored 2 hits in 15 substitutions (13.3%); 1<->7 
 **General rule. When several errors share a shape, stop treating them as independent typos and ask
 what PHYSICAL process makes that shape.** Then run the process as a generator, and use its
 asymmetries to reject candidates a residual test would wave through.
+
+---
+
+## Finding 034 — A BACKUP THAT REPORTS SUCCESS IS NOT A BACKUP THAT COVERS YOUR WORK (2026-08-19)
+
+`pkm_backup()` ran clean, committed, pushed, and **verified the push against the remote ref** -- the very check Finding 031 added. It reported `975 files | 4 changed | pushed TRUE`. All of that was true.
+
+**And 82 of the 85 files in `Projects/Smart_Car` were not in it.**
+
+The mirror keeps a file only if its extension is in `SOURCE_EXT`: `qmd, rmd, r, yml, yaml, css, scss, bib, py, js, md`. **`csv` is not there. Neither is `xlsx`, `pdf`, or `jpg`.** So the mirror carried `twored_ingest.R`, `trip_logs_read.R` and one charter, and left behind:
+
+- **every errata file** -- `TwoRed_log_errata.csv` (61 entries), the gazetteer errata, the machine corrections, the inserts, the flags;
+- **the corrected dataset** `TwoRed_fuel_clean.csv`;
+- **all ten trip logs** (107 legs) and `TwoRed_fuel_timetemp.csv` (95 rows);
+- **the primary source workbook** `TwoRed_fuel_June_2014.xlsx`;
+- **all 17 scan PDFs** and 38 photographs.
+
+**The scripts were backed up. Everything the scripts operate ON was not.** Weeks of adjudication -- each entry carrying a basis and a status that cannot be re-derived -- sat outside the backup while the backup said it had run.
+
+**Why it went unseen.** Nothing lied. The commit was real, the push was real, the verification against the remote was real. **Every check tested that the mechanism EXECUTED. None tested WHAT IT COVERED.** Finding 031 taught me to verify the push against the server instead of against a timeout; this is the same error one level up -- I verified the transport and never verified the manifest.
+
+**How it was caught.** Not by a check. By reading the mirror directory for a file I expected to find there, because the ground-truth rule says verify by CONTENT. The directory `projects/Smart_Car/data` **did not exist.**
+
+**General rule. For any pipeline with an INCLUSION FILTER, the success report describes the filter's output, never its coverage. Test coverage separately, from the source side: list what exists, list what arrived, and diff.** A whitelist is a silent-failure machine -- adding a new file TYPE to a project is enough to drop it out of the backup, with no error anywhere.
+
+**Corollary for `pkm_health()`.** It reports orphans (mirrored files with no source) and size mismatches. **It has no check for the reverse -- source files with no mirror.** That asymmetry is the bug.
+
+**Not fixed unilaterally.** `SOURCE_EXT` governs all 50 projects. Adding `csv` and `xlsx` would pull in **182 files, 1.8 MB** system-wide -- trivially cheap -- but it is Kim's policy call, not mine. Flagged in `deferred.md`. Note the data is NOT unprotected meanwhile: it lives on Google Drive. It is outside the *versioned* backup, which is where the adjudication history would be recoverable from.

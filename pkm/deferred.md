@@ -133,6 +133,25 @@ and misleading on paper.
 
 ---
 
+**★★★ DECISION NEEDED FROM KIM — THE BACKUP DOES NOT COVER THIS PROJECT'S DATA (2026-08-19).**
+`pkm_backup()` keeps a file only if its extension is in `SOURCE_EXT` (`qmd rmd r yml yaml css scss bib py js md`).
+**`csv`, `xlsx`, `pdf` and `jpg` are all absent, so 82 of the 85 files in `Projects/Smart_Car` have never been
+backed up** -- every errata file, the corrected dataset, all ten trip logs, the source workbook, all 17 scans.
+**The scripts were backed up; everything they operate on was not.** Full write-up as **Finding 034**.
+
+**The fix is cheap but it is a SYSTEM-WIDE POLICY CHANGE and therefore Kim's call:** adding `csv` and `xlsx`
+to `SOURCE_EXT` in `pkm_health.R` pulls in **182 files / 1.8 MB across all 50 projects**. `pdf` and `jpg` are
+a separate question -- Smart_Car alone holds 7.6 MB of scans and 168 MB of photographs, which is a git-LFS
+conversation, not a one-line edit.
+
+**Also worth doing whatever Kim decides: `pkm_health()` reports ORPHANS (mirrored files with no source) but
+has NO reverse check for source files with no mirror.** That asymmetry is what let this hide. A coverage
+check belongs in the health report regardless of which extensions are whitelisted.
+
+**Not urgent in the sense of data loss** -- the files live on Google Drive. What is missing is the VERSIONED
+copy, which is where the adjudication history (61 errata, each with a basis and a status) would be
+recoverable from if a file were overwritten rather than deleted.
+
 ## Smart_Car
 
 _Section opened 2026-08-12 when the project was filed; the fleet roster and Kim's
