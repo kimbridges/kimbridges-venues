@@ -3,6 +3,7 @@ _Last updated: 2026-08-16_
 _Status: Active_
 _Focus readiness: Ready_
 _Tags: intake, data-recovery_
+_Log: logs/proj_Smart_Car_log.md
 
 ## Type
 R + Quarto document (data-driven), with photography
@@ -302,6 +303,93 @@ the wrong value by looking harder.
   true LSM and Blythe gallons and costs.
 - **2017 Jan-May, 13 rows** -- the only 2017 file is *January*, against a run ending 2017-05-22.
 
+## ★★ THE CARD COVERS THE FLEET; THE LOG COVERS ONE CAR (2026-08-18)
+
+Kim's **AMEX fuel summary for 2015** -- 16 charges. **Eight match the TwoRed log to the cent.
+Eight do not, and those eight are the OTHER CARS.** Seven are Hawai`i (six Costco Honolulu, one
+Tesoro Hilo); one is a 7-Eleven in **Orlando, Florida**, where TwoRed never was -- almost certainly
+a rental. **Every mainland-west charge matches. The card is a FLEET-level record and the fuel log is
+a SINGLE-CAR record, and the difference between them is itself data.**
+
+### ★★ The scope boundary appears a FOURTH time -- and this time an outside source proves it
+
+**AMEX 01/10/2015 COSTCO HONOLULU $19.74 matches TwoFer's final logged fill EXACTLY** (1/10/2015,
+9:19 AM, Costco, ODO 1,209, 6.93 gal, $19.74). **And then the card keeps going where the log stops:**
+six further Hawai`i fuel charges from February to October 2015.
+
+At TwoFer's own logged averages (6.675 gal/fill, 31.3 MPG) those six fills are **roughly 1,254 miles
+-- against the 1,209 the log records. The log captures about HALF of 2015 use.** *(ESTIMATE ONLY: the
+card gives a count of charges, not gallons or odometers. Do not print this as a measurement.)*
+
+**Why it matters.** The fractal-scope section already showed the same rule at fleet, car and trip
+level, inferred each time from the record's own shape. **This is the first time an INDEPENDENT source
+has confirmed it**: the log stopping is demonstrably not the car stopping. It is the exact pattern of
+TwoRed's 71,181 against ~75,000, now visible in a second car and a second document.
+**And it does not complicate the 2x2 role split -- it strengthens it.** Every one of those unlogged
+fills is in Honolulu or Hilo. **TwoFer stayed a short-haul car even in the miles nobody wrote down.**
+
+## ★★ THE CORRECTED DATASET EXISTS (2026-08-18)
+
+**`twored_ingest.R`** (in `Projects\Smart_Car`) reads the UNTOUCHED xlsx plus a machine-readable
+corrections table and emits **`data/TwoRed_fuel_clean.csv`** -- 294 rows, 16 columns, provenance on
+every change. Nothing is edited in place; re-running reproduces it from the sources.
+
+| Test | before | after | with hypotheses |
+|---|---|---|---|
+| pump identity fails | 15 | **5** | **2** |
+| MPG > 60 (non-partial) | 5 | **0** | 0 |
+| MPG < 22 (non-partial) | 1 | **0** | 0 |
+
+**Three things the build forced that the errata could not express:** a **ROW INSERT** (the merged
+Big Spring/Alpine row -- a whole fill-up was missing, not a wrong field); **EXPLICIT FLAGS** (Woody
+Point is 3.74 gal, just over an arbitrary 3.5 threshold, so partial fills now come from the errata
+rather than a cutoff); and **A GUARD THAT REFUSES** -- every correction must find the value it claims
+to replace. It refused a date correction because the sheet stores Excel serials, and it caught two of
+my odometer keys pointing at the wrong rows. **Finding 032 is written into the code:** the script
+asserts rows may be ADDED but never silently lost, and prints the count.
+
+**The two survivors are honest ones:** Deming (arithmetic wants 20.85 but the slashed-zero DIRECTION
+is wrong, so it is flagged not applied) and Haines Junction -- **not a typo but a UNITS design flaw
+my own L32 fix created**: a USD cost against a CAD-derived price. That row needs a CURRENCY column.
+
+## ★★ FIRST ANALYSIS ON CLEAN DATA -- SIX RESULTS (2026-08-18)
+
+**1. THE URBAN-COMMUTER CLAIM IS REFUTED, AND THE NUMBER SURVIVES THE OBVIOUS OBJECTION.**
+**Median distance between fill-ups: 251 miles**; 5th percentile 159; **87% of logged miles in legs
+of 200+.** The objection -- *he only logged long trips* -- fails on arithmetic: the log spans **71,177
+miles of a car that reached ~75,000, so ~95% of the odometer is in the sample.** It is not a
+subsample, it is nearly the population.
+
+**2. AN INDEPENDENT CHECK AGREES.** Lifetime **39.44 MPG**, at the HIGHWAY end of the 2010 Fortwo's
+own 33/41 EPA range -- what a car averaging 251 miles between stops should show, and not a commuter.
+
+**3. LEG LENGTH DOMINATES ECONOMY: +4.61 MPG per 100 extra miles between fills** (p<0.0001).
+The city-vs-highway penalty, measured from Kim's own tank rather than quoted from a manufacturer.
+
+**4. THE CAR DID NOT DEGRADE.** Controlling for route mix, MPG **ROSE +0.30 per 10,000 miles**
+(p=0.030) -- about **+2 MPG across its life.** Not the expected direction over 71,000 miles.
+
+**5. FUEL COST.** $6,663 total, **$0.0936 per mile lifetime**, yearly range $0.069-$0.108. Price paid
+peaked 4.199 (2013), bottomed 2.769 (2017) -- a 34% fall tracking the real 2014-15 collapse.
+
+**6. NO TEMPERATURE EFFECT DETECTED -- and the reason is actionable.** +0.20 MPG per 10F, p=0.75,
+n=58, over a range of only **38-94F**. The large cold-weather penalty lives near freezing.
+**The data to test it is on the paper and was never transcribed** (see deferred.md).
+
+## ★★ THE WHEELS WERE NEVER ABOUT FUEL (Kim, 2026-08-18)
+
+The first crossing ran on the stock narrow "city" tires. On open highway the car was blown around by crosswind and the handling was difficult. Smart Madness -- Kim's mechanics -- prescribed WIDE tires; fancy rims came along with them, because this is a car that is fun to drive and fun to be seen in. It worked. Handling became very good.
+
+**The purpose was handling, not economy.** That reframes what the fuel data can say. Wider tires carry a real theoretical cost -- more rolling resistance, more frontal area -- usually put at 1-3%. So the question the data answers is not "did the wheels help?" (they did, on the axis they were bought for) but "what did that help cost?"
+
+**Answer, stated honestly:** before/after the change, the difference in economy is not distinguishable from zero, with a 95% interval of **-3.7% to +4.9%**. The theoretically expected 1-3% penalty sits INSIDE that interval. So the correct claim is the narrow one:
+
+> The data rules out a LARGE fuel penalty from the wide tires. It is too small a sample to detect the modest penalty theory predicts. Absence of a detected effect is not absence of an effect.
+
+I first wrote the stronger version ("rules out a penalty worse than 3.7%") and had to withdraw it in the same turn. Logged because it is the same failure mode as Finding 032: a number that looked like a bound was actually one end of an interval that straddles zero.
+
+**For the story:** this is a clean example of the document's recurring shape -- a decision made for one reason (safety and pleasure in a crosswind at 70 mph in a 1,800-lb car), then measured on a different axis (fuel), and the measurement's job is to say what the decision cost, not whether it was right. Kim already knew it was right; he drove it.
+
 ## Intended analysis
 
 _Kim, 2026-08-12._ Statistics with graphics, on:
@@ -559,125 +647,9 @@ files"** -- Kim has them, they are substantial, and they are what makes the flee
 analytically real rather than narrative. Plus the TwoRed log top-up. Both unscheduled, by
 his choice, in miscellaneous time.
 
+
 ---
 ## Log
-### 2026-08-17 (the paper trip logs; the fractal scope boundary; a fuel-log audit)
 
-**Kim scanned a set of 2011 field sheets and asked whether I could read them. I can.** Four pages,
-handwritten, fuel log above and trip log below. **The trip half had never been typed** -- which is
-the exact gap that made TwoRed's Trip Log "7 rows, a fragment not a dataset" on 2026-08-12.
-
-**Transcribed: 15 legs, 4,635 driving miles, odometer 13,689 -> 18,789.** Written to
-`data/TwoRed_2011_StLouis_trip_log.csv`.
-
-**★ The odometer is a free QC gate, and it works.** 12 of 14 written distances match the odometer
-delta within 2.5 mi. Of the two that did not: 7/05 read as 298.7 against an odometer delta of 289
--- **re-read as 289.7, and the odometer corrected my transcription**; 7/04 remains 392.1 written
-against 397, unresolved and flagged in the file rather than smoothed. **This matters for scale:
-every leg self-checks, so bulk transcription of the remaining sheets is trustworthy rather than
-OCR-and-hope.**
-
-**★ THE FUEL AUDIT, and the finding is the DISTINCTION not the fixes.** Testing whether
-`gallons x $/gal` reproduces the recorded cost failed on 4 of 23 rows in the 2011 window. **The paper
-splits them into two kinds:** 6/23 San Marcos ($/gal typed **3.000**, paper says **3.999**) and 6/25
-Ash Fork (gallons typed **7.624**, paper says **7.264**, which reproduces the cost exactly, and the
-paper itself shows the total struck and corrected) are **TRANSCRIPTION errors the scans repair**.
-6/25 Ludlow and 7/02 Spring TX are **inconsistent on the paper too -- FIELD errors that predate the
-spreadsheet** and can only be settled from a receipt, or left flagged. **The scans do not merely add
-data; they let a transcription error be told apart from a field error.** Neither fix applied yet --
-editing Kim's data file is his call.
-
-**★ KIM: THE SCOPE BOUNDARY IS FRACTAL.** The 4,635 logged miles against 5,100 odometer miles is
-city driving, and *we're laser focused on the long drives, not the city stuff*. **The same rule
-appears at fleet, car and trip level, excluding the same thing each time -- so the gaps are
-DEFINITIONAL, not missing.** See the section above; it is now an analysis rule.
-
-**KIM: a complete set of TwoRed trip logs likely exists.** If so, TwoRed stops being a fuel spine
-with a 7-row fragment and becomes a **true parallel spine to Creamsicle**.
-
-**KIM: temperature recording was DROPPED** -- not worth the effort against everything else happening
-at departure and arrival. **So temperature is a BOUNDED EARLY SUBSET of the TwoRed record, not a
-column that runs through it.** Scope any thermal analysis to the years that carry it; establish the
-cut-off from the sheets as they arrive rather than assuming one.
-
-**⚠ METHOD TRAP for the TwoRed-vs-Creamsicle comparison.** Creamsicle's `Miles/Hour` is computed
-**after** subtracting a `Stop` column; the TwoRed paper sheets have no stop column, so their mph is
-**gross**. Verified on Creamsicle's Nixa->Kansas City leg. **Compared naively, Creamsicle wins by
-construction.** Use Creamsicle's raw `Duration` for any speed comparison.
-
-### 2026-08-16 (Kim's rulings, second half of session)
-
-**Context: Hurricane Lala.** Hawai`i was narrowly missed but damaged across all islands -- nearly
-**200,000 homes without power**, bridges washed out, communities isolated. Kim and Nancy are safe
-and their Honolulu apartment kept power; he had been reluctant to use the computer at all in case
-it dropped. **Recorded because it explains the shape of the next few sessions, not as colour.**
-Recovery expected to begin 2026-08-17.
-
-**1. The fleet splits 2x2 by DISTANCE ROLE** -- see the section above. Supersedes the ICE/EV axis.
-
-**2. `TwoRed_fuel_June_2014` IS the last fuel log for TwoRed.** Kim: he logged fuel while the car
-was used primarily for long trips; Honolulu trips are all short, and the receipts exist but add
-nothing to a document about long-trip performance. **★ This dissolves what the PKM had filed as a
-gap: the log stopping at 71,181 while the car reached ~75,000 is not missing data, it is the
-project's SCOPE BOUNDARY showing up in its own record.** Consequence for the document: cite *log
-miles* and *odometer miles* as two different quantities and say why they differ, rather than
-reconciling them.
-
-**3. The Origin Story confidentiality question is ADJUDICATED -- Kim is content with the text as
-it stands.** He gives away neither the person nor the condition, which he judges within the spirit
-of the 2026-08-12 conditional. **Closed. Do not re-raise; do not re-derive the detail.**
-
-**4. The `Creamsicle` doc ending is BY DESIGN, not truncation.** The countries/states list is a
-summary reminder that place analysis is coming; the actual places live in the trip log. **The
-open question raised earlier today is closed -- and refusing to call it an absence was correct.**
-
-**5. The spreadsheet needs a cleanup.** Kim's own account: calculations were put "here and there"
-to feed figures into the story. Filed as a TASK.
-
-**6. The photo layer.** See Intended analysis.
-
-### 2026-08-16 (the Creamsicle data found; project unblocked)
-
-**Focus chosen by Kim at session open.** The block was discharged in one search, and the reason it
-had held for months is worth more than the data: **every prior sweep was a filesystem sweep, and a
-Google-native document has no bytes on disk.** `G:` reported `Final Creamsicle Logs.gsheet` at 176
-bytes; `readBin` returned 0. The card's ground-truth rule predicted exactly this.
-
-**Found:** `Final Creamsicle Logs` (gas log + the project's first real trip log), the `Creamsicle`
-narrative doc (9 trips, drafted), `Creamsicle_July_Fuel_Log_update` (with lat/long), and
-`Creamsicle Inventory`. **28,697 miles, 1,123 days, 9,845 mi/yr, 18 states + Canada.**
-
-**Two side findings.** `TwoFer Gas Log` is car #2's record -- 7 fill-ups, 1,209 miles, **all
-Honolulu** -- which the PKM had as "one line of text". Kim ruled both names were used: Two4Two
-canonical in prose, TwoFer recorded as the log's title so a future session does not "correct" it.
-**★ It also sharpens the thesis rather than padding it: the one car that WAS a pure urban commuter
-is the one that was leased and given back.** And `TwoRed_fuel` is a second, richer TwoRed sheet
-carrying ambient temperature in its Notes.
-
-**One hypothesis raised and killed by data.** 2016 is Creamsicle's model year, so
-`2016_Fourth_Crossing_Analysis.xlsx` looked like it might be Creamsicle's. It is **TwoRed's** --
-odometer opens at 58,214 in May 2016, five years before Creamsicle was bought at 30,290.
-
-**Not claimed:** no Creamsicle fill-ups past 2024-07-02 appeared in the read, though trip legs run
-to 2024-10-20. Filed as an open question, not as an absence (Findings 018/019/020).
-
-Set **Active / Ready** at Kim's direction.
-### 2026-08-12 (intake gap closed; reframed from one car to four; focus lowered)
-
-Filed as a project after the 2026-08-11 session identified it as a document mis-scoped as
-a story. **Kim confirmed that reading and went further:** the largest section of the source
-material is the Arctic Circle Challenge, which is already a posted story -- so the
-remaining substance is the data, not the narrative.
-
-**The reframing is his:** four Smart cars, not one. Two still owned. Deepest data on the
-first, TwoRed.
-
-Materials copied to `Projects/Smart_Car` under `data/`, `source/`, `images/`. Nine files,
-**all nine verified byte-identical**, 20.56 MB both sides.
-
-**Reading the data rather than the charter changed three claims** -- the Gas Log runs to
-2017 not June 2014, the odometer tops out at 71,181 not 75,000, and the Trip Log is 7 rows
-rather than a dataset. Recorded above rather than carried forward as fact.
-
-Set **Active + Blocked** at Kim's direction so it leaves the active worklist while staying
-findable, with the blocker named as his own data recovery.
+The dated log for this project lives in `logs/proj_Smart_Car_log.md`. Verbatim and unedited.
+New entries go there, not here. (Split 2026-08-18 by pkm_health.R)

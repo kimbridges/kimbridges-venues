@@ -11,6 +11,78 @@ Mechanism 4.
 
 ---
 
+## 2026-08-18 (evening) -- THE CORRECTED DATASET EXISTS; first analysis on clean data; the wheels question answered narrowly
+
+**Active focus at start and close:** Smart_Car. Second half of the day, after a dinner break. The morning
+entry below covers the audit; this one covers turning the audit into a DATASET and then, for the first
+time in the project, asking the data a question.
+
+### The May-June 2016 hole was not a hole
+
+I had filed the Fourth Crossing's contaminated rows as unrecoverable. **I had searched one folder.**
+Kim: *it's an electronic shoebox. I scan paper. All paper.* He produced the AMEX statements for both
+months and then the actual pump receipts. All three unknowns fell out: **LSM 3.641 gal / $10.92,
+Blythe 4.531 gal / $14.04, Winslow cost $15.48.** Same shape as the Creamsicle closure two days
+earlier -- **the wrong KIND of search, not missing data.** Recorded in `deferred.md` as a rule, because
+twice in three days is a pattern and not an accident.
+
+### `twored_ingest.R` -- and the three things building it forced
+
+Signature `twored_ingest(apply_hypotheses = FALSE, verbose = TRUE)`. Reads the xlsx plus three
+correction files, emits `data/TwoRed_fuel_clean.csv` (294 rows x 16 cols) carrying `corrections` and
+`corr_source` per row. **34 applied, 0 refused, 1 inserted, source never edited.**
+
+A correction LIST would not have surfaced any of these; only the BUILD did:
+
+1. **A row INSERT.** The Big Spring row was a **chimera** -- date, city and brand from one stop, all four
+   numeric fields from another. It **passes the arithmetic test perfectly**, because every number in it
+   came from a single real row. Relabelling it would have been directionally right and structurally
+   wrong. It needed a SPLIT.
+2. **EXPLICIT partial-fill flags.** A flag recomputed from a threshold on every run is not a recorded
+   decision, it is a guess that changes when the threshold does.
+3. **A guard that REFUSES.** Any correction whose `old_value` does not match the live source row is
+   rejected rather than applied. It fired immediately on **two errata keyed to the wrong odometer**
+   (L07 at 65789 not 58213; L14 at 11794 not 12034). **A correction that cannot find its row is a bug,
+   not a no-op.** It also caught my own date comparison being string-based against Excel serials --
+   **I fixed the guard, not the data.**
+
+Finding 032 is written into the code: order by the monotonic counter, never the date, and
+`stopifnot(nrow >= n_src)` -- rows may be ADDED, never silently lost.
+
+### Six results, on clean data, for the first time
+
+Median leg **251 mi**; log distance about **95%** of odometer miles (the scope boundary showing up
+again, quantified). Lifetime **39.44 MPG**, at the EPA highway end. **Leg length is the strongest
+predictor: +4.61 MPG per 100 miles of leg.** No degradation over sixteen years -- **+0.30 MPG per
+10,000 miles**, controlled. **$0.0936 per mile** lifetime fuel cost. Temperature: null, with the
+caveat that the recorded range is only 38-94 F.
+
+From the 50 transcribed legs with both times: **median departure 08:13, arrival 16:35, an 8.7-hour
+day, 317 miles, 37.9 mph gross**, earliest departure **05:35**, and **46% of departures before 08:00**.
+
+### ★★ I over-claimed, and caught it in the same turn
+
+On the wide tires I wrote that the data *rules out a penalty worse than 3.7%*. **It does not.** -3.7%
+is one END of a 95% interval running to **+4.9%**, and that interval **straddles zero and contains**
+the 1-3% penalty theory predicts. The defensible claim is narrower: **a large penalty is ruled out; a
+modest one is undetectable at this n.** Same failure mode as Finding 032 -- **a number that looked
+like a bound was one end of an interval.** Filed as a CONDITIONAL in `deferred.md` so the strong
+version cannot come back.
+
+**And Kim reframed the question underneath it.** The wheels were never a fuel decision: the stock
+narrow city tires let crosswind push an 1,800-lb car around at highway speed, Smart Madness prescribed
+wide tires (fancy rims came along, because the car is fun to be seen in), and **the handling became
+very good.** So fuel is not the axis the change was made on. **The measurement's job is to say what
+the fix COST, not whether it worked.** Kim already knew it worked; he drove it.
+
+### Close
+
+Kim's call to checkpoint before continuing -- *it might be best to record our progress in the PKM
+before going on. We'll come back to the analyses.* Right call: the day produced a dataset, a script,
+six results and a withdrawn claim, and none of it was written down yet.
+
+---
+
 ## 2026-08-18 -- THE FUEL LOG AUDIT CLOSED; three trips transcribed; two findings; five of my own conclusions overturned
 
 **Active focus at start and close:** Smart_Car. A long session, Kim driving it from the paper.

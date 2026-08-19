@@ -235,27 +235,47 @@ subfolder (md5-checked); the `proj` Key Files entry points at the `data/` copy. 
 *2011 St. Louis Trip* -- **check for repeated legs before merging them.** Also note
 `2016_TwoRed_fuel_missing_page.pdf`, which Kim named himself and which may close a category-B gap.
 
-**★ STATE OF THE ERRATA, 2026-08-18 close: 45 entries** in `data/TwoRed_log_errata.csv`, 8 in
+**★ STATE OF THE ERRATA, 2026-08-18 close: 58 entries (L01-L58)** in `data/TwoRed_log_errata.csv`, 8 in
 `TwoRed_gazetteer_errata.csv`. **The arithmetic class is EXHAUSTED** -- nine typos proven, three rows
 contaminated by a single May-2016 fill-drag, one coincidence cleared, all residuals above 2c resolved.
 **The 'missing fill-up' class ended at FIVE FLAGGED, ZERO REAL** -- one merged row, three partial
 fills, and one artifact my own filter created (Finding 032).
 
 **★★ TASK — SCAN THE MISSING PERIODS. Highest-value remaining data task.** 153 of 293 fuel rows have
-no verified paper. **Priority: MAY-JUNE 2016** (the Fourth Crossing) -- the fill-drag contamination
+no verified paper. **✓ MAY-JUNE 2016 CLOSED 2026-08-18 — RECOVERED, NOT LOST.** Kim's AMEX statements plus the actual
+pump receipts (`2016_Fouth_Crossing_Fuel_Receipts.pdf`) settled all three: **LSM 3.641 gal / $10.92,
+Blythe 4.531 gal / $14.04, Winslow cost $15.48.** **The lesson is mine and it is kept: I filed the period
+as unrecoverable after searching ONE folder.** Kim: *it's an electronic shoebox. I scan paper. All paper.*
+**Search the whole archive before declaring anything missing** -- the same shape as the Creamsicle closure,
+where the wrong KIND of search, not the data, was the problem.
+
+_Original:_ **Priority: MAY-JUNE 2016** (the Fourth Crossing) -- the fill-drag contamination
 lives there and the true LSM/Blythe gallons and costs are unrecoverable without it. Then the 2017
 Feb-May tail. Kim to check the box while the papers are out.
 
-**TASK — open the remaining 8 scans.** 2011 STL (also settles whether it overlaps the June sheet --
+**TASK — open the remaining 7 scans.** (`2016 fall-winter` arrived 2026-08-19 as
+`2016_TwoRed_trip_log_fall-winter.pdf` and is NOT yet transcribed.) 2011 STL (also settles whether it overlaps the June sheet --
 different md5, same trip name, so check for repeated legs BEFORE merging), 2011 fuel log,
 2012 Frostburg, 2012 May Arizona, 2013-4 LA Expedition, 2015 Sedona, 2016 fall-winter, 2017 January.
 
 **TASK — confirm 3 open items from a card or receipt, NOT from a scan.**
 - **L42 Coarse Gold** gallons 7.385 -> 7.305. **A scan cannot settle this** (0/8 illusion); arithmetic favours 7.305.
 - **L44 Big Spring odometer**: Kim's typing says 22,945, the scan looks like 22,954. Neither test separates them.
-- **L11 / L38** true gallons and costs for LSM 5/25/16, Blythe 5/26/16, Winslow 5/27/16.
+- **✓ L11 / L38 RESOLVED 2026-08-18 from the pump receipts.** True gallons and costs for LSM 5/25/16, Blythe 5/26/16, Winslow 5/27/16.
 
-**TASK — apply the errata as a DERIVED LAYER in the ingestion script.** 45 entries now exist and only
+**✓ DONE 2026-08-18 — `Projects/Smart_Car/twored_ingest.R` applies the errata as a DERIVED LAYER.**
+Reads the xlsx + `TwoRed_corrections_machine.csv` + `TwoRed_inserts.csv` + `TwoRed_flags.csv` and emits
+`data/TwoRed_fuel_clean.csv` (294 rows x 16 cols) with `corrections` and `corr_source` provenance columns.
+**34 applied, 0 refused, 1 row inserted (Big Spring @ 22945).** The source workbook is never edited.
+**Kept for the reason, not the answer: BUILDING it forced three things a correction LIST could not.**
+(1) A row **INSERT**, because the Alpine/Big Spring row was a chimera and needed splitting, not relabelling.
+(2) **EXPLICIT** partial-fill flags, because a derived flag recomputed each run is not a decision, it is a guess.
+(3) A **GUARD that REFUSES** any correction whose `old_value` does not match the source row -- it immediately
+caught two errata keyed to the WRONG odometer (L07, L14). A correction that cannot find its row is a bug,
+not a no-op. **Finding 032 is written into the code**: order by the monotonic counter, never the date, and
+`stopifnot(nrow >= n_src)` -- rows may be added, never silently lost.
+
+_Original entry:_ **TASK — apply the errata as a DERIVED LAYER in the ingestion script.** 45 entries now exist and only
 TWO have been written into the xlsx. **That is deliberate** -- the errata file is the correction of
 record. The ingestion must read xlsx + errata and emit corrected values with provenance, never edit
 the source.
@@ -299,6 +319,40 @@ Cheap, and it partitions into transcription vs field errors wherever a scan exis
 computed after subtracting `Stop` time; the TwoRed paper sheets have **no stop column**, so TwoRed mph
 is GROSS. **Naive comparison makes Creamsicle faster by construction.** Use Creamsicle's raw
 `Duration`. Verified against its Nixa->Kansas City leg (209.4 mi / 3.00 adj hrs = 69.8).
+
+**★★ RULE ADOPTED 2026-08-19 — TRANSCRIBE ONCE, COMPLETELY.** Every re-read of a scan costs a FULL
+pass: finding the file, orienting the page, decoding Kim's hand, cross-checking the odometer. The
+marginal cost of capturing a second column during that pass is near zero; the cost of coming back
+for it is the whole pass again. **So no scan is opened for one field.** When a sheet is opened,
+capture EVERY column present, even columns no analysis has been named for yet.
+
+**★★ TASK — the trip logs carry FIVE things beyond distance, and only distance has been taken.**
+Inventory, so a future session does not rediscover this:
+1. **TEMPERATURE at departure and arrival** -- the field Kim named. Bounded early subset (see below).
+2. **START and FINISH TIMES** -- these are what make the average-speed analysis possible at all.
+   50 legs transcribed so far give median departure 08:13, arrival 16:35, an 8.7-hour day, 317 median
+   miles, **37.9 mph gross**, earliest departure 05:35, and **46% of departures before 08:00**.
+   ⚠ GROSS, not net -- the CONDITIONAL on Creamsicle comparison below governs any use of this.
+3. **CITY PAIRS** -- route, which the fuel log structurally cannot give. **The fuel log records STOPS;
+   the trip log records LEGS.** They are different objects and neither substitutes for the other.
+4. **OVERNIGHT LOCATIONS** -- the map, and the only source for where a day actually ended.
+5. **AN INDEPENDENT ODOMETER READING** per leg -- a second, non-fuel check on the odometer chain,
+   which is the spine every derived distance hangs from.
+
+**★★ TASK — transcribe TEMPERATURE from the scans ALREADY READ.** Roughly **140 of 294 fuel rows**
+sit under paper that carries a temperature never typed in. **This is the cheapest open data task in
+the project** -- the scans are already located, already oriented, already decoded. Do it in the same
+pass as the remaining trip-log columns, per the rule above. **Bound the claim by the recording
+cut-off, not by the data's convenience.**
+
+**⚠ CONDITIONAL — if anyone is about to write that the wide tires cost N% in fuel.** They may not.
+The measured before/after difference has a 95% interval of **-3.7% to +4.9%**, which STRADDLES ZERO
+and CONTAINS the 1-3% penalty theory predicts. **The only defensible claim is: a large penalty is
+ruled out; a modest one is undetectable at this sample size.** I wrote the stronger version once
+and withdrew it in the same turn. **And the wheels were bought for HANDLING, not economy** (Kim,
+2026-08-18: narrow city tires let crosswind push the car around; Smart Madness prescribed wide
+tires; handling became very good). Measuring them on fuel answers what the fix COST, not whether
+it worked.
 
 **TASK — establish when TwoRed temperature recording STOPPED.** Kim, 2026-08-17: it was dropped as
 not worth the effort at departure and arrival. **Temperature is therefore a bounded early subset, not
