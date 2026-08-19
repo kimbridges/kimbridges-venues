@@ -235,6 +235,31 @@ subfolder (md5-checked); the `proj` Key Files entry points at the `data/` copy. 
 *2011 St. Louis Trip* -- **check for repeated legs before merging them.** Also note
 `2016_TwoRed_fuel_missing_page.pdf`, which Kim named himself and which may close a category-B gap.
 
+**★ STATE OF THE ERRATA, 2026-08-18 close: 45 entries** in `data/TwoRed_log_errata.csv`, 8 in
+`TwoRed_gazetteer_errata.csv`. **The arithmetic class is EXHAUSTED** -- nine typos proven, three rows
+contaminated by a single May-2016 fill-drag, one coincidence cleared, all residuals above 2c resolved.
+**The 'missing fill-up' class ended at FIVE FLAGGED, ZERO REAL** -- one merged row, three partial
+fills, and one artifact my own filter created (Finding 032).
+
+**★★ TASK — SCAN THE MISSING PERIODS. Highest-value remaining data task.** 153 of 293 fuel rows have
+no verified paper. **Priority: MAY-JUNE 2016** (the Fourth Crossing) -- the fill-drag contamination
+lives there and the true LSM/Blythe gallons and costs are unrecoverable without it. Then the 2017
+Feb-May tail. Kim to check the box while the papers are out.
+
+**TASK — open the remaining 8 scans.** 2011 STL (also settles whether it overlaps the June sheet --
+different md5, same trip name, so check for repeated legs BEFORE merging), 2011 fuel log,
+2012 Frostburg, 2012 May Arizona, 2013-4 LA Expedition, 2015 Sedona, 2016 fall-winter, 2017 January.
+
+**TASK — confirm 3 open items from a card or receipt, NOT from a scan.**
+- **L42 Coarse Gold** gallons 7.385 -> 7.305. **A scan cannot settle this** (0/8 illusion); arithmetic favours 7.305.
+- **L44 Big Spring odometer**: Kim's typing says 22,945, the scan looks like 22,954. Neither test separates them.
+- **L11 / L38** true gallons and costs for LSM 5/25/16, Blythe 5/26/16, Winslow 5/27/16.
+
+**TASK — apply the errata as a DERIVED LAYER in the ingestion script.** 45 entries now exist and only
+TWO have been written into the xlsx. **That is deliberate** -- the errata file is the correction of
+record. The ingestion must read xlsx + errata and emit corrected values with provenance, never edit
+the source.
+
 **★ TASK — transcribe the REST of the TwoRed paper trip logs.** Kim, 2026-08-17: he likely has a
 **complete set**. The 2011 St. Louis Trip is done (`data/TwoRed_2011_StLouis_trip_log.csv`, 15 legs).
 **This is the highest-value open item in the project** -- it converts TwoRed from a fuel spine with a

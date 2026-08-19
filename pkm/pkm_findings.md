@@ -1604,3 +1604,72 @@ for (Finding 020): knowing a rule is not the same as having a trigger for it. Th
 **Cost.** Kim ended a hurricane day believing his PKM had gone 16 days without a backup, during an
 active recovery, when in fact it had been backed up and pushed minutes earlier. **A false absence
 is not a neutral error: it spends the reader's trust and their attention at the worst moment.**
+
+---
+
+## Finding 032 (2026-08-18) — A filter that DROPS rows manufactures anomalies indistinguishable from real ones
+
+**What happened.** Auditing TwoRed's 293 fuel rows I flagged Morgantown WV (2012-06-01) as implying
+**100.6 MPG** -- the largest anomaly in the dataset -- and reported it to Kim as *a fill-up that was
+never written down*. He asked a simple question: **"I see June 2012 values for two fill-ups in
+Morgantown. What's the missing value?"**
+
+**There was none.** The preceding fill-up -- Richmond, Ohio, odometer 28,688 -- is present in the
+sheet. Its date cell reads **`5/31/0202`**: the year typed as 0202 for 2012, stored as TEXT. My
+pipeline began `G <- G[!is.na(G$date), ]`, which **silently deleted that row**. Morgantown's
+predecessor then became Champaign, 500 miles back, and the phantom leg produced 100.6 MPG.
+**In odometer order the sequence is continuous and every MPG is ordinary: 41.9 / 42.6 / 35.1 / 41.2.**
+
+**Why this is worse than an ordinary bug.** A dropped row and a missing row look **identical**
+downstream: both appear as an unexplained odometer gap. The analysis could not distinguish a hole
+in the DATA from a hole it had just made in its own working set -- **and it reported the second as
+the first, with confidence, twice.**
+
+**Rule. Any filter that removes rows must REPORT what it removed, as a count, before results are
+read.** `kept 292 of 293` would have exposed this in one line. **Never write `!is.na(x)` into a
+pipeline without printing the drop count beside it.**
+
+**Second rule, narrower.** When ordering records that carry BOTH a timestamp and a monotonic
+counter, **order by the counter.** The odometer cannot be mistyped into a different century; the
+date can. Sorting by date made a corrupt cell into a structural error.
+
+**★ The tell was Kim's, not the code's.** He looked at the actual rows and saw two Morgantown
+fill-ups where my summary implied a gap. **A person reading the raw record caught what three
+automated test families could not, because all three ran on the same silently-truncated input.**
+
+**Cost.** The `missing fill-up` class ended at **5 flagged, 0 real**: one merged row, three partial
+fills, and this artifact. **The single most dramatic number in the audit was manufactured by the
+audit.**
+
+---
+
+## Finding 033 (2026-08-18) — A physical error MECHANISM outperforms a statistical threshold, because it predicts DIRECTION
+
+**The observation.** Four typos in TwoRed's fuel log, spread over 2011-2015, all had the same shape:
+a **zero recorded as an eight** (29.06->29.86, 26.08->26.88, 7.088->7.889, 4.089->4.809). A fifth
+occurred live in this session -- Kim read 5.401 off his own receipt as 5.481.
+
+**The cause, from Kim:** *the stripe across the zero.* He writes slashed zeros. Under a scan, or a
+hurried glance, a slashed 0 reads as an 8.
+
+**Why this beat every threshold we had.** All four typos had already survived the arithmetic audit's
+attention as either corrected one-offs or sub-dollar noise. Turning the mechanism into a SEARCH --
+try every single-position 0<->8 substitution and keep the ones that make the row balance -- surfaced
+two more candidates from residuals that had been dismissed as rounding.
+
+**★ AND THEN THE MECHANISM REJECTED ONE OF THEM.** A slashed zero can be read as an eight; an eight
+is not read as a zero. **The error is DIRECTIONAL.** Of the two candidates:
+- **Coarse Gold** (7.385 -> 7.305): the record holds an 8 where the paper had a 0. **Consistent.**
+- **Effingham** (6.480 -> 6.488): would need a 0 in the record to have been an 8 on paper. **Impossible.**
+
+**Arithmetic alone would have accepted both.** The physical mechanism threw one out. **A cause-based
+test is stronger than a fit-based test, because a cause constrains the DIRECTION of the error and a
+residual does not.**
+
+**Control, so the generator is not merely finding something.** The same search with digit pairs that
+are NOT the mechanism: **0<->8 scored 2 hits in 15 substitutions (13.3%); 1<->7 scored 0 in 19;
+3<->5 scored 0 in 20; 4<->9 scored 1 in 39.** The signal is specific to the pair with a physical story.
+
+**General rule. When several errors share a shape, stop treating them as independent typos and ask
+what PHYSICAL process makes that shape.** Then run the process as a generator, and use its
+asymmetries to reject candidates a residual test would wave through.

@@ -11,6 +11,68 @@ Mechanism 4.
 
 ---
 
+## 2026-08-18 -- THE FUEL LOG AUDIT CLOSED; three trips transcribed; two findings; five of my own conclusions overturned
+
+**Active focus at start and close:** Smart_Car. A long session, Kim driving it from the paper.
+Opened with the R bridge DOWN (ClaudeR addin not started) -- read via the device bridge after clearing
+the stale staged copies (Finding 015), and held off writing until the bridge returned.
+
+### What was built: five audit instruments, none redundant
+
+pump identity / economy / geography / **contiguity** / **price-family**. **Every major error today was
+caught by exactly one of them.** The decisive pairing is **contiguity + arithmetic**: where two adjacent
+rows share a value, **the row that BALANCES is the source and the row that FAILS is the copy** -- a
+determination neither test can make alone.
+
+### ★★ The sixth instrument was Kim's handwriting
+
+Four typos across 2011-2015 shared one shape -- a **zero recorded as an eight**. Kim gave the cause:
+**he writes slashed zeros.** Run as a search generator it produced two new candidates from residuals
+already dismissed as rounding; **then the mechanism rejected one of them**, because a slashed 0 reads
+as an 8 but an 8 does not read as a 0. **A cause-based test beats a fit-based test because a cause
+constrains DIRECTION.** Control: 0<->8 hit 2 of 15; 1<->7 and 3<->5 hit 0 of 39 combined. **Finding 033.**
+**And its limit, recorded: for the 0/8 class SCANS ARE NOT EVIDENCE** -- the scan is where the illusion
+lives, so only arithmetic or a card can adjudicate.
+
+### ★★ Five of my own conclusions were overturned, all by Kim's paper
+
+1. **The 'odometer high by 130-170' hypothesis** at Big Springs -- elegant, self-consistent, two
+   independent estimates agreeing within 45 miles, and **wrong**. The town was Alpine.
+2. **The 'relabel it Alpine' fix** -- directionally right, structurally wrong. The row needed SPLITTING:
+   a chimera with date/city/brand from Big Spring and the four numeric fields from Alpine. **It passes
+   the arithmetic test perfectly**, because all four numbers came from one source row.
+3. **Withdrawing the Big Spring gazetteer fix** -- wrong, because I assumed one label means one place.
+   `Big Springs, Texas` appears three times and means three different things. **Errata key to a ROW.**
+4. **Morgantown's 100.6 MPG** -- the largest anomaly in the dataset, and **my own filter made it**
+   (Finding 032). Kim asked one question about the raw rows and it collapsed.
+5. **'The cost is wrong at Homer'** -- his card confirmed the cost, and two independent tests then
+   agreed the GALLONS were the fault.
+
+### Results
+
+**45 log errata + 8 gazetteer errata**, each with basis, evidence and status. **Arithmetic class
+EXHAUSTED.** **'Missing fill-ups': 5 flagged, 0 real** -- one merged row, three partial fills, one
+artifact. **Three trips transcribed, 67 legs** -- 2011 St. Louis, 2013 Arctic (18 of 18 exact), and
+2014 Penultimate State, whose 10,907 miles **match Kim's own margin total exactly**.
+**Fuel-log coverage: 140 of 293 rows verified against paper (48%).**
+
+### ★ Two stories, and why they are evidence
+
+**Yukon River Camp:** the woman running the concession ran over -- they had never seen a car like it.
+**The claim is unusually strong for an anecdote because the observation post is a CHOKE POINT**: it is
+the only fuel between Fairbanks and Coldfoot, which is why the log shows Kim buying there twice, north
+and south. **Alpine, TX:** a stranger walked over having mistaken the Smart for a friend's car.
+**Same cause -- the car was rare -- opposite reactions. Two strangers in two years is a PATTERN**, and
+it is evidence for the thesis that no fuel statistic can supply.
+
+### Next
+
+**Scan May-June 2016** (highest value -- the fill-drag lives there and the true values are otherwise
+unrecoverable), then the 2017 tail. Open the 8 remaining scans. Then the chapter architecture, which
+has been the named weak point since 2026-08-16 and is still the one-car charter's.
+
+---
+
 ## 2026-08-17 -- THE BACKUP HAD RUN ALL ALONG; Finding 031; health check clean on every axis that matters
 
 **Active focus at start:** Smart_Car (2026-08-16 close). **At close:** unchanged -- the day opened
