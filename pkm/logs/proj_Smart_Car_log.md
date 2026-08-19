@@ -251,3 +251,69 @@ gap:** Kim has substantial cross-country data for it, and finding those files is
 this from a one-car document into a two-spine one. Bordeaux is not yet inventoried.
 
 
+
+## ★ THE AMEX STATEMENTS ARE A THIRD INDEPENDENT RECORD (2026-08-18)
+
+Kim kept scans of the old credit-card statements. **BRAND and COST are the invariants** -- they
+anchor a row to a real transaction, so where the log's CITY is wrong the statement names the town.
+**Four cities corrected this way, every one confirmed independently by geography:**
+
+| Logged | Actually | Ratio before -> after |
+|---|---|---|
+| Austinburg, OH (Sunoco $22.46) | **Waterloo, NY** | 0.65 -> 1.17 |
+| Warren, OH (Flying J $17.74) | **Austinburg, OH** | 6.34 -> 1.08 |
+| Matfield Green, KS ($21.59) | **Lenexa, KS** | 0.88 -> 1.25, and inbound 2.30 -> 1.15 |
+| Big Springs, TX / Fina ($23.57) | **Alpine, TX / Stripes** | 1.95 & 0.83 -> 1.17 & 1.13 |
+
+
+
+### ★★ A HYPOTHESIS OF MINE WAS REFUTED, AND THE REFUTATION IS THE LESSON
+
+I proposed that ONE bad odometer reading at 'Big Springs' explained both its anomalies -- an
+impossible 76.2 MPG on the way in and an impossible geometry on the way out. It was elegant: too
+high inflates the inbound leg and shortens the outbound one, and two independent estimates of the
+corrected value agreed to within 45 miles. **It was also wrong.** The town was **Alpine**, 183 miles
+away, and the odometer had been right all along.
+
+**The row held TWO UNRELATED FAULTS: a mislabelled city AND a missing fill-up.** The geographic fix
+resolves the first and leaves the second untouched -- 475 mi on 6.237 gal is still 76.2 MPG.
+**Rule: parsimony is a preference, not evidence. Two tests firing on one row may be finding two
+faults, and collapsing them into one story is how a plausible answer replaces a true one.** This is
+the sharpest form of the disjoint-audit-families result: **two errors, adjacent columns, one row.**
+
+### ★★ TWO MORE OF MY OWN CORRECTIONS WERE CORRECTED (2026-08-18)
+
+**1. The row was MERGED, not mislabelled.** Kim's paper log, confirmed against AMEX, has THREE
+fill-ups where the sheet has two. The survivor is a **chimera**: `date / city / brand` from the
+**Big Spring** row, `$per gal / odometer / gallons / cost` from the **Alpine** row -- an eye
+tracking across a paper log and dropping a line partway over. **My 'relabel it Alpine' fix was
+directionally right and structurally wrong; the row needed SPLITTING.**
+
+**★ AND IT PASSES THE ARITHMETIC TEST PERFECTLY** -- 6.237 x 3.779 = 23.57 exactly -- **because all
+four numeric fields came from ONE source row, so the pump identity survived the merge.** **A
+collapsed row can be flawlessly self-consistent. That is the arithmetic test's blind spot, and only
+the economy and geography tests saw it.** Restored, the three legs give ratios 0.96 / 1.31 / 1.13
+and MPG 35.4 / 38.6 / 36.3 -- all normal.
+
+**2. ERRATA MUST BE KEYED TO A ROW, NOT TO A LABEL.** I withdrew a gazetteer fix on 2026-08-18
+believing the 2012 row proved `Big Springs, Texas` was never a real stop. **That withdrawal was
+wrong.** The label appears in three rows and means three different things:
+
+| Row | Truth |
+|---|---|
+| 2010-11-21 | **Big Spring, TX** -- a spelling slip; genuinely mis-geocoded to Nebraska |
+| 2012-02-06 | **Big Spring TX + Alpine TX** -- two fill-ups merged into one row |
+| 2016-05-30 | **Big Springs, NEBRASKA** -- a real, different town; no error at all |
+
+**One logged label, three resolutions. A correction scoped to a NAME will silently mis-apply to
+every other row carrying that name.** The gazetteer entry is reinstated with row-level scope.
+
+### ★ ALL FIVE FERRIES ARE NOW IDENTIFIED
+
+Every geographically impossible leg in seven years is now explained or is a boat. **The remaining
+five ARE the boats:** Alaska Marine Highway twice (Bellingham->Haines Junction, 1,018 SL / 160 odo;
+Homer->Lakewood, 1,455 / 336), Newfoundland twice, and **Lake Michigan** (Jackson MI -> Madison WI,
+260 / 239 -- the Muskegon-Milwaukee crossing, identified by Kim). **A data-quality test built to
+find typing errors located every water crossing of the record instead.**
+
+

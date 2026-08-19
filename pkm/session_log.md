@@ -11,7 +11,7 @@ Mechanism 4.
 
 ---
 
-## 2026-08-18 (evening) -- THE CORRECTED DATASET EXISTS; first analysis on clean data; the wheels question answered narrowly
+## 2026-08-18 (evening) -- THE CORRECTED DATASET EXISTS; ALL 15 SCANS READ; the backup was not backing up the data
 
 **Active focus at start and close:** Smart_Car. Second half of the day, after a dinner break. The morning
 entry below covers the audit; this one covers turning the audit into a DATASET and then, for the first
@@ -80,6 +80,32 @@ the fix COST, not whether it worked.** Kim already knew it worked; he drove it.
 Kim's call to checkpoint before continuing -- *it might be best to record our progress in the PKM
 before going on. We'll come back to the analyses.* Right call: the day produced a dataset, a script,
 six results and a withdrawn claim, and none of it was written down yet.
+
+### Later the same evening: the scan backlog closed, and Finding 034
+
+Kim: *let's keep working through the six remaining scans.* **Eighteen pages, seven files, every column** -- the transcribe-once rule, applied. **Trip legs 69 -> 107; fuel rows carrying a time and temperature stamped on the FILL, 0 -> 95.**
+
+**The first file tested the rule and passed it.** `2011..._STL.pdf` turned out to be the June sheet rescanned -- different md5, same four pages, **zero new legs.** But it carried 23 fuel-row temperatures the first pass had walked past, because that pass was looking for distance.
+
+**★ The wheel change is DATED.** In Kim's hand, top margin: `NEW WHEELS @ 13510 miles`. 179 miles before the St. Louis departure, so the narrow-tire group is exactly 2010-07-23 to 2011-05-11 -- the first crossing plus local driving, matching his account. **And the estimate still flips sign with specification** (+3.6% / +1.7% / +1.6% / -1.8% / -1.5%). That, not any one number, is the finding.
+
+**★★ Temperature is not null; the earlier test used the wrong instrument.** MPG is per FILL, so temperature belongs on the fill. n=94: **-0.068 MPG/degF, p=0.045**, stable -0.068 to -0.084 across four specifications; fills at 80F+ average 36.76 against 38.87. **But p crosses 0.05 under era fixed effects and the sign is counterintuitive.** Filed as a signal, not a finding. I over-claimed on the wheels once already.
+
+**★★ The slashed zero produced three more, and the control held.** Over the 44 rows failing the pump identity: the permitted 8->0 substitution fixes **4**; the forbidden 0->8 fixes **1** (Deming, already flagged wrong-direction); six control substitutions fix **0**. L59 is the FIRST fill in the record; L60 is the SAME ROW as L01, which already had a proven slip -- two in one row.
+
+### ★★★ Finding 034 -- the backup reported success and did not contain the data
+
+`pkm_backup()` committed, pushed, and verified against the remote ref -- the check Finding 031 added. **And 82 of the 85 files in Projects/Smart_Car were not in it.** `SOURCE_EXT` had no `csv`. Every errata file, the corrected dataset, all ten trip logs, the source workbook, all 17 scans: outside the backup. **The scripts were backed up; everything they operate on was not.**
+
+**Every check tested that the mechanism EXECUTED. None tested WHAT IT COVERED.** Same error as Finding 031, one level up: I verified the transport and never verified the manifest. Caught only by reading the mirror for a file I expected to find -- the directory did not exist.
+
+**Kim decided it the same evening:** *yes, we should be doing that too. After all, these files are where data live and that's often our focus.* **And the fix immediately found a second bug:** admitting `xlsx` pulled in Excel's `~$` lock file, which is locked, reports 165 bytes and copies as 0 -- **the size-mismatch guard refused to commit, correctly.** `.is_source()` had a `.~lock.` rule for LibreOffice and none for Excel, because no Office extension had ever been whitelisted. **Widening an inclusion filter is a change of KIND: every extension admitted brings its application's debris with it. Budget for the debris, not the bytes.**
+
+Result: **mirror 975 -> 1,191 files**, Smart_Car 3 -> 26 of 85, verified BY CONTENT inside the mirror (61 errata rows, 10 trip logs, 294-row dataset). The binary tail -- 168 MB of photographs, 17 scan PDFs -- is left open as a git-LFS question, deliberately.
+
+### Close
+
+Kim, on being shown the four longest days: *I remember why I drove each of those. One was a navigation error; we went 100 miles off course and we were almost late for a dinner appointment.* And: *for me, a lot of this is memory lane material.* **Unprompted, that is the best evidence yet for his own TWO LOGS, TWO SUBJECTS frame** -- a 575-mile day is a number in one spine and an EVENT in the other. It also means the trip-log outliers are chapter hooks with a living source, and the stories should be collected BEFORE the analysis chapter is written.
 
 ---
 

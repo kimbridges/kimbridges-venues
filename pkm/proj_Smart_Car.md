@@ -194,67 +194,14 @@ geocoding artefact to real odometer suspect.
 **69,689 miles across 285 measured legs. 1,488 miles (2.1%) sit in disputed legs and are excluded.
 97.9% of the logged distance rests on undisputed odometer readings.** This tightens as scans arrive.
 
-## ★ THE AMEX STATEMENTS ARE A THIRD INDEPENDENT RECORD (2026-08-18)
+## ★ THE AMEX STATEMENTS ARE A THIRD INDEPENDENT RECORD (2026-08-18) — detail moved to the log
 
-Kim kept scans of the old credit-card statements. **BRAND and COST are the invariants** -- they
-anchor a row to a real transaction, so where the log's CITY is wrong the statement names the town.
-**Four cities corrected this way, every one confirmed independently by geography:**
+Full write-up verbatim in `logs/proj_Smart_Car_log.md`. **The card statements are independent of both the paper and the spreadsheet, which is what makes them decisive.** The four things worth carrying forward:
 
-| Logged | Actually | Ratio before -> after |
-|---|---|---|
-| Austinburg, OH (Sunoco $22.46) | **Waterloo, NY** | 0.65 -> 1.17 |
-| Warren, OH (Flying J $17.74) | **Austinburg, OH** | 6.34 -> 1.08 |
-| Matfield Green, KS ($21.59) | **Lenexa, KS** | 0.88 -> 1.25, and inbound 2.30 -> 1.15 |
-| Big Springs, TX / Fina ($23.57) | **Alpine, TX / Stripes** | 1.95 & 0.83 -> 1.17 & 1.13 |
-
-### ★★ A HYPOTHESIS OF MINE WAS REFUTED, AND THE REFUTATION IS THE LESSON
-
-I proposed that ONE bad odometer reading at 'Big Springs' explained both its anomalies -- an
-impossible 76.2 MPG on the way in and an impossible geometry on the way out. It was elegant: too
-high inflates the inbound leg and shortens the outbound one, and two independent estimates of the
-corrected value agreed to within 45 miles. **It was also wrong.** The town was **Alpine**, 183 miles
-away, and the odometer had been right all along.
-
-**The row held TWO UNRELATED FAULTS: a mislabelled city AND a missing fill-up.** The geographic fix
-resolves the first and leaves the second untouched -- 475 mi on 6.237 gal is still 76.2 MPG.
-**Rule: parsimony is a preference, not evidence. Two tests firing on one row may be finding two
-faults, and collapsing them into one story is how a plausible answer replaces a true one.** This is
-the sharpest form of the disjoint-audit-families result: **two errors, adjacent columns, one row.**
-
-### ★★ TWO MORE OF MY OWN CORRECTIONS WERE CORRECTED (2026-08-18)
-
-**1. The row was MERGED, not mislabelled.** Kim's paper log, confirmed against AMEX, has THREE
-fill-ups where the sheet has two. The survivor is a **chimera**: `date / city / brand` from the
-**Big Spring** row, `$per gal / odometer / gallons / cost` from the **Alpine** row -- an eye
-tracking across a paper log and dropping a line partway over. **My 'relabel it Alpine' fix was
-directionally right and structurally wrong; the row needed SPLITTING.**
-
-**★ AND IT PASSES THE ARITHMETIC TEST PERFECTLY** -- 6.237 x 3.779 = 23.57 exactly -- **because all
-four numeric fields came from ONE source row, so the pump identity survived the merge.** **A
-collapsed row can be flawlessly self-consistent. That is the arithmetic test's blind spot, and only
-the economy and geography tests saw it.** Restored, the three legs give ratios 0.96 / 1.31 / 1.13
-and MPG 35.4 / 38.6 / 36.3 -- all normal.
-
-**2. ERRATA MUST BE KEYED TO A ROW, NOT TO A LABEL.** I withdrew a gazetteer fix on 2026-08-18
-believing the 2012 row proved `Big Springs, Texas` was never a real stop. **That withdrawal was
-wrong.** The label appears in three rows and means three different things:
-
-| Row | Truth |
-|---|---|
-| 2010-11-21 | **Big Spring, TX** -- a spelling slip; genuinely mis-geocoded to Nebraska |
-| 2012-02-06 | **Big Spring TX + Alpine TX** -- two fill-ups merged into one row |
-| 2016-05-30 | **Big Springs, NEBRASKA** -- a real, different town; no error at all |
-
-**One logged label, three resolutions. A correction scoped to a NAME will silently mis-apply to
-every other row carrying that name.** The gazetteer entry is reinstated with row-level scope.
-
-### ★ ALL FIVE FERRIES ARE NOW IDENTIFIED
-
-Every geographically impossible leg in seven years is now explained or is a boat. **The remaining
-five ARE the boats:** Alaska Marine Highway twice (Bellingham->Haines Junction, 1,018 SL / 160 odo;
-Homer->Lakewood, 1,455 / 336), Newfoundland twice, and **Lake Michigan** (Jackson MI -> Madison WI,
-260 / 239 -- the Muskegon-Milwaukee crossing, identified by Kim). **A data-quality test built to
-find typing errors located every water crossing of the record instead.**
+1. **An elegant single-cause hypothesis of mine was REFUTED by one line of Kim's statement** -- the town was    Alpine, not Big Spring. Two independent estimates agreeing within 45 miles, and still wrong.
+2. **The merged row was a CHIMERA and needed a SPLIT, not a relabel** -- labels from one stop, all four    numeric fields from another, which is exactly why it passes the arithmetic test perfectly.
+3. **Errata key to a ROW, never a LABEL.** `Big Springs, Texas` appears three times and means three    different places.
+4. **All five ferries are identified** (Alaska Marine Highway x2, Newfoundland x2, Lake Michigan x1) -- and    the Lake Michigan crossing is now confirmed a second time, in Kim's own hand on the Frostburg-3 sheet.
 
 ## ★★ THE AUDIT TOOLKIT -- FIVE INSTRUMENTS, NONE REDUNDANT (2026-08-18)
 
@@ -435,6 +382,25 @@ New: **L59** San Marcos 2010-11-29 19.28 -> 19.20 (**the first fill in the entir
 2011 St. Louis (interstate) **47.6** | 2012 Frostburg **43.5** | 2017 January 41.2 | 2011 N. California 40.6 | 2014 Penultimate State 39.7 | 2015 Sedona 39.0 | 2012 May Arizona 36.9 | 2013-4 LA 34.6 | 2013 Arctic (Dalton) **30.9** | 2016 fall-winter (US-101 coastal) **28.3**. Same car throughout.
 
 **Longest days found:** 6/14/2012 Billings -> Pocatello **448 mi in 6.85 h, 65.4 mph gross**; 5/31/2012 St Louis -> Columbus **517 mi**; 1/6/2017 Brookings -> Paso Robles **562 mi**; 7/7/2015 Carlsbad -> Sedona **575 mi**, departing **04:05**.
+
+### ★★★ KIM REMEMBERS EVERY ONE OF THE LONG DAYS (2026-08-19)
+
+On being shown the four longest days, his reply was immediate: *I remember why I drove each of those. One was a navigation error; we went 100 miles off course and we were almost late for a dinner appointment.* And: *for me, a lot of this is memory lane material.*
+
+**This is the strongest possible evidence for the TWO LOGS, TWO SUBJECTS frame, and it arrived unprompted.** A 575-mile day is a number in the fuel spine. It is an EVENT in the human spine -- it has a cause, a consequence, and a person who can still tell you both fifteen years later.
+
+**Consequence for the document, and it changes the writing order:** the trip-log outliers are not anomalies to be explained away, they are **chapter hooks with a living source**. **Ask Kim for the story behind each long day BEFORE writing the analysis chapter**, because the analysis will otherwise describe a distribution where the reader wants a reason. The four to ask about:
+
+| date | leg | miles | note |
+|---|---|---|---|
+| 2015-07-07 | Carlsbad CA -> Sedona AZ | **575** | departed 04:05; routed via Palo Verde and Seligman, far off the direct road |
+| 2017-01-06 | Brookings OR -> Paso Robles CA | **562** | arrived 22:10 |
+| 2012-05-31 | St Louis MO -> Columbus OH | **517** | |
+| 2012-06-14 | Billings MT -> Pocatello ID | 448 | **65.4 mph gross -- the fastest day in the record** |
+
+**★ The 575-mile day is the leading candidate for the navigation error** -- its routing is the one that cannot be explained by the map. Do not assert that; ask him.
+
+**And a methodological note worth keeping.** The 100-miles-off-course day is a case where the odometer is RIGHT and the route is wrong. Every geographic test in the audit toolkit assumes road distance >= straight line; a navigation error inflates the ratio without any error in the data. **A high GMaps/SL ratio is not always a defect. Sometimes it is a story.**
 
 ## Intended analysis
 

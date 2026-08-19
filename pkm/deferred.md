@@ -133,7 +133,23 @@ and misleading on paper.
 
 ---
 
-**★★★ DECISION NEEDED FROM KIM — THE BACKUP DOES NOT COVER THIS PROJECT'S DATA (2026-08-19).**
+**✓ DECIDED AND FIXED 2026-08-19 — Kim: _yes, we should be doing that too. After all, these files are where
+data live and that's often our focus._** `csv` and `xlsx` added to `SOURCE_EXT` in `pkm_health.R`.
+**Mirror 975 -> 1,191 files; Smart_Car coverage 3 -> 26 of 85.** Verified BY CONTENT inside the mirror: 61
+errata rows, 10 trip logs, the 294-row corrected dataset, the source workbook. Pushed and verified.
+**The first run ABORTED on a size mismatch:** admitting `xlsx` pulled in Excel's `~$` lock/owner file, which
+is locked and copies as 0 bytes. `.is_source()` had a `.~lock.` rule for LibreOffice but no `~$` rule for
+Excel, because no Office extension had ever been whitelisted. Excluded; the guard was right to refuse.
+
+**STILL OPEN — the binary tail, and it is a git-LFS question, not a whitelist one.** 38 photographs (168 MB),
+17 scan PDFs (7.6 MB), one docx, one pptx. **The scans matter most: they are the only copy of the paper.**
+Deliberately NOT decided here -- putting 168 MB of JPEGs into a plain git repo is a different kind of choice.
+
+**STILL OPEN — `pkm_health()` has no COVERAGE check.** It reports orphans (mirrored files with no source) but
+never the reverse. That asymmetry is what let this hide for the life of the system. A source-side diff
+belongs in the health report whatever the whitelist says.
+
+_Original entry:_ **DECISION NEEDED FROM KIM — THE BACKUP DOES NOT COVER THIS PROJECT'S DATA (2026-08-19).**
 `pkm_backup()` keeps a file only if its extension is in `SOURCE_EXT` (`qmd rmd r yml yaml css scss bib py js md`).
 **`csv`, `xlsx`, `pdf` and `jpg` are all absent, so 82 of the 85 files in `Projects/Smart_Car` have never been
 backed up** -- every errata file, the corrected dataset, all ten trip logs, the source workbook, all 17 scans.

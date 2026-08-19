@@ -1701,3 +1701,13 @@ The mirror keeps a file only if its extension is in `SOURCE_EXT`: `qmd, rmd, r, 
 **Corollary for `pkm_health()`.** It reports orphans (mirrored files with no source) and size mismatches. **It has no check for the reverse -- source files with no mirror.** That asymmetry is the bug.
 
 **Not fixed unilaterally.** `SOURCE_EXT` governs all 50 projects. Adding `csv` and `xlsx` would pull in **182 files, 1.8 MB** system-wide -- trivially cheap -- but it is Kim's policy call, not mine. Flagged in `deferred.md`. Note the data is NOT unprotected meanwhile: it lives on Google Drive. It is outside the *versioned* backup, which is where the adjudication history would be recoverable from.
+
+### RESOLVED SAME DAY — and the fix immediately found a second bug
+
+Kim's decision, 2026-08-19: *yes, we should be doing that too. After all, these files are where data live and that's often our focus.* `csv` and `xlsx` added to `SOURCE_EXT`.
+
+**The first run after the change ABORTED.** `size mismatch after copy -- investigate before committing`. Cause: allowing `xlsx` in pulled `data/~$TwoRed_fuel_June_2014.xlsx` -- an **Excel lock/owner file**, which is locked, so it reports 165 bytes at source and copies as 0. The guard did its job perfectly and refused to commit. `.is_source()` already excluded LibreOffice's `.~lock.` files; it had never needed Excel's `~$` equivalent, because no Office extension had ever been whitelisted. Excluded; the run then completed.
+
+**Result: 975 -> 1,191 files mirrored, 108 changed, pushed and verified against the remote ref.** Smart_Car coverage 3 -> 26 of 85. Verified BY CONTENT in the mirror, not by the report: 61 errata rows, 10 trip logs, a 294-row corrected dataset, the source workbook. What is still outside is only the binary tail -- 38 photographs, 17 scan PDFs, a docx and a pptx -- which is a git-LFS decision, not a whitelist one.
+
+**Second-order lesson, and it is the more useful one. WIDENING AN INCLUSION FILTER IS A CHANGE OF KIND, NOT OF DEGREE.** A whitelist does not only exclude files; it silently excludes the entire ECOSYSTEM around those files -- lock files, temp files, autosaves, sidecars. Every extension admitted brings its application's debris with it. **Budget for the debris, not just for the bytes.** The 1.8 MB estimate was right and irrelevant; what nearly stopped the fix was a 165-byte file that should never have been considered.
