@@ -742,7 +742,7 @@ VENUE_MIRROR <- "C:/repos/kimbridges-venues"
 # Hand-authored code and markup. NOT .txt/.csv/.json/.docx -- those are DATA.
 SOURCE_EXT <- c("qmd", "rmd", "r", "yml", "yaml", "css", "scss",
                 "bib", "py", "js", "md",
-                # DATA extensions added 2026-08-19 on Kim's decision (Finding 034).
+                # DATA extensions added 2026-08-18 on Kim's decision (Finding 034).
                 # The mirror had never carried a single csv: 82 of 85 files in
                 # Projects/Smart_Car were outside the backup while it reported success.
                 # Kim: "these files are where data live and that's often our focus".
@@ -770,7 +770,7 @@ VENUE_SOURCE_ROOTS <- list("kimbridges-documents" = c(".", "docs"))
                                  any(startsWith(s, "_backup")), logical(1))
   bad <- bad | grepl("\\.~lock\\.", rel, fixed = FALSE)
   # Office lock/owner files. LibreOffice writes .~lock.NAME# ; Excel writes ~$NAME.
-  # Added 2026-08-19: allowing xlsx into SOURCE_EXT immediately pulled in a ~$ owner file,
+  # Added 2026-08-18: allowing xlsx into SOURCE_EXT immediately pulled in a ~$ owner file,
   # which is LOCKED, so it reports a size at source and copies as 0 bytes -- tripping the
   # size-mismatch guard and aborting the whole backup before the commit. Not data; exclude.
   bad <- bad | startsWith(basename(rel), "~$")   # LibreOffice lock files

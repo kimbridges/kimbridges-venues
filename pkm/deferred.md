@@ -133,7 +133,7 @@ and misleading on paper.
 
 ---
 
-**✓ DECIDED AND FIXED 2026-08-19 — Kim: _yes, we should be doing that too. After all, these files are where
+**✓ DECIDED AND FIXED 2026-08-18 — Kim: _yes, we should be doing that too. After all, these files are where
 data live and that's often our focus._** `csv` and `xlsx` added to `SOURCE_EXT` in `pkm_health.R`.
 **Mirror 975 -> 1,191 files; Smart_Car coverage 3 -> 26 of 85.** Verified BY CONTENT inside the mirror: 61
 errata rows, 10 trip logs, the 294-row corrected dataset, the source workbook. Pushed and verified.
@@ -149,7 +149,7 @@ Deliberately NOT decided here -- putting 168 MB of JPEGs into a plain git repo i
 never the reverse. That asymmetry is what let this hide for the life of the system. A source-side diff
 belongs in the health report whatever the whitelist says.
 
-_Original entry:_ **DECISION NEEDED FROM KIM — THE BACKUP DOES NOT COVER THIS PROJECT'S DATA (2026-08-19).**
+_Original entry:_ **DECISION NEEDED FROM KIM — THE BACKUP DOES NOT COVER THIS PROJECT'S DATA (2026-08-18).**
 `pkm_backup()` keeps a file only if its extension is in `SOURCE_EXT` (`qmd rmd r yml yaml css scss bib py js md`).
 **`csv`, `xlsx`, `pdf` and `jpg` are all absent, so 82 of the 85 files in `Projects/Smart_Car` have never been
 backed up** -- every errata file, the corrected dataset, all ten trip logs, the source workbook, all 17 scans.
@@ -288,7 +288,7 @@ _Original:_ **Priority: MAY-JUNE 2016** (the Fourth Crossing) -- the fill-drag c
 lives there and the true LSM/Blythe gallons and costs are unrecoverable without it. Then the 2017
 Feb-May tail. Kim to check the box while the papers are out.
 
-**✓ 2016 FALL-WINTER TRANSCRIBED 2026-08-19 — both pages, EVERY column.** Outputs: `data/TwoRed_2016_FallWinter_trip_log.csv` (4 legs) and `data/TwoRed_fuel_timetemp.csv` (9 fuel rows). **All 9 fuel rows matched the clean dataset on date, city, brand, price and gallons** -- the sheet is sound. **QC passed on four independent axes:** odometer chain contiguous across all 4 legs; all 4 fuel stops fall INSIDE their leg and on the leg's own date; every leg distance is road-plausible; every pump identity balances.
+**✓ 2016 FALL-WINTER TRANSCRIBED 2026-08-18 — both pages, EVERY column.** Outputs: `data/TwoRed_2016_FallWinter_trip_log.csv` (4 legs) and `data/TwoRed_fuel_timetemp.csv` (9 fuel rows). **All 9 fuel rows matched the clean dataset on date, city, brand, price and gallons** -- the sheet is sound. **QC passed on four independent axes:** odometer chain contiguous across all 4 legs; all 4 fuel stops fall INSIDE their leg and on the leg's own date; every leg distance is road-plausible; every pump identity balances.
 
 **★★ THE FUEL TABLE ON THE PAPER FORM HAS ITS OWN `Time` AND `Temp` COLUMNS.** This matters more than the trip-log temperatures do: **MPG is computed per FILL, so a temperature stamped on the fill is the right instrument for an economy-vs-temperature test. A leg-endpoint temperature is not** -- it belongs to a different unit of analysis. Any thermal claim should be built on the fuel-row temperatures.
 
@@ -297,7 +297,7 @@ Feb-May tail. Kim to check the box while the papers are out.
 **TASK — the trip-log CSVs drifted into TWO INCOMPATIBLE SCHEMAS and nobody noticed.** 2011 and 2016 use `start_time/start_temp_F/start_odo/start_city`; 2013 and 2014 use `start/tempA/odoA/from`. A naive rbind **errors out**, which is the lucky case -- a silent partial match would have been worse. Normalised by `Projects/Smart_Car/trip_logs_read.R`, which maps both to one canonical schema and computes `raw_hours / elapsed_hours / gross_mph / odo_miles` on read. **It does not edit the CSVs.** **Decide later whether to rewrite the two B-schema files or keep the reader as the compatibility layer.**
 **It immediately paid: pooled legs with usable times went from 50 to 69**, because 2013/2014 had times all along and the earlier count simply could not see them.
 
-**✓ ALL 15 SCANS READ 2026-08-19. THE SCAN BACKLOG IS CLOSED.** 18 pages, 7 files, every column taken.
+**✓ ALL 15 SCANS READ 2026-08-18. THE SCAN BACKLOG IS CLOSED.** 18 pages, 7 files, every column taken.
 Trip legs **69 -> 107**; fuel rows with a time and temperature stamped on the FILL **0 -> 95** (32%).
 New CSVs in `data/`: `TwoRed_2012_Frostburg_trip_log.csv` (18), `..._2012_MayArizona_...` (7),
 `..._2015_Sedona_...` (3), `..._2017_January_...` (3), `..._2011_NorCalRoadtrip_...` (6),
@@ -336,7 +336,7 @@ running trip-mile totals in the margin act as a checksum and they all reconcile*
 1189.9 / 1494.4 / 1801.5 total, against 13,461 - 11,660 = 1,801). **They also caught one of my misreadings**
 -- Healdsburg is 12,850, not the 13,850 I first wrote.
 
-**✓ CLOSED 2026-08-19 — NO SCANS REMAIN UNOPENED.** *(The count itself had drifted: I wrote 8 -> 7 when the fall-winter file ARRIVED and 7 -> 6 when it was transcribed. Arrival is not transcription; the count was decremented twice for one event. Actual folder holds 15 scans, 4 trips transcribed.)* (`2016 fall-winter` arrived 2026-08-19 as
+**✓ CLOSED 2026-08-18 — NO SCANS REMAIN UNOPENED.** *(The count itself had drifted: I wrote 8 -> 7 when the fall-winter file ARRIVED and 7 -> 6 when it was transcribed. Arrival is not transcription; the count was decremented twice for one event. Actual folder holds 15 scans, 4 trips transcribed.)* (`2016 fall-winter` arrived 2026-08-18 as
 `2016_TwoRed_trip_log_fall-winter.pdf` and is NOT yet transcribed.) 2011 STL (also settles whether it overlaps the June sheet --
 different md5, same trip name, so check for repeated legs BEFORE merging), 2011 fuel log,
 2012 Frostburg, 2012 May Arizona, 2013-4 LA Expedition, 2015 Sedona, 2016 fall-winter, 2017 January.
@@ -403,11 +403,70 @@ computed after subtracting `Stop` time; the TwoRed paper sheets have **no stop c
 is GROSS. **Naive comparison makes Creamsicle faster by construction.** Use Creamsicle's raw
 `Duration`. Verified against its Nixa->Kansas City leg (209.4 mi / 3.00 adj hrs = 69.8).
 
-**★★ RULE ADOPTED 2026-08-19 — TRANSCRIBE ONCE, COMPLETELY.** Every re-read of a scan costs a FULL
+**★★ RULE ADOPTED 2026-08-18 — TRANSCRIBE ONCE, COMPLETELY.** Every re-read of a scan costs a FULL
 pass: finding the file, orienting the page, decoding Kim's hand, cross-checking the odometer. The
 marginal cost of capturing a second column during that pass is near zero; the cost of coming back
 for it is the whole pass again. **So no scan is opened for one field.** When a sheet is opened,
 capture EVERY column present, even columns no analysis has been named for yet.
+
+**✓ FOUR OF THE LONG-DAY STORIES COLLECTED 2026-08-19 — and all four check out against the log.**
+Written up in `proj_Smart_Car.md`. **The navigation error is 2012-05-31 St Louis -> Columbus**: the friend
+he made navigator was the executive director of the society's support organisation, they talked instead of
+navigating, and the 09:52 fill at **Champaign, Illinois** -- one metro with Urbana -- is the recorded moment
+of discovery. **Excess over the direct I-70 route: 108 miles, against the ~100 he remembered.** Dinner late,
+outside, fireflies. **★★ And that Champaign row is L61**, one of the three slashed-zero cost typos raised
+the day before -- **the typo sits at the stop where he had just found out he was lost and late.**
+
+**★ TASK — ASK KIM ABOUT THE 04:05 DEPARTURE OF 2015-07-07.** He attached the nephew-at-Holbrook story to it,
+but the data pins that to the **04:30** start of 2011-06-26 (Flagstaff -> Holbrook, 100 mi, arriving 06:45),
+and the **70 miles of local driving between the Holbrook arrival and the next morning's departure IS the
+park tour**. So the earliest start in sixteen years -- the 575-mile Carlsbad -> Sedona day routed the long
+way through Palo Verde and Seligman -- **still has no explanation.** Also confirm the park: he said
+"Petroglyphs NP"; the park at Holbrook is **Petrified Forest NP** (which holds the Newspaper Rock
+petroglyphs). **Ask; do not silently correct a memory.**
+
+**★★ RULE REVISED — a high road/straight-line ratio is sometimes a STORY, not a defect.** The St Louis day
+inflates road distance by 26% with **no error in the data at all**. The geographic test assumes road >=
+straight line and treats a high ratio as suspect. **Check the trip log for a reason before opening an errata
+entry.** This is the first case where the human spine has corrected an audit instrument.
+
+**✓ SIX OF EIGHT LONG-DAY STORIES COLLECTED 2026-08-19.** Verbatim in `logs/proj_Smart_Car_log.md` under 
+COLLECTED STORIES; corroboration and consequences in `proj_Smart_Car.md`. **Every one checked out.**
+**★ 2017-01-06 Brookings -> Paso Robles (562 mi) is the drive to his mother**, then 104, who was failing; 
+red-eye from Honolulu, car collected in Eugene mid-day, then as far as exhaustion allowed. **He reached San 
+Marcos and had time with her before she passed.** Handle this material with care in the document; it is the 
+emotional centre of the January 2017 trip and it is not a performance anecdote.
+
+**TASK — two long-day stories still to collect:** 2014-05-05 El Paso -> San Antonio (531 mi) and 
+2013-08-31 Bellingham -> Grants Pass (488, straight off the Alaska ferry). Also **2013-08-04 LSM -> Carson 
+City (487)** if he remembers it.
+
+**★★ TASK — READ THE ODOMETER GAPS. A new readable quantity, across the whole record.** The difference 
+between an arrival odometer and the NEXT MORNING's departure odometer is the day off the highway. At 
+Holbrook it is **70 miles = a Petrified Forest tour**. **Nobody has ever read this column and it exists 
+for every consecutive pair of legs.** Cheap, and it maps where he actually spent his days.
+
+**★★ TASK — MODEL DAILY DISTANCE WITH A LODGING TERM.** Kim on the fastest day in sixteen years: *there 
+aren't many places to stay between the two cities, other than truck stop motels.* **Accommodation density 
+is a first-order term in daily distance and no model has it.** Same for the ferries: a night crossing 
+hands the next morning a loaded, fuelled car -- **read the five ferries as ENABLING the long days after 
+them, not as holes in the odometer.**
+
+**✓ FIXED 2026-08-19 — TIME ZONES WERE WRONG ON 16 OF 107 LEGS.** Kim records LOCAL clock time at both 
+ends, so any leg crossing a zone had an elapsed time wrong by the offset, and **nothing in the data flagged 
+it**. Only the 2011 file ever carried the correction by hand; every file transcribed since had 
+`tz_shift_hr = 0` throughout. **Fixed as a DERIVED LAYER:** `data/TwoRed_city_timezones.csv` (97 endpoint 
+cities -> IANA zones, 15 annotated where the state is misleading) and `trip_logs_read.R` computes the shift. 
+**DST, Arizona and Saskatchewan not observing it, Yukon in 2013 and Newfoundland's half hour all fall out 
+for free.** Effect: up to 6 mph per leg; **trip medians moved 0 to +0.9 and the road ordering is unchanged**; 
+pooled 39.7 -> 40.3. **Billings -> Pocatello untouched at 65.5 -- the fastest day is real.**
+
+**★★ RULE — GROSS MPH IS A CEILING ON DRIVING SPEED, NEVER A MEASURE OF IT.** LSM -> St George read 31.6 
+mph and looked like a slog; it was a normal drive with a half-day visit to friends inside it. **Gross speed 
+conflates driving with living.** Kim: *this was before I was recording why I took time off during a drive.* 
+**This SHARPENS the Creamsicle conditional below rather than replacing it:** Creamsicle's `Stop` column is 
+exactly the instrument that separates the two, and TwoRed has none. **Never present a TwoRed gross figure 
+as a driving speed, even on its own.**
 
 **★★ TASK — the trip logs carry FIVE things beyond distance, and only distance has been taken.**
 Inventory, so a future session does not rediscover this:

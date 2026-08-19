@@ -1509,6 +1509,36 @@ means something.**
 under budget and invited padding it. The ground-truth rule holds: **`readBin` for size,
 content for verification, `file.info()` for neither** (Finding 020).
 
+**RECURRENCE, 2026-08-18 -- the third time, and the first where the rule was READ that same session.**
+The 2026-08-18 evening session wrote **29 dated strings as 2026-08-19** across eight files: the Active Focus
+block, Finding 034 and its resolution, seven `deferred.md` entries, six headings in `proj_Smart_Car.md`, two
+code comments in `pkm_health.R`, the `focus_history.md` supersession marker, and **nine cells inside
+`TwoRed_log_errata.csv`** -- three of them the `status` field of newly-raised errata. Kim's machine read
+**2026-08-18 21:43 HST**.
+
+**The session log heading was RIGHT and everything else was wrong**, which is the diagnostic detail. That one
+heading was written after explicitly checking `format(Sys.time(), tz="Pacific/Honolulu")`, because the
+newest-first ordering forced a comparison against the entry above it. **Every other date was written without
+a comparison to force the question.** So the rule did not fail from ignorance -- the card's *write a date* row
+was read at session start and the local clock was queried during the session. **It failed because a single
+lookup does not persist across ninety minutes of unrelated work.**
+
+**The structural fix, and it is not another reminder.** Bind the date ONCE at session start and write
+through the binding, never through a fresh judgement:
+
+```r
+TODAY <- format(Sys.time(), "%Y-%m-%d", tz = "Pacific/Honolulu")   # bind at session start
+```
+
+Then every heading, status field and marker interpolates `TODAY`. A variable cannot drift halfway through a
+session; an intention can. **This is Finding 030's lesson in a different costume: the fix that works is the
+one the next caller cannot skip.**
+
+**Repair, 2026-08-19.** Same-length `gsub(fixed = TRUE)` over `rawToChar` -> `charToRaw`, per the method
+above. Verified per file BY CONTENT: 29 replaced, 0 of `2026-08-19` left, **every file gained exactly the
+count it lost**, byte length unchanged in all eight. `pkm_health.R` re-sourced and re-checked; the errata CSV
+re-parsed at 61 rows x 8 columns. **`session_log.md` was correctly left alone -- it had none.**
+
 ---
 
 ### Finding 030 (2026-08-12) — A guard that only PRINTS is not a guard; `regexpr` returning -1 silently duplicates a file
@@ -1676,7 +1706,7 @@ asymmetries to reject candidates a residual test would wave through.
 
 ---
 
-## Finding 034 — A BACKUP THAT REPORTS SUCCESS IS NOT A BACKUP THAT COVERS YOUR WORK (2026-08-19)
+## Finding 034 — A BACKUP THAT REPORTS SUCCESS IS NOT A BACKUP THAT COVERS YOUR WORK (2026-08-18)
 
 `pkm_backup()` ran clean, committed, pushed, and **verified the push against the remote ref** -- the very check Finding 031 added. It reported `975 files | 4 changed | pushed TRUE`. All of that was true.
 
@@ -1704,10 +1734,29 @@ The mirror keeps a file only if its extension is in `SOURCE_EXT`: `qmd, rmd, r, 
 
 ### RESOLVED SAME DAY — and the fix immediately found a second bug
 
-Kim's decision, 2026-08-19: *yes, we should be doing that too. After all, these files are where data live and that's often our focus.* `csv` and `xlsx` added to `SOURCE_EXT`.
+Kim's decision, 2026-08-18: *yes, we should be doing that too. After all, these files are where data live and that's often our focus.* `csv` and `xlsx` added to `SOURCE_EXT`.
 
 **The first run after the change ABORTED.** `size mismatch after copy -- investigate before committing`. Cause: allowing `xlsx` in pulled `data/~$TwoRed_fuel_June_2014.xlsx` -- an **Excel lock/owner file**, which is locked, so it reports 165 bytes at source and copies as 0. The guard did its job perfectly and refused to commit. `.is_source()` already excluded LibreOffice's `.~lock.` files; it had never needed Excel's `~$` equivalent, because no Office extension had ever been whitelisted. Excluded; the run then completed.
 
 **Result: 975 -> 1,191 files mirrored, 108 changed, pushed and verified against the remote ref.** Smart_Car coverage 3 -> 26 of 85. Verified BY CONTENT in the mirror, not by the report: 61 errata rows, 10 trip logs, a 294-row corrected dataset, the source workbook. What is still outside is only the binary tail -- 38 photographs, 17 scan PDFs, a docx and a pptx -- which is a git-LFS decision, not a whitelist one.
 
 **Second-order lesson, and it is the more useful one. WIDENING AN INCLUSION FILTER IS A CHANGE OF KIND, NOT OF DEGREE.** A whitelist does not only exclude files; it silently excludes the entire ECOSYSTEM around those files -- lock files, temp files, autosaves, sidecars. Every extension admitted brings its application's debris with it. **Budget for the debris, not just for the bytes.** The 1.8 MB estimate was right and irrelevant; what nearly stopped the fix was a 165-byte file that should never have been considered.
+
+
+---
+
+## Finding 035 — A DURATION BUILT FROM TWO LOCAL CLOCKS IS SILENTLY WRONG WHEREVER THE CLOCKS DIFFER (2026-08-19)
+
+TwoRed's trip logs record a departure time and an arrival time, both **local**. Sixteen of 107 legs cross a time zone, so their elapsed time -- and every speed derived from it -- was wrong by an hour. **The data cannot flag this. `06:03` and `21:36` are both valid, both real, and their difference is meaningless without knowing where each was read.**
+
+Only the earliest file carried a hand-entered `tz_shift_hr`. Every file transcribed afterwards -- including six I wrote the day before -- had **zero throughout**, because the column existed and looked filled in.
+
+**What surfaced it was not a check. It was a story.** Kim explained that one 15.6-hour day included a long visit with friends in Las Vegas. Working out how much of the day the visit accounted for meant splitting the leg at the Las Vegas fill -- and the second half came out at 34 mph on empty interstate, which is not possible. Nevada is Pacific and Utah is Mountain.
+
+**The fix is a lookup, not a column.** Storing an integer per leg puts a human in the path of a question with a correct mechanical answer, and humans forget. A city -> IANA-zone table plus the platform's own database gets **DST, Arizona and Saskatchewan declining to observe it, Yukon before 2020, and Newfoundland's HALF-HOUR offset** for free. **No hand-entered integer would have survived Newfoundland.**
+
+**The general rule. Any quantity derived from two readings taken in different places must carry the PLACE, not just the reading.** Local clock time is the obvious case; the same shape governs currency (this project already has a Canadian sheet in litres and Canadian dollars), altitude-corrected volumes, and any units that a locale silently redefines. **Store the context and compute the conversion. Never store the conversion.**
+
+**A second lesson, about where the error came from.** The 2011 file was RIGHT and everything after it was wrong. Whoever transcribed 2011 met a leg that obviously crossed a zone and dealt with it; later transcriptions saw a populated column and inherited its zeros. **A field that is correct in the first instance and defaulted thereafter is worse than an absent field**, because absence prompts a question and a plausible default does not. **If a value cannot be determined at transcription time, leave it NA and let the reader fail loudly.**
+
+**Scale.** 16 legs corrected, up to 6 mph each. Trip medians moved 0 to +0.9 mph and the ordering by road type was unchanged, so no published claim was wrong -- **but that is luck, not vindication.** The single leg that prompted the whole investigation moved 31.6 -> 33.8, and the one next to it 60.9 -> 53.0.

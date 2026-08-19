@@ -122,41 +122,9 @@ encode the thesis** -- a record that omits city miles is the artefact of a perso
 only long-distance driving worth recording, which is precisely what the document argues a Smart
 was used for. A completeness check that flags these has misunderstood the project.
 
-## ★ THREE AUDIT FAMILIES, AND THEY ARE NEARLY DISJOINT (2026-08-17)
+## ★ THREE AUDIT FAMILIES (2026-08-17) — SUPERSEDED, moved to the log
 
-**The single most useful methodological result so far.** Two independent tests were run over all
-292 TwoRed fill-ups. **They overlap on only 2 rows out of 34.**
-
-| Test | Catches | Blind to |
-|---|---|---|
-| **Arithmetic** -- `gallons x $/gal = cost` | typed digits in price, gallons, cost | city, state, date, odometer |
-| **Economy** -- implied MPG per leg | partial fills; **MISSING rows** (MPG too high) | anything self-consistent |
-| **Geographic** -- straight-line vs odometer | wrong city/state, mis-geocodes, **odometer digits** | errors that stay on the route |
-
-**Rule: one test finds one error CLASS. A clean pass on the arithmetic says nothing about the
-geography.** 21 arithmetic suspects, 15 geographic, **2 in common, 31 distinct rows needing a scan.**
-
-### ★ The geographic test, and the thing it found that is not an error
-
-If the straight-line distance between consecutive fill-ups **exceeds** the odometer change, the leg
-is impossible -- you cannot drive less than the straight line. 15 legs fail. **They fall into three
-kinds, and the third is a feature of the record rather than a fault in it:**
-
-- **4 GEOCODE errors, from 2 cities.** **`Deming` is logged as ARIZONA; Deming is in NEW MEXICO**
-  (twice, 2010 and 2014). **`Big Springs, Texas`** is mis-placed -- the town is **Big Spring**, no `s`,
-  and the gazetteer appears to have taken it to Big Springs, Nebraska (twice, 2010 and 2012).
-- **7 ODOMETER suspects** -- straight line exceeds the recorded distance with no other explanation.
-  **This is exactly the error class the arithmetic test cannot see.** Needs the scans.
-- **★ 4 FERRY LEGS -- NOT ERRORS.** Bellingham WA -> Haines Junction YT (1,018 straight-line miles
-  against 160 on the odometer) and Homer AK -> Lakewood WA (1,455 vs 336) are the **Alaska Marine
-  Highway**; Sydney Mines NS -> Corner Brook NL and Port aux Basques NL -> Aulac NB are the
-  **Newfoundland ferry**. **The car crossed water while the odometer stood still.** The test detected
-  both great water crossings of the TwoRed record automatically. **Do not 'correct' these** -- and
-  they are worth the document: getting a Smart to Alaska and Newfoundland involved boats.
-
-**A fourth, free test: the JOIN ITSELF.** Matching fill-ups to the gazetteer fails on 47 distinct
-locations, one of which is **`Lake San Marcos, Callifornia`** -- a spelling error surfaced with no
-test written for it.
+The 2026-08-17 three-family write-up is verbatim in `logs/proj_Smart_Car_log.md`. **It is superseded by THE AUDIT TOOLKIT -- FIVE INSTRUMENTS below**, which is the same idea after two more instruments turned up (contiguity, and price-family/same-pump). Its one durable sub-finding is carried in the toolkit section: **the geographic test found things that are not errors at all -- the five ferries.** And see THE LONG DAYS above for the revision: a high road/straight-line ratio is sometimes a story, not a defect.
 
 ## ★ THE ERRATA ARCHITECTURE, AND THE RULE THAT DRIVES IT (2026-08-17)
 
@@ -317,7 +285,7 @@ I first wrote the stronger version ("rules out a penalty worse than 3.7%") and h
 
 **For the story:** this is a clean example of the document's recurring shape -- a decision made for one reason (safety and pleasure in a crosswind at 70 mph in a 1,800-lb car), then measured on a different axis (fuel), and the measurement's job is to say what the decision cost, not whether it was right. Kim already knew it was right; he drove it.
 
-## ★★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-19)
+## ★★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18)
 
 His words: *the fuel log is more about the CAR'S performance, while the trip log shows the HUMAN performance -- how far and fast can you expect to drive in a day, something I had no idea about until I started doing these drives.*
 
@@ -333,74 +301,52 @@ His words: *the fuel log is more about the CAR'S performance, while the trip log
 
 **First evidence that the human axis is measuring something real:** across 69 legs, median gross speed separates by ROAD, not by car -- 2011 interstate **47.6 mph**, 2014 mixed **39.7**, 2013 Dalton Highway **30.9**, 2016 US-101 coastal **28.3**. The car was the same car throughout.
 
-## ★★ THE SCAN SWEEP -- ALL 15 SCANS NOW READ (2026-08-19)
+## ★★ THE SCAN SWEEP, 2026-08-18 — full write-up in the log; the four results kept here
 
-Eighteen pages across seven files, read to the transcribe-once rule: every column, not just distance.
+All 15 scans read: 18 pages, 7 files, every column. **Trip legs 69 -> 107** (101 with usable times); **fuel rows with a time and temperature stamped ON THE FILL 0 -> 95** (32%). The 2011 St. Louis file was a pure duplicate -- zero new legs -- but re-opening it returned 23 fuel-row temperatures the first pass had walked past. **Detail in `logs/proj_Smart_Car_log.md`.** What must not be lost:
 
-**Trip legs 69 -> 107** (101 with usable times). New trip logs: 2012 Frostburg (18 legs), 2012 May Arizona (7), 2015 Sedona (3), 2017 January (3), 2011 N. California Roadtrip (6, reconstructed), 2013-4 LA Expedition (1).
-**Fuel rows with a TIME AND TEMPERATURE stamped on the fill: 0 -> 95** (32% of the log), 38-102 degF.
+**1. The wheel change is DATED: `NEW WHEELS @ 13510 miles`, Kim's margin, 179 mi before the 2011 departure.** So the narrow-tire group is exactly 2010-07-23 to 2011-05-11. **The estimate FLIPS SIGN with specification** -- raw +1.7%, +leg length +3.6%, +odometer trend +1.6%, local +/-12,000 mi -1.8%, +temperature -1.5%. **That is the finding. Not any one of those numbers.** The CONDITIONAL in `deferred.md` governs.
 
-### ★ The 2011 St. Louis file was a pure duplicate -- and that is the finding
+**2. Temperature is not null once measured ON THE FILL** (the earlier test used leg endpoints, the wrong unit). n=94: **-0.068 MPG/degF, p=0.045**, stable -0.068 to -0.084 across four specifications; fills at 80 degF+ average **36.76** against **38.87**. **A SIGNAL, NOT A FINDING** -- p crosses 0.05 under era fixed effects, and the counterintuitive sign points at A/C load, which is inferred and not measured.
 
-`2011_TwoRed_fuel_and_trip_log_STL.pdf` and `..._travel_and_fuel_log_June.pdf` differ by md5 and are the SAME four pages rescanned. **Zero new legs.** But those pages carry Time and Temp columns in the FUEL table that were never taken, because the first pass went looking for distance. **The re-open cost a full pass and returned 23 fuel-row temperatures.** This is the transcribe-once rule proved on the first file it was applied to.
+**3. The slashed zero produced three more corrections and the control held.** Over the 44 rows failing the pump identity, a single-digit substitution in the cost: **permitted 8->0 fixes 4; forbidden 0->8 fixes 1** (Deming, already flagged wrong-direction); **six control substitutions fix 0.** New L59-L61; errata at 61.
 
-### ★★★ THE WHEEL CHANGE IS DATED. It is written in the margin: NEW WHEELS @ 13510 miles
+**4. Gross speed separates by ROAD, across 107 legs.** 2011 interstate **47.6** | 2012 Frostburg 43.5 | 2017 January 41.2 | 2011 N. California 40.6 | 2014 Penultimate State 39.7 | 2015 Sedona 39.0 | 2012 May Arizona 36.9 | 2013-4 LA 34.6 | 2013 Dalton Highway **30.9** | 2016 US-101 coastal **28.3**. Same car throughout. **And see THE LONG DAYS above: the tails are set by lodging geography and ferry timetables, not by the road alone.**
 
-So the before/after cut is no longer an assumption. **The wheels went on 179 miles before the 2011 St. Louis departure**, which puts the narrow-tire group at exactly 2010-07-23 to 2011-05-11 -- the first crossing plus local driving, precisely matching Kim's account.
+## ★★★ THE LONG DAYS — SIX OF EIGHT COLLECTED, AND EVERY ONE CHECKS OUT (2026-08-19)
 
-**And the estimate is still not significant, in either direction.** Raw +1.7%; +leg length +3.6%; +leg length and odometer trend +1.6%; **local window +/-12,000 miles -1.8% [-6.6%, +3.0%]**; with temperature also controlled -1.5% [-8.9%, +5.9%]. **The sign FLIPS with specification. That is what an underpowered comparison looks like, and it is the honest headline** -- not any single one of those numbers.
+**Kim's accounts are verbatim in `logs/proj_Smart_Car_log.md` under COLLECTED STORIES.** They are chapter source material; what follows is only what the log CONFIRMED and what it changed.
 
-### ★★ TEMPERATURE IS NOT NULL -- THE EARLIER TEST USED THE WRONG INSTRUMENT
+| day | leg | mi | his reason | what the data independently shows |
+|---|---|---|---|---|
+| 2012-05-31 | St Louis -> Columbus | 518 | navigator distracted; lost near Urbana IL | **the 09:52 fill is at Champaign IL -- one metro with Urbana.** Excess over direct I-70: **108 mi** vs his remembered ~100 |
+| 2011-06-26 | Flagstaff -> Holbrook | 100 | meeting his nephew, a park naturalist | out **04:30**, in **06:45** -- a 100-mi hop existing only to arrive early; **70 mi of local driving before the next departure IS the tour** |
+| 2012-06-14 | Billings -> Pocatello | 449 | dull country, nowhere to stay, good freeway | **65.5 mph gross, the fastest day in the record**; sole stop **2.695 gal at Livingston**, already flagged `partial_fill` |
+| 2014-05-29 | Sydney NS -> Edmundston | 555 | off the overnight ferry, car already packed | previous leg ends Port aux Basques **46,625**, this one starts Sydney **46,625** -- zero odometer miles; last fill before boarding was a **full 7.12 gal** |
+| 2017-01-06 | Brookings -> Paso Robles | 562 | racing to his mother, 104; heavy rain at Santa Rosa | **32 degF at Brookings, the coldest start in 107 legs**; Santa Rosa fill **15:59** is the decision point; Paso Robles fill **22:04 at 68,731**, arrival **22:10 at 68,732** -- one mile, six minutes |
+| 2012-05-24 | LSM -> St George | 492 | a long stop with friends in Las Vegas | Las Vegas fill at **18:08**: 375 mi in 12.1 h (**31 mph -- the visit is inside that**), then 117 mi in 2.5 h (**47 mph**) once moving |
 
-MPG is computed PER FILL. A temperature stamped on the fill belongs to that quantity; a temperature at a leg endpoint belongs to a different unit of analysis. Once the fill-stamped temperatures existed, a signal appeared:
+### ★★★ FIVE THINGS THE STORIES CHANGED, none of which the data could have volunteered
 
-| specification | MPG per degF | 95% CI | p |
-|---|---|---|---|
-| temperature only | -0.084 | -0.159, -0.009 | 0.028 |
-| + leg length | -0.068 | -0.135, -0.002 | 0.045 |
-| + leg length + odometer | -0.078 | -0.147, -0.009 | 0.027 |
-| + leg length + era fixed effects | -0.069 | -0.138, +0.001 | 0.053 |
+**1. Finding 033 got its best corroboration, from an unrelated direction.** The Champaign row is **L61**, one of three slashed-zero cost typos raised the day before. **The typo sits at the stop where he had just discovered he was 100 miles off course and late for dinner.** Kim gave the mechanism on 2026-08-17 -- *record quickly* under pressure -- and here the pressure is documented, at a named stop, by a route that had nothing to do with the audit.
 
-Fills at 80 degF and above average **36.76 MPG** against **38.87** below it -- a **2.1 MPG, 5.4%** gap on n=94.
+**2. The gap between an arrival odometer and the next departure odometer is not noise -- it is the day off the highway.** 70 miles at Holbrook is a park tour. This is a readable quantity across the whole record and nobody has read it.
 
-**State it as a signal, not a settled result.** p sits ON the 0.05 boundary and crosses it under era fixed effects. The sign is counterintuitive (warm air is thinner, and should help), so the likely mechanism is **air-conditioning load on a 1.0-litre engine** -- but that mechanism is INFERRED, not measured, and nothing in the data distinguishes it from hot-weather routes being different routes. **I over-claimed on the wheels once already; this one gets the same discipline.**
+**3. Daily distance has a first-order term nobody modelled: WHERE THE BEDS ARE.** The fastest day in sixteen years is fast because Montana has nowhere to stop. Lodging geography sets the length; scenery sets the pace.
 
-### ★★ THE SLASHED ZERO GENERATED THREE MORE CORRECTIONS, AND THE CONTROL HELD
+**4. A ferry is a LOGISTICS MULTIPLIER, not a hole in the odometer.** It converts a night into progress and hands the next morning a loaded, fuelled car. Read the five ferries as ENABLING the long days after them.
 
-Systematic test over the **44 rows that fail the pump identity**: does a single-digit substitution in the COST make the row balance exactly?
+**5. ★★ A LONG ELAPSED TIME IS NOT A SLOW DAY.** LSM -> St George read 31.6 mph and looked like a slog; it was a normal drive with a half-day visit inside it. **Gross speed silently conflates driving with living.** Kim's own note: *this was before I was recording why I took time off during a drive* -- so the STOP column that Creamsicle has is exactly the instrument that would separate them. **Until then, gross mph is a ceiling on driving speed, never a measure of it.**
 
-| substitution | mechanism | rows fixed |
-|---|---|---|
-| **8 -> 0** | **permitted** (a slashed 0 reads as an 8) | **4** |
-| 0 -> 8 | forbidden (an 8 does not read as a 0) | 1 -- and it is Deming, already flagged wrong-direction |
-| 3/5, 5/3, 1/7, 7/1, 6/0, 9/4 | none | **0 of 6** |
+### ★★ AND CHASING #5 FOUND A BUG IN 16 OF 107 LEGS
 
-New: **L59** San Marcos 2010-11-29 19.28 -> 19.20 (**the first fill in the entire record already carries the signature**); **L60** San Marcos 2011-06-23 32.48 -> 32.40, **the SAME ROW as L01**, where a 3.000/3.999 slip was already proven -- two slips in one row, exactly the queue-pressure mechanism Kim described; **L61** Champaign 2012-05-31 29.68 -> 29.60. All three HYPOTHESIS tier: **the scan is not evidence for this class**, because the scan is where the illusion lives. Confirm from AMEX.
+Asking why that day looked slow exposed it: **Nevada is Pacific and Utah is Mountain, and `tz_shift_hr` was 0 on every leg I transcribed.** Kim records LOCAL clock time at both ends, so any leg crossing a zone has a raw elapsed time wrong by the offset -- **and nothing in the data flags it.** Only the 2011 file ever carried the correction by hand.
 
-### Gross speed separates by ROAD, across 107 legs
+**Fixed as a DERIVED LAYER, not as 107 hand-entered numbers:** `data/TwoRed_city_timezones.csv` maps 97 endpoint cities to IANA zones and `trip_logs_read.R` computes the shift per leg. **DST, Arizona's and Saskatchewan's no-DST rules, Yukon in 2013 and Newfoundland's half hour all fall out for free** -- none of which a hand-entered integer would have survived. Fifteen cities carry a note saying why they are not what their state implies (El Paso is Mountain; Lewiston ID is Pacific; Bismarck is Central and western North Dakota is not).
 
-2011 St. Louis (interstate) **47.6** | 2012 Frostburg **43.5** | 2017 January 41.2 | 2011 N. California 40.6 | 2014 Penultimate State 39.7 | 2015 Sedona 39.0 | 2012 May Arizona 36.9 | 2013-4 LA 34.6 | 2013 Arctic (Dalton) **30.9** | 2016 fall-winter (US-101 coastal) **28.3**. Same car throughout.
+**Effect: 16 legs corrected, up to 6 mph each.** St George -> LSM 60.9 -> **53.0**; Ogallala -> Omaha 42.7 -> **48.8**; St Louis -> Columbus 41.0 -> **44.5**. **The headline survived** -- trip medians moved 0 to +0.9 mph and the road ordering is unchanged; pooled median 39.7 -> **40.3**. **Billings -> Pocatello is untouched at 65.5** (both ends Mountain), so the fastest day is real.
 
-**Longest days found:** 6/14/2012 Billings -> Pocatello **448 mi in 6.85 h, 65.4 mph gross**; 5/31/2012 St Louis -> Columbus **517 mi**; 1/6/2017 Brookings -> Paso Robles **562 mi**; 7/7/2015 Carlsbad -> Sedona **575 mi**, departing **04:05**.
-
-### ★★★ KIM REMEMBERS EVERY ONE OF THE LONG DAYS (2026-08-19)
-
-On being shown the four longest days, his reply was immediate: *I remember why I drove each of those. One was a navigation error; we went 100 miles off course and we were almost late for a dinner appointment.* And: *for me, a lot of this is memory lane material.*
-
-**This is the strongest possible evidence for the TWO LOGS, TWO SUBJECTS frame, and it arrived unprompted.** A 575-mile day is a number in the fuel spine. It is an EVENT in the human spine -- it has a cause, a consequence, and a person who can still tell you both fifteen years later.
-
-**Consequence for the document, and it changes the writing order:** the trip-log outliers are not anomalies to be explained away, they are **chapter hooks with a living source**. **Ask Kim for the story behind each long day BEFORE writing the analysis chapter**, because the analysis will otherwise describe a distribution where the reader wants a reason. The four to ask about:
-
-| date | leg | miles | note |
-|---|---|---|---|
-| 2015-07-07 | Carlsbad CA -> Sedona AZ | **575** | departed 04:05; routed via Palo Verde and Seligman, far off the direct road |
-| 2017-01-06 | Brookings OR -> Paso Robles CA | **562** | arrived 22:10 |
-| 2012-05-31 | St Louis MO -> Columbus OH | **517** | |
-| 2012-06-14 | Billings MT -> Pocatello ID | 448 | **65.4 mph gross -- the fastest day in the record** |
-
-**★ The 575-mile day is the leading candidate for the navigation error** -- its routing is the one that cannot be explained by the map. Do not assert that; ask him.
-
-**And a methodological note worth keeping.** The 100-miles-off-course day is a case where the odometer is RIGHT and the route is wrong. Every geographic test in the audit toolkit assumes road distance >= straight line; a navigation error inflates the ratio without any error in the data. **A high GMaps/SL ratio is not always a defect. Sometimes it is a story.**
+**★ Twice in one session, a story he told corrected the data.** First the audit rule on road/straight-line ratios; now the time zones. **The human spine is not decoration on the analysis. It is an instrument.**
 
 ## Intended analysis
 
@@ -431,11 +377,11 @@ T9 4, after-delivery 2, plus one staging shot at Torrance 2024-10-05, two days b
 **T2 (LA->Madison, Oct 2021) is the blank** -- the solo run Kim describes as pushing his daily
 limits. **NOT an absence claim:** the photos may be elsewhere or may never have been taken.
 
-### Two narrative set-pieces moved to the log 2026-08-19
+### Two narrative set-pieces moved to the log 2026-08-18
 
 **THE YUKON RIVER CAMP STORY** and **THE ALPINE STORY** now live verbatim in `logs/proj_Smart_Car_log.md` under ARCHIVE, together with the superseded scan-coverage table. Both are for the Expeditions chapter and neither is working state. Moved to hold the 45 KB budget.
 
-## What the data ACTUALLY contains -- moved to the log 2026-08-19
+## What the data ACTUALLY contains -- moved to the log 2026-08-18
 
 The 2026-08-12 intake audit (charter claims vs what the files hold: 293 fill-ups not "nearly 300", range to 2017-05-22 not June 2014, 52 State values not "49 states and 10 provinces") is verbatim in `logs/proj_Smart_Car_log.md`. Its conclusions are all carried forward above or in `deferred.md`.
 
@@ -538,7 +484,7 @@ it was written for one car and one trip.** Redesign it before writing prose. Liv
 2x2 role split as the top-level frame, and the two long-distance cars as parallel spines rather
 than one primary plus supplements.
 
-## Chapter architecture -- SUPERSEDED, moved to the log 2026-08-19
+## Chapter architecture -- SUPERSEDED, moved to the log 2026-08-18
 
 The one-car charter's chapter list is verbatim in `logs/proj_Smart_Car_log.md`. It is superseded, and the redesign is an open task in `deferred.md`. **Kim's TWO LOGS, TWO SUBJECTS frame above is the candidate replacement top-level structure.**
 

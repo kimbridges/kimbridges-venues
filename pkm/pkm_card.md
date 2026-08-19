@@ -3,9 +3,8 @@
 _The one page read at EVERY session start. Created 2026-07-31 (Tier 3)._
 _Budget: 6 KB. If it outgrows that, the surplus belongs in pkm_findings.md._
 
-Full detail lives in `pkm_findings.md` (Findings 001-029). This card exists because
-that file passed 66 KB with **nothing firing it** -- rules were broken days after being
-written (020). *The trigger is the mechanism, not the list.*
+Full detail lives in `pkm_findings.md` (001-034). This card exists because that file
+passed 66 KB with **nothing firing it**. *The trigger is the mechanism, not the list.*
 
 ---
 
@@ -32,7 +31,7 @@ headings, known strings), never by reading size.
 
 | If you are about to... | read |
 |---|---|
-| **write a date** | **029 -- HONOLULU LOCAL.** The session clock is UTC. `format(Sys.time(), "%Y-%m-%d")` |
+| **write a date** | **029 -- BIND IT ONCE, AT SESSION START.** `TODAY <- format(Sys.time(), "%Y-%m-%d", tz="Pacific/Honolulu")`, then write `TODAY` everywhere. Session clock is UTC and runs a day ahead from 14:00 HST. **Failed 3x as a reminder; a binding cannot drift mid-session.** |
 | say a file, page, entry or site is MISSING or GONE | **018, 019, 020** |
 | verify a write you just made | 020 |
 | render Quarto | 012, 016, 017 |
@@ -57,9 +56,8 @@ headings, known strings), never by reading size.
 the PKM becomes load-bearing: the next session reads the note instead of re-checking.
 
 - Before declaring a log gap: grep the WHOLE file, at EVERY heading level (019).
-- Before calling a site dead: retry, vary the user-agent, check DNS, try http and
-  https, bare and www. **A live site can return 403 to curl** -- exposure.co does
-  (020).
+- Before calling a site dead: retry, vary user-agent, check DNS, try http/https and
+  bare/www. **A live site can return 403 to curl** -- exposure.co does (020).
 - Untried? The honest statement is **"could not reach it"**, not "it is gone".
 
 ---
@@ -115,12 +113,12 @@ solid green check, then drag. Verify the biggest asset by URL afterwards (Findin
 | 4 | `C:\temp\<name>_<date>` | **BUILD SCRATCH** -- regenerable, never a source |
 | 5 | `C:\repos\<name>` | **GIT WORKING CLONES** |
 
-**Bucket 4 retention:** delete once the deploy is verified live. `pkm_health()`
-flags scratch folders older than 14 days. It exists because the bridge cannot
-delete recursively, so overwriting in place drags stale files along (Finding 008).
+**Bucket 4 retention:** delete once the deploy is verified live; `pkm_health()` flags
+scratch older than 14 days. The bridge cannot delete recursively, so overwriting in
+place drags stale files along (008).
 
-**Bucket 5 rationale:** NOT Drive, NOT OneDrive. A syncing folder serves
-placeholders and git reads them as corrupt or empty. Decided 2026-07-31.
+**Bucket 5:** NOT Drive, NOT OneDrive -- a syncing folder serves placeholders and git
+reads them as corrupt or empty (2026-07-31).
 
 ---
 
