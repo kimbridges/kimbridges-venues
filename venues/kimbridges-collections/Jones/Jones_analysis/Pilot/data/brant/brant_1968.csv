@@ -1,0 +1,8 @@
+year,month,day,date,date_start,date_end,location,count,count_type,method,age_class,pct_juvenile,sample_size,activity,direction,banding_new,banding_recapture,band_recoveries,source_page,ocr_confidence,notes
+1968,5,31,1968-05-31,,,Cold Bay (Ohio Point),,observation,visual_estimate,mixed,,,migrating,N,,,,11,high,"Three flocks of brant observed at Ohio Point proceeding north along western shoreline of Cold Bay. 'These birds were coming in from the open sea, not skirting the coast.' Significant for understanding migration routes."
+1968,8,18,1968-08-18,,,Izembek Lagoon,,observation,visual_estimate,mixed,,,arriving,arriving,,,,11,high,First southbound migrants noted August 18th.
+1968,9,3,1968-09-03,,,Izembek Lagoon,150000,estimate,visual_estimate,mixed,,,staging,,,,,11,high,"Rapid initial influx: 'by September 3rd there were an estimated 150,000 in the Lagoon.'"
+1968,11,3,1968-11-03,,,Izembek Lagoon,,observation,visual_estimate,mixed,,,arriving,arriving,,,,11,high,"Last identifiable new arrival: 'The last flock that we were able to identify as newly arrived, did so on November 3rd, just five days before migration.'"
+1968,11,8,1968-11-08,,,Izembek Lagoon,,observation,visual_estimate,mixed,,,migrating,departing,,,,11,medium,Migration inferred ~November 8 based on 'just five days before migration' from Nov 3 context.
+1968,,,,1968-09-01,1968-11-08,Izembek Range,21278,census,telescope,mixed,17.6,21278,staging,,,,,12,high,"Annual census total: Adult=17,537, Juv=3,741, Total=21,278, %Juv=17.6. Math verified: 17537+3741=21278, 3741/21278=17.58%."
+1968,10,1,1968-10-01,,,NWT Canada (coast),,observation,visual_estimate,mixed,,,staging,,,,,12,medium,Dr. T.W. Barry reported brant lingering along coast of Northwest Territories as late as October 1st this year.

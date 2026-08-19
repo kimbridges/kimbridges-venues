@@ -1,0 +1,94 @@
+id,species,constancy,c2_index,role_code,role,group_level
+1,ARRHELAT,25,1,-2,super-companion(>=2n/3),
+2,DACTGLOM,25,2,-2,super-companion(>=2n/3),
+3,HELIPUBE,16,19,-2,super-companion(>=2n/3),
+4,BROMEREC,7,6,2,group2,40/10
+5,FESTOVIN,4,17,5,group5,40/10
+6,POA PRAT,25,32,-2,super-companion(>=2n/3),
+7,BRIZMEDI,5,20,5,group5,40/10
+8,KOELPYRA,4,24,5,group5,40/10
+9,FESTRUBR,15,30,2,group2,40/10
+10,CAREFLAC,6,14,-1,companion,
+11,TRIFPRAT,18,15,-2,super-companion(>=2n/3),
+12,TRIFREPE,14,28,-1,companion,
+13,MEDILUPU,17,23,-2,super-companion(>=2n/3),
+14,ACHIMILL,21,11,-2,super-companion(>=2n/3),
+15,DAUCCARO,20,13,-2,super-companion(>=2n/3),
+16,CAMPROTU,13,38,2,group2,40/10
+17,PLANLANC,25,3,-2,super-companion(>=2n/3),
+18,HERASPON,14,36,-1,companion,
+19,GALIMOLU,25,33,-2,super-companion(>=2n/3),
+20,CHRYLEUC,23,9,-2,super-companion(>=2n/3),
+21,SCABCOLU,5,18,3,group3,50/20
+22,LINUCATH,5,27,5,group5,40/10
+23,RUMEACET,19,12,-2,super-companion(>=2n/3),
+24,RANUACER,23,31,-2,super-companion(>=2n/3),
+25,THYMSERP,5,50,3,group3,50/20
+26,CERACAES,13,26,2,group2,40/10
+27,CENTJACE,14,56,-1,companion,
+28,TARAOFFI,19,16,-2,super-companion(>=2n/3),
+29,CAMPGLOM,7,63,2,group2,40/10
+30,VEROCHAM,22,49,-2,super-companion(>=2n/3),
+31,PLANMEDI,14,57,-1,companion,
+32,FESTPRAT,23,44,-2,super-companion(>=2n/3),
+33,TRISFLAV,15,54,-1,companion,
+34,SILEINFL,3,48,-1,companion,
+35,LEONHISP,4,59,5,group5,40/10
+36,CREPBIEN,15,29,-1,companion,
+37,MYOSARVE,2,51,-3,footnote(<3 rel),
+38,AJUGREPT,16,66,-2,super-companion(>=2n/3),
+39,VICISEPI,7,4,3,group3,50/20
+40,LOTUCORN,4,39,-1,companion,
+41,SALVPRAT,5,60,3,group3,50/20
+42,KNAUARVE,3,52,3,group3,50/20
+43,VIOLHIRT,6,58,3,group3,50/20
+44,BELLPERE,11,67,2,group2,40/10
+45,DIANSUPE,4,43,5,group5,40/10
+46,PIMPSAXI,2,10,-3,footnote(<3 rel),
+47,GALIBORE,4,7,-1,companion,
+48,ALOPPRAT,9,53,1,group1,40/10
+49,HOLCLANA,12,41,1,group1,40/10
+50,CIRSOLER,14,62,1,group1,40/10
+51,TRAGPRAT,7,68,-1,companion,
+52,GLECHEDE,6,21,1,group1,40/10
+53,ANTHSILV,5,22,-1,companion,
+54,LATHPRAT,10,25,1,group1,40/10
+55,FILIULMA,4,65,4,group4,40/10
+56,GEUMRIVA,13,45,1,group1,40/10
+57,MELADIUR,11,47,1,group1,40/10
+58,ANGESILV,6,35,4,group4,40/10
+59,LYSINUMU,8,8,1,group1,40/10
+60,DESCCESP,7,5,1,group1,40/10
+61,POA TRIV,1,55,-3,footnote(<3 rel),
+62,CAREACUT,5,64,-1,companion,
+63,PRUNVULG,12,40,-1,companion,
+64,PIMPMAGN,4,42,4,group4,40/10
+65,POLYBIST,4,75,4,group4,40/10
+66,LYCHFLOS,7,34,1,group1,40/10
+67,SENEJACO,6,69,3,group3,50/20
+68,VICICRAC,5,80,3,group3,50/20
+69,POTEREPT,3,83,-1,companion,
+70,CAREHIRT,1,37,-3,footnote(<3 rel),
+71,CARDPRAT,2,71,-3,footnote(<3 rel),
+72,PHLEPRAT,1,88,-3,footnote(<3 rel),
+73,MYOSPALU,2,73,-3,footnote(<3 rel),
+74,GERAPRAT,1,79,-3,footnote(<3 rel),
+75,PASTSATI,3,46,4,group4,40/10
+76,FESTARUN,1,76,-3,footnote(<3 rel),
+77,GALIULIG,1,61,-3,footnote(<3 rel),
+78,SANGOFFI,1,78,-3,footnote(<3 rel),
+79,GALIVERU,2,74,-3,footnote(<3 rel),
+80,SILAPRAT,3,70,-1,companion,
+81,RANUREPE,1,81,-3,footnote(<3 rel),
+82,LOLIPERE,1,82,-3,footnote(<3 rel),
+83,EUPHODON,2,72,-3,footnote(<3 rel),
+84,GLYCFLUI,1,84,-3,footnote(<3 rel),
+85,PHALARUN,1,85,-3,footnote(<3 rel),
+86,CAREGRAC,1,86,-3,footnote(<3 rel),
+87,LAMIALBU,1,87,-3,footnote(<3 rel),
+88,RUMECRIS,2,77,-3,footnote(<3 rel),
+89,POLYCONV,1,89,-3,footnote(<3 rel),
+90,CHENALBU,1,90,-3,footnote(<3 rel),
+91,PHRACOMM,1,91,-3,footnote(<3 rel),
+92,BRACPINN,1,92,-3,footnote(<3 rel),
+93,ALCHVULG,1,93,-3,footnote(<3 rel),

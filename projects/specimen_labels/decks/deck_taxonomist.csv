@@ -1,0 +1,20 @@
+copies,header,footer,text
+1,Tree,Life Form,Life Form: Tree
+1,Shrub,Life Form,Life Form: Shrub
+1,Liana,Life Form,Life Form: Liana / vine
+1,Herb,Life Form,Life Form: Herb
+1,Epiphyte,Life Form,Life Form: Epiphyte
+1,White,Flower Color,Flower Color: White
+1,Yellow,Flower Color,Flower Color: Yellow
+1,Red,Flower Color,Flower Color: Red
+1,Pink,Flower Color,Flower Color: Pink
+1,Purple,Flower Color,Flower Color: Purple
+1,Glabrous,Indument,Indument: Glabrous
+1,Pubescent,Indument,Indument: Pubescent
+1,Tomentose,Indument,Indument: Tomentose
+1,Glaucous,Indument,Indument: Glaucous
+1,<0.5m,Size Class,Size Class: under 0.5 m
+1,0.5-2m,Size Class,Size Class: 0.5 - 2 m
+1,2-5m,Size Class,Size Class: 2 - 5 m
+1,5-15m,Size Class,Size Class: 5 - 15 m
+1,>15m,Size Class,Size Class: over 15 m

@@ -1,0 +1,7 @@
+year,adults,juveniles,total,pct_juvenile,source_report,source_page,notes
+1963,3859,1243,5012,23,report 1968.pdf,13,From Table 1. Math: 3859+1243=5102 (MISMATCH: calc=5102). Calc %=24.8
+1964,10727,4532,15259,29.21,report 1968.pdf,13,From Table 1. Math: 10727+4532=15259 (verified). Calc %=29.7
+1965,26796,7262,34058,21.3,report 1968.pdf,13,From Table 1. Math: 26796+7262=34058 (verified). Calc %=21.3
+1966,12647,8587,21234,40.3,report 1968.pdf,13,From Table 1. Math: 12647+8587=21234 (verified). Calc %=40.4
+1967,15964,3398,19362,17.5,report 1968.pdf,13,From Table 1. Math: 15964+3398=19362 (verified). Calc %=17.5
+1968,17537,3741,21278,17.6,report 1968.pdf,13,From Table 1. Math: 17537+3741=21278 (verified). Calc %=17.6

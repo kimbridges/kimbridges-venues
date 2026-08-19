@@ -1,0 +1,11 @@
+key,value
+book_name,Kyoto Botanical Garden
+cover_file,Kyoto_cover.pdf
+stories_folder,Stories
+images_folder,Keepers
+kml_folder,KML
+output_pdf,Kyoto_Test_Book.pdf
+make_map,TRUE
+map_html,Test_Event_Map.html
+use_gt_mods,TRUE
+gt_mods_file,gt_mods.R

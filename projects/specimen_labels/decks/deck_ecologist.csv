@@ -1,0 +1,17 @@
+copies,header,footer,text
+1,Aa,Substrate,Substrate: `a`a lava
+1,Pahoehoe,Substrate,Substrate: pahoehoe lava
+1,Ash,Substrate,Substrate: ash / cinder
+1,Rocky,Substrate,Substrate: rocky
+1,Soil,Substrate,Substrate: soil / clay
+1,Open,Cover,Cover: open
+1,Scattered,Cover,Cover: scattered
+1,Closed,Cover,Cover: closed / dense
+1,Dry,Moisture,Moisture: dry
+1,Mesic,Moisture,Moisture: mesic
+1,Wet,Moisture,Moisture: wet
+1,Undisturbed,Disturbance,Disturbance: undisturbed
+1,Grazed,Disturbance,Disturbance: grazed
+1,Logged,Disturbance,Disturbance: logged / cut-over
+1,Invaded,Disturbance,Disturbance: invaded / alien-dominated
+3,,Associated spp,Associated species:

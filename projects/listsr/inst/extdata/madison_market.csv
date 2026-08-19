@@ -1,0 +1,215 @@
+month,produce,status
+August,Apples,fresh
+September,Apples,fresh
+October,Apples,fresh
+May,Asparagus,fresh
+June,Asparagus,fresh
+July,Asparagus,fresh
+August,Asparagus,fresh
+August,Basil,fresh
+September,Basil,fresh
+June,Beets,fresh
+July,Beets,fresh
+August,Beets,fresh
+September,Beets,fresh
+October,Beets,fresh
+August,Bitter melon,fresh
+September,Bitter melon,fresh
+October,Bitter melon,fresh
+July,Blueberries,fresh
+August,Blueberries,fresh
+June,Broccoli,fresh
+July,Broccoli,fresh
+August,Broccoli,fresh
+September,Broccoli,fresh
+October,Broccoli,fresh
+August,Brussels sprouts,fresh
+September,Brussels sprouts,fresh
+October,Brussels sprouts,fresh
+November,Brussels sprouts,fresh
+June,Cabbage,fresh
+July,Cabbage,fresh
+August,Cabbage,fresh
+September,Cabbage,fresh
+October,Cabbage,fresh
+November,Cabbage,fresh
+August,Cantaloupes,fresh
+September,Cantaloupes,fresh
+June,Carrots,fresh
+July,Carrots,fresh
+August,Carrots,fresh
+September,Carrots,fresh
+October,Carrots,fresh
+November,Carrots,stored
+December,Carrots,stored
+January,Carrots,stored
+February,Carrots,stored
+August,Cauliflower,fresh
+September,Cauliflower,fresh
+October,Cauliflower,fresh
+November,Cauliflower,fresh
+August,Celery,fresh
+September,Celery,fresh
+October,Celery,fresh
+July,Chard,fresh
+August,Chard,fresh
+September,Chard,fresh
+June,Corn,fresh
+July,Corn,fresh
+August,Corn,fresh
+September,Corn,fresh
+October,Corn,fresh
+July,Cucumbers,fresh
+August,Cucumbers,fresh
+September,Cucumbers,fresh
+October,Cucumbers,fresh
+July,Eggplant,fresh
+August,Eggplant,fresh
+September,Eggplant,fresh
+October,Eggplant,fresh
+August,Garlic,fresh
+September,Garlic,fresh
+October,Garlic,fresh
+November,Garlic,fresh
+September,Grapes,fresh
+July,Green beans,fresh
+August,Green beans,fresh
+September,Green beans,fresh
+June,Green onions,fresh
+July,Green onions,fresh
+August,Green onions,fresh
+September,Green onions,fresh
+June,Greens (various),fresh
+July,Greens (various),fresh
+August,Greens (various),fresh
+September,Greens (various),fresh
+October,Greens (various),fresh
+July,Herbs,fresh
+August,Herbs,fresh
+September,Herbs,fresh
+October,Herbs,fresh
+August,Leeks,fresh
+September,Leeks,fresh
+October,Leeks,fresh
+June,Lettuce (various),fresh
+July,Lettuce (various),fresh
+August,Lettuce (various),fresh
+September,Lettuce (various),fresh
+October,Lettuce (various),fresh
+August,Melons,fresh
+September,Melons,fresh
+April,Mint,fresh
+May,Mint,fresh
+June,Mint,fresh
+July,Mint,fresh
+August,Mint,fresh
+September,Mint,fresh
+October,Mint,fresh
+April,Onions,stored
+May,Onions,stored
+June,Onions,stored
+July,Onions,stored
+August,Onions,fresh
+September,Onions,fresh
+October,Onions,fresh
+November,Onions,stored
+December,Onions,stored
+January,Onions,stored
+February,Onions,stored
+March,Onions,stored
+April,Parsnips,fresh
+May,Parsnips,fresh
+October,Parsnips,fresh
+November,Parsnips,fresh
+December,Parsnips,stored
+January,Parsnips,stored
+February,Parsnips,stored
+June,Pea greens,fresh
+July,Pea greens,fresh
+July,Peas,fresh
+August,Peas,fresh
+July,Peppers (sweet),fresh
+August,Peppers (sweet),fresh
+September,Peppers (sweet),fresh
+April,Potatoes,stored
+May,Potatoes,stored
+June,Potatoes,stored
+July,Potatoes,fresh
+August,Potatoes,fresh
+September,Potatoes,fresh
+October,Potatoes,fresh
+November,Potatoes,stored
+December,Potatoes,stored
+January,Potatoes,stored
+February,Potatoes,stored
+March,Potatoes,stored
+October,Pumpkins,fresh
+May,Radishes,fresh
+June,Radishes,fresh
+July,Radishes,fresh
+August,Radishes,fresh
+September,Radishes,fresh
+October,Radishes,fresh
+June,Raspberries,fresh
+July,Raspberries,fresh
+August,Raspberries,fresh
+May,Rhubarb,fresh
+June,Rhubarb,fresh
+October,Rutabagas,fresh
+November,Rutabagas,fresh
+December,Rutabagas,stored
+January,Rutabagas,stored
+February,Rutabagas,stored
+September,Shelling beans,fresh
+October,Shelling beans,fresh
+May,Spinach,fresh
+June,Spinach,fresh
+July,Spinach,fresh
+August,Spinach,fresh
+September,Spinach,fresh
+October,Spinach,fresh
+July,Summer Squash,fresh
+August,Summer Squash,fresh
+September,Summer Squash,fresh
+October,Summer Squash,fresh
+June,Strawberries,fresh
+July,Strawberries,fresh
+July,Tomatoes,fresh
+August,Tomatoes,fresh
+September,Tomatoes,fresh
+October,Tomatoes,fresh
+August,Turnips,fresh
+September,Turnips,fresh
+October,Turnips,fresh
+November,Turnips,fresh
+December,Turnips,stored
+January,Turnips,stored
+February,Turnips,stored
+August,Watermelons,fresh
+September,Watermelons,fresh
+April,Wild Rice,stored
+May,Wild Rice,stored
+June,Wild Rice,stored
+July,Wild Rice,stored
+August,Wild Rice,stored
+September,Wild Rice,stored
+October,Wild Rice,stored
+November,Wild Rice,stored
+December,Wild Rice,stored
+January,Wild Rice,stored
+February,Wild Rice,stored
+March,Wild Rice,stored
+August,Winter Squash,fresh
+September,Winter Squash,fresh
+October,Winter Squash,fresh
+November,Winter Squash,stored
+December,Winter Squash,stored
+January,Winter Squash,stored
+February,Winter Squash,stored
+July,Zucchini,fresh
+August,Zucchini,fresh
+September,Zucchini,fresh
+October,Zucchini,fresh
+June,Zucchini Blossoms,fresh
+July,Zucchini Blossoms,fresh
+August,Zucchini Blossoms,fresh

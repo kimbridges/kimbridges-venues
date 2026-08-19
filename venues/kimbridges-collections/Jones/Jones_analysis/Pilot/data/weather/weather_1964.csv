@@ -1,0 +1,13 @@
+year,month,day,date,temp_max_f,temp_min_f,precip_type,precip_total_in,snow_on_ground_in,source_page,ocr_confidence,notes
+1964,1,,1964-01-15,43,10,Rain and Snow,1.33,6.1,6,high,"MONTHLY SUMMARY - not daily. Avg temp=30.0F, Wind avg=13.4mph peak=59mph. "
+1964,2,,1964-02-15,44,6,Rain and Snow,1.75,8.3,6,high,"MONTHLY SUMMARY - not daily. Avg temp=26.2F, Wind avg=18.5mph peak=77mph. "
+1964,3,,1964-03-15,48,10,Rain and Snow,1.32,7.3,6,high,"MONTHLY SUMMARY - not daily. Avg temp=29.3F, Wind avg=17.7mph peak=68mph. "
+1964,4,,1964-04-15,49,11,Rain and Snow,0.21,1.1,6,high,"MONTHLY SUMMARY - not daily. Avg temp=32.7F, Wind avg=19.1mph peak=73mph. "
+1964,5,,1964-05-15,65,22,Rain and Snow,1.15,1.2,6,high,"MONTHLY SUMMARY - not daily. Avg temp=38.1F, Wind avg=16.2mph peak=63mph. "
+1964,6,,1964-06-15,63,34,Rain,1.85,0,6,high,"MONTHLY SUMMARY - not daily. Avg temp=46.4F, Wind avg=15.4mph peak=53mph. Wind max 39 lower than other months; unusual"
+1964,7,,1964-07-15,61,37,Rain,1.74,0,6,high,"MONTHLY SUMMARY - not daily. Avg temp=47.8F, Wind avg=14.0mph peak=56mph. "
+1964,8,,1964-08-15,61,39,Rain,3.56,0,6,high,"MONTHLY SUMMARY - not daily. Avg temp=48.6F, Wind avg=14.8mph peak=65mph. Highest rain month"
+1964,9,,1964-09-15,57,35,Rain,5.25,0,6,high,"MONTHLY SUMMARY - not daily. Avg temp=47.1F, Wind avg=15.3mph peak=63mph. Highest total precip month"
+1964,10,,1964-10-15,69,26,Rain and Snow,3.33,3.2,6,high,"MONTHLY SUMMARY - not daily. Avg temp=39.9F, Wind avg=16.7mph peak=81mph. Oct max temp 69F is annual max; unusual for Oct"
+1964,11,,1964-11-15,50,11,Rain and Snow,3.71,16.2,6,high,"MONTHLY SUMMARY - not daily. Avg temp=32.9F, Wind avg=27.0mph peak=84mph. Heaviest snow month; highest peak gust (84mph)"
+1964,12,,1964-12-15,45,16,Rain and Snow,1.31,9.1,6,high,"MONTHLY SUMMARY - not daily. Avg temp=30.3F, Wind avg=13.9mph peak=44mph. "

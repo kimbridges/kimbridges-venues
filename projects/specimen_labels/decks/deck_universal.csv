@@ -1,0 +1,12 @@
+copies,header,footer,text
+1,Vegetative,Phenology,Phenology: Vegetative
+1,Bud,Phenology,Phenology: Budding
+1,Flower,Phenology,Phenology: Flowering
+1,Fruit,Phenology,Phenology: Fruiting
+1,Fl+Fr,Phenology,Phenology: Flowering & fruiting
+1,Forest,Habitat,Habitat: Closed forest
+1,Woodland,Habitat,Habitat: Open woodland
+1,Shrubland,Habitat,Habitat: Shrubland
+1,Grassland,Habitat,Habitat: Grassland
+1,Wetland,Habitat,Habitat: Wetland / bog
+1,Barren,Habitat,Habitat: Barren / lava

@@ -1,0 +1,11 @@
+key,value
+book_name,Birds of Kakaako
+cover_file,cover.pdf
+stories_folder,Stories
+images_folder,Keepers
+kml_folder,KML
+output_pdf,Test_Photo_Book.pdf
+make_map,true
+map_html,Test_Event_Map.html
+use_gt_mods,true
+gt_mods_file,gt_mods.R

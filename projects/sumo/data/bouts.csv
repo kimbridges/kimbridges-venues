@@ -1,0 +1,15 @@
+tourney_id,    day,bout_num,division, east_id, west_id, winner_id,     kimarite,henka_flag,mono_ii,yorikiri_grip,duration_sec
+2025-11-kyushu, 1, 1,Makuuchi,Onosato,    Wakatakakage, Onosato,       yorikiri,0,,,6
+2025-11-kyushu, 1, 2,Makuuchi,Hakuroho,   Hoshoryu,     Hakuroho,      oshidashi,0,,,4
+2025-11-kyushu, 1, 3,Makuuchi,Kotozakura, Wakamotoharu, Wakamotoharu,  uwatenage,0,,,5
+2025-11-kyushu, 1, 4,Makuuchi,Aonishiki,  Kirishima,    Aonishiki,     yoritaoshi,0,,,7
+2025-11-kyushu, 1, 5,Makuuchi,Oho,        Ura,          Ura,           hatakikomi,0,,,3
+2025-11-kyushu, 1, 6,Makuuchi,Takanosho,  Tamawashi,    Tamawashi,     oshidashi,0,,,5
+2025-11-kyushu, 1, 7,Makuuchi,Takayasu,   Ohohoma,      Takayasu,      uwatenage,0,,,6
+2025-11-kyushu, 2, 1,Makuuchi,Onosato,    Wakamotoharu, Onosato,       yorikiri,0,,,5
+2025-11-kyushu, 2, 2,Makuuchi,Kirishima,  Hoshoryu,     Kirishima,     tsukiotoshi,0,,,4
+2025-11-kyushu, 2, 3,Makuuchi,Kotozakura, Hakuroho,     Kotozakura,    oshidashi,0,,,5
+2025-11-kyushu, 2, 4,Makuuchi,Aonishiki,  Wakatakakage, Wakatakakage,  hikiotoshi,0,,,3
+2025-11-kyushu, 2, 5,Makuuchi,Oho,        Tamawashi,    Oho,           uwatedashinage,0,,,6
+2025-11-kyushu, 2, 6,Makuuchi,Takanosho,  Ura,          Ura,           sukuinage,0,,,5
+2025-11-kyushu, 2, 7,Makuuchi,Takayasu,   Yoshinofuji,  Takayasu,      oshidashi,0,,,4

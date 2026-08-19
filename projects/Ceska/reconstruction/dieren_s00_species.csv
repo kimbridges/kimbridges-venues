@@ -1,0 +1,117 @@
+id,species,constancy,c2_index,role_code,role
+1,CARELYNG,9,12,2,group_66/33a
+2,ELEOPALU,4,7,4,group_66/33b
+3,JUNCARCT,9,5,2,group_66/33a
+4,SCIRACUT,4,14,4,group_66/33b
+5,LILAOCCI,10,1,2,group_66/33a
+6,CENTMINI,5,3,1,group_50/20
+7,TRIGMARI,10,29,2,group_66/33a
+8,TILLAQUA,5,32,1,group_50/20
+9,ISOEMARI,3,34,4,group_66/33b
+10,ELATTRIA,3,17,4,group_66/33b
+11,ASTESUBS,4,44,1,group_50/20
+12,POTEPACI,13,43,-2,super-companion(>66%)
+13,TYPHLATI,1,45,-3,footnote(<3 rel)
+14,DESCCESP,10,54,2,group_66/33a
+15,HYPORADI,5,33,1,group_50/20
+16,TRIFWORM,5,48,1,group_50/20
+17,SONCARVE,7,55,3,group_40/10
+18,SCIRAMER,5,52,1,group_50/20
+19,ELEOROST,5,27,1,group_50/20
+20,SCIRCER?,1,39,-3,footnote(<3 rel)
+21,ERIGPHIL,2,16,-3,footnote(<3 rel)
+22,PLANMACR,5,59,1,group_50/20
+23,ORTHCAST,2,6,-3,footnote(<3 rel)
+24,PLANMARI,1,19,-3,footnote(<3 rel)
+25,SISYANGU,3,18,1,group_50/20
+26,SAGICRAS,2,15,-3,footnote(<3 rel)
+27,EQUIARVE,5,22,1,group_50/20
+28,GRININTE,1,8,-3,footnote(<3 rel)
+29,PLANLANC,9,64,-1,companion
+30,DODEPAUC,4,79,1,group_50/20
+31,RUMECRIS,3,53,1,group_50/20
+32,HYPEFORM,7,11,1,group_50/20
+33,GLAUMARI,6,2,1,group_50/20
+34,CIRSARVE,7,69,3,group_40/10
+35,FESTRUBR,1,81,-3,footnote(<3 rel)
+36,LYTHSALI,1,4,-3,footnote(<3 rel)
+37,MELIALBA,1,74,-3,footnote(<3 rel)
+38,JUNCBUFF,2,30,-3,footnote(<3 rel)
+39,BRODHYAC,5,71,1,group_50/20
+40,MAIADILA,2,70,-3,footnote(<3 rel)
+41,MONTFONT,1,9,-3,footnote(<3 rel)
+42,BIDEAMPL,2,66,-3,footnote(<3 rel)
+43,CASTUNAL,7,65,1,group_50/20
+44,FRITCAMS,7,76,1,group_50/20
+45,CAMAQUAM,6,83,1,group_50/20
+46,RANUORTH,2,10,-3,footnote(<3 rel)
+47,HABEDILA,2,75,-3,footnote(<3 rel)
+48,MYRIGALE,6,80,1,group_50/20
+49,LEONNUDI,2,67,-3,footnote(<3 rel)
+50,AGROREPE,1,31,-3,footnote(<3 rel)
+51,ELEOPARV,2,25,-3,footnote(<3 rel)
+52,MENTARVE,5,68,1,group_50/20
+53,LATHPALU,4,42,1,group_50/20
+54,HOLCLANA,6,56,3,group_40/10
+55,ACHIMILL,6,49,3,group_40/10
+56,PRUNVULG,2,21,-3,footnote(<3 rel)
+57,CICUDOUG,1,85,-3,footnote(<3 rel)
+58,LILASCIL,1,87,-3,footnote(<3 rel)
+59,PLANMAJO,5,62,1,group_50/20
+60,SAGIPROC,1,82,-3,footnote(<3 rel)
+61,GALIBORE,2,38,-3,footnote(<3 rel)
+62,EPILWATS,2,94,-3,footnote(<3 rel)
+63,SALIHOOK,1,95,-3,footnote(<3 rel)
+64,ROSANUTK,4,73,3,group_40/10
+65,RUBUSPEC,3,61,3,group_40/10
+66,VICISATI,3,26,3,group_40/10
+67,LONIINVO,3,47,3,group_40/10
+68,HERALANA,3,23,3,group_40/10
+69,SIDAHEND,4,72,3,group_40/10
+70,PHALARUN,3,51,3,group_40/10
+71,CIRSVULG,3,46,3,group_40/10
+72,SANGOFFI,2,40,-3,footnote(<3 rel)
+73,ANGEGENU,2,20,-3,footnote(<3 rel)
+74,ASTEEATO,4,35,3,group_40/10
+75,SIUMSUAV,3,63,-1,companion
+76,ANGELUCI,3,41,3,group_40/10
+77,SISYCALI,1,28,-3,footnote(<3 rel)
+78,PRUNEMAR,1,78,-3,footnote(<3 rel)
+79,ELYMMOLL,4,50,3,group_40/10
+80,PYRUFUSC,3,57,3,group_40/10
+81,SOLICANA,4,60,3,group_40/10
+82,GALIAPAR,2,24,-3,footnote(<3 rel)
+83,AGROSTOL,3,77,3,group_40/10
+84,ALLIGEYE,1,84,-3,footnote(<3 rel)
+85,RUMEACET,2,13,-3,footnote(<3 rel)
+86,AQUIFORM,1,86,-3,footnote(<3 rel)
+87,ANAPMARG,2,58,-3,footnote(<3 rel)
+88,TRIFPRAT,1,88,-3,footnote(<3 rel)
+89,ZIGAVENE,1,89,-3,footnote(<3 rel)
+90,TRIFREPE,1,90,-3,footnote(<3 rel)
+91,POAxPRAT,1,91,-3,footnote(<3 rel)
+92,CONIPACI,1,92,-3,footnote(<3 rel)
+93,LATHNEVA,1,93,-3,footnote(<3 rel)
+94,SYMPALBU,2,36,-3,footnote(<3 rel)
+95,CAREOBNU,2,37,-3,footnote(<3 rel)
+96,BROMSITC,1,96,-3,footnote(<3 rel)
+97,PICESITC,1,97,-3,footnote(<3 rel)
+98,RHAMPURS,1,98,-3,footnote(<3 rel)
+99,POLYMUNI,1,99,-3,footnote(<3 rel)
+100,RIBEDIVA,1,100,-3,footnote(<3 rel)
+101,POLYGLYC,1,101,-3,footnote(<3 rel)
+102,ATHYFILI,1,102,-3,footnote(<3 rel)
+103,MELISUBU,1,103,-3,footnote(<3 rel)
+104,GAULSHAL,1,104,-3,footnote(<3 rel)
+105,VACCPARV,1,105,-3,footnote(<3 rel)
+106,RUBUURSI,1,106,-3,footnote(<3 rel)
+107,LACTMURA,1,107,-3,footnote(<3 rel)
+108,VICITETR,1,108,-3,footnote(<3 rel)
+109,CYTISCOP,1,109,-3,footnote(<3 rel)
+110,AIRACARY,1,110,-3,footnote(<3 rel)
+111,SPEC380,1,111,-3,footnote(<3 rel)
+112,LEPICAMP,1,112,-3,footnote(<3 rel)
+113,LOTUDENT,1,113,-3,footnote(<3 rel)
+114,AGROSCAB,1,114,-3,footnote(<3 rel)
+115,AIRAPRAE,1,115,-3,footnote(<3 rel)
+116,CORNNUTT,1,116,-3,footnote(<3 rel)

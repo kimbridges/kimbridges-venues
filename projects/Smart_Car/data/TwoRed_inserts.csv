@@ -1,0 +1,2 @@
+"errata","after_odometer","Timestamp","City","State","Brand","Price/Gallon","Odometer","Gallons","Price","source","note"
+"L20",22711,"2012-02-06","Big Spring","Texas","Fina",3.799,22945,6.608,25.1,"Kim's original fuel log + AMEX; confirmed on the 2011-2012 scan p4","the sheet held ONE merged row: date/city/brand from Big Spring, numeric fields from Alpine. Odometer 22945 per Kim's transcription; the scan may read 22954 (errata L44, undecided)."

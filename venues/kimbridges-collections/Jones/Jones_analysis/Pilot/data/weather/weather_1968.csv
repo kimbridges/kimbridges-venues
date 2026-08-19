@@ -1,0 +1,13 @@
+year,month,day,date,temp_max_f,temp_min_f,precip_type,precip_total_in,snow_on_ground_in,source_page,ocr_confidence,notes
+1968,1,,1968-01-15,42,7,Snow,2.77,6.8,5,high,"MONTHLY SUMMARY. Avg temp=28.3F, Wind max=59mph avg=18.6mph. "
+1968,2,,1968-02-15,43,-1,Snow,1.29,10.3,5,high,"MONTHLY SUMMARY. Avg temp=24.0F, Wind max=53mph avg=17.0mph. Min temp -1F; coldest month"
+1968,3,,1968-03-15,43,16,Snow,1.21,7.8,5,high,"MONTHLY SUMMARY. Avg temp=30.4F, Wind max=55mph avg=15.3mph. "
+1968,4,,1968-04-15,50,18,Snow,1.37,5.1,5,high,"MONTHLY SUMMARY. Avg temp=34.2F, Wind max=39mph avg=16.1mph. "
+1968,5,,1968-05-15,62,25,Snow,1.3,2.1,5,high,"MONTHLY SUMMARY. Avg temp=42.7F, Wind max=47mph avg=13.7mph. "
+1968,6,,1968-06-15,57,34,Rain,0.84,0,5,high,"MONTHLY SUMMARY. Avg temp=45.4F, Wind max=30mph avg=12.7mph. No snow; lowest wind max (30mph)"
+1968,7,,1968-07-15,72,42,Rain,0.99,0,5,high,"MONTHLY SUMMARY. Avg temp=52.9F, Wind max=33mph avg=15.6mph. Max temp 72F; annual record and warmest in 5-year comparison"
+1968,8,,1968-08-15,60,45,Rain,3.53,0,5,high,"MONTHLY SUMMARY. Avg temp=52.0F, Wind max=44mph avg=16.4mph. Wettest month (rain only)"
+1968,9,,1968-09-15,60,32,Rain,2.55,0,5,high,"MONTHLY SUMMARY. Avg temp=46.8F, Wind max=36mph avg=14.0mph. Sleet/Snow=Trace, encoded as 0.001"
+1968,10,,1968-10-15,51,18,Snow,8.02,15.6,5,high,"MONTHLY SUMMARY. Avg temp=38.9F, Wind max=46mph avg=13.3mph. Heaviest precip month (water equiv); heavy snow"
+1968,11,,1968-11-15,45,20,Snow,3.32,6.7,5,high,"MONTHLY SUMMARY. Avg temp=36.0F, Wind max=45mph avg=16.4mph. "
+1968,12,,1968-12-15,46,15,Snow,1.17,7.3,5,high,"MONTHLY SUMMARY. Avg temp=30.8F, Wind max=51mph avg=19.3mph. Highest avg wind (19.3mph)"

@@ -1,0 +1,8 @@
+"common","genus","species","variety","author","naive_code","code"
+"apple","Malus","domestica","","(Suckow) Borkh.","MALUDOME","MALUDOME"
+"broccoli","Brassica","oleracea","italica","L.","BRASOLER","BRASITAL"
+"cabbage","Brassica","oleracea","capitata","L.","BRASOLER","BRASCAPI"
+"cauliflower","Brassica","oleracea","botrytis","L.","BRASOLER","BRASBOTR"
+"lemon","Citrus","limon","","(L.) Osbeck","CITRLIMO","CITRLIMO"
+"potato","Solanum","tuberosum","","L.","SOLATUBE","SOLATUBE"
+"watermelon","Citrullus","lanatus","","(Thunb.) Matsum. & Nakai","CITRLANA","CITRLANA"

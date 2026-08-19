@@ -1,0 +1,2 @@
+"date","start_time","start_temp_F","start_odo","start_city","end_time","end_temp_F","end_odo","end_city","miles_written","odo_miles","tz_shift_hr","raw_hours","elapsed_hours","gross_mph","source_page","note"
+"2013-12-26","08:29",42,40068,"Lake San Marcos CA","16:00",62,40328,"Lake San Marcos CA",259.1,260,0,7.52,7.52,34.6,1,"ROUND TRIP -- starts and ends at the same place. A day run to Los Angeles and back."

@@ -1,0 +1,5 @@
+"date","start_time","start_temp_F","start_odo","start_city","end_time","end_temp_F","end_odo","end_city","miles_written","odo_miles","tz_shift_hr","raw_hours","elapsed_hours","gross_mph","source_page","note"
+"2016-09-24","10:45",84,66645,"San Marcos CA","19:30",70,66905,"Santa Maria CA",,260,0,8.75,8.75,29.7,1,"start_odo AND start_time cells are OVERWRITTEN on the sheet; 66645 adjudicated by two road-distance checks (San Marcos->Goleta fill 198 mi; day total 260 mi). Kim holds the original -- ink colour/pressure can settle what a bitonal scan cannot."
+"2016-09-25","05:14",60,66905,"Santa Maria CA","18:03",76,67250,"Bodega Bay CA",,345,0,12.82,12.82,26.9,1,""
+"2016-09-26","05:24",59,67250,"Bodega Bay CA","18:19",67,67588,"Brookings OR",,338,0,12.92,12.92,26.2,2,""
+"2016-09-27","08:55",58,67588,"Brookings OR","14:36",75,67786,"Eugene OR",,198,0,5.68,5.68,34.9,2,""

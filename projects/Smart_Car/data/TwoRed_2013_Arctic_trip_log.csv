@@ -1,0 +1,19 @@
+"date","start","tempA","odoA","from","finish","tempB","odoB","to","miles_written","odo_delta","discrep","note","trip","source_page"
+"2013-08-04","07:45",62,34419,"Lake San Marcos CA","18:22",85,34906,"Carson City NV",486.6,487,0.4,"trip actually opens Aug 3 at ODO 34,350 (LSM fuel stop); the Aug 3 leg to the Smart Center San Diego has no end ODO, so 69 miles fall outside the leg table. Kim's margin total of 5,470 counts from 34,350.","2013 Arctic",1
+"2013-08-05","07:03",60,34912,"Carson City NV","17:30",91,35335,"Roseburg OR",422.5,423,0.5,"","2013 Arctic",1
+"2013-08-06","07:22",64,35335,"Roseburg OR","16:23",56,35589,"Lincoln City OR",254.1,254,-0.1,"","2013 Arctic",1
+"2013-08-07","07:47",53,35589,"Lincoln City OR","15:26",84,35871,"Kirkland WA",282.2,282,-0.2,"","2013 Arctic",1
+"2013-08-08","07:25",64,35873,"Kirkland WA","14:02",71,35979,"Bellingham WA",108.4,106,-2.4,"","2013 Arctic",1
+"2013-08-12","10:22",72,35989,"Haines AK","17:10",78,36210,"Destruction Bay YT",220.8,221,0.2,"FERRY: Aug 9 boarded Bellingham WA at ODO 35979; disembarked Haines AK at 35989 -- 10 miles in 3 days at sea","2013 Arctic",2
+"2013-08-13","07:46",48,36210,"Destruction Bay YT","19:33",67,36647,"Ester AK",437.9,437,-0.9,"","2013 Arctic",2
+"2013-08-17","09:37",55,36715,"Ester AK","18:26",64,36967,"Coldfoot AK",251.7,252,0.3,"ARCTIC CIRCLE run north up the Dalton Hwy -- Kim marked the page 'circle!'","2013 Arctic",2
+"2013-08-18","07:52",38,36967,"Coldfoot AK","21:03",51,37265,"Ester AK",297.6,298,0.4,"return leg of the Arctic Circle run","2013 Arctic",2
+"2013-08-20","09:01",46,37296,"Ester AK","17:44",56,37644,"Anchorage AK",348.3,348,-0.3,"","2013 Arctic",2
+"2013-08-21","10:53",53,37644,"Anchorage AK","16:41",54,37872,"Homer AK",227.6,228,0.4,"","2013 Arctic",3
+"2013-08-27","09:23",50,38078,"Homer AK","17:54",55,38284,"Whittier AK",206.2,206,-0.2,"","2013 Arctic",3
+"2013-08-31","06:49",58,38285,"Bellingham WA","20:18",79,38773,"Grants Pass OR",488.7,488,-0.7,"FERRY: Whittier AK 38284 (Aug 27) -> Bellingham WA 38285 (Aug 31) -- ONE odometer mile from Alaska to Washington","2013 Arctic",3
+"2013-09-01","09:05",67,38775,"Grants Pass OR","18:16",65,39168,"San Francisco CA",393.1,393,-0.1,"","2013 Arctic",3
+"2013-09-02","11:22",69,39168,"San Francisco CA","15:43",71,39295,"Monterey CA",127,127,0,"","2013 Arctic",4
+"2013-09-03","08:10",61,39295,"Monterey CA","14:26",70,39415,"Morro Bay CA",119.9,120,0.1,"","2013 Arctic",4
+"2013-09-05","08:16",61,39493,"Morro Bay CA","14:25",75,39636,"Carpinteria CA",142.5,143,0.5,"","2013 Arctic",4
+"2013-09-06","07:24",60,39636,"Carpinteria CA","16:10",90,39820,"Lake San Marcos CA",184.4,184,-0.4,"","2013 Arctic",4

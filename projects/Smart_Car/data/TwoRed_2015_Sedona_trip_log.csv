@@ -1,0 +1,4 @@
+"date","start_time","start_temp_F","start_odo","start_city","end_time","end_temp_F","end_odo","end_city","miles_written","odo_miles","tz_shift_hr","raw_hours","elapsed_hours","gross_mph","source_page","note"
+"2015-07-07","04:05",,56378,"Carlsbad CA","18:34",,,"Sedona AZ",575,,0,14.48,14.48,,1,"start time cell overwritten; end odometer never written. 575 mi is Kim's own figure and is consistent with the I-10/Palo Verde/Seligman routing, not the direct road."
+"2015-07-09","10:32",,,"Sedona AZ","18:14",97,57268,"Brawley CA",316,,0,7.7,7.7,,1,"start odometer never written"
+"2015-07-10","10:03",87,57268,"Brawley CA","13:54",74,57418,"Lake San Marcos CA",150,150,0,3.85,3.85,39,1,"trip total 1,041.4 written in margin = 575 + 316 + 150, checks"

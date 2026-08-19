@@ -1,0 +1,13 @@
+year,month,precip_rain_in,precip_sleet_snow_in,precip_water_equiv_in,temp_max_f,temp_min_f,temp_avg_f,wind_max_mph,wind_avg_mph,wind_peak_gust_mph,source_page,ocr_confidence,notes
+1964,1,0.3,6.1,1.33,43,10,30.0,43,13.4,59,6,high,
+1964,2,0.1,8.3,1.75,44,6,26.2,52,18.5,77,6,high,
+1964,3,0.2,7.3,1.32,48,10,29.3,52,17.7,68,6,high,
+1964,4,0.04,1.1,0.21,49,11,32.7,55,19.1,73,6,high,
+1964,5,1.0,1.2,1.15,65,22,38.1,54,16.2,63,6,high,
+1964,6,1.85,0,1.85,63,34,46.4,39,15.4,53,6,high,Wind max 39 lower than other months; unusual
+1964,7,1.74,0,1.74,61,37,47.8,42,14.0,56,6,high,
+1964,8,3.56,0,3.56,61,39,48.6,46,14.8,65,6,high,Highest rain month
+1964,9,5.25,0,5.25,57,35,47.1,46,15.3,63,6,high,Highest total precip month
+1964,10,2.81,3.2,3.33,69,26,39.9,52,16.7,81,6,high,Oct max temp 69F is annual max; unusual for Oct
+1964,11,2.72,16.2,3.71,50,11,32.9,59,27.0,84,6,high,Heaviest snow month; highest peak gust (84mph)
+1964,12,0.9,9.1,1.31,45,16,30.3,44,13.9,44,6,high,
