@@ -253,7 +253,55 @@ _Original:_ **Priority: MAY-JUNE 2016** (the Fourth Crossing) -- the fill-drag c
 lives there and the true LSM/Blythe gallons and costs are unrecoverable without it. Then the 2017
 Feb-May tail. Kim to check the box while the papers are out.
 
-**TASK — open the remaining 7 scans.** (`2016 fall-winter` arrived 2026-08-19 as
+**✓ 2016 FALL-WINTER TRANSCRIBED 2026-08-19 — both pages, EVERY column.** Outputs: `data/TwoRed_2016_FallWinter_trip_log.csv` (4 legs) and `data/TwoRed_fuel_timetemp.csv` (9 fuel rows). **All 9 fuel rows matched the clean dataset on date, city, brand, price and gallons** -- the sheet is sound. **QC passed on four independent axes:** odometer chain contiguous across all 4 legs; all 4 fuel stops fall INSIDE their leg and on the leg's own date; every leg distance is road-plausible; every pump identity balances.
+
+**★★ THE FUEL TABLE ON THE PAPER FORM HAS ITS OWN `Time` AND `Temp` COLUMNS.** This matters more than the trip-log temperatures do: **MPG is computed per FILL, so a temperature stamped on the fill is the right instrument for an economy-vs-temperature test. A leg-endpoint temperature is not** -- it belongs to a different unit of analysis. Any thermal claim should be built on the fuel-row temperatures.
+
+**★★ CHECK THE LIVE `TwoRed_fuel` SHEET BEFORE TRANSCRIBING ONE MORE TEMPERATURE.** The existing deferred entry below records that its Notes column already carries strings like `64F @ 2:25PM` and that its summary block reads **141 fill-ups**. **If that holds, roughly half the temperature data is ALREADY DIGITISED and the scan-transcription campaign is largely unnecessary.** Same shape as Creamsicle and as May-June 2016: **check whether the data already exists in another form before paying to re-create it.** Do this FIRST.
+
+**TASK — the trip-log CSVs drifted into TWO INCOMPATIBLE SCHEMAS and nobody noticed.** 2011 and 2016 use `start_time/start_temp_F/start_odo/start_city`; 2013 and 2014 use `start/tempA/odoA/from`. A naive rbind **errors out**, which is the lucky case -- a silent partial match would have been worse. Normalised by `Projects/Smart_Car/trip_logs_read.R`, which maps both to one canonical schema and computes `raw_hours / elapsed_hours / gross_mph / odo_miles` on read. **It does not edit the CSVs.** **Decide later whether to rewrite the two B-schema files or keep the reader as the compatibility layer.**
+**It immediately paid: pooled legs with usable times went from 50 to 69**, because 2013/2014 had times all along and the earlier count simply could not see them.
+
+**✓ ALL 15 SCANS READ 2026-08-19. THE SCAN BACKLOG IS CLOSED.** 18 pages, 7 files, every column taken.
+Trip legs **69 -> 107**; fuel rows with a time and temperature stamped on the FILL **0 -> 95** (32%).
+New CSVs in `data/`: `TwoRed_2012_Frostburg_trip_log.csv` (18), `..._2012_MayArizona_...` (7),
+`..._2015_Sedona_...` (3), `..._2017_January_...` (3), `..._2011_NorCalRoadtrip_...` (6),
+`..._2013-4_LAExpedition_...` (1), plus `TwoRed_fuel_timetemp.csv` (95 rows).
+
+**✓ THE 2011 STL OVERLAP QUESTION IS ANSWERED: PURE DUPLICATE, ZERO NEW LEGS.** Different md5, same four
+pages rescanned. **But re-opening it returned 23 fuel-row temperatures that the first pass walked past** because it was looking for distance. **The transcribe-once rule proved itself on the first file it touched.**
+
+**★★★ THE WHEEL CHANGE IS DATED: `NEW WHEELS @ 13510 miles`, in Kim's hand on the 2011 STL sheet.** The
+before/after cut is no longer an assumption. 179 miles before the St. Louis departure; the narrow-tire group
+is exactly 2010-07-23 to 2011-05-11. **The estimate still flips sign with specification (+3.6% to -1.8%)** --
+see the CONDITIONAL above, which still governs.
+
+**★★ TASK — CONFIRM L59/L60/L61 FROM AMEX. Three new slashed-zero cost corrections.** L59 San Marcos
+2010-11-29 19.28->19.20 (**the first fill in the record**); L60 San Marcos 2011-06-23 32.48->32.40 (**the same
+row as L01** -- two slips in one row); L61 Champaign 2012-05-31 29.68->29.60. **Control run over the 44 rows
+that fail the pump identity: the permitted 8->0 substitution fixes 4; the forbidden 0->8 fixes 1 (Deming,
+already flagged wrong-direction); six control substitutions fix ZERO.** Errata now 61 entries.
+
+**★★ TASK — the TEMPERATURE result needs a bigger n before it is a claim.** With temperature measured ON THE
+FILL (n=94): **-0.068 MPG per degF controlling leg length, p=0.045**; fills at 80F+ average 36.76 MPG against
+38.87 below. **But p crosses 0.05 under era fixed effects, and the sign is counterintuitive** (warm air is
+thinner and should help). Likely mechanism is **A/C load on a 1.0-litre engine -- INFERRED, not measured**, and
+indistinguishable in this data from hot-weather routes being different routes. **Do not write this as a
+finding yet.** The live `TwoRed_fuel` Sheet's Notes column may hold ~141 more fill temperatures -- that is the
+cheapest route to the n that would settle it. **Harvest it before transcribing anything else.**
+
+**TASK — decide the fate of the two-schema trip-log CSVs.** `trip_logs_read.R` normalises A (2011/2016/2012/
+2015/2017) and B (2013/2014) on read. Either rewrite the two B files or keep the reader as the permanent
+compatibility layer. **Not urgent; do not let it drift into a third schema.**
+
+**TASK — six legs of the 2011 N. California Roadtrip are RECONSTRUCTED, not transcribed.** That trip has no
+table -- only circled margin stamps. Four of its six end-odometers are the NEXT MORNING's departure reading,
+so they may include evening local driving. **Flagged in the `note` column of every affected row. Kim's own
+running trip-mile totals in the margin act as a checksum and they all reconcile** (443.1 / 847.8 / 949.8 /
+1189.9 / 1494.4 / 1801.5 total, against 13,461 - 11,660 = 1,801). **They also caught one of my misreadings**
+-- Healdsburg is 12,850, not the 13,850 I first wrote.
+
+**✓ CLOSED 2026-08-19 — NO SCANS REMAIN UNOPENED.** *(The count itself had drifted: I wrote 8 -> 7 when the fall-winter file ARRIVED and 7 -> 6 when it was transcribed. Arrival is not transcription; the count was decremented twice for one event. Actual folder holds 15 scans, 4 trips transcribed.)* (`2016 fall-winter` arrived 2026-08-19 as
 `2016_TwoRed_trip_log_fall-winter.pdf` and is NOT yet transcribed.) 2011 STL (also settles whether it overlaps the June sheet --
 different md5, same trip name, so check for repeated legs BEFORE merging), 2011 fuel log,
 2012 Frostburg, 2012 May Arizona, 2013-4 LA Expedition, 2015 Sedona, 2016 fall-winter, 2017 January.

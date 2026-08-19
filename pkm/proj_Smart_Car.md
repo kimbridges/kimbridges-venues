@@ -283,26 +283,6 @@ as rounding; **then the mechanism REJECTED one of them**, because the error is D
 arithmetic, a card or a receipt can adjudicate. Recorded because it would have been easy to 'confirm'
 the wrong value by looking harder.
 
-## SCAN COVERAGE AND WHAT IS TRANSCRIBED (2026-08-18)
-
-**Trip logs transcribed -- 67 legs, one CSV per trip in `data/`:**
-
-| Trip | Legs | Miles | Agreement with the written distances |
-|---|---|---|---|
-| 2011 St. Louis | 15 | 4,635 | 12 of 14 within 2.5 mi |
-| 2013 Arctic | 18 | 5,401 logged (Kim's 5,470 counts from the first fuel stop) | **18 of 18** |
-| 2014 Penultimate State | 32 | **10,907 -- Kim's own margin total, EXACT** | 31 of 32 |
-
-**Fuel-log scan coverage: 140 of 293 rows (48%) now have verified paper behind them.**
-6 of 14 distinct scans opened; **8 remain unopened**: 2011 STL, 2011 fuel log, 2012 Frostburg,
-2012 May Arizona, 2013-4 LA Expedition, 2015 Sedona, 2016 fall-winter, 2017 January.
-
-**★ TWO PERIODS MAY HAVE NO SHEET AT ALL, and one of them matters:**
-- **2016 May-Dec, 39 rows** -- the only remaining 2016 file is *fall-winter*. **This is exactly where
-  the fill-drag contamination sits**, so if no May-2016 sheet exists the AMEX is the only route to the
-  true LSM and Blythe gallons and costs.
-- **2017 Jan-May, 13 rows** -- the only 2017 file is *January*, against a run ending 2017-05-22.
-
 ## ★★ THE CARD COVERS THE FLEET; THE LOG COVERS ONE CAR (2026-08-18)
 
 Kim's **AMEX fuel summary for 2015** -- 16 charges. **Eight match the TwoRed log to the cent.
@@ -390,6 +370,72 @@ I first wrote the stronger version ("rules out a penalty worse than 3.7%") and h
 
 **For the story:** this is a clean example of the document's recurring shape -- a decision made for one reason (safety and pleasure in a crosswind at 70 mph in a 1,800-lb car), then measured on a different axis (fuel), and the measurement's job is to say what the decision cost, not whether it was right. Kim already knew it was right; he drove it.
 
+## ★★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-19)
+
+His words: *the fuel log is more about the CAR'S performance, while the trip log shows the HUMAN performance -- how far and fast can you expect to drive in a day, something I had no idea about until I started doing these drives.*
+
+**This is the strongest organising idea the project has produced, and it should be the top frame of the chapter architecture** -- which has been the named weak point since 2026-08-16 precisely because it was inherited from a one-car charter and had no thesis under it.
+
+**Why it is more than a nice phrasing:**
+
+- **It explains why neither log substitutes for the other.** The fuel log records STOPS; the trip   log records LEGS. They are not two views of one thing, they are measurements of two different   subjects that happen to share an odometer. The odometer is the JOIN, not the topic.
+- **It tells us which instrument answers which question.** Economy, degradation, cost per mile,   the wide-tire question -- car. Daily range, departure discipline, gross speed, the length of a   driving day -- human. **Mixing them is how you get a meaningless average.**
+- **It makes the temperature decision obvious.** Temperature stamped on a FILL belongs to the car's   question; temperature at a leg endpoint belongs to the human's. Same word, two instruments.
+- **★ It supplies the missing NARRATIVE thesis.** Kim did not know the answer before he drove it.   So the human half is not a summary statistic -- it is a **finding he made about himself by doing   the thing**, sixteen years of it, and the data is the record of the learning. The 3-bar refuelling   rule adopted at Deming in 2010 is exactly this: a behaviour CHANGED by a near-miss, and visible   in the numbers afterwards.
+- **And it explains the collection history rather than apologising for it.** Trip logging started   LATER than fuel logging (Kim's ruling, 2026-08-17). Of course it did: **the car's question was   the obvious one to ask first. The human question is the one the driving itself taught him to ask.**
+
+**First evidence that the human axis is measuring something real:** across 69 legs, median gross speed separates by ROAD, not by car -- 2011 interstate **47.6 mph**, 2014 mixed **39.7**, 2013 Dalton Highway **30.9**, 2016 US-101 coastal **28.3**. The car was the same car throughout.
+
+## ★★ THE SCAN SWEEP -- ALL 15 SCANS NOW READ (2026-08-19)
+
+Eighteen pages across seven files, read to the transcribe-once rule: every column, not just distance.
+
+**Trip legs 69 -> 107** (101 with usable times). New trip logs: 2012 Frostburg (18 legs), 2012 May Arizona (7), 2015 Sedona (3), 2017 January (3), 2011 N. California Roadtrip (6, reconstructed), 2013-4 LA Expedition (1).
+**Fuel rows with a TIME AND TEMPERATURE stamped on the fill: 0 -> 95** (32% of the log), 38-102 degF.
+
+### ★ The 2011 St. Louis file was a pure duplicate -- and that is the finding
+
+`2011_TwoRed_fuel_and_trip_log_STL.pdf` and `..._travel_and_fuel_log_June.pdf` differ by md5 and are the SAME four pages rescanned. **Zero new legs.** But those pages carry Time and Temp columns in the FUEL table that were never taken, because the first pass went looking for distance. **The re-open cost a full pass and returned 23 fuel-row temperatures.** This is the transcribe-once rule proved on the first file it was applied to.
+
+### ★★★ THE WHEEL CHANGE IS DATED. It is written in the margin: NEW WHEELS @ 13510 miles
+
+So the before/after cut is no longer an assumption. **The wheels went on 179 miles before the 2011 St. Louis departure**, which puts the narrow-tire group at exactly 2010-07-23 to 2011-05-11 -- the first crossing plus local driving, precisely matching Kim's account.
+
+**And the estimate is still not significant, in either direction.** Raw +1.7%; +leg length +3.6%; +leg length and odometer trend +1.6%; **local window +/-12,000 miles -1.8% [-6.6%, +3.0%]**; with temperature also controlled -1.5% [-8.9%, +5.9%]. **The sign FLIPS with specification. That is what an underpowered comparison looks like, and it is the honest headline** -- not any single one of those numbers.
+
+### ★★ TEMPERATURE IS NOT NULL -- THE EARLIER TEST USED THE WRONG INSTRUMENT
+
+MPG is computed PER FILL. A temperature stamped on the fill belongs to that quantity; a temperature at a leg endpoint belongs to a different unit of analysis. Once the fill-stamped temperatures existed, a signal appeared:
+
+| specification | MPG per degF | 95% CI | p |
+|---|---|---|---|
+| temperature only | -0.084 | -0.159, -0.009 | 0.028 |
+| + leg length | -0.068 | -0.135, -0.002 | 0.045 |
+| + leg length + odometer | -0.078 | -0.147, -0.009 | 0.027 |
+| + leg length + era fixed effects | -0.069 | -0.138, +0.001 | 0.053 |
+
+Fills at 80 degF and above average **36.76 MPG** against **38.87** below it -- a **2.1 MPG, 5.4%** gap on n=94.
+
+**State it as a signal, not a settled result.** p sits ON the 0.05 boundary and crosses it under era fixed effects. The sign is counterintuitive (warm air is thinner, and should help), so the likely mechanism is **air-conditioning load on a 1.0-litre engine** -- but that mechanism is INFERRED, not measured, and nothing in the data distinguishes it from hot-weather routes being different routes. **I over-claimed on the wheels once already; this one gets the same discipline.**
+
+### ★★ THE SLASHED ZERO GENERATED THREE MORE CORRECTIONS, AND THE CONTROL HELD
+
+Systematic test over the **44 rows that fail the pump identity**: does a single-digit substitution in the COST make the row balance exactly?
+
+| substitution | mechanism | rows fixed |
+|---|---|---|
+| **8 -> 0** | **permitted** (a slashed 0 reads as an 8) | **4** |
+| 0 -> 8 | forbidden (an 8 does not read as a 0) | 1 -- and it is Deming, already flagged wrong-direction |
+| 3/5, 5/3, 1/7, 7/1, 6/0, 9/4 | none | **0 of 6** |
+
+New: **L59** San Marcos 2010-11-29 19.28 -> 19.20 (**the first fill in the entire record already carries the signature**); **L60** San Marcos 2011-06-23 32.48 -> 32.40, **the SAME ROW as L01**, where a 3.000/3.999 slip was already proven -- two slips in one row, exactly the queue-pressure mechanism Kim described; **L61** Champaign 2012-05-31 29.68 -> 29.60. All three HYPOTHESIS tier: **the scan is not evidence for this class**, because the scan is where the illusion lives. Confirm from AMEX.
+
+### Gross speed separates by ROAD, across 107 legs
+
+2011 St. Louis (interstate) **47.6** | 2012 Frostburg **43.5** | 2017 January 41.2 | 2011 N. California 40.6 | 2014 Penultimate State 39.7 | 2015 Sedona 39.0 | 2012 May Arizona 36.9 | 2013-4 LA 34.6 | 2013 Arctic (Dalton) **30.9** | 2016 fall-winter (US-101 coastal) **28.3**. Same car throughout.
+
+**Longest days found:** 6/14/2012 Billings -> Pocatello **448 mi in 6.85 h, 65.4 mph gross**; 5/31/2012 St Louis -> Columbus **517 mi**; 1/6/2017 Brookings -> Paso Robles **562 mi**; 7/7/2015 Carlsbad -> Sedona **575 mi**, departing **04:05**.
+
 ## Intended analysis
 
 _Kim, 2026-08-12._ Statistics with graphics, on:
@@ -419,90 +465,13 @@ T9 4, after-delivery 2, plus one staging shot at Torrance 2024-10-05, two days b
 **T2 (LA->Madison, Oct 2021) is the blank** -- the solo run Kim describes as pushing his daily
 limits. **NOT an absence claim:** the photos may be elsewhere or may never have been taken.
 
-### ★★ THE YUKON RIVER CAMP STORY -- and why the claim is stronger than an anecdote (Kim, 2026-08-18)
+### Two narrative set-pieces moved to the log 2026-08-19
 
-**August 17-18, 2013, Dalton Highway.** While Kim was filling the car at Yukon River Camp, the woman
-running the small concession in the parking area ran over, excited: **they had never seen a car like
-it before.** Kim reads this as confirmation that TwoRed was **the first Smart car to make the Arctic
-Circle run.** On the way back the weather turned, and **the highway closed shortly after they were
-off it.**
+**THE YUKON RIVER CAMP STORY** and **THE ALPINE STORY** now live verbatim in `logs/proj_Smart_Car_log.md` under ARCHIVE, together with the superseded scan-coverage table. Both are for the Expeditions chapter and neither is working state. Moved to hold the 45 KB budget.
 
-**★ THE INFERENCE IS UNUSUALLY WELL-SUPPORTED FOR A TRAVELLER'S ANECDOTE, AND THE FUEL DATA IS WHY.**
-Yukon River Camp is **the only fuel between Fairbanks and Coldfoot** -- which is exactly why the log
-shows Kim buying there **twice, northbound (ODO 36,852) and southbound (37,114)**. Anyone driving the
-Dalton must stop there. **So the observation post is a CHOKE POINT, and a negative observation at a
-choke point is worth far more than the same observation anywhere else** -- she was positioned to have
-seen every vehicle that made the run. It remains testimony rather than proof, and should be written
-as *the only fuel stop on the road had never seen one*, which is both defensible and stronger-sounding
-than a bare claim of primacy.
+## What the data ACTUALLY contains -- moved to the log 2026-08-19
 
-**★★ AND IT IS THE SECOND INSTANCE OF THE SAME UNDERLYING FACT.** In Alpine, Texas a stranger walked
-over because he mistook the Smart for **a specific friend's car**. At Yukon River Camp a stranger ran
-over because she had **never seen one at all**. Same cause -- the car was rare -- producing opposite
-reactions according to where it was parked. **Two independent strangers approaching the car in two
-years is a PATTERN, not a pair of anecdotes**, and it is evidence for the document's thesis that no
-fuel statistic can supply: the vehicle was conspicuous in exactly the places the urban-commuter
-assumption says it should never have been.
-
-**Margin of safety, from the data:** the Coldfoot round trip was **550 miles over two days** in a car
-with roughly a 330-mile range, refuelling at the single station in both directions, and the road shut
-behind them. Kim: *there were more adventures.*
-
-### ★★ THE ALPINE STORY -- for the Expeditions chapter (Kim, 2026-08-18)
-
-**February 2012.** Kim had met a faculty member from the university in Alpine, Texas while in Fort
-Worth, and drove out to visit him -- a **408-mile straight-line detour** into Big Bend country. The
-campus looked deserted. Casting about for the right building, he saw a single person walking toward
-the parking lot where he had stopped. The man came over to the car. **He was the very person Kim
-had driven there to see -- and he had walked over because he mistook the Smart for a friend's car.**
-Two coincidences in one empty car park.
-
-**★ Why it belongs in a document about the CAR and not just the trip:** the coincidence is only
-possible because a Smart in Alpine, Texas in 2012 was distinctive enough that a passer-by assumed it
-belonged to the one person he knew who drove one. **The car was legible as an individual.** That is
-a fact about what it was like to run this vehicle long-distance in that era, and no statistic in the
-fuel log carries it.
-
-**★ AND THE STORY DOES ANALYTICAL WORK.** It confirms the route, which turns the missing fill-up
-from a suspicion into a certainty: Ft Worth -> Alpine is 475 recorded miles against a ~331-mile tank
-range, so **a fill-up exists that was never written down** (errata L18). It also explains why the
-row is the messiest in the file -- **the log was written up at the end of a memorably disorienting
-day.** Kim's own reading: *that's enough to get me confused.*
-**This is the pattern worth repeating: the narrative and the data each explain a gap in the other.**
-
-**Photographs of the cars in interesting places** are a first-class element, not decoration.
-They are also the natural join to `Photo_Locations` and `timelinesr`: a geotagged photo and a
-geocoded fuel stop are the same kind of record, and the fuel log already supplies a route to
-hang them on.
-
-**ICE and EV are kept SEPARATE (Kim, 2026-08-12).** Statistics run across the three gas
-cars; Bordeaux is described qualitatively. **A $/mile axis spanning gasoline and electricity
-was considered and declined** — it would force a comparison the charging data may not
-support. Revisit only if kWh and charging-cost records turn up.
-
-## What the data ACTUALLY contains
-
-Read directly rather than taken from the charter, 2026-08-12. **Three of the charter's
-claims do not survive contact with the files, and one filename actively misleads.**
-
-| Asset | Charter said | What is actually there |
-|---|---|---|
-| `TwoRed_fuel_June_2014.xlsx`, sheet *Gas Log* | "nearly 300 fill-ups" | **293 fill-ups, and the range is 2010-07-23 to 2017-05-22** -- nearly three years past what the filename claims. **Rename deferred until Kim confirms.** |
-| same, odometer | "75,000 miles" | Tops out at 71,181 in the file. **RESOLVED 2026-08-12 by Kim: TwoRed is ~20 miles short of 75,000** -- the log stops before the car did. The charter was right; my open question rested on the spreadsheet alone. Kim is filling in the remaining miles. |
-| same, *State* column | "49 states and 10 provinces" | **52 distinct values.** California 96 fill-ups, then Arizona 24, Texas 21. Needs normalising before any count is claimed. |
-| same, sheet *Trip Log* | "precise daily driving intervals" | **7 rows.** This is a fragment, not a dataset. |
-| same, sheet *Canada2014* | not mentioned | **24 rows in litres and Canadian dollars.** A unit-normalisation job the charter did not anticipate. |
-| `2016_Fourth_Crossing_Analysis.xlsx` | "a highly refined subset" | **Accurate -- and it is TwoRED, not Creamsicle. RULED 2026-08-16 by odometer, against the tempting coincidence that 2016 is Creamsicle's model year:** the file opens at **58,214 in May 2016**, inside TwoRed's trajectory and five years before Creamsicle was bought at 30,290. Carries `am_temp` / `pm_temp` as well. 35 rows, with `time_zone`, `raw_hours`, `activity_time`, `corrected_hrs`, `miles_per_hour` already derived. The best-prepared asset in the set. |
-| `Smart_Car_master_dictionary.pdf` | expedition names and date ranges | Present, 2.0 MB. Not yet parsed. |
-
-**SUPERSEDED 2026-08-16 -- the sentence below was written when the on-disk sweep was the only
-search that had been run. Creamsicle and Two4Two/TwoFer both have machine-readable records; they
-are Google-native and therefore invisible to a filesystem sweep. Bordeaux remains uninventoried.**
-
-_Superseded:_ **The other three cars are now NAMED and DATED (see The fleet above), but only Two4Two has
-a machine-readable record** -- `leased_smart.txt`, one line. **Creamsicle is the important
-gap:** Kim has substantial cross-country data for it, and finding those files is what turns
-this from a one-car document into a two-spine one. Bordeaux is not yet inventoried.
+The 2026-08-12 intake audit (charter claims vs what the files hold: 293 fill-ups not "nearly 300", range to 2017-05-22 not June 2014, 52 State values not "49 states and 10 provinces") is verbatim in `logs/proj_Smart_Car_log.md`. Its conclusions are all carried forward above or in `deferred.md`.
 
 ## Statement of intentions
 
@@ -603,15 +572,9 @@ it was written for one car and one trip.** Redesign it before writing prose. Liv
 2x2 role split as the top-level frame, and the two long-distance cars as parallel spines rather
 than one primary plus supplements.
 
-## Chapter architecture (PROVISIONAL — inherited from the one-car charter)
-1. **Foreword** — origin (Paris to the US mainland) and the urban-myth thesis.
-2. **The Canvas** — the geocoded constellation of every recorded fuel stop.
-3. **The Expeditions** — fill-ups classified into trips via the master dictionary.
-4. **The 4th Crossing** — daily friction: temperature against mileage, true average speed.
-5. **The Extremes** — highest (Mount Evans), lowest (Death Valley), furthest.
-6. **The Fleet** — NEW, and the reframing's payload: four cars, sixteen years.
+## Chapter architecture -- SUPERSEDED, moved to the log 2026-08-19
 
-Old Chapter 5 (Arctic Circle embedded) is deleted; see intentions item 2.
+The one-car charter's chapter list is verbatim in `logs/proj_Smart_Car_log.md`. It is superseded, and the redesign is an open task in `deferred.md`. **Kim's TWO LOGS, TWO SUBJECTS frame above is the candidate replacement top-level structure.**
 
 ## Next Steps
 1. **✓ DONE 2026-08-16 -- the Creamsicle data is found.** See Current Status.
