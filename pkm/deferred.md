@@ -176,7 +176,7 @@ recoverable from if a file were overwritten rather than deleted.
 
 **Why this was not fixed unilaterally:** adding `pdf` to `SOURCE_EXT` sweeps **290 MB** of rendered figure output across the PKM into a **10.8 MB** mirror. The narrow alternative — *PDF counts as source only under a `data/`, `scans/` or `source/` path segment, never inside a derived or `_backup*` directory* — captures **23 files, 8.7 MB**, of which 6.6 MB is the Smart_Car scans. **Kim decides; this changes backup policy for every project.**
 
-**Until it is decided the scans exist in exactly one place: Google Drive.**
+**RISK MITIGATED 2026-08-19, decision still open.** Kim took a local copy of all the scanned PDFs to his own computer on being told. **That is a second physical copy, not a versioned backup** — it is not in the mirror, not committed, and will not track future scans. The policy question below is unchanged; only the urgency dropped.
 
 ### ✓✓ CREAMSICLE IS INGESTED, 2026-08-19 — the second spine exists
 
