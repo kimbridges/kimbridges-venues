@@ -1,0 +1,7 @@
+"date","start_time","start_temp_F","start_odo","start_city","end_time","end_temp_F","end_odo","end_city","miles_written","odo_miles","tz_shift_hr","raw_hours","elapsed_hours","gross_mph","source_page","note"
+"2017-02-01","10:30",,69705,"Mentone CA","16:00",,69813,"Long Beach CA",,108,0,5.5,5.5,19.6,2,"both temperature cells blank"
+"2017-02-02","08:48",56,69813,"Long Beach CA","17:48",62,70003,"Santa Maria CA",,190,0,9,9,21.1,2,""
+"2017-02-03","09:23",59,70003,"Santa Maria CA","14:47",61,70225,"S. San Francisco CA",,222,0,5.4,5.4,41.1,2,""
+"2017-02-04","09:04",57,70258,"S. San Francisco CA","16:12",55,70409,"Point Arena CA",,151,0,7.13,7.13,21.2,3,""
+"2017-02-06","08:57",51,70409,"Point Arena CA","16:24",48,70719,"Brookings OR",,310,0,7.45,7.45,41.6,3,""
+"2017-02-07","09:28",50,70726,"Brookings OR","14:15",41,70923,"Eugene OR",,197,0,4.78,4.78,41.2,3,"the car is left in Oregon again -- next fill is 2017-05-20 Eugene, three months later"

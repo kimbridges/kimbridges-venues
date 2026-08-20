@@ -1,5 +1,27 @@
 ## COLLECTED STORIES — Kim's accounts of the long days, verbatim (opened 2026-08-19)
 
+### THE TWO NEAR-MISSES — Kim, 2026-08-19
+
+> Driving in the Canadian Yukon. Virtually no traffic. Pretty good highways. When there is a pothole, someone has put a flag marker at the side of the road. An adequate warning if you're paying attention. Which I was. But there wasn't a flag at the car-sized pothole that I barely missed. That would have been a TwoRed ending event. Lucky I was paying a lot of attention.
+
+> The other "nearly destroyed the car" event was going into New Brunswick, Canada. A nice freeway. But at the place where the highway met a bridge, there was an abrupt level change (perhaps 4 inches). Wham! I wondered if the two front wheels had been seriously damaged. Fortunately, TwoRed survived. But it was a wakeup for Canadian highway driving. We were plagued by potholes. We often slowed to avoid damage. This meant also looking in the rear view mirror to make sure we wouldn't be hit from the rear. Those miles, which were mostly across the Canadian Plains, were very stressful.
+
+_Both legs are identified and both look completely ordinary in the data: the Yukon run is 2013-08-12 Haines AK -> Destruction Bay YT (221 mi, 38.1 mph) or the 08-13 return; the bridge is **2014-05-23 Lubec ME -> Moncton NB, 217 mi, 5.35 h, 40.6 mph** -- Lubec being the easternmost town in the United States. See `proj_Smart_Car.md` for what the test of the Canadian Plains claim actually found._
+
+### THE FAVOURITE DRIVES — asked 2026-08-19, unprompted by any number
+
+> People have wondered about my favorite drive. Of course, I love going through the mountains in the West. The drive through the Rockies is one of most beautiful anywhere. Going through the mountains down to the Oregon Coast is fantastic. In the East, I found it almost surreal to do a morning drive on the sweeping highway running through the West Virginia hills. Villages tucked into the valleys were covered with fog and smoke from chimneys rose toward the sky. I liked this so much, I drove it twice. The Dalton Highway, going where cars weren't intended, was a very memorable experience.
+
+### THE DALTON, AND THE STEEP SECTION
+
+> There was a bit of drama on that road as the car slid forward on the gravel roadbed as we were going down a very steep section. Would we be able to go back up this incline? We were.
+
+### STUCK ON TRIBAL LAND, ARIZONA
+
+> I did get stuck once. I was following Google Maps and crossing tribal lands in Arizona. This was on the route between Phoenix and Monument Valley. I was on a dirt road and making a right turn. I was too close to the edge and got stuck in powdery soil. Completely stuck. In the middle of nowhere. Fortunately, after a long wait, a truck with two men came by. They gave me a much needed push and TwoRed was free. The rest of the drive, until paved roads returned, was very stressful. These dirt roads were also very rough. Memo to self: stay on the main roads.
+
+
+
 _Chapter source material. Each was checked against the log; the corroboration is summarised in `proj_Smart_Car.md` under THE LONG DAYS. Six of eight collected._
 
 ### 2012-05-31 — St Louis MO -> Columbus OH, 518 mi. THE NAVIGATION ERROR.
@@ -8,7 +30,9 @@ _Chapter source material. Each was checked against the log; the corroboration is
 
 ### 2011-06-26 — Flagstaff -> Holbrook AZ, 100 mi, out at 04:30. THE NEPHEW.
 
-> I was meeting my nephew at Holbrook. He was then a naturalist at Petroglyphs NP and I wanted a tour of the place that day. The early start gave me the hours I needed.
+> I was meeting my nephew at Holbrook. He was then a naturalist at Petrified Forest NP and I wanted a tour of the place that day. The early start gave me the hours I needed.
+
+_Kim corrected this himself on 2026-08-19: he first said "Petroglyphs NP" and the park is **Petrified Forest NP**. Recorded because the data had already pointed the same way -- 70 miles of local driving at Holbrook matches the Petrified Forest park road, and Petroglyph National Monument is in Albuquerque, 300 miles east. The instruments agreed before he did._
 
 ### 2012-06-14 — Billings MT -> Pocatello ID, 449 mi at 65.5 mph gross. THE FASTEST DAY.
 
@@ -21,6 +45,16 @@ _Chapter source material. Each was checked against the log; the corroboration is
 ### 2017-01-05/06/07 — Eugene -> Brookings -> Paso Robles -> Vista, 562 mi on the middle day. HIS MOTHER.
 
 > I was keeping TwoRed at a friend's house in Eugene. I got the word that my mother, who had just turned 104 years old, was having problems. I took the next flight to the mainland and got to Eugene mid-day and picked up the car. I drove to Brookings, as far as I could on little sleep (I'd taken the red-eye from Honolulu). The next day, I continued south with the intention of stopping in Santa Rosa. But on my arrival there, the rain was very heavy and it looked like there would be flooding. I had to get to SoCal, so I decided to push on. The logic was to get as far south as possible for a one-day drive from where I'd be stopping would get me to San Marcos. I envisioned stopping in San Luis Obispo, but driving at night in rainy weather was very tiring and I had to quit a little short of my destination. It was OK, as I got to San Marcos the next day and was able to spend some time with my mother before she passed.
+
+### 2014-05-05 — El Paso TX -> San Antonio TX, 531 mi. THE FLORIDA RUN.
+
+> This was the trip where I wanted to finish the goal of driving in all 49 mainland states. One that remained was Florida. That became my goal at the start of the trip. That meant a southern route across the US. I'd previously driven across Texas near the middle (Ft. Worth and Dallas). This time, I'd take the route to the south by going through San Antonio and Houston. I was concerned with getting to Florida as soon as possible as I had a meeting to attend in Cherokee, NC. There weren't many interesting places along the route between El Paso and San Antonio and I was motivated to drive as far as possible. It was a long day.
+
+> **[Florida, told 2026-08-19]** I got to Florida. I aimed at the panhandle. I drove just barely (a few miles) into what I thought was Florida. I stopped at a neighborhood intersection and got the attention of another driver. "Is this Florida?" "Yes." That's all I needed. Back in the car and I was out of the state as quickly as I had entered. Next goal: The Tail of the Dragon. That was on the way to my meeting and it was a not-to-be-missed drive.
+
+### 2013-08-31 — Bellingham WA -> Grants Pass OR, 488 mi. NANCY AT THE DOCK.
+
+> The Bellingham to Grants Pass, OR happened because Nancy decided to surprise me. She took a red-eye flight from Honolulu to Seattle and then boarded the train to Bellingham. She timed this to meet me at the dock when I arrived on the ferry from Alaska. When we met up, it was early afternoon. She told me we had reservations at Grants Pass. I reminded her that this was a long way away! That was OK with her as she had another long drive planned for the next day. We'd go all the way to San Francisco so she could fly home. Yikes! Two big driving days. So off we went. I remember the drive as being particularly enjoyable.
 
 ### 2012-05-24 — Lake San Marcos CA -> St George UT, 492 mi in 15.6 h. THE LAS VEGAS BREAK.
 
@@ -454,5 +488,357 @@ On being shown the four longest days, his reply was immediate: *I remember why I
 **★ The 575-mile day is the leading candidate for the navigation error** -- its routing is the one that cannot be explained by the map. Do not assert that; ask him.
 
 **And a methodological note worth keeping.** The 100-miles-off-course day is a case where the odometer is RIGHT and the route is wrong. Every geographic test in the audit toolkit assumes road distance >= straight line; a navigation error inflates the ratio without any error in the data. **A high GMaps/SL ratio is not always a defect. Sometimes it is a story.**
+
+
+
+## FLORIDA AND THE DRAGON — moved from proj 2026-08-19 (summary kept there; rules in Finding 036)
+
+### ★★★ FLORIDA — I CONCLUDED HE NEVER GOT THERE. HE DID, AND THE RECORD CANNOT SHOW IT
+
+**My inference, 2026-08-19: Florida appears in no fuel stop of 294 and no leg endpoint of 107, therefore TwoRed never reached it. WRONG.** Kim's account:
+
+> I aimed at the panhandle. I drove just barely (a few miles) into what I thought was Florida. I stopped at a neighborhood intersection and got the attention of another driver. "Is this Florida?" "Yes." That's all I needed. Back in the car and I was out of the state as quickly as I had entered.
+
+**★★★ THE GENERAL LESSON, and it is the most important methodological point in the project.** **A RECORD'S RESOLUTION SETS THE FLOOR ON WHAT ITS SILENCES CAN MEAN.** This log resolves to two events: BUYING FUEL and ENDING A DAY. Kim did neither in Florida, deliberately -- the whole point was to touch the state and leave. **So the visit is not faintly recorded, it is UNRECORDABLE, and no amount of care with the data would have found it.** The card's ABSENCE CLAIMS rule says never assert something is missing without proving it; I proved only that no FILL-UP and no OVERNIGHT happened there, and then asserted something about a JOURNEY.
+
+**And the geographic test confirms it is beyond reach.** The dip hangs off the New Orleans -> Atmore stretch: **Atmore, Alabama is about 12 road miles from the Florida line at Century**, and it is a fuel stop on exactly the right day. Road-to-straight-line for that stretch is **1.23 against a trip median of 1.22 (IQR 1.11-1.39)**. **A ~25-mile out-and-back on 210 miles is indistinguishable from ordinary routing.** The instrument has a floor and this sits under it.
+
+**So the trip DID complete the 49 mainland states**, and the name *Penultimate State* must mean something else -- ask him. **The chapter beat is better than the one I invented:** not a goal lost to a calendar, but **a state claimed in a few minutes at a neighbourhood intersection, on the word of a stranger.** The cheapest possible acquisition of the hardest remaining item. And the record he kept so carefully for sixteen years has no idea it happened.
+
+### ★★ THE TAIL OF THE DRAGON — and a second piece of my reasoning that was wrong
+
+Kim, next goal after Florida: *The Tail of the Dragon. That was on the way to my meeting and it was a not-to-be-missed drive.* US-129 at Deals Gap on the NC/TN line.
+
+**I had argued the Montgomery -> Cherokee leg had no room for a detour: 407 logged against ~400 direct. That reasoning was worthless, because the route was never the direct one.** The fuel stops give the waypoints: **Montgomery 43,159 -> Trussville AL (Birmingham) 43,266 -> Madisonville TN 43,462 -> Cherokee 43,566.** Madisonville is in EAST TENNESSEE. The leg went north through Birmingham, Chattanooga and Knoxville -- **which is how you get to Deals Gap** -- and not east through Atlanta at all.
+
+**The last stretch settles it: Madisonville -> Cherokee is 104 odometer miles.** Direct is about 75. Via US-129 over the Dragon and down through Robbinsville is about 105-115. **The Dragon is in the odometer.**
+
+**★★ RULE: A MATCHING TOTAL DOES NOT MEAN A MATCHING ROUTE.** Two quite different paths totalled within seven miles of each other and I read the agreement as proof. **Check the intermediate fuel stops before inferring anything about a route from its endpoints** -- they are the only waypoints this record has.
+
+
+
+## ★★ THE CORRECTED DATASET EXISTS (2026-08-18)
+
+**`twored_ingest.R`** (in `Projects\Smart_Car`) reads the UNTOUCHED xlsx plus a machine-readable
+corrections table and emits **`data/TwoRed_fuel_clean.csv`** -- 294 rows, 16 columns, provenance on
+every change. Nothing is edited in place; re-running reproduces it from the sources.
+
+| Test | before | after | with hypotheses |
+|---|---|---|---|
+| pump identity fails | 15 | **5** | **2** |
+| MPG > 60 (non-partial) | 5 | **0** | 0 |
+| MPG < 22 (non-partial) | 1 | **0** | 0 |
+
+**Three things the build forced that the errata could not express:** a **ROW INSERT** (the merged
+Big Spring/Alpine row -- a whole fill-up was missing, not a wrong field); **EXPLICIT FLAGS** (Woody
+Point is 3.74 gal, just over an arbitrary 3.5 threshold, so partial fills now come from the errata
+rather than a cutoff); and **A GUARD THAT REFUSES** -- every correction must find the value it claims
+to replace. It refused a date correction because the sheet stores Excel serials, and it caught two of
+my odometer keys pointing at the wrong rows. **Finding 032 is written into the code:** the script
+asserts rows may be ADDED but never silently lost, and prints the count.
+
+**The two survivors are honest ones:** Deming (arithmetic wants 20.85 but the slashed-zero DIRECTION
+is wrong, so it is flagged not applied) and Haines Junction -- **not a typo but a UNITS design flaw
+my own L32 fix created**: a USD cost against a CAD-derived price. That row needs a CURRENCY column.
+
+
+
+## ★★ THE CARD COVERS THE FLEET; THE LOG COVERS ONE CAR (2026-08-18)
+
+Kim's **AMEX fuel summary for 2015** -- 16 charges. **Eight match the TwoRed log to the cent.
+Eight do not, and those eight are the OTHER CARS.** Seven are Hawai`i (six Costco Honolulu, one
+Tesoro Hilo); one is a 7-Eleven in **Orlando, Florida**, where TwoRed never was -- almost certainly
+a rental. **Every mainland-west charge matches. The card is a FLEET-level record and the fuel log is
+a SINGLE-CAR record, and the difference between them is itself data.**
+
+### ★★ The scope boundary appears a FOURTH time -- and this time an outside source proves it
+
+**AMEX 01/10/2015 COSTCO HONOLULU $19.74 matches TwoFer's final logged fill EXACTLY** (1/10/2015,
+9:19 AM, Costco, ODO 1,209, 6.93 gal, $19.74). **And then the card keeps going where the log stops:**
+six further Hawai`i fuel charges from February to October 2015.
+
+At TwoFer's own logged averages (6.675 gal/fill, 31.3 MPG) those six fills are **roughly 1,254 miles
+-- against the 1,209 the log records. The log captures about HALF of 2015 use.** *(ESTIMATE ONLY: the
+card gives a count of charges, not gallons or odometers. Do not print this as a measurement.)*
+
+**Why it matters.** The fractal-scope section already showed the same rule at fleet, car and trip
+level, inferred each time from the record's own shape. **This is the first time an INDEPENDENT source
+has confirmed it**: the log stopping is demonstrably not the car stopping. It is the exact pattern of
+TwoRed's 71,181 against ~75,000, now visible in a second car and a second document.
+**And it does not complicate the 2x2 role split -- it strengthens it.** Every one of those unlogged
+fills is in Honolulu or Hilo. **TwoFer stayed a short-haul car even in the miles nobody wrote down.**
+
+
+
+## ★★★ THE FAVOURITE DRIVES — and what the odometer says about them (2026-08-19)
+
+Kim's own list, offered unprompted by any number. **Verbatim in `logs/proj_Smart_Car_log.md`.** The Rockies; the mountains down to the Oregon coast; **a morning on the sweeping highway through the West Virginia hills, villages fogged in the valleys and chimney smoke rising** -- *I liked this so much, I drove it twice*; and the Dalton, *going where cars weren't intended*.
+
+**★ West Virginia twice is in the record, and the second pass is SLOWER.** Morgantown WV is a fill on **2012-06-01 at 12:33 (66 degF)** outbound to Frostburg, and again on **2012-06-08 at 08:58 (60 degF)** on the way back. **The morning pass is the one he describes**, and its leg runs **33.9 mph gross against 45.5 outbound**, over a slightly longer distance. **A drive being savoured shows up as slowness.** Gross speed cannot tell pleasure from a traffic jam -- but paired with the account it reads cleanly, and that pairing is the whole method.
+
+**★★ The Dalton return is the slowest long day in the record: 298 mi in 13.2 h, 22.6 mph**, out at 07:52 into **38 degF**, in at 21:03; outbound the day before was 28.6. **Gravel is worth six miles an hour.**
+
+**★★★ AND THERE ARE 46 MILES ON THAT ROAD THAT NOBODY HAS EXPLAINED.** Ester -> Coldfoot is **252** odometer miles; Coldfoot -> Ester the next day is **298**. Same road, 46 miles more coming back. Kim's drama -- *the car slid forward on the gravel roadbed going down a very steep section; would we be able to go back up? We were* -- belongs NORTH of Coldfoot, where the Dalton climbs to Atigun Pass. **23 miles up and back is 46.** **ASK HIM: did you push north of Coldfoot on the morning of 18 August before turning round?** If so the odometer holds the drama and nothing else in the record mentions it.
+
+**★★ THE STUCK-IN-ARIZONA CORRIDOR IS IDENTIFIED, AND THE EPISODE IS INVISIBLE.** *Following Google Maps across tribal lands, a dirt road, a right turn too close to the edge, powdery soil, completely stuck, then a truck with two men gave me a push.* **Route: 2016-05-27/28, Winslow AZ 58,746 -> Monticello UT 59,013 -- 267 odometer miles north through the Navajo Nation, the road past Monument Valley.** Phoenix sits on the leg before (Blythe -> Winslow, 331 mi). **This is the Fourth Crossing, the one stretch with NO trip-log sheet**, so there is no departure time, no arrival time, no note. **Finding 036 again: the unit of observation is the fill-up, and hours stuck in powdery soil do not generate one.**
+
+**★ One flag, not a claim.** The 2016 fills at Winslow, Gypsum and Big Springs read **52.2, 50.2 and 56.0 MPG** -- three consecutive values in the top 3%, in exactly the stretch rebuilt from pump receipts. Long legs do raise economy (+4.61 MPG per 100 mi) and 15 full fills exceed 48 MPG across sixteen years, so this is **not** evidence on its own. **But Kim placing Phoenix on the 331-mile Blythe -> Winslow leg is an independent reason to look for an unrecorded fill there.** Re-check against the AMEX before the Fourth Crossing is written up.
+
+**★★ And a note for the toolkit.** *Memo to self: stay on the main roads.* **Following a routing app onto unpaved tribal roads produces exactly the signature the geographic test hunts** -- excess road miles over the straight line, plus low economy from rough surface. **It is not an error. It is a wrong turn a machine recommended.** Third case now where a high ratio wants a story rather than an errata entry.
+
+
+
+## ★★ FIRST ANALYSIS ON CLEAN DATA -- SIX RESULTS (2026-08-18)
+
+**1. THE URBAN-COMMUTER CLAIM IS REFUTED, AND THE NUMBER SURVIVES THE OBVIOUS OBJECTION.**
+**Median distance between fill-ups: 251 miles**; 5th percentile 159; **87% of logged miles in legs
+of 200+.** The objection -- *he only logged long trips* -- fails on arithmetic: the log spans **71,177
+miles of a car that reached ~75,000, so ~95% of the odometer is in the sample.** It is not a
+subsample, it is nearly the population.
+
+**2. AN INDEPENDENT CHECK AGREES.** Lifetime **39.44 MPG**, at the HIGHWAY end of the 2010 Fortwo's
+own 33/41 EPA range -- what a car averaging 251 miles between stops should show, and not a commuter.
+
+**3. LEG LENGTH DOMINATES ECONOMY: +4.61 MPG per 100 extra miles between fills** (p<0.0001).
+The city-vs-highway penalty, measured from Kim's own tank rather than quoted from a manufacturer.
+
+**4. THE CAR DID NOT DEGRADE.** Controlling for route mix, MPG **ROSE +0.30 per 10,000 miles**
+(p=0.030) -- about **+2 MPG across its life.** Not the expected direction over 71,000 miles.
+
+**5. FUEL COST.** $6,663 total, **$0.0936 per mile lifetime**, yearly range $0.069-$0.108. Price paid
+peaked 4.199 (2013), bottomed 2.769 (2017) -- a 34% fall tracking the real 2014-15 collapse.
+
+**6. NO TEMPERATURE EFFECT DETECTED -- and the reason is actionable.** +0.20 MPG per 10F, p=0.75,
+n=58, over a range of only **38-94F**. The large cold-weather penalty lives near freezing.
+**The data to test it is on the paper and was never transcribed** (see deferred.md).
+
+
+
+## ★ THE ERRATA ARCHITECTURE, AND THE RULE THAT DRIVES IT (2026-08-17)
+
+**Nothing is ever overwritten. Corrections live beside the sources and are applied as a DERIVED
+LAYER at read time.** Three files in `data/`:
+
+| File | Holds |
+|---|---|
+| `TwoRed_log_errata.csv` | 11 corrections to the FUEL LOG, each with basis, evidence and status |
+| `TwoRed_gazetteer_errata.csv` | 4 corrections to the COORDINATES -- a different artefact, different fixes |
+| `TwoRed_leg_distances.csv` | all 292 legs with `distance_basis` (measured / disputed / unresolved) and `distance_source` |
+
+**★ THE ADJUDICATION RULE, and it came from Kim's own GMaps checks: A ROAD DISTANCE CAN NEVER BE
+SHORTER THAN THE STRAIGHT LINE. So when GMaps comes in BELOW the great-circle, the COORDINATE (or
+the city name behind it) is wrong -- not the odometer.** That one test says which END to fix, and
+it is automatable. Applied to Kim's four checks, ratios of 0.61 / 0.75 / 0.69 -- all physically
+impossible -- became **1.21 / 1.08 / 1.18** once the real towns were used. **In three of four cases
+the odometer had been right all along.**
+
+**★ THE LINE THAT MUST NOT BE CROSSED: reconstruct DISTANCES, never ODOMETER READINGS.** A distance
+is an estimate and can be labelled one. An odometer value is a claim about what the car said, and
+inventing one propagates a false measurement into the MPG of the fills on either side. Where the
+reading was never written (Waynesburg PA, 2010-11-07) the odometer stays **blank** and the distance
+carries GMaps 227 as `reconstructed`. Kim, 2026-08-17: *documenting the procedure rather than
+inventing data.*
+
+**GMaps is a DATED INSTRUMENT** -- recorded as `gmaps_2026`, because 2026 roads are not 2010 roads.
+Same discipline as the temperature and trip-log-onset rulings.
+
+**Impossible legs 15 -> 10 after corrections; 4 of those are the ferries, so 6 are genuinely open.**
+Big Spring TX improved from ratio 0.37 to 0.83 -- still impossible, so it has graduated from
+geocoding artefact to real odometer suspect.
+
+**★ THE DEFENSIBLE HEADLINE, reproducible from the file rather than asserted:**
+**69,689 miles across 285 measured legs. 1,488 miles (2.1%) sit in disputed legs and are excluded.
+97.9% of the logged distance rests on undisputed odometer readings.** This tightens as scans arrive.
+
+
+
+## ★★ THE AUDIT TOOLKIT -- FIVE INSTRUMENTS, NONE REDUNDANT (2026-08-18)
+
+| # | Test | Catches | Blind to |
+|---|---|---|---|
+| 1 | **pump identity** `gallons x price = cost` | typed digits in the money/volume fields | anything self-consistent -- including a MERGED row |
+| 2 | **economy** implied MPG between fills | missing rows, partial fills | rows that balance |
+| 3 | **geography** straight line vs odometer | wrong city/state, mis-geocodes, odometer digits | errors that stay on the route |
+| 4 | **contiguity** repeated values in neighbouring rows | spreadsheet FILL-DRAG (correlated, not independent) | isolated typos |
+| 5 | **price family / same pump** | prices out of regional, seasonal or per-seller family | volumes and odometers |
+
+**Every major error found on 2026-08-18 was caught by exactly ONE of these, and several needed TWO
+to be pinned down.** The decisive combination proved to be **contiguity + arithmetic**: when two
+adjacent rows share a value, **the row that BALANCES is the source and the row that FAILS is the copy.**
+Neither reaches that alone -- contiguity cannot tell contamination from coincidence, and arithmetic
+cannot say where a bad value came from.
+
+**★ A SIXTH INSTRUMENT, WHICH IS KIM'S HANDWRITING.** Four typos across 2011-2015 shared one shape:
+a ZERO recorded as an EIGHT. Kim named the cause -- **he writes slashed zeros**, and a slashed 0 scans
+as an 8. Run as a search generator it found two further candidates from residuals previously dismissed
+as rounding; **then the mechanism REJECTED one of them**, because the error is DIRECTIONAL. Control:
+0<->8 scored 2 hits in 15 substitutions; 1<->7 scored 0 in 19; 3<->5 scored 0 in 20. **Finding 033.**
+
+**⚠ ITS LIMIT: for the 0/8 class, SCANS ARE NOT EVIDENCE.** Coarse Gold appears to read 7.385; a
+7.305 written with a slashed zero looks identical. **The scan is where the illusion lives**, so only
+arithmetic, a card or a receipt can adjudicate. Recorded because it would have been easy to 'confirm'
+the wrong value by looking harder.
+
+
+
+## ★ THE SCOPE BOUNDARY IS FRACTAL (2026-08-17)
+
+The same rule operates at three levels of the data, and at every level the excluded thing is the
+same: **city driving.**
+
+| Level | Logged | Not logged |
+|---|---|---|
+| **Fleet** | TwoRed, Creamsicle | Two4Two/TwoFer, Bordeaux -- the Honolulu cars |
+| **Car** | TwoRed while it was doing long trips | the Honolulu years; `TwoRed_fuel_June_2014` IS the last log |
+| **Trip** | 15 legs, 4,635 mi (2011 St. Louis Trip) | **465 mi, 9%** -- local driving in St Louis, Moab, Fort Worth |
+
+Kim, 2026-08-17: *we're laser focused on the long drives, not the city stuff.*
+
+**★ CONSEQUENCE, AND IT IS A RULE FOR THE ANALYSIS: these gaps are DEFINITIONAL, NOT MISSING DATA.**
+Never impute them, never fill them, never caveat them as incompleteness. **The dataset's absences
+encode the thesis** -- a record that omits city miles is the artefact of a person who considered
+only long-distance driving worth recording, which is precisely what the document argues a Smart
+was used for. A completeness check that flags these has misunderstood the project.
+
+
+
+## ★ THE FLEET SPLITS 2x2 -- BY DISTANCE ROLE, NOT POWERTRAIN (Kim, 2026-08-16)
+
+**This supersedes the 2026-08-12 axis of "three ICE + one electric".** The organising split is
+what each car was FOR:
+
+| Role | Cars |
+|---|---|
+| **Long-distance** -- the document's subject | **TwoRed**, **Creamsicle** |
+| **Honolulu short-haul** -- deliberately minor | **Two4Two / TwoFer**, **Bordeaux** (electric) |
+
+**Why this is better than the powertrain axis:** it cuts across it (one Honolulu car is ICE, the
+other electric) and it matches how the data was actually GENERATED -- Kim logged fuel while a car
+was doing long trips and stopped when it wasn't.
+
+**★ It also makes the thesis more honest, and therefore stronger.** "A Smart is not an urban
+commuter" was never quite true -- **two of the four were exactly that.** The defensible claim is
+that the SAME owner ran the SAME marque both ways for sixteen years, and only the long-distance
+half was worth logging. **The Honolulu pair is not filler; it is the control that makes the
+contrast measurable instead of asserted.**
+
+
+
+## ★ THE CHAPTER ARCHITECTURE IS NOW THE WEAKEST PART (2026-08-16)
+
+Stated plainly so a future session does not inherit it by default. The project now has a
+quantitative spine on two cars, a drafted narrative on one, a photo layer that joins to both, and
+a defined minor role for the Honolulu pair. **The architecture below has none of that in view --
+it was written for one car and one trip.** Redesign it before writing prose. Live candidates: the
+2x2 role split as the top-level frame, and the two long-distance cars as parallel spines rather
+than one primary plus supplements.
+
+
+
+## ★★ THE SCAN SWEEP, 2026-08-18 — full write-up in the log; the four results kept here
+
+All 15 scans read: 18 pages, 7 files, every column. **Trip legs 69 -> 107** (101 with usable times); **fuel rows with a time and temperature stamped ON THE FILL 0 -> 95** (32%). The 2011 St. Louis file was a pure duplicate -- zero new legs -- but re-opening it returned 23 fuel-row temperatures the first pass had walked past. **Detail in `logs/proj_Smart_Car_log.md`.** What must not be lost:
+
+**1. The wheel change is DATED: `NEW WHEELS @ 13510 miles`, Kim's margin, 179 mi before the 2011 departure.** So the narrow-tire group is exactly 2010-07-23 to 2011-05-11. **The estimate FLIPS SIGN with specification** -- raw +1.7%, +leg length +3.6%, +odometer trend +1.6%, local +/-12,000 mi -1.8%, +temperature -1.5%. **That is the finding. Not any one of those numbers.** The CONDITIONAL in `deferred.md` governs.
+
+**2. Temperature is not null once measured ON THE FILL** (the earlier test used leg endpoints, the wrong unit). n=94: **-0.068 MPG/degF, p=0.045**, stable -0.068 to -0.084 across four specifications; fills at 80 degF+ average **36.76** against **38.87**. **A SIGNAL, NOT A FINDING** -- p crosses 0.05 under era fixed effects, and the counterintuitive sign points at A/C load, which is inferred and not measured.
+
+**3. The slashed zero produced three more corrections and the control held.** Over the 44 rows failing the pump identity, a single-digit substitution in the cost: **permitted 8->0 fixes 4; forbidden 0->8 fixes 1** (Deming, already flagged wrong-direction); **six control substitutions fix 0.** New L59-L61; errata at 61.
+
+**4. Gross speed separates by ROAD, across 107 legs.** 2011 interstate **47.6** | 2012 Frostburg 43.5 | 2017 January 41.2 | 2011 N. California 40.6 | 2014 Penultimate State 39.7 | 2015 Sedona 39.0 | 2012 May Arizona 36.9 | 2013-4 LA 34.6 | 2013 Dalton Highway **30.9** | 2016 US-101 coastal **28.3**. Same car throughout. **And see THE LONG DAYS above: the tails are set by lodging geography and ferry timetables, not by the road alone.**
+
+
+
+## ★★★ THE FOURTH CROSSING LOG IS FOUND — 9 pages, 25 legs, and the reconstruction was RIGHT (2026-08-19)
+
+Kim scanned `2016_Fourth_Crossing_Log.pdf` the same afternoon he was asked for it. **It is the trip we had rebuilt from AMEX statements and pump receipts because the paper was believed lost.**
+
+| | before | after |
+|---|---|---|
+| trip legs | 107 | **132** (126 with usable times) |
+| fuel rows with time + temperature | 99 | **127** (43% of the log) |
+| fuel rows sitting under a trip log | 140 (48%) | **169 (57%)** |
+| temperature observations | 146 | **382**, range **32-107 degF** |
+| errata | 61 | 65 |
+
+### ★★★ THE RECONSTRUCTION HELD. All 29 paper rows balance the pump identity (max residual half a cent), and **25 of 29 are identical to the corrected dataset on brand, price, gallons and cost.**
+
+**The L11 and L38 values recovered from card statements and pump receipts match the paper EXACTLY on gallons and cost.** LSM 3.641/$10.92, Blythe 4.531/$14.04, Winslow $15.48 -- every one confirmed by a source that did not exist when they were derived. **That is as strong a validation as this project can produce: an independent record, arrived at afterwards, agreeing to the thousandth of a gallon.**
+
+The four differences are all mine and all minor. **L62 Blythe and L63 Winslow: I had written the AMEX MERCHANT NAME into the Brand field** (`Quick Check West`, `Hallum Store`) because the card was the only source; the paper gives the actual brands, **Valero** and **Conoco**. **L64 Burlington `Hy-Vse` -> `Hy-Vee`**, a plain typo. **L65 Cherokee gallons 6.002 -> 6.003** -- both satisfy the pump identity, so arithmetic cannot separate them and the PAPER is the source. **Lesson: when a field is filled from a substitute source, record WHICH source, because a merchant string is not a brand.**
+
+### ★★ AND THERE IS NO PHOENIX FILL
+
+The 5/25-5/27 fuel table reads LSM -> Blythe -> Winslow with **nothing between them.** **The missing-fill hypothesis I raised and then withdrew on three statistical grounds is now settled on documentary ones.** The withdrawal was right; the reasoning that produced it was right; and it took a piece of paper to make it certain.
+
+### ★★★ THE STUCK DAY IS FULLY RECOVERED
+
+**2016-05-27, Youngtown AZ (a Phoenix suburb, where he had overnighted) -> Monument Valley UT.** Out at **06:40 in 72 degF**, in at **17:17**, **362 odometer miles**, 9.62 h once the Arizona-to-Utah zone change is applied, **37.6 mph gross against the trip's own median of 41.4.**
+
+**Youngtown to Monument Valley is about 320 road miles. He drove 362. The dirt-road detour is 42 miles, and the day is 4 mph slower than his own average for the trip.** Both the excess and the slowness are exactly what *following Google Maps onto unpaved tribal land, then getting stuck in powdery soil* should look like. **The episode was invisible yesterday because the record's unit of observation is the fill-up (Finding 036). It is visible today because the unit changed.**
+
+### ★★ A NEW LONGEST DAY, BY EIGHTY MILES
+
+**2016-06-19: Richmond MO -> Denver CO, 640 miles.** Out 06:57, in 16:53, 10.93 h with the Central-to-Mountain change, **58.6 mph gross**. Three fills en route -- Junction City 10:09, Oakley 13:43, Watkins 16:35 -- and each segment independently runs 57-60 mph. **I-70 across Kansas is the fastest road in the record and this is what it permits.** The previous longest was 562.
+
+**Also new: 107 degF arriving St George on 6/21**, the hottest reading in sixteen years, and **101 degF into Grand Junction the day before.**
+
+### ★ TWO THINGS TO PUT TO KIM
+
+**1. A time conflict on 5/26.** The Blythe fill reads **6:08P** at odometer 58,415; the arrival at Youngtown reads **7:41P** at 58,559. That is 144 miles in about 1.5 hours -- **93 mph, impossible.** Either the fill is 4:08P or the arrival is 9:41P; **both give 41 mph and nothing in the data separates them.** He holds the original.
+
+**2. West Virginia, driven twice -- there are now TWO candidate pairs.** The 2012 Morgantown pair (I-68, out 06-01 and back 06-08), or **the 2016 pair: Huntington WV -> Richmond VA on 6/12 and Richmond -> Morehead City NC on 6/13, both on I-64 through the Greenbrier hills, on consecutive days** -- with the Lewisburg WV fill sitting on the eastbound run. **The 2016 pair is the better fit for *I liked this so much, I drove it twice*: same road, out and back, one day apart.** Ask him which.
+
+
+
+## ★★ TWO RELOCATIONS, AND A TRIP NAME THAT SURVIVED IN ONLY ONE SCAN (2026-08-19)
+
+Three more scans arrived, six of eight pages duplicates. **A duplicate page carried an annotation the earlier scan of the same page did not show: `Relocation  1141 miles`.** The 2016 fall-winter legs run odometer **66,645 -> 67,786 = 1,141. Exact.**
+
+**So September 2016 was not a tour. It was the one-way relocation of TwoRed to Oregon** -- which is why the car was at a friend's house in Eugene when the January 2017 call came about his mother. **And February 2017 is a SECOND relocation** (new, from 2017 pp.2-3): Mentone -> Long Beach -> Santa Maria -> S. San Francisco -> Point Arena -> Brookings -> **Eugene**, after which the car sits until 20 May.
+
+**★ That is the shape of the record's last year, and it was invisible until now: the car stops touring and starts COMMUTING BETWEEN TWO HOMES.** The fuel log's own ending -- Eugene 2017-05-20, Toledo WA 2017-05-22 -- is the third northbound run, and it simply stops. **The scope boundary appears one final time: the log ends when the long-distance role ends.**
+
+**★★ METHOD NOTE: two scans of the same page are not the same evidence.** A marginal annotation can survive in one and be lost in the other -- to cropping, to threshold, to the fold. **When a duplicate turns up, diff it rather than discarding it.** This one yielded a trip name, a verified total, and the frame for the project's final chapter.
+
+
+
+## ★ THE AMEX STATEMENTS ARE A THIRD INDEPENDENT RECORD (2026-08-18) — detail moved to the log
+
+Full write-up verbatim in `logs/proj_Smart_Car_log.md`. **The card statements are independent of both the paper and the spreadsheet, which is what makes them decisive.** The four things worth carrying forward:
+
+1. **An elegant single-cause hypothesis of mine was REFUTED by one line of Kim's statement** -- the town was    Alpine, not Big Spring. Two independent estimates agreeing within 45 miles, and still wrong.
+2. **The merged row was a CHIMERA and needed a SPLIT, not a relabel** -- labels from one stop, all four    numeric fields from another, which is exactly why it passes the arithmetic test perfectly.
+3. **Errata key to a ROW, never a LABEL.** `Big Springs, Texas` appears three times and means three    different places.
+4. **All five ferries are identified** (Alaska Marine Highway x2, Newfoundland x2, Lake Michigan x1) -- and    the Lake Michigan crossing is now confirmed a second time, in Kim's own hand on the Frostburg-3 sheet.
+
+
+
+## Current Status
+**★ UNBLOCKED 2026-08-16 -- THE CREAMSICLE DATA IS FOUND, AND IT WAS NEVER A FILE.**
+Every earlier search looked on disk for spreadsheets. Creamsicle's records are **Google-native
+documents at the root of `G:\My Drive`**, which Drive Stream presents as zero-byte placeholder
+stubs: `file.info()` reports 176 bytes for `Final Creamsicle Logs.gsheet` and `readBin` returns
+**0**. The ground-truth rule caught the lie; the Google Drive connector read straight through it.
+**The generalisable lesson, and the reason this sat blocked for months: a filesystem sweep cannot
+see a Google-native document. Search the Drive API by title before concluding data does not exist.**
+
+**The reversal:** TwoRed's Trip Log is 7 rows; **Creamsicle's is the real one** -- dozens of daily
+legs, 2021-09-23 to 2024-10-20, with departure/arrival times and cities, Miles, Duration, Stop time,
+Adjusted Duration and Miles/Hour already derived. The **average-speeds analysis Kim named is the
+readiest in the project, and it lives on the car the PKM had filed as the gap.** Creamsicle also
+arrives with a **drafted 9-trip narrative**, not raw material.
+
+Intake completed 2026-08-12. **Development is now Ready.**
+
+_Superseded (2026-08-12):_ **Intake completed; development BLOCKED on Kim's data recovery.** Materials
+moved out of `kimbridges-stories/underway/` (where they had been mis-filed as a story
+since 2026-05-06) into `Projects/Smart_Car`. No code written yet, by design: the data
+cannot support the reframed scope until Kim finds the paperwork on the other three cars.
+He will do that in miscellaneous time, not in a focused session, which is why this file
+reads Blocked rather than Ready.
+
+**This was the third intake gap of the Jones / vouchr shape** -- real project materials,
+a written charter, no `proj_*.md` and no index row, dormant three months.
 
 

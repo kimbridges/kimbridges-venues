@@ -1589,6 +1589,47 @@ the one damaged header line was repaired by name. **Structure, not size, is what
 clean** -- `## Purpose` back to one occurrence, `### 1.` back to one, the full heading list
 matching. A size check alone would have accepted several wrong answers.
 
+**RECURRENCE, 2026-08-19 — and this time the backup was the recovery, not memory.** A helper that extracts 
+a section by finding its heading and stopping at the next heading was called with a `^### ` boundary on a 
+block whose next heading was a `## `. **The pattern did not match the `##`, so the extraction ran past it 
+to the next `###` further down the file and swallowed an entire top-level section** -- `## Intended 
+analysis`, 2,182 characters, Kim's own statement of what he wants analysed. No error. No warning. The 
+replacement wrote cleanly and the file simply got shorter.
+
+**Caught by a structural check, not by reading:** listing the `##` headings after the edit and comparing 
+with the list from before it. **Size would not have caught it** -- the file was being deliberately trimmed 
+toward a budget that same minute, so a drop of 2 KB looked like success.
+
+**Recovered verbatim from `pkm_backup()`'s mirror**, which held the pre-edit copy. **This is the first time 
+the backup has been USED, eleven days after Finding 031 and one day after Finding 034 forced it to actually 
+contain the data.** A full heading diff against the mirror then confirmed exactly one other difference: a 
+heading I had renamed on purpose.
+
+**The structural fix, applied.** The grabber now takes a LEVEL and stops at that level **or any higher 
+one**, and asserts afterwards that the block it returns contains no `#` or `##` heading:
+
+```r
+grab_sec <- function(txt, head, level = 2) {
+  i <- regexpr(head, txt, fixed = TRUE); stopifnot("head not found" = i > 0)
+  stopifnot("head is not unique" = length(gregexpr(head, txt, fixed = TRUE)[[1]]) == 1)
+  r <- substring(txt, i + nchar(head))
+  j <- regexpr(paste0("(?m)^#{1,", level, "} "), r, perl = TRUE)   # same level OR HIGHER
+  out <- substr(txt, i, if (j > 0) i + nchar(head) + j - 2 else nchar(txt))
+  stopifnot("block swallowed a higher-level heading" =
+            !grepl("(?m)^#{1,2} ", substring(out, nchar(head) + 1), perl = TRUE))
+  out
+}
+```
+
+**The general rule, sharper than the 2026-08-12 version. A boundary pattern that is more specific than the 
+thing it must stop at will run straight past it.** `^### ` is narrower than the document's real structure, 
+so it could only fail by over-reaching -- and over-reach in a delete-and-replace is silent data loss. 
+**Match the boundary at the coarsest level that can legally follow, then assert what you got.**
+
+**And a second-order note. Verify edits STRUCTURALLY, never by size, especially while trimming to a 
+budget.** Trimming makes every loss look intentional. Finding 030 said structure beats size for proving a 
+file clean; **this is the case where size actively lies in the direction you want to believe.**
+
 **Standing caution.** The PKM has no version control (`proj_PKM.md`, Locations); recovery
 leaned on Drive revision history being unnecessary because the corruption was reversible in
 memory. **A destructive splice is not always reversible.** Read before write, assert before
@@ -1700,6 +1741,34 @@ residual does not.**
 are NOT the mechanism: **0<->8 scored 2 hits in 15 substitutions (13.3%); 1<->7 scored 0 in 19;
 3<->5 scored 0 in 20; 4<->9 scored 1 in 39.** The signal is specific to the pair with a physical story.
 
+**A SECOND SCAN ILLUSION, AND IT IS NOT THE SAME ONE (2026-08-19).** Reading the recovered Fourth Crossing
+log, one arrival time would not resolve: I read **7:41P**, which made the leg 93 mph and impossible. I then
+compared the glyph against known 7s and 9s elsewhere on the same page, found a **crossbar-like mark** that
+his plain 7s do not have, concluded the cell had been **overwritten**, and argued for 9:41P. Kim: **the
+arrival is 8:41 -- my writing was very light.**
+
+**The mark was not ink. It was the scanner.** A bitonal threshold applied to a faint stroke drops parts of
+it and promotes paper texture beside it, so a light `8` can lose its upper loop and gain a bar. **I read a
+THRESHOLDING artifact as a CORRECTION, and then reasoned confidently from it.**
+
+**The two illusions are opposites and must not be conflated:**
+
+| | slashed zero (033) | light pen pressure |
+|---|---|---|
+| lives in | the WRITING | the SCANNING |
+| direction | asymmetric -- a 0 reads as an 8, never the reverse | symmetric -- any digit can lose or gain a stroke |
+| the original settles it | **NO** -- the illusion is on the paper | **YES** -- the ink is unambiguous under a lamp |
+| arithmetic settles it | often | only if the field enters an identity |
+
+**So the standing rule *for the 0/8 class, scans are not evidence* does NOT generalise to all scan doubt.**
+For a faint stroke the original is decisive, and asking the writer is cheap. **Diagnose WHICH illusion you
+are looking at before deciding whether the paper can help.**
+
+**And the sharper lesson, which is about me rather than the scanner. A glyph that matches NOTHING in the
+writer's hand is more likely a rendering fault than a rare form of the writer's hand.** My comparison
+against his other 7s was the right method and I drew the wrong conclusion from it: the correct reading of
+*this does not look like how he writes 7* was *the image is damaged*, not *he wrote something else*. **Neither of my two candidate readings was right. The answer was the digit between them.**
+
 **General rule. When several errors share a shape, stop treating them as independent typos and ask
 what PHYSICAL process makes that shape.** Then run the process as a generator, and use its
 asymmetries to reject candidates a residual test would wave through.
@@ -1760,3 +1829,24 @@ Only the earliest file carried a hand-entered `tz_shift_hr`. Every file transcri
 **A second lesson, about where the error came from.** The 2011 file was RIGHT and everything after it was wrong. Whoever transcribed 2011 met a leg that obviously crossed a zone and dealt with it; later transcriptions saw a populated column and inherited its zeros. **A field that is correct in the first instance and defaulted thereafter is worse than an absent field**, because absence prompts a question and a plausible default does not. **If a value cannot be determined at transcription time, leave it NA and let the reader fail loudly.**
 
 **Scale.** 16 legs corrected, up to 6 mph each. Trip medians moved 0 to +0.9 mph and the ordering by road type was unchanged, so no published claim was wrong -- **but that is luck, not vindication.** The single leg that prompted the whole investigation moved 31.6 -> 33.8, and the one next to it 60.9 -> 53.0.
+
+
+---
+
+## Finding 036 — A RECORD'S RESOLUTION SETS THE FLOOR ON WHAT ITS SILENCES CAN MEAN (2026-08-19)
+
+I searched TwoRed's whole record for Florida: **no fuel stop in 294, no leg endpoint in 107.** I wrote that the car never reached the state, and built a chapter beat on it -- *a goal declared at the departure and lost to a calendar.*
+
+**Kim had been to Florida.** He aimed at the panhandle, drove a few miles in, stopped at a neighbourhood intersection, asked a passing driver *is this Florida?*, was told yes, turned around and left. **Minutes.**
+
+**The record could not have shown it.** This log resolves to exactly two kinds of event: **buying fuel** and **ending a day.** He did neither in Florida, on purpose -- the entire point was to touch the state and leave. So the visit is not faintly recorded or hard to find. **It is UNRECORDABLE.** No amount of care with the data would have produced it.
+
+**And the geographic instrument is under its own floor here.** The dip hangs off the New Orleans -> Atmore stretch (Atmore AL is ~12 road miles from the line at Century FL, and is a fuel stop on the right day). Road-to-straight-line for that stretch: **1.23, against a trip median of 1.22, IQR 1.11-1.39.** A ~25-mile out-and-back on 210 miles is **indistinguishable from ordinary routing**.
+
+**Where the reasoning actually went wrong.** The card's ABSENCE CLAIMS rule says never assert something is missing without proving it, and I did run the search. **But I proved a statement about FILL-UPS and OVERNIGHTS, and then asserted a statement about a JOURNEY.** Those are different objects. The search was exhaustive over the wrong universe.
+
+**The rule, and it generalises past this project.** Before reading a silence as an absence, **write down what the record's UNIT OF OBSERVATION is, and ask whether the thing you are looking for would have generated one.** A fuel log observes purchases. A trip log observes days. A photograph observes a moment someone chose to keep. **Each is blind to everything that happens between its units, and that blindness is a property of the instrument, not a gap in the data.** Findings 018-020 covered *searched badly*; this is *searched perfectly, in a record that cannot answer the question.*
+
+**A second error the same day, same shape.** I argued the Montgomery -> Cherokee leg had no room for a detour -- 407 logged against ~400 direct -- and therefore no Tail of the Dragon. **The route was never the direct one.** The intermediate fuel stops are Trussville AL (Birmingham) and **Madisonville, east Tennessee**: the leg ran north through Chattanooga and Knoxville, not east through Atlanta, and Madisonville -> Cherokee is **104 miles against ~75 direct** -- the Deals Gap route. **A matching TOTAL does not mean a matching ROUTE.** Two different paths agreed within seven miles and I read the agreement as proof. **Endpoints constrain a route far less than they appear to; the intermediate stops are the only waypoints this record has, and they were sitting there unread.**
+
+**Standing note.** Kim's recollections have now corrected the analysis four times in two days: the road/straight-line audit rule, the time zones, Florida, and this route inference. **Where a human witness to the data exists, treat them as an INSTRUMENT with its own error profile -- not as colour to be checked against the numbers.** So far the witness has the better record.
