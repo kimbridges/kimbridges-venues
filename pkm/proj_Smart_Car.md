@@ -19,15 +19,15 @@ the refutation stronger -- not one exceptional car on one exceptional journey, b
 
 ## Current Status
 
-**★★★ THE TWORED RECORD IS CLOSED AT BOTH ENDS AND READY TO WRITE FROM (2026-08-19).**
+**★★★ BOTH CARS ARE INGESTED, THE TWORED RECORD IS CLOSED AT BOTH ENDS, AND THE ONLY THING BLOCKING THE WRITING IS THE CHAPTER ARCHITECTURE (2026-08-19).**
 
-**Fuel spine: 294 rows, odometer 4 -> 71,283, 2010-07-23 to 2017-05-22, audited.** 277 of 294 balance the pump identity; the 13 that fail carry a documented basis. **65 errata**, 4 literally open. `twored_ingest.R` emits `data/TwoRed_fuel_clean.csv` with provenance per row; the source workbook is never edited.
+**TwoRed fuel spine: 294 rows, odometer 4 → 71,283, 2010-07-23 to 2017-05-22, audited.** 277 of 294 balance the pump identity; the 13 that fail carry a documented basis. **65 errata**, 4 open. `twored_ingest.R` emits `TwoRed_fuel_clean.csv` with provenance per row; the source workbook is never edited.
 
-**Human spine: 139 legs across 12 trips** (132 timed), **41,163 miles = 58% of lifetime**, 174 of 294 fuel rows sitting under a leg (59%), **134 fills carrying a time and temperature (46%)**. Time zones are computed from a 117-city IANA table, not stored. **Ten of Kim's own accounts are collected verbatim and every one has been cross-checked against the log.**
+**TwoRed human spine: 139 legs across 12 trips** (132 timed), **41,163 mi = 58% of lifetime**, 174 fuel rows under a leg (59%), **134 fills carrying time and temperature (46%)**. Time zones are COMPUTED from a 121-city IANA table, not stored. **Eleven of Kim's accounts are collected verbatim and every one cross-checks against the log.**
 
-**Ready to write:** economy, cost per mile and degradation; the shape of a driving day; gross speed by road type (stating the means-not-variance limit); the stories. **Not ready:** the temperature effect is **retired** (more data attenuated it); **Creamsicle has never been ingested** -- a whole car, and the largest remaining gap; Canadian economy blocked on litres/CAD normalisation; route work partial at a 78% gazetteer join.
+**Creamsicle: 173 fuel rows, 86 legs, ingested 2026-08-19** by `creamsicle_ingest.R`, with stopped time — the instrument TwoRed lacks.
 
-**The one thing actually blocking a start is the CHAPTER ARCHITECTURE**, named as the weak point on 2026-08-16 and still open. Kim's TWO LOGS, TWO SUBJECTS frame is the candidate. **Creamsicle's data was found on 2026-08-16 and remains un-ingested** -- see the log for that story, and `deferred.md` for the task.
+**Ready to write:** economy, cost per mile, degradation; the shape of a driving day; gross speed by road (stating the means-not-variance limit); the stories. **Not ready:** the temperature effect is **retired**; Canadian economy blocked on litres/CAD normalisation; route work partial at a 78% gazetteer join; **states 45 of 49 documented** (provinces confirmed at 10).
 
 ## The fleet
 
@@ -44,17 +44,9 @@ _Given by Kim 2026-08-12. This replaces the single-car framing entirely._
 three ICE and one electric, spanning purchase, lease, resale and replacement — and the
 choice made again three times after the first. That is the fleet thesis.
 
-**★ THE 75,000-MILE QUESTION IS RESOLVED (Kim, 2026-08-12).** TwoRed is **about 20 miles
-short of 75,000**. The Gas Log's 71,181 is simply where the *log* stops, not where the *car*
-stopped. **The charter's title was right and my reading of it was wrong** — I had the
-discrepancy filed as an open question on the strength of the spreadsheet alone. Kim is
-updating the fuel logs so the remaining miles are properly filled in. **Until those updates
-land, cite ~75,000 as Kim's figure, not as a value derived from the data.**
+**★ THE 75,000-MILE QUESTION IS RESOLVED (Kim, 2026-08-12).** TwoRed is **about 20 miles short of 75,000**; the log's 71,181 is where the *log* stops, not the car. **The charter was right and my reading of it was wrong.** The mainland record now closes at **71,283 at the Matson dock** (below), so the ~3,700 remaining are Honolulu miles. **Cite ~75,000 as Kim's figure, not as derived.**
 
-**Creamsicle's data is the second spine.** Kim has substantial records from driving it
-across the country several times — enough, in his words, to complement TwoRed rather than
-merely supplement it. **This changes the shape of the project:** it is not one documented car
-plus three anecdotes, but two well-documented cars bracketing a lease and an EV.
+**Creamsicle's data is the second spine and is now INGESTED (2026-08-19, below).** The project is not one documented car plus three anecdotes, but two well-documented cars bracketing a lease and an EV.
 
 **Creamsicle's purchase reason is recorded in `deferred.md` and is NOT FOR PUBLICATION**
 (Kim, 2026-08-12). It concerns a family member's medical history. The public chapter says
@@ -117,15 +109,15 @@ His words: *the fuel log is more about the CAR'S performance, while the trip log
 
 ## ★★ THE SCAN SWEEP, 2026-08-18 — full write-up in the log
 
-All 15 scans read. The four results that must not be lost:
+All 15 scans read (22 now on disk). The four results that must not be lost:
 
-**1. The wheel change is DATED** -- `NEW WHEELS @ 13510 miles`, Kim's margin, 179 mi before the 2011 departure. **The estimate FLIPS SIGN with specification (+3.6% to -1.8%); that is the finding, not any one number.** The CONDITIONAL in `deferred.md` governs.
+**1. The wheel change is DATED** — `NEW WHEELS @ 13510 miles`, Kim's margin, 179 mi before the 2011 departure. **The estimate FLIPS SIGN with specification (+3.6% to -1.8%); that is the finding, not any one number.** The CONDITIONAL in `deferred.md` governs.
 
-**2. ✗ THE TEMPERATURE EFFECT IS RETIRED (2026-08-19).** At n=94 it read **-0.068 MPG/degF, p=0.045**; the Fourth Crossing's 31 fill-stamped temperatures took it to n=125, where it reads **-0.050, p=0.099** and **p=0.17** controlling leg length and era. The coefficient moved TOWARD zero and the significance evaporated — it was noise. The raw hot/cold gap (37.97 vs 39.61) does not survive a control for leg length: **hot fills are on shorter legs.** Write no thermal claim. **Note what this demonstrates: the record is now good enough to RETIRE a result, not just produce one.**
+**2. ✗ THE TEMPERATURE EFFECT IS RETIRED (2026-08-19).** n=94 gave **-0.068, p=0.045**; the Fourth Crossing's 31 fill-stamped temperatures took it to n=125 and **-0.050, p=0.099**, and **p=0.17** with leg length and era controlled. The raw hot/cold gap (37.97 vs 39.61) dies on the same control — **hot fills are on shorter legs.** Write no thermal claim. **The record is now good enough to RETIRE a result, not just produce one.**
 
-**3. The slashed zero produced three more corrections and the control held.** Over the 44 rows failing the pump identity: **permitted 8->0 fixes 4; forbidden 0->8 fixes 1** (already flagged); **six controls fix 0.**
+**3. The slashed zero produced three more corrections and the control held.** Over the 44 rows failing the pump identity: **permitted 8→0 fixes 4; forbidden 0→8 fixes 1** (already flagged); **six controls fix 0.**
 
-**4. Gross speed separates by ROAD, across 138 legs in 12 trips.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate State 40.3 | Dalton **31.7** | **2017 February 31.1** | 2016 US-101 coastal **28.3**. Same car throughout. **Extreme case: the February 2017 run, 19.6/21.1/21.2 mph on the Highway 1 legs against 41 inland — the road changes the day by a factor of two.** But gross speed is a MEAN; see THE STRESSFUL MILES above.
+**4. Gross speed separates by ROAD, across 138 legs in 12 trips.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate State 40.3 | Dalton **31.7** | 2017 February 31.1 | 2016 US-101 coastal **28.3**. Same car throughout; the February 2017 run reads 19.6–21.2 on Highway 1 against 41 inland. **But gross speed is a MEAN — see THE STRESSFUL MILES above, and the Dalton return below, where the same road one day apart differs by 6 mph.**
 
 ## ★★★ THE LONG DAYS — ALL EIGHT COLLECTED, AND EVERY ONE CHECKS OUT (2026-08-19)
 
@@ -144,15 +136,15 @@ All 15 scans read. The four results that must not be lost:
 
 ### ★★★ FLORIDA, AND THE TAIL OF THE DRAGON — full write-up in the log; the rules in Finding 036
 
-**I concluded from the record that TwoRed never reached Florida. It did.** Kim drove a few miles into the panhandle, asked a passing driver *is this Florida?*, and left. **The log resolves to two events -- buying fuel and ending a day -- and he did neither there, on purpose. The visit is UNRECORDABLE.** The dip hangs off New Orleans -> Atmore (Atmore is ~12 mi from the line); road/straight-line **1.23 against a trip median of 1.22**. Invisible.
+**I concluded from the record that TwoRed never reached Florida. It did.** Kim drove a few miles into the panhandle, asked a passing driver *is this Florida?*, and left. **The log resolves to two events — buying fuel and ending a day — and he did neither there, on purpose.** Road/straight-line **1.23 against a trip median of 1.22**. Invisible.
 
-**And I argued the same leg had no room for the Tail of the Dragon -- 407 logged against ~400 direct. The route was never the direct one.** The intermediate fills give the waypoints: **Trussville AL (Birmingham) -> Madisonville, east Tennessee** -- north through Chattanooga and Knoxville, not east through Atlanta. **Madisonville -> Cherokee is 104 mi against ~75 direct**: the Deals Gap route. **The Dragon is in the odometer.**
+**And I argued the same leg had no room for the Tail of the Dragon — 407 logged against ~400 direct. The route was never the direct one.** The intermediate fills give the waypoints: **Trussville AL → Madisonville, east Tennessee**, north through Chattanooga and Knoxville. **Madisonville → Cherokee is 104 mi against ~75 direct**: the Deals Gap route. **The Dragon is in the odometer.**
 
-**Two rules out of it. A record's RESOLUTION sets the floor on what its silences can mean. And a matching TOTAL does not mean a matching ROUTE -- the intermediate stops are the only waypoints this record has.**
+**Two rules. A record's RESOLUTION sets the floor on what its silences can mean. And a matching TOTAL does not mean a matching ROUTE — the intermediate stops are the only waypoints this record has.**
 
 ### ★ ONE DISCREPANCY, UNRESOLVED — the Bellingham departure
 
-Kim remembers meeting Nancy *early afternoon*; the sheet starts the day at **06:49**. **The arithmetic favours the sheet** -- 488 mi from 06:49 is 36.2 mph gross, already slow for I-5 and slower than the next day's 42.8 on the same road, while an early-afternoon start needs ~67 mph gross with no stop. Likely 06:49 is the ferry docking recorded as the start of the day, and the reunion is the missing hours. **A hypothesis about a memory -- ask him.** Detail and the open question in `deferred.md`.
+Kim remembers meeting Nancy *early afternoon*; the sheet starts the day at **06:49**. **The arithmetic favours the sheet** — 488 mi from 06:49 is already 36.2 mph gross, while an early-afternoon start needs ~67 with no stop. Likely 06:49 is the ferry docking recorded as the day's start, and the reunion is the missing hours. **A hypothesis about a memory — ask him.** Detail in `deferred.md`.
 
 ### ★★★ FIVE THINGS THE STORIES CHANGED, none of which the data could have volunteered
 
@@ -164,13 +156,13 @@ Kim remembers meeting Nancy *early afternoon*; the sheet starts the day at **06:
 
 **4. A ferry is a LOGISTICS MULTIPLIER, not a hole in the odometer.** It converts a night into progress and hands the next morning a loaded, fuelled car. Read the five ferries as ENABLING the long days after them.
 
-**5. ★★ A LONG ELAPSED TIME IS NOT A SLOW DAY.** LSM -> St George read 31.6 mph and looked like a slog; it was a normal drive with a half-day visit inside it. **Gross speed silently conflates driving with living.** Kim's own note: *this was before I was recording why I took time off during a drive* -- so the STOP column that Creamsicle has is exactly the instrument that would separate them. **Until then, gross mph is a ceiling on driving speed, never a measure of it.**
+**5. ★★ A LONG ELAPSED TIME IS NOT A SLOW DAY.** LSM → St George read 31.6 mph and was a normal drive with a half-day Las Vegas visit inside it. **Gross speed silently conflates driving with living**, and both later measurements agree: Creamsicle's stop column puts the gap at **7.5 mph**, and the Dalton return (below) shows it against the SAME road driven the day before. **Gross mph is a ceiling on driving speed, never a measure of it.**
 
-### ★★ AND CHASING #5 FOUND A BUG IN 16 OF 107 LEGS
+### ★★ AND CHASING #5 FOUND A BUG IN 16 OF 107 LEGS — Finding 035
 
-Nevada is Pacific and Utah is Mountain, and `tz_shift_hr` was 0 on every leg transcribed after the 2011 file. **Full write-up: Finding 035.** Fixed as a derived layer -- `data/TwoRed_city_timezones.csv` (97 cities -> IANA zones) plus computation in `trip_logs_read.R`, so DST, Arizona and Saskatchewan declining to observe it, Yukon before 2020 and Newfoundland's half hour all fall out for free. **16 legs corrected, up to 6 mph each; trip medians moved 0 to +0.9 and the road ordering is unchanged (pooled 39.7 -> 40.3); Billings -> Pocatello untouched at 65.5, so the fastest day is real.**
+Nevada is Pacific and Utah is Mountain, and `tz_shift_hr` was 0 on every leg transcribed after the 2011 file. Fixed as a DERIVED layer — `data/TwoRed_city_timezones.csv` plus computation in `trip_logs_read.R` — so DST, Arizona and Saskatchewan declining it, Yukon before 2020 and Newfoundland's half hour all fall out for free. **16 legs corrected, up to 6 mph each; road ordering unchanged; Billings → Pocatello untouched at 65.5, so the fastest day is real.**
 
-**★ Kim's stories have now corrected the analysis four times in two days** -- the road/straight-line audit rule, the time zones, Florida, and the route inference on the Dragon day. **The human spine is not decoration on the analysis. It is an instrument, and so far it is the more accurate one.**
+**★ Kim's stories have now corrected the analysis five times** — the road/straight-line rule, the time zones, Florida, the Dragon route, and the Penultimate State. **The human spine is an instrument, and so far the more accurate one.**
 
 ## ★★★ THE FAVOURITE DRIVES (2026-08-19) — full write-up in the log
 
@@ -249,6 +241,21 @@ The final two fills read **52.4 and 93.0 MPG** -- the second the highest number 
 
 **★ General rule for the write-up: the first and last rows of any record are the least trustworthy, because they are the ones taken while the measuring itself was being started or stopped.** The first fill in this log carries a slashed-zero cost error (L59); the last two are shipping artifacts. **Trim the ends before quoting an extreme.**
 
+
+## ★★★ THREE ANSWERS FROM KIM (2026-08-19) — full working in the log
+
+**1. The 46 Dalton miles are 32 + 14, and only the 32 is the Dalton.** Coldfoot → Wiseman and back, the museum, and the season's first snow. **TwoRed fuelled at Yukon River Crossing in BOTH directions, and that intermediate fix splits the leg:** north of the river 115 out / **147 back (+32)**; south of it 137 / **151 (+14)**. Coldfoot is Dalton mile 175 and the Wiseman spur is ~16 road miles on — **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.*
+
+**★★ And the same leg is the extreme case on two other instruments, both of which his story now explains.** It is the **slowest leg of 200+ miles in sixteen years — 298 mi in 13.18 h, 22.6 mph** — against **28.6 mph over the identical road the day before**. The road was the same; the museum, the village and the turnaround were not. **This is FIVE THINGS #5 measured against a control.** And it starts at **38 degF**, tied second-coldest of 136 timed legs, after Coldfoot read **64 degF at 18:26 the previous evening** — a 26-degree overnight drop at the farthest north point the car ever reached, on the morning the snow began.
+
+**2. The Penultimate State was never Florida.** Kim's ruling: 49 mainland states leaves **Hawaii as the Ultimate State**, so the penultimate is the 49th mainland state reached. Florida mattered only as the last unvisited SE state. **The record's last new states all fall on the 2014 trip Kim named Penultimate State: Vermont 5/18, New Hampshire 5/20, Maine 5/22 at Lubec — the easternmost point of the continental US.** He remembers Vermont; the record's last is Maine, four days later. **Unresolved, and his is the better instrument.** Vermont does carry a mark the others lack: the trip stops dead there — **two nights, and 59 odometer miles for a drive that is 18 miles direct.**
+
+**★★★ 3. DELAWARE IS INVISIBLE AS A LABEL AND PROVABLE AS A ROW.** Four mainland states never appear: Florida, Delaware, Rhode Island, South Dakota. Florida is Finding 036. **Delaware is the same silence, and geography breaks it:** 2014-05-16, the Colonial Heights VA fill → Bellmawr NJ reads **264 odometer miles** (great-circle 219, ratio 1.21). Every route near that length crosses Delaware; **the only Delaware-free road is ~305 miles, 40 more than the odometer permits.** The record holds Delaware as a DISTANCE, not a name — the errata rule read backwards: **key to a ROW, never a LABEL.**
+
+**And a charter claim is settled: the provinces are exactly right — ten, all present.** States stand at **45 documented, 46 with Delaware by inference, plus Florida on testimony. Rhode Island and South Dakota have neither a record nor a story.**
+
+**4. West Virginia — the trips are identified, the ROAD is not.** The record's four WV touches fall on two highways 150 miles apart. **I-68 (2012 Frostburg):** Morgantown fills 6/1 and 6/8; Columbus → Frostburg MD is the direct route to the meeting, and the 6/8 return departs **07:31**, putting I-68 westbound in the first morning hour — *but that is one trip, out and back.* **I-64 (2010 and 2016):** Barboursville WV 9/30 and Summersville WV 11/14, six weeks apart; then 2016-06-12 **Huntington WV out at 08:58** → Lewisburg fill → Richmond, 359 mi at 49.9 mph, on a route that detours **north** to Huntington and back **south** afterwards — *he slept there to start the Greenbrier Valley in the morning.* **The record holds exactly two morning drives through the WV hills and they are different roads. One word settles it: I-68 or I-64?**
+
 ## ★★★ CREAMSICLE IS INGESTED — THE SECOND SPINE EXISTS (2026-08-19)
 
 Kim exported the Google-native files into the project. `creamsicle_ingest.R` reads the workbook and emits `Creamsicle_fuel_clean.csv` (**173 rows**) and `Creamsicle_trip_clean.csv` (**86 legs**). Same architecture as TwoRed: **the source is never edited**, the interleaved total/average rows are skipped programmatically, and **the skip counts are reported** (196 -> 173, 119 -> 86, 10 -> 6) per Finding 032.
@@ -312,10 +319,7 @@ the very correction `2016_Fourth_Crossing_Analysis.xlsx` had to build a dedicate
 **2021-09-23 11:45, Nixa MO.** Three minutes -- the car at the dealership, minutes before its first
 tank.
 
-**Coverage: 8 of 9 trips.** T1 2, T2 **0**, WI caregiving 2, T3 3, T4 2, T5 9, T6 6, T7 4, T8 2,
-T9 4, after-delivery 2, plus one staging shot at Torrance 2024-10-05, two days before T9 departs.
-**T2 (LA->Madison, Oct 2021) is the blank** -- the solo run Kim describes as pushing his daily
-limits. **NOT an absence claim:** the photos may be elsewhere or may never have been taken.
+**Coverage: 8 of 9 trips**, plus a staging shot at Torrance two days before T9 departs. **T2 (LA→Madison, Oct 2021) is the blank** — the solo run Kim describes as pushing his daily limits. **NOT an absence claim:** the photos may be elsewhere or may never have been taken.
 
 ### Two narrative set-pieces moved to the log 2026-08-18
 
@@ -327,86 +331,36 @@ The 2026-08-12 intake audit (charter claims vs what the files hold: 293 fill-ups
 
 ## Statement of intentions
 
-Written 2026-08-12 so that a session opening this file cold knows what was decided and
-what was deliberately left open.
+Written 2026-08-12 so a session opening this file cold knows what was decided and what was left open.
 
-**1. The document is about four cars.** TwoRed carries the deep quantitative spine because
-that is where the data is. The other three carry what a single car cannot show:
-replacement decisions, changing models, and the fact that the choice was made again.
+**1. The document is about four cars.** TwoRed carries the deep quantitative spine; the others carry what one car cannot show — replacement decisions, changing models, and the fact that the choice was made again.
 
-**2. The Arctic Circle Challenge is CROSS-REFERENCED, never re-told.** It is already a
-published story at `/stories/the-arctic-circle-challenge.html` (77 pp). The document links
-to it and uses only its **data** -- fuel stops, temperatures, elevations -- inside the
-analysis chapters. The 2026-05-08 charter's Chapter 5, which embedded the whole narrative
-by iframe, is **superseded**: it would have put the same content at two URLs and made the
-works register lie about what is published where.
+**2. The Arctic Circle Challenge is CROSS-REFERENCED, never re-told.** Already published at `/stories/the-arctic-circle-challenge.html` (77 pp). Use only its **data** inside the analysis chapters. The charter's Chapter 5, which embedded the narrative by iframe, is **superseded** — it would have put the same content at two URLs and made the works register lie.
 
-**3. Reuse the existing packages.** This is Kim's standing rule for new documents
-(2026-08-11) and it applies here: `timelinesr` and `Trip_Log` for the temporal spine,
-`plainmaps` / `sf` / `tidygeocoder` for the geography, `Photo_Locations` for the
-geotagging workflow. Write a new package only if something genuinely has no home.
+**3. Reuse the existing packages** (Kim's standing rule, 2026-08-11): `timelinesr` and `Trip_Log` for the temporal spine, `plainmaps`/`sf`/`tidygeocoder` for geography, `Photo_Locations` for geotagging. New package only if something has no home.
 
-**4. No number gets printed until it is sourced.** The 75,000-mile title claim is the
-live example. The charter asserted it, this file could not confirm it, and the honest
-state is *unresolved*. Same for the state and province counts.
+**4. No number gets printed until it is sourced.** The 75,000-mile claim was the live example; **the province count is now confirmed (10) and the state count is not (45 documented of 49).**
 
-**5. Production is staged, not simultaneous.** Data recovery first, then the ingestion
-script, then the maps, then prose. The chapter architecture below is inherited from the
-charter and is provisional -- it was written for one car.
+**5. Production is staged, not simultaneous.** Data recovery, then ingestion, then maps, then prose. **The chapter architecture below is provisional and is now the only thing blocking the writing.**
 
 ## Locations
-- Code: `G:\My Drive\Projects\Smart_Car` (bucket 2 -- code-as-source)
-- **★ GOOGLE-NATIVE DATA, root of `G:\My Drive` (found 2026-08-16).** NOT reachable by any
-  filesystem read -- `G:` shows zero-byte stubs. Read via the Google Drive connector by title.
-  | Title | Kind | Holds |
-  |---|---|---|
-  | `Final Creamsicle Logs` | Sheet | gas log 2021-09→2023-09 (odo 30,290→51,345) + trip log 2021-09→2024-10 + summary |
-  | `Creamsicle` | Doc | the 9-trip narrative, ~4,500 words, per-trip distances |
-  | `Creamsicle_July_Fuel_Log_update` | Sheet | Jan–Jul 2024, odo 52,656→55,743, **lat/long** |
-  | `Creamsicle Inventory` | Doc | Jun 2023 packing manifest + departure/arrival checklists |
-  | `TwoFer Gas Log` | Sheet | car #2: 7 fill-ups, 2014-03→2015-01, 1,209 mi, all Honolulu |
-  | `TwoRed_fuel` | Sheet | richer early TwoRed record: cumulative cost, $/mile, MPG-last-5, **ambient temperature in Notes** |
-  | `TwoRed_fuel_June_2014` | Sheet | live original of the exported `.xlsx` |
-  | `Travel/2016 Fourth Crossing Analysis` | Sheet | live original; `Travel/4th Crossing Fuel Stops` is a **My Map** |
-- **Fuel receipt scans:** `CS_Fuel_Receipts_2021.pdf` (5.7 MB) and `2022_fuel_receipts_Jan-Feb.pdf`
-  (6.5 MB) on Drive -- the primary sources behind the Creamsicle log's first two trips.
-- **Existing analysis code:** `G:\My Drive\Projects\Photo_Mapping\Fuel_Analysis.Rmd` (2022).
-  Predates this project and was written against the fuel data; read before writing new ingestion.
-- Data: `G:\My Drive\Projects\Smart_Car\data`
-- Source docs: `G:\My Drive\Projects\Smart_Car\source`
-- Images: `G:\My Drive\Projects\Smart_Car\images`
-- Docs/output: not yet; destination is kimbridges-documents
-- GitHub: not yet
-- **Superseded:** `G:\My Drive\kimbridges-stories\underway\Smart_car\` -- the original
-  mis-filing. Copies still there; neither bridge deletes, so removal is Kim's.
+- Code: `G:\My Drive\Projects\Smart_Car` (bucket 2 -- code-as-source); `data`, `source`, `images` beneath it
+- **★ GOOGLE-NATIVE DATA, root of `G:\My Drive` (found 2026-08-16).** NOT reachable by any filesystem read -- `G:` shows zero-byte stubs. Read via the Google Drive connector BY TITLE. **Full inventory of the eight Sheets/Docs is in the log.** The three Creamsicle files have since been exported and ingested (2026-08-19); still live-only: **`TwoRed_fuel`** (richer early record, **ambient temperature in Notes**, ~141 more fill temps), `TwoFer Gas Log`, `Creamsicle Inventory`, `Travel/2016 Fourth Crossing Analysis`.
+- **Fuel receipt scans on Drive:** `CS_Fuel_Receipts_2021.pdf` (5.7 MB), `2022_fuel_receipts_Jan-Feb.pdf` (6.5 MB) -- primary sources behind Creamsicle's first two trips.
+- **Existing analysis code:** `G:\My Drive\Projects\Photo_Mapping\Fuel_Analysis.Rmd` (2022), written against the fuel data; read before writing new ingestion.
+- Docs/output: not yet; destination is kimbridges-documents. GitHub: not yet.
+- **Superseded:** `G:\My Drive\kimbridges-stories\underway\Smart_car\` -- the original mis-filing. Copies still there; neither bridge deletes, so removal is Kim's.
 
 ## Key Files
-- `data/TwoRed_fuel_June_2014.xlsx` — 4 sheets: Gas Log (293 fill-ups, 2010-2017),
-  Locations (212), Trip Log (7), Canada2014 (24, metric). The foundational dataset.
-- `data/2016_Fourth_Crossing_Analysis.xlsx` — 35 rows, time-zone-corrected activity time.
-  The cleanest asset.
-- `data/leased_smart.txt` — one line. **Superseded as car #2's record by the `TwoFer Gas Log` Sheet.**
-- **`data/2011_TwoRed_travel_and_fuel_log_June.pdf` — NEW 2026-08-17.** Kim's scanned field sheets,
-  4 pages, 380 KB. Top half fuel log, bottom half trip log; the fuel half was typed up years ago,
-  **the trip half never was.** This is the 2011 St. Louis Trip.
-- **`data/TwoRed_2011_StLouis_trip_log.csv` — NEW 2026-08-17, transcribed from the scans.** 15 legs,
-  2011-06-24 to 07-19, Lake San Marcos -> St Louis -> Lake San Marcos. Carries start/end time, city and
-  **temperature at BOTH ends**, odometer at both ends, the written distance, the odometer delta, the
-  timezone shift, elapsed hours and **GROSS** mph, plus per-row notes on every uncertain reading.
+- `data/TwoRed_fuel_June_2014.xlsx` — 4 sheets: Gas Log (293 fill-ups, 2010-2017), Locations (212), Trip Log (7), Canada2014 (24, **metric — normalisation still OPEN**). The foundational dataset.
+- `data/2016_Fourth_Crossing_Analysis.xlsx` — 35 rows, time-zone-corrected activity time. The cleanest asset.
+- **`data/Fuel_and_Trip_Logs/*.pdf` — 22 scans, 2010-2017, Kim's paper field sheets.** Top half fuel, bottom half trip; the fuel halves were typed up years ago, **most trip halves never were.** Primary source behind all 65 errata rows. **Not in the mirror — see Finding 038.**
+- **13 trip-log CSVs, 139 legs** (132 timed), transcribed from those scans; each carries time, city and temperature at BOTH ends, both odometers, written distance, odometer delta, timezone shift, elapsed hours and gross mph, plus per-row notes on every uncertain reading.
+- `data/TwoRed_fuel_clean.csv` (294), `TwoRed_log_errata.csv` (65), `TwoRed_fuel_timetemp.csv` (134), `TwoRed_city_timezones.csv` (121 cities).
+- **Creamsicle:** `Creamsicle_fuel_clean.csv` (173), `Creamsicle_trip_clean.csv` (86), `Creamsicle_log_errata.csv` (3); sources `2024_Creamsicle_*.xlsx` + `.md`; built by `creamsicle_ingest.R`.
 - `source/Smart_Car_master_dictionary.pdf` — expedition names, dates, geographic targets.
-- `source/Smart_Car.docx` — 10.3 MB. Largest section is the Arctic Circle Challenge,
-  which is already published; treat as a quarry, not a draft.
-- `source/Smart_Car_2016.pptx` — 2016 presentation.
-- `source/charter_2026-05-08.md` — the original charter. **Kept verbatim as the historical
-  record; superseded by this file on scope and on Chapter 5.**
-- `images/Creamsicle/` — **NEW 2026-08-16.** 37 geotagged/timestamped trip photos plus
-  `Creamsicle_profile.jpg`. **RULED by Kim: `two_smarts.jpg` BECAME `Creamsicle_profile.jpg`**
-  (55,999 bytes), and the 439 KB `creamsicle.jpg` was deleted as a near duplicate. The old caption
-  in this file -- *the current two, and one earlier car* -- was therefore wrong about what
-  `two_smarts.jpg` showed; corrected here rather than carried forward.
-  **Backstop, if the deleted file is ever wanted:** a 439 KB `creamsicle.jpg` survives at
-  `kimbridges-stories\underway\Smart_car\` -- the superseded copy `deferred.md` has queued for
-  deletion is currently serving as the backup. Do not delete that folder without checking.
+- `source/Smart_Car.docx` — 10.3 MB. Largest section is the Arctic Circle Challenge, already published; **a quarry, not a draft.** `source/Smart_Car_2016.pptx` — 2016 presentation. `source/charter_2026-05-08.md` — the original charter, kept verbatim, superseded by this file on scope and Chapter 5.
+- `images/Creamsicle/` — 37 geotagged trip photos plus `Creamsicle_profile.jpg` (was `two_smarts.jpg`, ruled by Kim 2026-08-16). **Backstop for the deleted 439 KB `creamsicle.jpg`: a copy survives at `kimbridges-stories\underway\Smart_car\` — do not delete that folder without checking.**
 
 ## Related Projects
 - `proj_Trip_Log.md` — the travel-photo + trip workflow; upstream.
@@ -420,24 +374,12 @@ charter and is provisional -- it was written for one car.
 The one-car charter's chapter list is verbatim in `logs/proj_Smart_Car_log.md`, superseded. **The candidate replacement is Kim's TWO LOGS, TWO SUBJECTS frame above** -- now with a boundary attached: the trip log measures what the human ACHIEVED, the log records MEANS and not VARIANCE, and **the stories are the only record of what the driving COST.** Redesign is an open task in `deferred.md`.
 
 ## Next Steps
-1. **✓ DONE 2026-08-16 -- the Creamsicle data is found.** See Current Status.
-2. **✓ DONE 2026-08-16 -- Two4Two/TwoFer has a machine-readable record.** `TwoFer Gas Log`.
-3. **KIM, unscheduled:** update the TwoRed fuel logs so the last miles to ~75,000 are
-   properly filled in. He named this himself. **Check `TwoRed_fuel` (the live Sheet) first** --
-   it is a different and richer record than the exported `.xlsx`.
-4. **OPEN QUESTION:** the Creamsicle trip log carries legs through **2024-10-20**, but no
-   fill-ups past **2024-07-02** appeared in what was read. Trip 9 (the delivery run) may have
-   fuel records elsewhere, or may genuinely have none. **This is not an absence claim** -- the
-   sheet read may have been truncated. Verify before relying on it either way.
-5. **KIM, unscheduled:** whatever exists for Bordeaux. Deliberately outside the statistics.
-6. Then: the ingestion script assigning an `Expedition_ID` to every fill-up, across BOTH
-   documented cars. Read `Fuel_Analysis.Rmd` first.
-7. Then: the geocoded constellation map -- **the Jul-2024 update already carries lat/long**,
-   so start there rather than geocoding from scratch -- and the three analyses Kim named.
-4. Then: the ingestion script assigning an `Expedition_ID` to every fill-up, across BOTH
-   documented cars rather than TwoRed alone.
-5. Then: the geocoded constellation map, and the three analyses Kim named -- fuel costs,
-   daily distances, average speeds.
+1. **★ THE CHAPTER ARCHITECTURE.** The only thing blocking the writing. Kim's TWO LOGS, TWO SUBJECTS frame is the candidate, now bounded (achieved vs cost).
+2. **KIM:** answer the West Virginia road question (I-68 or I-64), and rule on Vermont vs Maine as the Penultimate State.
+3. **KIM, unscheduled:** update the TwoRed fuel logs for the last miles to ~75,000. **Check `TwoRed_fuel` (the live Sheet) first** — a different and richer record than the exported `.xlsx`, with ~141 more fill temperatures.
+4. **KIM:** rule on what the backup should carry (Finding 038, `deferred.md`) — and whatever exists for Bordeaux, deliberately outside the statistics.
+5. **OPEN:** Creamsicle trip legs run to **2024-10-20** but fills stop at **2024-07-02**. Trip 9 may have fuel records elsewhere or none. **Not an absence claim** — the read may have been truncated.
+6. Then: `Expedition_ID` on every fill-up across BOTH documented cars (read `Fuel_Analysis.Rmd` first); the geocoded constellation map (**the Jul-2024 Creamsicle update already carries lat/long**); and Kim's three analyses — fuel costs, daily distances, average speeds.
 
 ## Collaborators / Dependencies
 None.

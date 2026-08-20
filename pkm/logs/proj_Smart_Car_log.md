@@ -1,5 +1,18 @@
 ## COLLECTED STORIES — Kim's accounts of the long days, verbatim (opened 2026-08-19)
 
+### Wiseman, and the first snow (2026-08-19) — answers the 46 Dalton miles
+
+> We did the drive from Coldfoot to Wiseman, just up the road. A tiny city. Several years earlier, our friends who were with us said that on that stretch, the road was so bad that their tires were shredded. That's why they brought their car as a "chase car" to make sure we were OK. The road had been improved by the time we were there. We did get to go to the museum and were shown around by one of the residents. It was there, at our farthest north point, that the snow (I believe the first of the season) began to fall. That told us it was time to leave. And that was right as the weather was soon bad.
+
+### The Penultimate State was never Florida (2026-08-19)
+
+> By getting to 49 states, it left Hawaii as the Ultimate State, something we thought might happen (which, of course, it did). So it wasn't Florida. The emphasis on Florida came from the fact that it was the only state in the region (SE US) that hadn't been visited by TwoRed. There were more along the East Coast (Delaware, for example). I think Vermont became the real "penultimate state" that was visited (if memory serves me right).
+
+### The West Virginia pair (2026-08-19)
+
+> The West Virginia pair came from two different trips as there were scientific meetings in the region. I found the route the first time as it was a direct way to the meeting site. The second time, I believe I went out of my way a bit to go on this beautiful highway.
+
+
 ### THE TWO NEAR-MISSES — Kim, 2026-08-19
 
 > Driving in the Canadian Yukon. Virtually no traffic. Pretty good highways. When there is a pothole, someone has put a flag marker at the side of the road. An adequate warning if you're paying attention. Which I was. But there wasn't a flag at the car-sized pothole that I barely missed. That would have been a TwoRed ending event. Lucky I was paying a lot of attention.
@@ -905,5 +918,85 @@ He revised his own words the moment he saw the table: *I should have said "abrup
 **So the earlier statement was right but blunt.** *The log measures output, not cost to the driver* is true. **The sharper version: the log records MEANS and cannot record VARIANCE, and the cost lived entirely in the variance.**
 
 **I did look**, because his correction points at economy rather than speed -- repeated decel/accel cycles should show there if anywhere. Canadian 2014 residual **SD 4.87 (n=18)** against the US **4.73 (n=268)**, F-test **p = 0.79**. **Nothing.** And it could not have been anything: **those rows were converted from LITRES and Canadian dollars, and unit-normalising that sheet is still an OPEN item** -- a per-row conversion inflates spread by itself, so the test cannot separate rough-road behaviour from arithmetic. **Recorded as a non-result, not a null.**
+
+
+
+
+## ★★★ THREE ANSWERS FROM KIM, CHECKED (2026-08-19) — summary in proj
+
+### 1. The 46 Dalton miles: the fuel log splits them 32 / 14, and only the 32 is the Dalton
+
+The gap was Ester→Coldfoot **252** against Coldfoot→Ester **298**. Both legs are odometer-continuous (Aug 17 ends 36967, Aug 18 starts 36967), so all 46 miles sit inside the return leg. **But TwoRed fuelled at Yukon River Crossing in BOTH directions, and that intermediate fix splits the leg into two independently comparable halves:**
+
+| segment | north | south | difference |
+|---|---|---|---|
+| Ester ↔ Yukon River Crossing | 137 | 151 | **+14** |
+| Yukon River Crossing ↔ Coldfoot | 115 | 147 | **+32** |
+| | 252 | 298 | +46 |
+
+**The 32 miles are north of the Yukon River — the Dalton segment. Coldfoot is Dalton mile 175; the Wiseman village spur is about 16 road miles further. Out and back is 32.** Kim's account and the odometer agree to the mile. The other 14 are at the Fairbanks end and have nothing to do with the excursion.
+
+**★★ And the same leg is the strongest thing in the record on two other instruments, both of which his story now explains:**
+
+- **It is the SLOWEST leg of 200+ miles in sixteen years — 298 miles in 13.18 hours, 22.6 mph gross.** Nothing else under 24. The outbound run over the identical road the day before made 28.6. **The difference is not the road; the road was the same. It is the museum tour, the village, and the turnaround.** This is FIVE THINGS #5 in its purest form — a long elapsed time is not a slow day — and it is the case where the difference can be measured against the SAME road driven the day before.
+- **38 degF at the 07:52 departure, tied for the second-coldest start in 136 timed legs.** Coldfoot read **64 degF** at 18:26 the previous evening. **A 26-degree overnight drop at the farthest north point the car ever reached**, on the morning Kim says the season's first snow began. The instrument corroborates the weather turning, at the exact hour.
+
+**Note what closed this.** Two fills at one location, six hours of driving apart, converted an unexplained total into two separately attributable differences. **A matching total does not mean a matching route (the Dragon); a SPLIT total localises the discrepancy.** Same instrument, used the other way round.
+
+### 2. The Penultimate State was never Florida — and the record can only partly follow
+
+**Kim's ruling:** 49 mainland states leaves Hawaii as the Ultimate State. **The penultimate is the 49th mainland state, i.e. the last one reached.** Florida mattered for a different reason — the only unvisited state in the SE — and there were more gaps up the East Coast.
+
+**What the record holds:** 45 of the 49 mainland states appear, across the fuel log and 139 trip legs. **The last new states in the record all fall on the 2014 trip Kim himself named Penultimate State:** Alabama 5/7, New Jersey 5/16, **Vermont 5/18 (Hartland)**, **New Hampshire 5/20 (Lebanon)**, **Maine 5/22 (Lubec)**. Kim remembers Vermont; **the record's last new state is Maine, four days later, arriving at Lubec — the easternmost point of the continental United States.** Not resolved here; Kim is the better instrument and the two readings are three legs apart.
+
+**Vermont does carry a mark the others do not:** the trip stops dead there. Hartland VT on 5/18 at odo 44746, and the next logged leg opens at Lebanon NH on 5/20 at 44805 — **two nights, and 59 odometer miles for a drive that is 18 miles direct.** About 41 miles of local driving in the Upper Valley. Whatever happened in Vermont was not a pass-through.
+
+### ★★★ 3. DELAWARE IS INVISIBLE AS A LABEL AND PROVABLE AS A ROW
+
+Four mainland states never appear anywhere: **Florida, Delaware, Rhode Island, South Dakota.** Florida is already understood — Kim drove a few miles into the panhandle and turned around, and a log that samples at fill-ups cannot see it (Finding 036). **Delaware is the same class of silence, and here the geography instrument breaks it.**
+
+2014-05-16, Henderson NC → Bellmawr NJ, with an intermediate fill at **Colonial Heights VA**. From that fill to Bellmawr the odometer reads **264 miles** against a great-circle of 219 — a ratio of 1.21, ordinary for interstate. **Every road between those two points that is anywhere near 264 miles passes through Delaware:** I-95 through Baltimore and the Delaware Turnpike is ~262; US-13 up the Delmarva is ~285. **The only Delaware-free route — I-83 to York PA, then US-30 east — is about 305 miles, some 40 miles more than the odometer permits.**
+
+**So the record does contain Delaware. It contains it as a DISTANCE, not as a name** — which is exactly the errata architecture's own rule read in the other direction: **key to a ROW, never to a LABEL.** The same reasoning that placed the Tail of the Dragon by intermediate fills places Delaware by exclusion.
+
+**And a charter claim gets settled while we are here.** The 2026-08-12 intake audit flagged *49 states and 10 provinces* as unverified. **The provinces are exactly right: Alberta, Manitoba, New Brunswick, Newfoundland, Nova Scotia, Ontario, PEI, Quebec, Saskatchewan, Yukon — ten, all present.** The states stand at 45 documented, 46 with Delaware by inference, plus Florida on Kim's testimony. **Rhode Island and South Dakota are the only two with neither a record nor a story.**
+
+### 4. West Virginia — the trips are identified, the ROAD is not, and one question settles it
+
+Kim: two different trips, scientific meetings in the region, direct the first time, a deliberate detour the second. **The record holds four West Virginia touches and they fall on two different highways 150 miles apart.**
+
+**I-68, northern West Virginia — the 2012 Frostburg trip.** Morgantown WV fills on both 6/1 and 6/8. Columbus OH → **Frostburg MD** 6/1 (241 mi, arriving 14:37) is the direct route to the meeting; Frostburg MD → Streetsboro OH 6/8 departs **07:31**, which puts I-68 westbound through the hills in the first hour of the morning. **Fits *direct to the meeting site* exactly — but it is one trip, out and back, not two.**
+
+**I-64, southern West Virginia — 2010 and 2016.** Barboursville WV fill on 2010-09-30 (Huntington, on I-64) and Summersville WV on 2010-11-14 — **two separate trips six weeks apart.** Then 2016-06-12, **Huntington WV departing 08:58** → Lewisburg WV fill → Richmond VA, 359 miles at 49.9 mph, the fastest leg of that week. **And the 2016 route is plainly out of its way:** Atlanta → Dandridge TN → *north to Huntington WV* → Richmond VA → *back south* to Morehead City NC and Charleston SC. **He slept at Huntington to start the Greenbrier Valley in the morning.** That is *I went out of my way a bit* in the odometer.
+
+**The record contains exactly two MORNING drives through the West Virginia hills: 2012-06-08 westbound on I-68, and 2016-06-12 eastbound on I-64.** They are different roads. **The question for Kim is one word: I-68 (Morgantown → Frostburg) or I-64 (Huntington → Lewisburg → White Sulphur Springs)?** Route inference has been wrong twice in this project and is not being trusted with a third.
+
+
+## [archived] GOOGLE-NATIVE DATA INVENTORY — moved from proj 2026-08-19
+
+- Code: `G:\My Drive\Projects\Smart_Car` (bucket 2 -- code-as-source)
+- **★ GOOGLE-NATIVE DATA, root of `G:\My Drive` (found 2026-08-16).** NOT reachable by any
+  filesystem read -- `G:` shows zero-byte stubs. Read via the Google Drive connector by title.
+  | Title | Kind | Holds |
+  |---|---|---|
+  | `Final Creamsicle Logs` | Sheet | gas log 2021-09→2023-09 (odo 30,290→51,345) + trip log 2021-09→2024-10 + summary |
+  | `Creamsicle` | Doc | the 9-trip narrative, ~4,500 words, per-trip distances |
+  | `Creamsicle_July_Fuel_Log_update` | Sheet | Jan–Jul 2024, odo 52,656→55,743, **lat/long** |
+  | `Creamsicle Inventory` | Doc | Jun 2023 packing manifest + departure/arrival checklists |
+  | `TwoFer Gas Log` | Sheet | car #2: 7 fill-ups, 2014-03→2015-01, 1,209 mi, all Honolulu |
+  | `TwoRed_fuel` | Sheet | richer early TwoRed record: cumulative cost, $/mile, MPG-last-5, **ambient temperature in Notes** |
+  | `TwoRed_fuel_June_2014` | Sheet | live original of the exported `.xlsx` |
+  | `Travel/2016 Fourth Crossing Analysis` | Sheet | live original; `Travel/4th Crossing Fuel Stops` is a **My Map** |
+- **Fuel receipt scans:** `CS_Fuel_Receipts_2021.pdf` (5.7 MB) and `2022_fuel_receipts_Jan-Feb.pdf`
+  (6.5 MB) on Drive -- the primary sources behind the Creamsicle log's first two trips.
+- **Existing analysis code:** `G:\My Drive\Projects\Photo_Mapping\Fuel_Analysis.Rmd` (2022).
+  Predates this project and was written against the fuel data; read before writing new ingestion.
+- Data: `G:\My Drive\Projects\Smart_Car\data`
+- Source docs: `G:\My Drive\Projects\Smart_Car\source`
+- Images: `G:\My Drive\Projects\Smart_Car\images`
+- Docs/output: not yet; destination is kimbridges-documents
+- GitHub: not yet
+- **Superseded:** `G:\My Drive\kimbridges-stories\underway\Smart_car\` -- the original
+  mis-filing. Copies still there; neither bridge deletes, so removal is Kim's.
 
 

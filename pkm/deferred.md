@@ -251,6 +251,22 @@ rows under a trip log 169 -> 173 (59%); fill time+temp 127 -> 132 (45%).**
 2017-05-22 -- the end of the record). And the early period 2010-07 to 2011-03 remains DEFINITIONALLY
 uncovered per Kim's ruling.
 
+### ✓ THE 46 DALTON MILES ARE EXPLAINED, 2026-08-19 — Wiseman
+
+Kim: Coldfoot → Wiseman and back, the museum, a resident's tour, and the season's first snow. **The two Yukon River Crossing fills split the 46 into 32 north of the river (the Wiseman round trip, to the mile) and 14 at the Fairbanks end.** Closed. Full working in the log.
+
+### ★ OPEN QUESTION FOR KIM — Vermont or Maine as the Penultimate State?
+
+Kim's ruling settles the CONCEPT: 49 mainland states leaves **Hawaii as the Ultimate State**, so the penultimate is the 49th mainland state reached. It was never Florida. **But the record's last new states run Vermont 5/18, New Hampshire 5/20, Maine 5/22 (Lubec) — all on the 2014 trip he named Penultimate State.** He remembers Vermont; the record's last is Maine. **Do not print either until he rules.** Vermont is marked by a two-night stop and 59 odometer miles for an 18-mile drive.
+
+### ★ OPEN QUESTION FOR KIM — which West Virginia highway, I-68 or I-64?
+
+He gave the shape (two trips, meetings in the region, direct the first time, a detour the second) but the record holds four WV touches on **two roads 150 miles apart**. **I-68:** 2012 Frostburg, Morgantown fills 6/1 and 6/8, the 6/8 return departing 07:31 — but that is one trip out and back. **I-64:** Barboursville WV 2010-09-30 and Summersville WV 2010-11-14 (two trips), then 2016-06-12 Huntington out at 08:58 → Lewisburg → Richmond on a route that detours north then back south. **The record holds exactly two morning drives through the WV hills and they are different roads. Route inference has been wrong twice here; ask, do not infer.**
+
+### ✓ DELAWARE IS RECOVERED BY GEOGRAPHY, 2026-08-19
+
+Never appears as a label. **The Colonial Heights VA fill → Bellmawr NJ reads 264 odometer miles (great-circle 219, ratio 1.21); the only Delaware-free road is ~305 miles.** The record holds Delaware as a DISTANCE. **State tally: 45 documented, 46 with Delaware, plus Florida on testimony; Rhode Island and South Dakota have neither. Provinces confirmed at exactly 10 — the charter's claim, verified.**
+
 ### ★★★ READINESS ASSESSMENT, 2026-08-19 — Kim asked whether the record is complete enough to start writing
 
 **Answer: YES for four chapters, NO for three, and the strongest argument for starting is that the record
