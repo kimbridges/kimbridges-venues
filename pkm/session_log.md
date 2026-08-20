@@ -67,6 +67,17 @@ Kim exported the Google files; `creamsicle_ingest.R` reads them, skips interleav
 
 **Note the pairing with Finding 037, filed an hour earlier: two verifications in one session that inherited the blind spot of the thing they were verifying.**
 
+### Then I ran the complement check properly, and it broke my own proposed fix
+
+**The mirror has TWO gates and each is blind to the other.** `SOURCE_EXT` decides what is COPIED in; the mirror's `.gitignore` decides what is COMMITTED, and it carries `*.pdf`, `*.jpg`, `*.png`, `*.tif`, `*.mp3`, `*.mp4`, `images/`, `pdfs/`. **The narrow PDF rule I had just proposed to Kim would have copied all 22 scans into the mirror and committed none of them — and reported success.** Verify at the COMMIT with `git_ls()`, never at the copy.
+
+**And the gap is not about PDFs.** `.txt` was classified as DATA on 2026-08-18. Outside the backup on that classification: `Preface_text.txt`, `Chapter_13.txt`, `Research_Introduction.txt`, five `mRNA/Slide_N.txt`, `full_story.txt`, `Nike_challenge_canonical.txt`, a dozen `*_guidelines.txt` prompt documents, plus `Smart_Car/source/Smart_Car.docx` and `Smart_Car_2016.pptx`. **Manuscript text, narration scripts and authored prompts — the least reproducible things in the PKM.**
+
+**⚠ And the obvious repair would publish a credential.** The same set holds `auth_token.txt` (96 bytes) and `How_to_store_and_use_API_keys.txt`; the mirror pushes to a GitHub remote. Nothing is exposed today because those files are outside it. **Precondition recorded: audit the complement for secrets and confirm repo visibility before any extension is added.**
+
+**What is not the problem: 8.5 GB of jpg/tif/arw/wav/mp4.** Git is the wrong instrument for those and their absence is a design decision. **Three times in one session a repair was scoped to the instance I had just been shown. The complement check is the only one of the three that found anything.**
+
+
 ### Close
 
 `proj_Smart_Car.md` back under budget with four write-ups moved to the log behind pointers. `deferred.md` carries the Creamsicle result and two new TASKs (extend the timezone table to Creamsicle's cities; normalise TwoRed's Canada2014 litre/CAD rows before the Canadian Plains variance test is cited — it is a NON-RESULT, not a null).

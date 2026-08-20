@@ -1882,4 +1882,17 @@ I searched TwoRed's whole record for Florida: **no fuel stop in 294, no leg endp
 
 **Second-order note.** The same shape appears in Finding 037 filed an hour earlier: a content check that passed correctly while the file was corrupt, because the check was scoped to what I already suspected. **Two instances in one session of a verification that inherits the blind spot of the thing it verifies.**
 
-**Status: OPEN — a policy decision for Kim, not a bug to patch.** Adding `pdf` to `SOURCE_EXT` globally would sweep 290 MB of rendered figure output into a 10.8 MB mirror. The narrow rule — **PDF counts as source only under a `data/`, `scans/` or `source/` path segment** — captures the 23 files that matter (8.7 MB, of which 6.6 MB is the Smart_Car scans). Not applied unilaterally; see `deferred.md`.
+### The complement check, run properly, broke my own proposed fix
+
+I then did what the rule says and enumerated the complement across all of `Projects`. Three things fell out, and the FIRST of them invalidates the repair I had just proposed.
+
+**1. ★★★ THE MIRROR HAS TWO GATES AND EACH IS BLIND TO THE OTHER.** `SOURCE_EXT` decides what gets COPIED into the mirror. The mirror's own `.gitignore` decides what gets COMMITTED — and it carries `*.pdf`, `*.jpg`, `*.png`, `*.tif`, `*.mp3`, `*.mp4`, `images/`, `pdfs/`. **Adding `pdf` to `SOURCE_EXT` would have copied all 22 scans into the mirror and committed none of them, and `pkm_backup()` would have reported success.** A file can pass gate one and be dropped silently at gate two. **This is the same failure as Finding 034 one layer down, and I proposed a fix that would have hit it.** Any change to what the backup carries must be verified at the COMMIT, by `git_ls()`, never at the copy.
+
+**2. `.txt` was classified as DATA and a large share of it is authored prose.** The 2026-08-18 comment reads *NOT .txt/.csv/.json/.docx -- those are DATA*. The complement contains `LLM_Creates_R/Preface_text.txt`, `Chapter_13.txt`, `Scripting_Discovery/Research_Introduction.txt`, `storylines/full_story.txt`, `Audio/Nike_challenge_canonical.txt`, five `mRNA/Slide_N.txt`, and a dozen `*_guidelines.txt` prompt documents. **These are manuscript text, canonical narration scripts and authored prompts — the least reproducible things in the PKM — and they are outside the backup because of a one-word guess about an extension.** Also outside: `Smart_Car/source/Smart_Car.docx` and `Smart_Car_2016.pptx`.
+
+**3. ⚠ AND A BLANKET `txt` WOULD PUBLISH A CREDENTIAL.** The same complement holds `Photo_Locations/extra_code/auth_token.txt` (96 bytes) and `plainmaps/API_Information/How_to_store_and_use_API_keys.txt`. The mirror pushes to `github.com/kimbridges/kimbridges-venues`. **Nothing is exposed today — those files are outside the mirror — but the obvious repair would expose them.** Precondition on any extension change: audit the complement for secrets FIRST, and confirm the repo's visibility.
+
+**4. The 8.5 GB is not the problem and should not be treated as one.** Outside the mirror across `Projects`: 903 jpg (3.7 GB), 48 tif (1.4 GB), 9 arw (596 MB), 15 wav (398 MB), 4 mp4 (331 MB). **Git is the wrong instrument for these and their absence is a design decision, not a defect.** The defect is only where an authored, irreproducible, small file sits outside because of a misclassification.
+
+**Status: OPEN — a policy decision for Kim, and the naive version of it is now known to be wrong.** See `deferred.md`.
+
