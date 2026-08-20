@@ -170,6 +170,15 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ✓✓✓ THE CHAPTER ARCHITECTURE IS SOLVED, 2026-08-19 — this was the blocker
+
+**Kim's THREE LAYERS, given as preliminary thinking and recorded verbatim in the log.** Car = hook and preconception; drives = stories; data = answers, *including questions you didn't know you had*. **The car/human fabric runs THROUGH all three — it is the weave, not a chapter — so TWO LOGS, TWO SUBJECTS is absorbed rather than replaced.** The data layer has two ends and BOTH get written: collection/transcription/cleaning as a narrative with real suspense, and analysis/display at the other.
+
+**Editorial rule that falls out:** an analysis earns the ANALYSIS strand only if it answers a question the drives raised; **results with no story attach to the DIFFICULTY strand instead** (the retired temperature effect, the wide-tire interval straddling zero, the Canadian non-result — all three are the data being honest about what it cannot say).
+
+**NEXT ACTION, and it is now a writing task rather than a design one:** draft the chapter list against the three layers, retire the charter's six-chapter list for good, and sort the existing inventory into the two data strands. **Full development in `logs/proj_Smart_Car_log.md`.**
+
+
 ### ★★★ DECISION NEEDED FROM KIM — 22 scans are outside the backup (2026-08-19, Finding 038)
 
 **The paper logs are not backed up.** 39 Smart_Car files are in the mirror; the 22 scanned PDFs are not. They are the primary sources behind every errata row and the only things in this project that cannot be regenerated. `SOURCE_EXT` gained `csv` and `xlsx` on 2026-08-18 and did not gain `pdf`.
@@ -265,9 +274,15 @@ Kim checked Street View and confirmed the road. **The record puts TwoRed on that
 
 **The memory got the road and the count right and mis-bound one occasion:** he named Frostburg 2012, which is **I-68** (two Morgantown fills; the 6/1 fill sits 65 mi short of Frostburg against I-68's ~63) and never touches this road. The first drive was 2010, in the car's first ten weeks. **Full write-up and the failure-mode analysis in the log.**
 
-### ★ TASK — the two 2010 West Virginia trips have no stories
+### ✓✓ THE 2010 LOOP HAS ITS STORY, 2026-08-19 — and it explained an outlier nobody had looked for
 
-**2010-09-30 Barboursville** (now known to be the first of the pair, odometer 3,310) and **2010-11-14 Summersville**, on **US-19, the New River Gorge Bridge road** — six weeks apart, both inside the car's first four months, neither accounted for. **Ask Kim when the long-day stories are next being collected.** These are the earliest driving in the record and the only West Virginia visits with no narrative.
+Kim gave the Summersville trip unprompted: a Frostburg meeting, then **a car left in a St Louis car wash for three and a half weeks** while he flew home, then Nancy, a New England meeting, a university tour and a southern return to California. **All of it is in the fuel log.** The parking is **Altamont IL 2010-10-11 (odo 5,730) → Effingham IL 2010-11-05 (5,957) — 25 days, 227 miles, between two towns seventeen miles apart.**
+
+**★★★ And it is the only dormancy east of the Rockies in sixteen years.** 2,147 of 2,495 elapsed days (86%) fall inside a spell of two weeks or more; there are 35 such spells and **30 are California, 2 Arizona, 2 Oregon, 1 Illinois.** His story is the sole explanation of the single outlier. **New analysis queued: THE PARKING CONSTELLATION** — where the car sleeps, mapped against where it drives.
+
+**★ One open question for Kim (Finding 039):** he places the parking BEFORE Nancy's New England meeting; the record puts New England on **10/7–10/10, before the 25-day gap**, and the university tour on **11/6–11/10, after it**. Every component checks out; only the order differs. **Ask whether Nancy joined in October rather than November.** Do not treat this as a correction — it is the expected error profile of the instrument.
+
+**Still open: the OTHER 2010 West Virginia trip.** 2010-09-30 Barboursville is now known to be the first of the I-64 pair. **2010-11-14 Summersville is on US-19, the New River Gorge Bridge road**, and sits inside this loop's return — but the road itself has no story.
 
 ### ✓ DELAWARE IS RECOVERED BY GEOGRAPHY, 2026-08-19
 

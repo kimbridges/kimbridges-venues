@@ -1,5 +1,14 @@
 ## COLLECTED STORIES — Kim's accounts of the long days, verbatim (opened 2026-08-19)
 
+### The St Louis car wash, and the 2010 loop (2026-08-19)
+
+> I don't remember Summersville. But the loop that was part of was a bit complicated. I had been to a meeting in Frostburg and drove back after the meeting to St Louis. I left my car in a car wash facility (sounds strange, but it worked). I left the mainland and came back to St Louis, got the car. Nancy joined me and we went to her meeting (Boston?). After that, we drove around a bit, Nancy left and I continued the drive. I visited colleagues at a number of universities on the way back West. This route took me mostly through the South. I eventually got to California. By leaving the car in St Louis, I avoided having to drive back to California and then return soon after over the route I'd have just taken.
+
+### The three layers — the architecture, given 2026-08-19
+
+> The Smart Cars are the "hook" for the story. An overriding theme. The two aspects of performance, car and human, is the fabric for the story. The data become the real issue. The complexities and difficulties in the process of data collection, transcription, and cleaning on one end. At the other end, the opportunities for interesting, and perhaps unique, ways to analyze and display the results. This makes, in my mind, three layers. People see the unusual cars (and have preconceived notions). The drives make interesting stories. The data give satisfying answers to questions, even those you didn't know you had.
+
+
 ### Wiseman, and the first snow (2026-08-19) — answers the 46 Dalton miles
 
 > We did the drive from Coldfoot to Wiseman, just up the road. A tiny city. Several years earlier, our friends who were with us said that on that stretch, the road was so bad that their tires were shredded. That's why they brought their car as a "chase car" to make sure we were OK. The road had been improved by the time we were there. We did get to go to the museum and were shown around by one of the residents. It was there, at our farthest north point, that the snow (I believe the first of the season) began to fall. That told us it was time to leave. And that was right as the weather was soon bad.
@@ -1050,4 +1059,88 @@ He checked it on Street View: **the Charleston → Beckley run on I-64 is the ro
 - **Superseded:** `G:\My Drive\kimbridges-stories\underway\Smart_car\` -- the original
   mis-filing. Copies still there; neither bridge deletes, so removal is Kim's.
 
+
+
+
+## ★★★ THE 2010 LOOP, AND THE ONLY TIME THE CAR SLEPT EAST OF THE ROCKIES (2026-08-19)
+
+Kim volunteered the Summersville trip as *a bit complicated*, apologising for not remembering the town. **The loop is in the fuel log end to end, and it explains the single largest structural anomaly in sixteen years of dormancy — an anomaly nobody had looked for.**
+
+### The car wash is in the odometer
+
+| | |
+|---|---|
+| last fill before | **Altamont IL**, 2010-10-11, odo **5,730** |
+| first fill after | **Effingham IL**, 2010-11-05, odo **5,957** |
+| elapsed | **25 days** |
+| driven between them | **227 miles** |
+
+**Altamont and Effingham are seventeen miles apart on I-70 in central Illinois.** St Louis is ~85 miles west of one and ~100 west of the other. **In (85) plus out (~100) is 185; the remaining ~42 is local driving at each end.** The arithmetic is exactly a car driven into St Louis, left for three and a half weeks, and collected. **This is the only gap in the whole 2010 record with that shape.**
+
+### ★★★ AND IT IS THE ONLY ONE IN THE WHOLE RECORD
+
+Asking *where does this car sleep?* — a question nobody had put to the data — produces a result that stands on its own:
+
+- **TwoRed's fuel log spans 2,495 days. 2,147 of them — 86% — fall inside a dormancy of two weeks or more.** The car was parked for the overwhelming majority of the sixteen years, because its owner lived 2,500 miles away.
+- **There are 35 such dormancies. Thirty of them are in California; two Arizona, two Oregon.** That is the home base, and it maps a SECOND geography — not the driving constellation but the parking constellation.
+- **★★★ Exactly ONE is east of the Rockies: Altamont IL, 2010-10-11 to 2010-11-05, 25 days.** The car wash.
+
+**So the story does not merely survive the check. It is the sole explanation of the only anomaly in a distribution of 35.** And the logic Kim gives is the whole point: *by leaving the car in St Louis, I avoided having to drive back to California and then return soon after over the route I'd have just taken.* **A rational choice, made once in sixteen years, and it is visible in the record as a single outlier.**
+
+### The rest of the loop, and one order that does not match
+
+**Confirmed by the fills:** the westward return *mostly through the South* is unmistakable — **Summersville WV 11/14 → Bessemer NC → Villa Rica GA → Tupelo MS → Bryant AR → Mt Pleasant TX → Carlsbad NM → Ruidoso → Willcox AZ → Dateland → El Cajon CA 11/24.** And *visited colleagues at a number of universities* is equally visible in the four days before it: **Springfield OH 11/6, Waynesburg PA 11/7, Middleton PA 11/8, Newburg PA 11/9, Pittsburgh PA 11/10** — five fills, five short legs, one state.
+
+**★★ But the order differs from the memory in one step.** Kim's sequence is *Frostburg → park at St Louis → fly out → return → Nancy → Boston → universities → South*. **The record puts New England BEFORE the parking, not after:** Gettysburg PA and Danbury CT on 10/7, **Charlton MA on 10/9** (on I-90 between Worcester and Sturbridge), Waterloo NY 10/10, then Ohio and Altamont IL on 10/11 — and after the 25-day gap there is no New England at all. **The Frostburg meeting fits the 5-day gap of 10/2 to 10/7** (Waynesboro VA → Gettysburg PA, 369 miles for a ~290-mile route, the excess being local driving at a conference).
+
+**This is the West Virginia failure mode again, one day later and in a different story.** The COMPONENTS are all correct and independently confirmed — the Frostburg meeting, the car wash, Nancy, the New England meeting, the university tour, the southern return. **What slipped is the ORDER of two of them.** Do not treat this as a correction to Kim; treat it as the expected error profile of the instrument. **Ask him whether Nancy joined in October rather than November.**
+
+
+
+## ★★★ THE THREE LAYERS — THE CHAPTER ARCHITECTURE, SOLVED (Kim, 2026-08-19)
+
+**His formulation is in COLLECTED STORIES, verbatim.** What follows is the development, and why it closes a weak point that has been named since 2026-08-16.
+
+### Why TWO LOGS, TWO SUBJECTS was necessary but not sufficient
+
+That frame answered *which instrument answers which question* — economy and degradation belong to the car, daily range and departure discipline to the human. **It is an excellent SORTING rule and a useless ORDERING rule.** It never said what a reader meets first, or why they keep going. **Three layers answers both, and the two compose rather than compete: the car/human fabric runs THROUGH all three. It is the weave, not a chapter.**
+
+### The layers are three DEPTHS of one material, and each is bought by the one above
+
+1. **The car.** People see an unusual object and arrive with a preconception — *that thing is a city runabout*. **The preconception is an ASSET, not an obstacle.** It is the only reason layer 2 is surprising.
+2. **The drives.** The stories are surprising BECAUSE of the preconception, and they raise questions they cannot answer. *How far can you actually go in a day? What did those miles cost?*
+3. **The data.** It answers them — **including questions the reader never thought to ask.**
+
+**Remove any layer and the one below it loses its force.** Without the preconception the drives are just travel. Without the drives the numbers have no question attached. Without the numbers the stories are anecdote. **That mutual dependence is what makes this an architecture rather than a table of contents.**
+
+### ★★ *Questions you didn't know you had* is the load-bearing phrase, and it is already proven
+
+Every one of these came out of this project in the last three days, and **not one was asked before the data was made to answer it:**
+
+- *What does a day OFF the highway look like in an odometer?* — **70 miles at Holbrook**, a park tour with a nephew, sitting in the gap between an arrival reading and the next departure.
+- *How much of a "speed" is living rather than driving?* — **7.5 mph**, from Creamsicle's stopped-time column.
+- *Can a record contain a state it never names?* — **Delaware**, by 264 odometer miles against a 305-mile Delaware-free alternative.
+- *Where does a car sleep?* — **86% of the record's elapsed days are dormancy; 34 of the 35 long ones are in California, Arizona or Oregon, and the single exception is the St Louis car wash.**
+
+**That last one is the strongest possible demonstration, because it arrived the same day the architecture did.** Kim told a story to apologise for not remembering a town. **The story turned out to be the sole explanation of the only outlier in a distribution nobody had computed.** Layer 2 generated the question; layer 3 answered it; neither could have done it alone.
+
+### ★★ The DIFFICULTY end is a third narrative, not a methods appendix
+
+Kim named the data layer as having two ends — collection, transcription and cleaning at one; analysis and display at the other. **The first end is usually exiled to an appendix and that would be a mistake here, because it has the same shape as the driving stories: a problem, a mechanism, a resolution.** The inventory is already substantial:
+
+- **The slashed zero** — a handwriting habit that predicts the DIRECTION of an error, not just its presence, and whose control group holds.
+- **The crossbar that was not a correction** — a bitonal-thresholding artifact in a scan; the original settles it, the scan cannot.
+- **The pump identity** — three numbers that must multiply, and 277 of 294 rows that do.
+- **The intermediate fill** — a total cannot place a route; a SPLIT total localises a discrepancy to the mile (the Dragon, then Wiseman).
+- **The backup with two gates**, each blind to the other, reporting success while carrying nothing.
+
+**These are stories about the record with real suspense in them. Write them; do not bury them.**
+
+### ★ An editorial rule falls out, and it is testable against today's inventory
+
+**An analysis earns a place in the ANALYSIS strand only if it answers a question the drives raised.** A result with no story to attach to is not a failure — **it belongs to the DIFFICULTY strand instead, where its subject is the record rather than a drive.** Three current results sort themselves immediately: **the retired temperature effect** (a result destroyed by more data), **the wide-tire interval that straddles zero**, and **the Canadian non-result** (blocked on unit normalisation). **All three are the data being honest about what it cannot say — which is a good story, told in the right strand.**
+
+### The three layers are the three instruments
+
+**Preconception, memory, record.** This session has been nothing but those three checking each other, and they fail differently: the record is silent where its resolution cannot reach (Finding 036); the memory keeps roads and counts but mis-binds occasions (West Virginia, then the 2010 loop, one day apart); the preconception is simply wrong, which is the point of the book. **The reading structure and the working structure are the same structure. That is a good sign for an architecture and it should be said out loud in the Foreword.**
 

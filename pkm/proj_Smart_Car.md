@@ -40,9 +40,7 @@ _Given by Kim 2026-08-12. This replaces the single-car framing entirely._
 | 3 | **Creamsicle** | 2016 453 ForTwo "Edition #1", white/orange, 0.9L turbo triple, 89 hp, six-speed | ICE | **Sold** to family 2024-10-20 | **FOUND 2026-08-16 — the second spine, and it is a DRAFT not raw material.** Gas log 2021-09-23 to 2023-09-27 (odo 30,290→51,345, metric BC fill-ups already normalised); trip log 2021-09-23 to 2024-10-20; Jan–Jul 2024 update **with lat/long**; a 9-trip narrative; a packing inventory. **28,697 miles / 1,123 days / 9,845 mi-yr**, 18 states + Canada |
 | 4 | **Bordeaux** | 2018 Smart | **Electric** | **Owned** | Not yet inventoried |
 
-**The arc the roster makes visible, which one car could not.** Sixteen years, four cars,
-three ICE and one electric, spanning purchase, lease, resale and replacement — and the
-choice made again three times after the first. That is the fleet thesis.
+**The arc the roster makes visible, which one car could not.** Sixteen years, four cars, three ICE and one electric, spanning purchase, lease, resale and replacement — **and the choice made again three times after the first.** That is the fleet thesis.
 
 **★ THE 75,000-MILE QUESTION IS RESOLVED (Kim, 2026-08-12).** TwoRed is **about 20 miles short of 75,000**; the log's 71,181 is where the *log* stops, not the car. **The charter was right and my reading of it was wrong.** The mainland record now closes at **71,283 at the Matson dock** (below), so the ~3,700 remaining are Honolulu miles. **Cite ~75,000 as Kim's figure, not as derived.**
 
@@ -94,45 +92,38 @@ Median leg **251 mi**; log distance ~**95%** of odometer miles; lifetime **39.44
 
 Smart Madness prescribed WIDE tires after the first crossing because the stock narrow "city" tires let crosswind push the car around at highway speed. **The purpose was handling, not economy.** Before/after, the economy difference is indistinguishable from zero, 95% interval **-3.7% to +4.9%** — the 1-3% penalty theory predicts sits INSIDE it. **The data rules out a LARGE penalty; it cannot detect a modest one.** (I first wrote the stronger claim and withdrew it in the same turn — same failure mode as Finding 032.) For the story: a decision made for one reason, measured on a different axis, where the measurement's job is to say what it COST, not whether it was right.
 
-## ★★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18) — full write-up in the log
+## ★★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18) — now a component of the three layers; full write-up in the log
 
 His words: *the fuel log is more about the CAR'S performance, while the trip log shows the HUMAN performance -- how far and fast can you expect to drive in a day, something I had no idea about until I started doing these drives.*
 
-**This is the strongest organising idea the project has produced and it is the top frame for the chapter architecture.** Four consequences, argued in full in the log:
+**It assigns instruments to questions** — economy, degradation, cost/mile, the wide-tire question are the CAR's; daily range, departure discipline, gross speed are the HUMAN's; **mixing them yields a meaningless average.** Neither log substitutes for the other: fuel records STOPS, trip records LEGS, and **the odometer is the JOIN, not the topic.** It also explains the collection history rather than apologising for it — trip logging started LATER because **the car's question was the obvious one to ask first; the human question is the one the driving taught him to ask.**
 
-- **Neither log substitutes for the other.** Fuel records STOPS, trip records LEGS. The odometer is the JOIN, not the topic.
-- **It assigns instruments to questions.** Economy, degradation, cost/mile, the wide-tire question — car. Daily range, departure discipline, gross speed — human. Mixing them yields a meaningless average.
-- **★ It supplies the missing NARRATIVE thesis.** Kim did not know the answer before he drove it, so the human half is a finding he made about himself by doing the thing. The 3-bar refuelling rule adopted at Deming in 2010 is exactly that: a behaviour changed by a near-miss and visible in the numbers after.
-- **It explains the collection history rather than apologising for it.** Trip logging started LATER because **the car's question was the obvious one to ask first; the human question is the one the driving taught him to ask.**
-
-**Now bounded (2026-08-19):** the trip log records what the human ACHIEVED, in MEANS not variance; the stories are the only record of what it COST. And Creamsicle's net-vs-gross gap (below) is the first measurement of the driving-vs-living conflation the frame implies.
+**Bounded 2026-08-19:** the trip log records what the human ACHIEVED, in MEANS not variance; **the stories are the only record of what it COST.** Creamsicle's 7.5 mph net-vs-gross gap is the first measurement of the conflation the frame implies. **This is now the FABRIC of the three-layer architecture below, not a rival to it.**
 
 ## ★★ THE SCAN SWEEP, 2026-08-18 — full write-up in the log
 
-All 15 scans read (22 now on disk). The four results that must not be lost:
+All 15 scans read (22 on disk). Four results that must not be lost:
 
 **1. The wheel change is DATED** — `NEW WHEELS @ 13510 miles`, Kim's margin, 179 mi before the 2011 departure. **The estimate FLIPS SIGN with specification (+3.6% to -1.8%); that is the finding, not any one number.** The CONDITIONAL in `deferred.md` governs.
 
-**2. ✗ THE TEMPERATURE EFFECT IS RETIRED (2026-08-19).** n=94 gave **-0.068, p=0.045**; the Fourth Crossing's 31 fill-stamped temperatures took it to n=125 and **-0.050, p=0.099**, and **p=0.17** with leg length and era controlled. The raw hot/cold gap (37.97 vs 39.61) dies on the same control — **hot fills are on shorter legs.** Write no thermal claim. **The record is now good enough to RETIRE a result, not just produce one.**
+**2. ✗ THE TEMPERATURE EFFECT IS RETIRED (2026-08-19).** n=94 gave **-0.068, p=0.045**; 31 more fill-stamped temperatures took it to n=125 and **-0.050, p=0.099**, **p=0.17** with controls. The raw hot/cold gap (37.97 vs 39.61) dies on the same control — **hot fills are on shorter legs.** Write no thermal claim. **The record is now good enough to RETIRE a result.**
 
-**3. The slashed zero produced three more corrections and the control held.** Over the 44 rows failing the pump identity: **permitted 8→0 fixes 4; forbidden 0→8 fixes 1** (already flagged); **six controls fix 0.**
+**3. The slashed zero produced three more corrections and the control held.** Over 44 rows failing the pump identity: **permitted 8→0 fixes 4; forbidden 0→8 fixes 1**; **six controls fix 0.**
 
-**4. Gross speed separates by ROAD, across 138 legs in 12 trips.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate State 40.3 | Dalton **31.7** | 2017 February 31.1 | 2016 US-101 coastal **28.3**. Same car throughout; the February 2017 run reads 19.6–21.2 on Highway 1 against 41 inland. **But gross speed is a MEAN — see THE STRESSFUL MILES above, and the Dalton return below, where the same road one day apart differs by 6 mph.**
+**4. Gross speed separates by ROAD, across 138 legs in 12 trips.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate State 40.3 | Dalton **31.7** | 2017 February 31.1 | US-101 coastal **28.3**. Same car throughout. **But gross speed is a MEAN — see the Dalton return, where the same road one day apart differs by 6 mph.**
 
 ## ★★★ THE LONG DAYS — ALL EIGHT COLLECTED, AND EVERY ONE CHECKS OUT (2026-08-19)
 
-**Kim's accounts are verbatim in `logs/proj_Smart_Car_log.md` under COLLECTED STORIES.** They are chapter source material; what follows is only what the log CONFIRMED and what it changed.
+**Kim's accounts are verbatim in `logs/proj_Smart_Car_log.md` under COLLECTED STORIES; the full confirmation table is there too.** Chapter source material. The four that changed something here:
 
-| day | leg | mi | his reason | what the data independently shows |
-|---|---|---|---|---|
-| 2012-05-31 | St Louis -> Columbus | 518 | navigator distracted; lost near Urbana IL | **the 09:52 fill is at Champaign IL -- one metro with Urbana.** Excess over direct I-70: **108 mi** vs his remembered ~100 |
-| 2011-06-26 | Flagstaff -> Holbrook | 100 | meeting his nephew, a park naturalist | out **04:30**, in **06:45** -- a 100-mi hop existing only to arrive early; **70 mi of local driving before the next departure IS the tour** |
-| 2012-06-14 | Billings -> Pocatello | 449 | dull country, nowhere to stay, good freeway | **65.5 mph gross, the fastest day in the record**; sole stop **2.695 gal at Livingston**, already flagged `partial_fill` |
-| 2014-05-29 | Sydney NS -> Edmundston | 555 | off the overnight ferry, car already packed | previous leg ends Port aux Basques **46,625**, this one starts Sydney **46,625** -- zero odometer miles; last fill before boarding was a **full 7.12 gal** |
-| 2017-01-06 | Brookings -> Paso Robles | 562 | racing to his mother, 104; heavy rain at Santa Rosa | **32 degF at Brookings, the coldest start in 107 legs**; Santa Rosa fill **15:59** is the decision point; Paso Robles fill **22:04 at 68,731**, arrival **22:10 at 68,732** -- one mile, six minutes |
-| 2012-05-24 | LSM -> St George | 492 | a long stop with friends in Las Vegas | Las Vegas fill at **18:08**: 375 mi in 12.1 h (**31 mph -- the visit is inside that**), then 117 mi in 2.5 h (**47 mph**) once moving |
-| 2014-05-05 | El Paso -> San Antonio | 531 | racing for Florida, the last mainland state, before a meeting in Cherokee NC | **47.6 mph** over featureless road. **He reached Florida** -- a few minutes in the panhandle, invisible to a log that resolves to fill-ups and overnights (below) |
-| 2013-08-31 | Bellingham -> Grants Pass | 488 | Nancy flew the red-eye and met him off the Alaska ferry with the reservations already made | the leg before it is **Whittier 38,284 -> Bellingham 38,285, one odometer mile**; the next day is **Grants Pass -> San Francisco, 393 mi**, so she could fly home. Two big days, exactly as told |
+| day | leg | mi | what the data independently shows |
+|---|---|---|---|
+| 2012-05-31 | St Louis → Columbus | 518 | navigator distracted, lost near Urbana IL — **the 09:52 fill is at Champaign, one metro with Urbana**, and it carries slashed-zero typo **L61**. Excess over direct I-70: **108 mi** vs his remembered ~100 |
+| 2011-06-26 | Flagstaff → Holbrook | 100 | out **04:30**, in **06:45** — a 100-mi hop existing only to arrive early for his nephew; **70 mi of local driving before the next departure IS the park tour** |
+| 2012-06-14 | Billings → Pocatello | 449 | **65.5 mph gross, the fastest day in the record** — fast because Montana has nowhere to stop |
+| 2017-01-06 | Brookings → Paso Robles | 562 | racing to his mother, 104. **32 degF, the coldest start in the record**; Paso Robles fill **22:04 at 68,731**, arrival **22:10 at 68,732** — one mile, six minutes |
+
+**The other four — Sydney NS → Edmundston (555, off an overnight ferry, zero odometer miles across the water), El Paso → San Antonio (531, racing for Florida), LSM → St George (492, a half-day Las Vegas visit inside a 31 mph day), Bellingham → Grants Pass (488, Nancy off the red-eye) — all check out and are in the log.**
 
 ### ★★★ FLORIDA, AND THE TAIL OF THE DRAGON — full write-up in the log; rules in Finding 036
 
@@ -148,31 +139,23 @@ Kim remembers meeting Nancy *early afternoon*; the sheet starts the day at **06:
 
 ### ★★★ FIVE THINGS THE STORIES CHANGED, none of which the data could have volunteered
 
-**1. Finding 033 got its best corroboration, from an unrelated direction.** The Champaign row is **L61**, one of three slashed-zero cost typos raised the day before. **The typo sits at the stop where he had just discovered he was 100 miles off course and late for dinner.** Kim gave the mechanism on 2026-08-17 -- *record quickly* under pressure -- and here the pressure is documented, at a named stop, by a route that had nothing to do with the audit.
+**1. Finding 033 got its best corroboration, from an unrelated direction.** The Champaign row is **L61**, one of three slashed-zero cost typos raised the day before. **The typo sits at the stop where he had just discovered he was 100 miles off course and late for dinner.** Kim gave the mechanism — *record quickly* under pressure — blind to this route.
 
-**2. The gap between an arrival odometer and the next departure odometer is not noise -- it is the day off the highway.** 70 miles at Holbrook is a park tour. This is a readable quantity across the whole record and nobody has read it.
+**2. The gap between an arrival odometer and the next departure odometer is the day OFF the highway.** 70 miles at Holbrook is a park tour. **Readable across the whole record and nobody has read it.**
 
-**3. Daily distance has a first-order term nobody modelled: WHERE THE BEDS ARE.** The fastest day in sixteen years is fast because Montana has nowhere to stop. Lodging geography sets the length; scenery sets the pace.
+**3. Daily distance has a first-order term nobody modelled: WHERE THE BEDS ARE.** Lodging geography sets the length; scenery sets the pace.
 
-**4. A ferry is a LOGISTICS MULTIPLIER, not a hole in the odometer.** It converts a night into progress and hands the next morning a loaded, fuelled car. Read the five ferries as ENABLING the long days after them.
+**4. A ferry is a LOGISTICS MULTIPLIER, not a hole in the odometer.** It converts a night into progress and hands the next morning a loaded, fuelled car.
 
-**5. ★★ A LONG ELAPSED TIME IS NOT A SLOW DAY.** LSM → St George read 31.6 mph and was a normal drive with a half-day Las Vegas visit inside it. **Gross speed silently conflates driving with living**, and both later measurements agree: Creamsicle's stop column puts the gap at **7.5 mph**, and the Dalton return (below) shows it against the SAME road driven the day before. **Gross mph is a ceiling on driving speed, never a measure of it.**
-
-### ★★ AND CHASING #5 FOUND A BUG IN 16 OF 107 LEGS — Finding 035
-
-Nevada is Pacific and Utah is Mountain, and `tz_shift_hr` was 0 on every leg transcribed after the 2011 file. Fixed as a DERIVED layer — `data/TwoRed_city_timezones.csv` plus computation in `trip_logs_read.R` — so DST, Arizona and Saskatchewan declining it, Yukon before 2020 and Newfoundland's half hour all fall out for free. **16 legs corrected, up to 6 mph each; road ordering unchanged; Billings → Pocatello untouched at 65.5, so the fastest day is real.**
-
-**★ Kim's stories have now corrected the analysis five times** — the road/straight-line rule, the time zones, Florida, the Dragon route, and the Penultimate State. **The human spine is an instrument, and so far the more accurate one.**
+**5. ★★ A LONG ELAPSED TIME IS NOT A SLOW DAY.** LSM → St George read 31.6 mph and was a normal drive with a half-day Las Vegas visit inside it. **Gross speed silently conflates driving with living**, and both later measurements agree: Creamsicle's stop column puts the gap at **7.5 mph**, and the Dalton return shows it against the SAME road driven the day before. **Gross mph is a ceiling on driving speed, never a measure of it.**
 
 ## ★★★ THE FAVOURITE DRIVES (2026-08-19) — full write-up in the log
 
-Kim's list, unprompted: the Rockies; the mountains down to the Oregon coast; **a morning through the West Virginia hills, villages fogged in and chimney smoke rising** -- *I liked this so much, I drove it twice*; and the Dalton, *going where cars weren't intended*. **Accounts verbatim in `logs/proj_Smart_Car_log.md`.** What survives here:
+Kim's list, unprompted: the Rockies; the mountains down to the Oregon coast; **a morning through the West Virginia hills, villages fogged in and chimney smoke rising** — *I liked this so much, I drove it twice* (**settled: I-64 Charleston→Beckley, 2010 and 2016** — above); and the Dalton, *going where cars weren't intended*. Accounts verbatim in the log.
 
-**★ The Dalton return is the slowest long day in the record: 298 mi in 13.2 h, 22.6 mph**, out at 07:52 into 38 degF. Outbound the day before was 28.6. **Gravel is worth six miles an hour.**
+**★ The Dalton return is the slowest long day in the record: 298 mi in 13.2 h, 22.6 mph**, out at 07:52 into 38 degF, against 28.6 outbound the day before. **The 46-mile gap is now closed — Wiseman, above.**
 
-**★★★ AND 46 MILES ON THAT ROAD ARE STILL UNEXPLAINED.** Ester -> Coldfoot is **252** odometer miles; Coldfoot -> Ester the next day is **298**. Same road. His drama -- sliding forward on gravel down a very steep section, wondering whether they could climb back out -- belongs NORTH of Coldfoot, toward Atigun Pass. **23 miles up and back is 46. ASK HIM.**
-
-**★★ A routing app can manufacture the geographic test's own signature.** *Memo to self: stay on the main roads.* Excess road miles over the straight line PLUS low economy from rough surface is exactly what the test hunts. **It is not an error; it is a wrong turn a machine recommended.** Third case where a high ratio wants a story rather than an errata entry -- and the 2016 log has now made this one measurable at 42 miles.
+**★★ A routing app can manufacture the geographic test's own signature.** *Memo to self: stay on the main roads.* Excess road miles over the straight line PLUS low economy from a rough surface is exactly what the test hunts. **It is not an error; it is a wrong turn a machine recommended** — measurable at 42 miles in the 2016 log. Third case where a high ratio wants a story rather than an errata entry.
 
 ## ★★★ THE FOURTH CROSSING LOG IS FOUND (2026-08-19) — full write-up in the log
 
@@ -184,16 +167,9 @@ Nine pages, **25 legs**, scanned the afternoon it was asked for. **The reconstru
 
 ## ★★★ THE STRESSFUL MILES ARE INVISIBLE — AND THAT IS A DIFFERENT SILENCE FROM FINDING 036 (2026-08-19)
 
-Kim's two near-misses (verbatim in the log): **a car-sized pothole in the Yukon with no warning flag** -- *that would have been a TwoRed ending event* -- and, entering New Brunswick, **a four-inch level change where the freeway met a bridge**. *Wham! I wondered if the two front wheels had been seriously damaged.* Then the claim that IS testable: *we were plagued by potholes. We often slowed to avoid damage. This meant also looking in the rear view mirror to make sure we wouldn't be hit from the rear. Those miles, which were mostly across the Canadian Plains, were very stressful.*
+Kim's two near-misses (verbatim in the log): **a car-sized pothole in the Yukon with no warning flag** — *that would have been a TwoRed ending event* — and, entering New Brunswick, **a four-inch level change where the freeway met a bridge.** Then the claim that IS testable: *we were plagued by potholes. We often slowed to avoid damage... Those miles, which were mostly across the Canadian Plains, were very stressful.*
 
-**Both instruments were pointed at it. Neither sees anything.**
-
-| | Canadian Plains | US Plains | whole record |
-|---|---|---|---|
-| median gross mph | **44.5** | **45.0** | 40.5 |
-| median MPG residual vs the leg-length model | +0.56 (n=4) | +1.39 (n=21) | 0 (SD **4.74**) |
-
-The three Plains legs -- Thunder Bay -> Winnipeg -> Regina -> Lethbridge -- run **44.5, 47.3, 43.1 mph**, which is FASTER than his sixteen-year median, and their economy sits four-fifths of a standard deviation inside the noise. **The stretch he remembers as the most stressful of the whole crossing is, by every number we have, an unremarkable fast run.** And the two near-misses left no trace at all: the New Brunswick bridge is 2014-05-23 Lubec ME -> Moncton NB, **217 mi, 5.35 h, 40.6 mph** -- dead average.
+**Both instruments were pointed at it. Neither sees anything.** Canadian Plains median gross **44.5 mph** against US Plains **45.0** and a whole-record **40.5**; MPG residuals +0.56 (n=4) against a record SD of **4.74**. The three Plains legs run **44.5, 47.3, 43.1** — FASTER than his sixteen-year median. **The stretch he remembers as the most stressful of the crossing is, by every number we have, an unremarkable fast run.** The New Brunswick bridge leg is dead average too: 217 mi, 5.35 h, **40.6 mph**.
 
 ### ★★★ KIM'S CORRECTION INVERTS THE LOGIC — the data does not fail to corroborate him, it IS his mechanism
 
@@ -207,9 +183,7 @@ I had treated *no speed effect* as the record failing his memory. **His account 
 
 ### ★★★ WHY THIS IS NOT FINDING 036 — full write-up in the log
 
-**036 was about events that generated NO observation.** These miles generated a FULL set — distance, time, fuel, temperature, both endpoints — and every one is normal. The record is not silent; it is answering a different question at a resolution that cannot reach the answer.
-
-**★★★ BOTH LOGS MEASURE OUTPUT. NEITHER MEASURES COST TO THE DRIVER. Vigilance has no column.** A driver can buy an ordinary 44 mph day at an extraordinary price and the log records the 44. **Consequence for the document:** the stories are not colour around the data — they are the sole record of an entire dimension the data cannot reach.
+**036 was about events that generated NO observation.** These miles generated a FULL set — distance, time, fuel, temperature, both endpoints — and every one is normal. The record is not silent; it answers a different question at a resolution that cannot reach the answer. **★★★ BOTH LOGS MEASURE OUTPUT. NEITHER MEASURES COST TO THE DRIVER. Vigilance has no column.** A driver can buy an ordinary 44 mph day at an extraordinary price and the log records the 44. **So the stories are not colour around the data — they are the sole record of a dimension the data cannot reach.**
 
 ## ★★ TWO RELOCATIONS, AND THE LAST YEAR'S SHAPE (2026-08-19) — full write-up in the log
 
@@ -309,21 +283,13 @@ _Kim, 2026-08-12._ Statistics with graphics, on:
 - **Average speeds** — the Fourth Crossing file already carries time-zone-corrected
   `activity_time` and `miles_per_hour`, so this is the readiest analysis in the set.
 
-**★ THE PHOTO LAYER EXISTS AND IT JOINS (2026-08-16).** Kim downloaded the Creamsicle photo set
-into `images/Creamsicle/`. **38 files, 35 with GPS, 37 with timestamps, spanning 2021-09-23 to
-2024-10-22** -- the full ownership and two days past it. Six Pixel models plus a Surface Duo; the
-only two without coordinates are the oldest, from the pickup week.
+**★ THE PHOTO LAYER EXISTS AND IT JOINS (2026-08-16).** The Creamsicle photo set in `images/Creamsicle/`: **38 files, 35 with GPS, 37 with timestamps, 2021-09-23 to 2024-10-22** — the full ownership and two days past it.
 
-**The join is clean because of a detail worth stating: `DateTimeOriginal` is recorded in LOCAL
-time with `OffsetTimeOriginal` carrying the zone, and the logs record local clock times too.** So
-photos join to fuel stops and trip legs on date + local time with **no timezone reconstruction** --
-the very correction `2016_Fourth_Crossing_Analysis.xlsx` had to build a dedicated column for.
+**The join is clean because `DateTimeOriginal` is LOCAL time with `OffsetTimeOriginal` carrying the zone, and the logs record local clock times too.** So photos join to fuel stops and legs on date + local time with **no timezone reconstruction** — the very correction the Fourth Crossing sheet had to build a column for. **It validates on the first record:** earliest photo **2021-09-23 11:42**, first fill **11:45 at Nixa MO** — the car at the dealership, minutes before its first tank.
 
-**It validates on the first record.** Earliest photo **2021-09-23 11:42**; first fill-up in the log
-**2021-09-23 11:45, Nixa MO.** Three minutes -- the car at the dealership, minutes before its first
-tank.
+**Coverage: 8 of 9 trips**, plus a staging shot at Torrance two days before T9 departs. **T2 (LA→Madison, Oct 2021) is the blank** — the solo run Kim describes as pushing his daily limits. **NOT an absence claim.**
 
-**Coverage: 8 of 9 trips**, plus a staging shot at Torrance two days before T9 departs. **T2 (LA→Madison, Oct 2021) is the blank** — the solo run Kim describes as pushing his daily limits. **NOT an absence claim:** the photos may be elsewhere or may never have been taken.
+**★★ A FOURTH ANALYSIS (2026-08-19): THE PARKING CONSTELLATION.** Where the car SLEEPS is a second geography the record has always held — **86% of elapsed days are dormancy; 34 of the 35 long spells are in CA, AZ or OR.** Map it against the driving constellation.
 
 ### Two narrative set-pieces moved to the log 2026-08-18
 
@@ -373,9 +339,21 @@ Written 2026-08-12 so a session opening this file cold knows what was decided an
 - `proj_Plainmaps.md` — R mapping.
 - `proj_kimbridges_stories.md` — holds the published Arctic Circle Challenge.
 
-## ★ CHAPTER ARCHITECTURE — the weakest part, still open (named 2026-08-16)
+## ★★★ CHAPTER ARCHITECTURE — SOLVED. KIM'S THREE LAYERS (2026-08-19) — full development in the log
 
-The one-car charter's chapter list is verbatim in `logs/proj_Smart_Car_log.md`, superseded. **The candidate replacement is Kim's TWO LOGS, TWO SUBJECTS frame above** -- now with a boundary attached: the trip log measures what the human ACHIEVED, the log records MEANS and not VARIANCE, and **the stories are the only record of what the driving COST.** Redesign is an open task in `deferred.md`.
+**His words, preliminary and recorded as given:** *The Smart Cars are the "hook" for the story. An overriding theme. The two aspects of performance, car and human, is the fabric for the story. The data become the real issue. The complexities and difficulties in the process of data collection, transcription, and cleaning on one end. At the other end, the opportunities for interesting, and perhaps unique, ways to analyze and display the results. This makes, in my mind, three layers. People see the unusual cars (and have preconceived notions). The drives make interesting stories. The data give satisfying answers to questions, even those you didn't know you had.*
+
+**This closes the weak point named on 2026-08-16, and it does what TWO LOGS, TWO SUBJECTS could not.** That frame said which instrument answers which question. **It never said what ORDER to put things in, or why a reader keeps going.** Three layers answers both, and the two frames compose rather than compete: **the car/human fabric runs THROUGH all three layers; it is the weave, not a chapter.**
+
+**★ The layers are three DEPTHS of one material, not three sections — and each one's payoff is bought by the one above it.** The preconception (*that tiny car can't have done that*) is what makes the drives surprising. The drives are what make a reader want the numbers. **The numbers then answer questions the stories raised** — which is why *questions you didn't know you had* is the load-bearing phrase, not a flourish.
+
+**★★ AND THIS SESSION IS THE PROOF OF CONCEPT.** Nobody asked what a day off the highway looks like in an odometer — **70 miles at Holbrook** is a park tour with a nephew. Nobody asked how much of a gross speed is living rather than driving — **Creamsicle says 7.5 mph**. Nobody asked whether a record can contain a state it never names — **Delaware, by 264 miles against a 305-mile alternative.** Every one of those is a layer-3 answer to a layer-2 question that was never posed.
+
+**★★ THE DATA-DIFFICULTY END IS A THIRD NARRATIVE, NOT A METHODS APPENDIX.** Kim named it as one END of the data layer and it has the same shape as the driving stories — a problem, a mechanism, a resolution. **The slashed zero that predicts the DIRECTION of an error. The crossbar that was a scanning artifact and not a correction. The pump identity. The intermediate fill that places a route a total cannot.** These carry suspense; they should be written, not buried.
+
+**★★★ AND THE ARCHITECTURE WAS VALIDATED THE DAY IT WAS PROPOSED.** Kim told the St Louis car-wash story to apologise for not remembering Summersville. **It turned out to be the sole explanation of the only outlier in a distribution nobody had computed.** Asking *where does this car sleep?* — **TwoRed's log spans 2,495 days and 2,147 of them (86%) fall inside a dormancy of two weeks or more; there are 35 such spells and 34 are in California, Arizona or Oregon.** The single exception east of the Rockies is **Altamont IL, 2010-10-11 to 11-05, 25 days, 227 miles between two fills seventeen miles apart** — a car driven into St Louis, left three and a half weeks, and collected. **Layer 2 generated the question; layer 3 answered it; neither could alone.**
+
+**★ EDITORIAL RULE THAT FALLS OUT OF IT, and it is testable today:** an analysis earns its place in layer 3 only if it answers a question layer 2 raised. **Results with no story to attach to are not failures — they belong to the DIFFICULTY strand instead.** The retired temperature effect, the wide-tire interval that straddles zero, and the Canadian non-result are exactly this: **the data being honest about what it cannot say**, which is a story about the record, not about a drive.
 
 ## Next Steps
 1. **★ THE CHAPTER ARCHITECTURE.** The only thing blocking the writing. Kim's TWO LOGS, TWO SUBJECTS frame is the candidate, now bounded (achieved vs cost).

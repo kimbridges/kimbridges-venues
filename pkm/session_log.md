@@ -102,6 +102,28 @@ Two hints from Kim did it. First, the second meeting was **Pine Mountain KY** �
 
 **Left open:** the two 2010 West Virginia trips have no stories — Barboursville 9/30 (now known to be the first of the pair) and Summersville 11/14 on US-19, the New River Gorge Bridge road. Six weeks apart, both inside the car's first four months.
 
+### ★★★ THE CHAPTER ARCHITECTURE IS SOLVED — Kim's three layers
+
+He offered it as preliminary thinking he wanted recorded. **It closes the weak point named on 2026-08-16 and it is better than the frame it absorbs.** Car = the hook and the preconception; the drives = the stories; the data = the answers, *including questions you didn't know you had*. **The car/human fabric runs THROUGH all three layers — it is the weave, not a chapter — so TWO LOGS, TWO SUBJECTS becomes a component rather than a rival.** That frame was an excellent SORTING rule and a useless ORDERING rule; this one answers what a reader meets first and why they keep going.
+
+**The layers are three depths of one material and each is bought by the one above.** Without the preconception the drives are just travel; without the drives the numbers have no question attached; without the numbers the stories are anecdote.
+
+**And he named the data layer as having two ends — the collection/transcription/cleaning difficulties at one, analysis and display at the other. The first end is usually exiled to an appendix and that would be a mistake here:** the slashed zero, the crossbar that was a scanning artifact, the pump identity, the split total that places a route, the backup with two blind gates — **these have the same shape as the driving stories and the same suspense.** An editorial rule falls out: **an analysis earns the analysis strand only if it answers a question the drives raised; results with no story belong to the difficulty strand instead.** The retired temperature effect, the wide-tire interval and the Canadian non-result sort themselves immediately.
+
+### ★★★ AND THE ARCHITECTURE WAS VALIDATED THE SAME DAY, BY ACCIDENT
+
+Kim then told the St Louis car-wash story — offered only to apologise for not remembering Summersville. **He had been at a Frostburg meeting, drove to St Louis, left the car in a car wash facility, flew home, came back for it, and eventually returned to California through the South, visiting colleagues at universities on the way.** The reason he gives is pure logistics: *by leaving the car in St Louis, I avoided having to drive back to California and then return soon after over the route I'd have just taken.*
+
+**It is all in the fuel log.** The parking is **Altamont IL 2010-10-11 at odometer 5,730 → Effingham IL 2010-11-05 at 5,957 — 25 days and 227 miles between two towns seventeen miles apart on I-70.** St Louis is ~85 miles west of one; in and out plus local driving is exactly 227. The southern return is unmistakable — Summersville WV → Bessemer NC → Villa Rica GA → Tupelo MS → Bryant AR → Mt Pleasant TX → New Mexico → Arizona → El Cajon. And *colleagues at universities* is five fills and five short legs in four days across Pennsylvania.
+
+**★★★ Then the part nobody was looking for.** Asking *where does this car sleep?* — a question no one had put to the data — **2,147 of TwoRed's 2,495 recorded days (86%) fall inside a dormancy of two weeks or more. There are 35 such spells. Thirty are in California, two Arizona, two Oregon. Exactly one is east of the Rockies, and it is the car wash.** His story is the sole explanation of the only outlier in a distribution that had never been computed. **Layer 2 generated the question, layer 3 answered it, and this happened within an hour of him proposing the architecture that says exactly that.** A new analysis is queued: THE PARKING CONSTELLATION, mapped against the driving one.
+
+### Finding 039 — a memory's error profile
+
+**Two instances in one evening with the identical shape.** West Virginia: the road was right, the count was right, the category of occasion was right, and **the binding to one occasion was wrong** (2010, not Frostburg 2012). The 2010 loop: every component confirmed — meeting, car wash, Nancy, New England, universities, southern return — and **the order of two of them inverted** (New England is before the parking, not after).
+
+**The rule: a human witness to their own past is reliable for CONTENT and unreliable for INDEX.** Roads, counts, distances, reasons and categories survive decades; **what slips is the attachment of a remembered thing to a particular occasion, and it slips toward occasions that share the category.** Operationally — when story and record disagree, do not ask which is right, **ask which PART disagrees.** And note the complement: Finding 036 is the mirror, where the record was silent and the memory carried a fact the data could never produce. **Different failure modes is precisely why the pair works.**
+
 ### Close
 
 `proj_Smart_Car.md` back under budget with four write-ups moved to the log behind pointers. `deferred.md` carries the Creamsicle result and two new TASKs (extend the timezone table to Creamsicle's cities; normalise TwoRed's Canada2014 litre/CAD rows before the Canadian Plains variance test is cited — it is a NON-RESULT, not a null).

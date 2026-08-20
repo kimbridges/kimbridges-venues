@@ -1896,3 +1896,18 @@ I then did what the rule says and enumerated the complement across all of `Proje
 
 **Status: OPEN — a policy decision for Kim, and the naive version of it is now known to be wrong.** See `deferred.md`.
 
+
+
+## Finding 039 — A MEMORY'S ERROR PROFILE: ROADS AND COUNTS SURVIVE, BINDINGS SLIP (2026-08-19)
+
+**Two instances in one evening, in unrelated stories, with the identical shape.**
+
+**West Virginia.** Kim named a beautiful highway he had *driven twice*, and paired it with two scientific meetings — Frostburg 2012 and Pine Mountain 2016. **The road is right** (I-64, Charleston to Beckley — he confirmed it on Street View). **The count is right** (the record puts the car on that stretch on exactly two days in sixteen years). **The category of occasion is right** (a scientific meeting in the region, true of both trips). **The BINDING is wrong:** the first drive was 2010, not 2012. Frostburg is I-68, pinned by two Morgantown fills, and I-68 never touches that road.
+
+**The 2010 loop.** Kim gave a sequence: Frostburg meeting → park at St Louis → fly home → return → Nancy joins → her meeting in Boston → university visits → south to California. **Every COMPONENT is independently confirmed in the fuel log**, including the parking (25 days and 227 miles between two Illinois towns seventeen miles apart) and the southern return. **The ORDER of two of them is inverted:** New England is 10/7–10/10, BEFORE the parking; the university tour is 11/6–11/10, after.
+
+**★★ The rule.** **A human witness to their own past is a reliable instrument for CONTENT and an unreliable one for INDEX.** Roads, counts, distances, reasons, categories — these survive decades. **What slips is the attachment of a remembered thing to a particular occasion, and it slips TOWARD occasions that share the category.** Frostburg and Pine Mountain were both meetings; October and November were both parts of one loop.
+
+**Operationally:** when a story and the record disagree, **do not ask which is right — ask WHICH PART disagrees.** In both cases here the content was correct and only the index was wrong, and in both cases the record supplied the missing index without touching the content. **Treat the memory as the source of WHAT and the record as the source of WHEN.**
+
+**And note the complement, because this is not a demotion.** Finding 036 is the opposite case: the record was silent where its resolution could not reach, and the memory carried a fact the data could never have produced. **The two instruments fail in different places, which is exactly why the pair works, and it is why the stories are load-bearing rather than decorative.** See also the three-layer architecture (2026-08-19): preconception, memory and record are the three instruments AND the three reading layers.
