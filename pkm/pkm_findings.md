@@ -1868,3 +1868,18 @@ I searched TwoRed's whole record for Florida: **no fuel stop in 294, no leg endp
 4. **When a size does not move the way an edit predicts, that discrepancy is itself the observation.** Both this and Finding 030 were caught by a number that failed to match an expectation, not by an error.
 
 **Scope check run.** 89 markdown files in the PKM; exactly ONE was affected — `proj_Smart_Car_log.md`, 909 stray CRs, all written by me this session. Not a pre-existing condition. Both files normalised, verified word-identical.
+
+
+## Finding 038 — FIXING THE INSTANCE IS NOT FIXING THE CLASS (2026-08-19)
+
+**Finding 034 (2026-08-18):** `pkm_backup()` reported success while 82 of 85 files in `Projects/Smart_Car` were outside the backup, because `SOURCE_EXT` had no `csv`. I added `csv` and `xlsx` and verified the fix — the CSVs and workbooks are in the mirror, confirmed today against the remote ref.
+
+**Today, checking the mirror by hand rather than by report:** `Smart_Car` has **39 files in the mirror and 22 PDFs on disk that are in none of them.** Those PDFs are the SCANS — Kim's paper fuel and trip logs, 2010 to 2017. They are the primary sources behind all 65 errata rows, the only physical evidence for the pump-identity audit, and **the only artifacts in this project that cannot be regenerated from anything else.**
+
+**The failure is not the extension list. It is the shape of the repair.** I fixed the extensions I had just been burned by. **I never asked the general question — *what else on disk is not in the mirror?* — which is one line of code and would have returned the answer immediately.** A repair scoped to the observed instance leaves the class untouched, and the verification I ran afterwards passed, because it tested the instance too.
+
+**Rule.** After changing what a backup INCLUDES, do not verify the change. **Verify the complement: enumerate what is on disk and not in the mirror, by count and by extension, and read that list.** The question a backup must answer is never "did my fix work" but "what is still outside".
+
+**Second-order note.** The same shape appears in Finding 037 filed an hour earlier: a content check that passed correctly while the file was corrupt, because the check was scoped to what I already suspected. **Two instances in one session of a verification that inherits the blind spot of the thing it verifies.**
+
+**Status: OPEN — a policy decision for Kim, not a bug to patch.** Adding `pdf` to `SOURCE_EXT` globally would sweep 290 MB of rendered figure output into a 10.8 MB mirror. The narrow rule — **PDF counts as source only under a `data/`, `scans/` or `source/` path segment** — captures the 23 files that matter (8.7 MB, of which 6.6 MB is the Smart_Car scans). Not applied unilaterally; see `deferred.md`.

@@ -170,6 +170,14 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ★★★ DECISION NEEDED FROM KIM — 22 scans are outside the backup (2026-08-19, Finding 038)
+
+**The paper logs are not backed up.** 39 Smart_Car files are in the mirror; the 22 scanned PDFs are not. They are the primary sources behind every errata row and the only things in this project that cannot be regenerated. `SOURCE_EXT` gained `csv` and `xlsx` on 2026-08-18 and did not gain `pdf`.
+
+**Why this was not fixed unilaterally:** adding `pdf` to `SOURCE_EXT` sweeps **290 MB** of rendered figure output across the PKM into a **10.8 MB** mirror. The narrow alternative — *PDF counts as source only under a `data/`, `scans/` or `source/` path segment, never inside a derived or `_backup*` directory* — captures **23 files, 8.7 MB**, of which 6.6 MB is the Smart_Car scans. **Kim decides; this changes backup policy for every project.**
+
+**Until it is decided the scans exist in exactly one place: Google Drive.**
+
 ### ✓✓ CREAMSICLE IS INGESTED, 2026-08-19 — the second spine exists
 
 Three Google exports (`2024_Creamsicle_fuel_log.xlsx`, `2024_Creamsicle_trip_log.xlsx`, `2024_Creamsicle.md`) ingested by `creamsicle_ingest.R`, which skips interleaved summary rows programmatically and REPORTS the skip counts: Fuel_Log 196→173, Trip_Log 119→86, Pickup 10→6. Odometer 30,290→58,903, strictly increasing. **143 of 170 US rows balance the pump identity to under half a cent; exactly three fail by ≥2¢** and all three are now errata (C01 Oxnard, C02 Miranda, C03 Hays). Outputs: `Creamsicle_fuel_clean.csv` (173×19), `Creamsicle_trip_clean.csv` (86×15), `Creamsicle_log_errata.csv`.

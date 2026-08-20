@@ -57,6 +57,16 @@ Kim exported the Google files; `creamsicle_ingest.R` reads them, skips interleav
 
 `proj_Smart_Car.md` was trimmed by 4,045 characters of prose and `pkm_budget()` still reported it over the 45 KB budget — then reported it LARGER after rewriting byte-identical content. **`writeLines()` opens a text connection; on Windows it translates the `\n` inside an already-CRLF string, so `\r\n` becomes `\r\r\n` and every rewrite adds another CR.** The ground-truth rule (verify by CONTENT, never size) passed correctly at every step — **the corruption lives in the whitespace, the one part of the content a content check does not look at.** Scope check: 89 markdown files, exactly one affected, written by me this session. Write path is binary now.
 
+### Finding 038, found by checking the mirror instead of reading its report
+
+`pkm_backup()` ran clean — 1,202 files, 14 changed, pushed, local HEAD `4358c2f0` identical to the remote ref. Then I listed the mirror by hand: **39 Smart_Car files, and the 22 scanned PDFs are in none of them.** The paper logs — every primary source behind the errata, the only artifacts here that cannot be regenerated — have never been backed up.
+
+**The lesson is about the shape of yesterday's repair, not the extension list.** Finding 034 burned me on `csv`, so I added `csv` and `xlsx` and verified them. **I never asked the general question — what else on disk is not in the mirror — which is one line and answers immediately.** A fix scoped to the observed instance leaves the class intact, and the verification passes because it is scoped the same way. **New rule: after changing what a backup includes, verify the COMPLEMENT — enumerate what is on disk and outside the mirror — never the fix.**
+
+**Not patched unilaterally.** `pdf` in `SOURCE_EXT` would sweep 290 MB of rendered figures into a 10.8 MB mirror; the narrow rule (PDF is source only under `data/`, `scans/` or `source/`) takes 23 files, 8.7 MB. It changes policy for every project, so it is a decision for Kim and sits in `deferred.md`.
+
+**Note the pairing with Finding 037, filed an hour earlier: two verifications in one session that inherited the blind spot of the thing they were verifying.**
+
 ### Close
 
 `proj_Smart_Car.md` back under budget with four write-ups moved to the log behind pointers. `deferred.md` carries the Creamsicle result and two new TASKs (extend the timezone table to Creamsicle's cities; normalise TwoRed's Canada2014 litre/CAD rows before the Canadian Plains variance test is cited — it is a NON-RESULT, not a null).
