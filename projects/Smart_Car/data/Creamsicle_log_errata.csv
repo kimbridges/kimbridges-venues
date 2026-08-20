@@ -1,0 +1,4 @@
+"id","date","location","field","logged","corrected","basis","status"
+"C01","2022-11-27","Oxnard, CA odo 45,013","Dollars/gallon","4.399","3.999","CONTIGUITY: the $/gal cell is IDENTICAL to the Gallons cell (4.399), which is the signature of a copy into the wrong column. 17.59 / 4.399 = 3.999 exactly. Largest residual in the Creamsicle log at +1.761.","HYPOTHESIS 2026-08-19 (arithmetic) - confirm from a card or receipt"
+"C02","2022-11-03","Miranda, CA odo 41,910","Dollars/gallon","6.095","6.059","DIGIT TRANSPOSITION 59<->95. 3.872 x 6.059 = 23.460, exactly the recorded cost. Residual was +0.140.","HYPOTHESIS 2026-08-19 (arithmetic) - confirm from a card or receipt"
+"C03","2022-01-22","Hays, KS odo 36,920","Dollars/gallon","3.499","3.449","Single-digit slip 4->9 in the third decimal. 5.542 x 3.449 = 19.115 -> 19.11, exactly as recorded. Residual was +0.281.","HYPOTHESIS 2026-08-19 (arithmetic) - confirm from a card or receipt"

@@ -11,6 +11,60 @@ Mechanism 4.
 
 ---
 
+## 2026-08-19 -- THE STORIES ARE COLLECTED; THE RECORD IS CLOSED AT BOTH ENDS; CREAMSICLE IS INGESTED
+
+**Active focus at start and close:** Smart_Car. A long session in three movements: fix a date bug, collect Kim's accounts of the long drives, then close the record and ingest the second car.
+
+### The date bug, and the structural fix
+
+29 dates written as 2026-08-19 instead of 2026-08-18 across 8 files — **the third recurrence of Finding 029.** The session clock is UTC and Honolulu is a day behind from 14:00 HST. Fixed by same-length `gsub(fixed=TRUE)`, verified per file by content. Structural fix now standing: bind `TODAY <- format(Sys.time(), "%Y-%m-%d", tz="Pacific/Honolulu")` ONCE at session start and never call the clock again.
+
+### Eight long days, eight stories, and every one checks out
+
+Kim gave accounts of all eight of the longest driving days. They are verbatim in `logs/proj_Smart_Car_log.md` under COLLECTED STORIES. What they changed, none of which the data could have volunteered:
+
+- **Finding 033 got its best corroboration from an unrelated direction.** The Champaign slashed-zero cost typo (L61) sits at the stop where he had just discovered he was 100 miles off course, out of fuel, and late for dinner. He gave the *record quickly under pressure* mechanism two days earlier, blind to this route.
+- **Arrival-to-next-departure odometer gaps are the day OFF the highway.** 70 miles at Holbrook is a tour of the Petrified Forest with his nephew. Readable across the whole record; nobody has read it.
+- **Lodging geography is a first-order term in daily distance.** The fastest day in sixteen years is fast because Montana has nowhere to stop.
+- **A ferry is a logistics multiplier, not a hole in the odometer.**
+- **A long elapsed time is not a slow day.** LSM→St George read 31.6 mph and was a normal drive with a half-day visit in Las Vegas inside it.
+
+### Two findings that came from being wrong
+
+**Finding 036.** I concluded from the fuel log that TwoRed never reached Florida. Kim: *I aimed at the panhandle. I drove just barely into what I thought was Florida... 'Is this Florida?' 'Yes.' That's all I needed.* **A record's RESOLUTION sets the floor on what its silences can mean.** A log that samples at fill-ups cannot see an event measured in minutes.
+
+**Finding 035.** His Las Vegas story exposed `tz_shift_hr = 0` on every leg I had transcribed — 16 of 107 wrong. Fixed as a COMPUTED derived layer in `trip_logs_read.R` against a 121-city timezone table, never a typed field. **A duration spanning two local clocks is not a subtraction.**
+
+### Two more corrections from Kim, both instructive
+
+**The Youngtown arrival.** I read 7:41P, then argued from a "crossbar" for 9:41P. Kim: *arrival is 8:41. My writing was very light.* The bar was a bitonal-thresholding artifact. Filed as a second scan illusion under Finding 033 — **opposite in kind to the slashed zero: that one lives in the ORIGINAL, this one lives in the SCANNING, and the original settles it.**
+
+**"Abruptly slowed."** I read his frost-heave account as *drove slowly* and reported the flat gross speed as the data failing to corroborate him. He revised: *I couldn't go slow as big vehicles kept moving at highway speeds.* **His account PREDICTS the null. The high average is the mechanism of the stress, not evidence against it.** And it names the missing quantity exactly: **within-leg variance, which two endpoint samples average away by construction.**
+
+### The record is closed at both ends
+
+Four more scans processed. The last one carries a note on the back of the log: `5/22/17 71,283 LV Seattle @ Matson`. **71,283 miles at the Matson dock — the mainland record ends there, documented.** The first question the project ever asked (how many miles were Honolulu miles?) now has an answer: **≈3,697 implied**, the scope boundary quantified rather than assumed.
+
+**The temperature effect was retired.** The Fourth Crossing's 31 fill-stamped temperatures took n from 94 to 125 and moved the coefficient from -0.068 (p=0.045) toward zero, -0.050 (p=0.099), p=0.17 with controls. **A marginal result that attenuates as the sample grows was noise.** Worth its own line: the record is now good enough to RETIRE a result, not only produce one.
+
+### Creamsicle — the second spine
+
+Kim exported the Google files; `creamsicle_ingest.R` reads them, skips interleaved summary rows programmatically and REPORTS the skip counts (196→173, 119→86, 10→6). Odometer 30,290→58,903, strictly increasing. **143 of 170 US rows balance the pump identity to under half a cent; exactly three fail by ≥2¢, and all three are errata** — C01 Oxnard caught by contiguity (the $/gal cell is identical to the Gallons cell), C02 a transposition, C03 a slashed-zero-family digit.
+
+**The headline: Creamsicle logs STOPPED time, so it measures what TwoRed structurally cannot.** Across 84 timed legs, **median gross 43.5 mph against median NET 51.0 — a 7.5 mph gap.** The vivid case is 2024-10-20, Wisconsin Dells → Madison: 50.3 miles, 5 hours elapsed, 4.5 of them stopped, gross 10.1 mph, comment `Cranes`. **Every TwoRed gross-speed figure in the project is now readable as a ceiling roughly 7–8 mph below actual driving speed.** Two-car comparison: median MPG 39.12 vs 40.59, but cost per mile $0.0939 vs $0.1183 — **a 26% difference that is almost entirely fuel PRICES, not the car.**
+
+### Finding 037, found by an arithmetic that refused to work
+
+`proj_Smart_Car.md` was trimmed by 4,045 characters of prose and `pkm_budget()` still reported it over the 45 KB budget — then reported it LARGER after rewriting byte-identical content. **`writeLines()` opens a text connection; on Windows it translates the `\n` inside an already-CRLF string, so `\r\n` becomes `\r\r\n` and every rewrite adds another CR.** The ground-truth rule (verify by CONTENT, never size) passed correctly at every step — **the corruption lives in the whitespace, the one part of the content a content check does not look at.** Scope check: 89 markdown files, exactly one affected, written by me this session. Write path is binary now.
+
+### Close
+
+`proj_Smart_Car.md` back under budget with four write-ups moved to the log behind pointers. `deferred.md` carries the Creamsicle result and two new TASKs (extend the timezone table to Creamsicle's cities; normalise TwoRed's Canada2014 litre/CAD rows before the Canadian Plains variance test is cited — it is a NON-RESULT, not a null).
+
+**Still open, and it is the only thing blocking the writing: the CHAPTER ARCHITECTURE.** Kim's two-subjects frame is the candidate and is now bounded — the trip log measures what the human ACHIEVED, in means not variance, and the stories are the sole record of what it COST. Questions for Kim: the 46 unexplained Dalton miles; which West Virginia pair; what "Penultimate State" names now that Florida is reached; the storyless 487-mile LSM→Carson City on 2013-08-04.
+
+---
+
 ## 2026-08-18 (evening) -- THE CORRECTED DATASET EXISTS; ALL 15 SCANS READ; the backup was not backing up the data
 
 **Active focus at start and close:** Smart_Car. Second half of the day, after a dinner break. The morning

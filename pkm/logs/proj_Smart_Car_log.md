@@ -842,3 +842,68 @@ reads Blocked rather than Ready.
 a written charter, no `proj_*.md` and no index row, dormant three months.
 
 
+
+## ARCHIVE — moved from proj_Smart_Car.md 2026-08-19 (budget trim)
+
+Pointers stand in the project file. Verbatim originals follow.
+
+### [archived] ★★ THE WHEELS WERE NEVER ABOUT FUEL (Kim, 2026-08-18)
+
+The first crossing ran on the stock narrow "city" tires. On open highway the car was blown around by crosswind and the handling was difficult. Smart Madness -- Kim's mechanics -- prescribed WIDE tires; fancy rims came along with them, because this is a car that is fun to drive and fun to be seen in. It worked. Handling became very good.
+
+**The purpose was handling, not economy.** That reframes what the fuel data can say. Wider tires carry a real theoretical cost -- more rolling resistance, more frontal area -- usually put at 1-3%. So the question the data answers is not "did the wheels help?" (they did, on the axis they were bought for) but "what did that help cost?"
+
+**Answer, stated honestly:** before/after the change, the difference in economy is not distinguishable from zero, with a 95% interval of **-3.7% to +4.9%**. The theoretically expected 1-3% penalty sits INSIDE that interval. So the correct claim is the narrow one:
+
+> The data rules out a LARGE fuel penalty from the wide tires. It is too small a sample to detect the modest penalty theory predicts. Absence of a detected effect is not absence of an effect.
+
+I first wrote the stronger version ("rules out a penalty worse than 3.7%") and had to withdraw it in the same turn. Logged because it is the same failure mode as Finding 032: a number that looked like a bound was actually one end of an interval that straddles zero.
+
+**For the story:** this is a clean example of the document's recurring shape -- a decision made for one reason (safety and pleasure in a crosswind at 70 mph in a 1,800-lb car), then measured on a different axis (fuel), and the measurement's job is to say what the decision cost, not whether it was right. Kim already knew it was right; he drove it.
+
+
+### [archived] ★★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18)
+
+His words: *the fuel log is more about the CAR'S performance, while the trip log shows the HUMAN performance -- how far and fast can you expect to drive in a day, something I had no idea about until I started doing these drives.*
+
+**This is the strongest organising idea the project has produced, and it should be the top frame of the chapter architecture** -- which has been the named weak point since 2026-08-16 precisely because it was inherited from a one-car charter and had no thesis under it.
+
+**Why it is more than a nice phrasing:**
+
+- **It explains why neither log substitutes for the other.** The fuel log records STOPS; the trip   log records LEGS. They are not two views of one thing, they are measurements of two different   subjects that happen to share an odometer. The odometer is the JOIN, not the topic.
+- **It tells us which instrument answers which question.** Economy, degradation, cost per mile,   the wide-tire question -- car. Daily range, departure discipline, gross speed, the length of a   driving day -- human. **Mixing them is how you get a meaningless average.**
+- **It makes the temperature decision obvious.** Temperature stamped on a FILL belongs to the car's   question; temperature at a leg endpoint belongs to the human's. Same word, two instruments.
+- **★ It supplies the missing NARRATIVE thesis.** Kim did not know the answer before he drove it.   So the human half is not a summary statistic -- it is a **finding he made about himself by doing   the thing**, sixteen years of it, and the data is the record of the learning. The 3-bar refuelling   rule adopted at Deming in 2010 is exactly this: a behaviour CHANGED by a near-miss, and visible   in the numbers afterwards.
+- **And it explains the collection history rather than apologising for it.** Trip logging started   LATER than fuel logging (Kim's ruling, 2026-08-17). Of course it did: **the car's question was   the obvious one to ask first. The human question is the one the driving itself taught him to ask.**
+
+**First evidence that the human axis is measuring something real:** across 69 legs, median gross speed separates by ROAD, not by car -- 2011 interstate **47.6 mph**, 2014 mixed **39.7**, 2013 Dalton Highway **30.9**, 2016 US-101 coastal **28.3**. The car was the same car throughout.
+
+
+### [archived] ★★★ WHY THIS IS NOT FINDING 036
+
+**Finding 036 was about events that generated NO observation** -- Florida, being stuck in powdery soil. Nothing was recorded because nothing recordable happened.
+
+**This is the opposite. These miles generated a FULL set of observations -- distance, elapsed time, fuel, temperature, both endpoints -- and every one of them is normal.** The record is not silent. It is answering a different question, at a resolution that cannot reach the answer.
+
+**★★★ THE FUEL LOG AND THE TRIP LOG BOTH MEASURE OUTPUT. NEITHER MEASURES COST TO THE DRIVER.** Miles, hours, gallons, degrees -- all of it is what the car and the day PRODUCED. **Vigilance has no column.** A driver can buy an ordinary 44 mph day at an extraordinary price and the log will record the 44.
+
+**This sharpens Kim's own frame rather than contradicting it.** He said the trip log shows *the human performance -- how far and fast can you expect to drive in a day*. True, and now bounded: **it measures what the human ACHIEVED, never what it COST him.** The second quantity exists, it varies enormously across these sixteen years, and **the only instrument that ever recorded it is his memory.**
+
+**Consequence for the document, and it is a strong one.** Where the analysis chapters can only report output, **the stories are not colour around the data -- they are the sole record of an entire dimension the data cannot reach.** A chapter that presents 44.5 mph across Saskatchewan without saying what those miles felt like is not being neutral. It is reporting one axis of a two-axis thing.
+
+
+### [archived, condensed in proj] KIM'S CORRECTION INVERTS THE LOGIC — original
+
+★★★ KIM'S CORRECTION INVERTS THE LOGIC — the data does not fail to corroborate him, it IS his mechanism
+
+He revised his own words the moment he saw the table: *I should have said "abruptly slowed, then quickly speeded up". The problem was that I couldn't go slow as big vehicles kept moving at highway speeds. Hence the rear view mirror checks.*
+
+**That changes everything about how the null reads.** I had treated *no speed effect* as the record failing to support his memory. **His account PREDICTS no speed effect.** He was not free to drive slowly -- trucks were closing at highway speed behind him -- so the average had to stay up. **The high gross speed is not evidence against the stress. It is the mechanism OF the stress.** Being forced to hold 45 mph through a road you want to crawl is exactly what made those miles cost something.
+
+**★★★ AND IT NAMES THE MISSING QUANTITY PRECISELY: WITHIN-LEG SPEED VARIANCE.** Brake hard for a hole, accelerate back to seventy, check the mirror, repeat. **A trip log samples the day TWICE -- once at departure, once at arrival. Everything between the two samples is averaged away BY CONSTRUCTION.** No quantity derived from two endpoint readings can see variance, and variance is the whole of what he is describing.
+
+**So the earlier statement was right but blunt.** *The log measures output, not cost to the driver* is true. **The sharper version: the log records MEANS and cannot record VARIANCE, and the cost lived entirely in the variance.**
+
+**I did look**, because his correction points at economy rather than speed -- repeated decel/accel cycles should show there if anywhere. Canadian 2014 residual **SD 4.87 (n=18)** against the US **4.73 (n=268)**, F-test **p = 0.79**. **Nothing.** And it could not have been anything: **those rows were converted from LITRES and Canadian dollars, and unit-normalising that sheet is still an OPEN item** -- a per-row conversion inflates spread by itself, so the test cannot separate rough-road behaviour from arithmetic. **Recorded as a non-result, not a null.**
+
+

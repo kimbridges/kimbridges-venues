@@ -98,35 +98,22 @@ Independent of both paper and spreadsheet, which is what made them decisive duri
 
 Median leg **251 mi**; log distance ~**95%** of odometer miles; lifetime **39.44 MPG**; **leg length is the strongest predictor, +4.61 MPG per 100 mi**; **no degradation in sixteen years**; **$0.0936 per mile**. Temperature was null on leg-endpoint readings and is superseded by the fill-stamped result. `logs/proj_Smart_Car_log.md`.
 
-## ★★ THE WHEELS WERE NEVER ABOUT FUEL (Kim, 2026-08-18)
+## ★★ THE WHEELS WERE NEVER ABOUT FUEL (Kim, 2026-08-18) — full write-up in the log
 
-The first crossing ran on the stock narrow "city" tires. On open highway the car was blown around by crosswind and the handling was difficult. Smart Madness -- Kim's mechanics -- prescribed WIDE tires; fancy rims came along with them, because this is a car that is fun to drive and fun to be seen in. It worked. Handling became very good.
+Smart Madness prescribed WIDE tires after the first crossing because the stock narrow "city" tires let crosswind push the car around at highway speed. **The purpose was handling, not economy.** Before/after, the economy difference is indistinguishable from zero, 95% interval **-3.7% to +4.9%** — the 1-3% penalty theory predicts sits INSIDE it. **The data rules out a LARGE penalty; it cannot detect a modest one.** (I first wrote the stronger claim and withdrew it in the same turn — same failure mode as Finding 032.) For the story: a decision made for one reason, measured on a different axis, where the measurement's job is to say what it COST, not whether it was right.
 
-**The purpose was handling, not economy.** That reframes what the fuel data can say. Wider tires carry a real theoretical cost -- more rolling resistance, more frontal area -- usually put at 1-3%. So the question the data answers is not "did the wheels help?" (they did, on the axis they were bought for) but "what did that help cost?"
-
-**Answer, stated honestly:** before/after the change, the difference in economy is not distinguishable from zero, with a 95% interval of **-3.7% to +4.9%**. The theoretically expected 1-3% penalty sits INSIDE that interval. So the correct claim is the narrow one:
-
-> The data rules out a LARGE fuel penalty from the wide tires. It is too small a sample to detect the modest penalty theory predicts. Absence of a detected effect is not absence of an effect.
-
-I first wrote the stronger version ("rules out a penalty worse than 3.7%") and had to withdraw it in the same turn. Logged because it is the same failure mode as Finding 032: a number that looked like a bound was actually one end of an interval that straddles zero.
-
-**For the story:** this is a clean example of the document's recurring shape -- a decision made for one reason (safety and pleasure in a crosswind at 70 mph in a 1,800-lb car), then measured on a different axis (fuel), and the measurement's job is to say what the decision cost, not whether it was right. Kim already knew it was right; he drove it.
-
-## ★★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18)
+## ★★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18) — full write-up in the log
 
 His words: *the fuel log is more about the CAR'S performance, while the trip log shows the HUMAN performance -- how far and fast can you expect to drive in a day, something I had no idea about until I started doing these drives.*
 
-**This is the strongest organising idea the project has produced, and it should be the top frame of the chapter architecture** -- which has been the named weak point since 2026-08-16 precisely because it was inherited from a one-car charter and had no thesis under it.
+**This is the strongest organising idea the project has produced and it is the top frame for the chapter architecture.** Four consequences, argued in full in the log:
 
-**Why it is more than a nice phrasing:**
+- **Neither log substitutes for the other.** Fuel records STOPS, trip records LEGS. The odometer is the JOIN, not the topic.
+- **It assigns instruments to questions.** Economy, degradation, cost/mile, the wide-tire question — car. Daily range, departure discipline, gross speed — human. Mixing them yields a meaningless average.
+- **★ It supplies the missing NARRATIVE thesis.** Kim did not know the answer before he drove it, so the human half is a finding he made about himself by doing the thing. The 3-bar refuelling rule adopted at Deming in 2010 is exactly that: a behaviour changed by a near-miss and visible in the numbers after.
+- **It explains the collection history rather than apologising for it.** Trip logging started LATER because **the car's question was the obvious one to ask first; the human question is the one the driving taught him to ask.**
 
-- **It explains why neither log substitutes for the other.** The fuel log records STOPS; the trip   log records LEGS. They are not two views of one thing, they are measurements of two different   subjects that happen to share an odometer. The odometer is the JOIN, not the topic.
-- **It tells us which instrument answers which question.** Economy, degradation, cost per mile,   the wide-tire question -- car. Daily range, departure discipline, gross speed, the length of a   driving day -- human. **Mixing them is how you get a meaningless average.**
-- **It makes the temperature decision obvious.** Temperature stamped on a FILL belongs to the car's   question; temperature at a leg endpoint belongs to the human's. Same word, two instruments.
-- **★ It supplies the missing NARRATIVE thesis.** Kim did not know the answer before he drove it.   So the human half is not a summary statistic -- it is a **finding he made about himself by doing   the thing**, sixteen years of it, and the data is the record of the learning. The 3-bar refuelling   rule adopted at Deming in 2010 is exactly this: a behaviour CHANGED by a near-miss, and visible   in the numbers afterwards.
-- **And it explains the collection history rather than apologising for it.** Trip logging started   LATER than fuel logging (Kim's ruling, 2026-08-17). Of course it did: **the car's question was   the obvious one to ask first. The human question is the one the driving itself taught him to ask.**
-
-**First evidence that the human axis is measuring something real:** across 69 legs, median gross speed separates by ROAD, not by car -- 2011 interstate **47.6 mph**, 2014 mixed **39.7**, 2013 Dalton Highway **30.9**, 2016 US-101 coastal **28.3**. The car was the same car throughout.
+**Now bounded (2026-08-19):** the trip log records what the human ACHIEVED, in MEANS not variance; the stories are the only record of what it COST. And Creamsicle's net-vs-gross gap (below) is the first measurement of the driving-vs-living conflation the frame implies.
 
 ## ★★ THE SCAN SWEEP, 2026-08-18 — full write-up in the log
 
@@ -134,11 +121,11 @@ All 15 scans read. The four results that must not be lost:
 
 **1. The wheel change is DATED** -- `NEW WHEELS @ 13510 miles`, Kim's margin, 179 mi before the 2011 departure. **The estimate FLIPS SIGN with specification (+3.6% to -1.8%); that is the finding, not any one number.** The CONDITIONAL in `deferred.md` governs.
 
-**2. ✗ THE TEMPERATURE EFFECT IS RETIRED (2026-08-19). More data killed it, which is how this is supposed to work.** At n=94 it read **-0.068 MPG/degF, p=0.045** and I filed it as a signal, not a finding. The Fourth Crossing added 31 fill-stamped temperatures. **At n=125 it reads -0.050, p=0.099; controlling leg length and era, p=0.17.** The coefficient moved TOWARD ZERO and the significance evaporated. **A marginal result that attenuates when the sample grows was noise.** The raw hot/cold gap survives descriptively (80 degF+ fills average **37.97** against **39.61**, a 4.2% difference) but does not survive a control for leg length -- **hot fills are on shorter legs.** Do not write a thermal claim. **And note what this demonstrates: the record is now good enough to RETIRE a result, not just produce one.**
+**2. ✗ THE TEMPERATURE EFFECT IS RETIRED (2026-08-19).** At n=94 it read **-0.068 MPG/degF, p=0.045**; the Fourth Crossing's 31 fill-stamped temperatures took it to n=125, where it reads **-0.050, p=0.099** and **p=0.17** controlling leg length and era. The coefficient moved TOWARD zero and the significance evaporated — it was noise. The raw hot/cold gap (37.97 vs 39.61) does not survive a control for leg length: **hot fills are on shorter legs.** Write no thermal claim. **Note what this demonstrates: the record is now good enough to RETIRE a result, not just produce one.**
 
 **3. The slashed zero produced three more corrections and the control held.** Over the 44 rows failing the pump identity: **permitted 8->0 fixes 4; forbidden 0->8 fixes 1** (already flagged); **six controls fix 0.**
 
-**4. Gross speed separates by ROAD, across 138 legs in 12 trips.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate State 40.3 | Dalton Highway **31.7** | **2017 February 31.1** | 2016 US-101 coastal **28.3**. Same car throughout. **The extreme case is now the February 2017 run: 19.6, 21.1 and 21.2 mph on the Highway 1 legs against 41 on the inland ones -- the road changes the day by a factor of two.** **But see THE STRESSFUL MILES above: gross speed is a mean, and the cost of a road lives in the variance it cannot see.**
+**4. Gross speed separates by ROAD, across 138 legs in 12 trips.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate State 40.3 | Dalton **31.7** | **2017 February 31.1** | 2016 US-101 coastal **28.3**. Same car throughout. **Extreme case: the February 2017 run, 19.6/21.1/21.2 mph on the Highway 1 legs against 41 inland — the road changes the day by a factor of two.** But gross speed is a MEAN; see THE STRESSFUL MILES above.
 
 ## ★★★ THE LONG DAYS — ALL EIGHT COLLECTED, AND EVERY ONE CHECKS OUT (2026-08-19)
 
@@ -185,10 +172,6 @@ Nevada is Pacific and Utah is Mountain, and `tz_shift_hr` was 0 on every leg tra
 
 **★ Kim's stories have now corrected the analysis four times in two days** -- the road/straight-line audit rule, the time zones, Florida, and the route inference on the Dragon day. **The human spine is not decoration on the analysis. It is an instrument, and so far it is the more accurate one.**
 
-### Two narrative set-pieces moved to the log 2026-08-18
-
-**THE YUKON RIVER CAMP STORY** and **THE ALPINE STORY** now live verbatim in `logs/proj_Smart_Car_log.md` under ARCHIVE, together with the superseded scan-coverage table. Both are for the Expeditions chapter and neither is working state. Moved to hold the 45 KB budget.
-
 ## ★★★ THE FAVOURITE DRIVES (2026-08-19) — full write-up in the log
 
 Kim's list, unprompted: the Rockies; the mountains down to the Oregon coast; **a morning through the West Virginia hills, villages fogged in and chimney smoke rising** -- *I liked this so much, I drove it twice*; and the Dalton, *going where cars weren't intended*. **Accounts verbatim in `logs/proj_Smart_Car_log.md`.** What survives here:
@@ -224,25 +207,17 @@ The three Plains legs -- Thunder Bay -> Winnipeg -> Regina -> Lethbridge -- run 
 
 He revised his own words the moment he saw the table: *I should have said "abruptly slowed, then quickly speeded up". The problem was that I couldn't go slow as big vehicles kept moving at highway speeds. Hence the rear view mirror checks.*
 
-**That changes everything about how the null reads.** I had treated *no speed effect* as the record failing to support his memory. **His account PREDICTS no speed effect.** He was not free to drive slowly -- trucks were closing at highway speed behind him -- so the average had to stay up. **The high gross speed is not evidence against the stress. It is the mechanism OF the stress.** Being forced to hold 45 mph through a road you want to crawl is exactly what made those miles cost something.
+I had treated *no speed effect* as the record failing his memory. **His account PREDICTS no speed effect.** He was not free to drive slowly — trucks closing behind him at highway speed — so the average had to stay up. **The high gross speed is not evidence against the stress; it is the mechanism OF it.**
 
-**★★★ AND IT NAMES THE MISSING QUANTITY PRECISELY: WITHIN-LEG SPEED VARIANCE.** Brake hard for a hole, accelerate back to seventy, check the mirror, repeat. **A trip log samples the day TWICE -- once at departure, once at arrival. Everything between the two samples is averaged away BY CONSTRUCTION.** No quantity derived from two endpoint readings can see variance, and variance is the whole of what he is describing.
+**★★★ IT NAMES THE MISSING QUANTITY PRECISELY: WITHIN-LEG SPEED VARIANCE.** Brake for a hole, accelerate back to seventy, check the mirror, repeat. **A trip log samples the day TWICE — departure and arrival. Everything between is averaged away BY CONSTRUCTION.** So the sharper statement: **the log records MEANS and cannot record VARIANCE, and the cost lived entirely in the variance.**
 
-**So the earlier statement was right but blunt.** *The log measures output, not cost to the driver* is true. **The sharper version: the log records MEANS and cannot record VARIANCE, and the cost lived entirely in the variance.**
+**I did look**, since his correction points at economy rather than speed. Canadian 2014 residual **SD 4.87 (n=18)** vs US **4.73 (n=268)**, F-test **p = 0.79**. But those rows were converted from LITRES and CAD and **unit-normalising that sheet is still OPEN** — per-row conversion inflates spread by itself. **A non-result, not a null.**
 
-**I did look**, because his correction points at economy rather than speed -- repeated decel/accel cycles should show there if anywhere. Canadian 2014 residual **SD 4.87 (n=18)** against the US **4.73 (n=268)**, F-test **p = 0.79**. **Nothing.** And it could not have been anything: **those rows were converted from LITRES and Canadian dollars, and unit-normalising that sheet is still an OPEN item** -- a per-row conversion inflates spread by itself, so the test cannot separate rough-road behaviour from arithmetic. **Recorded as a non-result, not a null.**
+### ★★★ WHY THIS IS NOT FINDING 036 — full write-up in the log
 
-### ★★★ WHY THIS IS NOT FINDING 036
+**036 was about events that generated NO observation.** These miles generated a FULL set — distance, time, fuel, temperature, both endpoints — and every one is normal. The record is not silent; it is answering a different question at a resolution that cannot reach the answer.
 
-**Finding 036 was about events that generated NO observation** -- Florida, being stuck in powdery soil. Nothing was recorded because nothing recordable happened.
-
-**This is the opposite. These miles generated a FULL set of observations -- distance, elapsed time, fuel, temperature, both endpoints -- and every one of them is normal.** The record is not silent. It is answering a different question, at a resolution that cannot reach the answer.
-
-**★★★ THE FUEL LOG AND THE TRIP LOG BOTH MEASURE OUTPUT. NEITHER MEASURES COST TO THE DRIVER.** Miles, hours, gallons, degrees -- all of it is what the car and the day PRODUCED. **Vigilance has no column.** A driver can buy an ordinary 44 mph day at an extraordinary price and the log will record the 44.
-
-**This sharpens Kim's own frame rather than contradicting it.** He said the trip log shows *the human performance -- how far and fast can you expect to drive in a day*. True, and now bounded: **it measures what the human ACHIEVED, never what it COST him.** The second quantity exists, it varies enormously across these sixteen years, and **the only instrument that ever recorded it is his memory.**
-
-**Consequence for the document, and it is a strong one.** Where the analysis chapters can only report output, **the stories are not colour around the data -- they are the sole record of an entire dimension the data cannot reach.** A chapter that presents 44.5 mph across Saskatchewan without saying what those miles felt like is not being neutral. It is reporting one axis of a two-axis thing.
+**★★★ BOTH LOGS MEASURE OUTPUT. NEITHER MEASURES COST TO THE DRIVER. Vigilance has no column.** A driver can buy an ordinary 44 mph day at an extraordinary price and the log records the 44. **Consequence for the document:** the stories are not colour around the data — they are the sole record of an entire dimension the data cannot reach.
 
 ## ★★ TWO RELOCATIONS, AND THE LAST YEAR'S SHAPE (2026-08-19) — full write-up in the log
 
@@ -273,6 +248,45 @@ On 2026-08-12 the charter said **~75,000 miles**, the fuel log stopped at **71,1
 The final two fills read **52.4 and 93.0 MPG** -- the second the highest number in the entire record. Both are small: **4.333 and 2.496 gallons against a lifetime mean of 6.24** (72% of tank). **A vehicle handed to Matson must arrive with a low tank.** These are not measurements of the car; **they are a tank being managed DOWN for shipping**, and the implied MPG is an artifact of dividing a normal distance by a deliberately small fill.
 
 **★ General rule for the write-up: the first and last rows of any record are the least trustworthy, because they are the ones taken while the measuring itself was being started or stopped.** The first fill in this log carries a slashed-zero cost error (L59); the last two are shipping artifacts. **Trim the ends before quoting an extreme.**
+
+## ★★★ CREAMSICLE IS INGESTED — THE SECOND SPINE EXISTS (2026-08-19)
+
+Kim exported the Google-native files into the project. `creamsicle_ingest.R` reads the workbook and emits `Creamsicle_fuel_clean.csv` (**173 rows**) and `Creamsicle_trip_clean.csv` (**86 legs**). Same architecture as TwoRed: **the source is never edited**, the interleaved total/average rows are skipped programmatically, and **the skip counts are reported** (196 -> 173, 119 -> 86, 10 -> 6) per Finding 032.
+
+**It arrived clean.** Odometer **30,290 -> 58,903, strictly increasing, no duplicates.** Pump identity: **143 of 170 US rows balance to under half a cent; exactly THREE fail by 2c or more.** My recomputed MPG matches Kim's own column to **0.005**. The three BC rows carry litres and CAD alongside gallons and dollars -- **the unit problem TwoRed still has is already solved here.**
+
+**The three errata, and all three resolve exactly** (`Creamsicle_log_errata.csv`): **C01 Oxnard** $/gal 4.399 -> 3.999 -- **the cell is IDENTICAL to the Gallons cell**, a copy into the wrong column, caught by the contiguity instrument; **C02 Miranda** 6.095 -> 6.059, a 59/95 transposition; **C03 Hays** 3.499 -> 3.449. **Three errors in 173 rows.**
+
+### ★★★ AND IT MEASURES THE THING TWORED CANNOT
+
+Creamsicle's trip log has a **`Stop`** column and a **`Comment`** column. 54 legs carry a stop; 35 carry a reason. **So the gap between driving and living can be measured directly, for the first time in this project:**
+
+| across 84 timed legs | |
+|---|---|
+| median GROSS mph (elapsed) | **43.5** |
+| median NET mph (driving only) | **51.0** |
+| **the gap** | **7.5 mph** |
+
+**The clearest single case: 2024-10-20, WI Dells -> Madison. 50.3 miles, 5 hours elapsed, 4.5 of them stopped. Gross 10.1 mph. Comment: `Cranes`.** Gross speed called it the slowest leg in the file; he was watching sandhill cranes. The other big gaps are `C. Caverns NP`, `White Sands`, `Desert Musum`, `Monterey Bay Aquarium, Pelican Photos`, and twice simply `Tom`.
+
+**★★★ THIS CALIBRATES THE TWORED NUMBERS.** I have been reporting TwoRed gross speeds with the standing caveat that they conflate driving with living and that nothing could size the bias. **Creamsicle sizes it: about 7.5 mph at the median.** That is a CALIBRATION, not a correction -- different car, different years, different trips -- but it is the first empirical handle on how much TwoRed's 40.5 understates his driving. **Report TwoRed gross speeds as a floor, and cite Creamsicle for the scale of the gap.**
+
+### The two cars, side by side
+
+| | TwoRed 2010-2017 | Creamsicle 2021-2024 |
+|---|---|---|
+| fuel rows | 286 | 172 |
+| odometer span | 4 - 71,181 | 30,290 - 58,903 |
+| **median MPG** | **39.12** | **40.59** |
+| median leg | 251 mi | 166 mi |
+| **cost per mile** | **$0.0939** | **$0.1183** |
+| trip legs | 139 | 86 |
+| median gross mph | 40.5 | 43.5 |
+| median NET mph | *no Stop column* | **51.0** |
+
+**★ The cost-per-mile difference is 26%, and almost none of it is the car** -- 39.1 against 40.6 MPG. **It is the price of fuel between 2010-2017 and 2021-2024.** That comparison is one of the strongest things the two-car structure can deliver, and it needs no modelling at all.
+
+**★ And the median leg is 85 miles shorter.** Creamsicle stops more often. Whether that is the driver at 84 rather than 78, a different touring style, or simply more scenery per mile on those routes is **an open question, not a finding.**
 
 ## Intended analysis
 
@@ -438,7 +452,6 @@ constraint has narrowed from "find out what the cars were" to **"find the Creams
 files"** -- Kim has them, they are substantial, and they are what makes the fleet framing
 analytically real rather than narrative. Plus the TwoRed log top-up. Both unscheduled, by
 his choice, in miscellaneous time.
-
 
 ---
 ## Log

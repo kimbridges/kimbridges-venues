@@ -170,6 +170,20 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ✓✓ CREAMSICLE IS INGESTED, 2026-08-19 — the second spine exists
+
+Three Google exports (`2024_Creamsicle_fuel_log.xlsx`, `2024_Creamsicle_trip_log.xlsx`, `2024_Creamsicle.md`) ingested by `creamsicle_ingest.R`, which skips interleaved summary rows programmatically and REPORTS the skip counts: Fuel_Log 196→173, Trip_Log 119→86, Pickup 10→6. Odometer 30,290→58,903, strictly increasing. **143 of 170 US rows balance the pump identity to under half a cent; exactly three fail by ≥2¢** and all three are now errata (C01 Oxnard, C02 Miranda, C03 Hays). Outputs: `Creamsicle_fuel_clean.csv` (173×19), `Creamsicle_trip_clean.csv` (86×15), `Creamsicle_log_errata.csv`.
+
+**The result that matters:** Creamsicle logs STOPPED time, so it measures what TwoRed structurally cannot. Across 84 timed legs, **median gross 43.5 mph against median NET 51.0 — a 7.5 mph gap.** That is the first empirical size for the driving-vs-living conflation named in FIVE THINGS #5, and it calibrates every TwoRed gross-speed number in the project as a CEILING roughly 7–8 mph below actual driving speed.
+
+### TASK — extend the timezone table to Creamsicle's cities and apply Finding 035
+
+`TwoRed_city_timezones.csv` covers 121 cities and none of them are guaranteed to be Creamsicle's. Kim's own sheet carries the note *"Needs adj for time zone changes"* on its Miles/Hour column, so his stored speeds have the same defect Finding 035 found in mine. Do this before any cross-car speed claim is published — the 7.5 mph gap above is computed within-car and is safe, but a TwoRed-vs-Creamsicle speed comparison is not until this runs.
+
+### TASK — normalise TwoRed's Canada2014 units before re-testing the Canadian Plains
+
+Those rows were converted from litres and CAD per row, which inflates residual spread by itself. The rough-road variance test (SD 4.87 n=18 vs 4.73 n=268, p=0.79) is a **NON-RESULT, not a null**, and must not be cited as one. **Creamsicle's three BC rows carry litres/CAD alongside gallons/USD — that is the layout to copy.**
+
 ### ✓✓ THE RECORD IS CLOSED AT BOTH ENDS, 2026-08-19
 
 `2017_TwoRed_last_mainland_fuel.pdf`: two final fills, DAILY TRAVEL blank, and on the BACK of the sheet,
@@ -735,11 +749,53 @@ not worth the effort at departure and arrival. **Temperature is therefore a boun
 a column running through the record.** Determine the cut-off from the sheets as they arrive; do not
 assume one, and do not scope a thermal analysis beyond it. Creamsicle has no temperature at all.
 
+**★★★ CREAMSICLE READ IN FULL 2026-08-19 (via the Drive connector) — here is what is actually in it.**
+Three Google-native files at the DRIVE ROOT (`0ANiURP1SB7tSUk9PVA`), so **inside no project folder and
+outside the versioned backup** -- Finding 034's last uncovered corner.
+- `Final Creamsicle Logs` (Sheet, 30.8 KB, modified 2026-08-17) -- **~110 fuel rows 2021-09-23 to
+  2023-09-27** and **~70 trip legs 2021-09-23 to 2024-10-20**.
+- `Creamsicle` (Doc, 13.3 KB, modified 2026-08-17) -- the 9-trip narrative.
+- `Creamsicle_July_Fuel_Log_update` (Sheet, 1.7 KB) -- **19 rows, CLEAN, and it carries LATITUDE and
+  LONGITUDE**, odometer 52,656 -> 55,743.
+
+**Kim's own summary block: start 30,290 (2021-09-23), final 58,987 (2024-10-20), TOTAL 28,697 miles,
+1,123 days, 3.08 years, 9,845 miles/year.**
+
+**★★★ CREAMSICLE'S TRIP LOG HAS THE COLUMN TWORED LACKS: `Stop`, plus `Adj_Duration` and `Miles/Hour`.**
+**That is the instrument that separates DRIVING from LIVING** -- the exact quantity named as missing when
+TwoRed's Las Vegas day read 31.6 mph. **And it has a `Comment` column of REASONS**: *Stopped at Tom's
+house*, *Founders Grove*, *Accident delay, hail, rain*, *Hike to slot canyon*, *Monterey Bay Aquarium*,
+*Cranes*. **Creamsicle records WHY a day was slow. TwoRed never did.**
+
+**★★ AND FINDING 035 APPLIES TO CREAMSICLE TOO -- KIM ALREADY KNEW.** A cell in the 2021 tab reads *Needs
+adj for time zone changes*, and 2023-03-14 St George UT -> Lone Pine CA computes to **76.9 mph** with the
+note *Back to Pacific Time*. **His `Miles/Hour` is NOT zone-corrected.** `trip_logs_read.R` already solves
+this from the city table; extend the table rather than repairing his sheet.
+
+**★★ THE CANADA UNIT PROBLEM IS ALREADY SOLVED HERE.** BC rows carry `Liters`, `CAD/L` and `CAD` ALONGSIDE
+gallons and dollars -- unlike TwoRed's Canada2014 sheet. **Use Creamsicle's layout as the model when
+normalising TwoRed's.**
+
+**THE MESS IS REAL BUT MECHANICAL:** `total` / `average` / `min` rows are interleaved INSIDE the data region
+between trip segments, and the header row repeats. **A naive read ingests summaries as fill-ups.**
+
 **TASK — clean up `Final Creamsicle Logs`.** Kim, 2026-08-16, his own account: calculations were
 put "here and there" so figures could go into the story. Concretely, the fuel tab **interleaves
 per-trip totals and averages INSIDE the data region**, so a naive read ingests summary rows as
 fill-ups. **The cleanup principle: separate DATA from DERIVED** — raw rows in one tab, computed
 summaries generated in R. Do this before the ingestion script, not after.
+
+**★ DO NOT HAND-CLEAN IT.** Those summary rows are Kim's own work and belong in the source. **Sources are
+never edited in place; the ingestion skips them programmatically** -- the same architecture as TwoRed.
+Hand-cleaning destroys the ability to prove what the source said.
+
+**★★ EXPORT REQUEST, and the reason is BACKUP, not readability.** I can already read all three through the
+Drive connector. What they lack is a backed-up copy inside the project. **Ask Kim for: the two Sheets as
+.xlsx and the Doc as .md** (NOT .docx -- `docx` is not in `SOURCE_EXT` and would not be mirrored; `md` and
+`xlsx` both are), into `Projects/Smart_Car/data/`, with a DATE in each filename. **The Google files remain
+the live source of record; the export is a dated snapshot and will drift.** xlsx also beats the connector's
+text rendering, which returns `Adj_Duration` as HTML `<span type="duration">` markup in some tabs and plain
+text in others -- fragile to parse.
 
 **TASK — build the photo-to-log join.** `images/Creamsicle/` holds 37 geotagged, timestamped
 photos. **`DateTimeOriginal` is LOCAL with `OffsetTimeOriginal` carrying the zone, and the logs

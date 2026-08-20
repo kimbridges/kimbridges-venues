@@ -1850,3 +1850,21 @@ I searched TwoRed's whole record for Florida: **no fuel stop in 294, no leg endp
 **A second error the same day, same shape.** I argued the Montgomery -> Cherokee leg had no room for a detour -- 407 logged against ~400 direct -- and therefore no Tail of the Dragon. **The route was never the direct one.** The intermediate fuel stops are Trussville AL (Birmingham) and **Madisonville, east Tennessee**: the leg ran north through Chattanooga and Knoxville, not east through Atlanta, and Madisonville -> Cherokee is **104 miles against ~75 direct** -- the Deals Gap route. **A matching TOTAL does not mean a matching ROUTE.** Two different paths agreed within seven miles and I read the agreement as proof. **Endpoints constrain a route far less than they appear to; the intermediate stops are the only waypoints this record has, and they were sitting there unread.**
 
 **Standing note.** Kim's recollections have now corrected the analysis four times in two days: the road/straight-line audit rule, the time zones, Florida, and this route inference. **Where a human witness to the data exists, treat them as an INSTRUMENT with its own error profile -- not as colour to be checked against the numbers.** So far the witness has the better record.
+
+
+## Finding 037 — A WRITE TOOL CAN INFLATE A FILE WITHOUT CHANGING A WORD (2026-08-19)
+
+**Mechanism.** `writeLines(x, path, useBytes=TRUE)` opens a TEXT connection. On Windows that connection translates every `\n` to `\r\n` — including the `\n` inside an already-CRLF string. Text that arrived as `\r\n` leaves as `\r\r\n`. Every subsequent read-modify-write adds another `\r`.
+
+**How it surfaced.** `proj_Smart_Car.md` was trimmed by 4,045 characters of prose and `pkm_budget()` still reported it OVER the 45 KB budget — then reported it 0.4 KB LARGER after a rewrite of byte-identical content. The line endings were `0d 0d 0d 0a`.
+
+**Why it evaded every existing check.** The ground-truth rule says verify by CONTENT, never by size — and content verification PASSED at every step, correctly. Word-for-word the file was exactly what I intended. The corruption lives in the whitespace, which is the one part of the content no content check looks at. **A rule written to defeat stale sizes cannot see a bug whose only symptom IS the size.**
+
+**Rules.**
+
+1. Never write text with `writeLines()`. Use a binary connection: `con <- file(path, open="wb"); writeBin(charToRaw(enc2utf8(txt)), con); close(con)`.
+2. Normalise on read: `gsub("\r+\n", "\n", x)`. One line ending per line, chosen deliberately.
+3. Add whitespace to the verification: after any write, assert `!grepl("\r\r", txt)` alongside the content check.
+4. **When a size does not move the way an edit predicts, that discrepancy is itself the observation.** Both this and Finding 030 were caught by a number that failed to match an expectation, not by an error.
+
+**Scope check run.** 89 markdown files in the PKM; exactly ONE was affected — `proj_Smart_Car_log.md`, 909 stray CRs, all written by me this session. Not a pre-existing condition. Both files normalised, verified word-identical.
