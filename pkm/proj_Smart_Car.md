@@ -88,29 +88,27 @@ Independent of both paper and spreadsheet, which is what made them decisive duri
 
 Median leg **251 mi**; log distance ~**95%** of odometer miles; lifetime **39.44 MPG**; **leg length is the strongest predictor, +4.61 MPG per 100 mi**; **no degradation in sixteen years**; **$0.0936 per mile**. Temperature was null on leg-endpoint readings and is superseded by the fill-stamped result. `logs/proj_Smart_Car_log.md`.
 
-## ★★ THE WHEELS WERE NEVER ABOUT FUEL (Kim, 2026-08-18) — full write-up in the log
+## ★★ THE WHEELS WERE NEVER ABOUT FUEL — THEY WERE ABOUT SAFETY (Kim, 2026-08-18) — in the log
 
-Smart Madness prescribed WIDE tires after the first crossing because the stock narrow "city" tires let crosswind push the car around at highway speed. **The purpose was handling, not economy.** Before/after, the economy difference is indistinguishable from zero, 95% interval **-3.7% to +4.9%** — the 1-3% penalty theory predicts sits INSIDE it. **The data rules out a LARGE penalty; it cannot detect a modest one.** (I first wrote the stronger claim and withdrew it in the same turn — same failure mode as Finding 032.) For the story: a decision made for one reason, measured on a different axis, where the measurement's job is to say what it COST, not whether it was right.
+Smart Madness prescribed WIDE tires after the first crossing because the stock narrow "city" tires let crosswind push the car around at highway speed. **The purpose was handling, and handling is the mechanism of the safety thesis above.** Before/after, the economy difference is indistinguishable from zero, **95% interval -3.7% to +4.9%** — the 1-3% penalty theory predicts sits INSIDE it. **The data rules out a LARGE penalty; it cannot detect a modest one.** (I first wrote the stronger claim and withdrew it in the same turn — the Finding 032 failure mode.)
 
-## ★★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18) — now a component of the three layers; full write-up in the log
+## ★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18) — now the FABRIC of the three layers; full write-up in the log
 
-His words: *the fuel log is more about the CAR'S performance, while the trip log shows the HUMAN performance -- how far and fast can you expect to drive in a day, something I had no idea about until I started doing these drives.*
+*The fuel log is more about the CAR'S performance, while the trip log shows the HUMAN performance -- how far and fast can you expect to drive in a day, something I had no idea about until I started doing these drives.*
 
-**It assigns instruments to questions** — economy, degradation, cost/mile, the wide-tire question are the CAR's; daily range, departure discipline, gross speed are the HUMAN's; **mixing them yields a meaningless average.** Neither log substitutes for the other: fuel records STOPS, trip records LEGS, and **the odometer is the JOIN, not the topic.** It also explains the collection history rather than apologising for it — trip logging started LATER because **the car's question was the obvious one to ask first; the human question is the one the driving taught him to ask.**
-
-**Bounded 2026-08-19:** the trip log records what the human ACHIEVED, in MEANS not variance; **the stories are the only record of what it COST.** Creamsicle's 7.5 mph net-vs-gross gap is the first measurement of the conflation the frame implies. **This is now the FABRIC of the three-layer architecture below, not a rival to it.**
+**It assigns instruments to questions** — economy, degradation, cost/mile and the wide-tire question are the CAR's; daily range, departure discipline and gross speed are the HUMAN's; **mixing them yields a meaningless average.** Fuel records STOPS, trip records LEGS, and **the odometer is the JOIN, not the topic.** Trip logging started LATER because **the car's question was the obvious one to ask first; the human question is the one the driving taught him to ask.** **Bounded 2026-08-19:** the trip log records what the human ACHIEVED, in MEANS not variance; **the stories are the only record of what it COST.** Creamsicle's 7.5 mph net-vs-gross gap is the first measurement of that conflation.
 
 ## ★★ THE SCAN SWEEP, 2026-08-18 — full write-up in the log
 
 All 15 scans read (22 on disk). Four results that must not be lost:
 
-**1. The wheel change is DATED** — `NEW WHEELS @ 13510 miles`, Kim's margin, 179 mi before the 2011 departure. **The estimate FLIPS SIGN with specification (+3.6% to -1.8%); that is the finding, not any one number.** The CONDITIONAL in `deferred.md` governs.
+**1. The wheel change is DATED** — `NEW WHEELS @ 13510 miles`, 179 mi before the 2011 departure. **The estimate FLIPS SIGN with specification (+3.6% to -1.8%); that is the finding, not any one number.**
 
-**2. ✗ THE TEMPERATURE EFFECT IS RETIRED (2026-08-19).** n=94 gave **-0.068, p=0.045**; 31 more fill-stamped temperatures took it to n=125 and **-0.050, p=0.099**, **p=0.17** with controls. The raw hot/cold gap (37.97 vs 39.61) dies on the same control — **hot fills are on shorter legs.** Write no thermal claim. **The record is now good enough to RETIRE a result.**
+**2. ✗ THE TEMPERATURE EFFECT IS RETIRED.** n=94 gave **-0.068, p=0.045**; n=125 gives **-0.050, p=0.099**, **p=0.17** with controls. The raw hot/cold gap dies on the same control — **hot fills are on shorter legs.** Write no thermal claim. **The record is now good enough to RETIRE a result.**
 
 **3. The slashed zero produced three more corrections and the control held.** Over 44 rows failing the pump identity: **permitted 8→0 fixes 4; forbidden 0→8 fixes 1**; **six controls fix 0.**
 
-**4. Gross speed separates by ROAD, across 138 legs in 12 trips.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate State 40.3 | Dalton **31.7** | 2017 February 31.1 | US-101 coastal **28.3**. Same car throughout. **But gross speed is a MEAN — see the Dalton return, where the same road one day apart differs by 6 mph.**
+**4. Gross speed separates by ROAD, across 138 legs.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate State 40.3 | Dalton **31.7** | US-101 coastal **28.3**. Same car. **But gross speed is a MEAN — see the Dalton return, where the same road one day apart differs by 6 mph.**
 
 ## ★★★ THE LONG DAYS — ALL EIGHT COLLECTED, AND EVERY ONE CHECKS OUT (2026-08-19)
 
@@ -165,25 +163,19 @@ Nine pages, **25 legs**, scanned the afternoon it was asked for. **The reconstru
 
 **The stuck day is recovered: 2016-05-27 Youngtown AZ -> Monument Valley UT, 362 mi against ~320 direct = 42 miles of detour**, 37.6 mph against the trip median of 41.4. **A new longest day: 2016-06-19 Richmond MO -> Denver, 640 mi, 58.6 mph gross** (previous best 562). **107 degF into St George on 6/21**, the hottest reading in the record. Full write-up in `logs/proj_Smart_Car_log.md`.
 
-## ★★★ THE STRESSFUL MILES ARE INVISIBLE — AND THAT IS A DIFFERENT SILENCE FROM FINDING 036 (2026-08-19)
+## ★★★ THE STRESSFUL MILES ARE INVISIBLE — A DIFFERENT SILENCE FROM FINDING 036 (2026-08-19)
 
-Kim's two near-misses (verbatim in the log): **a car-sized pothole in the Yukon with no warning flag** — *that would have been a TwoRed ending event* — and, entering New Brunswick, **a four-inch level change where the freeway met a bridge.** Then the claim that IS testable: *we were plagued by potholes. We often slowed to avoid damage... Those miles, which were mostly across the Canadian Plains, were very stressful.*
-
-**Both instruments were pointed at it. Neither sees anything.** Canadian Plains median gross **44.5 mph** against US Plains **45.0** and a whole-record **40.5**; MPG residuals +0.56 (n=4) against a record SD of **4.74**. The three Plains legs run **44.5, 47.3, 43.1** — FASTER than his sixteen-year median. **The stretch he remembers as the most stressful of the crossing is, by every number we have, an unremarkable fast run.** The New Brunswick bridge leg is dead average too: 217 mi, 5.35 h, **40.6 mph**.
+Kim's testable claim: *we were plagued by potholes. We often slowed to avoid damage... Those miles, which were mostly across the Canadian Plains, were very stressful.* **Both instruments were pointed at it. Neither sees anything.** Canadian Plains median gross **44.5 mph** against US Plains **45.0** and a whole-record **40.5**; MPG residuals +0.56 (n=4) against a record SD of **4.74**. The three Plains legs run **44.5, 47.3, 43.1** — FASTER than his sixteen-year median. The New Brunswick bridge-strike leg is dead average too: 217 mi, **40.6 mph**.
 
 ### ★★★ KIM'S CORRECTION INVERTS THE LOGIC — the data does not fail to corroborate him, it IS his mechanism
 
-He revised his own words the moment he saw the table: *I should have said "abruptly slowed, then quickly speeded up". The problem was that I couldn't go slow as big vehicles kept moving at highway speeds. Hence the rear view mirror checks.*
+He revised himself the moment he saw the table: *I should have said "abruptly slowed, then quickly speeded up". The problem was that I couldn't go slow as big vehicles kept moving at highway speeds. Hence the rear view mirror checks.* **His account PREDICTS no speed effect.** He was not free to drive slowly — trucks closing behind him — so the average had to stay up. **The high gross speed is not evidence against the stress; it is the mechanism OF it.**
 
-I had treated *no speed effect* as the record failing his memory. **His account PREDICTS no speed effect.** He was not free to drive slowly — trucks closing behind him at highway speed — so the average had to stay up. **The high gross speed is not evidence against the stress; it is the mechanism OF it.**
+**★★★ IT NAMES THE MISSING QUANTITY: WITHIN-LEG SPEED VARIANCE.** Brake for a hole, accelerate back to seventy, check the mirror, repeat. **A trip log samples the day TWICE — departure and arrival. Everything between is averaged away BY CONSTRUCTION.** So: **the log records MEANS and cannot record VARIANCE, and the cost lived entirely in the variance.** (I did look: Canadian 2014 residual SD 4.87 n=18 vs US 4.73 n=268, **p = 0.79** — but those rows are converted from litres and CAD and **unit-normalising is still OPEN**, so it is a **non-result, not a null**.)
 
-**★★★ IT NAMES THE MISSING QUANTITY PRECISELY: WITHIN-LEG SPEED VARIANCE.** Brake for a hole, accelerate back to seventy, check the mirror, repeat. **A trip log samples the day TWICE — departure and arrival. Everything between is averaged away BY CONSTRUCTION.** So the sharper statement: **the log records MEANS and cannot record VARIANCE, and the cost lived entirely in the variance.**
+### ★★★ WHY THIS IS NOT FINDING 036
 
-**I did look**, since his correction points at economy rather than speed. Canadian 2014 residual **SD 4.87 (n=18)** vs US **4.73 (n=268)**, F-test **p = 0.79**. But those rows were converted from LITRES and CAD and **unit-normalising that sheet is still OPEN** — per-row conversion inflates spread by itself. **A non-result, not a null.**
-
-### ★★★ WHY THIS IS NOT FINDING 036 — full write-up in the log
-
-**036 was about events that generated NO observation.** These miles generated a FULL set — distance, time, fuel, temperature, both endpoints — and every one is normal. The record is not silent; it answers a different question at a resolution that cannot reach the answer. **★★★ BOTH LOGS MEASURE OUTPUT. NEITHER MEASURES COST TO THE DRIVER. Vigilance has no column.** A driver can buy an ordinary 44 mph day at an extraordinary price and the log records the 44. **So the stories are not colour around the data — they are the sole record of a dimension the data cannot reach.**
+**036 was about events that generated NO observation.** These miles generated a FULL set — distance, time, fuel, temperature, both endpoints — and every one is normal. The record is not silent; it answers a different question at a resolution that cannot reach the answer. **★★★ BOTH LOGS MEASURE OUTPUT. NEITHER MEASURES COST TO THE DRIVER. Vigilance has no column.** A driver can buy an ordinary 44 mph day at an extraordinary price and the log records the 44. **So the stories are not colour around the data — they are the sole record of a dimension the data cannot reach**, which is exactly why the safety argument above needs both.
 
 ## ★★ TWO RELOCATIONS, AND THE LAST YEAR'S SHAPE (2026-08-19) — full write-up in the log
 
@@ -193,46 +185,27 @@ A page I had filed as a duplicate carried an annotation its twin did not show: *
 
 ## ★★★ THE END OF THE MAINLAND RECORD IS DOCUMENTED: 71,283 AT THE MATSON DOCK (2026-08-19)
 
-Kim scanned `2017_TwoRed_last_mainland_fuel.pdf`. Its DAILY TRAVEL table is blank, and he explained why: *there is no travel log. We got on a plane and left TwoRed at the dock for shipping.* **On the BACK of the sheet, circled: `5/22/17  71,283  LV Seattle @ Matson`.**
-
-**So the record does not end at 71,181. It ends at 71,283, in Seattle, at a shipping terminal.** The last mainland miles are **Toledo WA 71,181 (fuelled 10:09) -> Seattle 71,283 = 102 miles**, and Toledo to the Seattle waterfront is about 100 road miles. **Both odometer readings are documented; nothing is reconstructed.** Filed as `data/TwoRed_2017_LastMainlandMiles_trip_log.csv` with no arrival time, because none was ever written.
+On the BACK of the last fuel sheet, circled: **`5/22/17  71,283  LV Seattle @ Matson`**. There is no travel log because *we got on a plane and left TwoRed at the dock for shipping.* **The record ends at 71,283, in Seattle, at a shipping terminal** — last mainland miles **Toledo WA 71,181 → Seattle 71,283 = 102**, against ~100 road miles. Both readings documented; nothing reconstructed. Filed as `TwoRed_2017_LastMainlandMiles_trip_log.csv`.
 
 ### ★★★ AND THIS CLOSES THE FIRST QUESTION THE PROJECT EVER ASKED
 
-On 2026-08-12 the charter said **~75,000 miles**, the fuel log stopped at **71,181**, and the gap looked like missing data. Kim ruled the same day that the car went *about 20 miles short of 75,000*. With the terminus documented:
-
-| | miles |
-|---|---|
-| mainland record, Julyary 2010 to 22 May 2017 | **71,283** |
-| Kim's lifetime figure (~75,000 less 20) | ~74,980 |
-| **implied Honolulu miles, after shipping** | **~3,697** |
-
-**The ~3,700-mile gap was never missing data. It is the scope boundary, appearing one last time and now quantified at the terminus.** The log records long-distance driving; it stops when the long-distance driving stops. **The car crossed the Pacific and kept going for another 3,700 miles that this record is not about, by design.**
+The charter said ~75,000, the log stopped at 71,181, and the gap looked like missing data. **Mainland record 71,283; Kim's lifetime figure ~74,980; implied Honolulu miles ~3,697.** **The gap was never missing data — it is the scope boundary, quantified at the terminus.** The log records long-distance driving and stops when the long-distance driving stops. **The car crossed the Pacific and kept going for another 3,700 miles this record is not about, by design.**
 
 ### ★★ TWO ANOMALIES AT THE END THAT ARE NOT ECONOMY READINGS
 
-The final two fills read **52.4 and 93.0 MPG** -- the second the highest number in the entire record. Both are small: **4.333 and 2.496 gallons against a lifetime mean of 6.24** (72% of tank). **A vehicle handed to Matson must arrive with a low tank.** These are not measurements of the car; **they are a tank being managed DOWN for shipping**, and the implied MPG is an artifact of dividing a normal distance by a deliberately small fill.
+The final two fills read **52.4 and 93.0 MPG** — the second the highest in the record. Both are small: **4.333 and 2.496 gallons against a lifetime mean of 6.24.** **A vehicle handed to Matson must arrive with a low tank.** These are not measurements of the car; **they are a tank being managed DOWN for shipping.**
 
-**★ General rule for the write-up: the first and last rows of any record are the least trustworthy, because they are the ones taken while the measuring itself was being started or stopped.** The first fill in this log carries a slashed-zero cost error (L59); the last two are shipping artifacts. **Trim the ends before quoting an extreme.**
-
+**★ General rule: the first and last rows of any record are the least trustworthy, because they are taken while the measuring itself is being started or stopped.** The first fill carries a slashed-zero cost error (L59); the last two are shipping artifacts. **Trim the ends before quoting an extreme.**
 
 ## ★★★ FOUR ANSWERS FROM KIM (2026-08-19) — full working in the log
 
-**1. The 46 Dalton miles are 32 + 14, and only the 32 is the Dalton.** Coldfoot → Wiseman and back, the museum, the season's first snow. **TwoRed fuelled at Yukon River Crossing in BOTH directions, and that fix splits the leg:** north of the river 115 out / **147 back (+32)**; south of it 137 / **151 (+14)**. Coldfoot is Dalton mile 175, the Wiseman spur ~16 road miles on — **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.*
+**1. The 46 Dalton miles are 32 + 14 — CLOSED.** Coldfoot → Wiseman and back, the museum, the season's first snow. **The two Yukon River Crossing fills split the leg:** north of the river 115 out / **147 back (+32)**; south of it 137 / **151 (+14)**. Coldfoot is Dalton mile 175, the Wiseman spur ~16 road miles on — **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.* **The same leg is the slowest 200+-mile day in sixteen years (22.6 mph against 28.6 over the identical road the day before) and starts at 38 degF after Coldfoot read 64 degF the previous evening** — the weather turning, at the hour he describes.
 
-**★★ The same leg is the extreme case on two other instruments his story now explains.** It is the **slowest leg of 200+ miles in sixteen years — 298 mi in 13.18 h, 22.6 mph** — against **28.6 over the identical road the day before**: the road held constant, so the difference IS the museum and the turnaround. **FIVE THINGS #5 with a control.** And it starts at **38 degF**, tied second-coldest of 136 timed legs, after Coldfoot read **64 degF at 18:26 the previous evening** — a 26-degree overnight drop at the farthest north point the car ever reached, on the morning the snow began.
+**2. The Penultimate State was never Florida — STILL OPEN.** 49 mainland states leaves **Hawaii as the Ultimate State**, so the penultimate is the 49th reached. **The record's last new states all fall on the 2014 trip he named Penultimate State: Vermont 5/18, New Hampshire 5/20, Maine 5/22 at Lubec.** He remembers Vermont; the record's last is Maine. **His is the better instrument.** Vermont carries a mark the others lack — the trip stops dead there, **two nights and 59 odometer miles for a drive that is 18 miles direct.**
 
-**2. The Penultimate State was never Florida.** Kim's ruling: 49 mainland states leaves **Hawaii as the Ultimate State**, so the penultimate is the 49th reached; Florida mattered only as the last unvisited SE state. **The record's last new states all fall on the 2014 trip he named Penultimate State: Vermont 5/18, New Hampshire 5/20, Maine 5/22 at Lubec — the easternmost point of the continental US.** He remembers Vermont; the record's last is Maine. **Unresolved; his is the better instrument.** Vermont carries a mark the others lack — the trip stops dead there, **two nights and 59 odometer miles for a drive that is 18 miles direct.**
+**3. ★★★ DELAWARE IS INVISIBLE AS A LABEL AND PROVABLE AS A ROW.** Four mainland states never appear: Florida, Delaware, Rhode Island, South Dakota. Florida is Finding 036; **Delaware is the same silence and geography breaks it.** The 2014-05-16 Colonial Heights VA fill → Bellmawr NJ reads **264 odometer miles** (great-circle 219, ratio 1.21); **the only Delaware-free road is ~305 miles, 40 more than the odometer permits.** Delaware is in the record as a DISTANCE — **key to a ROW, never a LABEL.** **Charter claim settled: provinces are exactly ten. States: 45 documented, 46 with Delaware, plus Florida on testimony.**
 
-**★★★ 3. DELAWARE IS INVISIBLE AS A LABEL AND PROVABLE AS A ROW.** Four mainland states never appear: Florida, Delaware, Rhode Island, South Dakota. Florida is Finding 036; **Delaware is the same silence, and geography breaks it.** 2014-05-16, the Colonial Heights VA fill → Bellmawr NJ reads **264 odometer miles** (great-circle 219, ratio 1.21). Every route near that length crosses Delaware; **the only Delaware-free road is ~305 miles, 40 more than the odometer permits.** The record holds Delaware as a DISTANCE, not a name — **key to a ROW, never a LABEL.**
-
-**Charter claim settled: provinces are exactly ten, all present.** States: **45 documented, 46 with Delaware, plus Florida on testimony; Rhode Island and South Dakota have neither.**
-
-**★★★ 4. WEST VIRGINIA IS SETTLED: I-64, CHARLESTON TO BECKLEY — AND HE DROVE IT EXACTLY TWICE.** Confirmed by Kim on Street View, 2026-08-19. **The record puts TwoRed on that stretch on exactly two days in sixteen years, 2010-10-01 and 2016-06-12 — the number he remembered.**
-
-**Both times the behaviour is identical six years apart: arrive Huntington late, sleep, drive the hills in the morning.** 2010: **Barboursville** (a Huntington suburb) closes a 275-mile day at odometer **3,310**, the car ten weeks old; next morning 197 miles to Hillsville VA — I-64 east through Charleston to Beckley, then **I-77 south** (197 against a 142-mile great circle). 2016: in at **14:54**, out at **08:58**, 359 miles to Richmond at 49.9 mph, the **Lewisburg** fill splitting it **155 + 204** against I-64's markers of ~161 and ~205.
-
-**The pair he named was the wrong pair, and that is the interesting part.** The second meeting was **Pine Mountain KY** (6/4–6/9), reached from the west with no WV on the way in — **the WV miles are entirely post-meeting, and cost ~370 extra: Atlanta → Richmond is ~525 direct, he drove 895.** But the FIRST time was **2010, not Frostburg 2012** — Frostburg is I-68, pinned by two Morgantown fills, and I-68 never touches this road. **The memory kept the highway and the count and swapped an occasion.** Five WV fills, three highways; neither 2010 trip has a story attached.
+**4. ★★★ WEST VIRGINIA — CLOSED. I-64, Charleston to Beckley, driven exactly twice.** Confirmed by Kim on Street View. **The record puts TwoRed on that stretch on exactly two days in sixteen years — 2010-10-01 and 2016-06-12 — the count he gave before anyone looked.** Both times: arrive Huntington late, sleep, drive the hills in the morning. **The pair he NAMED was wrong** — Frostburg 2012 is I-68, pinned by two Morgantown fills, and never touches this road. **See Finding 039.**
 
 ## ★★★ CREAMSICLE IS INGESTED — THE SECOND SPINE EXISTS (2026-08-19)
 
@@ -338,6 +311,25 @@ Written 2026-08-12 so a session opening this file cold knows what was decided an
 - `proj_Photo_Locations.md` — geotagging workflow.
 - `proj_Plainmaps.md` — R mapping.
 - `proj_kimbridges_stories.md` — holds the published Arctic Circle Challenge.
+
+
+## ★★★ THE SAFETY QUESTION IS LAYER ONE'S ACTUAL CONTENT (Kim, 2026-08-19) — full development in the log
+
+**The preconception now has a name, and it is not *that thing is a city car*. It is a question with stakes: IS IT SAFE?** *These are small cars!* Kim's account is verbatim in the log. His answer has three parts and only the third is the thesis:
+
+1. **The engineering answer** — Mercedes designed it; the safety cell is race-car logic. **His own verdict on how that lands: *Do they believe it? Maybe. Maybe not.*** The engineering answer alone does not persuade, and the document should not pretend otherwise.
+2. **The empirical answer** — sixteen years of prudent driving, and nothing happened.
+3. **★★★ THE THESIS, and it INVERTS the preconception rather than rebutting it: SMALL AND NIMBLE ARE COMPONENTS OF SAFETY.** Both close calls were survived BECAUSE the car is small. **The Yukon pothole** — unflagged, *big enough to eat a big car too*, and he was nimble enough to go around it. **And the second, told tonight for the first time: an Interstate on-ramp east of Fort Worth**, a police car coming UP the ramp at full speed with no lights and no siren; hard right, hard brakes, a slide to a stop inches from the guard rail. He waited, shaken, and watched several cars take the ramp exactly as he had — **it was the police car going the wrong way.** *Small and nimble are components of safety. That's maybe counter intuitive.*
+
+**★★★ AND THE SAFETY CHAPTER IS THE PROOF THAT THE THREE LAYERS ARE LOAD-BEARING, because the argument CANNOT be made from one of them.**
+
+- **Layer 3 supplies the DENOMINATOR, and it is a real number: 100,999 documented miles across three cars** — TwoRed 71,177, Creamsicle 28,613, TwoFer 1,209; ~105,000 with TwoRed's implied Honolulu miles. **467 fill-ups, 225 logged legs, 45 states, 10 provinces, gravel on the Dalton, frost heaves across the Canadian Plains, Deals Gap, US-101. No crash.**
+- **Layer 2 supplies the NUMERATOR.** The near-misses exist nowhere else. **A crash avoided buys no fuel, ends no leg, and takes under a minute** — Finding 036's resolution rule and the means-not-variance rule at once.
+- **Neither alone is an argument.** Miles without the near-misses are absence of evidence; near-misses without the miles are anecdote.
+
+**★ AND IT CLOSES THE WIDE-TIRE LOOP, OPEN SINCE 2026-08-18.** The only modification he ever made was made for SAFETY — crosswind made the stock narrow tires hard to handle at highway speed, and *the cars have handled well and this, in part, keeps them out of dangerous situations.* **The fuel data's job was to say what that safety cost: indistinguishable from zero, 95% interval -3.7% to +4.9%.** A layer-3 answer to a layer-1 question. **The safety modification was free.**
+
+**⚠ TWO DISCIPLINES, both recorded in `deferred.md`.** *Granted, no crash testing* is Kim's own caveat and belongs in the DIFFICULTY strand — **the record cannot answer a counterfactual.** And **101,000 crash-free miles must not be oversold**: one prudent driver, mostly interstate, mostly daylight, almost no urban commuting. **The miles show the car did not prevent sixteen years of safe driving; the near-misses are where the car actively contributed.** A crash-rate comparison needs a SOURCED figure before any number is printed (intentions item 4).
 
 ## ★★★ CHAPTER ARCHITECTURE — SOLVED. KIM'S THREE LAYERS (2026-08-19) — full development in the log
 

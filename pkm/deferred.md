@@ -170,6 +170,28 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ★★★ THE SAFETY THESIS — layer one's content, given 2026-08-19
+
+**The preconception is not *it's a city car*, it is IS IT SAFE? — a question with a fear in it, which is why layer 1 can carry a book.** Kim's answer has three parts and only the third is the thesis: the engineering answer (Mercedes, the safety cell) which by his own verdict lands as *maybe, maybe not*; the empirical answer (sixteen years, nothing happened); and **SMALL AND NIMBLE ARE COMPONENTS OF SAFETY**, which INVERTS the preconception rather than rebutting it. Both close calls support it — the Yukon pothole *big enough to eat a big car too* but dodgeable, and the Texas on-ramp (a police car coming up it at speed, no lights; hard right, hard brakes, stopped inches from the guard rail).
+
+**★★ Write this chapter FIRST: it demonstrates the architecture on the project's own central question.** Layer 3 supplies the denominator — **100,999 documented miles across three cars, 467 fill-ups, 225 legs, 45 states, 10 provinces, no crash.** Layer 2 supplies the numerator, and nothing else can: **a crash avoided buys no fuel, ends no leg, and takes under a minute.** **Miles without near-misses are absence of evidence; near-misses without miles are anecdote.**
+
+**★ It also closes the wide-tire loop (open since 2026-08-18):** the only modification was made for HANDLING, handling is the mechanism of the safety claim, and **the economy cost is indistinguishable from zero (-3.7% to +4.9%). The safety modification was free.**
+
+### ⚠ TWO DISCIPLINES ON THE SAFETY CHAPTER — do not skip these
+
+**1. No crash testing — Kim's own caveat.** The record cannot answer a counterfactual. Belongs in the DIFFICULTY strand, stated plainly rather than hedged.
+
+**2. Do not oversell 101,000 crash-free miles.** One prudent driver, mostly interstate, mostly daylight, almost no urban commuting — **a low-exposure profile before the car is considered.** Honest claim: *the miles show the car did not prevent sixteen years of safe driving; the near-misses are where the car actively contributed.*
+
+### TASK — source a per-mile crash rate before any comparison is printed
+
+Intentions item 4 forbids printing an unsourced number. A US police-reported crash rate per 100M vehicle-miles (NHTSA or FHWA) would let the 101,000-mile figure be placed in context. **Until it is sourced and cited, state the exposure and stop.**
+
+### ★ OPEN QUESTION FOR KIM — where was the Texas on-ramp?
+
+The record holds four eastbound approaches to the Fort Worth area and **cannot discriminate**, which is itself the thesis working. Candidates, all I-20 eastbound except the second: **2010-09-23 Abilene → Flower Mound** (284 mi / 2 days), **2011-06-29 Wichita Falls → Fort Worth** (US-287, 111 mi, 07:41–09:38 — no room), **2012-02-05 Colorado City → Ft. Worth** (261 mi / 6 days), **2014-08-06 Colorado City → Ft. Worth** (217 mi / 3 days). The 2012 and 2014 legs are the same pair 44 miles apart, but both span several days so local driving explains the spread. **Ask; do not infer.**
+
 ### ✓✓✓ THE CHAPTER ARCHITECTURE IS SOLVED, 2026-08-19 — this was the blocker
 
 **Kim's THREE LAYERS, given as preliminary thinking and recorded verbatim in the log.** Car = hook and preconception; drives = stories; data = answers, *including questions you didn't know you had*. **The car/human fabric runs THROUGH all three — it is the weave, not a chapter — so TWO LOGS, TWO SUBJECTS is absorbed rather than replaced.** The data layer has two ends and BOTH get written: collection/transcription/cleaning as a narrative with real suspense, and analysis/display at the other.

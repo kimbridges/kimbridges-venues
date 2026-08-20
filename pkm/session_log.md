@@ -124,6 +124,28 @@ Kim then told the St Louis car-wash story — offered only to apologise for not 
 
 **The rule: a human witness to their own past is reliable for CONTENT and unreliable for INDEX.** Roads, counts, distances, reasons and categories survive decades; **what slips is the attachment of a remembered thing to a particular occasion, and it slips toward occasions that share the category.** Operationally — when story and record disagree, do not ask which is right, **ask which PART disagrees.** And note the complement: Finding 036 is the mirror, where the record was silent and the memory carried a fact the data could never produce. **Different failure modes is precisely why the pair works.**
 
+### ★★★ THE SAFETY THESIS — layer one turns out to have a fear in it
+
+Kim added it last, saying it was *part of the story motivation*, and it supplies what the architecture was missing three hours earlier: **what the preconception actually IS.** Not *that thing is a city runabout* — a shrug, and no reason to turn a page. **IS IT SAFE?** *These are small cars!* **A preconception with a fear inside it can carry a book.**
+
+**His answer has three parts and only the third is the thesis.** The engineering answer — Mercedes, the safety cell, race-car logic — with his own honest verdict on how it lands: ***Do they believe it? Maybe. Maybe not.*** That sentence should survive into the writing; a spec sheet does not defeat a visual impression, and the document is stronger for admitting it. The empirical answer: sixteen years, prudent driving, nothing happened. **And then: SMALL AND NIMBLE ARE COMPONENTS OF SAFETY — which INVERTS the preconception instead of rebutting it.** Size stops being a liability to excuse and becomes the mechanism of the escape.
+
+**Both close calls support it directly.** The Yukon pothole was, by his account, *big enough to eat a big car too* — **the hazard was size-blind; the escape was not.** And the second, told tonight for the first time: **an on-ramp east of Fort Worth, a police car coming UP it at full speed with no lights and no siren.** Hard right, hard brakes, a slide to a stop inches from the guard rail. He sat there shaken, wondering if HE was the one going the wrong way, and **watched several cars take the ramp exactly as he had.** *Did the police stop? Of course not. This was Texas.* Note the structure: **the hazard was external, unlawful and unpredictable — no amount of prudence prevents it. What was available was steering and braking inside a very short distance.** That is a handling argument, and handling is measurable in a way a crash test is not.
+
+### ★★★ And the safety chapter is the proof that the three layers are load-bearing
+
+**Layer 3 supplies the denominator, and it is a real number: 100,999 documented miles across three cars** — TwoRed 71,177, Creamsicle 28,613, TwoFer 1,209; ~105,000 with TwoRed's implied Honolulu miles. **467 fill-ups, 225 logged legs, 45 states, 10 provinces, gravel on the Dalton, frost heaves across the Canadian Plains, Deals Gap, US-101. No crash.**
+
+**Layer 2 supplies the numerator, and nothing else can.** A crash avoided buys no fuel, ends no leg, covers a few hundred feet and takes under a minute — **invisible to this record by construction**, Finding 036's resolution rule and the means-not-variance rule at once. The near-misses exist only because he remembers them.
+
+**Neither half is an argument. 101,000 miles without the near-misses is an absence of evidence; the near-misses without the miles are two anecdotes. Together they are a rate and a mechanism, which is what a safety claim requires.** Recorded as the chapter to write first.
+
+**★ It also closed the wide-tire loop, open since 2026-08-18.** The only modification TwoRed ever got was made for safety — crosswind on the stock narrow tires — and tonight Kim made the link explicit: *the cars have handled well and this, in part, keeps them out of dangerous situations.* **So the fuel data's job was never to judge the modification but to price it: indistinguishable from zero, 95% interval -3.7% to +4.9%. The safety modification was free.** A layer-3 answer to a layer-1 question, and it had no home until tonight.
+
+**Two disciplines recorded, both in the difficulty strand.** *Granted, no crash testing* is his own caveat and the right one — the record cannot answer a counterfactual. And **the 101,000 crash-free miles must not be oversold**: one prudent driver, mostly interstate, mostly daylight, almost no urban commuting. **The miles show the car did not prevent sixteen years of safe driving; the near-misses are where the car actively contributed.** A crash-rate comparison needs a sourced per-mile figure first (intentions item 4).
+
+**And the Texas incident cannot be located, which is the third demonstration in one evening.** Four eastbound approaches to Fort Worth exist in the log; the 2012 and 2014 legs are the same city pair 44 miles apart, but both span several days, so local driving explains the spread and the geographic instrument cannot discriminate. **Candidates went to Kim as a question, not an inference.**
+
 ### Close
 
 `proj_Smart_Car.md` back under budget with four write-ups moved to the log behind pointers. `deferred.md` carries the Creamsicle result and two new TASKs (extend the timezone table to Creamsicle's cities; normalise TwoRed's Canada2014 litre/CAD rows before the Canadian Plains variance test is cited — it is a NON-RESULT, not a null).

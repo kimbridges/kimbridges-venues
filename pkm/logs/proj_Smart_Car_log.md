@@ -1,5 +1,14 @@
 ## COLLECTED STORIES — Kim's accounts of the long days, verbatim (opened 2026-08-19)
 
+### ★★★ IS IT SAFE? — the safety question, and the Texas on-ramp (2026-08-19)
+
+> When people see the Smart cars, their reaction has to do with the size. These are small cars! So the question is: Is it safe? The preconception is that it isn't safe. Just too small. My explanation involves Mercedes (the designer) and the safety cell (like a race car). It say how it is safe. Do they believe it? Maybe. Maybe not. What the trips have shown me is that with prudent driving, it has been safe. Granted, no crash testing. But the cars have handled well and this, in part, keeps them out of dangerous situations. Were there close calls? Yes, I've mentioned one. It was the unmarked pothole in the Yukon that would have eaten the car. I was nimble enough to avoid the hole. A bigger car might not have been able to do that. The hole was big enough to eat a big car, too.
+>
+> The other close call, which I haven't mentioned happened in Texas. It was with TwoRed. I was heading East on the Interstate, not too far from Ft. Worth. I left the Interstate to drive through a small town. Just curious. No need to stop. Getting back on the Interstate involved going on an overpass across the freeway and then taking the road in a sweeping left turn down the freeway on ramp. I was doing that and just before the final down hill section, a police car came up the ramp, full speed, no lights, no siren. I pulled the steering wheel hard to the right and hit the brakes hard. I slid to a stop on the side of the road inches away from hitting the metal guard rail. I was stunned. Was I going the wrong way? I was in a near state of shock. So I waited. And while I waited, I watched several cars go down the on ramp, just as I had been doing. It was the police car that was going the wrong direction. I missed being hit head on by quick action and some luck. Did the police stop? Of course not. This was Texas.
+>
+> Small and nimble are components of safety, I believe. That's maybe counter intuitive.
+
+
 ### The St Louis car wash, and the 2010 loop (2026-08-19)
 
 > I don't remember Summersville. But the loop that was part of was a bit complicated. I had been to a meeting in Frostburg and drove back after the meeting to St Louis. I left my car in a car wash facility (sounds strange, but it worked). I left the mainland and came back to St Louis, got the car. Nancy joined me and we went to her meeting (Boston?). After that, we drove around a bit, Nancy left and I continued the drive. I visited colleagues at a number of universities on the way back West. This route took me mostly through the South. I eventually got to California. By leaving the car in St Louis, I avoided having to drive back to California and then return soon after over the route I'd have just taken.
@@ -1144,3 +1153,57 @@ Kim named the data layer as having two ends — collection, transcription and cl
 
 **Preconception, memory, record.** This session has been nothing but those three checking each other, and they fail differently: the record is silent where its resolution cannot reach (Finding 036); the memory keeps roads and counts but mis-binds occasions (West Virginia, then the 2010 loop, one day apart); the preconception is simply wrong, which is the point of the book. **The reading structure and the working structure are the same structure. That is a good sign for an architecture and it should be said out loud in the Foreword.**
 
+
+
+## ★★★ THE SAFETY THESIS — LAYER ONE'S CONTENT, AND THE BEST WORKED EXAMPLE THE ARCHITECTURE HAS (2026-08-19)
+
+**Kim's account is verbatim in COLLECTED STORIES.** It arrived hours after the three-layer architecture and it supplies the thing the architecture was missing: **what the preconception actually IS.**
+
+### It is not a category error, it is a question with stakes
+
+*That thing is a city runabout* is a shrug. **IS IT SAFE?** is not. **The preconception has a fear inside it, and that is why layer 1 can carry a whole book.** A reader who merely thinks the car is impractical has no reason to turn the page; a reader who thinks it is dangerous wants to know what happened.
+
+### The answer has three parts and only the third is the thesis
+
+**1. The engineering answer.** Mercedes designed it; the safety cell is race-car logic. **Kim's own verdict on how that lands is the honest part and must survive into the writing: *Do they believe it? Maybe. Maybe not.*** An engineering answer does not persuade against a visual impression. **The document should say so rather than pretend the spec sheet settles it.**
+
+**2. The empirical answer.** Sixteen years, prudent driving, nothing happened.
+
+**3. ★★★ THE THESIS — SMALL AND NIMBLE ARE COMPONENTS OF SAFETY.** This is the move that makes the chapter worth writing, because **it inverts the preconception instead of rebutting it.** Size stops being a liability to be excused and becomes the mechanism of the escape. Both close calls support it directly:
+
+- **The Yukon pothole** — unflagged, and by his account *big enough to eat a big car too*. **The hazard was size-blind; the escape was not.** *I was nimble enough to avoid the hole. A bigger car might not have been able to do that.*
+- **The Texas on-ramp** — a police car coming UP an on-ramp at full speed, no lights, no siren. Hard right, hard brakes, a slide to a stop inches short of the guard rail. **He then sat and watched several cars take the ramp exactly as he had, which is how he learned it was the police car going the wrong way.** *I missed being hit head on by quick action and some luck.*
+
+**Note the structure of the second one.** The hazard was external, unlawful and unpredictable — nothing about prudence prevents it. **What was available to him was steering and braking inside a very short distance.** That is a handling argument, and handling is measurable in a way a crash test is not.
+
+### ★★★ AND THE ARGUMENT CANNOT BE MADE FROM ONE LAYER — WHICH IS THE POINT
+
+**Layer 3 has the denominator, and it is a real number:**
+
+| | miles |
+|---|---|
+| TwoRed, documented | **71,177** |
+| Creamsicle, documented | **28,613** |
+| Two4Two / TwoFer | **1,209** |
+| **total documented** | **100,999** |
+| with TwoRed's implied Honolulu miles | ~105,000 |
+
+**467 fill-ups. 225 logged legs. 45 states, 10 provinces. Gravel on the Dalton, frost heaves across the Canadian Plains, Deals Gap, US-101, the Trans-Canada. No crash.**
+
+**Layer 2 has the numerator, and nothing else does.** **A crash avoided buys no fuel, ends no leg, covers a few hundred feet and takes under a minute.** It is invisible to this record by construction — Finding 036's resolution rule and the means-not-variance rule operating together. **The two near-misses exist only because Kim remembers them.**
+
+**Neither half is an argument.** 101,000 miles without the near-misses is an absence of evidence — it shows nothing happened, not that the car did anything. The near-misses without the miles are two anecdotes. **Together they are a rate and a mechanism, which is what a safety claim requires.** **This is the chapter to write first, because it demonstrates the architecture on the project's own central question.**
+
+### ★★ IT ALSO CLOSES THE WIDE-TIRE LOOP, OPEN SINCE 2026-08-18
+
+The only modification TwoRed ever received was made for **safety**: crosswind pushed the car around on the stock narrow tires at highway speed, Smart Madness prescribed wide ones, and handling became very good. **Kim's own sentence tonight makes the link explicit — *the cars have handled well and this, in part, keeps them out of dangerous situations.*** So the fuel data's job was never to judge the modification; **it was to say what the safety cost. Answer: indistinguishable from zero, 95% interval -3.7% to +4.9%.** A layer-3 answer to a layer-1 question, and the answer is that **the safety modification was free.**
+
+### ⚠ TWO DISCIPLINES, both of which belong in the DIFFICULTY strand
+
+**1. *Granted, no crash testing.* Kim's own caveat, and it is the right one.** The record cannot answer a counterfactual. **What would have happened in the crash that did not occur is outside every instrument this project has**, and saying so plainly is stronger than hedging.
+
+**2. The 101,000 crash-free miles must not be oversold.** One driver, prudent by disposition, mostly interstate, mostly daylight, almost no urban commuting — **a low-exposure profile before the car is considered at all.** The honest claim: **the miles show the car did not prevent sixteen years of safe driving; the near-misses are where the car actively contributed.** A crash-rate comparison would need a SOURCED per-mile figure, and intentions item 4 forbids printing one until it exists.
+
+### The Texas incident cannot be located in the record, and that is the third demonstration
+
+There are four eastbound approaches to the Fort Worth area in the whole log: **2010-09-23 Abilene → Flower Mound** (I-20, 284 mi over 2 days), **2011-06-29 Wichita Falls → Fort Worth** (US-287, 111 mi, 07:41–09:38, no room for a detour), **2012-02-05 Colorado City → Ft. Worth** (I-20, 261 mi over 6 days) and **2014-08-06 Colorado City → Ft. Worth** (I-20, 217 mi over 3 days). **The 2012 and 2014 legs are the same city pair and differ by 44 miles — but both span multiple days, so local driving explains the spread and the geographic instrument cannot discriminate.** Put the three I-20 candidates to Kim; do not infer. **The near-miss itself is unrecoverable, exactly as the thesis predicts.**
