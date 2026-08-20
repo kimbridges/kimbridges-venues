@@ -997,6 +997,30 @@ There is no southbound departure from Huntington in 2016. **But there is one in 
 
 **Note the 2010 pair is itself two separate trips six weeks apart, and neither has been accounted for by a story.** Summersville is on US-19 between I-79 and Beckley — the New River Gorge Bridge road. **Three scenic West Virginia highways, five fills, and the memory of one.** Kim to adjudicate; the geometry is offered, not asserted.
 
+### ✓✓✓ SETTLED BY KIM, 2026-08-19 — I-64, CHARLESTON TO BECKLEY
+
+He checked it on Street View: **the Charleston → Beckley run on I-64 is the road he remembers.** That closes it, and the closure is unusually clean.
+
+**★★★ The record puts TwoRed on that stretch on exactly two days in sixteen years — 2010-10-01 and 2016-06-12 — and *twice* is the number he gave before anyone counted.** His memory produced the road and the count independently of the data, and both survive.
+
+**And the behaviour is identical six years apart, which is the part no one was looking for.**
+
+| | 2010 | 2016 |
+|---|---|---|
+| arrive Huntington | **Barboursville** fill closes a 275-mi day at odo **3,310** — the car was ten weeks old | in at **14:54**, from Dandridge TN |
+| overnight | yes | yes |
+| the morning drive | 197 mi to Hillsville VA: I-64 east through Charleston to Beckley, then **I-77 south** | out at **08:58**, 359 mi to Richmond at **49.9 mph**, the trip's fastest leg |
+| the check | 197 against a 142-mi great circle, ratio **1.38** | **Lewisburg** fill splits it **155 + 204** against I-64's markers of ~161 and ~205 |
+
+**Both times he stopped short of the mountains, slept, and started the beautiful part in the morning.** That is a decision, made twice, six years apart, and it is legible in nothing but arrival and departure times.
+
+**★★ WHAT THE MEMORY GOT WRONG IS INSTRUCTIVE, AND IT IS NOT THE ROAD.** He named the pair as Frostburg (2012) and Pine Mountain (2016). **The road and the count are right; one of the two occasions is wrong.** Frostburg is **I-68**, pinned by two Morgantown fills — the 6/1 fill sits 65 miles short of Frostburg against I-68's ~63 — and **I-68 never touches the Charleston-Beckley road at any point.** The first drive was **2010-10-01**, in the car's first ten weeks, on a trip he has not told a story about.
+
+**The error has a shape worth naming.** He remembered the ROAD (verifiable, and verified), the COUNT (verifiable, and verified), and the CATEGORY of occasion — *a scientific meeting in the region* — which is true of both 2012 and 2016. **What slipped is the BINDING between the road and one of its occasions**, and it slipped toward the occasion that shares the category. **This is the mirror image of Finding 036:** there, the record was silent and the memory carried the fact; here the memory carries the fact and the record supplies the index. **Neither instrument is reliable alone, and their failure modes are different, which is exactly why the pair works.**
+
+**Still open: the two 2010 West Virginia trips have no stories.** 2010-09-30 Barboursville (which we now know is the first drive) and 2010-11-14 Summersville, on **US-19, the New River Gorge Bridge road** — six weeks apart, both in the car's first four months, both unaccounted for.
+
+
 
 
 ## [archived] GOOGLE-NATIVE DATA INVENTORY — moved from proj 2026-08-19

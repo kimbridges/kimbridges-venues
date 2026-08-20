@@ -134,17 +134,17 @@ All 15 scans read (22 now on disk). The four results that must not be lost:
 | 2014-05-05 | El Paso -> San Antonio | 531 | racing for Florida, the last mainland state, before a meeting in Cherokee NC | **47.6 mph** over featureless road. **He reached Florida** -- a few minutes in the panhandle, invisible to a log that resolves to fill-ups and overnights (below) |
 | 2013-08-31 | Bellingham -> Grants Pass | 488 | Nancy flew the red-eye and met him off the Alaska ferry with the reservations already made | the leg before it is **Whittier 38,284 -> Bellingham 38,285, one odometer mile**; the next day is **Grants Pass -> San Francisco, 393 mi**, so she could fly home. Two big days, exactly as told |
 
-### ★★★ FLORIDA, AND THE TAIL OF THE DRAGON — full write-up in the log; the rules in Finding 036
+### ★★★ FLORIDA, AND THE TAIL OF THE DRAGON — full write-up in the log; rules in Finding 036
 
-**I concluded from the record that TwoRed never reached Florida. It did.** Kim drove a few miles into the panhandle, asked a passing driver *is this Florida?*, and left. **The log resolves to two events — buying fuel and ending a day — and he did neither there, on purpose.** Road/straight-line **1.23 against a trip median of 1.22**. Invisible.
+**I concluded TwoRed never reached Florida. It did.** A few miles into the panhandle, *is this Florida?*, and out. **The log resolves to two events — buying fuel and ending a day — and he did neither there, on purpose.** Road/straight-line **1.23 against a trip median of 1.22**. Invisible.
 
-**And I argued the same leg had no room for the Tail of the Dragon — 407 logged against ~400 direct. The route was never the direct one.** The intermediate fills give the waypoints: **Trussville AL → Madisonville, east Tennessee**, north through Chattanooga and Knoxville. **Madisonville → Cherokee is 104 mi against ~75 direct**: the Deals Gap route. **The Dragon is in the odometer.**
+**And I argued the same leg had no room for the Dragon — 407 logged against ~400 direct. The route was never the direct one.** The fills give the waypoints: **Trussville AL → Madisonville TN**, north through Chattanooga and Knoxville. **Madisonville → Cherokee is 104 mi against ~75 direct**: the Deals Gap route. **The Dragon is in the odometer.**
 
-**Two rules. A record's RESOLUTION sets the floor on what its silences can mean. And a matching TOTAL does not mean a matching ROUTE — the intermediate stops are the only waypoints this record has.**
+**Two rules. A record's RESOLUTION sets the floor on what its silences can mean. And a matching TOTAL does not mean a matching ROUTE.**
 
 ### ★ ONE DISCREPANCY, UNRESOLVED — the Bellingham departure
 
-Kim remembers meeting Nancy *early afternoon*; the sheet starts the day at **06:49**. **The arithmetic favours the sheet** — 488 mi from 06:49 is already 36.2 mph gross, while an early-afternoon start needs ~67 with no stop. Likely 06:49 is the ferry docking recorded as the day's start, and the reunion is the missing hours. **A hypothesis about a memory — ask him.** Detail in `deferred.md`.
+Kim remembers meeting Nancy *early afternoon*; the sheet starts the day at **06:49**. **The arithmetic favours the sheet** — 488 mi from 06:49 is already 36.2 mph gross, while an early-afternoon start needs ~67 with no stop. Likely 06:49 is the ferry docking recorded as the day's start. **Ask him.** Detail in `deferred.md`.
 
 ### ★★★ FIVE THINGS THE STORIES CHANGED, none of which the data could have volunteered
 
@@ -242,9 +242,9 @@ The final two fills read **52.4 and 93.0 MPG** -- the second the highest number 
 **★ General rule for the write-up: the first and last rows of any record are the least trustworthy, because they are the ones taken while the measuring itself was being started or stopped.** The first fill in this log carries a slashed-zero cost error (L59); the last two are shipping artifacts. **Trim the ends before quoting an extreme.**
 
 
-## ★★★ THREE ANSWERS FROM KIM (2026-08-19) — full working in the log
+## ★★★ FOUR ANSWERS FROM KIM (2026-08-19) — full working in the log
 
-**1. The 46 Dalton miles are 32 + 14, and only the 32 is the Dalton.** Coldfoot → Wiseman and back, the museum, and the season's first snow. **TwoRed fuelled at Yukon River Crossing in BOTH directions, and that intermediate fix splits the leg:** north of the river 115 out / **147 back (+32)**; south of it 137 / **151 (+14)**. Coldfoot is Dalton mile 175 and the Wiseman spur is ~16 road miles on — **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.*
+**1. The 46 Dalton miles are 32 + 14, and only the 32 is the Dalton.** Coldfoot → Wiseman and back, the museum, the season's first snow. **TwoRed fuelled at Yukon River Crossing in BOTH directions, and that fix splits the leg:** north of the river 115 out / **147 back (+32)**; south of it 137 / **151 (+14)**. Coldfoot is Dalton mile 175, the Wiseman spur ~16 road miles on — **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.*
 
 **★★ The same leg is the extreme case on two other instruments his story now explains.** It is the **slowest leg of 200+ miles in sixteen years — 298 mi in 13.18 h, 22.6 mph** — against **28.6 over the identical road the day before**: the road held constant, so the difference IS the museum and the turnaround. **FIVE THINGS #5 with a control.** And it starts at **38 degF**, tied second-coldest of 136 timed legs, after Coldfoot read **64 degF at 18:26 the previous evening** — a 26-degree overnight drop at the farthest north point the car ever reached, on the morning the snow began.
 
@@ -252,13 +252,13 @@ The final two fills read **52.4 and 93.0 MPG** -- the second the highest number 
 
 **★★★ 3. DELAWARE IS INVISIBLE AS A LABEL AND PROVABLE AS A ROW.** Four mainland states never appear: Florida, Delaware, Rhode Island, South Dakota. Florida is Finding 036; **Delaware is the same silence, and geography breaks it.** 2014-05-16, the Colonial Heights VA fill → Bellmawr NJ reads **264 odometer miles** (great-circle 219, ratio 1.21). Every route near that length crosses Delaware; **the only Delaware-free road is ~305 miles, 40 more than the odometer permits.** The record holds Delaware as a DISTANCE, not a name — **key to a ROW, never a LABEL.**
 
-**A charter claim is settled: provinces are exactly ten, all present.** States: **45 documented, 46 with Delaware, plus Florida on testimony. Rhode Island and South Dakota have neither.**
+**Charter claim settled: provinces are exactly ten, all present.** States: **45 documented, 46 with Delaware, plus Florida on testimony; Rhode Island and South Dakota have neither.**
 
-**4. West Virginia — the second meeting was PINE MOUNTAIN KY, and that hint moved it.** The record holds the meeting (6/4 to 6/9, five days) and the detour after it: **Atlanta → Richmond is ~525 road miles direct; he drove 895 over three days — ~370 extra, +70%** — with three fills pinning the route, **Cherokee NC → Pikeville KY → Lewisburg WV.**
+**★★★ 4. WEST VIRGINIA IS SETTLED: I-64, CHARLESTON TO BECKLEY — AND HE DROVE IT EXACTLY TWICE.** Confirmed by Kim on Street View, 2026-08-19. **The record puts TwoRed on that stretch on exactly two days in sixteen years, 2010-10-01 and 2016-06-12 — the number he remembered.**
 
-**But the Huntington departure is EASTBOUND, not south.** The Lewisburg fill sits at I-64 exit 169 and splits 6/12 into **155 + 204** against I-64's own markers of ~161 and ~205 — **I-64 across West Virginia, documented, not inferred.** Kim's *south out of Huntington* exists too, **in 2010**: Barboursville WV (a Huntington suburb) → Hillsville VA, **197 odometer miles against a 142-mile great circle** — I-64 east to Beckley, then **I-77 SOUTH.**
+**Both times the behaviour is identical six years apart: arrive Huntington late, sleep, drive the hills in the morning.** 2010: **Barboursville** (a Huntington suburb) closes a 275-mile day at odometer **3,310**, the car ten weeks old; next morning 197 miles to Hillsville VA — I-64 east through Charleston to Beckley, then **I-77 south** (197 against a 142-mile great circle). 2016: in at **14:54**, out at **08:58**, 359 miles to Richmond at 49.9 mph, the **Lewisburg** fill splitting it **155 + 204** against I-64's markers of ~161 and ~205.
 
-**★★ The two runs share a stretch: I-64, Huntington → Charleston → Beckley, ~120 miles. 2010 turns south onto I-77; 2016 stays east.** So *I drove it twice* has a referent — **just not the two trips he named**; Frostburg 2012 is I-68, a different road. Open in `deferred.md`.
+**The pair he named was the wrong pair, and that is the interesting part.** The second meeting was **Pine Mountain KY** (6/4–6/9), reached from the west with no WV on the way in — **the WV miles are entirely post-meeting, and cost ~370 extra: Atlanta → Richmond is ~525 direct, he drove 895.** But the FIRST time was **2010, not Frostburg 2012** — Frostburg is I-68, pinned by two Morgantown fills, and I-68 never touches this road. **The memory kept the highway and the count and swapped an occasion.** Five WV fills, three highways; neither 2010 trip has a story attached.
 
 ## ★★★ CREAMSICLE IS INGESTED — THE SECOND SPINE EXISTS (2026-08-19)
 
@@ -327,7 +327,7 @@ tank.
 
 ### Two narrative set-pieces moved to the log 2026-08-18
 
-**THE YUKON RIVER CAMP STORY** and **THE ALPINE STORY** now live verbatim in `logs/proj_Smart_Car_log.md` under ARCHIVE, together with the superseded scan-coverage table. Both are for the Expeditions chapter and neither is working state. Moved to hold the 45 KB budget.
+**THE YUKON RIVER CAMP STORY** and **THE ALPINE STORY** live verbatim in the log under ARCHIVE, with the superseded scan-coverage table. Both are for the Expeditions chapter; neither is working state.
 
 ## What the data ACTUALLY contains -- moved to the log 2026-08-18
 

@@ -90,6 +90,18 @@ Kim exported the Google files; `creamsicle_ingest.R` reads them, skips interleav
 
 **West Virginia is left open on purpose.** He gave the shape — two trips, scientific meetings, direct the first time and a detour the second — but the record's four WV touches sit on **two highways 150 miles apart**, and it holds exactly **two morning drives through those hills: 2012-06-08 westbound on I-68 out of Frostburg at 07:31, and 2016-06-12 eastbound on I-64 out of Huntington at 08:58** on a route that detours north and then back south. Different roads. **Route inference has been wrong twice in this project and was not trusted with a third; the question went back to him as one word.**
 
+### West Virginia closed — and the memory's failure mode is the finding
+
+Two hints from Kim did it. First, the second meeting was **Pine Mountain KY** — in the record, 6/4 to 6/9, reached from the west with no West Virginia on the way in, so the WV miles are entirely post-meeting and cost **~370 extra: Atlanta → Richmond is ~525 direct and he drove 895**, pinned by fills at Cherokee NC, Pikeville KY and Lewisburg WV. Then: *we drove south out of Huntington.* There is no southbound departure in 2016 — **but there is one in 2010**, Barboursville WV (a Huntington suburb) at odometer **3,310**, the car ten weeks old, then 197 miles to Hillsville VA against a 142-mile great circle: I-64 east to Beckley, then I-77 south.
+
+**The two runs share the Charleston → Beckley stretch of I-64, and Kim confirmed it on Street View.** The closure is unusually clean: **the record puts TwoRed on that stretch on exactly two days in sixteen years, and *twice* is the count he gave before anyone counted.** Both times the behaviour is identical six years apart — **arrive Huntington late, sleep, drive the hills in the morning** (2010: a 275-mile day ending at the fill; 2016: in at 14:54, out at 08:58 for 359 miles at 49.9 mph, the trip's fastest leg). **He stopped short of the mountains twice, deliberately, to start the beautiful part in daylight — a decision legible in nothing but arrival and departure times.**
+
+**★★ What the memory got wrong is the interesting part, and it is not the road.** He named the pair as Frostburg 2012 and Pine Mountain 2016. **Frostburg is I-68** — two Morgantown fills, the 6/1 one sitting 65 miles short of Frostburg against I-68's ~63 — and **I-68 never touches this road.** So: the ROAD was right, the COUNT was right, and the CATEGORY of occasion (*a scientific meeting in the region*) was right of both trips. **What slipped was the BINDING between the road and one of its occasions, and it slipped toward the occasion sharing the category.**
+
+**This is the mirror image of Finding 036.** There, the record was silent and the memory carried the fact. Here the memory carried the fact — road and count — and the record supplied the index. **Neither instrument is reliable alone and their failure modes are different, which is precisely why the pair works.** Filed with the write-up in the log.
+
+**Left open:** the two 2010 West Virginia trips have no stories — Barboursville 9/30 (now known to be the first of the pair) and Summersville 11/14 on US-19, the New River Gorge Bridge road. Six weeks apart, both inside the car's first four months.
+
 ### Close
 
 `proj_Smart_Car.md` back under budget with four write-ups moved to the log behind pointers. `deferred.md` carries the Creamsicle result and two new TASKs (extend the timezone table to Creamsicle's cities; normalise TwoRed's Canada2014 litre/CAD rows before the Canadian Plains variance test is cited — it is a NON-RESULT, not a null).
