@@ -259,9 +259,15 @@ Kim: Coldfoot → Wiseman and back, the museum, a resident's tour, and the seaso
 
 Kim's ruling settles the CONCEPT: 49 mainland states leaves **Hawaii as the Ultimate State**, so the penultimate is the 49th mainland state reached. It was never Florida. **But the record's last new states run Vermont 5/18, New Hampshire 5/20, Maine 5/22 (Lubec) — all on the 2014 trip he named Penultimate State.** He remembers Vermont; the record's last is Maine. **Do not print either until he rules.** Vermont is marked by a two-night stop and 59 odometer miles for an 18-mile drive.
 
-### ★ OPEN QUESTION FOR KIM — which West Virginia highway, I-68 or I-64?
+### ★ OPEN QUESTION FOR KIM — narrowed 2026-08-19 by the Pine Mountain hint
 
-He gave the shape (two trips, meetings in the region, direct the first time, a detour the second) but the record holds four WV touches on **two roads 150 miles apart**. **I-68:** 2012 Frostburg, Morgantown fills 6/1 and 6/8, the 6/8 return departing 07:31 — but that is one trip out and back. **I-64:** Barboursville WV 2010-09-30 and Summersville WV 2010-11-14 (two trips), then 2016-06-12 Huntington out at 08:58 → Lewisburg → Richmond on a route that detours north then back south. **The record holds exactly two morning drives through the WV hills and they are different roads. Route inference has been wrong twice here; ask, do not infer.**
+**Resolved:** the second meeting was **Pine Mountain KY** (arrive 6/4, depart 6/9). He came in from the west through Kentucky, so the WV driving is entirely AFTER the meeting — a choice, not a route. **The detour is ~370 miles, +70%:** Atlanta → Richmond is ~525 direct and he drove **895** over three days, pinned by fills at Cherokee NC, Pikeville KY and Lewisburg WV. **The Huntington departure is EASTBOUND on I-64** — the Lewisburg fill splits 6/12 into 155 + 204 against I-64's own markers of ~161 and ~205.
+
+**His *south out of Huntington* is real but it is 2010, not 2016.** Barboursville WV (a Huntington suburb) 9/30 at odometer 3,310 → Hillsville VA 10/1, **197 miles against a 142-mile great circle** — I-64 east to Beckley then **I-77 south**. **★★ The 2010 and 2016 runs share the Huntington → Charleston → Beckley stretch of I-64, ~120 miles. That is a road he demonstrably drove twice.**
+
+**What the record cannot support is the pair he named.** Frostburg 2012 is **I-68**, pinned by two Morgantown fills, and I-68 never touches the Huntington road. **Five WV fills across three highways: I-77 south (2010-09-30), US-19 / New River Gorge (2010-11-14), I-68 (2012, twice), I-64 (2016).**
+
+**STILL OPEN, and it is now a good question rather than a vague one:** is the road he pictures the **Huntington → Charleston → Beckley run on I-64** (2010 and 2016), or the **I-68 approach to Frostburg** (2012)? **And neither 2010 trip has a story attached — two separate visits six weeks apart, both unaccounted for.**
 
 ### ✓ DELAWARE IS RECOVERED BY GEOGRAPHY, 2026-08-19
 

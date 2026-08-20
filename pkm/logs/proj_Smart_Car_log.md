@@ -971,6 +971,33 @@ Kim: two different trips, scientific meetings in the region, direct the first ti
 
 **The record contains exactly two MORNING drives through the West Virginia hills: 2012-06-08 westbound on I-68, and 2016-06-12 eastbound on I-64.** They are different roads. **The question for Kim is one word: I-68 (Morgantown → Frostburg) or I-64 (Huntington → Lewisburg → White Sulphur Springs)?** Route inference has been wrong twice in this project and is not being trusted with a third.
 
+### ★★★ AND KIM'S HINT MOVED IT — the second meeting was PINE MOUNTAIN KY (2026-08-19)
+
+**The record holds the meeting.** Bowling Green KY → **Pine Mountain KY** 6/4, and nothing until the 07:34 departure on **6/9**. Five days. He arrived from the WEST, through Kentucky — **no West Virginia on the way in.** So the WV driving is entirely AFTER the meeting, which already makes it a choice rather than a route.
+
+**And the detour is large.** Pine Mountain → Atlanta 6/9, then Atlanta → Richmond over three days. **Direct is ~525 road miles. He drove 895** (odometer 61,450 → 62,345), against a great circle of 470. **~370 extra miles, +70%.** Three fills pin the shape and none of it is inference: **Cherokee NC** 6/10 (the Smokies), **Pikeville KY** 6/11 (US-23 up the eastern-Kentucky coalfields), **Lewisburg WV** 6/12.
+
+**The Huntington departure is EASTBOUND, and the fill proves it.** Lewisburg sits at I-64 exit 169, and it splits the 6/12 leg into **155 miles to the fill and 204 after**. I-64's own markers give ~161 from Huntington to Lewisburg and ~205 from Lewisburg to Richmond. **Both halves match. That is I-64 across the width of West Virginia — Charleston, the New River, Sandstone Mountain, the Greenbrier Valley — 359 miles at 49.9 mph, the fastest leg of the trip, out of Huntington at 08:58 in the morning.**
+
+### ★★ KIM'S SECOND HINT — *we drove south out of Huntington* — POINTS AT A REAL DRIVE, SIX YEARS EARLIER
+
+There is no southbound departure from Huntington in 2016. **But there is one in 2010, and it is the project's very first West Virginia mile.** Fuel at **Barboursville WV** (a Huntington suburb) on **2010-09-30, odometer 3,310** — the car was ten weeks old — then **Hillsville VA** on 10-01 at 3,507. **197 odometer miles against a 142-mile great circle, ratio 1.38.** That is I-64 east to Beckley and then **I-77 SOUTH** through the mountains — Flat Top, Camp Creek, the East River Mountain Tunnel. **A southbound run out of the Huntington area through the West Virginia hills, exactly as he describes it.**
+
+**★★★ AND THE TWO RUNS SHARE A ROAD.** 2010 and 2016 both begin at Huntington and both take **I-64 east through Charleston to Beckley — about 120 miles.** 2010 turns south there onto I-77; 2016 stays on I-64 into the Greenbrier Valley. **So *I liked this so much, I drove it twice* has a documented referent after all — it is the Huntington → Charleston → Beckley stretch of I-64, driven in 2010 and again in 2016.** What the record cannot support is that the pair is Frostburg-and-Pine-Mountain: **Frostburg 2012 is I-68, pinned by two Morgantown fills (the 6/1 fill sits 65 miles short of Frostburg against I-68's ~63), and I-68 does not touch the Huntington road at any point.**
+
+**Five West Virginia fills, and they fall on three different highways:**
+
+| date | fill | odometer | road |
+|---|---|---|---|
+| 2010-09-30 | Barboursville | 3,310 | I-64 east → **I-77 south** |
+| 2010-11-14 | Summersville | 7,531 | **US-19**, the New River Gorge corridor |
+| 2012-06-01 | Morgantown | 28,900 | **I-68** east to Frostburg |
+| 2012-06-08 | Morgantown | 29,109 | **I-68** west, departing 07:31 |
+| 2016-06-12 | Lewisburg | 62,141 | **I-64** east, Huntington → Richmond |
+
+**Note the 2010 pair is itself two separate trips six weeks apart, and neither has been accounted for by a story.** Summersville is on US-19 between I-79 and Beckley — the New River Gorge Bridge road. **Three scenic West Virginia highways, five fills, and the memory of one.** Kim to adjudicate; the geometry is offered, not asserted.
+
+
 
 ## [archived] GOOGLE-NATIVE DATA INVENTORY — moved from proj 2026-08-19
 
