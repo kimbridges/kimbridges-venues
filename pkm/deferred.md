@@ -178,9 +178,21 @@ recoverable from if a file were overwritten rather than deleted.
 
 **★★ The economics are visible as a COUNT, not a cost:** a rental must be returned, a car in a parking space need not be, and **22 long dormancies = twenty-two rentals not taken out in six years.** **The saving is in the DORMANCY column.** (A dollar figure needs a sourced rental rate — intentions item 4.)
 
-### ★ OPEN QUESTION FOR KIM — why did the car move to Oregon in September 2016?
+### ✓✓✓ ANSWERED 2026-08-20 — THE CAR LEFT BECAUSE THE PARKING SPOT DID
 
-**The sequence is documented and the causation is not.** Last anchor fill **2016-08-02**; the September 2016 trip is the one-way relocation to Eugene and **the car never returns to Lake San Marcos**; in January 2017 it is in Eugene when the call comes about his mother; she dies shortly after; **the car ships from Matson 2017-05-22, four months later.** **The loop broke BEFORE she died, so the relocation was not a consequence of it.** **Do not write the bracketing arc until Kim explains the September move.**
+Kim: *As my mother neared her 104th year, she could no longer stay in her assisted living facility in LSM. She moved to a more secure facility in August and that place didn't have parking for TwoRed. Parking is a big issue and we've been fortunate that friends and family have helped at critical times.*
+
+**Not a bereavement — a facility's parking policy.** Last anchor fill **2016-08-02**; **Carlsbad holds the car 36 days** (08-17 to 09-22) while a new home is found; the coast run to Oregon follows 09-24 to 09-27. She died in January 2017 with the car already in Eugene, **which is why it was there when the call came. Adjacent facts, separate causes — the writing must keep them so.**
+
+### ★★★ NEW THEME — PARKING IS THE HIDDEN INFRASTRUCTURE, and the dormancy map is the favour map
+
+**34 of the 35 long dormancies sit inside a network of family, friends and a facility** — San Marcos 11 spells/578 days, Lake San Marcos 7/421, Carlsbad 4/334, then Signal Hill, Barstow, Parker AZ, Yuma, Coos Bay, Brookings and four singles. **Exactly ONE is outside it: Altamont IL, 25 days — the only time in sixteen years he had to BUY the service.** **The car wash is not an odd anecdote; it is the single failure of the parking network.**
+
+**For the Foreword: the enabling condition of sixteen years of cross-country driving was not fuel and not roads — it was people willing to let a car sit.** The fuel log records movement; **the gaps between its rows record hospitality, and they are 86% of the elapsed days.**
+
+### ⚠ ASK KIM BEFORE PUBLISHING THE DORMANCY TABLE — whose driveway, and what may be named
+
+San Marcos, Lake San Marcos and Carlsbad are accounted for. **Barstow (102 days), Signal Hill (141), Parker AZ (94), Yuma (83), Lancaster, Laguna Hills, Hesperia, South Pasadena, Coos Bay and Brookings are not.** **Ask him to annotate the list — and to rule on naming private individuals and addresses**, as with the Texas on-ramp. **Do not publish the table as it stands.**
 
 ### ★★★ THE SAFETY THESIS — layer one's content, given 2026-08-19
 

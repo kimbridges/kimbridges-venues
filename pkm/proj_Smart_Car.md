@@ -80,7 +80,7 @@ Median leg **251 mi**; log distance ~**95%** of odometer miles; lifetime **39.44
 
 ## ★★ THE WHEELS WERE NEVER ABOUT FUEL — THEY WERE ABOUT SAFETY (Kim, 2026-08-18) — in the log
 
-Smart Madness prescribed WIDE tires after the first crossing because the stock narrow "city" tires let crosswind push the car around at highway speed. **The purpose was handling, and handling is the mechanism of the safety thesis above.** Before/after, the economy difference is indistinguishable from zero, **95% interval -3.7% to +4.9%** — the 1-3% penalty theory predicts sits INSIDE it. **The data rules out a LARGE penalty; it cannot detect a modest one.** (I first wrote the stronger claim and withdrew it in the same turn — the Finding 032 failure mode.)
+Smart Madness prescribed WIDE tires after the first crossing because the stock narrow "city" tires let crosswind push the car around at highway speed. **The purpose was handling, and handling is the mechanism of the safety thesis.** Before/after, the economy difference is indistinguishable from zero, **95% interval -3.7% to +4.9%** — the 1-3% penalty theory predicts sits INSIDE it. **The data rules out a LARGE penalty; it cannot detect a modest one.**
 
 ## ★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18) — the FABRIC of the three layers; in the log
 
@@ -115,9 +115,7 @@ All 15 scans read (22 on disk). Four results that must not be lost:
 
 ### ★★★ FLORIDA, AND THE TAIL OF THE DRAGON — full write-up in the log; rules in Finding 036
 
-**I concluded TwoRed never reached Florida. It did.** A few miles into the panhandle, *is this Florida?*, and out. **The log resolves to two events — buying fuel and ending a day — and he did neither there, on purpose.** Road/straight-line **1.23 against a trip median of 1.22**. Invisible.
-
-**And I argued the same leg had no room for the Dragon — 407 logged against ~400 direct. The route was never the direct one.** The fills give the waypoints: **Trussville AL → Madisonville TN**, north through Chattanooga and Knoxville. **Madisonville → Cherokee is 104 mi against ~75 direct**: the Deals Gap route. **The Dragon is in the odometer.**
+**I concluded TwoRed never reached Florida. It did** — a few miles into the panhandle, *is this Florida?*, and out. **The log resolves to two events, buying fuel and ending a day, and he did neither there, on purpose.** **And I argued the same leg had no room for the Dragon — 407 logged against ~400 direct. The route was never the direct one:** the fills give **Trussville AL → Madisonville TN**, north through Chattanooga and Knoxville, and **Madisonville → Cherokee is 104 mi against ~75 direct** — the Deals Gap route. **The Dragon is in the odometer.**
 
 **Two rules. A record's RESOLUTION sets the floor on what its silences can mean. And a matching TOTAL does not mean a matching ROUTE.**
 
@@ -185,42 +183,31 @@ On the BACK of the last fuel sheet, circled: **`5/22/17  71,283  LV Seattle @ Ma
 
 ## ★★★ CREAMSICLE IS INGESTED — THE SECOND SPINE EXISTS (2026-08-19)
 
-Kim exported the Google-native files into the project. `creamsicle_ingest.R` reads the workbook and emits `Creamsicle_fuel_clean.csv` (**173 rows**) and `Creamsicle_trip_clean.csv` (**86 legs**). Same architecture as TwoRed: **the source is never edited**, the interleaved total/average rows are skipped programmatically, and **the skip counts are reported** (196 -> 173, 119 -> 86, 10 -> 6) per Finding 032.
+`creamsicle_ingest.R` reads the exported workbook and emits `Creamsicle_fuel_clean.csv` (**173 rows**) and `Creamsicle_trip_clean.csv` (**86 legs**). Same architecture as TwoRed: **the source is never edited**, interleaved total/average rows are skipped programmatically, and **the skip counts are reported** (196→173, 119→86, 10→6) per Finding 032.
 
-**It arrived clean.** Odometer **30,290 -> 58,903, strictly increasing, no duplicates.** Pump identity: **143 of 170 US rows balance to under half a cent; exactly THREE fail by 2c or more.** My recomputed MPG matches Kim's own column to **0.005**. The three BC rows carry litres and CAD alongside gallons and dollars -- **the unit problem TwoRed still has is already solved here.**
-
-**The three errata, and all three resolve exactly** (`Creamsicle_log_errata.csv`): **C01 Oxnard** $/gal 4.399 -> 3.999 -- **the cell is IDENTICAL to the Gallons cell**, a copy into the wrong column, caught by the contiguity instrument; **C02 Miranda** 6.095 -> 6.059, a 59/95 transposition; **C03 Hays** 3.499 -> 3.449. **Three errors in 173 rows.**
+**It arrived clean.** Odometer **30,290 → 58,903, strictly increasing.** Pump identity: **143 of 170 US rows balance to under half a cent; exactly THREE fail by 2c or more**, and all three resolve — **C01 Oxnard** $/gal 4.399→3.999, **the cell IDENTICAL to the Gallons cell**, caught by contiguity; **C02 Miranda** a 59/95 transposition; **C03 Hays** 3.499→3.449. My recomputed MPG matches Kim's own column to **0.005**. **The three BC rows carry litres and CAD alongside gallons — the unit problem TwoRed still has is already solved here.**
 
 ### ★★★ AND IT MEASURES THE THING TWORED CANNOT
 
-Creamsicle's trip log has a **`Stop`** column and a **`Comment`** column. 54 legs carry a stop; 35 carry a reason. **So the gap between driving and living can be measured directly, for the first time in this project:**
+**Creamsicle's trip log records STOPPED time.** Across 84 timed legs:
 
-| across 84 timed legs | |
+| | |
 |---|---|
-| median GROSS mph (elapsed) | **43.5** |
-| median NET mph (driving only) | **51.0** |
+| median GROSS mph | **43.5** |
+| median NET mph | **51.0** |
 | **the gap** | **7.5 mph** |
 
-**The clearest single case: 2024-10-20, WI Dells -> Madison. 50.3 miles, 5 hours elapsed, 4.5 of them stopped. Gross 10.1 mph. Comment: `Cranes`.** Gross speed called it the slowest leg in the file; he was watching sandhill cranes. The other big gaps are `C. Caverns NP`, `White Sands`, `Desert Musum`, `Monterey Bay Aquarium, Pelican Photos`, and twice simply `Tom`.
-
-**★★★ THIS CALIBRATES THE TWORED NUMBERS.** I have been reporting TwoRed gross speeds with the standing caveat that they conflate driving with living and that nothing could size the bias. **Creamsicle sizes it: about 7.5 mph at the median.** That is a CALIBRATION, not a correction -- different car, different years, different trips -- but it is the first empirical handle on how much TwoRed's 40.5 understates his driving. **Report TwoRed gross speeds as a floor, and cite Creamsicle for the scale of the gap.**
+**That is the first empirical size for the driving-vs-living conflation named in FIVE THINGS #5**, and it makes every TwoRed gross speed readable as a **ceiling roughly 7-8 mph below actual driving speed.** The vivid case: **2024-10-20, Wisconsin Dells → Madison, 50.3 miles, 5 hours elapsed, 4.5 of them stopped, gross 10.1 mph, comment `Cranes`.**
 
 ### The two cars, side by side
 
-| | TwoRed 2010-2017 | Creamsicle 2021-2024 |
+| | TwoRed | Creamsicle |
 |---|---|---|
-| fuel rows | 286 | 172 |
-| odometer span | 4 - 71,181 | 30,290 - 58,903 |
-| **median MPG** | **39.12** | **40.59** |
-| median leg | 251 mi | 166 mi |
+| median MPG | 39.12 | 40.59 |
 | **cost per mile** | **$0.0939** | **$0.1183** |
-| trip legs | 139 | 86 |
-| median gross mph | 40.5 | 43.5 |
-| median NET mph | *no Stop column* | **51.0** |
+| median leg | 251 mi | 166 mi |
 
-**★ The cost-per-mile difference is 26%, and almost none of it is the car** -- 39.1 against 40.6 MPG. **It is the price of fuel between 2010-2017 and 2021-2024.** That comparison is one of the strongest things the two-car structure can deliver, and it needs no modelling at all.
-
-**★ And the median leg is 85 miles shorter.** Creamsicle stops more often. Whether that is the driver at 84 rather than 78, a different touring style, or simply more scenery per mile on those routes is **an open question, not a finding.**
+**The 26% cost-per-mile difference is almost entirely FUEL PRICES, not the car** — 2010-2017 against 2021-2024. **Do not write it as a car comparison.**
 
 ## Intended analysis
 
@@ -301,7 +288,11 @@ Written 2026-08-12 so a session opening this file cold knows what was decided an
 
 **★★ The economics are visible as a COUNT, not a cost.** A rental must be returned; a car in a parking space need not be. **22 long dormancies = the car left and collected twenty-two times in six years — twenty-two rentals not taken out.** **The saving is in the DORMANCY column, which is the one nobody thinks to read.** (A dollar figure needs a sourced rental rate — intentions item 4.)
 
-**★★★ AND THE RECORD IS BRACKETED BY HIS MOTHER.** Last anchor fill **2016-08-02**; September 2016 is the one-way relocation to Oregon and the car never returns; **in January 2017 it is in Eugene when the call comes** (Brookings → Paso Robles, 562 mi, the coldest start in the record); she died shortly after; **the car ships from the Matson dock 2017-05-22, four months later.** ⚠ **The sequence is documented, the CAUSATION is not — the loop broke BEFORE she died. ASK KIM why the car moved to Oregon when it did. Do not write the arc until he says.**
+**★★★ AND PARKING IS THE HIDDEN INFRASTRUCTURE — Kim, 2026-08-20, answering why the car left.** *She could no longer stay in her assisted living facility in LSM. She moved to a more secure facility in August and that place didn't have parking for TwoRed. Parking is a big issue and we've been fortunate that friends and family have helped at critical times.* **The car did not leave California because she died. It left because the parking spot did.** Last anchor fill **2016-08-02**; **Carlsbad holds it for 36 days** while a new home is found; the coast run to Oregon follows on 09-24. **Six years of anchorage end inside a fortnight, on a facility's parking policy.** She died in January 2017 with the car already in Eugene — **which is why it was there when the call came. The two facts are adjacent and separate; keep them so.**
+
+**★★★ THE DORMANCY MAP *IS* THE FAVOUR MAP.** **Thirty-four of the thirty-five long dormancies sit inside the network of family, friends and a facility** (San Marcos 11 spells / 578 days, Lake San Marcos 7 / 421, Carlsbad 4 / 334, then Signal Hill, Barstow, Parker, Yuma, Coos Bay, Brookings and four singles). **Exactly one is outside it — Altamont IL, 25 days — and it is the only time in sixteen years he had to BUY the service.** Two thousand miles from anyone who could hold the car, the substitute for a favour was a commercial car wash. **The car wash is not an odd anecdote; it is the single failure of the parking network.**
+
+**★ For the Foreword: the hidden infrastructure of sixteen years of cross-country driving in a small car was not fuel and not roads — it was people willing to let a car sit.** The fuel log records movement; **the gaps between its rows record hospitality, and they are 86% of the elapsed days.** ⚠ **Do not publish the dormancy table until Kim annotates whose driveway each town was, and rules on naming private individuals** — as with the Texas on-ramp.
 
 **★ For the Foreword: this is layer-3 material arriving in service of layer 1.** The preconception is *that car is for errands.* The origin story answers *yes — that is exactly why we bought it.* **Then the record shows the errand car's parking space is the origin of every expedition in the book. The document does not argue the reader out of the preconception; it agrees with it and shows where it leads.**
 

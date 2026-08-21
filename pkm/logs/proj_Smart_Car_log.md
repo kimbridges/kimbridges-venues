@@ -1,5 +1,10 @@
 ## COLLECTED STORIES — Kim's accounts of the long days, verbatim (opened 2026-08-19)
 
+### ★★★ Why the car left California — parking (Kim, 2026-08-20)
+
+> The reason the car was relocated to Eugene is that as my mother neared her 104th year, she could no longer stay in her assisted living facility in LSM. She moved to a more secure facility in August and that place didn't have parking for TwoRed. Parking is a big issue and we've been fortunate that friends and family have helped at critical times.
+
+
 ### ★★★ THE OPENING — why there was a car at all (Kim, 2026-08-20)
 
 > The overriding fact was we needed a car in Lake San Marcos. We were visiting my mother quite frequently. Each time we'd rent a car. That was getting expensive. Smart cars, it seemed to us at the time, we reasonably priced. And there was a parking spot available at my mom's place. Getting a Smart was a decision based, in part, on economics. Convenience, too. But this story is not about using a Smart for local suburban travel. It's about the long, cross country drives. This conflict is resolved by the familiar family dynamic of kids needing to visit parents, but not staying too long. In our case, we'd visit for a few days and then go off to a meeting (which wasn't optional, either). We'd drive back and visit again. Two visits separated by the time needed to do some work. The car served both purposes. That added to the value.
@@ -1474,3 +1479,54 @@ Kim's reason was rental expense. **A rental must be returned; a car in a parking
 ### For the writing
 
 **This is the Foreword's spine and it is layer-3 material arriving in service of layer 1.** The preconception is *that car is for errands*. The origin story says *yes — that is exactly why we bought it*. **And then the record shows that the errand car's parking space is the origin of every expedition in the book.** The document does not have to argue the reader out of the preconception; **it can agree with it and then show where it leads.**
+
+
+## ★★★ PARKING IS THE HIDDEN INFRASTRUCTURE — AND THE RECORD IS A MAP OF IT (Kim, 2026-08-20)
+
+**Kim answered the September 2016 question and the answer is not the one the sequence suggested.** *As my mother neared her 104th year, she could no longer stay in her assisted living facility in LSM. She moved to a more secure facility in August and that place didn't have parking for TwoRed.* **The car did not leave California because she died. It left because the parking spot did.**
+
+**And he generalised it into a theme the project did not have:** *Parking is a big issue and we've been fortunate that friends and family have helped at critical times.*
+
+### The handoff is in the odometer, to the month
+
+| date | fill | odo | |
+|---|---|---|---|
+| 2016-07-18 | San Marcos | 66,007 | |
+| **2016-08-02** | **San Marcos** | **66,242** | **the last fill ever at the anchor** |
+| 2016-08-17 | **Carlsbad** | 66,373 | 131 miles later — the car has moved towns |
+| 2016-09-22 | Carlsbad | 66,589 | **after a 36-day stay** |
+| 2016-09-24 → 09-27 | Goleta → Santa Cruz → Piercy → **Coos Bay OR** | 67,691 | the relocation run up the coast |
+
+**She moved in August. The last fill at Lake San Marcos is 2016-08-02.** Then **somebody in Carlsbad held the car for five weeks** while a new home was found for it, and it went to a friend's house in Eugene. **Six years of anchorage end inside a fortnight, and the cause is a facility's parking policy.**
+
+### ★★★ THE DORMANCY MAP *IS* THE FAVOUR MAP
+
+Read the 35 long dormancies again with Kim's sentence in hand and they stop being a distribution and become **a list of people who let a car sit**:
+
+| where | spells | days | |
+|---|---|---|---|
+| **San Marcos** | 11 | 578 | his mother's facility |
+| **Lake San Marcos** | 7 | 421 | the same anchor |
+| **Carlsbad** | 4 | 334 | incl. the 36-day handoff of Aug-Sept 2016 |
+| Signal Hill | 2 | 141 | |
+| Brookings OR | 1 | 103 | the last one |
+| Barstow | 2 | 102 | |
+| Parker AZ | 1 | 94 | |
+| Coos Bay OR | 1 | 93 | the first Oregon one |
+| Yuma AZ | 1 | 83 | |
+| Lancaster, Laguna Hills, Hesperia, South Pasadena | 1 each | 173 | |
+| **Altamont IL** | **1** | **25** | **the car wash** |
+
+**★★★ AND THE CAR WASH IS THE EXCEPTION THAT PROVES THE THEME.** Thirty-four of the thirty-five long dormancies are in California, Arizona or Oregon — **inside the network of family, friends and a facility.** **Exactly one is outside it, and it is the only time in sixteen years he had to BUY the service.** Two thousand miles from anyone who could hold the car, the substitute for a favour was a commercial car wash in central Illinois. *Sounds strange, but it worked.*
+
+**That reframes the car-wash story a second time.** On 2026-08-19 it explained the only outlier in the dormancy distribution. **Now it explains WHY it is the outlier: not an unusual trip, but the single failure of the parking network.** The logistics reason Kim gave — *I avoided having to drive back to California and then return soon after* — is the motive; **the reason it had to be a car wash rather than a driveway is the theme.**
+
+### For the writing — this belongs in the Foreword beside the anchor
+
+**The hidden infrastructure of sixteen years of cross-country driving in a small car was not fuel, and not roads. It was people willing to let a car sit.** The fuel log is a record of movement; **the gaps between its rows are a record of hospitality**, and they occupy **86% of the elapsed days**. *We've been fortunate that friends and family have helped at critical times* is not a courtesy — **it is the enabling condition, and it is measurable.**
+
+**★ And it closes the arc without needing the death to do the work.** The mainland record opens because a parking space was available at his mother's place and closes when that space is withdrawn — **a facility's policy, not a bereavement.** She died five months later, in January 2017, with the car already in Oregon; that is why it was in Eugene when the call came. **The two facts are adjacent and separate, and the writing should keep them so.**
+
+### ⚠ ONE ASK BEFORE ANY OF THIS IS PUBLISHED
+
+**The table above names towns, and the theme requires knowing whose driveway each was.** San Marcos, Lake San Marcos and Carlsbad are accounted for. **Barstow (102 days), Parker AZ (94), Yuma (83), Signal Hill (141), Lancaster, Laguna Hills, Hesperia, South Pasadena, Coos Bay and Brookings are not.** **Ask Kim to annotate the list — and note that a chapter naming private individuals and addresses needs his ruling on what may be published**, as with the Texas on-ramp. Do not publish the table as it stands.
