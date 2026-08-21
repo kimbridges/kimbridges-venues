@@ -102,16 +102,16 @@ All 15 scans read (22 on disk). Four results that must not be lost:
 
 ## ★★★ THE LONG DAYS — ALL EIGHT COLLECTED, AND EVERY ONE CHECKS OUT (2026-08-19)
 
-**Twelve of Kim's accounts are verbatim in the log under COLLECTED STORIES, with the full confirmation table.** Chapter source material. Four that changed something:
+**Fourteen of Kim's accounts are verbatim in the log under COLLECTED STORIES, with the full confirmation table.** Four that changed something:
 
 | day | leg | what the data independently shows |
 |---|---|---|
-| 2012-05-31 | St Louis → Columbus, 518 | lost near Urbana IL — **the 09:52 fill is at Champaign, one metro with Urbana**, and it carries slashed-zero typo **L61**. Excess over direct I-70: **108 mi** vs his remembered ~100 |
+| 2012-05-31 | St Louis → Columbus, 518 | lost near Urbana IL — **the 09:52 fill is at Champaign, one metro with Urbana**, carrying slashed-zero typo **L61**. Excess over direct I-70: **108 mi** vs his remembered ~100 |
 | 2011-06-26 | Flagstaff → Holbrook, 100 | out **04:30**, in **06:45** — a hop existing only to arrive early for his nephew; **70 mi of local driving before the next departure IS the park tour** |
 | 2012-06-14 | Billings → Pocatello, 449 | **65.5 mph gross, the fastest day in the record** — fast because Montana has nowhere to stop |
 | 2017-01-06 | Brookings → Paso Robles, 562 | racing to his mother, 104. **32 degF, the coldest start in the record**; fill **22:04 at 68,731**, arrival **22:10 at 68,732** — one mile, six minutes |
 
-**The other four — Sydney NS → Edmundston (555, off an overnight ferry, zero odometer miles across the water), El Paso → San Antonio (531, racing for Florida), LSM → St George (492, a half-day Las Vegas visit inside a 31 mph day), Bellingham → Grants Pass (488, Nancy off the red-eye) — all check out and are in the log.**
+**The other four — Sydney NS → Edmundston (555, off an overnight ferry, zero odometer miles across the water), El Paso → San Antonio (531, racing for Florida), LSM → St George (492, a half-day Las Vegas visit inside a 31 mph day), Bellingham → Grants Pass (488, Nancy off the red-eye) — all check out.**
 
 ### ★★★ FLORIDA, AND THE TAIL OF THE DRAGON — full write-up in the log; rules in Finding 036
 
@@ -119,21 +119,23 @@ All 15 scans read (22 on disk). Four results that must not be lost:
 
 **Two rules. A record's RESOLUTION sets the floor on what its silences can mean. And a matching TOTAL does not mean a matching ROUTE.**
 
-### ★ ONE DISCREPANCY, UNRESOLVED — the Bellingham departure
-
-Kim remembers meeting Nancy *early afternoon*; the sheet starts the day at **06:49**. **The arithmetic favours the sheet** — 488 mi from 06:49 is already 36.2 mph gross, while an early-afternoon start needs ~67 with no stop. Likely 06:49 is the ferry docking recorded as the day's start. **Ask him.** Detail in `deferred.md`.
-
 ### ★★★ FIVE THINGS THE STORIES CHANGED, none of which the data could have volunteered
 
-**1. Finding 033's best corroboration, from an unrelated direction.** The Champaign row is **L61**, a slashed-zero cost typo raised the day before — **and it sits at the stop where he had just discovered he was 100 miles off course and late for dinner.** Kim gave the *record quickly under pressure* mechanism blind to this route.
+**1. Finding 033's best corroboration, from an unrelated direction.** The Champaign row is **L61**, a slashed-zero cost typo raised the day before — **and it sits at the stop where he had just discovered he was 100 miles off course and late for dinner.**
 
 **2. The gap between an arrival odometer and the next departure is the day OFF the highway.** 70 miles at Holbrook is a park tour; **59 at Hartland is a lawyer's house across the river.** Readable across the whole record and nobody had read it.
 
-**3. Daily distance has a first-order term nobody modelled: WHERE THE BEDS ARE.** Lodging geography sets the length; scenery sets the pace.
+**3. Daily distance has a first-order term nobody modelled: WHERE THE BEDS ARE.**
 
-**4. A ferry is a LOGISTICS MULTIPLIER, not a hole in the odometer.** It converts a night into progress and hands the next morning a loaded, fuelled car.
+**4. A ferry is a LOGISTICS MULTIPLIER, not a hole in the odometer.**
 
-**5. ★★ A LONG ELAPSED TIME IS NOT A SLOW DAY.** **Gross speed silently conflates driving with living**, and both later measurements agree: Creamsicle's stop column puts the gap at **7.5 mph**, and the Dalton return shows it against the SAME road driven the day before. **Gross mph is a ceiling on driving speed, never a measure of it.**
+**5. ★★ A LONG ELAPSED TIME IS NOT A SLOW DAY.** **Gross speed silently conflates driving with living** — Creamsicle's stop column puts the gap at **7.5 mph**, and the Dalton return shows it against the SAME road driven the day before. **Gross mph is a ceiling on driving speed, never a measure of it.**
+
+### ★★ AND CHASING #5 FOUND A BUG IN 16 OF 107 LEGS — Finding 035
+
+Nevada is Pacific and Utah is Mountain, and `tz_shift_hr` was 0 on every leg I transcribed. Fixed as a DERIVED layer — a 121-city IANA table plus computation in `trip_logs_read.R` — so DST, Arizona and Saskatchewan declining it, Yukon before 2020 and Newfoundland's half hour all fall out for free. **16 legs corrected; road ordering unchanged; the fastest day is real.**
+
+**★ Kim's stories have now corrected the analysis SEVEN times** — the road/straight-line rule, the time zones, Florida, the Dragon route, the Penultimate State, the West Virginia landscape-not-road, and the parking map (Finding 041). **The human spine is an instrument, and it is the more accurate one.**
 
 ## ★★★ THE FAVOURITE DRIVES (2026-08-19) — full write-up in the log
 
@@ -155,7 +157,7 @@ Kim's testable claim: *we were plagued by potholes. We often slowed to avoid dam
 
 ## ★★ TWO RELOCATIONS, AND THE LAST YEAR'S SHAPE (2026-08-19) — full write-up in the log
 
-A page filed as a duplicate carried an annotation its twin did not show: **`Relocation  1141 miles`**. **September 2016 was not a tour; it was the one-way relocation of TwoRed to Will McClatchey's farm in Eugene** — which is why the car was there when the January 2017 call came. **February 2017 is a SECOND relocation** (Mentone → Long Beach → Eugene), after which the car sits until 20 May. **The last year's shape: the car stops touring, starts commuting between two homes, then ships.**
+A page filed as a duplicate carried an annotation its twin did not show: **`Relocation  1141 miles`**. **September 2016 was not a tour; it was the one-way relocation of TwoRed to a close colleague's farm in Eugene** — which is why the car was there when the January 2017 call came. **February 2017 is a SECOND relocation** (Mentone → Long Beach → Eugene), after which the car sits until 20 May. **The last year's shape: the car stops touring, starts commuting between two homes, then ships.**
 
 **★ METHOD: two scans of the same page are not the same evidence.** A marginal annotation can be lost to cropping, threshold or the fold. **Diff a duplicate rather than discarding it.**
 
@@ -169,13 +171,13 @@ On the BACK of the last fuel sheet, circled: **`5/22/17  71,283  LV Seattle @ Ma
 
 ## ★★★ THE OPEN QUESTIONS ARE CLOSED (2026-08-19/20) — full working in the log
 
-**1. The 46 Dalton miles are 32 + 14 — Coldfoot → Wiseman.** The two Yukon River Crossing fills split the leg: north of the river 115 out / **147 back (+32)**, south 137 / **151 (+14)**; the Wiseman spur is ~16 road miles from Coldfoot, so **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.* The same leg is the **slowest 200+-mile day in sixteen years (22.6 mph against 28.6 over the identical road the day before)**, starting at **38 degF after Coldfoot read 64 the previous evening**.
+**1. The 46 Dalton miles are 32 + 14 — Coldfoot → Wiseman.** Two Yukon River Crossing fills split the leg: north of the river 115 out / **147 back (+32)**, south 137 / **151 (+14)**; the Wiseman spur is ~16 road miles, so **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.* Same leg: **slowest 200+-mile day in sixteen years (22.6 mph against 28.6 over the identical road the day before)**, starting at **38 degF after Coldfoot read 64 the previous evening.**
 
-**2. THE PENULTIMATE STATE IS VERMONT (Kim, 2026-08-20)** — *a lawyer who has an office in NH, but lives nearby in Vermont. I drove to his house.* **Exactly the anomaly the record flagged and could not read:** Hartland VT → Lebanon NH, **two nights and 59 odometer miles for an eighteen-mile drive**, across the Connecticut River. **★ Definitional point: TwoRed's state list and KIM'S state list are two different quantities** — which is why the record holds 45 against a challenge counting to 49.
+**2. THE PENULTIMATE STATE IS VERMONT** — *a lawyer who has an office in NH, but lives nearby in Vermont. I drove to his house.* **Exactly the anomaly the record flagged and could not read:** Hartland VT → Lebanon NH, **two nights and 59 odometer miles for an eighteen-mile drive**, across the Connecticut River. **★ TwoRed's state list and KIM'S state list are two different quantities** — hence 45 documented against a challenge counting to 49.
 
-**3. ★★★ DELAWARE IS INVISIBLE AS A LABEL AND PROVABLE AS A ROW.** Four mainland states never appear: Florida, Delaware, Rhode Island, South Dakota. Florida is Finding 036; **Delaware is the same silence and geometry breaks it** — Colonial Heights VA → Bellmawr NJ reads **264 odometer miles** (great-circle 219), and **the only Delaware-free road is ~305, forty more than the odometer permits.** **Key to a ROW, never a LABEL.** Charter claim settled: **provinces are exactly ten.**
+**3. ★★★ DELAWARE IS INVISIBLE AS A LABEL AND PROVABLE AS A ROW.** Colonial Heights VA → Bellmawr NJ reads **264 odometer miles** (great-circle 219); **the only Delaware-free road is ~305, forty more than the odometer permits.** **Key to a ROW, never a LABEL.** Never-appearing states: Florida (Finding 036), Delaware, Rhode Island, South Dakota. **Provinces confirmed at exactly ten.**
 
-**4. ⛔ THE TEXAS ON-RAMP — CLOSED BY REQUEST.** *For personal safety, I wouldn't reveal it either. Near Ft Worth is sufficiently close.* **No session may attempt to localise it; no published text may place it more precisely than NEAR FORT WORTH.** Candidates removed from `deferred.md`. **A request, not a feasibility question.**
+**4. ⛔ THE TEXAS ON-RAMP — CLOSED BY REQUEST.** *For personal safety, I wouldn't reveal it either. Near Ft Worth is sufficiently close.* **No session may localise it; no published text may place it more precisely than NEAR FORT WORTH.**
 
 ## ★★★ CREAMSICLE IS INGESTED — THE SECOND SPINE EXISTS (2026-08-19)
 
@@ -236,7 +238,9 @@ _Written 2026-08-12; item 6 added 2026-08-20._
 
 **6. ★ ESTABLISH EARLY THAT THEY LIVE IN HAWAII.** Kim, 2026-08-20: *if you didn't know that you might wonder why we didn't just drive to my mother's place.* **It explains the dormancies (every gap is a flight), the scope boundary (the ~3,700 excluded Honolulu miles), and the second layer-one inversion — they live in a city and bought a city car to escape city driving.**
 
-**7. ⚠ PRIVACY.** Standing constraints: Creamsicle's purchase reason is NOT FOR PUBLICATION; the Texas on-ramp is never narrowed beyond *near Fort Worth*; **no `bordeaux*` slug or filename.** **And the parking chapter names private individuals and their homes — Kim must rule on each before publication.**
+**7. ⚠ PRIVACY — standing constraints.** Creamsicle's purchase reason is NOT FOR PUBLICATION. The Texas on-ramp is never narrowed beyond *near Fort Worth*. No `bordeaux*` slug or filename. **⛔ The Eugene holding is *a close colleague* — NOT NAMED (Kim, 2026-08-20; the name is in the log for continuity only).**
+
+**★ The principle behind that ruling, because it governs the whole parking chapter:** the same colleague is named in **seven live documents** on `kimbridges-documents` and those stand. **Naming someone as a COLLABORATOR is ordinary; naming them as a LOCATION is not. The constraint is on pairing a name with a private fact — a home, a farm, that a car was kept there.** Apply it to the niece at Mentone and the St Louis business too, and get Kim's confirmation on each.
 
 ## Locations
 - Code: `G:\My Drive\Projects\Smart_Car` (bucket 2 -- code-as-source); `data`, `source`, `images` beneath it
@@ -275,27 +279,21 @@ _Written 2026-08-12; item 6 added 2026-08-20._
 
 **⚠ A SIGNAL THAT CANNOT BE SETTLED.** `mpg ~ leg_miles + group`: South **-3.18, p=0.023** (n=30); with era **-2.61, p=0.065**; on 16 temperature-stamped rows **-5.81, p=0.009** with temperature null. **Mechanism would invert the intuition — flat straight highway invites steady high speed, and drag costs an 1,800-lb car more than hills do.** But the coefficient is **unstable across subsamples**, n=30, and temperature is confounded with group. **★★ Creamsicle has ZERO southern fills, so the sample is closed at 30 and will not grow.** **DIFFICULTY strand. Do not print the coefficient; print the fact that it cannot be settled.**
 
-## ★★★ THE OPENING IS WRITTEN, AND THE ANCHOR IS THE FOREWORD'S SPINE (Kim, 2026-08-20) — full working in the log
+## ★★★ THE OPENING IS WRITTEN — THE ANCHOR, THE PARKING, AND HAWAII (Kim, 2026-08-20) — full working in the log
 
-**Kim's origin story:** a car was needed at Lake San Marcos because visits to his mother were frequent and rentals were adding up; **there was a parking spot at her place**; and the apparent contradiction — a city car with 71,283 mainland miles on it — resolves through the family dynamic. ***We'd visit for a few days and then go off to a meeting... We'd drive back and visit again. Two visits separated by the time needed to do some work. The car served both purposes.*** Verbatim in the log.
+**Kim's origin story:** a car was needed at Lake San Marcos because visits to his mother were frequent and rentals were adding up; **there was a parking spot at her place**; and the contradiction — a city car with 71,283 mainland miles — resolves through the family dynamic, *two visits separated by the time needed to do some work.*
 
-**★★★ THE RECORD SAYS SOMETHING STRONGER THAN *BOTH PURPOSES*.** **22 of the 35 long dormancies are at that one address — 1,333 of 2,147 dormant days, 62%, median stay 52 days, longest 184, spanning 2010-07-26 to 2016-08-02 exactly six years.** **The car spent more of its life parked there than doing anything else, including driving.**
+**★★★ THE RECORD SAYS MORE THAN *BOTH PURPOSES*. EVERY COMPLETE TRIP IS A LOOP FROM THAT PARKING SPACE.** Eight of thirteen logged trips begin and end at Lake San Marcos, and **every complete one from 2011 through the Fourth Crossing does** — the Arctic Circle run, the crossing that reached Florida and the Dragon, the fourth crossing. **The long-distance driving is not a departure from the local-errand purchase; it is structurally hung off it.** The anchor holds **18 dormancies and 999 days**, 2010-07-26 to 2016-08-02. **86% of the record's elapsed days sit inside a dormancy of two weeks or more.**
 
-**AND EVERY COMPLETE TRIP IS A LOOP FROM IT.** Eight of thirteen logged trips begin and end at Lake San Marcos, and **every complete one from 2011 through the Fourth Crossing is a round trip from that parking space** — the Arctic Circle run, the crossing that reached Florida and the Dragon, the fourth crossing. **The long-distance driving is not a departure from the local-errand purchase; it is structurally hung off it. There was never a choice between the two uses, because every long drive began and ended in the same parking spot.**
+**★★★ THE CAR LEFT BECAUSE THE PARKING SPOT DID.** *She could no longer stay in her assisted living facility... She moved to a more secure facility in August and that place didn't have parking for TwoRed.* Last anchor fill **2016-08-02**; his **niece at Mentone** holds the car five weeks; the coast run to Oregon follows on 09-24. **She died in January 2017 with the car already in Eugene — which is why it was there when the call came. Adjacent facts, separate causes; keep them so.**
 
-**★★ The economics are visible as a COUNT, not a cost.** A rental must be returned; a car in a parking space need not be. **22 long dormancies = the car left and collected twenty-two times in six years — twenty-two rentals not taken out.** **The saving is in the DORMANCY column, which is the one nobody thinks to read.** (A dollar figure needs a sourced rental rate — intentions item 4.)
+**⚠ I BUILT A FAVOUR MAP FROM THE DORMANCY LOCATIONS AND IT WAS MOSTLY WRONG — FINDING 041.** *The other places are simply hotel/motels we stopped at along the way.* **A fill records where fuel was BOUGHT, not where the car came to REST.** Same class as *a matching TOTAL does not mean a matching ROUTE*: **a fuel row is a TRANSACTION, not a STATE.** **What survives: the durations, the anchor (confirmed by Kim independently), and SIGNAL HILL = SMART MADNESS** — 7 fills 2011-2017 at the seams of expeditions; the 2013-09-06 one falls inside the Arctic trip's last leg, **so the car came off the Dalton and stopped at the shop on the way home. The wide-tire decision has an address.**
 
-**★★★ AND PARKING IS THE HIDDEN INFRASTRUCTURE — Kim, 2026-08-20, answering why the car left.** *She could no longer stay in her assisted living facility in LSM. She moved to a more secure facility in August and that place didn't have parking for TwoRed. Parking is a big issue and we've been fortunate that friends and family have helped at critical times.* **The car did not leave California because she died. It left because the parking spot did.** Last anchor fill **2016-08-02**; **Carlsbad holds it for 36 days** while a new home is found; the coast run to Oregon follows on 09-24. **Six years of anchorage end inside a fortnight, on a facility's parking policy.** She died in January 2017 with the car already in Eugene — **which is why it was there when the call came. The two facts are adjacent and separate; keep them so.**
+**★★ THE THEME STANDS ON TESTIMONY, NOT ON MY MAP.** Four holdings: **his mother's facility, his niece at Mentone, a close colleague's farm with a huge garage in Eugene (⛔ not named), and the St Louis car wash near the airport** — improvised on sight from an unused garage, **the only PAID holding in sixteen years.** **Where a car is allowed to sit is exactly what a fuel log cannot hold; only the witness can name it.** Layer 3 built a map, layer 2 corrected it, and **the correction says the map cannot be built from data at all.**
 
-**⚠ I BUILT A FAVOUR MAP FROM THE DORMANCY LOCATIONS AND IT WAS MOSTLY WRONG — FINDING 041.** I attributed each spell to the city of the preceding fill. Kim: *the other places are simply hotel/motels we stopped at along the way.* **A fill records where fuel was BOUGHT, not where the car came to REST** — the five weeks I gave to Carlsbad were at **Mentone**, ninety miles on, at his niece's. Same class as *a matching TOTAL does not mean a matching ROUTE*: **a fuel row is a TRANSACTION, not a STATE.**
+**★★★ AND THEY LIVE IN HAWAII — SAY IT EARLY (intentions item 6).** **Every dormancy is a FLIGHT home**, not an idle car; **the ~3,700 excluded Honolulu miles are the only miles driven where they live**; and it **inverts layer one a second time** — *you don't do much driving in Hawaii (think: downtown Honolulu). Driving on the mainland was something different for us.* **They live in a city and bought a city car to escape city driving.** Put it beside the safety inversion.
 
-**What survives.** The **durations** (they need no location): **86% of elapsed days sit inside a 14+ day dormancy.** The **anchor**, confirmed independently by Kim: San Marcos / Lake San Marcos, 18 spells, 999 days, his mother's facility. And **★★ SIGNAL HILL = SMART MADNESS**, the garage that equipped and maintained BOTH cars — **7 fills, 2011 to 2017, sitting at the seams of expeditions**: the 2012-05-24 fill is 81 miles into the first day of the Frostburg trip; **the 2013-09-06 fill is inside the Arctic trip's final leg — the car came off the Dalton and stopped at the shop on the way home.** **The wide-tire decision has an address, and it is in the fuel log.**
-
-**★★★ THE THEME STANDS ON KIM'S TESTIMONY, NOT ON MY MAP — and is stronger for it.** The named holdings are **Mentone (his niece), Eugene (Will McClatchey's farm, a huge garage), and the St Louis car wash near the airport — the only PAID holding in sixteen years**, improvised on sight from an unused garage. **Where a car is allowed to sit is exactly the kind of fact a fuel log cannot hold; only the witness can name it.** Layer 3 built a map, layer 2 corrected it, **and the correction says the map cannot be built from data at all.**
-
-**★★★ AND THEY LIVE IN HAWAII — SAY IT EARLY.** *If you didn't know that you might wonder why we didn't just drive to my mother's place.* It is load-bearing three times: **every dormancy is a flight home**, not an idle car; **the ~3,700 excluded Honolulu miles are the only miles driven where they live**; and **it inverts layer one a second time** — *you don't do much driving in Hawaii (think: downtown Honolulu). Driving on the mainland was something different for us.* **The preconception says a Smart is a city car. These owners LIVE in a city and bought one to escape city driving.** Put it beside the safety inversion in the Foreword.
-
-**★ For the Foreword: this is layer-3 material arriving in service of layer 1.** The preconception is *that car is for errands.* The origin story answers *yes — that is exactly why we bought it.* **Then the record shows the errand car's parking space is the origin of every expedition in the book. The document does not argue the reader out of the preconception; it agrees with it and shows where it leads.**
+**★ For the Foreword:** the preconception is *that car is for errands.* The origin story answers *yes — exactly why we bought it.* **Then the record shows the errand car's parking space is the origin of every expedition in the book**, and that the enabling condition was never fuel or roads but **people willing to let a car sit.**
 
 ## ★★★ THE SAFETY QUESTION IS LAYER ONE'S ACTUAL CONTENT (Kim, 2026-08-19) — full development in the log
 

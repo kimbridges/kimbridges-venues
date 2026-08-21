@@ -204,14 +204,22 @@ Kim: *the other places are simply hotel/motels we stopped at along the way. They
 |---|---|
 | **Lake San Marcos / San Marcos** | his mother's assisted living facility — 18 spells, 999 days, the anchor |
 | **Mentone CA** | **his niece**, who kept TwoRed the five weeks of Aug–Sept 2016 |
-| **Eugene OR** | **Will McClatchey**, a close colleague — *a farm with a huge garage. He made space for us.* Visited several times a year |
+| **Eugene OR** | **a close colleague** (named in the log; ⛔ NOT FOR PUBLICATION) — *a farm with a huge garage. He made space for us.* Visited several times a year |
 | **St Louis**, near the airport | a hand car wash with an unused garage — **the only PAID holding in sixteen years**, improvised on sight |
 
 **★★ AND SIGNAL HILL IS SMART MADNESS** — the garage and after-market vendor that equipped and maintained BOTH cars. **7 fills, 2011 to 2017, sitting at the seams of expeditions:** 2012-05-24 is 81 miles into day one of the Frostburg trip; **2013-09-06 is inside the Arctic trip's final leg — the car came off the Dalton and stopped at the shop on the way home.** **The wide-tire decision has an address.**
 
-### ⚠ PRIVACY RULING STILL NEEDED before the parking chapter is published
+### ⛔ PRIVACY RULING GIVEN 2026-08-20 — the Eugene colleague is NOT NAMED in Smart_Car
 
-**The chapter names private individuals and their homes** — a niece in Mentone, a named colleague's farm in Eugene, a small business in St Louis. **Kim must rule on each**, as he did for the Texas on-ramp. He volunteered Will McClatchey's name in conversation; **that is not the same as clearing it for print.**
+Kim: *I'd rather refer to Will as a colleague rather than name him. I gave you his name as he appears in a lot of our projects.*
+
+**RULE FOR SMART_CAR: the Eugene holding is "a close colleague with a farm and a large garage". No name, and no detail that would identify the farm.** The name stays in the PKM — like Creamsicle's purchase reason — **so a future session knows who is meant and does not ask again. It is NOT FOR PUBLICATION in this document.**
+
+**★★ AND THE PRINCIPLE GENERALISES, which is the useful part.** He is already named in **seven live documents** on `kimbridges-documents` — acknowledgements, citations, academic activities, the AI microscope piece, whittakerr — **and those are untouched.** Naming a colleague as a COLLABORATOR is ordinary and appropriate; **naming him as a LOCATION is not.** **The constraint is not on the name. It is on pairing the name with a private fact — his home, his farm, that a car was stored there.** Do not go editing published scholarly work on the strength of a preference expressed about a memoir.
+
+**Apply the same test to the others:** the **niece at Mentone** — relationship without a name, and no town if he prefers; the **St Louis car wash** — a business, and the story is about the arrangement rather than the firm, so no name is needed. **Ask Kim to confirm those two.**
+
+**★ Deep connections, noted for the PKM rather than the book.** The same colleague appears across **17 PKM files and 7 projects** — AI_Microscope, audio, briefing_book, whittakerr, checklists, kimbridges-stories (Kakaako Birds), collections. **He is a hub in this system, and Smart_Car is the only project where the fact about him is private rather than professional.**
 
 ### ★★★ THE SAFETY THESIS — layer one's content, given 2026-08-19
 
