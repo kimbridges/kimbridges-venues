@@ -160,7 +160,7 @@ On the BACK of the last fuel sheet, circled: **`5/22/17  71,283  LV Seattle @ Ma
 | **Delaware** | geometry — 264 odometer miles where the only Delaware-free road is ~305 |
 | **Rhode Island** | geometry — the Douglas MA fill sits on MA-146, the Providence road; 287 mi fits the coastal route |
 | **South Dakota** | geometry — **255 miles against ~175 direct, ratio 1.83, the most indirect stretch in sixteen years**, on the northern road through Chadron NE, twelve miles from the line. A deliberate dash to cross the border, with **a storm-chaser convoy coming the other way** |
-| **Florida** | **incidental knowledge (Finding 044) — STYX RIVER ROAD.** Unlike *is this Florida?*, it's FALSIFIABLE, and it survives |
+| **Florida** | **PHOTOGRAPHED.** Three kinds of evidence: testimony (unfalsifiable), **Styx River Road** — incidental knowledge, falsifiable, survives (Finding 044) — and **a geotagged photograph at 30.983392, -87.571312: 1.15 miles inside the state, 5.4 from the Atmore fill.** The whole visit is ~11 miles hung off a fuel stop, and the New Orleans → Atmore segment already carried 210 miles against ~195 direct |
 
 **⚠ My *no leg has room for South Dakota* was wrong: the arithmetic was right and the HYPOTHESIS was wrong** — I assumed visiting a state meant going somewhere IN it. **A negative result is only as strong as the hypothesis it tested.**
 
@@ -286,39 +286,35 @@ He withdrew his own West Virginia answer after checking a map: **different highw
 
 **⚠ Disciplines held in the draft:** *granted, no crash testing*; and **101,000 crash-free miles are not oversold** — one prudent driver, mostly interstate, mostly daylight. **The miles show the car didn't prevent sixteen years of safe driving; the near-misses are where the car actively contributed.** **The wide-tire interval is NOT PRINTABLE until re-derived.**
 
-## ★★★ CHAPTER ARCHITECTURE — SOLVED. KIM'S THREE LAYERS (2026-08-19) — full development in the log
+## ★★★ CHAPTER ARCHITECTURE — KIM'S THREE LAYERS (2026-08-19) — full development in the log
 
-*The Smart Cars are the "hook"... The two aspects of performance, car and human, is the fabric... The data become the real issue. The complexities and difficulties in the process of data collection, transcription, and cleaning on one end. At the other end, the opportunities for interesting, and perhaps unique, ways to analyze and display the results... People see the unusual cars (and have preconceived notions). The drives make interesting stories. The data give satisfying answers to questions, even those you didn't know you had.*
+*The Smart Cars are the "hook"... The two aspects of performance, car and human, is the fabric... The data become the real issue... People see the unusual cars (and have preconceived notions). The drives make interesting stories. The data give satisfying answers to questions, even those you didn't know you had.*
 
-**TWO LOGS, TWO SUBJECTS was an excellent SORTING rule and a useless ORDERING rule.** Three layers says what a reader meets first and why they keep going, and the two compose: **the car/human fabric runs THROUGH all three. It is the weave, not a chapter.**
+**TWO LOGS, TWO SUBJECTS was a fine SORTING rule and a useless ORDERING rule.** Three layers says what a reader meets first and why they keep going, and the two compose: **the car/human fabric runs THROUGH all three. It's the weave, not a chapter.** **Three DEPTHS of one material, each bought by the one above** — without the preconception the drives are travel; without the drives the numbers have no question; without the numbers the stories are anecdote.
 
-**★ Three DEPTHS of one material, each bought by the one above.** Without the preconception the drives are travel; without the drives the numbers have no question; without the numbers the stories are anecdote.
+**★★ *Questions you didn't know you had*, proven:** *what does a day OFF the highway look like?* — **70 miles at Holbrook, 59 at Hartland.** *How much of a speed is living?* — **7.5 mph.** *Can a record hold a state it never names?* — **Delaware, Rhode Island, South Dakota.** *Where does a car sleep?* — **86% of elapsed days.**
 
-**★★ *Questions you didn't know you had* is load-bearing, and proven:** *what does a day OFF the highway look like?* — **70 miles at Holbrook, 59 at Hartland.** *How much of a speed is living?* — **7.5 mph.** *Can a record hold a state it never names?* — **Delaware.** *Where does a car sleep?* — **86% of elapsed days, and the answer was a parking spot at his mother's.**
+**★ EDITORIAL RULE:** an analysis earns the ANALYSIS strand only if it answers a question the drives raised. **Results with no story belong to the DIFFICULTY strand** — the retired temperature effect, the wide-tire interval, the Canadian non-result, the unsettleable southern signal.
 
-**★ EDITORIAL RULE:** an analysis earns the ANALYSIS strand only if it answers a question the drives raised. **Results with no story belong to the DIFFICULTY strand** — the retired temperature effect, the wide-tire interval straddling zero, the Canadian non-result, the unsettleable southern signal. **All are the data being honest about what it cannot say.**
+**The three layers are the three instruments — preconception, memory, record — and they fail differently:** the record is silent where its resolution can't reach (036), **and that silence belongs to the instrument, not to the past (045)**; the memory keeps content and loses index (039), and keeps CLASSES while naming specifics; **a fuel row is a TRANSACTION, not a STATE (041)**; and **a derived count inherits the record's resolution (043)**. The preconception is simply wrong, which is the point of the book. **The reading structure and the working structure are the same structure. Say so in the Foreword.**
 
-**The three layers are the three instruments — preconception, memory, record — and they fail differently:** the record is silent where its resolution cannot reach (036); **the memory keeps content and loses index, and keeps CLASSES while naming specifics (039); and a fuel row is a TRANSACTION, not a STATE (041).** The preconception is simply wrong, which is the point of the book. **The reading structure and the working structure are the same structure. Say so in the Foreword.**
+## ★★★ THE CHAPTER LIST AND THE MANUSCRIPT (2026-08-20) — full draft in the log
 
-## ★★★ THE CHAPTER LIST IS APPROVED AND THE MANUSCRIPT EXISTS (2026-08-20)
+**13 chapters, four parts, front and back matter. Kim approved the design and the interleaving.** FOREWORD | **PART ONE, THE CAR:** 1. *These are small cars!* · 2. Is it safe? | **PART TWO, THE DRIVES:** 3. The anchor · 4. The expeditions · 5. The long days · 6. The roads · **7. What the driving cost — the hinge** | **PART THREE, THE DATA, both ends interleaved:** 8. Sixteen years of paper *(diff)* · 9. How you know a number is wrong *(diff)* · 10. What the car cost · 11. What a day in a Smart looks like · 12. The two constellations · **13. What the record cannot say** | **AFTERWORD.**
 
-**Kim approved the 13-chapter design, the four parts, and the interleaving of the difficulty strand** — *It is better to have more (the 13) than fewer... I agree with having the data spread through the story.* **The charter's six-chapter list is retired.** Full draft and rationale in the log.
+**★★ THE ARGUMENT KIM ACCEPTED: the difficulty chapters EARN the analysis chapters.** A reader can't believe *$0.0939 per mile* until they know how the cost column was audited. **⛔ And the PKM's own tooling failures are OUT of the book.**
 
-**FOREWORD** Why there was a car at all — the parking spot, and **Hawaii, early**. | **PART ONE, THE CAR:** 1. *These are small cars!* · **2. Is it safe? ← write first.** | **PART TWO, THE DRIVES:** 3. The anchor · 4. The expeditions · 5. The long days · 6. The roads · **7. What the driving cost ← the hinge.** | **PART THREE, THE DATA (both ends interleaved):** 8. Sixteen years of paper *(diff)* · 9. How you know a number is wrong *(diff)* · 10. What the car cost *(anal)* · 11. What a day in a Smart actually looks like *(anal)* · 12. The two constellations *(anal)* · **13. What the record cannot say *(diff, closing argument)*.** | **AFTERWORD** The choice made again.
+**The manuscript:** Quarto book at `Smart_Car/book/`, house pattern, **`R/book_setup.R` as the single source of truth** with `stopifnot()` row-count guards — **no number reaches a page without coming from an object.** Each undrafted chapter carries a scaffold comment holding purpose, verified material and privacy constraints. **Cross-references verified: no dangling refs, no duplicate ids, image paths resolve.**
 
-**★★ THE STRUCTURAL ARGUMENT KIM ACCEPTED: the difficulty chapters EARN the analysis chapters.** A reader cannot believe *$0.0939 per mile* until they know how the cost column was audited. **Audit before economy and the number is credible; audit after and it reads as a defence.**
+## ★★★ FINDING 045 — A SILENCE BELONGS TO AN INSTRUMENT, NOT TO THE PAST (2026-08-21)
 
-**⛔ RULED OUT BY KIM (2026-08-20): the PKM's own tooling failures are NOT book material.** *They are just part of the process that we work through together. Nothing more.* **The difficulty strand is about THE RECORD — Kim's handwriting, the paper, the reconstruction, the resolution limits.** Findings 037/040 stay in `pkm_findings.md` and never enter the manuscript.
+**Kim produced a geotagged photograph of the Florida corner.** Finding 036 said the fuel log's resolution cannot reach that visit. **It was right.** What it does not license is the sentence I then wrote repeatedly — **that the visit was UNRECORDABLE.** It was unrecordable **by that log.** He was carrying a second instrument the whole time, sampling on a different trigger: **not *I bought fuel* or *the day ended*, but *this is worth looking at*** — the exact trigger a state-line dash satisfies and a fill-up does not.
 
-### ★ THE MANUSCRIPT SKELETON EXISTS — `G:\My Drive\Projects\Smart_Car\book\`
+**A quantifier slip.** *This record cannot hold X* is a claim about a record; *X is not recorded* is a claim about the world. **I let the first license the second**, and the gap between them is every other instrument that happened to be running. **Rule: when a record cannot reach an event, the next question is not *is it lost* but *what ELSE was running at the time?*** **Three times now — AMEX, Styx River Road, this photograph — and each time I had already called the gap unreachable.**
 
-Quarto **book**, `output-dir: _output`, matching the house pattern (`whittakerr`, `storylines`): `code-fold: true`, `editor: visual`, numbered sections to depth 2, warnings/messages off. **15 `.qmd` files, one per chapter plus front and back matter, all listed in `_quarto.yml` and all present — verified both ways.**
+**★★ AND IT IMPROVES CHAPTER 13 RATHER THAN DAMAGING IT.** The chapter is no longer *here is what the record cannot say* but ***here is what THIS record cannot say, and here is how we found out anyway*** — which ends in recovery instead of a shrug.
 
-**`R/book_setup.R` is the single source of truth**, sourced by a `setup` chunk at the top of every chapter. It reads only the CORRECTED datasets (294 TwoRed fills, 139 legs, 173 + 86 Creamsicle), computes timezones as a derived layer via `trip_logs_read.R`, and ends with **`stopifnot()` guards on the row counts — so any number printed in the book comes from the objects, never typed.** It also sets a shared `theme_smartcar()`, **a starting point rather than a decision**, so the figures read as one system.
-
-**Each chapter file carries a SCAFFOLD comment** — purpose, the verified material and Kim's quotes on hand, and the open items and privacy constraints that apply to that chapter. **Delete each block as its chapter is written.** No blank pages.
-
-**★ KIM WANTS GRAPHICS AND PHOTOS.** *When we get to the data, I'm expecting we'll be doing some interesting graphics. At some point, we'll want to slip in some pictures, too.* `figures/` created; `images/Creamsicle/` holds 37 geotagged, timestamped photos that **join to the logs on date + local time with no timezone reconstruction.** **The photo layer is chapter 12's material and needs a TwoRed equivalent — ask Kim what exists.**
+**★★★ THE QUESTION IT OPENS, and it may be the largest one left: IS THERE A TWORED PHOTO ARCHIVE?** Creamsicle has 37 geotagged, timestamped photos that join to its logs with no timezone reconstruction. **Nobody has asked about 2010-2017.** A photo archive samples exactly where a fuel log cannot — **the complement, not a duplicate** — and would bear on ch.12 and most of ch.13.
 
 ## ★★★ CHAPTER 1 IS DRAFTED (2026-08-21) — `book/small_cars.qmd`, ~720 words
 
