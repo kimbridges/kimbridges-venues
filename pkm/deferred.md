@@ -170,6 +170,16 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ★★★ THE STATE COUNT IS 49 AND 10 — KIM'S RULING, 2026-08-21 (Finding 043)
+
+*Take my word for it: TwoRed did, indeed, go to the 49 mainland states and the 10 Canadian provinces.* **Some states had no fill and no overnight, so they are not in the data.** **My framing — *TwoRed's list and Kim's list are two different quantities* — was WRONG and has been corrected in four files.** There is one number, 49, and a log that witnesses 45 of it.
+
+**Write 49 in the text. Where the log's own count matters, say *the log witnesses 45*, never *45 states*.** The four unwitnessed states are **three kinds of silence** and are ch.13's best example: **Delaware** recoverable by geometry; **Rhode Island** strongly indicated (Douglas MA sits on MA-146, the Providence road); **Florida** testimony only; **South Dakota** with no leg in the record having room for it.
+
+### ★ OPEN QUESTION FOR KIM — when did TwoRed go to South Dakota?
+
+No fill, no leg endpoint, no `SD` anywhere in 294 fills and 139 legs. **The only slack in the whole region is ~80 miles on the 2012-05-27 Douglas WY → Bridgeport NE stretch (255 logged against ~175 direct), and a Lusk-to-Edgemont dip needs ~110.** **His testimony stands; the record simply cannot reach it.** Knowing the trip would be good chapter material.
+
 ### ★★★ SAY EARLY THAT THEY LIVE IN HAWAII (Kim, 2026-08-20)
 
 *If you didn't know that you might wonder why we didn't just drive to my mother's place.* **Load-bearing three times: every dormancy is a FLIGHT home, not an idle car; the ~3,700 excluded Honolulu miles are the only miles driven where they live; and it inverts layer one a second time** — *you don't do much driving in Hawaii (think: downtown Honolulu). Driving on the mainland was something different for us.* **They live in a city and bought a city car to escape city driving.** Recorded as intentions item 6. **Put it beside the safety inversion in the Foreword.**

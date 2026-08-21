@@ -64,11 +64,11 @@ Kim scans everything. The AMEX statements and pump receipts recovered three cont
 
 ## ★★ THE AUDIT TOOLKIT — SIX INSTRUMENTS (2026-08-18) — full write-up in the log
 
-**pump identity** (gallons × $/gal = cost) | **economy** | **geography** (great-circle vs odometer) | **contiguity** (repeated values in adjacent rows) | **price family / same pump** | and **Kim's slashed zeros** — a physical mechanism, so it predicts error DIRECTION, not just fit (Finding 033).
+**pump identity** (gallons × $/gal = cost) | **economy** | **geography** (great-circle vs odometer) | **contiguity** | **price family / same pump** | **Kim's slashed zeros** — a physical mechanism, so it predicts error DIRECTION (Finding 033).
 
-**None is redundant: every major error found was caught by exactly one of them.** The decisive pairing is contiguity + arithmetic — where two adjacent rows share a value, **the row that BALANCES is the source and the row that FAILS is the copy**, which neither test reaches alone.
+**None is redundant: every major error was caught by exactly one.** The decisive pairing is contiguity + arithmetic — where two adjacent rows share a value, **the row that BALANCES is the source and the row that FAILS is the copy.**
 
-**Three standing limits.** For the 0/8 class **the scan is not evidence** (the illusion is on the paper). A **high road/straight-line ratio is sometimes a story**, not a defect. And every instrument has a **floor**: a 25-mile detour inside a 210-mile segment is indistinguishable from ordinary routing (Finding 036).
+**Three standing limits.** For the 0/8 class **the scan is not evidence**. A **high road/straight-line ratio is sometimes a story**, not a defect. And every instrument has a **floor** (Finding 036). **★ The geography instrument also works in reverse: it RECOVERS what the log never named — Delaware, and probably Rhode Island (Finding 043).**
 
 ## ★★ THE CORRECTED DATASET (2026-08-18) — build story in the log
 
@@ -356,12 +356,12 @@ Quarto **book**, `output-dir: _output`, matching the house pattern (`whittakerr`
 **Figures wired:** `@fig-day-one` (the day it arrived, on the original narrow tires, **with the silver safety cell visible** — the photo does the pointing the text describes) and `@fig-wide-wheels` (after Smart Madness; visibly wider). **Book images live in `book/images/`** so Quarto copies them into the output; the canonical archive stays in `Smart_Car/images/`. ⚠ **`*.jpg` is in the mirror's `.gitignore`, so photographs are NOT in the versioned backup** — Kim's own copies are the record.
 
 ## Next Steps
-1. **★★★ KIM IS READING the Foreword and chapter 2** (`book/index.qmd`, `book/is_it_safe.qmd`). **Corrections first thing next session** — voice, facts, structure, and whether the Foreword should name the three layers as openly as it does.
-2. **Then chapter 1, `small_cars.qmd`** — the fleet, Mercedes, the safety cell. It is the setup for ch.2 and is best written against a finished ch.2.
-3. **KIM:** the Yukon pothole in his own words is the last thin patch in ch.2 (mine is serviceable, his will be better). Also: the tree-tunnel stretches he remembers, and whatever exists for Bordeaux.
-4. **TASK before any figure is printed:** re-derive the wide-tire interval with a WRITTEN specification (`deferred.md`). **A number that cannot be reproduced is not sourced.**
+1. **★★★ CHAPTER 1, `small_cars.qmd`** — the fleet, Mercedes, the safety cell. Written against a finished ch.2. **Use contractions from the first sentence** (standing voice rule).
+2. **KIM:** the Yukon pothole in his own words is the last thin patch in ch.2. Also **when did TwoRed go to South Dakota** — no leg in the record has room for it. Also the tree-tunnel stretches, and whatever exists for Bordeaux.
+3. **KIM:** confirm the remaining privacy calls — the niece at Mentone, and the St Louis business. **The Eugene colleague is ruled: NOT NAMED.**
+4. **TASK before any figure is printed:** re-derive the wide-tire interval with a WRITTEN specification. **A number that cannot be reproduced is not sourced.**
 5. **DEFERRED UNTIL A CHAPTER ASKS.** Canada2014 units, Creamsicle's timezone table, `Expedition_ID`, the constellation maps, the ~141 extra fill temperatures in the live `TwoRed_fuel` Sheet.
-6. **⚠ `*.jpg` is gitignored in the mirror** — photographs are not in the versioned backup. Kim's own copies are the record.
+6. **⚠ `*.jpg` is gitignored in the mirror** — photographs are not in the versioned backup.
 
 ## Collaborators / Dependencies
 None.
