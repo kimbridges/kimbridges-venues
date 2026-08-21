@@ -311,6 +311,20 @@ Quarto **book**, `output-dir: _output`, matching the house pattern (`whittakerr`
 
 **★ KIM WANTS GRAPHICS AND PHOTOS.** *When we get to the data, I'm expecting we'll be doing some interesting graphics. At some point, we'll want to slip in some pictures, too.* `figures/` created; `images/Creamsicle/` holds 37 geotagged, timestamped photos that **join to the logs on date + local time with no timezone reconstruction.** **The photo layer is chapter 12's material and needs a TwoRed equivalent — ask Kim what exists.**
 
+## ★★★ CHAPTER 1 IS DRAFTED (2026-08-21) — `book/small_cars.qmd`, ~720 words
+
+**Its job had to be redefined**, because the Foreword now names the four cars and ch.2 owns the safety-cell demonstration. **Chapter 1 is about the OBJECT: how small, why it's that shape, and the fleet as four decisions rather than one.**
+
+**★★ THE CHAPTER'S NUMBER, and it is a good one.** **TwoFer went 1,209 miles in its entire ten-month life, all of it in Honolulu. TwoRed's median driving day was 305 miles.** So **TwoRed covered TwoFer's whole existence in about four days of driving.** Same manufacturer, near enough the same car — **the difference isn't in the machine, it's in what was asked of it.** That is layer one's argument in one comparison, and it uses the leased car, which had looked like the fleet's least interesting member.
+
+**The shape argument:** most small cars are ordinary cars made smaller; a Smart isn't. **Mercedes started from the steel cell and built outward, so the cell IS the structure and the coloured panels aren't** — which is why the proportions look wrong to an eye trained on normal cars, and why the panels are a different colour. **They aren't pretending to be structural, so they don't have to match.**
+
+**Four cars, four decisions, each with more information than the last** — buy 2010 (a price list and a parking space, nobody had crossed a continent in one yet), lease 2014, replace 2016 (*by then we knew exactly what we were buying, because TwoRed had already been to the Arctic Circle and back*), electric 2018. **One car you like is taste; four chosen again over sixteen years with a continent's evidence in between is a judgement.**
+
+**Figure handling changed:** `@fig-day-one` is now DEFINED in ch.1 (the reader meets the car, with Kim beside it for scale) and **referenced** from ch.2 for the silver band. Cross-references verified across all 15 files — **no dangling refs, no duplicate ids, both image paths resolve.**
+
+**⚠ FOUR GAPS MARKED, and ch.1 needs more from Kim than ch.2 did** — it is a chapter about living with the object, and the record holds almost none of that. See Next Steps.
+
 ## ★★★ FOREWORD AND CH.2 — KIM'S FIRST PASS DONE (2026-08-21)
 
 **Approved:** the voice; **the three layers stay in the Foreword** (*people can see what's ahead*); **chapter 2's story order stays** (denominator before the close calls).
@@ -332,12 +346,13 @@ Quarto **book**, `output-dir: _output`, matching the house pattern (`whittakerr`
 **Figures wired:** `@fig-day-one` (the day it arrived, on the original narrow tires, **with the silver safety cell visible** — the photo does the pointing the text describes) and `@fig-wide-wheels` (after Smart Madness; visibly wider). **Book images live in `book/images/`** so Quarto copies them into the output; the canonical archive stays in `Smart_Car/images/`. ⚠ **`*.jpg` is in the mirror's `.gitignore`, so photographs are NOT in the versioned backup** — Kim's own copies are the record.
 
 ## Next Steps
-1. **★★★ CHAPTER 1, `small_cars.qmd`** — the fleet, Mercedes, the safety cell. Written against a finished ch.2. **Use contractions from the first sentence** (standing voice rule).
-2. **KIM:** the Yukon pothole in his own words is the last thin patch in ch.2. Also **when did TwoRed go to South Dakota** — no leg in the record has room for it. Also the tree-tunnel stretches, and whatever exists for Bordeaux.
-3. **KIM:** confirm the remaining privacy calls — the niece at Mentone, and the St Louis business. **The Eugene colleague is ruled: NOT NAMED.**
+1. **★★★ KIM — CHAPTER 1 NEEDS FIVE THINGS ONLY HE HAS.** (a) **The physical experience** — getting in and out, two people and a week's luggage, headroom, and the early automated-manual gearbox with its famous pause. (b) **Why a Smart specifically** in 2010; there were other small cars. (c) **Why lease TwoFer at all** in 2014, and what that settled. (d) **BORDEAUX IS A BLANK** — year, character, and how electric changes the calculation. (e) **Does he still have TwoRed?** The fleet table says owned.
+2. **KIM:** the Yukon pothole in his own words — the last thin patch in ch.2. Also the tree-tunnel stretches, and the remaining privacy calls (the niece at Mentone; the St Louis business). **The Eugene colleague is ruled NOT NAMED.**
+3. **THEN ch.3, `the_anchor.qmd`** — the most material of any undrafted chapter, and the Foreword already sets it up.
 4. **TASK before any figure is printed:** re-derive the wide-tire interval with a WRITTEN specification. **A number that cannot be reproduced is not sourced.**
-5. **DEFERRED UNTIL A CHAPTER ASKS.** Canada2014 units, Creamsicle's timezone table, `Expedition_ID`, the constellation maps, the ~141 extra fill temperatures in the live `TwoRed_fuel` Sheet.
-6. **⚠ `*.jpg` is gitignored in the mirror** — photographs are not in the versioned backup.
+5. **SMALL TASK:** TwoFer's 1,209 miles is a TYPED constant in ch.1 and ch.2 (commented as such). **The `TwoFer Gas Log` Sheet is live-only and never ingested** — 7 fills would take ten minutes and put the last car in the corrected dataset.
+6. **DEFERRED UNTIL A CHAPTER ASKS.** Canada2014 units, Creamsicle's timezone table, `Expedition_ID`, the constellation maps, the ~141 extra fill temperatures in the live `TwoRed_fuel` Sheet.
+7. **⚠ `*.jpg` is gitignored in the mirror** — photographs are not in the versioned backup.
 
 ## Collaborators / Dependencies
 None.

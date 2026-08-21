@@ -7,19 +7,72 @@
 source("R/book_setup.R")
 ```
 
-<!-- SCAFFOLD — delete this block as the chapter is written.
+![TwoRed on the day it arrived, on the narrow tires it left the factory with. I'm six feet tall, which gives you the scale. **The silver band running around the car isn't trim — it's the safety cell**, and chapter 2 comes back to it.](images/TwoRed/twored_day_one.jpg){#fig-day-one}
 
-PURPOSE
-The preconception, and the fleet that answers it. Ends by admitting the engineering answer only half-lands, which is what earns the next chapter.
+That's the reaction, and it's usually delivered as an exclamation rather than a question.
 
-MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- Four cars, sixteen years: TwoRed (2010 Passion), Two4Two/TwoFer (leased, 1,209 Honolulu miles), Creamsicle (2016 453, sold to family 2024), Bordeaux (2018, electric).
-- The fleet thesis: purchase, lease, resale, replacement -- the choice made again three times after the first.
-- Mercedes; the tridion safety cell; race-car logic.
-- Kim: 'Do they believe it? Maybe. Maybe not.'  <- keep verbatim; it is the hinge into ch.2.
+It's worth being concrete about how small, because the rest of this book doesn't make much sense otherwise. Two seats, and no back seat at all — not a small one, none. **The luggage space behind them is about the size of the boot of an ordinary car with the boot floor raised to the window line.** Before the Dalton Highway I bought a spare wheel to carry, and it barely fitted.
 
-OPEN / NEEDED
-- Creamsicle's purchase reason is NOT FOR PUBLICATION. Public text: bought to help family, and stops there.
-- No `bordeaux*` slug, filename, figure or path (name collision with two published stories).
--->
+<!-- KIM: the physical experience. Getting in and out. What it's like inside for two people
+     and a week's luggage. The transmission — early Smarts had an automated manual with a
+     famous pause between gears; did that bother you? And headroom, since you're tall. -->
 
+## It isn't a shrunken car. It's a car built around a box.
+
+Most small cars are ordinary cars made smaller. A Smart isn't. Mercedes started from the steel cell you can see in @fig-day-one — the silver band — and built outward. **The cell is the structure. The coloured panels hung on it aren't.** That's why the proportions look wrong to an eye trained on normal cars: you're looking at a passenger box with the mechanical parts pushed to the ends, rather than a long car with the middle removed.
+
+It's also why the panels are a different colour. They aren't pretending to be structural, so they don't have to match.
+
+<!-- KIM: why a Smart specifically? There were other small cars in 2010. What decided it? -->
+
+## What everyone assumes it's for
+
+People assume a car this size is for short trips in a crowded place. That's a fair assumption — it's what Mercedes designed it for, and it's what most of them do.
+
+**And we owned one that did exactly that.**
+
+```{r}
+#| label: twofer
+#| include: false
+
+## TwoFer: from the leased-car gas log (a live Google Sheet, not yet in the corrected
+## dataset -- see deferred.md). 7 fill-ups, 2014-03-22 to 2015-01-10.
+twofer_miles <- 1209
+twored_median_day <- round(median(twored_legs$odo_miles, na.rm = TRUE))
+twofer_in_days <- round(twofer_miles / twored_median_day, 1)
+```
+
+**Two4Two** — we called it TwoFer — was leased for about ten months in 2014 and 2015, and it never left Honolulu. Over its entire life with us it went **`r twofer_miles` miles.**
+
+TwoRed's median driving day, on the mainland, was **`r twored_median_day` miles.**
+
+**So TwoRed covered TwoFer's whole existence in about four days of driving.** Same manufacturer, near enough the same car, and the difference isn't in the machine at all. It's in what we asked of it.
+
+<!-- KIM: why lease a second one at all, in 2014? And what did that experiment settle? -->
+
+## Four cars, four decisions
+
+The Foreword introduced them. What matters here is that they weren't one decision — they were four, spread over sixteen years, each made with more information than the last.
+
+**2010, buy.** TwoRed, on the evidence available at the time, which was a price list and a parking space. Nobody had crossed a continent in one yet, least of all us.
+
+**2014, lease.** TwoFer, in Honolulu, for ten months. A short commitment on a car we already understood.
+
+**2016, replace.** Creamsicle, bought new, and by then we knew exactly what we were buying — because TwoRed had already been to the Arctic Circle and back.
+
+**2018, change the engine.** Bordeaux, electric.
+
+<!-- KIM: Bordeaux is a blank. What year exactly, what it's like, and how an electric one
+     changes the calculation. Also: do you still have TwoRed? The fleet table says owned. -->
+
+**That's the fleet argument, and it doesn't depend on any single car being good.** One car you like is taste. **Four, chosen again and again over sixteen years, with a continent's worth of evidence accumulating in between, is a judgement.**
+
+## Which brings us to the question
+
+People who see the car say they like it. Then, almost always, they ask whether it's safe.
+
+I have an answer. It involves Mercedes, and that steel cell, and a comparison to race cars, and I've given it many times standing next to the car with my hand on the silver part.
+
+**Do they believe it? Maybe. Maybe not.**
+
+That's the honest report, and it's why the next chapter doesn't stop at the engineering.
