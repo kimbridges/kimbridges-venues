@@ -1,0 +1,23 @@
+# What the car cost
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+ANALYSIS strand, and now believable because chapters 8-9 came first.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- Lifetime 39.44 MPG; median 39.12 (TwoRed) vs 40.59 (Creamsicle).
+- Cost per mile $0.0939 (TwoRed) vs $0.1183 (Creamsicle) -- a 26% difference that is almost entirely FUEL PRICES (2010-2017 vs 2021-2024), not the car. State the caveat, do not bury it.
+- NO DEGRADATION IN SIXTEEN YEARS.
+- LEG LENGTH is the strongest predictor: +4.61 MPG per 100 miles.
+- The wide tires: economy difference indistinguishable from zero, 95% CI -3.7% to +4.9%.
+- Trim the ends before quoting an extreme: the first fill carries a slashed-zero error (L59); the last two are a tank managed DOWN for shipping (52.4 and 93.0 MPG on 4.333 and 2.496 gallons).
+-->
+

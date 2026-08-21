@@ -1,0 +1,23 @@
+# Sixteen years of paper
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+DIFFICULTY strand. The physical record: field sheets, handwriting, scanning. Read before ch.10 so its numbers are believable.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- 22 scanned PDFs, 2010-2017. Top half fuel log, bottom half trip log; the fuel halves were typed up years ago, most trip halves never were.
+- THE SLASHED ZERO (Finding 033): a handwriting habit that predicts the DIRECTION of an error, not just its presence. Permitted 8->0 fixes 4 of 44 failing rows; forbidden 0->8 fixes 1; six controls fix 0.
+- The AMEX statements as a THIRD independent record: gallons and costs matched the recovered paper to the thousandth of a gallon.
+- The crossbar that was NOT a correction: a bitonal-thresholding artifact in a scan. 'Youngtown arrival is 8:41. My writing was very light.' The original settles it; the scan cannot.
+- Two scans of the same page are not the same evidence: a marginal annotation ('Relocation 1141 miles') survived in one copy and not its twin.
+- Kim: 'it's an electronic shoebox. I scan paper. All paper.'
+-->
+

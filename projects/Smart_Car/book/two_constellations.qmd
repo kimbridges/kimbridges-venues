@@ -1,0 +1,25 @@
+# The two constellations
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+ANALYSIS strand, and the payoff chapter. Where it drove, and where it slept.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- The driving constellation: every recorded fuel stop, geocoded. 45 states, 10 provinces.
+- THE PARKING CONSTELLATION -- the map nobody thinks to draw. 86% of elapsed days sit inside a dormancy of 14+ days.
+- The photo layer JOINS cleanly: DateTimeOriginal is LOCAL time with OffsetTimeOriginal carrying the zone, and the logs record local clock times, so photos join on date + local time with no timezone reconstruction. Validates on the first record -- earliest photo 11:42, first fill 11:45 at Nixa MO.
+- 37 geotagged Creamsicle photos in images/Creamsicle/. The Jul-2024 Creamsicle update already carries lat/long -- start there rather than geocoding from scratch.
+
+OPEN / NEEDED
+- Route work is partial at a 78% gazetteer join.
+- Finding 041: do NOT build the parking map from fill cities. The named holdings come from Kim, not from the data.
+-->
+

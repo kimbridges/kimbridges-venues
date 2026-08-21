@@ -1,0 +1,29 @@
+# The long days
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+Eight of them, and why each happened. The chapter where the human spine is most visible.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- 2012-05-31 St Louis -> Columbus, 518 mi: a navigator distracted, lost near Urbana IL, fireflies at dinner. The 09:52 fill is at Champaign -- one metro with Urbana -- and carries slashed-zero typo L61. Excess over direct I-70: 108 mi.
+- 2011-06-26 Flagstaff -> Holbrook, 100 mi: out 04:30, in 06:45, to meet his nephew, a naturalist at the Petrified Forest. 70 mi of local driving before the next departure IS the park tour.
+- 2012-06-14 Billings -> Pocatello, 449 mi: 65.5 mph gross, the fastest day in the record -- fast because Montana has nowhere to stop.
+- 2014-05-29 Sydney NS -> Edmundston, 555 mi: off an overnight ferry, car already packed; zero odometer miles across the water.
+- 2014-05-05 El Paso -> San Antonio, 531 mi: racing for Florida, the last state in the region.
+- 2012-05-24 LSM -> St George, 492 mi: a half-day Las Vegas visit inside a 31 mph day.
+- 2013-08-31 Bellingham -> Grants Pass, 488 mi: Nancy flew the red-eye and met him off the Alaska ferry.
+- 2017-01-06 Brookings -> Paso Robles, 562 mi: racing to his mother at 104. 32 degF, the coldest start in the record; fill 22:04 at 68,731, arrival 22:10 at 68,732 -- one mile, six minutes.
+
+OPEN / NEEDED
+- The Bellingham departure is UNRESOLVED: Kim remembers early afternoon, the sheet says 06:49. The arithmetic favours the sheet. Ask him again, or write it as an open question.
+- 2013-08-04 LSM -> Carson City, 487 mi, still has no story.
+-->
+

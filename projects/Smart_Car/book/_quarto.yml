@@ -1,0 +1,49 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Smart Car"
+  subtitle: "Sixteen years, four small cars, and 100,000 miles of evidence"
+  author:
+    - "K. W. Bridges"
+  date: today
+  chapters:
+    - index.qmd
+    - part: "The Car"
+      chapters:
+        - small_cars.qmd
+        - is_it_safe.qmd
+    - part: "The Drives"
+      chapters:
+        - the_anchor.qmd
+        - expeditions.qmd
+        - long_days.qmd
+        - the_roads.qmd
+        - what_driving_cost.qmd
+    - part: "The Data"
+      chapters:
+        - sixteen_years_of_paper.qmd
+        - knowing_a_number_is_wrong.qmd
+        - what_the_car_cost.qmd
+        - a_day_in_a_smart.qmd
+        - two_constellations.qmd
+        - what_the_record_cannot_say.qmd
+    - afterword.qmd
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    embed-resources: false
+
+editor: visual
+
+toc: true
+number-sections: true
+number-depth: 2
+
+execute:
+  warning: false
+  error: false
+  message: false

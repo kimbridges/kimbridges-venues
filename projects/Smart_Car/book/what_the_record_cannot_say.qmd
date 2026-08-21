@@ -1,0 +1,22 @@
+# What the record cannot say
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+DIFFICULTY strand, and the closing argument. The chapter that makes the whole book honest.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- RESOLUTION AND SILENCE (Finding 036): Kim drove a few miles into the Florida panhandle, asked a stranger 'Is this Florida?', and turned around. A log that samples at fill-ups cannot see it. A record's RESOLUTION sets the floor on what its silences can mean.
+- DELAWARE, present as a distance and absent as a name: Colonial Heights VA -> Bellmawr NJ reads 264 odometer miles against a great-circle 219; the only Delaware-free road is ~305. Key to a ROW, never a LABEL.
+- RETIRED RESULTS: the temperature effect died as the sample grew (n=94 -0.068 p=0.045; n=125 -0.050 p=0.099; p=0.17 with controls). The record is now good enough to RETIRE a result, not just produce one.
+- THE SIGNAL THAT CANNOT BE SETTLED: a ~3 MPG southern economy deficit, unstable across subsamples, n=30 -- and Creamsicle has ZERO southern fills, so the sample is closed and will not grow. Print the fact that it cannot be settled, not the coefficient.
+- THE WITNESS AS AN INSTRUMENT (Findings 039, 041): content reliable, index not. Roads and counts survive decades; what slips is the binding of a memory to an occasion. And a fuel row is a TRANSACTION, not a STATE.
+-->
+

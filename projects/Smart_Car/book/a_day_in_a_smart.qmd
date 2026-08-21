@@ -1,0 +1,23 @@
+# What a day in a Smart actually looks like
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+ANALYSIS strand. The human half of the fabric, measured.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- Median leg 251 miles (TwoRed), 166 (Creamsicle). Log distance ~95% of odometer miles.
+- WHERE THE BEDS ARE is a first-order term nobody modelled: the fastest day in sixteen years is fast because Montana has nowhere to stop.
+- Gross speed by road, 138 legs in 12 trips: interstate 47.6 | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate 40.3 | Dalton 31.7 | US-101 coastal 28.3. Same car throughout.
+- THE CEILING: Creamsicle logs stopped time. Median gross 43.5 vs median NET 51.0 -- a 7.5 mph gap across 84 timed legs. Every TwoRed gross speed is a ceiling ~7-8 mph below actual driving speed.
+- The vivid case: 2024-10-20 Wisconsin Dells -> Madison, 50.3 miles, 5 hours elapsed, 4.5 stopped, gross 10.1 mph, comment 'Cranes'.
+- A ferry is a LOGISTICS MULTIPLIER: it converts a night into progress and hands the next morning a loaded, fuelled car.
+-->
+

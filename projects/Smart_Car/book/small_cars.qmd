@@ -1,0 +1,25 @@
+# These are small cars!
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+The preconception, and the fleet that answers it. Ends by admitting the engineering answer only half-lands, which is what earns the next chapter.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- Four cars, sixteen years: TwoRed (2010 Passion), Two4Two/TwoFer (leased, 1,209 Honolulu miles), Creamsicle (2016 453, sold to family 2024), Bordeaux (2018, electric).
+- The fleet thesis: purchase, lease, resale, replacement -- the choice made again three times after the first.
+- Mercedes; the tridion safety cell; race-car logic.
+- Kim: 'Do they believe it? Maybe. Maybe not.'  <- keep verbatim; it is the hinge into ch.2.
+
+OPEN / NEEDED
+- Creamsicle's purchase reason is NOT FOR PUBLICATION. Public text: bought to help family, and stops there.
+- No `bordeaux*` slug, filename, figure or path (name collision with two published stories).
+-->
+

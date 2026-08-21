@@ -1,0 +1,31 @@
+# The anchor
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+Every complete trip is a loop from one parking space. Parking as the hidden infrastructure of sixteen years.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- 8 of 13 logged trips begin AND end at Lake San Marcos; every complete one from 2011 through the Fourth Crossing does -- including the Arctic run.
+- The anchor: 18 dormancies, 999 days, 2010-07-26 to 2016-08-02.
+- 86% of the record's elapsed days sit inside a dormancy of two weeks or more.
+- Economics as a COUNT, not a cost: a rental must be returned, a parked car need not. 22 long stays = 22 rentals not taken out.
+- Kim: 'Parking is a big issue and we've been fortunate that friends and family have helped at critical times.'
+- The four holdings: his mother's facility; his niece at Mentone; a close colleague's farm with a huge garage in Eugene; the St Louis car wash near the airport -- the ONLY paid holding in sixteen years, improvised on sight.
+- Kim: 'I saw a hand carwash business that had a large garage that they didn't seem to be using. I asked... And I got a car wash, too.'
+- The car left because the parking spot did: she moved to a more secure facility in August 2016 and it had no parking. Last anchor fill 2016-08-02.
+
+OPEN / NEEDED
+- The Eugene colleague is NOT NAMED -- 'a close colleague' (Kim, 2026-08-20).
+- Confirm with Kim: the niece at Mentone (relationship without a name? town or not?) and whether the St Louis business is named.
+- She died January 2017 with the car already in Oregon. ADJACENT FACTS, SEPARATE CAUSES -- do not let the bereavement do work the parking policy did.
+- Finding 041: a fill records where fuel was BOUGHT, not where the car RESTED. Do not rebuild the parking map from fill cities.
+-->
+

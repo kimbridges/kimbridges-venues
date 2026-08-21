@@ -1,0 +1,23 @@
+# Foreword — Why there was a car at all
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+Establish the origin, the family dynamic, and Hawaii. End on the promise: an errand car, and 71,283 mainland miles.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- Kim: 'The overriding fact was we needed a car in Lake San Marcos... there was a parking spot available at my mom's place.'
+- Kim: 'We'd visit for a few days and then go off to a meeting... Two visits separated by the time needed to do some work. The car served both purposes.'
+- Kim: 'You don't do much driving in Hawaii (think: downtown Honolulu). Driving on the mainland was something different for us.'
+- TwoRed mainland record: odometer 4 -> 71,283, 2010-07-23 to 2017-05-22.
+- ~3,700 implied Honolulu miles = the scope boundary, quantified.
+- SAY HAWAII EARLY (intentions item 6). Without it the reader asks why they didn't just drive to her place.
+-->
+

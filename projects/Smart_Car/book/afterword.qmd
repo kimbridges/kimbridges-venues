@@ -1,0 +1,25 @@
+# Afterword — The choice made again
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+Close on the fleet arc and what sixteen years of repeating a decision means.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- Four cars: one bought, one leased and returned, one sold to family, one electric in the driveway now.
+- TwoRed crossed the Pacific and drove ~3,700 more miles the record is not about, by design.
+- The two-subjects frame, closed: the fuel log measured the car, the trip log measured what the human achieved, and the stories were the only record of what it cost.
+- Kim, on why any of it happened: 'how far and fast can you expect to drive in a day, something I had no idea about until I started doing these drives.'
+
+OPEN / NEEDED
+- Bordeaux is not yet inventoried. Ask Kim for whatever exists.
+- No `bordeaux*` slug, filename, figure or path.
+-->
+

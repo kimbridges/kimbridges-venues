@@ -1,0 +1,25 @@
+# What the driving cost
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+THE HINGE. Ends Part Two by proving the record cannot see the driver -- which is what licenses Part Three to be honest about its own limits.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- Kim: 'we were plagued by potholes. We often slowed to avoid damage. This meant also looking in the rear view mirror... Those miles, which were mostly across the Canadian Plains, were very stressful.'
+- Both instruments see nothing: Canadian Plains median gross 44.5 mph vs US Plains 45.0 and a whole-record 40.5. The three Plains legs run 44.5, 47.3, 43.1 -- FASTER than his sixteen-year median.
+- His correction INVERTS the logic: 'I couldn't go slow as big vehicles kept moving at highway speeds.' His account PREDICTS the null. The high speed is the MECHANISM of the stress.
+- The missing quantity is WITHIN-LEG VARIANCE. A trip log samples the day twice; everything between is averaged away by construction.
+- The pair: the most stressful miles and the most monotonous miles both read as unremarkable fast runs. VIGILANCE HAS NO COLUMN; NEITHER DOES TEDIUM.
+
+OPEN / NEEDED
+- The Canadian variance test is a NON-RESULT, not a null -- those rows are converted from litres and CAD and unit-normalising is still open. Do not cite it as a null.
+-->
+

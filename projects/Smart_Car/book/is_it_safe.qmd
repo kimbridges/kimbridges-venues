@@ -1,0 +1,29 @@
+# Is it safe?
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+THE THESIS CHAPTER — write this one first. It demonstrates the whole architecture on the project's central question.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- Kim: 'Small and nimble are components of safety, I believe. That's maybe counter intuitive.'
+- Yukon pothole: unflagged, 'big enough to eat a big car, too'. The hazard was size-blind; the escape was not.
+- Texas on-ramp: police car up the ramp at speed, no lights, no siren; hard right, hard brakes, stopped inches from the guard rail.
+- DENOMINATOR (layer 3): 100,999 documented miles across three cars -- TwoRed 71,177 + Creamsicle 28,613 + TwoFer 1,209. 467 fills, 225 logged legs, 45 states, 10 provinces. No crash.
+- NUMERATOR (layer 2): the near-misses exist nowhere but memory. A crash avoided buys no fuel and ends no leg.
+- Wide tires bought for HANDLING, not economy: economy difference indistinguishable from zero, 95% CI -3.7% to +4.9%. The safety modification was free.
+- Kim's caveat, kept: 'Granted, no crash testing.'
+
+OPEN / NEEDED
+- NEVER place the Texas incident more precisely than 'near Fort Worth' (Kim, 2026-08-20).
+- Do not oversell 101,000 crash-free miles: one prudent driver, mostly interstate, mostly daylight.
+- A crash-rate comparison needs a SOURCED per-mile figure (intentions item 4). Until then, state exposure and stop.
+-->
+

@@ -1,0 +1,26 @@
+# The roads
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+Kim's taxonomy, built from experience rather than speed. The chapter that names what the numbers cannot hold.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- Kim: 'rolling, tree-covered hills, a winding highway, small villages tucked in the valleys' -- the relief. I-64 Charleston to Beckley, driven exactly twice (2010 and 2016).
+- TREE TUNNELS: 'the very long (miles and miles) of straight divided highway lined by a dense thicket of trees. Flat. Monotonous. Where are these found? In the South.'
+- The third term, what both are a relief from: 'nearly straight freeways lined by commerce, billboards and wall-to-wall housing.'
+- Also measured: gravel (Dalton 31.7 mph), coastal (US-101 28.3), interstate (2011, 47.6), Frostburg 44.4, Fourth Crossing 41.4, Penultimate 40.3.
+- The memory retained a LANDSCAPE TYPE, not a road: he said 'highway', he meant 'this kind of country'.
+
+OPEN / NEEDED
+- KIM TO NAME the tree-tunnel stretches he remembers. Do NOT infer them from the data.
+- Gross speed does NOT separate the categories: Deep South 40.3 (n=10) vs Appalachian 38.0 (n=6), p=0.42. That null is the point, not a failure.
+-->
+

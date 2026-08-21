@@ -243,12 +243,12 @@ _Written 2026-08-12; item 6 added 2026-08-20._
 **★ The principle behind that ruling, because it governs the whole parking chapter:** the same colleague is named in **seven live documents** on `kimbridges-documents` and those stand. **Naming someone as a COLLABORATOR is ordinary; naming them as a LOCATION is not. The constraint is on pairing a name with a private fact — a home, a farm, that a car was kept there.** Apply it to the niece at Mentone and the St Louis business too, and get Kim's confirmation on each.
 
 ## Locations
-- Code: `G:\My Drive\Projects\Smart_Car` (bucket 2 -- code-as-source); `data`, `source`, `images` beneath it
-- **★ GOOGLE-NATIVE DATA, root of `G:\My Drive` (found 2026-08-16).** NOT reachable by any filesystem read -- `G:` shows zero-byte stubs. Read via the Google Drive connector BY TITLE. **Full inventory of the eight Sheets/Docs is in the log.** The three Creamsicle files have since been exported and ingested (2026-08-19); still live-only: **`TwoRed_fuel`** (richer early record, **ambient temperature in Notes**, ~141 more fill temps), `TwoFer Gas Log`, `Creamsicle Inventory`, `Travel/2016 Fourth Crossing Analysis`.
-- **Fuel receipt scans on Drive:** `CS_Fuel_Receipts_2021.pdf` (5.7 MB), `2022_fuel_receipts_Jan-Feb.pdf` (6.5 MB) -- primary sources behind Creamsicle's first two trips.
-- **Existing analysis code:** `G:\My Drive\Projects\Photo_Mapping\Fuel_Analysis.Rmd` (2022), written against the fuel data; read before writing new ingestion.
-- Docs/output: not yet; destination is kimbridges-documents. GitHub: not yet.
-- **Superseded:** `G:\My Drive\kimbridges-stories\underway\Smart_car\` -- the original mis-filing. Copies still there; neither bridge deletes, so removal is Kim's.
+- Code + manuscript: `G:\My Drive\Projects\Smart_Car` (bucket 2). **`book/` is the Quarto book** — `_quarto.yml`, 15 chapter `.qmd`s, `R/book_setup.R`, `figures/`, output-dir `_output`. `data/`, `source/`, `images/` alongside.
+- **★ GOOGLE-NATIVE DATA, root of `G:\My Drive`.** NOT reachable by filesystem read — `G:` shows zero-byte stubs. Read via the Google Drive connector BY TITLE. Full inventory in the log. The three Creamsicle files are exported and ingested; **still live-only: `TwoRed_fuel`** (richer early record, **~141 more fill temperatures in Notes**), `TwoFer Gas Log`, `Creamsicle Inventory`, `Travel/2016 Fourth Crossing Analysis`.
+- **Fuel receipt scans on Drive:** `CS_Fuel_Receipts_2021.pdf`, `2022_fuel_receipts_Jan-Feb.pdf` — Creamsicle's first two trips.
+- **Existing analysis code:** `Projects\Photo_Mapping\Fuel_Analysis.Rmd` (2022); read before writing new ingestion.
+- **Deploy target: `kimbridges-documents`.** Drag the folder named in `output-dir` (`_output`), never the project root — Netlify Drop REPLACES the whole site.
+- **Superseded:** `G:\My Drive\kimbridges-stories\underway\Smart_car\` — the original mis-filing. **Do not delete: it is the backstop for `creamsicle.jpg`.**
 
 ## Key Files
 - `data/TwoRed_fuel_June_2014.xlsx` — 4 sheets: Gas Log (293 fills), Locations (212), Trip Log (7), Canada2014 (24, **metric — normalisation OPEN**). The foundational dataset.
@@ -323,23 +323,25 @@ _Written 2026-08-12; item 6 added 2026-08-20._
 
 **The three layers are the three instruments — preconception, memory, record — and they fail differently:** the record is silent where its resolution cannot reach (036); **the memory keeps content and loses index, and keeps CLASSES while naming specifics (039); and a fuel row is a TRANSACTION, not a STATE (041).** The preconception is simply wrong, which is the point of the book. **The reading structure and the working structure are the same structure. Say so in the Foreword.**
 
-## ★★★ THE CHAPTER LIST — FIRST DRAFT (2026-08-20) — full draft and rationale in the log
+## ★★★ THE CHAPTER LIST IS APPROVED AND THE MANUSCRIPT EXISTS (2026-08-20)
 
-**Thirteen chapters, four parts, front and back matter. Drafted for Kim to correct, not approve.** The charter's six-chapter list is retired by it: The Canvas survives as ch.12, The Expeditions as ch.4, The Fleet as ch.1 + Afterword; **The 4th Crossing and The Extremes do not survive as chapters** — one-car framing, content distributed.
+**Kim approved the 13-chapter design, the four parts, and the interleaving of the difficulty strand** — *It is better to have more (the 13) than fewer... I agree with having the data spread through the story.* **The charter's six-chapter list is retired.** Full draft and rationale in the log.
 
-**FOREWORD** Why there was a car at all — the mother, the rentals, **the parking spot**, and **early: they live in Hawaii.**
+**FOREWORD** Why there was a car at all — the parking spot, and **Hawaii, early**. | **PART ONE, THE CAR:** 1. *These are small cars!* · **2. Is it safe? ← write first.** | **PART TWO, THE DRIVES:** 3. The anchor · 4. The expeditions · 5. The long days · 6. The roads · **7. What the driving cost ← the hinge.** | **PART THREE, THE DATA (both ends interleaved):** 8. Sixteen years of paper *(diff)* · 9. How you know a number is wrong *(diff)* · 10. What the car cost *(anal)* · 11. What a day in a Smart actually looks like *(anal)* · 12. The two constellations *(anal)* · **13. What the record cannot say *(diff, closing argument)*.** | **AFTERWORD** The choice made again.
 
-**PART ONE — THE CAR** 1. *These are small cars!* (the fleet; Mercedes and the safety cell; *do they believe it? maybe not*). **2. Is it safe? — the thesis chapter, written FIRST.**
+**★★ THE STRUCTURAL ARGUMENT KIM ACCEPTED: the difficulty chapters EARN the analysis chapters.** A reader cannot believe *$0.0939 per mile* until they know how the cost column was audited. **Audit before economy and the number is credible; audit after and it reads as a defence.**
 
-**PART TWO — THE DRIVES** 3. The anchor (parking as hidden infrastructure). 4. The expeditions (Arctic **cross-referenced, never re-told**). 5. The long days. 6. The roads (Kim's experience taxonomy: rolling wooded hills, **tree tunnels**, the commercial freeway both relieve). **7. What the driving cost — the hinge: this chapter proves the record cannot see the driver.**
+**⛔ RULED OUT BY KIM (2026-08-20): the PKM's own tooling failures are NOT book material.** *They are just part of the process that we work through together. Nothing more.* **The difficulty strand is about THE RECORD — Kim's handwriting, the paper, the reconstruction, the resolution limits.** Findings 037/040 stay in `pkm_findings.md` and never enter the manuscript.
 
-**PART THREE — THE DATA, both ends INTERLEAVED** 8. Sixteen years of paper *(difficulty)*. 9. How you know a number is wrong *(difficulty)*. 10. What the car cost *(analysis)*. 11. What a day in a Smart actually looks like *(analysis)*. 12. The two constellations *(analysis, the payoff)*. **13. What the record cannot say *(difficulty, the closing argument)*.**
+### ★ THE MANUSCRIPT SKELETON EXISTS — `G:\My Drive\Projects\Smart_Car\book\`
 
-**AFTERWORD** The choice made again — four cars, and an electric one in the driveway now.
+Quarto **book**, `output-dir: _output`, matching the house pattern (`whittakerr`, `storylines`): `code-fold: true`, `editor: visual`, numbered sections to depth 2, warnings/messages off. **15 `.qmd` files, one per chapter plus front and back matter, all listed in `_quarto.yml` and all present — verified both ways.**
 
-**★★ THE ONE STRUCTURAL ARGUMENT, flagged so it can be rejected cleanly: DO NOT QUARANTINE THE DIFFICULTY STRAND AT THE BACK.** Interleave it, because **the difficulty chapters are what EARN the analysis chapters** — a reader cannot believe *$0.0939 per mile* until they know how the cost column was audited. **Audit before economy and the number is credible; audit after and it reads as a defence.**
+**`R/book_setup.R` is the single source of truth**, sourced by a `setup` chunk at the top of every chapter. It reads only the CORRECTED datasets (294 TwoRed fills, 139 legs, 173 + 86 Creamsicle), computes timezones as a derived layer via `trip_logs_read.R`, and ends with **`stopifnot()` guards on the row counts — so any number printed in the book comes from the objects, never typed.** It also sets a shared `theme_smartcar()`, **a starting point rather than a decision**, so the figures read as one system.
 
-**★ A LINE THAT MUST BE HELD: the difficulty strand is about THE RECORD, not the analyst.** Kim's handwriting, the paper, the reconstruction, the resolution limits — book material. **The PKM's own tooling failures are hygiene, and stay in `pkm_findings.md`.**
+**Each chapter file carries a SCAFFOLD comment** — purpose, the verified material and Kim's quotes on hand, and the open items and privacy constraints that apply to that chapter. **Delete each block as its chapter is written.** No blank pages.
+
+**★ KIM WANTS GRAPHICS AND PHOTOS.** *When we get to the data, I'm expecting we'll be doing some interesting graphics. At some point, we'll want to slip in some pictures, too.* `figures/` created; `images/Creamsicle/` holds 37 geotagged, timestamped photos that **join to the logs on date + local time with no timezone reconstruction.** **The photo layer is chapter 12's material and needs a TwoRed equivalent — ask Kim what exists.**
 
 ## Next Steps
 1. **★★★ KIM: correct the chapter list above.** Then **write the SAFETY chapter (ch.2) first** — it demonstrates the architecture on the project's own central question. Foreword material is already being dictated and is in the log.

@@ -1,0 +1,27 @@
+# The expeditions
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+The crossings, trip by trip, 2010 to 2017. Ends on the last year's shape.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- 13 logged trips, 139 legs, 41,163 logged miles = 58% of lifetime.
+- 2010 first crossing and the complex loop: BRIT in Fort Worth, BSA/MOBOT in St Louis, Nancy joins, Washington DC, friends in MA, the car wash, Pittsburgh (Gigapan robots), NSF colleagues in the South, home.
+- The states challenge was a BY-PRODUCT: 'We did add on a bit of driving so we could see areas of the country neither of us had visited... and, in a way, became the basis of the challenge.'
+- 2014 Penultimate State: Florida reached in the panhandle; the Tail of the Dragon; VERMONT as the penultimate state (a lawyer with an office in NH and a house across the river).
+- 2016 Fourth Crossing: the last loop from the anchor.
+- The endgame: relocation to Oregon Sept 2016, a second relocation Feb 2017, then 71,283 at the Matson dock, Seattle, 2017-05-22.
+
+OPEN / NEEDED
+- The Arctic Circle Challenge is CROSS-REFERENCED, never re-told (intentions item 2). Link to /stories/the-arctic-circle-challenge.html and use only its DATA.
+- TwoRed's state list and Kim's state list are two different quantities: 45 documented vs a challenge counting to 49. Say so; do not smooth it.
+-->
+

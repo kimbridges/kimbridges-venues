@@ -1,0 +1,23 @@
+# How you know a number is wrong
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+```
+
+<!-- SCAFFOLD — delete this block as the chapter is written.
+
+PURPOSE
+DIFFICULTY strand. The audit. This chapter is what makes chapter 10 credible.
+
+MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
+- THE PUMP IDENTITY: gallons x $/gal = cost. Three numbers that must multiply. 277 of 294 TwoRed rows balance; 143 of 170 Creamsicle US rows balance to under half a cent.
+- The six instruments: pump identity, economy, geography (great-circle vs odometer), contiguity (repeated values in adjacent rows), price-family/same-pump, and the slashed zero.
+- THE ERRATA ARCHITECTURE: corrections live BESIDE the source as a derived layer; the source is never edited; errata key to a ROW, never a LABEL. Reconstruct DISTANCES, never ODOMETER READINGS.
+- Worked example: C01 Oxnard, where the $/gal cell is IDENTICAL to the gallons cell -- caught by contiguity, not by arithmetic.
+- 65 TwoRed errata, 4 still open; 3 Creamsicle errata, all resolved.
+- A field filled from a substitute source must record WHICH source: an AMEX merchant string is not a brand.
+-->
+
