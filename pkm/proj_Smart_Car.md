@@ -78,9 +78,9 @@ Independent of both paper and spreadsheet, which is what made them decisive duri
 
 Median leg **251 mi**; log distance ~**95%** of odometer miles; lifetime **39.44 MPG**; **leg length is the strongest predictor, +4.61 MPG per 100 mi**; **no degradation in sixteen years**; **$0.0936 per mile**. Temperature was null on leg-endpoint readings and is superseded by the fill-stamped result. `logs/proj_Smart_Car_log.md`.
 
-## ★★ THE WHEELS WERE NEVER ABOUT FUEL — THEY WERE ABOUT SAFETY (Kim, 2026-08-18) — in the log
+## ★★ THE WHEELS WERE NEVER ABOUT FUEL — THEY WERE ABOUT SAFETY — folded into ch.2
 
-Smart Madness prescribed WIDE tires after the first crossing because the stock narrow "city" tires let crosswind push the car around at highway speed. **The purpose was handling, and handling is the mechanism of the safety thesis.** Before/after, the economy difference is indistinguishable from zero, **95% interval -3.7% to +4.9%** — the 1-3% penalty theory predicts sits INSIDE it. **The data rules out a LARGE penalty; it cannot detect a modest one.**
+Stock narrow tires let a **variable** desert crosswind push the car out of lane; the cost was in the constant correcting, not the force. Smart Madness prescribed wide tires. **Handling is the mechanism of the safety thesis.** The economy difference is indistinguishable from zero under every specification, and the 1-3% theoretical penalty sits inside every interval — **but the interval itself is NOT PRINTABLE until re-derived (see `deferred.md`).**
 
 ## ★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18) — the FABRIC of the three layers; in the log
 
@@ -92,13 +92,13 @@ Smart Madness prescribed WIDE tires after the first crossing because the stock n
 
 All 15 scans read (22 on disk). Four results that must not be lost:
 
-**1. The wheel change is DATED** — `NEW WHEELS @ 13510 miles`, 179 mi before the 2011 departure. **The estimate FLIPS SIGN with specification (+3.6% to -1.8%); that is the finding, not any one number.**
+**1. The wheel change is DATED** — `NEW WHEELS @ 13510 miles`, 179 mi before the 2011 departure. **The estimate FLIPS SIGN with specification; that is the finding, not any one number.** ⚠ **And there were THREE wheel states** — see ch.2 above.
 
-**2. ✗ THE TEMPERATURE EFFECT IS RETIRED.** n=94 gave -0.068, p=0.045; n=125 gives **-0.050, p=0.099**, **p=0.17** with controls — and **hot fills are on shorter legs.** **The record is now good enough to RETIRE a result.**
+**2. ✗ THE TEMPERATURE EFFECT IS RETIRED.** n=94 gave -0.068, p=0.045; n=125 gives **-0.050, p=0.099**, **p=0.17** with controls — and **hot fills are on shorter legs.** **The record is good enough to RETIRE a result.**
 
-**3. The slashed zero produced three more corrections and the control held.** Over 44 rows failing the pump identity: **permitted 8→0 fixes 4; forbidden 0→8 fixes 1; six controls fix 0.**
+**3. The slashed zero produced three more corrections and the control held.** Of 44 rows failing the pump identity: **permitted 8→0 fixes 4; forbidden 0→8 fixes 1; six controls fix 0.**
 
-**4. Gross speed separates by ROAD.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate 40.3 | Dalton **31.7** | US-101 coastal **28.3**. **But it is a MEAN, and it cannot see road CHARACTER at all — see ROAD CHARACTER above.**
+**4. Gross speed separates by ROAD.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate 40.3 | Dalton **31.7** | US-101 coastal **28.3**. **But it is a MEAN and cannot see road CHARACTER at all.**
 
 ## ★★★ THE LONG DAYS — ALL EIGHT COLLECTED, AND EVERY ONE CHECKS OUT (2026-08-19)
 
