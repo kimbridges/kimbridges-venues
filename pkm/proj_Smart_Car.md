@@ -19,15 +19,15 @@ the refutation stronger -- not one exceptional car on one exceptional journey, b
 
 ## Current Status
 
-**★★★ THE WRITING HAS STARTED. Two pieces drafted, both awaiting Kim's corrections (2026-08-20).**
+**★★★ THREE PIECES DRAFTED (2026-08-21). The Foreword and chapters 1 and 2 exist as prose.**
 
-**`book/index.qmd` — the Foreword, ~950 words.** The errand car, the parking spot, the two-visits dynamic, **Hawaii**, the three layers named lightly, and the scope boundary as subject rather than omission. **`book/is_it_safe.qmd` — chapter 2, ~2,300 words, two figures.** *Cute* as the opener, the safety-cell demonstration, both close calls unified as **one failure: a trusted pattern that did not hold**, the 100,999-mile denominator, and the wide tires priced rather than judged.
+**`index.qmd`** — Foreword, ~1,150 words: the errand car, the parking spot, **the four cars introduced by name**, Hawaii, the three layers, and the scope boundary as subject. **`small_cars.qmd`** — ch.1, ~720 words: how small, why it's that shape, **TwoFer's whole life covered in four of TwoRed's driving days**, and four decisions over sixteen years. **`is_it_safe.qmd`** — ch.2, ~2,300 words, two figures: *cute* as the opener, the demonstration, **both close calls as one failure**, the 100,999-mile denominator, the wide tires priced rather than judged.
 
-**The manuscript:** Quarto book at `Smart_Car/book/`, 15 chapters, `R/book_setup.R` as the single source of truth with `stopifnot()` row-count guards. **No number reaches a page without coming from an object.**
+**The manuscript:** Quarto book at `Smart_Car/book/`, 15 chapters, `R/book_setup.R` as the single source of truth with `stopifnot()` row-count guards. **Cross-references verified across all files — no dangling refs, no duplicate ids, image paths resolve.** **Voice rule: contractions.**
 
-**The record behind it.** TwoRed: 294 audited fills, odo 4 → **71,283 at the Matson dock**, 65 errata, **139 legs across 12 trips**, 134 fills carrying time and temperature, time zones COMPUTED not stored. Creamsicle: 173 fills, 86 legs, **with STOPPED TIME** (median gross 43.5 vs net 51.0). **Sixteen of Kim's accounts collected verbatim, every one cross-checked.**
+**The record.** TwoRed: 294 audited fills, odo 4 → **71,283 at the Matson dock**, 65 errata, 139 legs, time zones COMPUTED. Creamsicle: 173 fills, 86 legs, **with STOPPED TIME**. **Nineteen of Kim's accounts collected verbatim, every one cross-checked. All four unwitnessed states now closed** — three by geometry, Florida by incidental knowledge (Finding 044).
 
-**Not ready:** the temperature effect is **retired**; the wide-tire interval is **not printable until re-derived**; the Canadian variance test is a NON-RESULT; the southern economy signal **cannot be settled at all**; route work partial at a 78% gazetteer join.
+**Not ready:** the temperature effect is **retired**; the wide-tire interval is **not printable until re-derived**; the Canadian variance test is a NON-RESULT; the southern economy signal **cannot be settled**; route work partial at a 78% gazetteer join; **TwoFer is still not ingested.**
 
 ## The fleet
 
@@ -265,17 +265,15 @@ He withdrew his own West Virginia answer after checking a map: **different highw
 
 **★★★ AND THEY LIVE IN HAWAII (intentions item 6).** **Every dormancy is a FLIGHT home**; the **~3,700 excluded Honolulu miles are the only miles driven where they live**; and it **inverts layer one a second time** — **they live in a city and bought a city car to escape city driving.**
 
-## ★★★ THE SAFETY QUESTION IS LAYER ONE'S ACTUAL CONTENT (Kim, 2026-08-19) — now DRAFTED as ch.2
+## ★★★ THE SAFETY QUESTION — LAYER ONE'S CONTENT, DRAFTED AS ch.2
 
-**The preconception is not *it's a city car*. It is a question with a fear in it: IS IT SAFE?** — and it arrives as **affection**, not hostility: people say *I like your car* first and worry second. Kim's answer has three parts and only the third is the thesis: the engineering answer (Mercedes, the safety cell, *see the silver part?*, the race drivers with their hands up) which by his own verdict lands as **maybe, maybe not**; the empirical answer; and **SMALL AND NIMBLE ARE COMPONENTS OF SAFETY**, which INVERTS the preconception rather than rebutting it.
+**The preconception isn't *it's a city car*. It's a question with a fear in it: IS IT SAFE?** — and it arrives as **affection**: people say *I like your car* first and worry second. Three parts, and only the third is the thesis: the engineering answer (*see the silver part?*, the race drivers with their hands up) which by his own verdict lands as **maybe, maybe not**; the empirical answer; and **SMALL AND NIMBLE ARE COMPONENTS OF SAFETY**, which INVERTS the preconception rather than rebutting it.
 
-**★★★ AND BOTH CLOSE CALLS ARE ONE FAILURE: A TRUSTED PATTERN THAT DID NOT HOLD.** *You learn the pattern. You begin to trust your experience. Accidents happen when the pattern doesn't hold.* The Dalton hazard with no flag; the ramp with traffic coming up it. **You cannot drive without trusting patterns and you cannot make patterns hold, so the only thing left to ask of a car is what it can do in the second after one breaks.** **A safety cell is for the crash you are having; handling is for the crash you are not going to have.**
+**★★★ BOTH CLOSE CALLS ARE ONE FAILURE: A TRUSTED PATTERN THAT DIDN'T HOLD.** *You learn the pattern. You begin to trust your experience. Accidents happen when the pattern doesn't hold.* **You can't make patterns hold, so the only thing left to ask of a car is what it can do in the second after one breaks. A safety cell is for the crash you're having; handling is for the crash you aren't going to have.**
 
-**Layer 3 has the denominator: 100,999 documented miles across three cars**, 467 fills, 225 legs, 45 states, 10 provinces, no crash. **Layer 2 has the numerator — a crash avoided buys no fuel and ends no leg.** **Miles without near-misses are absence of evidence; near-misses without miles are anecdote.**
+**Layer 3 has the denominator: 100,999 documented miles across three cars**, 467 fills, 225 legs, **49 states and 10 provinces** (the log witnesses 45 — Finding 043), no crash. **Layer 2 has the numerator — a crash avoided buys no fuel and ends no leg.** **Miles without near-misses are absence of evidence; near-misses without miles are anecdote.**
 
-**★ The wide tires close the loop:** bought for control in a variable crosswind — **the difficulty was the VARIANCE, not the force** — so the fuel data's job was to PRICE the safety modification, not judge it. **The interval is currently NOT PRINTABLE (see `deferred.md`); the claim stands under every specification.**
-
-**⚠ Disciplines held in the draft:** *granted, no crash testing* — the record cannot answer a counterfactual; and **101,000 crash-free miles are not oversold** — one prudent driver, mostly interstate, mostly daylight. **The miles show the car did not prevent sixteen years of safe driving; the near-misses are where the car actively contributed.**
+**⚠ Disciplines held in the draft:** *granted, no crash testing*; and **101,000 crash-free miles are not oversold** — one prudent driver, mostly interstate, mostly daylight. **The miles show the car didn't prevent sixteen years of safe driving; the near-misses are where the car actively contributed.** **The wide-tire interval is NOT PRINTABLE until re-derived.**
 
 ## ★★★ CHAPTER ARCHITECTURE — SOLVED. KIM'S THREE LAYERS (2026-08-19) — full development in the log
 
