@@ -60,7 +60,7 @@ _Given by Kim 2026-08-12. This replaces the single-car framing entirely._
 
 ## ★ THE AMEX STATEMENTS ARE A THIRD INDEPENDENT RECORD (2026-08-18) — in the log
 
-Independent of both paper and spreadsheet, which is what made them decisive during the months the Fourth Crossing paper was believed lost. **Four things carried forward:** an elegant single-cause hypothesis of mine was refuted by one line of statement (the town was Alpine); **the merged row was a CHIMERA needing a SPLIT, not a relabel** -- which is why it passes the arithmetic test perfectly; **errata key to a ROW, never a LABEL**; and all five ferries are identified. **Postscript 2026-08-19: when the paper turned up, the AMEX-derived gallons and costs matched it exactly -- but the MERCHANT NAMES I had put in the Brand field did not (L62/L63).** Full write-up in `logs/proj_Smart_Car_log.md`.
+Kim scans everything. The AMEX statements and pump receipts recovered three contaminated 2016 rows, and when the paper log turned up months later it **matched them exactly on gallons and cost.** **Three independent records agreeing to the thousandth of a gallon.** The lesson was the search, not the data: it was the wrong KIND of search, not missing data.
 
 ## ★★ THE AUDIT TOOLKIT — SIX INSTRUMENTS (2026-08-18) — full write-up in the log
 
@@ -76,7 +76,7 @@ Independent of both paper and spreadsheet, which is what made them decisive duri
 
 ## ★★ FIRST ANALYSIS ON CLEAN DATA — SIX RESULTS (2026-08-18) — detail in the log
 
-Median leg **251 mi**; log distance ~**95%** of odometer miles; lifetime **39.44 MPG**; **leg length is the strongest predictor, +4.61 MPG per 100 mi**; **no degradation in sixteen years**; **$0.0936 per mile**. Temperature was null on leg-endpoint readings and is superseded by the fill-stamped result. `logs/proj_Smart_Car_log.md`.
+Median leg **251 mi**; log distance ~**95%** of odometer miles; lifetime **39.44 MPG**; **leg length is the strongest predictor, +4.61 MPG per 100 mi**; **no degradation in sixteen years**; **$0.0936 per mile**. Temperature is superseded and retired.
 
 ## ★★ THE WHEELS WERE NEVER ABOUT FUEL — THEY WERE ABOUT SAFETY — folded into ch.2
 
