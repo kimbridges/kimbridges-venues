@@ -7,22 +7,29 @@
 source("R/book_setup.R")
 ```
 
-People notice these cars. The reaction is always about the size.
+The first thing people say is that it is cute.
 
-<!-- KIM: the actual encounters go here. What people say at gas stations, what friends said,
-     what your mother's neighbours said. Two or three real ones, in their words. I have not
-     invented any, and I won't. This paragraph is a placeholder for material only you have. -->
+Very cute, usually, because it is so different from what anyone expects a car to look like. That was especially true in 2010. Smarts were not common then, and pulling into a gas station meant somebody was going to come over.
 
-And underneath the remarks there is always the same question, whether or not anyone asks it out loud. *Is it safe?* The car is small. Everything else on an American interstate is not. The arithmetic seems obvious.
+*I like your car.* That was almost always the opener. **Seeing TwoRed was an invitation to talk**, and a great many conversations over sixteen years started exactly that way, with a stranger walking across a forecourt to say something friendly about a very small car.
+
+And then, nearly every time, the same second question.
+
+*Is it safe?*
+
+It is worth noticing where that question comes from. **It is not hostility.** Nobody opens with the size as an accusation. They open by saying they like it — and then, having said so, they worry about it. The car is small, everything else on an American interstate is not, and the arithmetic seems obvious. **The concern is affectionate, which is exactly why it deserves a real answer rather than a defence.**
 
 ## The answer I give
 
-The car was designed by Mercedes. It is built around a steel safety cell — the same idea as the survival cell in a race car. The body panels are not the structure. The cell is the structure, and it is engineered to keep its shape.
+I have a short version and I have given it many times, standing next to the car.
 
-<!-- KIM: how you actually deliver this to someone standing next to the car, and what you see
-     on their face while you say it. -->
+Mercedes designed this to be safe. Just like a race car. **See the silver part? That's the safety cell.** When a race car crashes, the cell protects the driver — they pop out afterwards and hold their hands up.
 
-I have given that explanation many times. Do they believe it? Maybe. Maybe not. A specification does not defeat an impression, and the impression arrives first, from twenty feet away, before anyone has heard a word about safety cells.
+I demonstrate that part. Hands up, unhurt, walking away from the wreckage.
+
+Same thing here. A solid structure built for protection. The silver you can see running around the car is not trim; it is the structure, and the body panels hung on it are not.
+
+Do they believe it? Maybe. Maybe not. **A specification does not defeat an impression**, and the impression arrived first — from twenty feet away, before anyone heard a word about safety cells. The pointing helps more than the explaining does, which tells you something about what kind of question it really is.
 
 So I stopped relying on the engineering answer alone. What I have instead is sixteen years of driving.
 
@@ -92,12 +99,19 @@ The cars have handled well, and handling keeps you out of situations rather than
 
 ## The one modification, and what it cost
 
-The first crossing was made on the stock narrow tires. On open highway in a crosswind the car was pushed around and it was hard work to hold a line.
+The first crossing was made on the stock narrow tires — the ones a car like this leaves the factory with, sized for a city.
 
-<!-- KIM: what that actually felt like, at 70 mph, hour after hour. This is the moment the whole
-     safety argument comes out of, and it is the one part of it I cannot write for you. -->
+Crossing the deserts, a strong wind would come from the side. It pushed the car enough that staying in the lane could be a challenge. **And the difficulty was not the strength of it. It was that the push was not constant.** It varied, so I had to keep correcting — a small input, then another, then another, for as long as the wind lasted.
 
-Smart Madness prescribed wide tires. The rims came along with them, because this is a car that is fun to drive and fun to be seen in. It worked. The handling became very good.
+It was possible to control. But it was tiring.
+
+**That distinction is the whole of it, and it is worth holding on to, because this book comes back to it.** A steady force you lean against and forget. A varying one you have to answer, continuously, and the cost is not in any single correction but in the fact that they never stop. **The wind was not dangerous. Being tired at 70 miles an hour is.**
+
+It happened enough that I discussed it with some experts. They understood right away and they had the solution: wider tires.
+
+The fancy rims came along with them, because this is a car that is fun to drive and fun to be seen in. It worked. The handling became very good.
+
+Now, when I pull up behind a high-priced sports car, I note the width of their tires. Mine are not as wide. **But they are wide enough to take care of the problem.**
 
 **The wheels were never about fuel.** They were bought for control in a crosswind, which is to say they were bought for safety. But wider tires have a theoretical cost — more rolling resistance, more frontal area — usually put somewhere between one and three per cent.
 
