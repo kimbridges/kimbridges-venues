@@ -188,9 +188,13 @@ recoverable from if a file were overwritten rather than deleted.
 
 Intentions item 4 forbids printing an unsourced number. A US police-reported crash rate per 100M vehicle-miles (NHTSA or FHWA) would let the 101,000-mile figure be placed in context. **Until it is sourced and cited, state the exposure and stop.**
 
-### ★ OPEN QUESTION FOR KIM — where was the Texas on-ramp?
+### ⛔ STANDING CONSTRAINT — THE TEXAS ON-RAMP LOCATION IS NOT TO BE NARROWED (Kim, 2026-08-20)
 
-The record holds four eastbound approaches to the Fort Worth area and **cannot discriminate**, which is itself the thesis working. Candidates, all I-20 eastbound except the second: **2010-09-23 Abilene → Flower Mound** (284 mi / 2 days), **2011-06-29 Wichita Falls → Fort Worth** (US-287, 111 mi, 07:41–09:38 — no room), **2012-02-05 Colorado City → Ft. Worth** (261 mi / 6 days), **2014-08-06 Colorado City → Ft. Worth** (217 mi / 3 days). The 2012 and 2014 legs are the same pair 44 miles apart, but both span several days so local driving explains the spread. **Ask; do not infer.**
+*I don't know the freeway on-ramp location in Texas where there was the police car incident. And for personal safety, I wouldn't reveal it either. Near Ft Worth is sufficiently close.*
+
+**The three I-20 candidate legs assembled on 2026-08-19 have been REMOVED from this file.** No session should attempt to localise this incident; no published text may place it more precisely than **near Fort Worth**. **This is a request, not a feasibility question** — it stands whether or not the record could pin it, and the record cannot.
+
+**Alongside the other standing constraints:** Creamsicle's purchase reason is NOT FOR PUBLICATION; no Smart_Car slug, filename, figure, data file or deploy path may take a `bordeaux*` form; the Arctic Circle Challenge is cross-referenced, never re-told.
 
 ### ✓✓✓ THE CHAPTER ARCHITECTURE IS SOLVED, 2026-08-19 — this was the blocker
 
@@ -215,12 +219,6 @@ The record holds four eastbound approaches to the Fort Worth area and **cannot d
 
 **RISK MITIGATED 2026-08-19, decision still open.** Kim took a local copy of all the scanned PDFs to his own computer on being told. **That is a second physical copy, not a versioned backup** — it is not in the mirror, not committed, and will not track future scans. The policy question below is unchanged; only the urgency dropped.
 
-### ✓✓ CREAMSICLE IS INGESTED, 2026-08-19 — the second spine exists
-
-Three Google exports (`2024_Creamsicle_fuel_log.xlsx`, `2024_Creamsicle_trip_log.xlsx`, `2024_Creamsicle.md`) ingested by `creamsicle_ingest.R`, which skips interleaved summary rows programmatically and REPORTS the skip counts: Fuel_Log 196→173, Trip_Log 119→86, Pickup 10→6. Odometer 30,290→58,903, strictly increasing. **143 of 170 US rows balance the pump identity to under half a cent; exactly three fail by ≥2¢** and all three are now errata (C01 Oxnard, C02 Miranda, C03 Hays). Outputs: `Creamsicle_fuel_clean.csv` (173×19), `Creamsicle_trip_clean.csv` (86×15), `Creamsicle_log_errata.csv`.
-
-**The result that matters:** Creamsicle logs STOPPED time, so it measures what TwoRed structurally cannot. Across 84 timed legs, **median gross 43.5 mph against median NET 51.0 — a 7.5 mph gap.** That is the first empirical size for the driving-vs-living conflation named in FIVE THINGS #5, and it calibrates every TwoRed gross-speed number in the project as a CEILING roughly 7–8 mph below actual driving speed.
-
 ### TASK — extend the timezone table to Creamsicle's cities and apply Finding 035
 
 `TwoRed_city_timezones.csv` covers 121 cities and none of them are guaranteed to be Creamsicle's. Kim's own sheet carries the note *"Needs adj for time zone changes"* on its Miles/Hour column, so his stored speeds have the same defect Finding 035 found in mine. Do this before any cross-car speed claim is published — the 7.5 mph gap above is computed within-car and is safe, but a TwoRed-vs-Creamsicle speed comparison is not until this runs.
@@ -229,86 +227,34 @@ Three Google exports (`2024_Creamsicle_fuel_log.xlsx`, `2024_Creamsicle_trip_log
 
 Those rows were converted from litres and CAD per row, which inflates residual spread by itself. The rough-road variance test (SD 4.87 n=18 vs 4.73 n=268, p=0.79) is a **NON-RESULT, not a null**, and must not be cited as one. **Creamsicle's three BC rows carry litres/CAD alongside gallons/USD — that is the layout to copy.**
 
-### ✓✓ THE RECORD IS CLOSED AT BOTH ENDS, 2026-08-19
+### ✓ CLOSED 2026-08-19/20 — full entries archived in `logs/proj_Smart_Car_log.md`
 
-`2017_TwoRed_last_mainland_fuel.pdf`: two final fills, DAILY TRAVEL blank, and on the BACK of the sheet,
-circled -- **`5/22/17  71,283  LV Seattle @ Matson`.** Kim: *there is no travel log. We got on a plane and
-left TwoRed at the dock for shipping.*
+Eight items finished and moved out so this file reads as OPEN work. Each is verbatim in the log under **SMART_CAR ITEMS CLOSED 2026-08-19/20**:
 
-**The record ends at 71,283 in Seattle, not 71,181 in Toledo.** Last mainland miles: Toledo (fuelled 10:09)
--> Seattle = **102**, against ~100 road miles. **Both odometer readings documented; nothing reconstructed.**
-Filed as `data/TwoRed_2017_LastMainlandMiles_trip_log.csv`, arrival time NA because none was ever written.
+- **Creamsicle is ingested** — 173 fuel rows, 86 legs, the 7.5 mph net-vs-gross gap.
+- **The record is closed at both ends** — 71,283 at the Matson dock; ~3,697 implied Honolulu miles.
+- **Three more scans** — mostly redundant, and the redundancy paid twice.
+- **The 46 Dalton miles** — Coldfoot → Wiseman; the two Yukon River Crossing fills split it 32 / 14.
+- **The Penultimate State is Vermont** — the lawyer with an office in NH and a house across the river.
+- **West Virginia** — I-64 Charleston to Beckley, driven twice; **superseded 2026-08-20, see ROAD CHARACTER below: different highways, one country.**
+- **The 2010 loop has its story** — and it explained the only dormancy east of the Rockies.
+- **Delaware recovered by geography** — 264 odometer miles against a 305-mile Delaware-free alternative.
 
-**★★★ THIS CLOSES THE PROJECT'S FIRST OPEN QUESTION (2026-08-12).** Charter ~75,000; log stopped 71,181;
-Kim: *about 20 miles short of 75,000*. **Mainland = 71,283; implied Honolulu miles after shipping ~3,697.**
-**The gap was never missing data -- it is the SCOPE BOUNDARY, quantified at the terminus.**
+### ★★★ ROAD CHARACTER — a new taxonomy from Kim, 2026-08-20, and a new analysis
 
-**★★ AND THE LAST TWO MPG VALUES ARE NOT ECONOMY.** 52.4 and 93.0 (the highest in the record) come from
-fills of **4.333 and 2.496 gallons** against a lifetime mean of 6.24. **Matson requires a low tank on
-delivery** -- these are a tank being run DOWN for shipping. **RULE: the first and last rows of any record
-are the least trustworthy, because they are taken while the measuring is being started or stopped.** The
-first fill carries a slashed-zero error (L59); the last two are shipping artifacts. **Trim the ends before
-quoting an extreme.**
+He withdrew the West Virginia "same highway" claim himself after checking a map: **different highways, one country** — *rolling, tree-covered hills, a winding highway, small villages tucked in the valleys.* **And he added a category the project did not have: TREE TUNNELS — very long straight divided highway walled by dense trees. Flat. Monotonous. In the South.** The third term is the one both are a relief from: *nearly straight freeways lined by commerce, billboards and wall-to-wall housing.*
 
-**Coverage final: 139 legs (132 timed), 174 of 294 fuel rows under a trip log (59%), 134 fill time+temp (46%).**
+**★★ The project's existing road taxonomy is built from SPEED; this one is built from EXPERIENCE. They are different axes and both are needed.** Gross speed does not separate them — **Deep South median 40.3 mph (n=10) vs Appalachian 38.0 (n=6), p = 0.42** — and **that null completes a pair with the Canadian Plains: the most STRESSFUL miles and the most MONOTONOUS miles both read as unremarkable fast runs. The record is blind to the driver's experience at BOTH ends of the scale.** *Vigilance has no column; neither does tedium.*
 
-### ✓ THREE MORE SCANS, 2026-08-19 — mostly redundant, and the redundancy paid twice
+**TASK — classify legs by Kim's categories and use them in the writing.** The categories are his and they are chapter material even where they are not measurable. Ask him to name the tree-tunnel stretches he remembers; do not infer them.
 
-Kim scanned `2015_TwoRed_April-May_travel_log.pdf`, `2016_TwoRed_September_travel_log.pdf` and
-`2017_TwoRed_travel_logs.pdf`, warning they might overlap. **Six of the eight pages ARE duplicates** --
-the 2015 file is the Sedona sheet plus Fourth Crossing May p1 (its filename is wrong; there is no April-May
-2015 content in it), the September file is the fall-winter sheet, and 2017 p1 is the January sheet. p4 is blank.
+### ⚠ SIGNAL, NOT A FINDING — a ~3 MPG southern economy deficit that CANNOT be settled
 
-**★★★ BUT A 'DUPLICATE' PAGE CARRIED A TRIP NAME THE OTHER SCAN DID NOT SHOW: `Relocation  1141 miles`.**
-The fall-winter legs run odometer **66,645 -> 67,786 = 1,141 miles. Exact.** So the September 2016 trip is
-not a tour -- **it is the one-way RELOCATION of TwoRed to Oregon**, which is why the car was at a friend's
-house in Eugene when the January 2017 call came about his mother. **Two scans of the same page are not the
-same evidence: a marginal annotation can survive in one and not the other.**
+`mpg ~ leg_miles + group`: South **-3.18, p=0.023** (n=30). With era: **-2.61, p=0.065**. On the 16 rows carrying a fill-stamped temperature: **-5.81, p=0.009**, with temperature itself null (**+0.108, p=0.39**). **Plausible mechanism is the inverse of the intuition — flat straight divided highway invites steady high speed, and drag costs an 1,800-lb car more than hills do.**
 
-**★★ AND 2017 pp.2-3 ARE GENUINELY NEW -- a whole trip nobody knew was logged.** New file
-`data/TwoRed_2017_February_trip_log.csv`, **6 legs**, plus 5 fill times and temperatures. **All 5 fuel rows
-matched the dataset EXACTLY on date, gallons and cost, and all balance the pump identity within half a cent.**
+**Three reasons it is a signal:** the coefficient is **unstable across subsamples** (-2.6 to -5.8), **n=30**, and temperature is **confounded with group** (median 87.5 degF vs 76.5). **★★ And unlike the temperature effect it cannot be resolved by waiting: Creamsicle has ZERO fills in any southern state** — its routes are California↔Wisconsin and the West. **The sample is closed at 30 and will not grow.**
 
-**The February 2017 trip is a SECOND relocation**: Mentone -> Long Beach -> Santa Maria -> S. San Francisco
--> Point Arena -> Brookings -> **Eugene**, and the car then sits until 2017-05-20. **Its gross speeds are the
-slowest sustained run in the record -- 19.6, 21.1, 21.2 mph on the Highway 1 legs** (Long Beach->Santa Maria,
-S.SF->Point Arena), against 41 on the inland ones. **Trip median 31.1 mph, second-slowest of the twelve trips
-after the fall-winter coastal run at 28.3.** The road-type ordering holds and now has its extreme case.
-
-**Coverage after all three: legs 132 -> 138 (132 timed); miles inside a leg 41,061 = 58% of lifetime; fuel
-rows under a trip log 169 -> 173 (59%); fill time+temp 127 -> 132 (45%).**
-
-**★ STILL UNCOVERED at the tail: 70,923 -> 71,181** (the last two fills, Eugene 2017-05-20 and Toledo WA
-2017-05-22 -- the end of the record). And the early period 2010-07 to 2011-03 remains DEFINITIONALLY
-uncovered per Kim's ruling.
-
-### ✓ THE 46 DALTON MILES ARE EXPLAINED, 2026-08-19 — Wiseman
-
-Kim: Coldfoot → Wiseman and back, the museum, a resident's tour, and the season's first snow. **The two Yukon River Crossing fills split the 46 into 32 north of the river (the Wiseman round trip, to the mile) and 14 at the Fairbanks end.** Closed. Full working in the log.
-
-### ★ OPEN QUESTION FOR KIM — Vermont or Maine as the Penultimate State?
-
-Kim's ruling settles the CONCEPT: 49 mainland states leaves **Hawaii as the Ultimate State**, so the penultimate is the 49th mainland state reached. It was never Florida. **But the record's last new states run Vermont 5/18, New Hampshire 5/20, Maine 5/22 (Lubec) — all on the 2014 trip he named Penultimate State.** He remembers Vermont; the record's last is Maine. **Do not print either until he rules.** Vermont is marked by a two-night stop and 59 odometer miles for an 18-mile drive.
-
-### ✓✓✓ WEST VIRGINIA IS CLOSED, 2026-08-19 — I-64, Charleston to Beckley
-
-Kim checked Street View and confirmed the road. **The record puts TwoRed on that stretch on exactly two days in sixteen years — 2010-10-01 and 2016-06-12 — and *twice* is the count he gave before anyone looked.** Both times: arrive Huntington late, sleep, drive the hills in the morning (2010: Barboursville fill at odo 3,310 closing a 275-mi day, then 197 mi to Hillsville VA, ratio 1.38, I-64 east then I-77 south. 2016: in 14:54, out 08:58, 359 mi at 49.9 mph, Lewisburg fill splitting it 155 + 204 against I-64's ~161 and ~205).
-
-**The memory got the road and the count right and mis-bound one occasion:** he named Frostburg 2012, which is **I-68** (two Morgantown fills; the 6/1 fill sits 65 mi short of Frostburg against I-68's ~63) and never touches this road. The first drive was 2010, in the car's first ten weeks. **Full write-up and the failure-mode analysis in the log.**
-
-### ✓✓ THE 2010 LOOP HAS ITS STORY, 2026-08-19 — and it explained an outlier nobody had looked for
-
-Kim gave the Summersville trip unprompted: a Frostburg meeting, then **a car left in a St Louis car wash for three and a half weeks** while he flew home, then Nancy, a New England meeting, a university tour and a southern return to California. **All of it is in the fuel log.** The parking is **Altamont IL 2010-10-11 (odo 5,730) → Effingham IL 2010-11-05 (5,957) — 25 days, 227 miles, between two towns seventeen miles apart.**
-
-**★★★ And it is the only dormancy east of the Rockies in sixteen years.** 2,147 of 2,495 elapsed days (86%) fall inside a spell of two weeks or more; there are 35 such spells and **30 are California, 2 Arizona, 2 Oregon, 1 Illinois.** His story is the sole explanation of the single outlier. **New analysis queued: THE PARKING CONSTELLATION** — where the car sleeps, mapped against where it drives.
-
-**★ One open question for Kim (Finding 039):** he places the parking BEFORE Nancy's New England meeting; the record puts New England on **10/7–10/10, before the 25-day gap**, and the university tour on **11/6–11/10, after it**. Every component checks out; only the order differs. **Ask whether Nancy joined in October rather than November.** Do not treat this as a correction — it is the expected error profile of the instrument.
-
-**Still open: the OTHER 2010 West Virginia trip.** 2010-09-30 Barboursville is now known to be the first of the I-64 pair. **2010-11-14 Summersville is on US-19, the New River Gorge Bridge road**, and sits inside this loop's return — but the road itself has no story.
-
-### ✓ DELAWARE IS RECOVERED BY GEOGRAPHY, 2026-08-19
-
-Never appears as a label. **The Colonial Heights VA fill → Bellmawr NJ reads 264 odometer miles (great-circle 219, ratio 1.21); the only Delaware-free road is ~305 miles.** The record holds Delaware as a DISTANCE. **State tally: 45 documented, 46 with Delaware, plus Florida on testimony; Rhode Island and South Dakota have neither. Provinces confirmed at exactly 10 — the charter's claim, verified.**
+**Belongs to the DIFFICULTY strand by the editorial rule. Do not print the coefficient. Print the fact that it cannot be settled.**
 
 ### ★★★ READINESS ASSESSMENT, 2026-08-19 — Kim asked whether the record is complete enough to start writing
 
@@ -351,7 +297,6 @@ and is now the only thing blocking a start. **Kim's TWO LOGS, TWO SUBJECTS frame
 its boundary attached: the trip log measures what the human ACHIEVED, it records MEANS and not VARIANCE, and
 the stories are the sole record of what the driving COST. **Settle the architecture and the rest is
 drafting.**
-
 
 
 _Section opened 2026-08-12 when the project was filed; the fleet roster and Kim's

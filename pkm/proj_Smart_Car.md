@@ -35,28 +35,18 @@ _Given by Kim 2026-08-12. This replaces the single-car framing entirely._
 
 | # | Name | Year / model | Power | Status | Data on hand |
 |---|---|---|---|---|---|
-| 1 | **TwoRed** | 2010 Smart Passion | ICE | **Owned** | Deepest by far — 293 fill-ups, 2010-2017, 52 states/provinces |
-| 2 | **Two4Two** / **TwoFer** | Smart Pure | ICE | **Leased** from 2014-03-22; returned | **`TwoFer Gas Log` FOUND 2026-08-16** -- 7 fill-ups, 2014-03-22 (dealer, odo 0) to 2015-01-10, **1,209 miles, every one in Honolulu** |
-| 3 | **Creamsicle** | 2016 453 ForTwo "Edition #1", white/orange, 0.9L turbo triple, 89 hp, six-speed | ICE | **Sold** to family 2024-10-20 | **FOUND 2026-08-16 — the second spine, and it is a DRAFT not raw material.** Gas log 2021-09-23 to 2023-09-27 (odo 30,290→51,345, metric BC fill-ups already normalised); trip log 2021-09-23 to 2024-10-20; Jan–Jul 2024 update **with lat/long**; a 9-trip narrative; a packing inventory. **28,697 miles / 1,123 days / 9,845 mi-yr**, 18 states + Canada |
+| 1 | **TwoRed** | 2010 Smart Passion | ICE | **Owned** | Deepest by far — 294 fills, 2010-2017, 45 states + 10 provinces, odo 4 → 71,283 |
+| 2 | **Two4Two** / **TwoFer** | Smart Pure | ICE | **Leased** 2014-03 to 2015-01, returned | 7 fills, **1,209 miles, every one in Honolulu** |
+| 3 | **Creamsicle** | 2016 453 ForTwo "Edition #1", white/orange, 0.9L turbo triple, 89 hp | ICE | **Sold** to family 2024-10-20 | **INGESTED 2026-08-19** — 173 fills, 86 legs, odo 30,290→58,903, **with STOPPED TIME**; 18 states + BC. **Zero southern fills.** |
 | 4 | **Bordeaux** | 2018 Smart | **Electric** | **Owned** | Not yet inventoried |
 
 **The arc the roster makes visible, which one car could not.** Sixteen years, four cars, three ICE and one electric, spanning purchase, lease, resale and replacement — **and the choice made again three times after the first.** That is the fleet thesis.
 
-**★ THE 75,000-MILE QUESTION IS RESOLVED (Kim, 2026-08-12).** TwoRed is **about 20 miles short of 75,000**; the log's 71,181 is where the *log* stops, not the car. **The charter was right and my reading of it was wrong.** The mainland record now closes at **71,283 at the Matson dock** (below), so the ~3,700 remaining are Honolulu miles. **Cite ~75,000 as Kim's figure, not as derived.**
+**★ THE 75,000-MILE QUESTION IS RESOLVED (Kim, 2026-08-12).** TwoRed is **about 20 miles short of 75,000**; the log's 71,181 is where the *log* stops, not the car. The mainland record now closes at **71,283 at the Matson dock**, so the ~3,700 remaining are Honolulu miles. **Cite ~75,000 as Kim's figure, not as derived.**
 
-**Creamsicle's data is the second spine and is now INGESTED (2026-08-19, below).** The project is not one documented car plus three anecdotes, but two well-documented cars bracketing a lease and an EV.
+**Creamsicle's purchase reason is in `deferred.md` and is NOT FOR PUBLICATION** (Kim, 2026-08-12). The public chapter says the car was bought to help family and stops there.
 
-**Creamsicle's purchase reason is recorded in `deferred.md` and is NOT FOR PUBLICATION**
-(Kim, 2026-08-12). It concerns a family member's medical history. The public chapter says
-the car was bought to help family; the reason stays in the PKM so a future session
-understands why a fourth Smart appeared, and stops there.
-
-**⚠ NAME COLLISION — `Bordeaux`.** The car shares its name with two published stories,
-`/stories/bordeaux` and `/stories/bordeaux-2` (the wine booklets). **Rule adopted
-2026-08-12: the car keeps its name in prose, but NO Smart_Car output — slug, filename,
-figure, data file or deploy path — may take a `bordeaux*` form.** Costs nothing now and
-prevents a future render from shadowing a live story. Folder/slug/name drift is already a
-known root cause here — see `priorities.md` item 3.5.
+**⚠ NAME COLLISION — `Bordeaux`.** The car shares its name with two published stories (`/stories/bordeaux`, `/stories/bordeaux-2`). **Rule: the car keeps its name in prose, but NO Smart_Car output — slug, filename, figure, data file or deploy path — may take a `bordeaux*` form.**
 
 ## ★ THE TWO STRUCTURAL RULINGS (Kim, 2026-08-16/17) — full write-ups in the log
 
@@ -197,15 +187,15 @@ The final two fills read **52.4 and 93.0 MPG** — the second the highest in the
 
 **★ General rule: the first and last rows of any record are the least trustworthy, because they are taken while the measuring itself is being started or stopped.** The first fill carries a slashed-zero cost error (L59); the last two are shipping artifacts. **Trim the ends before quoting an extreme.**
 
-## ★★★ FOUR ANSWERS FROM KIM (2026-08-19) — full working in the log
+## ★★★ THE OPEN QUESTIONS ARE CLOSED (2026-08-19/20) — full working in the log
 
-**1. The 46 Dalton miles are 32 + 14 — CLOSED.** Coldfoot → Wiseman and back, the museum, the season's first snow. **The two Yukon River Crossing fills split the leg:** north of the river 115 out / **147 back (+32)**; south of it 137 / **151 (+14)**. Coldfoot is Dalton mile 175, the Wiseman spur ~16 road miles on — **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.* **The same leg is the slowest 200+-mile day in sixteen years (22.6 mph against 28.6 over the identical road the day before) and starts at 38 degF after Coldfoot read 64 degF the previous evening** — the weather turning, at the hour he describes.
+**1. The 46 Dalton miles are 32 + 14 — Coldfoot → Wiseman.** The two Yukon River Crossing fills split the leg: north of the river 115 out / **147 back (+32)**, south of it 137 / **151 (+14)**. Coldfoot is Dalton mile 175, the Wiseman spur ~16 road miles on — **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.* The same leg is the **slowest 200+-mile day in sixteen years (22.6 mph against 28.6 over the identical road the day before)** and starts at **38 degF after Coldfoot read 64 degF the previous evening** — the weather turning, at the hour he describes.
 
-**2. The Penultimate State was never Florida — STILL OPEN.** 49 mainland states leaves **Hawaii as the Ultimate State**, so the penultimate is the 49th reached. **The record's last new states all fall on the 2014 trip he named Penultimate State: Vermont 5/18, New Hampshire 5/20, Maine 5/22 at Lubec.** He remembers Vermont; the record's last is Maine. **His is the better instrument.** Vermont carries a mark the others lack — the trip stops dead there, **two nights and 59 odometer miles for a drive that is 18 miles direct.**
+**2. ✓ THE PENULTIMATE STATE IS VERMONT (Kim, 2026-08-20), and there was a reason to go.** *I was working with a lawyer who has an office in NH, but lives nearby in Vermont. I drove to his house.* **That is precisely the anomaly the record flagged and could not read:** Hartland VT 5-18 at odo 44,746, next leg opens **Lebanon NH** 5-20 at 44,805 — **two nights and 59 odometer miles for an eighteen-mile drive**, and Lebanon sits across the Connecticut River from Hartland. Office one bank, house the other. **★ Definitional point for the writing: TwoRed's state list and KIM'S state list are two different quantities** — Maine first appears four days later — **which is also why the record holds 45 against a challenge that counts to 49.**
 
-**3. ★★★ DELAWARE IS INVISIBLE AS A LABEL AND PROVABLE AS A ROW.** Four mainland states never appear: Florida, Delaware, Rhode Island, South Dakota. Florida is Finding 036; **Delaware is the same silence and geography breaks it.** The 2014-05-16 Colonial Heights VA fill → Bellmawr NJ reads **264 odometer miles** (great-circle 219, ratio 1.21); **the only Delaware-free road is ~305 miles, 40 more than the odometer permits.** Delaware is in the record as a DISTANCE — **key to a ROW, never a LABEL.** **Charter claim settled: provinces are exactly ten. States: 45 documented, 46 with Delaware, plus Florida on testimony.**
+**3. ★★★ DELAWARE IS INVISIBLE AS A LABEL AND PROVABLE AS A ROW.** Four mainland states never appear: Florida, Delaware, Rhode Island, South Dakota. Florida is Finding 036; **Delaware is the same silence and geography breaks it.** The 2014-05-16 Colonial Heights VA fill → Bellmawr NJ reads **264 odometer miles** (great-circle 219, ratio 1.21); **the only Delaware-free road is ~305 miles, 40 more than the odometer permits.** **Key to a ROW, never a LABEL.** Charter claim settled: **provinces are exactly ten.**
 
-**4. ★★★ WEST VIRGINIA — CLOSED. I-64, Charleston to Beckley, driven exactly twice.** Confirmed by Kim on Street View. **The record puts TwoRed on that stretch on exactly two days in sixteen years — 2010-10-01 and 2016-06-12 — the count he gave before anyone looked.** Both times: arrive Huntington late, sleep, drive the hills in the morning. **The pair he NAMED was wrong** — Frostburg 2012 is I-68, pinned by two Morgantown fills, and never touches this road. **See Finding 039.**
+**4. ⛔ THE TEXAS ON-RAMP — CLOSED BY REQUEST.** *For personal safety, I wouldn't reveal it either. Near Ft Worth is sufficiently close.* **No session may attempt to localise it; no published text may place it more precisely than NEAR FORT WORTH.** The candidate legs have been removed from `deferred.md`. **A request, not a feasibility question.**
 
 ## ★★★ CREAMSICLE IS INGESTED — THE SECOND SPINE EXISTS (2026-08-19)
 
@@ -250,23 +240,12 @@ Creamsicle's trip log has a **`Stop`** column and a **`Comment`** column. 54 leg
 
 _Kim, 2026-08-12._ Statistics with graphics, on:
 
-- **Fuel costs** — per fill, per mile, over time and across the price swings of 2010-2017.
-- **Daily driving distances** — what a day in a Smart actually looks like, against the
-  urban-commuter assumption the whole document exists to refute.
-- **Average speeds** — the Fourth Crossing file already carries time-zone-corrected
-  `activity_time` and `miles_per_hour`, so this is the readiest analysis in the set.
+- **Fuel costs** — per fill, per mile, over time, across the 2010-2017 price swings.
+- **Daily driving distances** — what a day in a Smart actually looks like, against the urban-commuter assumption the document exists to refute.
+- **Average speeds** — the Fourth Crossing file already carries time-zone-corrected `activity_time` and `miles_per_hour`.
+- **★★ THE PARKING CONSTELLATION (added 2026-08-19)** — where the car SLEEPS is a second geography the record has always held: **86% of elapsed days are dormancy; 34 of the 35 long spells are CA/AZ/OR.** Map it against the driving constellation.
 
-**★ THE PHOTO LAYER EXISTS AND IT JOINS (2026-08-16).** The Creamsicle photo set in `images/Creamsicle/`: **38 files, 35 with GPS, 37 with timestamps, 2021-09-23 to 2024-10-22** — the full ownership and two days past it.
-
-**The join is clean because `DateTimeOriginal` is LOCAL time with `OffsetTimeOriginal` carrying the zone, and the logs record local clock times too.** So photos join to fuel stops and legs on date + local time with **no timezone reconstruction** — the very correction the Fourth Crossing sheet had to build a column for. **It validates on the first record:** earliest photo **2021-09-23 11:42**, first fill **11:45 at Nixa MO** — the car at the dealership, minutes before its first tank.
-
-**Coverage: 8 of 9 trips**, plus a staging shot at Torrance two days before T9 departs. **T2 (LA→Madison, Oct 2021) is the blank** — the solo run Kim describes as pushing his daily limits. **NOT an absence claim.**
-
-**★★ A FOURTH ANALYSIS (2026-08-19): THE PARKING CONSTELLATION.** Where the car SLEEPS is a second geography the record has always held — **86% of elapsed days are dormancy; 34 of the 35 long spells are in CA, AZ or OR.** Map it against the driving constellation.
-
-### Two narrative set-pieces moved to the log 2026-08-18
-
-**THE YUKON RIVER CAMP STORY** and **THE ALPINE STORY** live verbatim in the log under ARCHIVE, with the superseded scan-coverage table. Both are for the Expeditions chapter; neither is working state.
+**★ THE PHOTO LAYER EXISTS AND IT JOINS (2026-08-16).** `images/Creamsicle/`: **38 files, 35 with GPS, 37 with timestamps, 2021-09-23 to 2024-10-22.** **The join is clean because `DateTimeOriginal` is LOCAL time with `OffsetTimeOriginal` carrying the zone, and the logs record local clock times too** — so photos join on date + local time with **no timezone reconstruction**. **It validates on the first record:** earliest photo **11:42**, first fill **11:45 at Nixa MO** — the car at the dealership, minutes before its first tank. **Coverage 8 of 9 trips**; T2 (LA→Madison, Oct 2021) is the blank — **not an absence claim.**
 
 ## What the data ACTUALLY contains -- moved to the log 2026-08-18
 
@@ -295,15 +274,14 @@ Written 2026-08-12 so a session opening this file cold knows what was decided an
 - **Superseded:** `G:\My Drive\kimbridges-stories\underway\Smart_car\` -- the original mis-filing. Copies still there; neither bridge deletes, so removal is Kim's.
 
 ## Key Files
-- `data/TwoRed_fuel_June_2014.xlsx` — 4 sheets: Gas Log (293 fill-ups, 2010-2017), Locations (212), Trip Log (7), Canada2014 (24, **metric — normalisation still OPEN**). The foundational dataset.
+- `data/TwoRed_fuel_June_2014.xlsx` — 4 sheets: Gas Log (293 fills), Locations (212), Trip Log (7), Canada2014 (24, **metric — normalisation OPEN**). The foundational dataset.
 - `data/2016_Fourth_Crossing_Analysis.xlsx` — 35 rows, time-zone-corrected activity time. The cleanest asset.
-- **`data/Fuel_and_Trip_Logs/*.pdf` — 22 scans, 2010-2017, Kim's paper field sheets.** Top half fuel, bottom half trip; the fuel halves were typed up years ago, **most trip halves never were.** Primary source behind all 65 errata rows. **Not in the mirror — see Finding 038.**
-- **13 trip-log CSVs, 139 legs** (132 timed), transcribed from those scans; each carries time, city and temperature at BOTH ends, both odometers, written distance, odometer delta, timezone shift, elapsed hours and gross mph, plus per-row notes on every uncertain reading.
+- **`data/Fuel_and_Trip_Logs/*.pdf` — 22 scans, 2010-2017, Kim's paper field sheets.** Primary source behind all 65 errata. **Not in the mirror — Finding 038.**
+- **13 trip-log CSVs, 139 legs** (132 timed), each carrying time, city and temperature at BOTH ends, both odometers, written distance, odometer delta, timezone shift, elapsed hours, gross mph, and per-row notes.
 - `data/TwoRed_fuel_clean.csv` (294), `TwoRed_log_errata.csv` (65), `TwoRed_fuel_timetemp.csv` (134), `TwoRed_city_timezones.csv` (121 cities).
-- **Creamsicle:** `Creamsicle_fuel_clean.csv` (173), `Creamsicle_trip_clean.csv` (86), `Creamsicle_log_errata.csv` (3); sources `2024_Creamsicle_*.xlsx` + `.md`; built by `creamsicle_ingest.R`.
-- `source/Smart_Car_master_dictionary.pdf` — expedition names, dates, geographic targets.
-- `source/Smart_Car.docx` — 10.3 MB. Largest section is the Arctic Circle Challenge, already published; **a quarry, not a draft.** `source/Smart_Car_2016.pptx` — 2016 presentation. `source/charter_2026-05-08.md` — the original charter, kept verbatim, superseded by this file on scope and Chapter 5.
-- `images/Creamsicle/` — 37 geotagged trip photos plus `Creamsicle_profile.jpg` (was `two_smarts.jpg`, ruled by Kim 2026-08-16). **Backstop for the deleted 439 KB `creamsicle.jpg`: a copy survives at `kimbridges-stories\underway\Smart_car\` — do not delete that folder without checking.**
+- **Creamsicle:** `Creamsicle_fuel_clean.csv` (173), `Creamsicle_trip_clean.csv` (86), `Creamsicle_log_errata.csv` (3); built by `creamsicle_ingest.R`.
+- `source/` — `Smart_Car_master_dictionary.pdf` (expedition names, dates, targets); `Smart_Car.docx` (10.3 MB, largest section is the already-published Arctic Circle Challenge — **a quarry, not a draft**); `Smart_Car_2016.pptx`; `charter_2026-05-08.md`, kept verbatim, superseded on scope and Chapter 5.
+- `images/Creamsicle/` — 37 geotagged trip photos + `Creamsicle_profile.jpg`. **Backstop for the deleted `creamsicle.jpg`: a copy survives at `kimbridges-stories\underway\Smart_car\` — do not delete that folder without checking.**
 
 ## Related Projects
 - `proj_Trip_Log.md` — the travel-photo + trip workflow; upstream.
@@ -313,47 +291,58 @@ Written 2026-08-12 so a session opening this file cold knows what was decided an
 - `proj_kimbridges_stories.md` — holds the published Arctic Circle Challenge.
 
 
+
+## ★★★ ROAD CHARACTER — A TAXONOMY FROM EXPERIENCE, AND A NULL THAT COMPLETES A PAIR (Kim, 2026-08-20)
+
+**He withdrew his own West Virginia answer after checking a map: the two drives were DIFFERENT HIGHWAYS**, and what they shared was *the same type of countryside; rolling, tree-covered hills, a winding highway, small villages tucked in the valleys.* **So the memory retained a LANDSCAPE TYPE, not a road — and *twice* counted instances of a category.** He said *highway*; he meant *this kind of country*. **Finding 039 amended: when a witness names a specific, test whether the specific stands for a class.**
+
+**And a category the project did not have — TREE TUNNELS:** *very long (miles and miles) of straight divided highway lined by a dense thicket of trees. Flat. Monotonous. Where are these found? In the South.* The third term is what both are a relief from: *nearly straight freeways lined by commerce, billboards and wall-to-wall housing.*
+
+**★★ The project's road taxonomy is built from SPEED; his is built from EXPERIENCE. Different axes, both needed.** Gross speed does not separate them — **Deep South median 40.3 mph (n=10) against Appalachian 38.0 (n=6), p = 0.42.**
+
+**★★★ AND THAT NULL COMPLETES A PAIR WITH THE CANADIAN PLAINS.** Those were the most STRESSFUL miles of the crossing and read as an unremarkable fast run. **Tree tunnels are the most MONOTONOUS and read exactly the same way. The record is blind to the driver's experience at BOTH ends of the scale — terror and boredom produce identical numbers.** *Vigilance has no column; neither does tedium.* **This is the cleanest one-line case the project has for why layer 2 is load-bearing.**
+
+**⚠ A SIGNAL IN THE ECONOMY THAT CANNOT BE SETTLED.** `mpg ~ leg_miles + group` gives South **-3.18, p=0.023** (n=30); with era **-2.61, p=0.065**; on the 16 temperature-stamped rows **-5.81, p=0.009** with temperature itself null. **Mechanism would be the inverse of the intuition — flat straight highway invites steady high speed, and drag costs an 1,800-lb car more than hills do.** But the coefficient is **unstable across subsamples**, n=30, and temperature is confounded with group. **★★ And it cannot be resolved by waiting: Creamsicle has ZERO southern fills. The sample is closed at 30.** **DIFFICULTY strand, not analysis. Do not print the coefficient; print the fact that it cannot be settled.**
+
 ## ★★★ THE SAFETY QUESTION IS LAYER ONE'S ACTUAL CONTENT (Kim, 2026-08-19) — full development in the log
 
-**The preconception now has a name, and it is not *that thing is a city car*. It is a question with stakes: IS IT SAFE?** *These are small cars!* Kim's account is verbatim in the log. His answer has three parts and only the third is the thesis:
+**The preconception is not *that thing is a city car*. It is a question with a fear in it: IS IT SAFE?** *These are small cars!* **A shrug gives a reader no reason to turn the page; a fear does.** Kim's answer has three parts and only the third is the thesis:
 
-1. **The engineering answer** — Mercedes designed it; the safety cell is race-car logic. **His own verdict on how that lands: *Do they believe it? Maybe. Maybe not.*** The engineering answer alone does not persuade, and the document should not pretend otherwise.
-2. **The empirical answer** — sixteen years of prudent driving, and nothing happened.
-3. **★★★ THE THESIS, and it INVERTS the preconception rather than rebutting it: SMALL AND NIMBLE ARE COMPONENTS OF SAFETY.** Both close calls were survived BECAUSE the car is small. **The Yukon pothole** — unflagged, *big enough to eat a big car too*, and he was nimble enough to go around it. **And the second, told tonight for the first time: an Interstate on-ramp east of Fort Worth**, a police car coming UP the ramp at full speed with no lights and no siren; hard right, hard brakes, a slide to a stop inches from the guard rail. He waited, shaken, and watched several cars take the ramp exactly as he had — **it was the police car going the wrong way.** *Small and nimble are components of safety. That's maybe counter intuitive.*
+1. **The engineering answer** — Mercedes, the safety cell, race-car logic. **His own verdict on how it lands: *Do they believe it? Maybe. Maybe not.*** Keep that sentence; a spec sheet does not defeat a visual impression, and the document is stronger for admitting it.
+2. **The empirical answer** — sixteen years of prudent driving, nothing happened.
+3. **★★★ THE THESIS: SMALL AND NIMBLE ARE COMPONENTS OF SAFETY.** It **INVERTS** the preconception rather than rebutting it — size stops being a liability to excuse and becomes the mechanism of the escape. **The Yukon pothole** was *big enough to eat a big car too*: **the hazard was size-blind, the escape was not.** **The Texas on-ramp** — a police car coming UP it at full speed, no lights, no siren; hard right, hard brakes, a stop inches from the guard rail. **The hazard was external, unlawful and unpredictable: no prudence prevents it, and what was available was steering and braking in a very short distance.** That is a handling argument, and handling is measurable in a way a crash test is not.
 
-**★★★ AND THE SAFETY CHAPTER IS THE PROOF THAT THE THREE LAYERS ARE LOAD-BEARING, because the argument CANNOT be made from one of them.**
+**★★★ THE SAFETY CHAPTER IS THE PROOF THAT THE LAYERS ARE LOAD-BEARING — write it first.** **Layer 3 has the denominator: 100,999 documented miles across three cars** (TwoRed 71,177 + Creamsicle 28,613 + TwoFer 1,209; ~105,000 with the Honolulu miles), **467 fills, 225 legs, 45 states, 10 provinces, Dalton gravel, Canadian frost heaves, Deals Gap, US-101 — no crash.** **Layer 2 has the numerator, and nothing else can: a crash avoided buys no fuel, ends no leg, and takes under a minute.** **Miles without near-misses are absence of evidence; near-misses without miles are anecdote.**
 
-- **Layer 3 supplies the DENOMINATOR, and it is a real number: 100,999 documented miles across three cars** — TwoRed 71,177, Creamsicle 28,613, TwoFer 1,209; ~105,000 with TwoRed's implied Honolulu miles. **467 fill-ups, 225 logged legs, 45 states, 10 provinces, gravel on the Dalton, frost heaves across the Canadian Plains, Deals Gap, US-101. No crash.**
-- **Layer 2 supplies the NUMERATOR.** The near-misses exist nowhere else. **A crash avoided buys no fuel, ends no leg, and takes under a minute** — Finding 036's resolution rule and the means-not-variance rule at once.
-- **Neither alone is an argument.** Miles without the near-misses are absence of evidence; near-misses without the miles are anecdote.
+**★ IT ALSO CLOSES THE WIDE-TIRE LOOP.** The only modification TwoRed ever got was made for handling — *the cars have handled well and this, in part, keeps them out of dangerous situations* — so the fuel data's job was to PRICE it, not judge it: **indistinguishable from zero, 95% interval -3.7% to +4.9%. The safety modification was free.**
 
-**★ AND IT CLOSES THE WIDE-TIRE LOOP, OPEN SINCE 2026-08-18.** The only modification he ever made was made for SAFETY — crosswind made the stock narrow tires hard to handle at highway speed, and *the cars have handled well and this, in part, keeps them out of dangerous situations.* **The fuel data's job was to say what that safety cost: indistinguishable from zero, 95% interval -3.7% to +4.9%.** A layer-3 answer to a layer-1 question. **The safety modification was free.**
-
-**⚠ TWO DISCIPLINES, both recorded in `deferred.md`.** *Granted, no crash testing* is Kim's own caveat and belongs in the DIFFICULTY strand — **the record cannot answer a counterfactual.** And **101,000 crash-free miles must not be oversold**: one prudent driver, mostly interstate, mostly daylight, almost no urban commuting. **The miles show the car did not prevent sixteen years of safe driving; the near-misses are where the car actively contributed.** A crash-rate comparison needs a SOURCED figure before any number is printed (intentions item 4).
+**⚠ TWO DISCIPLINES, both in the DIFFICULTY strand.** *Granted, no crash testing* is Kim's own caveat — **the record cannot answer a counterfactual**, and saying so plainly beats hedging. And **101,000 crash-free miles must not be oversold**: one prudent driver, mostly interstate, mostly daylight, almost no urban commuting. **The miles show the car did not prevent sixteen years of safe driving; the near-misses are where the car actively contributed.** A crash-rate comparison needs a SOURCED per-mile figure first.
 
 ## ★★★ CHAPTER ARCHITECTURE — SOLVED. KIM'S THREE LAYERS (2026-08-19) — full development in the log
 
-**His words, preliminary and recorded as given:** *The Smart Cars are the "hook" for the story. An overriding theme. The two aspects of performance, car and human, is the fabric for the story. The data become the real issue. The complexities and difficulties in the process of data collection, transcription, and cleaning on one end. At the other end, the opportunities for interesting, and perhaps unique, ways to analyze and display the results. This makes, in my mind, three layers. People see the unusual cars (and have preconceived notions). The drives make interesting stories. The data give satisfying answers to questions, even those you didn't know you had.*
+**His words, recorded as given:** *The Smart Cars are the "hook"... The two aspects of performance, car and human, is the fabric... The data become the real issue. The complexities and difficulties in the process of data collection, transcription, and cleaning on one end. At the other end, the opportunities for interesting, and perhaps unique, ways to analyze and display the results... People see the unusual cars (and have preconceived notions). The drives make interesting stories. The data give satisfying answers to questions, even those you didn't know you had.*
 
-**This closes the weak point named on 2026-08-16, and it does what TWO LOGS, TWO SUBJECTS could not.** That frame said which instrument answers which question. **It never said what ORDER to put things in, or why a reader keeps going.** Three layers answers both, and the two frames compose rather than compete: **the car/human fabric runs THROUGH all three layers; it is the weave, not a chapter.**
+**This closes the weak point named 2026-08-16 and does what TWO LOGS, TWO SUBJECTS could not.** That frame said which instrument answers which question — an excellent SORTING rule and a useless ORDERING rule. **Three layers says what a reader meets first and why they keep going, and the two compose: the car/human fabric runs THROUGH all three. It is the weave, not a chapter.**
 
-**★ The layers are three DEPTHS of one material, not three sections — and each one's payoff is bought by the one above it.** The preconception (*that tiny car can't have done that*) is what makes the drives surprising. The drives are what make a reader want the numbers. **The numbers then answer questions the stories raised** — which is why *questions you didn't know you had* is the load-bearing phrase, not a flourish.
+**★ Three DEPTHS of one material, each bought by the one above.** The preconception makes the drives surprising; the drives make a reader want the numbers; the numbers answer questions the stories raised. **Remove any layer and the one below loses its force** — without the preconception the drives are travel, without the drives the numbers have no question, without the numbers the stories are anecdote.
 
-**★★ AND THIS SESSION IS THE PROOF OF CONCEPT.** Nobody asked what a day off the highway looks like in an odometer — **70 miles at Holbrook** is a park tour with a nephew. Nobody asked how much of a gross speed is living rather than driving — **Creamsicle says 7.5 mph**. Nobody asked whether a record can contain a state it never names — **Delaware, by 264 miles against a 305-mile alternative.** Every one of those is a layer-3 answer to a layer-2 question that was never posed.
+**★★ *Questions you didn't know you had* is load-bearing, and already proven:** *what does a day OFF the highway look like?* — **70 miles at Holbrook**. *How much of a speed is living rather than driving?* — **7.5 mph**. *Can a record hold a state it never names?* — **Delaware**. *Where does a car sleep?* — **86% of elapsed days are dormancy; 34 of the 35 long spells are CA/AZ/OR, and the 35th is the St Louis car wash.**
 
-**★★ THE DATA-DIFFICULTY END IS A THIRD NARRATIVE, NOT A METHODS APPENDIX.** Kim named it as one END of the data layer and it has the same shape as the driving stories — a problem, a mechanism, a resolution. **The slashed zero that predicts the DIRECTION of an error. The crossbar that was a scanning artifact and not a correction. The pump identity. The intermediate fill that places a route a total cannot.** These carry suspense; they should be written, not buried.
+**★★★ AND THE ARCHITECTURE WAS VALIDATED THE DAY IT WAS PROPOSED.** Kim told the car-wash story to apologise for not remembering Summersville. **It turned out to be the sole explanation of the only outlier in a distribution nobody had computed** — Altamont IL 2010-10-11 to 11-05, 25 days, 227 miles between two fills seventeen miles apart. **Layer 2 generated the question; layer 3 answered it; neither could alone.**
 
-**★★★ AND THE ARCHITECTURE WAS VALIDATED THE DAY IT WAS PROPOSED.** Kim told the St Louis car-wash story to apologise for not remembering Summersville. **It turned out to be the sole explanation of the only outlier in a distribution nobody had computed.** Asking *where does this car sleep?* — **TwoRed's log spans 2,495 days and 2,147 of them (86%) fall inside a dormancy of two weeks or more; there are 35 such spells and 34 are in California, Arizona or Oregon.** The single exception east of the Rockies is **Altamont IL, 2010-10-11 to 11-05, 25 days, 227 miles between two fills seventeen miles apart** — a car driven into St Louis, left three and a half weeks, and collected. **Layer 2 generated the question; layer 3 answered it; neither could alone.**
+**★★ THE DIFFICULTY END IS A THIRD NARRATIVE, NOT A METHODS APPENDIX.** Same shape as the driving stories — problem, mechanism, resolution. **The slashed zero that predicts the DIRECTION of an error. The crossbar that was a scanning artifact. The pump identity. The split total that places a route. The backup with two blind gates.** Write them; do not bury them.
 
-**★ EDITORIAL RULE THAT FALLS OUT OF IT, and it is testable today:** an analysis earns its place in layer 3 only if it answers a question layer 2 raised. **Results with no story to attach to are not failures — they belong to the DIFFICULTY strand instead.** The retired temperature effect, the wide-tire interval that straddles zero, and the Canadian non-result are exactly this: **the data being honest about what it cannot say**, which is a story about the record, not about a drive.
+**★ EDITORIAL RULE, testable today:** an analysis earns the ANALYSIS strand only if it answers a question the drives raised. **Results with no story belong to the DIFFICULTY strand** — the retired temperature effect, the wide-tire interval straddling zero, the Canadian non-result, and now **the unsettleable southern economy signal.** All are the data being honest about what it cannot say.
+
+**The three layers are the three instruments — preconception, memory, record — and they fail differently:** the record is silent where its resolution cannot reach (036); the memory keeps content and loses index, and keeps CLASSES while naming specifics (039); the preconception is simply wrong, which is the point of the book. **The reading structure and the working structure are the same structure. Say so in the Foreword.**
 
 ## Next Steps
-1. **★ THE CHAPTER ARCHITECTURE.** The only thing blocking the writing. Kim's TWO LOGS, TWO SUBJECTS frame is the candidate, now bounded (achieved vs cost).
-2. **KIM:** answer the West Virginia road question (I-68 or I-64), and rule on Vermont vs Maine as the Penultimate State.
-3. **KIM, unscheduled:** update the TwoRed fuel logs for the last miles to ~75,000. **Check `TwoRed_fuel` (the live Sheet) first** — a different and richer record than the exported `.xlsx`, with ~141 more fill temperatures.
-4. **KIM:** rule on what the backup should carry (Finding 038, `deferred.md`) — and whatever exists for Bordeaux, deliberately outside the statistics.
-5. **OPEN:** Creamsicle trip legs run to **2024-10-20** but fills stop at **2024-07-02**. Trip 9 may have fuel records elsewhere or none. **Not an absence claim** — the read may have been truncated.
-6. Then: `Expedition_ID` on every fill-up across BOTH documented cars (read `Fuel_Analysis.Rmd` first); the geocoded constellation map (**the Jul-2024 Creamsicle update already carries lat/long**); and Kim's three analyses — fuel costs, daily distances, average speeds.
+1. **★★★ DRAFT THE CHAPTER LIST against the three layers, and WRITE THE SAFETY CHAPTER FIRST.** It demonstrates the architecture on the project's own central question. Retire the charter's six-chapter list for good; sort the existing inventory into the ANALYSIS and DIFFICULTY strands.
+2. **KIM:** name the tree-tunnel stretches he remembers (do not infer them); and whatever exists for Bordeaux.
+3. **KIM:** rule on what the backup should carry (Finding 038) — 22 scans and the authored `.txt`/`.docx`/`.pptx` files are outside the mirror, and the `.gitignore` must change in step with `SOURCE_EXT`.
+4. **KIM, unscheduled:** update the TwoRed fuel logs for the last miles to ~75,000. **Check `TwoRed_fuel` (the live Sheet) first** — richer than the exported `.xlsx`, with ~141 more fill temperatures.
+5. **OPEN:** Creamsicle trip legs run to 2024-10-20 but fills stop at 2024-07-02. **Not an absence claim** — the read may have been truncated.
+6. Then: `Expedition_ID` on every fill across BOTH documented cars (read `Fuel_Analysis.Rmd` first); **the parking constellation** and the driving constellation (the Jul-2024 Creamsicle update carries lat/long); and Kim's three analyses — fuel costs, daily distances, average speeds.
 
 ## Collaborators / Dependencies
 None.

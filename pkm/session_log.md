@@ -11,6 +11,48 @@ Mechanism 4.
 
 ---
 
+## 2026-08-20 -- FOUR ANSWERS, A NEW ROAD TAXONOMY, AND THE RESEARCH PHASE ENDS
+
+**Active focus at start and close:** Smart_Car. A short session: Kim answered the four lingering questions, and one of the answers corrected me rather than the record.
+
+### The 2010 loop, in the right order
+
+His corrected sequence maps onto the fuel log leg for leg: **BRIT in Fort Worth** (Flower Mound fill, 09-23), **the Botanical Society of America and MOBOT in St Louis** (09-29), **Nancy joins and they drive to Washington DC for her meeting**, north **to friends in MA** (Charlton, 10-09), **Nancy back to St Louis and home to HNL**, **the car stored at the car wash** (the 25-day gap), then **Pittsburgh for the Gigapan robots** (11-10) and **NSF colleagues in places like South Carolina** before heading west. **Finding 039 predicted exactly this: the components were all right last night and only the order slipped.**
+
+**★★ AND THE GAP I FILLED WAS MINE TO GET WRONG.** I read the 10-02 to 10-07 hole as a Frostburg meeting because the distances fitted and Frostburg was a meeting I already had in hand. **It was Washington DC.** The arithmetic works for DC and always did — Waynesboro → Washington ~120, Washington → Gettysburg ~80, against 369 driven over five days. **Same failure mode as the finding I was writing at the time, committed by the analyst rather than the witness: a gap that admits several stories is not evidence for the one you happen to be holding.**
+
+**★★★ And it names the origin of the states challenge.** *We did add on a bit of driving so we could see areas of the country neither of us had visited. That, incidentally, added to the total number of states TwoRed visited and, in a way, became the basis of the challenge.* **The sixteen-year project began as a by-product of scenic detours on scientific-meeting trips, noticed after the fact.** That belongs in the writing.
+
+### Vermont, with a reason
+
+**The Penultimate State is Vermont** — *I was working with a lawyer who has an office in NH, but lives nearby in Vermont. I drove to his house.* **That is exactly the anomaly the record flagged and could not read:** Hartland VT 5-18 at 44,746, next leg opens **Lebanon NH** 5-20 at 44,805 — **two nights, 59 odometer miles for an eighteen-mile drive**, and Lebanon sits across the Connecticut River from Hartland. **Office one bank, house the other.** One definitional point recorded for the writing: **TwoRed's state list and Kim's state list are two different quantities**, which is why the record holds 45 against a challenge counting to 49.
+
+### ⛔ The Texas on-ramp — closed by request
+
+*For personal safety, I wouldn't reveal it either. Near Ft Worth is sufficiently close.* **The three candidate legs I assembled yesterday have been removed from `deferred.md` and a standing constraint recorded** alongside the Creamsicle purchase reason and the `bordeaux*` naming rule. **A request, not a feasibility question** — it stands whether or not the record could pin it, and it cannot.
+
+### ★★★ Road character — he withdrew his own answer and gave a better one
+
+Kim checked a map and revised: the two West Virginia drives were **different highways**, and what they shared was *the same type of countryside; rolling, tree-covered hills, a winding highway, small villages tucked in the valleys.* **So the memory retained a LANDSCAPE TYPE, not a road, and *twice* counted instances of a category.** He said *highway*; he meant *this kind of country*. **Finding 039 amended: when a witness names a specific, test whether the specific stands for a class before treating a mismatch as an error.** The count was still right.
+
+**And a category the project did not have: TREE TUNNELS** — *very long miles of straight divided highway lined by a dense thicket of trees. Flat. Monotonous.* In the South. The third term is what both are a relief from: *nearly straight freeways lined by commerce, billboards and wall-to-wall housing.* **The project's road taxonomy is built from SPEED; his is built from EXPERIENCE.**
+
+**★★★ Gross speed cannot see it — Deep South median 40.3 mph (n=10) against Appalachian 38.0 (n=6), p = 0.42 — and that null completes a pair.** The Canadian Plains were the most STRESSFUL miles of the crossing and read as an unremarkable fast run. **The tree tunnels are the most MONOTONOUS and read exactly the same. The record is blind to the driver's experience at BOTH ends of the scale — terror and boredom produce identical numbers.** *Vigilance has no column; neither does tedium.* **The cleanest one-line case the project has for why layer 2 is load-bearing.**
+
+### ⚠ A signal that cannot be settled, and it goes to the difficulty strand
+
+The same split on FUEL does produce something: `mpg ~ leg_miles + group` gives South **-3.18, p=0.023** (n=30), **-2.61, p=0.065** with era, and **-5.81, p=0.009** on the 16 temperature-stamped rows with temperature itself null. **The mechanism would invert the intuition — flat straight highway invites steady high speed, and drag costs an 1,800-lb car more than hills do.** But the coefficient is **unstable across subsamples**, n=30, and temperature is confounded with group. **★★ Unlike the temperature effect it cannot be resolved by waiting: Creamsicle has ZERO southern fills. The sample is closed at 30 and will not grow.** **Do not print the coefficient. Print the fact that it cannot be settled** — a good story about a record, in the strand built for exactly that.
+
+### Housekeeping
+
+`deferred.md`'s Smart_Car section had grown to **70.9 KB with nine items already finished**; eight were moved verbatim to the log under **SMART_CAR ITEMS CLOSED 2026-08-19/20** and replaced by a one-line index, taking the section to **62.9 KB** and leaving it reading as open work. **The Active Focus block had grown by accretion to 4.8 KB of running log** and was rewritten as a statement of where the project stands. `proj_Smart_Car.md` condensed from 47.3 to **44.7 KB**.
+
+### Where this leaves the project
+
+**The research phase is over.** Both cars are ingested, the record is closed at both ends, every open question is answered or explicitly constrained, and the architecture is settled down to what layer one contains. **The next action is not analysis. It is drafting the chapter list against the three layers and writing the safety chapter.**
+
+---
+
 ## 2026-08-19 -- THE STORIES ARE COLLECTED; THE RECORD IS CLOSED AT BOTH ENDS; CREAMSICLE IS INGESTED
 
 **Active focus at start and close:** Smart_Car. A long session in three movements: fix a date bug, collect Kim's accounts of the long drives, then close the record and ingest the second car.
