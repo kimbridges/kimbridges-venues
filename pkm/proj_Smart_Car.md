@@ -19,15 +19,15 @@ the refutation stronger -- not one exceptional car on one exceptional journey, b
 
 ## Current Status
 
-**★★★ THE RESEARCH PHASE IS OVER. THE ARCHITECTURE IS SETTLED AND THE WRITING STARTS NEXT (2026-08-20).**
+**★★★ THE WRITING HAS STARTED. Two pieces drafted, both awaiting Kim's corrections (2026-08-20).**
 
-**TwoRed:** 294 audited fills, odo 4 → **71,283 at the Matson dock**, 2010-07-23 to 2017-05-22. 277 of 294 balance the pump identity; the 13 that fail carry a documented basis. **65 errata**, 4 open. **139 legs across 12 trips** (132 timed), 41,163 mi = 58% of lifetime; **134 fills carry a time and temperature (46%)**; time zones COMPUTED from a 121-city IANA table, never typed.
+**`book/index.qmd` — the Foreword, ~950 words.** The errand car, the parking spot, the two-visits dynamic, **Hawaii**, the three layers named lightly, and the scope boundary as subject rather than omission. **`book/is_it_safe.qmd` — chapter 2, ~2,300 words, two figures.** *Cute* as the opener, the safety-cell demonstration, both close calls unified as **one failure: a trusted pattern that did not hold**, the 100,999-mile denominator, and the wide tires priced rather than judged.
 
-**Creamsicle:** 173 fills, 86 legs, **with STOPPED TIME** — hence median gross 43.5 vs net 51.0 mph. **Zero southern fills**, which closes one test permanently.
+**The manuscript:** Quarto book at `Smart_Car/book/`, 15 chapters, `R/book_setup.R` as the single source of truth with `stopifnot()` row-count guards. **No number reaches a page without coming from an object.**
 
-**Twelve of Kim's accounts are collected verbatim and every one has been cross-checked.** All the open questions are answered or explicitly constrained.
+**The record behind it.** TwoRed: 294 audited fills, odo 4 → **71,283 at the Matson dock**, 65 errata, **139 legs across 12 trips**, 134 fills carrying time and temperature, time zones COMPUTED not stored. Creamsicle: 173 fills, 86 legs, **with STOPPED TIME** (median gross 43.5 vs net 51.0). **Sixteen of Kim's accounts collected verbatim, every one cross-checked.**
 
-**Ready to write:** the safety chapter (first), the origin/anchor Foreword, economy and cost per mile, the shape of a driving day, gross speed by road (stating the means-not-variance limit), the parking constellation. **Not ready:** the temperature effect is **retired**; the Canadian variance test is a NON-RESULT blocked on litre/CAD normalisation; the southern economy signal **cannot be settled at all**; route work partial at a 78% gazetteer join.
+**Not ready:** the temperature effect is **retired**; the wide-tire interval is **not printable until re-derived**; the Canadian variance test is a NON-RESULT; the southern economy signal **cannot be settled at all**; route work partial at a 78% gazetteer join.
 
 ## The fleet
 
@@ -279,19 +279,17 @@ _Written 2026-08-12; item 6 added 2026-08-20._
 
 **⚠ A SIGNAL THAT CANNOT BE SETTLED.** `mpg ~ leg_miles + group`: South **-3.18, p=0.023** (n=30); with era **-2.61, p=0.065**; on 16 temperature-stamped rows **-5.81, p=0.009** with temperature null. **Mechanism would invert the intuition — flat straight highway invites steady high speed, and drag costs an 1,800-lb car more than hills do.** But the coefficient is **unstable across subsamples**, n=30, and temperature is confounded with group. **★★ Creamsicle has ZERO southern fills, so the sample is closed at 30 and will not grow.** **DIFFICULTY strand. Do not print the coefficient; print the fact that it cannot be settled.**
 
-## ★★★ THE OPENING IS WRITTEN — THE ANCHOR, THE PARKING, AND HAWAII (Kim, 2026-08-20) — full working in the log
+## ★★★ THE ANCHOR, THE PARKING, AND HAWAII (Kim, 2026-08-20) — now DRAFTED as the Foreword
 
-**The origin:** a car was needed at Lake San Marcos because visits to his mother were frequent and rentals were adding up; **there was a parking spot at her place**; the contradiction — a city car with 71,283 mainland miles — resolves through the family dynamic, *two visits separated by the time needed to do some work.*
+**★★★ EVERY COMPLETE TRIP IS A LOOP FROM ONE PARKING SPACE.** Eight of thirteen logged trips begin and end at Lake San Marcos, and **every complete one from 2011 through the Fourth Crossing does** — including the Arctic run. The anchor: **18 dormancies, 2010-07-26 to 2016-08-02**, and **86% of the record's elapsed days sit inside a dormancy of two weeks or more.** **The long-distance driving is not a departure from the errand purchase; it is structurally hung off it.**
 
-**★★★ EVERY COMPLETE TRIP IS A LOOP FROM THAT PARKING SPACE.** Eight of thirteen logged trips begin and end at Lake San Marcos, and **every complete one from 2011 through the Fourth Crossing does** — including the Arctic run. The anchor holds **18 dormancies and 999 days**, 2010-07-26 to 2016-08-02, and **86% of the record's elapsed days sit inside a dormancy of two weeks or more.** **The long-distance driving is not a departure from the local-errand purchase; it is structurally hung off it.**
+**THE CAR LEFT BECAUSE THE PARKING SPOT DID.** *She moved to a more secure facility in August and that place didn't have parking for TwoRed.* Last anchor fill **2016-08-02**; his **niece at Mentone** holds the car five weeks; the coast run to Oregon follows. **She died in January 2017 with the car already in Eugene. Adjacent facts, separate causes.**
 
-**★★★ THE CAR LEFT BECAUSE THE PARKING SPOT DID.** *She moved to a more secure facility in August and that place didn't have parking for TwoRed.* Last anchor fill **2016-08-02**; his **niece at Mentone** holds the car five weeks; the coast run to Oregon follows. **She died in January 2017 with the car already in Eugene — which is why it was there when the call came. Adjacent facts, separate causes.**
+**⚠ FINDING 041 — my favour map from dormancy locations was mostly wrong.** *The other places are simply hotel/motels we stopped at along the way.* **A fill records where fuel was BOUGHT, not where the car came to REST** — a fuel row is a **TRANSACTION, not a STATE.** **What survives:** the durations; the anchor (confirmed by Kim independently); and **SIGNAL HILL = SMART MADNESS**, 7 fills 2011-2017 at the seams of expeditions — **the 2013-09-06 one is inside the Arctic trip's last leg, so the car came off the Dalton and went to the shop on the way home.**
 
-**⚠ I BUILT A FAVOUR MAP FROM DORMANCY LOCATIONS AND IT WAS MOSTLY WRONG — FINDING 041.** *The other places are simply hotel/motels we stopped at along the way.* **A fill records where fuel was BOUGHT, not where the car came to REST** — a fuel row is a **TRANSACTION, not a STATE.** **What survives:** the durations; the anchor (confirmed independently by Kim); and **SIGNAL HILL = SMART MADNESS**, 7 fills 2011-2017 at the seams of expeditions — the 2013-09-06 one falls inside the Arctic trip's last leg, so **the car came off the Dalton and stopped at the shop on the way home. The wide-tire decision has an address.**
+**The four holdings, all named by Kim, none recoverable from the data:** his mother's facility; his niece at Mentone; **a close colleague's farm with a huge garage in Eugene (⛔ NOT NAMED)**; and the **St Louis car wash near the airport — the only PAID holding in sixteen years**, improvised on sight.
 
-**★★ THE THEME STANDS ON TESTIMONY.** Four holdings: **his mother's facility, his niece at Mentone, a close colleague's farm in Eugene (⛔ not named), and the St Louis car wash near the airport — the only PAID holding in sixteen years**, improvised on sight. **Only the witness can name where a car was allowed to sit.**
-
-**★★★ AND THEY LIVE IN HAWAII — SAY IT EARLY (intentions item 6).** **Every dormancy is a FLIGHT home**; **the ~3,700 excluded Honolulu miles are the only miles driven where they live**; and it **inverts layer one a second time** — *you don't do much driving in Hawaii.* **They live in a city and bought a city car to escape city driving.**
+**★★★ AND THEY LIVE IN HAWAII (intentions item 6).** **Every dormancy is a FLIGHT home**; the **~3,700 excluded Honolulu miles are the only miles driven where they live**; and it **inverts layer one a second time** — **they live in a city and bought a city car to escape city driving.**
 
 ## ★★★ THE SAFETY QUESTION IS LAYER ONE'S ACTUAL CONTENT (Kim, 2026-08-19) — now DRAFTED as ch.2
 
@@ -339,6 +337,16 @@ Quarto **book**, `output-dir: _output`, matching the house pattern (`whittakerr`
 
 **★ KIM WANTS GRAPHICS AND PHOTOS.** *When we get to the data, I'm expecting we'll be doing some interesting graphics. At some point, we'll want to slip in some pictures, too.* `figures/` created; `images/Creamsicle/` holds 37 geotagged, timestamped photos that **join to the logs on date + local time with no timezone reconstruction.** **The photo layer is chapter 12's material and needs a TwoRed equivalent — ask Kim what exists.**
 
+## ★★★ THE FOREWORD IS DRAFTED (2026-08-20) — `book/index.qmd`, ~950 words
+
+**Opens on Kim's own sentence** — *the overriding fact was that we needed a car in Lake San Marcos* — and runs: the visits, the rentals, the parking spot, **an errand car**; then the turn, *but this is not a book about errands*; then the odometer at 4 miles against **71,283 at the Matson dock**; then the family dynamic that makes both true, **two visits separated by the time it took to do some work.**
+
+**★★ HAWAII IS ITS OWN SECTION, placed where the reader first needs it** — after the dormancy is mentioned and before it becomes confusing. *Without that, none of the above parses.* **Every long gap is a flight home.** And it carries the second inversion: *you don't do much driving in Hawaii... Driving on the mainland was something different for us. Not a chore to be got through. The point.*
+
+**The three layers are named lightly, as what the book IS rather than as architecture** — the car, the drives, the data — with the data's two ends stated plainly and the car/human fabric run through all three in Kim's own words. **Closes on the scope boundary as SUBJECT, not omission:** *the log was always a record of long-distance driving, and it ends when the long-distance driving ends.*
+
+**Three code chunks, all `include: false`, feeding inline values** — `first_odo` (4), `dormant_pct` (86), the anchor span. **Verified to resolve.** Nothing in the Foreword is typed.
+
 ## ★★★ CHAPTER 2 IS DRAFTED (2026-08-20) — `book/is_it_safe.qmd`, ~2,300 words
 
 **Kim's material closed every gap and gave the chapter its thesis** — see THE SAFETY QUESTION above for the argument. Three things worth keeping here:
@@ -350,12 +358,12 @@ Quarto **book**, `output-dir: _output`, matching the house pattern (`whittakerr`
 **Figures wired:** `@fig-day-one` (the day it arrived, on the original narrow tires, **with the silver safety cell visible** — the photo does the pointing the text describes) and `@fig-wide-wheels` (after Smart Madness; visibly wider). **Book images live in `book/images/`** so Quarto copies them into the output; the canonical archive stays in `Smart_Car/images/`. ⚠ **`*.jpg` is in the mirror's `.gitignore`, so photographs are NOT in the versioned backup** — Kim's own copies are the record.
 
 ## Next Steps
-1. **★★★ KIM: correct the chapter list above.** Then **write the SAFETY chapter (ch.2) first** — it demonstrates the architecture on the project's own central question. Foreword material is already being dictated and is in the log.
-2. **BUILD THE MANUSCRIPT SKELETON.** There is no draft file yet — dictated prose is currently landing in `logs/proj_Smart_Car_log.md`, which is working state, not a manuscript. **A Quarto book in `G:\My Drive\Projects\Smart_Car`, one file per chapter, destination `kimbridges-documents`.**
-3. **KIM:** confirm the remaining privacy calls — the niece at Mentone (relationship without a name? town or not?) and the St Louis business. **The Eugene colleague is ruled: NOT NAMED.**
-4. **KIM:** name the tree-tunnel stretches he remembers (do not infer them); and whatever exists for Bordeaux.
-5. **DEFERRED UNTIL A CHAPTER ASKS.** Canada2014 unit normalisation, Creamsicle's timezone table, `Expedition_ID` across both cars, the constellation maps, the ~141 extra fill temperatures in the live `TwoRed_fuel` Sheet. **By the editorial rule, an analysis earns its place by answering a question the drives raised — none of these has a chapter asking yet.**
-6. **OPEN, not urgent:** Creamsicle trip legs run to 2024-10-20 but fills stop at 2024-07-02. **Not an absence claim.**
+1. **★★★ KIM IS READING the Foreword and chapter 2** (`book/index.qmd`, `book/is_it_safe.qmd`). **Corrections first thing next session** — voice, facts, structure, and whether the Foreword should name the three layers as openly as it does.
+2. **Then chapter 1, `small_cars.qmd`** — the fleet, Mercedes, the safety cell. It is the setup for ch.2 and is best written against a finished ch.2.
+3. **KIM:** the Yukon pothole in his own words is the last thin patch in ch.2 (mine is serviceable, his will be better). Also: the tree-tunnel stretches he remembers, and whatever exists for Bordeaux.
+4. **TASK before any figure is printed:** re-derive the wide-tire interval with a WRITTEN specification (`deferred.md`). **A number that cannot be reproduced is not sourced.**
+5. **DEFERRED UNTIL A CHAPTER ASKS.** Canada2014 units, Creamsicle's timezone table, `Expedition_ID`, the constellation maps, the ~141 extra fill temperatures in the live `TwoRed_fuel` Sheet.
+6. **⚠ `*.jpg` is gitignored in the mirror** — photographs are not in the versioned backup. Kim's own copies are the record.
 
 ## Collaborators / Dependencies
 None.
