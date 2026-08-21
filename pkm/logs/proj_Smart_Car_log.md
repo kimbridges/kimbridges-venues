@@ -1,5 +1,14 @@
 ## COLLECTED STORIES — Kim's accounts of the long days, verbatim (opened 2026-08-19)
 
+### ★★★ Where the car actually slept — and why they live 2,500 miles away (Kim, 2026-08-20)
+
+> The list of "unsettled" places only has one of any significance: Signal Hill. The other places are simply hotel/motels we stopped at along the way. They may repeat (like Brookings) as they are convenient stopping points. Signal Hill is where Smart Madness, a very helpful garage and after-market vendor, is located. We depended on them to help equip and maintain both TwoRed and Creamsicle. That's why there are frequent visits. One place you didn't list is Mentone. That's where my niece lives. She kept TwoRed for that five weeks while as I was making other arrangements. Eugene seems like an unlikely place, but a close colleague (Will McClatchey) has a farm with a huge garage. He made space for us. We continue to work together so it was logical to keep the car there as we visit Will several times each year.
+>
+> Although I'm sure you know, but we might need to mention that we live in Hawaii. If you didn't know that you might wonder why we didn't just drive to my mother's place. It also helps explain, in part, why we were interested in driving on the mainland. You don't do much driving in Hawaii (think: downtown Honolulu). Driving on the mainland was something different for us.
+>
+> The place the car was held on the first trip was in St Louis, quite near the airport. I saw a hand carwash business that had a large garage that they didn't seem to be using. I asked if they would keep the car for a reasonable fee. They were happy to do so. And I got a car wash, too.
+
+
 ### ★★★ Why the car left California — parking (Kim, 2026-08-20)
 
 > The reason the car was relocated to Eugene is that as my mother neared her 104th year, she could no longer stay in her assisted living facility in LSM. She moved to a more secure facility in August and that place didn't have parking for TwoRed. Parking is a big issue and we've been fortunate that friends and family have helped at critical times.
@@ -1483,6 +1492,9 @@ Kim's reason was rental expense. **A rental must be returned; a car in a parking
 
 ## ★★★ PARKING IS THE HIDDEN INFRASTRUCTURE — AND THE RECORD IS A MAP OF IT (Kim, 2026-08-20)
 
+> **⚠ CORRECTED THE SAME DAY — READ FINDING 041 FIRST.** The THEME below is Kim's and stands. **The MAP below does not.** I attributed each dormancy to the city of the preceding fill; Kim's correction is that most of those cities are *hotel/motels we stopped at along the way*, and that the five-week hold I gave to Carlsbad was actually at **Mentone**, at his niece's. **A fill records where fuel was BOUGHT, not where the car came to REST.** The corrected account follows this section under **WHERE THE CAR ACTUALLY SLEPT**. The text below is preserved as the record of what was concluded before the correction.
+
+
 **Kim answered the September 2016 question and the answer is not the one the sequence suggested.** *As my mother neared her 104th year, she could no longer stay in her assisted living facility in LSM. She moved to a more secure facility in August and that place didn't have parking for TwoRed.* **The car did not leave California because she died. It left because the parking spot did.**
 
 **And he generalised it into a theme the project did not have:** *Parking is a big issue and we've been fortunate that friends and family have helped at critical times.*
@@ -1530,3 +1542,35 @@ Read the 35 long dormancies again with Kim's sentence in hand and they stop bein
 ### ⚠ ONE ASK BEFORE ANY OF THIS IS PUBLISHED
 
 **The table above names towns, and the theme requires knowing whose driveway each was.** San Marcos, Lake San Marcos and Carlsbad are accounted for. **Barstow (102 days), Parker AZ (94), Yuma (83), Signal Hill (141), Lancaster, Laguna Hills, Hesperia, South Pasadena, Coos Bay and Brookings are not.** **Ask Kim to annotate the list — and note that a chapter naming private individuals and addresses needs his ruling on what may be published**, as with the Texas on-ramp. Do not publish the table as it stands.
+
+
+## ★★★ WHERE THE CAR ACTUALLY SLEPT — THE CORRECTED ACCOUNT (Kim, 2026-08-20)
+
+**Three holdings, all named by Kim, none of them recoverable from the fuel log:**
+
+| place | who | when |
+|---|---|---|
+| **Lake San Marcos / San Marcos** | his mother's assisted living facility | **2010-07-26 to 2016-08-02**, 18 spells, 999 days — the anchor |
+| **Mentone CA** | **his niece** | the five weeks of Aug-Sept 2016, while other arrangements were made |
+| **Eugene OR** | **Will McClatchey**, a close colleague — *a farm with a huge garage. He made space for us.* | from Sept 2016; *we visit Will several times each year, so it was logical to keep the car there* |
+| **St Louis** (near the airport) | a hand car wash with an unused garage | 25 days, Oct-Nov 2010 — **the only PAID holding in sixteen years** |
+
+**And one waypoint that is not a holding but matters more than any of them:**
+
+**★★ SIGNAL HILL IS SMART MADNESS.** *A very helpful garage and after-market vendor... We depended on them to help equip and maintain both TwoRed and Creamsicle.* **Seven fills across the record — 2011-10-14, 2011-10-23, 2012-05-24, 2013-09-06, 2016-04-20, 2017-01-07, 2017-01-18 — and they sit at the seams of expeditions.** The 2012-05-24 fill at 25,795 falls 81 miles into the first day of the Frostburg trip (LSM 25,714 that morning). **The 2013-09-06 fill at 39,739 falls inside the final leg of the Arctic trip, Carpinteria → Lake San Marcos: the car came off the Dalton Highway and stopped at the shop on the way home.** **The wide-tire decision — the only modification the car ever received, made for handling and therefore for safety — has an address, and the address is in the fuel log.**
+
+### ★★★ AND THE ST LOUIS CAR WASH IS BETTER THAN THE INFERENCE WAS
+
+*The place the car was held on the first trip was in St Louis, quite near the airport. I saw a hand carwash business that had a large garage that they didn't seem to be using. I asked if they would keep the car for a reasonable fee. They were happy to do so. And I got a car wash, too.*
+
+**Near the airport is the whole mechanism** — the car had to be within reach of a flight home, because the owners live 2,500 miles away. **And the solution was improvised on sight: an unused garage, a question asked, a fee agreed.** It is the only paid holding in the record and it is not a transaction he went looking for. **This is the parking theme in one paragraph: the network is people, and where there are no people there is improvisation.**
+
+### ★★★ THEY LIVE IN HAWAII — AND IT HAS TO BE SAID EARLY
+
+*Although I'm sure you know, but we might need to mention that we live in Hawaii. If you didn't know that you might wonder why we didn't just drive to my mother's place.*
+
+**He is right, and it is more than a clarification. It is load-bearing three times over:**
+
+1. **It explains the dormancies.** 86% of elapsed days inside a long gap is not a car sitting idle — **it is a car waiting 2,500 miles from its owners while they are at home.** Every dormancy is a flight.
+2. **It explains the scope boundary.** The ~3,700 implied Honolulu miles the record deliberately excludes are the ONLY miles driven where they live. **The log is a record of driving that happens somewhere else.**
+3. **★★★ AND IT INVERTS LAYER ONE A SECOND TIME.** *You don't do much driving in Hawaii (think: downtown Honolulu). Driving on the mainland was something different for us.* **The preconception says a Smart car is a city car. These owners LIVE in a city — and bought one to do the opposite of city driving.** The car that looks built for Honolulu was used to escape it. **That belongs beside the safety inversion in the Foreword: two counter-intuitive turns, one after the other, and both are true.**

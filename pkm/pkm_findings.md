@@ -1937,3 +1937,25 @@ I then did what the rule says and enumerated the complement across all of `Proje
 **Recovery, and the reason it was instant.** The pre-edit content was still bound to `x` in the session, so the fix was `wbin(P, x)` and a confirmation that the restored text was `identical()` to it. **Holding the pre-edit string in a named variable turned a data-loss incident into a one-line undo** — this is the second time (see Finding 030, where the backup mirror was needed instead). **Bind the old text before every surgery; it is free.**
 
 **And note the detection path, which is the same as Finding 037's.** Nobody read the corrupted file. **A size that moved the wrong way was the entire signal.** Third time in two days that an arithmetic which refused to work was the only witness to a bug the content checks could not see.
+
+
+## Finding 041 — THE LAST FILL BEFORE A GAP IS NOT WHERE THE CAR SLEPT (2026-08-20)
+
+**What I built.** From 35 dormancies of 14+ days I assembled a "favour map" — attributing each spell to the CITY OF THE PRECEDING FILL and concluding that **34 of 35 sat inside a network of family, friends and a facility, with the St Louis car wash the lone exception.** It was a satisfying result and it was mostly wrong.
+
+**Kim's correction.** *The other places are simply hotel/motels we stopped at along the way. They may repeat (like Brookings) as they are convenient stopping points.* **Barstow, Yuma, Parker, Lancaster, Hesperia, Laguna Hills, Coos Bay and Brookings are waypoints, not driveways.** And the five-week hold I attributed to **Carlsbad** was actually at **Mentone**, at his niece's — **Carlsbad is merely where he last bought fuel, ninety miles short of where the car came to rest.**
+
+**The rule. A fill records where fuel was BOUGHT, not where the car came to REST.** The two coincide only when the resting place is also the refuelling place — true at the Lake San Marcos anchor, where he fuelled locally before flying home, and false at every waypoint on a travelling day.
+
+**This is the same class of error as *a matching TOTAL does not mean a matching ROUTE*.** Both attribute to a row a property the row does not carry. **A fuel row is a TRANSACTION, not a STATE.** It says a purchase happened at a place and a time; it says nothing about what the car did next, and a long gap after it is evidence about DURATION only.
+
+**What survives the correction, and it is not nothing.**
+
+- **The durations are real** — they are gaps between fills and need no location. **86% of elapsed days inside a 14+ day dormancy stands.**
+- **The anchor stands**, because Kim's own account confirms it independently: San Marcos / Lake San Marcos, 18 spells, 999 days, his mother's facility.
+- **Signal Hill stands, and gains meaning:** it is **Smart Madness**, the garage and after-market vendor that equipped and maintained BOTH cars. **7 fills across the record, 2011 to 2017.** The wide-tire decision has an address.
+- **The THEME stands, on Kim's testimony rather than on my map:** *Parking is a big issue and we've been fortunate that friends and family have helped at critical times.* **Mentone (his niece), Eugene (a colleague's farm with a huge garage), the St Louis car wash — three named holdings, none of which the fill locations would have given me.**
+
+**★★ AND THE CORRECTED RESULT IS BETTER THAN THE MAP WOULD HAVE BEEN.** Layer 3 produced a map; layer 2 corrected it; **and the correction says the map cannot be built from the data at all.** Where a car was allowed to sit is exactly the kind of fact a fuel log cannot hold — **only the witness can name it.** That is Finding 036's resolution rule arriving from a new direction, and it makes the parking chapter dependent on the stories in a way that can be stated rather than asserted.
+
+**Operational guard.** Before attributing any dormancy to a place, ask: **was this a place he would refuel, or a place he would stop?** If the odometer moves materially between the pre-gap and post-gap fills (Carlsbad → Carlsbad, 216 miles across 36 days), **the car went somewhere in between and the fill city is not the answer.**

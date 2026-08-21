@@ -170,6 +170,10 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ★★★ SAY EARLY THAT THEY LIVE IN HAWAII (Kim, 2026-08-20)
+
+*If you didn't know that you might wonder why we didn't just drive to my mother's place.* **Load-bearing three times: every dormancy is a FLIGHT home, not an idle car; the ~3,700 excluded Honolulu miles are the only miles driven where they live; and it inverts layer one a second time** — *you don't do much driving in Hawaii (think: downtown Honolulu). Driving on the mainland was something different for us.* **They live in a city and bought a city car to escape city driving.** Recorded as intentions item 6. **Put it beside the safety inversion in the Foreword.**
+
 ### ★★★ THE OPENING IS WRITTEN — the anchor at Lake San Marcos (Kim, 2026-08-20)
 
 **Kim's origin story:** a car was needed at Lake San Marcos because visits to his mother were frequent and rentals were adding up; **there was a parking spot at her place**; and the contradiction — a city car with 71,283 mainland miles — resolves through the family dynamic, *two visits separated by the time needed to do some work.*
@@ -190,9 +194,24 @@ Kim: *As my mother neared her 104th year, she could no longer stay in her assist
 
 **For the Foreword: the enabling condition of sixteen years of cross-country driving was not fuel and not roads — it was people willing to let a car sit.** The fuel log records movement; **the gaps between its rows record hospitality, and they are 86% of the elapsed days.**
 
-### ⚠ ASK KIM BEFORE PUBLISHING THE DORMANCY TABLE — whose driveway, and what may be named
+### ✓ ANSWERED 2026-08-20 — and my favour map was mostly wrong (Finding 041)
 
-San Marcos, Lake San Marcos and Carlsbad are accounted for. **Barstow (102 days), Signal Hill (141), Parker AZ (94), Yuma (83), Lancaster, Laguna Hills, Hesperia, South Pasadena, Coos Bay and Brookings are not.** **Ask him to annotate the list — and to rule on naming private individuals and addresses**, as with the Texas on-ramp. **Do not publish the table as it stands.**
+Kim: *the other places are simply hotel/motels we stopped at along the way. They may repeat (like Brookings) as they are convenient stopping points.* **A fill records where fuel was BOUGHT, not where the car came to REST** — the five weeks I gave to Carlsbad were at **Mentone**, at his niece's, ninety miles on.
+
+**THE FOUR REAL HOLDINGS, all named by him, none recoverable from fill locations:**
+
+| place | who |
+|---|---|
+| **Lake San Marcos / San Marcos** | his mother's assisted living facility — 18 spells, 999 days, the anchor |
+| **Mentone CA** | **his niece**, who kept TwoRed the five weeks of Aug–Sept 2016 |
+| **Eugene OR** | **Will McClatchey**, a close colleague — *a farm with a huge garage. He made space for us.* Visited several times a year |
+| **St Louis**, near the airport | a hand car wash with an unused garage — **the only PAID holding in sixteen years**, improvised on sight |
+
+**★★ AND SIGNAL HILL IS SMART MADNESS** — the garage and after-market vendor that equipped and maintained BOTH cars. **7 fills, 2011 to 2017, sitting at the seams of expeditions:** 2012-05-24 is 81 miles into day one of the Frostburg trip; **2013-09-06 is inside the Arctic trip's final leg — the car came off the Dalton and stopped at the shop on the way home.** **The wide-tire decision has an address.**
+
+### ⚠ PRIVACY RULING STILL NEEDED before the parking chapter is published
+
+**The chapter names private individuals and their homes** — a niece in Mentone, a named colleague's farm in Eugene, a small business in St Louis. **Kim must rule on each**, as he did for the Texas on-ramp. He volunteered Will McClatchey's name in conversation; **that is not the same as clearing it for print.**
 
 ### ★★★ THE SAFETY THESIS — layer one's content, given 2026-08-19
 

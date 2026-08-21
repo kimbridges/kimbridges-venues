@@ -86,7 +86,7 @@ Smart Madness prescribed WIDE tires after the first crossing because the stock n
 
 *The fuel log is more about the CAR'S performance, while the trip log shows the HUMAN performance -- how far and fast can you expect to drive in a day, something I had no idea about until I started doing these drives.*
 
-**It assigns instruments to questions** — economy, degradation, cost/mile and the wide-tire question are the CAR's; daily range, departure discipline and gross speed are the HUMAN's; **mixing them yields a meaningless average.** Fuel records STOPS, trip records LEGS; **the odometer is the JOIN, not the topic.** **Bounded 2026-08-19:** the trip log records what the human ACHIEVED, in MEANS not variance; **the stories are the only record of what it COST.**
+**It assigns instruments to questions** — economy, degradation, cost/mile and the wide-tire question are the CAR's; daily range, departure discipline and gross speed are the HUMAN's. Fuel records STOPS, trip records LEGS; **the odometer is the JOIN, not the topic.** **Bounded 2026-08-19:** the trip log records what the human ACHIEVED, in MEANS not variance; **the stories are the only record of what it COST** — and, per Finding 041, **of where the car was allowed to sit.**
 
 ## ★★ THE SCAN SWEEP, 2026-08-18 — full write-up in the log
 
@@ -94,11 +94,11 @@ All 15 scans read (22 on disk). Four results that must not be lost:
 
 **1. The wheel change is DATED** — `NEW WHEELS @ 13510 miles`, 179 mi before the 2011 departure. **The estimate FLIPS SIGN with specification (+3.6% to -1.8%); that is the finding, not any one number.**
 
-**2. ✗ THE TEMPERATURE EFFECT IS RETIRED.** n=94 gave **-0.068, p=0.045**; n=125 gives **-0.050, p=0.099**, **p=0.17** with controls. The raw hot/cold gap dies on the same control — **hot fills are on shorter legs.** **The record is now good enough to RETIRE a result.**
+**2. ✗ THE TEMPERATURE EFFECT IS RETIRED.** n=94 gave -0.068, p=0.045; n=125 gives **-0.050, p=0.099**, **p=0.17** with controls — and **hot fills are on shorter legs.** **The record is now good enough to RETIRE a result.**
 
-**3. The slashed zero produced three more corrections and the control held.** Over 44 rows failing the pump identity: **permitted 8→0 fixes 4; forbidden 0→8 fixes 1**; **six controls fix 0.**
+**3. The slashed zero produced three more corrections and the control held.** Over 44 rows failing the pump identity: **permitted 8→0 fixes 4; forbidden 0→8 fixes 1; six controls fix 0.**
 
-**4. Gross speed separates by ROAD, across 138 legs.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate 40.3 | Dalton **31.7** | US-101 coastal **28.3**. **But gross speed is a MEAN, and it cannot see road CHARACTER at all — see ROAD CHARACTER above.**
+**4. Gross speed separates by ROAD.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate 40.3 | Dalton **31.7** | US-101 coastal **28.3**. **But it is a MEAN, and it cannot see road CHARACTER at all — see ROAD CHARACTER above.**
 
 ## ★★★ THE LONG DAYS — ALL EIGHT COLLECTED, AND EVERY ONE CHECKS OUT (2026-08-19)
 
@@ -143,23 +143,19 @@ Kim's list, unprompted: the Rockies; the mountains down to the Oregon coast; **a
 
 ## ★★★ THE FOURTH CROSSING LOG IS FOUND (2026-08-19) — full write-up in the log
 
-Nine pages, **25 legs**. **The reconstruction HELD: all 29 paper rows balance the pump identity, 25 of 29 are identical to the corrected dataset, and the LSM/Blythe/Winslow values derived from AMEX statements match the paper EXACTLY** — an independent source, arrived at afterwards, agreeing to the thousandth of a gallon. **There is no Phoenix fill**, settling a hypothesis already withdrawn on three statistical grounds.
-
-**Three of the four differences are mine.** L62/L63: **I had written the AMEX MERCHANT NAME into the Brand field** (`Quick Check West`, `Hallum Store`) where the paper says **Valero** and **Conoco**. **RULE: when a field is filled from a substitute source, record WHICH source — a merchant string is not a brand.**
-
-**Recovered:** the stuck day, 2016-05-27 Youngtown → Monument Valley, **362 mi against ~320 direct = 42 miles of detour**. **A new longest day: 2016-06-19 Richmond MO → Denver, 640 mi at 58.6 mph.** **107 degF into St George on 6/21, the hottest reading in the record.**
+**The reconstruction HELD: all 29 paper rows balance the pump identity, 25 of 29 match the corrected dataset, and the AMEX-derived values match the paper EXACTLY** — an independent source agreeing to the thousandth of a gallon. **There is no Phoenix fill.** Three of the four differences are mine: L62/L63, **I had written the AMEX MERCHANT NAME into the Brand field** where the paper says Valero and Conoco. **RULE: when a field is filled from a substitute source, record WHICH source — a merchant string is not a brand.** **Recovered:** the stuck day (2016-05-27, **42 miles of detour**); **a new longest day, 2016-06-19 Richmond MO → Denver, 640 mi at 58.6 mph**; **107 degF into St George, the hottest reading in the record.**
 
 ## ★★★ THE STRESSFUL MILES ARE INVISIBLE — A DIFFERENT SILENCE FROM FINDING 036 (2026-08-19)
 
-Kim's testable claim: *we were plagued by potholes. We often slowed to avoid damage... Those miles, which were mostly across the Canadian Plains, were very stressful.* **Both instruments were pointed at it. Neither sees anything.** Canadian Plains median gross **44.5 mph** against US Plains **45.0** and a whole-record **40.5**; MPG residuals +0.56 (n=4) against a record SD of **4.74**. The three Plains legs run **44.5, 47.3, 43.1** — FASTER than his sixteen-year median.
+Kim's testable claim: *we were plagued by potholes. We often slowed to avoid damage... Those miles, which were mostly across the Canadian Plains, were very stressful.* **Both instruments were pointed at it. Neither sees anything.** Canadian Plains median gross **44.5 mph** against US Plains 45.0 and a whole-record 40.5 — **FASTER than his sixteen-year median.**
 
-**★★★ HIS CORRECTION INVERTS THE LOGIC.** *I should have said "abruptly slowed, then quickly speeded up". The problem was that I couldn't go slow as big vehicles kept moving at highway speeds. Hence the rear view mirror checks.* **His account PREDICTS no speed effect** — he was not free to drive slowly, so the average had to stay up. **The high gross speed is not evidence against the stress; it is the mechanism OF it.** And it names the missing quantity: **within-leg VARIANCE. A trip log samples the day TWICE — everything between is averaged away BY CONSTRUCTION.** *(The Canadian variance test is a NON-RESULT, not a null: those rows are converted from litres and CAD and unit-normalising is still OPEN.)*
+**★★★ HIS CORRECTION INVERTS THE LOGIC.** *I couldn't go slow as big vehicles kept moving at highway speeds. Hence the rear view mirror checks.* **His account PREDICTS no speed effect** — he was not free to drive slowly, so the average had to stay up. **The high gross speed is not evidence against the stress; it is the mechanism OF it.** And it names the missing quantity: **within-leg VARIANCE. A trip log samples the day TWICE — everything between is averaged away BY CONSTRUCTION.** *(The Canadian variance test is a NON-RESULT, not a null: those rows are converted from litres and CAD and unit-normalising is still OPEN.)*
 
-**★★★ WHY THIS IS NOT FINDING 036.** 036 was about events that generated NO observation. These miles generated a FULL set and every one is normal. **BOTH LOGS MEASURE OUTPUT. NEITHER MEASURES COST TO THE DRIVER. Vigilance has no column** — and, per ROAD CHARACTER above, **neither does tedium.** A driver can buy an ordinary 44 mph day at an extraordinary price and the log records the 44. **The stories are the sole record of a dimension the data cannot reach.**
+**★★★ WHY THIS IS NOT FINDING 036.** 036 was about events that generated NO observation. These miles generated a FULL set and every one is normal. **BOTH LOGS MEASURE OUTPUT. NEITHER MEASURES COST TO THE DRIVER. Vigilance has no column** — and per ROAD CHARACTER, **neither does tedium.** **The stories are the sole record of a dimension the data cannot reach.**
 
 ## ★★ TWO RELOCATIONS, AND THE LAST YEAR'S SHAPE (2026-08-19) — full write-up in the log
 
-A page filed as a duplicate carried an annotation its twin did not show: **`Relocation  1141 miles`**, matching the 2016 fall-winter legs exactly. **September 2016 was not a tour; it was the one-way relocation of TwoRed to Oregon** — which is why the car was in Eugene when the January 2017 call came. **February 2017 is a SECOND relocation**, after which the car sits until 20 May. **The last year's shape: the car stops touring, starts commuting between two homes, then ships.** **See THE ANCHOR above — this is also where the Lake San Marcos loop breaks for good.**
+A page filed as a duplicate carried an annotation its twin did not show: **`Relocation  1141 miles`**. **September 2016 was not a tour; it was the one-way relocation of TwoRed to Will McClatchey's farm in Eugene** — which is why the car was there when the January 2017 call came. **February 2017 is a SECOND relocation** (Mentone → Long Beach → Eugene), after which the car sits until 20 May. **The last year's shape: the car stops touring, starts commuting between two homes, then ships.**
 
 **★ METHOD: two scans of the same page are not the same evidence.** A marginal annotation can be lost to cropping, threshold or the fold. **Diff a duplicate rather than discarding it.**
 
@@ -226,17 +222,21 @@ The 2026-08-12 intake audit (charter claims vs what the files hold: 293 fill-ups
 
 ## Statement of intentions
 
-Written 2026-08-12 so a session opening this file cold knows what was decided and what was left open.
+_Written 2026-08-12; item 6 added 2026-08-20._
 
-**1. The document is about four cars.** TwoRed carries the deep quantitative spine; the others carry what one car cannot show — replacement decisions, changing models, and the fact that the choice was made again.
+**1. The document is about four cars.** TwoRed carries the deep quantitative spine; the others carry what one car cannot show.
 
-**2. The Arctic Circle Challenge is CROSS-REFERENCED, never re-told.** Already published at `/stories/the-arctic-circle-challenge.html` (77 pp). Use only its **data** inside the analysis chapters. The charter's Chapter 5, which embedded the narrative by iframe, is **superseded** — it would have put the same content at two URLs and made the works register lie.
+**2. The Arctic Circle Challenge is CROSS-REFERENCED, never re-told.** Already published (77 pp). Use only its **data**. The charter's Chapter 5 is superseded.
 
-**3. Reuse the existing packages** (Kim's standing rule, 2026-08-11): `timelinesr` and `Trip_Log` for the temporal spine, `plainmaps`/`sf`/`tidygeocoder` for geography, `Photo_Locations` for geotagging. New package only if something has no home.
+**3. Reuse the existing packages** (Kim's standing rule): `timelinesr`, `Trip_Log`, `plainmaps`/`sf`/`tidygeocoder`, `Photo_Locations`.
 
-**4. No number gets printed until it is sourced.** The 75,000-mile claim was the live example; **the province count is now confirmed (10) and the state count is not (45 documented of 49).**
+**4. No number gets printed until it is sourced.** The province count is now confirmed (10); the state count is not (45 documented of 49). **A crash-rate or rental-rate comparison needs a cited figure first.**
 
-**5. Production is staged, not simultaneous.** Data recovery, then ingestion, then maps, then prose. **The chapter architecture below is provisional and is now the only thing blocking the writing.**
+**5. Production is staged.** Data recovery, ingestion, maps, prose. **The architecture is settled; the writing has begun.**
+
+**6. ★ ESTABLISH EARLY THAT THEY LIVE IN HAWAII.** Kim, 2026-08-20: *if you didn't know that you might wonder why we didn't just drive to my mother's place.* **It explains the dormancies (every gap is a flight), the scope boundary (the ~3,700 excluded Honolulu miles), and the second layer-one inversion — they live in a city and bought a city car to escape city driving.**
+
+**7. ⚠ PRIVACY.** Standing constraints: Creamsicle's purchase reason is NOT FOR PUBLICATION; the Texas on-ramp is never narrowed beyond *near Fort Worth*; **no `bordeaux*` slug or filename.** **And the parking chapter names private individuals and their homes — Kim must rule on each before publication.**
 
 ## Locations
 - Code: `G:\My Drive\Projects\Smart_Car` (bucket 2 -- code-as-source); `data`, `source`, `images` beneath it
@@ -267,16 +267,13 @@ Written 2026-08-12 so a session opening this file cold knows what was decided an
 
 ## ★★★ ROAD CHARACTER — A TAXONOMY FROM EXPERIENCE, AND A NULL THAT COMPLETES A PAIR (Kim, 2026-08-20)
 
-**He withdrew his own West Virginia answer after checking a map: the two drives were DIFFERENT HIGHWAYS**, and what they shared was *the same type of countryside; rolling, tree-covered hills, a winding highway, small villages tucked in the valleys.* **So the memory retained a LANDSCAPE TYPE, not a road — and *twice* counted instances of a category.** He said *highway*; he meant *this kind of country*. **Finding 039 amended: when a witness names a specific, test whether the specific stands for a class.**
+**He withdrew his own West Virginia answer after checking a map: the two drives were DIFFERENT HIGHWAYS**, sharing *the same type of countryside; rolling, tree-covered hills, a winding highway, small villages tucked in the valleys.* **The memory retained a LANDSCAPE TYPE, not a road** — Finding 039 amended: *when a witness names a specific, test whether the specific stands for a class.*
 
-**And a category the project did not have — TREE TUNNELS:** *very long (miles and miles) of straight divided highway lined by a dense thicket of trees. Flat. Monotonous. Where are these found? In the South.* The third term is what both are a relief from: *nearly straight freeways lined by commerce, billboards and wall-to-wall housing.*
+**New category — TREE TUNNELS:** *very long miles of straight divided highway lined by a dense thicket of trees. Flat. Monotonous.* In the South. The third term is what both are a relief from: *nearly straight freeways lined by commerce, billboards and wall-to-wall housing.* **The project's road taxonomy is built from SPEED; his is built from EXPERIENCE.**
 
-**★★ The project's road taxonomy is built from SPEED; his is built from EXPERIENCE. Different axes, both needed.** Gross speed does not separate them — **Deep South median 40.3 mph (n=10) against Appalachian 38.0 (n=6), p = 0.42.**
+**★★★ Gross speed cannot see it — Deep South median 40.3 mph (n=10) vs Appalachian 38.0 (n=6), p = 0.42 — and that null COMPLETES A PAIR.** The Canadian Plains were the most STRESSFUL miles and read as an unremarkable fast run. **Tree tunnels are the most MONOTONOUS and read exactly the same. The record is blind to the driver's experience at BOTH ends of the scale — terror and boredom produce identical numbers.** *Vigilance has no column; neither does tedium.* **The cleanest one-line case for why layer 2 is load-bearing.**
 
-**★★★ AND THAT NULL COMPLETES A PAIR WITH THE CANADIAN PLAINS.** Those were the most STRESSFUL miles of the crossing and read as an unremarkable fast run. **Tree tunnels are the most MONOTONOUS and read exactly the same way. The record is blind to the driver's experience at BOTH ends of the scale — terror and boredom produce identical numbers.** *Vigilance has no column; neither does tedium.* **This is the cleanest one-line case the project has for why layer 2 is load-bearing.**
-
-**⚠ A SIGNAL IN THE ECONOMY THAT CANNOT BE SETTLED.** `mpg ~ leg_miles + group` gives South **-3.18, p=0.023** (n=30); with era **-2.61, p=0.065**; on the 16 temperature-stamped rows **-5.81, p=0.009** with temperature itself null. **Mechanism would be the inverse of the intuition — flat straight highway invites steady high speed, and drag costs an 1,800-lb car more than hills do.** But the coefficient is **unstable across subsamples**, n=30, and temperature is confounded with group. **★★ And it cannot be resolved by waiting: Creamsicle has ZERO southern fills. The sample is closed at 30.** **DIFFICULTY strand, not analysis. Do not print the coefficient; print the fact that it cannot be settled.**
-
+**⚠ A SIGNAL THAT CANNOT BE SETTLED.** `mpg ~ leg_miles + group`: South **-3.18, p=0.023** (n=30); with era **-2.61, p=0.065**; on 16 temperature-stamped rows **-5.81, p=0.009** with temperature null. **Mechanism would invert the intuition — flat straight highway invites steady high speed, and drag costs an 1,800-lb car more than hills do.** But the coefficient is **unstable across subsamples**, n=30, and temperature is confounded with group. **★★ Creamsicle has ZERO southern fills, so the sample is closed at 30 and will not grow.** **DIFFICULTY strand. Do not print the coefficient; print the fact that it cannot be settled.**
 
 ## ★★★ THE OPENING IS WRITTEN, AND THE ANCHOR IS THE FOREWORD'S SPINE (Kim, 2026-08-20) — full working in the log
 
@@ -290,9 +287,13 @@ Written 2026-08-12 so a session opening this file cold knows what was decided an
 
 **★★★ AND PARKING IS THE HIDDEN INFRASTRUCTURE — Kim, 2026-08-20, answering why the car left.** *She could no longer stay in her assisted living facility in LSM. She moved to a more secure facility in August and that place didn't have parking for TwoRed. Parking is a big issue and we've been fortunate that friends and family have helped at critical times.* **The car did not leave California because she died. It left because the parking spot did.** Last anchor fill **2016-08-02**; **Carlsbad holds it for 36 days** while a new home is found; the coast run to Oregon follows on 09-24. **Six years of anchorage end inside a fortnight, on a facility's parking policy.** She died in January 2017 with the car already in Eugene — **which is why it was there when the call came. The two facts are adjacent and separate; keep them so.**
 
-**★★★ THE DORMANCY MAP *IS* THE FAVOUR MAP.** **Thirty-four of the thirty-five long dormancies sit inside the network of family, friends and a facility** (San Marcos 11 spells / 578 days, Lake San Marcos 7 / 421, Carlsbad 4 / 334, then Signal Hill, Barstow, Parker, Yuma, Coos Bay, Brookings and four singles). **Exactly one is outside it — Altamont IL, 25 days — and it is the only time in sixteen years he had to BUY the service.** Two thousand miles from anyone who could hold the car, the substitute for a favour was a commercial car wash. **The car wash is not an odd anecdote; it is the single failure of the parking network.**
+**⚠ I BUILT A FAVOUR MAP FROM THE DORMANCY LOCATIONS AND IT WAS MOSTLY WRONG — FINDING 041.** I attributed each spell to the city of the preceding fill. Kim: *the other places are simply hotel/motels we stopped at along the way.* **A fill records where fuel was BOUGHT, not where the car came to REST** — the five weeks I gave to Carlsbad were at **Mentone**, ninety miles on, at his niece's. Same class as *a matching TOTAL does not mean a matching ROUTE*: **a fuel row is a TRANSACTION, not a STATE.**
 
-**★ For the Foreword: the hidden infrastructure of sixteen years of cross-country driving in a small car was not fuel and not roads — it was people willing to let a car sit.** The fuel log records movement; **the gaps between its rows record hospitality, and they are 86% of the elapsed days.** ⚠ **Do not publish the dormancy table until Kim annotates whose driveway each town was, and rules on naming private individuals** — as with the Texas on-ramp.
+**What survives.** The **durations** (they need no location): **86% of elapsed days sit inside a 14+ day dormancy.** The **anchor**, confirmed independently by Kim: San Marcos / Lake San Marcos, 18 spells, 999 days, his mother's facility. And **★★ SIGNAL HILL = SMART MADNESS**, the garage that equipped and maintained BOTH cars — **7 fills, 2011 to 2017, sitting at the seams of expeditions**: the 2012-05-24 fill is 81 miles into the first day of the Frostburg trip; **the 2013-09-06 fill is inside the Arctic trip's final leg — the car came off the Dalton and stopped at the shop on the way home.** **The wide-tire decision has an address, and it is in the fuel log.**
+
+**★★★ THE THEME STANDS ON KIM'S TESTIMONY, NOT ON MY MAP — and is stronger for it.** The named holdings are **Mentone (his niece), Eugene (Will McClatchey's farm, a huge garage), and the St Louis car wash near the airport — the only PAID holding in sixteen years**, improvised on sight from an unused garage. **Where a car is allowed to sit is exactly the kind of fact a fuel log cannot hold; only the witness can name it.** Layer 3 built a map, layer 2 corrected it, **and the correction says the map cannot be built from data at all.**
+
+**★★★ AND THEY LIVE IN HAWAII — SAY IT EARLY.** *If you didn't know that you might wonder why we didn't just drive to my mother's place.* It is load-bearing three times: **every dormancy is a flight home**, not an idle car; **the ~3,700 excluded Honolulu miles are the only miles driven where they live**; and **it inverts layer one a second time** — *you don't do much driving in Hawaii (think: downtown Honolulu). Driving on the mainland was something different for us.* **The preconception says a Smart is a city car. These owners LIVE in a city and bought one to escape city driving.** Put it beside the safety inversion in the Foreword.
 
 **★ For the Foreword: this is layer-3 material arriving in service of layer 1.** The preconception is *that car is for errands.* The origin story answers *yes — that is exactly why we bought it.* **Then the record shows the errand car's parking space is the origin of every expedition in the book. The document does not argue the reader out of the preconception; it agrees with it and shows where it leads.**
 
