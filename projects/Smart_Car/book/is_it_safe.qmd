@@ -13,11 +13,7 @@ Very cute, usually, because it is so different from what anyone expects a car to
 
 *I like your car.* That was almost always the opener. **Seeing TwoRed was an invitation to talk**, and a great many conversations started exactly that way, with a stranger walking across a forecourt to say something friendly about a very small car.
 
-<!-- FIGURE 1 goes here: TwoRed, red and silver, Lake San Marcos. Kim beside it.
-     Put the file at images/TwoRed/twored_day_one.jpg and uncomment:
-![TwoRed. The silver band running around the car is not trim — it is the safety cell, and it is the first thing I point at.](images/TwoRed/twored_day_one.jpg){#fig-twored}
-     CHECK WITH KIM: he called this 'day one', but the car is wearing the wide alloys,
-     which went on at 13,510 miles in 2011. Day one of the WHEELS, or day one of the car? -->
+![TwoRed on the day it arrived, on the narrow tires it left the factory with. **The silver band running around the car is not trim. It is the safety cell**, and it is the first thing I point at.](images/TwoRed/twored_day_one.jpg){#fig-day-one}
 
 **It did not last, and the record of that is worth keeping.** By the time we were driving Creamsicle, Smart cars were relatively common and the effect had largely worn off. People no longer crossed a forecourt to look. Creamsicle is cute too — **but by my measure not quite as cute as TwoRed**, and in any case by then it was not a surprise. **The reaction this chapter is about belongs to a particular decade**, and it faded as the cars stopped being strange.
 
@@ -146,6 +142,8 @@ It was possible to control. But it was tiring.
 It happened enough that I discussed it with some experts. They understood right away and they had the solution: wider tires.
 
 The fancy rims came along with them, because this is a car that is fun to drive and fun to be seen in. It worked. The handling became very good.
+
+![The same car after Smart Madness had finished with it. Set this against @fig-day-one: the tires are visibly wider, and the fancy rims came along with them.](images/TwoRed/twored_wide_wheels.jpg){#fig-wide-wheels}
 
 Now, when I pull up behind a high-priced sports car, I note the width of their tires. Mine are not as wide. **But they are wide enough to take care of the problem.**
 

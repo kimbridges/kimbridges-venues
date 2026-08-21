@@ -341,6 +341,16 @@ Quarto **book**, `output-dir: _output`, matching the house pattern (`whittakerr`
 
 **★ KIM WANTS GRAPHICS AND PHOTOS.** *When we get to the data, I'm expecting we'll be doing some interesting graphics. At some point, we'll want to slip in some pictures, too.* `figures/` created; `images/Creamsicle/` holds 37 geotagged, timestamped photos that **join to the logs on date + local time with no timezone reconstruction.** **The photo layer is chapter 12's material and needs a TwoRed equivalent — ask Kim what exists.**
 
+## ★★★ CHAPTER 2 IS DRAFTED (2026-08-20) — `book/is_it_safe.qmd`, ~2,300 words
+
+**Kim's material closed every gap and gave the chapter its argument.** *The first thing people say is that it is cute* — **the preconception arrives as affection, not hostility**, which is why it deserves an answer rather than a defence. The safety-cell demonstration is his, verbatim, including the race drivers popping out with their hands up. **The reaction faded: by Creamsicle, Smarts were common and nobody crossed a forecourt.**
+
+**★★★ AND THE POTHOLE GAVE THE CHAPTER ITS THESIS.** *You learn the pattern (flag equals slow and swerve). You begin to trust your experience. Accidents happen when the pattern doesn't hold.* **That unifies both close calls — they are one failure, twice.** On the Dalton, a hazard with no flag; near Fort Worth, a ramp with traffic coming up it. **Both times the world briefly stopped behaving as sixteen years had taught him it behaves.** So: *you cannot drive without trusting patterns, and you cannot make patterns hold — the only thing left to ask of a car is what it can do in the second after one breaks.* **A safety cell is for the crash you are having; handling is for the crash you are not going to have.**
+
+**★ The crosswind was about VARIANCE, not force.** *Not a constant push, but one sufficiently variable that I had to keep correcting.* **Controllable, but tiring** — the same shape as the frost heaves, and the same thing a two-sample trip log averages away. **Chapter 7's argument now makes its first appearance in chapter 2.**
+
+**Figures wired:** `@fig-day-one` (original narrow tires, and **the silver safety cell visible** — the photo does the pointing the text describes) and `@fig-wide-wheels` (after Smart Madness). **Book images live in `book/images/`** so Quarto copies them to the output; the canonical archive stays in `Smart_Car/images/`.
+
 ## Next Steps
 1. **★★★ KIM: correct the chapter list above.** Then **write the SAFETY chapter (ch.2) first** — it demonstrates the architecture on the project's own central question. Foreword material is already being dictated and is in the log.
 2. **BUILD THE MANUSCRIPT SKELETON.** There is no draft file yet — dictated prose is currently landing in `logs/proj_Smart_Car_log.md`, which is working state, not a manuscript. **A Quarto book in `G:\My Drive\Projects\Smart_Car`, one file per chapter, destination `kimbridges-documents`.**
