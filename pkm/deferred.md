@@ -170,6 +170,18 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ★★★ THE OPENING IS WRITTEN — the anchor at Lake San Marcos (Kim, 2026-08-20)
+
+**Kim's origin story:** a car was needed at Lake San Marcos because visits to his mother were frequent and rentals were adding up; **there was a parking spot at her place**; and the contradiction — a city car with 71,283 mainland miles — resolves through the family dynamic, *two visits separated by the time needed to do some work.*
+
+**★★★ THE RECORD GOES FURTHER THAN *BOTH PURPOSES*.** **22 of the 35 long dormancies are at that one address — 1,333 of 2,147 dormant days (62%), median stay 52 days, longest 184, spanning 2010-07-26 to 2016-08-02 exactly six years.** The car spent more of its life parked there than doing anything else. **AND EVERY COMPLETE TRIP IS A LOOP FROM IT** — eight of thirteen logged trips begin and end at Lake San Marcos, and every complete one from 2011 through the Fourth Crossing does. **The long-distance driving is not a departure from the local-errand purchase; it is structurally hung off it.**
+
+**★★ The economics are visible as a COUNT, not a cost:** a rental must be returned, a car in a parking space need not be, and **22 long dormancies = twenty-two rentals not taken out in six years.** **The saving is in the DORMANCY column.** (A dollar figure needs a sourced rental rate — intentions item 4.)
+
+### ★ OPEN QUESTION FOR KIM — why did the car move to Oregon in September 2016?
+
+**The sequence is documented and the causation is not.** Last anchor fill **2016-08-02**; the September 2016 trip is the one-way relocation to Eugene and **the car never returns to Lake San Marcos**; in January 2017 it is in Eugene when the call comes about his mother; she dies shortly after; **the car ships from Matson 2017-05-22, four months later.** **The loop broke BEFORE she died, so the relocation was not a consequence of it.** **Do not write the bracketing arc until Kim explains the September move.**
+
 ### ★★★ THE SAFETY THESIS — layer one's content, given 2026-08-19
 
 **The preconception is not *it's a city car*, it is IS IT SAFE? — a question with a fear in it, which is why layer 1 can carry a book.** Kim's answer has three parts and only the third is the thesis: the engineering answer (Mercedes, the safety cell) which by his own verdict lands as *maybe, maybe not*; the empirical answer (sixteen years, nothing happened); and **SMALL AND NIMBLE ARE COMPONENTS OF SAFETY**, which INVERTS the preconception rather than rebutting it. Both close calls support it — the Yukon pothole *big enough to eat a big car too* but dodgeable, and the Texas on-ramp (a police car coming up it at speed, no lights; hard right, hard brakes, stopped inches from the guard rail).

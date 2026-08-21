@@ -1,5 +1,10 @@
 ## COLLECTED STORIES — Kim's accounts of the long days, verbatim (opened 2026-08-19)
 
+### ★★★ THE OPENING — why there was a car at all (Kim, 2026-08-20)
+
+> The overriding fact was we needed a car in Lake San Marcos. We were visiting my mother quite frequently. Each time we'd rent a car. That was getting expensive. Smart cars, it seemed to us at the time, we reasonably priced. And there was a parking spot available at my mom's place. Getting a Smart was a decision based, in part, on economics. Convenience, too. But this story is not about using a Smart for local suburban travel. It's about the long, cross country drives. This conflict is resolved by the familiar family dynamic of kids needing to visit parents, but not staying too long. In our case, we'd visit for a few days and then go off to a meeting (which wasn't optional, either). We'd drive back and visit again. Two visits separated by the time needed to do some work. The car served both purposes. That added to the value.
+
+
 ### The 2010 loop, corrected and complete (2026-08-20)
 
 > This was the first big drive and it was complex. I went first for a short stop in Ft Worth, TX at BRIT (Botanical Research Institute of Texas). The on to St Louis where I did some work at the Botanical Society of America headquarters (and MOBOT, the big botanical garden). Nancy flew in and joined me in St Louis. We drove to Washington, DC, where she had a meeting. After that, we took a trip north to see friends in MA. After that, we did some driving around the region. Eventually, we got Nancy back to St Louis and she took a plan back to HNL. I stayed long enough to get the car stored (at a Car Wash). I returned to HNL for a short stay. Then I returned to St Louis and got the car (it was OK) and drove to Pittsburgh for a meeting (Gigapan camera robots). After that, I drove to meet with colleagues who were part of an NSF grant. They were in places like South Carolina. I then headed West until I got back to Lake San Marcos. Most of the trip was for Nancy and me to get to scientific meetings. We did add on a bit of driving so we could see areas of the country neither of us had visited. That, incidentally, added to the total number of states TwoRed visited and, in a way, became the basis of the challenge to visit the remaining states.
@@ -1413,3 +1418,59 @@ Kim gave the Summersville trip unprompted: a Frostburg meeting, then **a car lef
 
 Never appears as a label. **The Colonial Heights VA fill → Bellmawr NJ reads 264 odometer miles (great-circle 219, ratio 1.21); the only Delaware-free road is ~305 miles.** The record holds Delaware as a DISTANCE. **State tally: 45 documented, 46 with Delaware, plus Florida on testimony; Rhode Island and South Dakota have neither. Provinces confirmed at exactly 10 — the charter's claim, verified.**
 
+
+
+## ★★★ THE ANCHOR — KIM'S OPENING IS TESTABLE, AND THE RECORD GOES FURTHER THAN HE DID (2026-08-20)
+
+His opening (verbatim in COLLECTED STORIES) makes a structural claim: **a car was needed at Lake San Marcos because visits to his mother were frequent and rentals were adding up; there was a parking spot at her place; and the apparent contradiction — a city car with 71,283 mainland miles on it — is resolved by the family dynamic. *We'd visit for a few days and then go off to a meeting... We'd drive back and visit again. Two visits separated by the time needed to do some work. The car served both purposes.***
+
+**Every part of that is in the data, and the data says something stronger than *both purposes*.**
+
+### 1. The parking spot is the structural centre of the entire record
+
+| | |
+|---|---|
+| long dormancies (14+ days) in the whole record | **35** |
+| of those, at San Marcos / Lake San Marcos / Carlsbad | **22** |
+| dormant DAYS at the anchor | **1,333 of 2,147 — 62%** |
+| median stay | **52 days** |
+| longest | **184 days**, 2012-06-20 to 2012-12-21 |
+| anchor span | **2010-07-26 to 2016-08-02 — six years exactly** |
+
+**The car spent more of its life parked at that one address than doing anything else, including driving.**
+
+### 2. ★★★ EVERY COMPLETE TRIP IS A LOOP FROM IT — until the loop breaks
+
+Of thirteen logged trips, **eight begin and end at Lake San Marcos.** The exceptions are not exceptions to the pattern; they are its ending:
+
+| trip | from → to | |
+|---|---|---|
+| 2011 NorCal Roadtrip | LSM → LSM | **loop** |
+| 2011 St Louis | LSM → LSM | **loop** |
+| 2012 Frostburg | LSM → LSM | **loop** |
+| 2012 May Arizona | LSM → LSM | **loop** |
+| 2013-4 LA Expedition | LSM → LSM | **loop** |
+| 2013 Arctic | LSM → LSM | **loop** |
+| 2014 Penultimate State | LSM → LSM | **loop** |
+| 2015 Sedona | Carlsbad → Brawley | partial log, 3 legs |
+| **2016 Fourth Crossing** | LSM → LSM | **loop — the last one** |
+| 2016 Fall/Winter | San Marcos → **Eugene OR** | the relocation |
+| 2017 January | Eugene → Vista CA | |
+| 2017 February | Mentone → Eugene | second relocation |
+| 2017 Last Mainland Miles | Toledo WA → **Matson, Seattle** | |
+
+**Every complete trip from 2011 through the Fourth Crossing is a round trip from the parking spot at his mother's place. The Arctic Circle run is a loop from it. So is the crossing that reached Florida and the Tail of the Dragon. So is the fourth crossing.** **The long-distance driving is not a departure from the local-errand purchase — it is structurally hung off it.** That is the resolution of Kim's conflict, stated in the geometry: **there was never a choice between the two uses, because every long drive began and ended in the same parking space.**
+
+### 3. ★★ The economics are visible as a COUNT, not a cost
+
+Kim's reason was rental expense. **A rental must be returned; a car in a parking space does not.** The record holds that difference as a number: **22 long dormancies at the anchor** means **the car was left there and picked up again twenty-two times in six years** — twenty-two rentals not taken out, before any shorter stay is counted. **The saving is not in the fuel column. It is in the dormancy column, which is the one nobody thinks to read.** *(A dollar comparison needs a sourced rental rate; intentions item 4 forbids printing one until it exists.)*
+
+### 4. ★★★ AND THE RECORD IS BRACKETED BY HIS MOTHER
+
+**Last fill at the anchor: 2016-08-02.** The September 2016 trip is the one-way **relocation to Oregon**, and the car never returns to Lake San Marcos. **In January 2017 it is in Eugene when the call comes** — the Brookings → Paso Robles run, 562 miles, the coldest start in the record, racing to his mother at 104. She died shortly after. **The car ships from the Matson dock on 2017-05-22, four months later.**
+
+**So the mainland record opens because a parking spot was available at her place and closes within months of her death.** ⚠ **The sequence is documented; the CAUSATION is not.** The loop broke in September 2016, BEFORE she died — so the relocation was not a consequence of it. **Ask Kim why the car moved to Oregon when it did.** Do not write the arc until he says.
+
+### For the writing
+
+**This is the Foreword's spine and it is layer-3 material arriving in service of layer 1.** The preconception is *that car is for errands*. The origin story says *yes — that is exactly why we bought it*. **And then the record shows that the errand car's parking space is the origin of every expedition in the book.** The document does not have to argue the reader out of the preconception; **it can agree with it and then show where it leads.**

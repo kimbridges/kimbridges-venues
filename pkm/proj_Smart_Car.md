@@ -19,15 +19,15 @@ the refutation stronger -- not one exceptional car on one exceptional journey, b
 
 ## Current Status
 
-**★★★ BOTH CARS ARE INGESTED, THE TWORED RECORD IS CLOSED AT BOTH ENDS, AND THE ONLY THING BLOCKING THE WRITING IS THE CHAPTER ARCHITECTURE (2026-08-19).**
+**★★★ THE RESEARCH PHASE IS OVER. THE ARCHITECTURE IS SETTLED AND THE WRITING STARTS NEXT (2026-08-20).**
 
-**TwoRed fuel spine: 294 rows, odometer 4 → 71,283, 2010-07-23 to 2017-05-22, audited.** 277 of 294 balance the pump identity; the 13 that fail carry a documented basis. **65 errata**, 4 open. `twored_ingest.R` emits `TwoRed_fuel_clean.csv` with provenance per row; the source workbook is never edited.
+**TwoRed:** 294 audited fills, odo 4 → **71,283 at the Matson dock**, 2010-07-23 to 2017-05-22. 277 of 294 balance the pump identity; the 13 that fail carry a documented basis. **65 errata**, 4 open. **139 legs across 12 trips** (132 timed), 41,163 mi = 58% of lifetime; **134 fills carry a time and temperature (46%)**; time zones COMPUTED from a 121-city IANA table, never typed.
 
-**TwoRed human spine: 139 legs across 12 trips** (132 timed), **41,163 mi = 58% of lifetime**, 174 fuel rows under a leg (59%), **134 fills carrying time and temperature (46%)**. Time zones are COMPUTED from a 121-city IANA table, not stored. **Eleven of Kim's accounts are collected verbatim and every one cross-checks against the log.**
+**Creamsicle:** 173 fills, 86 legs, **with STOPPED TIME** — hence median gross 43.5 vs net 51.0 mph. **Zero southern fills**, which closes one test permanently.
 
-**Creamsicle: 173 fuel rows, 86 legs, ingested 2026-08-19** by `creamsicle_ingest.R`, with stopped time — the instrument TwoRed lacks.
+**Twelve of Kim's accounts are collected verbatim and every one has been cross-checked.** All the open questions are answered or explicitly constrained.
 
-**Ready to write:** economy, cost per mile, degradation; the shape of a driving day; gross speed by road (stating the means-not-variance limit); the stories. **Not ready:** the temperature effect is **retired**; Canadian economy blocked on litres/CAD normalisation; route work partial at a 78% gazetteer join; **states 45 of 49 documented** (provinces confirmed at 10).
+**Ready to write:** the safety chapter (first), the origin/anchor Foreword, economy and cost per mile, the shape of a driving day, gross speed by road (stating the means-not-variance limit), the parking constellation. **Not ready:** the temperature effect is **retired**; the Canadian variance test is a NON-RESULT blocked on litre/CAD normalisation; the southern economy signal **cannot be settled at all**; route work partial at a 78% gazetteer join.
 
 ## The fleet
 
@@ -82,11 +82,11 @@ Median leg **251 mi**; log distance ~**95%** of odometer miles; lifetime **39.44
 
 Smart Madness prescribed WIDE tires after the first crossing because the stock narrow "city" tires let crosswind push the car around at highway speed. **The purpose was handling, and handling is the mechanism of the safety thesis above.** Before/after, the economy difference is indistinguishable from zero, **95% interval -3.7% to +4.9%** — the 1-3% penalty theory predicts sits INSIDE it. **The data rules out a LARGE penalty; it cannot detect a modest one.** (I first wrote the stronger claim and withdrew it in the same turn — the Finding 032 failure mode.)
 
-## ★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18) — now the FABRIC of the three layers; full write-up in the log
+## ★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18) — the FABRIC of the three layers; in the log
 
 *The fuel log is more about the CAR'S performance, while the trip log shows the HUMAN performance -- how far and fast can you expect to drive in a day, something I had no idea about until I started doing these drives.*
 
-**It assigns instruments to questions** — economy, degradation, cost/mile and the wide-tire question are the CAR's; daily range, departure discipline and gross speed are the HUMAN's; **mixing them yields a meaningless average.** Fuel records STOPS, trip records LEGS, and **the odometer is the JOIN, not the topic.** Trip logging started LATER because **the car's question was the obvious one to ask first; the human question is the one the driving taught him to ask.** **Bounded 2026-08-19:** the trip log records what the human ACHIEVED, in MEANS not variance; **the stories are the only record of what it COST.** Creamsicle's 7.5 mph net-vs-gross gap is the first measurement of that conflation.
+**It assigns instruments to questions** — economy, degradation, cost/mile and the wide-tire question are the CAR's; daily range, departure discipline and gross speed are the HUMAN's; **mixing them yields a meaningless average.** Fuel records STOPS, trip records LEGS; **the odometer is the JOIN, not the topic.** **Bounded 2026-08-19:** the trip log records what the human ACHIEVED, in MEANS not variance; **the stories are the only record of what it COST.**
 
 ## ★★ THE SCAN SWEEP, 2026-08-18 — full write-up in the log
 
@@ -94,22 +94,22 @@ All 15 scans read (22 on disk). Four results that must not be lost:
 
 **1. The wheel change is DATED** — `NEW WHEELS @ 13510 miles`, 179 mi before the 2011 departure. **The estimate FLIPS SIGN with specification (+3.6% to -1.8%); that is the finding, not any one number.**
 
-**2. ✗ THE TEMPERATURE EFFECT IS RETIRED.** n=94 gave **-0.068, p=0.045**; n=125 gives **-0.050, p=0.099**, **p=0.17** with controls. The raw hot/cold gap dies on the same control — **hot fills are on shorter legs.** Write no thermal claim. **The record is now good enough to RETIRE a result.**
+**2. ✗ THE TEMPERATURE EFFECT IS RETIRED.** n=94 gave **-0.068, p=0.045**; n=125 gives **-0.050, p=0.099**, **p=0.17** with controls. The raw hot/cold gap dies on the same control — **hot fills are on shorter legs.** **The record is now good enough to RETIRE a result.**
 
 **3. The slashed zero produced three more corrections and the control held.** Over 44 rows failing the pump identity: **permitted 8→0 fixes 4; forbidden 0→8 fixes 1**; **six controls fix 0.**
 
-**4. Gross speed separates by ROAD, across 138 legs.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate State 40.3 | Dalton **31.7** | US-101 coastal **28.3**. Same car. **But gross speed is a MEAN — see the Dalton return, where the same road one day apart differs by 6 mph.**
+**4. Gross speed separates by ROAD, across 138 legs.** 2011 interstate **47.6** | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate 40.3 | Dalton **31.7** | US-101 coastal **28.3**. **But gross speed is a MEAN, and it cannot see road CHARACTER at all — see ROAD CHARACTER above.**
 
 ## ★★★ THE LONG DAYS — ALL EIGHT COLLECTED, AND EVERY ONE CHECKS OUT (2026-08-19)
 
-**Kim's accounts are verbatim in `logs/proj_Smart_Car_log.md` under COLLECTED STORIES; the full confirmation table is there too.** Chapter source material. The four that changed something here:
+**Twelve of Kim's accounts are verbatim in the log under COLLECTED STORIES, with the full confirmation table.** Chapter source material. Four that changed something:
 
-| day | leg | mi | what the data independently shows |
-|---|---|---|---|
-| 2012-05-31 | St Louis → Columbus | 518 | navigator distracted, lost near Urbana IL — **the 09:52 fill is at Champaign, one metro with Urbana**, and it carries slashed-zero typo **L61**. Excess over direct I-70: **108 mi** vs his remembered ~100 |
-| 2011-06-26 | Flagstaff → Holbrook | 100 | out **04:30**, in **06:45** — a 100-mi hop existing only to arrive early for his nephew; **70 mi of local driving before the next departure IS the park tour** |
-| 2012-06-14 | Billings → Pocatello | 449 | **65.5 mph gross, the fastest day in the record** — fast because Montana has nowhere to stop |
-| 2017-01-06 | Brookings → Paso Robles | 562 | racing to his mother, 104. **32 degF, the coldest start in the record**; Paso Robles fill **22:04 at 68,731**, arrival **22:10 at 68,732** — one mile, six minutes |
+| day | leg | what the data independently shows |
+|---|---|---|
+| 2012-05-31 | St Louis → Columbus, 518 | lost near Urbana IL — **the 09:52 fill is at Champaign, one metro with Urbana**, and it carries slashed-zero typo **L61**. Excess over direct I-70: **108 mi** vs his remembered ~100 |
+| 2011-06-26 | Flagstaff → Holbrook, 100 | out **04:30**, in **06:45** — a hop existing only to arrive early for his nephew; **70 mi of local driving before the next departure IS the park tour** |
+| 2012-06-14 | Billings → Pocatello, 449 | **65.5 mph gross, the fastest day in the record** — fast because Montana has nowhere to stop |
+| 2017-01-06 | Brookings → Paso Robles, 562 | racing to his mother, 104. **32 degF, the coldest start in the record**; fill **22:04 at 68,731**, arrival **22:10 at 68,732** — one mile, six minutes |
 
 **The other four — Sydney NS → Edmundston (555, off an overnight ferry, zero odometer miles across the water), El Paso → San Antonio (531, racing for Florida), LSM → St George (492, a half-day Las Vegas visit inside a 31 mph day), Bellingham → Grants Pass (488, Nancy off the red-eye) — all check out and are in the log.**
 
@@ -127,75 +127,61 @@ Kim remembers meeting Nancy *early afternoon*; the sheet starts the day at **06:
 
 ### ★★★ FIVE THINGS THE STORIES CHANGED, none of which the data could have volunteered
 
-**1. Finding 033 got its best corroboration, from an unrelated direction.** The Champaign row is **L61**, one of three slashed-zero cost typos raised the day before. **The typo sits at the stop where he had just discovered he was 100 miles off course and late for dinner.** Kim gave the mechanism — *record quickly* under pressure — blind to this route.
+**1. Finding 033's best corroboration, from an unrelated direction.** The Champaign row is **L61**, a slashed-zero cost typo raised the day before — **and it sits at the stop where he had just discovered he was 100 miles off course and late for dinner.** Kim gave the *record quickly under pressure* mechanism blind to this route.
 
-**2. The gap between an arrival odometer and the next departure odometer is the day OFF the highway.** 70 miles at Holbrook is a park tour. **Readable across the whole record and nobody has read it.**
+**2. The gap between an arrival odometer and the next departure is the day OFF the highway.** 70 miles at Holbrook is a park tour; **59 at Hartland is a lawyer's house across the river.** Readable across the whole record and nobody had read it.
 
 **3. Daily distance has a first-order term nobody modelled: WHERE THE BEDS ARE.** Lodging geography sets the length; scenery sets the pace.
 
 **4. A ferry is a LOGISTICS MULTIPLIER, not a hole in the odometer.** It converts a night into progress and hands the next morning a loaded, fuelled car.
 
-**5. ★★ A LONG ELAPSED TIME IS NOT A SLOW DAY.** LSM → St George read 31.6 mph and was a normal drive with a half-day Las Vegas visit inside it. **Gross speed silently conflates driving with living**, and both later measurements agree: Creamsicle's stop column puts the gap at **7.5 mph**, and the Dalton return shows it against the SAME road driven the day before. **Gross mph is a ceiling on driving speed, never a measure of it.**
+**5. ★★ A LONG ELAPSED TIME IS NOT A SLOW DAY.** **Gross speed silently conflates driving with living**, and both later measurements agree: Creamsicle's stop column puts the gap at **7.5 mph**, and the Dalton return shows it against the SAME road driven the day before. **Gross mph is a ceiling on driving speed, never a measure of it.**
 
 ## ★★★ THE FAVOURITE DRIVES (2026-08-19) — full write-up in the log
 
-Kim's list, unprompted: the Rockies; the mountains down to the Oregon coast; **a morning through the West Virginia hills, villages fogged in and chimney smoke rising** — *I liked this so much, I drove it twice* (**settled: I-64 Charleston→Beckley, 2010 and 2016** — above); and the Dalton, *going where cars weren't intended*. Accounts verbatim in the log.
+Kim's list, unprompted: the Rockies; the mountains down to the Oregon coast; **a morning through the West Virginia hills, villages fogged in and chimney smoke rising** — *I liked this so much, I drove it twice* (**see ROAD CHARACTER: two different highways, one country**); and the Dalton, *going where cars weren't intended*.
 
-**★ The Dalton return is the slowest long day in the record: 298 mi in 13.2 h, 22.6 mph**, out at 07:52 into 38 degF, against 28.6 outbound the day before. **The 46-mile gap is now closed — Wiseman, above.**
-
-**★★ A routing app can manufacture the geographic test's own signature.** *Memo to self: stay on the main roads.* Excess road miles over the straight line PLUS low economy from a rough surface is exactly what the test hunts. **It is not an error; it is a wrong turn a machine recommended** — measurable at 42 miles in the 2016 log. Third case where a high ratio wants a story rather than an errata entry.
+**★★ A routing app can manufacture the geographic test's own signature.** *Memo to self: stay on the main roads.* Excess road miles PLUS low economy from a rough surface is exactly what the test hunts. **It is not an error; it is a wrong turn a machine recommended** — measurable at 42 miles in the 2016 log. Third case where a high ratio wants a story rather than an errata entry.
 
 ## ★★★ THE FOURTH CROSSING LOG IS FOUND (2026-08-19) — full write-up in the log
 
-Nine pages, **25 legs**, scanned the afternoon it was asked for. **The reconstruction HELD: all 29 paper rows balance the pump identity and 25 of 29 are identical to the corrected dataset. The LSM/Blythe/Winslow values derived from AMEX statements and pump receipts match the paper EXACTLY on gallons and cost** -- an independent source, arrived at afterwards, agreeing to the thousandth of a gallon.
+Nine pages, **25 legs**. **The reconstruction HELD: all 29 paper rows balance the pump identity, 25 of 29 are identical to the corrected dataset, and the LSM/Blythe/Winslow values derived from AMEX statements match the paper EXACTLY** — an independent source, arrived at afterwards, agreeing to the thousandth of a gallon. **There is no Phoenix fill**, settling a hypothesis already withdrawn on three statistical grounds.
 
-**And there is no Phoenix fill**, settling documentarily a hypothesis already withdrawn on three statistical grounds. The four differences are mine: **L62/L63 I had written the AMEX MERCHANT NAME into the Brand field** (`Quick Check West`, `Hallum Store`) where the paper says **Valero** and **Conoco**; L64 a typo; L65 one thousandth of a gallon. **RULE: when a field is filled from a substitute source, record WHICH source -- a merchant string is not a brand.**
+**Three of the four differences are mine.** L62/L63: **I had written the AMEX MERCHANT NAME into the Brand field** (`Quick Check West`, `Hallum Store`) where the paper says **Valero** and **Conoco**. **RULE: when a field is filled from a substitute source, record WHICH source — a merchant string is not a brand.**
 
-**The stuck day is recovered: 2016-05-27 Youngtown AZ -> Monument Valley UT, 362 mi against ~320 direct = 42 miles of detour**, 37.6 mph against the trip median of 41.4. **A new longest day: 2016-06-19 Richmond MO -> Denver, 640 mi, 58.6 mph gross** (previous best 562). **107 degF into St George on 6/21**, the hottest reading in the record. Full write-up in `logs/proj_Smart_Car_log.md`.
+**Recovered:** the stuck day, 2016-05-27 Youngtown → Monument Valley, **362 mi against ~320 direct = 42 miles of detour**. **A new longest day: 2016-06-19 Richmond MO → Denver, 640 mi at 58.6 mph.** **107 degF into St George on 6/21, the hottest reading in the record.**
 
 ## ★★★ THE STRESSFUL MILES ARE INVISIBLE — A DIFFERENT SILENCE FROM FINDING 036 (2026-08-19)
 
-Kim's testable claim: *we were plagued by potholes. We often slowed to avoid damage... Those miles, which were mostly across the Canadian Plains, were very stressful.* **Both instruments were pointed at it. Neither sees anything.** Canadian Plains median gross **44.5 mph** against US Plains **45.0** and a whole-record **40.5**; MPG residuals +0.56 (n=4) against a record SD of **4.74**. The three Plains legs run **44.5, 47.3, 43.1** — FASTER than his sixteen-year median. The New Brunswick bridge-strike leg is dead average too: 217 mi, **40.6 mph**.
+Kim's testable claim: *we were plagued by potholes. We often slowed to avoid damage... Those miles, which were mostly across the Canadian Plains, were very stressful.* **Both instruments were pointed at it. Neither sees anything.** Canadian Plains median gross **44.5 mph** against US Plains **45.0** and a whole-record **40.5**; MPG residuals +0.56 (n=4) against a record SD of **4.74**. The three Plains legs run **44.5, 47.3, 43.1** — FASTER than his sixteen-year median.
 
-### ★★★ KIM'S CORRECTION INVERTS THE LOGIC — the data does not fail to corroborate him, it IS his mechanism
+**★★★ HIS CORRECTION INVERTS THE LOGIC.** *I should have said "abruptly slowed, then quickly speeded up". The problem was that I couldn't go slow as big vehicles kept moving at highway speeds. Hence the rear view mirror checks.* **His account PREDICTS no speed effect** — he was not free to drive slowly, so the average had to stay up. **The high gross speed is not evidence against the stress; it is the mechanism OF it.** And it names the missing quantity: **within-leg VARIANCE. A trip log samples the day TWICE — everything between is averaged away BY CONSTRUCTION.** *(The Canadian variance test is a NON-RESULT, not a null: those rows are converted from litres and CAD and unit-normalising is still OPEN.)*
 
-He revised himself the moment he saw the table: *I should have said "abruptly slowed, then quickly speeded up". The problem was that I couldn't go slow as big vehicles kept moving at highway speeds. Hence the rear view mirror checks.* **His account PREDICTS no speed effect.** He was not free to drive slowly — trucks closing behind him — so the average had to stay up. **The high gross speed is not evidence against the stress; it is the mechanism OF it.**
-
-**★★★ IT NAMES THE MISSING QUANTITY: WITHIN-LEG SPEED VARIANCE.** Brake for a hole, accelerate back to seventy, check the mirror, repeat. **A trip log samples the day TWICE — departure and arrival. Everything between is averaged away BY CONSTRUCTION.** So: **the log records MEANS and cannot record VARIANCE, and the cost lived entirely in the variance.** (I did look: Canadian 2014 residual SD 4.87 n=18 vs US 4.73 n=268, **p = 0.79** — but those rows are converted from litres and CAD and **unit-normalising is still OPEN**, so it is a **non-result, not a null**.)
-
-### ★★★ WHY THIS IS NOT FINDING 036
-
-**036 was about events that generated NO observation.** These miles generated a FULL set — distance, time, fuel, temperature, both endpoints — and every one is normal. The record is not silent; it answers a different question at a resolution that cannot reach the answer. **★★★ BOTH LOGS MEASURE OUTPUT. NEITHER MEASURES COST TO THE DRIVER. Vigilance has no column.** A driver can buy an ordinary 44 mph day at an extraordinary price and the log records the 44. **So the stories are not colour around the data — they are the sole record of a dimension the data cannot reach**, which is exactly why the safety argument above needs both.
+**★★★ WHY THIS IS NOT FINDING 036.** 036 was about events that generated NO observation. These miles generated a FULL set and every one is normal. **BOTH LOGS MEASURE OUTPUT. NEITHER MEASURES COST TO THE DRIVER. Vigilance has no column** — and, per ROAD CHARACTER above, **neither does tedium.** A driver can buy an ordinary 44 mph day at an extraordinary price and the log records the 44. **The stories are the sole record of a dimension the data cannot reach.**
 
 ## ★★ TWO RELOCATIONS, AND THE LAST YEAR'S SHAPE (2026-08-19) — full write-up in the log
 
-A page I had filed as a duplicate carried an annotation its twin did not show: **`Relocation  1141 miles`**, matching the 2016 fall-winter legs exactly (66,645 -> 67,786). **September 2016 was not a tour; it was the one-way relocation of TwoRed to Oregon** -- which is why the car was in Eugene when the January 2017 call came. **February 2017 is a SECOND relocation** (6 new legs), after which the car sits until 20 May. **The last year's shape: the car stops touring and starts commuting between two homes, then ships.**
+A page filed as a duplicate carried an annotation its twin did not show: **`Relocation  1141 miles`**, matching the 2016 fall-winter legs exactly. **September 2016 was not a tour; it was the one-way relocation of TwoRed to Oregon** — which is why the car was in Eugene when the January 2017 call came. **February 2017 is a SECOND relocation**, after which the car sits until 20 May. **The last year's shape: the car stops touring, starts commuting between two homes, then ships.** **See THE ANCHOR above — this is also where the Lake San Marcos loop breaks for good.**
 
-**★ METHOD: two scans of the same page are not the same evidence.** A marginal annotation can be lost to cropping, threshold or the fold. **Diff a duplicate rather than discarding it** -- this one yielded a trip name, a verified total, and the frame for the final chapter.
+**★ METHOD: two scans of the same page are not the same evidence.** A marginal annotation can be lost to cropping, threshold or the fold. **Diff a duplicate rather than discarding it.**
 
-## ★★★ THE END OF THE MAINLAND RECORD IS DOCUMENTED: 71,283 AT THE MATSON DOCK (2026-08-19)
+## ★★★ THE END OF THE MAINLAND RECORD: 71,283 AT THE MATSON DOCK (2026-08-19)
 
-On the BACK of the last fuel sheet, circled: **`5/22/17  71,283  LV Seattle @ Matson`**. There is no travel log because *we got on a plane and left TwoRed at the dock for shipping.* **The record ends at 71,283, in Seattle, at a shipping terminal** — last mainland miles **Toledo WA 71,181 → Seattle 71,283 = 102**, against ~100 road miles. Both readings documented; nothing reconstructed. Filed as `TwoRed_2017_LastMainlandMiles_trip_log.csv`.
+On the BACK of the last fuel sheet, circled: **`5/22/17  71,283  LV Seattle @ Matson`**. No travel log because *we got on a plane and left TwoRed at the dock for shipping.* Last mainland miles **Toledo WA 71,181 → Seattle 71,283 = 102**, against ~100 road miles; both readings documented.
 
-### ★★★ AND THIS CLOSES THE FIRST QUESTION THE PROJECT EVER ASKED
+**This closes the first question the project ever asked.** The charter said ~75,000, the log stopped at 71,181, and the gap looked like missing data. **Mainland 71,283; Kim's figure ~74,980; implied Honolulu miles ~3,697.** **The gap was never missing data — it is the scope boundary, quantified at the terminus.**
 
-The charter said ~75,000, the log stopped at 71,181, and the gap looked like missing data. **Mainland record 71,283; Kim's lifetime figure ~74,980; implied Honolulu miles ~3,697.** **The gap was never missing data — it is the scope boundary, quantified at the terminus.** The log records long-distance driving and stops when the long-distance driving stops. **The car crossed the Pacific and kept going for another 3,700 miles this record is not about, by design.**
-
-### ★★ TWO ANOMALIES AT THE END THAT ARE NOT ECONOMY READINGS
-
-The final two fills read **52.4 and 93.0 MPG** — the second the highest in the record. Both are small: **4.333 and 2.496 gallons against a lifetime mean of 6.24.** **A vehicle handed to Matson must arrive with a low tank.** These are not measurements of the car; **they are a tank being managed DOWN for shipping.**
-
-**★ General rule: the first and last rows of any record are the least trustworthy, because they are taken while the measuring itself is being started or stopped.** The first fill carries a slashed-zero cost error (L59); the last two are shipping artifacts. **Trim the ends before quoting an extreme.**
+**★★ Two anomalies at the end that are NOT economy readings.** The final two fills read **52.4 and 93.0 MPG** on **4.333 and 2.496 gallons against a lifetime mean of 6.24.** **A vehicle handed to Matson must arrive with a low tank** — a tank managed DOWN for shipping, not a measurement of the car. **★ General rule: the first and last rows of any record are the least trustworthy, because they are taken while the measuring itself is being started or stopped.** The first fill carries a slashed-zero error (L59); the last two are shipping artifacts. **Trim the ends before quoting an extreme.**
 
 ## ★★★ THE OPEN QUESTIONS ARE CLOSED (2026-08-19/20) — full working in the log
 
-**1. The 46 Dalton miles are 32 + 14 — Coldfoot → Wiseman.** The two Yukon River Crossing fills split the leg: north of the river 115 out / **147 back (+32)**, south of it 137 / **151 (+14)**. Coldfoot is Dalton mile 175, the Wiseman spur ~16 road miles on — **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.* The same leg is the **slowest 200+-mile day in sixteen years (22.6 mph against 28.6 over the identical road the day before)** and starts at **38 degF after Coldfoot read 64 degF the previous evening** — the weather turning, at the hour he describes.
+**1. The 46 Dalton miles are 32 + 14 — Coldfoot → Wiseman.** The two Yukon River Crossing fills split the leg: north of the river 115 out / **147 back (+32)**, south 137 / **151 (+14)**; the Wiseman spur is ~16 road miles from Coldfoot, so **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.* The same leg is the **slowest 200+-mile day in sixteen years (22.6 mph against 28.6 over the identical road the day before)**, starting at **38 degF after Coldfoot read 64 the previous evening**.
 
-**2. ✓ THE PENULTIMATE STATE IS VERMONT (Kim, 2026-08-20), and there was a reason to go.** *I was working with a lawyer who has an office in NH, but lives nearby in Vermont. I drove to his house.* **That is precisely the anomaly the record flagged and could not read:** Hartland VT 5-18 at odo 44,746, next leg opens **Lebanon NH** 5-20 at 44,805 — **two nights and 59 odometer miles for an eighteen-mile drive**, and Lebanon sits across the Connecticut River from Hartland. Office one bank, house the other. **★ Definitional point for the writing: TwoRed's state list and KIM'S state list are two different quantities** — Maine first appears four days later — **which is also why the record holds 45 against a challenge that counts to 49.**
+**2. THE PENULTIMATE STATE IS VERMONT (Kim, 2026-08-20)** — *a lawyer who has an office in NH, but lives nearby in Vermont. I drove to his house.* **Exactly the anomaly the record flagged and could not read:** Hartland VT → Lebanon NH, **two nights and 59 odometer miles for an eighteen-mile drive**, across the Connecticut River. **★ Definitional point: TwoRed's state list and KIM'S state list are two different quantities** — which is why the record holds 45 against a challenge counting to 49.
 
-**3. ★★★ DELAWARE IS INVISIBLE AS A LABEL AND PROVABLE AS A ROW.** Four mainland states never appear: Florida, Delaware, Rhode Island, South Dakota. Florida is Finding 036; **Delaware is the same silence and geography breaks it.** The 2014-05-16 Colonial Heights VA fill → Bellmawr NJ reads **264 odometer miles** (great-circle 219, ratio 1.21); **the only Delaware-free road is ~305 miles, 40 more than the odometer permits.** **Key to a ROW, never a LABEL.** Charter claim settled: **provinces are exactly ten.**
+**3. ★★★ DELAWARE IS INVISIBLE AS A LABEL AND PROVABLE AS A ROW.** Four mainland states never appear: Florida, Delaware, Rhode Island, South Dakota. Florida is Finding 036; **Delaware is the same silence and geometry breaks it** — Colonial Heights VA → Bellmawr NJ reads **264 odometer miles** (great-circle 219), and **the only Delaware-free road is ~305, forty more than the odometer permits.** **Key to a ROW, never a LABEL.** Charter claim settled: **provinces are exactly ten.**
 
-**4. ⛔ THE TEXAS ON-RAMP — CLOSED BY REQUEST.** *For personal safety, I wouldn't reveal it either. Near Ft Worth is sufficiently close.* **No session may attempt to localise it; no published text may place it more precisely than NEAR FORT WORTH.** The candidate legs have been removed from `deferred.md`. **A request, not a feasibility question.**
+**4. ⛔ THE TEXAS ON-RAMP — CLOSED BY REQUEST.** *For personal safety, I wouldn't reveal it either. Near Ft Worth is sufficiently close.* **No session may attempt to localise it; no published text may place it more precisely than NEAR FORT WORTH.** Candidates removed from `deferred.md`. **A request, not a feasibility question.**
 
 ## ★★★ CREAMSICLE IS INGESTED — THE SECOND SPINE EXISTS (2026-08-19)
 
@@ -303,6 +289,21 @@ Written 2026-08-12 so a session opening this file cold knows what was decided an
 **★★★ AND THAT NULL COMPLETES A PAIR WITH THE CANADIAN PLAINS.** Those were the most STRESSFUL miles of the crossing and read as an unremarkable fast run. **Tree tunnels are the most MONOTONOUS and read exactly the same way. The record is blind to the driver's experience at BOTH ends of the scale — terror and boredom produce identical numbers.** *Vigilance has no column; neither does tedium.* **This is the cleanest one-line case the project has for why layer 2 is load-bearing.**
 
 **⚠ A SIGNAL IN THE ECONOMY THAT CANNOT BE SETTLED.** `mpg ~ leg_miles + group` gives South **-3.18, p=0.023** (n=30); with era **-2.61, p=0.065**; on the 16 temperature-stamped rows **-5.81, p=0.009** with temperature itself null. **Mechanism would be the inverse of the intuition — flat straight highway invites steady high speed, and drag costs an 1,800-lb car more than hills do.** But the coefficient is **unstable across subsamples**, n=30, and temperature is confounded with group. **★★ And it cannot be resolved by waiting: Creamsicle has ZERO southern fills. The sample is closed at 30.** **DIFFICULTY strand, not analysis. Do not print the coefficient; print the fact that it cannot be settled.**
+
+
+## ★★★ THE OPENING IS WRITTEN, AND THE ANCHOR IS THE FOREWORD'S SPINE (Kim, 2026-08-20) — full working in the log
+
+**Kim's origin story:** a car was needed at Lake San Marcos because visits to his mother were frequent and rentals were adding up; **there was a parking spot at her place**; and the apparent contradiction — a city car with 71,283 mainland miles on it — resolves through the family dynamic. ***We'd visit for a few days and then go off to a meeting... We'd drive back and visit again. Two visits separated by the time needed to do some work. The car served both purposes.*** Verbatim in the log.
+
+**★★★ THE RECORD SAYS SOMETHING STRONGER THAN *BOTH PURPOSES*.** **22 of the 35 long dormancies are at that one address — 1,333 of 2,147 dormant days, 62%, median stay 52 days, longest 184, spanning 2010-07-26 to 2016-08-02 exactly six years.** **The car spent more of its life parked there than doing anything else, including driving.**
+
+**AND EVERY COMPLETE TRIP IS A LOOP FROM IT.** Eight of thirteen logged trips begin and end at Lake San Marcos, and **every complete one from 2011 through the Fourth Crossing is a round trip from that parking space** — the Arctic Circle run, the crossing that reached Florida and the Dragon, the fourth crossing. **The long-distance driving is not a departure from the local-errand purchase; it is structurally hung off it. There was never a choice between the two uses, because every long drive began and ended in the same parking spot.**
+
+**★★ The economics are visible as a COUNT, not a cost.** A rental must be returned; a car in a parking space need not be. **22 long dormancies = the car left and collected twenty-two times in six years — twenty-two rentals not taken out.** **The saving is in the DORMANCY column, which is the one nobody thinks to read.** (A dollar figure needs a sourced rental rate — intentions item 4.)
+
+**★★★ AND THE RECORD IS BRACKETED BY HIS MOTHER.** Last anchor fill **2016-08-02**; September 2016 is the one-way relocation to Oregon and the car never returns; **in January 2017 it is in Eugene when the call comes** (Brookings → Paso Robles, 562 mi, the coldest start in the record); she died shortly after; **the car ships from the Matson dock 2017-05-22, four months later.** ⚠ **The sequence is documented, the CAUSATION is not — the loop broke BEFORE she died. ASK KIM why the car moved to Oregon when it did. Do not write the arc until he says.**
+
+**★ For the Foreword: this is layer-3 material arriving in service of layer 1.** The preconception is *that car is for errands.* The origin story answers *yes — that is exactly why we bought it.* **Then the record shows the errand car's parking space is the origin of every expedition in the book. The document does not argue the reader out of the preconception; it agrees with it and shows where it leads.**
 
 ## ★★★ THE SAFETY QUESTION IS LAYER ONE'S ACTUAL CONTENT (Kim, 2026-08-19) — full development in the log
 

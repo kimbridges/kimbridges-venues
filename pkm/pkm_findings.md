@@ -1915,3 +1915,25 @@ I then did what the rule says and enumerated the complement across all of `Proje
 **★★ AND THE FAILURE IS NOT THE WITNESS'S ALONE.** Writing this finding up on 2026-08-19 I read a five-day gap in the 2010 record as a Frostburg meeting, because the distances fitted and Frostburg was a meeting already in hand. **It was Washington DC.** Same mechanism, same evening, committed by the analyst rather than the witness. **A gap that admits several stories is not evidence for the one you happen to be holding.**
 
 **And note the complement, because this is not a demotion.** Finding 036 is the opposite case: the record was silent where its resolution could not reach, and the memory carried a fact the data could never have produced. **The two instruments fail in different places, which is exactly why the pair works, and it is why the stories are load-bearing rather than decorative.** See also the three-layer architecture (2026-08-19): preconception, memory and record are the three instruments AND the three reading layers.
+
+
+## Finding 040 — A NEGATIVE INDEX SILENTLY RETURNS THE WHOLE STRING (2026-08-20)
+
+**What happened.** Slicing a section out of `proj_Smart_Car.md` by two anchors, I checked the START anchor and not the END one. The end anchor did not exist, so `regexpr()` returned **-1**. Then:
+
+- `substr(x, i, -2)` returned **""** — no error, no warning.
+- `substr(x, -1, nchar(x))` returned **the entire string** — R clamps a negative start to 1.
+
+`paste0(prefix, new, whole_string)` wrote a file containing a duplicate of everything. **45.7 KB became 60.4 KB, and the only thing that noticed was `pkm_budget()`.**
+
+**Why the existing guard did not fire.** Finding 022 already says *ALWAYS check the match count before using the index*, and `grab_sec()` enforces it with `stopifnot`. **But I bypassed `grab_sec()` for a two-anchor slice and hand-rolled `regexpr()` twice, checking one of them.** The helper was correct; I stepped around it.
+
+**Rules.**
+
+1. **Never hand-roll a two-anchor slice.** Use `grab_sec()`. If a slice genuinely needs two anchors, `stopifnot()` BOTH match counts before either index is used.
+2. **Treat a negative index as a bug, never as a boundary.** R's `substr` accepts nonsense silently in both directions.
+3. **Add a length assertion to every structural rewrite:** after building the new text, `stopifnot(abs(nchar(new) - nchar(old)) < nchar(old)/2)` before writing. A rewrite that doubles a file is never intended.
+
+**Recovery, and the reason it was instant.** The pre-edit content was still bound to `x` in the session, so the fix was `wbin(P, x)` and a confirmation that the restored text was `identical()` to it. **Holding the pre-edit string in a named variable turned a data-loss incident into a one-line undo** — this is the second time (see Finding 030, where the backup mirror was needed instead). **Bind the old text before every surgery; it is free.**
+
+**And note the detection path, which is the same as Finding 037's.** Nobody read the corrupted file. **A size that moved the wrong way was the entire signal.** Third time in two days that an arithmetic which refused to work was the only witness to a bug the content checks could not see.
