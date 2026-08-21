@@ -80,13 +80,13 @@ Median leg **251 mi**; log distance ~**95%** of odometer miles; lifetime **39.44
 
 ## ★★ THE WHEELS WERE NEVER ABOUT FUEL — THEY WERE ABOUT SAFETY — folded into ch.2
 
-Stock narrow tires let a **variable** desert crosswind push the car out of lane; the cost was in the constant correcting, not the force. Smart Madness prescribed wide tires. **Handling is the mechanism of the safety thesis.** The economy difference is indistinguishable from zero under every specification, and the 1-3% theoretical penalty sits inside every interval — **but the interval itself is NOT PRINTABLE until re-derived (see `deferred.md`).**
+Stock narrow tires let a **variable** desert crosswind push the car out of lane; **the cost was in the constant correcting, not the force.** Smart Madness prescribed wide tires. **Handling is the mechanism of the safety thesis.** Economy difference indistinguishable from zero under every specification — **but the interval is NOT PRINTABLE until re-derived.** ⚠ **THREE wheel states, not two:** the 2013 Dalton run was on steel rims (21 rows); the conclusion survives, the confound is reported, nothing attributed.
 
-## ★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18) — the FABRIC of the three layers; in the log
+## ★★ KIM'S FRAME: TWO LOGS, TWO SUBJECTS (2026-08-18) — the FABRIC of the three layers
 
 *The fuel log is more about the CAR'S performance, while the trip log shows the HUMAN performance -- how far and fast can you expect to drive in a day, something I had no idea about until I started doing these drives.*
 
-**It assigns instruments to questions** — economy, degradation, cost/mile and the wide-tire question are the CAR's; daily range, departure discipline and gross speed are the HUMAN's. Fuel records STOPS, trip records LEGS; **the odometer is the JOIN, not the topic.** **Bounded 2026-08-19:** the trip log records what the human ACHIEVED, in MEANS not variance; **the stories are the only record of what it COST** — and, per Finding 041, **of where the car was allowed to sit.**
+**Economy, degradation, cost/mile and the wide-tire question are the CAR's; daily range, departure discipline and gross speed are the HUMAN's.** Fuel records STOPS, trip records LEGS; **the odometer is the JOIN, not the topic.** **Bounded:** the trip log records what the human ACHIEVED, in MEANS not variance; **the stories are the only record of what it COST** — and, per Finding 041, of where the car was allowed to sit.
 
 ## ★★ THE SCAN SWEEP, 2026-08-18 — full write-up in the log
 
@@ -145,15 +145,26 @@ On the BACK of the last fuel sheet, circled: **`5/22/17  71,283  LV Seattle @ Ma
 
 **★★ Two anomalies at the end that are NOT economy readings.** The final two fills read **52.4 and 93.0 MPG** on **4.333 and 2.496 gallons against a lifetime mean of 6.24.** **A vehicle handed to Matson must arrive with a low tank** — a tank managed DOWN for shipping, not a measurement of the car. **★ General rule: the first and last rows of any record are the least trustworthy, because they are taken while the measuring itself is being started or stopped.** The first fill carries a slashed-zero error (L59); the last two are shipping artifacts. **Trim the ends before quoting an extreme.**
 
-## ★★★ THE OPEN QUESTIONS ARE CLOSED (2026-08-19/21) — full working in the log
+## ★★★ THE OPEN QUESTIONS ARE ALL CLOSED (2026-08-19/21) — full working in the log
 
-**1. The 46 Dalton miles are 32 + 14 — Coldfoot → Wiseman.** Two Yukon River Crossing fills split the leg: north of the river 115 out / **147 back (+32)**; the Wiseman spur is ~16 road miles, so **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.*
+**1. The 46 Dalton miles are 32 + 14 — Coldfoot → Wiseman.** Two Yukon River Crossing fills split the leg (115 out / **147 back**); the Wiseman spur is ~16 road miles, so **out and back is 32, to the mile.** *A matching TOTAL doesn't mean a matching ROUTE; a SPLIT total localises the discrepancy.*
 
-**2. THE PENULTIMATE STATE IS VERMONT** — *a lawyer who has an office in NH, but lives nearby in Vermont. I drove to his house.* **Exactly the anomaly the record flagged and could not read:** Hartland VT → Lebanon NH, **two nights and 59 odometer miles for an eighteen-mile drive**, across the Connecticut River.
+**2. THE PENULTIMATE STATE IS VERMONT** — a lawyer with an office in NH and a house across the river. **Exactly the anomaly the record flagged and couldn't read:** Hartland VT → Lebanon NH, **two nights and 59 odometer miles for an eighteen-mile drive.**
 
-**3. ★★★ THE STATE COUNT IS 49 AND 10, ON KIM'S TESTIMONY (2026-08-21) — and my framing was wrong.** *Some states, like Florida, didn't have a fuel stop or a stop at night. So they aren't in the data... Take my word for it.* **I had been writing that TwoRed's list and Kim's list were two different quantities. They are one quantity and a log that witnesses 45 of it.** **Finding 043: a count DERIVED from a record inherits the record's resolution, silently, because the count looks like an ordinary number.** **The four unwitnessed states are three kinds of silence:** **Delaware** recoverable by geometry (264 odometer miles where the only Delaware-free road is ~305); **Rhode Island** strongly indicated (the Douglas MA fill sits on MA-146, the Providence road; 287 mi fits the coastal route at ~285 against ~265 inland); **Florida** unrecoverable by the log (Finding 036) — but **★★★ STYX RIVER ROAD (Finding 044): incidental knowledge is evidence of PRESENCE, and unlike *is this Florida?* it is FALSIFIABLE.** A fact the witness had no reason to want; its uselessness certifies it; **South Dakota** — **RECOVERED 2026-08-21.** Kim drove north from Nebraska on a rural road for the sole purpose of crossing the line, met a **convoy of storm chasers** coming the other way, crossed, and turned around. The record holds it: 2012-05-27, **Douglas WY → Bridgeport NE reads 255 odometer miles against ~175 direct, ratio 1.83 — the most indirect stretch in sixteen years** — on the northern road through **Chadron NE, twelve miles from the border.** ⚠ **My earlier *no leg has room for it* was wrong: the arithmetic was right and the HYPOTHESIS was wrong — I had assumed visiting a state meant going somewhere IN it. A negative result is only as strong as the hypothesis it tested.** **Provinces confirmed at exactly ten by the record itself.**
+**3. ★★★ THE STATE COUNT IS 49 AND 10, ON KIM'S TESTIMONY — and my framing was wrong (Finding 043).** I had written that TwoRed's list and Kim's list were two different quantities. **They're one quantity and a log that witnesses 45 of it.** A count DERIVED from a record inherits the record's resolution, silently, because the count looks like an ordinary number.
 
-**4. ⛔ THE TEXAS ON-RAMP — CLOSED BY REQUEST.** **No session may localise it; no published text may place it more precisely than NEAR FORT WORTH.**
+**★★ ALL FOUR UNWITNESSED STATES ARE NOW CLOSED, by four different routes:**
+
+| state | how |
+|---|---|
+| **Delaware** | geometry — 264 odometer miles where the only Delaware-free road is ~305 |
+| **Rhode Island** | geometry — the Douglas MA fill sits on MA-146, the Providence road; 287 mi fits the coastal route |
+| **South Dakota** | geometry — **255 miles against ~175 direct, ratio 1.83, the most indirect stretch in sixteen years**, on the northern road through Chadron NE, twelve miles from the line. A deliberate dash to cross the border, with **a storm-chaser convoy coming the other way** |
+| **Florida** | **incidental knowledge (Finding 044) — STYX RIVER ROAD.** Unlike *is this Florida?*, it's FALSIFIABLE, and it survives |
+
+**⚠ My *no leg has room for South Dakota* was wrong: the arithmetic was right and the HYPOTHESIS was wrong** — I assumed visiting a state meant going somewhere IN it. **A negative result is only as strong as the hypothesis it tested.**
+
+**4. ⛔ THE TEXAS ON-RAMP — CLOSED BY REQUEST.** **Never placed more precisely than NEAR FORT WORTH.**
 
 ## ★★★ CREAMSICLE IS INGESTED — THE SECOND SPINE EXISTS (2026-08-19)
 
