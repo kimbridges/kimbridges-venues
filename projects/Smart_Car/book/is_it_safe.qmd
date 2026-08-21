@@ -7,23 +7,110 @@
 source("R/book_setup.R")
 ```
 
-<!-- SCAFFOLD — delete this block as the chapter is written.
+People notice these cars. The reaction is always about the size.
 
-PURPOSE
-THE THESIS CHAPTER — write this one first. It demonstrates the whole architecture on the project's central question.
+<!-- KIM: the actual encounters go here. What people say at gas stations, what friends said,
+     what your mother's neighbours said. Two or three real ones, in their words. I have not
+     invented any, and I won't. This paragraph is a placeholder for material only you have. -->
 
-MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- Kim: 'Small and nimble are components of safety, I believe. That's maybe counter intuitive.'
-- Yukon pothole: unflagged, 'big enough to eat a big car, too'. The hazard was size-blind; the escape was not.
-- Texas on-ramp: police car up the ramp at speed, no lights, no siren; hard right, hard brakes, stopped inches from the guard rail.
-- DENOMINATOR (layer 3): 100,999 documented miles across three cars -- TwoRed 71,177 + Creamsicle 28,613 + TwoFer 1,209. 467 fills, 225 logged legs, 45 states, 10 provinces. No crash.
-- NUMERATOR (layer 2): the near-misses exist nowhere but memory. A crash avoided buys no fuel and ends no leg.
-- Wide tires bought for HANDLING, not economy: economy difference indistinguishable from zero, 95% CI -3.7% to +4.9%. The safety modification was free.
-- Kim's caveat, kept: 'Granted, no crash testing.'
+And underneath the remarks there is always the same question, whether or not anyone asks it out loud. *Is it safe?* The car is small. Everything else on an American interstate is not. The arithmetic seems obvious.
 
-OPEN / NEEDED
-- NEVER place the Texas incident more precisely than 'near Fort Worth' (Kim, 2026-08-20).
-- Do not oversell 101,000 crash-free miles: one prudent driver, mostly interstate, mostly daylight.
-- A crash-rate comparison needs a SOURCED per-mile figure (intentions item 4). Until then, state exposure and stop.
--->
+## The answer I give
 
+The car was designed by Mercedes. It is built around a steel safety cell — the same idea as the survival cell in a race car. The body panels are not the structure. The cell is the structure, and it is engineered to keep its shape.
+
+<!-- KIM: how you actually deliver this to someone standing next to the car, and what you see
+     on their face while you say it. -->
+
+I have given that explanation many times. Do they believe it? Maybe. Maybe not. A specification does not defeat an impression, and the impression arrives first, from twenty feet away, before anyone has heard a word about safety cells.
+
+So I stopped relying on the engineering answer alone. What I have instead is sixteen years of driving.
+
+## What sixteen years shows
+
+```{r}
+#| label: exposure
+#| echo: false
+
+tw <- max(twored_fuel$Odometer) - min(twored_fuel$Odometer)
+cs <- max(cream_fuel$odometer) - min(cream_fuel$odometer)
+tf <- 1209   ## TwoFer, from the leased-car gas log
+
+exposure <- data.frame(
+  Car   = c("TwoRed", "Creamsicle", "Two4Two"),
+  Years = c("2010-2017", "2021-2024", "2014-2015"),
+  Miles = c(tw, cs, tf)
+)
+knitr::kable(
+  rbind(exposure, data.frame(Car = "Total", Years = "", Miles = sum(exposure$Miles))),
+  format.args = list(big.mark = ","),
+  caption = "Documented miles. Every figure is read from the fuel logs, not from memory."
+)
+```
+
+A hundred thousand documented miles across three of the cars. Four hundred and sixty-seven fill-ups. Two hundred and twenty-five logged driving days. Forty-five states and ten Canadian provinces and territories. Gravel on the Dalton Highway north of the Arctic Circle. Frost heaves across the Canadian plains. The Tail of the Dragon. The Oregon coast highway. Two winters and a good many summers.
+
+No crash.
+
+That is worth stating plainly and then immediately qualifying, because a number like that can be made to say more than it should. I am one driver. I am a prudent one. The miles are mostly interstate, mostly in daylight, and almost none of them are urban commuting. **The hundred thousand miles do not show that the car kept me safe. They show that the car did not prevent sixteen years of safe driving** — which is a smaller claim, and the honest one.
+
+The larger claim comes from two days when the driving stopped being ordinary.
+
+## Two close calls
+
+### The hole in the Yukon
+
+<!-- KIM: your own telling of this, in your words. What I have from you is below; replace it. -->
+
+On the Dalton Highway there was a pothole big enough to swallow a car. It was not flagged. I saw it late and went around it.
+
+The detail that matters is not that I missed it. It is that the hole was big enough to eat a big car too. **The hazard did not care what I was driving. The escape did.** A wider, heavier vehicle has a wider, heavier problem getting out of the way of something that size at speed, and less room on a road that narrow to do it in.
+
+### The on-ramp near Fort Worth
+
+I was heading east on the interstate. I left it to drive through a small town — no reason, just curious, nothing to stop for. Getting back on meant crossing over the freeway on an overpass and then taking a long sweeping left turn down onto the on-ramp.
+
+I was most of the way around that curve when a police car came up the ramp. Full speed. No lights, no siren.
+
+I pulled the wheel hard right and hit the brakes hard. The car slid to a stop on the shoulder, inches from the metal guard rail.
+
+I sat there. I was stunned, and my first thought was that I had done something wrong — that I was the one going the wrong way. So I waited. And while I waited I watched several cars come down the on-ramp exactly as I had been doing.
+
+It was the police car that was going the wrong direction.
+
+Did the police stop? Of course not. This was Texas.
+
+I missed being hit head-on by quick action and some luck. Note what was and was not available to me. Nothing about prudence prevents a vehicle coming the wrong way up a ramp with no warning; the hazard was outside my control entirely. What I had was a steering input and a braking distance, and both of them had to work in a very short space.
+
+## Small and nimble are components of safety
+
+That is the argument, and I know it runs against the intuition.
+
+The preconception treats size as a liability to be excused — *yes, it is small, but it is well built.* I do not think that is the right shape for the answer. In both of the moments where this car was closest to being destroyed, **it was the smallness that got me out.** Less to move, less distance to move it, and a chassis that responds immediately because there is not much of it.
+
+The cars have handled well, and handling keeps you out of situations rather than surviving them. That is a different kind of safety from crash structure, and it is the kind that gets used far more often.
+
+## The one modification, and what it cost
+
+The first crossing was made on the stock narrow tires. On open highway in a crosswind the car was pushed around and it was hard work to hold a line.
+
+<!-- KIM: what that actually felt like, at 70 mph, hour after hour. This is the moment the whole
+     safety argument comes out of, and it is the one part of it I cannot write for you. -->
+
+Smart Madness prescribed wide tires. The rims came along with them, because this is a car that is fun to drive and fun to be seen in. It worked. The handling became very good.
+
+**The wheels were never about fuel.** They were bought for control in a crosswind, which is to say they were bought for safety. But wider tires have a theoretical cost — more rolling resistance, more frontal area — usually put somewhere between one and three per cent.
+
+So the fuel log gets to answer a question it was never keeping score on. Before and after the change, the difference in economy is not distinguishable from zero, with a ninety-five per cent interval running from **-3.7% to +4.9%**. The penalty theory predicts sits comfortably inside that interval.
+
+Stated carefully: the data rules out a large fuel penalty. It cannot detect a modest one. What it will not support is a claim that the wheels cost nothing at all — only that whatever they cost was too small for sixteen years of records to see.
+
+**The one change ever made to this car was made for safety, and it did not show up in the fuel.**
+
+## What this chapter cannot tell you
+
+Granted: no crash testing.
+
+Nothing here is a substitute for a barrier test, and nothing here can answer the question people are really asking, which is what happens in the collision. I have not had one. That is the whole of my evidence and it is also the limit of it. **A record of things that did not happen cannot tell you what it would have been like if they had.**
+
+What I can say is narrower and, I think, more useful. Over a hundred thousand documented miles, on gravel and frost heave and interstate and coast highway, the small car was twice the reason the day ended without damage. Both times, the thing that saved it was the thing everyone worries about.
