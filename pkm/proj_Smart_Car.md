@@ -102,40 +102,16 @@ All 15 scans read (22 on disk). Four results that must not be lost:
 
 ## ★★★ THE LONG DAYS — ALL EIGHT COLLECTED, AND EVERY ONE CHECKS OUT (2026-08-19)
 
-**Fourteen of Kim's accounts are verbatim in the log under COLLECTED STORIES, with the full confirmation table.** Four that changed something:
+**Seventeen of Kim's accounts are verbatim in the log under COLLECTED STORIES, with the full confirmation table.** Four that changed something:
 
 | day | leg | what the data independently shows |
 |---|---|---|
-| 2012-05-31 | St Louis → Columbus, 518 | lost near Urbana IL — **the 09:52 fill is at Champaign, one metro with Urbana**, carrying slashed-zero typo **L61**. Excess over direct I-70: **108 mi** vs his remembered ~100 |
+| 2012-05-31 | St Louis → Columbus, 518 | lost near Urbana IL — **the 09:52 fill is at Champaign, one metro with Urbana**, carrying slashed-zero typo **L61**. Excess over direct I-70: **108 mi** |
 | 2011-06-26 | Flagstaff → Holbrook, 100 | out **04:30**, in **06:45** — a hop existing only to arrive early for his nephew; **70 mi of local driving before the next departure IS the park tour** |
 | 2012-06-14 | Billings → Pocatello, 449 | **65.5 mph gross, the fastest day in the record** — fast because Montana has nowhere to stop |
 | 2017-01-06 | Brookings → Paso Robles, 562 | racing to his mother, 104. **32 degF, the coldest start in the record**; fill **22:04 at 68,731**, arrival **22:10 at 68,732** — one mile, six minutes |
 
 **The other four — Sydney NS → Edmundston (555, off an overnight ferry, zero odometer miles across the water), El Paso → San Antonio (531, racing for Florida), LSM → St George (492, a half-day Las Vegas visit inside a 31 mph day), Bellingham → Grants Pass (488, Nancy off the red-eye) — all check out.**
-
-### ★★★ FLORIDA, AND THE TAIL OF THE DRAGON — full write-up in the log; rules in Finding 036
-
-**I concluded TwoRed never reached Florida. It did** — a few miles into the panhandle, *is this Florida?*, and out. **The log resolves to two events, buying fuel and ending a day, and he did neither there, on purpose.** **And I argued the same leg had no room for the Dragon — 407 logged against ~400 direct. The route was never the direct one:** the fills give **Trussville AL → Madisonville TN**, north through Chattanooga and Knoxville, and **Madisonville → Cherokee is 104 mi against ~75 direct** — the Deals Gap route. **The Dragon is in the odometer.**
-
-**Two rules. A record's RESOLUTION sets the floor on what its silences can mean. And a matching TOTAL does not mean a matching ROUTE.**
-
-### ★★★ FIVE THINGS THE STORIES CHANGED, none of which the data could have volunteered
-
-**1. Finding 033's best corroboration, from an unrelated direction.** The Champaign row is **L61**, a slashed-zero cost typo raised the day before — **and it sits at the stop where he had just discovered he was 100 miles off course and late for dinner.**
-
-**2. The gap between an arrival odometer and the next departure is the day OFF the highway.** 70 miles at Holbrook is a park tour; **59 at Hartland is a lawyer's house across the river.** Readable across the whole record and nobody had read it.
-
-**3. Daily distance has a first-order term nobody modelled: WHERE THE BEDS ARE.**
-
-**4. A ferry is a LOGISTICS MULTIPLIER, not a hole in the odometer.**
-
-**5. ★★ A LONG ELAPSED TIME IS NOT A SLOW DAY.** **Gross speed silently conflates driving with living** — Creamsicle's stop column puts the gap at **7.5 mph**, and the Dalton return shows it against the SAME road driven the day before. **Gross mph is a ceiling on driving speed, never a measure of it.**
-
-### ★★ AND CHASING #5 FOUND A BUG IN 16 OF 107 LEGS — Finding 035
-
-Nevada is Pacific and Utah is Mountain, and `tz_shift_hr` was 0 on every leg I transcribed. Fixed as a DERIVED layer — a 121-city IANA table plus computation in `trip_logs_read.R` — so DST, Arizona and Saskatchewan declining it, Yukon before 2020 and Newfoundland's half hour all fall out for free. **16 legs corrected; road ordering unchanged; the fastest day is real.**
-
-**★ Kim's stories have now corrected the analysis SEVEN times** — the road/straight-line rule, the time zones, Florida, the Dragon route, the Penultimate State, the West Virginia landscape-not-road, and the parking map (Finding 041). **The human spine is an instrument, and it is the more accurate one.**
 
 ## ★★★ THE FAVOURITE DRIVES (2026-08-19) — full write-up in the log
 
@@ -175,7 +151,7 @@ On the BACK of the last fuel sheet, circled: **`5/22/17  71,283  LV Seattle @ Ma
 
 **2. THE PENULTIMATE STATE IS VERMONT** — *a lawyer who has an office in NH, but lives nearby in Vermont. I drove to his house.* **Exactly the anomaly the record flagged and could not read:** Hartland VT → Lebanon NH, **two nights and 59 odometer miles for an eighteen-mile drive**, across the Connecticut River.
 
-**3. ★★★ THE STATE COUNT IS 49 AND 10, ON KIM'S TESTIMONY (2026-08-21) — and my framing was wrong.** *Some states, like Florida, didn't have a fuel stop or a stop at night. So they aren't in the data... Take my word for it.* **I had been writing that TwoRed's list and Kim's list were two different quantities. They are one quantity and a log that witnesses 45 of it.** **Finding 043: a count DERIVED from a record inherits the record's resolution, silently, because the count looks like an ordinary number.** **The four unwitnessed states are three kinds of silence:** **Delaware** recoverable by geometry (264 odometer miles where the only Delaware-free road is ~305); **Rhode Island** strongly indicated (the Douglas MA fill sits on MA-146, the Providence road; 287 mi fits the coastal route at ~285 against ~265 inland); **Florida** unrecoverable, testimony only (Finding 036); **South Dakota** — **no leg in the record has room for it**, the only regional slack being ~80 mi against the ~110 a Black Hills dip needs. **ASK KIM WHEN.** **Provinces confirmed at exactly ten by the record itself.**
+**3. ★★★ THE STATE COUNT IS 49 AND 10, ON KIM'S TESTIMONY (2026-08-21) — and my framing was wrong.** *Some states, like Florida, didn't have a fuel stop or a stop at night. So they aren't in the data... Take my word for it.* **I had been writing that TwoRed's list and Kim's list were two different quantities. They are one quantity and a log that witnesses 45 of it.** **Finding 043: a count DERIVED from a record inherits the record's resolution, silently, because the count looks like an ordinary number.** **The four unwitnessed states are three kinds of silence:** **Delaware** recoverable by geometry (264 odometer miles where the only Delaware-free road is ~305); **Rhode Island** strongly indicated (the Douglas MA fill sits on MA-146, the Providence road; 287 mi fits the coastal route at ~285 against ~265 inland); **Florida** unrecoverable, testimony only (Finding 036); **South Dakota** — **RECOVERED 2026-08-21.** Kim drove north from Nebraska on a rural road for the sole purpose of crossing the line, met a **convoy of storm chasers** coming the other way, crossed, and turned around. The record holds it: 2012-05-27, **Douglas WY → Bridgeport NE reads 255 odometer miles against ~175 direct, ratio 1.83 — the most indirect stretch in sixteen years** — on the northern road through **Chadron NE, twelve miles from the border.** ⚠ **My earlier *no leg has room for it* was wrong: the arithmetic was right and the HYPOTHESIS was wrong — I had assumed visiting a state meant going somewhere IN it. A negative result is only as strong as the hypothesis it tested.** **Provinces confirmed at exactly ten by the record itself.**
 
 **4. ⛔ THE TEXAS ON-RAMP — CLOSED BY REQUEST.** **No session may localise it; no published text may place it more precisely than NEAR FORT WORTH.**
 

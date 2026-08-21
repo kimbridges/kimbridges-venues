@@ -1,5 +1,10 @@
 ## COLLECTED STORIES — Kim's accounts of the long days, verbatim (opened 2026-08-19)
 
+### ★★★ South Dakota, and the storm chasers (Kim, 2026-08-21)
+
+> The South Dakota side trip is real. I knew this would be a hard state to get. I believe I was in Nebraska when I told myself to do the trip north just to get SD and return. I had the time. It is memorable because while I was going on a narrow, rural road toward SD, I was met by a convoy of storm chaser vehicles coming the other way. I thought "maybe I shouldn't be going there" (because of the weather). I drove just far enough to cross the state line into SD, then turned around and left. It was definitely a side trip across a rural landscape.
+
+
 ### ★★★ Where the car actually slept — and why they live 2,500 miles away (Kim, 2026-08-20)
 
 > The list of "unsettled" places only has one of any significance: Signal Hill. The other places are simply hotel/motels we stopped at along the way. They may repeat (like Brookings) as they are convenient stopping points. Signal Hill is where Smart Madness, a very helpful garage and after-market vendor, is located. We depended on them to help equip and maintain both TwoRed and Creamsicle. That's why there are frequent visits. One place you didn't list is Mentone. That's where my niece lives. She kept TwoRed for that five weeks while as I was making other arrangements. Eugene seems like an unlikely place, but a close colleague (Will McClatchey) has a farm with a huge garage. He made space for us. We continue to work together so it was logical to keep the car there as we visit Will several times each year.
@@ -1637,3 +1642,38 @@ Four cars, a lease returned, a car sold to family, **an electric one in the driv
 - **★ A LINE THAT MUST BE HELD: the difficulty strand is about THE RECORD, not about the analyst.** Kim's handwriting, the paper, the reconstruction, the resolution limits — **all book material.** The PKM's own tooling failures (a write function that inflated a file, a negative index that duplicated one) are **hygiene, not narrative.** They stay in `pkm_findings.md`.
 - **13 chapters plus front and back matter.** If that is too many, chapters 8 and 9 merge, and 10 and 11 could.
 - **Retired by this draft:** the charter's *Foreword / The Canvas / The Expeditions / The 4th Crossing / The Extremes / The Fleet*. The Canvas survives as chapter 12, The Expeditions as chapter 4, The Fleet as chapter 1 plus the Afterword. **The 4th Crossing and The Extremes do not survive as chapters** — they were one-car framing, and their content is distributed.
+
+
+## ★★★ SOUTH DAKOTA IS IN THE RECORD AFTER ALL — AND I TESTED THE WRONG HYPOTHESIS (2026-08-21)
+
+Yesterday I reported that **no leg in the record has room for South Dakota.** That was wrong, and the way it was wrong is the useful part.
+
+### The segment
+
+**2012-05-27, Casper WY → Ogallala NE, 408 odometer miles**, with two intermediate fills. Split by them:
+
+| segment | odometer | direct road |
+|---|---|---|
+| Casper → **Douglas WY** fill | 62 | ~50 |
+| **Douglas WY → Bridgeport NE** fill | **255** | **~175** |
+| Bridgeport → Ogallala | 91 | ~90 |
+
+**All of the slack — about 80 miles — is in one segment, and the great-circle ratio there is 1.83.** For scale, ordinary interstate runs about 1.15 and the Tail of the Dragon day reached roughly 1.4. **This is the most indirect stretch the audit has turned up in sixteen years, and it produced no correction, because there was nothing arithmetically wrong with it.**
+
+### Where 255 miles goes
+
+- **Direct:** Douglas → Lusk WY → NE-71 south → Bridgeport. **~175 miles.** The odometer rules it out.
+- **North:** Douglas → Lusk → **US-20 EAST across the Nebraska panhandle to CHADRON** → US-385 south → Bridgeport. **~245 miles.**
+- **North, plus a run to the line:** **Chadron NE sits twelve miles from the South Dakota border.** Out and back adds ~24.
+
+**Logged: 255.** Road estimates carry ±15 miles easily, so this does not pin the exact turn-around point — **but it decisively excludes the direct route and places the car on the only road in the region from which the state line is a short dash.**
+
+**And the corroboration is not only geometric.** Kim: *a narrow, rural road toward SD*, *a side trip across a rural landscape*, and **a convoy of storm chaser vehicles coming the other way.** **Late May, the High Plains — that is the season and the country for it.** The date, the region, the road type and the eighty unexplained miles all agree.
+
+### ★★★ WHY I MISSED IT: THE TEST WAS SOUND AND THE HYPOTHESIS WAS NOT
+
+My check yesterday read: *the only slack is ~80 miles, and a Black Hills dip needs ~110, therefore no room.* **The arithmetic was right. The hypothesis was wrong.** I had assumed that visiting South Dakota meant going somewhere in South Dakota — Rapid City, the Black Hills, a town with a fuel pump. **Kim's goal was the LINE.** *I drove just far enough to cross the state line into SD, then turned around and left.*
+
+**Rule. A negative result is only as strong as the hypothesis it tested, and a null carries the hypothesis's assumptions invisibly inside it.** I reported *no leg has room for it* when the honest statement was *no leg has room for the trip I imagined.* **Before concluding that a record cannot contain something, state what you assumed the something looks like** — because that assumption, not the data, is usually what fails.
+
+**This also completes the state picture.** All four states the log never names now have an account, and **three of the four are corroborated by geometry**: Delaware by exclusion, Rhode Island by a fill on the Providence road, South Dakota by eighty miles of detour on the right day in the right country. **Only Florida rests on testimony alone — and Finding 036 already explains exactly why it must.**

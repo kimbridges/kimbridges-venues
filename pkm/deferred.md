@@ -176,9 +176,17 @@ recoverable from if a file were overwritten rather than deleted.
 
 **Write 49 in the text. Where the log's own count matters, say *the log witnesses 45*, never *45 states*.** The four unwitnessed states are **three kinds of silence** and are ch.13's best example: **Delaware** recoverable by geometry; **Rhode Island** strongly indicated (Douglas MA sits on MA-146, the Providence road); **Florida** testimony only; **South Dakota** with no leg in the record having room for it.
 
-### ★ OPEN QUESTION FOR KIM — when did TwoRed go to South Dakota?
+### ✓✓✓ SOUTH DAKOTA ANSWERED AND CORROBORATED, 2026-08-21
 
-No fill, no leg endpoint, no `SD` anywhere in 294 fills and 139 legs. **The only slack in the whole region is ~80 miles on the 2012-05-27 Douglas WY → Bridgeport NE stretch (255 logged against ~175 direct), and a Lusk-to-Edgemont dip needs ~110.** **His testimony stands; the record simply cannot reach it.** Knowing the trip would be good chapter material.
+Kim: *I believe I was in Nebraska when I told myself to do the trip north just to get SD and return... a convoy of storm chaser vehicles coming the other way... I drove just far enough to cross the state line into SD, then turned around and left.*
+
+**The record has it. 2012-05-27, Casper → Ogallala, 408 miles, and the two intermediate fills put ALL the slack in one segment: Douglas WY → Bridgeport NE, 255 odometer miles against ~175 direct — ratio 1.83, the most indirect stretch in the whole audit.** The northern road runs US-20 east to **Chadron NE, twelve miles from the line.** Date, region, road type and eighty unexplained miles all agree.
+
+**⚠ AND MY NEGATIVE RESULT WAS WRONG (Finding 043, amended).** *No leg has room for it* assumed visiting South Dakota meant going somewhere IN South Dakota. **His goal was the LINE.** The honest statement was *no leg has room for the trip I imagined.* **All four unwitnessed states now have an account and three of the four are corroborated by geometry; only Florida rests on testimony alone, which is exactly what Finding 036 predicts.**
+
+### ★ OPTIONAL — a third independent record for the South Dakota dash
+
+Storm chasers on the High Plains on **2012-05-27** would appear in NOAA/SPC storm reports for that date. **If it checks out it is a third independent record**, the way the AMEX statements were. **Needs a SOURCED citation before anything is printed (intentions item 4) — ask Kim whether the book wants that level of forensics.**
 
 ### ★★★ SAY EARLY THAT THEY LIVE IN HAWAII (Kim, 2026-08-20)
 
