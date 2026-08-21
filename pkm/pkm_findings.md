@@ -2035,3 +2035,22 @@ I then did what the rule says and enumerated the complement across all of `Proje
 **Rule. When a record cannot reach an event, ask the witness not what happened but what they LEARNED there.** Testimony about the event is unfalsifiable; **incidental knowledge acquired at the event is checkable, and its very uselessness is what certifies it.** Look for facts the witness had no reason to want.
 
 **Status of the four unwitnessed states, now complete.** Delaware — geometry. Rhode Island — geometry. South Dakota — geometry. **Florida — testimony, and now incidental knowledge, which is a different and better thing.**
+
+
+## Finding 045 — A SILENCE BELONGS TO AN INSTRUMENT, NOT TO THE PAST (2026-08-21)
+
+**Finding 036, established 2026-08-19:** *a record's RESOLUTION sets the floor on what its silences can mean.* The fuel log samples at fill-ups and overnights; the Florida visit produced neither; **therefore the log cannot see it.** Every word of that is still correct.
+
+**What I then wrote, repeatedly, in the project file and in chapter 13: the visit is UNRECORDABLE.** Today Kim produced a photograph of the corner where he stopped, with coordinates — **30.983392, -87.571312, one and a fifteen-hundredths of a mile inside Florida**, at the crossroads he described, checkable against Street View.
+
+**It was never unrecordable. It was unrecordable BY THAT LOG.** He was carrying a second instrument the whole time, and it samples on an entirely different trigger — **not *I bought fuel* or *the day ended*, but *this is worth looking at*** — which is exactly the trigger a state-line dash satisfies and a fill-up does not.
+
+**The error is a quantifier slip, and it is easy to make.** *This record cannot hold X* is a claim about a record. *X is not recorded* is a claim about the world. **I let the first license the second**, and the gap between them is every other instrument that happened to be running.
+
+**Rule. When a record cannot reach an event, the next question is not *is it lost* but *what ELSE was running at the time?*** Photographs, receipts, statements, correspondence, other people's records, the witness's own incidental knowledge. **In this project three of those have already produced evidence the fuel log could not** — the AMEX statements, Styx River Road, and now a geotagged photograph — **and in each case I had already characterised the gap as unreachable.**
+
+**Corollary for the writing.** Chapter 13's argument survives and improves. **The chapter is not *here is what the record cannot say*; it is *here is what THIS record cannot say, and here is how we found out anyway*.** The stronger version, because it ends in recovery rather than in a shrug.
+
+**And the recovery has Finding 039's shape.** *I had forgotten that evidence.* He did not misremember the corner. **He misremembered that he had proof of it** — content reliable, index unreliable, one level up.
+
+**★★ ACTION, and it may be the largest open question in the project.** Creamsicle has 37 geotagged, timestamped photographs that join to its logs with no timezone reconstruction. **Nobody has asked whether the TwoRed years have an equivalent archive.** If they do, the project gains a trip record that samples precisely where the fuel log cannot — **the complement, not a duplicate.**

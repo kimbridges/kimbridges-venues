@@ -1,5 +1,14 @@
 ## COLLECTED STORIES — Kim's accounts of the long days, verbatim (opened 2026-08-19)
 
+### ★★★ The Florida corner — a photograph, with coordinates (Kim, 2026-08-21)
+
+> If you look at this location in Google Maps Street View, you'll see the same street sign: 30.983391913439764, -87.57131185084037. I did, indeed, take a photo of the corner where I stopped with TwoRed in Florida. I had forgotten that evidence.
+
+### TwoFer had no logs (Kim, 2026-08-21)
+
+> Re TwoFer and fuel. We didn't do any logs of this leased car. It was only used in Honolulu for very short trips. It was, basically, a fill in for TwoRed until we brought TwoRed to Hawaii.
+
+
 ### ★★★ Styx River Road — the Florida confirmation (Kim, 2026-08-21)
 
 > Here is an unusual Florida confirmation. I have a friend who lives in Alaska on Styx River Road. There is only one other road in the US with this name. I remember seeing it (Huh? Another one???) in Alabama, just after leaving Florida. It is less than 10 miles from the Florida border. How would I have known that except by a visit?
@@ -1682,3 +1691,42 @@ My check yesterday read: *the only slack is ~80 miles, and a Black Hills dip nee
 **Rule. A negative result is only as strong as the hypothesis it tested, and a null carries the hypothesis's assumptions invisibly inside it.** I reported *no leg has room for it* when the honest statement was *no leg has room for the trip I imagined.* **Before concluding that a record cannot contain something, state what you assumed the something looks like** — because that assumption, not the data, is usually what fails.
 
 **This also completes the state picture.** All four states the log never names now have an account, and **three of the four are corroborated by geometry**: Delaware by exclusion, Rhode Island by a fill on the Providence road, South Dakota by eighty miles of detour on the right day in the right country. **Only Florida rests on testimony alone — and Finding 036 already explains exactly why it must.**
+
+
+## ★★★ FLORIDA IS PHOTOGRAPHED — AND FINDING 036 WAS RIGHT ABOUT THE WRONG INSTRUMENT (2026-08-21)
+
+**Kim produced a photograph of the corner where he stopped, with coordinates: 30.983392, -87.571312.** A rural crossroads — **N Pineville Rd × Rease Seales Rd** — a DEAD END sign, a wooden farm mailbox lettered *SEALES FARM*, hay bales, open fields.
+
+### The geometry is exact
+
+| | |
+|---|---|
+| the AL/FL boundary in Escambia County | the 31st parallel |
+| the photograph's latitude | **30.98339 N** |
+| **distance inside Florida** | **1.15 miles** |
+| distance from the **Atmore AL** fill (2014-05-07, odo 43,037) | **5.4 miles** |
+| Atmore's own distance north of the line | 1.7 miles |
+
+**So the entire Florida visit is about eleven miles of driving hung off a fuel stop** — down across the line, stop at a crossroads, ask a passing driver, turn around. **And that is exactly the size of the slack already sitting in the record:** the New Orleans → Atmore segment reads **210 odometer miles against ~195 direct.**
+
+**Three independent kinds of evidence now agree**, and they were acquired in the reverse order of their strength:
+
+1. **Testimony** (2026-08-18) — *is this Florida?* **Unfalsifiable.**
+2. **Incidental knowledge** (2026-08-21) — Styx River Road. **Falsifiable, and it survives.** Finding 044.
+3. **A geotagged photograph** (2026-08-21) — **documentary, checkable against Street View, 1.15 miles inside the state.**
+
+### ★★★ FINDING 036 WAS RIGHT, AND IT WAS RIGHT ABOUT ONE INSTRUMENT ONLY
+
+The rule reads: **a record's RESOLUTION sets the floor on what its silences can mean.** The fuel log samples at fill-ups and overnights; **the Florida visit produced neither, so the log cannot see it. All of that is still true.**
+
+**What the rule does not license is the leap I made from it — that the visit was therefore UNRECORDABLE.** It was not unrecordable. **It was unrecordable BY THAT LOG.** Kim was carrying a second instrument that samples on a completely different trigger — whenever something is worth looking at — and it caught the thing the first instrument structurally could not.
+
+**Rule. When a record cannot reach an event, the next question is not *is it lost* but *what ELSE was running at the time?*** Every silence in this project has been treated as a property of the fuel log. **Some of them are only a property of which record we happened to consult.**
+
+**And note the shape of the recovery:** *I had forgotten that evidence.* **Content reliable, index unreliable, again (Finding 039)** — he did not misremember the corner, he misremembered that he had proof of it.
+
+### ★★★ THE QUESTION THIS OPENS, AND IT MAY BE THE BIGGEST ONE LEFT
+
+**Creamsicle has 37 geotagged, timestamped photographs that join to its logs on date and local time with no timezone reconstruction.** We knew that. **What we did not ask is whether the TwoRed years have an equivalent archive.**
+
+**If they do, the project gains a second trip-record that samples where the fuel log cannot** — at viewpoints, at borders, at the moments worth stopping for, rather than at fill-ups and hotels. **That is precisely the complement of what the fuel log records**, and it would bear directly on chapter 12 (the constellations) and on every silence chapter 13 discusses. **ASK KIM. This is the highest-value open question in the project.**

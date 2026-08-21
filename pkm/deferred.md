@@ -170,6 +170,26 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ★★★ IS THERE A TWORED PHOTO ARCHIVE? — the largest open question in the project (2026-08-21)
+
+**Creamsicle has 37 geotagged, timestamped photographs that join to its logs on date + local time with NO timezone reconstruction.** Today Kim produced a **geotagged photograph of the Florida corner** — a visit the fuel log structurally cannot see. **Nobody has ever asked whether the TwoRed years have an equivalent archive.**
+
+**Why it matters more than it sounds.** A photo archive samples on a completely different trigger from a fuel log — **not *I bought fuel* or *the day ended*, but *this is worth looking at*.** That is the exact complement of what the fuel log records, and it is where every silence in this project lives. **It would bear directly on ch.12 (the constellations) and on most of ch.13.**
+
+**ASK KIM: is there a photo set for 2010-2017, and does it carry GPS?**
+
+### ✓✓✓ FLORIDA IS PHOTOGRAPHED, 2026-08-21 — and Finding 045 falls out of it
+
+**30.983392, -87.571312 — N Pineville Rd × Rease Seales Rd, 1.15 miles inside Florida, 5.4 miles from the Atmore fill.** A DEAD END sign and a farm mailbox, checkable against Street View. **The whole visit is ~11 miles hung off a fuel stop, and the New Orleans → Atmore segment already carried 210 odometer miles against ~195 direct.** Three kinds of evidence now agree: testimony (unfalsifiable), incidental knowledge (falsifiable, survives), **and a photograph (documentary).**
+
+**★★★ FINDING 045 — A SILENCE BELONGS TO AN INSTRUMENT, NOT TO THE PAST.** Finding 036 was right that the fuel log cannot see this. **It does not license *therefore unrecordable*, which is what I wrote.** *When a record cannot reach an event, the next question is not "is it lost" but "what ELSE was running at the time?"* **Three times now — AMEX, Styx River Road, this photograph — and each time I had already called the gap unreachable.**
+
+**⚠ KIM TO PLACE THE FILE:** `Smart_Car/images/TwoRed/twored_florida_corner.jpg`, and I'll copy it into `book/images/TwoRed/` and wire the figure into ch.13.
+
+### ⚠ TWO THINGS ABOUT TWOFER THAT DON'T LINE UP (2026-08-21)
+
+Kim: *We didn't do any logs of this leased car... It was, basically, a fill in for TwoRed until we brought TwoRed to Hawaii.* **Two discrepancies, both worth pinning before ch.1 is printed.** (1) A **`TwoFer Gas Log` Sheet was found on Drive 2026-08-16** — 7 fill-ups, 2014-03-22 (dealer, odometer 0) to 2015-01-10, 1,209 miles. **Either it is a minimal record he has forgotten, or the note is wrong.** (2) **The lease ends January 2015 and TwoRed did not ship until May 2017** — a 2.5-year gap the *fill-in* account does not cover. **Finding 039 shape: content reliable, index not. Ask; do not assume.**
+
 ### ★★★ STYX RIVER ROAD — A NEW KIND OF EVIDENCE, 2026-08-21 (Finding 044)
 
 Kim, unprompted: *I have a friend who lives in Alaska on Styx River Road. There is only one other road in the US with this name. I remember seeing it (Huh? Another one???) in Alabama, just after leaving Florida... How would I have known that except by a visit?*

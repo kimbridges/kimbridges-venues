@@ -42,13 +42,18 @@ twored_median_day <- round(median(twored_legs$odo_miles, na.rm = TRUE))
 twofer_in_days <- round(twofer_miles / twored_median_day, 1)
 ```
 
-**Two4Two** — we called it TwoFer — was leased for about ten months in 2014 and 2015, and it never left Honolulu. Over its entire life with us it went **`r twofer_miles` miles.**
+**Two4Two** — we called it TwoFer — was leased in Honolulu and never left the island. It was **a stand-in**: something to drive at home until we could bring TwoRed across. It was only ever used for very short trips, and we kept no logs for it at all. Over its whole life with us it went about **`r twofer_miles` miles.**
 
 TwoRed's median driving day, on the mainland, was **`r twored_median_day` miles.**
 
 **So TwoRed covered TwoFer's whole existence in about four days of driving.** Same manufacturer, near enough the same car, and the difference isn't in the machine at all. It's in what we asked of it.
 
-<!-- KIM: why lease a second one at all, in 2014? And what did that experiment settle? -->
+<!-- KIM, two things that don't line up and are worth pinning before this is printed:
+     1. You say you kept no logs for TwoFer. But a `TwoFer Gas Log` Sheet turned up on Drive
+        on 2026-08-16 -- 7 fill-ups, 2014-03-22 (dealer, odometer 0) to 2015-01-10, 1,209 miles.
+        Either that's a minimal record you'd forgotten, or my note is wrong. Which?
+     2. 'A fill in for TwoRed until we brought TwoRed to Hawaii' -- but that lease ends in
+        January 2015 and TwoRed didn't ship until May 2017. What covered the gap? -->
 
 ## Four cars, four decisions
 
