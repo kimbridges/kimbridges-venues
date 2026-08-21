@@ -311,29 +311,43 @@ _Written 2026-08-12; item 6 added 2026-08-20._
 
 ## ★★★ CHAPTER ARCHITECTURE — SOLVED. KIM'S THREE LAYERS (2026-08-19) — full development in the log
 
-**His words, recorded as given:** *The Smart Cars are the "hook"... The two aspects of performance, car and human, is the fabric... The data become the real issue. The complexities and difficulties in the process of data collection, transcription, and cleaning on one end. At the other end, the opportunities for interesting, and perhaps unique, ways to analyze and display the results... People see the unusual cars (and have preconceived notions). The drives make interesting stories. The data give satisfying answers to questions, even those you didn't know you had.*
+*The Smart Cars are the "hook"... The two aspects of performance, car and human, is the fabric... The data become the real issue. The complexities and difficulties in the process of data collection, transcription, and cleaning on one end. At the other end, the opportunities for interesting, and perhaps unique, ways to analyze and display the results... People see the unusual cars (and have preconceived notions). The drives make interesting stories. The data give satisfying answers to questions, even those you didn't know you had.*
 
-**This closes the weak point named 2026-08-16 and does what TWO LOGS, TWO SUBJECTS could not.** That frame said which instrument answers which question — an excellent SORTING rule and a useless ORDERING rule. **Three layers says what a reader meets first and why they keep going, and the two compose: the car/human fabric runs THROUGH all three. It is the weave, not a chapter.**
+**TWO LOGS, TWO SUBJECTS was an excellent SORTING rule and a useless ORDERING rule.** Three layers says what a reader meets first and why they keep going, and the two compose: **the car/human fabric runs THROUGH all three. It is the weave, not a chapter.**
 
-**★ Three DEPTHS of one material, each bought by the one above.** The preconception makes the drives surprising; the drives make a reader want the numbers; the numbers answer questions the stories raised. **Remove any layer and the one below loses its force** — without the preconception the drives are travel, without the drives the numbers have no question, without the numbers the stories are anecdote.
+**★ Three DEPTHS of one material, each bought by the one above.** Without the preconception the drives are travel; without the drives the numbers have no question; without the numbers the stories are anecdote.
 
-**★★ *Questions you didn't know you had* is load-bearing, and already proven:** *what does a day OFF the highway look like?* — **70 miles at Holbrook**. *How much of a speed is living rather than driving?* — **7.5 mph**. *Can a record hold a state it never names?* — **Delaware**. *Where does a car sleep?* — **86% of elapsed days are dormancy; 34 of the 35 long spells are CA/AZ/OR, and the 35th is the St Louis car wash.**
+**★★ *Questions you didn't know you had* is load-bearing, and proven:** *what does a day OFF the highway look like?* — **70 miles at Holbrook, 59 at Hartland.** *How much of a speed is living?* — **7.5 mph.** *Can a record hold a state it never names?* — **Delaware.** *Where does a car sleep?* — **86% of elapsed days, and the answer was a parking spot at his mother's.**
 
-**★★★ AND THE ARCHITECTURE WAS VALIDATED THE DAY IT WAS PROPOSED.** Kim told the car-wash story to apologise for not remembering Summersville. **It turned out to be the sole explanation of the only outlier in a distribution nobody had computed** — Altamont IL 2010-10-11 to 11-05, 25 days, 227 miles between two fills seventeen miles apart. **Layer 2 generated the question; layer 3 answered it; neither could alone.**
+**★ EDITORIAL RULE:** an analysis earns the ANALYSIS strand only if it answers a question the drives raised. **Results with no story belong to the DIFFICULTY strand** — the retired temperature effect, the wide-tire interval straddling zero, the Canadian non-result, the unsettleable southern signal. **All are the data being honest about what it cannot say.**
 
-**★★ THE DIFFICULTY END IS A THIRD NARRATIVE, NOT A METHODS APPENDIX.** Same shape as the driving stories — problem, mechanism, resolution. **The slashed zero that predicts the DIRECTION of an error. The crossbar that was a scanning artifact. The pump identity. The split total that places a route. The backup with two blind gates.** Write them; do not bury them.
+**The three layers are the three instruments — preconception, memory, record — and they fail differently:** the record is silent where its resolution cannot reach (036); **the memory keeps content and loses index, and keeps CLASSES while naming specifics (039); and a fuel row is a TRANSACTION, not a STATE (041).** The preconception is simply wrong, which is the point of the book. **The reading structure and the working structure are the same structure. Say so in the Foreword.**
 
-**★ EDITORIAL RULE, testable today:** an analysis earns the ANALYSIS strand only if it answers a question the drives raised. **Results with no story belong to the DIFFICULTY strand** — the retired temperature effect, the wide-tire interval straddling zero, the Canadian non-result, and now **the unsettleable southern economy signal.** All are the data being honest about what it cannot say.
+## ★★★ THE CHAPTER LIST — FIRST DRAFT (2026-08-20) — full draft and rationale in the log
 
-**The three layers are the three instruments — preconception, memory, record — and they fail differently:** the record is silent where its resolution cannot reach (036); the memory keeps content and loses index, and keeps CLASSES while naming specifics (039); the preconception is simply wrong, which is the point of the book. **The reading structure and the working structure are the same structure. Say so in the Foreword.**
+**Thirteen chapters, four parts, front and back matter. Drafted for Kim to correct, not approve.** The charter's six-chapter list is retired by it: The Canvas survives as ch.12, The Expeditions as ch.4, The Fleet as ch.1 + Afterword; **The 4th Crossing and The Extremes do not survive as chapters** — one-car framing, content distributed.
+
+**FOREWORD** Why there was a car at all — the mother, the rentals, **the parking spot**, and **early: they live in Hawaii.**
+
+**PART ONE — THE CAR** 1. *These are small cars!* (the fleet; Mercedes and the safety cell; *do they believe it? maybe not*). **2. Is it safe? — the thesis chapter, written FIRST.**
+
+**PART TWO — THE DRIVES** 3. The anchor (parking as hidden infrastructure). 4. The expeditions (Arctic **cross-referenced, never re-told**). 5. The long days. 6. The roads (Kim's experience taxonomy: rolling wooded hills, **tree tunnels**, the commercial freeway both relieve). **7. What the driving cost — the hinge: this chapter proves the record cannot see the driver.**
+
+**PART THREE — THE DATA, both ends INTERLEAVED** 8. Sixteen years of paper *(difficulty)*. 9. How you know a number is wrong *(difficulty)*. 10. What the car cost *(analysis)*. 11. What a day in a Smart actually looks like *(analysis)*. 12. The two constellations *(analysis, the payoff)*. **13. What the record cannot say *(difficulty, the closing argument)*.**
+
+**AFTERWORD** The choice made again — four cars, and an electric one in the driveway now.
+
+**★★ THE ONE STRUCTURAL ARGUMENT, flagged so it can be rejected cleanly: DO NOT QUARANTINE THE DIFFICULTY STRAND AT THE BACK.** Interleave it, because **the difficulty chapters are what EARN the analysis chapters** — a reader cannot believe *$0.0939 per mile* until they know how the cost column was audited. **Audit before economy and the number is credible; audit after and it reads as a defence.**
+
+**★ A LINE THAT MUST BE HELD: the difficulty strand is about THE RECORD, not the analyst.** Kim's handwriting, the paper, the reconstruction, the resolution limits — book material. **The PKM's own tooling failures are hygiene, and stay in `pkm_findings.md`.**
 
 ## Next Steps
-1. **★★★ DRAFT THE CHAPTER LIST against the three layers, and WRITE THE SAFETY CHAPTER FIRST.** It demonstrates the architecture on the project's own central question. Retire the charter's six-chapter list for good; sort the existing inventory into the ANALYSIS and DIFFICULTY strands.
-2. **KIM:** name the tree-tunnel stretches he remembers (do not infer them); and whatever exists for Bordeaux.
-3. **KIM:** rule on what the backup should carry (Finding 038) — 22 scans and the authored `.txt`/`.docx`/`.pptx` files are outside the mirror, and the `.gitignore` must change in step with `SOURCE_EXT`.
-4. **KIM, unscheduled:** update the TwoRed fuel logs for the last miles to ~75,000. **Check `TwoRed_fuel` (the live Sheet) first** — richer than the exported `.xlsx`, with ~141 more fill temperatures.
-5. **OPEN:** Creamsicle trip legs run to 2024-10-20 but fills stop at 2024-07-02. **Not an absence claim** — the read may have been truncated.
-6. Then: `Expedition_ID` on every fill across BOTH documented cars (read `Fuel_Analysis.Rmd` first); **the parking constellation** and the driving constellation (the Jul-2024 Creamsicle update carries lat/long); and Kim's three analyses — fuel costs, daily distances, average speeds.
+1. **★★★ KIM: correct the chapter list above.** Then **write the SAFETY chapter (ch.2) first** — it demonstrates the architecture on the project's own central question. Foreword material is already being dictated and is in the log.
+2. **BUILD THE MANUSCRIPT SKELETON.** There is no draft file yet — dictated prose is currently landing in `logs/proj_Smart_Car_log.md`, which is working state, not a manuscript. **A Quarto book in `G:\My Drive\Projects\Smart_Car`, one file per chapter, destination `kimbridges-documents`.**
+3. **KIM:** confirm the remaining privacy calls — the niece at Mentone (relationship without a name? town or not?) and the St Louis business. **The Eugene colleague is ruled: NOT NAMED.**
+4. **KIM:** name the tree-tunnel stretches he remembers (do not infer them); and whatever exists for Bordeaux.
+5. **DEFERRED UNTIL A CHAPTER ASKS.** Canada2014 unit normalisation, Creamsicle's timezone table, `Expedition_ID` across both cars, the constellation maps, the ~141 extra fill temperatures in the live `TwoRed_fuel` Sheet. **By the editorial rule, an analysis earns its place by answering a question the drives raised — none of these has a chapter asking yet.**
+6. **OPEN, not urgent:** Creamsicle trip legs run to 2024-10-20 but fills stop at 2024-07-02. **Not an absence claim.**
 
 ## Collaborators / Dependencies
 None.
