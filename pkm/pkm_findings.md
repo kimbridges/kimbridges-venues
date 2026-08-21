@@ -1980,3 +1980,27 @@ I then did what the rule says and enumerated the complement across all of `Proje
 3. **A flag left in the code, not silently fixed:** those writes still assume CRLF and `project_index.md` is now LF (Finding 037). **It is `dry_run = TRUE` by default and must be reconciled before anyone runs it for real.**
 
 **Rule. When a structural convention changes, grep for the code that depends on it.** The block became multi-paragraph in one edit; two functions encoded the old shape and neither complained. **A convention is an interface, and changing it is a breaking change even when nothing throws.**
+
+
+## Finding 043 — A DERIVED COUNT INHERITS THE RECORD'S RESOLUTION, AND I KEPT REPORTING IT AS A FACT (2026-08-21)
+
+**Kim's correction.** *There is an important count that's not in the fuel or trip logs for TwoRed. That's the state visit total. Some states, like Florida, didn't have a fuel stop or a stop at night. So they aren't in the data... Take my word for it: TwoRed did, indeed, go to the 49 mainland states and the 10 Canadian provinces.*
+
+**What I had been writing, for three days, in four files:** *TwoRed's state list and Kim's state list are two different quantities — 45 documented against a challenge counting to 49.* **That framing is wrong, and it is wrong in a way worth naming.** It treats a shortfall caused by the instrument's RESOLUTION as though it were a disagreement between two claims. **There was never a second quantity. There is one number, 49, and a log that can only witness 45 of it.**
+
+**Why the error was easy to make.** Every other number in this project comes from the data and is checked against it, and that discipline is right. **But a state count is not measured by a fuel log. It is INFERRED from one** — a state appears only if the car happened to buy fuel or end a day inside it. **A derived count inherits every limitation of the record it is derived from, and it does so silently, because the count itself looks like an ordinary number.**
+
+**The distinguishing test, and it generalises past this case.** Ask: **could the record have registered this even in principle?** Miles, gallons, dates and odometer readings — yes, that is what it is for. **A state boundary crossed between two fill-ups is not an event the instrument samples at all.** Where the answer is no, the record's total is a FLOOR, never a value, and it must be labelled as one.
+
+**The four missing states are three different kinds of silence, which is why the case is a good one for the book (ch.13).**
+
+| state | status |
+|---|---|
+| **Delaware** | **recoverable by geometry** — 264 odometer miles where the only Delaware-free road is ~305 |
+| **Rhode Island** | **strongly indicated** — the Douglas MA fill sits on MA-146, the Providence road, and 287 mi fits the coastal route (~285) better than the inland one (~265) |
+| **Florida** | **unrecoverable; testimony only.** Finding 036 |
+| **South Dakota** | **no leg in the record has room for it.** The only slack in the region is ~80 mi and a Black Hills dip needs ~110. OPEN with Kim |
+
+**Rule.** **A count derived from a record is a floor unless every member of the class generates an observation.** Say *the log witnesses 45* and not *45 states*, and put the witness's number in the text. **And when a witness corrects a derived count, check the derivation before the memory** — here the derivation was the thing at fault, and the memory was right.
+
+**Cross-reference:** this is Finding 036's rule (*a record's RESOLUTION sets the floor on what its silences can mean*) applied to an aggregate rather than an event, and Finding 041's (*a fuel row is a TRANSACTION, not a STATE*) applied to a total rather than a location. **Three faces of one thing: the record answers the question it was built for, and every other question is asked at its mercy.**

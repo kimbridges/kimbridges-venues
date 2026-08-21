@@ -13,11 +13,25 @@ My mother lived there, and we were visiting quite frequently. Each time we came,
 
 Smart cars, it seemed to us at the time, were priced sensibly. And there was a parking spot available at my mom's place.
 
-That is the whole of the decision. Economics, mostly. Convenience, too. **We bought a very small car to run errands in a suburb**, and if you had asked either of us then what it was for, that is what we would have said, and we would have been right.
+That's the whole of the decision. Economics, mostly. Convenience, too. **We bought a very small car to run errands in a suburb**, and if you'd asked either of us then what it was for, that's what we'd have said, and we'd have been right.
+
+## The four of them
+
+There have been four, and they all have names, because you end up naming a car you spend that much time in.
+
+**TwoRed** is the 2010 Smart Passion — red and silver, the one in the photographs, and the one this book follows most closely. It's the car that did the crossings, and it kept the deepest record by a long way.
+
+**Two4Two**, which we mostly called **TwoFer**, was leased for about ten months in 2014 and 2015 and never left Honolulu. It went 1,209 miles in its whole life with us. It's in the story because it shows what a Smart looks like when you use it the way everyone assumes you're going to.
+
+**Creamsicle** is the 2016 model, white and orange, which is where the name comes from. We bought it to help family and we sold it to family in 2024. It crossed the country several times, and — this matters later — its logs record something TwoRed's don't, which is how long we were stopped.
+
+**Bordeaux** is the 2018, and it's electric. It's the one in the driveway now.
+
+Three petrol cars and an electric one, over sixteen years. **The interesting thing about that list isn't any single car. It's that we kept choosing the same kind of car, three more times after the first one.**
 
 ## But this is not a book about errands
 
-It is about long drives. Four thousand miles at a stretch, the Dalton Highway north of the Arctic Circle, forty-five states, ten Canadian provinces and territories, and a good deal of the Trans-Canada.
+It's about long drives. Four thousand miles at a stretch, the Dalton Highway north of the Arctic Circle, forty-five states, ten Canadian provinces and territories, and a good deal of the Trans-Canada.
 
 ```{r}
 #| label: mainland-total
@@ -29,17 +43,17 @@ first_date <- min(twored_fuel$date)
 
 TwoRed — the first of them, and the one this record follows most closely — was bought new. **The odometer read `r first_odo` miles.** When it was handed over to a shipping company at the Matson dock in Seattle on 22 May 2017, it read **71,283**.
 
-Those two facts sit oddly together, and the oddness is the reason for the book.
+Those two facts sit oddly together, and that's the reason for the book.
 
 ## How both things are true
 
 The answer is a family dynamic that anyone who has aging parents will recognise: **children need to visit, and they need not to stay too long.**
 
-So we would visit for a few days. Then we would go off to a meeting — which was not optional either; scientific meetings have dates, and they are held wherever they are held. Then we would drive back and visit again.
+So we'd visit for a few days. Then we'd go off to a meeting — which was not optional either; scientific meetings have dates, and they are held wherever they are held. Then we'd drive back and visit again.
 
 **Two visits, separated by the time it took to do some work.** The car served both purposes, and that added to its value in a way that had nothing to do with the price we paid for it.
 
-It also, without anyone intending it, produced the pattern that shapes everything that follows.
+It also produced, without anyone intending it, the pattern that shapes everything that follows.
 
 ```{r}
 #| label: anchor
@@ -59,24 +73,24 @@ And for **`r dormant_pct`%** of the days in this record, it was not moving at al
 
 We live in Hawaii.
 
-Without that, none of the above parses. You would reasonably wonder why we did not simply drive to my mother's place, and why a car would sit unused for months at a stretch. **The answer is that the car lived on the mainland and we did not.** Every one of those long gaps is a flight home.
+Without that, none of the above parses. You'd reasonably wonder why we didn't just drive to my mother's place, and why a car would sit unused for months at a stretch. **The answer is that the car lived on the mainland and we didn't.** Every one of those long gaps is a flight home.
 
-It also explains something less obvious, which is why we wanted to do this at all. **You don't do much driving in Hawaii.** Think about downtown Honolulu — where you would go, and how far, and how long it would take. Driving on the mainland was something different for us. Not a chore to be got through. **The point.**
+It also explains something less obvious, which is why we wanted to do this at all. **You don't do much driving in Hawaii.** Think about downtown Honolulu — where you'd go, and how far, and how long it'd take. Driving on the mainland was something different for us. Not a chore to be got through. **The point.**
 
 ## What this book is
 
 Three things, in the order people meet them.
 
-**The car.** People see it and have opinions. Almost all of them are about the size, and underneath is always the same question, which is whether a thing that small is safe to be in. That question deserves a real answer and it gets one.
+**The car.** People see it and have opinions. Almost all of them are about the size, and underneath is always the same question, which is whether a thing that small is safe to be in. That question deserves a real answer, and it gets one.
 
 **The drives.** Sixteen years of them, and they are the reason there is anything to count. They also carry things no measurement reaches — what a road felt like, why a particular day was long, what it cost to drive miles that look ordinary in a table.
 
 **The data.** I kept a fuel log for every fill-up and, later, a trip log for every driving day. Together they run to several hundred pages of handwriting. **The data end of this book has two ends of its own** — the work of getting sixteen years of pencil into a form that can be trusted, which turned out to be a story in itself; and then the questions that record can answer, including a fair number I did not know I had until I asked.
 
-The two performances run through all three. **The fuel log is mostly about the car's performance. The trip log is about the human's** — how far and how fast you can expect to drive in a day, which is something I had no idea about until I started doing these drives.
+The two performances run through all three. **The fuel log is mostly about the car's performance. The trip log is about the human's** — how far and how fast you can expect to drive in a day, which is something I'd no idea about until I started doing these drives.
 
 ## A note on what is and is not here
 
-This record covers the mainland. It stops at the dock in Seattle, and the roughly 3,700 miles TwoRed drove afterwards, at home, are not in it. **That is not an omission. It is the subject.** The log was always a record of long-distance driving, and it ends when the long-distance driving ends.
+This record covers the mainland. It stops at the dock in Seattle, and the roughly 3,700 miles TwoRed drove afterwards, at home, are not in it. **That's not an omission. It's the subject.** The log was always a record of long-distance driving, and it ends when the long-distance driving ends.
 
-Which is a tidy way of saying what the rest of the book will say at more length: **an errand car, bought for a parking space, that went 71,283 miles.**
+Which is a tidy way of saying what the rest of the book says at more length: **an errand car, bought for a parking space, that went 71,283 miles.**

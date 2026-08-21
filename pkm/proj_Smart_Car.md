@@ -169,15 +169,15 @@ On the BACK of the last fuel sheet, circled: **`5/22/17  71,283  LV Seattle @ Ma
 
 **★★ Two anomalies at the end that are NOT economy readings.** The final two fills read **52.4 and 93.0 MPG** on **4.333 and 2.496 gallons against a lifetime mean of 6.24.** **A vehicle handed to Matson must arrive with a low tank** — a tank managed DOWN for shipping, not a measurement of the car. **★ General rule: the first and last rows of any record are the least trustworthy, because they are taken while the measuring itself is being started or stopped.** The first fill carries a slashed-zero error (L59); the last two are shipping artifacts. **Trim the ends before quoting an extreme.**
 
-## ★★★ THE OPEN QUESTIONS ARE CLOSED (2026-08-19/20) — full working in the log
+## ★★★ THE OPEN QUESTIONS ARE CLOSED (2026-08-19/21) — full working in the log
 
-**1. The 46 Dalton miles are 32 + 14 — Coldfoot → Wiseman.** Two Yukon River Crossing fills split the leg: north of the river 115 out / **147 back (+32)**, south 137 / **151 (+14)**; the Wiseman spur is ~16 road miles, so **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.* Same leg: **slowest 200+-mile day in sixteen years (22.6 mph against 28.6 over the identical road the day before)**, starting at **38 degF after Coldfoot read 64 the previous evening.**
+**1. The 46 Dalton miles are 32 + 14 — Coldfoot → Wiseman.** Two Yukon River Crossing fills split the leg: north of the river 115 out / **147 back (+32)**; the Wiseman spur is ~16 road miles, so **out and back is 32, to the mile.** *A matching TOTAL does not mean a matching ROUTE; a SPLIT total localises the discrepancy.*
 
-**2. THE PENULTIMATE STATE IS VERMONT** — *a lawyer who has an office in NH, but lives nearby in Vermont. I drove to his house.* **Exactly the anomaly the record flagged and could not read:** Hartland VT → Lebanon NH, **two nights and 59 odometer miles for an eighteen-mile drive**, across the Connecticut River. **★ TwoRed's state list and KIM'S state list are two different quantities** — hence 45 documented against a challenge counting to 49.
+**2. THE PENULTIMATE STATE IS VERMONT** — *a lawyer who has an office in NH, but lives nearby in Vermont. I drove to his house.* **Exactly the anomaly the record flagged and could not read:** Hartland VT → Lebanon NH, **two nights and 59 odometer miles for an eighteen-mile drive**, across the Connecticut River.
 
-**3. ★★★ DELAWARE IS INVISIBLE AS A LABEL AND PROVABLE AS A ROW.** Colonial Heights VA → Bellmawr NJ reads **264 odometer miles** (great-circle 219); **the only Delaware-free road is ~305, forty more than the odometer permits.** **Key to a ROW, never a LABEL.** Never-appearing states: Florida (Finding 036), Delaware, Rhode Island, South Dakota. **Provinces confirmed at exactly ten.**
+**3. ★★★ THE STATE COUNT IS 49 AND 10, ON KIM'S TESTIMONY (2026-08-21) — and my framing was wrong.** *Some states, like Florida, didn't have a fuel stop or a stop at night. So they aren't in the data... Take my word for it.* **I had been writing that TwoRed's list and Kim's list were two different quantities. They are one quantity and a log that witnesses 45 of it.** **Finding 043: a count DERIVED from a record inherits the record's resolution, silently, because the count looks like an ordinary number.** **The four unwitnessed states are three kinds of silence:** **Delaware** recoverable by geometry (264 odometer miles where the only Delaware-free road is ~305); **Rhode Island** strongly indicated (the Douglas MA fill sits on MA-146, the Providence road; 287 mi fits the coastal route at ~285 against ~265 inland); **Florida** unrecoverable, testimony only (Finding 036); **South Dakota** — **no leg in the record has room for it**, the only regional slack being ~80 mi against the ~110 a Black Hills dip needs. **ASK KIM WHEN.** **Provinces confirmed at exactly ten by the record itself.**
 
-**4. ⛔ THE TEXAS ON-RAMP — CLOSED BY REQUEST.** *For personal safety, I wouldn't reveal it either. Near Ft Worth is sufficiently close.* **No session may localise it; no published text may place it more precisely than NEAR FORT WORTH.**
+**4. ⛔ THE TEXAS ON-RAMP — CLOSED BY REQUEST.** **No session may localise it; no published text may place it more precisely than NEAR FORT WORTH.**
 
 ## ★★★ CREAMSICLE IS INGESTED — THE SECOND SPINE EXISTS (2026-08-19)
 
@@ -335,15 +335,15 @@ Quarto **book**, `output-dir: _output`, matching the house pattern (`whittakerr`
 
 **★ KIM WANTS GRAPHICS AND PHOTOS.** *When we get to the data, I'm expecting we'll be doing some interesting graphics. At some point, we'll want to slip in some pictures, too.* `figures/` created; `images/Creamsicle/` holds 37 geotagged, timestamped photos that **join to the logs on date + local time with no timezone reconstruction.** **The photo layer is chapter 12's material and needs a TwoRed equivalent — ask Kim what exists.**
 
-## ★★★ THE FOREWORD IS DRAFTED (2026-08-20) — `book/index.qmd`, ~950 words
+## ★★★ FOREWORD AND CH.2 — KIM'S FIRST PASS DONE (2026-08-21)
 
-**Opens on Kim's own sentence** — *the overriding fact was that we needed a car in Lake San Marcos* — and runs: the visits, the rentals, the parking spot, **an errand car**; then the turn, *but this is not a book about errands*; then the odometer at 4 miles against **71,283 at the Matson dock**; then the family dynamic that makes both true, **two visits separated by the time it took to do some work.**
+**Approved:** the voice; **the three layers stay in the Foreword** (*people can see what's ahead*); **chapter 2's story order stays** (denominator before the close calls).
 
-**★★ HAWAII IS ITS OWN SECTION, placed where the reader first needs it** — after the dormancy is mentioned and before it becomes confusing. *Without that, none of the above parses.* **Every long gap is a flight home.** And it carries the second inversion: *you don't do much driving in Hawaii... Driving on the mainland was something different for us. Not a chore to be got through. The point.*
+**★ VOICE RULE, STANDING: use contractions.** *I like to use conjunctions (e.g., "I'll") more than you've put into the document. I think it makes it more casual, which is part of this document's flavor.* **36 applied across the two drafts; apply from the first sentence in every future chapter.**
 
-**The three layers are named lightly, as what the book IS rather than as architecture** — the car, the drives, the data — with the data's two ends stated plainly and the car/human fabric run through all three in Kim's own words. **Closes on the scope boundary as SUBJECT, not omission:** *the log was always a record of long-distance driving, and it ends when the long-distance driving ends.*
+**★★ ADDED AT KIM'S REQUEST — `## The four of them`**, a short Foreword section introducing the cars by name and character, because **they are the main players and the Foreword never named them.** TwoRed (2010 Passion, red and silver, the crossings, the deep record); **Two4Two/TwoFer** (leased ten months, **1,209 miles, never left Honolulu** — the car that shows what a Smart looks like used the way everyone assumes); **Creamsicle** (2016, white and orange, bought to help family and sold to family, **and its logs record stopped time**); **Bordeaux** (2018, electric, the one in the driveway now). Closes on the fleet thesis: **we kept choosing the same kind of car, three more times after the first.**
 
-**Three code chunks, all `include: false`, feeding inline values** — `first_odo` (4), `dormant_pct` (86), the anchor span. **Verified to resolve.** Nothing in the Foreword is typed.
+**Foreword now ~1,150 words. Chapter 2 unchanged in structure**, with the state figure corrected to 49 and a forward pointer to ch.13.
 
 ## ★★★ CHAPTER 2 IS DRAFTED (2026-08-20) — `book/is_it_safe.qmd`, ~2,300 words
 

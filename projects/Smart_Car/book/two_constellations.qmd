@@ -13,7 +13,7 @@ PURPOSE
 ANALYSIS strand, and the payoff chapter. Where it drove, and where it slept.
 
 MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- The driving constellation: every recorded fuel stop, geocoded. 45 states, 10 provinces.
+- The driving constellation: every recorded fuel stop, geocoded. **Show 49 states and 10 provinces, and show WHICH four are unwitnessed by a fill** (Florida, Delaware, Rhode Island, South Dakota) -- the map's own silences are part of what it has to say.
 - THE PARKING CONSTELLATION -- the map nobody thinks to draw. 86% of elapsed days sit inside a dormancy of 14+ days.
 - The photo layer JOINS cleanly: DateTimeOriginal is LOCAL time with OffsetTimeOriginal carrying the zone, and the logs record local clock times, so photos join on date + local time with no timezone reconstruction. Validates on the first record -- earliest photo 11:42, first fill 11:45 at Nixa MO.
 - 37 geotagged Creamsicle photos in images/Creamsicle/. The Jul-2024 Creamsicle update already carries lat/long -- start there rather than geocoding from scratch.

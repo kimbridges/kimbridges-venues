@@ -21,17 +21,17 @@ And then, nearly every time, the same second question.
 
 *Is it safe?*
 
-It is worth noticing where that question comes from. **It is not hostility.** Nobody opens with the size as an accusation. They open by saying they like it — and then, having said so, they worry about it. The car is small, everything else on an American interstate is not, and the arithmetic seems obvious. **The concern is affectionate, which is exactly why it deserves a real answer rather than a defence.**
+It's worth noticing where that question comes from. **It isn't hostility.** Nobody opens with the size as an accusation. They open by saying they like it — and then, having said so, they worry about it. The car is small, everything else on an American interstate isn't, and the arithmetic seems obvious. **The concern is affectionate, which is exactly why it deserves a real answer rather than a defence.**
 
 ## The answer I give
 
-I have a short version and I have given it many times, standing next to the car.
+I've a short version and I've given it many times, standing next to the car.
 
 Mercedes designed this to be safe. Just like a race car. **See the silver part? That's the safety cell.** When a race car crashes, the cell protects the driver — they pop out afterwards and hold their hands up.
 
 I demonstrate that part. Hands up, unhurt, walking away from the wreckage.
 
-Same thing here. A solid structure built for protection. The silver you can see running around the car is not trim; it is the structure, and the body panels hung on it are not.
+Same thing here. A solid structure built for protection. The silver you can see running around the car isn't trim; it's the structure, and the body panels hung on it aren't.
 
 Do they believe it? Maybe. Maybe not. **A specification does not defeat an impression**, and the impression arrived first — from twenty feet away, before anyone heard a word about safety cells. The pointing helps more than the explaining does, which tells you something about what kind of question it really is.
 
@@ -59,11 +59,11 @@ knitr::kable(
 )
 ```
 
-A hundred thousand documented miles across three of the cars. Four hundred and sixty-seven fill-ups. Two hundred and twenty-five logged driving days. Forty-five states and ten Canadian provinces and territories. Gravel on the Dalton Highway north of the Arctic Circle. Frost heaves across the Canadian plains. The Tail of the Dragon. The Oregon coast highway. Two winters and a good many summers.
+A hundred thousand documented miles across three of the cars. Four hundred and sixty-seven fill-ups. Two hundred and twenty-five logged driving days. **Forty-nine mainland states and ten Canadian provinces and territories** — the log itself only witnesses forty-five of the states, for reasons chapter 13 gets into, but the car went to all of them. Gravel on the Dalton Highway north of the Arctic Circle. Frost heaves across the Canadian plains. The Tail of the Dragon. The Oregon coast highway. Two winters and a good many summers.
 
 No crash.
 
-That is worth stating plainly and then immediately qualifying, because a number like that can be made to say more than it should. I am one driver. I am a prudent one. The miles are mostly interstate, mostly in daylight, and almost none of them are urban commuting. **The hundred thousand miles do not show that the car kept me safe. They show that the car did not prevent sixteen years of safe driving** — which is a smaller claim, and the honest one.
+That's worth stating plainly and then immediately qualifying, because a number like that can be made to say more than it should. I'm one driver, and a prudent one. The miles are mostly interstate, mostly in daylight, and almost none of them are urban commuting. **The hundred thousand miles do not show that the car kept me safe. They show that the car did not prevent sixteen years of safe driving** — which is a smaller claim, and the honest one.
 
 The larger claim comes from two days when the driving stopped being ordinary.
 
@@ -77,17 +77,17 @@ Smart Madness put steel rims on the car, and I bought a spare wheel to carry. It
 
 Nobody told me about the flags.
 
-Along that road, small flags are set at the roadside to mark a pothole. I did not know that when I started, so I learned it the way you learn most things up there, which is by hitting a few. Fortunately the lessons came from small ones. **After a while the rule is automatic: flag ahead means slow down and swerve.**
+Along that road, small flags are set at the roadside to mark a pothole. I didn't know that when I started, so I learned it the way you learn most things up there, which is by hitting a few. Fortunately the lessons came from small ones. **After a while the rule is automatic: flag ahead means slow down and swerve.**
 
 The car-eater had no flag.
 
 It was big enough to swallow a car — not a wheel, a car — and it arrived with no warning at all. I saw it late and went around it.
 
-Two things about that. The first is the one this chapter is built on: **the hole was big enough to eat a big car too.** The hazard did not care what I was driving. **The escape did.** Something wider and heavier has a wider, heavier problem getting out of the way at speed, on a road that narrow, with a shoulder that is not really a shoulder.
+Two things about that. The first is the one this chapter is built on: **the hole was big enough to eat a big car too.** The hazard didn't care what I was driving. **The escape did.** Something wider and heavier has a wider, heavier problem getting out of the way at speed, on a road that narrow, with a shoulder that isn't really a shoulder.
 
-The second is about how it happened at all. **You learn the pattern. Flag equals slow and swerve. You begin to trust your experience — and the trust is earned, because the pattern is real and it holds hundreds of times.** Then once it does not.
+The second is about how it happened at all. **You learn the pattern. Flag equals slow and swerve. You begin to trust your experience — and the trust is earned, because the pattern is real and it holds hundreds of times.** Then once it doesn't.
 
-**Accidents happen when the pattern does not hold.**
+**Accidents happen when the pattern doesn't hold.**
 
 ### The on-ramp near Fort Worth
 
@@ -97,7 +97,7 @@ I was most of the way around that curve when a police car came up the ramp. Full
 
 I pulled the wheel hard right and hit the brakes hard. The car slid to a stop on the shoulder, inches from the metal guard rail.
 
-I sat there. I was stunned, and my first thought was that I had done something wrong — that I was the one going the wrong way. So I waited. And while I waited I watched several cars come down the on-ramp exactly as I had been doing.
+I sat there. I was stunned, and my first thought was that I'd done something wrong — that I was the one going the wrong way. So I waited. And while I waited I watched several cars come down the on-ramp exactly as I had been doing.
 
 It was the police car that was going the wrong direction.
 
@@ -107,7 +107,7 @@ I missed being hit head-on by quick action and some luck.
 
 Note what was and was not available to me. Nothing about prudence prevents a vehicle coming the wrong way up a ramp with no warning; the hazard was outside my control entirely. What I had was a steering input and a braking distance, and both had to work in a very short space.
 
-**And note that it is the same failure as the pothole.** On-ramps run one way. That is a pattern, it is real, and it holds every single time for years — which is precisely why I was around that curve at speed and not creeping. **I trusted a pattern, and the pattern did not hold.** The sat-there-stunned part, the wondering whether I was the one going the wrong way, is what it feels like when a rule that has never failed suddenly does.
+**And note that it is the same failure as the pothole.** On-ramps run one way. That is a pattern, it is real, and it holds every single time for years — which is precisely why I was around that curve at speed and not creeping. **I trusted a pattern, and the pattern didn't hold.** The sat-there-stunned part, the wondering whether I was the one going the wrong way, is what it feels like when a rule that has never failed suddenly does.
 
 ## The pattern, and what happens when it breaks
 
@@ -115,7 +115,7 @@ Put the two together, because they are not two stories.
 
 Both times, the danger was not that I did something careless. **It was that the world briefly stopped behaving the way sixteen years of driving had taught me it behaves.** A hazard on that road is flagged. Traffic on a ramp goes down. Both rules are sound, both are earned by long experience, and both are what let you drive at a reasonable speed instead of crawling everywhere in a state of suspicion.
 
-You cannot drive without trusting patterns. **And you cannot make patterns hold.** So the only thing left to ask of a car is what it can do in the second after one breaks.
+You can't drive without trusting patterns. **And you can't make patterns hold.** So the only thing left to ask of a car is what it can do in the second after one breaks.
 
 
 
@@ -123,9 +123,9 @@ You cannot drive without trusting patterns. **And you cannot make patterns hold.
 
 That is the argument, and I know it runs against the intuition.
 
-The preconception treats size as a liability to be excused — *yes, it is small, but it is well built.* I do not think that is the right shape for the answer. **In both of the moments where this car came closest to being destroyed, it was the smallness that got me out.** Less mass to move, less distance to move it through, and a chassis that answers immediately because there is not much of it.
+The preconception treats size as a liability to be excused — *yes, it is small, but it is well built.* I don't think that's the right shape for the answer. **In both of the moments where this car came closest to being destroyed, it was the smallness that got me out.** Less mass to move, less distance to move it through, and a chassis that answers immediately because there is not much of it.
 
-A safety cell is for the crash you are having. **Handling is for the crash you are not going to have** — and that second kind gets used far more often. Nobody counts those. There is no column for them, in this record or any other, which is why the two I remember are worth more here than the hundred thousand miles they sit inside.
+A safety cell is for the crash you are having. **Handling is for the crash you aren't going to have** — and that second kind gets used far more often. Nobody counts those. There's no column for them, in this record or any other, which is why the two I remember are worth more here than the hundred thousand miles they sit inside.
 
 The wide tires belong to the same argument, which is why they come next.
 
@@ -137,7 +137,7 @@ Crossing the deserts, a strong wind would come from the side. It pushed the car 
 
 It was possible to control. But it was tiring.
 
-**That distinction is the whole of it, and it is worth holding on to, because this book comes back to it.** A steady force you lean against and forget. A varying one you have to answer, continuously, and the cost is not in any single correction but in the fact that they never stop. **The wind was not dangerous. Being tired at 70 miles an hour is.**
+**That distinction is the whole of it, and it is worth holding on to, because this book comes back to it.** A steady force you lean against and forget. A varying one you have to answer, continuously, and the cost is not in any single correction but in the fact that they never stop. **The wind wasn't dangerous. Being tired at 70 miles an hour is.**
 
 It happened enough that I discussed it with some experts. They understood right away and they had the solution: wider tires.
 
@@ -145,11 +145,11 @@ The fancy rims came along with them, because this is a car that is fun to drive 
 
 ![The same car after Smart Madness had finished with it. Set this against @fig-day-one: the tires are visibly wider, and the fancy rims came along with them.](images/TwoRed/twored_wide_wheels.jpg){#fig-wide-wheels}
 
-Now, when I pull up behind a high-priced sports car, I note the width of their tires. Mine are not as wide. **But they are wide enough to take care of the problem.**
+Now, when I pull up behind a high-priced sports car, I note the width of their tires. Mine aren't as wide. **But they are wide enough to take care of the problem.**
 
 **The wheels were never about fuel.** They were bought for control in a crosswind, which is to say they were bought for safety. But wider tires have a theoretical cost — more rolling resistance, more frontal area — usually put somewhere between one and three per cent.
 
-So the fuel log gets to answer a question it was never keeping score on. **Before and after the change, the difference in economy is not distinguishable from zero.** Under every specification tried — with and without a control for leg length, with and without partial fills, with and without the Alaska rows — **the confidence interval straddles zero and the one-to-three per cent penalty theory predicts sits comfortably inside it.**
+So the fuel log gets to answer a question it was never keeping score on. **Before and after the change, the difference in economy isn't distinguishable from zero.** Under every specification tried — with and without a control for leg length, with and without partial fills, with and without the Alaska rows — **the confidence interval straddles zero and the one-to-three per cent penalty theory predicts sits comfortably inside it.**
 
 <!-- NUMBER NOT YET PRINTABLE. The interval quoted in our notes (-3.7% to +4.9%) could not be
      reproduced from the corrected dataset under four reasonable specifications on 2026-08-20;
@@ -157,7 +157,7 @@ So the fuel log gets to answer a question it was never keeping score on. **Befor
      The INTERVAL must be re-derived with a written specification before any figure is printed
      (intentions item 4). See deferred.md. -->
 
-Stated carefully: **the data rules out a large fuel penalty. It cannot detect a modest one.** And it will not support the opposite claim either — not that the wheels cost nothing, only that whatever they cost was too small for sixteen years of records to see.
+Stated carefully: **the data rules out a large fuel penalty. It cannot detect a modest one.** And it won't support the opposite claim either — not that the wheels cost nothing, only that whatever they cost was too small for sixteen years of records to see.
 
 **The one change ever made to this car was made for safety, and it did not show up in the fuel.**
 
@@ -165,6 +165,6 @@ Stated carefully: **the data rules out a large fuel penalty. It cannot detect a 
 
 Granted: no crash testing.
 
-Nothing here is a substitute for a barrier test, and nothing here can answer the question people are really asking, which is what happens in the collision. I have not had one. That is the whole of my evidence and it is also the limit of it. **A record of things that did not happen cannot tell you what it would have been like if they had.**
+Nothing here is a substitute for a barrier test, and nothing here can answer the question people are really asking, which is what happens in the collision. I haven't had one. That's the whole of my evidence and it's also the limit of it. **A record of things that didn't happen can't tell you what it would've been like if they had.**
 
 What I can say is narrower and, I think, more useful. Over a hundred thousand documented miles, on gravel and frost heave and interstate and coast highway, the small car was twice the reason the day ended without damage. Both times, the thing that saved it was the thing everyone worries about.
