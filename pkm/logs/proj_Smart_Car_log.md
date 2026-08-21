@@ -1574,3 +1574,66 @@ Read the 35 long dormancies again with Kim's sentence in hand and they stop bein
 1. **It explains the dormancies.** 86% of elapsed days inside a long gap is not a car sitting idle — **it is a car waiting 2,500 miles from its owners while they are at home.** Every dormancy is a flight.
 2. **It explains the scope boundary.** The ~3,700 implied Honolulu miles the record deliberately excludes are the ONLY miles driven where they live. **The log is a record of driving that happens somewhere else.**
 3. **★★★ AND IT INVERTS LAYER ONE A SECOND TIME.** *You don't do much driving in Hawaii (think: downtown Honolulu). Driving on the mainland was something different for us.* **The preconception says a Smart car is a city car. These owners LIVE in a city — and bought one to do the opposite of city driving.** The car that looks built for Honolulu was used to escape it. **That belongs beside the safety inversion in the Foreword: two counter-intuitive turns, one after the other, and both are true.**
+
+
+## ★★★ THE CHAPTER LIST — FIRST DRAFT AGAINST THE THREE LAYERS (2026-08-20)
+
+**Drafted for Kim to correct, not to approve.** The charter's six-chapter list is retired by this. One structural argument is made below and flagged so it can be rejected cleanly.
+
+### ★★ THE ONE ARGUMENT: DO NOT QUARANTINE THE DIFFICULTY STRAND AT THE BACK
+
+Kim named the data layer as having two ends — **collection/transcription/cleaning** at one, **analysis and display** at the other — and said the first is usually exiled to an appendix. **If the difficulty chapters all sit at the back, they read as an appendix no matter what they are called.**
+
+**The fix is to interleave them, and there is an argument for it beyond variety: the difficulty chapters are what EARN the analysis chapters.** A reader cannot believe *$0.0939 per mile* until they know how the cost column was audited. **Put the audit before the economy chapter and the number is credible; put it after and it reads as a defence.** So each analysis chapter is preceded by the difficulty story that made it possible.
+
+---
+
+### FOREWORD — Why there was a car at all
+
+The mother in Lake San Marcos, the frequent visits, the rentals adding up, **the parking spot at her place.** *We'd visit for a few days and then go off to a meeting. We'd drive back and visit again.* **And early, because nothing works without it: they live in Hawaii.** *You don't do much driving in Hawaii — think: downtown Honolulu. Driving on the mainland was something different for us.* Ends on the promise: **an errand car, and 71,283 mainland miles.**
+
+### PART ONE — THE CAR *(the layer everyone arrives with)*
+
+**1. These are small cars!** The fleet — four cars, sixteen years, three ICE and one electric, **the choice made again three times after the first.** Mercedes, the tridion safety cell, race-car logic. **And the honest admission that the engineering answer only half-lands:** *Do they believe it? Maybe. Maybe not.*
+
+**2. Is it safe?** ★ **The thesis chapter, and the one to write first.** *Small and nimble are components of safety* — the inversion. The Yukon pothole, *big enough to eat a big car too*. The Texas on-ramp (**never located beyond *near Fort Worth***). **The denominator: 100,999 documented miles across three cars, 467 fills, 45 states, 10 provinces, no crash.** The wide tires bought for handling — **and what that safety cost: nothing measurable.** Closes on Kim's own caveat: *granted, no crash testing.*
+
+### PART TWO — THE DRIVES *(what actually happened)*
+
+**3. The anchor.** Every complete trip is a loop from one parking space. **Parking as the hidden infrastructure** — the mother's facility, the niece, the colleague's garage, the improvised car wash near the St Louis airport. *We've been fortunate that friends and family have helped at critical times.*
+
+**4. The expeditions.** The crossings, trip by trip, 2010 to 2017. **The Arctic Circle Challenge is CROSS-REFERENCED, never re-told** (intentions item 2). Ends with the last year's shape: two relocations, then the Matson dock.
+
+**5. The long days.** Eight of them, and **why each happened** — a navigation error and fireflies, a nephew at the Petrified Forest, Montana having nowhere to stop, a red-eye flight to Bellingham, a mother at 104.
+
+**6. The roads.** Kim's taxonomy, built from experience rather than speed: **rolling wooded hills** (the relief), **tree tunnels** (the monotony, in the South), the commercial freeway both are a relief from, gravel, coast.
+
+**7. What the driving cost.** The near-misses and the stressful miles. **The Canadian Plains read as an unremarkable fast run and were the worst miles of the crossing.** ★ **This chapter exists to establish that the record cannot see the driver — it is the hinge into Part Three.**
+
+### PART THREE — THE DATA *(both ends, interleaved)*
+
+**8. Sixteen years of paper.** *(difficulty)* The field sheets, the handwriting, **the slashed zero that predicts the DIRECTION of an error.** The scans, the AMEX statements as a third independent record, **the crossbar that turned out to be a scanning artifact.**
+
+**9. How you know a number is wrong.** *(difficulty)* **The pump identity.** The six audit instruments. The errata architecture — corrections beside the source, never in it, **keyed to a ROW and never to a LABEL.**
+
+**10. What the car cost.** *(analysis — now believable)* Economy, cost per mile, **no degradation in sixteen years**, leg length as the strongest predictor. The two cars side by side, **with the fuel-price caveat stated rather than buried.**
+
+**11. What a day in a Smart actually looks like.** *(analysis)* Daily distance, **where the beds are**, departure discipline, gross speed by road — **and the ceiling: Creamsicle's stopped-time column puts driving 7.5 mph above the gross.**
+
+**12. The two constellations.** *(analysis, and the payoff chapter)* Where it drove, and **where it slept** — the map nobody thinks to draw.
+
+**13. What the record cannot say.** *(difficulty, and the closing argument)* **Resolution and silence** — Florida, a few minutes in the panhandle, invisible. **Delaware, present as a distance and absent as a name.** The retired temperature effect. **The southern economy signal that cannot be settled because the sample is closed at thirty.** And **the witness as an instrument with its own error profile** — content reliable, index not.
+
+### AFTERWORD — The choice made again
+
+Four cars, a lease returned, a car sold to family, **an electric one in the driveway now.** What sixteen years of making the same decision means, and what the record could not have told you without the stories.
+
+---
+
+### Notes on the draft
+
+- **The fabric runs through everything.** Car performance and human performance are not chapters; **Part One is mostly the car, Part Two mostly the human, and Part Three separates them explicitly.** That is the two-subjects frame doing its job as the weave.
+- **Chapter 7 is the hinge and is deliberately placed.** It ends Part Two by proving the stories carry something the numbers cannot, which is what licenses Part Three to be honest about its own limits in chapter 13.
+- **★ A LINE THAT MUST BE HELD: the difficulty strand is about THE RECORD, not about the analyst.** Kim's handwriting, the paper, the reconstruction, the resolution limits — **all book material.** The PKM's own tooling failures (a write function that inflated a file, a negative index that duplicated one) are **hygiene, not narrative.** They stay in `pkm_findings.md`.
+- **13 chapters plus front and back matter.** If that is too many, chapters 8 and 9 merge, and 10 and 11 could.
+- **Retired by this draft:** the charter's *Foreword / The Canvas / The Expeditions / The 4th Crossing / The Extremes / The Fleet*. The Canvas survives as chapter 12, The Expeditions as chapter 4, The Fleet as chapter 1 plus the Afterword. **The 4th Crossing and The Extremes do not survive as chapters** — they were one-car framing, and their content is distributed.

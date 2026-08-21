@@ -256,19 +256,13 @@ Intentions item 4 forbids printing an unsourced number. A US police-reported cra
 **NEXT ACTION, and it is now a writing task rather than a design one:** draft the chapter list against the three layers, retire the charter's six-chapter list for good, and sort the existing inventory into the two data strands. **Full development in `logs/proj_Smart_Car_log.md`.**
 
 
-### ★★★ DECISION NEEDED FROM KIM — 22 scans are outside the backup (2026-08-19, Finding 038)
+### ✓ THE SCANS ARE SAFE — Kim, 2026-08-20
 
-**The paper logs are not backed up.** 39 Smart_Car files are in the mirror; the 22 scanned PDFs are not. They are the primary sources behind every errata row and the only things in this project that cannot be regenerated. `SOURCE_EXT` gained `csv` and `xlsx` on 2026-08-18 and did not gain `pdf`.
+*I did a backup of the 22 scans in a place on my machine where they are safe. I think we shouldn't worry about their loss. The backup is in a good place.* **Closed as an urgency.**
 
-**★★★ THE OBVIOUS FIX DOES NOT WORK, AND FINDING OUT WHY CHANGED THE QUESTION.** The mirror has TWO gates. `SOURCE_EXT` controls what is COPIED in; the mirror's own `.gitignore` controls what is COMMITTED, and it lists `*.pdf`, `*.jpg`, `*.png`, `*.tif`, `*.mp3`, `*.mp4`, `images/`, `pdfs/`. **Adding `pdf` to `SOURCE_EXT` would have copied all 22 scans and committed none of them, reporting success.** Any change here must be verified at the COMMIT with `git_ls()`, never at the copy.
+**⚠ What is closed and what is not.** The SCANS are protected. **The POLICY is not:** `SOURCE_EXT` still excludes `pdf`, `txt`, `docx` and `pptx`, and the mirror's `.gitignore` still lists `*.pdf`, `*.jpg`, `*.png`, `*.tif`, `*.mp3`, `*.mp4` — **two gates, each blind to the other (Finding 038).** So **authored prose across the PKM remains outside the versioned backup**: `LLM_Creates_R/Preface_text.txt` and `Chapter_13.txt`, `Scripting_Discovery/Research_Introduction.txt` and five `mRNA/Slide_N.txt`, `storylines/full_story.txt`, `Audio/Nike_challenge_canonical.txt`, a dozen `*_guidelines.txt`, plus `Smart_Car/source/Smart_Car.docx` and `Smart_Car_2016.pptx`.
 
-**And the real gap is wider than PDFs.** Enumerating everything on disk and outside the mirror turned up authored prose sitting outside because `.txt` was classified as DATA on 2026-08-18: `LLM_Creates_R/Preface_text.txt` and `Chapter_13.txt`, `Scripting_Discovery/Research_Introduction.txt` and five `mRNA/Slide_N.txt`, `storylines/full_story.txt`, `Audio/Nike_challenge_canonical.txt`, a dozen `*_guidelines.txt` prompt documents, plus `Smart_Car/source/Smart_Car.docx` and `Smart_Car_2016.pptx`. **Manuscript text, narration scripts and authored prompts — small, irreproducible, and outside the backup on a one-word guess.**
-
-**⚠ PRECONDITION — do not add `txt` without this step.** The same set holds `Photo_Locations/extra_code/auth_token.txt` (96 bytes) and `plainmaps/API_Information/How_to_store_and_use_API_keys.txt`, and the mirror pushes to `github.com/kimbridges/kimbridges-venues`. Nothing is exposed today. **Audit the complement for secrets and confirm the repo's visibility BEFORE any extension is added, then gitignore or relocate them.**
-
-**What is NOT the problem:** 903 jpg / 48 tif / 9 arw / 15 wav / 4 mp4, about 8.5 GB. Git is the wrong instrument for those and their absence is deliberate. **The question for Kim is narrow: which SMALL, AUTHORED, IRREPRODUCIBLE files belong in the mirror, and it needs the `.gitignore` changed in step with `SOURCE_EXT`.**
-
-**RISK MITIGATED 2026-08-19, decision still open.** Kim took a local copy of all the scanned PDFs to his own computer on being told. **That is a second physical copy, not a versioned backup** — it is not in the mirror, not committed, and will not track future scans. The policy question below is unchanged; only the urgency dropped.
+**A manual copy is a second physical copy, not a versioned backup** — it will not track files created after today. **Not urgent, and not Smart_Car's problem any more. Raise it when the PKM itself is the focus**, and remember the precondition: `auth_token.txt` and `How_to_store_and_use_API_keys.txt` sit in the same set, and the mirror pushes to GitHub. **Audit for secrets before any extension is added.**
 
 ### TASK — extend the timezone table to Creamsicle's cities and apply Finding 035
 
