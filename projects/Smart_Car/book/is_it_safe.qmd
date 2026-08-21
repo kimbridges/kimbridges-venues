@@ -11,7 +11,15 @@ The first thing people say is that it is cute.
 
 Very cute, usually, because it is so different from what anyone expects a car to look like. That was especially true in 2010. Smarts were not common then, and pulling into a gas station meant somebody was going to come over.
 
-*I like your car.* That was almost always the opener. **Seeing TwoRed was an invitation to talk**, and a great many conversations over sixteen years started exactly that way, with a stranger walking across a forecourt to say something friendly about a very small car.
+*I like your car.* That was almost always the opener. **Seeing TwoRed was an invitation to talk**, and a great many conversations started exactly that way, with a stranger walking across a forecourt to say something friendly about a very small car.
+
+<!-- FIGURE 1 goes here: TwoRed, red and silver, Lake San Marcos. Kim beside it.
+     Put the file at images/TwoRed/twored_day_one.jpg and uncomment:
+![TwoRed. The silver band running around the car is not trim — it is the safety cell, and it is the first thing I point at.](images/TwoRed/twored_day_one.jpg){#fig-twored}
+     CHECK WITH KIM: he called this 'day one', but the car is wearing the wide alloys,
+     which went on at 13,510 miles in 2011. Day one of the WHEELS, or day one of the car? -->
+
+**It did not last, and the record of that is worth keeping.** By the time we were driving Creamsicle, Smart cars were relatively common and the effect had largely worn off. People no longer crossed a forecourt to look. Creamsicle is cute too — **but by my measure not quite as cute as TwoRed**, and in any case by then it was not a surprise. **The reaction this chapter is about belongs to a particular decade**, and it faded as the cars stopped being strange.
 
 And then, nearly every time, the same second question.
 
@@ -67,11 +75,23 @@ The larger claim comes from two days when the driving stopped being ordinary.
 
 ### The hole in the Yukon
 
-<!-- KIM: your own telling of this, in your words. What I have from you is below; replace it. -->
+Before the Dalton Highway the cute wheels came off.
 
-On the Dalton Highway there was a pothole big enough to swallow a car. It was not flagged. I saw it late and went around it.
+Smart Madness put steel rims on the car, and I bought a spare wheel to carry. It barely fitted in the rear luggage compartment. **They were quite sure I would hit something bad** — although I imagine they were thinking about something sharp rather than something deep.
 
-The detail that matters is not that I missed it. It is that the hole was big enough to eat a big car too. **The hazard did not care what I was driving. The escape did.** A wider, heavier vehicle has a wider, heavier problem getting out of the way of something that size at speed, and less room on a road that narrow to do it in.
+Nobody told me about the flags.
+
+Along that road, small flags are set at the roadside to mark a pothole. I did not know that when I started, so I learned it the way you learn most things up there, which is by hitting a few. Fortunately the lessons came from small ones. **After a while the rule is automatic: flag ahead means slow down and swerve.**
+
+The car-eater had no flag.
+
+It was big enough to swallow a car — not a wheel, a car — and it arrived with no warning at all. I saw it late and went around it.
+
+Two things about that. The first is the one this chapter is built on: **the hole was big enough to eat a big car too.** The hazard did not care what I was driving. **The escape did.** Something wider and heavier has a wider, heavier problem getting out of the way at speed, on a road that narrow, with a shoulder that is not really a shoulder.
+
+The second is about how it happened at all. **You learn the pattern. Flag equals slow and swerve. You begin to trust your experience — and the trust is earned, because the pattern is real and it holds hundreds of times.** Then once it does not.
+
+**Accidents happen when the pattern does not hold.**
 
 ### The on-ramp near Fort Worth
 
@@ -87,15 +107,31 @@ It was the police car that was going the wrong direction.
 
 Did the police stop? Of course not. This was Texas.
 
-I missed being hit head-on by quick action and some luck. Note what was and was not available to me. Nothing about prudence prevents a vehicle coming the wrong way up a ramp with no warning; the hazard was outside my control entirely. What I had was a steering input and a braking distance, and both of them had to work in a very short space.
+I missed being hit head-on by quick action and some luck.
+
+Note what was and was not available to me. Nothing about prudence prevents a vehicle coming the wrong way up a ramp with no warning; the hazard was outside my control entirely. What I had was a steering input and a braking distance, and both had to work in a very short space.
+
+**And note that it is the same failure as the pothole.** On-ramps run one way. That is a pattern, it is real, and it holds every single time for years — which is precisely why I was around that curve at speed and not creeping. **I trusted a pattern, and the pattern did not hold.** The sat-there-stunned part, the wondering whether I was the one going the wrong way, is what it feels like when a rule that has never failed suddenly does.
+
+## The pattern, and what happens when it breaks
+
+Put the two together, because they are not two stories.
+
+Both times, the danger was not that I did something careless. **It was that the world briefly stopped behaving the way sixteen years of driving had taught me it behaves.** A hazard on that road is flagged. Traffic on a ramp goes down. Both rules are sound, both are earned by long experience, and both are what let you drive at a reasonable speed instead of crawling everywhere in a state of suspicion.
+
+You cannot drive without trusting patterns. **And you cannot make patterns hold.** So the only thing left to ask of a car is what it can do in the second after one breaks.
+
+
 
 ## Small and nimble are components of safety
 
 That is the argument, and I know it runs against the intuition.
 
-The preconception treats size as a liability to be excused — *yes, it is small, but it is well built.* I do not think that is the right shape for the answer. In both of the moments where this car was closest to being destroyed, **it was the smallness that got me out.** Less to move, less distance to move it, and a chassis that responds immediately because there is not much of it.
+The preconception treats size as a liability to be excused — *yes, it is small, but it is well built.* I do not think that is the right shape for the answer. **In both of the moments where this car came closest to being destroyed, it was the smallness that got me out.** Less mass to move, less distance to move it through, and a chassis that answers immediately because there is not much of it.
 
-The cars have handled well, and handling keeps you out of situations rather than surviving them. That is a different kind of safety from crash structure, and it is the kind that gets used far more often.
+A safety cell is for the crash you are having. **Handling is for the crash you are not going to have** — and that second kind gets used far more often. Nobody counts those. There is no column for them, in this record or any other, which is why the two I remember are worth more here than the hundred thousand miles they sit inside.
+
+The wide tires belong to the same argument, which is why they come next.
 
 ## The one modification, and what it cost
 
@@ -115,9 +151,15 @@ Now, when I pull up behind a high-priced sports car, I note the width of their t
 
 **The wheels were never about fuel.** They were bought for control in a crosswind, which is to say they were bought for safety. But wider tires have a theoretical cost — more rolling resistance, more frontal area — usually put somewhere between one and three per cent.
 
-So the fuel log gets to answer a question it was never keeping score on. Before and after the change, the difference in economy is not distinguishable from zero, with a ninety-five per cent interval running from **-3.7% to +4.9%**. The penalty theory predicts sits comfortably inside that interval.
+So the fuel log gets to answer a question it was never keeping score on. **Before and after the change, the difference in economy is not distinguishable from zero.** Under every specification tried — with and without a control for leg length, with and without partial fills, with and without the Alaska rows — **the confidence interval straddles zero and the one-to-three per cent penalty theory predicts sits comfortably inside it.**
 
-Stated carefully: the data rules out a large fuel penalty. It cannot detect a modest one. What it will not support is a claim that the wheels cost nothing at all — only that whatever they cost was too small for sixteen years of records to see.
+<!-- NUMBER NOT YET PRINTABLE. The interval quoted in our notes (-3.7% to +4.9%) could not be
+     reproduced from the corrected dataset under four reasonable specifications on 2026-08-20;
+     they run from +1.7% [-2.3, +5.6] to +4.5% [-0.2, +9.2]. The CLAIM is stable everywhere.
+     The INTERVAL must be re-derived with a written specification before any figure is printed
+     (intentions item 4). See deferred.md. -->
+
+Stated carefully: **the data rules out a large fuel penalty. It cannot detect a modest one.** And it will not support the opposite claim either — not that the wheels cost nothing, only that whatever they cost was too small for sixteen years of records to see.
 
 **The one change ever made to this car was made for safety, and it did not show up in the fuel.**
 

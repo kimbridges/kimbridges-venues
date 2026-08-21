@@ -221,6 +221,20 @@ Kim: *I'd rather refer to Will as a colleague rather than name him. I gave you h
 
 **★ Deep connections, noted for the PKM rather than the book.** The same colleague appears across **17 PKM files and 7 projects** — AI_Microscope, audio, briefing_book, whittakerr, checklists, kimbridges-stories (Kakaako Birds), collections. **He is a hub in this system, and Smart_Car is the only project where the fact about him is private rather than professional.**
 
+### ⚠ THE WIDE-TIRE INTERVAL CANNOT BE REPRODUCED — do not print it (2026-08-20)
+
+The figure carried since 2026-08-18, **-3.7% to +4.9%**, could not be reproduced from `TwoRed_fuel_clean.csv` under four reasonable specifications: with/without a leg-length control, with/without partial fills, with/without the Alaska rows. **They run from +1.7% [-2.3, +5.6] to +4.5% [-0.2, +9.2].**
+
+**The CLAIM is stable everywhere — the interval straddles zero and the 1-3% theoretical penalty sits inside it — so chapter 2 states the claim and prints no number.** **TASK: re-derive the interval with a WRITTEN specification** (which rows, which controls, which baseline) and record it beside the result, per intentions item 4. **A number that cannot be reproduced is not sourced.**
+
+### ★★ THERE WERE THREE WHEEL STATES, NOT TWO (Kim, 2026-08-20)
+
+*The Smart Madness people had me change the wheels to steel rims. I also bought an extra wheel.* **The 2013 Alaska expedition ran on STEEL RIMS, not the wide alloys** — 21 fuel rows (odometer 34,419-39,820) that every before/after wheel analysis has silently counted as *after*.
+
+**Excluding them moves the before/after coefficient from -1.82 (p=0.058) to -1.47 (p=0.129): weaker, and still indistinguishable from zero. The conclusion survives.** ⚠ **And do NOT read the Alaska rows as evidence about steel rims** — they show +4 to +5 MPG against both other groups, but wheels are perfectly confounded with the entire expedition (roads, temperature, traffic, speeds). **Report the confound; attribute nothing.**
+
+**★ Another layer-2 → layer-3 instance: a story revealed a variable the dataset did not know it had.**
+
 ### ★★★ THE SAFETY THESIS — layer one's content, given 2026-08-19
 
 **The preconception is not *it's a city car*, it is IS IT SAFE? — a question with a fear in it, which is why layer 1 can carry a book.** Kim's answer has three parts and only the third is the thesis: the engineering answer (Mercedes, the safety cell) which by his own verdict lands as *maybe, maybe not*; the empirical answer (sixteen years, nothing happened); and **SMALL AND NIMBLE ARE COMPONENTS OF SAFETY**, which INVERTS the preconception rather than rebutting it. Both close calls support it — the Yukon pothole *big enough to eat a big car too* but dodgeable, and the Texas on-ramp (a police car coming up it at speed, no lights; hard right, hard brakes, stopped inches from the guard rail).
