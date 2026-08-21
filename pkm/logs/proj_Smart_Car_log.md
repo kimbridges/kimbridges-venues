@@ -1,5 +1,10 @@
 ## COLLECTED STORIES — Kim's accounts of the long days, verbatim (opened 2026-08-19)
 
+### ★★★ Styx River Road — the Florida confirmation (Kim, 2026-08-21)
+
+> Here is an unusual Florida confirmation. I have a friend who lives in Alaska on Styx River Road. There is only one other road in the US with this name. I remember seeing it (Huh? Another one???) in Alabama, just after leaving Florida. It is less than 10 miles from the Florida border. How would I have known that except by a visit?
+
+
 ### ★★★ South Dakota, and the storm chasers (Kim, 2026-08-21)
 
 > The South Dakota side trip is real. I knew this would be a hard state to get. I believe I was in Nebraska when I told myself to do the trip north just to get SD and return. I had the time. It is memorable because while I was going on a narrow, rural road toward SD, I was met by a convoy of storm chaser vehicles coming the other way. I thought "maybe I shouldn't be going there" (because of the weather). I drove just far enough to cross the state line into SD, then turned around and left. It was definitely a side trip across a rural landscape.

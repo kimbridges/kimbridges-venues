@@ -170,6 +170,18 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ★★★ STYX RIVER ROAD — A NEW KIND OF EVIDENCE, 2026-08-21 (Finding 044)
+
+Kim, unprompted: *I have a friend who lives in Alaska on Styx River Road. There is only one other road in the US with this name. I remember seeing it (Huh? Another one???) in Alabama, just after leaving Florida... How would I have known that except by a visit?*
+
+**This is stronger than the testimony it supplements, for four reasons.** The fact is **USELESS** — nobody memorises a county road name to win an argument twelve years later, and its irrelevance is the guarantee. It is **FALSIFIABLE**, where *I asked a stranger "Is this Florida?"* is not — it is a claim about the WORLD, checkable, and it survives. It has a **documented encoding mechanism**: a collision with a friend's Alaska address, and surprise as the hook. And it is **CONTENT, not INDEX** (Finding 039) — a proper noun, which is the register this witness has never got wrong.
+
+**The route agrees.** 2014-05-07, the **New Orleans → Atmore** fill segment reads **210 miles against ~195 direct**, ratio **1.23** against a trip median of 1.22 — invisible, as Finding 036 requires. **Atmore is nine miles from the line, and the road runs through Baldwin County AL, where the Styx flows into the Perdido — and the Perdido IS the Alabama-Florida boundary.**
+
+**★ THE GENERAL RULE, worth using again: when a record cannot reach an event, ask the witness not WHAT HAPPENED but WHAT THEY LEARNED THERE.** Testimony about the event is unfalsifiable; incidental knowledge acquired at it is checkable. **Look for facts the witness had no reason to want.**
+
+**All four unwitnessed states now have an account. Three by geometry; Florida by incidental knowledge.** ✓ **CLOSED.**
+
 ### ★★★ THE STATE COUNT IS 49 AND 10 — KIM'S RULING, 2026-08-21 (Finding 043)
 
 *Take my word for it: TwoRed did, indeed, go to the 49 mainland states and the 10 Canadian provinces.* **Some states had no fill and no overnight, so they are not in the data.** **My framing — *TwoRed's list and Kim's list are two different quantities* — was WRONG and has been corrected in four files.** There is one number, 49, and a log that witnesses 45 of it.

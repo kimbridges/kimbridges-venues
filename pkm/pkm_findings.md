@@ -2008,3 +2008,30 @@ I then did what the rule says and enumerated the complement across all of `Proje
 **Rule. A negative result is only as strong as the hypothesis it tested, and a null carries that hypothesis's assumptions invisibly inside it.** The honest statement was never *no leg has room for it* but *no leg has room for the trip I imagined.* **Before concluding a record cannot contain something, state what you assumed the something looks like** — that assumption, not the data, is usually what fails. **Note the symmetry with the finding above: there I mistook an instrument's floor for a fact; here I mistook my own premise for the instrument's limit. Both dress an assumption up as a measurement.**
 
 **Cross-reference:** this is Finding 036's rule (*a record's RESOLUTION sets the floor on what its silences can mean*) applied to an aggregate rather than an event, and Finding 041's (*a fuel row is a TRANSACTION, not a STATE*) applied to a total rather than a location. **Three faces of one thing: the record answers the question it was built for, and every other question is asked at its mercy.**
+
+
+## Finding 044 — INCIDENTAL KNOWLEDGE IS EVIDENCE OF PRESENCE, AND IT IS FALSIFIABLE (2026-08-21)
+
+**Kim, offering a Florida confirmation unprompted:** *I have a friend who lives in Alaska on Styx River Road. There is only one other road in the US with this name. I remember seeing it (Huh? Another one???) in Alabama, just after leaving Florida. It is less than 10 miles from the Florida border. **How would I have known that except by a visit?***
+
+**This is a form of evidence the project did not have, and it is stronger than the testimony it supplements.**
+
+### What makes it work
+
+**1. The fact is USELESS, which is exactly why it is credible.** Nobody memorises an obscure county road name in order to prove, twelve years later, that they were once nearby. **A detail with no argumentative purpose cannot have been manufactured for one.** Its irrelevance is the guarantee.
+
+**2. It is FALSIFIABLE, and the earlier Florida testimony was not.** *I asked a stranger "Is this Florida?" and he said yes* is unfalsifiable — there is no way to check it and no way it could fail. **"There is a Styx River Road in Alabama within ten miles of the Florida line" can be looked up, and if it were not there the claim would collapse.** It is a claim about the WORLD rather than about a memory, and it survives.
+
+**3. It has a documented encoding mechanism.** He did not retain the name for its own sake. He retained it because it **collided** with something already in his head — a friend's address in Alaska — and produced surprise. *Huh? Another one???* **Surprise is the hook, and a proper noun welded to a spike of surprise is the most durable content memory carries.**
+
+**4. It is CONTENT, not INDEX (Finding 039).** He is not claiming a date, a route, an order or an occasion — every one of which has slipped at least once in this project. **He is claiming a name.** That is precisely the register in which this witness has been reliable throughout.
+
+### And it runs the other way from everything else here
+
+**Normally the record corroborates the memory, or fails to.** Here the memory holds a fact the record could never hold — a fuel log has no column for a road sign — **and the fact is checkable against the world rather than against the log.** That makes it a genuinely independent source, the way the AMEX statements were independent of the paper sheets.
+
+**The route supports it.** 2014-05-07, Gonzales LA → Montgomery AL: the **New Orleans → Atmore** segment reads **210 odometer miles against ~195 direct** (great-circle ratio **1.23** against a trip median of **1.22** — the Florida dip is invisible in the aggregate, exactly as Finding 036 says it must be). **Atmore sits nine miles from the Florida line**, and the road from New Orleans runs through **Baldwin County, Alabama, where the Styx River flows into the Perdido — and the Perdido IS the Alabama-Florida boundary.** A road named for the Styx sits in precisely the corridor he describes, on precisely the route his fills document.
+
+**Rule. When a record cannot reach an event, ask the witness not what happened but what they LEARNED there.** Testimony about the event is unfalsifiable; **incidental knowledge acquired at the event is checkable, and its very uselessness is what certifies it.** Look for facts the witness had no reason to want.
+
+**Status of the four unwitnessed states, now complete.** Delaware — geometry. Rhode Island — geometry. South Dakota — geometry. **Florida — testimony, and now incidental knowledge, which is a different and better thing.**
