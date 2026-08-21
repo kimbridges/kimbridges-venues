@@ -269,15 +269,13 @@ _Written 2026-08-12; item 6 added 2026-08-20._
 
 
 
-## ★★★ ROAD CHARACTER — A TAXONOMY FROM EXPERIENCE, AND A NULL THAT COMPLETES A PAIR (Kim, 2026-08-20)
+## ★★★ ROAD CHARACTER — A TAXONOMY FROM EXPERIENCE (Kim, 2026-08-20) — ch.6 material
 
-**He withdrew his own West Virginia answer after checking a map: the two drives were DIFFERENT HIGHWAYS**, sharing *the same type of countryside; rolling, tree-covered hills, a winding highway, small villages tucked in the valleys.* **The memory retained a LANDSCAPE TYPE, not a road** — Finding 039 amended: *when a witness names a specific, test whether the specific stands for a class.*
+He withdrew his own West Virginia answer after checking a map: **different highways, one country** — *rolling, tree-covered hills, a winding highway, small villages tucked in the valleys.* **The memory retained a LANDSCAPE TYPE, not a road** (Finding 039 amended). **New category — TREE TUNNELS:** *straight divided highway lined by a dense thicket of trees. Flat. Monotonous.* In the South. Both are a relief from *nearly straight freeways lined by commerce, billboards and wall-to-wall housing.*
 
-**New category — TREE TUNNELS:** *very long miles of straight divided highway lined by a dense thicket of trees. Flat. Monotonous.* In the South. The third term is what both are a relief from: *nearly straight freeways lined by commerce, billboards and wall-to-wall housing.* **The project's road taxonomy is built from SPEED; his is built from EXPERIENCE.**
+**★★★ Gross speed cannot see it — Deep South 40.3 mph (n=10) vs Appalachian 38.0 (n=6), p=0.42 — and that null COMPLETES A PAIR** with the Canadian Plains. **The most STRESSFUL miles and the most MONOTONOUS miles both read as unremarkable fast runs. The record is blind to the driver's experience at BOTH ends of the scale.** *Vigilance has no column; neither does tedium.*
 
-**★★★ Gross speed cannot see it — Deep South median 40.3 mph (n=10) vs Appalachian 38.0 (n=6), p = 0.42 — and that null COMPLETES A PAIR.** The Canadian Plains were the most STRESSFUL miles and read as an unremarkable fast run. **Tree tunnels are the most MONOTONOUS and read exactly the same. The record is blind to the driver's experience at BOTH ends of the scale — terror and boredom produce identical numbers.** *Vigilance has no column; neither does tedium.* **The cleanest one-line case for why layer 2 is load-bearing.**
-
-**⚠ A SIGNAL THAT CANNOT BE SETTLED.** `mpg ~ leg_miles + group`: South **-3.18, p=0.023** (n=30); with era **-2.61, p=0.065**; on 16 temperature-stamped rows **-5.81, p=0.009** with temperature null. **Mechanism would invert the intuition — flat straight highway invites steady high speed, and drag costs an 1,800-lb car more than hills do.** But the coefficient is **unstable across subsamples**, n=30, and temperature is confounded with group. **★★ Creamsicle has ZERO southern fills, so the sample is closed at 30 and will not grow.** **DIFFICULTY strand. Do not print the coefficient; print the fact that it cannot be settled.**
+**⚠ A SIGNAL THAT CANNOT BE SETTLED.** South **-3.18, p=0.023** (n=30); **-2.61, p=0.065** with era; **-5.81** on 16 temperature-stamped rows with temperature null. **Unstable across subsamples, and Creamsicle has ZERO southern fills — the sample is closed at 30.** **DIFFICULTY strand; print the fact that it cannot be settled, not the coefficient.**
 
 ## ★★★ THE ANCHOR, THE PARKING, AND HAWAII (Kim, 2026-08-20) — now DRAFTED as the Foreword
 

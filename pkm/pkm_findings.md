@@ -1961,3 +1961,22 @@ I then did what the rule says and enumerated the complement across all of `Proje
 **★★ AND THE CORRECTED RESULT IS BETTER THAN THE MAP WOULD HAVE BEEN.** Layer 3 produced a map; layer 2 corrected it; **and the correction says the map cannot be built from the data at all.** Where a car was allowed to sit is exactly the kind of fact a fuel log cannot hold — **only the witness can name it.** That is Finding 036's resolution rule arriving from a new direction, and it makes the parking chapter dependent on the stories in a way that can be stated rather than asserted.
 
 **Operational guard.** Before attributing any dormancy to a place, ask: **was this a place he would refuel, or a place he would stop?** If the odometer moves materially between the pre-gap and post-gap fills (Carlsbad → Carlsbad, 216 miles across 36 days), **the car went somewhere in between and the fill city is not the answer.**
+
+
+## Finding 042 — A CHECK THAT MEASURES ONE LINE OF A SEVEN-PARAGRAPH BLOCK (2026-08-20)
+
+**What happened.** The Active Focus block in `project_index.md` had always been a single long paragraph, so `pkm_focus_size()` measured it with `nchar(a[i])` — the one line beginning `**Active Focus`. On 2026-08-19 I rewrote the block into seven paragraphs because it had become unreadable. **The next health report said the Active Focus block was 0.1 KB against a 6 KB budget.** It was 4.8.
+
+**And the same assumption was load-bearing somewhere worse.** `archive_focus()` moves the block to `focus_history.md` with `block <- sp$get(i, i)` and rejoins the file from `i + 1`. **Run against a multi-paragraph block it would archive the first line and leave the remaining six paragraphs orphaned in the index.** Nobody ran it — **but I did exactly that by hand this evening**, anchoring on the first `\n\n`, archiving one paragraph of yesterday's block and leaving 3.4 KB of stale focus sitting under the new one. Found by printing the lines rather than trusting the replacement.
+
+**The general shape, and it is the third instance this week.** Finding 038: a backup verified by re-testing the fix instead of enumerating the complement. Finding 040: a slice whose end anchor was never checked. **Here: a measurement whose definition of its own subject silently stopped matching the subject.** In all three, **the check kept returning a confident answer about something it was no longer looking at.**
+
+**The distinguishing feature of this one: nothing was wrong with the code.** It was correct for the document it was written against. **The DOCUMENT changed, and the code had no way to notice.** A hand-written parser and the thing it parses drift apart silently, and the drift is invisible precisely because the parser still returns a number.
+
+**Fixes applied.**
+
+1. **An explicit end marker.** `project_index.md` now carries `<!-- /active-focus -->`. Both functions measure to it and fall back to the single line when it is absent, so the change is backward compatible.
+2. **`archive_focus()` moves the whole block** (`sp$get(i, last)`, rejoining from `last + 1`), and its dry-run now reports the line range.
+3. **A flag left in the code, not silently fixed:** those writes still assume CRLF and `project_index.md` is now LF (Finding 037). **It is `dry_run = TRUE` by default and must be reconciled before anyone runs it for real.**
+
+**Rule. When a structural convention changes, grep for the code that depends on it.** The block became multi-paragraph in one edit; two functions encoded the old shape and neither complained. **A convention is an interface, and changing it is a breaking change even when nothing throws.**

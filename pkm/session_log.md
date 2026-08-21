@@ -47,6 +47,28 @@ The same split on FUEL does produce something: `mpg ~ leg_miles + group` gives S
 
 `deferred.md`'s Smart_Car section had grown to **70.9 KB with nine items already finished**; eight were moved verbatim to the log under **SMART_CAR ITEMS CLOSED 2026-08-19/20** and replaced by a one-line index, taking the section to **62.9 KB** and leaving it reading as open work. **The Active Focus block had grown by accretion to 4.8 KB of running log** and was rewritten as a statement of where the project stands. `proj_Smart_Car.md` condensed from 47.3 to **44.7 KB**.
 
+### ★★★ AND THEN THE WRITING STARTED
+
+Kim approved the 13-chapter list, the four parts, and the interleaving of the difficulty strand — *It is better to have more (the 13) than fewer... I agree with having the data spread through the story.* **He also ruled the tooling failures out of the book:** *they are just part of the process that we work through together. Nothing more.* The difficulty strand is about THE RECORD; Findings 037 and 040 stay in the PKM.
+
+**The manuscript now exists** — a Quarto book at `Smart_Car/book/`, built to the house pattern from `whittakerr` and `storylines`. 15 chapter files, `R/book_setup.R` as the single source of truth with `stopifnot()` guards on the row counts, so **no number reaches a page without coming from an object.** Each chapter carries a scaffold comment holding its purpose, verified material, and the privacy constraints that apply to it. **Kim's dictated prose finally has somewhere to go that isn't a log.**
+
+**Chapter 2 drafted, then rebuilt by Kim's material.** He gave what I could not invent: *the first thing people say is that it is cute* — **the preconception arrives as affection, not hostility**, which reframed the whole opening; the safety-cell demonstration with the race drivers popping out and their hands up; and the crosswind, which turned out to be about **variance, not force** — *not a constant push, but one sufficiently variable that I had to keep correcting* — the same shape as the frost heaves, six chapters early.
+
+**★★★ And the pothole gave the chapter its thesis.** *You learn the pattern (flag equals slow and swerve). You begin to trust your experience. Accidents happen when the pattern doesn't hold.* **That unifies both close calls: they are one failure, twice.** A Dalton hazard with no flag; a ramp with traffic coming up it. **You cannot drive without trusting patterns and you cannot make patterns hold, so the only thing left to ask of a car is what it can do in the second after one breaks.** Written as: **a safety cell is for the crash you are having; handling is for the crash you are not going to have.**
+
+### Two things caught while drafting
+
+**THERE WERE THREE WHEEL STATES, NOT TWO.** Kim's steel-rim detail means the 2013 Dalton run — 21 fuel rows — was on different wheels entirely, and every before/after analysis had counted them as *after*. Excluding them the coefficient weakens from -1.82 (p=0.058) to -1.47 (p=0.129); **the conclusion survives.** The Alaska rows show +4-5 MPG but wheels are perfectly confounded with the whole expedition — **confound reported, nothing attributed.** *Another story revealing a variable the dataset did not know it had.*
+
+**AND I PULLED A NUMBER OUT OF THE CHAPTER.** The -3.7% to +4.9% wide-tire interval carried since 2026-08-18 **could not be reproduced** under four reasonable specifications (+1.7% to +4.5%). **The claim is stable everywhere, so the chapter states the claim and prints no figure.** By intentions item 4, **a number that cannot be reproduced is not sourced.** Re-derivation with a written specification is a task in `deferred.md`.
+
+### The Foreword
+
+~950 words, opening on Kim's own sentence — *the overriding fact was that we needed a car in Lake San Marcos* — through the rentals and the parking spot to **an errand car**, then the turn, then **4 miles on the odometer against 71,283 at the Matson dock.** **Hawaii gets its own section, placed where the reader first needs it:** *without that, none of the above parses.* And it carries the second inversion — *you don't do much driving in Hawaii... Driving on the mainland was something different for us. Not a chore to be got through. The point.* **Closes on the scope boundary as SUBJECT, not omission.**
+
+**Two photographs wired in**, and asking about them was worth it — the day-one picture is on the ORIGINAL narrow tires, not the wide alloys as I had assumed. **`@fig-day-one` does the pointing the text describes: the silver safety cell is right there in the frame.** `@fig-wide-wheels` gives the reader the after. ⚠ `*.jpg` is gitignored in the mirror, so **photographs are not in the versioned backup.**
+
 ### Where this leaves the project
 
 **The research phase is over.** Both cars are ingested, the record is closed at both ends, every open question is answered or explicitly constrained, and the architecture is settled down to what layer one contains. **The next action is not analysis. It is drafting the chapter list against the three layers and writing the safety chapter.**

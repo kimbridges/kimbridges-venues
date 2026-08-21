@@ -334,9 +334,15 @@ pkm_focus_size <- function() {
   a <- .read(file.path(PKM$index, "project_index.md"))
   i <- which(startsWith(a, "**Active Focus"))
   if (!length(i)) return(data.frame())
-  data.frame(line = i, kb = round(nchar(a[i]) / 1024, 1),
+  ## The block may run to several paragraphs. Measure to the explicit end
+  ## marker if one is present; fall back to the single line if it is not.
+  ## Added 2026-08-20 after a multi-paragraph block silently measured 0.1 KB.
+  e <- which(a == "<!-- /active-focus -->")
+  e <- if (length(e)) e[e > i][1] else NA_integer_
+  txt <- if (!is.na(e)) paste(a[i:(e - 1)], collapse = "\n") else a[i]
+  data.frame(line = i, kb = round(nchar(txt) / 1024, 1),
              budget_kb = PKM$budget$focus_block,
-             over = round(nchar(a[i]) / 1024 - PKM$budget$focus_block, 1),
+             over = round(nchar(txt) / 1024 - PKM$budget$focus_block, 1),
              stringsAsFactors = FALSE)
 }
 
@@ -428,19 +434,27 @@ archive_focus <- function(new_focus = NULL, dry_run = TRUE) {
   i <- which(startsWith(a, "**Active Focus"))
   if (!length(i)) stop("no Active Focus block found")
   i <- i[1]
+  ## The block may run to several paragraphs. Use the explicit end marker when
+  ## present; fall back to the single line. Added 2026-08-20 after archiving ONE
+  ## line of a seven-paragraph block by hand and orphaning the rest.
+  e <- which(a == "<!-- /active-focus -->"); e <- e[e > i]
+  last <- if (length(e)) e[1] - 1L else i
+  ## NOTE: the writes below assume CRLF line endings. project_index.md is now LF.
+  ## Reconcile before running with dry_run = FALSE (Finding 037).
   if (dry_run) {
-    message("Active Focus at line ", i, " is ", round(nchar(a[i]) / 1024, 1),
+    message("Active Focus lines ", i, "-", last, " is ",
+            round(nchar(paste(a[i:last], collapse = "\n")) / 1024, 1),
             " KB -> would move to logs/focus_history.md")
     return(invisible(NULL))
   }
   snap <- .snapshot(c(f, h))
   r <- readBin(f, "raw", file.info(f)$size); sp <- .spanner(r)
-  block <- sp$get(i, i)
+  block <- sp$get(i, last)
   repl <- if (is.null(new_focus)) charToRaw(paste0(
       "**Active Focus (", format(Sys.Date()), "): NOT YET SET** -- previous focus archived to ",
       "`logs/focus_history.md`. Confirm or redirect at session start.\r\n"))
     else charToRaw(paste0(new_focus, "\r\n"))
-  writeBin(c(sp$get(1, i - 1), repl, sp$get(i + 1, sp$N)), f)
+  writeBin(c(sp$get(1, i - 1), repl, sp$get(last + 1, sp$N)), f)
   hr <- readBin(h, "raw", file.info(h)$size)
   mark <- charToRaw("## Superseded Active Focus blocks\r\n\r\n")
   pos <- grepRaw(mark, hr, fixed = TRUE)
