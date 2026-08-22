@@ -20,6 +20,15 @@ twored_timetemp <- utils::read.csv(file.path(SC_DIR, "TwoRed_fuel_timetemp.csv")
 cream_fuel <- utils::read.csv(file.path(SC_DIR, "Creamsicle_fuel_clean.csv"), stringsAsFactors = FALSE)
 cream_legs <- utils::read.csv(file.path(SC_DIR, "Creamsicle_trip_clean.csv"), stringsAsFactors = FALSE)
 
+## ---- Fleet ownership ------------------------------------------------------
+## Every date here comes from a document in data/<car>/ -- bill of sale, lease
+## agreement, lease-end statement, purchase paperwork, registration. NOT from memory.
+fleet <- utils::read.csv(file.path(SC_DIR, "fleet_ownership.csv"), stringsAsFactors = FALSE)
+fleet$start <- as.Date(fleet$start)
+fleet$end   <- as.Date(fleet$end)          ## NA = still owned
+fleet$end_eff <- fleet$end; fleet$end_eff[is.na(fleet$end_eff)] <- Sys.Date()
+fleet$years <- round(as.numeric(fleet$end_eff - fleet$start) / 365.25, 1)
+
 ## ---- Figure defaults ------------------------------------------------------
 ## A STARTING POINT, not a decision. Change freely -- the only thing that matters
 ## is that every figure in the book uses the same one, so the set reads as a system.

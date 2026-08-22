@@ -1730,3 +1730,45 @@ The rule reads: **a record's RESOLUTION sets the floor on what its silences can 
 **Creamsicle has 37 geotagged, timestamped photographs that join to its logs on date and local time with no timezone reconstruction.** We knew that. **What we did not ask is whether the TwoRed years have an equivalent archive.**
 
 **If they do, the project gains a second trip-record that samples where the fuel log cannot** — at viewpoints, at borders, at the moments worth stopping for, rather than at fill-ups and hotels. **That is precisely the complement of what the fuel log records**, and it would bear directly on chapter 12 (the constellations) and on every silence chapter 13 discusses. **ASK KIM. This is the highest-value open question in the project.**
+
+
+## ★★★ THE OWNERSHIP DOCUMENTS — EVERY DATE IS NOW SOURCED, AND TWO WERE WRONG (2026-08-21)
+
+Kim gathered purchase, lease and sale paperwork into `data/<car>/`. **Read, and written to `data/fleet_ownership.csv`, which `book_setup.R` now loads — so no ownership date in the book is typed.**
+
+| car | acquired | ended | document |
+|---|---|---|---|
+| **TwoRed** | **2010-07-23**, odometer **4**, Smart Center San Diego, NEW | **still owned**, in Honolulu | Vehicle/Vessel Transfer and Reassignment |
+| **Two4Two / TwoFer** | **2014-03-22**, odometer **25**, Mercedes-Benz of Honolulu, NEW, **36-month lease** | **2017-03-22** (statement 04-08, paid 04-20) | Hawaii Motor Vehicle Lease Agreement + Lease End Statement |
+| **Creamsicle** | **2021-09-15**, **USED** (a 2016 ForTwo), Modern Motorcars, DocuSign 4:59 PM CDT | **2024-10-20**, sold to family | purchase paperwork; sale by the licence-plate photograph |
+| **Bordeaux** | **2019-04-01**, 2018 model, **leased then bought out** | **still owned** | Temporary Registration Certificate |
+
+### ★★ TWO OF KIM'S DATES ARE OFF, AND BOTH ARE FINDING 039 EXACTLY
+
+**Creamsicle: he said *a 2016 model we bought in 2018*. The DocuSign envelope is timestamped 2021-09-15, signed by him at 4:59 PM CDT**, and the fuel log's first fill follows **eight days later** — 2021-09-23, Nixa MO, odometer 30,290. **Content right (used, a 2016 model, from a dealer); index wrong by three years.**
+
+**TwoFer: I wrote *leased for about ten months in 2014 and 2015* in chapter 1. The lease agreement says 36 months, 2014-03-22 to 2017-03-22.** I had read the last logged fill (2015-01-10) as the end of the lease.
+
+**★★★ THAT ONE IS MINE, NOT HIS, AND IT IS FINDING 041 AGAIN.** *A fuel row is a TRANSACTION, not a STATE.* **The last fill is not the end of ownership**, any more than a fill city is where the car slept. **I flagged Kim's account as a discrepancy — *the lease ends January 2015 and TwoRed didn't ship until May 2017, what covered the gap?* — and the answer was that nothing needed to: the lease covered it.** He was right and the query was mine to withdraw.
+
+### ★★★ AND THE HANDOFF IS EXACT
+
+*It was, basically, a fill in for TwoRed until we brought TwoRed to Hawaii.*
+
+**TwoFer's lease ends 22 March 2017. TwoRed leaves the Matson dock in Seattle on 22 May 2017. Sixty-one days.** The stand-in was returned two months before the car it stood in for arrived. **Kim's sentence is not approximate; it is a description of the actual schedule.**
+
+### ★★★ A GAP NOBODY HAD NOTICED: FOUR YEARS WITH NO MAINLAND CAR
+
+**Last mainland mile: 2017-05-22. Creamsicle bought: 2021-09-15. Four years and four months.**
+
+**This changes what Creamsicle IS.** I had been calling it a replacement for TwoRed. **It is not a replacement — TwoRed was never replaced, they still have it.** It is the **resumption** of mainland driving after a four-year interruption, and it starts in Missouri rather than California because the Lake San Marcos anchor was gone by then.
+
+**Two things follow for the writing.** The fleet is not a relay of one car handing to the next; **it is TwoRed continuously since 2010, with a Honolulu stand-in inside it, a mainland successor four years after the pause, and an electric car alongside.** And **the four-year gap wants an explanation** — it spans the pandemic, but that is an assumption, not a finding. **ASK KIM.**
+
+### ⚠ PRIVACY — THESE DOCUMENTS CANNOT BE REPRODUCED AS FIGURES WITHOUT REDACTION
+
+They carry, between them: **a home street address and apartment number**; a mainland mailing address; **two driver's licence numbers**; a Mercedes-Benz Financial **account number**; **four VINs**; an email address; Nancy's full legal name; and signatures. **If any document becomes a figure, redact first.** Kim has been shown photographs as figures already, so this is live, not hypothetical.
+
+### ★ One more fact from the lease, useful and bounded
+
+TwoFer's mileage allowance was **22,500 miles over 36 months**, and the Lease End Statement charges **$0.00 excess wear and no excess mileage at all** — only the flat $395 turn-in fee. **So TwoFer went well under 22,500 miles in three years**, which is the only lifetime bound the record supports. **The 1,209-mile figure covers seven fills between March 2014 and January 2015 and is NOT a lifetime total** — chapter 1 must not say it is.

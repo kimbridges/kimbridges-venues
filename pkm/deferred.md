@@ -186,9 +186,30 @@ recoverable from if a file were overwritten rather than deleted.
 
 **⚠ KIM TO PLACE THE FILE:** `Smart_Car/images/TwoRed/twored_florida_corner.jpg`, and I'll copy it into `book/images/TwoRed/` and wire the figure into ch.13.
 
-### ⚠ TWO THINGS ABOUT TWOFER THAT DON'T LINE UP (2026-08-21)
+### ✓✓✓ THE OWNERSHIP DOCUMENTS ARE READ — EVERY DATE SOURCED (2026-08-21)
 
-Kim: *We didn't do any logs of this leased car... It was, basically, a fill in for TwoRed until we brought TwoRed to Hawaii.* **Two discrepancies, both worth pinning before ch.1 is printed.** (1) A **`TwoFer Gas Log` Sheet was found on Drive 2026-08-16** — 7 fill-ups, 2014-03-22 (dealer, odometer 0) to 2015-01-10, 1,209 miles. **Either it is a minimal record he has forgotten, or the note is wrong.** (2) **The lease ends January 2015 and TwoRed did not ship until May 2017** — a 2.5-year gap the *fill-in* account does not cover. **Finding 039 shape: content reliable, index not. Ask; do not assume.**
+Kim gathered purchase/lease/sale paperwork into `data/<car>/`. **Read and written to `data/fleet_ownership.csv`, loaded by `book_setup.R` — no ownership date in the book is typed.**
+
+| car | acquired | ended |
+|---|---|---|
+| **TwoRed** | **2010-07-23**, odometer **4**, San Diego, NEW | **still owned**, Honolulu |
+| **TwoFer** | **2014-03-22**, odometer 25, **36-month lease** | **2017-03-22** |
+| **Creamsicle** | **2021-09-15**, **USED** (2016 model), Modern Motorcars | **2024-10-20** |
+| **Bordeaux** | **2019-04-01**, 2018 model, leased then bought out | **still owned** |
+
+**★★ TWO DATES CORRECTED, both Finding 039 in shape.** Kim said Creamsicle was bought in **2018**; the DocuSign envelope is timestamped **2021-09-15** and the first fill follows eight days later at Nixa MO. **Content right — used, a 2016 model — index wrong by three years.** And **my own** *ten-month lease* was wrong: the agreement says 36 months. **I had read the last logged fill as the end of the lease. Finding 041: a fuel row is a TRANSACTION, not a STATE. Kim's *fill-in until we brought TwoRed to Hawaii* was exact — the lease ended 61 days before TwoRed left Seattle.**
+
+### ★★★ A FOUR-YEAR GAP WITH NO MAINLAND CAR — ASK KIM
+
+**Last mainland mile 2017-05-22; Creamsicle bought 2021-09-15. Four years and four months.** **This changes what Creamsicle IS: not TwoRed's replacement (TwoRed was never replaced) but the RESUMPTION of mainland driving after a pause** — and it starts in Missouri because the Lake San Marcos anchor was long gone. **The pandemic covers part of the gap but that is an assumption. Ask: what happened in those four years, and why buy again in 2021?**
+
+### ⚠ PRIVACY — THE OWNERSHIP DOCUMENTS CANNOT BE FIGURES WITHOUT REDACTION
+
+Between them they carry **a home street address and apartment number**, a mainland mailing address, **two driver's licence numbers**, a Mercedes-Benz Financial **account number**, **four VINs**, an email address, Nancy's full legal name, and signatures. **Kim is already using photographs as figures, so this is live.** Redact before any document is reproduced.
+
+### ★ TwoFer's lifetime mileage is BOUNDED, not known
+
+The lease allowed **22,500 miles over 36 months** and the Lease End Statement charges **$0.00 excess wear and no excess mileage** — only the flat $395 turn-in fee. **So TwoFer went well under 22,500 in three years.** **The 1,209-mile figure covers seven fills, March 2014 to January 2015, and is NOT a lifetime total** — ch.1 has been corrected to say so.
 
 ### ★★★ STYX RIVER ROAD — A NEW KIND OF EVIDENCE, 2026-08-21 (Finding 044)
 

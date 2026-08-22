@@ -19,7 +19,9 @@ MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_lo
 - Kim, on why any of it happened: 'how far and fast can you expect to drive in a day, something I had no idea about until I started doing these drives.'
 
 OPEN / NEEDED
-- Bordeaux is not yet inventoried. Ask Kim for whatever exists.
+- ★★★ THE ENDING WRITES ITSELF: BORDEAUX WAS ONE OF THE LAST SMART CARS THE DEALERSHIP SOLD. Kim, 2026-08-21: 'It was one of the last Smart cars at our Mercedes dealership. After these few were sold, they wouldn't sell Smart cars any more.' THE FLEET OUTLASTS THE PRODUCT LINE. Four cars chosen over sixteen years, and by the end you couldn't buy another.
+- AND THE LAST IMAGE IS AVAILABLE AND TRUE: TwoRed and Bordeaux side by side in the Honolulu garage, not filling one normal parking space between them. The first car and the last car, both still here.
+- Ownership dates all documented -- see data/fleet_ownership.csv, loaded by book_setup.R.
 - No `bordeaux*` slug, filename, figure or path.
 -->
 

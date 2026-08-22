@@ -13,6 +13,8 @@ That's the reaction, and it's usually delivered as an exclamation rather than a 
 
 It's worth being concrete about how small, because the rest of this book doesn't make much sense otherwise. Two seats, and no back seat at all — not a small one, none. **The luggage space behind them is about the size of the boot of an ordinary car with the boot floor raised to the window line.** Before the Dalton Highway I bought a spare wheel to carry, and it barely fitted.
 
+Here's the other measure, and it's the one I can point at today. **TwoRed and Bordeaux both live in our building's parking structure in Honolulu, side by side in a single space marked out for one ordinary car — and between them they don't come close to filling it.**
+
 <!-- KIM: the physical experience. Getting in and out. What it's like inside for two people
      and a week's luggage. The transmission — early Smarts had an automated manual with a
      famous pause between gears; did that bother you? And headroom, since you're tall. -->
@@ -42,35 +44,50 @@ twored_median_day <- round(median(twored_legs$odo_miles, na.rm = TRUE))
 twofer_in_days <- round(twofer_miles / twored_median_day, 1)
 ```
 
-**Two4Two** — we called it TwoFer — was leased in Honolulu and never left the island. It was **a stand-in**: something to drive at home until we could bring TwoRed across. It was only ever used for very short trips, and we kept no logs for it at all. Over its whole life with us it went about **`r twofer_miles` miles.**
+**Two4Two** — we called it TwoFer — was leased in Honolulu in March 2014 and never left the island. It was **a stand-in**: something to drive at home until we could bring TwoRed across. Only short trips, and we kept no proper logs for it.
+
+The lease ran thirty-six months and ended on **22 March 2017**. **TwoRed was handed to a shipping company in Seattle sixty-one days later.** The stand-in went back two months before the car it stood in for arrived.
+
+What record there is — seven fill-ups between March 2014 and January 2015 — covers **`r twofer_miles` miles.** The lease allowed 22,500 over its whole term and the closing statement charged nothing for mileage at all, so whatever TwoFer did in three years, it wasn't much.
 
 TwoRed's median driving day, on the mainland, was **`r twored_median_day` miles.**
 
-**So TwoRed covered TwoFer's whole existence in about four days of driving.** Same manufacturer, near enough the same car, and the difference isn't in the machine at all. It's in what we asked of it.
+**So TwoRed covered TwoFer's entire logged mileage in about four days of driving.** Same manufacturer, near enough the same car, and the difference isn't in the machine at all. It's in what we asked of it.
 
-<!-- KIM, two things that don't line up and are worth pinning before this is printed:
-     1. You say you kept no logs for TwoFer. But a `TwoFer Gas Log` Sheet turned up on Drive
-        on 2026-08-16 -- 7 fill-ups, 2014-03-22 (dealer, odometer 0) to 2015-01-10, 1,209 miles.
-        Either that's a minimal record you'd forgotten, or my note is wrong. Which?
-     2. 'A fill in for TwoRed until we brought TwoRed to Hawaii' -- but that lease ends in
-        January 2015 and TwoRed didn't ship until May 2017. What covered the gap? -->
 
-## Four cars, four decisions
 
-The Foreword introduced them. What matters here is that they weren't one decision — they were four, spread over sixteen years, each made with more information than the last.
+## Four cars, and not the sequence you'd guess
 
-**2010, buy.** TwoRed, on the evidence available at the time, which was a price list and a parking space. Nobody had crossed a continent in one yet, least of all us.
+```{r}
+#| label: fleet-dates
+#| include: false
 
-**2014, lease.** TwoFer, in Honolulu, for ten months. A short commitment on a car we already understood.
+## every date from a document in data/<car>/ -- see fleet_ownership.csv
+```
 
-**2016, replace.** Creamsicle, bought new, and by then we knew exactly what we were buying — because TwoRed had already been to the Arctic Circle and back.
+The Foreword introduced them. What matters here is the shape, and it isn't a relay.
 
-**2018, change the engine.** Bordeaux, electric.
+**TwoRed, 23 July 2010.** Bought new in San Diego with four miles on the odometer. We still have it. **It has never been replaced** — that's the thing to hold on to, because the other three all arrived around it rather than after it.
 
-<!-- KIM: Bordeaux is a blank. What year exactly, what it's like, and how an electric one
-     changes the calculation. Also: do you still have TwoRed? The fleet table says owned. -->
+**TwoFer, March 2014 to March 2017.** A three-year lease, in Honolulu, entirely inside TwoRed's life. A stand-in, not a successor.
 
-**That's the fleet argument, and it doesn't depend on any single car being good.** One car you like is taste. **Four, chosen again and again over sixteen years, with a continent's worth of evidence accumulating in between, is a judgement.**
+**Bordeaux, 1 April 2019.** Leased first, then bought out at the end — Mercedes insisted on that procedure, presumably for reasons of their own. **It was ours from the first day of the lease and it still is.**
+
+**Creamsicle, 15 September 2021.** Bought used — a 2016 car, five years old. Sold to family in October 2024.
+
+**★ And there's a hole in the middle of that list.** TwoRed left the mainland in May 2017. Creamsicle wasn't bought until September 2021. **For four years and four months we had no car on the mainland at all**, and the long drives simply stopped.
+
+<!-- KIM: what happened in those four years? The pandemic covers part of it but that's an
+     assumption, not a finding. And why buy a mainland car again in 2021, from a dealer in
+     Missouri, when the Lake San Marcos anchor was long gone? -->
+
+So Creamsicle isn't TwoRed's replacement. **It's the resumption** — mainland driving picked up again after a four-year pause, starting from a different part of the country because the parking space that had organised everything was gone.
+
+**That's the fleet argument, and it doesn't depend on any single car being good.** One car you like is taste. **Four, chosen and re-chosen across sixteen years — including one bought used, one leased twice over, and one still sitting in the garage — is a judgement.**
+
+<!-- KIM: Bordeaux was one of the last Smart cars your Mercedes dealership sold; after those
+     few went, they stopped carrying the line. That belongs in the AFTERWORD -- the fleet
+     outlasts the product. Confirm and I'll put it there. -->
 
 ## Which brings us to the question
 
