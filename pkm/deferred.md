@@ -205,6 +205,9 @@ Kim gathered purchase/lease/sale paperwork into `data/<car>/`. **Read and writte
 
 ### ⚠ PRIVACY — THE OWNERSHIP DOCUMENTS CANNOT BE FIGURES WITHOUT REDACTION
 
+- **The Matson shipping receipt is SOURCE ONLY -- Kim's ruling 2026-08-21.** Not a figure, not an excerpt, not redacted-and-used. It carries the VIN, the CA plate, his legal name, his hawaii.edu address, and a named Matson agent with direct contact. Its FACTS are book material and already in `fleet_residency.csv`: SEA->HON, voyage 377, dropped 2017-05-22, estimated availability 2017-06-09, 18 days at sea. The DOCUMENT is not.
+- **`Creamsicle_profile.jpg` is 533x400.** Too small to crop for print. Do not build a figure on it.
+
 Between them they carry **a home street address and apartment number**, a mainland mailing address, **two driver's licence numbers**, a Mercedes-Benz Financial **account number**, **four VINs**, an email address, Nancy's full legal name, and signatures. **Kim is already using photographs as figures, so this is live.** Redact before any document is reproduced.
 
 ### ★ TwoFer's lifetime mileage is BOUNDED, not known
@@ -1369,3 +1372,21 @@ makes them findable. Added as `pkm/` — 87 files, 2.0 MB, including `pkm_health
 every `proj_*.md`, `pkm_findings.md`, the session log and its archive. Repo now carries
 **969 blobs**. The artifacts could be re-read from their own files; nothing else records
 why a decision was made or which mistakes have already been paid for once.
+
+## OPEN FOR KIM -- opened 2026-08-21
+
+- **Is the nose-to-tail parking still current?** `2021_Bordeaux_and_TwoRed_in_one_space.jpg`
+  shows the two cars end to end in one stall (2 x 8 ft 10 in = 17 ft 8 in). His 2026-08-20
+  message says they "sit side by side" now, and `2026_Bordeaux_with_TwoRed.jpg` looks different.
+  Chapter 1 currently says nose to tail. **Confirm which arrangement is present-tense.**
+- **No sourced dimensions for Creamsicle or Bordeaux.** The Matson manifest covers TwoRed only
+  (451). Creamsicle is a 453 and a different size. Needs a document before any number is printed.
+- **Photo shoot 2026-08-22:** TwoRed and Bordeaux, front-right three-quarter, building garage.
+  Match angle, framing and scale to `2014_TwoFer_University_Ave.jpg` and
+  `PXL_20241021_173419870`, which are the two archive frames the plate will use.
+- **Chapter 13 owes the leg-floor argument.** A leg is a tankful; town driving is absorbed,
+  not recorded; urban economy and the gearbox penalty are unmeasurable by this instrument.
+- **Still wanted from Kim:** why a Smart specifically in 2010; Bordeaux's character; the
+  tree-tunnel stretches by name; the Bordeaux "last ones the dealership sold" detail for the
+  Afterword.
+

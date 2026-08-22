@@ -2054,3 +2054,19 @@ I then did what the rule says and enumerated the complement across all of `Proje
 **And the recovery has Finding 039's shape.** *I had forgotten that evidence.* He did not misremember the corner. **He misremembered that he had proof of it** — content reliable, index unreliable, one level up.
 
 **★★ ACTION, and it may be the largest open question in the project.** Creamsicle has 37 geotagged, timestamped photographs that join to its logs with no timezone reconstruction. **Nobody has asked whether the TwoRed years have an equivalent archive.** If they do, the project gains a trip record that samples precisely where the fuel log cannot — **the complement, not a duplicate.**
+
+## Finding 046 -- a convenience path variable shadowed the PKM config object (2026-08-21)
+
+Bound `PKM <- "G:/My Drive/Projects_Index"` at session start as a path shortcut. `pkm_health.R`
+defines `PKM` as the **config list** (`$index`, `$drive`, `$logs`, `$venues`, `$budget`,
+`$scratch_days`). Every `pkm_*()` helper reads it. The clobber was silent for the whole session
+and only surfaced at close-out, when `pkm_focus_size()` failed with *"$ operator is invalid for
+atomic vectors"* -- i.e. **the close-out ritual was the thing that detected it**, which is the
+argument for having a ritual.
+
+**Rule: never bind a bare `PKM`.** Path shortcuts take a suffix -- `PKM_DIR`, as `SC_DIR` already
+does. Recovery is one line: re-`source()` `pkm_health.R`.
+
+**Wider point:** a name collision between a config object and a convenience variable is invisible
+until something dereferences it. Nothing written to disk was affected -- all writes this session
+used explicit paths and were verified by content.

@@ -1,4 +1,21 @@
 # Focus History and Change Log
+
+**Active Focus (2026-08-20, close): "Smart_Car" -- THE WRITING HAS STARTED. TWO PIECES DRAFTED AND WITH KIM.**
+
+**The manuscript exists:** a Quarto book at `Projects\Smart_Car\book\`, built to the house pattern, **15 chapters** across four parts. **`R/book_setup.R` is the single source of truth**, with `stopifnot()` guards on the row counts — **no number reaches a page without coming from an object.** Each chapter carries a scaffold comment holding its purpose, verified material and privacy constraints.
+
+**★★★ KIM APPROVED THE 13-CHAPTER DESIGN and the interleaving of the difficulty strand** — *better to have more than fewer... I agree with having the data spread through the story.* **The structural argument he accepted: the difficulty chapters EARN the analysis chapters** — a reader cannot believe *$0.0939 per mile* until they know how the cost column was audited. **⛔ He also ruled the PKM's own tooling failures OUT of the book.** The difficulty strand is about THE RECORD.
+
+**DRAFTED AND AWAITING HIS CORRECTIONS: `index.qmd` (the Foreword, ~950 words) and `is_it_safe.qmd` (ch.2, ~2,300 words, two figures).** The Foreword runs from the errand car and the parking spot to **4 miles on the odometer against 71,283 at the Matson dock**, with **Hawaii in its own section where the reader first needs it** and the scope boundary framed as SUBJECT, not omission.
+
+**★★★ AND KIM'S POTHOLE STORY GAVE CHAPTER 2 ITS THESIS.** *You learn the pattern. You begin to trust your experience. Accidents happen when the pattern doesn't hold.* **Both close calls are one failure, twice** — a Dalton hazard with no flag, a ramp with traffic coming up it. **You cannot make patterns hold, so the only thing left to ask of a car is what it can do in the second after one breaks. A safety cell is for the crash you are having; handling is for the crash you are not going to have.** *Cute* reframed the opening too: **the preconception arrives as affection, not hostility.**
+
+**Two catches while drafting.** **THREE wheel states, not two** — the 2013 Dalton run was on steel rims, 21 rows every before/after analysis had miscounted; the conclusion survives, the confound is reported, nothing is attributed. And **the -3.7%/+4.9% wide-tire interval could not be reproduced** under four specifications, so **the chapter states the claim and prints no number** — *a number that cannot be reproduced is not sourced* (intentions item 4).
+
+**NEXT: Kim's corrections on both pieces, then chapter 1 (`small_cars.qmd`).** Still wanted from him: the Yukon pothole in his own words, the tree-tunnel stretches, and whatever exists for Bordeaux. ⚠ **He may be offline periodically — a tropical storm is expected in a few days.**
+
+
+---
 _Split from project_index.md on 2026-07-28._
 
 The historical tail of `project_index.md`: every superseded Active Focus block

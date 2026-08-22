@@ -13,11 +13,22 @@ That's the reaction, and it's usually delivered as an exclamation rather than a 
 
 It's worth being concrete about how small, because the rest of this book doesn't make much sense otherwise. Two seats, and no back seat at all — not a small one, none. **The luggage space behind them is about the size of the boot of an ordinary car with the boot floor raised to the window line.** Before the Dalton Highway I bought a spare wheel to carry, and it barely fitted.
 
-Here's the other measure, and it's the one I can point at today. **TwoRed and Bordeaux both live in our building's parking structure in Honolulu, side by side in a single space marked out for one ordinary car — and between them they don't come close to filling it.**
+Here's the other measure, and it's the one I can point at today. **TwoRed and Bordeaux both live in our building's parking structure in Honolulu, parked nose to tail inside a single space marked out for one ordinary car.** When Matson shipped TwoRed they measured it for stowage, the way you measure any piece of freight: `r dim_l` long, `r dim_w` wide, `r dim_h` tall, `r dim_wt` pounds. Two of them end to end come to `r pair_len` — and the pair still doesn't fill the stall.
 
 <!-- KIM: the physical experience. Getting in and out. What it's like inside for two people
      and a week's luggage. The transmission — early Smarts had an automated manual with a
      famous pause between gears; did that bother you? And headroom, since you're tall. -->
+
+```{r}
+#| label: dims
+#| include: false
+.ftin <- function(i) sprintf("%d ft %d in", i %/% 12, i %% 12)
+dim_l  <- .ftin(twored_dim[["length_in"]])
+dim_w  <- .ftin(twored_dim[["width_in"]])
+dim_h  <- .ftin(twored_dim[["height_in"]])
+dim_wt <- format(twored_dim[["weight_lb"]], big.mark = ",")
+pair_len <- sprintf("%d ft %d in", twored_pair_ft, twored_pair_in)
+```
 
 ## It isn't a shrunken car. It's a car built around a box.
 
@@ -26,6 +37,60 @@ Most small cars are ordinary cars made smaller. A Smart isn't. Mercedes started 
 It's also why the panels are a different colour. They aren't pretending to be structural, so they don't have to match.
 
 <!-- KIM: why a Smart specifically? There were other small cars in 2010. What decided it? -->
+
+## You sit high, which nobody expects
+
+Getting in is unremarkable. It's about like getting into any sedan -- you fit, but you watch your head going in. Then you sit down and the car surprises you.
+
+**You sit high.** Almost like getting into an SUV. You're not down near the road the way the outside of the car leads you to expect.
+
+That follows directly from the box. A car built around a passenger cell puts you *in* the cell, upright, rather than reclining you into a wedge. Which is also why a Smart isn't streamlined. **It is very nearly as tall as it is wide** — `r dim_h` against `r dim_w`, by the carrier's own tape. That is not a shape chosen for slipping through air. It's a shape chosen for putting a person upright inside it.
+
+The payoff is headroom, and there's a lot of it. I have had big friends fold themselves in expecting the worst, and had no complaints afterwards.
+
+There's one more thing about sitting in a box, and it only shows up on a long day. Behind the seats there's a shelf, and you can reach it without stopping. Snacks. A jacket. The camera. That's a genuinely useful travel feature and no one ever mentions it in a review.
+
+## The Costco test
+
+The other thing people assume is that there is nowhere to put anything.
+
+The space behind the seats, as I said, is an ordinary boot stood on end. We travel light, so we rarely fill it -- unless we are ferrying something large for somebody.
+
+Around town the test is Costco. A full cart, top rack and bottom, paper goods and all, goes in. **And I can still see out the back window when I look in the mirror.** In sixteen years I've never once put something back because I was afraid it wouldn't fit in the car.
+
+The limit isn't cargo. It's seats. There are two, and most people say *yikes* when they work that out.
+
+My answer is that I'd have exactly the same problem in a Lamborghini -- and I can carry things the Lamborghini can't. When we need to move four people, we take both cars. **Two cars, two passengers.** That's not a workaround we invented; it is why two of the bars above run side by side from 2019 on.
+
+```{r}
+#| label: leg-floor
+#| include: false
+.tr <- twored_fuel$leg_miles[is.finite(twored_fuel$leg_miles) &
+                             is.finite(twored_fuel$mpg) & !isTRUE(twored_fuel$partial_fill)]
+.cr <- cream_fuel$leg_miles[is.finite(cream_fuel$leg_miles) & is.finite(cream_fuel$mpg)]
+n_tr_legs  <- length(.tr)
+min_tr_leg <- floor(min(.tr) / 10) * 10          ## report as a floor, not a point value
+min_cr_leg <- round(min(.cr))
+biggest_fill <- round(max(twored_fuel$Gallons, na.rm = TRUE), 1)   ## TwoRed tank, effectively
+```
+
+## The gearbox, which I will not defend
+
+TwoRed has one honest weak point and it's the automated manual gearbox. In town it isn't as smooth as I'd like. That's the complaint, and it's a fair one.
+
+On the highway it stops mattering, because once you're up to speed there's almost no shifting to do. Creamsicle, six model years later, had a much better gearbox, and local driving was noticeably nicer for it.
+
+Here's the part I didn't expect. **The record cannot referee any of this.** Not one of TwoRed's `r n_tr_legs` usable legs is shorter than `r min_tr_leg` miles, and Creamsicle's shortest is `r min_cr_leg`. There's no town driving in the fuel log at all.
+
+The reason is that a leg isn't a trip -- it's a tankful, and neither car holds much. The largest single fill anywhere in sixteen years of TwoRed's record is `r biggest_fill` gallons. Errands don't go missing from the record so much as get *absorbed* into it: a week of short runs and then a long highway day arrive at the pump as a single leg with a single number. The instrument has a resolution, and the tank sets it.
+
+So the gearbox complaint is about driving that sixteen years of careful record-keeping never once saw. We will come back to that.
+
+## A table at my right hand
+
+On the solo long-distance drives I generally put the passenger seat down flat. That gave me a table off to my right -- and the thing that lived on it was the clipboard with the travel information.
+
+Which is worth saying plainly, because the rest of this book depends on it. **The record exists because the car had a flat surface within arm's reach.**
 
 ## What everyone assumes it's for
 
@@ -88,6 +153,15 @@ So Creamsicle isn't TwoRed's replacement. **It's the resumption** — mainland d
 <!-- KIM: Bordeaux was one of the last Smart cars your Mercedes dealership sold; after those
      few went, they stopped carrying the line. That belongs in the AFTERWORD -- the fleet
      outlasts the product. Confirm and I'll put it there. -->
+
+
+```{r}
+#| label: fig-fleet-timeline
+#| fig-cap: "Sixteen years and four cars. Each bar is one car's ownership; the colour is which ocean it was on. Every date comes from a purchase, lease or shipping document -- none from memory. The seam in TwoRed's bar is the eighteen days it spent on a ship between Seattle and Honolulu."
+#| fig-width: 7.5
+#| fig-height: 3.4
+fig_fleet_timeline()
+```
 
 ## Which brings us to the question
 

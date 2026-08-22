@@ -45,6 +45,49 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
   ggplot2::theme_set(theme_smartcar())
 }
 
+## ---- Fleet residency -----------------------------------------------------
+## One row per (car, residency phase). Only TwoRed has two phases: it was bought
+## in San Diego and shipped to Honolulu in May 2017. Every start/end is sourced
+## in the `source` column of the CSV. NA end = still ours.
+residency <- utils::read.csv(file.path(SC_DIR, "fleet_residency.csv"),
+                             stringsAsFactors = FALSE)
+residency$start   <- as.Date(residency$start)
+residency$end     <- as.Date(residency$end)
+residency$ongoing <- is.na(residency$end)
+residency$end_eff <- residency$end
+residency$end_eff[residency$ongoing] <- Sys.Date()
+residency$years   <- as.numeric(residency$end_eff - residency$start) / 365.25
+## row order: cars top-to-bottom by acquisition date -> reverse for ggplot y
+.ord <- fleet$car[order(fleet$start)]
+residency$label <- factor(residency$label,
+  levels = rev(c("TwoRed","TwoFer","Bordeaux","Creamsicle")))
+## the interval with no car on the mainland
+mainland_gap <- c(start = max(residency$end_eff[residency$where == "Mainland" &
+                                                residency$start < as.Date("2018-01-01")]),
+                  end   = min(residency$start[residency$where == "Mainland" &
+                                              residency$start > as.Date("2018-01-01")]))
+
+## TwoRed crossed the Pacific once, and both ends of the crossing are on the
+## Matson shipping receipt (BK 9811942, voyage 377, vessel MHI, SEA -> HON).
+## The far end is an ESTIMATED availability date, not a record of pickup.
+voyage <- c(depart = as.Date("2017-05-22"), available = as.Date("2017-06-09"))
+voyage_days <- as.integer(voyage[["available"]] - voyage[["depart"]])
+
+## ---- TwoRed, as measured -------------------------------------------------
+## From the Matson shipping receipt, unit 11907531: dimensions taken by the
+## carrier for stowage. Not a brochure figure -- a third-party measurement made
+## because somebody had to fit the car onto a ship.
+twored_dim <- c(length_in = 8 * 12 + 10, width_in = 5 * 12 + 1,
+                height_in = 5 * 12 + 0, weight_lb = 1808)
+twored_pair_ft <- (2 * twored_dim[["length_in"]]) %/% 12
+twored_pair_in <- (2 * twored_dim[["length_in"]]) %%  12
+
+## ---- Figure functions ----------------------------------------------------
+## Every R/fig_*.R defines one fig_<name>() returning a ggplot. Chapters call them.
+for (.f in list.files(file.path(dirname(SC_DIR), "book/R"), pattern = "^fig_.*[.]R$",
+                      full.names = TRUE)) source(.f)
+rm(.f)
+
 ## ---- Guards ---------------------------------------------------------------
 ## Any number printed in the book should come from these objects, not be typed.
 stopifnot(nrow(twored_fuel) == 294, nrow(cream_fuel) == 173, nrow(cream_legs) == 86)
