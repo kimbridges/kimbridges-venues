@@ -7,21 +7,35 @@
 source("R/book_setup.R")
 ```
 
-![TwoRed on the day it arrived, on the narrow tires it left the factory with. I'm six feet tall, which gives you the scale. **The silver band running around the car isn't trim — it's the safety cell**, and chapter 2 comes back to it.](images/TwoRed/twored_day_one.jpg){#fig-day-one}
+![TwoRed on the day it arrived, on the narrow tires it left the factory with. I'm five foot seven, which gives you the scale. **The silver band running around the car isn't trim — it's the safety cell**, and chapter 2 comes back to it.](images/TwoRed/twored_day_one.jpg){#fig-day-one}
 
 That's the reaction, and it's usually delivered as an exclamation rather than a question.
 
-It's worth being concrete about how small, because the rest of this book doesn't make much sense otherwise. Two seats, and no back seat at all — not a small one, none. **The luggage space behind them is about the size of the boot of an ordinary car with the boot floor raised to the window line.** Before the Dalton Highway I bought a spare wheel to carry, and it barely fitted.
+It's worth being concrete about how small, because the rest of this book doesn't make much sense otherwise. Two seats, and no back seat at all — not a small one, none. **The luggage space behind them is about the size of the boot of an ordinary car with the boot floor raised to the window line** — and it sits on top of the engine. To load it you swing the rear window up and drop the solid part of the hatch down, which opens the whole back of the car.
 
-Here's the other measure, and it's the one I can point at today. **TwoRed and Bordeaux both live in our building's parking structure in Honolulu, parked nose to tail inside a single space marked out for one ordinary car.** When Matson shipped TwoRed they measured it for stowage, the way you measure any piece of freight: `r dim_l` long, `r dim_w` wide, `r dim_h` tall, `r dim_wt` pounds. Two of them end to end come to `r pair_len` — and the pair still doesn't fill the stall.
+The numbers: `r boot_h` of height, `r boot_w` of width at the floor widening to `r boot_wu` higher up, and `r boot_d` of depth depending on where the seats are. That is `r boot_v1` up to the window line, and about `r boot_v2` stacked to the roof, which is easy to do.
 
-<!-- KIM: the physical experience. Getting in and out. What it's like inside for two people
-     and a week's luggage. The transmission — early Smarts had an automated manual with a
-     famous pause between gears; did that bother you? And headroom, since you're tall. -->
+Before heading to Alaska I bought a spare wheel to carry, and it barely fitted.
+
+Here's the other measure, and it's the one I can point at today. **TwoRed and Bordeaux both live in our building's parking structure in Honolulu. We park them side by side — but nose to nose they would fit inside a single space marked out for one ordinary car, with room to spare.** When Matson shipped TwoRed they measured it for stowage, the way you measure any piece of freight: `r dim_l` long, `r dim_w` wide, `r dim_h` tall, `r dim_wt` pounds. Two of them end to end come to `r pair_len`, which is why the pair fits where one ordinary car is meant to go.
+
+The owner's manual gives a different width: `r man_w`, against Matson's `r dim_w_in`. **Neither is wrong.** The gap is `r man_gap` — `r man_side` a side — and the manual settles it in a footnote: that width is measured **with the mirrors folded out**. The manual is describing the car you drive, mirrors and all; the shipping clerk measured the car you stow. Length and height agree between them to within a rounding tick. **Which width you want depends on whether you are parking it or putting it on a boat**, and that is going to keep happening in this book.
 
 ```{r}
 #| label: dims
 #| include: false
+man_w    <- sprintf("%.1f in", twored_manual[["width_in"]])
+dim_w_in <- sprintf("%d in", twored_dim[["width_in"]])   ## same units, for the comparison
+man_gap  <- sprintf("%.0f in", twored_manual[["width_in"]] - twored_dim[["width_in"]])
+man_side <- sprintf("%.0f in", (twored_manual[["width_in"]] - twored_dim[["width_in"]]) / 2)
+wb_pct   <- sprintf("%.0f%%", 100 * twored_manual[["wheelbase_in"]] / twored_manual[["length_in"]])
+oh_each  <- sprintf("%.0f in", twored_overhang_in / 2)
+boot_h  <- sprintf("%.1f in (%d cm)", boot_dim$height_in, 70L)
+boot_w  <- sprintf("%.1f in", boot_dim$width_floor_in)
+boot_wu <- sprintf("%d in", as.integer(boot_dim$width_upper_in))
+boot_d  <- sprintf("%d to %d in", as.integer(boot_dim$depth_min_in), as.integer(boot_dim$depth_max_in))
+boot_v1 <- sprintf("%.1f cubic feet (%d litres)", boot_dim$cuft_window, boot_dim$litre_window)
+boot_v2 <- sprintf("%d cubic feet (%d litres)", as.integer(boot_dim$cuft_roof), boot_dim$litre_roof)
 .ftin <- function(i) sprintf("%d ft %d in", i %/% 12, i %% 12)
 dim_l  <- .ftin(twored_dim[["length_in"]])
 dim_w  <- .ftin(twored_dim[["width_in"]])
@@ -32,11 +46,19 @@ pair_len <- sprintf("%d ft %d in", twored_pair_ft, twored_pair_in)
 
 ## It isn't a shrunken car. It's a car built around a box.
 
-Most small cars are ordinary cars made smaller. A Smart isn't. Mercedes started from the steel cell you can see in @fig-day-one — the silver band — and built outward. **The cell is the structure. The coloured panels hung on it aren't.** That's why the proportions look wrong to an eye trained on normal cars: you're looking at a passenger box with the mechanical parts pushed to the ends, rather than a long car with the middle removed.
+Most small cars are ordinary cars made smaller. A Smart isn't. Mercedes started from the steel cell you can see in @fig-day-one — the silver band — and built outward. **The cell is the structure. The coloured panels hung on it aren't.** That's why the proportions look wrong to an eye trained on normal cars: you're looking at a passenger box with the mechanical parts pushed to the ends, rather than a long car with the middle removed. The manual puts a number on it — the wheelbase is `r wb_pct` of the total length, which leaves about `r oh_each` of car hanging past each axle. There is almost nothing at the ends because there is almost no end.
 
 It's also why the panels are a different colour. They aren't pretending to be structural, so they don't have to match.
 
-<!-- KIM: why a Smart specifically? There were other small cars in 2010. What decided it? -->
+## Why a Smart, and not something else
+
+There were other small cars in 2010. The honest answer for why it was this one is that the decision was partly emotional, and I don't mind saying so.
+
+**We'd seen them all over Europe, and people were having fun with them.** That is not a specification, but it is a real reason, and it got there first.
+
+The rest of it was ordinary enough. The price was right. And there was the ecological-economy side of it -- **we simply didn't see the need for a large car.** Two people who travel light, going a long way, do not require much car to do it in.
+
+There were a few alternatives. **None of them hit all of those at once** the way a Smart did.
 
 ## You sit high, which nobody expects
 
@@ -44,9 +66,9 @@ Getting in is unremarkable. It's about like getting into any sedan -- you fit, b
 
 **You sit high.** Almost like getting into an SUV. You're not down near the road the way the outside of the car leads you to expect.
 
-That follows directly from the box. A car built around a passenger cell puts you *in* the cell, upright, rather than reclining you into a wedge. Which is also why a Smart isn't streamlined. **It is very nearly as tall as it is wide** — `r dim_h` against `r dim_w`, by the carrier's own tape. That is not a shape chosen for slipping through air. It's a shape chosen for putting a person upright inside it.
+That follows directly from the box. A car built around a passenger cell puts you *in* the cell, upright, rather than reclining you into a wedge. Which is also why a Smart isn't streamlined. **Across the body it is very nearly as tall as it is wide** — `r dim_h` against `r dim_w`, by the carrier's own tape. That is not a shape chosen for slipping through air. It's a shape chosen for putting a person upright inside it.
 
-The payoff is headroom, and there's a lot of it. I have had big friends fold themselves in expecting the worst, and had no complaints afterwards.
+The payoff is headroom, and there's a lot of it. I'm five foot seven, which is to say I stand taller than the car does, and I've never come close to the roof. I've had big friends fold themselves in expecting the worst, and had no complaints afterwards.
 
 There's one more thing about sitting in a box, and it only shows up on a long day. Behind the seats there's a shelf, and you can reach it without stopping. Snacks. A jacket. The camera. That's a genuinely useful travel feature and no one ever mentions it in a review.
 

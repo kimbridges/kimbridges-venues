@@ -299,7 +299,7 @@ Kim: *I'd rather refer to Will as a colleague rather than name him. I gave you h
 
 The figure carried since 2026-08-18, **-3.7% to +4.9%**, could not be reproduced from `TwoRed_fuel_clean.csv` under four reasonable specifications: with/without a leg-length control, with/without partial fills, with/without the Alaska rows. **They run from +1.7% [-2.3, +5.6] to +4.5% [-0.2, +9.2].**
 
-**The CLAIM is stable everywhere — the interval straddles zero and the 1-3% theoretical penalty sits inside it — so chapter 2 states the claim and prints no number.** **TASK: re-derive the interval with a WRITTEN specification** (which rows, which controls, which baseline) and record it beside the result, per intentions item 4. **A number that cannot be reproduced is not sourced.**
+**RESOLVED 2026-08-22. The interval is not printed and never will be.** Kim chose to make the instability itself the finding; the chapter now prints all four specifications and says why they disagree. The specification lives in the `wheels` chunk of `is_it_safe.qmd`, so the numbers are whatever the render produces -- **the reproducibility problem is dissolved, not solved.** A large effect is still ruled out; nothing beyond that is claimed.
 
 ### ★★ THERE WERE THREE WHEEL STATES, NOT TWO (Kim, 2026-08-20)
 
@@ -1375,7 +1375,8 @@ why a decision was made or which mistakes have already been paid for once.
 
 ## OPEN FOR KIM -- opened 2026-08-21
 
-- **Is the nose-to-tail parking still current?** `2021_Bordeaux_and_TwoRed_in_one_space.jpg`
+- ~~Is the nose-to-tail parking still current?~~ **ANSWERED 2026-08-22: side by side**, and nose
+  to nose they would fit one space. Foreword and chapter 1 both corrected. Original note: `2021_Bordeaux_and_TwoRed_in_one_space.jpg`
   shows the two cars end to end in one stall (2 x 8 ft 10 in = 17 ft 8 in). His 2026-08-20
   message says they "sit side by side" now, and `2026_Bordeaux_with_TwoRed.jpg` looks different.
   Chapter 1 currently says nose to tail. **Confirm which arrangement is present-tense.**
@@ -1390,3 +1391,37 @@ why a decision was made or which mistakes have already been paid for once.
   tree-tunnel stretches by name; the Bordeaux "last ones the dealership sold" detail for the
   Afterword.
 
+
+- **Boot figures: provenance unconfirmed.** `boot_dim` in `book_setup.R` (27.5 x 39.5-41 x
+  21-23 in; 7.8 / 12 cu ft) came from Kim 2026-08-22 as a paste. **Which car -- TwoRed (451) or
+  Creamsicle (453)? Measured, or from a published spec?** Chapter 1 prints them. Confirm.
+- ~~Chapter 2 exposure table lists three cars.~~ **DONE 2026-08-22:** TwoFer's row dropped on
+  Kim's instruction. Two rows, total 99,790, matching the prose, `stopifnot` guard passing.
+- **The 2021 photo shows the two cars nose to TAIL** (both facing the same way), not nose to
+  nose. Irrelevant to the text as now written, but the caption must match if it ever becomes a figure.
+
+- ~~Confirm the manual quotes width across the mirrors.~~ **CLOSED 2026-08-22:** the manual
+  footnotes the figure as measured with the mirrors folded out. Chapter 1 now cites the footnote
+  rather than inferring from the arithmetic.
+- ~~Turning circle 28.7 ft belongs in chapter 2.~~ **REJECTED 2026-08-22 by Kim, with a reason
+  worth keeping: "When you use this tight radius, you're going very, very slowly (think: parking
+  lot)." A turning circle is exercised at parking speeds and the chapter is about highway
+  hazards, so it does not bear on the argument.** Generalise: **a specification earns its place
+  only if it operates in the situation under discussion.** Track front 50.5 / rear 54.5 remains
+  unused and is probably subject to the same test.
+- **Boot: Kim measures 2026-08-23.** Replace `boot_dim` with his tape figures and drop the
+  NOT YET SOURCED flag.
+
+- ~~The tire invoice is not in `data/TwoRed/`.~~ **FILED 2026-08-22.** 4 pages, 2.6 MB,
+  verified through the R bridge alongside the purchase and shipping documents.
+- ~~Front tire pressure ambiguous.~~ **CLOSED 2026-08-22: it went TO 36 psi** (Kim), which he
+  notes is high for a Smart. Higher pressure lowers rolling resistance -- a third reason the X-Ice
+  interval cannot be read as a tire-size effect.
+- **Signal Hill fills = shop visits.** Seven in the log. Worth testing whether the 2011 pair
+  (18,933 / 20,345) date any other modification.
+
+- ~~Name the mechanic?~~ **RULED 2026-08-22, Kim: no. "We don't need to put Art's name in."**
+  The shop is named; no individual is. Chapter 2 already complies -- no change needed. Treat this
+  as standing: **the businesses may be named, the people who work in them may not.**
+- **Chapter 3 echo:** "the people who knew the car" and the parking chapter are the same argument.
+  Make the connection deliberate when chapter 3 is written.

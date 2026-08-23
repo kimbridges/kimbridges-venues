@@ -13,7 +13,7 @@ Very cute, usually, because it is so different from what anyone expects a car to
 
 *I like your car.* That was almost always the opener. **Seeing TwoRed was an invitation to talk**, and a great many conversations started exactly that way, with a stranger walking across a forecourt to say something friendly about a very small car.
 
-The photograph in @fig-day-one shows it plainly: **that silver band isn't trim. It's the safety cell**, and it's the first thing I point at.
+@fig-day-one is TwoRed on the first day we owned it. **That is the car people were crossing forecourts to look at** — small, bright, and not much like anything else in the row.
 
 **It did not last, and the record of that is worth keeping.** By the time we were driving Creamsicle, Smart cars were relatively common and the effect had largely worn off. People no longer crossed a forecourt to look. Creamsicle is cute too — **but by my measure not quite as cute as TwoRed**, and in any case by then it was not a surprise. **The reaction this chapter is about belongs to a particular decade**, and it faded as the cars stopped being strange.
 
@@ -31,7 +31,7 @@ Mercedes designed this to be safe. Just like a race car. **See the silver part? 
 
 I demonstrate that part. Hands up, unhurt, walking away from the wreckage.
 
-Same thing here. A solid structure built for protection. The silver you can see running around the car isn't trim; it's the structure, and the body panels hung on it aren't.
+Same thing here. A solid structure built for protection. The silver you can see running around the car in @fig-day-one isn't trim; it's the structure, and the body panels hung on it aren't.
 
 Do they believe it? Maybe. Maybe not. **A specification does not defeat an impression**, and the impression arrived first — from twenty feet away, before anyone heard a word about safety cells. The pointing helps more than the explaining does, which tells you something about what kind of question it really is.
 
@@ -45,12 +45,16 @@ So I stopped relying on the engineering answer alone. What I have instead is six
 
 tw <- max(twored_fuel$Odometer) - min(twored_fuel$Odometer)
 cs <- max(cream_fuel$odometer) - min(cream_fuel$odometer)
-tf <- 1209   ## TwoFer, from the leased-car gas log
+## The prose spells these out, so guard them: a data change must break the build,
+## not silently falsify a sentence.
+stopifnot(nrow(twored_fuel) + nrow(cream_fuel) == 467, tw + cs == 99790)
 
+## TwoFer is not here. It was leased, never logged for travel, and its 1,209 Honolulu
+## miles are errands, not exposure of the kind this chapter is counting.
 exposure <- data.frame(
-  Car   = c("TwoRed", "Creamsicle", "Two4Two"),
-  Years = c("2010-2017", "2021-2024", "2014-2015"),
-  Miles = c(tw, cs, tf)
+  Car   = c("TwoRed", "Creamsicle"),
+  Years = c("2010-2017", "2021-2024"),
+  Miles = c(tw, cs)
 )
 knitr::kable(
   rbind(exposure, data.frame(Car = "Total", Years = "", Miles = sum(exposure$Miles))),
@@ -59,7 +63,7 @@ knitr::kable(
 )
 ```
 
-A hundred thousand documented miles across three of the cars. Four hundred and sixty-seven fill-ups. Two hundred and twenty-five logged driving days. **Forty-nine mainland states and ten Canadian provinces and territories** — the log itself only witnesses forty-five of the states, for reasons chapter 13 gets into, but the car went to all of them. Gravel on the Dalton Highway north of the Arctic Circle. Frost heaves across the Canadian plains. The Tail of the Dragon. The Oregon coast highway. Two winters and a good many summers.
+Just under a hundred thousand documented miles across the two cars that did the travelling. Four hundred and sixty-seven fill-ups. Two hundred and twenty-five logged driving days. **Forty-nine mainland states, ten Canadian provinces and the Yukon Territory** — the log itself only witnesses forty-five of the states, for reasons chapter 13 gets into, but the car went to all of them. Gravel on the Dalton Highway north of the Arctic Circle. Frost heaves across the Canadian plains. The Tail of the Dragon. The Oregon coast highway. Two winters and a good many summers.
 
 No crash.
 
@@ -71,13 +75,13 @@ The larger claim comes from two days when the driving stopped being ordinary.
 
 ### The hole in the Yukon
 
-Before the Dalton Highway the cute wheels came off.
+Before heading to Alaska, where the car would meet the challenges of the Dalton Highway, the cute wheels came off.
 
 Smart Madness put steel rims on the car, and I bought a spare wheel to carry. It barely fitted in the rear luggage compartment. **They were quite sure I would hit something bad** — although I imagine they were thinking about something sharp rather than something deep.
 
 Nobody told me about the flags.
 
-Along that road, small flags are set at the roadside to mark a pothole. I didn't know that when I started, so I learned it the way you learn most things up there, which is by hitting a few. Fortunately the lessons came from small ones. **After a while the rule is automatic: flag ahead means slow down and swerve.**
+Along the highway through Canada's Yukon Territory, small flags are set at the roadside to mark a pothole. I didn't know that when I started, so I learned it the way you learn most things up there, which is by hitting a few. Fortunately the lessons came from small ones. **After a while the rule is automatic: a flag on the highway's side warns to slow down and swerve.**
 
 The car-eater had no flag.
 
@@ -95,7 +99,7 @@ I was heading east on the interstate. I left it to drive through a small town �
 
 I was most of the way around that curve when a police car came up the ramp. Full speed. No lights, no siren.
 
-I pulled the wheel hard right and hit the brakes hard. The car slid to a stop on the shoulder, inches from the metal guard rail.
+I pulled the steering wheel hard right and hit the brakes hard. TwoRed slid to a stop on the shoulder, inches from the metal guard rail.
 
 I sat there. I was stunned, and my first thought was that I'd done something wrong — that I was the one going the wrong way. So I waited. And while I waited I watched several cars come down the on-ramp exactly as I had been doing.
 
@@ -103,7 +107,7 @@ It was the police car that was going the wrong direction.
 
 Did the police stop? Of course not. This was Texas.
 
-I missed being hit head-on by quick action and some luck.
+I missed being hit head-on by three things: quick action, some luck, and a small car. **There was not room on that shoulder for a big one to have stopped without hitting the guard rail.**
 
 Note what was and was not available to me. Nothing about prudence prevents a vehicle coming the wrong way up a ramp with no warning; the hazard was outside my control entirely. What I had was a steering input and a braking distance, and both had to work in a very short space.
 
@@ -113,7 +117,7 @@ Note what was and was not available to me. Nothing about prudence prevents a veh
 
 Put the two together, because they are not two stories.
 
-Both times, the danger was not that I did something careless. **It was that the world briefly stopped behaving the way sixteen years of driving had taught me it behaves.** A hazard on that road is flagged. Traffic on a ramp goes down. Both rules are sound, both are earned by long experience, and both are what let you drive at a reasonable speed instead of crawling everywhere in a state of suspicion.
+Both times, the danger was not that I did something careless. **It was that the world briefly stopped behaving the way a lifetime of driving had taught me it behaves.** A hazard on that road is flagged. Traffic on an on-ramp goes one way. Both rules are sound, both are earned by long experience, and both are what let you drive at a reasonable speed instead of crawling everywhere in a state of suspicion.
 
 You can't drive without trusting patterns. **And you can't make patterns hold.** So the only thing left to ask of a car is what it can do in the second after one breaks.
 
@@ -129,6 +133,20 @@ A safety cell is for the crash you are having. **Handling is for the crash you a
 
 The wide tires belong to the same argument, which is why they come next.
 
+## The people who knew the car
+
+Something about that period is easy to miss now. **In 2010, and for a few years after, the Smart was the hot-rodder's small car.** People tricked them out -- unusual paint, custom accessories, engine work. There was a whole scene. We did some of that ourselves, and the tires were only part of it.
+
+The modifications are not the point. **The scene came with mechanics who actually knew the car**, and that is what we got out of it. The alternative was the Mercedes dealer, and you can guess what a dealer charges for simple maintenance.
+
+So when the crosswind became a problem, I wasn't working it out alone. I described it to people who had heard it described before.
+
+Every service TwoRed and Creamsicle ever had was done at that shop, in Signal Hill, California, over fourteen years and two cars -- with one exception, when something went wrong in Wisconsin and we were a long way from anybody who knew a Smart.
+
+**And there is evidence for all of this that I did not put in the record on purpose.** Signal Hill turns up seven times in TwoRed's fuel log. Every one of them is a service visit. There is a filling station two blocks up the street, and after a service there was usually a hundred-mile drive back to Lake San Marcos, so it made sense to leave with a full tank.
+
+**A fuel log turns out to be a record of who looked after the car, and not only of where it went.**
+
 ## The one modification, and what it cost
 
 The first crossing was made on the stock narrow tires — the ones a car like this leaves the factory with, sized for a city.
@@ -139,7 +157,7 @@ It was possible to control. But it was tiring.
 
 **That distinction is the whole of it, and it is worth holding on to, because this book comes back to it.** A steady force you lean against and forget. A varying one you have to answer, continuously, and the cost is not in any single correction but in the fact that they never stop. **The wind wasn't dangerous. Being tired at 70 miles an hour is.**
 
-It happened enough that I discussed it with some experts. They understood right away and they had the solution: wider tires.
+It happened enough that I raised it with them. They understood right away, and they had the solution: wider tires.
 
 The fancy rims came along with them, because this is a car that is fun to drive and fun to be seen in. It worked. The handling became very good.
 
@@ -147,19 +165,57 @@ The fancy rims came along with them, because this is a car that is fun to drive 
 
 Now, when I pull up behind a high-priced sports car, I note the width of their tires. Mine aren't as wide. **But they are wide enough to take care of the problem.**
 
-**The wheels were never about fuel.** They were bought for control in a crosswind, which is to say they were bought for safety. But wider tires have a theoretical cost — more rolling resistance, more frontal area — usually put somewhere between one and three per cent.
+**The wheels were never about fuel.** They were bought for control in a crosswind, which is to say they were bought for safety. But wider tires have a theoretical cost — more rolling resistance, more frontal area. The effect ought to be small, and it ought to be there.
 
-So the fuel log gets to answer a question it was never keeping score on. **Before and after the change, the difference in economy isn't distinguishable from zero.** Under every specification tried — with and without a control for leg length, with and without partial fills, with and without the Alaska rows — **the confidence interval straddles zero and the one-to-three per cent penalty theory predicts sits comfortably inside it.**
+So the fuel log gets asked a question it was never keeping score on. `r n_nar` fill-ups on the narrow tires, `r n_wid` on the wide ones, with the winter-tire interval cut out entirely because three things changed on it at once.
 
-<!-- NUMBER NOT YET PRINTABLE. The interval quoted in our notes (-3.7% to +4.9%) could not be
-     reproduced from the corrected dataset under four reasonable specifications on 2026-08-20;
-     they run from +1.7% [-2.3, +5.6] to +4.5% [-0.2, +9.2]. The CLAIM is stable everywhere.
-     The INTERVAL must be re-derived with a written specification before any figure is printed
-     (intentions item 4). See deferred.md. -->
+Here is what four reasonable ways of asking produce.
 
-Stated carefully: **the data rules out a large fuel penalty. It cannot detect a modest one.** And it won't support the opposite claim either — not that the wheels cost nothing, only that whatever they cost was too small for sixteen years of records to see.
+```{r}
+#| label: wheels
+#| echo: false
+tr <- twored_fuel
+tr$wheels <- ifelse(tr$Odometer < 13510, "narrow",
+              ifelse(tr$Odometer >= 34190 & tr$Odometer <= 39739, "xice", "wide"))
+## The winter-tire interval is documented at both ends (Madness Autoworks receipt #5951)
+## and dropped outright: tire size, tire compound and tire pressure all changed on it,
+## inside a single trip. See data/TwoRed/wheel_states.csv.
+d <- tr[tr$wheels != "xice" & is.finite(tr$mpg) & is.finite(tr$leg_miles) &
+          !isTRUE(tr$partial_fill), ]
+d$wide <- as.integer(d$wheels == "wide")
+n_nar <- sum(d$wide == 0); n_wid <- sum(d$wide == 1)
 
-**The one change ever made to this car was made for safety, and it did not show up in the fuel.**
+pct <- function(fit, dat) {
+  b <- coef(fit)[["wide"]]; ci <- confint(fit)["wide", ]
+  mu <- mean(dat$mpg[dat$wide == 0])
+  sprintf("%+.1f%% [%+.1f, %+.1f]", 100*b/mu, 100*ci[1]/mu, 100*ci[2]/mu)
+}
+dw <- d[abs(d$Odometer - 13510) <= 12000, ]   ## a local window around the change
+
+wheel_tab <- data.frame(
+  `How the question is asked` = c("raw difference", "controlling for leg length",
+      "leg length and odometer trend", "local window, +/-12,000 miles"),
+  `Effect on economy` = c(
+      pct(lm(mpg ~ wide, data = d), d),
+      pct(lm(mpg ~ wide + leg_miles, data = d), d),
+      pct(lm(mpg ~ wide + leg_miles + Odometer, data = d), d),
+      pct(lm(mpg ~ wide + leg_miles, data = dw), dw)),
+  check.names = FALSE)
+knitr::kable(wheel_tab, caption = paste(
+  "Four defensible ways of asking the same question of the same", nrow(d),
+  "fill-ups. 95% intervals."))
+```
+
+**Look at the signs.** Positive, more positive, negative, negative — and every interval contains zero. Not one of those rows is wrong. They are four defensible ways of handling the same fill-ups, and they do not agree on whether the wide tires helped or hurt.
+
+**That is not a cautious result. A cautious result is a small number with a tight interval.** This is an unstable one, and the instability has a cause. `r n_nar` rows against `r n_wid`, and the `r n_nar` are not a sample of ordinary driving. They are the car's first ten months: one crossing, one season, one part of the country. Every difference between that year and the fifteen that followed is riding along with the wheel change, and no amount of controlling pulls them apart.
+
+**I could have picked one.** Any single row of that table, printed on its own, would have looked like an answer. That is exactly why the table is here instead.
+
+
+The one thing the table does rule out is a large effect. Nothing in it is consistent with the wheels costing ten per cent. Beyond that it declines to say, and I am not going to make it.
+
+**The one change ever made to this car was made for safety.** What it cost at the pump is a question this record cannot settle — and knowing that is worth more than a number I would have had to choose.
 
 ## Attention is a component of safety too
 
@@ -183,4 +239,4 @@ Granted: no crash testing.
 
 Nothing here is a substitute for a barrier test, and nothing here can answer the question people are really asking, which is what happens in the collision. I haven't had one. That's the whole of my evidence and it's also the limit of it. **A record of things that didn't happen can't tell you what it would've been like if they had.**
 
-What I can say is narrower and, I think, more useful. Over a hundred thousand documented miles, on gravel and frost heave and interstate and coast highway, the small car was twice the reason the day ended without damage. Both times, the thing that saved it was the thing everyone worries about.
+What I can say is narrower and, I think, more useful. Close to a hundred thousand documented miles, on gravel and frost heave and interstate and coast highway, the small car was twice the reason the day ended without damage. Both times, the thing that saved it was the thing everyone worries about.

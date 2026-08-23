@@ -74,13 +74,33 @@ voyage <- c(depart = as.Date("2017-05-22"), available = as.Date("2017-06-09"))
 voyage_days <- as.integer(voyage[["available"]] - voyage[["depart"]])
 
 ## ---- TwoRed, as measured -------------------------------------------------
-## From the Matson shipping receipt, unit 11907531: dimensions taken by the
-## carrier for stowage. Not a brochure figure -- a third-party measurement made
-## because somebody had to fit the car onto a ship.
+## TWO SOURCES, AND THEY DISAGREE ON ONE DIMENSION.
+## (a) Matson shipping receipt, unit 11907531 -- the carrier measured the BODY for
+##     stowage, rounded to whole inches.
+## (b) 2010 smart fortwo owner's manual, "Main dimensions (model passion)" -- supplied
+##     by Kim 2026-08-22.
+## Length and height agree to within a rounding tick. Width differs by exactly 8.0 in,
+## 4 in a side. RESOLVED 2026-08-22 (Kim, from the manual): the manual footnotes its
+## width as measured WITH THE MIRRORS FOLDED OUT. Both figures are correct; they are
+## measuring different objects. Use twored_dim (body) for anything about fitting the
+## car into a space, twored_manual for the car as specified.
 twored_dim <- c(length_in = 8 * 12 + 10, width_in = 5 * 12 + 1,
-                height_in = 5 * 12 + 0, weight_lb = 1808)
+                height_in = 5 * 12 + 0, weight_lb = 1808)          ## (a) carrier, body
+twored_manual <- c(length_in = 106.1, width_in = 69.0, height_in = 60.7,
+                   wheelbase_in = 73.5, track_front_in = 50.5,
+                   track_rear_in = 54.5, turning_circle_ft = 28.7)  ## (b) owner's manual
+twored_overhang_in <- twored_manual[["length_in"]] - twored_manual[["wheelbase_in"]]
 twored_pair_ft <- (2 * twored_dim[["length_in"]]) %/% 12
 twored_pair_in <- (2 * twored_dim[["length_in"]]) %%  12
+
+## ---- Rear compartment ----------------------------------------------------
+## PROVISIONAL, supplied by Kim 2026-08-22. He is measuring the actual compartment
+## 2026-08-23; replace these with his tape figures then. ** NOT YET SOURCED ** -- which car (451 or
+## 453), and measured or published? Do not treat as sourced until he answers.
+boot_dim <- list(height_in = 27.5, width_floor_in = 39.5, width_upper_in = 41,
+                 depth_min_in = 21, depth_max_in = 23,
+                 cuft_window = 7.8, cuft_roof = 12,
+                 litre_window = 220, litre_roof = 340)
 
 ## ---- Figure functions ----------------------------------------------------
 ## Every R/fig_*.R defines one fig_<name>() returning a ggplot. Chapters call them.
