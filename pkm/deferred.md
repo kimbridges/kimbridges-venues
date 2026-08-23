@@ -1425,3 +1425,14 @@ why a decision was made or which mistakes have already been paid for once.
   as standing: **the businesses may be named, the people who work in them may not.**
 - **Chapter 3 echo:** "the people who knew the car" and the parking chapter are the same argument.
   Make the connection deliberate when chapter 3 is written.
+
+## TOMORROW -- opened 2026-08-22
+
+- **★ FREQUENCY DIAGRAM OF PARKED PERIODS (Kim's idea, "Think: graphics").** The intervals
+  between fills are the times the car stood still, and they are the chapter-3 thesis made
+  visible. **There are enough points:** TwoRed 42 intervals of a week or more,
+  Creamsicle 19. Distribution is heavily right-skewed (median 1  d, mean 11 d) -- so **log scale, or split at the natural break between
+  "between legs of a trip" and "parked at a home port".** Both cars on the same axis; the
+  contrast between their two characters is the point. **Read `dataviz` before writing chart code.**
+  Caveat to carry into the caption: an interval is bounded by *fills*, so it measures time between
+  drinks, not time asleep.
