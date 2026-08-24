@@ -43,11 +43,17 @@ So I stopped relying on the engineering answer alone. What I have instead is six
 #| label: exposure
 #| echo: false
 
-tw <- max(twored_fuel$Odometer) - min(twored_fuel$Odometer)
-cs <- max(cream_fuel$odometer) - min(cream_fuel$odometer)
+## Boundaries come from the TRIP logs, not the fuel logs. A fill is a transaction,
+## not the end of a life: TwoRed's last fill was 102 miles short of the Matson
+## terminal, and Creamsicle's was 84 miles short of the handover. Between them the
+## fuel record misses 186 miles -- and both cars' final journeys are exactly the
+## ones it cannot see.
+tw <- max(twored_legs$end_odo, na.rm = TRUE) - min(twored_fuel$Odometer)   ## 4 -> 71,283
+cs <- 58987 - 30290   ## Start/Final Mileage stamps, Creamsicle_trip_clean.csv
+short <- 100000 - (tw + cs)
 ## The prose spells these out, so guard them: a data change must break the build,
 ## not silently falsify a sentence.
-stopifnot(nrow(twored_fuel) + nrow(cream_fuel) == 467, tw + cs == 99790)
+stopifnot(nrow(twored_fuel) + nrow(cream_fuel) == 467, tw + cs == 99976, short == 24)
 
 ## TwoFer is not here. It was leased, never logged for travel, and its 1,209 Honolulu
 ## miles are errands, not exposure of the kind this chapter is counting.
@@ -59,11 +65,12 @@ exposure <- data.frame(
 knitr::kable(
   rbind(exposure, data.frame(Car = "Total", Years = "", Miles = sum(exposure$Miles))),
   format.args = list(big.mark = ","),
-  caption = "Documented miles. Every figure is read from the fuel logs, not from memory."
+  caption = paste("Documented miles, odometer to odometer. The trip logs supply the",
+                  "boundaries; the fuel logs cannot see either car's last journey.")
 )
 ```
 
-Just under a hundred thousand documented miles across the two cars that did the travelling. Four hundred and sixty-seven fill-ups. Two hundred and twenty-five logged driving days. **Forty-nine mainland states, ten Canadian provinces and the Yukon Territory** — the log itself only witnesses forty-five of the states, for reasons chapter 13 gets into, but the car went to all of them. Gravel on the Dalton Highway north of the Arctic Circle. Frost heaves across the Canadian plains. The Tail of the Dragon. The Oregon coast highway. Two winters and a good many summers.
+Add the two odometers together and they stop `r short` miles short of a hundred thousand. **That is not a rounded figure, and it is not the fuel log's figure either** — a fill is a transaction, not the end of a life, and the last drive each car ever made is one neither fuel log can see. Four hundred and sixty-seven fill-ups. Two hundred and twenty-five logged driving days. **Forty-nine mainland states, ten Canadian provinces and the Yukon Territory** — the log itself only witnesses forty-five of the states, for reasons chapter 13 gets into, but the car went to all of them. Gravel on the Dalton Highway north of the Arctic Circle. Frost heaves across the Canadian plains. The Tail of the Dragon. The Oregon coast highway. Two winters and a good many summers.
 
 No crash.
 
@@ -239,4 +246,4 @@ Granted: no crash testing.
 
 Nothing here is a substitute for a barrier test, and nothing here can answer the question people are really asking, which is what happens in the collision. I haven't had one. That's the whole of my evidence and it's also the limit of it. **A record of things that didn't happen can't tell you what it would've been like if they had.**
 
-What I can say is narrower and, I think, more useful. Close to a hundred thousand documented miles, on gravel and frost heave and interstate and coast highway, the small car was twice the reason the day ended without damage. Both times, the thing that saved it was the thing everyone worries about.
+What I can say is narrower and, I think, more useful. Within sight of a hundred thousand documented miles, on gravel and frost heave and interstate and coast highway, the small car was twice the reason the day ended without damage. Both times, the thing that saved it was the thing everyone worries about.

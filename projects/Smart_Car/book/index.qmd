@@ -69,7 +69,7 @@ dormant_pct <- round(100 * sum(gaps$days[gaps$days >= 14]) /
 
 Every long trip in this book **begins and ends in the same parking space.** Not most of them. Every complete one, from 2011 through the last crossing in 2016 — the Arctic run, the crossing that reached Florida and the Tail of the Dragon, all of them. The car went out from my mother's place and it came back to my mother's place, and in between it crossed the continent.
 
-And for **`r dormant_pct`%** of the days in this record, it was not moving at all. It was parked, in that spot, waiting.
+And for **`r dormant_pct`%** of the days in this record, it made no journey the log can see. It was in that spot, waiting.
 
 ## Which brings up the thing you need to know
 

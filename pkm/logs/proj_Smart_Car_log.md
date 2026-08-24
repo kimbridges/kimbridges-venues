@@ -1,5 +1,150 @@
 ## COLLECTED STORIES — Kim's accounts of the long days, verbatim (opened 2026-08-19)
 
+### ★★★ TWENTY-FOUR MILES SHORT OF A HUNDRED THOUSAND (2026-08-24)
+
+**Kim: "Did you look at Creamsicle_trip_clean.csv?"** I had -- as `cream_legs`, for its legs --
+and had missed the two rows that carry no miles at all: **`Start Mileage 30290.0` (2021-09-23)**
+and **`Final Mileage 58987.0` (2024-10-20)**. Odometer stamps, sitting in the city/state columns.
+
+They change the headline number of chapter 2.
+
+| | fuel log | odometer | missed |
+|---|---|---|---|
+| TwoRed | 71,177 | **71,279** | 102 |
+| Creamsicle | 28,613 | **28,697** | 84 |
+| total | 99,790 | **99,976** | **186** |
+
+**The two odometers stop 24 miles short of a hundred thousand.**
+
+**And the 186 miles the fuel record misses are not random.** TwoRed's last fill was 102 miles
+short of the Matson terminal; Creamsicle's was 84 miles short of the handover. **Each car's final
+journey is precisely the one its fuel log cannot see** -- the drive to the ship and the drive to
+the new owner. Finding 041 for the fourth time: *a fill is a transaction, not a state.*
+
+Chapter 2 now reads: *"Add the two odometers together and they stop `r short` miles short of a
+hundred thousand. That is not a rounded figure, and it is not the fuel log's figure either -- a
+fill is a transaction, not the end of a life, and the last drive each car ever made is one neither
+fuel log can see."* Guard updated to `tw + cs == 99976, short == 24`; the table caption now says
+the trip logs supply the boundaries.
+
+**How close this came to being wrong.** The chapter said *"Over a hundred thousand documented
+miles"* until 2026-08-22. On the fuel figures that was false by 210 miles. On the true figures it
+is false by 24. **A claim can be wrong, get corrected, and still be wrong for a different reason** --
+and the only thing that caught it was Kim asking whether I had actually read a file I had loaded.
+
+⚠ Creamsicle's Final Mileage is stamped 2024-10-20 while the handover photograph is 2024-10-22.
+Any miles driven on those two days are outside the record. The text says the odometers *stop* 24
+miles short, which is exactly true of the record and makes no claim about the car.
+
+### ★★★ "ON STATION" vs "STANDING BY" -- THE RECORD SEES THE CHANGE BUT NOT THE PURPOSE (2026-08-24)
+
+**Kim proposes two terms:** *on station* = parked and in service of a person (TwoRed at LSM for his
+mother; Creamsicle in Wisconsin); *standing by* = parked and waiting for the next long trip
+(Creamsicle in SoCal, after Wisconsin, for pleasure travel). **A conceptual distinction that can be
+tested**, because service driving should leave miles on the odometer and waiting should not.
+
+Tested on between-trip intervals of 60+ days, odometer read from the fuel log at each boundary:
+
+| | days | miles | mi/day |
+|---|---|---|---|
+| Creamsicle, Wisconsin | 90 | 1,646 | **18.3** |
+| Creamsicle, after Wisconsin | 882 | 2,849 | **3.2** |
+| TwoRed, on station at LSM | 374 | 962 | **2.6** |
+| (on a trip, either car) | | | **~230** |
+
+**HALF CONFIRMED, AND THE HALF THAT FAILS IS THE INTERESTING ONE.**
+
+1. **Wisconsin is unmistakable: 18.3 mi/day, 7x TwoRed's on-station rate.** Kim described doctor
+   visits and food shopping there; Sun Prairie to Madison is a far longer errand than anything
+   around Lake San Marcos. **The record corroborates the intensity of that service independently.**
+2. **But on-station and standing-by are NOT separable by rate: 2.6 vs 3.2 mi/day.** A car waiting
+   to help someone and a car waiting for a holiday look identical to an odometer.
+
+**So the instrument can see WHEN the job changed, and never WHY.** The rate drops 5.7x when
+Creamsicle leaves Wisconsin -- the change of function is measurable even though the function is not.
+**That is the exact boundary between the data layer and the testimony layer**, drawn by the data
+itself, and it is the strongest argument yet for Kim's three-layer architecture.
+
+**THREE REGIMES, NOT TWO** -- and Wisconsin is the middle one, which neither of us predicted:
+~3 mi/day (waiting) -> ~18 (intensive local service) -> ~230 (travelling). The graphic should show
+three, and the ambiguous short intervals besides.
+
+**Adopt both terms**, with the text stating plainly that the distinction between them is testimony
+rather than measurement -- except at Wisconsin, where it is both.
+
+⚠ Method caveat: Creamsicle has **no trip log boundaries and no odometers in her leg table**; trips
+are DERIVED from a 7-day date-gap rule and odometers borrowed from the fuel log. Intervals shorter
+than 60 days are contaminated by driving the rule failed to catch (one 7-day "interval" runs at
+82.6 mi/day). **A derived definition wearing the same word as a measured one -- label it in the text.**
+
+### ★★★ "ON STATION" IS AN OPERATIONAL DEFINITION, AND IT NEEDED THE OTHER LOG (2026-08-24)
+
+**Kim: "It is the trip log that defines when a trip begins and ends... For the 'on station'
+definition to work, it must be based on the trip log, not the fuel log."** He is right, and I had
+been arguing about operational definitions while using the wrong instrument. Every "parked period"
+I had computed was a gap between *fuel purchases*.
+
+**THE DEFINITION.** On station = the interval between the last leg of one logged trip and the
+first leg of the next, **with the odometer used to confirm no travel happened inside it.** The
+validity check is part of the definition, which is the whole point.
+
+`twored_legs` gives **13 logged trips, 139 legs, 190 trip-days, 43,624 miles (61% of lifetime).**
+Twelve intervals sit between them. Sorting by miles accrued:
+
+- **5 clean on-station intervals** (<300 mi): 44, 15, 111, 100, 104 days.
+- **4 ambiguous** (300-1500 mi) -- probably short unlogged runs.
+- **3 that must contain trips nobody wrote down** (>1500 mi): 5,408 / 4,789 / 2,174 miles.
+
+**THE NUMBER THAT MAKES THE CHAPTER:**
+
+| | days | miles | per day |
+|---|---|---|---|
+| on station | 374 | 962 | **2.6** |
+| on a trip | 190 | 43,624 | **230** |
+
+**89 to 1.** And 2.6 miles a day is not zero -- **"on station" is emphatically not stationary.**
+That is precisely the errand driving Kim described at Lake San Marcos: fetching things for his
+mother, a couple of miles at a time. **The car moved on most days. It just did not go anywhere.**
+The fuel log could never have shown this; the odometer between trip logs shows it exactly.
+
+**THE THRESHOLD IS A CHOICE AND THE BOOK MUST SAY SO.** 300 miles is my line, not a fact. Four
+intervals sit in the ambiguous band. Reporting all three bands rather than a clean binary is the
+honest form -- and it is the operational-definition lesson demonstrating itself.
+
+**Consequence for the graphic:** this is not one right-skewed distribution. It is **two regimes**,
+and the axis is miles per day between trip-log boundaries, not days between fills.
+
+**Kim also wants the concept named explicitly somewhere.** Chapter 1 has the width and depth
+cases; chapter 3 has this one; chapter 9 generalises. And **"on station" is adopted** as the term.
+
+### THE BOOT IS MEASURED, AND THE VOLUME IS DELIBERATELY ABSENT (2026-08-24)
+
+Kim measured TwoRed with a tape: **41 in wide, 27 in high, 24 in deep** -- depth taken back to the
+driver's seat *in the position he drives in*. The pasted figures are retired
+(27.5 x 39.5-41 x 21-23 in; 7.8 / 12 cu ft): no source, and **their depth was an inch short of
+what he measures**, because they were describing the opening and he was describing what fits.
+
+**That is the mirror-width finding for the second time in one chapter.** Two measurements of the
+same object disagreeing because they answer different questions -- published width across folded
+mirrors vs the carrier's body measurement, and now published depth vs usable depth. **Worth
+watching for a third; two is a coincidence, three is a section.**
+
+**NO VOLUME IS RECORDED, on Kim's reasoning, and it is better than mine.** I offered a bounding
+box (41 x 27 x 24 = 15.4 cu ft, 28% above the pasted "to the roof" figure). He rejected the whole
+idea: *"the volume is meaningless because if you fill it, you can't see out the back."*
+**The binding constraint was never cubic feet. It was the rear-view mirror.** The chapter now says
+so: *"I could multiply those together and give you a volume. It would be a useless number... the
+limit was never how much will go in. It is how much will go in and still leave the mirror working."*
+
+**COSTCO REWRITTEN FOR RECOGNITION.** Was: "a full cart, top rack and bottom, paper goods and
+all". Now the specific awkward object -- *the bundle of toilet paper, the bundle of paper towels,
+both in the same trip if that is the week* -- because Kim's point is that **he never hesitates over
+the big item**, and a reader knows exactly what that bundle looks like in a trolley. A category
+("paper goods") asks the reader to imagine; **a specific object lets them remember.**
+
+`boot_dim` in `book_setup.R` is now three measured numbers and a note on what the depth is
+measured to. Chapter 1: 2,468 words.
+
 ### ★★★ THE POINT OF THE CAR WAS HAVING IT THERE (Kim, 2026-08-22) -- CHAPTER 3 REFRAMED
 
 > **Having a car at the right location was the point of having the car. It wasn't that we wanted

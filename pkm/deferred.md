@@ -1392,7 +1392,7 @@ why a decision was made or which mistakes have already been paid for once.
   Afterword.
 
 
-- **Boot figures: provenance unconfirmed.** `boot_dim` in `book_setup.R` (27.5 x 39.5-41 x
+- ~~Boot figures: provenance unconfirmed.~~ **CLOSED -- retired and replaced by measurement.** OLD: `boot_dim` in `book_setup.R` (27.5 x 39.5-41 x
   21-23 in; 7.8 / 12 cu ft) came from Kim 2026-08-22 as a paste. **Which car -- TwoRed (451) or
   Creamsicle (453)? Measured, or from a published spec?** Chapter 1 prints them. Confirm.
 - ~~Chapter 2 exposure table lists three cars.~~ **DONE 2026-08-22:** TwoFer's row dropped on
@@ -1409,8 +1409,9 @@ why a decision was made or which mistakes have already been paid for once.
   hazards, so it does not bear on the argument.** Generalise: **a specification earns its place
   only if it operates in the situation under discussion.** Track front 50.5 / rear 54.5 remains
   unused and is probably subject to the same test.
-- **Boot: Kim measures 2026-08-23.** Replace `boot_dim` with his tape figures and drop the
-  NOT YET SOURCED flag.
+- ~~Boot: Kim measures.~~ **DONE 2026-08-24.** 41 x 27 x 24 in, measured, depth to the driver's
+  seat. Volumes dropped entirely on his reasoning: fill it and you cannot see out the back, so the
+  mirror is the constraint, not cubic feet.
 
 - ~~The tire invoice is not in `data/TwoRed/`.~~ **FILED 2026-08-22.** 4 pages, 2.6 MB,
   verified through the R bridge alongside the purchase and shipping documents.

@@ -94,13 +94,17 @@ twored_pair_ft <- (2 * twored_dim[["length_in"]]) %/% 12
 twored_pair_in <- (2 * twored_dim[["length_in"]]) %%  12
 
 ## ---- Rear compartment ----------------------------------------------------
-## PROVISIONAL, supplied by Kim 2026-08-22. He is measuring the actual compartment
-## 2026-08-23; replace these with his tape figures then. ** NOT YET SOURCED ** -- which car (451 or
-## 453), and measured or published? Do not treat as sourced until he answers.
-boot_dim <- list(height_in = 27.5, width_floor_in = 39.5, width_upper_in = 41,
-                 depth_min_in = 21, depth_max_in = 23,
-                 cuft_window = 7.8, cuft_roof = 12,
-                 litre_window = 220, litre_roof = 340)
+## MEASURED BY KIM ON TwoRed WITH A TAPE, 2026-08-24. These are the PRACTICAL
+## dimensions -- what actually fits -- not the size of the rear opening. Depth is
+## taken back to the driver's seat in the position he drives in, so it is a usable
+## figure rather than a specification.
+##
+## NO VOLUME IS RECORDED, deliberately. Fill the compartment and the rear window is
+## blocked, so cubic feet is not the binding constraint -- the mirror is. The earlier
+## pasted figures (27.5 x 39.5-41 x 21-23 in; 7.8 / 12 cu ft) are RETIRED: they had no
+## source, and their depth was an inch short of what Kim measures.
+boot_dim <- list(width_in = 41, height_in = 27, depth_in = 24,
+                 depth_ref = "to the driver's seat, in the position he drives in")
 
 ## ---- Figure functions ----------------------------------------------------
 ## Every R/fig_*.R defines one fig_<name>() returning a ggplot. Chapters call them.
