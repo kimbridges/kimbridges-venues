@@ -1,5 +1,257 @@
 ## COLLECTED STORIES — Kim's accounts of the long days, verbatim (opened 2026-08-19)
 
+### KIM KILLS AN ANALYSIS AND REPLACES IT WITH A BETTER ARGUMENT (2026-08-24)
+
+> Doing a rental vs purchase/maintenance/insurance is **a futile exercise**. Instead, consider that
+> there is something about driving your own car that resonates... **You build muscle memory.** And
+> when you're going down a crowded LA freeway, that's a nice thing to have. -- Kim
+
+**The scaffold item "economics as a COUNT, not a cost" is retired**, and not because the numbers
+failed. Because the question was wrong. **An analysis can be sound and still not be the reason for
+anything** -- worth remembering the next time a comparison looks available.
+
+What replaces it, as `## Why not just rent one?`, closing chapter 3:
+
+- the small practical part: *"A car you keep is, in a small way, a cupboard you can park."*
+  (the big tripod and the heavy coat -- and the tripod is the **photography thread** surfacing again)
+- **the real part: familiarity is a safety property.** Not just knowing how to work the car ("not
+  hunting for the defroster while the windshield fogs over") but knowing how it drives.
+
+**★★ THIS COMPLETES A TRIO THE BOOK BUILT WITHOUT PLANNING TO.** Chapter 2: *small and nimble are
+components of safety*; then *attention is a component of safety too*. Chapter 3 now adds the third,
+and the closing move is what makes it more than a list:
+
+> **Familiarity is the third, and it is the only one of the three you cannot buy on the day you
+> need it.** It accumulates, slowly, in one particular car -- which means it accumulates only if
+> that car is waiting somewhere for you to come back to it. **Which is what the parking spaces
+> were for.**
+
+So the chapter's two halves join: the parking history is not logistics, and it is not sentiment
+either. **A kept car is a known car, and knowing it is a safety property that only a parking space
+can produce.** Chapter 3 ends on the same argument chapter 2 opened with, arrived at from the
+opposite direction.
+
+Chapter 3: **3,140 words, seven sections.** Callback verified against the actual chapter 2 headings.
+
+### ★★ THE TORRANCE GARAGE, AND A CAR STATIONED BEFORE THE NEED ARRIVED (Kim, 2026-08-24)
+
+> Nancy's cousin, living in Torrance, California, sort of had a spot for a small car. The problem
+> was the space was filled with "stuff."... **She said that if we would help with the cleaning, we
+> could use the spot.** ... **A practical necessity, a place to park a car, became a way to
+> strengthen some family bonds.** ... The LSM pattern repeated. For the same reason. With the same
+> result. -- Kim
+
+**THE DESIGN RULE COMPLETES ITSELF HERE.** At LSM and Eugene the criterion was *minimal
+inconvenience to the person providing the space*. Torrance goes past that to a **net benefit** --
+she got a job done she had been putting off. That is why the arrangements lasted, and it is the
+reason the parking history is a story about people rather than about logistics.
+
+**AND THE SAME SECOND-ORDER EFFECT, TWICE.** At LSM the car was a standing message to his mother.
+At Torrance the space became a social conduit -- the cousin, distant relatives across the region,
+friends -- **and it has outlasted the car**, which went to Wisconsin and never came back. Kim:
+*"The car became the link."* **Both ports produced a relationship the car was not bought for.**
+
+**★★★ THE RECORD SHOWS THE PARKING COMING FIRST, LITERALLY.** Bought in Missouri 2021-09-15,
+collected at Nixa 09-23 at odometer 30,290. Then driven **1,987 miles WEST to Torrance** --
+away from Wisconsin, away from the thing it had been bought for -- arriving 09-28. **17 days**
+in the garage while they flew home to Hawaii. Then back, and **2,217 miles EAST** to the first
+Wisconsin fill on 10-22.
+
+**And the need was still conditional when they bought it** (*"if he needed our offer"*). A car,
+bought and stationed on the mainland, standing by for something that might not happen. Chapter 3
+closes the section: *"That is not a strange way to own a car. It is the only way we ever owned one."*
+
+Kim's "about four months" checks out: purchase to last Wisconsin fill is **4.1 months**.
+
+**NAMING RULED:** no name for the niece or the St Louis car wash. The standing rule is now
+complete -- **institutions with a public face may be named; individuals and small private firms
+may not.** Towns stay (Mentone, Torrance).
+
+Chapter 3 now runs **2,840 words in six sections.**
+
+### CHAPTER 3 DRAFTED THROUGH (2026-08-24) -- 2,245 words, five sections
+
+Order: **A stall that came free** (the human case) -> **What counts as a trip** (the definition) ->
+**The shape of sixteen years, on one picture** (`@fig-regimes`) -> **What happens when the space
+goes** -> **The one time it was actually parked**. Story, then method, then picture, then
+consequence, then the exception that proves the definition.
+
+**The chapter now sets up and pays off its own central number.** Section 1 ends *"Hold on to that,
+because a number later in this chapter depends on it."* The chart section closes: *"A couple of
+miles a day is what visiting your mother looks like, measured with an odometer."* **The 2.6 mi/day
+stops being evidence about a definition and becomes the thing it was all along.**
+
+**MOBOT resolves the St Louis discrepancy** (Kim confirmed): several days working at the Missouri
+Botanical Garden, driving garden-to-hotel-to-meals, THEN the car wash garage, then the flight home.
+So the 217 miles are real and precede the parking. The chapter says so, and draws the conclusion:
+**the one genuinely stationary period in sixteen years is hidden twice** -- by the odometer, which
+cannot tell stillness from motion after the fact, and by the definition, which files the whole
+fortnight under travel.
+
+**Botanical gardens are a through-line, not a detail.** MOBOT in 2011; the Flower Fields at
+Carlsbad and four gardens across the LA basin for Creamsicle; hummingbirds at a garden in the
+website stories. **Worth tracking as a thread** -- it is the recurring purpose behind excursions
+in both cars.
+
+⚠ **TWO RELOCATION FIGURES, both correct, different instruments.** 4,592 miles from the fuel log
+(2016-09-22 fill onward); **4,638 from the trip log** (2016_FallWinter start, odo 66,645, to the
+dock at 71,283). **The chapter prints 4,638**, computed inline, because chapter 3 takes its
+boundaries from the trip log throughout. Earlier log entries and the Active Focus say 4,592.
+
+### ★★★ THE STALL, AND WHY THE ERRANDS WERE THE POINT (Kim, 2026-08-24)
+
+> She kept a car in her stall even after she had given up driving. That car, appropriately, went
+> to my brother. **It left the stall open.** This was one of the few empty stalls among the
+> hundreds that ringed the facility... And having our car there would mean a lot to us. Not just
+> the convenience and likely cost saving. **But a continuing symbol for my mother; the car meant
+> we'd be back.** Probably sooner rather than later. **Having an unusual car would reinforce this;
+> she would recognize it every time she passed by.** ... The visits, when we used the car to run
+> errands, weren't just haphazard. We supplied things, some essential but mostly treats, by
+> buzzing around the neighboring area. **Mom never let us be gone long. These were her times with
+> us.** -- Kim
+
+**THIS RECONTEXTUALISES THE CENTRAL NUMBER OF THE CHAPTER.** The 2.6 miles a day I computed as
+proof that "on station" is not stationary is not a residual, and it is not errand overhead.
+**It is the visits.** Short by design, because she did not let them be long. The chapter can now
+say what those miles were, and the measurement and the meaning arrive in the same sentence.
+
+**The stall's provenance is a chain of small facts that produced 71,000 miles:** the apartment
+came with a stall; she kept a car in it after she stopped driving; that car went to his brother;
+the stall stayed empty; empty stalls in that area are rare. **A car was cheap to keep only because
+somebody else had already stopped needing the space.**
+
+**THE DESIGN RULE FOR EVERY PORT, in Kim's words:** *"What we needed was a place that would be a
+minimal inconvenience for the person providing a space."* That is the criterion behind Mentone,
+Eugene, Torrance and the car wash, and it should be stated once and then left to do its work.
+
+**Eugene was accepted as a downgrade, knowingly:** short visits would mean renting in SoCal again,
+*"That's OK as TwoRed had served its purpose well."* Then one more SoCal run when his mother's
+health fell away steeply -- car out of storage, driven fast, and kept there through her final days
+and the wrapping up. ⚠ Handle per the standing note: **adjacent facts, separate causes.**
+
+**THE ST LOUIS CAR WASH -- the one true parking event, and the record cannot see it.**
+Kim: two mainland meetings, fly home to Hawaii between them, so leave the car near the airport
+rather than drive back to LSM. A car wash in a former large gas station: small wash, big empty
+mechanics' garage. *"The owner was amused with my suggestion... in the end, gave me a car wash."*
+*"Would I do that again? Maybe not. But at the time, I had no obvious alternative."*
+
+The trip log has it: **a 9-day hole inside 2011_StLouis, 2011-07-05 to 2011-07-14**, car left at
+St Louis (Fenton) MO and resumed from St Louis MO. **But the odometer runs 16,516 -> 16,733 =
+217 miles across it, 24.1 mi/day** -- squarely in the on-station band. **The one period in sixteen
+years that was genuinely parked in the ordinary sense reads, in the record, as ordinary local
+driving.** And because it sits INSIDE a trip it never becomes a between-trip interval, so it is
+not on `@fig-regimes` at all. **The exception is hidden twice over: once by the odometer and once
+by the definition.**
+
+⚠ **OPEN:** a fuel fill at University City MO on 2011-07-12, odometer 16,703 -- 196 of those 217
+miles fall between arrival and that fill. If the car was garaged from 7/5, where did they come
+from? Likely the car was driven around St Louis for some days BEFORE being parked. **ASK KIM;
+do not write the passage until he says.**
+
+### CHAPTER 3 HAS ITS FIRST PROSE, BUILT AROUND THE REGIME CHART (2026-08-24)
+
+748 words in `the_anchor.qmd`, two sections: **`## What counts as a trip`** and
+**`## The shape of sixteen years, on one picture`**. The scaffold is preserved beneath, trimmed
+to what is still unwritten.
+
+**The explanation strategy Kim approved: do not explain the chart. Ask a question, then walk the
+reader across it.** Question first (*what is a trip?*), one sentence on the axes, then the single
+sentence that unlocks the field ", a diagonal is a line of constant pace ", and only then four
+observations, ordered by how much they surprised me.
+
+The four beats: the clouds do not touch (no trip under 20 mi/day, only 5 intervals over it);
+those 5 strays are unlogged crossings, so **the record is telling you where it failed to keep
+itself**; Wisconsin alone in the gap; and last, **the empty floor** ", nothing below one mile a
+day, in twenty years of calendar across two cars.
+
+**Ending on the absence is the whole rhetorical move.** *"That empty region is where parked would
+live, if the word meant what people take it to mean. It has no points in it, because that is not
+what the cars were doing."* The operational-definition argument delivered as a picture rather than
+a claim.
+
+**Kim's own reading of the chart checked out on all four counts** ", TwoRed took the big trips
+(5 of hers beat Creamsicle's largest), both cars did middling ones (Creamsicle more of them: 11
+to 6), TwoRed held the longest intervals (414 days vs 260), and Creamsicle drove more in the
+short ones (34.7 vs 18.0 mi/day). **The fourth is the fragile one and I told him so:** her short
+intervals run 7-17 days and one hits 82.6 mi/day, which is almost certainly a real trip that my
+7-day gap rule cut in half. **The derived definition manufacturing a pattern the measured one
+cannot** ", exactly where the asymmetry was predicted to bite.
+
+New files: `book/R/regimes_data.R` (one row per span, both cars, with the asymmetry documented in
+the header), `book/R/fig_regimes.R`, `data/regimes_points.csv`, `book/figures/regimes.png`.
+
+⚠ **I overwrote the scaffold when writing the chapter and had to restore it from context.**
+Nothing was lost, but the near-miss is the lesson: **a scaffold is content. Append prose above it;
+never rebuild a file from scratch while it still holds unwritten material.**
+
+### ★★ A TRIP IS WHAT HE DECIDED TO RECORD (Kim, 2026-08-24)
+
+> A trip consists of a multi-day affair in addition to a lot of miles. **When those two
+> characteristics were present, we did the log recording.** So, I guess that a Creamsicle trip is
+> actually operationally defined by a multi-day, long distance drive **that is recorded in the log.**
+
+**The circularity is the honest part and it should be stated in the book.** The criteria -- multi-day,
+long distance -- are the rule he applied at the time; the log is the record of the decision.
+**So "trip" has perfect precision and unknown recall.** Everything in the log is a trip. Whether
+everything that met the criteria got in is a separate question, and for TwoRed the answer is no.
+
+**COVERAGE MEASURED:**
+
+| | logged legs | lifetime | in the trip log |
+|---|---|---|---|
+| TwoRed | 41,163 | 71,279 | **58%** |
+| Creamsicle | 22,723 | 28,697 | **79%** |
+| both | 63,886 | 99,976 | **64%** |
+
+**36,090 miles -- 36% of both cars' lives -- are outside the trip logs entirely.**
+
+⚠ **Do not read 58% vs 79% as "TwoRed did more excursions".** TwoRed has 12,371 miles of clearly
+out-of-state travel in three gaps nobody logged. Net of those, the non-trip driving is ~7.1 mi/day
+for TwoRed and ~5.3 for Creamsicle -- much closer. **The gap is mostly recording behaviour, not
+driving behaviour.**
+
+**THE TWO INSTRUMENTS HAVE COMPLEMENTARY BLINDNESS**, which is the summary chapter 13 needs:
+**the fuel log sees every mile and no purpose; the trip log sees purpose but only 64% of the miles.**
+
+**FOUR PORTS, FOUR CHEAP-FUEL STOPS** -- LSM (station beside the spot), Signal Hill (Costco two
+blocks from the shop), Sun Prairie (Costco, brother's house between it and Madison), **Torrance
+(garage, Costco ~3 miles away -- confirmed by Kim as the SoCal home port, and my inference from
+8 of 51 fills).** So fill clusters DO mark the home ports -- **by way of fuel price, not position.**
+The inference survives; the reason must be stated rather than assumed.
+
+### EXCURSIONS -- AND WHY CREAMSICLE'S ARE HARDER TO SEE THAN TwoRED'S (Kim, 2026-08-24)
+
+> Some of the SoCal travel was to Carlsbad to view Flower Fields. Many other trips were across the
+> LA basin to visit the four botanical gardens that we try to regularly see, particularly the
+> Huntington Garden. **Those drives are not "trips" but local excursions, much as replenishing
+> mom's supplies were earlier excursions.** ... Costco (think: cheap gas) is in Sun Prairie and
+> Nancy's brother's house was sort of between Madison and this gas stop. -- Kim
+
+**"EXCURSION" IS A BETTER CATEGORY THAN MY ERRAND/SERVICE SPLIT**, because it is defined by shape
+-- a day out and back from the home port -- and not by motive. It unifies the two cars: fetching
+his mother's supplies and driving to the Huntington are the same *kind* of driving. Purpose
+differs; form does not. **Three kinds now: trip, excursion, errand.** "On station" and "standing
+by" describe the STATE; excursions are what happens during it.
+
+**THE COSTCO POINT CHECKED, AND IT SURVIVES.** Wisconsin fills sit **136 miles apart (median),
+every 5-7 days** -- far beyond a fuel run. So Costco explains *where* he filled, not *how far* he
+drove; the 18.3 mi/day of Wisconsin service driving stands. **But it does damage something else:
+11 of 14 Wisconsin fills are Sun Prairie because the gas was cheap there.** A fill location is a
+PRICE DECISION, not a position report. That partly undercuts my LSM-cluster mapping -- which
+survives only because Kim confirmed the LSM station was beside the parking spot.
+
+**★★ AND THE MEASUREMENT PROBLEM IS WORSE FOR CREAMSICLE THAN FOR TwoRED.**
+
+At Lake San Marcos the invisible driving was a few miles at a time -- **too small to see**, so it
+was absorbed into the next long leg. In the LA basin an excursion is a crossing of the basin:
+post-Wisconsin California legs run **104 to 237 miles, median 168**. A garden day is the same size
+as a travel leg. **So Creamsicle's excursions do not hide beneath the resolution -- they
+masquerade as travel.** Absence below the noise floor is one problem; a confusable signal is a
+harder one, and no threshold fixes it. **Only the narrative separates them.** Chapter 13.
+
+**Torrance is the top post-Wisconsin California fill city (8 of 51)** -- the others are almost all
+singletons on travel routes. Plausibly the SoCal home port. **ASK KIM.**
+
 ### ★★★ TWENTY-FOUR MILES SHORT OF A HUNDRED THOUSAND (2026-08-24)
 
 **Kim: "Did you look at Creamsicle_trip_clean.csv?"** I had -- as `cream_legs`, for its legs --

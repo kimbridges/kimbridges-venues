@@ -1,0 +1,51 @@
+"car","kind","label","days","miles","mi_day"
+"TwoRed","trip","2011_NorCalRoadtrip",6,1801,300.166666666667
+"TwoRed","trip","2011_StLouis",26,5100,196.153846153846
+"TwoRed","trip","2012_MayArizona",7,1457,208.142857142857
+"TwoRed","trip","2012_Frostburg",24,6531,272.125
+"TwoRed","trip","2013_Arctic",34,5401,158.852941176471
+"TwoRed","trip","2013-4_LAExpedition",1,260,260
+"TwoRed","trip","2014_PenultimateState",44,10907,247.886363636364
+"TwoRed","trip","2015_Sedona",4,1040,260
+"TwoRed","trip","2016_FourthCrossing",29,7575,261.206896551724
+"TwoRed","trip","2016_FallWinter",4,1141,285.25
+"TwoRed","trip","2017_January",3,1091,363.666666666667
+"TwoRed","trip","2017_February",7,1218,174
+"TwoRed","trip","2017_LastMainlandMiles",1,102,102
+"TwoRed","between","after 2011_NorCalRoadtrip",44,228,5.18181818181818
+"TwoRed","between","after 2011_StLouis",289,5408,18.7128027681661
+"TwoRed","between","after 2012_MayArizona",15,60,4
+"TwoRed","between","after 2012_Frostburg",414,2174,5.2512077294686
+"TwoRed","between","after 2013_Arctic",111,248,2.23423423423423
+"TwoRed","between","after 2013-4_LAExpedition",125,354,2.832
+"TwoRed","between","after 2014_PenultimateState",390,4789,12.2794871794872
+"TwoRed","between","after 2015_Sedona",321,796,2.4797507788162
+"TwoRed","between","after 2016_FourthCrossing",93,856,9.20430107526882
+"TwoRed","between","after 2016_FallWinter",100,168,1.68
+"TwoRed","between","after 2017_January",25,660,26.4
+"TwoRed","between","after 2017_February",104,258,2.48076923076923
+"Creamsicle","trip","2021-09-23",6,1987,331.166666666667
+"Creamsicle","trip","2021-10-15",6,2197,366.166666666667
+"Creamsicle","trip","2022-01-18",10,2464,246.4
+"Creamsicle","trip","2022-05-29",3,856,285.333333333333
+"Creamsicle","trip","2022-06-11",4,1086,271.5
+"Creamsicle","trip","2022-11-01",8,1604,200.5
+"Creamsicle","trip","2022-11-16",2,126,63
+"Creamsicle","trip","2022-11-24",4,1331,332.75
+"Creamsicle","trip","2023-03-04",23,2354,102.347826086957
+"Creamsicle","trip","2023-09-08",5,1548,309.6
+"Creamsicle","trip","2023-09-19",13,1899,146.076923076923
+"Creamsicle","trip","2024-06-17",16,2571,160.6875
+"Creamsicle","trip","2024-10-07",14,2699,192.785714285714
+"Creamsicle","between","2021-09-28",17,141,8.29411764705882
+"Creamsicle","between","2021-10-20",90,1646,18.2888888888889
+"Creamsicle","between","2022-01-27",122,670,5.49180327868852
+"Creamsicle","between","2022-05-31",11,380,34.5454545454545
+"Creamsicle","between","2022-06-14",140,359,2.56428571428571
+"Creamsicle","between","2022-11-08",8,196,24.5
+"Creamsicle","between","2022-11-17",7,578,82.5714285714286
+"Creamsicle","between","2022-11-27",97,502,5.17525773195876
+"Creamsicle","between","2023-03-26",166,294,1.7710843373494
+"Creamsicle","between","2023-09-12",7,440,62.8571428571429
+"Creamsicle","between","2023-10-01",260,505,1.94230769230769
+"Creamsicle","between","2024-07-02",97,519,5.35051546391753
