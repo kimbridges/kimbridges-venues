@@ -19,5 +19,51 @@ MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_lo
 - Worked example: C01 Oxnard, where the $/gal cell is IDENTICAL to the gallons cell -- caught by contiguity, not by arithmetic.
 - 65 TwoRed errata, 4 still open; 3 Creamsicle errata, all resolved.
 - A field filled from a substitute source must record WHICH source: an AMEX merchant string is not a brand.
+
+★★★ KIM'S STATEMENT, 2026-08-28 — VERBATIM. This is the chapter's thesis, in his words:
+  "While this is a story about two cars, it is as much a story about data. Specifically the kind
+   of data that's added now and then. Often under difficult conditions, like when you have cold,
+   shivering hands. Or times when you're in a rush. It's easy to write down a wrong number.
+   Transcription, too, often comes when you probably don't want to be typing a lot of numbers,
+   some of which are hard to read. It is those distractions that can break the flow and cause
+   another form of data error. The bottom line is that these types of data are difficult to get
+   correct. When possible, enter fields that will let you cross check values (e.g., not just the
+   date; add the day of the week)."
+  ⚠ He says TWO cars, and for the data chapters that is right — TwoRed and Creamsicle carry the
+    logs. Do not silently upgrade it to four.
+  ★ TWO KINDS OF ERROR, and he separates them: the FIELD error (cold hands, haste) and the
+    TRANSCRIPTION error (hard-to-read figures, broken flow). Different causes, different signatures.
+    The Foreword now carries a short version of the first half; this chapter owns the full argument.
+  → CH.9 OWNS THE LAST SENTENCE — the design lesson: **enter fields that let you cross check.**
+    That is what every instrument in this chapter actually relies on, stated as advice.
+
+★★★ AND IT HAS A WORKED EXAMPLE FOUND THE SAME DAY (2026-08-28) — the Creamsicle Ely row.
+  - The date was written `2023-04-14`. It should be `2023-03-14` (Kim: an uncorrected typo).
+  - NO instrument in the suite could see it. All six take the DATE as given (Finding 047).
+  - What caught it was a REDUNDANT FIELD the log happens to carry: the odometer. Sorted by date,
+    it ran backwards by 1,410 miles. **The odometer was acting as a second clock.**
+  - ★ AND KIM'S OWN SUGGESTION WOULD HAVE CAUGHT IT INSTANTLY, WITH NO ANALYSIS AT ALL:
+    2023-04-14 was a **Friday**; 2023-03-14 was a **Tuesday**. A day-of-week column and the row
+    contradicts itself on the page, at the moment of writing, where it is cheapest to fix.
+  - THE ARGUMENT THIS MAKES: redundancy is not duplication. A cross-check field is a second,
+    cheap measurement of the same event, and it is the only thing that can catch an error in a
+    field every test trusts. **You cannot audit your way out of a missing column.**
+  - ★★ AND IT DID CARRY A SECOND ERROR, IN THE CITY. The sheet said `Ely NV`; the receipts say
+    `Las Vegas`. Caught by the geography instrument: Ely -> Beatty is 191 miles great-circle
+    against 136 on the odometer, and **a great-circle distance is a floor** -- no road covers it.
+    Corrected as C05. **TWO ERRORS IN ONE ROW, each invisible to every test but one, and each
+    caught by a DIFFERENT redundant field** -- the odometer for the date, the map for the town.
+  - ★★★ THE ENDING THE CHAPTER WANTED, AND KIM FOUND IT: **the fuel receipts print the odometer.**
+    His words: *"a duplication of data I had forgotten about."* A FOURTH independent record, and
+    the only one that duplicates the COUNTER -- the AMEX statements can settle gallons, price and
+    merchant, never a counter reading. **So the cross-check field he recommends had been printing
+    itself at the pump for years.** The advice is not only about designing the next sheet; half of
+    it is FIND THE REDUNDANCY YOU ALREADY HAVE. That is a better close than the advice alone,
+    and it ends in recovery rather than in a warning.
+  - ⚠ THE INSTRUMENT HAS A FLOOR AND THE CHAPTER MUST SAY SO. Parowan -> Las Vegas reads 167
+    odometer against 172 great-circle, ratio 0.97 -- also "impossible", and NOT a finding: a fill
+    on the north-side I-15 corridor is ~12 miles closer and the ratio becomes 1.03. **A shortfall
+    smaller than the spread of the city itself is coordinate imprecision.** 0.71 is not. Finding 036.
+
 -->
 

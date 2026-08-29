@@ -2070,3 +2070,82 @@ does. Recovery is one line: re-`source()` `pkm_health.R`.
 **Wider point:** a name collision between a config object and a convenience variable is invisible
 until something dereferences it. Nothing written to disk was affected -- all writes this session
 used explicit paths and were verified by content.
+
+
+### ⚠ SECOND INSTANCE, 2026-08-28 -- `pi`
+
+Bound `pi <- "G:/My Drive/Projects_Index/project_index.md"` as a path shortcut while editing the
+index. **`pi` is base R's mathematical constant.** Every great-circle calculation after that point
+failed with *"non-numeric argument to binary operator"*, and the failure was three calls removed
+from the cause -- I checked the coordinates, the function, and `sin`/`cos` before checking `pi`.
+
+**What made it survivable:** the earlier great-circle figures had been computed BEFORE the binding
+(a `rm(list = ls())` in a verification sweep had restored base `pi` in between), and they were
+re-verified identical after `rm(pi)`. **No reported number was wrong** -- but only by luck of
+ordering, and the check cost more than the discipline would have.
+
+**The rule widens.** Finding 046 said never bind a bare `PKM`. The general form: **never bind a bare
+short name at all.** Path shortcuts take a suffix -- `PI_PATH`, `SC_DIR`, `PKM_DIR`. The dangerous
+names are the short ones that already exist: `pi`, `T`, `F`, `c`, `q`, `df`, `data`, `sd`, `var`,
+`max`. **A masked constant does not error where it is bound; it errors somewhere else entirely**,
+which is what makes it expensive.
+
+**And note the shape:** this happened in the same session that wrote up "redundancy is not
+duplication". The debugging worked because the numbers had an independent second computation to
+be checked against. Same principle, applied to my own working.
+## Finding 047 -- AN INSTRUMENT IS BLIND TO THE FIELD IT TAKES AS GIVEN, AND A SORT KEY HIDES ERRORS IN ITSELF (2026-08-28)
+
+The Smart_Car fuel audit had six instruments -- pump identity, economy, geography, contiguity,
+price family, and Kim's slashed zeros. Every major error was caught by exactly one of them, and
+the toolkit was treated as complete. **All six take the DATE as given.** Each tests a row against
+arithmetic, against its neighbours, or against the map; none of them ever asks whether the date is
+right. So a wrong date was not a hard case for the toolkit -- it was **outside its range entirely**,
+and it sat in the data through an ingest, a full audit and a published set of results.
+
+**The seventh instrument is one line: sort by DATE and require the odometer to increase.**
+TwoRed passes on all 294 rows across seven years. Creamsicle failed exactly once -- a fill labelled
+`2023-04-14` sitting 1,410 miles below one dated 2023-03-26. Kim ruled it an uncorrected typo, month
+4 for 3, and it is now C04 in the corrections file.
+
+**★ THE SHARPER HALF: the ingest sorted by ODOMETER, with the comment ORDER BY THE COUNTER.** That
+was a good decision for computing leg mileage, and it is exactly what made the error invisible --
+**sorting by a field cannot reveal an error in that field, because the sort imposes the very order
+you would be checking.** The data looked monotonic because it had been made monotonic.
+
+**And the claim in the record was true, which is why nobody caught it.** `proj_Smart_Car.md` said
+*odometer 30,290 -> 58,903, strictly increasing*. True in odometer order. False in date order. Not a
+wrong statement -- a statement answering a narrower question than its wording suggests. **A true
+sentence can still be load-bearing in a direction it was never tested in.**
+
+**Rules.**
+1. **For every instrument, name the field it trusts.** That field is its blind spot, and the blind
+   spots of a whole toolkit can coincide.
+2. **Never validate along the sort key.** Check monotonicity in an ordering you did NOT impose.
+3. **A figure is an audit instrument.** This was found by building `@fig-dwell`, which needed date
+   ordering for the first time. Plotting data asks it questions no test in the suite was asking.
+
+**★★ COROLLARY, same day, from Kim: THE REDUNDANCY MAY ALREADY EXIST AND BE FORGOTTEN.** The row
+also carried a wrong CITY (Ely for Las Vegas). He settled it from the station receipts -- **and the
+receipts print the ODOMETER**, which he had forgotten. That is a fourth independent record, and the
+only one that duplicates the counter: the AMEX statements can check gallons, price and merchant,
+never a counter reading. **So before declaring a field uncheckable, inventory the redundant records
+you already hold.** Fourth time this has paid out on this project (AMEX, Styx River Road, the
+Florida photograph, the receipt odometer) and every time the answer was forgotten, not lost.
+
+## Finding 048 -- ON DRIVE STREAM, OVERWRITING AN EXISTING FILE CAN FAIL WHILE CREATING A NEW ONE SUCCEEDS (2026-08-28)
+
+`write.csv()` over an existing file on `G:` failed with *"cannot open the connection"*, repeatedly.
+The directory was writable, a NEW file in the same folder wrote fine, and `file.remove()` on the
+target returned `FALSE`. The file was not corrupt and nothing was wrong with the data.
+
+**What worked: write to a temporary name in the same folder, then `file.rename()` over the target.**
+`file.rename` succeeded where both `write.csv` and `file.remove` failed.
+
+**This is the ground-truth rule in a new costume.** A `G:` path can refuse a WRITE while reporting
+a correct name, size and mode, and `file.access(dir, 2)` says the directory is writable. **Do not
+read a failed overwrite as a broken file or a permissions problem** -- it is Drive holding the
+existing handle.
+
+**Rule: write-temp-then-rename is the safe overwrite pattern on `G:`.** And verify by reading
+CONTENT back afterwards, never size -- `file.remove` returning FALSE while the rename succeeded is
+exactly the kind of half-signal that would mislead anyone checking the return values alone.

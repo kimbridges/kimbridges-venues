@@ -1,0 +1,6 @@
+"errata","odometer","field","old_value","new_value","tier","source"
+"C01","45013","ppg","4.399","3.999","hypothesis","Arithmetic + contiguity 2026-08-19: the $/gal cell is identical to the Gallons cell; 17.59/4.399 = 3.999. Confirm from a card or receipt."
+"C02","41910","ppg","6.095","6.059","hypothesis","Arithmetic 2026-08-19: digit transposition 59<->95; 3.872 x 6.059 = 23.460 exactly. Confirm from a card or receipt."
+"C03","36920","ppg","3.499","3.449","hypothesis","Arithmetic 2026-08-19: single-digit slip 4->9 in the third decimal; 5.542 x 3.449 = 19.11 exactly. Confirm from a card or receipt."
+"C04","47168","date","2023-04-14","2023-03-14","confirmed","KIM'S RULING 2026-08-28: an uncorrected typo, the month should be 3. Found by the odometer-as-clock instrument -- the row sits 1,410 mi below a fill dated 2023-03-26. Day unchanged."
+"C05","47168","city","Ely","Las Vegas","confirmed","KIM 2026-08-28, FROM THE STATION RECEIPTS: the town is Las Vegas, not Ely. Cross-checked against the ODOMETER PRINTED ON THE FUEL RECEIPT -- a duplication of data he had forgotten the receipts carry. Flagged by the geography instrument: Ely->Beatty is 191 mi great-circle against 136 on the counter, and a great-circle distance is a floor. State NV unchanged."

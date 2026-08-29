@@ -11,6 +11,18 @@ spans <- regimes_data()
 low  <- round(min(spans$mi_day[spans$kind == "between"]), 1)
 stray <- sum(spans$mi_day[spans$kind == "between"] > 20)
 slow  <- sum(spans$mi_day[spans$kind == "trip"] < 20)
+source("R/dwell_data.R")
+source("R/fig_dwell.R")
+dwell <- dwell_data()
+## share of each car's covered days falling in intervals of a given length
+dshare <- function(car, lo, hi = Inf) {
+  z <- dwell[as.character(dwell$car) == car, ]
+  round(100 * sum(z$days[z$days >= lo & z$days < hi]) / sum(z$days))
+}
+tw_month  <- dshare("TwoRed", 30);     cs_month  <- dshare("Creamsicle", 30)
+tw_oneday <- dshare("TwoRed", 1, 2);   cs_oneday <- dshare("Creamsicle", 1, 2)
+tw_middle <- dshare("TwoRed", 2, 30);  cs_middle <- dshare("Creamsicle", 2, 30)
+stand <- dwell[which.max(dwell$days), ]
 ```
 
 ```{r}
@@ -82,11 +94,35 @@ Now look at four things, in the order they surprised me.
 
 **Wisconsin sits alone in the gap.** One interval, in neither cloud, at about eighteen miles a day. That is the winter Creamsicle spent doing what TwoRed had done for years at Lake San Marcos, only more of it, and further — doctor visits, and the shopping, and getting there and back.
 
-**And now the part that is not there.** Look along the bottom of the picture, below the line marked one mile a day. **Nothing.** In two cars and twenty years of calendar, there is not a single stretch, however long, in which the car sat still. The slowest interval either car ever had still ran at `r low` miles a day.
+**And now the part that is not there.** Look along the bottom of the picture, below the line marked one mile a day. **Nothing.** In two cars and twenty years of calendar, almost no period ran below a mile a day, and not one of them was the car sitting still. The slowest span on this chart still ran at `r low` miles a day.
 
-That empty region is where *parked* would live, if the word meant what people take it to mean. **It has no points in it, because that is not what the cars were doing.** They were on station: waiting, and being used a little while they waited, which is a different thing altogether.
+That empty region is where *parked* would live, if the word meant what people take it to mean. **It is all but empty, because that is not what the cars were doing.** They were on station: waiting, and being used a little while they waited, which is a different thing altogether.
 
 **And at Lake San Marcos we know what the small motion was.** It was the runs round the neighbouring streets for the things she needed, and the things she'd never have asked for unless we offered. A couple of miles a day is what visiting your mother looks like, measured with an odometer.
+
+## How much of a life is standing still
+
+That chart is about pace. This one is about time, and it asks a blunter question: where did the sixteen years actually go?
+
+Every fill-up carries a date, so the gap between one fill and the next is a stretch when the car wasn't drinking. There are hundreds of them. But counting them tells you almost nothing, because more than half are a single day — a fill yesterday, a fill today, which is just what driving looks like. So don't count the stretches. Weigh them. Ask how much of the car's life each length of stretch is responsible for.
+
+```{r}
+#| label: fig-dwell
+#| fig-cap: "Where the days went. Across: how long the car stood between one fill and the next. Up: the share of all the days each log covers that sit inside a stretch of that length. An interval is bounded by fills, so this measures time between drinks, not time asleep — a car that ran 300 miles on the last day of a long stretch still reads as one long stretch. The two records are different lengths, which is why both panels show shares rather than counts."
+#| fig-width: 7.5
+#| fig-height: 4.8
+fig_dwell(dwell)
+```
+
+**The weight is all on the right.** `r tw_month`% of the days TwoRed's log covers sit inside a single unbroken stretch of a month or more. For Creamsicle it's `r cs_month`%. The driving days — those one-day gaps that make up most of the *count* — come to `r tw_oneday`% and `r cs_oneday`% of the *calendar*. A car with a reputation for short hops, and the short hops are a rounding error in its own life.
+
+**And the middle is nearly empty.** Between a couple of days and a month there's `r tw_middle`% of TwoRed's life and `r cs_middle`% of Creamsicle's. The car was either being driven or it was somewhere waiting to be. There isn't much of a third state, and nothing chose that shape on the car's behalf — it falls out of what the two of them were for.
+
+That is the same claim the last chart made about pace, reached from the opposite direction. One says a trip and a not-trip are two populations with a gap between them. This one says the not-trips are where the life went.
+
+**Both cars have the same shape**, and that is worth a moment. They're different cars, a decade apart, doing different jobs on different coasts, and one of them was bought for a reason the other never had. It didn't matter. The pattern isn't TwoRed's peculiarity. It's what happens when you keep a car somewhere so that it's there when you fly in.
+
+The longest single stand in either record ran `r stand$days` days and covered `r stand$miles` miles. Which is not nothing — and the fact that it isn't nothing is the whole of the last section.
 
 ## What happens when the space goes
 

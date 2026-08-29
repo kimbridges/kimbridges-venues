@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-08-24 21:19 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-08-28 21:44 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -8,12 +8,12 @@ _Generated 2026-08-24 21:19 by pkm_health.R. Regenerate; do not edit._
 - **Rendered pages with no source:** 0
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 4
-- **Files over size budget:** 2
-- **Active Focus block:** 2.3 KB (budget 6)
+- **Files over size budget:** 3
+- **Active Focus block:** 5.9 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 6
 - **Legacy pages awaiting account deletion:** 58
-- **Build scratch in C:/temp:** 6 folder(s), 3 MB
+- **Build scratch in C:/temp:** 7 folder(s), 3 MB
 
 ## Reconciliation failures
 
@@ -37,13 +37,14 @@ None.
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
 | proj_seasonality.md | PROJECT | 51.6 | 45 | 6.6 | TRUE |
+| proj_Smart_Car.md | PROJECT | 48.6 | 45 | 3.6 | TRUE |
 | proj_audio.md | PROJECT | 47.3 | 45 | 2.3 | TRUE |
 
 ## Active Focus size
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 2.3 | 6 | -3.7 |
+| 8 | 5.9 | 6 | -0.1 |
 
 ## Venues without a source repo
 
@@ -70,12 +71,13 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| smartcar_docs_20260821 |  3.2 | 3 | FALSE |
-| pkm_edits_20260811 | 13.5 | 0 | FALSE |
-| pkm_snapshots | 22.0 | 0 | TRUE |
-| smartcar_fuelfix_20260817 |  3.4 | 0 | FALSE |
-| timelapse | 10.9 | 0 | FALSE |
-| venuemirror_clone_2026-08-03 | 22.2 | 0 | TRUE |
+| smartcar_docs_20260821 |  7.2 | 3 | FALSE |
+| creamsicle_clean_20260828 |  0.0 | 0 | FALSE |
+| pkm_edits_20260811 | 17.5 | 0 | TRUE |
+| pkm_snapshots | 26.1 | 0 | TRUE |
+| smartcar_fuelfix_20260817 |  7.4 | 0 | FALSE |
+| timelapse | 15.0 | 0 | TRUE |
+| venuemirror_clone_2026-08-03 | 26.3 | 0 | TRUE |
 
 ## Legacy pages by platform
 
@@ -91,4 +93,4 @@ None.
 None.
 
 ---
-_Ran in 100.2 s._
+_Ran in 98.9 s._

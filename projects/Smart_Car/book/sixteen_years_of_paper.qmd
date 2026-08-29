@@ -19,5 +19,22 @@ MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_lo
 - The crossbar that was NOT a correction: a bitonal-thresholding artifact in a scan. 'Youngtown arrival is 8:41. My writing was very light.' The original settles it; the scan cannot.
 - Two scans of the same page are not the same evidence: a marginal annotation ('Relocation 1141 miles') survived in one copy and not its twin.
 - Kim: 'it's an electronic shoebox. I scan paper. All paper.'
+
+★★★ KIM'S STATEMENT, 2026-08-28 — VERBATIM. This is the chapter's thesis, in his words:
+  "While this is a story about two cars, it is as much a story about data. Specifically the kind
+   of data that's added now and then. Often under difficult conditions, like when you have cold,
+   shivering hands. Or times when you're in a rush. It's easy to write down a wrong number.
+   Transcription, too, often comes when you probably don't want to be typing a lot of numbers,
+   some of which are hard to read. It is those distractions that can break the flow and cause
+   another form of data error. The bottom line is that these types of data are difficult to get
+   correct. When possible, enter fields that will let you cross check values (e.g., not just the
+   date; add the day of the week)."
+  ⚠ He says TWO cars, and for the data chapters that is right — TwoRed and Creamsicle carry the
+    logs. Do not silently upgrade it to four.
+  ★ TWO KINDS OF ERROR, and he separates them: the FIELD error (cold hands, haste) and the
+    TRANSCRIPTION error (hard-to-read figures, broken flow). Different causes, different signatures.
+    The Foreword now carries a short version of the first half; this chapter owns the full argument.
+  → CH.8 OWNS: the conditions under which the record was made. His two error classes are the
+    chapter's spine, and the slashed zero is the worked example of the first.
 -->
 

@@ -1,5 +1,5 @@
 # PROJECT: Smart_Car
-_Last updated: 2026-08-16_
+_Last updated: 2026-08-28_
 _Status: Active_
 _Focus readiness: Ready_
 _Tags: intake, data-recovery_
@@ -19,7 +19,20 @@ the refutation stronger -- not one exceptional car on one exceptional journey, b
 
 ## Current Status
 
-**★★★ THREE PIECES DRAFTED (2026-08-21). The Foreword and chapters 1 and 2 exist as prose.**
+**★★★ FOUR PIECES DRAFTED. The Foreword and chapters 1, 2 and 3 exist as prose — about 9,000 words. ★ KIM HAS READ CH.3 AND APPROVED IT (2026-08-28).**
+
+**`the_anchor.qmd`** — ch.3, ~3,400 words, TWO figures. Seven sections, ordered story → method →
+picture → consequence → exception. **`@fig-regimes`** (50 spans, both cars, log-log with iso-rate
+diagonals, so a regime is a BAND not a threshold) and, added 2026-08-28, **`@fig-dwell`** —
+**where the days went.** 346 fill-to-fill intervals, log x, faceted by car, y a SHARE of each
+car's covered days. **TwoRed 78% of its days in stretches of a month or more, Creamsicle 75%;
+the driving days are 5% and 7% of the calendar; the middle (2–29 days) is 17% and 18%.**
+**★ BOTH CARS HAVE THE SAME SHAPE** — a decade apart, different coasts, different jobs — which
+makes the anchor pattern the FLEET's and not TwoRed's. It reproduces the independently-recorded
+86% (≥14 days) and Creamsicle's 1,123 covered days exactly, on first run.
+**★★ THE FORM CHANGED ON CONTACT WITH THE DATA:** a frequency diagram counting INTERVALS is
+swamped by a one-day spike (57% of intervals) and hides the very thing the chapter is about.
+Counting DAYS asks the chapter's question instead. `R/dwell_data.R`, `R/fig_dwell.R`.
 
 **`index.qmd`** — Foreword, ~1,150 words: the errand car, the parking spot, **the four cars introduced by name**, Hawaii, the three layers, and the scope boundary as subject. **`small_cars.qmd`** — ch.1, ~720 words: how small, why it's that shape, **TwoFer's whole life covered in four of TwoRed's driving days**, and four decisions over sixteen years. **`is_it_safe.qmd`** — ch.2, ~2,300 words, two figures: *cute* as the opener, the demonstration, **both close calls as one failure**, the 100,999-mile denominator, the wide tires priced rather than judged.
 
@@ -58,15 +71,31 @@ _Given by Kim 2026-08-12. This replaces the single-car framing entirely._
 
 **Corrections live BESIDE the sources as a derived layer; sources are never edited in place.** `data/TwoRed_log_errata.csv` (65 entries, each with a basis and a status) is the correction of record; `twored_ingest.R` applies it. **Two rules that cost something to learn: an errata entry keys to a ROW, never a LABEL** (`Big Springs, Texas` appears three times and means three different places), and **reconstruct DISTANCES, never ODOMETER READINGS.** Full write-up in `logs/proj_Smart_Car_log.md`.
 
-## ★ THE AMEX STATEMENTS ARE A THIRD INDEPENDENT RECORD (2026-08-18) — in the log
+## ★ THE AMEX STATEMENTS ARE A THIRD INDEPENDENT RECORD (2026-08-18) — AND THE RECEIPTS ARE A FOURTH (2026-08-28)
 
 Kim scans everything. The AMEX statements and pump receipts recovered three contaminated 2016 rows, and when the paper log turned up months later it **matched them exactly on gallons and cost.** **Three independent records agreeing to the thousandth of a gallon.** The lesson was the search, not the data: it was the wrong KIND of search, not missing data.
 
-## ★★ THE AUDIT TOOLKIT — SIX INSTRUMENTS (2026-08-18) — full write-up in the log
+**★★★ FOURTH RECORD, 2026-08-28 (Kim): THE FUEL RECEIPTS PRINT THE ODOMETER.** *"a duplication of
+data I had forgotten about."* He used it to settle the Ely/Las Vegas city error. **This is the only
+record that duplicates the COUNTER** — AMEX can settle gallons, price and merchant, never a counter
+reading — **so it can audit the one field every other instrument treats as ground truth.**
+**Finding 045 for the fourth time** (AMEX, Styx River Road, the Florida photograph, this): every
+time the redundant record existed and had been FORGOTTEN rather than lost. **Rule: inventory the
+redundant records before declaring a field uncheckable.**
+
+## ★★ THE AUDIT TOOLKIT — SEVEN INSTRUMENTS (2026-08-18; seventh added 2026-08-28) — full write-up in the log
 
 **pump identity** (gallons × $/gal = cost) | **economy** | **geography** (great-circle vs odometer) | **contiguity** | **price family / same pump** | **Kim's slashed zeros** — a physical mechanism, so it predicts error DIRECTION (Finding 033).
 
 **None is redundant: every major error was caught by exactly one.** The decisive pairing is contiguity + arithmetic — where two adjacent rows share a value, **the row that BALANCES is the source and the row that FAILS is the copy.**
+
+**★ SEVENTH, added 2026-08-28 — THE ODOMETER AS A CLOCK.** Sort by DATE and require the odometer
+to increase. The other six take the date as GIVEN and test the row against arithmetic, geography or
+its neighbours, so **none of them can see a wrong date.** **TwoRed is CLEAN across all 294 rows.**
+Creamsicle fails **exactly once** — the Ely NV row dated `2023-04-14` sits 1,410 miles below a fill
+dated 2023-03-26 — and the odometer localises it between Parowan 03-13 and Beatty 03-14 without
+settling the day. **Found by a FIGURE, not by an audit**, because the figure needed date ordering.
+**Kim ruled BOTH errors in that row, 2026-08-28.** The date was a month typo (**C04**, 4->3); **and the CITY was wrong too — `Ely` is really `Las Vegas` (C05), settled FROM THE STATION RECEIPTS.** Caught by geography: Ely→Beatty is 191 mi great-circle against 136 on the counter, and a great-circle distance is a FLOOR. **Two errors in one row, each caught by a different redundant field.** Applied via a new `Creamsicle_corrections_machine.csv` + errata application in `creamsicle_ingest.R` (mirroring TwoRed; hypotheses C01-C03 stay unapplied), and **the odometer-as-clock check now runs inside the ingest.**
 
 **Three standing limits.** For the 0/8 class **the scan is not evidence**. A **high road/straight-line ratio is sometimes a story**, not a defect. And every instrument has a **floor** (Finding 036). **★ The geography instrument also works in reverse: it RECOVERS what the log never named — Delaware, and probably Rhode Island (Finding 043).**
 
@@ -170,7 +199,7 @@ On the BACK of the last fuel sheet, circled: **`5/22/17  71,283  LV Seattle @ Ma
 
 `creamsicle_ingest.R` reads the exported workbook and emits `Creamsicle_fuel_clean.csv` (**173 rows**) and `Creamsicle_trip_clean.csv` (**86 legs**). Same architecture as TwoRed: **the source is never edited**, interleaved total/average rows are skipped programmatically, and **the skip counts are reported** (196→173, 119→86, 10→6) per Finding 032.
 
-**It arrived clean.** Odometer **30,290 → 58,903, strictly increasing.** Pump identity: **143 of 170 US rows balance to under half a cent; exactly THREE fail by 2c or more**, and all three resolve — **C01 Oxnard** $/gal 4.399→3.999, **the cell IDENTICAL to the Gallons cell**, caught by contiguity; **C02 Miranda** a 59/95 transposition; **C03 Hays** 3.499→3.449. My recomputed MPG matches Kim's own column to **0.005**. **The three BC rows carry litres and CAD alongside gallons — the unit problem TwoRed still has is already solved here.**
+**It arrived clean.** Odometer **30,290 → 58,903, strictly increasing — and, since 2026-08-28, in DATE order too.** It failed that second test exactly once (the Ely row, a month typo Kim ruled on and C04 now corrects); **the two orderings are not the same claim**, and only the first had ever been checked. Pump identity: **143 of 170 US rows balance to under half a cent; exactly THREE fail by 2c or more**, and all three resolve — **C01 Oxnard** $/gal 4.399→3.999, **the cell IDENTICAL to the Gallons cell**, caught by contiguity; **C02 Miranda** a 59/95 transposition; **C03 Hays** 3.499→3.449. My recomputed MPG matches Kim's own column to **0.005**. **The three BC rows carry litres and CAD alongside gallons — the unit problem TwoRed still has is already solved here.** **⚠ "Resolve" means an arithmetic hypothesis was found, NOT that the data carries the fix: C01-C03 are `tier = hypothesis` in `Creamsicle_corrections_machine.csv` and are deliberately NOT applied. The clean CSV still holds the logged $/gal for those three rows until a card or receipt settles them.**
 
 ### ★★★ AND IT MEASURES THE THING TWORED CANNOT
 
@@ -243,7 +272,8 @@ _Written 2026-08-12; item 6 added 2026-08-20._
 - **`data/Fuel_and_Trip_Logs/*.pdf` — 22 scans, 2010-2017, Kim's paper field sheets.** Primary source behind all 65 errata. **Not in the mirror — Finding 038.**
 - **13 trip-log CSVs, 139 legs** (132 timed), each carrying time, city and temperature at BOTH ends, both odometers, written distance, odometer delta, timezone shift, elapsed hours, gross mph, and per-row notes.
 - `data/TwoRed_fuel_clean.csv` (294), `TwoRed_log_errata.csv` (65), `TwoRed_fuel_timetemp.csv` (134), `TwoRed_city_timezones.csv` (121 cities).
-- **Creamsicle:** `Creamsicle_fuel_clean.csv` (173), `Creamsicle_trip_clean.csv` (86), `Creamsicle_log_errata.csv` (3); built by `creamsicle_ingest.R`.
+- **Creamsicle:** `Creamsicle_fuel_clean.csv` (173), `Creamsicle_trip_clean.csv` (86), `Creamsicle_log_errata.csv` (the human-readable record) and — **NEW 2026-08-28** — **`Creamsicle_corrections_machine.csv`** (C01-C05; the file `creamsicle_ingest.R` actually applies, keyed to the ODOMETER, `tier` gating what is applied). `creamsicle_ingest.R` now **applies errata with a refusing guard and runs the odometer-as-clock check.**
+- **`book/R/dwell_data.R` + `book/R/fig_dwell.R` — NEW 2026-08-28.** The `@fig-dwell` pair: fill-to-fill intervals for both cars, and the time-weighted figure built from them. `dwell_data()` reports its own skip counts in `attr(, "same_day")` and `attr(, "backward")`.
 - `source/` — `Smart_Car_master_dictionary.pdf` (expedition names, dates, targets); `Smart_Car.docx` (10.3 MB, largest section is the already-published Arctic Circle Challenge — **a quarry, not a draft**); `Smart_Car_2016.pptx`; `charter_2026-05-08.md`, kept verbatim, superseded on scope and Chapter 5.
 - `images/Creamsicle/` — 37 geotagged trip photos + `Creamsicle_profile.jpg`. **Backstop for the deleted `creamsicle.jpg`: a copy survives at `kimbridges-stories\underway\Smart_car\` — do not delete that folder without checking.**
 
@@ -351,12 +381,12 @@ He withdrew his own West Virginia answer after checking a map: **different highw
 **Figures wired:** `@fig-day-one` (the day it arrived, on the original narrow tires, **with the silver safety cell visible** — the photo does the pointing the text describes) and `@fig-wide-wheels` (after Smart Madness; visibly wider). **Book images live in `book/images/`** so Quarto copies them into the output; the canonical archive stays in `Smart_Car/images/`. ⚠ **`*.jpg` is in the mirror's `.gitignore`, so photographs are NOT in the versioned backup** — Kim's own copies are the record.
 
 ## Next Steps
-1. **★★★ KIM — CHAPTER 1 NEEDS FIVE THINGS ONLY HE HAS.** (a) **The physical experience** — getting in and out, two people and a week's luggage, headroom, and the early automated-manual gearbox with its famous pause. (b) **Why a Smart specifically** in 2010; there were other small cars. (c) **Why lease TwoFer at all** in 2014, and what that settled. (d) **BORDEAUX IS A BLANK** — year, character, and how electric changes the calculation. (e) **Does he still have TwoRed?** The fleet table says owned.
-2. **KIM:** the Yukon pothole in his own words — the last thin patch in ch.2. Also the tree-tunnel stretches, and the remaining privacy calls (the niece at Mentone; the St Louis business). **The Eugene colleague is ruled NOT NAMED.**
-3. **THEN ch.3, `the_anchor.qmd`** — the most material of any undrafted chapter, and the Foreword already sets it up.
-4. **TASK before any figure is printed:** re-derive the wide-tire interval with a WRITTEN specification. **A number that cannot be reproduced is not sourced.**
-5. **SMALL TASK:** TwoFer's 1,209 miles is a TYPED constant in ch.1 and ch.2 (commented as such). **The `TwoFer Gas Log` Sheet is live-only and never ingested** — 7 fills would take ten minutes and put the last car in the corrected dataset.
-6. **DEFERRED UNTIL A CHAPTER ASKS.** Canada2014 units, Creamsicle's timezone table, `Expedition_ID`, the constellation maps, the ~141 extra fill temperatures in the live `TwoRed_fuel` Sheet.
+1. **★★★ DRAFT ch.4, `expeditions.qmd`.** Scaffold populated, and **the naming question that gated it is answered** (Kim, 2026-08-28: standing rule as written). Topic note in the Active Focus block.
+2. **KIM — still only he has these:** the Yukon pothole in his own words (the last thin patch in ch.2); the tree-tunnel stretches by name; Bordeaux's character and the "last ones the dealership sold" detail for the Afterword.
+3. **TASK before any figure is printed:** re-derive the wide-tire interval with a WRITTEN specification. **A number that cannot be reproduced is not sourced.**
+4. **SMALL TASK:** TwoFer's 1,209 miles is still a TYPED constant in ch.1 and ch.2. The `TwoFer Gas Log` Sheet is live-only and never ingested — 7 fills, ten minutes, and the last ICE car joins the corrected dataset.
+5. **OPEN, low cost, high value:** C01-C03 are still `hypothesis` and unapplied. **Kim has now shown the station receipts carry what settles them** — the same source that closed C05. Three $/gal values, one look at the receipts.
+6. **Everything else lives in `deferred.md`** — Canada2014 units, Creamsicle's timezone table, `Expedition_ID`, the constellation maps, the ~141 extra fill temperatures in the live `TwoRed_fuel` Sheet, and the open questions for Kim.
 7. **⚠ `*.jpg` is gitignored in the mirror** — photographs are not in the versioned backup.
 
 ## Collaborators / Dependencies

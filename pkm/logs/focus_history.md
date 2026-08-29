@@ -1,5 +1,22 @@
 # Focus History and Change Log
 
+**Active Focus (2026-08-24, close): "Smart_Car" -- CHAPTER 3 IS DRAFTED. ⚠ KIM IS OFF-LINE UNTIL ~2026-08-27 (85th birthday, two days at the Kahala).**
+
+**Four pieces now stand: Foreword, ch.1, ch.2, ch.3 -- about 9,000 words.** Chapter 3 `the_anchor.qmd` is **3,140 words in seven sections**, ordered story -> method -> picture -> consequence -> exception: *A stall that came free / What counts as a trip / The shape of sixteen years, on one picture / What happens when the space goes / The one time it was actually parked / A garage full of stuff / Why not just rent one?* **Kim has not read it yet.**
+
+**★★★ THE OPERATIONAL-DEFINITION THREAD IS NOW THE BOOK'S SPINE.** Kim: *a term is defined by how it is measured.* Six-plus instances: a leg is a tankful; width is across folded mirrors or it is not; boot depth is the opening or what fits; 49 states visited, 45 witnessed; a trip is what he decided to record; **on station is not stationary.** Chapter 1 plants it, chapter 3 uses it, chapter 9 should generalise it.
+
+**`@fig-regimes` is the session's centrepiece** -- 50 spans, both cars, log-log with iso-rate diagonals, so a regime is a BAND not a threshold. The clouds do not touch (no trip under 20 mi/day, only 5 intervals over it, and those 5 are the crossings nobody logged). Wisconsin sits alone in the gap. **And nothing at all sits below 1 mile a day** -- the empty floor is where *parked* would live if the word meant what people assume. `R/regimes_data.R`, `R/fig_regimes.R`.
+
+**THE PAYOFF LINE, and the reason the chapter works:** *"A couple of miles a day is what visiting your mother looks like, measured with an odometer."* The 2.6 mi/day stops being evidence about a definition and becomes the thing it always was.
+
+**Chapter 2 also closed today:** the wide-tire debt is paid by **printing the instability** (four specifications, +1.8 / +3.8 / -1.0 / -1.7, sign flipping) with the specification living in the chunk. And the headline number moved: **the two odometers stop 24 miles short of a hundred thousand** -- the fuel logs miss 186 miles, and they are each car's final journey.
+
+**NEXT: Kim reads ch.3.** One scaffold item left and it is mine -- the 8 of 13 logged trips that begin AND end at Lake San Marcos. Then ch.4 `expeditions.qmd`. **Standing rule: institutions with a public face may be named; individuals and small private firms may not.**
+
+
+---
+
 **Active Focus (2026-08-22, close): "Smart_Car" -- CHAPTERS 1 AND 2 ARE FINISHED. CHAPTER 3 HAS ITS THESIS, AND IT REFRAMES THE BOOK.**
 
 **★★★ KIM, tonight: "Having a car at the right location was the point of having the car. It wasn't that we wanted to drive. The drives were an additional feature."** In a book about 100,000 miles, the middle chapter says the miles were not the point. **The dormancy figure stops being a curiosity and becomes the thesis: a parked car was doing its job** -- insurance, peace of mind, the ability to reach his mother quickly. 225 driving days of 2,495: **TwoRed did not move on 91% of its mainland life.** Creamsicle 89%.

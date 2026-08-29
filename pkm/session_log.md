@@ -11,6 +11,120 @@ Mechanism 4.
 
 ---
 
+## 2026-08-28 -- CH.3 APPROVED AND GAINS A SECOND FIGURE; A SEVENTH AUDIT INSTRUMENT, FOUND BY A CHART
+
+**Active focus at start and close:** Smart_Car. Kim opened the PKM, confirmed he had read chapter 3 and approved it, and chose the parked-periods figure over drafting ch.4.
+
+### The figure, and why its form changed
+
+Kim's idea from 2026-08-22 (*"Think: graphics"*): the intervals between fills are the times the car stood still. Built as `R/dwell_data.R` + `R/fig_dwell.R`, wired into `the_anchor.qmd` as **`@fig-dwell`**.
+
+**The frequency diagram he asked for does not work, and rendering it is how I found out.** Counting INTERVALS puts 57% of the mass in a one-day spike and the standing time -- the entire subject of the chapter -- disappears behind it. **Counting DAYS instead asks the chapter's own question:** not how often did the car stand, but how much of its life did it spend standing. Y is a SHARE of each car's covered days, because the two records are different lengths (2,495 against 1,123).
+
+**What it shows.** TwoRed **78%** of covered days in stretches of a month or more, Creamsicle **75%**. Driving days -- the one-day gaps -- are **5%** and **7%** of the calendar. The middle, 2 to 29 days, is **17%** and **18%**; the three buckets sum to 100% for both cars.
+
+**★ BOTH CARS HAVE THE SAME SHAPE.** Different decades, different coasts, different jobs, one of them bought for a reason the other never had. The anchor pattern is the FLEET's, not TwoRed's -- which is a fleet-thesis result arrived at without any argument about the fleet.
+
+**Two independent cross-checks passed on the first run:** the derivation reproduces the separately-recorded **86%** (TwoRed, stretches of two weeks or more) exactly, and Creamsicle's covered days come to **1,123**, the number already in `proj_Smart_Car.md` from the trip narrative.
+
+Palette: dataviz slot 1, validator run, all checks PASS; INK tokens shared with `fig_regimes()`. Chapter renders clean; labels unique, no dangling refs.
+
+### ★★★ A SEVENTH AUDIT INSTRUMENT -- THE ODOMETER AS A CLOCK
+
+**Sort the fuel log by DATE and require the odometer to increase.** The six existing instruments each test a row against arithmetic, geography or its neighbours, and every one of them takes the DATE as given -- so none of them can see a wrong date. **This one was found by a figure, not by an audit**, because the figure needed date ordering and the ordering produced an interval of -1,410 miles.
+
+**TwoRed: clean across all 294 rows.** Seven years of paper kept at pumps, and the dates are in order. That is a result worth ch.9.
+
+**Creamsicle: exactly one failure.** The `2023-04-14 Ely NV` row (odo 47,168) sits 1,410 miles below a fill dated 2023-03-26. The odometer localises it between Parowan 03-13 (47,001) and Beatty 03-14 (47,304), and Ely lies on that road; a month-digit slip 03->04 is the obvious reading.
+
+**But it is a LOCALISATION, not a correction, and I stopped there.** Ely -> Beatty is 136 odometer miles against roughly 260 road miles, which does not fit, so either the day is wrong in a way the odometer cannot see or a fill never reached the sheet. Kim has the paper. `dwell_data()` drops the one bad interval and reports the count (Finding 032); the source is untouched.
+
+**⚠ It qualifies a claim already in the record.** *Creamsicle: odometer 30,290 -> 58,903, strictly increasing.* True in ODOMETER order; false in DATE order. Never wrong, but answering a narrower question than the wording suggests. Reworded in `proj_Smart_Car.md`.
+
+### One point now sits below chapter 3's floor
+
+`the_anchor.qmd` says nothing in either record ran below a mile a day. At TRIP level that holds (slowest between-trip span 1.68 mi/day). **At FILL level it does not:** TwoRed 2012-06-20 to 2012-12-21, **184 days, 158 miles, 0.86 mi/day** -- the longest single stand in either record. The empty floor in `@fig-regimes` is partly a property of the aggregation. Finding 043's shape again. Left for Kim: the sentence is his and he has approved it.
+
+### Rulings and verification
+
+**Naming (Kim):** the standing rule applies as written -- the St Louis car wash is not named, the niece is relationship-only with **Mentone kept**, institutions are named. Closes the two privacy calls carried since 2026-08-20 and unblocks ch.4.
+
+**Verified before asking:** the 8-of-13 Lake San Marcos loop claim checks out exactly (trips 1-7 plus the Fourth Crossing; 2015_Sedona is a 3-leg 150-mile fragment, not a counterexample). **And the trip log undercounts the anchor** -- the 2010 first crossing has no trip log at all, only 43 fuel fills, odo 4 -> 10,916, and it is a loop from the anchor too. Ch.4's opening problem.
+
+### Kim ruled, and applying it exposed missing machinery
+
+**The Ely date: month 4 for 3, an uncorrected typo** (Kim). Straightforward -- except that applying it was not.
+
+**`Creamsicle_log_errata.csv` was a DOCUMENT, not a mechanism.** `creamsicle_ingest.R` never read it. C01-C03 had been sitting there since 2026-08-19 as prose, and **the clean CSV still carried every uncorrected value.** TwoRed has had `twored_ingest.R` applying its errata with a refusing guard since 08-18; Creamsicle had the CSV and none of the plumbing, and the asymmetry had gone unnoticed because nothing ever tried to apply a Creamsicle correction.
+
+**Built it, mirroring TwoRed rather than inventing:** `Creamsicle_corrections_machine.csv` (keyed to the ODOMETER, never a label) plus application inside the ingest with the same guard -- **a correction that cannot find its row is refused, and applied + refused must account for every entry.** Only `tier == "confirmed"` is applied, so **C01-C03 stay HYPOTHESIS and stay unapplied** until a card or receipt settles them. Re-run: `corrections: 1 applied | 0 REFUSED`.
+
+**The odometer-as-clock check now runs INSIDE the ingest**, so the class cannot pass silently again.
+
+**Verified by content, never size:** 173 rows, Ely reads `2023-03-14` flagged `C04:date`, odometer 30,290 -> 58,903, dates 2021-09-23 .. 2024-10-20, **strictly increasing in DATE order as well as odometer order.** Old CSV snapshotted to `C:\temp\creamsicle_clean_20260828`. **No headline number moved** -- 78/75, 5/7, 17/18, and the 86% cross-check all unchanged. The chapter re-renders clean.
+
+**⚠ One thing still does not fit.** Parowan 03-13 (47,001) -> Ely (47,168) -> Beatty 03-14 (47,304) is 303 odometer miles; any route through Ely is roughly 440. **The date is settled; the distances in that stretch are not.** Left open, touching no number the book prints.
+
+**Ch.3's floor sentence scoped to Kim's wording:** *almost no period ran below a mile a day*, with the strong claim now attached to the chart it describes.
+
+### Kim answered the route, and the answer moved the error
+
+*"We didn't take the Tonopah route; instead we did I-15 to Las Vegas and then 95 onward."* **He is right and my Tonopah assumption was the mistake.** By his route the odometer works: Parowan -> Las Vegas 167 against 172 great-circle, Las Vegas -> Beatty 136 against 103.
+
+**But the distances fitting moves the problem to the CITY.** A great-circle distance is a FLOOR: no road covers 136 miles between two points 191 apart, and Ely -> Beatty is 191. So the fill 167 miles past Parowan is geometrically excluded from being Ely **whatever route was driven**. Beatty is corroborated by its next leg. The sheet plainly reads `Ely NV`, brand `Loves` -- not my transcription -- and Las Vegas already appears twice in this trip. **Put to Kim as a question, not a correction:** field entry, or a town written in later? If it is genuine, an odometer is wrong instead, which would be the more interesting outcome since the arithmetic currently corroborates all three.
+
+**★ METHOD NOTE ON MY SIDE, worth more than the row.** I reported *Ely -> Beatty is ~260 road miles via Tonopah* -- a route I inferred and then stated as though it were a fact about the trip. The distance was right and the route was mine, not his. **The route-independent version was available the whole time: the great-circle floor, 191 miles, which settles it by geometry alone.** When a claim can be made from geometry, do not make it from a guessed route. Same family as the South Dakota lesson.
+
+### ✓✓✓ THE CITY WAS WRONG TOO, AND KIM SETTLED IT FROM THE RECEIPTS
+
+*"That was a data entry error. I went back to the station receipts and found that Ely is really Las Vegas. I have no idea how they got mixed up."* Applied as **C05**; the row now carries `C04:date C05:city`.
+
+**Two errors in one row, each invisible to every test but one, and each caught by a DIFFERENT redundant field** -- the odometer for the date, the map for the town. The geography instrument did it: Ely -> Beatty is 191 miles great-circle against 136 on the counter, **and a great-circle distance is a floor.** Corrected, the same 136 becomes Las Vegas -> Beatty at 103 great-circle, ratio 1.32, ordinary.
+
+**★★★ AND THE CHECK HE USED IS THE REAL FIND: THE FUEL RECEIPTS PRINT THE ODOMETER.** *"a duplication of data I had forgotten about."* **A fourth independent record, and the only one that duplicates the COUNTER** -- AMEX settles gallons, price and merchant, never a counter reading. **So the receipts can audit the one field every other instrument treats as ground truth.**
+
+**Finding 045 for the FOURTH time** -- AMEX, Styx River Road, the Florida photograph, this. Every time the redundant record EXISTED and had been forgotten rather than lost. **At some point this stops being a lesson about instruments and becomes a rule about searching: inventory the redundant records BEFORE declaring a field uncheckable.**
+
+**★★ It also answers his own advice from the other end.** He wrote *enter fields that will let you cross check values.* **The pump had been doing exactly that for him for years, on the receipt, and he had forgotten.** So the advice is not only prospective -- half of it is *find the redundancy you already have*. That is ch.9's ending, and it closes in recovery rather than in a warning.
+
+### ⚠ Finding 046, committed a second time -- by me, in this session
+
+I bound `pi <- "G:/My Drive/Projects_Index/project_index.md"` as a path shortcut while editing the index. **`pi` is base R's constant.** Every great-circle call after that failed with *non-numeric argument to binary operator*, and I checked the coordinates, the function and `sin`/`cos` before checking `pi` -- **a masked constant does not error where it is bound.**
+
+**No reported number was wrong**, and only by luck of ordering: an earlier `rm(list = ls())` had restored base `pi` before the figures were computed, and all four were re-verified identical after `rm(pi)`. **The rule widens from Finding 046: never bind a bare short name at all.** Path shortcuts take a suffix. The dangerous ones are short and already exist -- `pi`, `T`, `F`, `c`, `df`, `data`, `sd`, `var`, `max`.
+
+Worth noting the shape: the debugging worked because the numbers had an independent second computation to check against. **The same principle the whole session has been about, applied to my own working.**
+
+### ⚠ AND THE GEOGRAPHY INSTRUMENT'S FLOOR IS NOW NAMED
+
+Corrected, Parowan -> Las Vegas reads 167 odometer against 172 great-circle: ratio **0.97**, also "impossible", and **not a finding.** It uses a downtown centroid; a fill on the north-side I-15 corridor is ~12 miles closer and gives 1.03. **A shortfall smaller than the spread of the city itself is coordinate imprecision.** 0.71 is not -- no plausible fill point in Ely brings 191 below 136. **The ratio is evidence only when the shortfall exceeds the spread of the place.** Finding 036 in its geographic form, and it must be said in ch.9 beside the instrument itself.
+
+### ★★★ KIM'S STATEMENT ON DATA QUALITY -- PART THREE's THESIS, AND IT IS PLACED
+
+He gave it unprompted, and it is the argument the difficulty chapters have been circling:
+
+> While this is a story about two cars, it is as much a story about data. Specifically the kind of data that's added now and then. Often under difficult conditions, like when you have cold, shivering hands. Or times when you're in a rush. It's easy to write down a wrong number. Transcription, too, often comes when you probably don't want to be typing a lot of numbers, some of which are hard to read. It is those distractions that can break the flow and cause another form of data error. The bottom line is that these types of data are difficult to get correct. When possible, enter fields that will let you cross check values (e.g., not just the date; add the day of the week).
+
+**Split three ways, because it does three jobs.** The framing and the field conditions are **written into the Foreword** as one paragraph, straight after *The data.*, in his content and his contractions. The two error classes go verbatim into the **ch.8** scaffold. **The design lesson -- cross-check fields -- goes to ch.9**, which is where every instrument in the book actually depends on it.
+
+**★ HE SEPARATES TWO ERROR CLASSES and the book should keep them apart:** the FIELD error (cold hands, haste, at the pump) and the TRANSCRIPTION error (hard-to-read figures, broken flow, at a keyboard years later). Different causes, different signatures. The slashed zero is the first; the Ely month typo is almost certainly the second.
+
+**★★ AND HIS ADVICE WOULD HAVE CAUGHT TODAY'S ERROR ON THE PAGE, WITH NO ANALYSIS AT ALL. 2023-04-14 was a Friday; 2023-03-14 was a Tuesday.** A day-of-week column and the row contradicts itself at the moment of writing, where a fix costs nothing. What actually caught it, seven years later, was the odometer acting as an accidental second clock -- **and that is the whole argument: redundancy is not duplication. A cross-check field is a second cheap measurement of the same event, and it is the only thing that can catch an error in a field every test trusts. You cannot audit your way out of a missing column.**
+
+⚠ *Two cars* is correct for the data chapters -- TwoRed and Creamsicle carry the logs. Not to be silently upgraded to four.
+
+### Findings 047 and 048
+
+**047 -- an instrument is blind to the field it takes as given, and a sort key hides errors in itself.** All six audit instruments take the DATE as given, so a wrong date was not a hard case, it was outside their range. And the ingest sorted BY ODOMETER: **sorting by a field cannot reveal an error in that field, because the sort imposes the order you would be checking.** The record's own claim -- *strictly increasing* -- was TRUE, in the ordering nobody had questioned. **A true sentence can be load-bearing in a direction it was never tested in.** Corollary: a figure is an audit instrument.
+
+**048 -- on Drive Stream, overwriting an existing file can fail while creating a new one succeeds.** `write.csv()` over the target failed with *cannot open the connection*, repeatedly; a new file in the same folder wrote fine and `file.remove()` returned FALSE. **Write to a temp name, then `file.rename()` over the target** -- that worked where both did. The ground-truth rule in a new costume: verify by reading content back, since the return values here were a half-signal.
+
+### ⚠ THREE SESSIONS ARE MISSING FROM THIS LOG
+
+**Proved, not assumed** (Finding 019): grepped the whole file for `2026-08-2[1-8]` at every heading level -- **zero matches**. The sessions of **2026-08-21, 08-22 and 08-24** produced chapters 1, 2 and 3, the boot measurement, the turning-circle rejection and several privacy rulings, and none of them has an entry here. **The work is not lost** -- it is in `logs/focus_history.md` (the archived Active Focus blocks for 08-21 and 08-22), in `proj_Smart_Car.md`, and in `deferred.md`. **Only the session-level record is missing.** Not reconstructed here, because I was not in those sessions and a plausible entry is not a true one.
+
+---
+
 ## 2026-08-20 -- FOUR ANSWERS, A NEW ROAD TAXONOMY, AND THE RESEARCH PHASE ENDS
 
 **Active focus at start and close:** Smart_Car. A short session: Kim answered the four lingering questions, and one of the answers corrected me rather than the record.
