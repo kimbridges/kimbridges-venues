@@ -28,12 +28,26 @@ stand <- dwell[which.max(dwell$days), ]
 ```{r}
 #| label: anchor-numbers
 #| include: false
-stl <- twored_legs[twored_legs$trip == "2011_StLouis", ]
-stl$date <- as.Date(stl$date); stl <- stl[order(stl$date), ]
-i <- which.max(c(NA, as.numeric(diff(stl$date))))
-stl_days  <- as.numeric(stl$date[i] - stl$date[i - 1])
-stl_miles <- stl$start_odo[i] - stl$end_odo[i - 1]
-stl_rate  <- round(stl_miles / stl_days)
+## THE CAR WASH IS 2010, NOT 2011. Kim dated it exactly (2026-08-29): dropped the
+## car 10/11, flew home, collected it 11/5. That matches the 2010 fuel gap to the day.
+## The chapter previously computed these from trip == "2011_StLouis" -- a DIFFERENT,
+## nine-day St Louis hold on the following year's trip, 217 miles against 227. The two
+## are ten miles apart, which is how the mis-sourcing survived a read-through.
+## THE 2010 CROSSING HAS NO TRIP LOG (the 139 legs begin 2011-05-06), so this stop
+## exists only as a gap between two FUEL fills -- and they name Illinois towns either
+## side of St Louis, never St Louis itself.
+cw   <- twored_fuel[order(twored_fuel$Odometer), ]
+cw$dt <- as.Date(cw$date)
+cw_a <- cw[cw$dt == as.Date("2010-10-11") & cw$City == "Altamont",  ]
+cw_b <- cw[cw$dt == as.Date("2010-11-05") & cw$City == "Effingham", ]
+stopifnot(nrow(cw_a) == 1, nrow(cw_b) == 1)
+stl_days  <- as.numeric(cw_b$dt - cw_a$dt)
+stl_miles <- cw_b$Odometer - cw_a$Odometer
+stl_rate  <- round(stl_miles / stl_days, 1)
+stl_from  <- paste0(cw_a$City, ", ", cw_a$State)
+stl_to    <- paste0(cw_b$City, ", ", cw_b$State)
+## the gap is bracketed but the resting place is not named by either bracket
+stl_med   <- round(median(spans$mi_day[spans$kind == "between"]), 1)
 ## the driving the lost stall generated: north, back down, north again, then the dock
 tb2 <- do.call(rbind, lapply(split(twored_legs, twored_legs$trip), function(x)
   data.frame(from = min(as.Date(x$date)), odo_from = min(x$start_odo, na.rm = TRUE),
@@ -150,13 +164,13 @@ So: somewhere near an airport, at a price that made sense. I looked around and f
 
 Would I do it again? Maybe not. But at the time I had no obvious alternative, and it worked.
 
-**Now here is what the record makes of it.** The trip log has the stop — a `r stl_days`-day hole in the middle of the trip, the car left in St Louis and collected again in St Louis. But the odometer moved `r stl_miles` miles across those days. About `r stl_rate` a day, which is the pace of an ordinary stretch on station.
+**Now here is what the record makes of it.** There's no trip log for 2010 — I didn't start keeping one until the following spring — so the stop survives only as a hole between two fuel fills: `r stl_days` days, and the odometer moved `r stl_miles` miles across them. About `r stl_rate` a day, against a median of `r stl_med` for the quiet stretches between trips. **An ordinary interval's pace, for three and a half weeks when the car was locked in a stranger's garage.**
 
 The explanation is prosaic. I wasn't in St Louis to park a car. I was there to work with people at the Missouri Botanical Garden, which is nowhere near the airport, and for several days I drove between the garden and the hotel and out to meals. **The car went into that garage at the end of the visit, not the beginning.**
 
 Which is exactly the point. **The one genuinely stationary period in the whole record is invisible.** The days the car sat locked in a stranger's garage are averaged in with the days I spent driving across St Louis, and what comes out looks like every other quiet interval. And because the whole thing sits inside a trip, it never becomes a gap *between* trips — so it isn't on the chart at all.
 
-**The exception is hidden twice.** Once by the odometer, which cannot tell stillness from motion after the fact. And once by the definition, which files the whole fortnight under travel.
+**The exception is hidden three times.** Once by the odometer, which cannot tell stillness from motion after the fact. Once by the definition, which files the whole business under travel. And once by the fills themselves: the last one before is at `r stl_from` and the first one after is at `r stl_to`, two towns the better part of a hundred miles either side of the city. **The record never names the place where the car actually sat.**
 
 
 ```{r}

@@ -1637,3 +1637,235 @@ silently upgrade the quote to four.
 **OPEN — worth asking Kim:** is the advice retrospective or prospective? If he would design the
 sheet again today, what else earns a column? (Day of week is one; a second is the pump's own
 receipt number, which would make the AMEX cross-check automatic rather than heroic.)
+
+### ★★★ CH.4 `expeditions.qmd` — THE TOPIC NOTE FOR TOMORROW (written 2026-08-28)
+
+The scaffold already holds the material. This is the ANGLE, found while checking the 8-of-13 claim.
+
+**★ THE FIRST CROSSING HAS NO TRIP LOG.** `twored_legs` holds 139 legs and they begin **2011-05-06**.
+The 2010 crossing — the one that started everything — exists only as **43 fuel fills, odometer 4 to
+10,916**, out through Texas and back through Arizona, a loop from the anchor before there was a
+word for the anchor. **The chapter's first subject is its least measured one.**
+
+**★★ AND THAT IS THE CHAPTER'S SHAPE, NOT A GAP IN IT.** The trip log begins in the middle of the
+thing it records, because **the instrument was invented partway through the sixteen years it
+measures.** Kim's own account of that trip says the states challenge was a BY-PRODUCT — *"We did add
+on a bit of driving so we could see areas of the country neither of us had visited... and, in a way,
+became the basis of the challenge."* **So the record and the purpose were both discovered in
+motion.** Chapter 4 can be the story of a practice forming: 2010 has fuel only; by 2011 there are
+legs; by 2014 there are times, temperatures and two odometers.
+
+**★ IT IS THE OPERATIONAL-DEFINITION SPINE AGAIN, at trip scale.** *A term is defined by how it is
+measured* — and here the measuring itself starts late, so what "a trip" is only becomes answerable
+partway through. Ch.1 plants the thread, ch.3 uses it, **ch.4 shows it being built.**
+
+**Order it by the record's own growth, not by the calendar alone:** 2010 (fuel only) -> 2011 (legs
+appear) -> 2012 Frostburg, carrying the South Dakota dash -> 2013 Arctic (**cross-referenced, never
+re-told**) -> 2014 Penultimate State, the fullest record and the Vermont set piece -> 2016 Fourth
+Crossing, the last loop from the anchor -> the endgame, which ch.3 has already set up.
+
+**Naming, settled 2026-08-28:** institutions named (BRIT, MOBOT, BSA, Smart Madness, Matson); the
+St Louis car wash described but NOT named; the niece by relationship only, Mentone kept.
+**Write 49 states and 10 provinces** — the log witnesses 45 and undercounts; it does not disagree.
+
+### ★★★ A FIFTH INDEPENDENT RECORD: KIM'S 2014 TALK AT LSM (found 2026-08-29)
+
+Given to people at Lake San Marcos **just after the big trip**, so it is CONTEMPORANEOUS, not recall.
+**It names the four states the drive was needed for: Florida, Delaware, Rhode Island, Vermont — and
+Vermont was the last, "other than Hawaii, of course."**
+
+**★★★ WHY THIS IS THE BEST CORROBORATION THE PROJECT HAS HAD.** Three of those four are exactly the
+states the geography instrument RECOVERED from odometer arithmetic, with no fill and no trip-log
+entry naming them. **A document written in 2014 confirms three inferences made in 2026 from numbers
+alone.** The instrument was not merely self-consistent; it was right.
+
+| state | how the record holds it | the talk |
+|---|---|---|
+| **Florida** | no fill, no leg. Recovered by testimony + Styx River Road + a geotagged photograph (Findings 044/045) | ✓ named as missing |
+| **Delaware** | no fill, no leg. Recovered by geometry — **Colonial Heights VA -> Bellmawr NJ, 265 odometer miles** against a Delaware-free alternative of ~305 | ✓ named as missing |
+| **Rhode Island** | no fill, no leg. Recovered by geometry — **Bellmawr NJ -> Douglas MA, 287 miles**, the Providence road | ✓ named as missing |
+| **Vermont** | **trip log only** (Leominster MA -> Hartland VT, then Lebanon NH out). No fuel fill in the state | ✓ named, and named LAST |
+
+**★ AND THE ONE IT LEAVES OUT IS THE PROOF IT IS RELIABLE. South Dakota is NOT in the talk's list**,
+and the record says why: it was crossed on **2012_Frostburg, 2012-05-27 Casper -> Ogallala** — two
+years earlier, so it was not missing by 2014. **The talk's silence about South Dakota is correct.**
+A corroborating document that agrees on everything is weak; one that disagrees exactly where it
+should is strong.
+
+**★★ IT ALSO EXPLAINS THE TRIP'S NAME, which nobody had explained.** `2014_PenultimateState`:
+**Vermont is the 49th. Hawaii is the 50th and was never driven to.** So Vermont is simultaneously
+the LAST state reached by car and the PENULTIMATE state of the fifty. Both framings in the record
+are right; they were counting different sets. **The name was carrying the answer the whole time.**
+
+**⚠ ONE FIGURE TO RECONCILE.** The record prints Delaware's leg as **264** miles; recomputed from the
+corrected fuel log it is **265** (44,279 - 44,014). One mile, but *no number gets printed until it is
+sourced* — fix the record to 265 or find the basis for 264 before ch.4 prints either.
+
+**TASK — the talk is a DOCUMENT and should be filed like one.** Where is it (slides, notes, a PDF)?
+It belongs in `source/` with the charter and the master dictionary. **Finding 045 for the FIFTH
+time** — AMEX, Styx River Road, the Florida photograph, the receipt odometer, and now a talk. Every
+single time the redundant record EXISTED and had been forgotten rather than lost.
+
+### ✓✓✓ FOUR CLEANUPS, KIM 2026-08-29
+
+**1. DELAWARE 264 vs 265 — CLOSED. Kim: insignificant, drop it as a concern.** Do not re-derive.
+
+**2. ✓✓✓ MAINE 2010 IS CONFIRMED — and the geometry is decisive.** Kim has a **non-cellphone photo
+dated October 9** on the Maine coast; Gemini identifies it as **Ogunquit**, and he confirms *"we had
+just barely gone into Maine"* — Ogunquit is about fifteen miles past the state line. **⚠ He notes the
+camera clock is off, so the date is soft.** It does not need to carry the weight:
+
+| Danbury CT -> Charlton MA, 2010 | odometer | great-circle | ratio |
+|---|---|---|---|
+| direct | 335 | 92 | **3.64 — absurd** |
+| **via Ogunquit ME** | 335 | 298 | **1.13 — an ordinary drive** |
+
+**A ratio of 3.64 collapses to 1.13 the moment Ogunquit is inserted, and 1.13 leaves essentially no
+unexplained mileage.** The dash accounts for the whole excess. **Four strands agree** — the geometry,
+the photo's location, the photo's date (the Charlton fill is also 10-09), and his testimony.
+**This does NOT change the state count:** Maine is already witnessed by fills in 2014 (Yarmouth,
+Calais). It confirms an ITINERARY, not a state. Safe for ch.4.
+
+**3. ✓ THE 2011 NINE-DAY ST LOUIS HOLD IS EXPLAINED.** Kim attended the **Society for Economic
+Botany** meeting there. It was never a second car-wash episode — it is a conference, and the car sat
+at a hotel. The hold ch.3 had borrowed for the car-wash story now has its own reason.
+
+**4. ★★★ THE TALK IS FOUND, READ, AND IT IS A PRIMARY SOURCE.**
+`source/2014_Chateau_Presentation.pptx` — **50.3 MB, 121 slides, dated 2014-06-16, four days after
+the trip ended.** *"Driving to the Extremes — Some Recent Smart Car Adventures. 2014 Expedition:
+Complete the 49 States + 10 Provinces. Professor Kim Bridges with Dr. Nancy Furumoto (Navigator)."*
+
+**⚠ IT WAS NEVER IN `Key Files`.** The largest file in `source/` sat unlisted since the 2026-08-12
+intake, because its name says *Chateau Presentation* and nothing about states, data or the trip.
+**An intake that lists four of five files is an intake gap, and this one held the answer to two
+separate open questions.** Finding 045 for the SIXTH time.
+
+#### ★★★ SLIDE 42 IS THE MISSING-STATES LIST, IN WRITING, IN 2014
+
+> 2014 Expedition | Complete the 49 States + 10 Provinces | **Missing States | Florida | Delaware |
+> Rhode Island | Vermont**
+
+**Kim's recollection is now a PRIMARY SOURCE.** Three of those four were recovered in 2026 from
+odometer arithmetic alone, and a document written in 2014 names them. **South Dakota is absent, as it
+must be** — crossed in 2012. Slide 121 gives **10,907 miles + ~280 ferry** for the 2014 expedition,
+matching the margin note and the corrected dataset a third time.
+
+#### ★★★ SLIDE 6 IS AN INDEPENDENT 2014 COMPUTATION OF THE WHOLE 2010-2013 RECORD
+
+> Total Distance: 39,739 miles | Total Fuel Used: 1017.414 gallons | Total Fuel Cost: $3,797.63 |
+> Overall Mileage: 39.28 mpg | Best 5 tank average: 47.10 mpg | Total Fill-ups: 163 | Average
+> Fill-up: 6.24 gallons | Average Distance per tank: 245.28 miles | **2010-2013 Statistics**
+
+**★ HIS BOUNDARY DECODED: 39,739 is the ODOMETER AT FILL #164 — Signal Hill CA, 2013-09-06, the last
+leg of the Arctic trip.** He drew the line at the end of the 2013 SEASON, not at 31 December; and his
+163 fill-ups are the fills AFTER the dealer's first at odometer 4. Once that frame is applied:
+
+| | slide 6, 2014 | corrected dataset, 2026 | |
+|---|---|---|---|
+| fill-ups | 163 | **163** | **exact** |
+| total distance | 39,739 | **39,739** | **exact** |
+| average fill | 6.24 gal | 6.23 gal | rounding |
+| total gallons | 1017.414 | 1015.19 | **-0.22%** |
+| total cost | $3,797.63 | $3,817.82 | **+0.53%** |
+| overall mpg | 39.28 | 39.14 ratio / 39.44 mean-of-tanks | his sits between |
+
+**⚠ AND THE RESIDUAL IS NOT THE ERRATA — DO NOT CLAIM IT IS.** The 36 errata dated on or before
+2013-09-06 move gallons by **+1.559** and cost by **+0.96**; the residuals are **-2.224** and
+**+20.19**. Wrong sign on one, wrong magnitude on both. **The audit is not the explanation.**
+
+**TASK — where to look next, and it is a specific place.** Kim's workbooks carry interleaved running
+totals and averages inside the data region (this is why `creamsicle_ingest.R` skips them and reports
+the count). **Slide 6 was almost certainly typed from those cells, not recomputed.** So the question
+is not *which dataset is right* but *what did the 2014 total cells contain* — and whether they were
+ever updated after a row changed. **A stale total cell is exactly the error class the book is about.**
+
+#### ★★★ AND IT ANSWERS THE PROJECT'S LARGEST OPEN QUESTION: YES, THERE ARE TWORED PHOTOGRAPHS
+
+`proj_Smart_Car.md` has carried this since 2026-08-21: *"IS THERE A TWORED PHOTO ARCHIVE? Creamsicle
+has 37 geotagged photos... Nobody has asked about 2010-2017."* **The deck holds 121 embedded images,
+50.1 MB, 118 JPEG and 3 PNG** — Alaska Marine Highway, the Dalton, Wiseman, fireweed, an ermine, the
+Moncton tidal bore, a Columbian ground squirrel. **Photographs from the 2013 and 2014 expeditions
+existed and were curated within days of the trip.**
+
+**⚠ BE PRECISE ABOUT WHAT THIS PROVES.** It proves the photographs were TAKEN and SELECTED. It does
+**not** locate an archive, and embedded PowerPoint media are downsampled copies stripped of most EXIF.
+**The question changes from "is there an archive?" to "where are the originals, and do they carry
+EXIF?"** — which is answerable, and which Kim can settle in a minute. If they do, ch.12's parking
+constellation and ch.13 both gain a second instrument for 2010-2017, exactly as Creamsicle has.
+
+**TASK: extract the 121 images and their embedded dates as a first pass** (`C:\temp\chateau_2026-08-29`),
+and ask Kim where the originals live.
+
+#### ✓ ANSWERED BY KIM, 2026-08-29 — THE PHOTOS ARE MANY, BUT THEY ARE NOT A LOCATION INSTRUMENT
+
+*"There are quite a few photos. But the EXIF data are sparse because these were cameras without GPS.
+No locations recorded (mostly Sony bad)."*
+
+**⚠ THIS RETIRES THE HOPE I ATTACHED TO IT THE SAME DAY.** I wrote that if the originals carried EXIF,
+ch.12 and ch.13 would gain a second instrument for 2010-2017 *exactly as Creamsicle has*. **They do
+not, and the comparison was wrong.** Creamsicle's 37 photos join to its logs on date + local time
+**with coordinates**; TwoRed's carry no coordinates at all. **The two photo layers are different
+instruments, not the same instrument at two dates.**
+
+**★★ WHAT THE TWORED PHOTOS CAN STILL DO, and the Maine case is the proof and the template.** A
+photograph without a geotag is not evidence of nothing — it is evidence that requires someone to
+IDENTIFY WHAT IS IN IT. Ogunquit was established by looking at a coastline, and it held because
+**geometry independently demanded a Maine dash on that leg** (ratio 3.64 direct, 1.13 via Ogunquit).
+**So the method for 2010-2017 is: visual identification, then arithmetic corroboration.** One alone
+is an anecdote; together they close a question.
+
+**★ AND THAT IS A CH.13 PARAGRAPH, not a disappointment.** The instruments do not simply get better
+over time — they change KIND. The 2010 photograph needs a human (or a vision model) to say where it
+is; the 2021 photograph says so itself. **Same act, same photographer, same purpose, and a completely
+different evidentiary status, decided by a chip.**
+
+**DEFERRED — TASK, until a chapter asks.** Kim: *"I can fish for a few things, but that's likely to
+wait until we need them."* **Agreed, and the trigger is specific:** fish only when a chapter has a
+question a photograph could settle — a named place with no fill, or a day the logs cannot resolve.
+Do not inventory the archive speculatively. **Timestamps, where present, are the useful field; they
+join to the logs the way Creamsicle's do, minus the geography.**
+
+### ★★★ MOUNT EVANS RECOVERED FROM THE RECORD, 2026-08-29 — THE LAST BLANK CORNER
+
+Kim, drafting ch.4: *"I had tried to get there on several trips between Grand Junction and Denver,
+but those early attempts failed because the road was closed due to snow. I finally did it, I believe
+in 2016... I took a few photos, but, alas, I can't find them.* **And none of this appears in the
+record unless there is a mileage anomaly on the route.*** **He named the test, and the test passes.**
+
+**2016-06-20, Denver -> Grand Junction, on the Fourth Crossing.** Three independent measures, none of
+which names the mountain:
+
+| instrument | reads | vs expected | excess |
+|---|---|---|---|
+| the LEG | 305 odometer miles | ~250 on I-70 | **55** |
+| the TANK (Watkins -> Gypsum) | 203 miles | ~150 of road | **~53** |
+| the CLOCK | 07:58 to 18:13, **10.2 h**, gross 29.8 mph | ~4 h on the interstate | **~6 h** |
+
+**The Mount Evans byway is 28 road miles from Idaho Springs to the summit. Out and back is 56.**
+
+**★ THE TANK IS THE STRONGEST PART.** It is a different instrument with different endpoints and its
+own boundaries; nobody aligned it with the leg, and it returns the same answer. **A control exists
+too:** the same stretch eastbound three weeks earlier, filling at the same Gypsum station —
+**50.15 mpg down, 40.75 mpg up.**
+
+**Corroborating detail, all of it independent:** late June, when the byway is open; westbound out of
+Denver with Idaho Springs 35 miles along; the Fourth Crossing was his last crossing, matching *"one
+of my last chances."*
+
+**★★ KIM'S ACCOUNT OF THE DAY (2026-08-29), now in ch.4:** he couldn't stay long at the summit — the
+altitude gave him a headache — and drove into a hail storm on the descent hard enough that he watched
+the paint. No damage. *"I was happy to be back on the Interstate."*
+
+**★★★ THIS CLOSES THE ONE BLANK ROW IN HIS OWN 2015 SUMMARY** (*Highest Elevation: see upcoming
+trips*). The extremes table in ch.4 now has all six corners, and the last one was recovered from an
+odometer a decade after the photographs were lost.
+
+**★ AND IT CHANGES A PARAGRAPH I HAD ALREADY WRITTEN.** Ch.4 called the blank row *"the most honest
+thing in the summary — a record kept by somebody who assumed there would be more trips."* **That
+reading was wrong and the true one is better:** he closed the row two years later and never went back
+to write it in. The summary is not an unfinished ambition; it is a record that stopped being updated
+before the ambition was finished off. Rewritten.
+
+**METHOD NOTE.** Same class as South Dakota, Delaware, Rhode Island and Ogunquit — geometry plus time
+plus testimony, with no fill and no photograph at the place itself. **Sixth recovery by this route.**
+Kim: *"It proves we've got a good analysis technology running."*

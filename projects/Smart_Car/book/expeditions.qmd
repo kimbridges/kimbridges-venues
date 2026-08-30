@@ -5,24 +5,195 @@
 #| include: false
 
 source("R/book_setup.R")
+source("R/expeditions_data.R")
+E <- expeditions_data()
+kim <- E$kim; lg <- E$log
+unlogged <- kim[!kim$logged, ]
+big <- lg[which.max(lg$miles_logged), ]
+## the 2014 expedition, the fullest record in the book
+p14 <- lg[lg$trip == "2014_PenultimateState", ]
+## the year the written-distance column was abandoned
+drop_yr <- format(min(lg$first[lg$pct_written == 0]), "%Y")
+## Vermont: the anomaly is the STANDING gap at Hartland, not the approach legs.
+## Arrived 05-18, left from Lebanon NH 05-20; two nights, and the odometer moved anyway.
+vt_a <- L14 <- twored_legs[twored_legs$trip == "2014_PenultimateState", ]
+L14$date <- as.Date(L14$date)
+vt_arrive <- L14$end_odo[L14$date   == as.Date("2014-05-18")]
+vt_depart <- L14$start_odo[L14$date == as.Date("2014-05-20")]
+vt_local  <- vt_depart - vt_arrive
+stopifnot(length(vt_local) == 1, vt_local > 0)
+
+## MOUNT EVANS, recovered 2026-08-29 from the record Kim believed was silent about it.
+## Three independent measures agree, and none of them names the mountain:
+##   the LEG   Denver -> Grand Junction, odometer against ~250 road miles on I-70
+##   the TANK  Watkins -> Gypsum, a different instrument with different boundaries
+##   the CLOCK elapsed hours against a four-hour interstate drive
+## The byway is 28 road miles from Idaho Springs to the summit; 56 out and back.
+ev <- L14b <- twored_legs[twored_legs$trip == "2016_FourthCrossing", ]
+L14b$date <- as.Date(L14b$date)
+ev <- L14b[L14b$start_city == "Denver CO" & L14b$end_city == "Grand Junction CO", ]
+stopifnot(nrow(ev) == 1)
+ev_miles <- ev$odo_miles
+ev_hours <- round(ev$elapsed_hours, 1)
+ev_mph   <- round(ev$gross_mph, 1)
+ev_road  <- 250L                       ## I-70 Denver -> Grand Junction, road atlas
+ev_excess<- ev_miles - ev_road
+ev_byway <- 56L                        ## 28 miles each way, Idaho Springs to the summit
+## the control: the same stretch eastbound three weeks earlier, same filling station
+gy <- twored_fuel[twored_fuel$City == "Gypsum", ]
+gy <- gy[order(as.Date(gy$date)), ]
+gy_east <- round(gy$mpg[1], 1); gy_west <- round(gy$mpg[2], 1)
+ev_tank <- twored_fuel$leg_miles[twored_fuel$City == "Gypsum" &
+                                  as.Date(twored_fuel$date) == as.Date("2016-06-20")]
+kept_yr <- format(max(lg$first[lg$pct_written > 0.9]), "%Y")
 ```
 
-<!-- SCAFFOLD — delete this block as the chapter is written.
+## The first one isn't in the log
 
-PURPOSE
-The crossings, trip by trip, 2010 to 2017. Ends on the last year's shape.
+I kept a trip log for most of the years in this book, and the first crossing isn't in it.
 
-MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- 13 logged trips, 139 legs, 41,163 logged miles = 58% of lifetime.
-- 2010 first crossing and the complex loop: BRIT in Fort Worth, BSA/MOBOT in St Louis, Nancy joins, Washington DC, friends in MA, the car wash, Pittsburgh (Gigapan robots), NSF colleagues in the South, home.
-- The states challenge was a BY-PRODUCT: 'We did add on a bit of driving so we could see areas of the country neither of us had visited... and, in a way, became the basis of the challenge.'
-- 2014 Penultimate State: Florida reached in the panhandle; the Tail of the Dragon; VERMONT as the penultimate state (a lawyer with an office in NH and a house across the river).
-- 2016 Fourth Crossing: the last loop from the anchor.
-- The endgame: relocation to Oregon Sept 2016, a second relocation Feb 2017, then 71,283 at the Matson dock, Seattle, 2017-05-22.
+The legs start in May of 2011. The drive that made everything after it possible happened the autumn before, and the only record I have of it is fuel. Forty receipts, a column of odometer readings, and the towns I bought the fuel in.
 
-OPEN / NEEDED
-- The Arctic Circle Challenge is CROSS-REFERENCED, never re-told (intentions item 2). Link to /stories/the-arctic-circle-challenge.html and use only its DATA.
-- ★ THE 2012 TRIP CARRIES THE SOUTH DAKOTA DASH (2012-05-27, Casper -> Ogallala): a deliberate 80-mile detour north through Chadron NE just to cross the line, with a storm-chaser convoy coming the other way. Good set piece; the geometry is in the log.
-- ★ KIM'S RULING 2026-08-21: TwoRed visited ALL 49 mainland states and 10 provinces. The log witnesses only 45 because some states had no fill and no overnight. THE RECORD UNDERCOUNTS; it does not disagree. Write 49.
--->
+Here's what that thin record still holds. We bought the car in San Diego with `r E$bought_odo` miles on it. We left on the nineteenth of September, came home on the twenty-ninth of November, and in between the odometer moved `r format(E$first_miles, big.mark = ",")` miles through `r E$first_states` states, on `r E$first_fills` tanks of fuel.
+
+**And you can put the whole trip back together from that.** The fills run south and east through Arizona and New Mexico into Texas, north to Kansas and across to Missouri, east through the Appalachians to the coast, up into New England, back west through Ohio and Illinois, and then home along the southern route through Georgia, Mississippi, Arkansas and Texas again. There's a week of fills across Pennsylvania that is a run of visits to colleagues, ending at a conference in Pittsburgh. There's a gap of three and a half weeks in the middle of it, which chapter 3 has already explained. Every place we worked shows up as a cluster of fills, and every long day shows up as a gap of three hundred miles between two of them.
+
+**Nobody designed that record to do this.** It's a fuel log. It exists because I wanted to know what the car cost to run. But a fuel log is a list of times and places, and a list of times and places is a trip whether you meant it to be or not.
+
+## What we were actually doing
+
+None of this began as a road trip.
+
+Nancy and I both worked, and our work was in Hawaii while a good deal of what our work required of us was on the mainland. Meetings, mostly. A conference in one place, a collaboration in another, a herbarium or a garden that had something we needed to see. For years we flew to those and rented cars when we got there.
+
+The car changed the arithmetic. Once there was a car of ours sitting in Southern California, two meetings six weeks apart stopped being two trips and became one, with a continent in the middle of it. That is the whole mechanism. **The expeditions are what happens when you already own the car and the meetings are in the wrong places.**
+
+The rest followed from a small decision made somewhere in Texas on that first crossing:
+
+> We did add on a bit of driving so we could see areas of the country neither of us had visited... and, in a way, became the basis of the challenge.
+
+**The challenge was a by-product.** We didn't set out to drive to every state. We set out to get from a meeting in one place to a meeting in another, noticed we could bend the route, bent it, and then noticed some years later that we'd bent it often enough to be most of the way to something. The aim arrived after the driving did, which is worth saying plainly, because a book about a sixteen-year project makes it look like there was a plan from the start. There was not. There was a car, and there were meetings, and there was a map.
+
+## Two lists of the same sixteen years
+
+Around 2015 I wrote a summary of what we'd done. It names the expeditions, gives their dates, and puts a mileage against each. It's the only list of its kind that exists, and I made it for its own sake rather than as a record of anything.
+
+It names `r E$n_kim` expeditions. The trip log holds `r nrow(lg)` trips.
+
+**They aren't the same list, and they aren't even close.**
+
+```{r}
+#| label: tbl-expeditions
+#| tbl-cap: "Every expedition I named in the 2015 summary, against what the trip log holds for it. The mileages in the middle column are mine, written at the time; the ones on the right are what the legs add up to. Seven have no trip log at all."
+#| echo: false
+z <- kim[, c("year","name","when","miles_stated","legs","miles_logged")]
+z$miles_stated <- ifelse(kim$approx, paste0("~", format(round(z$miles_stated), big.mark = ",")),
+                                      format(round(z$miles_stated), big.mark = ","))
+z$legs         <- ifelse(is.na(z$legs), "--", as.character(z$legs))
+z$miles_logged <- ifelse(is.na(z$miles_logged), "--", format(z$miles_logged, big.mark = ","))
+names(z) <- c("Year", "Expedition", "When", "Miles (mine)", "Legs logged", "Miles logged")
+knitr::kable(z, align = c("l","l","l","r","r","r"))
+```
+
+**`r E$n_unlogged` of the `r E$n_kim` have no trip log at all.** Not a partial one. None. The first crossing, a desert run, Yosemite, a February drive to Fort Worth, three days in Death Valley, an August meeting, and a weekend at Lake Havasu where somebody had got seventy-one Smart cars onto a bridge. And the one that is logged worst is Sedona, where the legs come to a small fraction of the trip it was part of.
+
+It'd be easy to call that missing data. It isn't.
+
+**The trip log was never a record of the trips.** It was a record of the long driving days, kept because I wanted to know what a long driving day looked like, and it started a year after the driving did. A weekend at Lake Havasu has no long driving day in it. Neither does Death Valley from Southern California. The log is silent about them because there was nothing in them it was built to hold.
+
+This is the same boundary the book has crossed twice already, drawn at a different scale. Chapter 3 found it inside a trip, where the errands around a parked car were absorbed into the interval and never counted. The Foreword found it at the end of the car's life, where the Honolulu miles fall outside the record on purpose. **Here it is between the trips: a whole expedition can fall through, and the record isn't wrong when it does. It is doing what it was built to do.**
+
+## What the record learned to hold, and what it stopped holding
+
+The log didn't arrive fully formed. It grew, and then it shed something, and both halves of that are visible if you count the columns rather than reading them.
+
+```{r}
+#| label: tbl-growth
+#| tbl-cap: "What the record carries, trip by trip. Each figure is the share of that trip's legs for which the field was filled in. The first crossing has no row here at all, because it has no legs. Note the last column."
+#| echo: false
+g <- lg[, c("trip","first","legs","pct_time","pct_temp","pct_odo","pct_written")]
+pc <- function(v) paste0(round(100 * v), "%")
+g$first <- format(g$first, "%b %Y")
+g[4:7] <- lapply(g[4:7], pc)
+names(g) <- c("Trip", "Began", "Legs", "Times", "Temperatures", "Odometers", "Distance written")
+knitr::kable(g, align = c("l","l","r","r","r","r","r"))
+```
+
+The times were there from the first leg, because the times were the point. The temperatures took a year to become a habit. By 2012 nearly everything is filled in, and by the 2014 expedition every field is complete on all `r p14$legs` legs, which makes it the richest thing in this book by a distance.
+
+**And then look at the last column.** Through `r kept_yr` I wrote down how far we'd driven, as a number, in its own space on the sheet. From `r drop_yr` onward that space is empty on every single leg.
+
+I remember why. I had been recording the distance because I wanted the distance, and at some point it became obvious that I was writing down something I could always work out later from the two odometer readings sitting beside it. So I stopped. **That is a rational decision, and it makes the record smaller.**
+
+It is also the only place in sixteen years where I can see myself deciding what mattered, in the act of deciding it. Every other change in the record is a habit forming quietly. This one is a column being switched off.
+
+## The crossings
+
+The long ones have their own character, and three of them earned names that stuck.
+
+**Frostburg and the Northern States, 2012.** `r format(lg$miles_logged[lg$trip == "2012_Frostburg"], big.mark = ",")` logged miles in the space of a few weeks. This is the trip that carries the strangest single day in the record: a run north through Nebraska with a hundred miles of detour in it and no destination at the end, because the destination *was* the line. We crossed into South Dakota, turned around, and came back. Chapter 9 works out how the record gives that away, years later, to somebody who wasn't told.
+
+**The Arctic Circle, 2013.** A month, the Alaska Marine Highway in both directions, and a gravel road north of Fairbanks that a Smart car had no business being on. **That trip has its own book and I'm not going to re-tell it here.** What matters to this chapter is that it happened at all, and that the fuel log kept working the whole way: the northernmost fill in sixteen years sits on the Dalton Highway, and the car came off that road and went straight to the shop at Signal Hill on the way home, which the log records without comment.
+
+**The 49 State and 10 Provinces Expedition, 2014.** `r format(p14$miles_logged, big.mark = ",")` miles over `r p14$legs` legs, six weeks, and the only trip in the book that set out to complete something.
+
+By the spring of 2014 the list of states we hadn't driven in was down to four. I know that precisely, and not from memory: I gave a talk about the trip at Lake San Marcos four days after we got home, and one of the slides says so.
+
+> Missing States: Florida, Delaware, Rhode Island, Vermont
+
+**Three of those four aren't in the fuel log and never were.** We crossed Delaware and Rhode Island without stopping for anything, and the Florida visit was about eleven miles hung off a fuel stop in Alabama. No fill, no overnight, nothing for the record to catch. Chapter 13 is about how we know they happened anyway, and about how close we came to not being able to say so.
+
+The fourth one was Vermont, and Vermont was the last.
+
+It's a quiet ending for a five-year project. A lawyer we needed to see had his office on the New Hampshire side of the river and his house on the Vermont side, so we drove over, stayed two nights, and drove out again. **We arrived in Hartland with `r vt_arrive` miles on the car and left Lebanon with `r vt_depart` — `r vt_local` miles for what the map calls an eighteen-mile drive.** The forty-ninth state, reached by the accident of somebody else's address, and the record of it is a small unexplained number sitting between two ordinary legs.
+
+The forty-ninth, not the fiftieth. **Hawaii is the fiftieth and we live there**, which is the one state this car was never going to drive to. The folder that holds this trip on my computer has been called *Penultimate State* for years, and it took me until this year to notice that the name had been carrying the answer all along.
+
+## The extremes
+
+There is another way to lay out sixteen years, and I like it better than a list of trips. In the same 2015 summary I wrote down the corners.
+
+| | |
+|---|---|
+| Northernmost | Wiseman, Alaska — about seventy-five miles past the Arctic Circle |
+| Southernmost | San Antonio, Texas |
+| Westernmost | Anchor Point, Alaska — as far west as the road system goes |
+| Easternmost, US | West Quoddy Head, Maine |
+| Easternmost | Deer Lake, Newfoundland |
+| Lowest | Death Valley, California, at 282 feet below sea level |
+| Highest | Mount Evans, Colorado — 14,130 feet, and the road goes to the top |
+
+**Every one of those is a place you have to decide to go to.** None of them's on the way to anywhere. The southernmost point of sixteen years of driving is San Antonio because that's where a road we were on happened to bottom out; every other line on that table is a detour that somebody sat down and planned.
+
+### The corner I thought I had lost
+
+When I wrote that summary the highest row was blank. I'd put *see upcoming trips* against it, because Mount Evans was on the list and I hadn't managed it. The road up it is the highest paved road in the country, and it climbs to 14,130 feet from the interstate at Idaho Springs. **I tried for it three or four times on runs between Grand Junction and Denver, and every time the road was shut for snow.**
+
+I got there in June 2016, on what turned out to be the last crossing. **And then I never wrote it down.** Not in the summary, which I had stopped updating; not on the log sheet, where by that year I had stopped writing distances at all. I took photographs and I can't find them. For ten years the only evidence that I had ever reached the highest corner was that I remembered reaching it.
+
+**The record had it the whole time, and it took about five minutes to find.**
+
+| | | |
+|---|---|---|
+| the leg | Denver to Grand Junction, `r ev_miles` odometer miles against about `r ev_road` on the interstate | excess **`r ev_excess`** |
+| the tank | Watkins to Gypsum, `r ev_tank` miles against about 150 of road | excess about 53 |
+| the clock | out at `r format(ev$start_time)`, in at `r format(ev$end_time)` — **`r ev_hours` hours** for a four-hour drive | about six hours spare |
+
+**The byway is twenty-eight miles from the interstate to the summit. Out and back is `r ev_byway`.**
+
+The tank is the part I find hardest to argue with. It's a different instrument from the leg, with different endpoints and its own boundaries, and nobody lined the two up on purpose — and it gives the same answer. There's even a control: I crossed that same stretch eastbound three weeks earlier and filled at the same station in Gypsum. **`r gy_east` miles per gallon going down, `r gy_west` coming back up.** Grade accounts for some of that. Fourteen thousand feet accounts for the rest.
+
+Here is what none of it holds. I couldn't stay long at the top, because the altitude gave me a headache. On the way down we drove into a hail storm hard enough that I spent it worrying about the paint, and there was no damage, and I've rarely been so pleased to see an interstate.
+
+**What the record has is fifty-five miles and six hours.** It can't tell you about the headache, or the hail, or that I'd been trying to get up there for years and this was the last chance I was going to get. But it can tell you, a decade later and without being asked, that a small red car went somewhere a long way off the road that day — and that's enough to put the last corner in the table.
+
+## And then it stops
+
+There's no final expedition. Nothing closes.
+
+The Fourth Crossing in 2016 is the last one that looks like the others — `r format(lg$miles_logged[lg$trip == "2016_FourthCrossing"], big.mark = ",")` miles, out and back, beginning and ending in the same parking space it had begun and ended in for six years. Nobody knew it was the last, least of all me.
+
+What happens after that isn't a trip and chapter 3 has already told it: the parking space goes, and the car spends its remaining `r format(round(max(twored_legs$end_odo, na.rm = TRUE) - twored_legs$start_odo[twored_legs$trip == "2016_FallWinter"][1]), big.mark = ",")` mainland miles being moved between places because it no longer has a place. Then a dock in Seattle, and a boat.
+
+**Fourteen expeditions in that summary, and I wrote it thinking I was somewhere in the middle.** The one row I left open, I closed two years later without noticing, on a day I remember for a headache and a hail storm. Then I put the pen down and the odometer kept writing.
 

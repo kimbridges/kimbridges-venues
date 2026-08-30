@@ -1,5 +1,5 @@
 # PROJECT: Smart_Car
-_Last updated: 2026-08-28_
+_Last updated: 2026-08-29_
 _Status: Active_
 _Focus readiness: Ready_
 _Tags: intake, data-recovery_
@@ -19,7 +19,19 @@ the refutation stronger -- not one exceptional car on one exceptional journey, b
 
 ## Current Status
 
-**★★★ FOUR PIECES DRAFTED. The Foreword and chapters 1, 2 and 3 exist as prose — about 9,000 words. ★ KIM HAS READ CH.3 AND APPROVED IT (2026-08-28).**
+**★★★ FIVE PIECES DRAFTED. Foreword and chapters 1, 2, 3 and 4 exist as prose — about 11,500 words. ★ KIM HAS READ AND APPROVED CH.3 AND CH.4 (2026-08-28/29).**
+
+**`expeditions.qmd`** — ch.4, ~2,530 words, **two tables and no figure**. Seven sections.
+**★★ ITS SUBJECT CHANGED ON CONTACT WITH THE MASTER DICTIONARY:** Kim's c.2015 summary names
+**14 expeditions**; the trip log holds 13 trips, and **7 of his 14 have NO trip log at all** —
+including the first crossing — while Sedona is logged as a fragment. So the chapter is not the
+crossings one by one; it is **the trip log was never a record of the trips.** The fractal scope
+boundary at a THIRD scale: ch.3 found it inside a trip, the Foreword at the end of the car's life,
+ch.4 finds it BETWEEN trips. `data/TwoRed_expeditions.csv` + `book/R/expeditions_data.R`.
+**`tbl-expeditions`** (his list against the log) and **`tbl-growth`** (what the record carries, trip
+by trip) — **the growth table shows a field being DROPPED: written distance goes to 0% from 2016**,
+the one place in sixteen years where Kim can be seen deciding what mattered.
+**★★★ AND THE EXTREMES TABLE IS NOW COMPLETE** — see the Mount Evans recovery below.
 
 **`the_anchor.qmd`** — ch.3, ~3,400 words, TWO figures. Seven sections, ordered story → method →
 picture → consequence → exception. **`@fig-regimes`** (50 spans, both cars, log-log with iso-rate
@@ -76,6 +88,15 @@ _Given by Kim 2026-08-12. This replaces the single-car framing entirely._
 Kim scans everything. The AMEX statements and pump receipts recovered three contaminated 2016 rows, and when the paper log turned up months later it **matched them exactly on gallons and cost.** **Three independent records agreeing to the thousandth of a gallon.** The lesson was the search, not the data: it was the wrong KIND of search, not missing data.
 
 **★★★ FOURTH RECORD, 2026-08-28 (Kim): THE FUEL RECEIPTS PRINT THE ODOMETER.** *"a duplication of
+
+**★★★ FIFTH RECORD, 2026-08-29: KIM'S 2014 TALK AT LAKE SAN MARCOS.** Given just after the big trip, so
+**contemporaneous rather than recall.** It names the four states the drive was needed for — Florida,
+Delaware, Rhode Island, Vermont. **THREE OF THOSE ARE EXACTLY THE STATES THE GEOGRAPHY INSTRUMENT
+RECOVERED FROM ODOMETER ARITHMETIC ALONE** (no fill, no leg naming them). A 2014 document confirms three
+inferences made in 2026 from numbers. **And its OMISSION is the proof it is reliable: South Dakota is not
+in the list, because it was crossed in 2012** — the talk is silent exactly where it should be.
+**Finding 045 for the fifth time.** ⚠ Delaware's leg recomputes to **265** miles, not the 264 printed here
+— reconcile before ch.4 prints it. **TASK: file the talk in `source/`; it is a document, not a memory.**
 data I had forgotten about."* He used it to settle the Ely/Las Vegas city error. **This is the only
 record that duplicates the COUNTER** — AMEX can settle gallons, price and merchant, never a counter
 reading — **so it can audit the one field every other instrument treats as ground truth.**
@@ -83,6 +104,14 @@ reading — **so it can audit the one field every other instrument treats as gro
 time the redundant record existed and had been FORGOTTEN rather than lost. **Rule: inventory the
 redundant records before declaring a field uncheckable.**
 
+
+**★★★ SIXTH GEOMETRIC RECOVERY, 2026-08-29 — MOUNT EVANS, and Kim named the test himself.**
+*"None of this appears in the record unless there is a mileage anomaly on the route."* There is.
+**2016-06-20 Denver → Grand Junction: the LEG reads 305 against ~250 on I-70 (excess 55); the TANK
+(Watkins → Gypsum) reads 203 against ~150 (excess ~53); the CLOCK reads 10.2 h for a 4 h drive.**
+The byway is 28 miles each way — **56 out and back.** Control: the same stretch eastbound three weeks
+earlier, same station, **50.15 mpg down against 40.75 up.** **This closes the one blank row in his own
+2015 summary** (*Highest Elevation: see upcoming trips*). Photographs lost; the odometer kept it.
 ## ★★ THE AUDIT TOOLKIT — SEVEN INSTRUMENTS (2026-08-18; seventh added 2026-08-28) — full write-up in the log
 
 **pump identity** (gallons × $/gal = cost) | **economy** | **geography** (great-circle vs odometer) | **contiguity** | **price family / same pump** | **Kim's slashed zeros** — a physical mechanism, so it predicts error DIRECTION (Finding 033).
@@ -178,7 +207,7 @@ On the BACK of the last fuel sheet, circled: **`5/22/17  71,283  LV Seattle @ Ma
 
 **1. The 46 Dalton miles are 32 + 14 — Coldfoot → Wiseman.** Two Yukon River Crossing fills split the leg (115 out / **147 back**); the Wiseman spur is ~16 road miles, so **out and back is 32, to the mile.** *A matching TOTAL doesn't mean a matching ROUTE; a SPLIT total localises the discrepancy.*
 
-**2. THE PENULTIMATE STATE IS VERMONT** — a lawyer with an office in NH and a house across the river. **Exactly the anomaly the record flagged and couldn't read:** Hartland VT → Lebanon NH, **two nights and 59 odometer miles for an eighteen-mile drive.**
+**2. THE PENULTIMATE STATE IS VERMONT** — a lawyer with an office in NH and a house across the river. **Exactly the anomaly the record flagged and couldn't read:** Hartland VT → Lebanon NH, **two nights and 59 odometer miles for an eighteen-mile drive.** **★★★ CORROBORATED 2026-08-29 BY KIM'S 2014 TALK AT LSM** (contemporaneous, given just after the trip): the drive was needed for **four** missing states — **Florida, Delaware, Rhode Island, Vermont — and Vermont was the LAST.** ★ It also explains the trip's NAME: **Vermont is the 49th, Hawaii the 50th and never driven to**, so Vermont is at once the last state reached by car and the penultimate of the fifty. Both framings in this file are right; they count different sets.
 
 **3. ★★★ THE STATE COUNT IS 49 AND 10, ON KIM'S TESTIMONY — and my framing was wrong (Finding 043).** I had written that TwoRed's list and Kim's list were two different quantities. **They're one quantity and a log that witnesses 45 of it.** A count DERIVED from a record inherits the record's resolution, silently, because the count looks like an ordinary number.
 
@@ -274,7 +303,9 @@ _Written 2026-08-12; item 6 added 2026-08-20._
 - `data/TwoRed_fuel_clean.csv` (294), `TwoRed_log_errata.csv` (65), `TwoRed_fuel_timetemp.csv` (134), `TwoRed_city_timezones.csv` (121 cities).
 - **Creamsicle:** `Creamsicle_fuel_clean.csv` (173), `Creamsicle_trip_clean.csv` (86), `Creamsicle_log_errata.csv` (the human-readable record) and — **NEW 2026-08-28** — **`Creamsicle_corrections_machine.csv`** (C01-C05; the file `creamsicle_ingest.R` actually applies, keyed to the ODOMETER, `tier` gating what is applied). `creamsicle_ingest.R` now **applies errata with a refusing guard and runs the odometer-as-clock check.**
 - **`book/R/dwell_data.R` + `book/R/fig_dwell.R` — NEW 2026-08-28.** The `@fig-dwell` pair: fill-to-fill intervals for both cars, and the time-weighted figure built from them. `dwell_data()` reports its own skip counts in `attr(, "same_day")` and `attr(, "backward")`.
-- `source/` — `Smart_Car_master_dictionary.pdf` (expedition names, dates, targets); `Smart_Car.docx` (10.3 MB, largest section is the already-published Arctic Circle Challenge — **a quarry, not a draft**); `Smart_Car_2016.pptx`; `charter_2026-05-08.md`, kept verbatim, superseded on scope and Chapter 5.
+- **`data/TwoRed_expeditions.csv` — NEW 2026-08-29.** Kim's own list of 14 named expeditions, transcribed VERBATIM from `source/Smart_Car_master_dictionary.pdf` with a `source` column recording where each field came from. **7 of the 14 have no trip log**; the join is what ch.4 is built on.
+- **`book/R/expeditions_data.R` — NEW 2026-08-29.** Joins Kim's list to the trip log and computes the record-growth table (which fields each trip carries, as a share of its legs) plus the 2010 fuel-only figures for a crossing with no trip log.
+- `source/` — **★★★ `2014_Chateau_Presentation.pptx` (50.3 MB, 121 slides, dated 2014-06-16, four days after the trip closed) — A PRIMARY SOURCE, added to this list 2026-08-29 after sitting unlisted since intake.** *Driving to the Extremes*, given at Lake San Marcos. **Slide 42 names the four missing states (Florida, Delaware, Rhode Island, Vermont) in writing; slide 6 is an independent 2010-2013 computation; slide 121 gives the 10,907-mile total; and 121 embedded photographs answer the TwoRed-photo question.** Also: `Smart_Car_master_dictionary.pdf` (expedition names, dates, targets); `Smart_Car.docx` (10.3 MB, largest section is the already-published Arctic Circle Challenge — **a quarry, not a draft**); `Smart_Car_2016.pptx`; `charter_2026-05-08.md`, kept verbatim, superseded on scope and Chapter 5.
 - `images/Creamsicle/` — 37 geotagged trip photos + `Creamsicle_profile.jpg`. **Backstop for the deleted `creamsicle.jpg`: a copy survives at `kimbridges-stories\underway\Smart_car\` — do not delete that folder without checking.**
 
 ## Related Projects
@@ -346,6 +377,29 @@ He withdrew his own West Virginia answer after checking a map: **different highw
 
 **★★★ THE QUESTION IT OPENS, and it may be the largest one left: IS THERE A TWORED PHOTO ARCHIVE?** Creamsicle has 37 geotagged, timestamped photos that join to its logs with no timezone reconstruction. **Nobody has asked about 2010-2017.** A photo archive samples exactly where a fuel log cannot — **the complement, not a duplicate** — and would bear on ch.12 and most of ch.13.
 
+**✓✓✓ ANSWERED 2026-08-29 — YES, THERE ARE MANY; BUT THEY ARE NOT A LOCATION INSTRUMENT.**
+`2014_Chateau_Presentation.pptx` embeds **121 images, 50.1 MB** from the 2013 and 2014 expeditions —
+the Alaska Marine Highway, the Dalton, Wiseman, fireweed, an ermine, the Moncton tidal bore — so
+photographs were taken and curated within four days of the trip ending. **Kim confirms the wider
+archive exists.**
+
+**⚠ BUT THE EXIF IS SPARSE AND CARRIES NO GPS** (Kim: *"these were cameras without GPS. No locations
+recorded"*). **This is NOT the Creamsicle situation and must not be described as it.** Creamsicle's 37
+photos join on date + local time **with coordinates**; TwoRed's carry none. **Two different
+instruments, not one instrument at two dates.**
+
+**★★ WHAT THEY CAN DO — the Ogunquit case is the template.** A photograph with no geotag is evidence
+that must be IDENTIFIED before it is evidence. Maine 2010 was settled by recognising a coastline and
+then finding that **the geometry independently demanded the dash** (Danbury→Charlton, ratio 3.64
+direct against 1.13 via Ogunquit). **Method: visual identification, then arithmetic corroboration.**
+
+**★ CH.13 MATERIAL.** The instruments did not merely improve; they changed KIND. The 2010 photograph
+needs a human to say where it is; the 2021 photograph says so itself. Same photographer, same act,
+different evidentiary status, decided by a chip.
+
+**DEFERRED with a specific trigger:** fish the archive only when a chapter has a question a photograph
+could settle. Do not inventory it speculatively. Timestamps are the useful field.
+
 ## ★★★ CHAPTER 1 IS DRAFTED (2026-08-21) — `book/small_cars.qmd`, ~720 words
 
 **Its job had to be redefined**, because the Foreword now names the four cars and ch.2 owns the safety-cell demonstration. **Chapter 1 is about the OBJECT: how small, why it's that shape, and the fleet as four decisions rather than one.**
@@ -381,13 +435,14 @@ He withdrew his own West Virginia answer after checking a map: **different highw
 **Figures wired:** `@fig-day-one` (the day it arrived, on the original narrow tires, **with the silver safety cell visible** — the photo does the pointing the text describes) and `@fig-wide-wheels` (after Smart Madness; visibly wider). **Book images live in `book/images/`** so Quarto copies them into the output; the canonical archive stays in `Smart_Car/images/`. ⚠ **`*.jpg` is in the mirror's `.gitignore`, so photographs are NOT in the versioned backup** — Kim's own copies are the record.
 
 ## Next Steps
-1. **★★★ DRAFT ch.4, `expeditions.qmd`.** Scaffold populated, and **the naming question that gated it is answered** (Kim, 2026-08-28: standing rule as written). Topic note in the Active Focus block.
+1. **★★★ KIM READS CH.4** (drafted 2026-08-29, ~2,530 words, two tables). Then **ch.5 `long_days.qmd`** — its scaffold already lists all eight long days with the material collected.
 2. **KIM — still only he has these:** the Yukon pothole in his own words (the last thin patch in ch.2); the tree-tunnel stretches by name; Bordeaux's character and the "last ones the dealership sold" detail for the Afterword.
 3. **TASK before any figure is printed:** re-derive the wide-tire interval with a WRITTEN specification. **A number that cannot be reproduced is not sourced.**
-4. **SMALL TASK:** TwoFer's 1,209 miles is still a TYPED constant in ch.1 and ch.2. The `TwoFer Gas Log` Sheet is live-only and never ingested — 7 fills, ten minutes, and the last ICE car joins the corrected dataset.
-5. **OPEN, low cost, high value:** C01-C03 are still `hypothesis` and unapplied. **Kim has now shown the station receipts carry what settles them** — the same source that closed C05. Three $/gal values, one look at the receipts.
-6. **Everything else lives in `deferred.md`** — Canada2014 units, Creamsicle's timezone table, `Expedition_ID`, the constellation maps, the ~141 extra fill temperatures in the live `TwoRed_fuel` Sheet, and the open questions for Kim.
-7. **⚠ `*.jpg` is gitignored in the mirror** — photographs are not in the versioned backup.
+4. **SMALL TASK:** TwoFer's 1,209 miles is still a TYPED constant in ch.1 and ch.2. The `TwoFer Gas Log` Sheet is live-only and never ingested — 7 fills, ten minutes.
+5. **OPEN, low cost:** C01-C03 are still `hypothesis` and unapplied. The station receipts settle them — the same source that closed C05.
+6. **★ NEW, from the 2014 deck:** slide 6's 2010-2013 totals reconcile EXACTLY on fill count (163) and distance (39,739) but differ by -0.22% on gallons and +0.53% on cost, **and the errata do not explain it.** Look at the interleaved running-total cells in the source workbook, which slide 6 was probably typed from.
+7. **Everything else lives in `deferred.md`** — Canada2014 units, Creamsicle's timezone table, `Expedition_ID`, the constellation maps, the ~141 extra fill temperatures, the photo archive (deferred with a trigger), and the open questions for Kim.
+8. **⚠ `*.jpg` is gitignored in the mirror** — photographs are not in the versioned backup.
 
 ## Collaborators / Dependencies
 None.

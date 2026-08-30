@@ -11,6 +11,139 @@ Mechanism 4.
 
 ---
 
+## 2026-08-29 -- CH.3 RE-SOURCED, CH.4 DRAFTED, AND THE LAST BLANK CORNER OF THE RECORD FILLED
+
+**Active focus at start and close:** Smart_Car. Opened the PKM to start ch.4; a question from Kim -- *should I be talking about how the long trips began?* -- turned into a correction to an approved chapter.
+
+### The question that found the error
+
+Checking whether ch.3 had already told the origin, I found it had: the car-wash section opens *"It came in the middle of the first long trip."* **But its numbers came from `trip == "2011_StLouis"`** -- a nine-day St Louis hold on the FOLLOWING year's trip.
+
+Kim then gave his itinerary for the first crossing (as reference, not text), and it dates the hold exactly: **dropped the car 10/11, flew home, collected it 11/5.** That is 2010, and it matches the 2010 fuel gap to the day.
+
+| | printed before (2011) | correct (2010) |
+|---|---|---|
+| gap | 9 days | **25 days** |
+| miles | 217 | **227** |
+| pace | 24 mi/day | **9.1**, against a between-trip median of 5.3 |
+| brackets | St Louis -> St Louis | **Altamont IL -> Effingham IL** |
+
+**217 against 227. Ten miles apart, and both are St-Louis-area holds on consecutive years** -- which is exactly how a mis-sourcing survives being read and approved.
+
+**★★ THE CORRECTED VERSION IS A BETTER PARAGRAPH, which is the argument for fixing it rather than patching it.** The 2010 crossing has NO trip log, so the stop exists only as a gap between two fuel fills -- and those fills name Altamont and Effingham, Illinois, the better part of a hundred miles either side of St Louis. **The exception is now hidden THREE times instead of two: by the odometer, by the definition, and by the fills themselves, which never name the place the car actually sat.** The chunk is re-sourced with a `stopifnot` on both bracket rows; rendered and verified, 10 of 10 checks including that the stale 9-day figure is gone.
+
+### His account matches the fuel log 12 for 12
+
+LSM 9/19, Dallas 9/23, St Louis 9/29, Blue Ridge 10/2, Connecticut 10/7, drop 10/11, collect 11/5, GigaPan Pittsburgh 11/10, North Carolina 11/15, Arkansas 11/17, Carlsbad Caverns 11/21, home. **A trip with no trip log, reconstructed entirely from 43 fuel fills. That is ch.4's opening argument and it arrived by itself.**
+
+### ★★★ A FIFTH INDEPENDENT RECORD -- KIM'S 2014 TALK AT LAKE SAN MARCOS
+
+Given just after the big trip, so **contemporaneous rather than recall.** It names the four states the drive was needed for: **Florida, Delaware, Rhode Island, Vermont**, and Vermont was the last, *"other than Hawaii, of course."*
+
+**★★★ THREE OF THOSE FOUR ARE EXACTLY THE STATES THE GEOGRAPHY INSTRUMENT RECOVERED FROM ODOMETER ARITHMETIC ALONE** -- no fill, no leg naming them. Delaware from Colonial Heights VA -> Bellmawr NJ (265 mi against a Delaware-free ~305); Rhode Island from Bellmawr NJ -> Douglas MA (287, the Providence road); Florida from testimony plus Styx River Road plus a geotagged photograph. **A document written in 2014 confirms three inferences made in 2026 from numbers alone.** The instrument was not merely self-consistent. It was right.
+
+**★ AND ITS OMISSION IS THE PROOF. South Dakota is NOT in the list**, because it was crossed on 2012_Frostburg (2012-05-27, Casper -> Ogallala) and was not missing by 2014. **A corroborating document that agrees on everything is weak; one that is silent exactly where it should be is strong.**
+
+**★★ IT ALSO EXPLAINS THE TRIP'S NAME, which nobody had explained.** `2014_PenultimateState`: **Vermont is the 49th, Hawaii the 50th and never driven to.** So Vermont is at once the LAST state reached by car and the PENULTIMATE of the fifty. Both framings already in the record are correct -- they were counting different sets. The name had been carrying the answer all along.
+
+**Finding 045 for the FIFTH time** -- AMEX, Styx River Road, the Florida photograph, the receipt odometer, and now a talk. **Every time, the redundant record existed and had been forgotten rather than lost.**
+
+### ★★★ CHAPTER 4 IS DRAFTED -- and the master dictionary changed what it is about
+
+`expeditions.qmd`, **~2,530 words, seven sections, two tables, no figure.**
+
+**The scaffold said "the crossings, trip by trip." Reading `source/Smart_Car_master_dictionary.pdf` made that the wrong chapter.** Kim's own c.2015 summary names **14 expeditions**. The trip log holds **13 trips**. They are not the same list: **7 of his 14 have no trip log at all** -- the first crossing, a desert run, Yosemite, a February Fort Worth drive, Death Valley, an August meeting, and a weekend at Lake Havasu -- and Sedona is logged as a fragment of the trip it belonged to.
+
+**So the chapter is: the trip log was never a record of the trips.** It recorded long driving days, and it started a year after the driving did. **This is the fractal scope boundary at a THIRD scale** -- ch.3 found it inside a trip, the Foreword at the end of the car's life, ch.4 finds it BETWEEN trips. A whole expedition can fall through and the record is not wrong when it does.
+
+**`tbl-expeditions`** puts his list against the log. **`tbl-growth`** shows what the record carries trip by trip, and it contains the chapter's best structural fact: **the written-distance column goes to 0% from 2016 and stays there.** Times were there from the first leg; temperatures took a year; everything is complete by 2014 -- and then a field is switched off. **It is the one place in sixteen years where Kim can be seen deciding what mattered, rather than a habit forming quietly.**
+
+New: `data/TwoRed_expeditions.csv` (transcribed verbatim, with a `source` column) and `book/R/expeditions_data.R`.
+
+### ★★★ MOUNT EVANS -- KIM NAMED THE TEST, AND THE TEST PASSED
+
+He raised it as a loss: he had tried for Mount Evans several times between Grand Junction and Denver and been turned back by snow, finally made it in 2016, took photographs he can no longer find, and added -- **"none of this appears in the record unless there is a mileage anomaly on the route."** He then said we should move on. **That sentence is a falsifiable prediction and the instrument was already built, so I ran it instead.**
+
+**2016-06-20, Denver -> Grand Junction, on the Fourth Crossing:**
+
+| instrument | reads | expected | excess |
+|---|---|---|---|
+| the LEG | 305 odometer miles | ~250 on I-70 | **55** |
+| the TANK (Watkins -> Gypsum) | 203 miles | ~150 of road | **~53** |
+| the CLOCK | 07:58-18:13, **10.2 h**, gross 29.8 mph | ~4 h | **~6 h** |
+
+**The byway is 28 road miles from Idaho Springs to the summit. Out and back is 56.**
+
+**★ THE TANK IS WHAT MAKES IT A FINDING RATHER THAN A SUGGESTIVE NUMBER.** The leg and the clock come off the same sheet in the same handwriting. The tank is a different instrument with different endpoints and its own boundaries, nobody aligned the two on purpose, and it returns the same answer. **A control exists too:** the same stretch eastbound three weeks earlier, filling at the same Gypsum station -- **50.15 mpg down against 40.75 up.**
+
+Everything else corroborates: late June, when the byway is open; westbound out of Denver with Idaho Springs 35 miles along; the Fourth Crossing was his last crossing, matching *"one of my last chances."*
+
+**★★★ IT CLOSES THE ONE BLANK ROW IN HIS OWN 2015 SUMMARY** (*Highest Elevation: see upcoming trips*). Sixth recovery by this route, after South Dakota, Delaware, Rhode Island, Florida and Ogunquit. Kim: *"It proves we've got a good analysis technology running."*
+
+**★★ AND HIS ACCOUNT OF THE DAY GAVE THE CHAPTER ITS BEST PARAGRAPH.** He could not stay long at the summit -- altitude headache -- and drove into a hail storm on the descent hard enough that he watched the paint. No damage. *"I was happy to be back on the Interstate."* The section sets that against what the record holds: **fifty-five miles and six hours.** That contrast was only available because he had first told me the record was silent; it could not have been written from the data alone.
+
+**★ AND IT CORRECTED A PARAGRAPH WRITTEN AN HOUR EARLIER.** Ch.4 had called the blank row *"the most honest thing in the summary -- a record kept by somebody who assumed there would be more trips."* Poignant, and false. **The truth is better: he closed the row two years later and never went back to write it in.**
+
+### ⚠ MY OWN FAILURE, TWICE IN ONE CHAPTER
+
+**Ch.4's first draft carried 2 contractions in 2,100 words**, against a standing voice rule Kim gave on 2026-08-21 and which is recorded in three places. I fixed it to 22 -- **and then wrote the 550-word Mount Evans section with none.** Final state 38, with one deliberate exception (*"There was not."*, where contracting kills the beat).
+
+**Twice in one chapter is not a slip, it is a missing step.** The rule now: **check the voice before showing Kim a draft, not after.** A mechanical count takes one line and I ran it only because I happened to.
+
+### The four open items, closed the same session
+
+**Delaware 264 vs 265 — CLOSED by Kim as insignificant.** Do not re-derive.
+
+**★★ MAINE 2010 IS CONFIRMED, and the geometry turned out to be decisive.** Kim has a non-cellphone photo dated October 9 on the Maine coast; Gemini places it at **Ogunquit**, about fifteen miles past the line, matching his *"we had just barely gone into Maine."* He flags the camera clock as unreliable — it does not need to carry the weight. **The Danbury CT -> Charlton MA leg runs 335 odometer miles: ratio 3.64 against the direct great-circle, and 1.13 via Ogunquit.** A 1.13 leaves essentially no unexplained mileage, so the dash accounts for the whole excess. Four independent strands agree: geometry, the photo's location, its date (the Charlton fill is also 10-09), and testimony. **It confirms an itinerary, not a state** — Maine is already witnessed by 2014 fills.
+
+**The 2011 nine-day St Louis hold is explained:** the **Society for Economic Botany** meeting. Never a second car-wash episode. The hold ch.3 had borrowed now has its own reason.
+
+### ★★★ THE TALK IS `source/2014_Chateau_Presentation.pptx`, AND IT WAS NEVER IN Key Files
+
+50.3 MB, **121 slides**, dated **2014-06-16 — four days after the trip closed.** *Driving to the Extremes: Some Recent Smart Car Adventures*, Kim with Dr. Nancy Furumoto (Navigator). **The largest file in `source/`, unlisted since the 2026-08-12 intake**, because its name says *Chateau Presentation* and nothing about states, data or the trip. **An intake that lists four of five files is an intake gap — and this one held the answers to two separate open questions.** Finding 045 for the sixth time.
+
+**Slide 42, verbatim:** *"2014 Expedition | Complete the 49 States + 10 Provinces | Missing States | Florida | Delaware | Rhode Island | Vermont."* **His recollection is now a primary source**, and three of those four were recovered in 2026 from odometer arithmetic alone. Slide 121 gives 10,907 miles + ~280 ferry, matching the margin note and the dataset a third time.
+
+### ★★★ SLIDE 6 IS AN INDEPENDENT 2014 COMPUTATION OF THE 2010-2013 RECORD
+
+*"Total Distance: 39,739 miles | Total Fuel Used: 1017.414 gallons | Total Fuel Cost: $3,797.63 | Overall Mileage: 39.28 mpg | Total Fill-ups: 163 | Average Fill-up: 6.24 gallons | 2010-2013 Statistics."*
+
+**Decoding his boundary was the whole trick. 39,739 is the ODOMETER AT FILL #164 — Signal Hill CA, 2013-09-06, the last leg of the Arctic trip.** He drew the line at the end of the 2013 SEASON, not 31 December, and his 163 fill-ups exclude the dealer's first at odometer 4. On that frame:
+
+| | slide 6 (2014) | corrected dataset (2026) | |
+|---|---|---|---|
+| fill-ups | 163 | **163** | **exact** |
+| total distance | 39,739 | **39,739** | **exact** |
+| average fill | 6.24 gal | 6.23 | rounding |
+| total gallons | 1017.414 | 1015.19 | **-0.22%** |
+| total cost | $3,797.63 | $3,817.82 | **+0.53%** |
+| overall mpg | 39.28 | 39.14 ratio / 39.44 mean-of-tanks | his sits between |
+
+**⚠ AND THE RESIDUAL IS NOT THE AUDIT — I checked before claiming it was.** The 36 errata dated on or before 2013-09-06 move gallons **+1.559** and cost **+0.96**; the residuals are **-2.224** and **+20.19**. Wrong sign on one, wrong magnitude on both. **The tempting story — "the difference is what the audit corrected" — is false.**
+
+**Where to look instead, and it is specific.** Kim's workbooks carry interleaved running totals and averages inside the data region (which is why the Creamsicle ingest skips them and reports the count). **Slide 6 was almost certainly typed from those cells rather than recomputed** — so the question is not which dataset is right, but what those 2014 total cells held, and whether they were ever updated after a row changed. **A stale total cell is precisely the error class this book is about.**
+
+### ★★★ AND IT ANSWERS THE PROJECT'S LARGEST OPEN QUESTION
+
+`proj_Smart_Car.md` has carried this since 2026-08-21: *is there a TwoRed photo archive? Nobody has asked about 2010-2017.* **The deck embeds 121 images, 50.1 MB** — the Alaska Marine Highway, the Dalton, Wiseman, fireweed, an ermine, the Moncton tidal bore, a Columbian ground squirrel. **Photographs were taken and curated within four days of the trip ending.**
+
+**⚠ Being precise about what that proves.** It proves they EXIST and were selected. It does not locate an archive: embedded PowerPoint media are downsampled and largely stripped of EXIF. **The question changes from "is there an archive?" to "where are the originals, and do they carry EXIF?"** — answerable, and Kim can settle it in a minute. If they do, ch.12's parking constellation and ch.13 both gain a second instrument for 2010-2017, exactly as Creamsicle has.
+
+
+---
+
+### Close-out (Mechanism 5)
+
+1. **New projects?** None.
+2. **Smart_Car header:** Status **Active**, Focus readiness **Ready** -- unchanged and correct. Ch.5's scaffold already holds its material; nothing is blocking.
+3. **New files, added to Key Files:** `data/TwoRed_expeditions.csv` (transcribed verbatim from the master dictionary, with a `source` column) and `book/R/expeditions_data.R`. Also newly listed after an intake gap: **`source/2014_Chateau_Presentation.pptx`**, the largest file in `source/` and unlisted since August.
+4. **Cross-references:** Active Focus rewritten for the close; yesterday's block archived verbatim to `logs/focus_history.md`; `proj_Smart_Car.md` updated in six places.
+5-6. **Decisions logged; this entry written.**
+7. **Active Focus updated**, 3.2 KB against a budget of 6.
+8-9. **Next Steps rewritten.** Ch.4 is drafted, so item 1 becomes *Kim reads ch.4, then ch.5*. **New item added from the deck:** slide 6 reconciles exactly on fill count and distance but differs on gallons and cost, and the errata do not explain it -- look at the workbook's interleaved running-total cells.
+10. **Written outside `G:`:** two bucket-4 folders, `C:\temp\chateau_2026-08-29` (pptx extraction scratch) and `C:\temp\ch4_20260829` (a render copy). **Both regenerable; delete whenever.** Nothing written to bucket 5.
+11-12. **`pkm_health()` and `pkm_backup()` run -- results below.**
+
 ## 2026-08-28 -- CH.3 APPROVED AND GAINS A SECOND FIGURE; A SEVENTH AUDIT INSTRUMENT, FOUND BY A CHART
 
 **Active focus at start and close:** Smart_Car. Kim opened the PKM, confirmed he had read chapter 3 and approved it, and chose the parked-periods figure over drafting ch.4.
@@ -118,6 +251,26 @@ He gave it unprompted, and it is the argument the difficulty chapters have been 
 **047 -- an instrument is blind to the field it takes as given, and a sort key hides errors in itself.** All six audit instruments take the DATE as given, so a wrong date was not a hard case, it was outside their range. And the ingest sorted BY ODOMETER: **sorting by a field cannot reveal an error in that field, because the sort imposes the order you would be checking.** The record's own claim -- *strictly increasing* -- was TRUE, in the ordering nobody had questioned. **A true sentence can be load-bearing in a direction it was never tested in.** Corollary: a figure is an audit instrument.
 
 **048 -- on Drive Stream, overwriting an existing file can fail while creating a new one succeeds.** `write.csv()` over the target failed with *cannot open the connection*, repeatedly; a new file in the same folder wrote fine and `file.remove()` returned FALSE. **Write to a temp name, then `file.rename()` over the target** -- that worked where both did. The ground-truth rule in a new costume: verify by reading content back, since the return values here were a half-signal.
+
+### Close-out (Mechanism 5)
+
+1. **New projects?** None.
+2. **Smart_Car header:** Status **Active**, Focus readiness **Ready** — unchanged, and correct: ch.4's scaffold is populated and the naming question that gated it is answered. Nothing is blocking.
+3. **New files, added to Key Files:** `book/R/dwell_data.R`, `book/R/fig_dwell.R`, and `data/Creamsicle_corrections_machine.csv`. `creamsicle_ingest.R` is materially changed (errata application + the odometer-as-clock check) and that is recorded beside it.
+4. **Cross-references:** project_index Active Focus rewritten, the superseded block archived verbatim to `logs/focus_history.md`, `proj_Smart_Car.md` updated in four places.
+5-6. **Decisions logged;** this entry written.
+7. **Active Focus updated**, and ch.4's topic note filed in `deferred.md` so tomorrow starts from an angle rather than a blank scaffold.
+8-9. **Next Steps rewritten and made honest.** Items 1-3 were stale — ch.3 is drafted and approved and both privacy calls are ruled. What is left is real: draft ch.4; the four things only Kim has; the wide-tire re-derivation; TwoFer's 7 fills. **New item added from tonight: C01-C03 are three $/gal values and Kim has just demonstrated the receipts can settle them** — the same source that closed C05.
+10. **Written outside `G:`:** one bucket-4 folder, `C:\temp\creamsicle_clean_20260828`, holding the pre-C04 and pre-C05 snapshots of `Creamsicle_fuel_clean.csv`. **Retention: delete once the corrected CSV has survived a session.** Nothing written to bucket 5.
+11. **`pkm_health()` — 98.9 s, and clean where it matters.** 83 works, **0 reconciliation failures, 0 rendered-without-source, 0 broken pointers, pre-deletion gate 0.** Focus block 5.9 KB against a budget of 6.
+12. **`pkm_backup()` — 1,230 files, 0 pruned, 0 size mismatches; secret scan CLEAN; committed `7aa72433b4`, 17 files changed; push VERIFIED AGAINST THE SERVER** (Finding 028 — the return value alone is not evidence).
+
+**Two housekeeping items, both reported rather than acted on** (remedies are never run automatically):
+
+- **`proj_Smart_Car.md` is now 48.6 KB against a 45 KB budget**, and tonight's edits are what pushed it over. It is flagged `splittable`. The project is in full flight, so the file growing is honest — but `split_tail()` to `logs/proj_Smart_Car_log.md` is the remedy when Kim wants it. `proj_seasonality.md` (51.6) and `proj_audio.md` (47.3) were already over.
+- **Four build-scratch folders are past the 14-day threshold** — `pkm_edits_20260811`, `pkm_snapshots`, `timelapse`, `venuemirror_clone_2026-08-03`. Together they are under 1 MB, so this is tidiness, not space.
+
+**Drift (4) and repo/clone mismatches (6) are unchanged from 2026-08-24** and belong to other projects.
 
 ### ⚠ THREE SESSIONS ARE MISSING FROM THIS LOG
 
