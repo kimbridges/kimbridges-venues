@@ -1,5 +1,5 @@
 # PROJECT: Smart_Car
-_Last updated: 2026-08-29_
+_Last updated: 2026-08-31_
 _Status: Active_
 _Focus readiness: Ready_
 _Tags: intake, data-recovery_
@@ -54,6 +54,14 @@ Counting DAYS asks the chapter's question instead. `R/dwell_data.R`, `R/fig_dwel
 
 **Not ready:** the temperature effect is **retired**; the wide-tire interval is **not printable until re-derived**; the Canadian variance test is a NON-RESULT; the southern economy signal **cannot be settled**; route work partial at a 78% gazetteer join; **TwoFer is still not ingested.**
 
+
+**2026-08-31 — SEVEN PIECES STAND (Foreword + ch.1-ch.7, ~17,000 words) AND THE BOOK RENDERS END TO END FOR THE FIRST TIME.** Ch.5 `long_days.qmd` and ch.6 `the_roads.qmd` drafted; **a new ch.7 `the_marine_highway.qmd`**; new sections written into ch.1 and ch.2. **16 chapters render, 0 error strings.** Status and Focus readiness UNCHANGED (Active / Ready).
+
+**Six accounts collected from Kim and four rulings taken, all verbatim in the log:** the calibration baseline and the logistics partnership; tree tunnels; ch.6's two-layer spine; the ferries and the Whittier tunnel; and fuel economy from his side. **Four analyses came out of them** — no learning curve in the day length (p = 0.44); five sea passages totalling **twelve odometer miles**; Costco worth **$0.20/gal** (paired Wilcoxon p = 0.008); and the slow-driving economy claim as a **signal that does not survive `leg_miles`**.
+
+**Two infrastructure findings.** **049** — two chapters had silently stopped rendering because inline `r` read variables defined in chunks lower in the file; after touching `book_setup.R`, render the whole book. **050** — **ten hardcoded chapter numbers are wrong**, half from inserting ch.7 and half from an older mismatch between the project's numbering and Quarto's. **The fix is to stop writing numbers** (`{#sec-name}` / `@sec-name`). Table in `deferred.md`.
+
+⚠ **This file is 55.7 KB against a 45 KB budget and `pkm_health()` marks it splittable.** The 2026-08-31 material was kept deliberately short for that reason; **a split is the next housekeeping job on this project.**
 ## The fleet
 
 _Given by Kim 2026-08-12. This replaces the single-car framing entirely._
@@ -300,11 +308,15 @@ _Written 2026-08-12; item 6 added 2026-08-20._
 - `data/2016_Fourth_Crossing_Analysis.xlsx` — 35 rows, time-zone-corrected activity time. The cleanest asset.
 - **`data/Fuel_and_Trip_Logs/*.pdf` — 22 scans, 2010-2017, Kim's paper field sheets.** Primary source behind all 65 errata. **Not in the mirror — Finding 038.**
 - **13 trip-log CSVs, 139 legs** (132 timed), each carrying time, city and temperature at BOTH ends, both odometers, written distance, odometer delta, timezone shift, elapsed hours, gross mph, and per-row notes.
-- `data/TwoRed_fuel_clean.csv` (294), `TwoRed_log_errata.csv` (65), `TwoRed_fuel_timetemp.csv` (134), `TwoRed_city_timezones.csv` (121 cities).
+- `data/TwoRed_fuel_clean.csv` (294), `TwoRed_log_errata.csv` (65), `TwoRed_fuel_timetemp.csv` (**156 as of 2026-08-31** -- the whole Alaska trip transcribed from `2013_TwoRed_Fuel_Trip_Logs_Alaska.pdf`, 22 rows, every odometer key gated against the fuel log on the same date), `TwoRed_city_timezones.csv` (121 cities).
 - **Creamsicle:** `Creamsicle_fuel_clean.csv` (173), `Creamsicle_trip_clean.csv` (86), `Creamsicle_log_errata.csv` (the human-readable record) and — **NEW 2026-08-28** — **`Creamsicle_corrections_machine.csv`** (C01-C05; the file `creamsicle_ingest.R` actually applies, keyed to the ODOMETER, `tier` gating what is applied). `creamsicle_ingest.R` now **applies errata with a refusing guard and runs the odometer-as-clock check.**
 - **`book/R/dwell_data.R` + `book/R/fig_dwell.R` — NEW 2026-08-28.** The `@fig-dwell` pair: fill-to-fill intervals for both cars, and the time-weighted figure built from them. `dwell_data()` reports its own skip counts in `attr(, "same_day")` and `attr(, "backward")`.
 - **`data/TwoRed_expeditions.csv` — NEW 2026-08-29.** Kim's own list of 14 named expeditions, transcribed VERBATIM from `source/Smart_Car_master_dictionary.pdf` with a `source` column recording where each field came from. **7 of the 14 have no trip log**; the join is what ch.4 is built on.
 - **`book/R/expeditions_data.R` — NEW 2026-08-29.** Joins Kim's list to the trip log and computes the record-growth table (which fields each trip carries, as a share of its legs) plus the 2010 fuel-only figures for a crossing with no trip log.
+- **`book/the_marine_highway.qmd` — NEW CHAPTER 2026-08-31.** The five sea passages. Added to `_quarto.yml` in The Drives after `the_roads.qmd`, which **renumbered every chapter after it — see Finding 050 and `deferred.md`.**
+- **`book/R/long_days_data.R` — NEW 2026-08-31.** `long_days_data()` (every leg of 450 mi or more, distance from the odometer with a written-figure fallback), `long_day_early()`, `day_segments()` (within-day fill-to-fill segments, with a timezone argument), `day_shape()` (the ordinary day: median leg, arrival and departure clock, and the no-learning-curve test).
+- **`book/R/roads_data.R` + `book/R/fig_roads.R` — NEW 2026-08-31.** `@fig-roads`, and **`ROADS_SOUTH` / `ROADS_APPAL` now STATE the group rule in code** — it had been quoted for eleven days with nothing written down. Also `roads_tanks()` (the I-65 tank pair) and `roads_dalton()`. Figure at `book/figures/roads.png`.
+- **`book/R/ferries_data.R` — NEW 2026-08-31.** The five sea passages and `ferry_tank()`. **Water distances are Kim's and are marked as his; nothing in the record measures them.**
 - `source/` — **★★★ `2014_Chateau_Presentation.pptx` (50.3 MB, 121 slides, dated 2014-06-16, four days after the trip closed) — A PRIMARY SOURCE, added to this list 2026-08-29 after sitting unlisted since intake.** *Driving to the Extremes*, given at Lake San Marcos. **Slide 42 names the four missing states (Florida, Delaware, Rhode Island, Vermont) in writing; slide 6 is an independent 2010-2013 computation; slide 121 gives the 10,907-mile total; and 121 embedded photographs answer the TwoRed-photo question.** Also: `Smart_Car_master_dictionary.pdf` (expedition names, dates, targets); `Smart_Car.docx` (10.3 MB, largest section is the already-published Arctic Circle Challenge — **a quarry, not a draft**); `Smart_Car_2016.pptx`; `charter_2026-05-08.md`, kept verbatim, superseded on scope and Chapter 5.
 - `images/Creamsicle/` — 37 geotagged trip photos + `Creamsicle_profile.jpg`. **Backstop for the deleted `creamsicle.jpg`: a copy survives at `kimbridges-stories\underway\Smart_car\` — do not delete that folder without checking.**
 

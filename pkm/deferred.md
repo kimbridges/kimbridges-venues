@@ -170,6 +170,12 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### TASK — SPLIT `proj_Smart_Car.md` (57.2 KB against a 45 KB budget)
+
+`pkm_health()` has flagged it splittable for several sessions and it grew again on 2026-08-31. **The tail is the natural cut:** roughly thirty dated `## ★★★` sections from 2026-08-16 onward are narrative-of-the-work, not living status, and most already say *full write-up in the log*. **Use `split_tail()` from `pkm_health.R`** -- snapshot-first, losslessness verified, restores on failure, and `dry_run = TRUE` by default.
+
+**Occasion: the next session that opens Smart_Car and is not mid-chapter.** Do it before the file crosses 60 KB.
+
 ### ★★★ TASK — TEN HARDCODED CHAPTER NUMBERS ARE WRONG, AND THE FIX IS STRUCTURAL (2026-08-31)
 
 **Two errors stacked.** (a) The prose numbers chapters the PROJECT's way, Foreword unnumbered, so `small_cars` is "ch.1" -- but **Quarto counts `index.qmd` as chapter 1**, so it renders as 2. **Every hardcoded reference was already one low.** (b) Inserting `the_marine_highway.qmd` moved every target after position 7 by one more.

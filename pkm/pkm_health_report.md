@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-08-31 21:35 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-08-31 21:45 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -37,7 +37,7 @@ None.
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
 | session_log.md | REFERENCE | 281.1 | 250 | 31.1 | FALSE |
-| proj_Smart_Car.md | PROJECT |  54.4 |  45 |  9.4 | TRUE |
+| proj_Smart_Car.md | PROJECT |  57.2 |  45 | 12.2 | TRUE |
 | proj_seasonality.md | PROJECT |  51.6 |  45 |  6.6 | TRUE |
 | proj_audio.md | PROJECT |  47.3 |  45 |  2.3 | TRUE |
 
@@ -77,10 +77,10 @@ None.
 | chateau_2026-08-29 |  2.2 | 0 | FALSE |
 | creamsicle_clean_20260828 |  3.0 | 0 | FALSE |
 | pkm_edits_20260811 | 20.5 | 0 | TRUE |
-| pkm_snapshots | 29.0 | 0 | TRUE |
+| pkm_snapshots | 29.1 | 0 | TRUE |
 | smartcar_fuelfix_20260817 |  2.0 | 0 | FALSE |
 | timelapse | 18.0 | 0 | TRUE |
-| venuemirror_clone_2026-08-03 | 29.2 | 0 | TRUE |
+| venuemirror_clone_2026-08-03 | 29.3 | 0 | TRUE |
 
 ## Legacy pages by platform
 
@@ -96,4 +96,4 @@ None.
 None.
 
 ---
-_Ran in 76.1 s._
+_Ran in 60.2 s._
