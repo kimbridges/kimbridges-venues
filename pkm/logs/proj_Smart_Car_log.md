@@ -945,6 +945,45 @@ _Kim corrected this himself on 2026-08-19: he first said "Petroglyphs NP" and th
 > The LSM to St George trip was before I was recording why I took time off during a drive. Las Vegas is between LSM and St George and we have friends who live in Las Vegas. We stopped to spend time with them and then pushed on later in the day to St George. A long day with a nice break to enjoy the company of our friends. The highway for the Las Vegas to St George leg is not challenging. That made it practical to push on to our destination.
 
 ---
+### 2016-06-19 — Richmond MO -> Denver CO, 640 mi. THE LONGEST DAY. (collected 2026-08-31)
+
+> My brother lives in Richmond. A short day to get there was all that was needed. After a visit, I faced the short trip remaining across MO, then the "flat" drive across KS and the part of CO leading up to the Rockies. There aren't a lot of interesting places to stop. I just wanted to get over this section of highway. I-70 through the CO mountains is one of the most beautiful drives in the US. I had some hope for Mt. Evans (which, we need to note has since been renamed Mount Blue Sky), but that wasn't the motivation. Getting back into roads that wind through the mountain valleys, often alongside the Colorado River, was what I longed for.
+
+**★★ THE MOUNTAIN HAS BEEN RENAMED.** Mount Evans is now **Mount Blue Sky**. Applied to `expeditions.qmd` in two places 2026-08-31 (the extremes table and the section opening) and re-rendered. Any future mention takes the new name with the old one alongside, because every map Kim drove by said Evans.
+
+**★ AND THE MOTIVATION IS THE OPPOSITE OF THE OBVIOUS ONE.** The 640 sits the day before the Mount Evans recovery, so the tempting reading is that the plains were crossed to reach the mountain. Kim rules that out himself: the mountain was hope, not motive. **He drove the longest day in the record to get a boring stretch of highway behind him.** The next day is what he wanted, and it is not the summit either, it is the Colorado River road.
+
+### 2013-08-04 — Lake San Marcos CA -> Carson City NV, 487 mi. THE SMOKE. (collected 2026-08-31)
+
+> That was a period when there were raging fires in the mountains. Smoke covered Hwy 395 as it runs up the east side of the Sierras. I couldn't stay farther south, even though I intended to stop well short of Carson City. It was the smoke that determined my miles on that day.
+
+**★★ THE ROUTE CORROBORATES IT WITHOUT BEING ASKED.** The two fills that day are **Kramer Junction 10:40** and **Bridgeport CA 16:34**, and both are US-395 towns; Bridgeport leaves 77 miles still to run into Carson City. He fuelled inside the smoke and kept going. **The fill times were not in the record before this session** (see below).
+
+### 2015-07-07 — Carlsbad CA -> Sedona AZ, 575 mi, out at 04:05. THE UNPAVED ROAD. (collected 2026-08-31)
+
+> Carlsbad is next to LSM, so I was effectively starting at my base. A friend lived in Sedona and we agreed to meet up part way (I believe it was Phoenix) and we'd caravan to his house in Sedona. That plan mostly worked, but near the end as we were close to Sedona, he chose a route that was a serious challenge. He wanted me to get a good view of our destination, but to get to his house we needed to take an unpaved road for what seemed to be quite a long stretch. I was following him and he had a 4WD vehicle with lots of ground clearance. Not me. I crept along at less than 1 MPH, weaving my way around huge rocks. There was no turning back, although I'd have done it if I could. This was exceedingly risky as I could have gotten stuck. But I made it. And in doing so, I told myself (and TwoRed) to never do anything like that again. Otherwise, it was a nice visit. Vistas worth seeing.
+
+**★ THIS IS PROBABLY WHY THE END ODOMETER WAS NEVER WRITTEN.** The leg carries `miles_written` 575 and no end reading, and the sheet note already said the start-time cell was overwritten. **A day that ends with the driver crawling around rocks in the dark is not a day the log gets filled in.** Not asserted in the text; offered to Kim.
+
+### 2013-08-31 — Bellingham WA -> Grants Pass OR, 488 mi. THE SECOND TELLING. (collected 2026-08-31)
+
+> I might have told the story before, but briefly, this was Nancy's having made the reservation in Grants Pass. I was just off the ferry from AK and she had flown in for a brief ride with me as I completed the Arctic Circle expedition. I think she hadn't quite thought about the length of the drive and that we were starting fairly late in the day. It was a grin and bare it drive. Having Nancy along made it work as we could share stories about the expedition. But it was, indeed, a long drive.
+
+**★★★ THE CONFLICT IS RESOLVED, AND BY A NUMBER THAT WAS NEVER TRANSCRIBED.** Kim has said twice that the day started late; the sheet says **06:49**. The arithmetic rules out a genuine afternoon departure (488 mi by 20:18 needs about 67 mph gross, above the fastest day in the record). **The Alaska trip's FILL TIMES had never been entered** -- `TwoRed_fuel_timetemp.csv` held 3 rows for 2013 against 40 for 2016 -- so there was nothing between the two ends of the day. Transcribed from `2013_TwoRed_Fuel_Trip_Logs_Alaska.pdf` (22 rows, every odometer key gated against the fuel log on the same date, 0 unmatched, 0 date mismatches), the day splits:
+
+| | clock | odo | miles | hours | mph |
+|---|---|---|---|---|---|
+| Bellingham | 06:49 | 38,285 | | | |
+| Lakewood WA | 12:52 | 38,407 | 122 | 6.05 | **20.2** |
+| Rice Hill OR | 18:36 | 38,683 | 276 | 5.73 | 48.2 |
+| Grants Pass | 20:18 | 38,773 | 90 | 1.70 | 52.9 |
+
+**The first 122 miles took six hours; the rest of the day ran at 50.** About four hours are unaccounted for between Bellingham and Tacoma, which is the size of a ferry docking and unloading, a train arriving from Seattle, and two people finding each other. **The sheet recorded when the car came off the boat. Kim remembers when the driving started. Neither is wrong.** Written into ch.5 that way; **Kim has not yet confirmed the reading.**
+
+**★★ METHOD: the conflict was between two records only because a third had never been read.** Both accounts had been checked against each other for a fortnight. The instrument that settled it was sitting in the same PDF as the leg, one table higher up the page.
+
+---
+
 
 # Smart_Car -- project log
 

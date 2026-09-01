@@ -5,25 +5,158 @@
 #| include: false
 
 source("R/book_setup.R")
+source("R/long_days_data.R")
+
+D  <- long_days_data()            ## every leg of 450 miles or more, ranked
+E  <- long_day_early()            ## the 100-mile day that starts at 04:30
+L  <- twored_legs; L$date <- as.Date(L$date)
+
+d640 <- D[D$rank == 1, ]
+sedona <- D[D$rank == 2, ]
+mother <- D[D$rank == 3, ]
+ferry  <- D[D$rank == 4, ]
+florida<- D[D$rank == 5, ]
+urbana <- D[D$rank == 6, ]
+vegas  <- D[D$rank == 7, ]
+belling<- D[D$rank == 8, ]
+smoke  <- D[D$rank == 9, ]
+
+fastest <- L[L$date == as.Date("2012-06-14"), ]        ## Billings -> Pocatello
+dalton  <- L[L$date == as.Date("2013-08-18"), ]        ## Coldfoot -> Ester, the gravel return
+
+med_leg <- median(L$odo_miles, na.rm = TRUE)
+n_legs  <- sum(!is.na(L$odo_miles))
+n_long  <- nrow(D)
+
+## the day before the 640: a short run into Richmond
+stage <- L[L$date == as.Date("2016-06-18"), ]
+
+## segments inside three days. tz_seg names the segment holding the clock change.
+s640 <- day_segments("2016-06-19", tz_gain = 1, tz_seg = 3)   ## Central -> Mountain
+sbel <- day_segments("2013-08-31")
+ssmk <- day_segments("2013-08-04")
+
+stopifnot(nrow(d640) == 1, d640$miles == 640, nrow(sbel) == 4)
 ```
 
-<!-- SCAFFOLD — delete this block as the chapter is written.
+## Six hundred and forty miles
 
-PURPOSE
-Eight of them, and why each happened. The chapter where the human spine is most visible.
+The longest day in sixteen years starts in my brother's driveway.
 
-MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- 2012-05-31 St Louis -> Columbus, 518 mi: a navigator distracted, lost near Urbana IL, fireflies at dinner. The 09:52 fill is at Champaign -- one metro with Urbana -- and carries slashed-zero typo L61. Excess over direct I-70: 108 mi.
-- 2011-06-26 Flagstaff -> Holbrook, 100 mi: out 04:30, in 06:45, to meet his nephew, a naturalist at the Petrified Forest. 70 mi of local driving before the next departure IS the park tour.
-- 2012-06-14 Billings -> Pocatello, 449 mi: 65.5 mph gross, the fastest day in the record -- fast because Montana has nowhere to stop.
-- 2014-05-29 Sydney NS -> Edmundston, 555 mi: off an overnight ferry, car already packed; zero odometer miles across the water.
-- 2014-05-05 El Paso -> San Antonio, 531 mi: racing for Florida, the last state in the region.
-- 2012-05-24 LSM -> St George, 492 mi: a half-day Las Vegas visit inside a 31 mph day.
-- 2013-08-31 Bellingham -> Grants Pass, 488 mi: Nancy flew the red-eye and met him off the Alaska ferry.
-- 2017-01-06 Brookings -> Paso Robles, 562 mi: racing to his mother at 104. 32 degF, the coldest start in the record; fill 22:04 at 68,731, arrival 22:10 at 68,732 -- one mile, six minutes.
+He lives in Richmond, Missouri, and the day before this one is a short one, `r stage$odo_miles` miles from St Peters, because a short day was all that was needed to get there. Then a visit. Then the rest of Missouri, and Kansas, and the part of Colorado that leads up to the Rockies.
 
-OPEN / NEEDED
-- The Bellingham departure is UNRESOLVED: Kim remembers early afternoon, the sheet says 06:49. The arithmetic favours the sheet. Ask him again, or write it as an open question.
-- 2013-08-04 LSM -> Carson City, 487 mi, still has no story.
--->
+**`r format(d640$miles, big.mark = ",")` miles, out at `r d640$start_time` and in at `r d640$end_time`.** The clock says `r d640$elapsed_hours` hours, and it's lying by an hour in my favour, because somewhere out past Oakley the time zone changes and I got the hour back. `r d640$gross_mph` miles an hour gross, which is the fastest sustained day in the record and isn't close.
 
+The record can show you how it was done, because I bought fuel three times.
+
+```{r}
+#| label: tbl-640
+#| tbl-cap: "The longest day, in four pieces. Each row is one fill to the next, and the hours in the third row include the hour gained crossing into Mountain time. Nobody planned these as measurements. They're receipts."
+#| echo: false
+z <- s640
+z$miles <- ifelse(is.na(z$miles), "--", format(z$miles, big.mark = ","))
+z$hours <- ifelse(is.na(z$hours), "--", format(z$hours))
+z$mph   <- ifelse(is.na(z$mph),   "--", format(z$mph))
+names(z) <- c("", "Clock", "Odometer", "Miles", "Hours", "mph")
+knitr::kable(z, align = c("l","l","r","r","r","r"))
+```
+
+**Three segments, three independent stretches of road, and they run at `r s640$mph[4]`, `r s640$mph[3]` and `r s640$mph[2]` miles an hour.** That's not a car being pushed. That's a car being left alone on I-70 across Kansas, which is the fastest road anywhere in this book.
+
+And here's the part the numbers can't reach. I wasn't driving toward Denver. There aren't a lot of interesting places to stop between Richmond and the Front Range, and I just wanted to get over that section of highway. **What I was driving toward was the other side of it.** I-70 through the Colorado mountains is one of the most beautiful drives in the United States, and what I wanted was to be back on roads that wind through mountain valleys, often alongside the Colorado River. Mount Evans was on the list for the next morning, and I had some hope for it, but it wasn't the motivation. The mountain has since been renamed Mount Blue Sky, which is a better name for a thing I'd been trying to reach for six years.
+
+So the longest day in the record is a day I drove in order to get it over with. **Six hundred and forty miles is what impatience looks like when it's written down.**
+
+## What makes a day long
+
+`r n_legs` legs have both ends of the odometer written on them. The middle one is `r med_leg` miles. That's what an ordinary day of this driving looks like, and it's a perfectly good day: out after breakfast, somewhere by mid-afternoon, still a person by dinner.
+
+`r n_long` of them are `r min(D$miles)` miles or more.
+
+```{r}
+#| label: tbl-longdays
+#| tbl-cap: "Every driving day of 450 miles or more. The distance is the odometer's, except for 2015-07-07, where I never wrote the end reading down and 575 is my own figure from the sheet. Gross mph is the whole day, stops and all, which is why none of them look fast."
+#| echo: false
+z <- D[, c("rank","date","start_city","end_city","miles","start_time","end_time","gross_mph")]
+z$date  <- format(z$date, "%d %b %Y")
+z$miles <- format(z$miles, big.mark = ",")
+z$gross_mph <- ifelse(is.na(z$gross_mph), "--", format(z$gross_mph))
+names(z) <- c("#", "Date", "From", "To", "Miles", "Out", "In", "Gross mph")
+knitr::kable(z, align = c("r","l","l","l","r","r","r","r"))
+```
+
+Then there's this one, which belongs in the chapter and would never make the table.
+
+**`r format(E$date, "%d %B %Y")`. Flagstaff to Holbrook, `r E$odo_miles` miles, out at `r E$start_time`.** My nephew was a naturalist at Petrified Forest National Park and I wanted a tour of the place that day. The early start gave me the hours I needed. It's the earliest departure in the record after one other, it's a hundred miles, and it is unquestionably one of the long days, because **a long day is measured from when you got up, not from the odometer.**
+
+The sheet has a column for distance and a column for time. It doesn't have one for why.
+
+## Nobody drove a long day in order to drive a long way
+
+I remember all of them. That surprised me when I was first shown the list, and then it stopped surprising me, because **not one of these days was about the driving.** Every single one has a cause outside the car, and the causes are almost embarrassingly ordinary.
+
+**A wrong turn.** `r format(urbana$date, "%d %B %Y")`, St Louis to Columbus, `r urbana$miles` miles. I'd picked up a friend in St Louis and we were going to a scientific meeting together, with a dinner scheduled at his assistant's house in Columbus at the end of it. I asked him to navigate. We had a great deal to talk about and neither of us paid much attention to the travel details, and when I got off the freeway for fuel I discovered we were in Urbana, Illinois, which wasn't on our route. About a hundred miles of backtracking. We got to dinner late, but there were fireflies out, so eating outside in the dark was fine. **I took over the navigation the next day.**
+
+**Nowhere to stop.** `r format(fastest$date, "%d %B %Y")`, Billings to Pocatello, `r fastest$odo_miles` miles at `r fastest$gross_mph` miles an hour gross, the fastest day in the record by that measure. Familiar countryside, and frankly not very interesting. There aren't many places to stay between those two cities other than truck stop motels, and I wanted to be positioned for the next day. An efficient straight run on good freeway. Going fast was pretty easy.
+
+**A ferry that did the packing.** `r format(ferry$date, "%d %B %Y")`, Sydney, Nova Scotia to Edmundston, New Brunswick, `r ferry$miles` miles. We came off the overnight ferry from Newfoundland with the car already loaded, which is the whole reason the day worked: no packing, so an early start. We wanted to be in position for Quebec the next day, so we pushed on to Edmundston even though it was a really long day.
+
+**Friends in the middle.** `r format(vegas$date, "%d %B %Y")`, Lake San Marcos to St George, `r vegas$miles` miles in `r vegas$elapsed_hours` hours, which is `r vegas$gross_mph` miles an hour and the slowest big day here. Las Vegas is between the two and we have friends there. We stopped, spent time with them, and pushed on later in the day. The highway from Las Vegas to St George isn't challenging, and that's what made it practical to finish.
+
+**A state I still needed.** `r format(florida$date, "%d %B %Y")`, El Paso to San Antonio, `r florida$miles` miles. This was the trip where I meant to finish all forty-nine mainland states, and Florida was one of the ones left, so the whole route went south. I'd crossed Texas through the middle before, by Fort Worth and Dallas; this time it was San Antonio and Houston. There wasn't much between El Paso and San Antonio that I wanted to stop for and I had a meeting in Cherokee, North Carolina waiting at the other end. **It was a long day because Florida was a long way and I'd decided it was going to happen.**
+
+**Smoke.** `r format(smoke$date, "%d %B %Y")`, Lake San Marcos to Carson City, `r smoke$miles` miles, the first day of the Arctic expedition. I meant to stop well short of Carson City. There were fires raging in the mountains that summer and the smoke lay over Highway 395 all the way up the east side of the Sierras, and I couldn't stay in it. **The record agrees with that without being asked:** the two fills that day are at Kramer Junction and Bridgeport, both of them 395 towns, and the second one is at `r ssmk$time[3]` with `r ssmk$miles[4]` miles still to run. I fuelled in the smoke and kept going. It was the smoke that set the mileage on that day, not me.
+
+**My mother.** `r format(mother$date, "%d %B %Y")`, Brookings to Paso Robles, `r mother$miles` miles, in at `r mother$end_time`. She had just turned 104 and word came that she was having problems. I took the next flight to the mainland, picked the car up in Eugene where it was living at a friend's house, and drove as far as I could on a red-eye's worth of sleep, which got me to Brookings. The next day I meant to stop in Santa Rosa. The rain there was heavy enough that it looked like flooding, and I had to get to Southern California, so the logic became simple: get far enough south that one more day would finish it. I aimed at San Luis Obispo and quit a little short, because driving at night in that rain was very tiring. It was fine. I got to San Marcos the next day and had time with my mother before she died.
+
+Read them together and the pattern is hard to miss. A brother, a wrong turn, an empty stretch of Montana, a ferry, some friends in Las Vegas, a state, a fire, and a mother at 104. **The long days are the days something else was in charge.**
+
+## The day inside the day
+
+One of them argues with me, and it took a fill time to find out where.
+
+`r format(belling$date, "%d %B %Y")`, Bellingham to Grants Pass, `r belling$miles` miles. Nancy decided to surprise me. She took a red-eye from Honolulu to Seattle, got on the train north, and timed it to meet me at the dock as I came off the Alaska ferry at the end of the Arctic run. When we met up it was early afternoon. She told me she had reservations in Grants Pass. I pointed out that Grants Pass was a very long way away. That was fine with her, she said, because she had another long drive planned for the day after, all the way to San Francisco so she could fly home. **Two big driving days, and I found out about both of them standing on a dock.**
+
+My memory of that day is that we started fairly late. The sheet says we started at `r belling$start_time`. Both of those can't be true, and until this week there was nothing to put between them, because the fill times for the whole Alaska trip had never been transcribed off the scans.
+
+They have been now.
+
+```{r}
+#| label: tbl-bellingham
+#| tbl-cap: "Bellingham to Grants Pass, in the four pieces the record can see. Two of these segments are a normal day's driving. One of them is not."
+#| echo: false
+z <- sbel
+z$miles <- ifelse(is.na(z$miles), "--", format(z$miles))
+z$hours <- ifelse(is.na(z$hours), "--", format(z$hours))
+z$mph   <- ifelse(is.na(z$mph),   "--", format(z$mph))
+names(z) <- c("", "Clock", "Odometer", "Miles", "Hours", "mph")
+knitr::kable(z, align = c("l","l","r","r","r","r"))
+```
+
+**The first `r sbel$miles[2]` miles took `r sbel$hours[2]` hours. The rest of the day ran at `r sbel$mph[3]` and `r sbel$mph[4]`.**
+
+That's about four hours unaccounted for between Bellingham and Tacoma, and four hours is roughly what it takes for a ferry to dock and unload, a train from Seattle to arrive, two people to find each other, and one of them to be told where they're sleeping. **The sheet recorded when the car came off the boat. I remember when the driving started. Neither of us was wrong, and the gap between us is exactly the size of the morning.**
+
+I remember the drive as being particularly enjoyable, which for `r belling$miles` miles on someone else's reservation is a generous thing for me to say. Having Nancy along made it work. We had four weeks of Alaska to talk about.
+
+## The slowest miles in the record
+
+A day can also be long because you're barely moving.
+
+`r format(sedona$date, "%d %B %Y")`, Carlsbad to Sedona, `r sedona$miles` miles, out at `r sedona$start_time`. That's the earliest departure in sixteen years. Carlsbad is next door to Lake San Marcos, so I was effectively leaving from home, and the plan was to meet a friend partway, I believe at Phoenix, and caravan to his house in Sedona.
+
+The plan mostly worked. Near the end, close to Sedona, he picked a route meant to give me a good view of where we were going, and getting to his house from there meant a long stretch of unpaved road. He was in a four-wheel drive with real ground clearance. I was in a Smart car. **I crept along at less than a mile an hour, weaving around huge rocks, with no way to turn back, although I would have if I could.** It was exceedingly risky. Getting stuck out there was entirely possible. I made it, and I told myself, and I told TwoRed, never to do anything like that again.
+
+Otherwise a nice visit. Vistas worth seeing.
+
+That day is why the end odometer for the leg was never written down, and why the `r sedona$miles` is my own figure rather than the car's. It's also the second-longest day in the book, and part of it was driven at walking pace with the driver certain he had made a mistake.
+
+For comparison, the slowest full day the odometer does have is the return from Coldfoot on the Dalton Highway: `r dalton$odo_miles` miles in `r dalton$elapsed_hours` hours, `r dalton$gross_mph` miles an hour gross, on gravel, in `r dalton$start_temp_F` degrees at the start. **Gravel costs about six miles an hour. Rocks cost forty.**
+
+## What the column can't hold
+
+The sheet has a column for the start time, a column for the end time, and a column for the miles between them. From all three you can work out that a day was long. You can work out, decades later, that a car went `r format(d640$miles, big.mark = ",")` miles across Kansas, or that it sat still for four hours in Bellingham, or that somewhere near Sedona it stopped behaving like a car on a road.
+
+What no column holds is that the Kansas day was bought so the Colorado day could happen. I drove six hundred and forty miles to get a stretch of country behind me, and the next morning I went up the highest paved road in the country, and neither of those facts is written anywhere on the sheet. **One of them is a number I can still recover. The other one is only mine.**
+
+That's the trade this record keeps making. It kept the miles and let the reasons go, and it kept them so well that fifteen years later the miles can still find the reasons, one at a time, as long as somebody is around to be asked.

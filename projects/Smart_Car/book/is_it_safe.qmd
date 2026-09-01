@@ -174,13 +174,9 @@ Now, when I pull up behind a high-priced sports car, I note the width of their t
 
 **The wheels were never about fuel.** They were bought for control in a crosswind, which is to say they were bought for safety. But wider tires have a theoretical cost — more rolling resistance, more frontal area. The effect ought to be small, and it ought to be there.
 
-So the fuel log gets asked a question it was never keeping score on. `r n_nar` fill-ups on the narrow tires, `r n_wid` on the wide ones, with the winter-tire interval cut out entirely because three things changed on it at once.
-
-Here is what four reasonable ways of asking produce.
-
 ```{r}
-#| label: wheels
-#| echo: false
+#| label: wheels-data
+#| include: false
 tr <- twored_fuel
 tr$wheels <- ifelse(tr$Odometer < 13510, "narrow",
               ifelse(tr$Odometer >= 34190 & tr$Odometer <= 39739, "xice", "wide"))
@@ -208,6 +204,15 @@ wheel_tab <- data.frame(
       pct(lm(mpg ~ wide + leg_miles + Odometer, data = d), d),
       pct(lm(mpg ~ wide + leg_miles, data = dw), dw)),
   check.names = FALSE)
+```
+
+So the fuel log gets asked a question it was never keeping score on. `r n_nar` fill-ups on the narrow tires, `r n_wid` on the wide ones, with the winter-tire interval cut out entirely because three things changed on it at once.
+
+Here is what four reasonable ways of asking produce.
+
+```{r}
+#| label: wheels
+#| echo: false
 knitr::kable(wheel_tab, caption = paste(
   "Four defensible ways of asking the same question of the same", nrow(d),
   "fill-ups. 95% intervals."))

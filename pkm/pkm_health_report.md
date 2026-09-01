@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-08-29 22:34 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-08-31 16:26 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -36,7 +36,7 @@ None.
 
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
-| session_log.md | REFERENCE | 260.8 | 250 | 10.8 | FALSE |
+| session_log.md | REFERENCE | 266.9 | 250 | 16.9 | FALSE |
 | proj_Smart_Car.md | PROJECT |  54.4 |  45 |  9.4 | TRUE |
 | proj_seasonality.md | PROJECT |  51.6 |  45 |  6.6 | TRUE |
 | proj_audio.md | PROJECT |  47.3 |  45 |  2.3 | TRUE |
@@ -72,15 +72,15 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| smartcar_docs_20260821 |  8.2 | 3 | FALSE |
-| ch4_20260829 |  0.1 | 0 | FALSE |
-| chateau_2026-08-29 |  0.2 | 0 | FALSE |
-| creamsicle_clean_20260828 |  1.0 | 0 | FALSE |
-| pkm_edits_20260811 | 18.5 | 0 | TRUE |
-| pkm_snapshots | 27.1 | 0 | TRUE |
-| smartcar_fuelfix_20260817 |  0.1 | 0 | FALSE |
-| timelapse | 16.0 | 0 | TRUE |
-| venuemirror_clone_2026-08-03 | 27.3 | 0 | TRUE |
+| smartcar_docs_20260821 | 10.0 | 3 | FALSE |
+| ch4_20260829 |  1.8 | 0 | FALSE |
+| chateau_2026-08-29 |  2.0 | 0 | FALSE |
+| creamsicle_clean_20260828 |  2.8 | 0 | FALSE |
+| pkm_edits_20260811 | 20.3 | 0 | TRUE |
+| pkm_snapshots | 28.8 | 0 | TRUE |
+| smartcar_fuelfix_20260817 |  1.8 | 0 | FALSE |
+| timelapse | 17.7 | 0 | TRUE |
+| venuemirror_clone_2026-08-03 | 29.0 | 0 | TRUE |
 
 ## Legacy pages by platform
 
@@ -96,4 +96,4 @@ None.
 None.
 
 ---
-_Ran in 99.7 s._
+_Ran in 99.2 s._

@@ -11,6 +11,53 @@ Mechanism 4.
 
 ---
 
+## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
+
+**Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.
+
+### The scaffold's eight was missing the longest day
+
+`long_days.qmd` listed eight days. **The longest day in the record was not one of them:** 2016-06-19, Richmond MO -> Denver, **640 miles**, 06:57-16:53, **58.6 mph gross**, three fills across Kansas. The leg note in the data had flagged it as the longest; the scaffold predated that.
+
+**★★ AND KIM'S REASON INVERTS THE OBVIOUS READING.** Mount Evans is the next morning, so the tempting story is that the plains bought the mountain. He rules it out: his brother lives in Richmond, the short 195-mile day before was to get there, and the 640 was to **get a dull stretch of highway behind him.** What he wanted was I-70 through the Colorado mountains and the road alongside the Colorado River. *"I had some hope for Mt. Evans, but that wasn't the motivation."* **The longest day in sixteen years is what impatience looks like written down.**
+
+**★ MOUNT EVANS IS NOW MOUNT BLUE SKY** (Kim). Applied to `expeditions.qmd` in two places and re-rendered.
+
+### ★★★ THE BELLINGHAM CONFLICT IS SETTLED BY A NUMBER NOBODY HAD TRANSCRIBED
+
+Kim has said twice that 2013-08-31 started late in the day; the sheet says **06:49**. I recommended going with the sheet **before I had read the collected stories**, and had to walk that back: his verbatim account names *early afternoon* at the dock specifically, which is not a vague recollection.
+
+**The instrument that settled it was in the same PDF as the leg, one table higher up the page.** `TwoRed_fuel_timetemp.csv` held **3 rows for 2013 against 40 for 2016** -- the whole Alaska trip's fill times had never been entered. Transcribed off `2013_TwoRed_Fuel_Trip_Logs_Alaska.pdf`: **22 rows, every odometer key gated against the fuel log on the same date, 0 unmatched, 0 date mismatches.**
+
+**The day then splits: 122 miles in 6.05 hours (20.2 mph), then 48.2, then 52.9.** About four hours unaccounted for between Bellingham and Tacoma. **The sheet recorded when the car came off the boat; Kim remembers when the driving started.** Neither is wrong, and the gap between them is the size of a morning. Written into ch.5 that way, pending his confirmation.
+
+**★★ THE GENERAL FORM: a conflict between two records was only a conflict because a third had never been read.** Both accounts had been checked against each other for a fortnight. Before writing "cannot be settled", ask what in the same source has not been transcribed.
+
+### The other two accounts, and what they corroborated
+
+**Carson City 2013-08-04 had no story; it was smoke.** Fires in the Sierra, US-395 covered, and he could not stop short as he intended. **The route corroborates it unprompted:** the day's two fills are Kramer Junction 10:40 and Bridgeport 16:34, both 395 towns, with 77 miles still to run. Those fill times came from the same new transcription.
+
+**Sedona 2015-07-07, 575 mi, out at 04:05, ends at under 1 mph.** A friend led him onto a long unpaved stretch behind a 4WD; he crept around rocks with no way to turn back. *"I told myself (and TwoRed) to never do anything like that again."* **It is the second-longest day in the book and part of it was driven at walking pace.** Probably also why the end odometer was never written; offered, not asserted.
+
+### ★★ TWO PRE-EXISTING RENDER BREAKS, BOTH THE SAME CLASS
+
+The book had **not** been rendering end to end, and neither break was in ch.5.
+
+- `small_cars.qmd`: `object 'boot_w' not found`. The `dims` chunk that defines it sat **below** its first inline use. Chunk moved above.
+- `is_it_safe.qmd`: `object 'n_nar' not found`, same shape -- but that chunk also prints a table, so it was **split** into `wheels-data` (hidden, above the use) and `wheels` (the kable, in place).
+
+**The class: inline `` `r x` `` is evaluated in document order, so a variable defined in a chunk further down the file is not there yet.** It is invisible to a single-chapter render if the variable happens to exist in the interactive session, and invisible to `R CMD`-style checks entirely. **A full-book render is the only thing that finds it.** Both were introduced by refactors into `book_setup.R` (the boot measurement, the wheel states) that renamed what the chapters were reading.
+
+**Result: 15/15 chapters render, 0 error strings across all of them.**
+
+### Ch.5 as drafted
+
+`long_days.qmd`, **~2,660 words, three tables, no figure.** Spine: **not one of the long days was about driving.** A brother, a wrong turn, an empty stretch of Montana, a ferry that did the packing, friends in Las Vegas, a state still needed, a fire, and a mother at 104. The sheet has a column for distance and a column for time and none for why. New: `book/R/long_days_data.R` (`long_days_data()`, `long_day_early()`, `day_segments()`).
+
+**Voice rule checked BEFORE showing Kim, which is the ch.4 failure not repeated: 40 contractions, 0 em dashes.**
+
+**Next:** Kim reads ch.5, then ch.6 `the_roads.qmd` -- whose deferred TASK needs him to name the tree-tunnel stretches, not have them inferred.
+
 ## 2026-08-29 -- CH.3 RE-SOURCED, CH.4 DRAFTED, AND THE LAST BLANK CORNER OF THE RECORD FILLED
 
 **Active focus at start and close:** Smart_Car. Opened the PKM to start ch.4; a question from Kim -- *should I be talking about how the long trips began?* -- turned into a correction to an approved chapter.
@@ -142,7 +189,10 @@ Everything else corroborates: late June, when the byway is open; westbound out o
 7. **Active Focus updated**, 3.2 KB against a budget of 6.
 8-9. **Next Steps rewritten.** Ch.4 is drafted, so item 1 becomes *Kim reads ch.4, then ch.5*. **New item added from the deck:** slide 6 reconciles exactly on fill count and distance but differs on gallons and cost, and the errata do not explain it -- look at the workbook's interleaved running-total cells.
 10. **Written outside `G:`:** two bucket-4 folders, `C:\temp\chateau_2026-08-29` (pptx extraction scratch) and `C:\temp\ch4_20260829` (a render copy). **Both regenerable; delete whenever.** Nothing written to bucket 5.
-11-12. **`pkm_health()` and `pkm_backup()` run -- results below.**
+11. **`pkm_health()` -- clean where it matters.** 83 works, **0 reconciliation failures, 0 rendered-without-source, 0 broken pointers, pre-deletion gate 0.** Focus block 3.2 KB against 6.
+12. **`pkm_backup()` -- 1,232 files, 0 pruned, 0 size mismatches; secret scan CLEAN; committed `100473cec3`, 11 files changed; push VERIFIED AGAINST THE SERVER** (Finding 028).
+
+**Reported, not acted on** (remedies are never run automatically): **`session_log.md` has crossed its own budget at 260.8 KB against 250** -- it is marked not splittable, and the archive split of 2026-07-30 is the precedent for what to do about it. **`proj_Smart_Car.md` is 54.4 KB against 45** and flagged splittable; it has grown 9 KB in two days because the project is in full flight. `proj_seasonality.md` and `proj_audio.md` were already over. **Four build-scratch folders are past 14 days**, all under 1 MB together -- tidiness, not space. **Drift (4) and repo/clone mismatches (6) are unchanged and belong to other projects.**
 
 ## 2026-08-28 -- CH.3 APPROVED AND GAINS A SECOND FIGURE; A SEVENTH AUDIT INSTRUMENT, FOUND BY A CHART
 

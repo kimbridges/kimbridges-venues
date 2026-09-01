@@ -2149,3 +2149,17 @@ existing handle.
 **Rule: write-temp-then-rename is the safe overwrite pattern on `G:`.** And verify by reading
 CONTENT back afterwards, never size -- `file.remove` returning FALSE while the rename succeeded is
 exactly the kind of half-signal that would mislead anyone checking the return values alone.
+
+## Finding 049 -- QUARTO INLINE `r` IS EVALUATED IN DOCUMENT ORDER; A VARIABLE DEFINED IN A CHUNK LOWER IN THE FILE IS NOT THERE YET (2026-08-31)
+
+**What happened.** The Smart_Car book had not rendered end to end, and neither break was in the chapter being worked on. `small_cars.qmd` halted on `object 'boot_w' not found`; the `dims` chunk that defines it sat **21 lines below its first inline use**. `is_it_safe.qmd` halted on `object 'n_nar' not found`, the same shape, four lines below.
+
+**Why it hides.** Three reasons, and they compound.
+
+1. **The interactive session masks it.** Source the chunks by hand, in any order, and every name exists. Knitr renders in a **fresh** session, top to bottom, so the inline call at line 16 runs before the chunk at line 37.
+2. **A single-chapter render can pass while the book fails**, and vice versa -- so a chapter verified on its own is not verified.
+3. **It is introduced by refactors elsewhere.** Both cases came from renaming things in `book_setup.R` (the boot measurement became `boot_dim`, the wheel states were rebuilt). **The chapter that breaks is not the file that changed**, which is why nobody looked.
+
+**Rule.** After any edit to a shared setup file, **render the whole book, not the chapter.** The exit code of a single-chapter render is not evidence about the book. And when a defining chunk also PRINTS something, do not move it: **split it** into a hidden data chunk above the first inline use and leave the printing chunk where the output belongs.
+
+**Companion to Finding 016.** That one says the exit code is not the artifact for anything visual. This one says the artifact for a book is the BOOK -- fifteen chapters rendering, not the one you touched.

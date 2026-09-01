@@ -1,5 +1,22 @@
 # Focus History and Change Log
 
+**Active Focus (2026-08-29, close): "Smart_Car" -- CH.4 IS DRAFTED, AND THE LAST BLANK CORNER OF THE RECORD IS FILLED.**
+
+**Five pieces stand: Foreword, ch.1, ch.2, ch.3, ch.4 -- about 11,500 words.** Kim approved ch.3 and reads ch.4 tomorrow.
+
+**★★★ CH.3 WAS COMPUTING FROM THE WRONG TRIP AND IS FIXED.** Its car-wash section derived from `2011_StLouis`; Kim's itinerary dates the hold to **2010** (dropped 10/11, collected 11/5). **9 days/217 mi/24 mph -> 25 days/227 mi/9.1 mph, brackets St Louis->St Louis -> Altamont IL->Effingham IL.** Ten miles apart, which is how it survived a read-through. **The corrected version is a BETTER paragraph:** the 2010 crossing has no trip log, so the stop is a gap between two fuel fills that name Illinois towns either side of St Louis. **Hidden THREE times now, not two -- by the odometer, by the definition, and by the fills, which never name the place the car sat.**
+
+**★★★ CH.4 `expeditions.qmd` DRAFTED — ~2,530 words, two tables, no figure.** **Its subject changed on contact with `source/Smart_Car_master_dictionary.pdf`:** Kim's c.2015 summary names **14 expeditions**; the trip log holds 13 trips, and **7 of his 14 have NO trip log at all**, including the first crossing. So ch.4 is not the crossings one by one — it is **the trip log was never a record of the trips.** The fractal scope boundary at a THIRD scale (ch.3 inside a trip, the Foreword at the car's end, ch.4 BETWEEN trips). `tbl-expeditions` and `tbl-growth`; **the growth table shows a field being DROPPED — written distance goes to 0% from 2016**, the one place Kim can be seen deciding what mattered.
+
+**★★★ MOUNT EVANS RECOVERED — KIM NAMED THE TEST AND THE TEST PASSED.** *"None of this appears in the record unless there is a mileage anomaly on the route."* **2016-06-20 Denver→Grand Junction: the LEG 305 vs ~250 on I-70 (excess 55); the TANK Watkins→Gypsum 203 vs ~150 (excess ~53); the CLOCK 10.2 h for a 4 h drive.** The byway is 28 miles each way — **56 out and back.** Control: same stretch eastbound three weeks earlier, same station, **50.15 mpg down vs 40.75 up.** **★ THE TANK IS THE STRONGEST PART** — a different instrument, different endpoints, nobody aligned them, same answer. **This closes the one blank row in his own 2015 summary.** Sixth recovery by this route.
+
+**★★★ THE 2014 TALK IS A PRIMARY SOURCE — `source/2014_Chateau_Presentation.pptx`, 121 slides, dated four days after the trip. ⚠ It was never in Key Files.** Slide 42 names the four missing states in writing; **slide 6 reconciles EXACTLY on fill count (163) and distance (39,739)** once his boundary is decoded, with gallons -0.22% and cost +0.53% **that the errata do NOT explain** — look at the workbook's interleaved running-total cells. 121 embedded photographs confirm a TwoRed photo archive exists, **but Kim reports the EXIF is sparse and carries NO GPS**, so it is not the Creamsicle instrument and must not be written as one.
+
+**⚠ MY OWN VOICE RULE FAILURE, TWICE IN ONE CHAPTER.** Ch.4's first draft had 2 contractions in 2,100 words, and the Mount Evans section went in with none. Now 38. **Check the voice rule BEFORE showing Kim a draft, not after.**
+
+**NEXT: Kim reads ch.4, then ch.5 `long_days.qmd`** — its scaffold already lists all eight long days with the material collected. **Nothing is blocking.**
+
+
 **Active Focus (2026-08-28, close): "Smart_Car" -- CH.3 IS READ AND APPROVED, AND IT GAINED A SECOND FIGURE.**
 
 **Kim read chapter 3 and approved it.** Four pieces stand: Foreword, ch.1, ch.2, ch.3 -- about 9,000 words.

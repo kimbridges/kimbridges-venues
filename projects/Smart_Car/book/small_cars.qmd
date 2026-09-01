@@ -7,22 +7,6 @@
 source("R/book_setup.R")
 ```
 
-![TwoRed on the day it arrived, on the narrow tires it left the factory with. I'm five foot seven, which gives you the scale. **The silver band running around the car isn't trim — it's the safety cell**, and chapter 2 comes back to it.](images/TwoRed/twored_day_one.jpg){#fig-day-one}
-
-That's the reaction, and it's usually delivered as an exclamation rather than a question.
-
-It's worth being concrete about how small, because the rest of this book doesn't make much sense otherwise. Two seats, and no back seat at all — not a small one, none. **The luggage space behind them is about the size of the boot of an ordinary car with the boot floor raised to the window line** — and it sits on top of the engine. To load it you swing the rear window up and drop the solid part of the hatch down, which opens the whole back of the car.
-
-I went out with a tape rather than look it up: `r boot_w` wide, `r boot_h` high, `r boot_d` deep. That last one is measured back to the driver's seat in the position I actually drive in, which is the only depth that means anything when you're loading.
-
-I could multiply those together and give you a volume. **It would be a useless number.** Fill the compartment and you can't see out of the back of the car — so the limit was never how much will go in. It is how much will go in and still leave the mirror working.
-
-Before heading to Alaska I bought a spare wheel to carry, and it barely fitted.
-
-Here's the other measure, and it's the one I can point at today. **TwoRed and Bordeaux both live in our building's parking structure in Honolulu. We park them side by side — but nose to nose they would fit inside a single space marked out for one ordinary car, with room to spare.** When Matson shipped TwoRed they measured it for stowage, the way you measure any piece of freight: `r dim_l` long, `r dim_w` wide, `r dim_h` tall, `r dim_wt` pounds. Two of them end to end come to `r pair_len`, which is why the pair fits where one ordinary car is meant to go.
-
-The owner's manual gives a different width: `r man_w`, against Matson's `r dim_w_in`. **Neither is wrong.** The gap is `r man_gap` — `r man_side` a side — and the manual settles it in a footnote: that width is measured **with the mirrors folded out**. The manual is describing the car you drive, mirrors and all; the shipping clerk measured the car you stow. Length and height agree between them to within a rounding tick. **Which width you want depends on whether you are parking it or putting it on a boat**, and that is going to keep happening in this book.
-
 ```{r}
 #| label: dims
 #| include: false
@@ -42,6 +26,23 @@ dim_h  <- .ftin(twored_dim[["height_in"]])
 dim_wt <- format(twored_dim[["weight_lb"]], big.mark = ",")
 pair_len <- sprintf("%d ft %d in", twored_pair_ft, twored_pair_in)
 ```
+
+![TwoRed on the day it arrived, on the narrow tires it left the factory with. I'm five foot seven, which gives you the scale. **The silver band running around the car isn't trim — it's the safety cell**, and chapter 2 comes back to it.](images/TwoRed/twored_day_one.jpg){#fig-day-one}
+
+That's the reaction, and it's usually delivered as an exclamation rather than a question.
+
+It's worth being concrete about how small, because the rest of this book doesn't make much sense otherwise. Two seats, and no back seat at all — not a small one, none. **The luggage space behind them is about the size of the boot of an ordinary car with the boot floor raised to the window line** — and it sits on top of the engine. To load it you swing the rear window up and drop the solid part of the hatch down, which opens the whole back of the car.
+
+I went out with a tape rather than look it up: `r boot_w` wide, `r boot_h` high, `r boot_d` deep. That last one is measured back to the driver's seat in the position I actually drive in, which is the only depth that means anything when you're loading.
+
+I could multiply those together and give you a volume. **It would be a useless number.** Fill the compartment and you can't see out of the back of the car — so the limit was never how much will go in. It is how much will go in and still leave the mirror working.
+
+Before heading to Alaska I bought a spare wheel to carry, and it barely fitted.
+
+Here's the other measure, and it's the one I can point at today. **TwoRed and Bordeaux both live in our building's parking structure in Honolulu. We park them side by side — but nose to nose they would fit inside a single space marked out for one ordinary car, with room to spare.** When Matson shipped TwoRed they measured it for stowage, the way you measure any piece of freight: `r dim_l` long, `r dim_w` wide, `r dim_h` tall, `r dim_wt` pounds. Two of them end to end come to `r pair_len`, which is why the pair fits where one ordinary car is meant to go.
+
+The owner's manual gives a different width: `r man_w`, against Matson's `r dim_w_in`. **Neither is wrong.** The gap is `r man_gap` — `r man_side` a side — and the manual settles it in a footnote: that width is measured **with the mirrors folded out**. The manual is describing the car you drive, mirrors and all; the shipping clerk measured the car you stow. Length and height agree between them to within a rounding tick. **Which width you want depends on whether you are parking it or putting it on a boat**, and that is going to keep happening in this book.
+
 
 ## It isn't a shrunken car. It's a car built around a box.
 

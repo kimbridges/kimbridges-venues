@@ -170,6 +170,23 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ✓✓✓ CLOSED 2026-08-31 — BOTH OPEN ITEMS IN THE CH.5 SCAFFOLD
+
+**The Bellingham departure.** Settled by the day's own fill times, transcribed this session (see below). Written into ch.5 as *the sheet recorded the roll-off, Kim remembers the driving, and the gap between them is the morning*. ⚠ **Kim has not confirmed that reading yet** — if he rejects it, the fallback is to print the sheet's figures and say the memory disagrees.
+**The 2013-08-04 LSM → Carson City day.** It was smoke on US-395; account collected verbatim, and the two fills (Kramer Junction, Bridgeport) corroborate the route unprompted.
+
+### TASK — the fill times for the other trips are still untranscribed
+
+`TwoRed_fuel_timetemp.csv` now carries **156 rows against 294 fuel rows**. The Alaska trip went in this session (22 rows, `2013_TwoRed_Fuel_Trip_Logs_Alaska.pdf`, every odometer key gated against the fuel log on the same date). **The gap is no longer invisible, and it has already paid once:** a fortnight-old conflict was only a conflict because these had never been read.
+
+**Occasion: before writing any chapter that turns on WHEN inside a day.** Known thin years from the coverage table: 2010 (2), 2013 (25, now), 2014 (1). **2014 is the Penultimate State expedition and is the richest trip in the book on every other field** — one row of fill times is almost certainly a transcription gap rather than a blank sheet. Check `2014_TwoRed_US_Canada_Expedition_Travel_Fuel_Log.pdf` first.
+
+**Two transcription notes carried from the Alaska pass**, kept because they are label drift, not errors: the scan reads *Lakewood / Bridgeport* where the clean CSV has Lakewood, and *Rice Hill Oregon* where it has Oakland (the same freeway exit). One time cell is genuinely unreadable — odometer 38,948, overwritten — and was left blank rather than guessed.
+
+### ⚠ CLASS FOUND 2026-08-31 — the book was not rendering, and it was not the chapter being written
+
+Two chapters halted the render on variables defined in chunks **below** their first inline use (`boot_w` in `small_cars.qmd`, `n_nar` in `is_it_safe.qmd`). Both fixed; **Finding 049** carries the general rule. **Standing consequence for this project: after touching `book/R/book_setup.R`, render the whole book.** The chapter that breaks will not be the file that changed.
+
 ### ★★★ IS THERE A TWORED PHOTO ARCHIVE? — the largest open question in the project (2026-08-21)
 
 **Creamsicle has 37 geotagged, timestamped photographs that join to its logs on date + local time with NO timezone reconstruction.** Today Kim produced a **geotagged photograph of the Florida corner** — a visit the fuel log structurally cannot see. **Nobody has ever asked whether the TwoRed years have an equivalent archive.**
