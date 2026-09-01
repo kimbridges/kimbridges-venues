@@ -19,6 +19,27 @@ MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_lo
 - The missing quantity is WITHIN-LEG VARIANCE. A trip log samples the day twice; everything between is averaged away by construction.
 - The pair: the most stressful miles and the most monotonous miles both read as unremarkable fast runs. VIGILANCE HAS NO COLUMN; NEITHER DOES TEDIUM.
 
+- ★★★ THE NEBRASKA FRONTAGE ROAD, and it is the sharpest example the book has.
+  Kim, 2026-08-31: "There were a few times I got off the Interstate just to go
+  slower. Once, I spent hours driving on the road that runs alongside the
+  Interstate as it runs through Nebraska. My speed dropped to about 50 MPH for that
+  period. I enjoyed the change as I could better appreciate the farming community
+  by seeing closer." He DATED it himself, on direction: 2012-05-28, Ogallala ->
+  Omaha. "I didn't do the whole drive on the side, just part of it."
+  AND THE DAY READS AS A FAST EFFICIENT INTERSTATE DAY. 340 mi, 06:50-14:48,
+  6.97 h, 48.8 mph gross -- 20th fastest of 132 timed legs against a median of
+  40.45 -- and the York NE tank is 50.62 mpg, 8th best of 286 against a median of
+  39.12. Top sixth for speed, top three percent for economy, on the day he chose to
+  slow down and look at farms.
+  THE MECHANISM: gross speed cannot separate slow cruising with almost no stops
+  from fast cruising with stops. The frontage-road hours are averaged into the
+  interstate either side. THE SAME ARITHMETIC THAT HID THE STRESS AND THE TEDIUM
+  HIDES AN AFTERNOON OF PLEASURE -- which completes the chapter's argument as a
+  triple rather than a pair.
+  ⚠ CARRY BOTH CAVEATS. The tank is not clean (it opens at Bridgeport, before the
+  leg starts, so ~73% of its 337 miles are this day), and eastbound Nebraska is
+  roughly a 2,200 ft descent. The economy is NOT evidence of the slow driving.
+
 OPEN / NEEDED
 - The Canadian variance test is a NON-RESULT, not a null -- those rows are converted from litres and CAD and unit-normalising is still open. Do not cite it as a null.
 -->

@@ -2163,3 +2163,15 @@ exactly the kind of half-signal that would mislead anyone checking the return va
 **Rule.** After any edit to a shared setup file, **render the whole book, not the chapter.** The exit code of a single-chapter render is not evidence about the book. And when a defining chunk also PRINTS something, do not move it: **split it** into a hidden data chunk above the first inline use and leave the printing chunk where the output belongs.
 
 **Companion to Finding 016.** That one says the exit code is not the artifact for anything visual. This one says the artifact for a book is the BOOK -- fifteen chapters rendering, not the one you touched.
+
+## Finding 050 -- HARDCODED CHAPTER NUMBERS IN PROSE ARE A LATENT BUG THAT GOES OFF WHEN A CHAPTER IS INSERTED (2026-08-31)
+
+**Found in Smart_Car after adding `the_marine_highway.qmd` in the middle of Part Two.** Ten prose cross-references across six chapters are written as plain text -- *"chapter 3 has already explained"*, *"Chapter 13 is about how we know"*. **Inserting one chapter moved every target after it by one and nothing complained**, because a sentence is not a build dependency.
+
+**★★ AND THE AUDIT FOUND A SECOND, OLDER ERROR UNDERNEATH IT.** The prose counts chapters the way the PROJECT does, with the Foreword unnumbered: small_cars = ch.1. **Quarto counts `index.qmd` as chapter 1**, so small_cars renders as 2. **Every hardcoded reference was already one lower than the number printed at the top of the chapter it points at**, before any insertion. The insertion did not create the bug; it made a second one and prompted the look.
+
+**Why it survives every check.** The render succeeds. The link is not a link. Only a reader following the reference finds it, and only if they check.
+
+**Rule.** In a multi-chapter Quarto document, **never write a chapter number as text.** Label each chapter heading (`# Title {#sec-name}`) and reference it (`@sec-name`), so the number is generated and moves when the book does. **And when a document's internal numbering differs from the renderer's** -- an unnumbered preface being the usual cause -- **settle which one the prose speaks, in writing, before the second chapter is drafted.**
+
+**Generalisation beyond chapter numbers.** This is the same class as Finding 049: a fact that lives in prose and is not derived from the thing it describes. **The book already applies the fix to figures -- every number comes from an R object, so it cannot go stale.** Cross-references had simply never been brought under that rule.

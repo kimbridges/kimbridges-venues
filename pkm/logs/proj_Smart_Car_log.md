@@ -1,3 +1,77 @@
+## ★★★ FUEL ECONOMY FROM KIM'S SIDE — 2026-08-31, verbatim, with four tests run on it
+
+> Smart cars weren't designed for the kind of fuel economy you get when you have an aerodynamic body. They're boxy. They push the wind instead of slipping through it. I knew that when I bought TwoRed. I'd get economy as it is a small car with a small engine. But highway economy wasn't the design priority. Safety: yes. Fit in small spaces: yes. Carry ample gear: yes.
+>
+> Once out on the highway, I had choices. I could keep up with the usual car traffic or I could follow the trucks. Slower speed. And the added safety of them providing a protective barrier traveling ahead of me. I wasn't in a hurry most of the time, so I feel into the habit of following trucks. Not always. Sometimes they were just too slow. At the lower speed I felt I was saving fuel.
+>
+> There were a few times I got off the Interstate just to go slower. Once, I spent hours driving on the road that runs alongside the Interstate as it runs through Nebraska. My speed dropped to about 50 MPH for that period. I enjoyed the change as I could better appreciate the farming community by seeing closer.
+>
+> There is sort of a flip side to this. I recall a few places, such as Texas, where the posted speed limit was 80 MPH. 75 MPH was common in rural areas. Smart cars can go that fast. Whether I want to is a different matter. The high speeds made me want to avoid these highways. I'm not in that big a rush and it is certainly not the way to achieve economy.
+>
+> It might be worth noting that Smart cars use premium (higher octane) fuel. There were only a few places that couldn't be found. Other than getting fuel at Costco (obviously less expensive), I often chose the station for the amenities, such as a clean restroom or good food. I rarely shopped around for the lowest price, other than avoiding some obvious stations that were located in places where they could charge higher prices. We often stopped outside of the town centers to get gas.
+
+### ★★★ TEST 1 — SLOWER DAYS DO READ BETTER, AND IT IS A SIGNAL, NOT A FINDING
+
+**The instrument had to be built first.** A tank and a leg do not line up, so I took only the **44 tanks that fall entirely inside a single leg** and attached that leg's gross speed to them.
+
+| test | result |
+|---|---|
+| Spearman, gross mph vs mpg, n = 44 | **rho = -0.359, p = 0.017** |
+| `lm(mpg ~ leg_mph)` | -0.158 mpg per mph, **p = 0.21** |
+| `lm(mpg ~ leg_mph + leg_miles)` | -0.098, **p = 0.33**, adj R2 jumps 0.01 -> **0.37** |
+| trimmed 5/95, n = 38 | rho = -0.317, **p = 0.052** |
+| early era (odo < 40k) n = 21 / late n = 23 | p = 0.27 / p = 0.057 |
+
+**The direction is his, every time. The significance is not stable.** ★★ **And the reason is the same instrument problem ch.6 is built on: gross speed is not cruising speed** -- it contains every stop -- so a day of truck-following and a day of long breaks look alike. **`leg_miles` carries most of what the model can explain** (adj R2 0.01 -> 0.37) and it eats the speed term when both are in.
+
+**★★★ SO KIM'S MOST CONFIDENT ECONOMY BELIEF IS THE ONE THE RECORD CAN LEAST CONFIRM, and his own wording already allows for it:** *"At the lower speed I felt I was saving fuel."* **He said felt.** Write it that way. Belongs to the DIFFICULTY strand by the editorial rule; **do not print a coefficient.**
+
+### ★★★ TEST 2 — THE BEST TANK IN SIXTEEN YEARS IS GRAVITY, NOT RESTRAINT
+
+**Gypsum CO -> Big Springs NE, 313 mi, 56.04 mpg, best of 286 full fills** against a median of 39.12. That is **down out of the Rockies and out across the high plains.** The second-best Nebraska tank, **York NE at 50.62 over 337 mi**, is the Ogallala -> Omaha day -- also eastbound, also downhill, and at **48.8 mph gross it is one of the FASTER days in the record.**
+
+**★★ Two of the three best tanks on that corridor are fast descents.** A chapter that argues slow driving saves fuel has to survive that, and the honest form is to put it in rather than route around it. ★ *Gypsum is the same station as the Mount Evans control in ch.4* -- the record keeps re-using its own landmarks.
+
+### ★★★ TEST 3 — COSTCO IS REAL, MEASURABLE, AND WORTH ABOUT 20 CENTS
+
+20 Costco fills of 294. Matching each against the median price of every non-Costco fill within **21 days either side**:
+
+**Median discount $0.20/gal. Eleven of thirteen comparable pairs cheaper. Paired Wilcoxon p = 0.008.** Biggest gap Ft. Oglethorpe GA at -$0.45; the two that go the other way are Carlsbad 2015 (+0.15) and a pair of California fills in Feb 2017.
+
+**★★ THE IRONY IS THE POINT AND IT IS KIND RATHER THAN SHARP.** He says he rarely shopped for price and chose stations for a clean restroom or good food. **The one price decision he did make is the only one the record can prove he made**, and it is worth twenty cents a gallon across sixteen years.
+
+### ★★★ TEST 4 — THE FRONTAGE ROAD IS DATED, AND IT READS AS ONE OF THE FASTEST DAYS IN THE RECORD
+
+**Kim dated it 2026-08-31: 2012-05-28, Ogallala -> Omaha.** *"I am quite sure it was the 2012-05-28 as this is the correct direction and it matches what I remember. I didn't do the whole drive on the side, just part of it."* He chose it on DIRECTION, which is a check I had not thought to apply and which the other two candidates fail.
+
+**Now look at what the day reads as.**
+
+| | |
+|---|---|
+| the leg | Ogallala NE -> Omaha NE, 340 mi, 06:50 to 14:48, 6.97 h |
+| gross speed | **48.8 mph -- 20th fastest of 132 timed legs**, against a record median of 40.45 |
+| the tank | York NE, 337 mi, **50.62 mpg -- 8th best of 286**, against a median of 39.12 |
+
+**★★★ THE DAY HE DELIBERATELY SPENT PART OF AT 50 MPH ON A SIDE ROAD IS, TO BOTH INSTRUMENTS, A FAST EFFICIENT INTERSTATE DAY.** Top-sixth for speed, top-3% for economy. **Nothing in either number is wrong and nothing in either number is true**, and this is the sharpest single example the book has of the hinge chapter's argument.
+
+**★★ THE MECHANISM IS WORTH SPELLING OUT, because it is the same one twice.** Gross speed cannot distinguish *slow cruising with almost no stops* from *fast cruising with stops* -- a 6.97-hour day covering 340 miles is a day that barely stopped, and the frontage-road hours are averaged into the interstate either side of them. **The same averaging that hid the Canadian Plains stress and the tree-tunnel tedium hides an afternoon of pleasure.**
+
+**⚠ TWO HONEST CAVEATS AND THE CHAPTER SHOULD CARRY BOTH.** The tank is **not clean** -- it opens at Bridgeport NE (27,228), before the leg starts at 27,320, so about 73% of the 337 miles are this day. And **eastbound across Nebraska is roughly a 2,200 ft descent**, Ogallala to Omaha, which is doing some of the work in that 50.62. **The economy is not evidence of the slow driving; it is another thing the record cannot separate.**
+
+**★ AND IT PAIRS WITH TEST 2.** The best tank in the record is a descent, the eighth-best is a descent, and the day inside the eighth-best is the one day he chose to go slowly. **Three explanations, one number, and the record cannot rank them.**
+
+### ⚠ NOT TESTABLE FROM THE RECORD
+
+- **Premium fuel.** The log has no grade column, so the octane requirement is his statement and stays attributed. It does mean every price in this book is a PREMIUM price and any comparison to national averages must say so.
+- **Avoiding the 80 mph highways.** A route not taken leaves nothing behind. His statement stands on its own.
+- **Stations outside town centres, chosen for a restroom.** No coordinates on the fills.
+
+### ★★ WHERE THIS MATERIAL GOES — it does NOT belong to one chapter
+
+`what_driving_cost.qmd` (ch.8, the hinge) is about **what the driving cost the DRIVER**, not money -- the name misleads. The money and economy chapter is `what_the_car_cost.qmd` in Part Three. This account splits at least three ways: the **design argument** (boxy, pushes wind, and economy was never the priority) sits with `small_cars.qmd`; **truck-following** is a SAFETY choice read as an economy choice and touches `is_it_safe.qmd`; **the frontage road** is hinge material; **Costco, premium and station choice** are `what_the_car_cost.qmd`. **Kim to rule.**
+
+---
+
 ## ★★★ THE FERRIES, AND THE WHITTIER TUNNEL — Kim, 2026-08-31, verbatim
 
 > TwoRed went on a number of ferry rides. I suppose for most people, that's not a big deal. There are a lot of short car-ferry rides. But consider the Whittier to Bellingham route: about 1,300 miles. Perhaps the longest on the continent. Even Bellingham to Skagway is a bit over 1,000 miles. An overnight ferry from Newfoundland was a long ride, too. The Alaska system is called the Marine Highway. It obviously has a character of its own.
@@ -11,6 +85,14 @@
 The record already held every one of these and nobody had added them up. `book/R/ferries_data.R` now does.
 
 | passage | date | odometer in | out | **miles** | nights |
+
+### ✓ APPROVED 2026-08-31, with a reader-model note worth keeping
+
+Kim on the finished chapter: *"That made a really nice transition. I particularly like that it puts the Alaska driving into a better perspective. **I don't think most people know about the Marine Highway.** The idea to have this a separate chapter is very good."*
+
+**★★ THAT SECOND SENTENCE IS AN EDITORIAL CONSTRAINT, not a compliment.** It says the chapter is addressed to a reader who **does not know the system exists**, which is why the explanatory register earns its place here and would be over-explaining anywhere else in the book. **Do not trim the "they call it a highway" section for length in a later pass** -- it is doing the work Kim is naming.
+
+**★ And note what it did structurally, which was not the reason for writing it.** It was made a separate chapter to protect ch.6's single argument. **The side effect Kim values most is that it re-scales the Alaska trip** -- the Arctic expedition now reads as a drive with an ocean voyage inside it rather than as a very long drive. **Splitting for one reason gave a benefit of a different kind**, which is worth remembering the next time the one-argument rule argues for a split.
 |---|---|---|---|---|---|
 | Lake Michigan, Ludington -> Milwaukee | 2012-06-10 | -- | -- | **0** | 0 |
 | Alaska Marine Highway north, Bellingham -> Haines | 2013-08-09 | 35,979 | 35,989 | **10** | 3 |

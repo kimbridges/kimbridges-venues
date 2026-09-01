@@ -170,6 +170,38 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ★★★ TASK — TEN HARDCODED CHAPTER NUMBERS ARE WRONG, AND THE FIX IS STRUCTURAL (2026-08-31)
+
+**Two errors stacked.** (a) The prose numbers chapters the PROJECT's way, Foreword unnumbered, so `small_cars` is "ch.1" -- but **Quarto counts `index.qmd` as chapter 1**, so it renders as 2. **Every hardcoded reference was already one low.** (b) Inserting `the_marine_highway.qmd` moved every target after position 7 by one more.
+
+**The ten, with what each actually points at:**
+
+| file | line | prints | means | renders as |
+|---|---|---|---|---|
+| small_cars.qmd | ~30 | chapter 2 | is_it_safe | **3** |
+| the_anchor.qmd | ~222 | Chapter 2 | is_it_safe | **3** |
+| expeditions.qmd | 59, 104, 196 | chapter 3 | the_anchor | **4** |
+| expeditions.qmd | 134 | Chapter 9 | sixteen_years_of_paper (probable) | **10** |
+| expeditions.qmd | 144 | Chapter 13 | what_the_record_cannot_say | **15** |
+| is_it_safe.qmd | 73 | chapter 13 | what_the_record_cannot_say | **15** |
+| knowing_a_number_is_wrong.qmd | 13 | chapter 10 | scaffold text | -- |
+| what_the_car_cost.qmd | 13 | chapters 8 | scaffold text | -- |
+
+⚠ **The two `expeditions.qmd` forward references (9 and 13) are INFERRED from content, not certain.** Confirm each against the chapter it means before renumbering; a wrong renumber is worse than the current state.
+
+**★★ THE FIX IS NOT TO RENUMBER. It is to stop writing numbers.** Label every chapter heading `# Title {#sec-name}` and reference `@sec-name`; Quarto then generates "Chapter N" and it moves when the book does. **Same discipline the figures already have** -- every printed figure number comes from an R object and cannot go stale. **Finding 050.**
+
+**Also settle, in writing: does the Foreword count as a chapter?** Quarto says yes, the project says no, and the whole class of error grows out of that never having been decided. **`number-sections` or an unnumbered preface will settle it; pick one.**
+
+**Occasion: before any chapter is shown to a reader outside the project.** Not urgent for drafting.
+
+### ✓✓✓ RULED 2026-08-31 — the fuel-economy account splits FOUR WAYS, and two of the four are done
+
+- **Design argument** (boxy, pushes wind, economy was never the priority; safety / small spaces / gear were) -> **`small_cars.qmd`, WRITTEN** as a new section *What it was designed to be good at*, placed before *Why a Smart*. Ends on the line the later chapters need: **every fuel figure in the book comes from a car optimised for something else.**
+- **Truck-following** -- a safety choice he also read as an economy choice, plus the flip side (80 mph Texas limits, and not wanting them) -> **`is_it_safe.qmd`, WRITTEN** as *Following the trucks*, before *Attention is a component of safety too*. **References the cost chapter BY NAME, not by number** (see the task above).
+- **The Nebraska frontage road** -> `what_driving_cost.qmd` scaffold, with the dated day and both caveats.
+- **Costco, premium fuel, station choice, and the speed signal** -> `what_the_car_cost.qmd` scaffold.
+
 ### ⛔ CLOSED BY RULING 2026-08-31 — do NOT compute the Whittier tunnel track gauge
 
 Kim wondered, in the tunnel, whether a narrower-than-average wheelbase would sit right relative to the rails. **I offered to check it against `twored_manual` (front track 50.5 in, rear 54.5) and he declined.** **The fear is the fact.** Answering it thirteen years later replaces his experience with arithmetic, and he never claimed it was a problem. **Do not re-derive this, and do not let a later chapter about the car's dimensions pick it up.**

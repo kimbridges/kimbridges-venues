@@ -124,6 +124,26 @@ Kim registered the ferries and the Whittier tunnel. **The five passages were eac
 
 **⚠ MY OWN VOICE RULE, CAUGHT ON THE CHECK RATHER THAN BY KIM.** First draft ran **17 contractions in 1,250 words -- 14 per thousand against ch.6's 26.** A pass brought it to 44. **The check works; the instinct still does not.** Third chapter running where the density had to be fixed after drafting rather than during.
 
+### ★★★ FUEL ECONOMY FROM KIM'S SIDE — four tests, and one of them is the sharpest example in the book
+
+Full account and all four tests verbatim in `logs/proj_Smart_Car_log.md`.
+
+**1. SLOWER DAYS DO READ BETTER, AND IT IS A SIGNAL.** New instrument: the **44 tanks that fall entirely inside ONE leg**, with that leg's gross speed attached. **Spearman rho = -0.359, p = 0.017** -- his claim exactly. Then it fails under pressure: trimmed p = 0.052, early era p = 0.27, and **adding `leg_miles` drops the speed term to p = 0.33 while adj R2 goes 0.01 -> 0.37.** ★★ **His most confident economy belief is the one the record can least confirm**, and his own wording already allows for it: *"At the lower speed I FELT I was saving fuel."*
+
+**2. THE BEST TANK IN SIXTEEN YEARS IS GRAVITY, NOT RESTRAINT.** Gypsum CO -> Big Springs NE, 313 mi, **56.04 mpg, best of 286** against a median of 39.12 -- down out of the Rockies.
+
+**3. COSTCO IS REAL: median $0.20/gal, 11 of 13 matched pairs cheaper, paired Wilcoxon p = 0.008.** ★ He says he rarely shopped for price and chose stations for a clean restroom. **The one price decision he did make is the only one the record can prove.**
+
+**4. ★★★ THE NEBRASKA FRONTAGE ROAD, AND KIM DATED IT ON DIRECTION.** *"I am quite sure it was the 2012-05-28 as this is the correct direction."* **A check I had not thought to apply, and the other two candidates fail it.** The day is Ogallala -> Omaha, 340 mi in 6.97 h. **It reads as 48.8 mph gross -- 20th fastest of 132 timed legs -- and its tank is 50.62 mpg, 8th best of 286.** ★★★ **The day he chose to leave the interstate and crawl past farms is, to both instruments, a fast efficient interstate day.** Gross speed cannot separate slow cruising with no stops from fast cruising with stops. **The same arithmetic that hid the stress and the tedium hides an afternoon of pleasure** -- the hinge chapter's argument becomes a triple. ⚠ Two caveats written into the scaffold: the tank is not clean (~73% of it is that day) and eastbound Nebraska is a ~2,200 ft descent.
+
+**★★ KIM RULED A FOUR-WAY SPLIT, and two of the four are written.** `small_cars.qmd` gains *What it was designed to be good at* -- boxy, pushes wind, and **every fuel figure in the book comes from a car optimised for something else.** `is_it_safe.qmd` gains *Following the trucks* -- a safety choice he also read as an economy one, plus the 80 mph flip side. The frontage road and the Costco/premium material went into the two scaffolds. **16 chapters render, 0 error strings.**
+
+### ★★★ AND THE INSERTION EXPOSED A LATENT BUG: TEN HARDCODED CHAPTER NUMBERS (Finding 050)
+
+**Adding a chapter mid-book moved every target after it and nothing complained**, because a sentence is not a build dependency. **The audit then found an older error underneath:** the prose counts chapters the project's way with the Foreword unnumbered, **but Quarto counts `index.qmd` as chapter 1** -- so every hardcoded reference was already one low, before any insertion.
+
+**★★ The fix is not to renumber. It is to stop writing numbers** -- label each heading `{#sec-name}` and reference `@sec-name`. **Exactly the discipline the figures already have:** every printed figure number comes from an R object and cannot go stale; cross-references had never been brought under the same rule. **Table of all ten, with what each actually points at, is in `deferred.md`** -- and two of the ten are inferred from content, so confirm before renumbering. **My new sections deliberately reference the cost chapter BY NAME.**
+
 ## 2026-08-29 -- CH.3 RE-SOURCED, CH.4 DRAFTED, AND THE LAST BLANK CORNER OF THE RECORD FILLED
 
 **Active focus at start and close:** Smart_Car. Opened the PKM to start ch.4; a question from Kim -- *should I be talking about how the long trips began?* -- turned into a correction to an approved chapter.

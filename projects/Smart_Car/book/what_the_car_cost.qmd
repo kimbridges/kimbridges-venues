@@ -19,5 +19,36 @@ MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_lo
 - LEG LENGTH is the strongest predictor: +4.61 MPG per 100 miles.
 - The wide tires: economy difference indistinguishable from zero, 95% CI -3.7% to +4.9%.
 - Trim the ends before quoting an extreme: the first fill carries a slashed-zero error (L59); the last two are a tank managed DOWN for shipping (52.4 and 93.0 MPG on 4.333 and 2.496 gallons).
+
+ADDED 2026-08-31 -- KIM'S OWN ACCOUNT OF ECONOMY, and four tests run on it.
+Verbatim in logs/proj_Smart_Car_log.md.
+
+- SLOWER DAYS DO READ BETTER, AND IT IS A SIGNAL. Instrument built for this: the 44
+  tanks that fall entirely inside ONE leg, with that leg's gross speed attached.
+  Spearman rho = -0.359, p = 0.017. But lm(mpg ~ leg_mph) is p = 0.21; adding
+  leg_miles drops it to p = 0.33 while adj R2 goes 0.01 -> 0.37; trimmed 5/95 is
+  p = 0.052; early era p = 0.27, late p = 0.057. THE DIRECTION IS HIS EVERY TIME;
+  THE SIGNIFICANCE IS NOT STABLE. Same instrument problem as the roads chapter --
+  gross speed is not cruising speed. Kim's own wording already handles it: "At the
+  lower speed I FELT I was saving fuel." Write felt. DO NOT PRINT A COEFFICIENT.
+- THE BEST TANK IN SIXTEEN YEARS IS GRAVITY, NOT RESTRAINT. Gypsum CO -> Big Springs
+  NE, 313 mi, 56.04 mpg, best of 286 against a median of 39.12: down out of the
+  Rockies. The 8th best, York NE at 50.62 over 337 mi, is also eastbound and also
+  downhill -- and at 48.8 mph gross one of the FASTER days. A chapter arguing slow
+  saves fuel has to survive that; put it in rather than route around it.
+- COSTCO IS REAL AND MEASURABLE. 20 fills of 294. Matched against the median price of
+  every non-Costco fill within 21 days either side: median discount $0.20/gal, 11 of
+  13 pairs cheaper, paired Wilcoxon p = 0.008. Biggest gap Ft. Oglethorpe GA -$0.45.
+  THE IRONY IS KIND, NOT SHARP: he says he rarely shopped for price and chose stations
+  for a clean restroom or good food, and the one price decision he did make is the
+  only one the record can prove.
+- ⚠ PREMIUM FUEL. Kim: Smart cars take higher octane, and it was rarely hard to find.
+  THE LOG HAS NO GRADE COLUMN, so this stays attributed to him -- and it means EVERY
+  PRICE IN THIS BOOK IS A PREMIUM PRICE. Any comparison to a national average must
+  say so.
+- ⚠ NOT TESTABLE AT ALL: avoiding the 80 mph highways (a route not taken leaves
+  nothing behind) and stopping outside town centres (no coordinates on the fills).
+- ⚠ CHAPTER-NUMBER REFERENCES: the "chapters 8-9" above predates the insertion of
+  the_marine_highway.qmd and the numbering audit of 2026-08-31. Do not trust it.
 -->
 
