@@ -170,6 +170,60 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ✓✓✓ CH.6 DRAFTED 2026-08-31 — and two things about it are worth carrying forward
+
+**1. The group definitions are now IN CODE, not in a log entry.** `ROADS_SOUTH` / `ROADS_APPAL` in `book/R/roads_data.R` reproduce the 2026-08-20 figures exactly (40.3 / 38.0 / p = 0.42). **They had never been written down anywhere** -- the numbers had been quoted for eleven days with no recoverable rule behind them. **Check the other quoted splits for the same gap** before any of them is printed: the Canadian Plains variance test and the ~3 MPG southern deficit both name group sizes and neither names its rule.
+
+**2. `fig_roads()` sets a pattern the remaining figures should follow.** Two questions, ONE shared axis, so the null is visible rather than argued. And **one hue on purpose** where the point is that two things cannot be told apart -- colouring them differently would assert the distinction the figure exists to deny. Worth applying to any later figure about a non-result.
+
+### TASK — the third road term has been described but never placed
+
+*"Nearly straight freeways lined by commerce, billboards and wall-to-wall housing"* -- the thing both the tree tunnel and the rolling hills are a relief from. **It is in the taxonomy and it is not in ch.6**, because Kim has never attached it to a place or a day. Ask only if he raises it; the chapter stands without it and the one-example rule argues against adding a third.
+
+### ✓✓✓ RULED 2026-08-31 — CH.6's SPINE, AND IT IS NOT A TAXONOMY CHAPTER
+
+Kim: *"The architects of the Interstate system brought a kind of uniformity: excellent highways. That was very important. Nature gives these highways character. It's equally important."*
+
+**Two layers, both required.** The engineered layer is uniform by design and the uniformity is the achievement -- and it is what made a 300-mile day possible at all, which is how ch.6 attaches to ch.5's baseline. The natural layer is what the engineering cannot flatten.
+
+**The argument is FOR VARIETY, not against a road** (*"if you've seen one, you've seen them all"*), which is Theme 10 arriving from a new direction. **⛔ NO BLAME: Alabama is not at fault and the text must not imply it** -- *"that's just their combination of vegetation and topography."* Scaffold rebuilt in `book/the_roads.qmd`; nothing is blocking a draft.
+
+### ✓✓✓ RULED 2026-08-31 — the calibration/logistics material is CH.5's BASELINE
+
+Kim: *"the best way to treat this is using the story to establish a baseline for Chapter 5... most often in the early day, the destination was not set. Experience put it at about 300 miles per day. And that distance held. That's why this distance becomes our measure against which we can see exceptions. It isn't the same as for other people. Their constraints are different."*
+
+**Written 2026-08-31 as two new opening sections** (`One route, a hundred miles` / `About three hundred miles`) ahead of the 640, which now lands against a known norm. **The framing is his and it is the statistical one:** the median is the measure, the long days are the variance, and **the measure is personal** -- five constraints produce 305 miles, and the two-driver crossings in the Smart forums had different constraints and a different number. **Closes the "where does it go" question. Do not re-open.**
+
+### ✓✓ ANSWERED 2026-08-31 — TREE TUNNELS: the concept, and ONE stretch named
+
+The TASK asked him to name them rather than have them inferred. **He named I-65 northbound in Alabama, and it is dated: 2014-05-07/08, Penultimate State.** Verbatim account and the fill-level placement are in `logs/proj_Smart_Car_log.md`.
+
+**The definition is a conjunction of three:** trees that block the view, nearly straight, nearly flat. **The western counter-case is part of the definition** -- tree-lined roads out West are not tree tunnels because the trees do not hide the landscape.
+
+**✓ CLOSED WON'T DO 2026-08-31 — no other stretches will be named.** Kim: *"Naming the other places doesn't do any service."* **One example, and it is I-65 north in Alabama.** The candidates the record could offer (Port Allen->Memphis, Atlanta->Murfreesboro, Charleston->Atlanta, Montgomery->Birmingham) are declined, not unresolved. **Reason kept: a second example adds weight without adding argument** -- Kim applying his own subtraction principle to his own chapter. **Do not re-open or re-derive the list.**
+
+### ⚠ ILLUSTRATION, NOT EVIDENCE — the tree-tunnel tank reads 33.67 mpg
+
+Atmore -> Trussville, 229 mi, **33.67 mpg**, the lowest of that week's eight fills against a lifetime mean of 39.53; the next tank, climbing into the Appalachians, reads **42.49**. **One pair, uncontrolled, and it sits inside the southern-deficit signal already ruled unsettleable** (sample closed at 30; Creamsicle has zero southern fills). **Usable only as a coincidence in the record that matches the hypothesised mechanism -- never as support for it.**
+
+### ★★★ TASK — WHICH TRIPS WERE SOLO? (opened 2026-08-31)
+
+Kim's calibration/logistics account says *much of the driving was solo, with Kim in the car and Nancy back in Honolulu*, and that later *Nancy was always on-board*. **The record has no column for who was in the car.** With that one fact per trip, several questions open at once and none of them can be asked without it:
+
+- does the day get longer or shorter when she is aboard?
+- do arrival times move? (the remote arrangement had to leave margin for a booking; the in-car one did not)
+- the 2013 Bellingham day is the transition case in miniature -- she flew in for part of a trip.
+
+**Ask for the trip-level answer only** (solo / both), not day-level. Occasion: before ch.7 or any chapter that turns on the day length.
+
+### ★★ TASK — what were the actual tools of the logistics arrangement? (opened 2026-08-31)
+
+The person-tracking and the same-day booking are period-specific and the record names none of it. **Ask Kim; do not infer a product name.** He is precise about this class of thing and the answer dates the practice.
+
+### ⚠ RULING NEEDED — is the logistics account ch.5 material or its own chapter?
+
+It answers **why the trip log exists**, which ch.4 asserted (*a record of the long driving days*) without a cause, and it supplies ch.5's missing baseline (*we did not know how far we could drive in a day*). **It also does not fit either**, because Nancy's role runs across the whole book and the car/human fabric is the weave, not a chapter. Candidates: a new short chapter in **The Drives** before `long_days.qmd`; an opening section of ch.5; or split -- baseline into ch.5, logistics into the part-opening. **Kim decides.**
+
 ### ✓✓✓ CLOSED 2026-08-31 — BOTH OPEN ITEMS IN THE CH.5 SCAFFOLD
 
 **The Bellingham departure.** Settled by the day's own fill times, transcribed this session (see below). Written into ch.5 as *the sheet recorded the roll-off, Kim remembers the driving, and the gap between them is the morning*. ⚠ **Kim has not confirmed that reading yet** — if he rejects it, the fallback is to print the sheet's figures and say the memory disagrees.

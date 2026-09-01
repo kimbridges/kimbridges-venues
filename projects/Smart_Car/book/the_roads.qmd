@@ -5,22 +5,111 @@
 #| include: false
 
 source("R/book_setup.R")
+source("R/roads_data.R")
+source("R/long_days_data.R")
+
+R  <- roads_data()
+K  <- roads_tanks()
+DA <- roads_dalton()
+S  <- day_shape()
+LD <- long_days_data()
+d640 <- LD[LD$rank == 1, ]      ## the Kansas day, ch.5
+
+tk <- K$t
+tunnel <- tk["trussville", ]
+climb  <- tk["madisonville", ]
+entry  <- tk["atmore", ]
+
+stopifnot(R$n_south == 10, R$n_appal == 6, K$is_lowest,
+          nrow(DA) == 2, R$fast$median_mph > R$slow$median_mph,
+          nrow(d640) == 1)
 ```
 
-<!-- SCAFFOLD — delete this block as the chapter is written.
+## An excellent highway
 
-PURPOSE
-Kim's taxonomy, built from experience rather than speed. The chapter that names what the numbers cannot hold.
+I was stuck on an excellent highway.
 
-MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- Kim: 'rolling, tree-covered hills, a winding highway, small villages tucked in the valleys' -- the relief. I-64 Charleston to Beckley, driven exactly twice (2010 and 2016).
-- TREE TUNNELS: 'the very long (miles and miles) of straight divided highway lined by a dense thicket of trees. Flat. Monotonous. Where are these found? In the South.'
-- The third term, what both are a relief from: 'nearly straight freeways lined by commerce, billboards and wall-to-wall housing.'
-- Also measured: gravel (Dalton 31.7 mph), coastal (US-101 28.3), interstate (2011, 47.6), Frostburg 44.4, Fourth Crossing 41.4, Penultimate 40.3.
-- The memory retained a LANDSCAPE TYPE, not a road: he said 'highway', he meant 'this kind of country'.
+Two lanes each way, a wide median, good surface, no traffic to speak of. Easy driving, by every measure anybody builds a road to. And I couldn't wait to get off it.
 
-OPEN / NEEDED
-- KIM TO NAME the tree-tunnel stretches he remembers. Do NOT infer them from the data.
-- Gross speed does NOT separate the categories: Deep South 40.3 (n=10) vs Appalachian 38.0 (n=6), p=0.42. That null is the point, not a failure.
--->
+This was I-65 north through Alabama, and the record puts a date on it: the seventh and eighth of May, 2014, on the trip that finished the states. The fills place it more exactly than I could from memory. We came up out of Louisiana, and there's a fill at Atmore, which sits on I-65 at exit 57, and from there the tank runs all the way to Birmingham with a night in Montgomery inside it. `r tunnel$leg_miles` miles of one road.
 
+I remember it as the most tedious driving of sixteen years, and I want to be careful about what I mean by that, because none of it is the road's fault.
+
+## It isn't about the trees. It's about the sightlines
+
+The term came from my nephew. He took the train from Siberia to Europe, and much of that route, he said, ran through **tree tunnels**. There wasn't much to look at outside the window. The phrase stuck with me for years before I had anywhere to put it.
+
+Then I put it on an interstate in Alabama, and in doing so I found out what I actually meant by it. **A tree tunnel needs three things at once.** Trees close enough and tall enough to block the view. A road that's nearly straight. And ground that's nearly flat. Take away any one of them and you don't have one.
+
+The proof of that is in the West, and it's the reason the definition needs all three. There are plenty of tree-lined highways in the mountain and coastal states. **They aren't tree tunnels, because the trees out there are rarely tall enough to hide the landscape behind them.** You see rolling hills through them. Sharp peaks above them. Ridgelines running away to the side. The trees and the landscape work together, and the trees are part of what you came to look at.
+
+So the category isn't about vegetation at all. **It's about what you can see past it.** That distinction took me a while to say out loud, and it matters, because a road can be walled in green and still show you a whole country.
+
+There's something uncomfortable in this for me. I've spent a working life on plants, and trees are important, and here I am complaining about them. But when you need visual relief to stay alert, a continuous wall of green works against you. **The thing I study and the thing I needed were, for about four hours in Alabama, in direct opposition.**
+
+## It isn't Alabama's fault either
+
+I want to say this plainly, because the chapter could easily be read as a complaint about a place, and it isn't one.
+
+That stretch of I-65 is what you get from that combination of vegetation and topography. The trees grow tall and close because the climate lets them. The road runs straight and flat because the land is straight and flat. **Nobody made a mistake.** The engineers built an excellent highway through the country that was there, and the country did what it does.
+
+What I'm describing is a fact about the driver, not about Alabama. I was bored. The road was fine.
+
+## What the record can see
+
+Here's where the fuel log and the trip log have something to say, and also where they stop.
+
+```{r}
+#| label: fig-roads
+#| fig-cap: "One instrument, two questions, one scale. Above, the median driving day of each trip: gross speed, meaning the whole day divided by the whole clock, stops and all. Below, every leg driven in two kinds of country. The trips separate. The country does not."
+#| fig-width: 7.2
+#| fig-height: 5.4
+#| echo: false
+fig_roads(R)
+```
+
+**The top panel is a real result and a fairly satisfying one.** Gross speed sorts the trips from `r R$slow$median_mph` miles an hour to `r R$fast$median_mph`, and the order it produces is a description of how the roads were built. At the bottom is the autumn of 2016 on the coast, `r R$slow$median_mph`, which is US-101 doing what US-101 does. Just above it the Arctic trip, which contains the gravel: the two Dalton Highway legs on their own run `r DA$gross_mph[1]` miles an hour going out and `r DA$gross_mph[2]` coming back. At the top is the 2011 St Louis run at `r R$fast$median_mph`, which is plains interstate and very little else.
+
+**Gravel at the bottom, freeway at the top, and everything else in between.** That scale works. It is measuring engineering, and engineering is a thing you can measure.
+
+## And what it can't
+
+Now the bottom panel, which is the reason this chapter exists.
+
+Take the same instrument and ask it the question I actually care about. Ten legs driven in the Deep South, six driven in the Appalachians, and those are the two kinds of country this chapter is about: the tunnel and the relief. **The southern legs come out at `r sprintf("%.1f", R$med_south)` miles an hour and the Appalachian ones at `r sprintf("%.1f", R$med_appal)`, and a rank test puts them at p = `r format(R$p)`.** The dots sit on top of each other. There is nothing there.
+
+That's not a disappointment. **It's the second half of a pair, and the first half is already in this book.** The Canadian Plains were the most stressful miles of the 2014 crossing, a long crosswind day with trucks, and in the record they read as an unremarkable fast run. The tree tunnel was the most monotonous driving I've done, and it reads as an unremarkable fast run too.
+
+**The record is blind to the driver's experience at both ends of the scale. Terror and boredom produce identical numbers.** Vigilance has no column. Neither does tedium.
+
+There is one coincidence worth putting down, on the condition that it's read as a coincidence.
+
+| | tank | miles | mpg |
+|---|---|---|---|
+| into Alabama, off I-10 | `r entry$City` | `r entry$leg_miles` | `r entry$mpg` |
+| **the tunnel** | **`r tunnel$City`** | **`r tunnel$leg_miles`** | **`r tunnel$mpg`** |
+| the climb into the mountains | `r climb$City` | `r climb$leg_miles` | **`r climb$mpg`** |
+
+The tank across the tree tunnel is the lowest of the `r K$n_week` fills that week, against a lifetime average of `r K$lifetime`, and the very next tank, climbing into the country I'd been waiting for, is one of the best. **The road I couldn't wait to leave is the road the car worked hardest on.**
+
+I'd like that to mean something and it doesn't, yet. It's one pair of tanks with nothing controlled, and it sits inside a wider southern fuel-economy question this book takes up later and cannot settle, because the sample is closed. What it does is match a mechanism that runs the opposite way to intuition: a flat straight divided highway invites a steady high speed, and pushing air out of the way costs an 1,800-pound car more than climbing a hill does. **The monotony and the fuel penalty may have the same cause, which is the road being too easy.** Later chapters will show you why I can't prove it.
+
+## Two layers, and both of them matter
+
+I've been circling something, so let me say it directly.
+
+**The people who built the Interstate system brought a kind of uniformity to this country, and the uniformity is excellent.** That was the achievement, and it is easy to be ungrateful for it. The road in Alabama that bored me is the same specification as the road in Kansas that let me drive `r format(d640$miles, big.mark = ",")` miles in a day, and the same specification as the road that let a two-seat car with a three-cylinder engine cross the continent on its own. **Every number in the last chapter rests on it.** A `r S$med_leg`-mile day, one driver, off the road before dark, is not available on the roads that came before.
+
+**And nature gives those highways their character, which is equally important.** The engineering is the same from one state to the next, on purpose. What isn't the same is what the road runs through, and there is nothing the engineers can do about that, and nothing they should. The interstate through the Greenbrier hills and the interstate through south Alabama were built to one standard, and driving them is not remotely the same experience.
+
+**The uniform layer is what makes the trip possible. The other layer is why it's worth taking.**
+
+## If you've seen one
+
+Which brings me to the thing I actually want to say, and it isn't about a road at all.
+
+Driving in a variety of places gives you completely different experiences. Some of them are better than others, and those differences are what make the country interesting. **The risk, if you don't get out and go a long way, is that you fall into thinking that if you've seen one you've seen them all.** That's the natural conclusion from a single sample, and it's wrong, and there's no way to find out it's wrong except by going.
+
+That's what I was thinking about on I-65, somewhere north of Atmore, on an excellent highway with a wall of green on both sides and nothing to look at. Not that the road was bad. **That there are people whose whole picture of driving in America is this road**, and that if I could take them out West for a week, it would change their life.
+
+The record has this day as `r tunnel$leg_miles` miles at `r tunnel$mpg` miles per gallon. I have it as the day I understood what my nephew had been talking about on a train in Siberia.

@@ -107,6 +107,7 @@ A career-long principle, and one Kim did not coin. It was given to him by two of
 - **Complete the circle.** Return at the close to the image or story the piece opened with, now transformed by everything in between. Kim treasures arcs that close the circle; he says they land hardest. Exemplar (named 2026-06-28): the Alaska whale-call story opens the seasonality book and returns as its final answer ("I think this book is my long answer"). When a piece has a strong opening anchor, the ending should reach back for it.
 - **End by naming what's next.** Present the work as an honest, unfinished case: identify the gaps that remain and hand over the tools to address them, the way a good scientific paper closes on future work. Kim's framing (2026-06-28): "say what needs to be done next… tell people where to go, and give them tools to help them get there." Naming the frontier is itself part of the contribution, not an admission of incompleteness.
 - **Acknowledge the injustice without grievance.** Note when the system failed; show what was done instead.
+- **Give the stories room.** Kim's own words on the ch.5 draft of Smart_Car (2026-08-31): *"It gives the stories lots of space, and that's something that I treasure."* Where an account exists in his voice, let it run at length rather than compressing it into a clause of analysis. The analysis is there to earn the story its place, not to replace it.
 
 ### Sentence-level prose preferences
 *Captured during whittakerr chapter drafting, May 2026.*

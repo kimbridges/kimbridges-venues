@@ -1,3 +1,131 @@
+## ★★★ CH.6's SPINE, RULED BY KIM 2026-08-31 — TWO LAYERS: ENGINEERED UNIFORMITY, NATURAL CHARACTER
+
+> You're right about it not being about the trees. It's the sightlines. That's a big difference. Naming the other places doesn't do any service. I can't blame Alabama's stretch of I-65. That's just their combination of vegetation and topography. What's critical is that driving in a variety of places gives you completely different experiences. Some are better than others. Those differences make the country interesting. If you don't get out and around, you might fall into the "if you've seen one, you've seen them all" mentality. The architects of Interstate system brought a kind of uniformity: excellent highways. That was very important. Nature gives these highways character. It's equally important. So, we can leave I-65 as our example of monotony and skip the other places.
+
+### ★★★ THE CHAPTER IS NOT A TAXONOMY OF ROADS. IT IS AN ARGUMENT FOR VARIETY
+
+**The closing pair is the spine and it is already in his own balanced two-clause form:** *"The architects of the Interstate system brought a kind of uniformity: excellent highways. That was very important. Nature gives these highways character. It's equally important."*
+
+**Two layers, and the chapter needs both.** The engineered layer is uniform BY DESIGN and that uniformity is the achievement -- it is also, quietly, what made a 300-mile day in an 1,800-lb car possible at all, which ties ch.6 back to ch.5's baseline. **The natural layer is what the engineering cannot flatten**, and it is the entire reason one excellent highway is not interchangeable with another.
+
+**★★ AND THE ARGUMENT IS THEME 10, IMMERSION OVER INSULATION, ARRIVING FROM A NEW DIRECTION.** *"If you don't get out and around, you might fall into the 'if you've seen one, you've seen them all' mentality."* The chapter is not complaining about a road. **It is making the case that the variety is the reason to go**, and the tree tunnel earns its place by being the one stretch where the variety is missing.
+
+### ★★ TWO STANDING CONSTRAINTS FROM THIS RULING
+
+1. **ONE example, not a survey. I-65 north in Alabama stands alone.** The candidate list of other stretches (Port Allen->Memphis, Atlanta->Murfreesboro, Charleston->Atlanta, Montgomery->Birmingham) is **CLOSED WON'T DO** -- see `deferred.md`. **This is Theme 13, subtraction, applied by Kim to his own chapter:** a second example adds weight without adding argument.
+2. **NO BLAME. Alabama is not at fault and the text must not imply it.** Kim: *"That's just their combination of vegetation and topography."* The tree tunnel is a fact of the place, not a failure of it, and the driver's boredom is a fact about the driver.
+
+### ★ AND THE CORRECTION IS WORTH KEEPING — the category is about SIGHTLINES
+
+Kim accepted the reframing and named it a big difference. **A tree tunnel is not defined by vegetation; it is defined by what the driver can see past it.** Which is why the western counter-case belongs IN the definition rather than after it, and why the project's speed-based taxonomy was structurally unable to reach the category.
+
+### MEASURED TAXONOMY, recomputed 2026-08-31 (median gross mph by trip)
+
+Supersedes the figures in the old `the_roads.qmd` scaffold, which disagreed with the 2026-08-20 list in two places.
+
+| trip | n | median gross mph | median leg |
+|---|---|---|---|
+| 2016 FallWinter (US-101 coastal) | 4 | **28.3** | 299 |
+| 2017 February | 6 | 31.1 | 194 |
+| 2013 Arctic | 18 | 31.7 | 253 |
+| 2013-4 LA Expedition | 1 | 34.6 | 260 |
+| 2012 May Arizona | 7 | 36.9 | 132 |
+| 2015 Sedona | 1 | 39.0 | 150 |
+| 2014 Penultimate State | 32 | 40.3 | 334 |
+| 2011 NorCal | 2 | 40.6 | 306 |
+| 2017 January | 3 | 41.2 | 313 |
+| 2016 Fourth Crossing | 25 | 41.4 | 303 |
+| 2012 Frostburg | 18 | 44.4 | 360 |
+| 2011 StLouis | 15 | **47.6** | 339 |
+
+**The two Dalton legs alone: 28.6 out, 22.6 back, median 25.6** -- the scaffold's "Dalton 31.7" was the whole Arctic trip, not the gravel.
+
+**★ The scale separates ROAD ENGINEERING and nothing else.** Gravel and coast at the bottom, plains interstate at the top. **It cannot separate the Deep South from the Appalachians (40.3 vs 38.0, p = 0.42)** -- the two categories this chapter is actually about. *Vigilance has no column; neither does tedium.* **That null is the chapter's hinge, not a gap in it.**
+
+---
+
+## ★★★ TREE TUNNELS — Kim, 2026-08-31, verbatim. The concept, its provenance, and the one stretch he names
+
+_For ch.6 `the_roads.qmd`. The deferred TASK said ask him to name them and do not infer them; this is the answer to that ask._
+
+> I picked up the concept from my nephew who took the train from Siberia to Europe. Much of the route, he said, was through "tree tunnels." He added that there wasn't much to look at outside the train window. The concept stuck. Trees alongside the route block the view. A monotonous wall of green. Trees are important, of course. But when you need visual relief to stay alert, they seem to work against you.
+>
+> I first got the connection as I drove north on I-65 in Alabama. My definition of a tree tunnel expanded to include the route being nearly straight and nearly flat. This Interstate highway met those conditions. I wondered if the people who take this route as their primary drive have ever seen the contrast with driving in the West. There are certainly highways in the mountain and coastal states that are lined with trees. But these trees are rarely tall enough to hide the landscape beyond. Rolling hills. Sharp peaks. Dramatic ridgelines. The trees and the landscape work together. But that I-65 corridor had none of that. I was stuck on an excellent highway. Two lanes each way with a wide median. Easy driving. But I couldn't wait to get off of it. All the while I wished I could take every driver who's only seen this type of highway out West. It would change their life.
+
+### ★★ THE DEFINITION IS A CONJUNCTION, NOT A DESCRIPTION OF TREES
+
+Three conditions, and all three are required: **trees tall enough and close enough to BLOCK THE VIEW; nearly straight; nearly flat.** The western counter-case is the test that proves it -- those roads are also tree-lined, and they are not tree tunnels, because the trees *"are rarely tall enough to hide the landscape beyond"* and so **the trees and the landscape work together.** ★ **It is not a category about vegetation. It is a category about what the driver can see past it**, which is why the project's speed-based taxonomy cannot reach it.
+
+**★★ THE PROVENANCE IS NOT AMERICAN AND NOT A ROAD.** The term came from his nephew describing the **train from Siberia to Europe** -- so a concept formed on the Trans-Siberian, on rails, gets carried to an Alabama interstate and fits. Worth keeping in the writing: it is the strongest evidence that the category is real and not a rationalisation of one bad afternoon.
+
+**★ AND THE TENSION IS HIS OWN, WHICH IS WHY IT LANDS.** *"Trees are important, of course. But when you need visual relief to stay alert, they seem to work against you."* **A botanist writing about trees as an obstacle.** Do not smooth that out.
+
+**★★ THE COMPLAINT IS NOT ABOUT ROAD QUALITY, AND HE SAYS SO EXPLICITLY.** *"I was stuck on an excellent highway. Two lanes each way with a wide median. Easy driving. But I couldn't wait to get off of it."* **That sentence is the chapter's argument in miniature: every measurable quality of that road is good, and the experience is bad.** It is the same shape as the Canadian Plains non-result and the Deep South / Appalachian null (40.3 vs 38.0, p = 0.42) -- *vigilance has no column; neither does tedium.*
+
+### ★★★ THE STRETCH IS IN THE RECORD AND IT IS DATED
+
+**I-65 northbound in Alabama = 2014-05-07 and 2014-05-08, on the Penultimate State expedition.** The fills place it exactly:
+
+| date | fill | odo | tank miles | mpg |
+|---|---|---|---|---|
+| 2014-05-07 | New Orleans LA | 42,827 | 274 | 41.62 |
+| 2014-05-07 | **Atmore AL** (I-65 exit 57) | 43,037 | 210 | 40.26 |
+| 2014-05-08 | **Trussville AL** (Birmingham) | 43,266 | **229** | **33.67** |
+| 2014-05-08 | Madisonville TN (the Appalachian climb) | 43,462 | 196 | **42.49** |
+
+**The Atmore -> Trussville tank is almost purely the tree tunnel.** Atmore to Birmingham is I-65 the whole way, with the Montgomery overnight sitting inside the tank. **It reads 33.67 mpg, the lowest of the eight fills that week, against a lifetime mean of 39.53** -- and the very next tank, climbing into the mountains he had been waiting for, reads **42.49.**
+
+**⚠ DO NOT PRINT THIS AS A FINDING.** It is one pair of tanks, temperature and speed are uncontrolled, and it sits inside the ~3 MPG southern deficit already ruled a SIGNAL THAT CANNOT BE SETTLED (`deferred.md`) -- **the sample is closed at 30 because Creamsicle has zero southern fills.** What the pair is good for is **illustration of the mechanism already hypothesised there:** flat straight divided highway invites steady high speed, and drag costs an 1,800-lb car more than hills do. **The road he could not wait to get off is the road the car worked hardest on, and the mountains he was longing for gave it back.** Write that as a nice coincidence in the record, explicitly not as evidence.
+
+**⚠ ALSO: no 2014 fill times exist in `TwoRed_fuel_timetemp.csv`** (1 row for the whole year), so the within-day clock is unavailable for these two days. Same gap as the deferred TASK.
+
+---
+
+## ★★★ THE CALIBRATION PROBLEM AND THE LOGISTICS PARTNERSHIP — Kim, 2026-08-31, verbatim
+
+_Registered before ch.6. This is not a long-day story; it is the missing account of **why the trip log exists at all**, and it names a second person's role that the record has been carrying without a label._
+
+> Living in Hawaii, we obviously don't do much long distance driving. Except when we go other places. Then we might do a long drive. In our case, for years, our mainland "long" driving seemed to be along a single route: From LAX to LSM. Each way, exactly 100 miles from where we picked up the rental car to my mother's parking spot. Not exactly a long drive by mainland standards. When we got TwoRed and decided to take a long trip, we didn't know how far we could drive in a day. We didn't have any relevant experience. We looked at Smart car on-line discussions to get guidance, but the reported long trips were usually done by two drivers sharing the task. And for them, there was usually a distinct target destination that justified a very long day on the road. That wasn't going to be us. Single driver. A very long distance to the final destination. Avoid night driving. The same for rush hour traffic around an unfamiliar city. We had to learn on the fly, so to speak.
+>
+> And that made for an interesting situation. Much of the driving was solo, with Kim in the car and Nancy back in Honolulu, busy at work. Thanks to GPS and an ability to track another person, Nancy could see where Kim was at any time. As any particular day began to show the limits of driving, Nancy would scout ahead using the Internet. She'd find a place to stay, make a reservation, and then locate an appropriate restaurant that would be walking distance from the hotel or motel. It was long distance (very long distance) teamwork. Kim could focus on the driving and know there was a good stop ahead. It was an interesting and innovative use of emerging technology.
+>
+> Eventually, when Nancy was always on-board for the drives, the pattern persisted as Nancy would evaluate how much farther we would travel, then use the Internet, like before, to reserve a place for the night. That's a role that extends well beyond that of navigation. Think: logistics.
+
+### ★★★ THE STATED RULES ARE VISIBLE IN THE RECORD AS A SHAPE
+
+*Avoid night driving. Avoid rush hour around an unfamiliar city.* Those are falsifiable, and the log was not kept to score them.
+
+**134 legs carry an arrival time. The median arrival is 16:12 and the 90th percentile is 18:55. The median departure is 08:11 and the LATEST departure in six years is 13:26.** Fourteen legs arrive after 19:00 and six after 20:00.
+
+**★★ AND EVERY ONE OF THE SIX HAS A NAME.** Three are **Alaska and the Yukon in August**, where 21:00 is broad daylight and the rule is not violated at all (Coldfoot->Ester 21:03 on the Dalton, Destruction Bay->Ester, and the day off the Alaska ferry). One is **North Sydney NS 21:00, a ferry terminal with a boat to catch.** One is **St George 21:36, the Las Vegas break.** One is **Paso Robles 22:10, his mother.** The seventh-latest, Youngtown 20:41, is the leg whose arrival time is itself disputed.
+
+**The rule is not stated anywhere in the log and it did not need to be. It is in the distribution.**
+
+### ★★★ AND THERE IS NO LEARNING CURVE, WHICH IS THE FINDING
+
+The obvious prediction from *we didn't know how far we could drive in a day* is that the days get longer as they learn. **They do not.**
+
+| | n | median leg |
+|---|---|---|
+| first three logged trips (2011-05 to 2012-05) | 28 | 301 mi |
+| everything after | 109 | 305 mi |
+
+Wilcoxon **p = 0.44**. Trip medians run 305, 339, 132, 360, 253, 260, 334, 150, 303, 299, 313, 194, and the low ones are the short local trips, not early ones.
+
+**★★ THE CALIBRATION HAPPENED ON THE 2010 CROSSING, WHICH HAS NO TRIP LOG.** The log opens in May 2011, a year after the driving started, and **it opens already knowing the answer.** So the record is not a search. It is a constant, and the constant is about 300 miles.
+
+**★★★ WHICH REFRAMES WHAT SET THE DAY LENGTH.** It was never stamina, and the flatness is the evidence: an 84-year-old's day and a 68-year-old's day are the same length. **The four rules set it** -- one driver, no night driving, no unfamiliar rush hour, and a reservation someone had to be able to make -- and four constraints produce a 300-mile day immediately and forever. **A long day is therefore not a hard day. It is a day one of the four rules was suspended for**, which is exactly what ch.5 found from the other end without knowing this.
+
+### ★★ NANCY'S ROLE IS A THIRD INSTRUMENT AND IT HAS NO COLUMN
+
+The end city of a day was **chosen in real time, remotely, by someone watching a GPS track from 2,500 miles away.** The record shows the outcome (an arrival city, an arrival time) and nothing about the decision, so this joins the standing list of things the log holds the shadow of: the reason, the road character, the driver's experience, and now **the choosing.**
+
+**Do not write this as "navigation."** Kim's own word is logistics, and the distinction is his: a navigator works inside the drive; this worked ahead of it, and it worked when she was not in the car at all.
+
+**⚠ AND IT DATES ITSELF.** Consumer person-tracking and same-day online booking from a phone were new in 2010-2014. The arrangement is period-specific and worth writing as such, but **the specific apps and services are NOT in the record and must not be invented.** Ask Kim what he actually used.
+
+---
+
 ## COLLECTED STORIES — Kim's accounts of the long days, verbatim (opened 2026-08-19)
 
 ### KIM KILLS AN ANALYSIS AND REPLACES IT WITH A BETTER ARGUMENT (2026-08-24)

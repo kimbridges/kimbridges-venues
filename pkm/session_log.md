@@ -58,6 +58,56 @@ The book had **not** been rendering end to end, and neither break was in ch.5.
 
 **Next:** Kim reads ch.5, then ch.6 `the_roads.qmd` -- whose deferred TASK needs him to name the tree-tunnel stretches, not have them inferred.
 
+### ★★★ REGISTERED AFTER CLOSE — THE CALIBRATION PROBLEM AND THE LOGISTICS PARTNERSHIP
+
+Kim gave a structural account, verbatim in `logs/proj_Smart_Car_log.md`. **Before TwoRed their mainland driving was one route, LAX to LSM, exactly 100 miles.** They took on a continent with no relevant experience, found the Smart forums useless (two-driver relays to a target), and set four rules: **one driver, a very long way to go, no night driving, no unfamiliar rush hour.**
+
+**Two tests run on it, and the second is the finding.**
+
+**1. The rules are visible as a shape.** Median arrival **16:12**, 90th percentile 18:55, median departure 08:11, latest departure in six years **13:26**. Six arrivals after 20:00 and **every one has a name** -- three are Alaska/Yukon in August where 21:00 is daylight, one is a ferry terminal, one the Las Vegas break, one his mother. **A rule nobody wrote down is in the distribution.**
+
+**2. THERE IS NO LEARNING CURVE.** First three logged trips median **301 mi**, everything after **305**, Wilcoxon **p = 0.44**. **The calibration happened on the 2010 crossing, which has no trip log, so the record opens already knowing the answer.** ★★ **It was never stamina** -- an 84-year-old's day and a 68-year-old's day are the same length. **The four rules set the day, and four constraints give you 300 miles immediately and forever.** So **a long day is not a hard day, it is a day one of the rules was suspended for** -- which is what ch.5 found from the other end, without this.
+
+**★★ And Nancy's role has no column.** Watching a GPS track from Honolulu, she picked the end city in real time, booked it, and found a restaurant within walking distance. **The end city of a day was chosen 2,500 miles from the car.** Kim's word is logistics, not navigation, and the distinction is his. Three items opened in `deferred.md`: which trips were solo, what the actual tools were, and where this material belongs in the book.
+
+### ✓✓✓ RULED, AND CH.5 REWRITTEN AROUND IT
+
+Kim ruled the calibration/logistics material is **ch.5's baseline**, and gave the reason: *"most often in the early day, the destination was not set. Experience put it at about 300 miles per day. And that distance held. That's why this distance becomes our measure against which we can see exceptions. It isn't the same as for other people."*
+
+**Ch.5 restructured: two new opening sections ahead of the 640** -- `One route, a hundred miles` (Hawaii, the LAX-LSM hundred, the useless two-driver forum advice, the four rules) and `About three hundred miles` (the median, the no-learning-curve table, the clock table, Nancy's logistics). **The 640 now lands against a known norm and is described as more than two ordinary days run together.** ~3,575 words, four tables. **57 contractions, 0 em dashes.** Renders clean, 0 NAs.
+
+### ★★★ TREE TUNNELS — the concept, and the stretch is DATED
+
+Verbatim in the project log. **The term came from his nephew describing the train from Siberia to Europe**, and it survived transplant to an Alabama interstate. **The definition is a conjunction of three -- trees that block the view, nearly straight, nearly flat -- and the western counter-case is part of it:** tree-lined roads out West are not tree tunnels because the trees do not hide the landscape. *"The trees and the landscape work together."*
+
+**★★ The complaint is explicitly NOT about road quality:** *"I was stuck on an excellent highway... Easy driving. But I couldn't wait to get off of it."* **Every measurable quality of that road is good and the experience is bad** -- the same shape as the Canadian Plains non-result and the Deep South / Appalachian null.
+
+**★★ AND THE STRETCH IS IN THE RECORD.** I-65 north in Alabama = **2014-05-07/08**, and the fills place it: the **Atmore -> Trussville tank is almost purely the tree tunnel**, 229 mi at **33.67 mpg**, lowest of that week's eight against a lifetime mean of 39.53 -- and **the next tank, climbing into the Appalachians, reads 42.49.** ⚠ **Illustration only.** One pair, uncontrolled, inside the southern-deficit signal already ruled unsettleable.
+
+### ★★★ CH.6's SPINE RULED, AND THE CHAPTER CHANGED SHAPE
+
+Kim accepted the sightlines reframing (*"That's a big difference"*) and then ruled the chapter. **It is not a taxonomy of roads. It is an argument for variety.** His closing pair, already in his own balanced two-clause form: *"The architects of the Interstate system brought a kind of uniformity: excellent highways. That was very important. Nature gives these highways character. It's equally important."*
+
+**★★ The engineered layer ties ch.6 back to ch.5's baseline** -- uniform excellent highway is quietly what made a 300-mile day in an 1,800-lb car possible at all. **The natural layer is what the engineering cannot flatten.**
+
+**★★ TWO STANDING CONSTRAINTS.** **One example only** -- I-65 north in Alabama stands alone, and the four candidate stretches I offered are **CLOSED WON'T DO** with the reason kept: a second example adds weight without adding argument. **That is Kim applying his own subtraction principle to his own chapter, unprompted.** And **no blame** -- *"I can't blame Alabama's stretch of I-65. That's just their combination of vegetation and topography."*
+
+**`the_roads.qmd` scaffold rebuilt** around the spine, the two constraints, and the material. **Measured taxonomy recomputed** (median gross mph by trip, coastal 28.3 to StLouis 47.6); the old scaffold's "Dalton 31.7" was the whole Arctic trip, not the gravel -- the two Dalton legs are 28.6 out and 22.6 back. **The Deep South / Appalachian null (40.3 vs 38.0, p = 0.42) is written in as the chapter's hinge, not a gap.** Nothing is blocking a draft.
+
+### ★★★ CH.6 IS DRAFTED — and it carries the book's first figure built to be an ARGUMENT rather than a display
+
+`the_roads.qmd`, **~1,720 words, one figure, one small table.** Seven sections: the excellent highway; sightlines not trees; not Alabama's fault; what the record can see; what it cannot; two layers; and *if you've seen one*. **45 contractions, 0 em dashes.** Renders clean; **16 chapters, 0 error strings across all of them.**
+
+**★★★ `@fig-roads` PUTS BOTH ANSWERS ON ONE SHARED AXIS, WHICH IS THE WHOLE POINT.** Top panel: median gross mph per trip, 28.3 (US-101 coastal) to 47.6 (2011 plains interstate), sorted, leg counts in the labels so a reader can see that three trips rest on one or two legs. Bottom panel: every leg in the two kinds of country, Deep South (n=10) against Appalachia (n=6). **The eye runs down ONE scale and watches separation become overlap.** Two charts on different scales would have let the comparison off the hook.
+
+**★★ ONE HUE, DELIBERATELY.** The bottom panel does NOT colour its two groups differently -- identity is row position plus a direct label -- **because two hues would assert a distinction the data cannot make.** Same slot (#2a78d6) as `fig_dwell`, validated light-mode, so the book's figures read as a system. New `R/roads_data.R` and `R/fig_roads.R`.
+
+**★ The group definitions are now STATED IN CODE rather than remembered:** Deep South = either endpoint in AL/MS/LA/GA/SC/FL; Appalachia = both endpoints in WV/KY/TN/NC/VA. Those reproduce the 2026-08-20 figures exactly (40.3 / 38.0 / p = 0.42), which they had not been written down anywhere before.
+
+**★★ THE CHAPTER FOUND ITS OWN TIE BACK TO CH.5, and it strengthens both.** The uniformity Kim could not wait to escape in Alabama is the same specification that made the 305-mile day possible. *The uniform layer is what makes the trip possible. The other layer is why it is worth taking.*
+
+**Handled with the agreed discipline:** the 33.67 vs 42.49 tank pair is written as a coincidence that matches a mechanism, explicitly not as evidence, with the closed sample named. No coefficient printed.
+
 ## 2026-08-29 -- CH.3 RE-SOURCED, CH.4 DRAFTED, AND THE LAST BLANK CORNER OF THE RECORD FILLED
 
 **Active focus at start and close:** Smart_Car. Opened the PKM to start ch.4; a question from Kim -- *should I be talking about how the long trips began?* -- turned into a correction to an approved chapter.

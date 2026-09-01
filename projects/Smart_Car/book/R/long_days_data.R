@@ -60,3 +60,30 @@ day_segments <- function(d, tz_gain = 0, tz_seg = NA_integer_) {
   pts$mph   <- round(pts$miles / pts$hours, 1)
   pts
 }
+
+## The shape of an ordinary day. Kim set four rules before the first crossing and
+## the record was never kept to score them, which is what makes the distribution
+## evidence rather than illustration.
+day_shape <- function() {
+  L <- twored_legs; L$date <- as.Date(L$date)
+  hm <- function(x) if (is.na(x)) NA_real_ else {
+    p <- as.numeric(strsplit(x, ":")[[1]]); p[1] + p[2] / 60 }
+  L$end_h   <- vapply(L$end_time,   hm, 0)
+  L$start_h <- vapply(L$start_time, hm, 0)
+  clock <- function(h) sprintf("%02d:%02d", floor(h), round((h %% 1) * 60))
+  ## the two eras, split at the end of the third logged trip
+  ord   <- unique(L$trip[order(L$date)])
+  early <- L$odo_miles[L$trip %in% ord[1:3]]
+  later <- L$odo_miles[!L$trip %in% ord[1:3]]
+  list(
+    n_timed   = sum(!is.na(L$end_h)),
+    med_leg   = median(L$odo_miles, na.rm = TRUE),
+    arr_med   = clock(median(L$end_h, na.rm = TRUE)),
+    arr_p90   = clock(unname(quantile(L$end_h, 0.9, na.rm = TRUE))),
+    dep_med   = clock(median(L$start_h, na.rm = TRUE)),
+    dep_late  = clock(max(L$start_h, na.rm = TRUE)),
+    n_after20 = sum(L$end_h >= 20, na.rm = TRUE),
+    early_n   = sum(!is.na(early)), early_med = median(early, na.rm = TRUE),
+    later_n   = sum(!is.na(later)), later_med = median(later, na.rm = TRUE),
+    p_learn   = suppressWarnings(wilcox.test(early, later))$p.value)
+}

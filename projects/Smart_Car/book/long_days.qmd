@@ -9,6 +9,7 @@ source("R/long_days_data.R")
 
 D  <- long_days_data()            ## every leg of 450 miles or more, ranked
 E  <- long_day_early()            ## the 100-mile day that starts at 04:30
+S  <- day_shape()                 ## the ordinary day: distances, clock, the learning test
 L  <- twored_legs; L$date <- as.Date(L$date)
 
 d640 <- D[D$rank == 1, ]
@@ -24,7 +25,7 @@ smoke  <- D[D$rank == 9, ]
 fastest <- L[L$date == as.Date("2012-06-14"), ]        ## Billings -> Pocatello
 dalton  <- L[L$date == as.Date("2013-08-18"), ]        ## Coldfoot -> Ester, the gravel return
 
-med_leg <- median(L$odo_miles, na.rm = TRUE)
+med_leg <- S$med_leg
 n_legs  <- sum(!is.na(L$odo_miles))
 n_long  <- nrow(D)
 
@@ -36,8 +37,56 @@ s640 <- day_segments("2016-06-19", tz_gain = 1, tz_seg = 3)   ## Central -> Moun
 sbel <- day_segments("2013-08-31")
 ssmk <- day_segments("2013-08-04")
 
-stopifnot(nrow(d640) == 1, d640$miles == 640, nrow(sbel) == 4)
+stopifnot(nrow(d640) == 1, d640$miles == 640, nrow(sbel) == 4, S$n_timed > 100)
 ```
+
+## One route, a hundred miles
+
+We live in Hawaii, so we don't do much long distance driving. That is the first thing to say, and everything in this chapter follows from it.
+
+For years our mainland driving was a single route. Los Angeles airport to Lake San Marcos, from the counter where we picked up the rental car to my mother's parking spot, and it was exactly a hundred miles each way. That was the long drive. By mainland standards it isn't one.
+
+So when we bought TwoRed and decided to take it across the country, **we did not know how far we could drive in a day.** We had no relevant experience to draw on. It sounds like a small thing to be missing and it isn't, because every other decision hangs off it: where you'll be tonight, how many nights the crossing takes, whether the meeting at the far end is reachable at all.
+
+I looked for guidance where you'd expect to find it, in the Smart car discussions online, and it wasn't much use. The long trips people reported were nearly always driven by **two drivers sharing the wheel**, and there was usually a destination that justified an enormous day on the road. That wasn't going to be us. One driver. A very long way to the far end. And two rules I wasn't going to bend: **no night driving**, and no rush hour in a city I didn't know.
+
+We had to learn on the fly.
+
+## About three hundred miles
+
+Here is what we learned, and the striking thing about it is how quickly it stopped changing.
+
+`r n_legs` legs in the record have both ends of the odometer on them. **The middle one is `r med_leg` miles.** That is the day: out after breakfast, somewhere by mid-afternoon, still a person at dinner. In the early years the destination usually wasn't set when we left in the morning. It emerged. About three hundred miles is where it kept landing.
+
+The obvious guess is that the days grew as we got better at it. **They didn't.**
+
+| | legs | median |
+|---|---|---|
+| the first three logged trips | `r S$early_n` | `r S$early_med` miles |
+| everything after | `r S$later_n` | `r S$later_med` miles |
+
+Four miles apart across six years, and a rank test puts them at p = `r round(S$p_learn, 2)`, which is to say the record cannot tell the two apart at all. The trip-by-trip medians wander between 132 and 360, and the low ones are the short local trips rather than the early ones.
+
+**So the calibration happened before the log did.** The first crossing was in the autumn of 2010 and it has no trip log at all. The log opens in May 2011, and it opens already knowing the answer. **It isn't a record of learning. It's a record of a settled habit, kept for six years.**
+
+The other two rules are in the record too, and neither of them was ever written on a sheet.
+
+| | |
+|---|---|
+| Median departure | `r S$dep_med` |
+| Latest departure in six years | **`r S$dep_late`** |
+| Median arrival | `r S$arr_med` |
+| Ninth in ten arrive before | `r S$arr_p90` |
+
+**`r S$n_timed` legs carry an arrival time and only `r S$n_after20` of them arrive after eight in the evening.** Three of those `r S$n_after20` are in Alaska and the Yukon in August, where eight in the evening is broad daylight and the rule isn't being broken. One is a ferry terminal with a boat to catch. One is a stop with friends in Las Vegas. One is the night I was driving to my mother. **A rule nobody recorded is sitting in the distribution anyway.**
+
+There was a fourth thing holding the day together, and it wasn't in the car.
+
+A great deal of this driving was solo, with me on the road and Nancy in Honolulu at work. She could see where I was, because by then you could follow another person on a map. As the day began to show its limits she would scout ahead on the internet, find somewhere to stay, book it, and then find a restaurant within walking distance of it. **The end of the day was chosen from two and a half thousand miles away, while I was still driving toward it.** I could put my attention on the road and know there was a good stop coming. Later, when Nancy was always along, the pattern didn't change: she'd judge how much farther we had in us and book it from the passenger seat.
+
+That is not navigation. Navigation works inside the drive. **This worked ahead of it, and it worked when she wasn't in the car at all.** The word for it is logistics, and there is no column on the sheet for the person doing it.
+
+**Three hundred miles, then, is not a fact about a Smart car or about me.** It's what falls out of one driver, a long way to go, no darkness, no strange rush hour, and a room somebody has to be able to book. Change the constraints and you get a different number, which is exactly what the two-driver crossings in those forums were reporting. **Ours is the measure this chapter needs, because every day that follows is a day one of those five things was set aside.**
 
 ## Six hundred and forty miles
 
@@ -45,7 +94,7 @@ The longest day in sixteen years starts in my brother's driveway.
 
 He lives in Richmond, Missouri, and the day before this one is a short one, `r stage$odo_miles` miles from St Peters, because a short day was all that was needed to get there. Then a visit. Then the rest of Missouri, and Kansas, and the part of Colorado that leads up to the Rockies.
 
-**`r format(d640$miles, big.mark = ",")` miles, out at `r d640$start_time` and in at `r d640$end_time`.** The clock says `r d640$elapsed_hours` hours, and it's lying by an hour in my favour, because somewhere out past Oakley the time zone changes and I got the hour back. `r d640$gross_mph` miles an hour gross, which is the fastest sustained day in the record and isn't close.
+**`r format(d640$miles, big.mark = ",")` miles, out at `r d640$start_time` and in at `r d640$end_time`.** The clock says `r d640$elapsed_hours` hours, and it's lying by an hour in my favour, because somewhere out past Oakley the time zone changes and I got the hour back. `r d640$gross_mph` miles an hour gross, which is the fastest sustained day in the record and isn't close. **Against a `r med_leg`-mile norm it is more than two ordinary days run together.**
 
 The record can show you how it was done, because I bought fuel three times.
 
@@ -67,15 +116,13 @@ And here's the part the numbers can't reach. I wasn't driving toward Denver. The
 
 So the longest day in the record is a day I drove in order to get it over with. **Six hundred and forty miles is what impatience looks like when it's written down.**
 
-## What makes a day long
+## The rest of the exceptions
 
-`r n_legs` legs have both ends of the odometer written on them. The middle one is `r med_leg` miles. That's what an ordinary day of this driving looks like, and it's a perfectly good day: out after breakfast, somewhere by mid-afternoon, still a person by dinner.
-
-`r n_long` of them are `r min(D$miles)` miles or more.
+`r n_long` legs are `r min(D$miles)` miles or more.
 
 ```{r}
 #| label: tbl-longdays
-#| tbl-cap: "Every driving day of 450 miles or more. The distance is the odometer's, except for 2015-07-07, where I never wrote the end reading down and 575 is my own figure from the sheet. Gross mph is the whole day, stops and all, which is why none of them look fast."
+#| tbl-cap: "Every driving day of 450 miles or more, against a 305-mile ordinary day. The distance is the odometer's, except for 2015-07-07, where I never wrote the end reading down and 575 is my own figure from the sheet. Gross mph is the whole day, stops and all, which is why none of them look fast."
 #| echo: false
 z <- D[, c("rank","date","start_city","end_city","miles","start_time","end_time","gross_mph")]
 z$date  <- format(z$date, "%d %b %Y")
@@ -87,7 +134,7 @@ knitr::kable(z, align = c("r","l","l","l","r","r","r","r"))
 
 Then there's this one, which belongs in the chapter and would never make the table.
 
-**`r format(E$date, "%d %B %Y")`. Flagstaff to Holbrook, `r E$odo_miles` miles, out at `r E$start_time`.** My nephew was a naturalist at Petrified Forest National Park and I wanted a tour of the place that day. The early start gave me the hours I needed. It's the earliest departure in the record after one other, it's a hundred miles, and it is unquestionably one of the long days, because **a long day is measured from when you got up, not from the odometer.**
+**`r format(E$date, "%d %B %Y")`. Flagstaff to Holbrook, `r E$odo_miles` miles, out at `r E$start_time`.** My nephew was a naturalist at Petrified Forest National Park and I wanted a tour of the place that day. The early start gave me the hours I needed. It's a hundred miles, and it is unquestionably one of the long days, because **a long day is measured from when you got up, not from the odometer.**
 
 The sheet has a column for distance and a column for time. It doesn't have one for why.
 
@@ -158,5 +205,7 @@ For comparison, the slowest full day the odometer does have is the return from C
 The sheet has a column for the start time, a column for the end time, and a column for the miles between them. From all three you can work out that a day was long. You can work out, decades later, that a car went `r format(d640$miles, big.mark = ",")` miles across Kansas, or that it sat still for four hours in Bellingham, or that somewhere near Sedona it stopped behaving like a car on a road.
 
 What no column holds is that the Kansas day was bought so the Colorado day could happen. I drove six hundred and forty miles to get a stretch of country behind me, and the next morning I went up the highest paved road in the country, and neither of those facts is written anywhere on the sheet. **One of them is a number I can still recover. The other one is only mine.**
+
+And none of it holds the thing that made every ordinary day work either: somebody a long way off, watching a dot move across a map, deciding where it should stop.
 
 That's the trade this record keeps making. It kept the miles and let the reasons go, and it kept them so well that fifteen years later the miles can still find the reasons, one at a time, as long as somebody is around to be asked.
