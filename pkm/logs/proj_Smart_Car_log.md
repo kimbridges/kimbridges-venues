@@ -1,3 +1,49 @@
+## ★★★ THE FERRIES, AND THE WHITTIER TUNNEL — Kim, 2026-08-31, verbatim
+
+> TwoRed went on a number of ferry rides. I suppose for most people, that's not a big deal. There are a lot of short car-ferry rides. But consider the Whittier to Bellingham route: about 1,300 miles. Perhaps the longest on the continent. Even Bellingham to Skagway is a bit over 1,000 miles. An overnight ferry from Newfoundland was a long ride, too. The Alaska system is called the Marine Highway. It obviously has a character of its own.
+>
+> An observation that I don't know where it fits: to get to Whittier (the port for the Alaska Marine Highway) you drive through a long (about 2.5 mile) railroad tunnel. That was scary! There's no instructions on how to drive and I wondered if my narrower than average wheelbase would work relative to the train tracks. It's dark. Water drips. You need to keep up your speed as you are part of a convoy as you go through. And, for a first-timer, you don't actually know how long it is. There were times I was scared due to danger (car eating hole, police car heading at me). But this was not dangerous in that sense. It was a kind of challenge danger; could I drive well enough to get through.
+>
+> By the way, that ferry route is largely discontinued now. There was just one run in 2026 and it was the only one in a period of several years. TwoRed had what is now a rare experience.
+
+### ★★★ FIVE SEA PASSAGES. TWELVE ODOMETER MILES. SEVEN NIGHTS ABOARD.
+
+The record already held every one of these and nobody had added them up. `book/R/ferries_data.R` now does.
+
+| passage | date | odometer in | out | **miles** | nights |
+|---|---|---|---|---|---|
+| Lake Michigan, Ludington -> Milwaukee | 2012-06-10 | -- | -- | **0** | 0 |
+| Alaska Marine Highway north, Bellingham -> Haines | 2013-08-09 | 35,979 | 35,989 | **10** | 3 |
+| Alaska Marine Highway south, Whittier -> Bellingham | 2013-08-27 | 38,284 | 38,285 | **1** | 4 |
+| Newfoundland out, North Sydney -> Port aux Basques | 2014-05-25 | 46,036 | 46,037 | **1** | 0 |
+| Newfoundland back, Port aux Basques -> Sydney NS | 2014-05-28 | 46,625 | 46,625 | **0** | 0 |
+
+**★★★ THE CAR CROSSED THOUSANDS OF MILES OF WATER AND THE ODOMETER RECORDED TWELVE**, and ten of the twelve are the drive off one dock and onto another. **On Kim's own figures the two Alaska passages alone are about 2,300 miles.** Those are HIS numbers, not the record's -- nothing in the fuel or trip log measures water, which is exactly the point.
+
+**★★ THIS IS THE SCOPE BOUNDARY AT A SCALE THE BOOK HAS NOT USED YET.** Ch.3 found it inside a trip, ch.4 between trips, the Foreword at the car's end, ch.5 in the reasons a day was long. **Here the car MOVED -- for days, hundreds of miles at a time -- and the instrument that exists to measure movement recorded nothing**, because it measures wheel rotation and the wheels were not turning. **The odometer is not a position sensor and this is the one place in sixteen years where the difference is visible.**
+
+**★ AND THE FUEL LOG SHOWS THE SAME THING FROM THE OTHER SIDE.** The Bellingham fill after the southbound crossing carries `leg_miles` 336 -- a tank that begins in Homer, Alaska and ends near Tacoma, Washington, with a Gulf of Alaska in the middle that cost no fuel at all. **The best fuel economy in the record would be a crossing, if a crossing were a leg.**
+
+### ★★ THE ROUTE IS BEING RETIRED, AND THE OFFICIAL SOURCE AGREES WITH KIM
+
+Kim reports the cross-gulf route is largely discontinued, with one run in 2026 and none for several years before it. **Checked against the Alaska DOT's own AMHS route page, which states: *"During the proposed winter 2026/27 schedule AMHS will not be traveling to Yakutat or scheduling 'cross gulf' routes."*** That corroborates the direction of his claim from the operator itself.
+
+**⚠ WHAT IS NOT SOURCED: the specific "one run in 2026" count.** Kim's figure, and the AMHS page does not carry it. **Write the sourced sentence (the operator is not scheduling cross-gulf) and attribute the single-run count to him**, or leave the count out. Do not print it as established.
+
+**★ Kim's framing is the one to keep: *TwoRed had what is now a rare experience.*** A 2013 crossing that would be difficult or impossible to repeat. **That is a fact the record could never have produced on its own and it dates the whole expedition.**
+
+### ★★★ THE WHITTIER TUNNEL — and it is a DIFFERENT KIND OF FEAR, which is why it belongs
+
+**Verified externally:** the **Anton Anderson Memorial Tunnel**, **2.5 miles**, the longest highway tunnel in North America and a combined vehicle-railroad bore. **One lane, shared by cars and trains travelling in both directions**, so traffic runs in alternating timed openings -- to Whittier on the half hour, from Whittier on the hour. Kim's 2.5 miles and his convoy are both right.
+
+**★★ HE DRAWS THE DISTINCTION HIMSELF AND IT IS THE BEST SENTENCE IN THE ACCOUNT.** *"There were times I was scared due to danger (car eating hole, police car heading at me). But this was not dangerous in that sense. It was a kind of challenge danger; could I drive well enough to get through."* **Two categories of fear, and the record cannot hold either one** -- which is ch.6's argument arriving in a place ch.6 never looked.
+
+**★★ AND THE WORRY IS SPECIFIC TO THIS CAR: *"I wondered if my narrower than average wheelbase would work relative to the train tracks."*** That is a **Smart-car-shaped anxiety**, unavailable to any other vehicle in the tunnel that day, and it belongs to the book's thesis rather than to a travel anecdote. Ch.1 already measures the car; **the track gauge is the one place where being small is a question rather than an advantage.**
+
+**⚠ DO NOT ASSERT WHETHER THE WHEELBASE WAS ACTUALLY A PROBLEM.** He does not say it was; he says he wondered. **The fear is the fact.** Standard gauge is 56.5 in and `twored_manual` gives a front track of 50.5 and rear of 54.5, but a comparison would be MY analysis of a worry he raised, not his account, and it would answer a question the chapter is better off leaving as he left it. **Offer it to him; do not write it.**
+
+---
+
 ## ★★★ CH.6's SPINE, RULED BY KIM 2026-08-31 — TWO LAYERS: ENGINEERED UNIFORMITY, NATURAL CHARACTER
 
 > You're right about it not being about the trees. It's the sightlines. That's a big difference. Naming the other places doesn't do any service. I can't blame Alabama's stretch of I-65. That's just their combination of vegetation and topography. What's critical is that driving in a variety of places gives you completely different experiences. Some are better than others. Those differences make the country interesting. If you don't get out and around, you might fall into the "if you've seen one, you've seen them all" mentality. The architects of Interstate system brought a kind of uniformity: excellent highways. That was very important. Nature gives these highways character. It's equally important. So, we can leave I-65 as our example of monotony and skip the other places.

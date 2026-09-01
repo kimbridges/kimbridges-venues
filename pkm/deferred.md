@@ -170,6 +170,18 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ⛔ CLOSED BY RULING 2026-08-31 — do NOT compute the Whittier tunnel track gauge
+
+Kim wondered, in the tunnel, whether a narrower-than-average wheelbase would sit right relative to the rails. **I offered to check it against `twored_manual` (front track 50.5 in, rear 54.5) and he declined.** **The fear is the fact.** Answering it thirteen years later replaces his experience with arithmetic, and he never claimed it was a problem. **Do not re-derive this, and do not let a later chapter about the car's dimensions pick it up.**
+
+### TASK — the ferry water distances are KIM'S, not the record's
+
+~1,300 mi Whittier to Bellingham, "a bit over 1,000" Bellingham to Skagway. **Nothing in the fuel or trip log measures water**, which is the chapter's whole point, so these are attributed to him in the text and must stay that way. **If a sourced figure is ever wanted, AMHS publishes route mileages** -- but check whether adding one improves the chapter or just makes it look more precise than the argument needs.
+
+### ✓ SOURCED 2026-08-31 — the cross-gulf route is being retired
+
+Alaska DOT's AMHS route page: *"During the proposed winter 2026/27 schedule AMHS will not be traveling to Yakutat or scheduling 'cross gulf' routes."* **That corroborates Kim from the operator.** ⚠ **His separate claim of a single run in 2026 is NOT sourced** and is written in the chapter as his count. Leave it that way unless he produces a source.
+
 ### ✓✓✓ CH.6 DRAFTED 2026-08-31 — and two things about it are worth carrying forward
 
 **1. The group definitions are now IN CODE, not in a log entry.** `ROADS_SOUTH` / `ROADS_APPAL` in `book/R/roads_data.R` reproduce the 2026-08-20 figures exactly (40.3 / 38.0 / p = 0.42). **They had never been written down anywhere** -- the numbers had been quoted for eleven days with no recoverable rule behind them. **Check the other quoted splits for the same gap** before any of them is printed: the Canadian Plains variance test and the ~3 MPG southern deficit both name group sizes and neither names its rule.

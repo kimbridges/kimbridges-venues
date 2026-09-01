@@ -21,7 +21,15 @@ _Last updated: 2026-08-31_
 
 **★★ TWO PRE-EXISTING RENDER BREAKS FIXED, NEITHER IN A CHAPTER BEING WRITTEN** (`boot_w`, `n_nar`): inline `r` reading a variable defined in a chunk LOWER in the file, introduced by `book_setup.R` refactors. **Invisible to every check except a full-book render (Finding 049).** Now **16/16 chapters, 0 error strings.**
 
-**NEXT: Kim reads ch.6. Nothing is blocking.**
+**★★★ A SEVENTH CHAPTER: `the_marine_highway.qmd`, ~1,240 words, and the record had been holding its best number all along.** The five sea passages were each already noted and nobody had added them up. **FIVE CROSSINGS. TWELVE ODOMETER MILES. SEVEN NIGHTS ABOARD.** Whittier -> Bellingham, four days at sea, reads **38,284 to 38,285 -- one mile**; the Newfoundland return is **zero**. On Kim's water figures the two Alaska passages alone are ~2,300 miles.
+
+**★★ THE SCOPE BOUNDARY AT A NEW SCALE: the car MOVED and the instrument recorded nothing, correctly.** An odometer counts wheel rotations; it is not a position sensor, and this is the one place in sixteen years the difference shows. ★ The fuel log mirrors it -- the Lakewood tank opens six days earlier in Homer, Alaska at 48.56 mpg, 14th of 286, **and the car spent most of it on a boat.**
+
+**★ TUNNEL RULING: leave the worry as the fact.** Kim wondered whether a narrower-than-average wheelbase would sit right on the train tracks; he declined the arithmetic. **Do not compute track gauge later** -- it would replace his experience with mine. He names the distinction himself: *challenge danger*, not danger. **Verified externally before writing:** the Anton Anderson tunnel is 2.5 mi, one lane shared with the Alaska Railroad; and **Alaska DOT's own page says AMHS "will not be... scheduling 'cross gulf' routes"** for winter 2026/27. ⚠ His "one run in 2026" is his count, not sourced, and is written as his.
+
+**⚠ VOICE RULE, THIRD CHAPTER RUNNING: caught by the check, not the instinct.** The first draft ran 14 contractions per thousand words against ch.6's 26; a pass fixed it. **Keep running the count before Kim sees a draft.**
+
+**17 chapters in `_quarto.yml`; 16 render, 0 error strings.** **NEXT: Kim reads ch.6 and the new ch.7. Nothing is blocking.**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

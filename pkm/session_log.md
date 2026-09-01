@@ -108,6 +108,22 @@ Kim accepted the sightlines reframing (*"That's a big difference"*) and then rul
 
 **Handled with the agreed discipline:** the 33.67 vs 42.49 tank pair is written as a coincidence that matches a mechanism, explicitly not as evidence, with the closed sample named. No coefficient printed.
 
+### ★★★ A SEVENTH CHAPTER, AND THE RECORD HAD BEEN HOLDING ITS BEST NUMBER ALL ALONG
+
+Kim registered the ferries and the Whittier tunnel. **The five passages were each already in the record, correctly noted, and nobody had ever added them up.**
+
+**★★★ FIVE SEA CROSSINGS. TWELVE ODOMETER MILES. SEVEN NIGHTS ABOARD.** Whittier -> Bellingham, four days at sea, reads **38,284 to 38,285 -- one mile.** The Newfoundland return is purer still: Port aux Basques 46,625 to Sydney NS 46,625, **zero.** Ten of the twelve are the northbound drive off the dock at Haines. On Kim's own water figures the two Alaska passages alone are about 2,300 miles.
+
+**★★ THIS IS THE SCOPE BOUNDARY AT A SCALE THE BOOK HAD NOT USED.** Ch.3 found it inside a trip, ch.4 between trips, ch.5 in the reasons a day was long. **Here the car MOVED and the instrument that exists to measure movement recorded nothing, correctly** -- an odometer counts wheel rotations, it is not a position sensor, and this is the one place in sixteen years where the difference is visible. ★ **The fuel log shows the same hole from the other side:** the Lakewood WA tank opens six days earlier in Homer, Alaska, scores 48.56 mpg, 14th best of 286 against a median of 39.12, **and the car spent most of it on a boat.**
+
+**★★ KIM RULED IT ITS OWN SHORT CHAPTER** rather than a coda inside ch.6 -- the one-argument discipline he set for the roads chapter, applied again. **`the_marine_highway.qmd`, ~1,240 words, one table**, inserted in The Drives after `the_roads.qmd`. New `R/ferries_data.R`. **17 chapters now; 16 render, 0 error strings.**
+
+**★ THE TUNNEL IS A DIFFERENT KIND OF FEAR AND HE NAMES IT HIMSELF.** *"There were times I was scared due to danger... But this was not dangerous in that sense. It was a kind of challenge danger; could I drive well enough to get through."* And the worry is Smart-car-shaped: *"I wondered if my narrower than average wheelbase would work relative to the train tracks."* **KIM RULED: leave the worry as the fact.** I offered to check track gauge against `twored_manual` and he declined -- **answering it now would replace his experience with my arithmetic.** Do not compute it later.
+
+**★ TWO EXTERNAL CHECKS, both done before writing.** The **Anton Anderson Memorial Tunnel** is 2.5 miles, one lane shared with the Alaska Railroad in both directions on alternating timed openings -- his 2.5 miles and his convoy are both right. And **Alaska DOT's own AMHS route page states it "will not be traveling to Yakutat or scheduling 'cross gulf' routes"** in the proposed winter 2026/27 schedule, which corroborates his report from the operator. ⚠ **His "one run in 2026" count is NOT sourced** and is written as his count, not as established.
+
+**⚠ MY OWN VOICE RULE, CAUGHT ON THE CHECK RATHER THAN BY KIM.** First draft ran **17 contractions in 1,250 words -- 14 per thousand against ch.6's 26.** A pass brought it to 44. **The check works; the instinct still does not.** Third chapter running where the density had to be fixed after drafting rather than during.
+
 ## 2026-08-29 -- CH.3 RE-SOURCED, CH.4 DRAFTED, AND THE LAST BLANK CORNER OF THE RECORD FILLED
 
 **Active focus at start and close:** Smart_Car. Opened the PKM to start ch.4; a question from Kim -- *should I be talking about how the long trips began?* -- turned into a correction to an approved chapter.

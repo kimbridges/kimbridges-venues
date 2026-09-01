@@ -1,0 +1,99 @@
+# The Marine Highway
+
+```{r}
+#| label: setup
+#| include: false
+
+source("R/book_setup.R")
+source("R/ferries_data.R")
+
+FR <- ferries_data()
+P  <- FR$passages
+TK <- ferry_tank()
+
+north <- P[P$passage == "Alaska Marine Highway, north", ]
+south <- P[P$passage == "Alaska Marine Highway, south", ]
+nfout <- P[P$passage == "Newfoundland, out", ]
+nfback<- P[P$passage == "Newfoundland, back", ]
+mich  <- P[P$passage == "Lake Michigan", ]
+
+## where the ocean tank sits in the record
+Fq <- twored_fuel[!twored_fuel$partial_fill & is.finite(twored_fuel$mpg), ]
+Fq <- Fq[order(-Fq$mpg), ]
+tank_rank <- which(Fq$Odometer == TK$close$Odometer)
+tank_med  <- round(median(Fq$mpg), 2)
+
+stopifnot(FR$n == 5, FR$total_odo == 12, south$odo_miles == 1, nfback$odo_miles == 0)
+```
+
+## One mile
+
+On the twenty-seventh of August, 2013, TwoRed drove onto a ship at Whittier, Alaska, with `r format(south$odo_in, big.mark = ",")` miles on the odometer. Four days later it drove off at Bellingham, Washington, with `r format(south$odo_out, big.mark = ",")`.
+
+**One mile, for the whole Gulf of Alaska.**
+
+That mile is the ramp. It's the distance from a parking deck, up a ramp, onto a dock, and it's the only part of the crossing that the instrument I'd been keeping so carefully for three years could see.
+
+## Five crossings
+
+There were five of them altogether, and I'd never put them in one place until now.
+
+```{r}
+#| label: tbl-ferries
+#| tbl-cap: "Every sea passage in the record. The odometer readings are the car's own, taken at the dock on each side. The Lake Michigan crossing has no pair, because I wrote 'ferry' beside Milwaukee on the sheet and let the day's mileage stand for the drive to the Michigan shore."
+#| echo: false
+z <- P[, c("passage","from","to","date","odo_miles","nights")]
+z$date <- format(z$date, "%d %b %Y")
+z$odo_miles <- as.character(z$odo_miles)
+z$nights <- ifelse(z$nights == 0, "--", as.character(z$nights))
+names(z) <- c("Passage", "From", "To", "Boarded", "Odometer miles", "Nights aboard")
+knitr::kable(z, align = c("l","l","l","l","r","r"))
+```
+
+**`r FR$n` passages. `r FR$total_odo` odometer miles. `r FR$nights` nights aboard.**
+
+And ten of the twelve are the northbound Alaska trip, where I drove off at Haines and had a little way to go before the log picked up again. The return from Newfoundland is the purest of them: the leg before it ends at Port aux Basques with `r format(nfback$odo_in, big.mark = ",")` on the counter, and the leg after it starts at Sydney, Nova Scotia with `r format(nfback$odo_out, big.mark = ",")`. **Two provinces, a night at sea, and the odometer didn't move at all.**
+
+## What an odometer actually measures
+
+This is worth saying plainly, because for a long time I couldn't see it as anything but a curiosity.
+
+An odometer counts wheel rotations. That's all it does. For sixteen years I treated it as a record of where the car had been, and for sixteen years that was safe enough, because the only way this car got anywhere was by turning its wheels.
+
+**Five times, it wasn't.** The car moved hundreds of miles, in one case for four days without stopping, and the instrument that exists to measure movement recorded nothing, correctly, because nothing it measures was happening. **An odometer is not a position sensor.** It's a device for counting turns, and I'd never once had to notice the difference.
+
+The fuel log shows the same hole from the other side, and more prettily. The tank that ends at `r TK$close$City`, Washington on the `r format(as.Date(TK$close$date), "%d")`th of August opens `r TK$days` days earlier at `r TK$open$City`, Alaska. **One tank of fuel, two coasts, and a Gulf of Alaska in the middle of it that cost nothing to cross.** The record scores that tank at `r TK$close$mpg` miles per gallon, `r tank_rank`th best of `r nrow(Fq)`, against a median of `r tank_med`.
+
+It's a fine number and it's meaningless. The car spent most of that tank on a boat.
+
+## They call it a highway
+
+The Alaska system's own name for itself is the Marine Highway, and having ridden it I'd say that's the right word rather than a marketing one.
+
+The Whittier to Bellingham run is about thirteen hundred miles of water, which as far as I know makes it the longest car ferry route on the continent. Even Bellingham to Skagway is a bit over a thousand. **You board a vessel and three or four days later you're in a different part of the world, having covered the sort of distance that would take four hard days of the driving in the last two chapters.** The overnight from Newfoundland was a long ride by any ordinary standard and it's the short one here.
+
+For most people a car ferry is twenty minutes across a strait. This isn't that. It's a road with a hull, and the reason it exists is that there isn't a road.
+
+## The tunnel to the dock
+
+There's one more thing about Whittier, and it happens before the boat.
+
+To reach the port you drive through a tunnel about two and a half miles long, bored through a mountain, and it isn't a road tunnel. It's a railway tunnel that cars are allowed into. **One lane, shared with the Alaska Railroad, and shared with traffic going the other way as well**, so everything runs on a timetable: one direction on the half hour, the other on the hour, and in between it belongs to the trains.
+
+Nobody tells you how to drive it. That was the part that got me.
+
+It's dark. Water drips. You're in a convoy so you've got to keep your speed up, and if you haven't done it before you've no idea how long it goes on for. **And you're driving along a railway track, which raises a question I don't think anyone else in that queue was asking: my wheelbase is narrower than average, and I didn't know whether that was going to matter.**
+
+I've been frightened in this car before and it wasn't like this. There's been a hole in a road big enough to eat the car. There's been a police car coming the other way down my side of the road. **Those were danger. This was a different thing entirely, and I want a different word for it. It was challenge danger. The question wasn't whether something terrible was about to happen to me. It was whether I could drive well enough to get through.**
+
+I got through. I still don't know about the wheelbase.
+
+## What is now a rare experience
+
+There's a note to add here, and it changes how I think about all of it.
+
+That crossing is largely gone. The state's own schedule says the Marine Highway will not be scheduling cross-gulf routes, and by my count there has been a single run in recent years. **What TwoRed did in 2013 isn't something you could readily do now.**
+
+I didn't know that at the time, of course. It was simply how you got the car home from Alaska without driving the Alaska Highway twice, and it didn't occur to me that it wouldn't always be there. **The rarest thing this car ever did is the thing I took the least notice of**, and the only reason I can date it and place it exactly is that a fuel log kept the two ends of it.
+
+Thirty-eight thousand, two hundred and eighty-four at Whittier. Thirty-eight thousand, two hundred and eighty-five at Bellingham. **The record gives that crossing one mile, and it's the only part of this whole account where the record and I disagree about everything.**

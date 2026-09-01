@@ -20,6 +20,7 @@ book:
         - expeditions.qmd
         - long_days.qmd
         - the_roads.qmd
+        - the_marine_highway.qmd
         - what_driving_cost.qmd
     - part: "The Data"
       chapters:
