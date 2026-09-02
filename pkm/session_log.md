@@ -359,6 +359,37 @@ Finding 045's *Corollary for the writing* assigns the four states to **`what_the
 **Two fill classes and one outlined class**, because there is no longer any state to mark as unvisited: **every jurisdiction on the map was reached.** Six dashed and labelled, all six explained in `@tbl-silent`. ⚠ **I also had to send Kim the PNGs** -- I had rendered them, inspected them and described them without ever putting them in front of him. **A figure the author has not seen is not a delivered figure.**
 
 ⚠ **OPEN: PRINCE EDWARD ISLAND.** `logs/proj_Smart_Car_log.md` records *"the provinces are exactly right: ... PEI ... ten, all present"* -- but **PEI appears in no fuel log and no trip-log city**, and the ten provinces WITH fills are AB BC MB NB NL NS ON QC SK YT, which includes BC and excludes PE. **Either PEI was settled from a source I have not found, or that line is itself a drift.** Not resolved; see `deferred.md`.
+
+### ★★★★ PEI CLOSED BY VISA — an ELEVENTH province, and the count was UNDER rather than wrong
+
+I had flagged the PKM's *"ten provinces ... PEI ... all present"* as a possible PEI-for-BC substitution. **Both are real.** **10 provinces have a FILL; 11 were REACHED.** PEI was entered over the Confederation Bridge and left by the Pictou ferry with no tank bought in between; **the Murray Harbour motel bill (2014-05-27) and the Bay Ferries booking settle it.** ⚠ The ferry charge dates 2014-03-31 and is the BOOKING, not the crossing.
+
+**Data module now exposes both:** `n_prov` (reached, 11) and `n_prov_fill` (10). `stopifnot` guard updated and **it caught the change on the first render**, which is the guard working.
+
+★★★ **FOURTH TIME the card statements have produced evidence the fuel log could not.** Ch.13: *"Prince Edward Island is the same story with a different receipt."*
+
+### ★★★ THE FUEL-STOP POINT MAP IS BUILT FOR TWORED — 256 of 294 fills placed (87.1%)
+
+New `R/stops_data.R` + `R/fig_stops.R`, `figures/stops.png`. **It shows what a choropleth cannot: cadence.** The beads across the Canadian prairie, the string up the Alaska Highway, the dense Californian cluster, the Maritimes run. ★★ **This is @sec-long-days's three-hundred-mile day drawn instead of tabulated.**
+
+**Geocoding is OFFLINE and reproducible**, three sources in priority order: the project gazetteer (212 stops), the 8 coordinate pairs in `TwoRed_gazetteer_errata.csv` (**keyed BOTH by the corrected name and by the misspelling the fuel log carries** -- that alone moved TwoRed from 84.7% to 87.1%), and `maps::us.cities`/`canada.cities`/`world.cities`, the last tagged to a state by point-in-polygon against `data/na_states.rds` and cached to `data/wc_tagged.rds`. ⛔ **No network geocoder in a figure function.**
+
+### ⛔ CREAMSICLE CANNOT BE DRAWN YET — 69 of 173 fills (39.9%), and I did not ship it
+
+Kim asked for **both** cars and said *"I've never made a Creamsicle map."* ⚠ **A 40% map would render real driving as sparse**, which is precisely the error the choropleth was chosen to avoid. **Not shipped; the gap is stated to him instead.**
+
+**Everything offline was tried and measured:** the project gazetteer alone places 17.3% of Creamsicle; `maps::us.cities` + `canada.cities` takes it to 39.9%; `maps::world.cities` filtered to USA/Canada holds only **1,914 entries**, not the 43,645 total; **`geonamescache` installed in the container carries 3,914 US+CA cities and matched 2 of 16 sample towns.** The unplaced are ordinary small towns -- Nixa MO, Gothenburg NE, Colby KS, Wagon Mound NM, Anamosa IA, Walsenburg CO.
+
+★ **The lead worth chasing:** the ch.13 scaffold records *"The Jul-2024 Creamsicle update already carries lat/long."* **That file is not in `data/` and has no coordinates in `Creamsicle_fuel_clean.csv`.** It is likely Google-native and never ingested. **One question to Kim, and 111 cities may arrive for free.**
+
+### ★★★ FOUR PHOTOGRAPHS ARRIVED AND ONE OF THEM IS THE END OF THE BOOK
+
+Committed to `book/images/TwoRed/`:
+- **`twored_alberta_last.jpg`** -- ★★★★ **TwoRed at the WELCOME TO ALBERTA sign. Kim: *"the last of the states/provinces. Mission complete!"*** A documented COMPLETION. **Ch.14 or the Afterword should use it.**
+- **`twored_florida_signs.jpg`** + **`twored_florida_corner.jpg`** -- the intersection, and the car at it. ★★★ **Kim named the cross-check himself: the DEAD END sign is in both frames.** Exactly what Finding 045 asked for.
+- **`twored_easternmost.jpg`** -- Kim and Nancy at West Quoddy Head, ★ **with a HAWAII decal in the rear window**: a Hawaii car at the far end of the continent, in one frame.
+
+**16 chapters render, 0 unresolved references.**
 ## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
 
 **Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.

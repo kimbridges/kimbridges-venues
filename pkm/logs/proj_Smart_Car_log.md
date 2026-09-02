@@ -1,3 +1,45 @@
+## ★★★★ PEI CLOSED, AND FOUR PHOTOGRAPHS ARRIVE — Kim, 2026-09-01, verbatim
+
+> Here is the evidence for PEI. It is a VISA statement this time:
+> `5/27/2014  VISA  -$68.23   HARBOUR MOTEL   MURRAY HARBO PE`
+> We entered PEI via the Confederation Bridge and left by ferry to Pictou. Here is the ferry VISA entry:
+> `3/31/2014  VISA  -$67.28   BAY FERRIES (ONLINE)   CHARLOTTETOW PE`
+>
+> The photo IMG_6155_nikD.jpg is TwoRed going into Alberta, **the last of the states/provinces. Mission complete!** The IMG_4403_nikD.jpg is evidence of the easternmost point in the USA. The pair of images, IMG_4166.jpg and IMG_4168 show the FL intersection and TwoRed at the intersection (note the Dead End sign in both images).
+>
+> **I'm really interested in the fuel stop map for both cars.** My TwoRed map is interesting. **I've never made a Creamsicle map.**
+
+### ★★★ PEI IS AN ELEVENTH JURISDICTION, NOT A SUBSTITUTION — the count was UNDER, not wrong
+
+I had flagged the PKM's *"ten provinces ... PEI ... all present"* as possibly having swapped PEI for BC. **Wrong: both are real.**
+
+| | |
+|---|---|
+| provinces/territories with a FILL | **10** -- AB BC MB NB NL NS ON QC SK YT |
+| provinces/territories REACHED | **11** -- the above plus **PE** |
+
+**PEI has no fill because the island was entered over the Confederation Bridge and left by the Pictou ferry**, and no tank was bought in between. ★★ **Two VISA lines settle it:** the Murray Harbour motel (2014-05-27) puts the car on the island overnight; the Bay Ferries booking (charged 2014-03-31, from Charlottetown) is the exit. **The 2014-03-31 date is the BOOKING, not the crossing** -- worth noting so nobody later reads it as a date of presence.
+
+★★★ **Fourth time the card statements have produced evidence no fuel log could.** They are now unambiguously a first-class instrument in this project. Ch.13 says so: *"Prince Edward Island is the same story with a different receipt."*
+
+### ★★★★ THE ALBERTA PHOTOGRAPH IS THE COMPLETION MOMENT, AND THE BOOK HAS NO PICTURE OF IT YET
+
+`twored_alberta_last.jpg` -- **TwoRed at the WELCOME TO ALBERTA sign, and Kim's own words: "the last of the states/provinces. Mission complete!"** The Alberta and Canadian flags are in frame, a tanker truck behind, the California plate reading **6MEC416** with a **SMART MADNESS** frame.
+
+⛔ **This is a documented COMPLETION, not just a nice photo.** Sixteen years, 49 states and 11 provinces, and there is a picture of the last one being entered. ★★ **Ch.14 or the Afterword should use it** -- it is the visual counterpart to the Foreword's two cars nose to nose in the Honolulu garage.
+
+### ★★★ THE FLORIDA PAIR IS EXACTLY WHAT FINDING 045 ASKED FOR
+
+`twored_florida_signs.jpg` -- the intersection: **N Pineville Rd x Rease Seales Rd**, a **DEAD END** sign, and the Seales Farm shed.
+`twored_florida_corner.jpg` -- **TwoRed itself at that corner, with the same DEAD END sign in frame.**
+
+★★★ **Kim named the cross-check himself: the Dead End sign appears in both.** The first image places the CORNER; the second places the CAR at the corner; **the shared sign welds them together.** With the coordinates already on record (30.983392, -87.571312, 1.07 mi inside Florida) this is as complete as documentary evidence gets in this project.
+
+`twored_easternmost.jpg` -- **Kim and Nancy at West Quoddy Head with the car and THE EASTERNMOST POINT IN THE USA sign.** Maine. ★ Note the **HAWAII** decal in the rear window, which is the whole book in one frame: a Hawaii car at the far end of the continent.
+
+**All four committed to `book/images/TwoRed/`.**
+
+---
 ## ★★★ KIM RULED ON THE MAP, AND SUPPLIED A THIRD INSTRUMENT FOR VERMONT — 2026-09-01, verbatim
 
 > More evidence for VT. Here is a line from my AMEX statement:

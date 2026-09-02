@@ -46,7 +46,7 @@ fig_driving <- function(K, path = "figures/driving.png") {
   ## TwoRed also reached, without ever buying a tank there: the six states of
   ## SILENT_STATES, and British Columbia (one road north out of Haines, plus a
   ## second clip of the corner off the Canadian plains).
-  tw <- union(tw, c(K$silent$state, "BC"))
+  tw <- union(tw, c(K$silent$state, "BC", "PE"))
 
   both <- intersect(tw, cr)
   one  <- setdiff(union(tw, cr), both)

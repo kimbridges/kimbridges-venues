@@ -11,7 +11,7 @@ source("R/fig_constellations.R")
 K <- constellations_data()
 S <- K$silent
 
-stopifnot(K$n_us == 43, K$n_prov == 10, length(K$cr_new) == 0,
+stopifnot(K$n_us == 43, K$n_prov == 11, K$n_prov_fill == 10, length(K$cr_new) == 0,
           K$complete, K$reach == 49, K$pct_parked > 90, K$n_unlogged == 3)
 ```
 
@@ -19,7 +19,7 @@ stopifnot(K$n_us == 43, K$n_prov == 10, length(K$cr_new) == 0,
 
 Sixteen years of driving make a map, and here it is.
 
-**`r K$reach` states and `r K$n_prov` Canadian provinces and territories.** That's every one of the forty-eight, plus Alaska, plus a band of Canada from Vancouver Island to Newfoundland. **The only state that's missing is the one the car lives in**, and it went there by ship.
+**`r K$reach` states and `r K$n_prov` Canadian provinces and territories.** That's every one of the forty-eight, plus Alaska, plus a band of Canada that runs from Vancouver Island to Newfoundland. **The only state that's missing is the one the car lives in**, and it went there by ship.
 
 ```{r}
 #| label: fig-driving
@@ -76,6 +76,8 @@ Here's a result I didn't expect and had to check twice.
 Creamsicle drove `r K$n_cr_us` states in its three years. **Every single one of them was already TwoRed's.** Not one new state, a decade later, in a different car, from a different starting point, on what I'd have described as completely different trips.
 
 The only ground the two cars share outside the United States is **British Columbia**, and they got there in opposite ways. Creamsicle bought three tanks on Vancouver Island. **TwoRed crossed it twice and never bought anything.** Coming off the ship at Haines there's exactly one road north, and it runs through British Columbia before it reaches the Yukon: it's a short enough stretch that the question of fuel never came up. And I clipped the corner of the province again coming off the Canadian plains.
+
+**Prince Edward Island is the same story with a different receipt.** We crossed on the Confederation Bridge and left by the ferry to Pictou, and no tank was bought on the island. What proves it is a card statement again: **a motel bill at Murray Harbour, and the ferry booking itself.** That makes eleven provinces and territories, and the fuel log knows about ten of them.
 
 @sec-car-cost found the two cars four tenths of a mile per gallon apart and called the car a constant. **The map says the same thing about the driver.** Ten years, a different vehicle, and I went back to the same country.
 

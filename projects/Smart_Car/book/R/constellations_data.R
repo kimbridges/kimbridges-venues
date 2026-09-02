@@ -67,7 +67,12 @@ constellations_data <- function() {
   tw_us <- sort(intersect(unique(tw$st), state.abb))
   cr_us <- sort(intersect(unique(cr$st), state.abb))
   us    <- sort(union(tw_us, cr_us))
-  prov  <- sort(intersect(unique(c(tw$st, cr$st)), CA_PROV))
+  ## Provinces reached, not merely filled in. BC: one road north out of Haines,
+  ## plus a second clip of the corner off the Canadian plains (Kim, 2026-09-01).
+  ## PE: entered over the Confederation Bridge and left by ferry to Pictou, with a
+  ## motel bill at Murray Harbour and the ferry booking both on a VISA statement.
+  prov_fill <- sort(intersect(unique(c(tw$st, cr$st)), CA_PROV))
+  prov <- sort(union(prov_fill, c("BC", "PE")))
 
   fills <- rbind(data.frame(car = "TwoRed",     st = tw$st, stringsAsFactors = FALSE),
                  data.frame(car = "Creamsicle", st = cr$st, stringsAsFactors = FALSE))
@@ -91,6 +96,7 @@ constellations_data <- function() {
     n_us = length(us), n_tw_us = length(tw_us), n_cr_us = length(cr_us),
     cr_new = setdiff(cr_us, tw_us),          # empty: the second car added nothing
     n_prov = length(prov), prov = prov,
+    n_prov_fill = length(prov_fill), prov_fill = prov_fill,
     by_st = by_st, us = us,
     silent = silent,
     n_silent = nrow(silent),

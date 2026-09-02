@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-09-01 20:50 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-09-01 21:22 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -36,8 +36,8 @@ None.
 
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
-| session_log.md | REFERENCE | 322.1 | 250 | 72.1 | FALSE |
-| proj_Smart_Car.md | PROJECT |  62.1 |  45 | 17.1 | TRUE |
+| session_log.md | REFERENCE | 325.8 | 250 | 75.8 | FALSE |
+| proj_Smart_Car.md | PROJECT |  63.1 |  45 | 18.1 | TRUE |
 | proj_seasonality.md | PROJECT |  51.6 |  45 |  6.6 | TRUE |
 | proj_audio.md | PROJECT |  47.3 |  45 |  2.3 | TRUE |
 
@@ -96,4 +96,4 @@ None.
 None.
 
 ---
-_Ran in 58.8 s._
+_Ran in 76.3 s._

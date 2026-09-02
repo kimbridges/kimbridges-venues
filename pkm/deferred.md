@@ -170,6 +170,41 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ⛔⛔ ASK KIM: WHERE ARE CREAMSICLE'S COORDINATES? 111 cities hang on it (2026-09-01)
+
+Kim asked for the fuel-stop map **for both cars** and noted *"I've never made a Creamsicle map."* ⛔ **TwoRed is built (87.1% of fills placed). Creamsicle is at 39.9% and was NOT shipped**, because a 40% map renders real driving as sparse.
+
+**Everything offline has been tried and measured:**
+
+| source | TwoRed | Creamsicle |
+|---|---|---|
+| project gazetteer alone | 78.2% | 17.3% |
+| + `TwoRed_gazetteer_errata.csv` coords, keyed both ways | **87.1%** | 39.9% |
+| + `maps::us.cities` / `canada.cities` / `world.cities` | (included above) | (included above) |
+| `geonamescache` (container test) | -- | 3,914 US+CA cities, **2 of 16 sample towns** |
+
+**The unplaced are ordinary small towns**: Nixa MO, Gothenburg NE, Colby KS, Wagon Mound NM, Anamosa IA, Walsenburg CO, Shelbina MO, Questa NM, Firebaugh CA.
+
+★★★ **THE LEAD.** The ch.13 scaffold recorded: *"The Jul-2024 Creamsicle update already carries lat/long -- start there rather than geocoding from scratch."* **That file is not in `data/` and `Creamsicle_fuel_clean.csv` has no coordinate columns.** It is very likely one of the Google-native Creamsicle assets (Finding: the Creamsicle data was never a file). **One question to Kim may deliver all 111.**
+
+⚠ Failing that, the fallback is a bulk gazetteer (GeoNames US.txt/CA.txt) ingested ONCE into `All_gas_stations_csv.csv`. ⛔ **Never from inside a figure function.**
+
+### ✓✓✓ CLOSED 2026-09-01 — PEI is an ELEVENTH province and my substitution hypothesis was wrong
+
+I proposed the PKM had swapped PEI for BC while counting to ten. **Both are real: 10 provinces have a FILL, 11 were REACHED.** Confederation Bridge in, Pictou ferry out, no tank bought on the island. **VISA: Harbour Motel, Murray Harbour PE, 2014-05-27; Bay Ferries booking from Charlottetown.** ⚠ **The ferry charge dates 2014-03-31 and is the BOOKING, not the crossing** -- do not read it as a date of presence.
+
+★ **Method note on my own error:** I had two hypotheses (PEI real, or PEI a slip for BC) and no way to choose, so I asked rather than guessed. **That was right, and the answer was a third option I had not listed: the count was UNDER.** ⛔ *When two hypotheses both explain a discrepancy, the answer is often neither.*
+
+### ★★★ PHOTOGRAPHS NOW IN THE BOOK — and one of them is an ending (2026-09-01)
+
+In `book/images/TwoRed/`:
+
+- **`twored_alberta_last.jpg`** -- ★★★★ TwoRed at the WELCOME TO ALBERTA sign. **Kim: *"the last of the states/provinces. Mission complete!"*** ⛔ **This is a documented COMPLETION and the book currently has no picture of one.** Strong candidate for **ch.14 or the Afterword**, as the counterpart to the Foreword's two cars nose to nose in the Honolulu garage.
+- **`twored_florida_signs.jpg`** and **`twored_florida_corner.jpg`** -- ★★★ the intersection and the car at it, **welded by the DEAD END sign visible in both**, a cross-check Kim named himself. ⛔ **Ch.14's Florida sequence: use the PAIR, and say why the pair is stronger than either alone.** Coordinates already on record: 30.983392, -87.571312.
+- **`twored_easternmost.jpg`** -- West Quoddy Head, Kim and Nancy, the EASTERNMOST POINT sign. ★ **A HAWAII decal is in the rear window** -- a Hawaii car at the far end of the continent, in one frame.
+
+⚠ The two Florida files are 8.2 MB and 4.6 MB. **Downsample before they go into a rendered book**; `pdftools`/`magick` in the R session, not by hand.
+
 ### ★★★ TASK — BUILD THE FUEL-STOP POINT MAP. It shows the one thing a choropleth cannot (2026-09-01)
 
 Kim attached his own Google-style point map of fuel stops (**he flags it as likely incomplete**) and named exactly what it does that ch.13's figure does not: *"what my map shows is what that '300 mile' run looks like, especially across Canada."*
@@ -219,7 +254,7 @@ Finding 045 established the geotagged **corner** photo (30.983392, -87.571312, 1
 
 ★★ **The second photo is strictly stronger: the first places the CORNER, the second places the CAR at the corner.** ⛔ **Ch.14's Florida sequence should ask for it before drafting** -- it is the closing chapter's best documentary object and it would pair with `@fig-sheet` as the book's second photograph. Target: `images/TwoRed/twored_florida_corner.jpg` (the scaffold already names the slot).
 
-### ⚠ OPEN — PRINCE EDWARD ISLAND is claimed but appears in no log (2026-09-01)
+### ✓ SUPERSEDED 2026-09-01 — PEI settled by VISA; see the CLOSED entry above
 
 `logs/proj_Smart_Car_log.md` records the 2026-08 charter check as: *"The provinces are exactly right: Alberta, Manitoba, New Brunswick, Newfoundland, Nova Scotia, Ontario, PEI, Quebec, Saskatchewan, Yukon -- ten, all present."*
 
