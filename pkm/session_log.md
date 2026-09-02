@@ -428,6 +428,39 @@ Google silently resolved 14 logged spellings to their real names, **each one a t
 ★★ **The two shapes are completely different and that is the point.** TwoRed: four transcontinental strings, the Alaska Highway, the Maritimes. **Creamsicle: a Pacific coast run from Vancouver Island to southern California, and two Midwest corridors.** @sec-car-cost said the CAR was a constant; the choropleth said the DRIVER was; **these two say the TRIPS were not.**
 
 ⛔ **Not yet placed in a chapter.** Candidates: @sec-long-days (cadence is that chapter's subject) or ch.13 alongside the choropleth. Kim to rule.
+
+### ✓✓✓ RULED 2026-09-01 — the stop maps go in CH.13, and Kim's reason is a caveat I had not made explicit
+
+> I'd argue for maps in Chapter 13. **Fuel stops, we need to remind ourselves, are not a measure of a day's drive. Sometimes, two fuel stops are required in a day.** So putting the maps in Chapter 5 might be misleading. These complement the choropleth map.
+
+★★★ **He is right, and I had been loose about exactly this.** I had offered the cadence reading as *"the three-hundred-mile day made visible"*, which quietly assumes one fill per day. **It is not true often enough to matter.**
+
+**Measured rather than hedged, and now derived in `stops_data()$perday`:**
+
+| | TwoRed | Creamsicle |
+|---|---|---|
+| fuelling days | 227 | 121 |
+| **days with MORE THAN ONE fill** | **63 (27.8%)** | **46 (38.0%)** |
+| most fills in one day | 3 | 3 |
+| fills per fuelling day | 1.30 | 1.43 |
+
+★★ **So the gap between two adjacent dots is a FLOOR on how far the car went that day, never a reading of it.** Written into ch.13 as its own section, *What a dot is, and what it isn't*, which hands the cadence question to @sec-long-days where a clock and an odometer can answer it properly.
+
+### ★★★ BOTH STOP MAPS PLACED IN CH.13 — two new sections, and a third finding falls out
+
+**`## The same map, one dot at a time`** carries `@fig-stops-twored` and `@fig-stops-creamsicle`; **`## What a dot is, and what it isn't`** carries the caveat. Ch.13 is now **~2,110 prose words, 10 sections, 4 figures and 1 table.** Voice 28.9 per thousand, 0 em dashes.
+
+★★★ **THE THIRD FINDING, which neither the choropleth nor the cost chapter could reach.** @sec-car-cost: the CAR is a constant (four tenths of a mpg). The choropleth: the DRIVER is a constant (no new states in the second car). **The two point maps: the TRIPS were nothing alike** -- TwoRed is four transcontinental strings plus the Alaska Highway and the Maritimes; Creamsicle is a Pacific coast run and two Midwest corridors. **Same person, same machine, same continent, completely different shape.**
+
+★ And the ending of that section: **the one place the dots stop entirely is the Gulf of Alaska** -- four days of movement and no transaction, @sec-marine-highway compressed into a blank patch of ocean.
+
+### ⚠⚠ CLEAN-UP FOUND A REGRESSION AND A BACKLOG
+
+**REGRESSION, fixed: `fig_cost.R` had em dashes in its panel titles AGAIN** -- `"how far the tank was driven  —  +4.61 mpg per 100 miles"`. These are PRINTED in a figure. Replaced with a colon; `fig_cost.png` rebuilt. ⚠ **This is the second time the same file has done this**, which says the earlier fix did not stick. **The sweep must run before every session close, not only when a figure is touched.**
+
+**BACKLOG, logged not fixed: 78 em dashes in the PROSE of the early chapters** -- `the_anchor` 23, `is_it_safe` 20, `small_cars` 14, `index` 12, `expeditions` 8, `afterword` 1. **These predate the voice rule** and sit in chapters Kim has read and approved. ⛔ **Not mass-substituted at the end of a long day** -- an em dash resolves to a comma, a colon or a parenthetical depending on the sentence, and 78 unreviewed edits to approved prose is a worse risk than the inconsistency. **Queued in `deferred.md` as a proper editorial pass.**
+
+**Also removed:** the superseded single-car `figures/stops.png`. **Swept `R/` clean: 0 em dashes, 0 hardcoded chapter numbers across all 14 modules.** No stray underscore-prefixed temp files anywhere in the book tree.
 ## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
 
 **Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.

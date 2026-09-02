@@ -19,7 +19,7 @@ fig_cost <- function(K) {
     ggplot2::geom_point(colour = FILL, size = 1.6, stroke = 0, alpha = 0.55) +
     ggplot2::geom_smooth(method = "lm", formula = y ~ x, se = TRUE,
                          colour = INK$secondary, fill = INK$grid, linewidth = 0.6) +
-    ggplot2::labs(title = sprintf("how far the tank was driven  —  +%.2f mpg per 100 miles",
+    ggplot2::labs(title = sprintf("how far the tank was driven: +%.2f mpg per 100 miles",
                                   K$len_per100),
                   x = "miles on the tank", y = "miles per gallon")
 
@@ -27,7 +27,7 @@ fig_cost <- function(K) {
     ggplot2::geom_point(colour = FILL, size = 1.6, stroke = 0, alpha = 0.55) +
     ggplot2::geom_smooth(method = "lm", formula = y ~ x, se = TRUE,
                          colour = INK$secondary, fill = INK$grid, linewidth = 0.6) +
-    ggplot2::labs(title = sprintf("the age of the car  —  %+.2f mpg per 10,000 miles, p = %.2f",
+    ggplot2::labs(title = sprintf("the age of the car: %+.2f mpg per 10,000 miles, p = %.2f",
                                   K$age_per10k, K$age_p),
                   x = "odometer (thousands of miles)", y = NULL)
 

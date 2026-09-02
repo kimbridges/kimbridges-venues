@@ -170,6 +170,39 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ⚠ TASK — 78 em dashes in the PROSE of the early chapters (opened 2026-09-01)
+
+| file | em dashes in prose |
+|---|---|
+| `the_anchor.qmd` | 23 |
+| `is_it_safe.qmd` | 20 |
+| `small_cars.qmd` | 14 |
+| `index.qmd` | 12 |
+| `expeditions.qmd` | 8 |
+| `afterword.qmd` | 1 |
+
+**These predate the voice rule** (established while ch.5 was being drafted) and sit in chapters **Kim has already read and approved**. ⛔ **Do NOT mass-substitute.** An em dash resolves to a comma, a colon, a full stop or a parenthetical depending on the sentence, and 78 unreviewed edits to approved prose is a worse risk than the inconsistency.
+
+**The right shape:** one chapter at a time, read the sentence, choose the replacement, and put the diff in front of Kim. **Best done when one of those chapters is being revisited for another reason** rather than as a standalone chore. ⚠ Chapters 5 onwards are clean and stay clean.
+
+### ⚠⚠ THE CODE-STRING SWEEP MUST RUN AT EVERY SESSION CLOSE, NOT ONLY WHEN A FIGURE IS TOUCHED
+
+**`fig_cost.R` shipped em dashes in its panel titles for the SECOND time** -- `"how far the tank was driven  —  +4.61 mpg per 100 miles"`. Caught only by a systematic sweep during clean-up. Fixed (colon), figure rebuilt.
+
+⛔ **Add to the close checklist, both greps over `R/`:**
+- `grep("—", L)` -- em dashes in any string a figure or table prints
+- `grep('"[^"]*[Cc]h(apter)?\\.? ?[0-9]', L)` -- hardcoded chapter numbers (Finding 050)
+
+**Swept clean 2026-09-01: 0 and 0 across all 14 modules.** ★ Both defect classes have now shipped from an R string literal, and **neither is visible to any sweep of the `.qmd` files.**
+
+### ✓✓✓ RULED 2026-09-01 — the stop maps live in CH.13, and a dot is not a day
+
+Kim: *"Fuel stops, we need to remind ourselves, are not a measure of a day's drive. Sometimes, two fuel stops are required in a day. So putting the maps in Chapter 5 might be misleading. These complement the choropleth map."*
+
+★★★ **He caught a looseness in my own framing.** I had called the cadence *"the three-hundred-mile day made visible"*, which assumes one fill per day. **Measured: 27.8% of TwoRed's fuelling days and 38.0% of Creamsicle's carry more than one fill; the most is three.** Now derived in `stops_data()$perday` and written into ch.13 as *What a dot is, and what it isn't*: **the gap between adjacent dots is a FLOOR on the day's distance, never a reading of it.** The cadence question is handed to @sec-long-days, which has a clock and an odometer.
+
+★★★ **THE THIRD CONSTANT-CHECK, and it is the one that breaks.** @sec-car-cost: the CAR is constant. The choropleth: the DRIVER is constant. **The two point maps: the TRIPS are not** -- TwoRed is four transcontinental strings, the Alaska Highway and the Maritimes; Creamsicle is a Pacific coast run and two Midwest corridors.
+
 ### ✓✓✓✓ CLOSED 2026-09-01 — the geocoding gap is gone. BOTH CARS AT 100%
 
 Kim supplied a Google Maps API key (already in his `.Renviron` as `GGMAP_GOOGLE_API_KEY`). ⚠ **He asked for "reverse geocode"; the job needed FORWARD geocoding** (reverse is coordinates -> address). Corrected and used the address endpoint.
@@ -190,7 +223,7 @@ Google resolved 14 logged spellings to their real names: **Elroy->Eloy, Quartzit
 
 **`TwoRed_gazetteer_errata.csv` grew from 8 rows to 22**, each with `basis = "Google Geocoding API, audited by point-in-polygon"` and the formatted address as evidence. ★★★ **Same shape as the scanning experiment in @sec-paper: an instrument brought in for one job audits the data on its way past.** ⚠ These are transcription errors in the fuel log that six other audit instruments never saw, **because none of them tests a place NAME against the world.**
 
-### ⛔ RULING WANTED — where do the two stop maps go?
+### ✓✓✓ RULED 2026-09-01 — CH.13. See the RULED entry above
 
 `figures/stops_twored.png` + `figures/stops_creamsicle.png`. ★★ **The two shapes are completely different**: TwoRed is four transcontinental strings plus the Alaska Highway and the Maritimes; **Creamsicle is a Pacific coast run and two Midwest corridors.** @sec-car-cost said the CAR was a constant, the choropleth said the DRIVER was, **and these say the TRIPS were not.**
 

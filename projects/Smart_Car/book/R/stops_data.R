@@ -99,6 +99,21 @@ stops_data <- function() {
   rownames(cov) <- NULL
 
   list(all = all, pts = all[is.finite(all$lat), ], cov = cov,
+  ## ⛔ A DOT IS NOT A DAY, and the chapter has to say so. Kim, 2026-09-01:
+  ## "Fuel stops, we need to remind ourselves, are not a measure of a day's drive.
+  ##  Sometimes, two fuel stops are required in a day." Measured below rather than
+  ##  carried as a hedge: on a substantial minority of fuelling days there are two,
+  ##  and occasionally three. The spacing between dots is therefore a floor on how
+  ##  far the car went, never a reading of a day.
+  perday = do.call(rbind, lapply(split(all, all$car), function(d) {
+    n <- table(table(as.character(d$date)))
+    data.frame(car = d$car[1], days = length(unique(d$date)), fills = nrow(d),
+               multi = sum(n[as.integer(names(n)) > 1]),
+               pct_multi = 100 * sum(n[as.integer(names(n)) > 1]) / length(unique(d$date)),
+               most = max(as.integer(names(n))),
+               per_day = nrow(d) / length(unique(d$date)),
+               stringsAsFactors = FALSE) })),
+
        unplaced = sort(unique(paste0(all$city[!is.finite(all$lat)], ", ",
                                      all$st[!is.finite(all$lat)]))))
 }

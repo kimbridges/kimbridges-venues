@@ -7,12 +7,16 @@
 source("R/book_setup.R")
 source("R/constellations_data.R")
 source("R/fig_constellations.R")
+source("R/stops_data.R")
+source("R/fig_stops.R")
 
 K <- constellations_data()
-S <- K$silent
+S <- stops_data()
+SS <- K$silent
 
 stopifnot(K$n_us == 43, K$n_prov == 11, K$n_prov_fill == 10, length(K$cr_new) == 0,
-          K$complete, K$reach == 49, K$pct_parked > 90, K$n_unlogged == 3)
+          K$complete, K$reach == 49, K$pct_parked > 90, K$n_unlogged == 3,
+          all(S$cov$pct == 100), max(S$perday$most) == 3)
 ```
 
 ## Where the cars went
@@ -80,6 +84,43 @@ The only ground the two cars share outside the United States is **British Columb
 **Prince Edward Island is the same story with a different receipt.** We crossed on the Confederation Bridge and left by the ferry to Pictou, and no tank was bought on the island. What proves it is a card statement again: **a motel bill at Murray Harbour, and the ferry booking itself.** That makes eleven provinces and territories, and the fuel log knows about ten of them.
 
 @sec-car-cost found the two cars four tenths of a mile per gallon apart and called the car a constant. **The map says the same thing about the driver.** Ten years, a different vehicle, and I went back to the same country.
+
+
+## The same map, one dot at a time
+
+The choropleth says where the cars got to. It can't tell you anything about how they got there, though, because a filled state's a filled state whether you crossed it once or lived in it.
+
+So here's every fuel stop both cars ever made, placed.
+
+```{r}
+#| label: fig-stops-twored
+#| fig-cap: "TwoRed's fuel stops, all 294 of them. Four transcontinental crossings, the Alaska Highway running up the left, and the Maritimes at the top right. No route lines: the roads between these points weren't recorded, and drawing them would be inventing evidence."
+#| fig-width: 7.4
+#| fig-height: 5.4
+#| echo: false
+fig_stops(S, "TwoRed")
+```
+
+```{r}
+#| label: fig-stops-creamsicle
+#| fig-cap: "Creamsicle's, all 173. The same country, ten years later, and a completely different shape: a Pacific coast run from Vancouver Island to southern California, and two corridors east across the Midwest."
+#| fig-width: 7.4
+#| fig-height: 5.4
+#| echo: false
+fig_stops(S, "Creamsicle")
+```
+
+**Put those two beside each other and something falls out that neither the choropleth nor the cost chapter could show.** @sec-car-cost found the two cars four tenths of a mile per gallon apart and called the car a constant. The choropleth found no new states in the second car and said the same of the driver. **These say the trips were nothing alike.** Same person, same kind of machine, same continent, and one of them's a set of long horizontal strings while the other's a coastline and a couple of corridors.
+
+## What a dot is, and what it isn't
+
+Now the caution, because the spacing in those figures is the first thing anybody will try to read.
+
+**A dot is not a day.** It's a transaction, and they only line up when the day happened to need exactly one tank. **`r sprintf("%.0f", S$perday$pct_multi[S$perday$car=="TwoRed"])` per cent of TwoRed's fuelling days carry more than one fill, and `r sprintf("%.0f", S$perday$pct_multi[S$perday$car=="Creamsicle"])` per cent of Creamsicle's.** The most in a single day is `r max(S$perday$most)`.
+
+So the gap between two adjacent dots is **a floor on how far the car went that day, and never a reading of it.** Where the beads run evenly across the prairie you're seeing a tank's range and a driver's habit tangled together, and @sec-long-days is the chapter that pulls them apart properly, with a clock and an odometer rather than with a picture.
+
+**What the dots do show honestly is reach and density.** Where they crowd, the car's working near home or in traffic. Where they string out, it was crossing something. And the one place they stop entirely, in the middle of the Gulf of Alaska, is @sec-marine-highway: four days of movement and no transaction at all, which is this book's whole argument compressed into a blank patch of ocean.
 
 ## The map nobody draws
 
