@@ -170,6 +170,14 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ⚠ OPEN — Port Angeles is a FOURTH Creamsicle pump-identity failure with no erratum (2026-09-01)
+
+`3.993 x 5.399 = 21.558` against **21.57** recorded: **1.17c over its 0.97c bound.** Outside by two tenths of a cent. **Ch.10 prints it as the place the instrument runs out, not as an error.** ⚠ **Do not raise an erratum unless a card or receipt settles it** -- an instrument used past its floor manufactures findings.
+
+### ✓ RE-DERIVED 2026-09-01 — three ch.10 scaffold numbers had drifted (Finding 051 working as intended)
+
+TwoRed "277 of 294" is the **under-half-a-cent** count (281 under a cent) and never stated its tolerance. Creamsicle "143 of 170" is really **163 of 169**. "3 Creamsicle errata, all resolved" is really **5, of which C01-C03 remain HYPOTHESIS.** **All corrected in the chapter, which computes them.** ★ **One day after the rule was written, and this is the ordinary rate. Keep re-deriving.**
+
 ### ★★★ CARRY THE FRICTION LESSON OUT OF SMART_CAR (opened 2026-09-01)
 
 Kim's scanning result -- *data has no value while it sits in a log; moving it into an analysis environment is what gives it value; scanning removes the friction* -- **is a claim about archives generally, and Kim's own PKM is full of paper-era material.** It also sits directly on `briefing_book`'s friction spine. **Raise it when the PKM or briefing_book is the focus, not while Smart_Car is.** ⚠ **Do not print a scanning accuracy rate anywhere** -- there is no measured control set.

@@ -122,7 +122,7 @@ earlier, same station, **50.15 mpg down against 40.75 up.** **This closes the on
 2015 summary** (*Highest Elevation: see upcoming trips*). Photographs lost; the odometer kept it.
 ## ★★ THE AUDIT TOOLKIT — SEVEN INSTRUMENTS (2026-08-18; seventh added 2026-08-28) — full write-up in the log
 
-**pump identity** (gallons × $/gal = cost) | **economy** | **geography** (great-circle vs odometer) | **contiguity** | **price family / same pump** | **Kim's slashed zeros** — a physical mechanism, so it predicts error DIRECTION (Finding 033).
+**pump identity** (gallons × $/gal = cost) | **economy** | **geography** (great-circle vs odometer) | **contiguity** | **price family / same pump** | **the DOTTED ZERO on the printed receipt** -- a physical mechanism, so it predicts error DIRECTION (Finding 033). ⚠ **Renamed 2026-09-01: Kim corrected the cause. It was never his slashed handwriting; it was small, faint receipt print with a dot in the zero, read in poor light.**
 
 **None is redundant: every major error was caught by exactly one.** The decisive pairing is contiguity + arithmetic — where two adjacent rows share a value, **the row that BALANCES is the source and the row that FAILS is the copy.**
 

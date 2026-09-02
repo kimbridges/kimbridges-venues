@@ -5,65 +5,124 @@
 #| include: false
 
 source("R/book_setup.R")
+source("R/audit_data.R")
+source("R/fig_audit.R")
+
+A <- audit_data()
+
+stopifnot(A$tw_bad > 0, A$cr_bad > 0, A$ratio > 2, nrow(A$geo) == 3)
 ```
 
-<!-- SCAFFOLD — delete this block as the chapter is written.
+## Three numbers that have to multiply
 
-PURPOSE
-DIFFICULTY strand. The audit. This chapter is what makes the `what_the_car_cost` chapter credible.
+Every row of the fuel log carries a price per gallon, a number of gallons, and a cost. Multiply the first two and you should get the third.
 
-MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- THE PUMP IDENTITY: gallons x $/gal = cost. Three numbers that must multiply. 277 of 294 TwoRed rows balance; 143 of 170 Creamsicle US rows balance to under half a cent.
-- The six instruments: pump identity, economy, geography (great-circle vs odometer), contiguity (repeated values in adjacent rows), price-family/same-pump, and the slashed zero.
-- THE ERRATA ARCHITECTURE: corrections live BESIDE the source as a derived layer; the source is never edited; errata key to a ROW, never a LABEL. Reconstruct DISTANCES, never ODOMETER READINGS.
-- Worked example: C01 Oxnard, where the $/gal cell is IDENTICAL to the gallons cell -- caught by contiguity, not by arithmetic.
-- 65 TwoRed errata, 4 still open; 3 Creamsicle errata, all resolved.
-- A field filled from a substitute source must record WHICH source: an AMEX merchant string is not a brand.
+Nobody put those three columns there so they'd be checked against each other. **They're there because a fuel receipt has all three on it and the form had room.** But three numbers that must agree is a test, whether it was meant as one or not, and it's the test everything else in this chapter hangs off.
 
-★★★ KIM'S STATEMENT, 2026-08-28 — VERBATIM. This is the chapter's thesis, in his words:
-  "While this is a story about two cars, it is as much a story about data. Specifically the kind
-   of data that's added now and then. Often under difficult conditions, like when you have cold,
-   shivering hands. Or times when you're in a rush. It's easy to write down a wrong number.
-   Transcription, too, often comes when you probably don't want to be typing a lot of numbers,
-   some of which are hard to read. It is those distractions that can break the flow and cause
-   another form of data error. The bottom line is that these types of data are difficult to get
-   correct. When possible, enter fields that will let you cross check values (e.g., not just the
-   date; add the day of the week)."
-  ⚠ He says TWO cars, and for the data chapters that is right — TwoRed and Creamsicle carry the
-    logs. Do not silently upgrade it to four.
-  ★ TWO KINDS OF ERROR, and he separates them: the FIELD error (cold hands, haste) and the
-    TRANSCRIPTION error (hard-to-read figures, broken flow). Different causes, different signatures.
-    The Foreword now carries a short version of the first half; this chapter owns the full argument.
-  → CH.9 OWNS THE LAST SENTENCE — the design lesson: **enter fields that let you cross check.**
-    That is what every instrument in this chapter actually relies on, stated as advice.
+The obvious question's the one that took me longest to answer properly. **How far out does a row have to be before it's wrong?**
 
-★★★ AND IT HAS A WORKED EXAMPLE FOUND THE SAME DAY (2026-08-28) — the Creamsicle Ely row.
-  - The date was written `2023-04-14`. It should be `2023-03-14` (Kim: an uncorrected typo).
-  - NO instrument in the suite could see it. All six take the DATE as given (Finding 047).
-  - What caught it was a REDUNDANT FIELD the log happens to carry: the odometer. Sorted by date,
-    it ran backwards by 1,410 miles. **The odometer was acting as a second clock.**
-  - ★ AND KIM'S OWN SUGGESTION WOULD HAVE CAUGHT IT INSTANTLY, WITH NO ANALYSIS AT ALL:
-    2023-04-14 was a **Friday**; 2023-03-14 was a **Tuesday**. A day-of-week column and the row
-    contradicts itself on the page, at the moment of writing, where it is cheapest to fix.
-  - THE ARGUMENT THIS MAKES: redundancy is not duplication. A cross-check field is a second,
-    cheap measurement of the same event, and it is the only thing that can catch an error in a
-    field every test trusts. **You cannot audit your way out of a missing column.**
-  - ★★ AND IT DID CARRY A SECOND ERROR, IN THE CITY. The sheet said `Ely NV`; the receipts say
-    `Las Vegas`. Caught by the geography instrument: Ely -> Beatty is 191 miles great-circle
-    against 136 on the odometer, and **a great-circle distance is a floor** -- no road covers it.
-    Corrected as C05. **TWO ERRORS IN ONE ROW, each invisible to every test but one, and each
-    caught by a DIFFERENT redundant field** -- the odometer for the date, the map for the town.
-  - ★★★ THE ENDING THE CHAPTER WANTED, AND KIM FOUND IT: **the fuel receipts print the odometer.**
-    His words: *"a duplication of data I had forgotten about."* A FOURTH independent record, and
-    the only one that duplicates the COUNTER -- the AMEX statements can settle gallons, price and
-    merchant, never a counter reading. **So the cross-check field he recommends had been printing
-    itself at the pump for years.** The advice is not only about designing the next sheet; half of
-    it is FIND THE REDUNDANCY YOU ALREADY HAVE. That is a better close than the advice alone,
-    and it ends in recovery rather than in a warning.
-  - ⚠ THE INSTRUMENT HAS A FLOOR AND THE CHAPTER MUST SAY SO. Parowan -> Las Vegas reads 167
-    odometer against 172 great-circle, ratio 0.97 -- also "impossible", and NOT a finding: a fill
-    on the north-side I-15 corridor is ~12 miles closer and the ratio becomes 1.03. **A shortfall
-    smaller than the spread of the city itself is coordinate imprecision.** 0.71 is not. Finding 036.
+## The tolerance isn't a choice
 
--->
+For a long time the audit used "under half a cent" and that number was picked because it looked about right. It isn't good enough. A threshold you chose is one somebody can argue with, and worse, it's one you can quietly move when a result disappoints you.
 
+So work it out instead.
+
+**The cost is printed to the cent.** Whatever gallons times price actually comes to, the slip rounds it, so the recorded cost can differ from the true product by up to half a cent **by construction**, on a row where nothing at all is wrong.
+
+**The gallons and the price per gallon are each recorded to three decimals.** Each of them is rounded too, and each one's rounding gets multiplied by the other. A tenth of a cent here, three tenths there.
+
+So add them up, row by row:
+
+$$\text{tolerance} = 0.005 + \text{gallons} \times 0.0005 + \text{price per gallon} \times 0.0005$$
+
+Across this record that comes to between **`r sprintf("%.2f", 100*A$bound_lo)` and `r sprintf("%.2f", 100*A$bound_hi)` cents**, depending on how big the fill was. **A row inside its own tolerance is arithmetic. A row outside it is something else.** Nobody's got to agree with me about where the line goes, because the line is wherever the recorded precision puts it.
+
+## What an audit actually looks like
+
+```{r}
+#| label: fig-audit
+#| fig-cap: "Every fill in both records, placed by how far it misses the identity. The axis is logarithmic because the interesting structure covers three orders of magnitude. The shaded band is the tolerance implied by the recorded precision, drawn at its median; each row's own band is a little wider or narrower than that. Open rings are the rows that fall outside."
+#| fig-width: 7.2
+#| fig-height: 2.9
+#| echo: false
+fig_audit(A)
+```
+
+**`r A$tw_ok` of TwoRed's `r A$tw_n` fills sit inside their own tolerance. `r A$cr_ok` of Creamsicle's `r A$cr_n` American ones do.** That leaves `r A$tw_bad` and `r A$cr_bad`.
+
+But the number I'd point at is not either of those. **It's the empty space in the middle of that figure.**
+
+The largest residual that still counts as arithmetic is **`r sprintf("%.2f", 100*A$gap[["largest_ok"]])` cents**. The smallest one that doesn't is **`r sprintf("%.2f", 100*A$gap[["smallest_bad"]])` cents**. That's a factor of nearly `r round(A$ratio)`, and **there is nothing in between.** Not one row lands in the zone where I'd have to make a judgment call.
+
+That's worth saying plainly because it's the difference between an instrument and an opinion. **If the rows had been smeared evenly from a tenth of a cent up to a dollar, this test would be useless.** I'd be drawing a line somewhere in a continuum and calling everything to the right of it an error. They aren't smeared. There's a wall of rounding noise, then a gap, then a scatter of genuine mistakes that miss by two cents to nearly two dollars.
+
+**The gap is the finding. The counts are just bookkeeping.**
+
+## Seven instruments, and none of them is spare
+
+Arithmetic finds a row that's wrong. It hardly ever says what's wrong with it, and there are whole classes of error it can't see at all. So there are seven tests in this audit and each one sees something the others can't.
+
+| | what it tests | what it cannot see |
+|---|---|---|
+| **the pump identity** | gallons × price = cost | anything in a field that isn't one of those three |
+| **economy** | miles per gallon against the car's own distribution | a small error, and an error in *both* distance and fuel |
+| **geography** | odometer miles against the straight-line distance | anything under the floor, and any error that shortens nothing |
+| **contiguity** | a value repeated in an adjacent row | an error that happens to be unique |
+| **price family** | fills at the same pump on the same day | a lone fill |
+| **the dotted zero** | a physical misreading, so it predicts *direction* | anything that isn't a 0 or an 8 |
+| **the odometer as a clock** | sort by date; the odometer must increase | anything except a wrong date |
+
+**None of them is redundant, and I can say that precisely: every major error in this record was caught by exactly one of the seven.** Not one was caught twice. That isn't luck. It's what it means for a set of tests to be looking at genuinely different things.
+
+## The pairing that settles arguments
+
+Two of them together do something neither can do alone.
+
+**Contiguity** looks for a value that appears twice where it shouldn't, which is the signature of a copy going into the wrong cell. On its own it'll tell you two rows are involved and not which one's the mistake.
+
+Then arithmetic tells you which. **Where two adjacent rows share a value, the row that balances is the source and the row that fails is the copy.**
+
+The cleanest example is in Creamsicle's log, at Oxnard, California. The price-per-gallon cell reads **4.399**. So does the gallons cell. Two identical numbers side by side, which does happen by coincidence and didn't here: **17.59 divided by 4.399 is 3.999 exactly.** The price had been overwritten by the gallons. Its residual, at a dollar seventy-six, is the largest in either record, and it's the rightmost ring in the figure above.
+
+## The one that had to be invented last
+
+Six of the seven take the date as given. They test a row against arithmetic, or against geography, or against its neighbours, and every one of those tests assumes it already knows *when* the row happened.
+
+**So none of them could see a wrong date.** That gap sat there for months and nothing turned it up, because nothing was looking.
+
+What found it was a figure. Sorting the fills by date to draw a chart put one row out of order, and the fix is embarrassingly simple once you've seen it: **sort by date and require the odometer to increase.** A car's odometer only ever goes one way. **TwoRed is clean across all `r A$tw_n` rows.** Creamsicle failed exactly once, on a fill logged in April that sits fourteen hundred miles below one logged the previous March.
+
+**And that row turned out to hold two separate errors.** The date was a month typo. The town was also wrong: the log said Ely, Nevada, and the station receipts say Las Vegas. **Each error was caught by a different redundant field**: the date by the odometer, the town by geography, since Ely to the next stop is a hundred and ninety-one miles in a straight line against a hundred and thirty-six on the counter, and a straight line is a floor.
+
+**Sorting by a field cannot reveal an error in that field.** The original ingest sorted by odometer, which is exactly what hid a bad date for as long as it did.
+
+## The instrument that also works backwards
+
+Geography deserves a paragraph of its own, because it's the only one of the seven that recovers things rather than just condemning them.
+
+It flagged `r A$geo_n` segments where the odometer records fewer miles than the straight-line distance between the two towns, which is impossible. The work's in deciding *why* each one is impossible, and they fall into three quite different kinds.
+
+```{r}
+#| label: tbl-geo
+#| tbl-cap: "Every segment where the car appears to have travelled less far than a straight line allows. One test, three completely different explanations."
+#| echo: false
+knitr::kable(A$geo, align = c("l","r"), row.names = FALSE)
+```
+
+**Four of them are ferries**, the crossings from @sec-marine-highway, where the car genuinely did move without the wheels turning. **Four are the gazetteer's fault**, not the log's: a town called Big Springs that is really Big Spring, and a Deming filed under Arizona that belongs to New Mexico. **Seven are odometer readings that need the scan.**
+
+And run the same logic the other way and it recovers a state. If a leg is *longer* than any road between its endpoints allows, the car went somewhere else in between. That's how Delaware got into this book: a leg that reads two hundred and sixty-four miles, where the only Delaware-free road is about three hundred and five.
+
+**One test. It condemns odometers, exonerates ferries, convicts a gazetteer, and finds a state nobody logged.**
+
+## Where it runs out
+
+Every instrument here's got a floor, and one used past its floor is a machine for generating confident nonsense.
+
+Creamsicle's fourth failing row is the honest example. A fill at Port Angeles misses the identity by about **1.2 cents against a tolerance of 0.97**. It's outside, and it's outside by two tenths of a cent, on a test whose whole authority comes from the gap I made so much of earlier. **It has no erratum and I'm not going to give it one.** Three of Creamsicle's four failures are explained, and the fourth's a row sitting on the boundary, which is what boundaries are for.
+
+Geography has the same problem at its own edge. Two towns whose centres are close together produce ratios that look impossible and are really just coordinate imprecision: a shortfall smaller than the width of the city itself is an artifact of pretending a city is a point.
+
+**So the audit's real output isn't the corrections.** It's `r A$errata_tw` entries for one car and `r A$errata_cr` for the other, each recording what was logged, what it should say, and on what evidence. And for the ones that are still guesses, that they're guesses.
+
+The thing that matters is what those entries let the next chapters do. **Every number after this point comes with a known provenance and a known doubt.** That isn't the same as being right. It's better, because it can be checked.

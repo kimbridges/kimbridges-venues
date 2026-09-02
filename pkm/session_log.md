@@ -136,6 +136,40 @@ Verbatim in the project log. **He noticed he had never entered some of the log d
 
 **Ch.9 final: ~3,060 words, four tables, one photograph, 30.1 contractions per thousand, 0 em dashes. 16 chapters render, 0 errors, 0 unresolved references.** ⚠ **No scanning accuracy rate is printed** -- there is no measured control set, and none should be invented later.
 
+### ★★★ CH.10 `knowing_a_number_is_wrong.qmd` DRAFTED — and the audit's central threshold is now DERIVED, not chosen
+
+**~1,800 words, two tables, one figure.** Finding 051 applied first: **every scaffold number re-derived before drafting, and three had drifted.**
+
+| scaffold said | re-derived |
+|---|---|
+| TwoRed "277 of 294 balance" | 277 to under HALF a cent; **281 to under a cent** -- consistent, but the tolerance was never stated |
+| Creamsicle "143 of 170 US rows" | 170 US rows ✓, but **163 balance to <0.5c, not 143** |
+| "3 Creamsicle errata, all resolved" | **5 errata (C01-C05); C01-C03 are HYPOTHESIS, C04-C05 confirmed. Not 3, and not all resolved.** |
+
+★★ **Two drifts in one scaffold, one day after the rule was written.** Not dramatic, and that is the point -- **this is the ordinary rate at which hand-copied numbers rot.**
+
+### ★★★ THE REAL RESULT: THE TOLERANCE IS IMPLIED BY THE RECORDED PRECISION
+
+The audit used a flat *under half a cent*, chosen because it looked about right. **It can be derived instead.** Cost is printed to the cent, so the product can differ by 0.005 by construction; gallons and $/gal are each recorded to three decimals and each one's rounding is multiplied by the other:
+
+`bound = 0.005 + gallons*0.0005 + ppg*0.0005`  --  **0.79 to 1.11 cents, median 1.00.**
+
+**TwoRed 281 of 294 inside their own bound; Creamsicle 165 of 169 US fills.** Same TwoRed count as the flat rule, **and now it has a reason.**
+
+**★★★ AND THE FINDING IS THE GAP, NOT THE COUNT. Largest residual that is still arithmetic: 0.76c. Smallest that is not: 2.93c. A factor of 3.9, with NOTHING in between.** **No row lands where a judgment call would be needed** -- which is the whole difference between an instrument and an opinion. If the residuals were smeared evenly the test would be worthless. `@fig-audit` shows the wall of rounding noise, the empty corridor, and the scatter of real errors from 2 cents to $1.76.
+
+### ★ A FOURTH CREAMSICLE FAILURE, AND IT IS DELIBERATELY LEFT UNEXPLAINED
+
+**Port Angeles WA, 3.993 gal x 5.399 = 21.558 against 21.57 recorded: 1.17c over a 0.97c bound.** Outside by **two tenths of a cent**, with no erratum. **Written into the chapter as the place the instrument runs out**, not as a finding. ⚠ **Do not give it an erratum** unless a receipt or card settles it.
+
+### Also in the chapter
+
+The seven instruments as a table of **what each tests and what each CANNOT see**; the contiguity+arithmetic pairing (*where two rows share a value, the one that balances is the source and the one that fails is the copy*) worked through Oxnard, `17.59 / 4.399 = 3.999` exactly; the seventh instrument and why it had to come last (**six of seven take the date as GIVEN, so none could see a wrong date; sorting by a field cannot reveal an error in that field**); and geography as **the only instrument that recovers rather than condemns** -- 15 impossible segments resolving into 4 ferries, 4 gazetteer errors and 7 suspect odometers, plus Delaware recovered by running it backwards.
+
+**⚠ Instrument 6 renamed in `proj_Smart_Car.md`** from *Kim's slashed zeros* to **the DOTTED ZERO on the printed receipt**, per his correction.
+
+**New: `book/R/audit_data.R`, `book/R/fig_audit.R`, `book/figures/audit.png`. 16 chapters render, 0 errors, 0 unresolved refs. Voice 26.6 -> 31.7 per thousand, 0 em dashes.** ⚠ Another transient `PermissionDenied` on `_output`; a retry succeeded, as before.
+
 ## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
 
 **Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.
