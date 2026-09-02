@@ -170,6 +170,40 @@ The seven instruments as a table of **what each tests and what each CANNOT see**
 
 **New: `book/R/audit_data.R`, `book/R/fig_audit.R`, `book/figures/audit.png`. 16 chapters render, 0 errors, 0 unresolved refs. Voice 26.6 -> 31.7 per thousand, 0 em dashes.** ⚠ Another transient `PermissionDenied` on `_output`; a retry succeeded, as before.
 
+### ★★★ CH.11 `what_the_car_cost.qmd` DRAFTED — and the two cars come out FOUR TENTHS OF A MILE PER GALLON APART
+
+**~1,440 words, one table, `@fig-cost`.** Scaffold numbers re-derived first again, and **three more had drifted:** the "lifetime 39.44 MPG" reproduces from nothing (the three defensible figures are mean-of-tanks 39.53, median 39.12, and **total miles / total gallons 39.25**); Creamsicle's median is 40.52, not 40.59; and the wide-tyre interval is **+2.8% [-0.9, +6.5]**, not the -3.7 to +4.9 on the scaffold. **Six scaffold drifts in two chapters.**
+
+★ **The chapter states WHICH lifetime figure it uses and why:** total miles over total gallons is the only form that weights a big tank more than a small one, and the only one that answers *how much fuel did this car use*.
+
+### ★★★ THE COST DIFFERENCE DECOMPOSES EXACTLY, AND IT IS ALL PRICE
+
+| | TwoRed 2010-2017 | Creamsicle 2021-2024 |
+|---|---|---|
+| miles per gallon (life) | **39.25** | **39.66** |
+| paid per gallon | $3.67 | $4.69 |
+| cents per mile | **9.36** | **11.83** |
+
+**Creamsicle costs 26% more per mile. Fuel prices alone account for 28%; its 1% better economy gives a little back.** `cost/mile = price actually paid / mpg` is an identity, so the split is exact rather than modelled.
+
+**★★★ AND THE HEADLINE IS THE SIMILARITY. 39.25 against 39.66 -- four tenths of a mile per gallon, across sixteen years, two coasts, two sets of habits and two completely different sets of roads.** One car crossed the continent four times and went to the Arctic; the other did the Midwest and the West. **The car is a constant; what changed underneath it was the world.**
+
+### The three candidate causes, and `@fig-cost`
+
+**Same grammar as `fig_roads`: one measurement, two questions, shared y axis**, so the reader compares a real slope against a flat one instead of taking my word for it.
+
+- **Tank length: +4.61 mpg per 100 miles, p = 8e-13, adj R2 0.16.** The strongest thing in the dataset **and it is about the trip, not the car.**
+- **Age: +0.26 mpg per 10,000 miles, p = 0.081** (with tank length controlled, +0.30 at p = 0.030). **Positive, not negative. NO DECLINE TO FIND across 71,177 miles.** The chapter explicitly declines to claim the car improved.
+- **Wheels: +2.8% [-0.9%, +6.5%]** over 52 narrow against 213 wide fills. **The record cannot tell you whether the wide tyres cost anything**, and after 213 tanks that is an answer of a sort.
+
+### And two where Kim's own beliefs are on the table
+
+**Truck-following** is carried as *felt*, per his own wording: rho -0.36 on the 44 single-leg tanks, collapsing when tank length enters, **because a slow day behind trucks is usually also a long highway day.** **Costco** is the one purchasing decision he can be shown to have made: **about 20c/gal, 11 of 13 comparisons.** ★ *He made it while telling himself he mostly picked stations for a clean restroom.*
+
+⚠ **Premium fuel gets its own short section:** no grade column, so it is his word, **and it means every price in the book is a premium price** and any comparison to a national regular-grade average understates the car.
+
+**16 chapters render, 0 errors, 0 unresolved refs. Voice 23.4 -> 29.9 per thousand, 0 em dashes** (two had appeared in `fig_cost.R` panel titles -- **the code-string sweep caught them**). New `R/cost_data.R`, `R/fig_cost.R`, `figures/cost.png`. ⚠ Two more transient `PermissionDenied` on `_output`; retries succeeded.
+
 ## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
 
 **Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.

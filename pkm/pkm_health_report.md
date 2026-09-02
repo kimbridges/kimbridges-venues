@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-09-01 14:39 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-09-01 16:32 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -9,7 +9,7 @@ _Generated 2026-09-01 14:39 by pkm_health.R. Regenerate; do not edit._
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 4
 - **Files over size budget:** 4
-- **Active Focus block:** 5.6 KB (budget 6)
+- **Active Focus block:** 4.3 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 6
 - **Legacy pages awaiting account deletion:** 58
@@ -36,8 +36,8 @@ None.
 
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
-| session_log.md | REFERENCE | 289.5 | 250 | 39.5 | FALSE |
-| proj_Smart_Car.md | PROJECT |  58.3 |  45 | 13.3 | TRUE |
+| session_log.md | REFERENCE | 301.4 | 250 | 51.4 | FALSE |
+| proj_Smart_Car.md | PROJECT |  59.0 |  45 | 14.0 | TRUE |
 | proj_seasonality.md | PROJECT |  51.6 |  45 |  6.6 | TRUE |
 | proj_audio.md | PROJECT |  47.3 |  45 |  2.3 | TRUE |
 
@@ -45,7 +45,7 @@ None.
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 5.6 | 6 | -0.4 |
+| 8 | 4.3 | 6 | -1.7 |
 
 ## Venues without a source repo
 
@@ -72,13 +72,13 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| smartcar_docs_20260821 | 10.9 | 3 | FALSE |
-| ch4_20260829 |  2.7 | 0 | FALSE |
-| chateau_2026-08-29 |  2.9 | 0 | FALSE |
-| creamsicle_clean_20260828 |  3.7 | 0 | FALSE |
-| pkm_edits_20260811 | 21.2 | 0 | TRUE |
+| smartcar_docs_20260821 | 11.0 | 3 | FALSE |
+| ch4_20260829 |  2.8 | 0 | FALSE |
+| chateau_2026-08-29 |  3.0 | 0 | FALSE |
+| creamsicle_clean_20260828 |  3.8 | 0 | FALSE |
+| pkm_edits_20260811 | 21.3 | 0 | TRUE |
 | pkm_snapshots | 29.8 | 0 | TRUE |
-| smartcar_fuelfix_20260817 |  2.7 | 0 | FALSE |
+| smartcar_fuelfix_20260817 |  2.8 | 0 | FALSE |
 | timelapse | 18.7 | 0 | TRUE |
 | venuemirror_clone_2026-08-03 | 30.0 | 0 | TRUE |
 
@@ -96,4 +96,4 @@ None.
 None.
 
 ---
-_Ran in 62.9 s._
+_Ran in 59.6 s._

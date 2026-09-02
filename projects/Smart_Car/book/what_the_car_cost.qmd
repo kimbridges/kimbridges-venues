@@ -5,51 +5,98 @@
 #| include: false
 
 source("R/book_setup.R")
+source("R/cost_data.R")
+source("R/fig_cost.R")
+
+K <- cost_data()
+D <- K$dec
+TW <- D[D$car == "TwoRed", ]
+CR <- D[D$car == "Creamsicle", ]
+
+stopifnot(nrow(D) == 2, K$len_p < 0.001, K$ratio_cost > 1)
 ```
 
-<!-- SCAFFOLD — delete this block as the chapter is written.
+## The number everybody asks for
 
-PURPOSE
-ANALYSIS strand, and now believable because `sixteen_years_of_paper` and `knowing_a_number_is_wrong` came first.
+**`r sprintf("%.1f", TW$mpg)` miles per gallon over `r format(round(K$tw_miles), big.mark = ",")` miles, at `r sprintf("%.2f", TW$per_mile*100)` cents a mile for fuel.**
 
-MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- Lifetime 39.44 MPG; median 39.12 (TwoRed) vs 40.59 (Creamsicle).
-- Cost per mile $0.0939 (TwoRed) vs $0.1183 (Creamsicle) -- a 26% difference that is almost entirely FUEL PRICES (2010-2017 vs 2021-2024), not the car. State the caveat, do not bury it.
-- NO DEGRADATION IN SIXTEEN YEARS.
-- LEG LENGTH is the strongest predictor: +4.61 MPG per 100 miles.
-- The wide tires: economy difference indistinguishable from zero, 95% CI -3.7% to +4.9%.
-- Trim the ends before quoting an extreme: the first fill carries a slashed-zero error (L59); the last two are a tank managed DOWN for shipping (52.4 and 93.0 MPG on 4.333 and 2.496 gallons).
+That's TwoRed's whole mainland life in one line, and it's worth a moment on how it was worked out, because there are three defensible answers and they aren't the same.
 
-ADDED 2026-08-31 -- KIM'S OWN ACCOUNT OF ECONOMY, and four tests run on it.
-Verbatim in logs/proj_Smart_Car_log.md.
+The mean of the per-tank figures is `r sprintf("%.2f", mean(K$tw$mpg))`. The median is `r sprintf("%.2f", median(K$tw$mpg))`. **The figure above is neither.** It's total miles divided by total gallons, which is the only one that weights a big tank more heavily than a small one, and it's the only one that answers the question you'd actually ask: how much fuel did this car use? The other two answer "what was a typical tank like," which is a different question and a less interesting one.
 
-- SLOWER DAYS DO READ BETTER, AND IT IS A SIGNAL. Instrument built for this: the 44
-  tanks that fall entirely inside ONE leg, with that leg's gross speed attached.
-  Spearman rho = -0.359, p = 0.017. But lm(mpg ~ leg_mph) is p = 0.21; adding
-  leg_miles drops it to p = 0.33 while adj R2 goes 0.01 -> 0.37; trimmed 5/95 is
-  p = 0.052; early era p = 0.27, late p = 0.057. THE DIRECTION IS HIS EVERY TIME;
-  THE SIGNIFICANCE IS NOT STABLE. Same instrument problem as the roads chapter --
-  gross speed is not cruising speed. Kim's own wording already handles it: "At the
-  lower speed I FELT I was saving fuel." Write felt. DO NOT PRINT A COEFFICIENT.
-- THE BEST TANK IN SIXTEEN YEARS IS GRAVITY, NOT RESTRAINT. Gypsum CO -> Big Springs
-  NE, 313 mi, 56.04 mpg, best of 286 against a median of 39.12: down out of the
-  Rockies. The 8th best, York NE at 50.62 over 337 mi, is also eastbound and also
-  downhill -- and at 48.8 mph gross one of the FASTER days. A chapter arguing slow
-  saves fuel has to survive that; put it in rather than route around it.
-- COSTCO IS REAL AND MEASURABLE. 20 fills of 294. Matched against the median price of
-  every non-Costco fill within 21 days either side: median discount $0.20/gal, 11 of
-  13 pairs cheaper, paired Wilcoxon p = 0.008. Biggest gap Ft. Oglethorpe GA -$0.45.
-  THE IRONY IS KIND, NOT SHARP: he says he rarely shopped for price and chose stations
-  for a clean restroom or good food, and the one price decision he did make is the
-  only one the record can prove.
-- ⚠ PREMIUM FUEL. Kim: Smart cars take higher octane, and it was rarely hard to find.
-  THE LOG HAS NO GRADE COLUMN, so this stays attributed to him -- and it means EVERY
-  PRICE IN THIS BOOK IS A PREMIUM PRICE. Any comparison to a national average must
-  say so.
-- ⚠ NOT TESTABLE AT ALL: avoiding the 80 mph highways (a route not taken leaves
-  nothing behind) and stopping outside town centres (no coordinates on the fills).
-- ✓ CHAPTER REFERENCES ARE NOW GENERATED (2026-09-01). Every chapter carries a
-  {#sec-...} label and the prose uses @sec-...; the Foreword and Afterword are unnumbered,
-  so printed chapter numbers now match the way the project has always talked about them.
--->
+Partial fills are out of all of it, and they've got to be. A tank that wasn't filled to the brim puts the miles over the wrong denominator, and the record flags them, which is how the last fill of TwoRed's mainland life, at 92.95 miles per gallon, stays out of a chapter about economy. **That was a tank deliberately run down before the car went on a ship, not a miracle.**
 
+## Two cars, ten years apart, and the same car
+
+Creamsicle covered `r format(round(K$cr_miles), big.mark = ",")` miles a decade later, on the other side of the country, and it's the only real check this book has got on whether any of TwoRed's figures are about Smart cars or just about one Smart car.
+
+```{r}
+#| label: tbl-cost
+#| tbl-cap: "Both cars, over their whole recorded lives. Cost per mile is fuel only, and it is exactly the price actually paid per gallon divided by the miles per gallon."
+#| echo: false
+z <- data.frame(
+  Car = D$car, Years = D$years,
+  `Miles per gallon` = sprintf("%.2f", D$mpg),
+  `Paid per gallon` = sprintf("$%.2f", D$paid),
+  `Cents per mile` = sprintf("%.2f", 100 * D$per_mile),
+  check.names = FALSE)
+knitr::kable(z, align = c("l","l","r","r","r"))
+```
+
+**Creamsicle cost `r round(100*(K$ratio_cost-1))` per cent more per mile to run.** And here's the whole of that difference, taken apart:
+
+- the fuel it bought was **`r round(100*(K$ratio_paid-1))` per cent** dearer
+- its economy was **`r sprintf("%.0f", 100*(K$ratio_mpg-1))` per cent** better, which gives a little back
+
+**That's it. Twenty-six per cent, and twenty-eight of it is the price of petrol.**
+
+The two cars are `r sprintf("%.2f", TW$mpg)` and `r sprintf("%.2f", CR$mpg)` miles per gallon. **Four tenths of a mile per gallon apart, across sixteen years, two owners' worth of driving habits, two coasts and two completely different sets of roads.** One of them crossed the continent four times and went to the Arctic. The other did the Midwest and the West.
+
+I find that steadier than I expected. **The car is a constant. What changed underneath it was the world.**
+
+## The three things that could have moved it
+
+There were three obvious candidates for what moves the economy about, and the record's got something to say about each.
+
+```{r}
+#| label: fig-cost
+#| fig-cap: "The same measurement asked two questions. On the left, economy against the length of the tank: a real effect, and the largest one in the record. On the right, economy against the odometer, which is to say against the age of the car. Shaded bands are the fitted uncertainty. Partial fills are excluded from both."
+#| fig-width: 7.4
+#| fig-height: 3.2
+#| echo: false
+fig_cost(K)
+```
+
+**How far you drove on the tank.** This is the big one and it isn't close. **`r sprintf("+%.2f", K$len_per100)` miles per gallon for every extra hundred miles**, and it survives everything I can throw at it. A cold engine, a town, a set of traffic lights and a car park all get charged to the same tank, and the more highway you put behind them the less they're worth. **It's the single strongest thing in this dataset and it's about the trip, not the car.**
+
+**The age of the car.** Everybody expects an old small engine to get thirstier. **It doesn't.** The slope over `r format(round(K$tw_miles), big.mark = ",")` miles is `r sprintf("%+.2f", K$age_per10k)` miles per gallon per ten thousand. That's *positive*, and at p = `r sprintf("%.2f", K$age_p)` not distinguishable from flat. Allow for the fact that the later years had more long-distance driving in them and it firms up slightly, to `r sprintf("%+.2f", K$age_adj_per10k)` per ten thousand at p = `r sprintf("%.2f", K$age_adj_p)`.
+
+I'm not going to claim the car improved. **What I'll claim is the useful half: across a whole life, sixteen years and seventy thousand miles, there is no decline here to find.** Whatever this car was doing in 2010, it was still doing in 2017.
+
+**The wheels.** In @sec-safe I put wider tyres on it, for control in a crosswind rather than for fuel, and the received wisdom says wider tyres cost you economy. Comparing `r K$w_n_narrow` narrow-tyre fills against `r K$w_n_wide` wide ones, with tank length controlled: **`r sprintf("%+.1f%%", K$w_pct[1])`, with an interval from `r sprintf("%+.1f%%", K$w_pct[2])` to `r sprintf("%+.1f%%", K$w_pct[3])`.**
+
+That interval contains zero, and it contains most of what anybody would argue about. **The honest reading is that this record cannot tell you whether the wheels cost anything**, and after `r K$w_n_wide` tanks on the wide ones, that's an answer of a sort. Whatever the modification did, it wasn't big enough to find.
+
+## What I thought I was doing
+
+Two more, and these are the ones where my own beliefs are on the table.
+
+**Following the trucks.** I've said in @sec-safe that I fell in behind lorries and went slower, and that at the lower speed I felt I was saving fuel. Testing it needs an instrument, because a tank and a driving day don't line up. Taking only the forty-four tanks that sit entirely inside a single leg, and attaching that day's speed to them, the correlation runs the way I said: slower days, better economy, at a rank correlation of −0.36. Then put the length of the tank into the same model and the speed term collapses.
+
+**So the feeling isn't contradicted and it isn't confirmed.** What it's tangled with is the thing that dominates everything else in this chapter, because a slow day behind trucks is usually also a long day on a highway. I said *felt* at the time and I'll leave it there.
+
+**Costco.** Here I did better than I'd have guessed. Matching every Costco fill against the ordinary fills within three weeks either side, **the discount runs about twenty cents a gallon**, eleven of thirteen comparisons the same way. It's the one purchasing decision in sixteen years I can prove I made, and I made it while telling myself I mostly picked stations for a clean restroom.
+
+## One caveat that changes every price on this page
+
+Smart cars take premium fuel.
+
+There's no column in the log for grade, so I can't show it from the data. You've got my word for it. But it means **every price in this book is a premium price**, and any comparison to a national average, which is quoted for regular, will make this car look more expensive to run than it was. The economy figures are unaffected. The cost figures carry a surcharge that was never optional.
+
+## What it actually cost
+
+`r format(round(K$tw_miles), big.mark = ",")` miles of TwoRed's mainland life took **$`r format(round(K$tw_fuel), big.mark = ",")`** of fuel. Creamsicle's `r format(round(K$cr_miles), big.mark = ",")` took **$`r format(round(K$cr_fuel), big.mark = ",")`**.
+
+That isn't a small amount of money, and it's a remarkably small amount of money, depending entirely on what you set it against, which is why I haven't. **What the record supports is narrower and more useful than a verdict: at nine and a half cents a mile in one decade and twelve in the next, the fuel was never the reason to think twice about the trip.**
+
+And the thing that moved the number most wasn't the car, or the tyres, or how I drove. **It was how far I was going.** Which is the same finding as @sec-long-days reached from the other end, and it means the cheapest way to run this car was the way we happened to use it: badly suited to errands, and very well suited to crossing a continent.

@@ -170,6 +170,12 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ✓ RE-DERIVED 2026-09-01 — three MORE ch.11 scaffold drifts (six in one day)
+
+"Lifetime 39.44 MPG" **reproduces from nothing**: the three defensible figures are mean-of-tanks 39.53, median 39.12, and **total miles / total gallons 39.25**, and the chapter says which it uses and why. Creamsicle median is **40.52**, not 40.59. Wide-tyre interval is **+2.8% [-0.9, +6.5]**, not -3.7 to +4.9. **All computed in `cost_data()` now.**
+
+⚠ **Every remaining scaffold still carries hand-copied numbers.** `a_day_in_a_smart`, `two_constellations` and `what_the_record_cannot_say` have not been re-derived. **Do it as each is drafted; the observed drift rate is roughly half the figures.**
+
 ### ⚠ OPEN — Port Angeles is a FOURTH Creamsicle pump-identity failure with no erratum (2026-09-01)
 
 `3.993 x 5.399 = 21.558` against **21.57** recorded: **1.17c over its 0.97c bound.** Outside by two tenths of a cent. **Ch.10 prints it as the place the instrument runs out, not as an error.** ⚠ **Do not raise an erratum unless a card or receipt settles it** -- an instrument used past its floor manufactures findings.
