@@ -1,4 +1,4 @@
-# What the car cost
+# What the car cost {#sec-car-cost}
 
 ```{r}
 #| label: setup
@@ -10,7 +10,7 @@ source("R/book_setup.R")
 <!-- SCAFFOLD — delete this block as the chapter is written.
 
 PURPOSE
-ANALYSIS strand, and now believable because chapters 8-9 came first.
+ANALYSIS strand, and now believable because `sixteen_years_of_paper` and `knowing_a_number_is_wrong` came first.
 
 MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
 - Lifetime 39.44 MPG; median 39.12 (TwoRed) vs 40.59 (Creamsicle).
@@ -48,7 +48,8 @@ Verbatim in logs/proj_Smart_Car_log.md.
   say so.
 - ⚠ NOT TESTABLE AT ALL: avoiding the 80 mph highways (a route not taken leaves
   nothing behind) and stopping outside town centres (no coordinates on the fills).
-- ⚠ CHAPTER-NUMBER REFERENCES: the "chapters 8-9" above predates the insertion of
-  the_marine_highway.qmd and the numbering audit of 2026-08-31. Do not trust it.
+- ✓ CHAPTER REFERENCES ARE NOW GENERATED (2026-09-01). Every chapter carries a
+  {#sec-...} label and the prose uses @sec-...; the Foreword and Afterword are unnumbered,
+  so printed chapter numbers now match the way the project has always talked about them.
 -->
 

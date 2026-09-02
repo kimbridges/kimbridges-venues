@@ -1,5 +1,5 @@
 # PROJECT: Smart_Car
-_Last updated: 2026-08-31_
+_Last updated: 2026-09-01_
 _Status: Active_
 _Focus readiness: Ready_
 _Tags: intake, data-recovery_
@@ -317,6 +317,8 @@ _Written 2026-08-12; item 6 added 2026-08-20._
 - **`book/R/long_days_data.R` — NEW 2026-08-31.** `long_days_data()` (every leg of 450 mi or more, distance from the odometer with a written-figure fallback), `long_day_early()`, `day_segments()` (within-day fill-to-fill segments, with a timezone argument), `day_shape()` (the ordinary day: median leg, arrival and departure clock, and the no-learning-curve test).
 - **`book/R/roads_data.R` + `book/R/fig_roads.R` — NEW 2026-08-31.** `@fig-roads`, and **`ROADS_SOUTH` / `ROADS_APPAL` now STATE the group rule in code** — it had been quoted for eleven days with nothing written down. Also `roads_tanks()` (the I-65 tank pair) and `roads_dalton()`. Figure at `book/figures/roads.png`.
 - **`book/R/ferries_data.R` — NEW 2026-08-31.** The five sea passages and `ferry_tank()`. **Water distances are Kim's and are marked as his; nothing in the record measures them.**
+- **`book/R/driving_cost_data.R` — NEW 2026-09-01.** The hinge chapter: the three prairie legs, the three-days-one-shape table, and **Creamsicle's gross-vs-net gap (84 legs, 43.5 vs 51.0)** — the measurement that sizes what a two-point trip log averages away. ⚠ The `net_mph` on the Cranes row is an artifact of quarter-hour rounding; never printed.
+- **Every chapter heading now carries a `{#sec-...}` label and `index.qmd` / `afterword.qmd` are `{.unnumbered}` (2026-09-01).** Chapter cross-references are generated, not typed — see Finding 050 and `deferred.md`.
 - `source/` — **★★★ `2014_Chateau_Presentation.pptx` (50.3 MB, 121 slides, dated 2014-06-16, four days after the trip closed) — A PRIMARY SOURCE, added to this list 2026-08-29 after sitting unlisted since intake.** *Driving to the Extremes*, given at Lake San Marcos. **Slide 42 names the four missing states (Florida, Delaware, Rhode Island, Vermont) in writing; slide 6 is an independent 2010-2013 computation; slide 121 gives the 10,907-mile total; and 121 embedded photographs answer the TwoRed-photo question.** Also: `Smart_Car_master_dictionary.pdf` (expedition names, dates, targets); `Smart_Car.docx` (10.3 MB, largest section is the already-published Arctic Circle Challenge — **a quarry, not a draft**); `Smart_Car_2016.pptx`; `charter_2026-05-08.md`, kept verbatim, superseded on scope and Chapter 5.
 - `images/Creamsicle/` — 37 geotagged trip photos + `Creamsicle_profile.jpg`. **Backstop for the deleted `creamsicle.jpg`: a copy survives at `kimbridges-stories\underway\Smart_car\` — do not delete that folder without checking.**
 

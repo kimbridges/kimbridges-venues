@@ -1,4 +1,4 @@
-# These are small cars!
+# These are small cars! {#sec-small-cars}
 
 ```{r}
 #| label: setup
@@ -27,7 +27,7 @@ dim_wt <- format(twored_dim[["weight_lb"]], big.mark = ",")
 pair_len <- sprintf("%d ft %d in", twored_pair_ft, twored_pair_in)
 ```
 
-![TwoRed on the day it arrived, on the narrow tires it left the factory with. I'm five foot seven, which gives you the scale. **The silver band running around the car isn't trim — it's the safety cell**, and chapter 2 comes back to it.](images/TwoRed/twored_day_one.jpg){#fig-day-one}
+![TwoRed on the day it arrived, on the narrow tires it left the factory with. I'm five foot seven, which gives you the scale. **The silver band running around the car isn't trim — it's the safety cell**, and chapter -@sec-safe comes back to it.](images/TwoRed/twored_day_one.jpg){#fig-day-one}
 
 That's the reaction, and it's usually delivered as an exclamation rather than a question.
 

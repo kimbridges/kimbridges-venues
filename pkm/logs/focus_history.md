@@ -1,5 +1,26 @@
 # Focus History and Change Log
 
+**Active Focus (2026-08-31, close): "Smart_Car" -- CH.5, CH.6 AND A NEW CH.7 ARE DRAFTED, AND THE BOOK RENDERS END TO END.**
+
+**Foreword + ch.1-ch.7 stand, about 17,000 words.** This was a long session; **the detail is in `session_log.md` 2026-08-31** and Kim's six accounts plus every ruling are verbatim in `logs/proj_Smart_Car_log.md`. **16 chapters render, 0 error strings.**
+
+**CH.5 `long_days.qmd`** (~3,575 w) -- *not one of the long days was about driving*. Opens with the calibration baseline Kim ruled into it: mainland driving was ONE route, LAX to LSM, **exactly 100 miles**, four rules set with no experience behind them. **★★ NO LEARNING CURVE: first three trips median 301 mi, everything after 305, p = 0.44** -- the calibration happened on the 2010 crossing, which has no log, so **the record opens already knowing the answer.** A long day is not a hard day; it is a day one of the rules was suspended for. ★ **Nancy chose the end city in real time from Honolulu off a GPS track. That role has no column.** ★★ The Bellingham conflict was settled by fill times nobody had transcribed (**122 mi in 6.05 h, then 48.2, then 52.9**); ⚠ Kim has not confirmed that reading.
+
+**CH.6 `the_roads.qmd`** (~1,720 w + `@fig-roads`) -- Kim's spine: *uniformity was the achievement; nature gives those highways character; both matter.* **The figure puts both answers on ONE shared axis** so the eye watches separation become overlap, and uses **one hue on purpose** because two would assert a distinction the data cannot make. **ONE example only (I-65 Alabama, 2014-05-07/08); ⛔ no blame.** The category is **sightlines, not trees.**
+
+**CH.7 `the_marine_highway.qmd`** (~1,240 w) -- **FIVE SEA CROSSINGS, TWELVE ODOMETER MILES, SEVEN NIGHTS ABOARD.** Whittier to Bellingham reads 38,284 -> 38,285. **The car moved and the instrument recorded nothing, correctly: an odometer is not a position sensor.** ⛔ **RULING: do not compute the tunnel track gauge** -- the fear is the fact.
+
+**★★★ FUEL ECONOMY, FOUR TESTS, SPLIT FOUR WAYS (2 written).** New instrument: the **44 tanks that sit inside ONE leg**. **Slower days do read better, rho = -0.359, p = 0.017 -- and it dies under `leg_miles` (p = 0.33). SIGNAL, no coefficient.** His own word was *felt*. ★ **The best tank in sixteen years is GRAVITY** (Gypsum CO -> Big Springs NE, 56.04, best of 286). ★ **Costco is real: $0.20/gal, paired Wilcoxon p = 0.008** -- the one price decision he made is the only one the record can prove. ⚠ No fuel-grade column, so **every price in this book is a PREMIUM price.** Written: `small_cars.qmd` *What it was designed to be good at*; `is_it_safe.qmd` *Following the trucks*. Scaffolded: the frontage road and the cost material.
+
+**★★★ AND KIM DATED THE NEBRASKA FRONTAGE ROAD ON DIRECTION -- 2012-05-28, Ogallala -> Omaha.** He left I-80 for the parallel road at ~50 mph for hours to see the farms. **The day reads 48.8 mph gross, 20th fastest of 132 legs, on a tank of 50.62 mpg, 8th best of 286.** ★★★ **The day he chose to go slowly is, to both instruments, a fast efficient interstate day.** The averaging that hid the stress and the tedium **hides an afternoon of pleasure** -- the hinge chapter is now a triple. ⚠ Caveats carried: the tank is ~73% that day, and eastbound Nebraska is a ~2,200 ft descent.
+
+**★★★ TEN HARDCODED CHAPTER NUMBERS ARE WRONG (Finding 050).** Inserting ch.7 moved every later target and **nothing complained, because a sentence is not a build dependency** -- and underneath, **the prose leaves the Foreword unnumbered while Quarto counts `index.qmd` as 1, so every reference was ALREADY one low.** **The fix is to stop writing numbers** (`{#sec-name}` / `@sec-name`), which is the discipline the figures already have. Table of all ten in `deferred.md`; two are inferred, so confirm before renumbering.
+
+**★★ Finding 049 earlier the same day:** two chapters had not been rendering because inline `r` read variables defined in chunks LOWER in the file. **After touching `book_setup.R`, render the whole book.**
+
+**NEXT: Kim reads ch.6, ch.7 and the two new sections. Nothing is blocking.**
+
+
 **Active Focus (2026-08-29, close): "Smart_Car" -- CH.4 IS DRAFTED, AND THE LAST BLANK CORNER OF THE RECORD IS FILLED.**
 
 **Five pieces stand: Foreword, ch.1, ch.2, ch.3, ch.4 -- about 11,500 words.** Kim approved ch.3 and reads ch.4 tomorrow.

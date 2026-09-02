@@ -1,4 +1,4 @@
-# The anchor
+# The anchor {#sec-anchor}
 
 ```{r}
 #| label: setup
@@ -219,7 +219,7 @@ But the part that matters is safety, and it is the same argument this book has a
 
 **You know your own car.** Not merely how to work it, though there is something to be said for not hunting for the defroster while the windshield fogs over. You know how it *drives*. Where it sits in a lane. What it does when you ask it for something suddenly. **You build muscle memory over years without noticing you are doing it** — and then you are on a crowded Los Angeles freeway, and it turns out to be a very nice thing to have.
 
-A rental is a car you have no pattern for. Chapter 2 argued that small and nimble are components of safety, and then that attention is one too. **Familiarity is the third**, and it is the only one of the three you cannot buy on the day you need it. It accumulates, slowly, in one particular car — which means it accumulates only if that car is waiting somewhere for you to come back to it.
+A rental is a car you have no pattern for. @sec-safe argued that small and nimble are components of safety, and then that attention is one too. **Familiarity is the third**, and it is the only one of the three you cannot buy on the day you need it. It accumulates, slowly, in one particular car — which means it accumulates only if that car is waiting somewhere for you to come back to it.
 
 Which is what the parking spaces were for.
 

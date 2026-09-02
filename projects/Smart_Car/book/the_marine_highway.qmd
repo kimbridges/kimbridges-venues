@@ -1,4 +1,4 @@
-# The Marine Highway
+# The Marine Highway {#sec-marine-highway}
 
 ```{r}
 #| label: setup

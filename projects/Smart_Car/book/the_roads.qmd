@@ -1,4 +1,4 @@
-# The roads
+# The roads {#sec-roads}
 
 ```{r}
 #| label: setup
@@ -13,7 +13,7 @@ K  <- roads_tanks()
 DA <- roads_dalton()
 S  <- day_shape()
 LD <- long_days_data()
-d640 <- LD[LD$rank == 1, ]      ## the Kansas day, ch.5
+d640 <- LD[LD$rank == 1, ]      ## the Kansas day, from the long-days chapter
 
 tk <- K$t
 tunnel <- tk["trussville", ]

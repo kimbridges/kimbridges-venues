@@ -1,4 +1,4 @@
-# What a day in a Smart actually looks like
+# What a day in a Smart actually looks like {#sec-a-day}
 
 ```{r}
 #| label: setup

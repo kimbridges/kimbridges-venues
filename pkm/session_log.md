@@ -11,6 +11,42 @@ Mechanism 4.
 
 ---
 
+## 2026-09-01 -- THE CROSS-REFERENCES ARE GENERATED, THE CHAPTER NUMBERS FINALLY MATCH THE WAY WE TALK, AND CH.8 IS DRAFTED
+
+**Active focus at start and close:** Smart_Car. Kim chose the order himself: **fix the references first, then draft**, so ch.8 would not add an eleventh hardcoded number. That was the right call and it changed what the fix turned out to be.
+
+### ★★★ ALL TEN REFERENCES CONFIRMED — and the OLD numbering turned out to be the proof
+
+Two of the ten were flagged as INFERRED from content and needing confirmation before any renumber. **Both are now certain, and by a second route.** Read the target chapters and *Chapter 9* is the geography instrument (`knowing_a_number_is_wrong`) while *Chapter 13* is the four missing states (`what_the_record_cannot_say`) -- and then **every one of the ten resolves cleanly under the project's own numbering: Foreword unnumbered, no marine chapter.** ★★ **A numbering scheme that is internally consistent across ten references in six files is not a guess.** The content reading and the arithmetic reading agree, which is what turned two inferences into two facts.
+
+### ★★★ THE FOREWORD WAS BEING NUMBERED AS CHAPTER 1, AND THAT WAS THE WHOLE ROOT
+
+`index.qmd` is titled **Foreword** and `afterword.qmd` is titled **Afterword**, and Quarto was numbering both. **So the printed book said `small_cars` was Chapter 2 while every conversation, every PKM entry and every sentence of prose called it ch.1.** Not an editorial choice -- front matter carrying a chapter number is a defect. Both marked `{.unnumbered}`.
+
+**The numbering now runs 1-14 and matches the project exactly:** small_cars 1, is_it_safe 2, the_anchor 3, expeditions 4, long_days 5, the_roads 6, the_marine_highway 7, what_driving_cost 8, sixteen_years_of_paper 9, knowing_a_number_is_wrong 10, what_the_car_cost 11, a_day_in_a_smart 12, two_constellations 13, what_the_record_cannot_say 14.
+
+### The mechanism, and what it bought beyond the fix
+
+Every chapter heading carries a `{#sec-...}` label; the prose uses `@sec-name` where the reference opens a sentence and `chapter -@sec-name` where it needs to be lower case. **Verified in the rendered HTML, not in the source:** *"Chapter 2 argued that small and nimble..."*, *"@sec-audit works out how"* renders as **Chapter 10** (it said 9), *"Chapter 14 is about how we know"* (it said 13). **0 unresolved references across 16 chapters, 0 hardcoded numbers left anywhere.**
+
+**★★ AND THE REFERENCES ARE NOW HYPERLINKS**, which the plain text never was. A fix for correctness paid in navigation.
+
+**⚠ One class remains and is NOT a defect:** positional phrases -- *"the next chapter"*, *"the driving in the last two chapters"*. They are correct today and they break silently on a reorder. Left alone deliberately; noted in `deferred.md`.
+
+### ★★★ CH.8 `what_driving_cost.qmd` IS DRAFTED — the hinge, ~1,250 words, two tables
+
+**Spine: the record cannot see the driver, and Kim's own correction is what proves it rather than a problem to explain away.** He remembers four prairie days in June 2014 as the worst driving of sixteen years -- potholes, slowing to save the wheels, watching the mirror for something large that had not slowed. **The record has those days at a median 44.5 mph against a whole-record 40.5.** ★★ Then his correction: *"I couldn't go slow, because the big vehicles kept moving at highway speeds."* **The speed is not evidence against the stress. The speed IS the stress, and his account therefore PREDICTS the null.**
+
+**★★★ THE CHAPTER IS NOW A TRIPLE, WHICH IT WAS NOT WHEN IT WAS SCAFFOLDED.** Fear (the prairie, 47.3), tedium (the I-65 tree tunnel, 40.3), pleasure (the Nebraska frontage road, 48.8). **Three days remembered for three incompatible reasons, all at or above the median.** *Vigilance has no column. Neither does tedium. And neither does an afternoon spent looking at things.*
+
+**★★★ AND CREAMSICLE TURNS THE ARGUMENT INTO A MEASUREMENT.** Its sheets carry STOPPED time, so gross and net can both be computed: **84 timed legs, median gross 43.5, median net 51.0, a gap of 7.5.** So **every gross speed printed anywhere in the book is a ceiling seven or eight mph below the driving speed**, and the averaging is not a hypothesis -- it has a size. **The second car measures the first car's blindness.** The extreme is `2024-10-20 WI Dells -> Madison, 50.3 mi, 5 hours, 4.5 of them stopped`, comment column: **Cranes.**
+
+New `book/R/driving_cost_data.R`. **16 chapters render, 0 error strings, 0 unresolved references.**
+
+**⚠ VOICE RULE, FOURTH CHAPTER RUNNING.** First draft 16.7 contractions per thousand words against ch.6's 26; a pass brought it to 28.9. **The count catches it every time and the instinct still does not. Keep running it before Kim sees a draft.**
+
+**⚠ A TRANSIENT `PermissionDenied` on `_output` during the first full render** -- Drive Stream holding the directory, the same class as Finding 048. **A plain retry succeeded.** Do not treat it as a broken build.
+
 ## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
 
 **Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.

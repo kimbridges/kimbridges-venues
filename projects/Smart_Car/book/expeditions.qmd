@@ -1,4 +1,4 @@
-# The expeditions
+# The expeditions {#sec-expeditions}
 
 ```{r}
 #| label: setup
@@ -56,7 +56,7 @@ The legs start in May of 2011. The drive that made everything after it possible 
 
 Here's what that thin record still holds. We bought the car in San Diego with `r E$bought_odo` miles on it. We left on the nineteenth of September, came home on the twenty-ninth of November, and in between the odometer moved `r format(E$first_miles, big.mark = ",")` miles through `r E$first_states` states, on `r E$first_fills` tanks of fuel.
 
-**And you can put the whole trip back together from that.** The fills run south and east through Arizona and New Mexico into Texas, north to Kansas and across to Missouri, east through the Appalachians to the coast, up into New England, back west through Ohio and Illinois, and then home along the southern route through Georgia, Mississippi, Arkansas and Texas again. There's a week of fills across Pennsylvania that is a run of visits to colleagues, ending at a conference in Pittsburgh. There's a gap of three and a half weeks in the middle of it, which chapter 3 has already explained. Every place we worked shows up as a cluster of fills, and every long day shows up as a gap of three hundred miles between two of them.
+**And you can put the whole trip back together from that.** The fills run south and east through Arizona and New Mexico into Texas, north to Kansas and across to Missouri, east through the Appalachians to the coast, up into New England, back west through Ohio and Illinois, and then home along the southern route through Georgia, Mississippi, Arkansas and Texas again. There's a week of fills across Pennsylvania that is a run of visits to colleagues, ending at a conference in Pittsburgh. There's a gap of three and a half weeks in the middle of it, which chapter -@sec-anchor has already explained. Every place we worked shows up as a cluster of fills, and every long day shows up as a gap of three hundred miles between two of them.
 
 **Nobody designed that record to do this.** It's a fuel log. It exists because I wanted to know what the car cost to run. But a fuel log is a list of times and places, and a list of times and places is a trip whether you meant it to be or not.
 
@@ -101,7 +101,7 @@ It'd be easy to call that missing data. It isn't.
 
 **The trip log was never a record of the trips.** It was a record of the long driving days, kept because I wanted to know what a long driving day looked like, and it started a year after the driving did. A weekend at Lake Havasu has no long driving day in it. Neither does Death Valley from Southern California. The log is silent about them because there was nothing in them it was built to hold.
 
-This is the same boundary the book has crossed twice already, drawn at a different scale. Chapter 3 found it inside a trip, where the errands around a parked car were absorbed into the interval and never counted. The Foreword found it at the end of the car's life, where the Honolulu miles fall outside the record on purpose. **Here it is between the trips: a whole expedition can fall through, and the record isn't wrong when it does. It is doing what it was built to do.**
+This is the same boundary the book has crossed twice already, drawn at a different scale. @sec-anchor found it inside a trip, where the errands around a parked car were absorbed into the interval and never counted. The Foreword found it at the end of the car's life, where the Honolulu miles fall outside the record on purpose. **Here it is between the trips: a whole expedition can fall through, and the record isn't wrong when it does. It is doing what it was built to do.**
 
 ## What the record learned to hold, and what it stopped holding
 
@@ -131,7 +131,7 @@ It is also the only place in sixteen years where I can see myself deciding what 
 
 The long ones have their own character, and three of them earned names that stuck.
 
-**Frostburg and the Northern States, 2012.** `r format(lg$miles_logged[lg$trip == "2012_Frostburg"], big.mark = ",")` logged miles in the space of a few weeks. This is the trip that carries the strangest single day in the record: a run north through Nebraska with a hundred miles of detour in it and no destination at the end, because the destination *was* the line. We crossed into South Dakota, turned around, and came back. Chapter 9 works out how the record gives that away, years later, to somebody who wasn't told.
+**Frostburg and the Northern States, 2012.** `r format(lg$miles_logged[lg$trip == "2012_Frostburg"], big.mark = ",")` logged miles in the space of a few weeks. This is the trip that carries the strangest single day in the record: a run north through Nebraska with a hundred miles of detour in it and no destination at the end, because the destination *was* the line. We crossed into South Dakota, turned around, and came back. @sec-audit works out how the record gives that away, years later, to somebody who wasn't told.
 
 **The Arctic Circle, 2013.** A month, the Alaska Marine Highway in both directions, and a gravel road north of Fairbanks that a Smart car had no business being on. **That trip has its own book and I'm not going to re-tell it here.** What matters to this chapter is that it happened at all, and that the fuel log kept working the whole way: the northernmost fill in sixteen years sits on the Dalton Highway, and the car came off that road and went straight to the shop at Signal Hill on the way home, which the log records without comment.
 
@@ -141,7 +141,7 @@ By the spring of 2014 the list of states we hadn't driven in was down to four. I
 
 > Missing States: Florida, Delaware, Rhode Island, Vermont
 
-**Three of those four aren't in the fuel log and never were.** We crossed Delaware and Rhode Island without stopping for anything, and the Florida visit was about eleven miles hung off a fuel stop in Alabama. No fill, no overnight, nothing for the record to catch. Chapter 13 is about how we know they happened anyway, and about how close we came to not being able to say so.
+**Three of those four aren't in the fuel log and never were.** We crossed Delaware and Rhode Island without stopping for anything, and the Florida visit was about eleven miles hung off a fuel stop in Alabama. No fill, no overnight, nothing for the record to catch. @sec-cannot-say is about how we know they happened anyway, and about how close we came to not being able to say so.
 
 The fourth one was Vermont, and Vermont was the last.
 
@@ -193,7 +193,7 @@ There's no final expedition. Nothing closes.
 
 The Fourth Crossing in 2016 is the last one that looks like the others — `r format(lg$miles_logged[lg$trip == "2016_FourthCrossing"], big.mark = ",")` miles, out and back, beginning and ending in the same parking space it had begun and ended in for six years. Nobody knew it was the last, least of all me.
 
-What happens after that isn't a trip and chapter 3 has already told it: the parking space goes, and the car spends its remaining `r format(round(max(twored_legs$end_odo, na.rm = TRUE) - twored_legs$start_odo[twored_legs$trip == "2016_FallWinter"][1]), big.mark = ",")` mainland miles being moved between places because it no longer has a place. Then a dock in Seattle, and a boat.
+What happens after that isn't a trip and chapter -@sec-anchor has already told it: the parking space goes, and the car spends its remaining `r format(round(max(twored_legs$end_odo, na.rm = TRUE) - twored_legs$start_odo[twored_legs$trip == "2016_FallWinter"][1]), big.mark = ",")` mainland miles being moved between places because it no longer has a place. Then a dock in Seattle, and a boat.
 
 **Fourteen expeditions in that summary, and I wrote it thinking I was somewhere in the middle.** The one row I left open, I closed two years later without noticing, on a day I remember for a headache and a hail storm. Then I put the pen down and the odometer kept writing.
 

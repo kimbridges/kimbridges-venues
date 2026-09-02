@@ -1,4 +1,4 @@
-# How you know a number is wrong
+# How you know a number is wrong {#sec-audit}
 
 ```{r}
 #| label: setup
@@ -10,7 +10,7 @@ source("R/book_setup.R")
 <!-- SCAFFOLD — delete this block as the chapter is written.
 
 PURPOSE
-DIFFICULTY strand. The audit. This chapter is what makes chapter 10 credible.
+DIFFICULTY strand. The audit. This chapter is what makes the `what_the_car_cost` chapter credible.
 
 MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
 - THE PUMP IDENTITY: gallons x $/gal = cost. Three numbers that must multiply. 277 of 294 TwoRed rows balance; 143 of 170 Creamsicle US rows balance to under half a cent.

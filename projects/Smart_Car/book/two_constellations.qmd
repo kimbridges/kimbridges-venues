@@ -1,4 +1,4 @@
-# The two constellations
+# The two constellations {#sec-constellations}
 
 ```{r}
 #| label: setup

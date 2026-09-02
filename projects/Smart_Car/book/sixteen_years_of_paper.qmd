@@ -1,4 +1,4 @@
-# Sixteen years of paper
+# Sixteen years of paper {#sec-paper}
 
 ```{r}
 #| label: setup
@@ -10,7 +10,7 @@ source("R/book_setup.R")
 <!-- SCAFFOLD — delete this block as the chapter is written.
 
 PURPOSE
-DIFFICULTY strand. The physical record: field sheets, handwriting, scanning. Read before ch.10 so its numbers are believable.
+DIFFICULTY strand. The physical record: field sheets, handwriting, scanning. Read before `what_the_car_cost` so its numbers are believable.
 
 MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
 - 22 scanned PDFs, 2010-2017. Top half fuel log, bottom half trip log; the fuel halves were typed up years ago, most trip halves never were.

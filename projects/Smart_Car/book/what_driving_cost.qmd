@@ -1,46 +1,112 @@
-# What the driving cost
+# What the driving cost {#sec-driving-cost}
 
 ```{r}
 #| label: setup
 #| include: false
 
 source("R/book_setup.R")
+source("R/driving_cost_data.R")
+
+D <- driving_cost_data()
+P <- D$prairie
+T3 <- D$three
+CR <- D$cranes
+
+stopifnot(nrow(P) == 3, nrow(T3) == 3, D$cream_gap > 0)
 ```
 
-<!-- SCAFFOLD — delete this block as the chapter is written.
+## The worst miles of the whole thing
 
-PURPOSE
-THE HINGE. Ends Part Two by proving the record cannot see the driver -- which is what licenses Part Three to be honest about its own limits.
+The hardest driving I did in sixteen years was four days across the Canadian prairie in June of 2014, and I can tell you exactly why.
 
-MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- Kim: 'we were plagued by potholes. We often slowed to avoid damage. This meant also looking in the rear view mirror... Those miles, which were mostly across the Canadian Plains, were very stressful.'
-- Both instruments see nothing: Canadian Plains median gross 44.5 mph vs US Plains 45.0 and a whole-record 40.5. The three Plains legs run 44.5, 47.3, 43.1 -- FASTER than his sixteen-year median.
-- His correction INVERTS the logic: 'I couldn't go slow as big vehicles kept moving at highway speeds.' His account PREDICTS the null. The high speed is the MECHANISM of the stress.
-- The missing quantity is WITHIN-LEG VARIANCE. A trip log samples the day twice; everything between is averaged away by construction.
-- The pair: the most stressful miles and the most monotonous miles both read as unremarkable fast runs. VIGILANCE HAS NO COLUMN; NEITHER DOES TEDIUM.
+**We were plagued by potholes.** We often slowed to avoid damage, which in an 1,800-pound car with small wheels is not a precaution, it's a requirement. And slowing meant looking in the rear-view mirror, because there was always something large behind me that hadn't slowed. Hours of it. Those miles were very stressful.
 
-- ★★★ THE NEBRASKA FRONTAGE ROAD, and it is the sharpest example the book has.
-  Kim, 2026-08-31: "There were a few times I got off the Interstate just to go
-  slower. Once, I spent hours driving on the road that runs alongside the
-  Interstate as it runs through Nebraska. My speed dropped to about 50 MPH for that
-  period. I enjoyed the change as I could better appreciate the farming community
-  by seeing closer." He DATED it himself, on direction: 2012-05-28, Ogallala ->
-  Omaha. "I didn't do the whole drive on the side, just part of it."
-  AND THE DAY READS AS A FAST EFFICIENT INTERSTATE DAY. 340 mi, 06:50-14:48,
-  6.97 h, 48.8 mph gross -- 20th fastest of 132 timed legs against a median of
-  40.45 -- and the York NE tank is 50.62 mpg, 8th best of 286 against a median of
-  39.12. Top sixth for speed, top three percent for economy, on the day he chose to
-  slow down and look at farms.
-  THE MECHANISM: gross speed cannot separate slow cruising with almost no stops
-  from fast cruising with stops. The frontage-road hours are averaged into the
-  interstate either side. THE SAME ARITHMETIC THAT HID THE STRESS AND THE TEDIUM
-  HIDES AN AFTERNOON OF PLEASURE -- which completes the chapter's argument as a
-  triple rather than a pair.
-  ⚠ CARRY BOTH CAVEATS. The tank is not clean (it opens at Bridgeport, before the
-  leg starts, so ~73% of its 337 miles are this day), and eastbound Nebraska is
-  roughly a 2,200 ft descent. The economy is NOT evidence of the slow driving.
+Now here's what the record says about them.
 
-OPEN / NEEDED
-- The Canadian variance test is a NON-RESULT, not a null -- those rows are converted from litres and CAD and unit-normalising is still open. Do not cite it as a null.
--->
+```{r}
+#| label: tbl-prairie
+#| tbl-cap: "The prairie days. Gross speed is the whole day divided by the whole clock, stops and all, which is the only speed this log can produce."
+#| echo: false
+z <- P[, c("date","start_city","end_city","odo_miles","elapsed_hours","gross_mph")]
+z$date <- format(z$date, "%d %b %Y")
+names(z) <- c("Date", "From", "To", "Miles", "Hours", "Gross mph")
+knitr::kable(z, align = c("l","l","l","r","r","r"))
+```
 
+**A median of `r D$prairie_med` miles an hour, against `r D$med_gross` for the whole record.** The worst days I can remember are among the *faster* days I ever drove.
+
+I want to be careful here, because there's an obvious wrong conclusion sitting there. It's that my memory has inflated the whole thing. It hasn't.
+
+## The correction that turns it around
+
+When I first saw those numbers I said something that fixed the problem in one sentence. **I couldn't go slow, because the big vehicles kept moving at highway speeds.**
+
+Read that again against the table. **The speed isn't evidence against the stress. The speed is the stress.** Slowing for a pothole while something enormous closes on you at seventy is precisely the situation I'm describing, and the only way it shows up in a two-point measurement is as a day that averaged out fast.
+
+So my account doesn't contradict the record. **It predicts it.** Any honest version of that day, written into this log, comes out looking like an unremarkable fast run, and that's what it did.
+
+## Three days, one shape
+
+Once you've seen it once you start finding it everywhere, and by now this book has three of them.
+
+```{r}
+#| label: tbl-three
+#| tbl-cap: "Three days I remember for three completely different reasons, and what the record made of each. Nothing in this table is wrong."
+#| echo: false
+z <- T3[, c("what","date","start_city","end_city","odo_miles","gross_mph")]
+z$date <- format(z$date, "%d %b %Y")
+names(z) <- c("What I remember", "Date", "From", "To", "Miles", "Gross mph")
+knitr::kable(z, align = c("l","l","l","l","r","r"))
+```
+
+The first is the prairie, and it was fear. The second is the tree tunnel from @sec-roads, four hours of an excellent highway I couldn't wait to get off, and it was boredom. The third is @sec-long-days's frontage road, where I left the interstate on purpose to crawl past Nebraska farms, and it was pleasure.
+
+**Terror, tedium and enjoyment. All three come out at or above the median.**
+
+Vigilance has no column in this record. Neither does tedium. And neither, it turns out, does an afternoon spent looking at things.
+
+## Why: the log samples the day twice
+
+The reason isn't mysterious and it isn't a fault. It's arithmetic, and it was designed in.
+
+**A trip log records where I started, when I started, where I stopped and when I stopped.** Two points, ten hours apart. Everything between them, every pothole and every truck and every decision to turn off onto a smaller road, is averaged into a single number by construction.
+
+Gross speed is a two-point measurement of a ten-hour process. It can't report variation, because it never sampled any. **A day that ran steadily at eighty and a day that alternated between forty and seventy give you the same figure, and it's the second one that frightened me.**
+
+That isn't the log failing. It recorded what it was built to record, faithfully, for six years. **What it never claimed to hold is what the day was like.**
+
+## And the second car proves it
+
+All of that would be an argument rather than a finding, except that a later car in this fleet kept a column the first one didn't.
+
+**Creamsicle's sheets record stopped time.** That makes it possible to work out two speeds for the same day: the gross figure, which is all TwoRed can ever give us, and a net figure with the stopped hours taken out.
+
+Across `r D$n_cream` timed legs, **the median gross speed is `r D$cream_gross` miles an hour and the median net speed is `r D$cream_net`.** A gap of **`r D$cream_gap`**.
+
+That number is worth sitting with. It means **every gross speed printed anywhere in this book is a ceiling, roughly seven or eight miles an hour below the speed the car was actually travelling** when it was travelling. And it means the averaging I've been describing isn't a hypothesis. It's got a size.
+
+The extreme case is my favourite thing in either record. `r format(as.Date(CR$date), "%d %B %Y")`, `r CR$lv_city` to `r CR$ar_city`. **`r CR$miles` miles. `r CR$raw_hours` hours, `r CR$stop_hours` of them stopped.** Gross speed `r CR$gross_mph` miles an hour, which is walking pace for a car.
+
+The comment column on that row contains one word.
+
+> `r CR$comment`
+
+**A fifty-mile day that took five hours because we stopped to watch birds**, and the only reason anybody will ever know that is that a later log had somewhere to put it. Enter that same day in TwoRed's sheet and you get ten miles an hour and no explanation at all.
+
+## What this licenses
+
+I've spent this chapter arguing that the record can't see the driver, and it's fair to ask why a book largely made of that record would want to press the case so hard.
+
+Here's why. **Everything after this point is analysis**, and analysis is where a record like this one becomes dangerous. Sixteen years of numbers, audited and corrected and cross-checked, give you answers that look authoritative because they're precise. The temptation is to let precision stand in for completeness.
+
+So it's worth settling, before any of that starts, exactly what these instruments are. **A fuel log is a list of transactions. A trip log is a pair of timestamps.** Between them they'll reconstruct a continent, recover a mountain, date a crossing to the day and catch an error made with cold hands in 2012. They can't tell you that the driver was frightened, or bored, or delighted.
+
+**They were never asked to.** The chapters that follow are honest about their limits because this one drew them.
+
+## The thing that was never in the column
+
+There's a version of this book that could have been written from the numbers alone. It'd be accurate. Every figure in it would survive an audit.
+
+And it would have a hole in the middle of it exactly the shape of a person: one driver, alone for most of it, deciding when to slow down and when to push on, when to leave the interstate and when to endure it, and whether today was the day to try for the mountain again.
+
+**The record kept the miles. I kept the rest.** That the two can still be laid alongside each other, fifteen years later, is the only reason any of this could be written down at all.

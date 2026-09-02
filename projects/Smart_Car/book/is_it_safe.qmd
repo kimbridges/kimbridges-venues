@@ -1,4 +1,4 @@
-# Is it safe?
+# Is it safe? {#sec-safe}
 
 ```{r}
 #| label: setup
@@ -70,7 +70,7 @@ knitr::kable(
 )
 ```
 
-Add the two odometers together and they stop `r short` miles short of a hundred thousand. **That is not a rounded figure, and it is not the fuel log's figure either** — a fill is a transaction, not the end of a life, and the last drive each car ever made is one neither fuel log can see. Four hundred and sixty-seven fill-ups. Two hundred and twenty-five logged driving days. **Forty-nine mainland states, ten Canadian provinces and the Yukon Territory** — the log itself only witnesses forty-five of the states, for reasons chapter 13 gets into, but the car went to all of them. Gravel on the Dalton Highway north of the Arctic Circle. Frost heaves across the Canadian plains. The Tail of the Dragon. The Oregon coast highway. Two winters and a good many summers.
+Add the two odometers together and they stop `r short` miles short of a hundred thousand. **That is not a rounded figure, and it is not the fuel log's figure either** — a fill is a transaction, not the end of a life, and the last drive each car ever made is one neither fuel log can see. Four hundred and sixty-seven fill-ups. Two hundred and twenty-five logged driving days. **Forty-nine mainland states, ten Canadian provinces and the Yukon Territory** — the log itself only witnesses forty-five of the states, for reasons chapter -@sec-cannot-say gets into, but the car went to all of them. Gravel on the Dalton Highway north of the Arctic Circle. Frost heaves across the Canadian plains. The Tail of the Dragon. The Oregon coast highway. Two winters and a good many summers.
 
 No crash.
 

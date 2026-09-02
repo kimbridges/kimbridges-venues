@@ -1,4 +1,4 @@
-# Afterword — The choice made again
+# Afterword — The choice made again {.unnumbered}
 
 ```{r}
 #| label: setup

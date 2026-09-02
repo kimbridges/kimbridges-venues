@@ -1,4 +1,4 @@
-# The long days
+# The long days {#sec-long-days}
 
 ```{r}
 #| label: setup

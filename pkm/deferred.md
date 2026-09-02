@@ -170,13 +170,29 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ✓✓✓ CLOSED 2026-09-01 — HOW the cross-reference fix went, and the one part left open
+
+**Both references flagged as inferred are now certain, by a second route.** Reading the target chapters gives *Chapter 9* = `knowing_a_number_is_wrong` and *Chapter 13* = `what_the_record_cannot_say` -- **and then all ten resolve cleanly under the project's own scheme.** ★★ **Ten references across six files agreeing on one scheme is not a guess**, and that is what promoted two inferences to two facts. **Nobody needs to re-derive this.**
+
+**★★★ THE ROOT: `index.qmd` (Foreword) and `afterword.qmd` (Afterword) were being NUMBERED.** Both are now `{.unnumbered}`, and **the printed numbering runs 1-14 exactly as the project has always spoken it.** The old prose was never wrong about which chapter it meant; **the renderer and the project simply disagreed about whether front matter is a chapter, and nobody had settled it.** That question is now settled in the files themselves.
+
+**Mechanism:** `{#sec-...}` on every heading; `@sec-name` at a sentence start, `chapter -@sec-name` mid-sentence. Verified in the rendered HTML, 0 unresolved across 16 chapters, 0 hardcoded numbers anywhere.
+
+### ⚠ STILL OPEN, DELIBERATELY — positional chapter phrases
+
+*"the next chapter"*, *"the driving in the last two chapters"*, *"a later car in this fleet"*. **All correct today; all break silently on a reorder**, and none of them can be generated the way a number can. **Not worth converting** -- the prose would get worse. **The rule instead: any reorder of `_quarto.yml` means re-reading these four lines.** They live in `small_cars.qmd` (2), `the_marine_highway.qmd` (1) and `the_roads.qmd` (1).
+
+### ✓✓✓ CH.8 DRAFTED 2026-09-01 — and it became a TRIPLE
+
+The scaffold had two cases (prairie stress, tree-tunnel tedium). **The Nebraska frontage road made it three, and the third is the one that lands**, because pleasure is the least expected thing for a record to be blind to. ★★ **Creamsicle's stopped-time column turned the whole argument from an assertion into a measurement** -- 84 legs, gross 43.5 vs net 51.0, **a 7.5 mph gap that sizes exactly what a two-point log averages away.** ⚠ **The `net_mph` on the Cranes row is 100.6 and is an artifact** of quarter-hour stop rounding on a 50-mile day; **the chapter cites the stopped hours and the gross figure, never that net.** Do not print it.
+
 ### TASK — SPLIT `proj_Smart_Car.md` (57.2 KB against a 45 KB budget)
 
 `pkm_health()` has flagged it splittable for several sessions and it grew again on 2026-08-31. **The tail is the natural cut:** roughly thirty dated `## ★★★` sections from 2026-08-16 onward are narrative-of-the-work, not living status, and most already say *full write-up in the log*. **Use `split_tail()` from `pkm_health.R`** -- snapshot-first, losslessness verified, restores on failure, and `dry_run = TRUE` by default.
 
 **Occasion: the next session that opens Smart_Car and is not mid-chapter.** Do it before the file crosses 60 KB.
 
-### ★★★ TASK — TEN HARDCODED CHAPTER NUMBERS ARE WRONG, AND THE FIX IS STRUCTURAL (2026-08-31)
+### ✓✓✓ CLOSED 2026-09-01 — the ten cross-references are now GENERATED, and the root was the Foreword
 
 **Two errors stacked.** (a) The prose numbers chapters the PROJECT's way, Foreword unnumbered, so `small_cars` is "ch.1" -- but **Quarto counts `index.qmd` as chapter 1**, so it renders as 2. **Every hardcoded reference was already one low.** (b) Inserting `the_marine_highway.qmd` moved every target after position 7 by one more.
 
@@ -270,7 +286,7 @@ Kim's calibration/logistics account says *much of the driving was solo, with Kim
 
 The person-tracking and the same-day booking are period-specific and the record names none of it. **Ask Kim; do not infer a product name.** He is precise about this class of thing and the answer dates the practice.
 
-### ⚠ RULING NEEDED — is the logistics account ch.5 material or its own chapter?
+### ✓ CLOSED 2026-08-31 — ruled ch.5's BASELINE; see the RULED entry above. (Marker fixed 2026-09-01.)
 
 It answers **why the trip log exists**, which ch.4 asserted (*a record of the long driving days*) without a cause, and it supplies ch.5's missing baseline (*we did not know how far we could drive in a day*). **It also does not fit either**, because Nancy's role runs across the whole book and the car/human fabric is the weave, not a chapter. Candidates: a new short chapter in **The Drives** before `long_days.qmd`; an opening section of ch.5; or split -- baseline into ch.5, logistics into the part-opening. **Kim decides.**
 
