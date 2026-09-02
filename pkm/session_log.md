@@ -317,6 +317,48 @@ From first logged leg to last is **2,209 days. The car was driven on 139 of them
 `SILENT_STATES` in `constellations_data.R` carried **`"...photographed in ch.9"` and `"...(ch.10)"`** -- hardcoded chapter numbers, inside code, feeding a printed table. **Caught in the rendered HTML, not the source.** Both rewritten without numbers. ★★ **Exactly the same lesson as the em dashes in `fig_cost.R` panel titles: the code-string sweep must cover Finding 050 as well as the voice rules.** Swept all of `R/`: clean.
 
 **Voice 30.2 per thousand, 0 em dashes. 16 chapters render, 0 unresolved references.** ⚠ One transient `PermissionDenied` and one 60s timeout on the full render, both verified complete by artifact mtimes.
+
+### ⚠⚠⚠ CORRECTION, SAME EVENING — I DERIVED CH.13'S STATE COUNT FROM SCRATCH AND CONTRADICTED THE PROJECT'S OWN SETTLED FINDINGS
+
+**Ch.13 as first drafted said: `FL, RI, SD never witnessed by anything. 46 states reached, 3 never.` That is wrong, and the project had already established it was wrong on 2026-08-21**, in Findings 043, 044 and 045 and in `proj_Smart_Car.md`'s own state table.
+
+**The true position, unchanged since August:**
+
+| tier | states | running total |
+|---|---|---|
+| a FILL in the fuel log | 43 | 43 |
+| the TRIP LOG only (MD, VT) | 2 | **45 documented** |
+| ARITHMETIC (DE, RI, SD) | 3 | 48 |
+| a PHOTOGRAPH (FL) | 1 | **49** |
+
+★★★ **49 of 49 -- every state you can drive to.** Hawaii is where the car lives and it went by ship. **The chapter now says so.**
+
+### ⚠⚠⚠ THE PROCESS FAILURE, STATED PLAINLY, BECAUSE IT IS THE OPPOSITE OF FINDING 051
+
+**Finding 051 says: re-derive rather than trust a copied number. I applied it and it was the wrong instrument for this question.** The state count is not a scaffold paraphrase that rots -- **it is a SETTLED FINDING with its own evidence, sitting in `pkm_findings.md` under three numbered findings.** I re-derived from the fuel log alone, got the fuel log's own answer (43), and **printed it as though it were the record's answer.**
+
+★★★ **THE RULE THIS NEEDS: re-derive the NUMBERS, but read the FINDINGS first.** A scaffold's arithmetic is a claim about a number. **A finding is a claim about the world, with its evidence attached, and it is not re-derivable from one instrument** -- that is precisely what made it a finding. **Before drafting any chapter, grep `pkm_findings.md` and the project file for the chapter's subject.** I did neither for ch.13.
+
+⚠ **And the disagreement I DID notice was the signal.** I wrote *"the scaffold said SD, slide 42 said VT, neither is right"* -- and treated that as licence to derive my own answer, when it was a flag that the question was contested and already worked. **Two sources disagreeing means READ MORE, not derive fresh.**
+
+### ⚠⚠ AND I TOOK CH.14'S CENTREPIECE
+
+Finding 045's *Corollary for the writing* assigns the four states to **`what_the_record_cannot_say`** explicitly. Ch.13 had been spending its best pages on them. **Now corrected: ch.13 states the totals, gives one table of what saw each state, and hands the argument forward with `@sec-cannot-say`.** The Florida sequence, Styx River Road, the storm chasers and my own South Dakota negative-result error all belong to ch.14 and are untouched.
+
+### ✓ WHAT KIM ADDED TONIGHT, AND WHAT IT CHANGED IN THE CHAPTER
+
+- **BC closed by testimony.** Haines AK to Yukon has one road and it runs through BC; plus a second corner-clip off the plains. **TwoRed reached BC twice and never filled there.** My open geometry question is answered; ch.13's *"small puzzle"* line is replaced with his account.
+- **VT explained**: a lawyer friend's house near the line, reached by following him home from his NH office, no stations en route and no stopping without losing him.
+- **FL upgraded**: he has found **a photo of TwoRed at the same intersection** as the already-established corner photo. ⛔ Not yet in hand; ch.14 should ask.
+- **Frostburg was a meeting.** The book's one photographic figure is a page from a work trip.
+
+★★★ **NEW SECTION IN CH.13, built entirely on his rule:** *The absences all have mechanisms.* **"I believe in being strict with the data, but circumstances that are clearly explained do count, too."** Every silence has a mechanism rather than an excuse, and **a fuel log does not record where a car went, it records where a driver bought petrol.** That is Finding 041 arriving as lived experience.
+
+### The map, rebuilt
+
+**Two fill classes and one outlined class**, because there is no longer any state to mark as unvisited: **every jurisdiction on the map was reached.** Six dashed and labelled, all six explained in `@tbl-silent`. ⚠ **I also had to send Kim the PNGs** -- I had rendered them, inspected them and described them without ever putting them in front of him. **A figure the author has not seen is not a delivered figure.**
+
+⚠ **OPEN: PRINCE EDWARD ISLAND.** `logs/proj_Smart_Car_log.md` records *"the provinces are exactly right: ... PEI ... ten, all present"* -- but **PEI appears in no fuel log and no trip-log city**, and the ten provinces WITH fills are AB BC MB NB NL NS ON QC SK YT, which includes BC and excludes PE. **Either PEI was settled from a source I have not found, or that line is itself a drift.** Not resolved; see `deferred.md`.
 ## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
 
 **Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.

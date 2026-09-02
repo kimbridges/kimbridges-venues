@@ -35,17 +35,27 @@ norm_state <- function(x) {
 CA_PROV <- c("AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT")
 
 ## The disposition of every state the FUEL log never saw. Each line records HOW
-## the state is known, not just that it is. The trip-log entries are the ones
-## that only exist because of the scanning experiment in ch.9.
+## the state is known, and every one of them IS known: the project settled all six
+## before this chapter was written, and the detail belongs to the closing chapter
+## rather than to this one. NOTHING HERE IS DERIVED FROM THE FUEL LOG -- these are
+## the other instruments, which is the whole point.
+##
+## Kim's rule, stated 2026-09-01, and it governs this table:
+##   "I believe in being strict with the data, but circumstances that are clearly
+##    explained do count, too."
+## Every absence below has a MECHANISM, not an excuse: a stretch too short to need
+## fuel, a drive with no station on it, a dash to a line and back.
 SILENT_STATES <- data.frame(
-  state = c("MD", "VT", "DE", "HI", "FL", "RI", "SD"),
-  how   = c("trip log", "trip log", "arithmetic", "home", "none", "none", "none"),
+  state = c("MD", "VT", "DE", "RI", "SD", "FL"),
+  how   = c("the trip log", "the trip log", "arithmetic", "arithmetic",
+            "arithmetic", "a photograph"),
   evidence = c(
     "Frostburg, on the sheet photographed earlier in this book",
-    "Hartland, on the Penultimate State sheet",
+    "Hartland, at a friend's house a few miles from the line",
     "a leg too short for any road that avoids it",
-    "where the car lives; no mainland log applies",
-    "nothing in either log", "nothing in either log", "nothing in either log"),
+    "a leg on the Providence road, ending five miles from the line",
+    "the most indirect stretch in sixteen years, out to the line and back",
+    "the car, at a named crossroads a mile inside the state"),
   stringsAsFactors = FALSE)
 
 constellations_data <- function() {
@@ -65,7 +75,6 @@ constellations_data <- function() {
   names(by_st) <- c("st", "fills")
 
   silent <- SILENT_STATES
-  silent$fills <- 0L
 
   ## ---- the parking constellation -------------------------------------------
   os <- read.csv(file.path(SC_DIR, "TwoRed_on_station.csv"), stringsAsFactors = FALSE)
@@ -85,10 +94,11 @@ constellations_data <- function() {
     by_st = by_st, us = us,
     silent = silent,
     n_silent = nrow(silent),
-    n_recovered = sum(silent$how %in% c("trip log", "arithmetic")),
-    n_never = sum(silent$how == "none"),
-    never = silent$state[silent$how == "none"],
-    reach = length(us) + sum(silent$how %in% c("trip log", "arithmetic")),
+    ## every drivable state. 48 contiguous + Alaska = 49; Hawaii is where the car
+    ## lives and it went there by ship, so it is not a state this car drove to.
+    reach = length(us) + nrow(silent),
+    n_drivable = 49,
+    complete = (length(us) + nrow(silent)) == 49,
 
     ## parking
     os = os, n_gaps = nrow(os),

@@ -170,7 +170,39 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
-### ⚠ OPEN — did TwoRed drive through British Columbia? The Delaware instrument, one province up (2026-09-01)
+### ✓✓✓ CLOSED 2026-09-01 BY KIM — British Columbia, and it was testimony not geometry
+
+**TwoRed reached BC twice and never filled there.** *"I got off the Alaska Marine Highway in Haines. The only road north goes through (wait for it ....) BC before entering the Yukon Territory. No need to get fuel on that short stretch. For the record, but not something easily verified, I also clipped the corner of BC after crossing the Canadian Plains."*
+
+★ My Alberta-does-not-border-Yukon argument was sound and it was the long way round; **the ferry landfall at Haines was already in @sec-marine-highway and I had not connected it.** ⚠ The second crossing (the plains corner) Kim himself flags as not easily verified -- **carried in ch.13 as his account, not as a derived fact.**
+
+### ⛔ ASK KIM FOR THE FLORIDA PHOTOGRAPH — ch.14 wants it and he has offered (2026-09-01)
+
+Finding 045 established the geotagged **corner** photo (30.983392, -87.571312, 1.07 mi inside FL). **Kim has now found a photo of TWORED ITSELF at that same intersection.** *"I'd dig it out, but that's kinda a lot of work at this hour. But if I need it, I can find it."*
+
+★★ **The second photo is strictly stronger: the first places the CORNER, the second places the CAR at the corner.** ⛔ **Ch.14's Florida sequence should ask for it before drafting** -- it is the closing chapter's best documentary object and it would pair with `@fig-sheet` as the book's second photograph. Target: `images/TwoRed/twored_florida_corner.jpg` (the scaffold already names the slot).
+
+### ⚠ OPEN — PRINCE EDWARD ISLAND is claimed but appears in no log (2026-09-01)
+
+`logs/proj_Smart_Car_log.md` records the 2026-08 charter check as: *"The provinces are exactly right: Alberta, Manitoba, New Brunswick, Newfoundland, Nova Scotia, Ontario, PEI, Quebec, Saskatchewan, Yukon -- ten, all present."*
+
+**But PEI appears in no fuel row and no trip-log city.** Derived tonight, the ten provinces WITH a fill are **AB BC MB NB NL NS ON QC SK YT** -- which *includes BC* (Creamsicle, Vancouver Island) and *excludes PE*. TwoRed's own nine are AB MB NB NL NS ON QC SK YT.
+
+**Three possibilities:** (a) PEI was settled from a source not yet found; (b) that line silently substituted PEI for BC while counting to ten; (c) Kim drove the Confederation Bridge and no instrument caught it, which would make PEI the eleventh jurisdiction and a province-level twin of the six silent states.
+
+⛔ **NOT resolved and NOT printed either way.** Ch.13 says only that ten provinces have a fill, which is derived and true. **One question to Kim settles it: did TwoRed cross to Prince Edward Island?** He was in NB, NS and NL on that trip, so the bridge is entirely plausible.
+
+### ★★★ STANDING RULE FROM FINDING 052 — findings first, then numbers
+
+**Before drafting any chapter, grep `pkm_findings.md` AND `proj_Smart_Car.md` for its subject. Then re-derive the arithmetic.** ⛔ **Re-derivation is a check on transcription, never a substitute for reading.** Ch.13 contradicted three settled findings in print because I applied Finding 051 without doing this. ★ **Two sources disagreeing about a fact means READ MORE, not derive fresh.**
+
+### ⚠ TASK — a figure the author has not seen is not a delivered figure (2026-09-01)
+
+I rendered both ch.13 maps, inspected them myself, wrote captions for them and described them in a report -- **and never put the PNGs in front of Kim.** He had to ask: *"Now, about the map(s). Where are they?"*
+
+**Rule: every figure goes to Kim as an image in the same turn it is finished.** Verifying it myself satisfies the caption rule (view the PNG before shipping the caption); **it does not satisfy the author.**
+
+### ✓ SUPERSEDED 2026-09-01 — Kim closed this by testimony; see the CLOSED entry above
 
 **TwoRed has no BC fuel fill and no BC city in its trip log.** It does have **Lethbridge AB** and **Destruction Bay YT**. ★★ **Alberta does not border Yukon.** A road journey between them must cross British Columbia or the Northwest Territories, and the Alaska Highway route runs through BC.
 

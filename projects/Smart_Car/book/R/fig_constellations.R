@@ -38,19 +38,19 @@ fig_driving <- function(K, path = "figures/driving.png") {
   cr <- norm_state(cream_fuel$state)
   both     <- intersect(unique(tw), unique(cr))
   one_car  <- setdiff(union(unique(tw), unique(cr)), both)   # either car, but only one
-  recovered <- K$silent$state[K$silent$how %in% c("trip log", "arithmetic")]
-  never     <- K$silent$state[K$silent$how == "none"]
+  silent   <- K$silent$state          # reached, and known from another instrument
+
 
   g$cls <- ifelse(g$postal %in% both, "filled by both cars",
            ifelse(g$postal %in% one_car, "filled by one car",
-           ifelse(g$postal %in% recovered, "reached, never a fill",
-           ifelse(g$postal %in% never, "never witnessed", NA))))
+           ifelse(g$postal %in% silent, "reached, never a fill", NA)))
+
   g$cls <- factor(g$cls, levels = c("filled by both cars", "filled by one car",
-                                    "reached, never a fill", "never witnessed"))
+                                    "reached, never a fill"))
   g <- sf::st_transform(g, .SC_CRS)
 
   ## direct labels on every silent state, which is the relief the contrast check asks for
-  lab <- g[g$postal %in% c(recovered, never), ]
+  lab <- g[g$postal %in% silent, ]
   ctr <- suppressWarnings(sf::st_coordinates(sf::st_point_on_surface(sf::st_geometry(lab))))
   labs <- data.frame(x = ctr[, 1], y = ctr[, 2], postal = lab$postal,
                      stringsAsFactors = FALSE)
@@ -58,8 +58,6 @@ fig_driving <- function(K, path = "figures/driving.png") {
   p <- ggplot2::ggplot(g) +
     ggplot2::geom_sf(ggplot2::aes(fill = cls), colour = .SC_INK$surface,
                      linewidth = 0.28) +
-    ggplot2::geom_sf(data = g[!is.na(g$cls) & g$cls == "never witnessed", ],
-                     fill = NA, colour = .SC_INK$secondary, linewidth = 0.7) +
     ggplot2::geom_sf(data = g[!is.na(g$cls) & g$cls == "reached, never a fill", ],
                      fill = NA, colour = .SC_HUE, linewidth = 0.7, linetype = "21") +
     ggrepel::geom_text_repel(
@@ -71,13 +69,11 @@ fig_driving <- function(K, path = "figures/driving.png") {
     ggplot2::scale_fill_manual(
       values = c("filled by both cars" = .SC_HUE,
                  "filled by one car" = .SC_LITE,
-                 "reached, never a fill" = .SC_INK$surface,
-                 "never witnessed" = .SC_INK$surface),
+                 "reached, never a fill" = .SC_INK$surface),
       na.value = "#f4f3ef", drop = FALSE, na.translate = FALSE, name = NULL) +
     ggplot2::guides(fill = ggplot2::guide_legend(nrow = 1, byrow = TRUE,
-                     override.aes = list(colour = c(.SC_INK$surface, .SC_INK$surface,
-                                                    .SC_HUE, .SC_INK$secondary),
-                                         linewidth = c(0.28, 0.28, 0.7, 0.7)))) +
+                     override.aes = list(colour = c(.SC_INK$surface, .SC_INK$surface, .SC_HUE),
+                                         linewidth = c(0.28, 0.28, 0.7)))) +
     ggplot2::coord_sf(expand = FALSE) +
     ggplot2::theme_void(base_size = 11) +
     ggplot2::theme(

@@ -1,3 +1,34 @@
+## ★★★ KIM CLOSED BRITISH COLUMBIA, EXPLAINED VERMONT, AND UPGRADED FLORIDA — 2026-09-01, verbatim
+
+> BC for TwoRed. I got off the Alaska Marine Highway in Haines. The only road north goes through (wait for it ....) BC before entering the Yukon Territory. No need to get fuel on that short stretch. For the record, but not something easily verified, I also clipped the corner of BC after crossing the Canadian Plains. So, no fuel dot because it would have been very difficult.
+>
+> Kinda the same thing for Vermont. I stayed very close to the border at a friend's (the lawyer) house. To get there, I followed him home from his NH office. No gas stations en route, and I couldn't have stopped as I needed to follow him. **I believe in being strict with the data, but circumstances that are clearly explained do count, too.**
+>
+> And Florida. I showed a photo of the street signs on a corner that had to be Florida. **I have since found a photo of TwoRed at the same intersection.** (I'd dig it out, but that's kinda a lot of work at this hour. But if I need it, I can find it.) So FL is photo evidence, just like Frostburg (which, by the way, was the site of one of the meetings I attended.)
+
+### ★★★ THE RULE INSIDE THIS, AND IT IS THE CHAPTER'S THESIS
+
+**"I believe in being strict with the data, but circumstances that are clearly explained do count, too."** ★★ **Every one of the six silent states has a MECHANISM, not an excuse** -- a stretch too short to need fuel, a road with no stations, a drive he could not stop on without losing the car he was following, a dash to a line and back. **The strictness is in demanding the explanation, not in refusing to hear it.** Written into ch.13 as its own section, *The absences all have mechanisms*.
+
+★★★ **And the deeper form: a fuel log does not record where a car went. It records where a driver bought petrol.** Those are the same map only when the trip is long enough and ordinary enough to need one. **The six holes are exactly where the journey and the transaction came apart** -- which is Finding 041 (*a fuel row is a TRANSACTION, not a STATE*) arriving as lived experience rather than as an inference.
+
+### ✓ BRITISH COLUMBIA IS CLOSED — TwoRed reached it TWICE
+
+**Haines AK to the Yukon: there is one road north and it runs through BC.** Plus a second clip of the BC corner coming off the Canadian plains (⚠ Kim flags this one himself as *"not something easily verified"*). **Neither crossing produced a fill, and the short-stretch explanation is the mechanism.**
+
+This closes my open `deferred.md` question from earlier tonight, **and by Kim's testimony rather than by the geometry I had proposed** -- my Alberta-does-not-border-Yukon argument was sound but it was the long way round. ★ Note he gave the Haines detail unprompted; the ferry landfall was already in @sec-marine-highway and I had not connected it.
+
+### ⚠⚠ FLORIDA IS NOW A SECOND PHOTOGRAPH — and Kim has offered to retrieve it
+
+Finding 045 already established the **geotagged corner photo, 30.983392 / -87.571312, 1.07 mi inside Florida.** ★★ **He has now found a photo of TWORED ITSELF at the same intersection**, which is a strictly stronger object: the first photo places the CORNER, the second places the CAR at the corner.
+
+⛔ **NOT YET IN HAND.** He offered to dig it out and it is a lot of work at this hour. **Ch.14 should ask for it** -- see `deferred.md`.
+
+### ★ Frostburg was a meeting
+
+Incidental, and it explains the trip's existence: **Frostburg MD was the site of one of the meetings Kim attended.** The 2012_Frostburg trip is named for it. ★ Worth noting that the book's one photographic figure is a page from a work trip, not a holiday.
+
+---
 ## ★★★ KIM IDENTIFIED THE THREE NAMES IN CREAMSICLE'S COMMENT COLUMN — 2026-09-01, and one of them broke my category scheme
 
 > "Tom" is my brother, "Cindy" is my niece (think: Mentone), and "Madness" is "Smart Madness/Madness Autoworks" my mechanics and general Smart advisors.

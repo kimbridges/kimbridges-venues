@@ -12,7 +12,7 @@ K <- constellations_data()
 S <- K$silent
 
 stopifnot(K$n_us == 43, K$n_prov == 10, length(K$cr_new) == 0,
-          K$n_never == 3, K$pct_parked > 90, K$n_unlogged == 3)
+          K$complete, K$reach == 49, K$pct_parked > 90, K$n_unlogged == 3)
 ```
 
 ## The map everybody expects
@@ -23,7 +23,7 @@ Sixteen years of fuel receipts make a map, and here it is.
 
 ```{r}
 #| label: fig-driving
-#| fig-cap: "Every state and province the two cars bought fuel in. Dark is the ground both cars covered; light is ground only one of them did. The two outlined classes are the interesting ones: dashed states were reached and never filled in, and the heavy outline marks the three the record never witnessed at all. Hawaii is left out, because that is where the car lives rather than somewhere it drove."
+#| fig-cap: "Every state and province the two cars bought fuel in. Dark is ground both cars covered, light is ground only one of them did, and the six dashed states were reached without the car ever buying a tank in them. Every jurisdiction on this map was visited; nothing here is a place the car did not go. Hawaii is left out, because that is where the car lives rather than somewhere it drove."
 #| fig-width: 7.4
 #| fig-height: 5.4
 #| echo: false
@@ -32,30 +32,38 @@ fig_driving(K)
 
 It's a satisfying picture and it's a slightly dishonest one, because a fuel log can only draw the places where somebody stopped and bought something. **The interesting part of that map is the holes.**
 
-## Three kinds of silence
+## The six the fuel log never saw
 
-Leaving Hawaii out of it, **`r nrow(S) - 1` states have no fill in either record**, and they aren't the same kind of absent.
+Leaving Hawaii aside, there are **`r K$n_silent` states** with no fill in either record. For a while I took that to mean the record couldn't place the car in them.
+
+That was wrong, and it was wrong in an instructive way: **I was treating a hole in one instrument as a hole in the past.** All six are settled, and not one of them is settled by the fuel log.
 
 ```{r}
 #| label: tbl-silent
-#| tbl-cap: "Every state the fuel log never saw, and how each one is known. Three different instruments, and only the last row is really a gap."
+#| tbl-cap: "Every state the fuel log never saw, and what did see it. Three different instruments, none of them the one this chapter's map is drawn from."
 #| echo: false
-z <- S[S$state != "HI", c("state", "how", "evidence")]
-z$how <- c("trip log" = "the trip log", "arithmetic" = "arithmetic",
-           "none" = "not at all")[z$how]
+z <- K$silent
 names(z) <- c("State", "Known from", "The evidence")
 knitr::kable(z, align = c("l", "l", "l"), row.names = FALSE)
 ```
 
-**Maryland and Vermont were driven through and never filled in.** The car crossed them, stopped for the night in them, and bought its fuel on either side. Nothing in `r nrow(twored_fuel) + nrow(cream_fuel)` fuel rows knows either state exists.
+**Maryland and Vermont were driven through and never filled in**, and the trip log has both. It only has them because of @sec-paper: before the scanning experiment the typed trip log ran to seven rows, and Frostburg and Hartland were sitting on paper in a box.
 
-What knows is the trip log, and **the trip log only knows because of @sec-paper.** Those legs came off scanned sheets. Before the scanning experiment the typed trip log had seven rows in it, and Maryland and Vermont were sitting on paper in a box.
+I'll put a finer point on Maryland. **The sheet photographed in @sec-paper, the one page of this record anybody will ever see reproduced, is Frostburg**, and Frostburg is in Maryland. It's where one of my meetings was. **The single image in this book is a picture of the evidence for a state that's blank on the map above**, and I didn't notice that until I drew the map.
 
-I want to put a finer point on that. **The sheet photographed in @sec-paper, the one page of this record anybody will ever see reproduced, is Frostburg.** Frostburg is in Maryland. **The single image in this book is a picture of the evidence for a state that is blank on the map above**, and I didn't notice that until I drew the map.
+**Delaware, Rhode Island and South Dakota came back by arithmetic**, and Florida by a photograph of the car at a crossroads a mile inside the line. @sec-cannot-say takes all four apart properly, because how a record gives back what it never recorded is a whole argument and not a footnote.
 
-**Delaware is stranger still**, and @sec-audit has already told that story: a leg too short for any road that avoids it. No fill, no sheet, no town. Just a distance that doesn't work unless the car went through Delaware, so it did.
+## The absences all have mechanisms
 
-**And then Florida, Rhode Island and South Dakota.** No fill, no leg, no arithmetic. Three states out of fifty, and after sixteen years I think that's the honest total: **`r K$reach` states reached, `r K$n_never` never.**
+Here's what I'd add now that I've seen the map, because the table above makes these look like failures of record-keeping and they aren't.
+
+**Every one of those six is a stretch where there was no reason to buy fuel, and in most of them no opportunity either.** Vermont was a friend's house a few miles over the line; I got there by following him home from his office in New Hampshire, and there were no stations on that road and no stopping anyway, because I'd have lost him. South Dakota was a dash north to the line and straight back. Florida was a few miles into the panhandle and a turn around.
+
+**A fuel log doesn't record where a car went. It records where a driver bought petrol**, and those are the same map only when the trip is long enough and ordinary enough to need one. The six holes are the places where the journey and the transaction came apart.
+
+**I believe in being strict with the data. But circumstances that are clearly explained do count**, and every one of these has a circumstance rather than an excuse. The strictness is in demanding the explanation, not in refusing to hear it.
+
+So the honest total is not the map's total. **`r K$reach` states, which is every one you can drive to.** Hawaii is where the car lives, and it went there by ship.
 
 ## The second car added nothing
 
@@ -63,10 +71,11 @@ Here's a result I didn't expect and had to check twice.
 
 Creamsicle drove `r K$n_cr_us` states in its three years. **Every single one of them was already TwoRed's.** Not one new state, a decade later, in a different car, from a different starting point, on what I'd have described as completely different trips.
 
-It added exactly one thing to the map, and it's a province: **British Columbia**, three fills on Vancouver Island. The two cars share no Canadian ground at all. TwoRed got to Alaska by sea from Bellingham and up the highway from Alberta; **it never once bought fuel in British Columbia**, which is its own small puzzle and one I'll leave sitting there.
+It added one jurisdiction, and it's a province: **British Columbia**, three fills on Vancouver Island.
+
+**TwoRed had been there too, twice, and never bought a tank in it.** Coming off the ship at Haines there's exactly one road north, and it runs through British Columbia before it reaches the Yukon: a short enough stretch that the question of fuel never came up. And I clipped the corner of the province again coming off the Canadian plains. **Neither crossing left a mark on any instrument I was carrying**, which puts British Columbia in the same class as the six states above, one border up.
 
 @sec-car-cost found the two cars four tenths of a mile per gallon apart and called the car a constant. **The map says the same thing about the driver.** Ten years, a different vehicle, and I went back to the same country.
-
 ## The map nobody draws
 
 Now the other constellation, and this is the one I'd never have thought to look for.

@@ -2227,3 +2227,19 @@ exactly the kind of half-signal that would mislead anyone checking the return va
 **★★★ COROLLARY, learned by catching it in my own draft (2026-09-01). A round phrase that FEELS true is the same defect wearing different clothes.** The ch.12 draft carried *"nine days in ten it really was just that"* -- no scaffold, no earlier note, nothing copied. **I generated it while writing, from a correct impression, and it is not derivable from the data.** The true figure was 49 of 84 legs, which is well short of nine in ten. It would have rendered, read well, and been unfalsifiable by any build.
 
 **So the rule extends past copied numbers to written ones: any quantity in prose that did not come from an R object is a claim, including quantities that arrived as English rather than as digits.** "Nine days in ten", "most", "nearly all", "roughly half" are numbers. **Either back them with an inline `r` expression or write the shape without the quantity.** ★ The tell is unchanged and it is still the hard part: **the build succeeds.**
+
+## Finding 052 -- RE-DERIVE THE NUMBERS, BUT READ THE FINDINGS FIRST (2026-09-01)
+
+**What happened.** Ch.13 needed the state count. Finding 051 says a copied number is a claim about a number, so I did what 051 asks: I went to the primary data and derived it. **The fuel log gives 43 states. I printed 43, added the two I could see in the trip log, and wrote that three states were never witnessed by anything.**
+
+**The project had settled that question eleven days earlier.** Findings 043, 044 and 045, plus a table in `proj_Smart_Car.md`, establish **49 of 49** -- Delaware, Rhode Island and South Dakota recovered by geometry, Florida by incidental knowledge and then by a geotagged photograph. **I contradicted three numbered findings in print, using the very method meant to protect the text.**
+
+**Why 051 pointed the wrong way here.** 051 governs a number that was DERIVED ONCE AND THEN COPIED -- a paraphrase in a scaffold, drifting from its generator. **The state count is not that.** It is a **FINDING**: a claim about the world, assembled from several instruments, with its evidence attached. ★★★ **A finding is not re-derivable from one instrument, and that is exactly what made it a finding.** Re-deriving it from the fuel log alone did not check it. **It silently replaced it with the fuel log's own narrower answer**, which was never in dispute and was never the question.
+
+**Rule. Before drafting, grep `pkm_findings.md` and the project file for the chapter's subject. THEN re-derive the arithmetic.** The two rules compose in one order only: **findings first, then numbers.** ⛔ **Re-derivation is a check on transcription, not a substitute for reading.**
+
+★★ **And the tell was in my own draft.** I wrote *"the scaffold said SD, slide 42 said VT, neither is right"* and treated a disagreement between two sources as licence to derive a third answer. **Two sources disagreeing is a signal that the question is contested and probably already worked. It means READ MORE. It does not mean start fresh.**
+
+**A second failure rode along with the first.** Finding 045's own *Corollary for the writing* assigns this material to the closing chapter, and I put it in ch.13. **The findings file contained not only the answer but the instruction about where the answer belonged**, and reading it would have prevented both errors at once.
+
+**Companion to 049, 050 and 051.** Those three are all one disease: **a fact in prose that is not derived from the thing it describes.** 052 is the reverse and it is the more dangerous of the two, because **the fix for the first three, applied without reading, produces a confidently wrong number with a live generator behind it.** ★ The tell is the same as ever: **the build succeeds**, and now the number recomputes every render, which makes it look more trustworthy rather than less.
