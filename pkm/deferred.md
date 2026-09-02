@@ -170,7 +170,33 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
-### ⛔⛔ ASK KIM: WHERE ARE CREAMSICLE'S COORDINATES? 111 cities hang on it (2026-09-01)
+### ✓✓✓✓ CLOSED 2026-09-01 — the geocoding gap is gone. BOTH CARS AT 100%
+
+Kim supplied a Google Maps API key (already in his `.Renviron` as `GGMAP_GOOGLE_API_KEY`). ⚠ **He asked for "reverse geocode"; the job needed FORWARD geocoding** (reverse is coordinates -> address). Corrected and used the address endpoint.
+
+**116 cities requested, 116 returned, 0 failures.** TwoRed **294/294**, Creamsicle **173/173**, 352 of 352 distinct cities. **`figures/stops_twored.png` and `figures/stops_creamsicle.png` both exist; Creamsicle's has never existed before.**
+
+⛔ **THE API IS CALLED ONCE, IN A SCRATCH RUN.** Results live in `data/geocode_google_2026-09-01.csv` (city_logged, state, city_resolved, lat, lon, location_type, formatted, audit, spelling_corrected, source, retrieved). **`stops_data()` reads that file and never touches the network** -- same rule as `na_states.rds`. ⛔ The key was never echoed and the output file was checked against it before saving.
+
+### ★★★ THE AUDIT IS THE PART TO KEEP — a geocoder is a source like any other
+
+**Every one of the 116 was tested by point-in-polygon against `data/na_states.rds`:** 111 inside the state the log claims, **5 coastal centroids up to 1,825 m outside a 3 km-simplified boundary whose nearest polygon was still correct** (recorded `PASS (coastal)`, not quietly waved through), **0 mismatches.**
+
+★★ **The record already carried a redundant field to check the geocoder against: the state column.** Nothing was accepted on the API's word. ⛔ **Any future external data source gets the same treatment: find the field the record can check it with, and check it.**
+
+### ★★★ 14 FREE GAZETTEER ERRATA — the geocoder is also a spelling checker
+
+Google resolved 14 logged spellings to their real names: **Elroy->Eloy, Quartzite->Quartzsite, Gothensburg->Gothenburg, Alamogaordo->Alamogordo, Amagosa->Amargosa Valley, Anacrtes->Anacortes, Spanish Forks->Spanish Fork, Ft Bragg->Fort Bragg, Ft. Oglethorpe->Fort Oglethorpe, Mt. Vernon->Mount Vernon, Bainbridge Is->Bainbridge Island, Lake Havasu->Lake Havasu City, Big Oak Flat->Groveland-Big Oak Flat, Dekorra.**
+
+**`TwoRed_gazetteer_errata.csv` grew from 8 rows to 22**, each with `basis = "Google Geocoding API, audited by point-in-polygon"` and the formatted address as evidence. ★★★ **Same shape as the scanning experiment in @sec-paper: an instrument brought in for one job audits the data on its way past.** ⚠ These are transcription errors in the fuel log that six other audit instruments never saw, **because none of them tests a place NAME against the world.**
+
+### ⛔ RULING WANTED — where do the two stop maps go?
+
+`figures/stops_twored.png` + `figures/stops_creamsicle.png`. ★★ **The two shapes are completely different**: TwoRed is four transcontinental strings plus the Alaska Highway and the Maritimes; **Creamsicle is a Pacific coast run and two Midwest corridors.** @sec-car-cost said the CAR was a constant, the choropleth said the DRIVER was, **and these say the TRIPS were not.**
+
+**Candidates:** (a) @sec-long-days, where cadence is already the subject and the 300-mile day is argued from tables alone; (b) ch.13 beside the choropleth, as extent-then-cadence; (c) both, one panel each. ⛔ **Not placed in any chapter yet.**
+
+### ✓✓✓✓ SOLVED 2026-09-01 — Google Geocoding API; both cars at 100%. See the CLOSED entry above
 
 Kim asked for the fuel-stop map **for both cars** and noted *"I've never made a Creamsicle map."* ⛔ **TwoRed is built (87.1% of fills placed). Creamsicle is at 39.9% and was NOT shipped**, because a 40% map renders real driving as sparse.
 

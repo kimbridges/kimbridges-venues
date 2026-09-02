@@ -51,6 +51,22 @@
   p <- rbind(p, data.frame(k = .stop_key(mc$nm, mc$st), lat = mc$lat, lon = mc$lon,
                            src = "maps", stringsAsFactors = FALSE))
 
+  ## 4. Google Geocoding API, run once on 2026-09-01 for the 116 cities no offline
+  ##    source could place. EVERY result was audited by point-in-polygon against
+  ##    data/na_states.rds: 111 fell inside the state the log claims, 5 were coastal
+  ##    centroids up to 1.8 km outside a 3 km-simplified boundary whose NEAREST
+  ##    polygon was still the right state, and 0 were mismatches. The file carries
+  ##    the resolved spelling and the formatted address so any row can be rechecked.
+  ##    ⛔ The API is NOT called from here. This reads the saved result.
+  gp <- file.path(SC_DIR, "geocode_google_2026-09-01.csv")
+  if (file.exists(gp)) {
+    gg <- utils::read.csv(gp, stringsAsFactors = FALSE)
+    gg <- gg[gg$audit != "FAIL", ]
+    p <- rbind(p, data.frame(k = .stop_key(gg$city_logged, gg$state),
+                             lat = gg$lat, lon = gg$lon, src = "google",
+                             stringsAsFactors = FALSE))
+  }
+
   wc <- file.path("data", "wc_tagged.rds")
   if (file.exists(wc)) {
     w <- readRDS(wc)

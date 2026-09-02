@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-09-01 21:22 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-09-01 21:47 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -9,7 +9,7 @@ _Generated 2026-09-01 21:22 by pkm_health.R. Regenerate; do not edit._
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 4
 - **Files over size budget:** 4
-- **Active Focus block:** 5.5 KB (budget 6)
+- **Active Focus block:** 5.7 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 6
 - **Legacy pages awaiting account deletion:** 58
@@ -36,8 +36,8 @@ None.
 
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
-| session_log.md | REFERENCE | 325.8 | 250 | 75.8 | FALSE |
-| proj_Smart_Car.md | PROJECT |  63.1 |  45 | 18.1 | TRUE |
+| session_log.md | REFERENCE | 329.3 | 250 | 79.3 | FALSE |
+| proj_Smart_Car.md | PROJECT |  63.4 |  45 | 18.4 | TRUE |
 | proj_seasonality.md | PROJECT |  51.6 |  45 |  6.6 | TRUE |
 | proj_audio.md | PROJECT |  47.3 |  45 |  2.3 | TRUE |
 
@@ -45,7 +45,7 @@ None.
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 5.5 | 6 | -0.5 |
+| 8 | 5.7 | 6 | -0.3 |
 
 ## Venues without a source repo
 
@@ -77,10 +77,10 @@ None.
 | chateau_2026-08-29 |  3.2 | 0 | FALSE |
 | creamsicle_clean_20260828 |  4.0 | 0 | FALSE |
 | pkm_edits_20260811 | 21.5 | 0 | TRUE |
-| pkm_snapshots | 30.0 | 0 | TRUE |
+| pkm_snapshots | 30.1 | 0 | TRUE |
 | smartcar_fuelfix_20260817 |  3.0 | 0 | FALSE |
-| timelapse | 18.9 | 0 | TRUE |
-| venuemirror_clone_2026-08-03 | 30.2 | 0 | TRUE |
+| timelapse | 19.0 | 0 | TRUE |
+| venuemirror_clone_2026-08-03 | 30.3 | 0 | TRUE |
 
 ## Legacy pages by platform
 
@@ -96,4 +96,4 @@ None.
 None.
 
 ---
-_Ran in 76.3 s._
+_Ran in 62.6 s._

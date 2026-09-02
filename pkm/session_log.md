@@ -390,6 +390,44 @@ Committed to `book/images/TwoRed/`:
 - **`twored_easternmost.jpg`** -- Kim and Nancy at West Quoddy Head, ★ **with a HAWAII decal in the rear window**: a Hawaii car at the far end of the continent, in one frame.
 
 **16 chapters render, 0 unresolved references.**
+
+### ★★★★ THE GEOCODING IS SOLVED — BOTH CARS AT 100%, AND CREAMSICLE'S MAP EXISTS FOR THE FIRST TIME
+
+Kim: *"I have a Google Maps API. Can we try to get the Creamsicle fuel city coordinates using their reverse geocode resource?"* ⚠ **Forward geocoding, not reverse** (reverse is coordinates -> address); the Geocoding API's address endpoint is what was needed. Said so and used it.
+
+| | before | after |
+|---|---|---|
+| TwoRed fills placed | 256 / 294 (87.1%) | **294 / 294 (100%)** |
+| Creamsicle fills placed | 69 / 173 (39.9%) | **173 / 173 (100%)** |
+| distinct cities placed | 232 / 352 | **352 / 352** |
+
+**`GGMAP_GOOGLE_API_KEY` was already in Kim's `.Renviron`.** ⛔ The key was never echoed, never written to any file, and `geocode_google_2026-09-01.csv` was checked against it before saving. ⛔ **The API is called ONCE, in a scratch run; `stops_data()` reads the saved CSV and never touches the network.**
+
+### ★★★ EVERY GEOCODE WAS AUDITED, WHICH IS THE PART THAT MATTERS
+
+**116 cities requested, 116 returned, and every one tested by point-in-polygon against `data/na_states.rds`:**
+
+- **111 fell inside the state the fuel log claims.**
+- **5 were coastal centroids** -- Tofino BC, Fort Bragg CA, Morehead City NC, Astoria OR, Anacortes WA -- **up to 1,825 m outside a 3 km-simplified boundary, whose NEAREST polygon was still the right state.** Recorded as `PASS (coastal)`, not quietly passed.
+- **0 mismatches.**
+
+★★ **This is the book's own method turned on a new instrument.** A geocoder is a source like any other, and the record already had a redundant field to check it against: the state column. **Nothing was accepted on the API's word.**
+
+### ★★★ AND IT PAID A DIVIDEND NOBODY ASKED FOR: 14 GAZETTEER ERRATA, FREE
+
+Google silently resolved 14 logged spellings to their real names, **each one a transcription error nobody had caught**:
+
+`Elroy -> Eloy` · `Quartzite -> Quartzsite` · `Gothensburg -> Gothenburg` · `Alamogaordo -> Alamogordo` · `Amagosa -> Amargosa Valley` · `Anacrtes -> Anacortes` · `Spanish Forks -> Spanish Fork` · `Ft Bragg -> Fort Bragg` · `Ft. Oglethorpe -> Fort Oglethorpe` · `Mt. Vernon -> Mount Vernon` · `Bainbridge Is -> Bainbridge Island` · `Lake Havasu -> Lake Havasu City` · `Big Oak Flat -> Groveland-Big Oak Flat` · `Dekorra` (confirmed)
+
+**All 14 appended to `TwoRed_gazetteer_errata.csv`** (8 rows -> 22) with `basis = "Google Geocoding API, audited by point-in-polygon"` and the formatted address as evidence. ★★★ **A geocoder is also a SPELLING checker, and this is the same lesson as the scanning experiment in @sec-paper: an instrument brought in for one job audits the data on its way past.**
+
+### The figures
+
+`figures/stops_twored.png` and `figures/stops_creamsicle.png`, one per car, same projection and mark spec as the choropleth. **No route lines** -- the standing rule against drawing roads nobody recorded. **The spacing is the finding.**
+
+★★ **The two shapes are completely different and that is the point.** TwoRed: four transcontinental strings, the Alaska Highway, the Maritimes. **Creamsicle: a Pacific coast run from Vancouver Island to southern California, and two Midwest corridors.** @sec-car-cost said the CAR was a constant; the choropleth said the DRIVER was; **these two say the TRIPS were not.**
+
+⛔ **Not yet placed in a chapter.** Candidates: @sec-long-days (cadence is that chapter's subject) or ch.13 alongside the choropleth. Kim to rule.
 ## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
 
 **Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.
