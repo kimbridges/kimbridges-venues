@@ -240,6 +240,30 @@ The obvious objection is that commented days were simply *different* days. **Tes
 **⚠ One unsupported clause caught in my own draft before Kim saw it:** "nine days in ten it really was just that" -- not derivable. Replaced with the 49 uncommented legs, which is. **A round phrase that feels true is exactly the shape of a Finding-051 number.**
 
 New `R/day_data.R` (88 lines), `R/fig_day.R`, `figures/day.png`. **16 chapters render, 0 unresolved references. Voice 29.9 per thousand, 0 em dashes.** ⚠ One transient `PermissionDenied` on `_output` and one 60s MCP timeout on the full render -- **both Finding 048/012 class, both verified complete by artifact mtimes rather than by return value.**
+
+### ★★★ KIM GAVE CH.12 ITS ENDING — the instrument-design lesson, and it is a methodology claim for the whole book
+
+**Two new sections, ~600 words: *What I'd do differently* and *And one box with no rules in it*.** His account is verbatim at the top of `logs/proj_Smart_Car_log.md`. Same shape as ch.9's scanning-experiment ending: **the chapter had the finding and he supplied what the finding was FOR.**
+
+*"At the start, I didn't know what to record. I just did what seemed both logical (what mileage do you get?) and possible (how many columns fit on the sheet of paper)... What would have been better is to think through, ahead of time, what answers I'd like to get... Planning ahead pays great dividends. Besides that, don't put off the analysis. Run the data early and often."*
+
+### ★★★ THE COST OF NOT PLANNING IS NOW AN EXACT NUMBER, AND IT IS THE LARGEST IN THE CHAPTER
+
+**TwoRed's sheet has no stopped-time column. `r 139` of the fleet's `r 223` recorded legs -- 62.3% -- cannot be asked the question ch.12 answers.** Six years of driving, closed to it. ★★ **And this is the one class of loss in the project that better analysis CANNOT repair:** an error corrects, a missing entry recovers from a scan, **a column that was never on the page recovers from nothing.** Stated in the chapter against @sec-audit, which is the contrast that gives it force.
+
+### ⚠⚠⚠ I NAMED A TENSION IN KIM'S OWN LESSON RATHER THAN SMOOTHING IT — HE SHOULD RULE ON THIS
+
+He proposed two fixes. **The first (add stopped time) is unambiguously right. The second (list reasons for stopping as categories) would, taken literally, have destroyed the chapter's finding**, and I wrote that into the chapter instead of quietly dropping it.
+
+**`DAY_CATS` was DERIVED BY READING THE FREE TEXT.** A dropdown built in 2010 holds *somebody to see*; it does not hold **Tom, Cindy, Meet Lan, Madness + Cindy**. It gives you the number 5 and none of the names. **★★★ So the chapter passes on a PAIR: design the structured columns you can foresee, AND keep one box with no rules in it, because that is where the next column comes from.** In this record the unruled box outperformed the column built for the job.
+
+### ★★★ AND HIS "RUN THE DATA EARLY" RULE TURNED OUT TO BE MEASURABLE
+
+I had written *"after ten or twenty comments the categories are already visible"* as a hand-wave. **Caught it under the Finding 051 corollary and tested it instead.** Walking the commented legs in date order: **6 of the 7 categories appear in the first TEN comments, and all 7 by the 20th, with 15 still to come.** ★★ **His rule is not advice, it is a result: the structured column was derivable from the first ten rows and he had six more years in which to add it.** New in `day_data.R`: `cat_total`, `cat_at10`, `cat_all_by`, `tw_no_stop`, `all_legs`, `pct_unaskable`, `names_seen`.
+
+**⚠ SECOND CATCH OF THE SAME KIND IN ONE SESSION.** *"a few hundred days of what people actually write"* -- also mine, also unsupported (there are 35 comments), also removed. **Both were English rather than digits, which is exactly why they survived the first read.** Finding 051's corollary is earning its keep immediately.
+
+**Ch.12 now ~2,080 prose words, 9 sections. Voice 34.2 per thousand, 0 em dashes. 16 chapters render, 0 unresolved references.** ⚠ One transient `PermissionDenied` and one 60s MCP timeout on the full render; both verified complete by artifact mtimes.
 ## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
 
 **Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.

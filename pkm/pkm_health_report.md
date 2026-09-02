@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-09-01 18:23 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-09-01 18:58 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -9,7 +9,7 @@ _Generated 2026-09-01 18:23 by pkm_health.R. Regenerate; do not edit._
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 4
 - **Files over size budget:** 4
-- **Active Focus block:** 4.6 KB (budget 6)
+- **Active Focus block:** 5.7 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 6
 - **Legacy pages awaiting account deletion:** 58
@@ -36,8 +36,8 @@ None.
 
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
-| session_log.md | REFERENCE | 308.8 | 250 | 58.8 | FALSE |
-| proj_Smart_Car.md | PROJECT |  60.4 |  45 | 15.4 | TRUE |
+| session_log.md | REFERENCE | 312.2 | 250 | 62.2 | FALSE |
+| proj_Smart_Car.md | PROJECT |  60.8 |  45 | 15.8 | TRUE |
 | proj_seasonality.md | PROJECT |  51.6 |  45 |  6.6 | TRUE |
 | proj_audio.md | PROJECT |  47.3 |  45 |  2.3 | TRUE |
 
@@ -45,7 +45,7 @@ None.
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 4.6 | 6 | -1.4 |
+| 8 | 5.7 | 6 | -0.3 |
 
 ## Venues without a source repo
 
@@ -96,4 +96,4 @@ None.
 None.
 
 ---
-_Ran in 62.1 s._
+_Ran in 58.8 s._

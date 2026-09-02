@@ -170,6 +170,28 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ⚠ AWAITING KIM'S RULING — I named a tension inside his own lesson (2026-09-01)
+
+He gave ch.12 its ending: *"think through, ahead of time, what answers I'd like to get... Stopped time would have been a logical addition to the trip log. Reasons for stopping, listed as categories, would have emerged with a small amount of reflection."*
+
+**The first proposal is unambiguously right and the chapter says so.** ⚠ **The second, taken literally, would have destroyed the chapter's own finding**, and rather than quietly dropping that half I wrote the tension into the chapter as section *And one box with no rules in it*.
+
+**The argument:** `DAY_CATS` was **derived by reading the free text**. Nobody could have written the list in 2010. A dropdown holds *somebody to see*; it does not hold **Tom, Cindy, Meet Lan, Madness + Cindy** -- it gives you the number 5 and none of the names. **So the chapter passes on a PAIR:** design the structured columns you can foresee, **and keep one box with no rules in it, because that is where the next column comes from.**
+
+**Kim should rule on three things:**
+
+1. **Is the pair-framing his view, or mine put in his mouth?** The chapter is in first person. If he thinks a well-designed dropdown plus an "other" field would have done the job, the section is wrong and should be cut or rewritten.
+2. **Does the lesson belong in ch.12 at all, or in the Afterword?** He said the methodology is *"a reason for writing down"* for other people's benefit, which reads afterword-ish. It currently ends ch.12 because that is where it is earned. **Moving it is a two-minute edit; both sections are self-contained.**
+3. **"Madness + Cindy"** is printed as one of the names a category list would lose. **I do not know whether Madness is a person, a place or an event.** Harmless as a verbatim quotation, but he may want it out of that particular sentence.
+
+⛔ **Do not treat this as settled while it sits here.** Nothing else in the chapter depends on it: the three-way test does not use the categories.
+
+### ✓ MEASURED 2026-09-01 — "run the data early" is a RESULT, not advice
+
+Walking the 35 commented legs in date order: **6 of the 7 categories appear in the first TEN comments; all 7 by the 20th, with 15 legs still to come.** ★★ **The structured column Kim wishes he had was derivable from the first ten rows of free text, and he had six more years in which to add it.** Derived in `day_data.R` as `cat_at10` / `cat_all_by` / `cat_total`, so the sentence cannot go stale.
+
+★ **This also generalises past the car**: it is the empirical case for the PKM/briefing_book friction entry already open above. **A free-text field saturates its own category structure fast.** Worth carrying wherever that lesson lands.
+
 ### ✓✓✓ CH.12 DRAFTED 2026-09-01 — and the scaffold drifted AGAIN (two more, seven in one day)
 
 **Re-derived before drafting, per the standing rule. Two more wrong:**

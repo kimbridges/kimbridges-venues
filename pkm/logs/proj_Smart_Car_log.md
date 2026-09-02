@@ -1,3 +1,32 @@
+## ★★★ THE INSTRUMENT-DESIGN LESSON — Kim, 2026-09-01, verbatim. CH.12's ENDING, and a methodology claim for the whole book
+
+> That's an interesting chapter. As expected, I learned something about the driving. I think there is a lesson shown here. At the start, I didn't know what to record. I just did what seemed both logical (what mileage do you get?) and possible (how many columns fit on the sheet of paper). I hadn't thought through what I'd do with the numbers, other than the obvious MPG calculation. What would have been better is to think through, ahead of time, what answers I'd like to get. It wouldn't have taken much thought to come up with "human performance" measures besides the "car performance" indices. And even doing a mock-up of potential analyses would have helped, a lot. Stopped time would have been a logical addition to the trip log. Reasons for stopping, listed as categories, would have emerged with a small amount of reflection. But I was in a hurry. Other responsibilities grabbed my time. So things got figured out as I went.
+>
+> A reason for writing down, probably in more detail than needed, is that other people might want to benefit from what I found. Not just the results, but the methodology. They can be the people who prototype a system and test it before driving the first mile. And I think that's part of the lesson. Planning ahead pays great dividends. Besides that, don't put off the analysis. Run the data early and often.
+
+### ★★★ THE COST OF NOT PLANNING IS EXACT, AND IT IS THE LARGEST NUMBER IN THE CHAPTER
+
+**TwoRed's sheet has no stopped-time column. Creamsicle's does.** So the question ch.12 answers can only ever be put to the later car:
+
+| | |
+|---|---|
+| legs that CAN be asked (Creamsicle) | **84** |
+| legs that can NEVER be asked (TwoRed, 2011-2017) | **139** |
+| share of the whole recorded fleet closed to the question | **62.3%** |
+
+**Six years of driving, and the question cannot be put to any of it.** ★★ This does not shrink with effort: no scan, no audit and no erratum recovers a column that was never on the page. **It is the one class of loss in this project that better analysis cannot repair**, which is precisely why Kim's lesson is worth more than any single finding in the chapter.
+
+### ⚠ THE TENSION IN THE LESSON, AND IT SHARPENS IT RATHER THAN WEAKENING IT
+
+**Kim proposes two fixes: (1) add stopped time, (2) list reasons for stopping as categories.** The first is unambiguously right. **The second, taken literally, would have destroyed the chapter's finding.**
+
+**The `DAY_CATS` grouping in `R/day_data.R` was DERIVED BY READING THE FREE TEXT.** It could not have been written in advance, because nobody knows the categories until they have seen the comments. **A dropdown built in 2010 would have captured the bucket and thrown away everything else** -- it holds *somebody to see*, and it does not hold **Tom, Cindy, Meet Lan, Madness + Cindy**. Six hours of a twelve-hour day were a person, and a category list gives you the number 5 and no names.
+
+**★★★ SO THE SHARPER RULE, and it is supported by this chapter's own data: design the structured columns you can foresee, AND keep one box with no rules in it.** The structured column is where the analysis you PLANNED comes from. The free box is where the NEXT column comes from -- and in this record the unplanned box outperformed the designed one, catching a day (*"Ferry, park, shop"*) that the stopped-time cell recorded as zero.
+
+**Kim's third point stands unqualified and is the one with the widest reach: `don't put off the analysis. Run the data early and often.`** Running it early is what turns the free box into a column. **He ran it after sixteen years, and the categories emerged in an afternoon** -- they were available from about the tenth comment.
+
+---
 ## ★★★ KIM'S OWN FIELD COMMENTS, ALL 35, VERBATIM — transcribed 2026-09-01 for ch.12
 
 These are not an account given to me. **They are what Kim wrote in Creamsicle's comment box at the

@@ -120,3 +120,29 @@ The median day was `r round(DY$cr_med)` miles and `r DY$hr_med` hours, and on th
 And then `r sprintf("%.0f", DY$pct_comment)` per cent of the time I wrote a word in a box, and that word turns out to mark the days that were about something. **Not slower days. Not shorter days. Days with a person or a canyon or a bird in them, where the car sat in a car park for an hour or six while the trip happened outside it.**
 
 I'd have told you the driving was the trip. **The one column I filled in for no reason says otherwise**, and it says so at p = `r sprintf("%.1e", DY$p_comment)`, which is a strange way to learn something you already knew.
+
+## What I'd do differently
+
+There's a lesson in all of this and it isn't really about cars.
+
+**At the start I didn't know what to record.** I did what seemed logical, which was to ask what mileage the thing got, and what seemed possible, which was however many columns fit across a sheet of paper. I hadn't thought through what I'd do with the numbers beyond the obvious calculation. **What would have been better is to work out ahead of time what answers I'd like to have.**
+
+It wouldn't have taken much. A few minutes of thinking would have produced measures of *human* performance alongside the measures of car performance, and **stopped time is the obvious one.** Even a mock-up of the analyses I might one day want would have shown me that. But I was in a hurry, other responsibilities took the time, and things got figured out as I went.
+
+**Here's what that cost, exactly.** TwoRed's sheet has no stopped-time column, so everything this chapter has just shown you can only be asked of the later car. **`r DY$tw_no_stop` of the record's `r DY$all_legs` legs, `r sprintf("%.0f", DY$pct_unaskable)` per cent of it, cannot be asked at all.** Six years of driving, and the question doesn't reach them.
+
+That's a different kind of loss from the ones in @sec-audit. **An error can be corrected and a missing entry can be recovered from a scan.** No amount of care recovers a column that was never on the page. It's the one thing in this project that better analysis cannot repair, and it's why I'd put the planning above everything else I've learned here.
+
+## And one box with no rules in it
+
+But I want to be careful, because there's a version of that advice this chapter would contradict.
+
+The obvious way to design the sheet properly would have been to add stopped time **and** a tidy list of reasons for stopping, ticked off from categories. The first of those is right. **The second would have thrown away everything you've just read.**
+
+Look at where the categories in @tbl-day came from. **I read the free text and sorted it.** They weren't available in 2010 and they couldn't have been, because nobody knows what the categories are until they've seen what people actually write. A tidy list made up in advance would have held *somebody to see* and it would not have held **`r paste(unique(DY$names_seen), collapse = ", ")`**. It'd give you the number `r DY$tab$Days[DY$tab[[1]] == "somebody to see"]` and none of the names.
+
+**So the rule I'd actually pass on is a pair.** Design the structured columns you can foresee, because the analysis you planned comes out of those. **And keep one box on the form with no rules in it at all, because that's where the next column comes from.** In this record the box with no rules outperformed the column built for the job.
+
+And the last part matters most. **Don't put off the analysis. Run the data early and often.** Running it early is exactly what turns a free-text box into a proper column: `r DY$cat_at10` of the `r DY$cat_total` categories in @tbl-day are already visible in the first ten comments, and all `r DY$cat_total` are there by the `r DY$cat_all_by`th, with `r DY$n_comment - DY$cat_all_by` still to come. The field could have been added years before the record closed. **I ran mine after sixteen years.** The categories took an afternoon. They'd have taken the same afternoon in 2011, and I'd have had six more years of them.
+
+That's the part worth handing to somebody else. Not the mileage, and not the errata. **The chance to prototype the sheet, run a mock analysis on twenty rows of it, and fix what's missing before driving the first mile.**

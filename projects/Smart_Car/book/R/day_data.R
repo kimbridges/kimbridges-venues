@@ -79,6 +79,27 @@ day_data <- function() {
     tw_q   = quantile(L$odo_miles, c(.25, .75), na.rm = TRUE),
     tw_hr  = median(L$elapsed_hours, na.rm = TRUE),
 
+    ## What the FIRST form cannot be asked. TwoRed's sheet has no stopped-time
+    ## column, so the question ch.12 answers can only ever be put to the later
+    ## car. This is the measurable cost of designing the sheet before thinking
+    ## through the analysis, and it does not shrink: those years are closed.
+    tw_no_stop = nrow(L), all_legs = nrow(L) + nrow(Co),
+    pct_unaskable = 100 * nrow(L) / (nrow(L) + nrow(Co)),
+
+    ## HOW FAST THE CATEGORIES SATURATE. Walk the commented legs in date order
+    ## and count how many distinct categories have been seen. This is the test of
+    ## Kim's "run the data early" rule: if the grouping is visible after a handful
+    ## of comments, the structured column could have been added years earlier.
+    cat_total = length(unique(d$kind)),
+    cat_at10  = length(unique(d$kind[order(as.Date(d$date))][1:10])),
+    cat_all_by = which(sapply(seq_len(nrow(d)), function(i)
+                   length(unique(d$kind[order(as.Date(d$date))][1:i]))) ==
+                   length(unique(d$kind)))[1],
+
+    ## The names. A category list holds "somebody to see"; it does not hold Tom.
+    ## Verbatim, in the order the legs run.
+    names_seen = d$comment[d$kind == "somebody to see"],
+
     ## The four commented legs with no stopped time at all. Three of them are
     ## notes about the clock, which is the column being used for a second
     ## purpose, and the fourth is a stop that never got a number.
