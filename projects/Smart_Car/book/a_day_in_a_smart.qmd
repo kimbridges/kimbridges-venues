@@ -139,7 +139,17 @@ But I want to be careful, because there's a version of that advice this chapter 
 
 The obvious way to design the sheet properly would have been to add stopped time **and** a tidy list of reasons for stopping, ticked off from categories. The first of those is right. **The second would have thrown away everything you've just read.**
 
-Look at where the categories in @tbl-day came from. **I read the free text and sorted it.** They weren't available in 2010 and they couldn't have been, because nobody knows what the categories are until they've seen what people actually write. A tidy list made up in advance would have held *somebody to see* and it would not have held **`r paste(unique(DY$names_seen), collapse = ", ")`**. It'd give you the number `r DY$tab$Days[DY$tab[[1]] == "somebody to see"]` and none of the names.
+Look at where the categories in @tbl-day came from. **I read the free text and sorted it.** They weren't available in 2010 and they couldn't have been, because nobody knows what the categories are until they've seen what people actually write. A tidy list made up in advance would have held *somebody to see* and it would not have held **Tom**, who is my brother, or **Cindy**, who is my niece. It'd give you a count and none of the names.
+
+And there's one row that makes the case better than any argument I can put.
+
+On the seventh of October 2024 the record says **Torrance, California to Yuma, Arizona: `r sprintf("%.1f", DY$bars$miles[grepl("Madness", DY$bars$comment)])` miles, `r round(DY$bars$raw_hours[grepl("Madness", DY$bars$comment)])` hours, `r sprintf("%.2f", DY$bars$stop_hours[grepl("Madness", DY$bars$comment)])` of them stopped.** The comment says **Madness + Cindy**.
+
+Four words, and here's what they're holding. *Madness* is Madness Autoworks in Signal Hill, the shop from @sec-safe that's serviced both mainland cars for fourteen years. *Cindy* is my niece, whose driveway in Mentone is one of the parking arrangements in @sec-anchor. So that day's the car coming out of the Torrance garage, calling on the people who look after it, stopping at family on the way past, and then running east into the desert. **It's the whole support network this book has spent three chapters describing, in one row, in four words, in a box nobody required me to fill in.**
+
+The columns give you Torrance and Yuma. They can't give you that.
+
+And there's a sting in it for me. **My own grouping filed that day under *somebody to see*, and that's half right at best.** I'd no way of knowing Madness was a garage rather than a person, and nothing in the data was ever going to tell me. It took the man who wrote it. **So the free text isn't self-interpreting either**, and that's worth saying in a chapter this pleased with itself about an accidental instrument. The box with no rules keeps what a dropdown would throw away, and it still can't do the job on its own. **You need somebody who was there.**
 
 **So the rule I'd actually pass on is a pair.** Design the structured columns you can foresee, because the analysis you planned comes out of those. **And keep one box on the form with no rules in it at all, because that's where the next column comes from.** In this record the box with no rules outperformed the column built for the job.
 

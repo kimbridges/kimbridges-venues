@@ -2206,6 +2206,10 @@ exactly the kind of half-signal that would mislead anyone checking the return va
 
 **Generalisation beyond chapter numbers.** This is the same class as Finding 049: a fact that lives in prose and is not derived from the thing it describes. **The book already applies the fix to figures -- every number comes from an R object, so it cannot go stale.** Cross-references had simply never been brought under that rule.
 
+**⚠⚠ AMENDED 2026-09-01 -- IT ALSO HIDES IN R STRING LITERALS, WHERE NO PROSE SWEEP LOOKS.** `SILENT_STATES` in `book/R/constellations_data.R` carried **`"...photographed in ch.9"`** and **`"...(ch.10)"`** as data, and those strings were printed straight into a chapter table. **The `.qmd` files were clean; the defect was in the module that fed them**, and it was caught only by reading the rendered HTML.
+
+★★ **This is the SECOND defect class to ship from an R string literal.** Em dashes did it first, in `fig_cost.R` panel titles. **So the pre-ship sweep is now two greps over `R/`, not one:** em dashes, and `ch.N` / `[Cc]hapter N`. ★ **Anything a figure or table prints is prose, wherever it happens to live.**
+
 ## Finding 051 -- THE TEST REPRODUCED AND THE PARAPHRASE OF IT DID NOT (2026-09-01)
 
 **What happened.** Finding 033 was re-run live for the ch.9 draft. **The finding reproduced and improved.** But a summary of it in the chapter's planning scaffold -- *permitted 8->0 fixes 4 of 44 failing rows; forbidden fixes 1; six controls fix 0* -- could not be reproduced from any available state of the data, and **that summary was the version queued for print.**

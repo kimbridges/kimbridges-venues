@@ -5,21 +5,117 @@
 #| include: false
 
 source("R/book_setup.R")
+source("R/constellations_data.R")
+source("R/fig_constellations.R")
+
+K <- constellations_data()
+S <- K$silent
+
+stopifnot(K$n_us == 43, K$n_prov == 10, length(K$cr_new) == 0,
+          K$n_never == 3, K$pct_parked > 90, K$n_unlogged == 3)
 ```
 
-<!-- SCAFFOLD — delete this block as the chapter is written.
+## The map everybody expects
 
-PURPOSE
-ANALYSIS strand, and the payoff chapter. Where it drove, and where it slept.
+Sixteen years of fuel receipts make a map, and here it is.
 
-MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- The driving constellation: every recorded fuel stop, geocoded. **Show 49 states and 10 provinces, and show WHICH four are unwitnessed by a fill** (Florida, Delaware, Rhode Island, South Dakota) -- the map's own silences are part of what it has to say.
-- THE PARKING CONSTELLATION -- the map nobody thinks to draw. 86% of elapsed days sit inside a dormancy of 14+ days.
-- The photo layer JOINS cleanly: DateTimeOriginal is LOCAL time with OffsetTimeOriginal carrying the zone, and the logs record local clock times, so photos join on date + local time with no timezone reconstruction. Validates on the first record -- earliest photo 11:42, first fill 11:45 at Nixa MO.
-- 37 geotagged Creamsicle photos in images/Creamsicle/. The Jul-2024 Creamsicle update already carries lat/long -- start there rather than geocoding from scratch.
+**`r K$n_us` of the fifty states and `r K$n_prov` Canadian provinces and territories** have at least one fill in them. That's the driving constellation, and it's the picture I'd have drawn if you'd asked me in 2010 what this record was going to be for.
 
-OPEN / NEEDED
-- Route work is partial at a 78% gazetteer join.
-- Finding 041: do NOT build the parking map from fill cities. The named holdings come from Kim, not from the data.
--->
+```{r}
+#| label: fig-driving
+#| fig-cap: "Every state and province the two cars bought fuel in. Dark is the ground both cars covered; light is ground only one of them did. The two outlined classes are the interesting ones: dashed states were reached and never filled in, and the heavy outline marks the three the record never witnessed at all. Hawaii is left out, because that is where the car lives rather than somewhere it drove."
+#| fig-width: 7.4
+#| fig-height: 5.4
+#| echo: false
+fig_driving(K)
+```
 
+It's a satisfying picture and it's a slightly dishonest one, because a fuel log can only draw the places where somebody stopped and bought something. **The interesting part of that map is the holes.**
+
+## Three kinds of silence
+
+Leaving Hawaii out of it, **`r nrow(S) - 1` states have no fill in either record**, and they aren't the same kind of absent.
+
+```{r}
+#| label: tbl-silent
+#| tbl-cap: "Every state the fuel log never saw, and how each one is known. Three different instruments, and only the last row is really a gap."
+#| echo: false
+z <- S[S$state != "HI", c("state", "how", "evidence")]
+z$how <- c("trip log" = "the trip log", "arithmetic" = "arithmetic",
+           "none" = "not at all")[z$how]
+names(z) <- c("State", "Known from", "The evidence")
+knitr::kable(z, align = c("l", "l", "l"), row.names = FALSE)
+```
+
+**Maryland and Vermont were driven through and never filled in.** The car crossed them, stopped for the night in them, and bought its fuel on either side. Nothing in `r nrow(twored_fuel) + nrow(cream_fuel)` fuel rows knows either state exists.
+
+What knows is the trip log, and **the trip log only knows because of @sec-paper.** Those legs came off scanned sheets. Before the scanning experiment the typed trip log had seven rows in it, and Maryland and Vermont were sitting on paper in a box.
+
+I want to put a finer point on that. **The sheet photographed in @sec-paper, the one page of this record anybody will ever see reproduced, is Frostburg.** Frostburg is in Maryland. **The single image in this book is a picture of the evidence for a state that is blank on the map above**, and I didn't notice that until I drew the map.
+
+**Delaware is stranger still**, and @sec-audit has already told that story: a leg too short for any road that avoids it. No fill, no sheet, no town. Just a distance that doesn't work unless the car went through Delaware, so it did.
+
+**And then Florida, Rhode Island and South Dakota.** No fill, no leg, no arithmetic. Three states out of fifty, and after sixteen years I think that's the honest total: **`r K$reach` states reached, `r K$n_never` never.**
+
+## The second car added nothing
+
+Here's a result I didn't expect and had to check twice.
+
+Creamsicle drove `r K$n_cr_us` states in its three years. **Every single one of them was already TwoRed's.** Not one new state, a decade later, in a different car, from a different starting point, on what I'd have described as completely different trips.
+
+It added exactly one thing to the map, and it's a province: **British Columbia**, three fills on Vancouver Island. The two cars share no Canadian ground at all. TwoRed got to Alaska by sea from Bellingham and up the highway from Alberta; **it never once bought fuel in British Columbia**, which is its own small puzzle and one I'll leave sitting there.
+
+@sec-car-cost found the two cars four tenths of a mile per gallon apart and called the car a constant. **The map says the same thing about the driver.** Ten years, a different vehicle, and I went back to the same country.
+
+## The map nobody draws
+
+Now the other constellation, and this is the one I'd never have thought to look for.
+
+From the first logged leg to the last is **`r format(K$span, big.mark = ",")` days.** The car was driven on **`r K$leg_days`** of them.
+
+```{r}
+#| label: fig-parking
+#| fig-cap: "The same six years from the other side. The top row is every day the record can show the car moving. The bottom row is the twelve intervals between logged trips, coloured by what the odometer says was happening in them. The four longest are labelled."
+#| fig-width: 7.4
+#| fig-height: 2.5
+#| echo: false
+fig_parking(K)
+```
+
+**`r sprintf("%.1f", K$pct_driving)` per cent.** Everything in this book, every long day and every road and every argument about fuel economy, comes off the thin blue marks in the top row of that figure. The other **`r sprintf("%.1f", K$pct_parked)` per cent** is the bottom row, and the bottom row is a car sitting still in somebody's garage.
+
+That's what a mainland car kept from Hawaii actually is. **It's a parked car with `r K$leg_days` exceptions**, and @sec-anchor is the chapter about the real problem, which was never driving and always storage.
+
+The longest single interval is **`r K$longest_gap` days**, after the `r sub("_", " ", K$longest_after)` trip. Fourteen months. The car sat, somebody's garage held it, and the next sheet picks up as though nothing had happened.
+
+## Except that three of those gaps are lying
+
+Look at the dark bands in that figure, because they're the reason the parking map can't just be read as parking.
+
+**Three of the twelve intervals carry more than fifteen hundred miles on the odometer.** Between them they hold **`r format(K$unlogged_miles, big.mark = ",")` miles** that the trip log has nothing whatever to say about. That isn't a car on station. **That's a trip nobody wrote down.**
+
+This is @sec-expeditions's finding arriving from a completely different direction. There it was Kim's own list of fourteen expeditions against thirteen logged trips. Here it's the odometer, which cannot be argued with: **`r format(K$gap_miles, big.mark = ",")` miles happened between the logged trips**, against `r format(K$leg_miles, big.mark = ",")` inside them.
+
+So the honest reading of that bottom row is three-way, and the figure colours it that way. Some of those intervals really are a car under a tarpaulin. Some are ambiguous. **And three of them are journeys that left no trace except a number going up.**
+
+## Where it actually slept
+
+The one thing neither figure can show you is the part that mattered most at the time.
+
+**The parking constellation has names**, and they aren't in the data. A colleague's farm outside Eugene. A car wash in St Louis with a garage nobody was using. My niece's driveway at Mentone. A motel in southern California. A cousin's space in Torrance, which we had to clear out before the car would fit. Every one of those came out of a conversation, and @sec-anchor tells the story of how each was found.
+
+I could put dots on a map for those. **I'm not going to, because it would be a map of five things I remember rather than a map of anything the record holds**, and this book has been careful about that distinction for twelve chapters.
+
+What the record holds is the shape: **long stillness, punctuated.** What I hold is the list of people who made the stillness possible.
+
+## Two pictures of the same car
+
+Put the two constellations side by side and they disagree about what this car was.
+
+**The driving map says a continental vehicle**: `r K$reach` states, `r K$n_prov` provinces, the Arctic, four crossings, and a coastline at each end. It's the map I'd show somebody who asked what we did with a Smart car.
+
+**The parking timeline says a car that sat still `r sprintf("%.0f", K$pct_parked)` per cent of the time** and was driven on fewer than a hundred and fifty days in six years.
+
+**Both are accurate and neither is the answer.** The first map is what the car was for. The second is what owning it was actually like, and the second is the one that explains the first: **the stillness is what made the driving possible.** A car parked free in a friend's garage for fourteen months is a car you can fly to and drive across a continent. That was the arrangement, and the arrangement is the story.
+
+The fuel log drew the first map without being asked. **The second one had to be gone looking for**, and it took the odometer, twelve gaps and a lot of arithmetic to find a picture of a car doing nothing at all.

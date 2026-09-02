@@ -170,7 +170,46 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
-### ⚠ AWAITING KIM'S RULING — I named a tension inside his own lesson (2026-09-01)
+### ⚠ OPEN — did TwoRed drive through British Columbia? The Delaware instrument, one province up (2026-09-01)
+
+**TwoRed has no BC fuel fill and no BC city in its trip log.** It does have **Lethbridge AB** and **Destruction Bay YT**. ★★ **Alberta does not border Yukon.** A road journey between them must cross British Columbia or the Northwest Territories, and the Alaska Highway route runs through BC.
+
+**This is exactly @sec-audit's Delaware argument** -- a route that cannot be completed without entering a state the record never names. ⛔ **NOT asserted in ch.13.** The chapter says only that TwoRed *"never once bought fuel in British Columbia, which is its own small puzzle and one I'll leave sitting there."*
+
+**To settle it, one of:** (a) Kim remembers the route; (b) a trip-log leg between AB and YT whose distance rules out the NWT alternative; (c) a scan page naming a BC town. **Worth doing** -- it would make BC a second recovered jurisdiction and strengthen the geography instrument, and Creamsicle's 3 Vancouver Island fills mean the map already shows BC as filled, so nothing printed is wrong either way.
+
+⚠ Note the asymmetry it would create: **the two cars currently share NO Canadian ground at all**, which is printed in ch.13. If TwoRed is placed in BC by inference, that sentence stays true (it is about FILLS) but wants a footnote.
+
+### ⚠⚠⚠ TASK — the Finding 050 sweep must cover R STRING LITERALS, not just prose (2026-09-01)
+
+`SILENT_STATES` in `R/constellations_data.R` shipped **`"...photographed in ch.9"`** and **`"...(ch.10)"`** into a printed table. **Hardcoded chapter numbers, inside code, invisible to any prose sweep, caught only by reading the rendered HTML.**
+
+★★ **This is the second defect class to hide in the same place.** Em dashes did it first, in `fig_cost.R` panel titles. **The standing pre-ship check must now grep `R/` for BOTH**: em dashes, and `ch.N` / `chapter N` / `Chapter N`. Swept 2026-09-01: clean.
+
+### ⛔ DO NOT REINTRODUCE A LIVE `ne_states()` CALL — it hung the R session (2026-09-01)
+
+`rnaturalearth::ne_states()` **blocked the R bridge for several minutes** on what looked like a network fetch; four consecutive `execute_r` calls timed out at 60s before the session came back. The geometry is now **cached at `book/data/na_states.rds`** (137 KB, simplified to a 3 km tolerance, 51 US + 13 CA features, Alaska included, all geometries valid).
+
+**`fig_driving()` reads the RDS and never calls the network.** ⛔ If the map ever needs rebuilding from source, do it in a scratch session and re-cache -- **never inside a figure function that a book render will call.**
+
+### ✓ MEASURED 2026-09-01 — the gazetteer is a TwoRed instrument and does not generalise
+
+| | placed | of |
+|---|---|---|
+| TwoRed fills, project gazetteer alone | **78.2%** | 294 |
+| Creamsicle fills, project gazetteer alone | **17.3%** | 173 |
+| TwoRed, + `maps::us.cities` + `canada.cities` | **84.7%** | 294 |
+| Creamsicle, + the same | **39.9%** | 173 |
+
+**121 distinct cities remain unplaced.** ★★ **This is why ch.13's driving map is a state-level choropleth rather than a point scatter:** a point map drawn from this would render Creamsicle as sparse because of a gazetteer gap, not because of anything the car did. ⚠ **If a future chapter wants a route or point map, the gazetteer needs extending to Creamsicle first** -- that is the blocking task, not the drawing.
+
+### ✓✓✓ RULED 2026-09-01 — Kim endorsed the pair-lesson, and then broke my category scheme himself
+
+**RULING (verbatim): _"You are completely right about not making the categories ahead of time. I appreciate your insight into this. And I like your explanation. This section belongs where you put it. The integration with the earlier text is apparent."_**
+
+**So: the pair-framing is HIS, the sections stay in ch.12, and question 2 (move to the Afterword) is closed.** ★★★ **And he answered question 3 by volunteering all three identities -- which proved `DAY_CATS` has an error in it.** *Madness* is **Madness Autoworks, his mechanics of fourteen years**, not a person. See `logs/proj_Smart_Car_log.md` (top entry).
+
+⚠ **STILL OPEN, and it is now the only open part:** `@tbl-day` still counts that row as *somebody to see* (5). The chapter names the error in prose instead of recoding. **Ruling wanted: leave it, or add a category for the car itself and reprint the table as 4 + 1?**
 
 He gave ch.12 its ending: *"think through, ahead of time, what answers I'd like to get... Stopped time would have been a logical addition to the trip log. Reasons for stopping, listed as categories, would have emerged with a small amount of reflection."*
 

@@ -11,7 +11,7 @@ Mechanism 4.
 
 ---
 
-## 2026-09-01 -- THE CROSS-REFERENCES ARE GENERATED, THE CHAPTER NUMBERS FINALLY MATCH THE WAY WE TALK, AND CH.8 THROUGH CH.12 ARE DRAFTED
+## 2026-09-01 -- THE CROSS-REFERENCES ARE GENERATED, THE CHAPTER NUMBERS FINALLY MATCH THE WAY WE TALK, AND CH.8 THROUGH CH.13 ARE DRAFTED
 
 **Active focus at start and close:** Smart_Car. Kim chose the order himself: **fix the references first, then draft**, so ch.8 would not add an eleventh hardcoded number. That was the right call and it changed what the fix turned out to be.
 
@@ -264,6 +264,59 @@ I had written *"after ten or twenty comments the categories are already visible"
 **⚠ SECOND CATCH OF THE SAME KIND IN ONE SESSION.** *"a few hundred days of what people actually write"* -- also mine, also unsupported (there are 35 comments), also removed. **Both were English rather than digits, which is exactly why they survived the first read.** Finding 051's corollary is earning its keep immediately.
 
 **Ch.12 now ~2,080 prose words, 9 sections. Voice 34.2 per thousand, 0 em dashes. 16 chapters render, 0 unresolved references.** ⚠ One transient `PermissionDenied` and one 60s MCP timeout on the full render; both verified complete by artifact mtimes.
+
+### ★★★ CH.13 `two_constellations.qmd` DRAFTED — two figures, and the scaffold was wrong about the states in two different ways
+
+**~1,200 prose words, 7 sections, `@fig-driving` + `@fig-parking` + `@tbl-silent`.** New `R/constellations_data.R` (103 lines) and `R/fig_constellations.R`.
+
+### ⚠⚠⚠ THE FOUR MISSING STATES WERE WRONG IN BOTH RECORDED VERSIONS
+
+The ch.13 scaffold said the four unwitnessed states were **FL, DE, RI, SD**. The PKM's record of Kim's 2014 slide 42 said **FL, DE, RI, VT**. **Neither is right, and the disagreement was the tell.**
+
+Derived live from the state columns of both fuel logs, with a proper normaliser (the raw data mixes full names and abbreviations, and carries a misspelled *SASKATCHWAN*):
+
+| | |
+|---|---|
+| US states with at least one FILL | **43** |
+| Canadian provinces/territories with a fill | **10** (AB BC MB NB NL NS ON QC SK YT) |
+| states with NO fill, Hawaii aside | **6** -- DE, FL, MD, RI, SD, VT |
+| **never witnessed by ANYTHING** | **3 -- FL, RI, SD** |
+| **total reach** | **46 of 50** |
+
+**★★★ AND THE SIX SILENCES TURN OUT TO BE THREE DIFFERENT KINDS, which is the chapter:**
+- **MD and VT were driven through and never filled in.** Recovered from the TRIP LOG, which exists only because of the scanning experiment in @sec-paper. Frostburg MD, Hartland VT.
+- **DE** by @sec-audit's arithmetic: a leg too short for any road that avoids it.
+- **FL, RI, SD**: nothing at all.
+
+**★★★ THE DETAIL I DID NOT SEE COMING.** The one photographic figure in the whole book is **Frostburg-3** -- and **Frostburg is in Maryland, a state that is blank on the driving map.** *The single image in this book is a picture of the evidence for a state the fuel log has never heard of.* Written into the chapter.
+
+### ★★★ CREAMSICLE ADDED NOT ONE US STATE — and exactly one province
+
+**All 19 of Creamsicle's states were already TwoRed's.** Zero new, a decade later, different car, different start. ★★ **@sec-car-cost said the CAR was a constant at four tenths of a mpg; the map says the same of the DRIVER.**
+
+⚠ **One province is new: British Columbia**, 3 fills on Vancouver Island (Tofino, Campbell River, Nanoose Bay). **The two cars share no Canadian ground whatever.** ⚠⚠ **TwoRed never bought fuel in BC and has no BC city in its trip log** -- despite reaching Yukon by road from Alberta. **Alberta does not border Yukon**, so this looks like the Delaware instrument again, one province up. **NOT asserted in the chapter** -- left as *"its own small puzzle"*. See `deferred.md`.
+
+### ★★★ THE PARKING CONSTELLATION — and the scaffold's 86% is really 91.9%
+
+From first logged leg to last is **2,209 days. The car was driven on 139 of them: 6.3%.** The other **2,031 days (91.9%)** sit in twelve intervals between logged trips. ★★ *Everything in this book comes off 6.3% of the elapsed time.*
+
+**⚠ BUT THREE OF THE TWELVE GAPS ARE NOT PARKING.** They carry >1500 odometer miles each, **12,371 miles of driving with no trip log at all**, against 41,163 inside the logged legs. **This is @sec-expeditions's finding arriving from the odometer instead of from Kim's list**, and the figure colours the three bands differently so the reader can see it.
+
+### The figures, and two design rulings
+
+**⛔ THE DRIVING MAP IS STATE-LEVEL, NOT A POINT SCATTER, DELIBERATELY.** The project gazetteer places **78% of TwoRed's fills and only 17% of Creamsicle's**; even after folding in `maps::us.cities` + `canada.cities` it is 85% and 40%. **A point map would have shown Creamsicle as sparse because of a GAZETTEER gap rather than anything the car did.** State coverage is complete for both cars, so that is the finest honest grain.
+
+**⛔ THE PARKING FIGURE IS A TIMELINE, NOT A MAP (Finding 041 respected).** The named holdings are Kim's testimony and there are five of them; the chapter says explicitly it will not draw a map of five things he remembers. What the record can place is *when* the car was still.
+
+**Geometry is CACHED** at `book/data/na_states.rds` (137 KB, `rnaturalearth` simplified to 3 km). ⚠⚠ **`ne_states()` HUNG THE R SESSION for several minutes on a network call** -- the cached RDS means the book build never touches the network. Do not reintroduce a live `ne_states()` call.
+
+**Palette validated** with the dataviz script: `#2a78d6` vs `#bcd8f2` is **dE 31.7 normal, 29.8 protan, 28.0 tritan**. The light step fails contrast-vs-surface, which obligates relief: supplied as **direct labels on every silent state plus `@tbl-silent`**. ⚠ Caption was checked against the rendered PNG before shipping, per the standing rule; the parking figure's in-bar labels were **light-on-light on the tint** and now switch ink by band.
+
+### ⚠⚠⚠ FINDING 050 WAS HIDING IN R STRING LITERALS AGAIN
+
+`SILENT_STATES` in `constellations_data.R` carried **`"...photographed in ch.9"` and `"...(ch.10)"`** -- hardcoded chapter numbers, inside code, feeding a printed table. **Caught in the rendered HTML, not the source.** Both rewritten without numbers. ★★ **Exactly the same lesson as the em dashes in `fig_cost.R` panel titles: the code-string sweep must cover Finding 050 as well as the voice rules.** Swept all of `R/`: clean.
+
+**Voice 30.2 per thousand, 0 em dashes. 16 chapters render, 0 unresolved references.** ⚠ One transient `PermissionDenied` and one 60s timeout on the full render, both verified complete by artifact mtimes.
 ## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
 
 **Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.

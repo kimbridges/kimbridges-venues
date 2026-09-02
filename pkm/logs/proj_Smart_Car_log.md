@@ -1,3 +1,30 @@
+## ★★★ KIM IDENTIFIED THE THREE NAMES IN CREAMSICLE'S COMMENT COLUMN — 2026-09-01, and one of them broke my category scheme
+
+> "Tom" is my brother, "Cindy" is my niece (think: Mentone), and "Madness" is "Smart Madness/Madness Autoworks" my mechanics and general Smart advisors.
+
+**Given unprompted, and it settles the open ch.12 grouping question in the most useful possible way: by proving the grouping had an error in it.**
+
+| name | who | already in the book |
+|---|---|---|
+| **Tom** | Kim's brother | ch.5 -- *"My brother lives in Richmond"* (the 640 day) |
+| **Cindy** | Kim's niece, at Mentone | **@sec-anchor** -- *"My niece gave us driveway space at her house in Mentone"* |
+| **Madness** | **Madness Autoworks / Smart Madness, Signal Hill CA** -- his mechanics AND general Smart advisors | **@sec-safe** -- every service on both mainland cars for fourteen years; receipt #5951; Signal Hill appears 7x in TwoRed's fuel log |
+
+### ⚠⚠⚠ `DAY_CATS` FILED "Madness + Cindy" UNDER *somebody to see*, AND MADNESS IS A GARAGE
+
+**I built the category scheme by reading free text, and I got one of the 35 wrong.** Nothing in the data could have corrected it -- no audit instrument, no cross-check, no amount of care. **It took the man who wrote the comment.** ★★★ **This is the limit of the free-text box, and it is now IN the chapter rather than in a footnote:** the box with no rules preserves what a dropdown would destroy, **and it still is not self-interpreting.** You need somebody who was there.
+
+⚠ **The grouping was NOT re-run.** `DAY_CATS` still files that row under *somebody to see* and `@tbl-day` still reads 5. **Deliberate**: the chapter names the error in prose, which is more honest than silently recoding one row and printing a clean 4. ⛔ Do not "fix" the table without a ruling from Kim.
+
+### ★★★ AND THE ROW TURNS OUT TO TIE THREE CHAPTERS TOGETHER — now written into ch.12
+
+`2024-10-07 Torrance CA -> Yuma AZ, 301.5 mi, 10 h, 2.75 stopped`, comment **"Madness + Cindy"**.
+
+**Torrance is Nancy's cousin's garage (@sec-anchor, Creamsicle's parking). Signal Hill is Smart Madness (@sec-safe). Mentone is the niece (@sec-anchor).** So the day is **the car coming out of storage, calling on its mechanics of fourteen years, stopping at family, and running east into the desert** -- and the trip log's columns give you only *Torrance* and *Yuma*.
+
+★★ **The whole support network the book spends three chapters building, in four words, in an optional box.** ⚠ The two intermediate stops are **Kim's testimony plus route geography, NOT recorded fact** -- the sheet records only the endpoints, and the chapter says so by attributing them to him rather than to the log.
+
+---
 ## ★★★ THE INSTRUMENT-DESIGN LESSON — Kim, 2026-09-01, verbatim. CH.12's ENDING, and a methodology claim for the whole book
 
 > That's an interesting chapter. As expected, I learned something about the driving. I think there is a lesson shown here. At the start, I didn't know what to record. I just did what seemed both logical (what mileage do you get?) and possible (how many columns fit on the sheet of paper). I hadn't thought through what I'd do with the numbers, other than the obvious MPG calculation. What would have been better is to think through, ahead of time, what answers I'd like to get. It wouldn't have taken much thought to come up with "human performance" measures besides the "car performance" indices. And even doing a mock-up of potential analyses would have helped, a lot. Stopped time would have been a logical addition to the trip log. Reasons for stopping, listed as categories, would have emerged with a small amount of reflection. But I was in a hurry. Other responsibilities grabbed my time. So things got figured out as I went.
