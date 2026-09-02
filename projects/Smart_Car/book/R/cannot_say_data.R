@@ -12,7 +12,7 @@
 ## for everything expected. In the second, three columns have collapsed into prose,
 ## because proof cannot be schematised in advance.
 
-.SOUTH_STATED <- c("AL", "MS", "LA", "GA", "SC", "FL")          # ch.6's stated group
+.SOUTH_STATED <- c("AL", "MS", "LA", "GA", "SC", "FL")   # the roads chapter's stated group
 .SOUTH_WIDE   <- c(.SOUTH_STATED, "AR", "TN", "NC")             # a defensible alternative
 
 .gc_mi <- function(la1, lo1, la2, lo2) {

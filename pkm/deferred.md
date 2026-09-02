@@ -170,6 +170,12 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ⚠ TASK — a dead SCAFFOLD block is still sitting in `the_anchor.qmd` (found 2026-09-02)
+
+**Lines 227-263 of ch.3 are an HTML comment headed `SCAFFOLD -- still to write`.** ⚠ **Ch.3 is finished (2,976 words) and Kim approved it on 2026-08-28/29**, and every item in the block HAS landed in the prose: Mentone, Torrance, the Eugene farm, the St Louis car wash, the mother's covered spot at Lake San Marcos.
+
+**So it is dead text, invisible in the rendered book** (Kim's read-through is unaffected). ⛔ **But a *still to write* note inside a finished chapter will mislead the next person to open the source**, including a future session. **Delete the block when Kim returns.** ★ It is the only scaffold left in the whole book; the other 15 pieces are clean.
+
 ### ⛔ WAITING ON KIM'S FULL READ-THROUGH — he returns with photos, cover design and changes (2026-09-02)
 
 **The book is complete in draft: Foreword + 14 chapters + Afterword, 33,333 words, 16 pieces rendering with 0 unresolved references.** Kim is reading the whole thing, read-only, and comes back for **additional photos, the cover design, and any needed changes.**
