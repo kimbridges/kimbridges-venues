@@ -1,5 +1,28 @@
 # Focus History and Change Log
 
+**Active Focus (2026-09-01, close): "Smart_Car" -- CH.8 THROUGH CH.11 DRAFTED IN ONE DAY; CHAPTER NUMBERS FIXED; AND THE SCAFFOLDS ARE PROVED TO ROT.**
+
+**Foreword + ch.1-ch.11 stand, about 24,000 words. 16 chapters render, 0 error strings, 0 unresolved references.** Full detail in `session_log.md` 2026-09-01; Kim's accounts and rulings verbatim in `logs/proj_Smart_Car_log.md`.
+
+**★★★ CROSS-REFERENCES ARE GENERATED (Finding 050).** The root was that the **Foreword was being numbered as Chapter 1**. `index.qmd` and `afterword.qmd` are `{.unnumbered}`, every heading carries `{#sec-...}`, and **the printed numbering now runs 1-14 exactly as the project speaks it.** Two references corrected themselves; they are hyperlinks now. ⚠ Positional phrases stay hand-checked on a reorder (four lines, in `deferred.md`).
+
+**★★★ FINDING 051 -- KEEP THE GENERATOR, NOT THE RESULT -- AND IT HAS EARNED ITS KEEP SIX TIMES IN ONE DAY.** Written after a chapter scaffold's PARAPHRASE of Finding 033 turned out to be the version queued for print (033 itself reproduces and **sharpens**: 0/8 at 15.6%, 166 control substitutions, zero repairs). **Then ch.10 and ch.11 scaffolds yielded five more drifts** -- Creamsicle "143 of 170" is 163 of 169; "3 errata, all resolved" is 5, three still hypotheses; "lifetime 39.44" reproduces from nothing; Creamsicle median 40.52 not 40.59; wide-tyre CI +2.8% [-0.9, +6.5] not -3.7 to +4.9. **This is the ordinary rate at which hand-copied numbers rot. Re-derive every scaffold before drafting.**
+
+**CH.8 the hinge** -- the record cannot see the driver, and **Kim's own correction proves it** (*"I couldn't go slow, the big vehicles kept moving at highway speeds"*: the speed IS the stress). **Now a triple** -- fear 47.3, tedium 40.3, pleasure 48.8, all at or above the 40.5 median. **Creamsicle turns it into a measurement: 84 legs, gross 43.5 vs net 51.0, a 7.5 mph gap**, so every gross speed in the book is a ceiling.
+
+**CH.9 sixteen years of paper** -- the book's first photographic figure (a real sheet), **20 files / 67 pages** derived. ⚠ **Kim corrected the 0/8 mechanism: never his handwriting, it was the PRINTED RECEIPTS** -- small type, little ink, a dot in the zero, read in poor light. **033 corrected in place; no number moved.** ★★★ **A shape in the data points at a PROCESS, not a PERSON. Ask whose hand, then ask whose printer.** ★★ **And Kim gave the chapter its ending: the SCANNING EXPERIMENT.** Typed trip log **7 rows -> 139 legs, 41,163 miles that were on paper all along**, and **the scans AUDIT the typing** -- all 65 errata came out of that comparison. *Data has no value while it sits in a log; moving it into an analysis environment is what gives it value; scanning removes the friction.*
+
+**CH.10 the audit** -- ★★★ **the tolerance is now DERIVED, not chosen:** `0.005 + gallons*0.0005 + ppg*0.0005`, 0.79-1.11c. TwoRed **281/294**, Creamsicle **165/169**. **The finding is the GAP: largest arithmetic residual 0.76c, smallest error 2.93c, nothing in between** -- no judgment call is ever required. Seven instruments as *what each tests and what each CANNOT see*; **six of seven take the date as GIVEN, so none could see a wrong date**; geography is the only one that RECOVERS. ⚠ **Port Angeles (1.17c over a 0.97c bound) is left deliberately unexplained** as the place the instrument runs out.
+
+**CH.11 what the car cost** -- ★★★ **the two cars are 39.25 and 39.66 mpg over their lives. Four tenths apart**, across sixteen years, two coasts and two sets of habits. **Creamsicle costs 26% more per mile and fuel prices account for 28% of it** (the decomposition is an identity, not a model). **Tank length is the only strong driver: +4.61 mpg per 100 miles.** **No decline with age: +0.26 per 10,000 miles, p = 0.081.** **Wide tyres +2.8% [-0.9, +6.5]** -- unanswerable after 213 tanks, which is itself an answer. ⚠ **Every price in the book is a PREMIUM price** (no grade column).
+
+**⚠ Voice: the count caught the density on every chapter today.** Em dashes now also appear in **R string literals** (`fig_cost.R` panel titles) -- the sweep must cover code, not just prose.
+
+**Queued, triggers fired:** split `proj_Smart_Car.md`; decide about `session_log.md` (not splittable).
+
+**NEXT: Kim reads ch.6 through ch.11 and the two new sections in ch.1 and ch.2. Ch.12 `a_day_in_a_smart.qmd` is next -- re-derive its scaffold numbers first. Nothing is blocking.**
+
+
 **Active Focus (2026-08-31, close): "Smart_Car" -- CH.5, CH.6 AND A NEW CH.7 ARE DRAFTED, AND THE BOOK RENDERS END TO END.**
 
 **Foreword + ch.1-ch.7 stand, about 17,000 words.** This was a long session; **the detail is in `session_log.md` 2026-08-31** and Kim's six accounts plus every ruling are verbatim in `logs/proj_Smart_Car_log.md`. **16 chapters render, 0 error strings.**

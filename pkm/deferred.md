@@ -170,6 +170,31 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ✓✓✓ CH.12 DRAFTED 2026-09-01 — and the scaffold drifted AGAIN (two more, seven in one day)
+
+**Re-derived before drafting, per the standing rule. Two more wrong:**
+
+| scaffold said | truth |
+|---|---|
+| median leg 251 mi (TwoRed), 166 (Creamsicle) | **305 (139 legs) and 273.7 (84 timed legs)** |
+| log distance ~95% of odometer miles | **median ratio 1.00** |
+
+**Third scaffold running to drift at roughly half its numbers.** Everything printed in ch.12 now derives from `R/day_data.R` at build time, including all six p-values.
+
+**★★★ THE CHAPTER'S RESULT, for anyone re-reading it later:** Creamsicle's free-text `comment` box was optional and unstructured; Kim filled it on **35 of 84 legs by whim**, and those legs hold **73.4% of all stopped time** (p = 2.4e-07). The three-way test is what makes it a finding rather than a curiosity: **same miles (272 vs 276, p = 0.97), different GROSS speed (38.1 vs 49.4, p = 0.002), same NET speed (47.3 vs 51.6, p = 0.36).** Same distance, same driving, and the entire difference is time the car stood still. **62% of the apparent speed gap is not speed.**
+
+### ⚠ OPEN — the ch.12 category grouping is MINE and has never been put to Kim (2026-09-01)
+
+`DAY_CATS` in `R/day_data.R` sorts 35 free-text comments into seven groups, and **a comment naming two things is filed under the FIRST match in the stated order** ("Ferry, Costco" -> the ferry, not an errand). The chapter's table caption says the grouping is mine and invites disagreement, and the figure prints every comment verbatim so a reader can regroup them. **But Kim wrote those comments and has not been asked whether the grouping matches what he meant.** Worth one question when he next reads ch.12. Nothing depends on it: the three-way test does not use the categories at all.
+
+### ⚠ TASK — two figure captions have now been WRONG about their own figure (2026-09-01)
+
+`fig-day`'s caption said "driving on the left, stopped time on the right" and the figure draws them the other way round. Caught only by rendering the PNG and looking at it. **`fig-cost` had a similar miss earlier (a clipped point at 176c).** Both were written from the code rather than from the picture. **Rule: view the PNG before shipping the caption, every figure, no exceptions.** Cheap check, and the code cannot tell you it is wrong.
+
+### ⚠ NOTE — Creamsicle's stopped-time column MISSES stops that the comment column catches (2026-09-01)
+
+`2023-09-24 Campbell River -> Vancouver, 101 mi, 7 h`, comment **"Ferry, park, shop"**, stopped-time cell **zero**. The column designed for the job recorded nothing; the optional one recorded the day. Three other zero-stop commented legs are time-zone notes (*TimeZone +1*, *To Mountain Time*, *Back to Pacific Time*) -- **the comment column doing a second job entirely**, and a class of false positive that announces itself. **Both are in the chapter as the limit of the instrument.** ⛔ Do not "clean" these four rows: they are the evidence.
+
 ### ✓ RE-DERIVED 2026-09-01 — three MORE ch.11 scaffold drifts (six in one day)
 
 "Lifetime 39.44 MPG" **reproduces from nothing**: the three defensible figures are mean-of-tanks 39.53, median 39.12, and **total miles / total gallons 39.25**, and the chapter says which it uses and why. Creamsicle median is **40.52**, not 40.59. Wide-tyre interval is **+2.8% [-0.9, +6.5]**, not -3.7 to +4.9. **All computed in `cost_data()` now.**

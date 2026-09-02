@@ -1,23 +1,122 @@
-# What a day in a Smart actually looks like {#sec-a-day}
+# A day in a Smart {#sec-a-day}
 
 ```{r}
 #| label: setup
 #| include: false
 
 source("R/book_setup.R")
+source("R/day_data.R")
+source("R/fig_day.R")
+
+DY <- day_data()
+Z <- DY$zero_rows
+
+stopifnot(DY$n_comment > 0, DY$p_comment < 0.001, DY$p_miles > 0.5,
+          DY$p_net > 0.05, nrow(Z) == 4)
 ```
 
-<!-- SCAFFOLD — delete this block as the chapter is written.
+## What a day actually looked like
 
-PURPOSE
-ANALYSIS strand. The human half of the fabric, measured.
+After eleven chapters of continents and audits, here's the small thing underneath all of it.
 
-MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- Median leg 251 miles (TwoRed), 166 (Creamsicle). Log distance ~95% of odometer miles.
-- WHERE THE BEDS ARE is a first-order term nobody modelled: the fastest day in sixteen years is fast because Montana has nowhere to stop.
-- Gross speed by road, 138 legs in 12 trips: interstate 47.6 | Frostburg 44.4 | Fourth Crossing 41.4 | Penultimate 40.3 | Dalton 31.7 | US-101 coastal 28.3. Same car throughout.
-- THE CEILING: Creamsicle logs stopped time. Median gross 43.5 vs median NET 51.0 -- a 7.5 mph gap across 84 timed legs. Every TwoRed gross speed is a ceiling ~7-8 mph below actual driving speed.
-- The vivid case: 2024-10-20 Wisconsin Dells -> Madison, 50.3 miles, 5 hours elapsed, 4.5 stopped, gross 10.1 mph, comment 'Cranes'.
-- A ferry is a LOGISTICS MULTIPLIER: it converts a night into progress and hands the next morning a loaded, fuelled car.
--->
+**A day in this car was about `r round(DY$cr_med)` miles and about `r DY$hr_med` hours.** The middle half of Creamsicle's days ran from `r round(DY$mi_q[[1]])` to `r round(DY$mi_q[[2]])` miles and from `r DY$hr_q[[1]]` to `r DY$hr_q[[2]]` hours. TwoRed's `r DY$tw_legs` recorded legs sit a little longer, `r round(DY$tw_med)` miles at the median with a middle half from `r round(DY$tw_q[[1]])` to `r round(DY$tw_q[[2]])`, and about `r sprintf("%.1f", DY$tw_hr)` hours on the clock.
 
+That's the whole answer to the question people ask, and it's close enough to @sec-long-days's three hundred miles that I'd say the rule of thumb I worked out in the field was right. But it's also the least interesting way to describe a day, because it describes a day as a quantity of driving, and most of these days weren't only driving.
+
+The trouble is proving that. **A trip log samples the day twice**, as @sec-driving-cost had to spend a whole chapter admitting, and two points can't tell you what happened between them.
+
+Except that the second car's sheet had two more columns on it.
+
+## The column that measures nothing happening
+
+Creamsicle's form has a place for stopped time, and TwoRed's doesn't. That one difference is the reason this chapter exists.
+
+Here's what it says. Across `r DY$cr_legs` timed legs the median stopped time is **`r sprintf("%.2f", DY$med_stop)` hours**, which is fifteen minutes, and **`r DY$n_zero` of the `r DY$cr_legs` legs record no stopped time at all.** Over the whole record, stopped hours are **`r sprintf("%.1f", DY$stop_share_all)` per cent** of all the time the car was out.
+
+So the first finding is a deflating one. **Most days really were just driving.** You get in, you go, you stop for fuel and you don't write it down because a fuel stop isn't a stop, it's a tax. Twelve per cent is not a lot of standing around for sixteen years of what I'd have called travelling.
+
+But that twelve per cent isn't spread evenly, and the way it clumps is the whole story.
+
+## A column nobody had to fill in
+
+There's one more column on Creamsicle's sheet: a free-text box at the end of the row, with no instructions and no requirement. I filled it in **`r DY$n_comment` times out of `r DY$cr_legs`**, which is `r sprintf("%.0f", DY$pct_comment)` per cent, and I did it entirely by whim. Some days I wrote "Lunch." Some days I wrote nothing at all after twelve hours and three hundred miles.
+
+I want to be plain that no method was involved. Nobody designed that column as an instrument, the same way nobody put three columns on the fuel form so they'd multiply. **It was there because the form had room**, which is the same accident @sec-paper is built on.
+
+And it turns out to be the sharpest instrument in this book.
+
+**Legs with a comment: median `r sprintf("%.2f", DY$med_stop_comment)` hours stopped, and only `r DY$zero_comment` of the `r DY$n_comment` show zero. Legs without one: median `r sprintf("%.2f", DY$med_stop_silent)` hours, and `r DY$zero_silent` of `r DY$cr_legs - DY$n_comment` show zero.** The two distributions separate at p = `r sprintf("%.1e", DY$p_comment)`.
+
+Put it the way that matters. **`r sprintf("%.0f", DY$pct_comment)` per cent of the legs carry `r sprintf("%.0f", DY$share_of_stopped)` per cent of all the stopped time in the record.** Whether I felt like writing a word at the end of a row predicts, better than anything else on the sheet, whether that day had anything in it besides the road.
+
+## Three ways it could have been something else
+
+That's a striking claim and there are two duller explanations for it, so I tested both.
+
+**Maybe the commented days were just different days.** Shorter ones, or scenic detours, or the days near a city. If so, the miles should differ.
+
+They don't. **Commented legs run a median `r round(DY$mi_comment)` miles. Silent legs run `r round(DY$mi_silent)`.** At p = `r sprintf("%.2f", DY$p_miles)`, those are the same number. Whatever the comment marks, it isn't a shorter day.
+
+**Maybe they were slower days.** Bad roads, or towns, or the following-the-trucks habit from @sec-safe. And on the face of it that's exactly what it looks like: **gross speed `r sprintf("%.1f", DY$gross_comment)` miles an hour on commented legs against `r sprintf("%.1f", DY$gross_silent)` on silent ones**, a gap of `r sprintf("%.1f", DY$gap_gross)` and significant at p = `r sprintf("%.3f", DY$p_gross)`.
+
+Now take the stopped hours out and ask again. **Net speed `r sprintf("%.1f", DY$net_comment)` against `r sprintf("%.1f", DY$net_silent)`.** A gap of `r sprintf("%.1f", DY$gap_net)`, at p = `r sprintf("%.2f", DY$p_net)`, which is to say no difference anybody could defend.
+
+**Same distance. Same driving. The only thing that separates the two kinds of day is time the car spent standing still.**
+
+That's about as clean as this record ever gets. `r sprintf("%.0f", 100*(DY$gap_gross - DY$gap_net)/DY$gap_gross)` per cent of the apparent speed difference is not speed at all, and the free-text column that nobody asked me to fill in is, functionally, a stopped-time detector that I built by accident and used for three years without noticing.
+
+## What made a day stop
+
+```{r}
+#| label: fig-day
+#| fig-cap: "Every leg that carries a comment, ordered by how long the car stood still. The bar is the whole elapsed day, with the stopped hours drawn first so they can be read straight off the axis, and the driving in grey behind them. Each bar is labelled with what I wrote at the time, verbatim, spelling included. The four bars with no blue at all record no stopped time, and they are the exceptions the text takes up."
+#| fig-width: 7.2
+#| fig-height: 8.4
+#| echo: false
+fig_day(DY)
+```
+
+Reading down that figure is the closest thing this book has to a diary.
+
+```{r}
+#| label: tbl-day
+#| tbl-cap: "The commented legs, grouped. The grouping is mine and not something I wrote down at the time, so it's arguable; a comment naming two things is filed under the first category it matches. The raw text is in the figure so you can disagree with me."
+#| echo: false
+knitr::kable(DY$tab, align = c("l","r"), row.names = FALSE)
+```
+
+**Something to look at is the largest category, and it isn't close.** Cranes, caverns, a slot canyon, white sand, an aquarium, a grove of founders. Then something to eat, which is mostly the word "Lunch" and is the most ordinary thing in the record. Then people: `r DY$tab$Days[DY$tab[[1]] == "somebody to see"]` days that stopped because somebody was there.
+
+The longest of them all is the top bar. Springfield, Illinois to Liberty, Missouri, `r round(DY$bars$miles[which.max(DY$bars$stop_hours)])` miles in `r round(DY$bars$raw_hours[which.max(DY$bars$stop_hours)])` hours, **half of it stopped**, and the comment is one word: `r DY$bars$comment[which.max(DY$bars$stop_hours)]`. That's a name. Six hours of a twelve-hour day were a person, and the sheet gives them three letters.
+
+The birds in @sec-driving-cost are the other extreme of the same thing: fifty miles, five hours, and the driving was half an hour of it.
+
+## The four that prove the column was doing two jobs
+
+There are `r DY$zero_comment` commented legs that record no stopped time whatsoever, and they're worth more than their number.
+
+```{r}
+#| label: tbl-day-zero
+#| tbl-cap: "The commented legs with no stopped time. Three of them aren't about stopping at all."
+#| echo: false
+z <- Z
+z$date <- format(as.Date(z$date), "%d %b %Y")
+names(z) <- c("Date", "From", "To", "Miles", "Hours", "What I wrote")
+knitr::kable(z, align = c("l","l","l","r","r","l"), row.names = FALSE)
+```
+
+Three of the four are notes about the clock. **A time zone isn't an event, it's a correction**, and I was writing it in the comment box because the comment box was where anything unusual went and there was nowhere else to put it. Those rows are the column being used for a completely different purpose, and they're the reason I'd never claim the detector is clean. It's got a category of false positives and they announce themselves.
+
+The fourth one is more honest and less comfortable. `r format(as.Date(Z$date[4]), "%d %B %Y")`, `r Z$lv_city[4]` to `r Z$ar_city[4]`, and what I wrote was "`r Z$comment[4]`." **A ferry, a park and some shopping, in `r Z$raw_hours[4]` hours for `r round(Z$miles[4])` miles, and the stopped-time cell says zero.**
+
+That day plainly had stops in it. I just didn't put a number on them. **Which is the limit of every instrument in this book, stated as plainly as I know how: the record holds what got written down, not what happened.** The comment column caught that day. The stopped-time column, the one actually designed for the job, missed it entirely.
+
+## The thing the numbers were for
+
+So here's what eleven chapters of miles and dollars and errata come to when you look at a single day.
+
+The median day was `r round(DY$cr_med)` miles and `r DY$hr_med` hours, and on the `r DY$cr_legs - DY$n_comment` legs that got no comment at all it really was just that: an early start, a long quiet run, a motel. **That's what the car was for and it's what it was good at.** @sec-car-cost says the fuel cost about a dime a mile, and @sec-long-days says three hundred miles was what a person could do in a day, and both of those are true of nearly every row in this record.
+
+And then `r sprintf("%.0f", DY$pct_comment)` per cent of the time I wrote a word in a box, and that word turns out to mark the days that were about something. **Not slower days. Not shorter days. Days with a person or a canyon or a bird in them, where the car sat in a car park for an hour or six while the trip happened outside it.**
+
+I'd have told you the driving was the trip. **The one column I filled in for no reason says otherwise**, and it says so at p = `r sprintf("%.1e", DY$p_comment)`, which is a strange way to learn something you already knew.

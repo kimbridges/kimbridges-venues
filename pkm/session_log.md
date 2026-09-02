@@ -11,7 +11,7 @@ Mechanism 4.
 
 ---
 
-## 2026-09-01 -- THE CROSS-REFERENCES ARE GENERATED, THE CHAPTER NUMBERS FINALLY MATCH THE WAY WE TALK, AND CH.8 IS DRAFTED
+## 2026-09-01 -- THE CROSS-REFERENCES ARE GENERATED, THE CHAPTER NUMBERS FINALLY MATCH THE WAY WE TALK, AND CH.8 THROUGH CH.12 ARE DRAFTED
 
 **Active focus at start and close:** Smart_Car. Kim chose the order himself: **fix the references first, then draft**, so ch.8 would not add an eleventh hardcoded number. That was the right call and it changed what the fix turned out to be.
 
@@ -204,6 +204,42 @@ The seven instruments as a table of **what each tests and what each CANNOT see**
 
 **16 chapters render, 0 errors, 0 unresolved refs. Voice 23.4 -> 29.9 per thousand, 0 em dashes** (two had appeared in `fig_cost.R` panel titles -- **the code-string sweep caught them**). New `R/cost_data.R`, `R/fig_cost.R`, `figures/cost.png`. ⚠ Two more transient `PermissionDenied` on `_output`; retries succeeded.
 
+
+### ★★★ CH.12 `a_day_in_a_smart.qmd` DRAFTED — and the free-text column turns out to be the sharpest instrument in the book
+
+**~1,680 words, one figure, two tables.** The chapter had to earn its place: ch.5 already owns long days and ch.8 already owns gross-vs-net. **Its distinctive material is Creamsicle's `comment` column**, a free-text box at the end of each row with no instructions and no requirement, filled in **35 of 84 timed legs (42%)** entirely by whim.
+
+**★★★ THE COMMENT COLUMN IS A STOPPED-TIME DETECTOR, AND KIM BUILT IT BY ACCIDENT.** Commented legs: median **0.75 h** stopped, 4 of 35 at zero. Silent legs: median **0.00 h**, 36 of 49 at zero. **Wilcoxon p = 2.4e-07.** Put the way that matters: **42% of the legs carry 73.4% of all the stopped time in the record.** Whether he felt like writing a word predicts, better than anything else on the sheet, whether the day had anything in it besides the road.
+
+### ★★★ THE THREE-WAY TEST — this is the result, and it is unusually clean
+
+The obvious objection is that commented days were simply *different* days. **Tested three ways, and the pattern is exactly what a stopped-time detector should produce:**
+
+| | commented | silent | p |
+|---|---|---|---|
+| **miles** | 272.0 | 276.2 | **0.97** (same) |
+| **gross mph** | 38.1 | 49.4 | **0.0019** (different) |
+| **net mph** | 47.3 | 51.6 | **0.36** (same) |
+
+**Same distance. Same driving. 62% of the apparent speed gap is not speed at all.** The only thing separating the two kinds of day is time the car spent standing still. ★★ **A column nobody designed as an instrument separates the record better than any column that was.** Same accident as the fuel form's three multiplying columns in ch.9, and the chapter says so.
+
+### The figure, the categories, and the four exceptions
+
+**`figures/day.png`, `fig_day.R`:** 35 horizontal bars, one per commented leg, ordered by stopped hours. **Stopped time drawn FIRST so it reads straight off the axis**, driving in recessive grey behind it, each bar labelled with Kim's verbatim text (typo *Desert Musum* deliberately preserved). Caption corrected after visual check -- the first draft said "driving on the left" and had it backwards.
+
+**Categories are MINE, not Kim's, and the chapter says so in the table caption** so a reader can disagree: something to look at 11, something to eat 9, somebody to see 5, an errand 4, the clock 3, the ferry 2, weather-or-a-wreck 1. A comment naming two things is filed under the first match, and the order is part of the claim.
+
+**★★ THE TOP BAR IS A NAME.** Springfield IL to Liberty MO, 307 miles in 12 hours, **six of them stopped**, and the comment is one word: **Tom**. Six hours of a twelve-hour day were a person and the sheet gives them three letters.
+
+**⚠ THE FOUR ZERO-STOP COMMENTED LEGS ARE THE HONEST PART.** Three are notes about the clock (*TimeZone +1*, *To Mountain Time*, *Back to Pacific Time*) -- **the column being used for a second purpose, a category of false positives that announce themselves.** The fourth is worse and better: `2023-09-24 Campbell River -> Vancouver, 101 mi, 7 h`, comment **"Ferry, park, shop"**, stopped-time cell **zero**. ★★★ **The comment column caught that day. The stopped-time column, the one actually designed for the job, missed it entirely.** Stated in the chapter as the limit of every instrument in the book: *the record holds what got written down, not what happened.*
+
+### Finding 051 applied again, and it caught more drift
+
+**Re-derived the scaffold's numbers rather than trusting them, and half were wrong again.** Scaffold said median leg 251 mi (TwoRed) / 166 (Creamsicle); truth is **305 (139 legs) and 273.7 (84 legs)**. Scaffold said log distance ~95% of odometer miles; the median ratio is **1.00**. **Third scaffold in a row to drift at roughly this rate.** The new module derives everything, including the three-way test, so nothing in the chapter is typed.
+
+**⚠ One unsupported clause caught in my own draft before Kim saw it:** "nine days in ten it really was just that" -- not derivable. Replaced with the 49 uncommented legs, which is. **A round phrase that feels true is exactly the shape of a Finding-051 number.**
+
+New `R/day_data.R` (88 lines), `R/fig_day.R`, `figures/day.png`. **16 chapters render, 0 unresolved references. Voice 29.9 per thousand, 0 em dashes.** ⚠ One transient `PermissionDenied` on `_output` and one 60s MCP timeout on the full render -- **both Finding 048/012 class, both verified complete by artifact mtimes rather than by return value.**
 ## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
 
 **Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.

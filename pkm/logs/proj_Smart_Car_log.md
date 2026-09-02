@@ -1,3 +1,63 @@
+## ★★★ KIM'S OWN FIELD COMMENTS, ALL 35, VERBATIM — transcribed 2026-09-01 for ch.12
+
+These are not an account given to me. **They are what Kim wrote in Creamsicle's comment box at the
+time, in the field, with no idea anyone would read them as data.** The column was optional and
+unstructured; he filled it on 35 of 84 timed legs by whim. Reproduced here EXACTLY as recorded,
+typos included (*Desert Musum*), because ch.12's figure prints them verbatim and because the
+grouping in `R/day_data.R` is MINE and a reader has to be able to check it against the raw text.
+
+⚠ **The grouping has never been put to Kim.** See `deferred.md`. Nothing depends on it: the
+chapter's three-way test does not use the categories at all.
+
+| date | leg | miles | hours | stopped | what he wrote |
+|---|---|---|---|---|---|
+| 2022-01-20 | Springfield -> Liberty | 307 | 12 | 6.00 | Tom |
+| 2024-10-20 | WI Dells -> Madison | 50 | 5 | 4.50 | Cranes |
+| 2024-10-12 | Carlsbad -> Santa Rosa | 260 | 8 | 3.50 | C. Caverns NP |
+| 2023-03-07 | Springdale -> Escalante | 182 | 10 | 3.50 | Hike to slot canyon |
+| 2023-09-30 | Milipitas -> Morro Bay | 245 | 8 | 2.83 | Monterey Bay Aquarium, Pelican Photos |
+| 2023-09-25 | Vancouver -> Bainbridge | 167 | 7 | 2.75 | Ferry, Costco |
+| 2024-10-07 | Torrance -> Yuma | 302 | 10 | 2.75 | Madness + Cindy |
+| 2024-10-08 | Yuma -> Tucson | 256 | 7 | 2.50 | Desert Musum |
+| 2024-10-11 | Las Cruces -> Carlsbad | 240 | 7 | 2.50 | White Sands |
+| 2023-03-20 | Las Vegas -> Carlsbad | 333 | 9 | 2.50 | Cindy |
+| 2024-10-18 | Liberty -> W. Des Moines | 208 | 6 | 1.75 | Tom |
+| 2023-10-01 | Morro Bay -> Torrance | 241 | 7 | 1.50 | Birds, otters |
+| 2022-11-07 | Eugene -> Aberdeen | 326 | 11 | 1.50 | Accident delay, hail, rain |
+| 2022-11-03 | Napa -> Trinidad | 275 | 7 | 1.00 | Founders Grove |
+| 2022-06-12 | Klamath -> Bodega Bay | 304 | 9 | 1.00 | Founders Grove |
+| 2023-09-08 | Torrance -> Milpitas | 362 | 9 | 1.00 | Meet Lan |
+| 2023-09-09 | Milipitas -> Orick | 347 | 9 | 1.00 | Lunch @ Trinidad |
+| 2022-01-18 | Madison -> Springfield | 272 | 5 | 0.75 | Post Office |
+| 2023-09-10 | Orick -> Eugene | 266 | 7 | 0.75 | Brunch |
+| 2023-09-27 | Bainbridge -> Eugene | 333 | 8 | 0.75 | Costco, Starbucks |
+| 2022-11-25 | Eugene -> Redding | 312 | 6 | 0.50 | lunch |
+| 2022-11-27 | Paso Robles -> Torrance | 239 | 6 | 0.50 | photos |
+| 2023-09-12 | Butchart Gardens -> Tofino | 212 | 6 | 0.50 | Lunch |
+| 2023-09-11 | Eugene -> Port Angeles | 361 | 7 | 0.50 | Costco |
+| 2023-09-29 | Orick -> Milpitas | 390 | 9 | 0.50 | Misc |
+| 2023-09-28 | Eugene -> Orick | 267 | 7 | 0.33 | Starbucks |
+| 2022-11-26 | Redding -> Paso Robles | 406 | 8 | 0.33 | coffee |
+| 2022-01-26 | Grand Canyon -> Kingman | 170 | 3 | 0.25 | Shopping |
+| 2023-09-19 | Tofino -> Campbell River | 157 | 4 | 0.25 | Port Alberni |
+| 2024-10-13 | Santa Rosa -> Elk City | 311 | 6 | 0.25 | Lunch |
+| 2024-10-14 | Elk City -> Catoosa | 226 | 4 | 0.17 | Lunch |
+| 2024-10-10 | Tucson -> Las Cruces | 272 | 5 | 0.00 | TimeZone +1 |
+| 2023-03-14 | St. George -> Lone Pine | 410 | 6 | 0.00 | Back to Pacific Time |
+| 2023-03-05 | Victorville -> Springdale | 345 | 7 | 0.00 | To Mountain Time |
+| 2023-09-24 | Campbell River -> Vancouver | 101 | 7 | 0.00 | Ferry, park, shop |
+
+**★★★ The finding these produced:** these 35 legs hold **73.4% of all stopped time** in the record
+(p = 2.4e-07), and they are **not shorter days** (272 vs 276 mi, p = 0.97) and **not slower driving**
+(net 47.3 vs 51.6 mph, p = 0.36). Same distance, same driving; the whole difference is time the car
+stood still. **An optional box separates the record better than the column designed for the job** --
+which reads zero on *"Ferry, park, shop"*.
+
+⚠ The last four rows record NO stopped time. Three are notes about the clock, which is the column
+doing a second job entirely. ⛔ **Do not 'clean' those four rows. They are the evidence.**
+
+---
+
 ## ★★★ THE SCANNING EXPERIMENT — Kim, 2026-09-01, verbatim. THIS IS CH.9's ENDING AND IT MAY BE THE BOOK'S
 
 > While we were working on this, I realized that I had not entered some of the log data. At about the same time, I was talking to a friend about this project as I know he, too, logs fuel purchases. We wondered, together, whether our handwritten logs could be scanned. If so, that would eliminate a huge amount of friction (that recurring concept). Unless there is an adequate payoff, the manual transcription of the data may not be worth the effort. If the log can be scanned, that troublesome part of the equation disappears. My friend and I decided that I'd try by using my logs. Could the handwritten data be read accurately? And it worked! Not only did it save me a lot of effort for the trip logs, but the scans checked my typed entries of the fuel logs. And it was there that errors were discovered.
