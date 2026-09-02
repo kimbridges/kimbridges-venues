@@ -1,5 +1,52 @@
 # Focus History and Change Log
 
+**Active Focus (2026-09-02, open): "Smart_Car" -- FINISH THE BOOK. ONE CHAPTER LEFT.**
+
+**Foreword + ch.1-ch.13 stand, about 29,000 words. 16 chapters render, 0 error strings, 0 unresolved references.** Yesterday's full detail is in `session_log.md` 2026-09-01 and the superseded focus block is in `logs/focus_history.md`. Kim's accounts and rulings are verbatim in `logs/proj_Smart_Car_log.md`.
+
+**THE ONLY CHAPTER NOT WRITTEN IS CH.14 `what_the_record_cannot_say.qmd`** -- the closing argument, and the chapter the whole book has been deferring material to.
+
+**⛔ BEFORE DRAFTING A WORD OF IT, READ (Finding 052, learned the hard way yesterday):** `pkm_findings.md` **036** (a record's RESOLUTION sets the floor on what its silences can mean), **041** (a fuel row is a TRANSACTION, not a STATE), **043** (the state count, and my own wrong negative result on South Dakota), **044** (incidental knowledge is evidence, and it is falsifiable -- Styx River Road), **045** (a silence belongs to an INSTRUMENT, not to the past). ⛔ **Also the amended state-count entry in `deferred.md`.** ★★★ *Re-derivation is a check on transcription, never a substitute for reading.*
+
+**THE STATE POSITION, current as of 2026-09-01 and NOT what older notes say:** **49 states and 11 provinces/territories REACHED; 43 states and 10 provinces have a FILL.** Six states have no fill and **every one is settled** -- MD and VT from the trip log, DE/RI/SD by arithmetic, FL by a photograph of the car at a named crossroads. ⛔ **Do not write "49 and 10".** ⛔ **Nothing is unwitnessed.**
+
+**★★★ CH.14'S MATERIAL IS ALREADY GATHERED AND UNUSED.** The Florida sequence (three kinds of evidence in reverse order of strength, ending in recovery rather than a shrug); the retired temperature effect (*the record is now good enough to RETIRE a result*); the ~3 MPG southern deficit that **cannot be settled** and whose sample is closed; the witness as an instrument (content reliable, index not). ⚠ The scaffold's numbers are **not** to be trusted -- Finding 051, nine drifts across four scaffolds yesterday.
+
+**★★★ PHOTOGRAPHS, all in `images/TwoRed/`.** ⛔ **Use the Florida PAIR** -- `twored_florida_signs.jpg` (the intersection) and `twored_florida_corner.jpg` (TwoRed at it), **welded by the DEAD END sign visible in both**, a cross-check Kim named himself; say why a pair beats either alone. ★★★ **`twored_alberta_last.jpg` is TwoRed entering Alberta, *the last of the states/provinces, mission complete*** -- a documented COMPLETION, and the book has no picture of one. **Ch.14 or the Afterword; Kim to rule.** Also `twored_easternmost.jpg` (West Quoddy Head, with a HAWAII decal in the rear window). ⚠ The two Florida files are 4.6 MB and 8.2 MB -- downsample before rendering.
+
+**THE STANDING DISCIPLINES, all of which caught something yesterday:** ⛔ **findings first, then numbers** (052). ⛔ **re-derive every scaffold number** (051). ⛔ **the `R/` sweep at session close** -- two greps, em dashes and hardcoded chapter numbers; `fig_cost.R` has offended twice. ⛔ **view every PNG and send it to Kim in the same turn.** ⛔ **ask of every figure: if a reader saw only the shapes, what would they think it was about?** ⛔ **the card statements are a first-class instrument** -- four times they have held what no fuel log could; query them before declaring any silence.
+
+**⚠ CARRIED, NOT BLOCKING:** 78 em dashes in the prose of ch.1-4, index and afterword (predate the voice rule; a reviewed pass, ⛔ not a mass substitution). `proj_Smart_Car.md` is 63.6 KB against a 45 KB budget and `session_log.md` is 332.7 KB against 250. Ch.6-ch.11 and ch.13 are drafted and **still unread by Kim**.
+
+
+**Active Focus (2026-09-01, close): "Smart_Car" -- CH.8 THROUGH CH.13 DRAFTED IN ONE DAY. ONLY CH.14 REMAINS.**
+
+**Foreword + ch.1-ch.13 stand, about 29,000 words. 16 chapters render, 0 error strings, 0 unresolved references.** Full detail in `session_log.md` 2026-09-01; Kim's accounts and rulings verbatim in `logs/proj_Smart_Car_log.md`.
+
+**★★★ CROSS-REFERENCES ARE GENERATED (Finding 050).** Root cause: the **Foreword was being numbered as Chapter 1**. `index.qmd` and `afterword.qmd` are `{.unnumbered}`, every heading carries `{#sec-...}`, and **the printed numbering now runs 1-14 exactly as the project speaks it.** Two references corrected themselves; they are hyperlinks now. ⚠ Positional phrases stay hand-checked on a reorder (four lines, in `deferred.md`).
+
+**★★★ FINDING 051 -- KEEP THE GENERATOR, NOT THE RESULT -- EARNED ITS KEEP TEN TIMES TODAY.** **Four scaffolds yielded nine drifts**, including dormancy **86% where it is 91.9%** and both recorded versions of the missing states. **Roughly half of every hand-copied scaffold is wrong.** ★ Corollary: **a round phrase that feels true is the same defect** (caught *"nine days in ten"* in my own ch.12 draft).
+
+**CH.8-CH.11** (detail in `session_log.md`). **8, the hinge:** the record cannot see the driver, and **Kim's correction proves it** -- *the speed IS the stress*. **9, the paper:** ⚠ **the 0/8 errors were the PRINTED RECEIPTS, not his hand**, and ★★ **the SCANNING EXPERIMENT** turned 7 typed rows into 139 legs. **10, the audit:** ★★★ **the tolerance is DERIVED**, and **the finding is the GAP**. **11, the cost:** ★★★ **39.25 vs 39.66 mpg, four tenths apart.**
+
+
+
+
+**★★★ CH.12 A DAY IN A SMART -- the free-text column is the sharpest instrument in the book.** Creamsicle's optional `comment` box, filled on **35 of 84 legs by whim**, carries **73.4% of all stopped time** (p = 2.4e-07). **Three-way test: same miles (p = 0.97), different gross speed (p = 0.002), same NET speed (p = 0.36)** -- same distance, same driving, and the whole difference is time the car stood still. ⚠ The stopped-time cell reads zero on *"Ferry, park, shop"*.
+
+**★★★ KIM GAVE CH.12 ITS ENDING: THE INSTRUMENT-DESIGN LESSON.** *"Think through, ahead of time, what answers I'd like to get... Run the data early and often."* ★★★ **The cost is exact: 139 of 223 legs (62.3%) can never be asked** -- **the one loss better analysis cannot repair.** ⚠ A dropdown built in 2010 would have held *somebody to see* and NOT Tom or Cindy, **so the lesson is a PAIR: design the columns you can foresee, AND keep one box with no rules in it.** ★★★ Run-it-early is MEASURABLE: **6 of 7 categories appear in the first TEN comments.**
+
+**⚠⚠ RUN THE `R/` SWEEP AT EVERY SESSION CLOSE, not only when a figure is touched** -- `fig_cost.R` shipped em dashes in printed panel titles for the SECOND time. Two greps: em dashes, and hardcoded chapter numbers. **Clean at close: 0 and 0 across 14 modules.** ⚠ **78 em dashes remain in the PROSE of ch.1-4, index and afterword** -- they predate the rule; queued as a reviewed editorial pass, ⛔ not a mass substitution. ⚠ **View every PNG and SEND it to Kim in the same turn.** ★★★ **Ask of every figure: if a reader saw only the shapes, what would they think it was about?**
+
+**★★★★ GEOCODING SOLVED (Kim's Google Maps key): BOTH CARS AT 100%, 467/467 fills.** 116 cities requested, 116 returned, **every one audited by point-in-polygon against the state the log claims: 111 inside, 5 coastal within 1.8 km, 0 mismatches.** ★★★ **14 free gazetteer errata fell out** (Elroy->Eloy, Gothensburg->Gothenburg, Alamogaordo->Alamogordo...) -- **transcription errors six audit instruments never saw, because none of them tests a place NAME against the world.** ⛔ API called ONCE; `stops_data()` reads the saved CSV and never touches the network.
+
+**★★★ BOTH STOP MAPS ARE NOW IN CH.13 (Kim's ruling), which is 10 sections and 4 figures.** ★★★ **His reason caught a looseness of mine: a DOT IS NOT A DAY.** 27.8% of TwoRed's fuelling days and 38.0% of Creamsicle's carry more than one fill, most is three, **so the gap between dots is a FLOOR on the day's distance, never a reading of it**; the cadence question goes to @sec-long-days. ★★★ **And the third constant-check is the one that BREAKS: the car is constant, the driver is constant, THE TRIPS ARE NOT** -- TwoRed is four transcontinental strings plus Alaska and the Maritimes; Creamsicle is a Pacific coast run and two Midwest corridors.
+
+**★★★ CH.13 THE TWO CONSTELLATIONS.** ⚠⚠⚠ **First draft contradicted three settled findings -- Finding 052.** **Corrected: 49 states and 11 provinces** (43 fills, +MD/VT trip log, +DE/RI/SD arithmetic, +FL photograph; **PEI is an ELEVENTH, settled by a VISA motel bill**). ★★★ **THE CARD STATEMENTS ARE A FIRST-CLASS INSTRUMENT -- four times they held what no fuel log could.** ★★★ **Kim's rule is the spine: _"strict with the data, but circumstances that are clearly explained do count."_ A fuel log doesn't record where a car went; it records where a driver bought petrol.** ★★★ **He also ruled the map is about TRAVEL, not transactions** -- outlined no-fill states made absence look like the subject. ★★★ **PARKING MAP: 2,209 days, driven on 139 (6.3%); 91.9% in twelve gaps**, three holding **12,371 unlogged miles**.
+
+**NEXT: ch.14 `what_the_record_cannot_say.qmd`, the LAST chapter. ⛔ READ Findings 036, 041, 043, 044, 045 AND the amended state-count entry in `deferred.md` FIRST (Finding 052) -- the four-state argument is ch.14's centrepiece and is already fully worked. ⛔ USE THE FLORIDA PAIR (`twored_florida_signs.jpg` + `twored_florida_corner.jpg`, welded by the DEAD END sign in both) and say why a pair beats either alone. ★★★ `twored_alberta_last.jpg` -- TwoRed entering ALBERTA, *the last of the states/provinces, mission complete* -- is a documented COMPLETION: ch.14 or the Afterword, Kim to rule. ⚠ Ch.6-ch.11 and ch.13 are drafted and still unread by him.**
+
+
 **Active Focus (2026-09-01, close): "Smart_Car" -- CH.8 THROUGH CH.11 DRAFTED IN ONE DAY; CHAPTER NUMBERS FIXED; AND THE SCAFFOLDS ARE PROVED TO ROT.**
 
 **Foreword + ch.1-ch.11 stand, about 24,000 words. 16 chapters render, 0 error strings, 0 unresolved references.** Full detail in `session_log.md` 2026-09-01; Kim's accounts and rulings verbatim in `logs/proj_Smart_Car_log.md`.

@@ -1541,6 +1541,8 @@ re-parsed at 61 rows x 8 columns. **`session_log.md` was correctly left alone --
 
 ---
 
+
+**⚠ AMENDED 2026-09-02. The binding cannot drift, but it CAN be destroyed.** `rm(list = ls())`, used mid-session to clear a polluted global environment, removed `TODAY` along with everything else. The next write of a date failed with *object 'TODAY' not found* -- **which is the good outcome, because it failed loudly rather than silently writing a UTC date.** ⛔ **After any `rm(list = ls())`, rebind `TODAY` immediately, in the same call.** ★ Note the interaction with Finding 053: the wipe was itself a response to a shadowed base object, so one hazard produced the other.
 ### Finding 030 (2026-08-12) — A guard that only PRINTS is not a guard; `regexpr` returning -1 silently duplicates a file
 
 **What happened.** An edit to `priorities.md` meant to replace one section used
@@ -2243,3 +2245,20 @@ exactly the kind of half-signal that would mislead anyone checking the return va
 **A second failure rode along with the first.** Finding 045's own *Corollary for the writing* assigns this material to the closing chapter, and I put it in ch.13. **The findings file contained not only the answer but the instruction about where the answer belonged**, and reading it would have prevented both errors at once.
 
 **Companion to 049, 050 and 051.** Those three are all one disease: **a fact in prose that is not derived from the thing it describes.** 052 is the reverse and it is the more dangerous of the two, because **the fix for the first three, applied without reading, produces a confidently wrong number with a live generator behind it.** ★ The tell is the same as ever: **the build succeeds**, and now the number recomputes every render, which makes it look more trustworthy rather than less.
+
+## Finding 053 -- A SHORT VARIABLE NAME CAN SHADOW A BASE OBJECT, AND THE FAILURE SURFACES SOMEWHERE ELSE (2026-09-02)
+
+**What happened, twice in two days.**
+
+- 2026-09-01: `PKM <- "G:/My Drive/Projects_Index"` overwrote the PKM **config list** that `pkm_health.R` defines. Every health function then failed with *`$ operator is invalid for atomic vectors`* -- an error naming neither `PKM` nor the assignment that broke it.
+- 2026-09-02: `pi <- readLines("project_index.md")` overwrote the **base constant** `pi`. Great-circle distances then failed with *`non-numeric argument to binary operator`*, thrown from inside a helper function three calls down, on the line `d <- pi/180`.
+
+**Both times the error appeared far from its cause, named neither the variable nor the shadowing, and cost several minutes of debugging the wrong thing.** In the second case I checked the classes of four vectors and the length of two before thinking to check `pi` itself.
+
+**Why the R bridge makes this worse than ordinary scripting.** A script starts clean every run. **This session is a long-lived global environment shared across hours of work and, per the connection banner, sometimes across more than one agent.** A name assigned casually at 09:40 is still there at 11:05, still shadowing, and nothing about the later failure points back to it.
+
+**Rule. In a persistent session, never bind a bare short name that could collide.** Two-letter and common-word names are the hazard: `pi`, `T`, `F`, `c`, `df`, `data`, `max`, and any ALL-CAPS name a sourced config might own (`PKM`, `SC_DIR`, `TODAY`). **Prefix scratch reads: `pi_lines`, `.idx`, `tmp_pi`.** ⛔ Prefer reading a file straight into the call that consumes it over parking it in a global.
+
+**And the diagnostic, which is cheap and I should reach for it first.** When an error complains about a TYPE on an expression that cannot have the wrong type -- `pi/180`, `PKM$index` -- **do not debug the data. Check whether the name means what you think it means:** `exists("pi")`, `class(pi)`, `environmentName(environment())`. ★ **A base object with the wrong class is a shadowing bug until proven otherwise.**
+
+**Companion to Finding 031.** That one says a bridge timeout is not a failure. This one says **an error message in a persistent session is not necessarily about the code that raised it.** Both are about the same thing: the session has state and history, and the symptom is not the site.

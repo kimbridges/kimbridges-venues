@@ -170,6 +170,32 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ⛔ WAITING ON KIM'S FULL READ-THROUGH — he returns with photos, cover design and changes (2026-09-02)
+
+**The book is complete in draft: Foreword + 14 chapters + Afterword, 33,333 words, 16 pieces rendering with 0 unresolved references.** Kim is reading the whole thing, read-only, and comes back for **additional photos, the cover design, and any needed changes.**
+
+⛔ **DO NOT EDIT ANY CHAPTER UNTIL HE REPORTS.** Three fixes were applied and re-rendered BEFORE he started reading; nothing has changed since.
+
+**What to have ready when he returns:**
+- **Cover design** has never been discussed. `images/TwoRed/` holds 7 photographs; `twored_day_one.jpg` and `twored_alberta_last.jpg` are the two strongest candidates for a cover, and Alberta is already committed to the last page.
+- ⚠ **The Afterword's originally-planned last image does not exist:** TwoRed and Bordeaux nose to nose in the Honolulu garage. **The scaffold called it "available and true" but no such file is in the book.** If Kim wants it, he has to take or find it. **It is the natural companion to the Alberta photo** and the only image of the fleet as it stands today.
+- **78 em dashes** in the prose of ch.1-4, index and afterword, queued as a reviewed pass.
+- ⚠ `proj_Smart_Car.md` is over its 45 KB budget and `session_log.md` is over 250 KB.
+
+### ⚠ TASK — three defects of my own, found by a whole-book sweep and FIXED 2026-09-02
+
+**All three were in the new work and every one is a class this book warns about.** Recorded because the pattern matters more than the fixes.
+
+1. **Ch.14 printed the lifetime MPG as a hardcoded `39.25`** -- Finding 051, in the chapter about not trusting typed-in numbers. ⚠⚠ **My first fix made it worse: a SECOND derivation returning 39.2724 against ch.11's 39.2511.** ⛔ **Two derivations of one headline number IS the drift.** Final: `cannot_say_data()` calls `cost_data()`. **There is now exactly one derivation of lifetime economy in the book, and any future one must reuse it.**
+2. **A chapter number, "ch.6", inside a printed table cell** in `cannot_say_data.R` -- Finding 050, third time from an R string literal.
+3. **Both ch.13 stop-map chunks wrote to `fig_stops()`'s default path.** Rendered book was correct; the saved PNGs were not. Explicit paths now passed.
+
+★★★ **The lesson to carry: the chapter arguing that proof needs a procedure was itself caught by a procedure, not by reading.** ⛔ **Run the whole-book sweep at every close now that all 16 pieces exist** -- cross-chapter number agreement, figure paths, positional phrases, and the two `R/` greps.
+
+### ⚠ NOTE — a hardcoded positional count in ch.14 (2026-09-02)
+
+Ch.14 opens *"This book has spent thirteen chapters producing figures."* **That is a hardcoded chapter count**, same family as the five carried "the next chapter" phrases. Correct today; breaks silently on any insertion. ⛔ Left deliberately, listed here so a reorder catches it.
+
 ### ⚠ TASK — 78 em dashes in the PROSE of the early chapters (opened 2026-09-01)
 
 | file | em dashes in prose |
@@ -264,7 +290,9 @@ In `book/images/TwoRed/`:
 
 ⚠ The two Florida files are 8.2 MB and 4.6 MB. **Downsample before they go into a rendered book**; `pdftools`/`magick` in the R session, not by hand.
 
-### ★★★ TASK — BUILD THE FUEL-STOP POINT MAP. It shows the one thing a choropleth cannot (2026-09-01)
+### ✓✓✓✓ DONE 2026-09-01 — the fuel-stop point map is BUILT for both cars, and placed in ch.13
+
+**Superseded by the geocoding solution** (Google Maps key, both cars at 100%, 467/467 fills) and by Kim's ruling that the maps belong in ch.13, not ch.5. ⚠ The coverage table below is the BEFORE state, kept as the record of why the task existed.
 
 Kim attached his own Google-style point map of fuel stops (**he flags it as likely incomplete**) and named exactly what it does that ch.13's figure does not: *"what my map shows is what that '300 mile' run looks like, especially across Canada."*
 
@@ -307,7 +335,9 @@ Vermont now has three witnesses: the trip log (Hartland), **an AMEX line (QUECHE
 
 ★ My Alberta-does-not-border-Yukon argument was sound and it was the long way round; **the ferry landfall at Haines was already in @sec-marine-highway and I had not connected it.** ⚠ The second crossing (the plains corner) Kim himself flags as not easily verified -- **carried in ch.13 as his account, not as a derived fact.**
 
-### ⛔ ASK KIM FOR THE FLORIDA PHOTOGRAPH — ch.14 wants it and he has offered (2026-09-01)
+### ✓✓✓ SUPPLIED 2026-09-01 — Kim sent the Florida pair; both are in `images/TwoRed/`
+
+**`twored_florida_signs.jpg`** (the intersection) and **`twored_florida_corner.jpg`** (TwoRed at it), **welded by the DEAD END sign visible in both** -- a cross-check Kim named himself. ⛔ Ch.14's Florida sequence should use the PAIR and say why a pair is stronger than either alone. ⚠ 4.6 MB and 8.2 MB; downsample before they go into a rendered book.
 
 Finding 045 established the geotagged **corner** photo (30.983392, -87.571312, 1.07 mi inside FL). **Kim has now found a photo of TWORED ITSELF at that same intersection.** *"I'd dig it out, but that's kinda a lot of work at this hour. But if I need it, I can find it."*
 
@@ -642,11 +672,17 @@ Kim, unprompted: *I have a friend who lives in Alaska on Styx River Road. There 
 
 **All four unwitnessed states now have an account. Three by geometry; Florida by incidental knowledge.** ✓ **CLOSED.**
 
-### ★★★ THE STATE COUNT IS 49 AND 10 — KIM'S RULING, 2026-08-21 (Finding 043)
+### ★★★ THE STATE COUNT — KIM'S RULING 2026-08-21, AMENDED 2026-09-01 TO 49 AND ELEVEN
 
 *Take my word for it: TwoRed did, indeed, go to the 49 mainland states and the 10 Canadian provinces.* **Some states had no fill and no overnight, so they are not in the data.** **My framing — *TwoRed's list and Kim's list are two different quantities* — was WRONG and has been corrected in four files.** There is one number, 49, and a log that witnesses 45 of it.
 
 **Write 49 in the text. Where the log's own count matters, say *the log witnesses 45*, never *45 states*.** The four unwitnessed states are **three kinds of silence** and are ch.13's best example: **Delaware** recoverable by geometry; **Rhode Island** strongly indicated (Douglas MA sits on MA-146, the Providence road); **Florida** testimony only; **South Dakota** with no leg in the record having room for it.
+
+**⚠⚠ AMENDED 2026-09-01. The province count is ELEVEN, not ten.** Kim produced a VISA statement placing the car on **Prince Edward Island** (Harbour Motel, Murray Harbour, 2014-05-27; Bay Ferries booking from Charlottetown) -- **Confederation Bridge in, Pictou ferry out, no tank bought on the island** -- and separately closed **British Columbia**, which TwoRed crossed twice without filling (one road north out of Haines; a second clip of the corner off the plains).
+
+**The current position: 49 states and 11 provinces/territories REACHED; 43 states and 10 provinces have a FILL.** ⛔ **Do not write *49 and 10*.** `constellations_data()` exposes both as `n_prov` (11) and `n_prov_fill` (10).
+
+**⚠ The four-unwitnessed-states framing above is also superseded.** It is now **SIX** states with no fill (DE, FL, MD, RI, SD, VT) and **every one is settled**: MD and VT from the trip log, DE/RI/SD by arithmetic, FL by a photograph of the car at a named crossroads. **Nothing is unwitnessed.** ★ *The log witnesses 45* still holds and is still the right way to say it.
 
 ### ✓✓✓ SOUTH DAKOTA ANSWERED AND CORROBORATED, 2026-08-21
 

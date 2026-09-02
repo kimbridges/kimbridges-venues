@@ -5,30 +5,180 @@
 #| include: false
 
 source("R/book_setup.R")
+source("R/constellations_data.R")
+source("R/stops_data.R")
+source("R/cost_data.R")
+source("R/cannot_say_data.R")
+
+X <- cannot_say_data()
+K <- constellations_data()
+
+stopifnot(X$free_text_in_answers == 0, X$prose$distinct[2] > 40,
+          X$sd_rank > 1, nrow(X$temp) == 3, nrow(X$south) == 2)
 ```
 
-<!-- SCAFFOLD — delete this block as the chapter is written.
+## The numbers you came for
 
-PURPOSE
-DIFFICULTY strand, and the closing argument. The chapter that makes the whole book honest.
+This book has spent thirteen chapters producing figures. **`r sprintf("%.2f", X$tw_mpg)` miles per gallon. Three hundred miles in a day. `r K$reach` states and `r K$n_prov` provinces.** Every one of them's derived, checkable, and sitting in a sentence built to hold it.
 
-MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- RESOLUTION AND SILENCE (Finding 036): Kim drove a few miles into the Florida panhandle, asked a stranger 'Is this Florida?', and turned around. A log that samples at fill-ups cannot see it. A record's RESOLUTION sets the floor on what its silences can mean.
-- ★★★ THE STATE COUNT IS THE CHAPTER'S BEST EXAMPLE. Kim: 49 mainland states, 10 provinces, and he went out of his way for the awkward ones. The log witnesses 45. THE FOUR IT MISSES SHOW THREE DIFFERENT KINDS OF SILENCE:
-  * DELAWARE -- recoverable by geometry. Colonial Heights VA -> Bellmawr NJ reads 264 odometer miles (great-circle 219); the only Delaware-free road is ~305, forty more than the odometer permits. Present as a DISTANCE, absent as a NAME.
-  * RHODE ISLAND -- strongly indicated, not forced. 2014-05-17 Bellmawr NJ -> Douglas MA is 287 mi (great-circle 232); the coastal I-95 route through Providence is ~285, the inland route ~265. And Douglas MA sits ON MA-146, the Providence-Worcester road, five miles from the line.
-  * FLORIDA -- THE CHAPTER'S BEST SEQUENCE, because it ends in recovery rather than a shrug. THREE kinds of evidence, acquired in the reverse order of their strength:
-      1. TESTIMONY (unfalsifiable): a few miles into the panhandle, 'Is this Florida?' 'Yes.' That's all I needed.
-      2. INCIDENTAL KNOWLEDGE (falsifiable, survives -- Finding 044): STYX RIVER ROAD. A friend in Alaska lives on the only other one; Kim remembers seeing the Alabama one -- 'Huh? Another one???' -- near the line. 'How would I have known that except by a visit?' A fact he had no reason to want; its uselessness certifies it.
-      3. A GEOTAGGED PHOTOGRAPH (documentary): 30.983392, -87.571312 -- N Pineville Rd x Rease Seales Rd, a DEAD END sign and a farm mailbox. ONE AND A FIFTH MILES INSIDE FLORIDA, 5.4 miles from the Atmore fill. Checkable against Street View. FIGURE: images/TwoRed/twored_florida_corner.jpg (KIM TO PLACE THE FILE).
-      AND THE ARITHMETIC AGREES: the whole visit is ~11 miles hung off a fuel stop, and the New Orleans -> Atmore segment carries 210 odometer miles against ~195 direct.
-      ★★★ THE POINT (Finding 045): Finding 036 was RIGHT -- the fuel log cannot see this. What it does NOT license is 'therefore it is unrecordable,' which is what I wrote. IT WAS UNRECORDABLE BY THAT LOG. He was carrying another instrument that samples on a different trigger -- not 'I bought fuel' but 'this is worth looking at.' A SILENCE BELONGS TO AN INSTRUMENT, NOT TO THE PAST.
+Those were the easy part.
 
-  * SOUTH DAKOTA -- recovered 2026-08-21, and the best story of the four. Kim went north from Nebraska on a narrow rural road for the sole purpose of crossing the line, met A CONVOY OF STORM CHASERS coming the other way, crossed, turned around and left. The record holds it as 255 odometer miles where the direct road is ~175 -- ratio 1.83, THE MOST INDIRECT STRETCH IN SIXTEEN YEARS -- on the northern road through Chadron NE, twelve miles from the border.
-  * AND THE CHAPTER SHOULD ADMIT MY OWN ERROR HERE, because it is the same lesson one level up: I first reported that no leg had room for South Dakota. The arithmetic was right and the HYPOTHESIS was wrong -- I had assumed visiting a state meant going somewhere IN it. A negative result is only as strong as the hypothesis it tested.
-- Key to a ROW, never a LABEL.
-- RETIRED RESULTS: the temperature effect died as the sample grew (n=94 -0.068 p=0.045; n=125 -0.050 p=0.099; p=0.17 with controls). The record is now good enough to RETIRE a result, not just produce one.
-- THE SIGNAL THAT CANNOT BE SETTLED: a ~3 MPG southern economy deficit, unstable across subsamples, n=30 -- and Creamsicle has ZERO southern fills, so the sample is closed and will not grow. Print the fact that it cannot be settled, not the coefficient.
-- THE WITNESS AS AN INSTRUMENT (Findings 039, 041): content reliable, index not. Roads and counts survive decades; what slips is the binding of a memory to an occasion. And a fuel row is a TRANSACTION, not a STATE.
--->
+**What it took to be allowed to print them is the part nobody sees**, and it's a good deal larger than the figures. This chapter is about that, because a number you can't audit is just a number somebody told you.
 
+## Where do you put the Florida confirmation?
+
+Here's the question that organises everything else.
+
+The state count has an obvious home. It goes in a headline, in a summary line, in the second paragraph of a talk. **Everybody knows where a total lives.**
+
+Now: I drove a few miles into the Florida panhandle, stopped at a crossroads, asked a passing driver whether this was Florida, was told yes, and turned around. **Where does that go?**
+
+It isn't a fuel purchase, so the fuel log hasn't got a row for it. It isn't the end of a day, so the trip log hasn't either. It's the thing that makes the total honest, and **there is no column anywhere in this record designed to hold it.**
+
+**That's not an oversight in my form design. It's the general case.** We build a place for the answer because we know what the answer will look like. We don't build a place for the proof, because proof takes whatever shape the doubt happens to take, and there's no knowing that in advance. **We're goal directed. We count the states. We are not procedure oriented, and the procedure is where the trust is.**
+
+## What that looks like when you measure it
+
+I can show you the asymmetry, because both files are sitting in the same folder.
+
+```{r}
+#| label: tbl-shape
+#| tbl-cap: "The two kinds of table this project keeps. One holds what the record says; the other holds why you should believe it."
+#| echo: false
+z <- X$shape
+names(z) <- c("Holds", "File", "Rows", "Columns")
+knitr::kable(z, align = c("l","l","r","r"))
+```
+
+**The fuel log has `r X$shape$cols[1]` columns and not one of them is free text.** Date, city, state, brand, price, odometer, gallons, cost. Every column knows what it's for, every value's got a type, and a new row slots in without anybody thinking about it. That's what a table looks like when you'd worked out the question before you started collecting.
+
+Now the errata file, which holds the corrections and the reasons for them.
+
+```{r}
+#| label: tbl-prose
+#| tbl-cap: "Three columns in the errata file, and how many distinct values each holds across sixty-five rows. A `status` column is normally an enum of about five."
+#| echo: false
+z <- X$prose
+names(z) <- c("Column", "Distinct values", "Rows")
+knitr::kable(z, align = c("l","r","r"))
+```
+
+Look at the middle row. **`status` holds `r X$prose$distinct[2]` distinct values in `r X$er_n` rows.** In any ordinary schema that column's a short list: open, confirmed, resolved, rejected, withdrawn. Here it holds sentences.
+
+> RESOLVED, and my earlier 'cost is wrong' diagnosis was REFUTED by the card.
+
+> WITHDRAWN, my classifier failed, not the data.
+
+**Nobody designs a status column like that.** It happens because the alternative is losing the reason, and the reason turned out to matter more than the correction.
+
+The `basis` column is worse, or better, depending on what you want from it: **`r X$prose$distinct[1]` distinct values in `r X$er_n` rows**, a median of `r X$er_med_chars` characters, and **`r X$er_over80` of the `r X$er_n` running past eighty.** The longest's `r X$er_max_chars` characters. It stopped being a field and became an argument, written out fresh each time, because **every correction had to be justified in whatever terms that particular doubt required.**
+
+## What actually settled things
+
+And here's what the arguments leaned on.
+
+```{r}
+#| label: tbl-src
+#| tbl-cap: "Every correction in the errata, by what settled it. The grouping is mine, read off the basis column, and the raw text is in the file so you can regroup it."
+#| echo: false
+knitr::kable(X$src, align = c("l","r"), row.names = FALSE)
+```
+
+**Not one of these is the fuel log itself.** The fuel log is what's being corrected. **Everything that does the correcting comes from outside it**, and most of it from a source that had nothing to do with cars: a scanned sheet of paper, a credit card statement filed for tax, a road name someone happened to remember.
+
+@sec-paper is the reason the top row is so large. **Before the scanning experiment there was no way to check a typed number against anything**, and after it there were `r X$src$entries[1]` corrections that came straight off the paper.
+
+## Florida, all the way down
+
+So: the state that has no row anywhere, and what it took.
+
+**The first evidence was testimony, and testimony is unfalsifiable.** *I drove in, I asked a man, he said yes.* I believe it because I was there. **You have no way to check it and no way it could ever fail**, which means it isn't evidence at all, it's a request.
+
+**The second was better and I didn't produce it on purpose.** I mentioned that a friend in Alaska lives on Styx River Road, that there's only one other road in the United States with that name, and that I remember seeing it in Alabama just after leaving Florida. *Huh? Another one???* **How would I have known that except by a visit?**
+
+That's a different kind of claim, and what makes it different's that **it's useless.** Nobody memorises an obscure county road name in order to prove something twelve years later. **A fact you had no reason to want can't have been manufactured**, and unlike the testimony it can be looked up: there is a Styx River in Baldwin County, Alabama, and the Perdido it runs into *is* the Florida line.
+
+**The third is a photograph, and I'd forgotten I had it.**
+
+![The corner. North Pineville Road at Rease Seales Road, a dead end sign, and somebody's farm shed.](images/TwoRed/twored_florida_signs.jpg){#fig-fl-signs}
+
+![The same corner, with the car in it. Note the dead end sign in both frames: that is what welds the two photographs into one piece of evidence rather than two separate ones.](images/TwoRed/twored_florida_corner.jpg){#fig-fl-corner}
+
+The coordinates put that corner **`r sprintf("%.1f", X$fl_inside)` miles inside Florida**, about `r sprintf("%.0f", X$fl_from_fill)` miles from the Atmore fill that brackets it. **It's checkable on a street map by anybody who doubts me**, which is the entire point, and it's the opposite of *just believe me*.
+
+**And the arithmetic agrees by staying silent.** The leg those miles hang off, New Orleans to Atmore, reads `r X$fl$odo` odometer miles against `r sprintf("%.0f", X$fl$straight)` straight, a ratio of `r sprintf("%.2f", X$fl$ratio)`. **The 2014 trip's own median is `r sprintf("%.2f", X$trip_med)`, with a middle half from `r sprintf("%.2f", X$trip_iqr[[1]])` to `r sprintf("%.2f", X$trip_iqr[[2]])`.** An eleven-mile detour sits inside ordinary routing and cannot be seen. **The instrument isn't failing there. It's being asked a question below its resolution**, and those are different things.
+
+## The one place the record says Florida, and it's wrong
+
+Now the trap, because it's the best argument in this chapter for being procedure oriented.
+
+There **is** a Florida entry in the financial records: a 7-Eleven in **Orlando**, on the 2015 card summary.
+
+**It isn't TwoRed.** Of sixteen fuel charges on the card that year, eight match the log to the cent and eight don't. Seven of the eight are Hawaii. One is Orlando. **The card covers the fleet; the log covers one car.**
+
+So the single place a statement says the word Florida is the one place it would mislead you completely. **A goal-directed reader searching for Florida finds that row and stops.** The only thing that catches it is a procedure: check the geography, check the year, check which car, check whether the charge matches the log to the cent. **The right answer and the wrong one look identical until you do the work.**
+
+## What proof costs
+
+I want to be honest about the price, because it's the reason this gets skipped.
+
+Vermont is in this book because of a lunch. I stayed at a friend's house a few miles over the line, having followed him home from his office in New Hampshire, and there were no filling stations on that road and no stopping anyway without losing him. **No fuel, no overnight in the log, no row.**
+
+What settled it was a line on a card statement from May 2014: a restaurant in Quechee, Vermont, and the bill for two. **Finding that meant going back through more than a decade of financial records looking for one transaction, in one state, in one month, from eleven years ago.**
+
+**That is not an easy find.** It took longer than any analysis in this book, and it wasn't interesting work. It produced one line of text, and that line is worth more than any paragraph I could write about my own memory, **because it was filed by somebody else, for their own reasons, and they had no idea what it would end up proving.**
+
+**When you find it, it adds trust. That was the primary issue all along.**
+
+## Three things I can't settle, and one I got wrong
+
+A chapter about trust should end with the things that don't resolve.
+
+**The first is my own mistake.** In August I wrote that the South Dakota leg was the most indirect stretch in sixteen years. **It isn't.** Re-run against the completed geocoding, it ranks **`r X$sd_rank` of `r X$n_legs` legs**, at the `r sprintf("%.0f", X$sd_pct)`th percentile, and it isn't first at any threshold you care to set. I'd found a striking number and I'd printed it without asking where it sat.
+
+**The conclusion survives on better evidence.** The odometer reads `r X$sd$odo` miles where the straight line is `r sprintf("%.0f", X$sd$straight)`. Route it through Chadron, Nebraska, which is `r sprintf("%.0f", X$chadron_to_line)` miles from the state line, and the straight-line path comes to about `r sprintf("%.0f", X$sd_via)`. **That leaves roughly `r sprintf("%.0f", X$sd_slack)` miles unaccounted for on a day with a dash to a border in it.** Not a record, just room.
+
+**The second is a result I retired and shouldn't have.** The record used to show fuel economy falling with ambient temperature, and as the sample grew the effect faded, so I wrote it off and noted approvingly that the record had got good enough to kill a finding.
+
+```{r}
+#| label: tbl-temp
+#| tbl-cap: "The temperature effect, re-run on the corrected data at three sample sizes. The coefficient shrinks by a third and the p-value never rises above 0.02."
+#| echo: false
+z <- data.frame(
+  `Tanks` = X$temp$n,
+  `MPG per degree F` = sprintf("%+.3f", X$temp$slope),
+  `p` = sprintf("%.3f", X$temp$p),
+  `With tank length held` = sprintf("%+.3f", X$temp$slope_adj),
+  `p ` = sprintf("%.3f", X$temp$p_adj), check.names = FALSE)
+knitr::kable(z, align = c("r","r","r","r","r"))
+```
+
+**That retirement does not reproduce.** On today's corrected data the effect is significant at every sample size I can construct. What's true's subtler and less satisfying: **the coefficient decays by about a third as the record grows, and refuses to die.** I'm not going to claim it now either, because ambient temperature travels with season, region and route, and this record cannot separate them. **What I'll claim is that I retired it too early, on a version of the data that no longer exists.**
+
+**The third genuinely cannot be settled, and I can show you why rather than just asserting it.** There may be a southern fuel-economy deficit. Here is what it is:
+
+```{r}
+#| label: tbl-south
+#| tbl-cap: "The southern economy deficit, under two defensible definitions of southern. Tank length is held constant in both."
+#| echo: false
+z <- data.frame(
+  `Which states count as southern` = X$south$definition,
+  `Tanks` = X$south$n_south,
+  `MPG difference` = sprintf("%+.2f", X$south$coef),
+  `p` = sprintf("%.2f", X$south$p), check.names = FALSE)
+knitr::kable(z, align = c("l","r","r","r"))
+```
+
+**The answer moves by a factor of four depending on a boundary nobody ever wrote down**, and neither version reaches significance. **And the sample is closed**: Creamsicle made `r X$cr_south` southern fills in three years, so no future data will settle this. It will be `r X$south$n_south[1]` tanks forever.
+
+**So the honest output is the fact that it cannot be settled, and not a coefficient.** A number printed here would be read as a finding by everybody who saw it, and it would be my definition of *southern* doing most of the work.
+
+## The lesson, which isn't about cars
+
+**Every dataset has a schema for its answers and no schema for its evidence.**
+
+The answers get columns, types and a place in the headline. The evidence gets whatever you can improvise: a free-text field that swells into paragraphs, a folder of scans, a photograph you forgot you took, a lunch receipt from 2014. **That improvisation is where the trust lives, and because it hasn't got a designed home it's the first thing to be skipped and the first thing to be lost.**
+
+The temptation is always to say *just believe me*. It's a strong temptation precisely because validating a claim's often genuinely hard, and sometimes there's no clean way to do it at all. **Ignore it anyway.** Go and look for the receipt. Most of the time you won't find one, and the honest move then is to say so and mark the claim as testimony.
+
+**But sometimes you find the lunch.**

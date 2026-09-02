@@ -98,7 +98,7 @@ So here's every fuel stop both cars ever made, placed.
 #| fig-width: 7.4
 #| fig-height: 5.4
 #| echo: false
-fig_stops(S, "TwoRed")
+fig_stops(S, "TwoRed", "figures/stops_twored.png")
 ```
 
 ```{r}
@@ -107,7 +107,7 @@ fig_stops(S, "TwoRed")
 #| fig-width: 7.4
 #| fig-height: 5.4
 #| echo: false
-fig_stops(S, "Creamsicle")
+fig_stops(S, "Creamsicle", "figures/stops_creamsicle.png")
 ```
 
 **Put those two beside each other and something falls out that neither the choropleth nor the cost chapter could show.** @sec-car-cost found the two cars four tenths of a mile per gallon apart and called the car a constant. The choropleth found no new states in the second car and said the same of the driver. **These say the trips were nothing alike.** Same person, same kind of machine, same continent, and one of them's a set of long horizontal strings while the other's a coastline and a couple of corridors.

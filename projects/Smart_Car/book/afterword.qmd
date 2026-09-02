@@ -1,27 +1,73 @@
-# Afterword — The choice made again {.unnumbered}
+# Afterword: the choice made again {.unnumbered}
 
 ```{r}
 #| label: setup
 #| include: false
 
 source("R/book_setup.R")
+
+f <- fleet[order(fleet$start), ]
+tw_years <- round(f$years[f$car == "TwoRed"], 0)
+n_cars <- nrow(f)
+stopifnot(n_cars == 4, tw_years >= 16)
 ```
 
-<!-- SCAFFOLD — delete this block as the chapter is written.
+There's a question underneath this whole book that the data can't reach, and it's the one I'd want answered if somebody handed me the file.
 
-PURPOSE
-Close on the fleet arc and what sixteen years of repeating a decision means.
+**Why keep doing it?**
 
-MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- Four cars: one bought, one leased and returned, one sold to family, one electric in the driveway now.
-- TwoRed crossed the Pacific and drove ~3,700 more miles the record is not about, by design.
-- The two-subjects frame, closed: the fuel log measured the car, the trip log measured what the human achieved, and the stories were the only record of what it cost.
-- Kim, on why any of it happened: 'how far and fast can you expect to drive in a day, something I had no idea about until I started doing these drives.'
+Not the logging. The logging is a habit and habits explain themselves. I mean the car. **Four of them, over `r tw_years` years**, at a moment when almost nobody around us was making that choice and quite a lot of people thought it was funny.
 
-OPEN / NEEDED
-- ★★★ THE ENDING WRITES ITSELF: BORDEAUX WAS ONE OF THE LAST SMART CARS THE DEALERSHIP SOLD. Kim, 2026-08-21: 'It was one of the last Smart cars at our Mercedes dealership. After these few were sold, they wouldn't sell Smart cars any more.' THE FLEET OUTLASTS THE PRODUCT LINE. Four cars chosen over sixteen years, and by the end you couldn't buy another.
-- AND THE LAST IMAGE IS AVAILABLE AND TRUE: TwoRed and Bordeaux side by side in the Honolulu garage, not filling one normal parking space between them. The first car and the last car, both still here.
-- Ownership dates all documented -- see data/fleet_ownership.csv, loaded by book_setup.R.
-- No `bordeaux*` slug, filename, figure or path.
--->
+```{r}
+#| label: tbl-fleet
+#| tbl-cap: "The whole fleet. Two are still with us."
+#| echo: false
+z <- data.frame(
+  Car = c("TwoRed", "TwoFer", "Bordeaux", "Creamsicle"),
+  `What it was` = c("bought new, San Diego, odometer 4",
+                    "leased three years, Honolulu",
+                    "leased then bought; electric",
+                    "bought used, Missouri; sold to family"),
+  Years = c(sprintf("%.0f, and counting", f$years[f$car == "TwoRed"]),
+            "3", sprintf("%.0f, and counting", f$years[f$car == "Bordeaux"]), "3"),
+  check.names = FALSE)
+knitr::kable(z, align = c("l", "l", "l"))
+```
 
+**One car you like is taste.** Four, chosen and re-chosen across `r tw_years` years, on two sides of an ocean, with one of them bought second-hand a decade after the first, is something else. It's a position, and I didn't hold it because the car was good at the thing small cars are supposed to be good at. **This book exists because it wasn't.**
+
+## What the record was for
+
+I started writing numbers down because I wanted to know something specific: **how far and fast can you expect to drive in a day.** I had no idea. Nobody had told me, the answer clearly depended on who was driving, and the only way to find out was to go and do it and write down what happened.
+
+@sec-long-days has the answer, and it's about three hundred miles. **It took sixteen years, four cars and about a hundred thousand miles to establish a figure I could now tell you in a sentence**, and I'd do it again, because the sentence isn't the point. The point is that it's *mine*, it's checkable, and it came with everything else attached: the roads, the ferries, the storms, the people at the other end.
+
+**And the last chapter is the honest coda to that.** A number worth having is a number somebody could check. Most of the work in this book went into making that possible, and almost none of it shows.
+
+## What happened to the car you can't buy
+
+Here's the part I didn't see coming, and it arrived from the dealership rather than the data.
+
+**Bordeaux was one of the last Smart cars our Mercedes dealership ever sold.** After those few went, they stopped carrying them. The line was withdrawn from this market, and that was that.
+
+So the argument this book has been making, over thirteen chapters and a great deal of arithmetic, is an argument about a car you can no longer walk in and buy. **The fleet outlasted the product line.** Two of the four are still in the garage in Honolulu, nose to nose, taking up less room between them than one ordinary car.
+
+I don't think that makes the argument wrong. **If anything it sharpens it**, because the case was never that everyone should own one. It was narrower and more stubborn than that: **a car assumed to be an urban runabout crossed the continent four times, went to the Arctic Circle, reached every state you can drive to, and cost about a dime a mile in fuel to do it.** That happened. It's in the record, and the record has been audited.
+
+## The last mile
+
+TwoRed came off a ship in Honolulu in June 2017 and has been here ever since. It's still driven. Those miles aren't in this book, on purpose: **the mainland record closed when the car did**, and a record that keeps growing after its question is answered is a different project.
+
+Which leaves one image, and it isn't from Hawaii at all.
+
+**On the sixth of June 2014 we crossed from Saskatchewan into Alberta**, at the end of a three hundred and ninety mile day, at the end of three days that @sec-driving-cost calls the hardest driving in the whole sixteen years. Potholes, and something enormous in the mirror every time we slowed for one. **We were tired and the car was filthy.**
+
+Alberta was the last one. Yukon had come the summer before, on the way to the Arctic; the Maritimes and Newfoundland and Quebec and Ontario had gone by in the previous fortnight; and this was the final name on a list that had taken four years to work through. **Every state you can drive to, and every province on the route.**
+
+So we pulled over at the sign, and I got out and took a picture of the car in front of it, the way you do.
+
+**It's a bad photograph of a small dirty car beside a piece of provincial signage, with a tanker truck going past.** Nothing about it looks like the end of anything. And that's about right, because the whole argument of this book is that the interesting things are the ones that don't announce themselves, and that you have to write them down at the time or they're gone.
+
+I'm glad I got out of the car.
+
+![Alberta, 6 June 2014. The last of the states and provinces, at the end of the three hardest days in the record. Mission complete.](images/TwoRed/twored_alberta_last.jpg){#fig-alberta}

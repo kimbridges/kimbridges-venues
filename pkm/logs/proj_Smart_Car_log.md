@@ -1,3 +1,37 @@
+## ★★★★ CH.14'S THESIS, GIVEN BY KIM 2026-09-02, VERBATIM — and it is NOT what the scaffold planned
+
+> My idea for the "what the record cannot say" chapter is that we've shown the things people focus on: MPG, miles per day, number of states visited, etc. **What people don't see is the superstructure that holds these values and visualizations. They are equally important because this is where trust lies.** Florida's visit, undocumented, could have been a "I was close enough for it to count". **We generally know where to put the expected data. The number of states visited has a place in a headline. But where do you put the Florida confirmation data?** There is no easy answer as we tend to be **goal directed** (e.g., count the states) **rather than procedure oriented.** And that's a big part of the lesson in this book. **Temptations to say "just believe me" should be ignored.** Which is hard, because there may not be a simple way to validate a claim. That's what happened here. **Searches through old financial records to find a receipt for a lunch shared with a friend more than a decade ago. That's not an easy find. When found, it adds trust.** And that was the primary issue.
+>
+> [I see the Alberta photo way at the end (last page?).]
+
+### ★★★ THE RESHAPE: the chapter is not an inventory of silences, it is an argument about WHERE PROOF LIVES
+
+**The scaffold planned a tour of the four unwitnessed states.** ⛔ **That is now the WORKED EXAMPLE, not the subject.** The subject is: **every dataset has a schema for its answers and no schema for its evidence**, and the evidence is where trust comes from.
+
+★★★ **AND THE RECORD PROVES IT ABOUT ITSELF, which is the gift here.** Measured 2026-09-02 from the errata file:
+
+| | rows | columns | shape |
+|---|---|---|---|
+| `TwoRed_fuel_clean.csv` -- **the answers** | 294 | 16 | every column named and typed; everything expected has a place |
+| `TwoRed_log_errata.csv` -- **the evidence** | 65 | 8 | ⚠ **three of the eight have collapsed into prose** |
+
+- **`basis`: 61 distinct values in 65 rows.** Median 117 characters, max 775, **51 of 65 run over 80 characters.** It is not a field, it is an argument written out each time.
+- **`status`: 48 distinct values in 65 rows.** ★★★ **A status column, which in any ordinary schema is an enum of five, has become 48 unique sentences.** *RESOLVED - my earlier 'cost is wrong' diagnosis was REFUTED by the card.* *WITHDRAWN - my classifier failed, not the data.* **Nobody designs that. It happens because the alternative is losing it.**
+- **`field`: 24 values, and several are not fields at all** -- `CROSS-CHECK`, `NO SOURCE DOCUMENT`, `SCOPE`, `CAVEAT`. **The category system broke under the load of what actually had to be recorded.**
+
+★★ **That is Kim's point, measurable and checkable: the schema for the answer holds; the schema for the proof disintegrates into prose.**
+
+### ★★★ THE ORLANDO ENTRY IS THE CHAPTER'S BEST SINGLE ILLUSTRATION (errata L50)
+
+A **Florida** charge exists on the card: `7-Eleven ORLANDO FL`, in the 2015 AMEX fuel summary. ⛔ **It is NOT evidence that TwoRed was in Florida.** Of 16 fuel charges that year, 8 match the log to the cent and 8 do not -- **7 Hawaii, 1 Orlando -- because the card covers the FLEET and the log covers ONE car.**
+
+★★★ **So the single place a card statement says the word Florida is the one place it would mislead you**, and the only thing that stops it is a procedure: check the geography, check which car, check whether the charge matches the log to the cent. **A goal-directed reader sees FLORIDA and stops. A procedure-oriented one keeps going and finds a different car.** Status field, verbatim: *"the card covers the FLEET, the log covers ONE car."*
+
+### ⛔ RULING RECORDED: THE ALBERTA PHOTOGRAPH GOES LAST
+
+*"I see the Alberta photo way at the end (last page?)."* **`twored_alberta_last.jpg` closes the BOOK, not ch.14** -- so it belongs to the Afterword, as the final image. ⚠ The Afterword is currently **105 words**, essentially a stub, and now has to carry an ending. **Flag when ch.14 is done.**
+
+---
 ## ★★★★ PEI CLOSED, AND FOUR PHOTOGRAPHS ARRIVE — Kim, 2026-09-01, verbatim
 
 > Here is the evidence for PEI. It is a VISA statement this time:

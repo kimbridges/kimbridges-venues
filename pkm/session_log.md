@@ -11,6 +11,68 @@ Mechanism 4.
 
 ---
 
+
+## 2026-09-02 -- THE BOOK IS WRITTEN. CH.14 AND THE AFTERWORD, AND KIM RESHAPED THE CLOSING ARGUMENT
+
+**Active focus at start and close: Smart_Car.** Session opened with the full protocol: `pkm_card.md`, `project_index.md`, `proj_PKM.md`, the project's `deferred.md` section, and **Findings 036/041/043/044/045 read before a word was drafted (Finding 052, learned the hard way yesterday).**
+
+**★★★★ FOREWORD + 14 CHAPTERS + AFTERWORD. 33,333 words. 16 pieces render, 0 error strings, 0 unresolved references.** The book is complete in draft.
+
+### ⚠⚠⚠ THREE STALE POINTERS RETIRED AT SESSION START, AND ONE WOULD HAVE POISONED CH.14
+
+`deferred.md` still carried **"THE STATE COUNT IS 49 AND 10 -- KIM'S RULING, 2026-08-21"**, whose four-unwitnessed-states framing was superseded on 2026-09-01. **Ch.14 is precisely the chapter that reads that entry.** Amended in place: **49 states and ELEVEN provinces REACHED; 43 and 10 have a FILL; six states have no fill and every one is settled.** ⛔ *Do not write 49 and 10.* Old text preserved, correction marked. Also closed: the fuel-stop map task (done) and the ask for the Florida photograph (supplied).
+
+★★ **The Active Focus block had grown to 5,943 bytes of yesterday's history against a 6 KB budget.** Archived to `focus_history.md`, replaced with a 3.7 KB block that says where things STAND rather than what happened. **A focus block is a working brief, not a diary.**
+
+### ★★★★ KIM RESHAPED CH.14, AND THE RECORD PROVED HIS THESIS ABOUT ITSELF
+
+His framing, verbatim at the top of `logs/proj_Smart_Car_log.md`: *"We've shown the things people focus on... What people don't see is the superstructure that holds these values. **They are equally important because this is where trust lies.**... We generally know where to put the expected data. The number of states visited has a place in a headline. **But where do you put the Florida confirmation data?**... We tend to be **goal directed** rather than **procedure oriented**... **Temptations to say 'just believe me' should be ignored.**"*
+
+⛔ **The scaffold planned a tour of the four unwitnessed states. That is now the WORKED EXAMPLE, not the subject.**
+
+**★★★ AND IT IS MEASURABLE FROM THE PROJECT'S OWN FILES:**
+
+| | rows x cols | shape |
+|---|---|---|
+| `TwoRed_fuel_clean.csv` -- the answers | 294 x 16 | **zero free-text columns**; every value typed |
+| `TwoRed_log_errata.csv` -- the evidence | 65 x 8 | **three columns collapsed into prose** |
+
+★★★★ **`status` holds 48 DISTINCT VALUES IN 65 ROWS.** A status column is normally an enum of five. **`basis` holds 61 in 65**, median 117 characters, 51 over eighty, longest 775. **The schema for the answer holds; the schema for the proof disintegrates into prose**, because proof takes whatever shape the doubt takes and you cannot know that in advance.
+
+**And nothing that does the correcting is the fuel log itself:** the scans settled 33, card statements 9, arithmetic 9, geography 4, Kim's memory 4, spelling 2, the odometer 1, and 3 are arguments written out longhand.
+
+### ★★★ THE ORLANDO TRAP IS THE CHAPTER'S SHARPEST PAGE (errata L50)
+
+**There IS a Florida entry in the financial records: `7-Eleven ORLANDO FL`, 2015 AMEX summary. It is NOT TwoRed.** Of 16 fuel charges that year, 8 match the log to the cent and 8 do not: 7 Hawaii, 1 Orlando. **The card covers the FLEET; the log covers ONE car.** ★★ *So the single place a statement says the word Florida is the one place it would mislead you completely*, and only a procedure catches it.
+
+### ⚠⚠⚠ THREE SCAFFOLD CLAIMS FAILED RE-DERIVATION, AND ALL THREE IMPROVED THE CHAPTER
+
+1. **"The most indirect stretch in sixteen years" (my own claim, 2026-08-21) is FALSE.** The South Dakota leg ranks **60 of 270**, the 78th percentile, and is not first at ANY straight-line threshold (46th at 50 mi, 24th at 100, 10th at 125). ★★★ **What survives is better: route it via Chadron NE, 11.8 mi from the line, and the straight-line path is ~202 mi against an odometer reading of 255 -- about 53 MILES OF SLACK.** Not a record, just room.
+2. **The retired temperature effect does NOT stay retired.** Recorded history (n=94 p=0.045 -> n=125 p=0.099 -> p=0.17 with controls) does not reproduce at all. On corrected data: **n=94 -0.126 p=0.003; n=125 -0.101 p=0.007; n=152 -0.083 p=0.010**, and with tank length held, p never exceeds 0.016. ★★ **The coefficient decays by a third and refuses to die.** The chapter claims only that I retired it too early, on a version of the data that no longer exists; ambient temperature travels with season, region and route and this record cannot separate them.
+3. **The southern deficit is the best illustration in the book of why it cannot be settled.** ★★★ **-2.05 MPG (p=0.18) on the six states this book groups as southern; -0.49 (p=0.66) on a wider nine.** *The answer moves fourfold on a boundary nobody ever wrote down*, neither reaches significance, and **Creamsicle made ZERO southern fills, so the sample is closed at ten tanks forever.**
+
+### ★★★ THE AFTERWORD, AND I HAD THE ALBERTA DATE WRONG FROM IMPRESSION
+
+⚠ I wrote *"June 2013, working north toward the Arctic."* **It is 2014-06-06**, crossing Saskatchewan into Alberta at Lethbridge, **at the end of the third of the three prairie days @sec-driving-cost calls the hardest driving in sixteen years.** Yukon had come the summer before. ★★★ **The last jurisdiction was collected when they were tired and the car was filthy**, which is a far better ending than the one I invented. Caught by checking the fuel log, not by rereading.
+
+The Afterword also carries the fleet arc and **Bordeaux was one of the last Smart cars the dealership ever sold: the fleet outlasted the product line.** It closes on `@fig-alberta`, per Kim's ruling that the photo goes last.
+
+### ⚠⚠⚠ AND A WHOLE-BOOK SWEEP FOUND THREE DEFECTS, ALL MINE, ALL IN THE NEW WORK
+
+**Only possible once all 16 pieces existed.** Every one is a class this book warns about:
+
+1. **Ch.14 opened by printing the lifetime MPG as a HARDCODED `39.25`** -- Finding 051, committed by me, in the chapter about not trusting typed-in numbers. ⚠⚠ **And the first fix was worse: I wrote a SECOND derivation that returned 39.2724 against ch.11's 39.2511.** ⛔ **Two derivations of one headline number is the drift itself.** Final fix: `cannot_say_data()` calls `cost_data()`, so **there is now exactly ONE derivation of lifetime economy in the whole book.**
+2. **`cannot_say_data.R` printed "ch.6" inside a table cell** -- Finding 050, from an R string literal, third time that class has shipped from inside a module. Reworded without the number.
+3. **Both ch.13 stop-map chunks wrote to the same default path.** The rendered book was correct (Quarto embeds the returned plot), but the saved PNGs were misleading and an orphan `stops.png` was regenerating. Explicit paths passed; orphan removed.
+
+★★★ **The irony is worth keeping: the chapter arguing that proof needs a procedure was itself caught by a procedure, not by reading.** ⚠ Also noted: ch.14 opens *"thirteen chapters"*, a hardcoded positional count of the same family as the five carried "next chapter" phrases.
+
+### ⚠ AND I SHADOWED A BASE OBJECT AGAIN
+
+**`pi <- readLines("project_index.md")` silently broke every great-circle calculation** until `gc()` failed with *non-numeric argument to binary operator*. **Second time in two days** after clobbering `PKM` yesterday. See the new finding.
+
+**Kim's plan for the rest of the day: he reads the whole book, read-only, then returns for photos, cover design and any changes.** ⛔ The book was NOT edited while he read; the three fixes above were applied and re-rendered BEFORE he started.
+
 ## 2026-09-01 -- THE CROSS-REFERENCES ARE GENERATED, THE CHAPTER NUMBERS FINALLY MATCH THE WAY WE TALK, AND CH.8 THROUGH CH.13 ARE DRAFTED
 
 **Active focus at start and close:** Smart_Car. Kim chose the order himself: **fix the references first, then draft**, so ch.8 would not add an eleventh hardcoded number. That was the right call and it changed what the fix turned out to be.

@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-09-01 22:05 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-09-02 11:13 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -9,7 +9,7 @@ _Generated 2026-09-01 22:05 by pkm_health.R. Regenerate; do not edit._
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 4
 - **Files over size budget:** 4
-- **Active Focus block:** 5.6 KB (budget 6)
+- **Active Focus block:** 3.5 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 6
 - **Legacy pages awaiting account deletion:** 58
@@ -36,8 +36,8 @@ None.
 
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
-| session_log.md | REFERENCE | 332.7 | 250 | 82.7 | FALSE |
-| proj_Smart_Car.md | PROJECT |  63.6 |  45 | 18.6 | TRUE |
+| session_log.md | REFERENCE | 340.3 | 250 | 90.3 | FALSE |
+| proj_Smart_Car.md | PROJECT |  64.5 |  45 | 19.5 | TRUE |
 | proj_seasonality.md | PROJECT |  51.6 |  45 |  6.6 | TRUE |
 | proj_audio.md | PROJECT |  47.3 |  45 |  2.3 | TRUE |
 
@@ -45,7 +45,7 @@ None.
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 5.6 | 6 | -0.4 |
+| 8 | 3.5 | 6 | -2.5 |
 
 ## Venues without a source repo
 
@@ -72,15 +72,15 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| smartcar_docs_20260821 | 11.2 | 3 | FALSE |
-| ch4_20260829 |  3.1 | 0 | FALSE |
-| chateau_2026-08-29 |  3.2 | 0 | FALSE |
-| creamsicle_clean_20260828 |  4.0 | 0 | FALSE |
-| pkm_edits_20260811 | 21.5 | 0 | TRUE |
-| pkm_snapshots | 30.1 | 0 | TRUE |
-| smartcar_fuelfix_20260817 |  3.1 | 0 | FALSE |
-| timelapse | 19.0 | 0 | TRUE |
-| venuemirror_clone_2026-08-03 | 30.3 | 0 | TRUE |
+| smartcar_docs_20260821 | 11.8 | 3 | FALSE |
+| ch4_20260829 |  3.6 | 0 | FALSE |
+| chateau_2026-08-29 |  3.8 | 0 | FALSE |
+| creamsicle_clean_20260828 |  4.6 | 0 | FALSE |
+| pkm_edits_20260811 | 22.1 | 0 | TRUE |
+| pkm_snapshots | 30.6 | 0 | TRUE |
+| smartcar_fuelfix_20260817 |  3.6 | 0 | FALSE |
+| timelapse | 19.5 | 0 | TRUE |
+| venuemirror_clone_2026-08-03 | 30.8 | 0 | TRUE |
 
 ## Legacy pages by platform
 
@@ -96,4 +96,4 @@ None.
 None.
 
 ---
-_Ran in 60.4 s._
+_Ran in 84.5 s._
