@@ -1,3 +1,38 @@
+## ★★★ KIM RULED ON THE MAP, AND SUPPLIED A THIRD INSTRUMENT FOR VERMONT — 2026-09-01, verbatim
+
+> More evidence for VT. Here is a line from my AMEX statement:
+> `5/19/2014  Reference: 320141400881672052  -220.63  QUECHEE RESTAURANT 8QUECHEE  VT  416276  802-230-2110`
+> I took my friend to lunch/dinner.
+>
+> Let me address the map. I see your intent. I like the idea of the two color representing the two cars. But visually, the "reached, never a fill" is the thing that draws your eye. At first glance, it seems to be the intent of the map. **I really don't think that not getting a fill is all that important. How about making the focus as "Traveled to these places"?** You have ample evidence of the places the two cars visited. I'm attaching a (likely incomplete) map of the fuel stops that I produced some time ago. It complements what you produced. **But what my map shows is what that "300 mile" run looks like, especially across Canada** (granted, these were not all 300 miles, but you get the general idea).
+
+### ★★★ THE DESIGN RULING, AND HE IS RIGHT ABOUT WHY
+
+**The outlined "reached, never a fill" class dominated the figure and made ABSENCE look like the subject.** It wasn't. ⛔ **Whether a state got a fill is an accident of where the tanks happened to run out; where the cars went is the thing worth drawing.**
+
+**Map rebuilt on TRAVEL, not TRANSACTIONS.** Two fills only, everything reached is filled, no outlines, no labels, no third class. **The six no-fill states now live in `@tbl-silent` where they belong.** ★★ Chapter opening rewritten to match: *"Sixteen years of driving make a map"*, **49 states and 10 provinces**, and then the honest turn: *"It isn't, however, a picture of the fuel log. The fuel log is thinner than that."* Section retitled **Where the cars went**.
+
+★★★ **AND THE REBUILD MOVED BRITISH COLUMBIA.** On fills the two cars shared no Canadian ground at all. **On travel they share BC** -- Creamsicle bought three tanks on Vancouver Island, TwoRed crossed it twice and bought nothing. The old sentence *"the two cars share no Canadian ground"* was true of fills and is now gone. **TwoRed's own reach is 49 states and 10 provinces, which is exactly the charter's claim.**
+
+### ★★★ VERMONT NOW HAS THREE INSTRUMENTS, AND THE THIRD ISN'T ABOUT CARS AT ALL
+
+| instrument | what it holds |
+|---|---|
+| the trip log | **Hartland VT**, from a scanned sheet |
+| the AMEX statement | **QUECHEE RESTAURANT, Quechee VT, 2014-05-19, $220.63** |
+| Kim's account | the lawyer friend's house near the line, reached by following him home from his NH office |
+
+★★★ **THE LINE THAT WRITES ITSELF, and it is in the chapter:** *"The card statement caught the dinner because dinner is a thing you stop for. The fuel log caught nothing because fuel was not."* ★★ **A fuel log records fuel. A card statement records anything you paid for, which turns out to include being somewhere.**
+
+⚠ This is the **third** time the card statements have produced evidence the fuel log could not (after the audit cross-checks and Finding 045's list). **They are a standing instrument in this project and should be reached for first, not last.**
+
+### ★★★ HIS OWN FUEL-STOP MAP — a figure this book does not have and probably should
+
+He attached a Google-style point map of fuel stops, **which he flags as likely incomplete.** ★★ **What it shows that a choropleth cannot: the RHYTHM.** Across the Canadian plains the dots are strung out at roughly even intervals, and **that spacing is @sec-long-days's three-hundred-mile day made visible.** A state fill cannot show cadence; a point map can.
+
+⛔ **NOT buildable from the project data as it stands.** The gazetteer places **85% of TwoRed's fills and 40% of Creamsicle's** even after folding in `maps::us.cities`; 121 distinct cities are unplaced. **A point map drawn today would misreport the gaps as sparse driving.** See `deferred.md` -- extending the gazetteer is the blocking task, and it is worth doing for this figure alone.
+
+---
 ## ★★★ KIM CLOSED BRITISH COLUMBIA, EXPLAINED VERMONT, AND UPGRADED FLORIDA — 2026-09-01, verbatim
 
 > BC for TwoRed. I got off the Alaska Marine Highway in Haines. The only road north goes through (wait for it ....) BC before entering the Yukon Territory. No need to get fuel on that short stretch. For the record, but not something easily verified, I also clipped the corner of BC after crossing the Canadian Plains. So, no fuel dot because it would have been very difficult.

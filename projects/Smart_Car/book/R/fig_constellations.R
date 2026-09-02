@@ -32,48 +32,37 @@
 fig_driving <- function(K, path = "figures/driving.png") {
   stopifnot(requireNamespace("sf", quietly = TRUE))
   g <- readRDS("data/na_states.rds")            # cached; the build never uses the network
-  g <- g[!(g$postal %in% c("HI")), ]            # the car's home, not part of the mainland record
+  g <- g[!(g$postal %in% c("HI")), ]            # the car's home, not somewhere it drove
 
-  tw <- norm_state(twored_fuel$State)
-  cr <- norm_state(cream_fuel$state)
-  both     <- intersect(unique(tw), unique(cr))
-  one_car  <- setdiff(union(unique(tw), unique(cr)), both)   # either car, but only one
-  silent   <- K$silent$state          # reached, and known from another instrument
+  ## THE SUBJECT IS TRAVEL, NOT TRANSACTIONS. An earlier version of this figure
+  ## outlined the six states the fuel log never saw, and the outlines drew the eye
+  ## so hard that the map appeared to be ABOUT the gaps. It is not. Whether a
+  ## particular state got a fill is an accident of how far apart the tanks fell;
+  ## where the cars went is the thing worth drawing. So every jurisdiction either
+  ## car reached is filled, by whichever cars reached it, and the six no-fill
+  ## states are carried in the chapter's table instead.
+  tw <- unique(norm_state(twored_fuel$State))
+  cr <- unique(norm_state(cream_fuel$state))
+  ## TwoRed also reached, without ever buying a tank there: the six states of
+  ## SILENT_STATES, and British Columbia (one road north out of Haines, plus a
+  ## second clip of the corner off the Canadian plains).
+  tw <- union(tw, c(K$silent$state, "BC"))
 
+  both <- intersect(tw, cr)
+  one  <- setdiff(union(tw, cr), both)
 
-  g$cls <- ifelse(g$postal %in% both, "filled by both cars",
-           ifelse(g$postal %in% one_car, "filled by one car",
-           ifelse(g$postal %in% silent, "reached, never a fill", NA)))
-
-  g$cls <- factor(g$cls, levels = c("filled by both cars", "filled by one car",
-                                    "reached, never a fill"))
+  g$cls <- ifelse(g$postal %in% both, "both cars went here",
+           ifelse(g$postal %in% one,  "one car went here", NA))
+  g$cls <- factor(g$cls, levels = c("both cars went here", "one car went here"))
   g <- sf::st_transform(g, .SC_CRS)
-
-  ## direct labels on every silent state, which is the relief the contrast check asks for
-  lab <- g[g$postal %in% silent, ]
-  ctr <- suppressWarnings(sf::st_coordinates(sf::st_point_on_surface(sf::st_geometry(lab))))
-  labs <- data.frame(x = ctr[, 1], y = ctr[, 2], postal = lab$postal,
-                     stringsAsFactors = FALSE)
 
   p <- ggplot2::ggplot(g) +
     ggplot2::geom_sf(ggplot2::aes(fill = cls), colour = .SC_INK$surface,
                      linewidth = 0.28) +
-    ggplot2::geom_sf(data = g[!is.na(g$cls) & g$cls == "reached, never a fill", ],
-                     fill = NA, colour = .SC_HUE, linewidth = 0.7, linetype = "21") +
-    ggrepel::geom_text_repel(
-      data = labs, ggplot2::aes(x = x, y = y, label = postal),
-      size = 3.1, colour = .SC_INK$primary, fontface = "bold",
-      bg.colour = .SC_INK$surface, bg.r = 0.18, seed = 1,
-      min.segment.length = 0.2, segment.colour = .SC_INK$muted,
-      segment.size = 0.3, box.padding = 0.35) +
     ggplot2::scale_fill_manual(
-      values = c("filled by both cars" = .SC_HUE,
-                 "filled by one car" = .SC_LITE,
-                 "reached, never a fill" = .SC_INK$surface),
+      values = c("both cars went here" = .SC_HUE,
+                 "one car went here"   = .SC_LITE),
       na.value = "#f4f3ef", drop = FALSE, na.translate = FALSE, name = NULL) +
-    ggplot2::guides(fill = ggplot2::guide_legend(nrow = 1, byrow = TRUE,
-                     override.aes = list(colour = c(.SC_INK$surface, .SC_INK$surface, .SC_HUE),
-                                         linewidth = c(0.28, 0.28, 0.7)))) +
     ggplot2::coord_sf(expand = FALSE) +
     ggplot2::theme_void(base_size = 11) +
     ggplot2::theme(

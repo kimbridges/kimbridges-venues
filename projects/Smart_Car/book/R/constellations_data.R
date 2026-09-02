@@ -47,11 +47,11 @@ CA_PROV <- c("AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT")
 ## fuel, a drive with no station on it, a dash to a line and back.
 SILENT_STATES <- data.frame(
   state = c("MD", "VT", "DE", "RI", "SD", "FL"),
-  how   = c("the trip log", "the trip log", "arithmetic", "arithmetic",
+  how   = c("the trip log", "two of them", "arithmetic", "arithmetic",
             "arithmetic", "a photograph"),
   evidence = c(
     "Frostburg, on the sheet photographed earlier in this book",
-    "Hartland, at a friend's house a few miles from the line",
+    "Hartland on the sheet, and a restaurant bill in Quechee",
     "a leg too short for any road that avoids it",
     "a leg on the Providence road, ending five miles from the line",
     "the most indirect stretch in sixteen years, out to the line and back",

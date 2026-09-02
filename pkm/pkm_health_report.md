@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-09-01 20:18 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-09-01 20:50 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -37,7 +37,7 @@ None.
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
 | session_log.md | REFERENCE | 322.1 | 250 | 72.1 | FALSE |
-| proj_Smart_Car.md | PROJECT |  61.8 |  45 | 16.8 | TRUE |
+| proj_Smart_Car.md | PROJECT |  62.1 |  45 | 17.1 | TRUE |
 | proj_seasonality.md | PROJECT |  51.6 |  45 |  6.6 | TRUE |
 | proj_audio.md | PROJECT |  47.3 |  45 |  2.3 | TRUE |
 
@@ -72,10 +72,10 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| smartcar_docs_20260821 | 11.1 | 3 | FALSE |
+| smartcar_docs_20260821 | 11.2 | 3 | FALSE |
 | ch4_20260829 |  3.0 | 0 | FALSE |
 | chateau_2026-08-29 |  3.2 | 0 | FALSE |
-| creamsicle_clean_20260828 |  3.9 | 0 | FALSE |
+| creamsicle_clean_20260828 |  4.0 | 0 | FALSE |
 | pkm_edits_20260811 | 21.5 | 0 | TRUE |
 | pkm_snapshots | 30.0 | 0 | TRUE |
 | smartcar_fuelfix_20260817 |  3.0 | 0 | FALSE |
@@ -96,4 +96,4 @@ None.
 None.
 
 ---
-_Ran in 61.7 s._
+_Ran in 58.8 s._

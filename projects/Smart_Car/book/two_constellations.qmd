@@ -15,22 +15,24 @@ stopifnot(K$n_us == 43, K$n_prov == 10, length(K$cr_new) == 0,
           K$complete, K$reach == 49, K$pct_parked > 90, K$n_unlogged == 3)
 ```
 
-## The map everybody expects
+## Where the cars went
 
-Sixteen years of fuel receipts make a map, and here it is.
+Sixteen years of driving make a map, and here it is.
 
-**`r K$n_us` of the fifty states and `r K$n_prov` Canadian provinces and territories** have at least one fill in them. That's the driving constellation, and it's the picture I'd have drawn if you'd asked me in 2010 what this record was going to be for.
+**`r K$reach` states and `r K$n_prov` Canadian provinces and territories.** That's every one of the forty-eight, plus Alaska, plus a band of Canada from Vancouver Island to Newfoundland. **The only state that's missing is the one the car lives in**, and it went there by ship.
 
 ```{r}
 #| label: fig-driving
-#| fig-cap: "Every state and province the two cars bought fuel in. Dark is ground both cars covered, light is ground only one of them did, and the six dashed states were reached without the car ever buying a tank in them. Every jurisdiction on this map was visited; nothing here is a place the car did not go. Hawaii is left out, because that is where the car lives rather than somewhere it drove."
+#| fig-cap: "Everywhere the two cars went. Dark is ground both of them covered; light is ground only one of them did. The pale territories at the top are the only places on this map neither car reached."
 #| fig-width: 7.4
 #| fig-height: 5.4
 #| echo: false
 fig_driving(K)
 ```
 
-It's a satisfying picture and it's a slightly dishonest one, because a fuel log can only draw the places where somebody stopped and bought something. **The interesting part of that map is the holes.**
+That's the driving constellation, and it's the picture I'd have drawn if you'd asked me in 2010 what this record was going to be for.
+
+**It isn't, however, a picture of the fuel log.** The fuel log is thinner than that, and the difference between the two is worth a section of its own.
 
 ## The six the fuel log never saw
 
@@ -51,13 +53,15 @@ knitr::kable(z, align = c("l", "l", "l"), row.names = FALSE)
 
 I'll put a finer point on Maryland. **The sheet photographed in @sec-paper, the one page of this record anybody will ever see reproduced, is Frostburg**, and Frostburg is in Maryland. It's where one of my meetings was. **The single image in this book is a picture of the evidence for a state that's blank on the map above**, and I didn't notice that until I drew the map.
 
+
+**And Vermont has a second witness, from an instrument that has nothing to do with cars.** A credit card statement for the nineteenth of May 2014 carries a restaurant bill in Quechee, Vermont, which is a few miles from where I'd stayed. **I took my friend to dinner, and the card company filed the receipt for its own reasons and kept it for eleven years.** A fuel log records fuel and nothing else. A card statement records anything you paid for, which turns out to include being somewhere.
 **Delaware, Rhode Island and South Dakota came back by arithmetic**, and Florida by a photograph of the car at a crossroads a mile inside the line. @sec-cannot-say takes all four apart properly, because how a record gives back what it never recorded is a whole argument and not a footnote.
 
 ## The absences all have mechanisms
 
 Here's what I'd add now that I've seen the map, because the table above makes these look like failures of record-keeping and they aren't.
 
-**Every one of those six is a stretch where there was no reason to buy fuel, and in most of them no opportunity either.** Vermont was a friend's house a few miles over the line; I got there by following him home from his office in New Hampshire, and there were no stations on that road and no stopping anyway, because I'd have lost him. South Dakota was a dash north to the line and straight back. Florida was a few miles into the panhandle and a turn around.
+**Every one of those six is a stretch where there was no reason to buy fuel, and in most of them no opportunity either.** Vermont was a friend's house a few miles over the line, and I got there by following him home from his office in New Hampshire: no stations on that road, and no stopping anyway, because I'd have lost him. **The card statement caught the dinner because dinner is a thing you stop for. The fuel log caught nothing because fuel was not.** South Dakota was a dash north to the line and straight back. Florida was a few miles into the panhandle and a turn around.
 
 **A fuel log doesn't record where a car went. It records where a driver bought petrol**, and those are the same map only when the trip is long enough and ordinary enough to need one. The six holes are the places where the journey and the transaction came apart.
 
@@ -71,11 +75,10 @@ Here's a result I didn't expect and had to check twice.
 
 Creamsicle drove `r K$n_cr_us` states in its three years. **Every single one of them was already TwoRed's.** Not one new state, a decade later, in a different car, from a different starting point, on what I'd have described as completely different trips.
 
-It added one jurisdiction, and it's a province: **British Columbia**, three fills on Vancouver Island.
-
-**TwoRed had been there too, twice, and never bought a tank in it.** Coming off the ship at Haines there's exactly one road north, and it runs through British Columbia before it reaches the Yukon: a short enough stretch that the question of fuel never came up. And I clipped the corner of the province again coming off the Canadian plains. **Neither crossing left a mark on any instrument I was carrying**, which puts British Columbia in the same class as the six states above, one border up.
+The only ground the two cars share outside the United States is **British Columbia**, and they got there in opposite ways. Creamsicle bought three tanks on Vancouver Island. **TwoRed crossed it twice and never bought anything.** Coming off the ship at Haines there's exactly one road north, and it runs through British Columbia before it reaches the Yukon: it's a short enough stretch that the question of fuel never came up. And I clipped the corner of the province again coming off the Canadian plains.
 
 @sec-car-cost found the two cars four tenths of a mile per gallon apart and called the car a constant. **The map says the same thing about the driver.** Ten years, a different vehicle, and I went back to the same country.
+
 ## The map nobody draws
 
 Now the other constellation, and this is the one I'd never have thought to look for.
