@@ -170,6 +170,18 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ⚠ TASK — the "22 scans" figure is wrong wherever it appears (2026-09-01)
+
+The folder holds **20 PDFs, 67 pages**, derived at build time by `paper_data()`. **"22 scans" is a batch count** from the delivery sessions and it recurs across `proj_Smart_Car.md`, the log and older focus blocks. **Ch.9 prints the derived numbers.** Not urgent; fix the PKM occurrences the next time that file is touched, and **do not fix them by hand in the book -- the book computes them.**
+
+### ✓✓✓ CLOSED 2026-09-01 — Finding 033 re-run, confirmed, and SHARPENED
+
+Live in `book/R/paper_data.R` off the source workbook: **0/8 repairs at 15.6% against 0% for three control pairs over 166 substitutions.** Original was 13.3% with one stray control hit that did not recur. ⚠ **Two things to carry:** substitute on the value AS RECORDED, never a zero-padded rendering (the mirror direction drops from 3 repairs to 1); and the mirror still repairs one row (Deming 20.05->20.85), so **the finding is the asymmetry, never an individual row.**
+
+### ★★★ STANDING RULE FROM FINDING 051 — keep the generator, not the result
+
+A number that has been summarised once is a **claim** about a number. **Before any figure is printed, run the thing that produced it.** The ch.9 scaffold's *4 of 44* was a faithful-at-the-time paraphrase that became unrecoverable, and it was the version queued for print. **Applies to every remaining scaffold in this book** -- each one carries figures copied out of the log by hand. **Occasion: when each chapter is drafted, re-derive its scaffold numbers rather than trusting them.**
+
 ### ✓✓✓ CLOSED 2026-09-01 — HOW the cross-reference fix went, and the one part left open
 
 **Both references flagged as inferred are now certain, by a second route.** Reading the target chapters gives *Chapter 9* = `knowing_a_number_is_wrong` and *Chapter 13* = `what_the_record_cannot_say` -- **and then all ten resolve cleanly under the project's own scheme.** ★★ **Ten references across six files agreeing on one scheme is not a guess**, and that is what promoted two inferences to two facts. **Nobody needs to re-derive this.**

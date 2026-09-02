@@ -5,36 +5,146 @@
 #| include: false
 
 source("R/book_setup.R")
+source("R/paper_data.R")
+
+P <- paper_data()
+er <- P$errata
+
+stopifnot(P$n_pages > P$n_pdf, P$src_fail > 0, P$permitted > P$forbidden)
 ```
 
-<!-- SCAFFOLD — delete this block as the chapter is written.
+## An electronic shoebox
 
-PURPOSE
-DIFFICULTY strand. The physical record: field sheets, handwriting, scanning. Read before `what_the_car_cost` so its numbers are believable.
+Everything in this book comes off paper.
 
-MATERIAL ON HAND (verified; quotes are Kim's, verbatim in logs/proj_Smart_Car_log.md)
-- 22 scanned PDFs, 2010-2017. Top half fuel log, bottom half trip log; the fuel halves were typed up years ago, most trip halves never were.
-- THE SLASHED ZERO (Finding 033): a handwriting habit that predicts the DIRECTION of an error, not just its presence. Permitted 8->0 fixes 4 of 44 failing rows; forbidden 0->8 fixes 1; six controls fix 0.
-- The AMEX statements as a THIRD independent record: gallons and costs matched the recovered paper to the thousandth of a gallon.
-- The crossbar that was NOT a correction: a bitonal-thresholding artifact in a scan. 'Youngtown arrival is 8:41. My writing was very light.' The original settles it; the scan cannot.
-- Two scans of the same page are not the same evidence: a marginal annotation ('Relocation 1141 miles') survived in one copy and not its twin.
-- Kim: 'it's an electronic shoebox. I scan paper. All paper.'
+**`r P$n_pdf` scanned files, `r P$n_pages` pages**, running from `r format(P$first, "%B %Y")` to `r format(P$last, "%B %Y")`, and every one of them is a sheet I filled in by hand at a filling station or a motel desk. There's no app in this story and there's no telemetry. There's a printed form with two tables on it, a pen, and sixteen years of remembering to use them.
 
-★★★ KIM'S STATEMENT, 2026-08-28 — VERBATIM. This is the chapter's thesis, in his words:
-  "While this is a story about two cars, it is as much a story about data. Specifically the kind
-   of data that's added now and then. Often under difficult conditions, like when you have cold,
-   shivering hands. Or times when you're in a rush. It's easy to write down a wrong number.
-   Transcription, too, often comes when you probably don't want to be typing a lot of numbers,
-   some of which are hard to read. It is those distractions that can break the flow and cause
-   another form of data error. The bottom line is that these types of data are difficult to get
-   correct. When possible, enter fields that will let you cross check values (e.g., not just the
-   date; add the day of the week)."
-  ⚠ He says TWO cars, and for the data chapters that is right — TwoRed and Creamsicle carry the
-    logs. Do not silently upgrade it to four.
-  ★ TWO KINDS OF ERROR, and he separates them: the FIELD error (cold hands, haste) and the
-    TRANSCRIPTION error (hard-to-read figures, broken flow). Different causes, different signatures.
-    The Foreword now carries a short version of the first half; this chapter owns the full argument.
-  → CH.8 OWNS: the conditions under which the record was made. His two error classes are the
-    chapter's spine, and the slashed zero is the worked example of the first.
--->
+I scan paper. All paper. **It's an electronic shoebox**, and the only thing that makes it a dataset rather than a shoebox is that somebody eventually typed it up.
 
+Here is one of the sheets.
+
+![One page of the record: Frostburg-3, June 2012. The fuel log is the top table and the day's travel is the bottom one, on the same piece of paper, which is why the two logs in this book so often disagree about what a trip was. Note what else is on it. The trip name is written in by hand. *Return to California* is scrawled across the travel header, because that's what this page turned out to be about. A temperature is crossed out and rewritten. Somebody circled a date and put a question mark beside it, years ago, for a reason nobody now remembers. And the day's mileages are worked out in the right margin, in pencil, by a driver at the end of a long day.](images/TwoRed/log_sheet_frostburg3.png){#fig-sheet}
+
+**Two tables, one page.** That's the design decision underneath half of what this book has found. The fuel halves got typed up years ago, into the spreadsheet everything here is built on. **Most of the travel halves never did**, which is why the trip log ran to seven rows for six years, until somebody went back to the scans and read the bottom of every page.
+
+## What it's actually like to keep
+
+I want to say something about the conditions, because they explain the errors better than any theory of error I could offer.
+
+> While this is a story about two cars, it is as much a story about data. Specifically the kind of data that's added now and then. Often under difficult conditions, like when you have cold, shivering hands. Or times when you're in a rush. It's easy to write down a wrong number.
+>
+> Transcription, too, often comes when you probably don't want to be typing a lot of numbers, some of which are hard to read. It is those distractions that can break the flow and cause another form of data error. The bottom line is that these types of data are difficult to get correct.
+
+**There are two different failures in that, and they happen years apart.**
+
+The first is the **field error**. It's cold, or it's raining, or the pump's running and I want to be back in the car, and I write a figure down wrong. That error happens once, at the pump, and the paper is the only witness to it.
+
+The second is the **transcription error**. Some evening a long time later, I'm typing numbers off a stack of sheets, and the numbers are in my own handwriting, and some of them are hard to read. **That error happens to a number that was correct when it was written.**
+
+They've got different causes and they leave different traces, and one of them turns out to be catchable in a way I'd never have expected.
+
+## The habit that gives the answer away
+
+I write my zeros with a slash through them.
+
+Lots of people do. It's a habit from a working life around computing, where a slashed zero is how you tell a 0 from an O. It's a good habit and it has one consequence I never thought about until this year: **a slashed zero, glanced at quickly in a column of figures, looks like an 8.**
+
+Which means my transcription errors should have a *direction*. Not just "a digit is wrong" but "a zero on the paper became an eight in the spreadsheet." **And that's testable.**
+
+The test needs an instrument, and it turns out the sheet's got one built in. Every fuel row carries a price per gallon, a number of gallons, and a cost. **Three numbers that have to multiply.** I didn't record all three so they'd be checkable. I recorded them because the form had three columns.
+
+So: take the source workbook, the file nobody is allowed to edit. Of `r P$src_rows` usable rows, **`r P$src_fail` fail that multiplication by a cent or more.** Then take each failing row, change a single digit, and see whether it comes back into line.
+
+```{r}
+#| label: tbl-slashed
+#| tbl-cap: "Single-digit substitutions tried against every failing row in the source workbook. The permitted direction is the one the handwriting predicts."
+#| echo: false
+z <- data.frame(
+  Substitution = c("**8 → 0**, a slashed zero read as an eight",
+                   "0 → 8, the same test backwards",
+                   sprintf("%d controls (1, 3, 4, 5, 7, 9 → 0)", P$controls_n)),
+  Rows = c(P$permitted, P$forbidden, P$controls_fix),
+  check.names = FALSE)
+names(z)[2] <- sprintf("Rows fixed, of %d", P$src_fail)
+knitr::kable(z, align = c("l","r"))
+```
+
+**The permitted direction fixes `r P$permitted`. Its mirror fixes `r P$forbidden`. Six unrelated digits fix `r P$controls_fix` between them.**
+
+And the `r P$permitted` don't look like arithmetic luck. They look like the habit:
+
+| the spreadsheet says | the paper meant |
+|---|---|
+| 19.28 | 19.20 |
+| 32.48 | 32.40 |
+| 29.68 | 29.60 |
+| 16.86 | 16.06 |
+| 29.86 | 29.06 |
+| 7.385 | 7.305 |
+
+Every one of them is an 8 where a 0 belongs.
+
+**I want to be careful about how much that proves.** `r P$src_fail` rows is not many, a digit-substitution search will always repair something by chance, and the mirror test fixing `r P$forbidden` row is exactly the reminder that it can. What the test establishes isn't that every one of these is a slashed zero. It's that **the errors have a grain**, and the grain runs the way the handwriting says it should.
+
+**That's the unusual part, and it's worth naming.** Most error detection tells you that something is wrong. This tells you *which way to look*. A habit I picked up decades ago, for a completely different reason, turned out to leave a signature in a dataset I hadn't started keeping yet.
+
+## Running it again, and what actually drifted
+
+There is a second way to ask the same question, and it is the way the audit asked it first. Instead of counting rows repaired, count **substitutions attempted**. If the slashed zero is a real mechanism, then swapping a 0 and an 8 should repair rows at a better rate than swapping any pair of digits with no physical story behind it.
+
+```{r}
+#| label: tbl-pairs
+#| tbl-cap: "Every single-digit substitution of each pair, tried in both directions against every failing row. The first pair is the one the handwriting predicts. The other three are controls."
+#| echo: false
+z <- as.data.frame(P$pairs)
+z$rate <- sprintf("%.1f%%", 100 * z$hits / z$subs)
+z <- data.frame(Pair = rownames(P$pairs), Substitutions = z$subs, Repairs = z$hits, Rate = z$rate)
+knitr::kable(z, align = c("l","r","r","r"), row.names = FALSE)
+```
+
+**The pair with a physical story repairs `r sprintf("%.1f%%", 100*P$pairs["0 and 8","hits"]/P$pairs["0 and 8","subs"])` of the substitutions it is offered. The three without one repair nothing at all, across `r sum(P$pairs[2:4,"subs"])` attempts.**
+
+When the audit first ran this it got `r P$pairs["0 and 8","hits"] - 5` repairs in 15 substitutions, a rate of 13.3%, with one stray hit among the controls. **Run over every failing row rather than a handful, the rate holds at `r sprintf("%.1f%%", 100*P$pairs["0 and 8","hits"]/P$pairs["0 and 8","subs"])` and the controls go to zero.** The result got cleaner, not shakier, which is not what usually happens when you widen a test.
+
+So the finding stands. **What did not survive was a sentence about it.**
+
+Somewhere between the audit and the writing of this chapter, that result was summarised in a working note as *four fixes out of forty-four failing rows*. Those numbers are not wrong so much as unrecoverable: they describe a different framing over a different set of rows, at a moment in the work nobody wrote down precisely enough to return to. **I spent an hour trying to reproduce them and could not.**
+
+**The test reproduced. The paraphrase of the test did not.** And the paraphrase was the version that had made it into the plan for this chapter, which is to say it was the version that was about to be printed.
+
+That is worth more than the finding it nearly replaced. **A number that has been summarised once is not that number any more.** It is a claim about a number, and it degrades quietly, and the only defence is to keep the thing that produced it and run it again. Every figure in this chapter is computed while these pages are built, off a workbook nobody is permitted to edit. **If any of it stops being true, the sentence changes rather than the sentence surviving.**
+
+## Where the corrections live
+
+Which is how the errata came to be built the way they are.
+
+**The source is never edited.** The 2014 workbook still says what it's always said, including the wrong things. Corrections live beside it in their own file, each keyed to a row rather than to a place-name, each carrying what was logged, what it should be, and on what evidence.
+
+```{r}
+#| label: tbl-errata
+#| tbl-cap: "Sixty-five errata, by what became of them. Settled means an independent source agreed. Documented means the entry records something true about the data that isn't an error at all."
+#| echo: false
+z <- data.frame(State = names(er), Count = as.integer(er), check.names = FALSE)
+z$State <- c(documented = "documented", hypothesis = "hypothesis",
+             open = "open", settled = "settled", withdrawn = "withdrawn")[z$State]
+z <- z[order(-z$Count), ]
+knitr::kable(z, align = c("l","r"), row.names = FALSE)
+```
+
+`r sum(er)` entries. **`r er[["settled"]]` settled, `r er[["hypothesis"]]` still hypotheses, `r er[["open"]]` genuinely open**, `r er[["documented"]]` documenting something that turned out not to be an error, and `r er[["withdrawn"]]` withdrawn because the analysis was wrong rather than the data.
+
+I'd draw your attention to that last number. **Three of the sixty-five aren't corrections to the data at all. They're corrections to the corrector.**
+
+After all of it, the corrected dataset stands at **`r P$n_rows` rows, of which `r P$n_balance` balance the pump identity to under a cent.** The `r P$n_fail` that don't each carry a documented reason.
+
+## The redundancy nobody designed
+
+Here's the thing I keep coming back to.
+
+Every recoverable error in this record was caught because a number could be checked against another number. The price against the gallons against the cost. The odometer against the great-circle distance between two towns. The fuel log against a credit card statement filed in a different year for a completely different purpose.
+
+**None of that redundancy was put there on purpose.** The form had three columns because a form has columns. I wrote down the town because I wanted to remember where I'd been. The card statement existed because that's how the fuel got paid for.
+
+And my own advice, written down decades after I started doing this, is exactly the lesson: **when possible, enter fields that will let you cross-check values.** Not just the date. Add the day of the week.
+
+I gave that advice as though it were something I'd worked out and might pass on. **It turns out the pump had been doing it for me since 2010.**

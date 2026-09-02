@@ -1775,6 +1775,26 @@ asymmetries to reject candidates a residual test would wave through.
 
 ---
 
+
+### ✓✓✓ RE-RUN AND CONFIRMED 2026-09-01 — and it got CLEANER at scale
+
+Rebuilt as a live test in `book/R/paper_data.R`, reading the **source workbook**, which the errata architecture never edits. Run over **every** row of the source Gas Log that fails the pump identity by a cent or more (23 of 292 usable rows), in the finding's own substitution-rate form:
+
+| pair | substitutions | repairs | rate |
+|---|---|---|---|
+| **0 and 8** | 45 | **7** | **15.6%** |
+| 1 and 7 | 44 | 0 | 0% |
+| 3 and 5 | 44 | 0 | 0% |
+| 4 and 9 | 78 | 0 | 0% |
+
+**Original: 13.3% for 0/8 with one stray control hit (4<->9, 1 of 39). Now: 15.6% with 166 control substitutions and not one repair.** ★★ **Widening a test usually softens it. This one sharpened**, and the single control hit did not recur -- which is what a chance hit looks like when you give it more chances and it fails to take them.
+
+**The six one-directional repairs all read as the habit:** 19.28->19.20, 32.48->32.40, 29.68->29.60, 16.86->16.06, 29.86->29.06, 7.385->7.305. ⚠ **And the mirror direction still repairs one row** (Deming, 20.05->20.85), which is the honest reminder that a substitution search always finds something. The finding is the ASYMMETRY, never the individual row.
+
+**⚠ ONE METHOD TRAP, worth carrying.** Substituting on a zero-PADDED rendering of a value invents digits nobody wrote and lets the mirror test cheat on trailing zeros (`6.480 -> 6.488` scores a false repair). **Substitute on the value AS RECORDED.** Fixing this alone moved the mirror direction from 3 repairs to 1.
+
+**★★★ WHAT DID NOT REPRODUCE WAS A PARAPHRASE, NOT THE FINDING — see Finding 051.** A working note had summarised this as *4 fixes of 44 failing rows*, a different framing over a row set nobody recorded, and **that was the version about to be printed in the book.**
+
 ## Finding 034 — A BACKUP THAT REPORTS SUCCESS IS NOT A BACKUP THAT COVERS YOUR WORK (2026-08-18)
 
 `pkm_backup()` ran clean, committed, pushed, and **verified the push against the remote ref** -- the very check Finding 031 added. It reported `975 files | 4 changed | pushed TRUE`. All of that was true.
@@ -2175,3 +2195,15 @@ exactly the kind of half-signal that would mislead anyone checking the return va
 **Rule.** In a multi-chapter Quarto document, **never write a chapter number as text.** Label each chapter heading (`# Title {#sec-name}`) and reference it (`@sec-name`), so the number is generated and moves when the book does. **And when a document's internal numbering differs from the renderer's** -- an unnumbered preface being the usual cause -- **settle which one the prose speaks, in writing, before the second chapter is drafted.**
 
 **Generalisation beyond chapter numbers.** This is the same class as Finding 049: a fact that lives in prose and is not derived from the thing it describes. **The book already applies the fix to figures -- every number comes from an R object, so it cannot go stale.** Cross-references had simply never been brought under that rule.
+
+## Finding 051 -- THE TEST REPRODUCED AND THE PARAPHRASE OF IT DID NOT (2026-09-01)
+
+**What happened.** Finding 033 was re-run live for the ch.9 draft. **The finding reproduced and improved.** But a summary of it in the chapter's planning scaffold -- *permitted 8->0 fixes 4 of 44 failing rows; forbidden fixes 1; six controls fix 0* -- could not be reproduced from any available state of the data, and **that summary was the version queued for print.**
+
+**The mechanism of the drift.** 033 states a SUBSTITUTION-rate result over digit pairs. The scaffold restated it as a ROWS-REPAIRED result over a row count. Both describe the same experiment; neither converts into the other without the row set, which was never written down. **The paraphrase was not wrong when it was made. It became unrecoverable as soon as the state it described was gone.**
+
+**★★ AND THE FAILURE MODE IS SPECIFIC TO A SYSTEM LIKE THIS ONE.** Notes summarise notes here: a finding goes into `pkm_findings.md`, a working line about it goes into a `proj_*.md`, a shorter line goes into a chapter scaffold, and the chapter reads the scaffold. **Every hop is a lossy re-encoding, and the last hop is the one that reaches the page.** Nothing in the chain is a lie and the endpoint is still not checkable.
+
+**Rule. A number that has been summarised once is a CLAIM about a number.** Before a figure is printed, run the thing that produced it, or print the figure the runnable thing gives. **Prefer keeping the generator over keeping the result** -- `paper_data()` recomputes every figure in ch.9 at build time from a file that is never edited, so a drifted sentence cannot survive a render.
+
+**Companion to 049 and 050.** 049: a fact in prose that is not derived from what it describes goes stale silently. 050: same, for cross-references. **051 is the same disease one level up -- a derived fact that was derived correctly, then copied by hand.** ★ The tell in all three is identical: **the build succeeds.**

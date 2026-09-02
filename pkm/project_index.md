@@ -5,7 +5,7 @@ _Last updated: 2026-09-01_
 > dated Change Log now live in `logs/focus_history.md`, verbatim and unedited.
 > This file carries the current focus, the structural notes, and the listings only.
 
-**Active Focus (2026-09-01, close): "Smart_Car" -- THE CHAPTER NUMBERS FINALLY MATCH THE WAY WE TALK, AND CH.8 IS DRAFTED.**
+**Active Focus (2026-09-01, close): "Smart_Car" -- CH.8 AND CH.9 DRAFTED; THE CHAPTER NUMBERS MATCH THE WAY WE TALK; AND A PARAPHRASE WAS CAUGHT ON ITS WAY TO THE PAGE.**
 
 **Foreword + ch.1-ch.8 stand, about 18,250 words. 16 chapters render, 0 error strings, 0 unresolved references.** Detail in `session_log.md` 2026-09-01.
 
@@ -23,7 +23,15 @@ _Last updated: 2026-09-01_
 
 **Still queued, both with triggers already fired:** split `proj_Smart_Car.md` (57.2 KB against 45) and decide what to do about `session_log.md` (281 KB against 250, not splittable -- it already carries an archive).
 
-**NEXT: Kim reads ch.6, ch.7, ch.8 and the two new sections in ch.1 and ch.2. Ch.9 `sixteen_years_of_paper.qmd` is scaffolded and ready. Nothing is blocking.**
+**★★★ CH.9 `sixteen_years_of_paper.qmd` DRAFTED — ~1,900 words, three tables, and the book's FIRST PHOTOGRAPHIC FIGURE:** a real sheet (Frostburg-3, June 2012) rendered from the scan at 150 dpi -- both logs on one page, the trip name in hand, *RETURN TO CALIFORNIA* across the travel header, a crossed-out temperature, a circled date with somebody's question mark, the day's mileages in the margin. **Derived counts: 20 scanned files, 67 pages** (the PKM's recurring "22 scans" is a batch count and does not match the folder).
+
+**★★★ THE SLASHED-ZERO TEST NOW RUNS LIVE off the SOURCE workbook** (`TwoRed_fuel_June_2014.xlsx`, never edited), so the printed figure is computed at build time. 292 usable rows, **23 fail the pump identity**; **8->0 repairs 6, the mirror 1, six controls 1 between them**, and the six read as the habit (19.28->19.20, 29.68->29.60, 7.385->7.305...). ⚠ **Method trap carried into Finding 033:** substituting on a zero-PADDED rendering invents digits nobody wrote; on the value AS RECORDED the mirror drops 3 -> 1.
+
+**★★★ CORRECTION I HAD TO MAKE MID-CHAPTER: I told Kim Finding 033 would not reproduce, he ruled "amend it", and then I read 033 and my report was wrong.** 033 states a **substitution-rate** result, not a rows-of-44 result, and in its own form it **reproduces and sharpens: 0/8 at 15.6% (was 13.3%), and 166 control substitutions with ZERO repairs (the original had one stray).** ★★ **What failed to reproduce was a PARAPHRASE in the chapter scaffold -- and that was the version queued for print.** **Finding 051 written:** notes summarise notes here, every hop is a lossy re-encoding, the last hop reaches the page, **and the tell is the same as 049 and 050 -- the build succeeds.** Rule: **keep the generator, not the result.** ★ The chapter is better for it -- its middle section is now *the test reproduced and the sentence about it did not*.
+
+**16 chapters render, 0 error strings, 0 unresolved references.** ⚠ Voice 23.8 -> 28.2 per thousand, fifth chapter running; and **four em dashes had crept into R string literals inside a table, so the sweep must cover code strings too.**
+
+**NEXT: Kim reads ch.6 through ch.9 and the two new sections in ch.1 and ch.2. Ch.10 `knowing_a_number_is_wrong.qmd` is scaffolded and is ch.9's natural sequel. Nothing is blocking.**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

@@ -47,6 +47,49 @@ New `book/R/driving_cost_data.R`. **16 chapters render, 0 error strings, 0 unres
 
 **⚠ A TRANSIENT `PermissionDenied` on `_output` during the first full render** -- Drive Stream holding the directory, the same class as Finding 048. **A plain retry succeeded.** Do not treat it as a broken build.
 
+### ★★★ CH.9 `sixteen_years_of_paper.qmd` DRAFTED — and I got the diagnosis wrong before I got it right
+
+**~1,900 words, three tables, and the book's first photographic figure:** a real sheet, Frostburg-3 June 2012, rendered from the scan at 150 dpi. Both logs on one page, the trip name in Kim's hand, *RETURN TO CALIFORNIA* across the travel header, a crossed-out temperature, a circled date with somebody's question mark, and the day's mileages worked out in the right margin. **The chapter's subject, in one look.**
+
+**Derived, not quoted: 20 scanned files, 67 pages, 2010-2017.** The PKM's recurring "22 scans" is a batch count and does not match the folder; the chapter prints the file and page counts, which anyone can check.
+
+### ★★★ THE SLASHED-ZERO TEST NOW RUNS LIVE, OFF THE SOURCE WORKBOOK
+
+Rebuilt in `book/R/paper_data.R` reading `TwoRed_fuel_June_2014.xlsx` -- **the file the errata architecture never edits** -- so the figure in the book is computed at build time rather than carried in prose. 292 usable rows, **23 fail the pump identity** by a cent or more.
+
+| | |
+|---|---|
+| 8 -> 0, the direction the handwriting predicts | **6 rows repaired** |
+| 0 -> 8, the mirror | 1 |
+| six controls (1,3,4,5,7,9 -> 0) | 1 between them |
+
+**And the six read as the habit, not as luck:** 19.28->19.20, 32.48->32.40, 29.68->29.60, 16.86->16.06, 29.86->29.06, 7.385->7.305.
+
+**⚠ A METHOD TRAP FOUND WHILE BUILDING IT.** Substituting on a zero-PADDED rendering invents digits nobody wrote and lets the mirror direction cheat on trailing zeros (`6.480 -> 6.488`). Substituting on the value AS RECORDED moved the mirror from 3 repairs to 1. **Carried into Finding 033.**
+
+### ★★★ THE CORRECTION THAT MATTERS: I TOLD KIM FINDING 033 WOULD NOT REPRODUCE. IT DOES
+
+**I reported a discrepancy against Finding 033 and asked him to rule on amending it. He ruled amend. Then I read 033 itself and the report was wrong.**
+
+**033 states a SUBSTITUTION-RATE result over digit pairs**, not a rows-of-44 result. Run in its own form over every failing row:
+
+| pair | substitutions | repairs | rate |
+|---|---|---|---|
+| **0 and 8** | 45 | **7** | **15.6%** |
+| 1 and 7 | 44 | 0 | 0% |
+| 3 and 5 | 44 | 0 | 0% |
+| 4 and 9 | 78 | 0 | 0% |
+
+**Original: 13.3%, with one stray control hit. Now: 15.6%, and 166 control substitutions without a single repair.** ★★ **Widening a test usually softens it; this one sharpened, and the stray control hit failed to recur** -- which is exactly what a chance hit does when given more chances.
+
+**What actually failed to reproduce was a PARAPHRASE in the ch.9 scaffold** -- *4 fixes of 44 failing rows* -- a different framing over a row set nobody recorded. **And that paraphrase was the version queued for print.** ★★★ **Finding 051 written:** notes summarise notes here, every hop is a lossy re-encoding, the last hop reaches the page, and **the tell is the same as 049 and 050 -- the build succeeds.** Rule: prefer keeping the GENERATOR over keeping the result.
+
+**The chapter is better for the correction.** Its middle section is no longer *the audit has a hole in it*; it is **the test reproduced and the sentence about it did not**, which is a sharper thing to have found and is true.
+
+**16 chapters render, 0 error strings, 0 unresolved references.**
+
+**⚠ Voice: 23.8 contractions per thousand on the first pass, 28.2 after. Fifth chapter running.** Four em dashes had also crept into R string literals inside a table -- **the sweep must cover code strings, not just prose.**
+
 ## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
 
 **Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.
