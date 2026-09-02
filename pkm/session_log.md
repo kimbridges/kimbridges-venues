@@ -112,6 +112,30 @@ The caption had it as *a question mark, for a reason nobody now remembers*. **It
 
 **Ch.9 after both corrections: ~2,360 words, four tables, one photographic figure. 25.4 contractions per thousand, 0 em dashes, renders clean.**
 
+### ★★★ AND THEN KIM GAVE CH.9 ITS ENDING — THE SCANNING EXPERIMENT, WHICH MAY BE THE BOOK'S REAL POINT
+
+Verbatim in the project log. **He noticed he had never entered some of the log data at all**, and a friend who also keeps a fuel log asked with him a question neither had thought to ask: **could a handwritten log just be scanned and read?**
+
+**Why it had never come up is the whole argument: transcription is FRICTION.** An evening of typing numbers you can barely read, producing nothing you did not already have on paper. **Unless the payoff is worth the effort the effort is not made** -- which is exactly why the fuel halves of these sheets were typed years ago and **most of the travel halves never were.**
+
+**★★★ IT WORKED, AND THE PAYOFF IS QUANTIFIABLE:**
+
+| | |
+|---|---|
+| typed `Trip Log` sheet | **7 rows** |
+| transcribed from the scans | **139 legs, 13 trips**, 137 with both odometers |
+| miles that were on paper all along | **41,163** |
+
+**Twenty times more record, never lost and never recovered -- just never typed in.** ★★★ **Every chapter in the middle of this book is made of data that sat in a drawer while everyone assumed it was in the computer.**
+
+**★★ THE SECOND PAYOFF IS THE ONE NOBODY PREDICTED: the scans AUDIT the typing.** All 65 errata came from reading images against a spreadsheet typed years earlier and never checked, **because checking meant reading the source, and reading the source was the friction.** ★ **The entire audit this book rests on is downstream of two men wondering whether a scanner could read handwriting.**
+
+★ **And the joke the chapter now carries:** the one part of the record that HAD been typed holds a date reading **`5/8/0201`**. **The paper hasn't got that error. The computer has.**
+
+**★★★ THE GENERAL CLAIM, and it is the one to carry out of this project:** *data recorded has no value while it sits in a log; moving it into an analysis environment is what gives it value; scanning removes the friction and encourages the move.* **That is about archives, field notebooks, herbarium sheets and card catalogues, not about car logs.** It is `briefing_book`'s friction spine arriving one level down, applied to his own archive.
+
+**Ch.9 final: ~3,060 words, four tables, one photograph, 30.1 contractions per thousand, 0 em dashes. 16 chapters render, 0 errors, 0 unresolved references.** ⚠ **No scanning accuracy rate is printed** -- there is no measured control set, and none should be invented later.
+
 ## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
 
 **Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.

@@ -95,6 +95,12 @@ paper_data <- function() {
     `3 and 5` = .pair_rate(bad, "3", "5"),
     `4 and 9` = .pair_rate(bad, "4", "9"))
 
+  ## ---- what the scanning experiment actually returned -------------------
+  ## The typed sheet held SEVEN trip-log rows for six years of driving. The
+  ## paper held the rest, and had all along.
+  tl <- as.data.frame(readxl::read_excel(SC_SOURCE_XLSX, sheet = "Trip Log"))
+  L <- twored_legs
+
   list(n_pdf = length(pdfs), n_pages = sum(pages, na.rm = TRUE),
        first = min(as.Date(F$date)), last = max(as.Date(F$date)),
        odo_lo = min(F$Odometer), odo_hi = max(F$Odometer),
@@ -103,5 +109,9 @@ paper_data <- function() {
        permitted = .sub_fixes(bad, "8", "0"),
        forbidden = .sub_fixes(bad, "0", "8"),
        controls_n = length(controls), controls_fix = sum(ctl),
-       errata = table(b), pairs = pairs)
+       errata = table(b), pairs = pairs,
+       typed_trip_rows = nrow(tl), legs = nrow(L),
+       legs_both_odo = sum(!is.na(L$start_odo) & !is.na(L$end_odo)),
+       leg_miles = sum(L$odo_miles, na.rm = TRUE),
+       trip_csvs = length(list.files(SC_DIR, pattern = "^TwoRed_.*_trip_log[.]csv$")))
 }

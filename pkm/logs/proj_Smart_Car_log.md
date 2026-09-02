@@ -1,3 +1,36 @@
+## ★★★ THE SCANNING EXPERIMENT — Kim, 2026-09-01, verbatim. THIS IS CH.9's ENDING AND IT MAY BE THE BOOK'S
+
+> While we were working on this, I realized that I had not entered some of the log data. At about the same time, I was talking to a friend about this project as I know he, too, logs fuel purchases. We wondered, together, whether our handwritten logs could be scanned. If so, that would eliminate a huge amount of friction (that recurring concept). Unless there is an adequate payoff, the manual transcription of the data may not be worth the effort. If the log can be scanned, that troublesome part of the equation disappears. My friend and I decided that I'd try by using my logs. Could the handwritten data be read accurately? And it worked! Not only did it save me a lot of effort for the trip logs, but the scans checked my typed entries of the fuel logs. And it was there that errors were discovered.
+>
+> So we got a benefit that may be the key part of this story. Data recorded has no value if it just sits in a log. Moving that data into an analysis environment is what gives the data value. Scanning removes the friction and encourages the move. That's a lesson learned not just for car logs. It applies much more broadly. And it's something we didn't know about. Now we do.
+
+### ★★★ THE PAYOFF IS QUANTIFIABLE AND THE NUMBERS ARE STAGGERING
+
+| | |
+|---|---|
+| typed `Trip Log` sheet in the source workbook | **7 rows**, most missing an end time and an end odometer |
+| transcribed from the scans | **139 legs across 13 trips**, 137 with both odometers |
+| logged miles that were on paper the whole time | **41,163** |
+| errata the comparison produced | **65** |
+
+**Twenty times more record, and it was never lost, never recovered, and never anywhere but in a drawer.** ★★★ **Every chapter in the middle of this book is made out of data that existed on paper while everyone concerned assumed the record was in the computer.**
+
+**★★ AND THE SECOND PAYOFF IS THE ONE NOBODY PREDICTED: the scans AUDIT the typing.** All 65 errata came out of reading images against a spreadsheet that had been typed years earlier and never checked, **because checking it meant reading the source, and reading the source was the friction.** The whole audit -- the pump identity, the seven instruments, the errata architecture -- **is downstream of a question two men asked each other about whether a scanner could read handwriting.**
+
+★ **A small joke that belongs in the chapter and now is:** the one part of the record that HAD been typed carries a date reading **`5/8/0201`**. **The paper does not have that error. The computer does.**
+
+### ★★★ FRICTION IS THE PROJECT'S OWN SPINE, ARRIVING FROM A NEW DIRECTION
+
+Kim flags it himself -- *that recurring concept*. **`briefing_book`'s method-spine is FRICTION reduction** (attention / cost / omission / access / knowledge). **Here it appears one level down, applied to his own archive**, and the mechanism is the same: an action with a real cost and a diffuse payoff does not happen, and **the fix is never exhortation, it is removing the cost.**
+
+**★★ AND THE GENERAL CLAIM IS THE ONE TO CARRY OUT OF THIS PROJECT.** *Data recorded has no value while it sits in a log. Moving it into an analysis environment is what gives it value. Scanning removes the friction and encourages the move.* **That is a claim about archives, field notebooks, herbarium sheets and card catalogues, not about car logs** -- and it connects straight to Theme 5 (sharing as the completion of the act) and Theme 6 (fix the structure, the symptom dissolves). ⚠ **It also has an obvious application to the rest of Kim's own PKM**, which is full of paper-era material; raise it when the PKM is the focus, not now.
+
+### ⚠ WHAT THE CHAPTER DOES NOT CLAIM
+
+**No accuracy rate is printed for the scanning itself.** Kim says it worked; the book says it worked and shows what it returned. **A claimed OCR/transcription accuracy would need a measured control set and there is none.** Do not invent one, and do not let a later chapter imply one.
+
+---
+
 ## ★★★ TWO CORRECTIONS FROM KIM, 2026-09-01 — the 0/8 mechanism, and the mark on the sheet
 
 ### ⚠⚠⚠ IT WAS NEVER HIS HANDWRITING. IT WAS THE RECEIPTS.

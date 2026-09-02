@@ -170,6 +170,10 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ★★★ CARRY THE FRICTION LESSON OUT OF SMART_CAR (opened 2026-09-01)
+
+Kim's scanning result -- *data has no value while it sits in a log; moving it into an analysis environment is what gives it value; scanning removes the friction* -- **is a claim about archives generally, and Kim's own PKM is full of paper-era material.** It also sits directly on `briefing_book`'s friction spine. **Raise it when the PKM or briefing_book is the focus, not while Smart_Car is.** ⚠ **Do not print a scanning accuracy rate anywhere** -- there is no measured control set.
+
 ### ⚠ TASK — the "22 scans" figure is wrong wherever it appears (2026-09-01)
 
 The folder holds **20 PDFs, 67 pages**, derived at build time by `paper_data()`. **"22 scans" is a batch count** from the delivery sessions and it recurs across `proj_Smart_Car.md`, the log and older focus blocks. **Ch.9 prints the derived numbers.** Not urgent; fix the PKM occurrences the next time that file is touched, and **do not fix them by hand in the book -- the book computes them.**

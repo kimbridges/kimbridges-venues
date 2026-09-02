@@ -160,3 +160,37 @@ Every recoverable error in this record was caught because a number could be chec
 And my own advice, written down decades after I started doing this, is exactly the lesson: **when possible, enter fields that will let you cross-check values.** Not just the date. Add the day of the week.
 
 I gave that advice as though it were something I'd worked out and might pass on. **It turns out the pump had been doing it for me since 2010.**
+
+## The part we didn't know
+
+Something happened while this book was being written that turned out to matter more than any of the corrections in it.
+
+I noticed I'd never entered some of the log data at all. Not lost, not wrong. **Just never typed in.** And around the same time I was describing this project to a friend who keeps a fuel log of his own, and between us we asked a question neither of us had thought to ask before: **could a handwritten log simply be scanned and read?**
+
+You have to understand why that question hadn't come up. **Transcription is friction.** It's an evening of typing numbers you can barely read, and it produces nothing you didn't already have on paper. **Unless there's a payoff worth the effort, the effort doesn't get made**, and that isn't laziness, it's an honest piece of arithmetic done by somebody who already knows roughly what the numbers say. It's exactly why the fuel halves of these sheets were typed up years ago and **most of the travel halves never were.** The fuel numbers were going to be used. The travel numbers were just going to sit there.
+
+So we decided I'd test it, on my own logs. Could handwritten data be read accurately?
+
+**It worked.**
+
+And it paid twice, and the second payment is the one we hadn't seen coming.
+
+**The first is the obvious one.** The typed spreadsheet held **`r P$typed_trip_rows` trip-log rows** for six years of driving. It now holds **`r P$legs` legs across `r P$trip_csvs` trips**, `r P$legs_both_odo` of them with both odometer readings, **`r format(P$leg_miles, big.mark = ",")` miles.** None of that was lost and none of it was recovered. **It had been on the paper the whole time, in a drawer, while everybody concerned assumed the record was in the computer.** Every chapter in the middle of this book is made out of it.
+
+**The second is the one that changed how I think about this.** Once the scans existed they could be read against the typed fuel log, line by line. **And that's where the errors turned up.** All `r sum(er)` of the errata in the table above came out of that comparison, or out of the audit it made possible. The typing had been done years earlier and nobody had ever gone back to check it against the source, because going back to the source meant reading the source, and reading the source was the friction.
+
+There's a small joke sitting in the middle of this. The one part of the record that *had* been typed up carries, in its date column, an entry reading **5/8/0201**. **The paper hasn't got that error. The computer has.**
+
+## What that's a lesson about
+
+Here's what my friend and I came away with, and I don't think it's only about car logs.
+
+**Data that has been recorded has no value while it sits in a log.** It's got potential value, and sentimental value perhaps. But it can't answer a question, or contradict you, or turn out to contain a mountain you thought you'd lost, until it's somewhere a question can be put to it.
+
+**Moving it into an analysis environment is what gives it value.** That's the step, and it's the step that doesn't happen, because it's the step with all the friction in it.
+
+**So reduce the friction and the move happens.** Scanning did that here. A stack of paper that would have cost me weeks of typing became a dataset in a few sessions, and it brought its own audit along with it, because the images stay readable after the numbers come out and you can always go back to them.
+
+I've kept these logs for sixteen years and I'd have told you, up until this year, that I knew what was in them. **I didn't.** The trip log was twenty times bigger than the version anyone could query. Sixty-five errors sat in the fuel log unnoticed. A summit I couldn't prove I'd reached was recorded three separate ways.
+
+**None of it was hidden. It was just still on paper.** And we had no idea, until we tried, how cheaply that could stop being true.
