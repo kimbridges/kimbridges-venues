@@ -1720,7 +1720,17 @@ audit.**
 a **zero recorded as an eight** (29.06->29.86, 26.08->26.88, 7.088->7.889, 4.089->4.809). A fifth
 occurred live in this session -- Kim read 5.401 off his own receipt as 5.481.
 
-**The cause, from Kim:** *the stripe across the zero.* He writes slashed zeros. Under a scan, or a
+**⚠ THE CAUSE WAS CORRECTED BY KIM 2026-09-01, AND THE ORIGINAL ATTRIBUTION HERE WAS WRONG.** This finding recorded the cause as *the stripe across the zero* -- Kim's own slashed handwriting. **It is not.** Kim: *"It wasn't me slashing zeros. You can see from the log that I don't do that (except sometimes, but not here). It was the printed fuel receipts that had a combination of small print, sometimes little ink, and a dot in the middle of the zero. These were hard to read, especially when there wasn't much light in the car. It was in entering or checking those receipts that errors were introduced due to the 'is it 0 or 8?' situation."*
+
+**★★ THE MECHANISM MOVES AND THE FINDING GETS STRONGER.** A **dotted zero** on a faint receipt fails in exactly the way a slashed one would, so **the DIRECTIONAL argument is untouched** -- 0 can be read as 8, never the reverse -- and the substitution test is unaffected. What changes is where the illusion lives, and it changes three things that matter:
+
+1. **The log sheet is NOT the witness.** The receipt is. And receipts are thermal slips that were mostly thrown away, so **for this error class the settling document usually no longer exists** -- unlike the light-pen-pressure class, where the original is decisive.
+2. **It is not one person's handwriting habit, so it does not vary with who was writing.** ★ Relevant because **there are two hands in this record** (Kim right-handed; Nancy left-handed, and an MD). A handwriting-based mechanism would have to explain why the error rate does not track the writer. A receipt-based one never had to.
+3. **The same document is both the cause and the cure.** The surviving receipts print the odometer and are the project's FOURTH independent record. **The instrument that introduced the error class is the one that resolves it, where it was kept.**
+
+**★★★ AND THE GENERAL LESSON IS SHARPER THAN THE ORIGINAL ONE.** The finding said: when errors share a shape, ask what physical process makes that shape. **That was right, and I then attached it to the wrong process** -- the writer in front of me, rather than the machine upstream of him. **A shape in the data points at a process, not at a person, and the process may belong to somebody who has never heard of this project.** Ask whose hand, and then ask whose printer.
+
+**⚠ Kim's slashed-zero habit is real but occasional** (*"except sometimes, but not here"*), so it is not available as a general explanation and must not be reintroduced as one.
 hurried glance, a slashed 0 reads as an 8.
 
 **Why this beat every threshold we had.** All four typos had already survived the arithmetic audit's

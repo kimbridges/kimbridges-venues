@@ -23,9 +23,11 @@ I scan paper. All paper. **It's an electronic shoebox**, and the only thing that
 
 Here is one of the sheets.
 
-![One page of the record: Frostburg-3, June 2012. The fuel log is the top table and the day's travel is the bottom one, on the same piece of paper, which is why the two logs in this book so often disagree about what a trip was. Note what else is on it. The trip name is written in by hand. *Return to California* is scrawled across the travel header, because that's what this page turned out to be about. A temperature is crossed out and rewritten. Somebody circled a date and put a question mark beside it, years ago, for a reason nobody now remembers. And the day's mileages are worked out in the right margin, in pencil, by a driver at the end of a long day.](images/TwoRed/log_sheet_frostburg3.png){#fig-sheet}
+![One page of the record: Frostburg-3, June 2012. The fuel log is the top table and the day's travel is the bottom one, on the same piece of paper, which is why the two logs in this book so often disagree about what a trip was. Note what else is on it. The trip name is written in by hand. *Return to California* is scrawled across the travel header, because that's what this page turned out to be about. A temperature is crossed out and rewritten, and the day's mileages are worked out in the right margin at the end of a long day. **And 6/9 is circled, with a small happy face beside it, because it's Nancy's birthday.** She joined the trip that day, and it's also the day the handwriting changes: the first two fuel rows are mine and the rest are hers. **You can see the join without being able to read a word of it.** From that row on, the date column starts carrying the year.](images/TwoRed/log_sheet_frostburg3.png){#fig-sheet}
 
 **Two tables, one page.** That's the design decision underneath half of what this book has found. The fuel halves got typed up years ago, into the spreadsheet everything here is built on. **Most of the travel halves never did**, which is why the trip log ran to seven rows for six years, until somebody went back to the scans and read the bottom of every page.
+
+**And there are two hands in this record, not one.** Nancy travelled on many of these trips, and when she was aboard she often kept the log. Our writing couldn't be less alike. I'm right-handed; she writes with her left, and she's spent a career as a physician, which does to handwriting what a career as a physician is famous for doing. **For a chapter about reading numbers off paper years later, that matters**, and it's why I'm wary of any explanation of an error that starts with the words *my handwriting*.
 
 ## What it's actually like to keep
 
@@ -43,24 +45,32 @@ The second is the **transcription error**. Some evening a long time later, I'm t
 
 They've got different causes and they leave different traces, and one of them turns out to be catchable in a way I'd never have expected.
 
-## The habit that gives the answer away
+## The zero with a dot in it
 
-I write my zeros with a slash through them.
+My first thought about this was wrong, and the way it's wrong is worth keeping.
 
-Lots of people do. It's a habit from a working life around computing, where a slashed zero is how you tell a 0 from an O. It's a good habit and it has one consequence I never thought about until this year: **a slashed zero, glanced at quickly in a column of figures, looks like an 8.**
+I assumed the trouble was my own handwriting. I've been around computing all my working life, and people in that world often write a zero with a slash through it so it can't be mistaken for a letter O. A slashed zero, glanced at in a hurry, does look a great deal like an 8. It made a tidy story and it isn't what happened.
 
-Which means my transcription errors should have a *direction*. Not just "a digit is wrong" but "a zero on the paper became an eight in the spreadsheet." **And that's testable.**
+**Look at the sheet in @fig-sheet, though. Those zeros are plain.** I do slash them sometimes. I didn't slash them here, and the pages this record's made of are full of ordinary round zeros.
 
-The test needs an instrument, and it turns out the sheet's got one built in. Every fuel row carries a price per gallon, a number of gallons, and a cost. **Three numbers that have to multiply.** I didn't record all three so they'd be checkable. I recorded them because the form had three columns.
+**The dotted zero was on the receipts.**
+
+A pump prints you a slip. The type is small, the ribbon or the thermal head's often tired, and on a good many of those printers **the zero's got a dot in the middle of it** so it can't be confused with an O. That's the same idea as the slash and it fails the same way. Now read that slip in a car at the end of the day, with the interior light doing what interior lights do, and copy the figures onto a form.
+
+**That's where the 0 and the 8 change places.** Not in my writing. In the reading of somebody else's printing, in bad light, by a man in a hurry to get to a motel.
+
+So the error should still have a *direction*, and it should be the same one: **a dotted zero can be taken for an eight; an eight is never taken for a zero.** That's testable, and it turns out the sheet's got an instrument built into it.
+
+Every fuel row carries a price per gallon, a number of gallons, and a cost. **Three numbers that have to multiply.** I didn't record all three so they'd be checkable. I recorded them because the form had three columns.
 
 So: take the source workbook, the file nobody is allowed to edit. Of `r P$src_rows` usable rows, **`r P$src_fail` fail that multiplication by a cent or more.** Then take each failing row, change a single digit, and see whether it comes back into line.
 
 ```{r}
 #| label: tbl-slashed
-#| tbl-cap: "Single-digit substitutions tried against every failing row in the source workbook. The permitted direction is the one the handwriting predicts."
+#| tbl-cap: "Single-digit substitutions tried against every failing row in the source workbook. The permitted direction is the one a dotted zero on a faint receipt predicts."
 #| echo: false
 z <- data.frame(
-  Substitution = c("**8 → 0**, a slashed zero read as an eight",
+  Substitution = c("**8 → 0**, a dotted zero read as an eight",
                    "0 → 8, the same test backwards",
                    sprintf("%d controls (1, 3, 4, 5, 7, 9 → 0)", P$controls_n)),
   Rows = c(P$permitted, P$forbidden, P$controls_fix),
@@ -71,9 +81,9 @@ knitr::kable(z, align = c("l","r"))
 
 **The permitted direction fixes `r P$permitted`. Its mirror fixes `r P$forbidden`. Six unrelated digits fix `r P$controls_fix` between them.**
 
-And the `r P$permitted` don't look like arithmetic luck. They look like the habit:
+And the `r P$permitted` don't look like arithmetic luck. They look like the mechanism:
 
-| the spreadsheet says | the paper meant |
+| the spreadsheet says | the receipt meant |
 |---|---|
 | 19.28 | 19.20 |
 | 32.48 | 32.40 |
@@ -84,9 +94,11 @@ And the `r P$permitted` don't look like arithmetic luck. They look like the habi
 
 Every one of them is an 8 where a 0 belongs.
 
-**I want to be careful about how much that proves.** `r P$src_fail` rows is not many, a digit-substitution search will always repair something by chance, and the mirror test fixing `r P$forbidden` row is exactly the reminder that it can. What the test establishes isn't that every one of these is a slashed zero. It's that **the errors have a grain**, and the grain runs the way the handwriting says it should.
+**I want to be careful about how much that proves.** `r P$src_fail` rows is not many, a digit-substitution search will always repair something by chance, and the mirror test fixing `r P$forbidden` row is exactly the reminder that it can. What the test establishes isn't that every one of these is a misread zero. It's that **the errors have got a grain**, and the grain runs the way a dotted zero says it should.
 
-**That's the unusual part, and it's worth naming.** Most error detection tells you that something is wrong. This tells you *which way to look*. A habit I picked up decades ago, for a completely different reason, turned out to leave a signature in a dataset I hadn't started keeping yet.
+**And here's the part I find hard to get over.** The document that would settle any one of these is the receipt, and **the receipts are mostly gone.** They were slips of thermal paper in a car. The sheet in @fig-sheet survives because I filed it. The piece of printing that caused the error went in a bin in Ohio in 2012, and it isn't coming back.
+
+**The signature in this data isn't mine. It belongs to the pumps.** Somebody at a fuel-dispenser company decided to put a dot in a zero so it wouldn't read as a letter, and that decision's sitting in a spreadsheet about a car fifteen years later, in the only form it could possibly have taken.
 
 ## Running it again, and what actually drifted
 

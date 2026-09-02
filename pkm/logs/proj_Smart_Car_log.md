@@ -1,3 +1,35 @@
+## ★★★ TWO CORRECTIONS FROM KIM, 2026-09-01 — the 0/8 mechanism, and the mark on the sheet
+
+### ⚠⚠⚠ IT WAS NEVER HIS HANDWRITING. IT WAS THE RECEIPTS.
+
+> It wasn't me slashing zeros. You can see from the log that I don't do that (except sometimes, but not here). It was the printed fuel receipts that had a combination of small print, sometimes little ink, and a dot in the middle of the zero. These were hard to read, especially when there wasn't much light in the car. It was in entering or checking those receipts that errors were introduced due to the "is it 0 or 8?" situation.
+
+**Finding 033 attributed the cause to Kim's slashed zeros and that attribution is now corrected in place.** The DIRECTIONAL argument survives untouched -- a **dotted** zero fails exactly the way a slashed one would -- and no number in the test changes. **Three consequences do:**
+
+1. **The log sheet is not the witness; the receipt is** -- and receipts are thermal slips that were mostly binned. **For this error class the settling document usually no longer exists.**
+2. **The mechanism does not belong to a writer**, which matters because **there are two hands in this record** (see below). A handwriting explanation would have to account for the error rate not tracking the writer. A receipt explanation never had to.
+3. **The same document is cause and cure** -- the surviving receipts print the odometer and are the project's FOURTH independent record.
+
+**★★★ AND THE LESSON IS SHARPER THAN THE ONE 033 RECORDED.** *When errors share a shape, ask what physical process makes that shape* was right; **I then attached it to the wrong process -- the writer in front of me, rather than the machine upstream of him.** A shape in the data points at a PROCESS, not at a PERSON, and the process may belong to somebody who never heard of this project. **Ask whose hand, then ask whose printer.**
+
+⚠ His slashed-zero habit is real but occasional (*"except sometimes, but not here"*). **Do not reintroduce it as a general explanation.**
+
+### ★★★ THE MARK ON THE SHEET IS A HAPPY FACE, AND THE HAND CHANGES THERE
+
+The ch.9 figure caption had it as *a question mark, for a reason nobody now remembers.* Kim:
+
+> There is also a happy-face icon beside it (hence it looks like a question mark). Why? It's Nancy's birthday (June 9). I picked her up in Atlanta and we spent the next few days traveling together. Just a coincidence that her coming aboard happened on her birthday. The writing in the log changed that day; it goes from mine to Nancy's hand. It is perhaps worth noting that our writing is quite different. I'm right-handed; Nancy writes with her left hand. And she's mastered "doctor writing" as she is an MD.
+
+**★★ AND THE SHEET CORROBORATES THE HANDOVER WITHOUT ANYONE READING THE WRITING.** On `2012_TwoRed_Frostburg_Trip_Log.pdf` p.3 the fuel rows before 6/9 are dated **`6/1`** and **`6/8`**; from the 6/9 row onward every date carries the year -- **`6/9/12`, `6/9/12`, `6/11/12`, `6/12/12`.** **The convention changes exactly where Kim says the hand does.** A second writer is visible as a change of FORMAT, not only of penmanship, which is a far more machine-readable signature than handwriting.
+
+**★ TWO HANDS IS A STANDING FACT ABOUT THIS RECORD** and belongs anywhere the book reasons from handwriting. Written into ch.9.
+
+### ⚠ ONE THING NOT PRINTED: THE PICKUP CITY
+
+Kim says **Atlanta**. **The 2012 Frostburg trip has no Atlanta leg or fill** -- 6/9 runs **Streetsboro OH -> Jackson MI**, out at 09:21, **268 odometer miles against roughly 215 by the direct road**. The late start and the ~50-mile excess are consistent with a detour to collect somebody, and the record cannot name where. **Atlanta GA appears in the record only on the 2016 Fourth Crossing.** Likely a conflation of trips. **Asked; not written into the chapter, which does not need the city.**
+
+---
+
 ## ★★★ FUEL ECONOMY FROM KIM'S SIDE — 2026-08-31, verbatim, with four tests run on it
 
 > Smart cars weren't designed for the kind of fuel economy you get when you have an aerodynamic body. They're boxy. They push the wind instead of slipping through it. I knew that when I bought TwoRed. I'd get economy as it is a small car with a small engine. But highway economy wasn't the design priority. Safety: yes. Fit in small spaces: yes. Carry ample gear: yes.

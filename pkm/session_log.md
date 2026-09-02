@@ -90,6 +90,28 @@ Rebuilt in `book/R/paper_data.R` reading `TwoRed_fuel_June_2014.xlsx` -- **the f
 
 **⚠ Voice: 23.8 contractions per thousand on the first pass, 28.2 after. Fifth chapter running.** Four em dashes had also crept into R string literals inside a table -- **the sweep must cover code strings, not just prose.**
 
+### ⚠⚠⚠ KIM CORRECTED THE 0/8 MECHANISM, AND THE CHAPTER IS BETTER FOR IT
+
+**It was never his handwriting. It was the printed fuel receipts** -- small type, tired ribbons and thermal heads, and **a dot in the middle of the zero**, read in a car with the light going. *"You can see from the log that I don't do that (except sometimes, but not here)."* **Finding 033's causal attribution corrected in place.**
+
+**No number moved.** A dotted zero fails exactly the way a slashed one would, so the directional argument and the whole substitution test stand. **Three things did move:**
+
+1. **The log sheet is not the witness; the receipt is** -- and receipts were thermal slips that got binned. **The settling document for this error class usually no longer exists.** That is a harder and better sentence than the one it replaced.
+2. **The mechanism belongs to no writer**, which matters because there are **two hands in this record.**
+3. **The same document is cause and cure** -- surviving receipts print the odometer and are the project's fourth independent record.
+
+**★★★ THE LESSON IS SHARPER THAN 033's OWN.** *When errors share a shape, ask what physical process makes it* was right; **I attached it to the wrong process -- the writer in front of me rather than the machine upstream of him.** A shape in the data points at a PROCESS, not a PERSON. **Ask whose hand, then ask whose printer.**
+
+### ★★★ THE MARK ON THE SHEET IS A HAPPY FACE — AND THE SHEET PROVES THE HANDOVER BY ITSELF
+
+The caption had it as *a question mark, for a reason nobody now remembers*. **It is a circled 6/9 with a happy face: Nancy's birthday.** She joined that day and the log passes into her hand. Kim right-handed, Nancy left-handed and an MD; *"she's mastered doctor writing."*
+
+**★★ AND THE PAGE CORROBORATES IT WITHOUT ANYONE READING THE WRITING.** Fuel rows before the handover are dated `6/1` and `6/8`; **from 6/9 onward every date carries the year** -- `6/9/12`, `6/9/12`, `6/11/12`, `6/12/12`. **The convention changes exactly where the hand does.** A second writer shows up as a change of FORMAT, which is far more machine-readable than penmanship. Written into the caption and a new paragraph in ch.9.
+
+⚠ **One thing NOT printed:** Kim says he collected her in **Atlanta**, and the 2012 trip has no Atlanta. 6/9 is **Streetsboro OH -> Jackson MI**, out 09:21, **268 mi against ~215 direct** -- a late start and a ~50-mile excess, consistent with collecting somebody, and the record cannot say where. Asked; the chapter does not need the city.
+
+**Ch.9 after both corrections: ~2,360 words, four tables, one photographic figure. 25.4 contractions per thousand, 0 em dashes, renders clean.**
+
 ## 2026-08-31 -- CH.5 DRAFTED; A FILL TIME SETTLES A FORTNIGHT-OLD CONFLICT; THE BOOK RENDERS END TO END FOR THE FIRST TIME
 
 **Active focus at start and close:** Smart_Car. Kim confirmed ch.5 `long_days.qmd` and gave four accounts. The chapter is drafted, and two chapters he was not asking about turned out to be broken.

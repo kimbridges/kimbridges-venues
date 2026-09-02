@@ -31,7 +31,9 @@ _Last updated: 2026-09-01_
 
 **16 chapters render, 0 error strings, 0 unresolved references.** ⚠ Voice 23.8 -> 28.2 per thousand, fifth chapter running; and **four em dashes had crept into R string literals inside a table, so the sweep must cover code strings too.**
 
-**NEXT: Kim reads ch.6 through ch.9 and the two new sections in ch.1 and ch.2. Ch.10 `knowing_a_number_is_wrong.qmd` is scaffolded and is ch.9's natural sequel. Nothing is blocking.**
+**⚠⚠⚠ KIM CORRECTED THE 0/8 MECHANISM AFTER THE DRAFT: it was never his handwriting, it was the PRINTED FUEL RECEIPTS** -- small type, little ink, **a dot in the middle of the zero**, read in a car with the light going. **Finding 033's attribution corrected in place; no number moved** (a dotted zero fails exactly as a slashed one would). ★★ **But three things did:** the **receipt** is the witness and receipts were binned, so **the settling document for this class usually no longer exists**; the mechanism belongs to **no writer**, which matters because **there are TWO HANDS in this record**; and **the same document is cause and cure** (surviving receipts print the odometer, the fourth independent record). ★★★ **The lesson is sharper than 033's own: a shape in the data points at a PROCESS, not a PERSON. Ask whose hand, then ask whose printer.** ★★ **And the circled mark on the figure is a HAPPY FACE -- Nancy's birthday, 9 June, the day she joined and the log passes to her hand.** The page proves the handover by itself: dates read `6/1`, `6/8`, then **carry the year from 6/9 on**. A second writer shows up as a change of FORMAT, not penmanship. ⚠ Kim says he collected her in Atlanta; **the 2012 trip has no Atlanta** (6/9 is Streetsboro OH -> Jackson MI, 268 mi against ~215 direct, out at 09:21). Asked; not printed.
+
+**NEXT: Kim reads ch.6 through ch.9 and the two new sections. Ch.10 `knowing_a_number_is_wrong.qmd` is next and is ch.9's sequel — re-derive its scaffold numbers per Finding 051. Nothing is blocking.**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R
