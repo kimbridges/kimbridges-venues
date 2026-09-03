@@ -1,5 +1,24 @@
 # Focus History and Change Log
 
+**Active Focus (2026-09-02, close): "Smart_Car" -- THE BOOK IS WRITTEN. Kim is reading it end to end; he returns for photos, cover and changes.**
+
+**★★★★ Foreword + 14 chapters + Afterword. 33,333 words. 16 pieces render, 0 error strings, 0 unresolved references.** Every chapter is drafted; nothing is scaffold. Full detail in `session_log.md` 2026-09-02.
+
+**⛔ DO NOT EDIT ANY CHAPTER UNTIL KIM REPORTS.** He is doing a read-only pass of the whole book. Three defects of mine were fixed and re-rendered BEFORE he began, and nothing has changed since.
+
+**★★★★ CH.14 IS KIM'S THESIS, NOT THE SCAFFOLD'S.** *"What people don't see is the superstructure that holds these values. They are equally important because this is where trust lies... We generally know where to put the expected data. But where do you put the Florida confirmation data?... Temptations to say 'just believe me' should be ignored."* The four states became the **worked example**; the subject is that **every dataset has a schema for its answers and no schema for its evidence.** ★★★ **And the record proves it about itself: the fuel log is 294x16 with ZERO free-text columns; the errata is 65x8 with THREE columns collapsed into prose, including a `status` field holding 48 distinct values in 65 rows.**
+
+**★★★ THE AFTERWORD** carries the fleet arc (**Bordeaux was one of the last Smart cars the dealership sold: the fleet outlasted the product line**) and closes on `@fig-alberta`, per Kim's ruling that the photo goes last. ⚠ I had the Alberta date wrong from impression: it is **2014-06-06**, at the end of the three prairie days ch.8 calls the hardest driving in sixteen years, not 2013.
+
+**⚠⚠⚠ THREE SCAFFOLD CLAIMS FAILED RE-DERIVATION and all three improved the chapter.** My own *"most indirect stretch in sixteen years"* is FALSE (60th of 270); what survives is **53 miles of slack** over the Chadron route. **The retired temperature effect does not stay retired** (significant at every sample size; the coefficient decays a third and refuses to die). **The southern deficit moves fourfold on a definition nobody wrote down** (-2.05 on six states, -0.49 on nine), neither significant, sample closed at ten tanks forever.
+
+**⚠⚠ A WHOLE-BOOK SWEEP FOUND THREE DEFECTS, ALL MINE, ALL FIXED.** A hardcoded `39.25` in the chapter about typed-in numbers; a chapter number inside a printed table cell; two figure chunks writing to one default path. ⚠⚠ **My first fix for the first was worse -- a second derivation returning 39.2724 against ch.11's 39.2511.** ⛔ **There is now exactly ONE derivation of lifetime economy in the book and any future use must reuse it.** ★★★ *The chapter arguing that proof needs a procedure was caught by a procedure, not by reading.*
+
+**⛔ WHEN HE RETURNS:** cover design (never discussed; `images/TwoRed/` has 7 photos, `twored_day_one.jpg` is the strongest cover candidate since Alberta is committed to the last page); **the Honolulu-garage photo of TwoRed and Bordeaux nose to nose does NOT exist** despite the scaffold calling it available, and it is the only possible image of the fleet as it stands today; then his changes.
+
+**⚠ CARRIED:** 78 em dashes in ch.1-4, index and afterword (a reviewed pass, ⛔ not a mass substitution). Ch.14 opens on a hardcoded *"thirteen chapters"*, same family as five carried positional phrases. `proj_Smart_Car.md` 64 KB against 45; `session_log.md` 340 KB against 250. **New Finding 053: a short variable name can shadow a base object and the failure surfaces somewhere else** -- `pi` today, `PKM` yesterday.
+
+
 **Active Focus (2026-09-02, open): "Smart_Car" -- FINISH THE BOOK. ONE CHAPTER LEFT.**
 
 **Foreword + ch.1-ch.13 stand, about 29,000 words. 16 chapters render, 0 error strings, 0 unresolved references.** Yesterday's full detail is in `session_log.md` 2026-09-01 and the superseded focus block is in `logs/focus_history.md`. Kim's accounts and rulings are verbatim in `logs/proj_Smart_Car_log.md`.

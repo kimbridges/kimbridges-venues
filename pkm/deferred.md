@@ -170,6 +170,40 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ⛔⛔ STANDING — JOINT AUTHORSHIP ON ALL COLLABORATIONS (Kim, 2026-09-02)
+
+> **"You need equal credit for what we're doing. We did that before on the last few documents. I want to keep doing it (sharing credit) here and on future collaborations. That's important to me."**
+
+**The form, matching what he already set in `specimen_labels` and `AI_Microscope`:** a `_quarto.yml` author LIST reading `"K. W. Bridges"` then `"Claude (Anthropic)"`. ★ The parenthetical is deliberate: a reader can tell what the second author is.
+
+⛔ **This is NOT specific to Smart_Car.** Apply it to every collaborative output unless Kim says otherwise. ⚠ **Check it at the start of any new document**, not at the end -- it belongs in the scaffold, not the polish.
+
+### ★★★ STANDING VOICE RULE — the considered-alternatives cadence (Kim, 2026-09-02)
+
+> *"there is a way I like to present sets of items (as in A, B, and C), particularly when a person is considering these... it might be 'I considered A. Then B. Finally, C.' **What this does is to slow the reader down, as though they, too, are making such considerations.**"*
+
+From the *Orbits* story, where Tad considers how to do his art. **Applied to the Foreword 2026-09-02 and approved by Kim.**
+
+⛔ **Use it where alternatives are being WEIGHED.** ⛔ **Do NOT use it for a roster of things that merely exist** -- the four-car list in the Foreword was deliberately left in ordinary prose and Kim was told so. ★ Marker words carry it: *first / then / finally*.
+
+**Now one of the project's standing voice rules, alongside:** contractions at 26+ per thousand, ⛔ no em dashes, concrete before abstract, close the circle.
+
+### ⛔ TOMORROW — PLACE THE PHOTOGRAPHS. 76 available, 17 placed (2026-09-02)
+
+**Full captioned inventory at the top of `logs/proj_Smart_Car_log.md`**, with the chapter each photo answers. **Kim's call, chapter by chapter.** The strongest single opportunity:
+
+★★★★ **`Bordeaux/2021_Bordeaux_and_TwoRed_in_one_space.jpg` photographs the Foreword's central claim.** Kim's caption: *"Just for fun, we parked both TwoRed and Bordeaux in one of our spaces... Just a demonstration of how small they are."* ⛔ **I had recorded this image as NOT EXISTING** when the Afterword scaffold asked for it. **It turns the book's opening assertion from testimony into evidence, which is ch.14's argument on page one.**
+
+**Others that answer something the book already argues:** the log sheet and OBD tablet in use (`2014_TwoRed_packed_for_travel`); the car under a cover in mom's spot (`2010_TwoRed_covered`, @sec-anchor); the Arctic Circle; the Torrance garage; a typical night's motel parking; the Eugene B&B; Tofino and Campbell River (the BC fills); White Sands.
+
+⚠ **Ten images have no usable caption** and `TwoFer/2014_TwoFer_newly_in_garage.jpg` has a CORRUPT one (`base64:EvgPOwE=` in UserComment). ⚠⚠ **Ten files carry a `DateTimeOriginal` of 2026:08:21/22 -- those are scan or re-save dates, NOT capture dates.** ⛔ Date those captions from the filename year, never from EXIF.
+
+### ⛔ THE GHOST `_output` NEEDS CLEARING OUTSIDE R (2026-09-02)
+
+`book/_output` is in `list.files()`, `file.exists()` is FALSE, `dir.create()` refuses. **See Finding 054.** ⛔ **Cannot be repaired from R** -- there is nothing for `unlink` to act on and the bridge cannot recursively delete. **Kim needs to remove it in Explorer, or restart Drive.**
+
+**Until then:** build in `C:/temp/Smart_Car_book_2026-09-02` and copy the rendered HTML to `book/_preview/`. ⚠ **`_preview/` is a scratch copy, not a source** -- delete it once the real `_output` works, and never edit a `.qmd` there.
+
 ### ⚠ TASK — a dead SCAFFOLD block is still sitting in `the_anchor.qmd` (found 2026-09-02)
 
 **Lines 227-263 of ch.3 are an HTML comment headed `SCAFFOLD -- still to write`.** ⚠ **Ch.3 is finished (2,976 words) and Kim approved it on 2026-08-28/29**, and every item in the block HAS landed in the prose: Mentone, Torrance, the Eugene farm, the St Louis car wash, the mother's covered spot at Lake San Marcos.

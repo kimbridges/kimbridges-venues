@@ -1,3 +1,49 @@
+## ★★★★ KIM ADDED 76 CAPTIONED PHOTOGRAPHS, ALL FOUR CARS — 2026-09-02
+
+**`book/images/` now holds TwoRed 27, Creamsicle 35, Bordeaux 7, TwoFer 7.** ★★ **66 of 76 carry a caption Kim wrote**, 40 are geotagged, 75 have a `DateTimeOriginal`. Read with `exiftoolr` (ExifTool 13.45, on Kim's machine). ⛔ **The caption lives in IPTC `Caption-Abstract` / XMP `dc:description`** -- the field his software labels *Caption* or *Description*.
+
+★★★ **This is the book's own thesis applied to the photographs: the caption travels WITH the artifact instead of in a separate list that gets lost.** And it paid at once -- the Alberta photo's own EXIF gives `DateTimeOriginal 2014:06:06` and GPS `49.94899, -110.0239`, the Alberta/Saskatchewan line on the Trans-Canada, **independently confirming the Afterword's scene from a second instrument.**
+
+### ★★★★ THE ONE THAT MATTERS MOST: the Foreword's central claim is PHOTOGRAPHED
+
+**`Bordeaux/2021_Bordeaux_and_TwoRed_in_one_space.jpg`** -- Kim's caption: *"Just for fun, we parked both TwoRed and Bordeaux in one of our spaces. We didn't leave them that way. Just a demonstration of how small they are."*
+
+⛔ **The Foreword asserts exactly this in prose** (*"Nose to nose, the two of them would fit inside a single space marked out for one ordinary car"*) and **the Afterword scaffold wanted this image and I recorded it as NOT EXISTING.** It exists. ★★ **It converts the book's opening claim from testimony into documented evidence**, which is the argument of ch.14 made visible on page one. Companion: `2020_Bordeaux_and_TwoRed_parked.jpg` (the two adjacent spaces).
+
+### ★★★ OTHER PHOTOGRAPHS THAT ANSWER SOMETHING THE BOOK ALREADY ARGUES
+
+| photo | what it settles |
+|---|---|
+| `TwoRed/2014_TwoRed_packed_for_travel.jpg` | ★★★ **The data-collection apparatus itself**: passenger seat down, a tablet reading the OBD connector, **and the log sheet in use.** For a book about record-keeping this is the missing picture. |
+| `TwoRed/2010_TwoRed_covered.jpg` | The car under a cover in mom's spot at LSM -- **@sec-anchor's subject, photographed** |
+| `TwoRed/2013_TwoRed_at_the_Arctic_Circle.JPG` | The Arctic Circle, which the book references and never shows |
+| `TwoRed/2013_TwoRed_tire_and_emergency_gear.jpg` | The spare wheel and gear, *"still room for our suitcases"* -- @sec-safe's wheel story |
+| `TwoRed/2014_TwoRed_at_Albert_Sign.jpg` | *"TwoRed set to enter the final province"* -- an ALTERNATE Alberta shot; compare with the one now closing the book |
+| `TwoRed/2014_TwoRed_in_NewFoundland.jpg` | *"about as far away as you can get from LSM"* |
+| `TwoRed/IMG_4169_D.jpg` | **A third Florida photograph** |
+| `Creamsicle/PXL_20241011_..._COVER.jpg` | **White Sands NP** -- a ch.12 comment-column entry, photographed |
+| `Creamsicle/PXL_20241005_..._COVER.jpg` | **The Torrance garage** -- @sec-anchor's holding, and the start of the *Madness + Cindy* day |
+| `Creamsicle/PXL_20220123_143353196.jpg` | *"A typical night's hotel parking while on the road"* -- **the parking constellation at ground level** |
+| `Creamsicle/PXL_20221125_...jpg` | The B&B near **Eugene** -- @sec-anchor again |
+| `Creamsicle/PXL_20230919 / PXL_20230924` | **Tofino and Campbell River** -- the three BC fills, photographed |
+| `Creamsicle/PXL_20230911_...jpg` | *"Creamsicle turns 50K miles"* |
+| `Creamsicle/PXL_20241022_...jpg` | Nancy's brother with the Wisconsin plates -- **the handover that ends the record** |
+
+### ⚠ TEN IMAGES HAVE NO USABLE CAPTION
+
+`TwoRed`: `2016_TwoRed_in_San_Marcos.jpg`, `2017_TwoRed_Matson_dropoff.jpg`, `log_sheet_frostburg3.png`, `twored_alberta_last.jpg`, `twored_easternmost.jpg`, `twored_florida_corner.jpg`, `twored_florida_signs.jpg`, `twored_day_one.jpg` (whitespace only).
+`Creamsicle`: `PXL_20240622_221211307.jpg`, `PXL_20241009_191015442.jpg`, `PXL_20241021_173419870...jpg`.
+
+⚠ **`TwoFer/2014_TwoFer_newly_in_garage.jpg` has a CORRUPT caption**: the UserComment field reads `base64:EvgPOwE=`, which is binary, not text. **Rewrite it in the Caption field.**
+
+⚠ **Eight files carry a `DateTimeOriginal` of 2026:08:21 or 2026:08:22** (`2013_TwoRed_at_end_of_Alaska_trip`, `2013_TwoRed_at_the_Arctic_Circle_2`, `2013_TwoRed_in_Fairbanks`, `2013_TwoRed_symbolic_start...`, `2013_TwoRed_tire_and_emergency_gear`, `2014_TwoRed_at_Albert_Sign`, `2014_TwoRed_at_start_of_Canada_Trip`, `2014_TwoRed_at_the_Bash_on_the_Bridge`, `2014_TwoRed_packed_for_travel`, `2016_TwoFer_with_Peter_car`). **These are scan or re-save dates, not capture dates** -- the filename year is the true one. ⛔ **Do not date a caption from EXIF on those files.**
+
+### ⛔ NOT YET PLACED IN ANY CHAPTER
+
+**Only 17 images appear in the rendered book**, of 76 available. **Placement is tomorrow's work and it is Kim's call**, chapter by chapter. ★ The strongest single opportunity is the one-space photograph in the Foreword.
+
+---
+
 ## ★★★★ CH.14'S THESIS, GIVEN BY KIM 2026-09-02, VERBATIM — and it is NOT what the scaffold planned
 
 > My idea for the "what the record cannot say" chapter is that we've shown the things people focus on: MPG, miles per day, number of states visited, etc. **What people don't see is the superstructure that holds these values and visualizations. They are equally important because this is where trust lies.** Florida's visit, undocumented, could have been a "I was close enough for it to count". **We generally know where to put the expected data. The number of states visited has a place in a headline. But where do you put the Florida confirmation data?** There is no easy answer as we tend to be **goal directed** (e.g., count the states) **rather than procedure oriented.** And that's a big part of the lesson in this book. **Temptations to say "just believe me" should be ignored.** Which is hard, because there may not be a simple way to validate a claim. That's what happened here. **Searches through old financial records to find a receipt for a lunch shared with a friend more than a decade ago. That's not an easy find. When found, it adds trust.** And that was the primary issue.

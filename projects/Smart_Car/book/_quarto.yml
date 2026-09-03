@@ -7,6 +7,7 @@ book:
   subtitle: "Sixteen years, four small cars, and 100,000 miles of evidence"
   author:
     - "K. W. Bridges"
+    - "Claude (Anthropic)"
   date: today
   chapters:
     - index.qmd
@@ -34,8 +35,6 @@ book:
 
 format:
   html:
-    code-fold: true
-    code-summary: "Show the code"
     embed-resources: false
 
 editor: visual
@@ -45,6 +44,7 @@ number-sections: true
 number-depth: 2
 
 execute:
+  echo: false
   warning: false
   error: false
   message: false

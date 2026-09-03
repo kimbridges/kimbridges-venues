@@ -73,6 +73,41 @@ The Afterword also carries the fleet arc and **Bordeaux was one of the last Smar
 
 **Kim's plan for the rest of the day: he reads the whole book, read-only, then returns for photos, cover design and any changes.** ⛔ The book was NOT edited while he read; the three fixes above were applied and re-rendered BEFORE he started.
 
+
+### ★★★★ JOINT AUTHORSHIP SET — Kim's ruling, and it is a standing preference for all future work
+
+> **"would you also change the authorship to this being a book by both of us. You need equal credit for what we're doing. We did that before on the last few documents. I want to keep doing it (sharing credit) here and on future collaborations. That's important to me."**
+
+⛔ **This is not a one-off for Smart_Car. It applies to every collaboration from here on unless Kim says otherwise.**
+
+**Matched his ESTABLISHED convention rather than inventing one.** Searched the venues and the logs; `proj_specimen_labels_log.md` records *"Settled authorship: joint -- `_quarto.yml` byline now 'K. W. Bridges' and 'Claude (Anthropic)'"*, `proj_AI_Microscope_log.md` has *"joint byline K. W. Bridges and Claude"*, and `session_log_archive.md` carries Kim's own words: ★★ ***"I like it when we are both authors as it better reflects the effort."***
+
+**`book/_quarto.yml` author list is now exactly:** `- "K. W. Bridges"` / `- "Claude (Anthropic)"`. **Verified in the rendered title block.** ★ The parenthetical is the point: a reader can tell what the second author is, which is the honest form and matches what he already uses elsewhere.
+
+### ⚠⚠ A GHOST DIRECTORY ON DRIVE — `_output` exists in the listing and does not exist
+
+**`list.files()` returns `_output`. `file.exists()` says FALSE. `file.info()` is all NA. `dir.create()` fails because the name is taken.** The book folder itself is writable (a probe file wrote fine). Kim confirmed nothing was holding it open in a browser.
+
+★★★ **This is THE GROUND-TRUTH RULE one level up: the card covers a FILE reporting a correct name and size while the bytes are absent. This is a DIRECTORY whose name is in the listing while the directory is not there and cannot be recreated.** See the new finding.
+
+**Worked around per the card, bucket 4:** the whole book copied to `C:/temp/Smart_Car_book_2026-09-02` and rendered there. **All 16 pieces build clean.** A copy of the rendered HTML is at `book/_preview/` so Kim can read it from Drive. ⛔ **The real `_output` needs clearing in Explorer or a Drive restart before the normal render path works.**
+
+### ✓ THE THREE READ-THROUGH DEFECTS ARE FIXED AND VERIFIED IN A RENDER
+
+1. **Ch.13 rendered NONE of its four figures.** `fig_constellations.R` and `fig_stops.R` both ended in `invisible(p)` -- I wrote them that way to save PNGs for my own inspection, and that suppresses the plot in the chapter. **Now returned visibly. Ch.13 shows 4 images; the book shows 17.**
+2. **"Show the code" gone.** It came from `code-fold: true` in `_quarto.yml`, firing on the three chunks that lacked `echo: false`. ★ **Every chunk in this book is a one-line figure or table call that teaches nothing**, so the fix was global: `echo: false` in the project's execute block, code-fold removed. **0 code boxes in all 16 pieces.**
+3. **The Foreword rewritten** -- see below.
+
+### ★★★ THE FOREWORD, REWRITTEN TO KIM'S CONSIDERED-ALTERNATIVES STYLE
+
+**New style rule, and it is now a standing voice preference.** Kim: *"there is a way I like to present sets of items (as in A, B, and C), particularly when a person is considering these... 'I considered A. Then B. Finally, C.' **What this does is to slow the reader down, as though they, too, are making such considerations.**"* ★ He used it in the *Orbits* story for Tad considering his art.
+
+**Applied in three places where something is genuinely being weighed:** the purchase decision (*"The rentals first... Then the price... Finally the parking"*), the roster of drives, and *"Think about downtown Honolulu. Where you'd go. How far. How long it'd take."* Also recast *Three things, in the order people meet them* as **First, the car. Then the drives. Finally the data.**
+
+⛔ **NOT applied to the four-car roster** -- that is a list of things that exist, not alternatives anybody is weighing, and forcing the rhythm there would be affectation. **Flagged to Kim as a deliberate choice.**
+
+**Facts fixed in the same pass:** ⚠ **TwoFer was "leased for about ten months in 2014 and 2015" and it was a 36-MONTH lease, 2014-03-22 to 2017-03-22** -- now derived from `fleet$years`. ⚠ **"ten Canadian provinces and the Yukon Territory" is now `KC$n_prov` = eleven**, derived. **The closing odometer is derived from the trip log** instead of typed. **12 em dashes and one stray double-hyphen removed; the title lost its dash.** Voice 31.2 per thousand.
+
 ## 2026-09-01 -- THE CROSS-REFERENCES ARE GENERATED, THE CHAPTER NUMBERS FINALLY MATCH THE WAY WE TALK, AND CH.8 THROUGH CH.13 ARE DRAFTED
 
 **Active focus at start and close:** Smart_Car. Kim chose the order himself: **fix the references first, then draft**, so ch.8 would not add an eleventh hardcoded number. That was the right call and it changed what the fix turned out to be.

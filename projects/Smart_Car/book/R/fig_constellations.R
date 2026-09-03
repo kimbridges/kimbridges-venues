@@ -72,7 +72,7 @@ fig_driving <- function(K, path = "figures/driving.png") {
       plot.margin = ggplot2::margin(2, 2, 2, 2))
 
   ggplot2::ggsave(path, p, width = 7.4, height = 5.4, dpi = 200, bg = .SC_INK$surface)
-  invisible(p)
+  p                       # returned VISIBLY: knitr must print it
 }
 
 fig_parking <- function(K, path = "figures/parking.png") {
@@ -125,5 +125,5 @@ fig_parking <- function(K, path = "figures/parking.png") {
       plot.margin = ggplot2::margin(2, 6, 2, 2))
 
   ggplot2::ggsave(path, p, width = 7.4, height = 2.5, dpi = 200, bg = .SC_INK$surface)
-  invisible(p)
+  p                       # returned VISIBLY: knitr must print it
 }

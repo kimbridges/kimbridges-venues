@@ -2262,3 +2262,26 @@ exactly the kind of half-signal that would mislead anyone checking the return va
 **And the diagnostic, which is cheap and I should reach for it first.** When an error complains about a TYPE on an expression that cannot have the wrong type -- `pi/180`, `PKM$index` -- **do not debug the data. Check whether the name means what you think it means:** `exists("pi")`, `class(pi)`, `environmentName(environment())`. ★ **A base object with the wrong class is a shadowing bug until proven otherwise.**
 
 **Companion to Finding 031.** That one says a bridge timeout is not a failure. This one says **an error message in a persistent session is not necessarily about the code that raised it.** Both are about the same thing: the session has state and history, and the symptom is not the site.
+
+## Finding 054 -- A DRIVE DIRECTORY CAN EXIST IN THE LISTING AND NOT EXIST (2026-09-02)
+
+**The ground-truth rule on the card covers FILES:** a `G:` path can report a correct name and size while the bytes are absent or stale. **This is the same disease one level up, and the card does not cover it.**
+
+`book/_output` returned all of this at once:
+
+| probe | answer |
+|---|---|
+| `"_output" %in% list.files(".")` | **TRUE** |
+| `file.exists("_output")` | **FALSE** |
+| `dir.exists("_output")` | **FALSE** |
+| `file.info("_output")` | **all NA** |
+| `dir.create("_output")` | **FALSE** -- the name is taken |
+| a probe write elsewhere in the folder | **succeeded** |
+
+**So the parent is writable, the name is occupied, and the directory is not there.** Quarto fails on `stat`, and it fails identically on every retry: ⛔ **this is NOT the transient `PermissionDenied` of Finding 048, which clears on a plain retry.** ★ **The distinguishing test is `dir.create()`: a transient lock lets you create it, a ghost entry does not.**
+
+**Rule. Before concluding a directory is missing OR present, probe it three ways: the listing, `dir.exists()`, and `dir.create()`.** A name in `list.files()` is not evidence the directory exists; a `dir.exists()` of FALSE is not evidence the name is free.
+
+**The workaround is the card's own bucket 4.** Copy the project to `C:\temp\<name>_<date>`, build there, and copy the output back to a differently-named folder on Drive. **A ghost entry cannot be repaired from R** -- `file.remove` and `unlink` have nothing to act on, and the bridge cannot recursively delete anyway. **It needs Explorer or a Drive restart.**
+
+⚠ **And it cost real time before it was diagnosed**, because the first two failures looked exactly like Finding 048 and I retried them as such. **The tell was that the error text changed** -- from `ensureDirSync` to `createWalkEntrySync` -- while the retry behaviour did not. ★ **When a retry-able error stops being retry-able, stop retrying and start probing.**

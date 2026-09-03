@@ -16,12 +16,14 @@ or not yet materialised. Every surface except the R bridge can be lied to.**
 
 - sandbox bash WRITES never reach Drive (001)
 - sandbox bash READS lag Drive contents (005)
-- `device_stage_files` can serve a STALE copy (013); staged copies are READ-ONLY and
-  do NOT refresh on re-stage -- `rm -rf` the staged folder first (015)
-- the browser upload in a Netlify drag-deploy SKIPS unmaterialised large files (008)
+- `device_stage_files` can serve a STALE copy (013); staged copies are READ-ONLY;
+  `rm -rf` the staged folder first (015)
+- a Netlify drag-deploy SKIPS unmaterialised large files (008)
 - `file.info()` size read straight after a write is unreliable (020)
 
 **Rule.** For ground truth on any `G:` file -- existence, content or size -- read it
+
+⚠ **DIRECTORIES do it too (054).** A name can sit in `list.files()` while `dir.exists()` is FALSE and `dir.create()` refuses it. **Probe three ways.** Build in `C:\temp` when it happens.
 through the **R bridge**. Verify a write by reading **CONTENT** back (line count,
 headings, known strings), never by reading size.
 

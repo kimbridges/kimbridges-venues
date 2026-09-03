@@ -30,5 +30,5 @@ fig_stops <- function(S, car = "TwoRed", path = "figures/stops.png") {
 
   ggplot2::ggsave(path, gg, width = 7.4, height = 5.4, dpi = 200,
                   bg = .SC_INK$surface)
-  invisible(gg)
+  gg                       # returned VISIBLY: knitr must print it
 }
