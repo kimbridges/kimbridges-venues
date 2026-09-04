@@ -80,6 +80,8 @@ There's one more thing about Whittier, and it happens before the boat.
 
 To reach the port you drive through a tunnel about two and a half miles long, bored through a mountain, and it isn't a road tunnel. It's a railway tunnel that cars are allowed into. **One lane, shared with the Alaska Railroad, and shared with traffic going the other way as well**, so everything runs on a timetable: one direction on the half hour, the other on the hour, and in between it belongs to the trains.
 
+![The Alaska Railroad going into the tunnel, August 26, 2013, at 60.789 N, 148.809 W. **TwoRed is out of frame, waiting.** The cars went in behind the train.](images/TwoRed/kwb_5d3_35490_nikb.jpg){#fig-tunnel}
+
 Nobody tells you how to drive it. That was the part that got me.
 
 It's dark. Water drips. You're in a convoy so you've got to keep your speed up, and if you haven't done it before you've no idea how long it goes on for. **And you're driving along a railway track, which raises a question I don't think anyone else in that queue was asking: my wheelbase is narrower than average, and I didn't know whether that was going to matter.**
@@ -95,5 +97,7 @@ There's a note to add here, and it changes how I think about all of it.
 That crossing is largely gone. The state's own schedule says the Marine Highway will not be scheduling cross-gulf routes, and by my count there has been a single run in recent years. **What TwoRed did in 2013 isn't something you could readily do now.**
 
 I didn't know that at the time, of course. It was simply how you got the car home from Alaska without driving the Alaska Highway twice, and it didn't occur to me that it wouldn't always be there. **The rarest thing this car ever did is the thing I took the least notice of**, and the only reason I can date it and place it exactly is that a fuel log kept the two ends of it.
+
+![TwoRed in Fairbanks, 2013, alongside a friend's Mini. **The car went north by ferry to Haines, then drove the rest of the way: up to Fairbanks, and on past the Arctic Circle. It came home on a ship from Whittier.**](images/TwoRed/2013_TwoRed_in_Fairbanks.jpg){#fig-fairbanks}
 
 Thirty-eight thousand, two hundred and eighty-four at Whittier. Thirty-eight thousand, two hundred and eighty-five at Bellingham. **The record gives that crossing one mile, and it's the only part of this whole account where the record and I disagree about everything.**

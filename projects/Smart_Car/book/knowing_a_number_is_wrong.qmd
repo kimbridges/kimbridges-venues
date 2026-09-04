@@ -86,7 +86,7 @@ The cleanest example is in Creamsicle's log, at Oxnard, California. The price-pe
 
 ## The one that had to be invented last
 
-Six of the seven take the date as given. They test a row against arithmetic, or against geography, or against its neighbours, and every one of those tests assumes it already knows *when* the row happened.
+Six of the seven take the date as given. They test a row against arithmetic, or against geography, or against its neighbors, and every one of those tests assumes it already knows *when* the row happened.
 
 **So none of them could see a wrong date.** That gap sat there for months and nothing turned it up, because nothing was looking.
 
@@ -104,7 +104,7 @@ It flagged `r A$geo_n` segments where the odometer records fewer miles than the 
 
 ```{r}
 #| label: tbl-geo
-#| tbl-cap: "Every segment where the car appears to have travelled less far than a straight line allows. One test, three completely different explanations."
+#| tbl-cap: "Every segment where the car appears to have traveled less far than a straight line allows. One test, three completely different explanations."
 #| echo: false
 knitr::kable(A$geo, align = c("l","r"), row.names = FALSE)
 ```
@@ -121,7 +121,7 @@ Every instrument here's got a floor, and one used past its floor is a machine fo
 
 Creamsicle's fourth failing row is the honest example. A fill at Port Angeles misses the identity by about **1.2 cents against a tolerance of 0.97**. It's outside, and it's outside by two tenths of a cent, on a test whose whole authority comes from the gap I made so much of earlier. **It has no erratum and I'm not going to give it one.** Three of Creamsicle's four failures are explained, and the fourth's a row sitting on the boundary, which is what boundaries are for.
 
-Geography has the same problem at its own edge. Two towns whose centres are close together produce ratios that look impossible and are really just coordinate imprecision: a shortfall smaller than the width of the city itself is an artifact of pretending a city is a point.
+Geography has the same problem at its own edge. Two towns whose centers are close together produce ratios that look impossible and are really just coordinate imprecision: a shortfall smaller than the width of the city itself is an artifact of pretending a city is a point.
 
 **So the audit's real output isn't the corrections.** It's `r A$errata_tw` entries for one car and `r A$errata_cr` for the other, each recording what was logged, what it should say, and on what evidence. And for the ones that are still guesses, that they're guesses.
 

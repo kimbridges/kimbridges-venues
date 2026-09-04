@@ -1,7 +1,7 @@
 # PROJECT: Smart_Car
-_Last updated: 2026-09-01_
-_Status: Active_
-_Focus readiness: Ready_
+_Last updated: 2026-09-03_
+_Status: Complete_
+_Focus readiness: Not applicable_
 _Tags: intake, data-recovery_
 _Log: logs/proj_Smart_Car_log.md
 
@@ -18,6 +18,11 @@ the refutation stronger -- not one exceptional car on one exceptional journey, b
 **sustained sixteen-year choice**, repeated three times after the first.
 
 ## Current Status
+
+**★★★★★ PUBLISHED 2026-09-03. *Smart Car* is LIVE at https://kimbridges-documents.netlify.app/smart_car/ as the venue's 23rd Document.** Foreword + 14 chapters + Afterword, ~33,300 words, 37 photographs, 16 pages. **0 unresolved cross-references; 276 local `src=` references, 0 missing.** Card categories Data Analysis / Data Visualization / Maps. Kim drag-deployed to the existing Netlify tile and confirmed live.
+
+**The finish, 2026-09-03:** Kim's two reading passes closed (13 caption and prose fixes, the province count relabelled *provinces and territories*, two optional photographs he supplied both placed -- Anchor Point closing one of the three blank corners in ch.4, and the Whittier tunnel train giving §7.4 its first figure). Venue conventions applied: cover `smart_car_cover_art_text.png` and navbar logo at the project root, `styles.css` setting one book-wide base type, `output-dir` back to `_output`. **Photographs web-sized by `R/resize_images.R` at 1800 px / q88: images 178.4 -> 47.1 MB, rendered document 80.1 -> 26.6 MB.** Both `<!-- KIM: -->` comments removed from `small_cars.qmd`; the Bordeaux/dealership note was already in the Afterword, and the four-year-gap question survives only in `deferred.md`.
+
 
 **★★★★ THE BOOK IS WRITTEN AND KIM HAS READ IT (2026-09-02).** Foreword + 14 chapters + Afterword, ~33,300 words, 16 pieces rendering clean. His verdict: *"Overall, it is very good. I'm pleased with the result... a bit more work will make it excellent."* **★★★★ AUTHORSHIP IS JOINT: `_quarto.yml` lists "K. W. Bridges" and "Claude (Anthropic)"**, per Kim's standing preference for all collaborations. ★★★ **New voice rule: the considered-alternatives cadence** (*"I considered A. Then B. Finally, C."*), applied to the Foreword and approved. **76 captioned photographs are now in `book/images/` and only 17 are placed.** ⚠ A ghost `_output` directory blocks the normal render; build in `C:/temp` (Finding 054). Per-chapter detail lives in `session_log.md`. The notes below describe ch.4 and earlier and are kept as written.
 

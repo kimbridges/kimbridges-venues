@@ -38,7 +38,20 @@ There have been four, and they all have names, because you end up naming a car y
 
 **TwoRed and Bordeaux are both still with us**, parked side by side in our building's garage in Honolulu. Nose to nose, the two of them would fit inside a single space marked out for one ordinary car, with room to spare.
 
-Three petrol cars and an electric one, over sixteen years. **The interesting thing about that list isn't any single car. It's that we kept choosing the same kind of car, three more times after the first one**, and that the first one is still here.
+Three gas cars and an electric one, over sixteen years. **The interesting thing about that list isn't any single car. It's that we kept choosing the same kind of car, three more times after the first one**, and that the first one is still here.
+
+::: {#fig-four-cars layout-ncol=2}
+
+![**TwoRed.** San Diego, July 2010, days old.](images/TwoRed/2010_TwoRed_brand_new.jpg)
+
+![**TwoFer.** Leaving the Honolulu dealership on March 22, 2014, the lease just signed.](images/TwoFer/2014_Hawaii_smart_first_day_1.jpg)
+
+![**Bordeaux.** Taking delivery on April 1, 2019. The electric one.](images/Bordeaux/2019_Bordeaux_purchase.jpg)
+
+![**Creamsicle.** At the dealer in Missouri on September 23, 2021, waiting to be collected.](images/Creamsicle/IMG_20210923_114250.jpg)
+
+The four cars, in the order they arrived. Two of them are still here.
+:::
 
 ## But this is not a book about errands
 
@@ -46,13 +59,13 @@ It's about long drives.
 
 Four thousand miles at a stretch. The Dalton Highway, north of the Arctic Circle. **`r KC$reach` states**, and a fiftieth it was finally shipped to. **`r KC$n_prov` Canadian provinces and territories.** A good deal of the Trans-Canada.
 
-TwoRed was bought new. **The odometer read `r first_odo` miles.** When it was handed over to a shipping company at the Matson dock in Seattle on 22 May 2017, it read **`r format(last_odo, big.mark = ",")`**.
+TwoRed was bought new. **The odometer read `r first_odo` miles.** When it was handed over to a shipping company at the Matson dock in Seattle on May 22, 2017, it read **`r format(last_odo, big.mark = ",")`**.
 
 Those two facts sit oddly together, and that's the reason for the book.
 
 ## How both things are true
 
-The answer is a family dynamic that anyone who has aging parents will recognise: **children need to visit, and they need not to stay too long.**
+The answer is a family dynamic that anyone who has aging parents will recognize: **children need to visit, and they need not to stay too long.**
 
 So the pattern set itself. First a visit, for a few days. Then a meeting somewhere, which was not optional either, because scientific meetings have dates and they are held wherever they are held. Then the drive back, and another visit.
 
@@ -92,7 +105,7 @@ Three things, in the order people meet them.
 
 **Then the drives.** Sixteen years of them, and they are the reason there is anything to count. They also carry things no measurement reaches. What a road felt like. Why a particular day was long. What it cost to drive miles that look ordinary in a table.
 
-**Finally the data.** I kept a fuel log for every fill-up and, later, a trip log for every driving day. Together they run to several hundred pages of handwriting. **The data end of this book has two ends of its own.** There's the work of getting sixteen years of pencil into a form that can be trusted, which turned out to be a story in itself. Then there are the questions that record can answer, including a fair number I did not know I had until I asked.
+**Finally the data.** I kept a fuel log for every fill-up and, later, a trip log for every driving day. Together they run to dozens of pages, with each page full of handwritten lines. **The data end of this book has two ends of its own.** There's the work of getting sixteen years of pencil into a form that can be trusted, which turned out to be a story in itself. Then there are the questions that record can answer, including a fair number I did not know I had until I asked.
 
 **And it's worth saying why that's hard**, because it isn't obvious once the numbers are in a tidy table. This is the kind of data that gets added now and then, often under difficult conditions. Cold, shivering hands at a pump. A day when you're in a rush. It's easy to write down a wrong number.
 

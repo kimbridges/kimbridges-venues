@@ -5,6 +5,8 @@ project:
 book:
   title: "Smart Car"
   subtitle: "Sixteen years, four small cars, and 100,000 miles of evidence"
+  cover-image: smart_car_cover_art_text.png
+  cover-image-alt: "TwoRed in the parking space at Lake San Marcos, California, 08:43 on April 30, 2014, seven minutes before the trip that completed the states and provinces began."
   author:
     - "K. W. Bridges"
     - "Claude (Anthropic)"
@@ -32,10 +34,13 @@ book:
         - two_constellations.qmd
         - what_the_record_cannot_say.qmd
     - afterword.qmd
+  navbar:
+    logo: smart_car_logo_art.png
 
 format:
   html:
     embed-resources: false
+    css: styles.css
 
 editor: visual
 

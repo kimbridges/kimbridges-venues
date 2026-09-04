@@ -1,19 +1,19 @@
 # PKM Health Report
-_Generated 2026-09-02 22:26 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-09-03 22:53 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
-- **Works registered:** 83
+- **Works registered:** 84
 - **Works failing reconciliation:** 0 (source -> _site -> live)
 - **Rendered pages with no source:** 0
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 4
 - **Files over size budget:** 6
-- **Active Focus block:** 3.5 KB (budget 6)
+- **Active Focus block:** 2.3 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 6
 - **Legacy pages awaiting account deletion:** 58
-- **Build scratch in C:/temp:** 10 folder(s), 177 MB
+- **Build scratch in C:/temp:** 12 folder(s), 344 MB
 
 ## Reconciliation failures
 
@@ -36,18 +36,18 @@ None.
 
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
-| session_log.md | REFERENCE | 344.8 | 250 | 94.8 | FALSE |
-| proj_Smart_Car.md | PROJECT |  64.7 |  45 | 19.7 | TRUE |
-| proj_seasonality.md | PROJECT |  51.6 |  45 |  6.6 | TRUE |
-| deferred.md | REFERENCE | 202.5 | 200 |  2.5 | FALSE |
-| proj_audio.md | PROJECT |  47.3 |  45 |  2.3 | TRUE |
-| pkm_card.md | HOT |   6.2 |   6 |  0.2 | FALSE |
+| session_log.md | REFERENCE | 350.9 | 250 | 100.9 | FALSE |
+| proj_Smart_Car.md | PROJECT |  65.9 |  45 |  20.9 | TRUE |
+| deferred.md | REFERENCE | 210.6 | 200 |  10.6 | FALSE |
+| proj_seasonality.md | PROJECT |  51.6 |  45 |   6.6 | TRUE |
+| proj_audio.md | PROJECT |  47.3 |  45 |   2.3 | TRUE |
+| pkm_card.md | HOT |   6.2 |   6 |   0.2 | FALSE |
 
 ## Active Focus size
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 3.5 | 6 | -2.5 |
+| 8 | 2.3 | 6 | -3.7 |
 
 ## Venues without a source repo
 
@@ -74,16 +74,18 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| Smart_Car_book_2026-09-02 |  0.0 | 174 | FALSE |
-| smartcar_docs_20260821 | 12.2 |   3 | FALSE |
-| ch4_20260829 |  4.1 |   0 | FALSE |
-| chateau_2026-08-29 |  4.2 |   0 | FALSE |
-| creamsicle_clean_20260828 |  5.0 |   0 | FALSE |
-| pkm_edits_20260811 | 22.5 |   0 | TRUE |
-| pkm_snapshots | 31.1 |   0 | TRUE |
-| smartcar_fuelfix_20260817 |  4.1 |   0 | FALSE |
-| timelapse | 20.0 |   0 | TRUE |
-| venuemirror_clone_2026-08-03 | 31.3 |   0 | TRUE |
+| Smart_Car_book_2026-09-02 |  1.0 | 174 | FALSE |
+| Smart_Car_book_2026-09-03 |  0.0 | 151 | FALSE |
+| sc_imgtest |  0.0 |  16 | FALSE |
+| smartcar_docs_20260821 | 13.2 |   3 | FALSE |
+| ch4_20260829 |  5.1 |   0 | FALSE |
+| chateau_2026-08-29 |  5.3 |   0 | FALSE |
+| creamsicle_clean_20260828 |  6.1 |   0 | FALSE |
+| pkm_edits_20260811 | 23.6 |   0 | TRUE |
+| pkm_snapshots | 32.1 |   0 | TRUE |
+| smartcar_fuelfix_20260817 |  5.1 |   0 | FALSE |
+| timelapse | 21.0 |   0 | TRUE |
+| venuemirror_clone_2026-08-03 | 32.3 |   0 | TRUE |
 
 ## Legacy pages by platform
 
@@ -99,4 +101,4 @@ None.
 None.
 
 ---
-_Ran in 70.6 s._
+_Ran in 86.5 s._

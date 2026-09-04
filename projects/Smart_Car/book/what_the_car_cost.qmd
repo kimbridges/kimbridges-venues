@@ -43,12 +43,12 @@ z <- data.frame(
 knitr::kable(z, align = c("l","l","r","r","r"))
 ```
 
-**Creamsicle cost `r round(100*(K$ratio_cost-1))` per cent more per mile to run.** And here's the whole of that difference, taken apart:
+**Creamsicle cost `r round(100*(K$ratio_cost-1))` percent more per mile to run.** And here's the whole of that difference, taken apart:
 
-- the fuel it bought was **`r round(100*(K$ratio_paid-1))` per cent** dearer
-- its economy was **`r sprintf("%.0f", 100*(K$ratio_mpg-1))` per cent** better, which gives a little back
+- the fuel it bought was **`r round(100*(K$ratio_paid-1))` percent** more expensive
+- its economy was **`r sprintf("%.0f", 100*(K$ratio_mpg-1))` percent** better, which gives a little back
 
-**That's it. Twenty-six per cent, and twenty-eight of it is the price of petrol.**
+**That's it. Twenty-six percent, and twenty-eight of it is the price of gas.**
 
 The two cars are `r sprintf("%.2f", TW$mpg)` and `r sprintf("%.2f", CR$mpg)` miles per gallon. **Four tenths of a mile per gallon apart, across sixteen years, two owners' worth of driving habits, two coasts and two completely different sets of roads.** One of them crossed the continent four times and went to the Arctic. The other did the Midwest and the West.
 
@@ -67,13 +67,13 @@ There were three obvious candidates for what moves the economy about, and the re
 fig_cost(K)
 ```
 
-**How far you drove on the tank.** This is the big one and it isn't close. **`r sprintf("+%.2f", K$len_per100)` miles per gallon for every extra hundred miles**, and it survives everything I can throw at it. A cold engine, a town, a set of traffic lights and a car park all get charged to the same tank, and the more highway you put behind them the less they're worth. **It's the single strongest thing in this dataset and it's about the trip, not the car.**
+**How far you drove on the tank.** This is the big one and it isn't close. **`r sprintf("+%.2f", K$len_per100)` miles per gallon for every extra hundred miles**, and it survives everything I can throw at it. A cold engine, a town, a set of traffic lights and a parking lot all get charged to the same tank, and the more highway you put behind them the less they're worth. **It's the single strongest thing in this dataset and it's about the trip, not the car.**
 
 **The age of the car.** Everybody expects an old small engine to get thirstier. **It doesn't.** The slope over `r format(round(K$tw_miles), big.mark = ",")` miles is `r sprintf("%+.2f", K$age_per10k)` miles per gallon per ten thousand. That's *positive*, and at p = `r sprintf("%.2f", K$age_p)` not distinguishable from flat. Allow for the fact that the later years had more long-distance driving in them and it firms up slightly, to `r sprintf("%+.2f", K$age_adj_per10k)` per ten thousand at p = `r sprintf("%.2f", K$age_adj_p)`.
 
 I'm not going to claim the car improved. **What I'll claim is the useful half: across a whole life, sixteen years and seventy thousand miles, there is no decline here to find.** Whatever this car was doing in 2010, it was still doing in 2017.
 
-**The wheels.** In @sec-safe I put wider tyres on it, for control in a crosswind rather than for fuel, and the received wisdom says wider tyres cost you economy. Comparing `r K$w_n_narrow` narrow-tyre fills against `r K$w_n_wide` wide ones, with tank length controlled: **`r sprintf("%+.1f%%", K$w_pct[1])`, with an interval from `r sprintf("%+.1f%%", K$w_pct[2])` to `r sprintf("%+.1f%%", K$w_pct[3])`.**
+**The wheels.** In @sec-safe I put wider tires on it, for control in a crosswind rather than for fuel, and the received wisdom says wider tires cost you economy. Comparing `r K$w_n_narrow` narrow-tire fills against `r K$w_n_wide` wide ones, with tank length controlled: **`r sprintf("%+.1f%%", K$w_pct[1])`, with an interval from `r sprintf("%+.1f%%", K$w_pct[2])` to `r sprintf("%+.1f%%", K$w_pct[3])`.**
 
 That interval contains zero, and it contains most of what anybody would argue about. **The honest reading is that this record cannot tell you whether the wheels cost anything**, and after `r K$w_n_wide` tanks on the wide ones, that's an answer of a sort. Whatever the modification did, it wasn't big enough to find.
 
@@ -81,7 +81,7 @@ That interval contains zero, and it contains most of what anybody would argue ab
 
 Two more, and these are the ones where my own beliefs are on the table.
 
-**Following the trucks.** I've said in @sec-safe that I fell in behind lorries and went slower, and that at the lower speed I felt I was saving fuel. Testing it needs an instrument, because a tank and a driving day don't line up. Taking only the forty-four tanks that sit entirely inside a single leg, and attaching that day's speed to them, the correlation runs the way I said: slower days, better economy, at a rank correlation of −0.36. Then put the length of the tank into the same model and the speed term collapses.
+**Following the trucks.** I've said in @sec-safe that I fell in behind trucks and went slower, and that at the lower speed I felt I was saving fuel. Testing it needs an instrument, because a tank and a driving day don't line up. Taking only the forty-four tanks that sit entirely inside a single leg, and attaching that day's speed to them, the correlation runs the way I said: slower days, better economy, at a rank correlation of −0.36. Then put the length of the tank into the same model and the speed term collapses.
 
 **So the feeling isn't contradicted and it isn't confirmed.** What it's tangled with is the thing that dominates everything else in this chapter, because a slow day behind trucks is usually also a long day on a highway. I said *felt* at the time and I'll leave it there.
 
@@ -97,6 +97,8 @@ There's no column in the log for grade, so I can't show it from the data. You've
 
 `r format(round(K$tw_miles), big.mark = ",")` miles of TwoRed's mainland life took **$`r format(round(K$tw_fuel), big.mark = ",")`** of fuel. Creamsicle's `r format(round(K$cr_miles), big.mark = ",")` took **$`r format(round(K$cr_fuel), big.mark = ",")`**.
 
+![Fifty thousand miles, southwest Washington, September 11, 2023. **Two years after we bought Creamsicle with thirty thousand on the clock.**](images/Creamsicle/PXL_20230911_175630081.MP.jpg){#fig-50k}
+
 That isn't a small amount of money, and it's a remarkably small amount of money, depending entirely on what you set it against, which is why I haven't. **What the record supports is narrower and more useful than a verdict: at nine and a half cents a mile in one decade and twelve in the next, the fuel was never the reason to think twice about the trip.**
 
-And the thing that moved the number most wasn't the car, or the tyres, or how I drove. **It was how far I was going.** Which is the same finding as @sec-long-days reached from the other end, and it means the cheapest way to run this car was the way we happened to use it: badly suited to errands, and very well suited to crossing a continent.
+And the thing that moved the number most wasn't the car, or the tires, or how I drove. **It was how far I was going.** Which is the same finding as @sec-long-days reached from the other end, and it means the cheapest way to run this car was the way we happened to use it: badly suited to errands, and very well suited to crossing a continent.

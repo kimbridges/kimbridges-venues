@@ -27,7 +27,7 @@ Here is one of the sheets.
 
 **Two tables, one page.** That's the design decision underneath half of what this book has found. The fuel halves got typed up years ago, into the spreadsheet everything here is built on. **Most of the travel halves never did**, which is why the trip log ran to seven rows for six years, until somebody went back to the scans and read the bottom of every page.
 
-**And there are two hands in this record, not one.** Nancy travelled on many of these trips, and when she was aboard she often kept the log. Our writing couldn't be less alike. I'm right-handed; she writes with her left, and she's spent a career as a physician, which does to handwriting what a career as a physician is famous for doing. **For a chapter about reading numbers off paper years later, that matters**, and it's why I'm wary of any explanation of an error that starts with the words *my handwriting*.
+**And there are two hands in this record, not one.** Nancy traveled on many of these trips, and when she was aboard she often kept the log. Our writing couldn't be less alike. I'm right-handed; she writes with her left, and she's spent a career as a physician, which does to handwriting what a career as a physician is famous for doing. **For a chapter about reading numbers off paper years later, that matters**, and it's why I'm wary of any explanation of an error that starts with the words *my handwriting*.
 
 ## What it's actually like to keep
 
@@ -120,11 +120,11 @@ When the audit first ran this it got `r P$pairs["0 and 8","hits"] - 5` repairs i
 
 So the finding stands. **What did not survive was a sentence about it.**
 
-Somewhere between the audit and the writing of this chapter, that result was summarised in a working note as *four fixes out of forty-four failing rows*. Those numbers are not wrong so much as unrecoverable: they describe a different framing over a different set of rows, at a moment in the work nobody wrote down precisely enough to return to. **I spent an hour trying to reproduce them and could not.**
+Somewhere between the audit and the writing of this chapter, that result was summarized in a working note as *four fixes out of forty-four failing rows*. Those numbers are not wrong so much as unrecoverable: they describe a different framing over a different set of rows, at a moment in the work nobody wrote down precisely enough to return to. **I spent an hour trying to reproduce them and could not.**
 
 **The test reproduced. The paraphrase of the test did not.** And the paraphrase was the version that had made it into the plan for this chapter, which is to say it was the version that was about to be printed.
 
-That is worth more than the finding it nearly replaced. **A number that has been summarised once is not that number any more.** It is a claim about a number, and it degrades quietly, and the only defence is to keep the thing that produced it and run it again. Every figure in this chapter is computed while these pages are built, off a workbook nobody is permitted to edit. **If any of it stops being true, the sentence changes rather than the sentence surviving.**
+That is worth more than the finding it nearly replaced. **A number that has been summarized once is not that number any more.** It is a claim about a number, and it degrades quietly, and the only defense is to keep the thing that produced it and run it again. Every figure in this chapter is computed while these pages are built, off a workbook nobody is permitted to edit. **If any of it stops being true, the sentence changes rather than the sentence surviving.**
 
 ## Where the corrections live
 

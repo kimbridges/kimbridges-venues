@@ -2285,3 +2285,24 @@ exactly the kind of half-signal that would mislead anyone checking the return va
 **The workaround is the card's own bucket 4.** Copy the project to `C:\temp\<name>_<date>`, build there, and copy the output back to a differently-named folder on Drive. **A ghost entry cannot be repaired from R** -- `file.remove` and `unlink` have nothing to act on, and the bridge cannot recursively delete anyway. **It needs Explorer or a Drive restart.**
 
 ⚠ **And it cost real time before it was diagnosed**, because the first two failures looked exactly like Finding 048 and I retried them as such. **The tell was that the error text changed** -- from `ensureDirSync` to `createWalkEntrySync` -- while the retry behaviour did not. ★ **When a retry-able error stops being retry-able, stop retrying and start probing.**
+
+### AMENDMENT 2026-09-03 -- THE PROBE SET WAS WRONG, AND A REBOOT DOES NOT CLEAR IT
+
+⛔ **The note written 2026-09-03 saying this "resolved itself overnight" was FALSE, and it was load-bearing for a day.** Kim rebooted between sessions. Afterwards `book/_output` reported the OPPOSITE of the table above and was still a ghost:
+
+| probe | answer | honest? |
+|---|---|---|
+| `"_output" %in% list.files(".")` | TRUE | no |
+| `file.exists("_output")` | TRUE | **no** |
+| `dir.exists("_output")` | TRUE | **no** |
+| `file.create("_output/probe.txt")` | TRUE | **no** |
+| `file.access("_output", 4)` / `(…, 2)` | **-1** | **yes** |
+| `file.info()` on a file the listing shows INSIDE it | **all NA** | **yes** |
+
+★ **So the three-way probe this finding originally prescribed is not enough.** `dir.create()` fails on a ghost only while the name is still contested; after a reboot every existence-and-creation probe flips to TRUE while the directory stays unreadable. ⛔ **The probes that do not lie are `file.access()` and `file.info()` on the CONTENTS.**
+
+⛔ **A reboot does not clear it.** Three renders in a row died on `PermissionDenied: stat '_output'`.
+
+⛔ **And it poisons the whole PROJECT directory, not just the output path.** Two workarounds were tried and both failed, because Quarto's own project scan walks the folder: (1) pointing `output-dir` at a different, real directory -- the error simply moved from `ensureDirSync` to `createWalkEntrySync` inside `expandGlobSync`; (2) a `.quartoignore` listing `_output/` -- ignored entirely. **The only route is still bucket 4:** copy the project to `C:\temp\<name>_<date>`, build there, copy the output back.
+
+★★ **The cheap version of the whole finding: to test a directory, READ it. Do not ask whether it exists.**

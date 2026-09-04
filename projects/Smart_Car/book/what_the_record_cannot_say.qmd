@@ -19,7 +19,7 @@ stopifnot(X$free_text_in_answers == 0, X$prose$distinct[2] > 40,
 
 ## The numbers you came for
 
-This book has spent thirteen chapters producing figures. **`r sprintf("%.2f", X$tw_mpg)` miles per gallon. Three hundred miles in a day. `r K$reach` states and `r K$n_prov` provinces.** Every one of them's derived, checkable, and sitting in a sentence built to hold it.
+This book has spent thirteen chapters producing figures. **`r sprintf("%.2f", X$tw_mpg)` miles per gallon. Three hundred miles in a day. `r K$reach` states and `r K$n_prov` provinces and territories.** Every one of them's derived, checkable, and sitting in a sentence built to hold it.
 
 Those were the easy part.
 
@@ -27,7 +27,7 @@ Those were the easy part.
 
 ## Where do you put the Florida confirmation?
 
-Here's the question that organises everything else.
+Here's the question that organizes everything else.
 
 The state count has an obvious home. It goes in a headline, in a summary line, in the second paragraph of a talk. **Everybody knows where a total lives.**
 
@@ -100,7 +100,7 @@ That's a different kind of claim, and what makes it different's that **it's usel
 
 **The third is a photograph, and I'd forgotten I had it.**
 
-![The corner. North Pineville Road at Rease Seales Road, a dead end sign, and somebody's farm shed.](images/TwoRed/twored_florida_signs.jpg){#fig-fl-signs}
+![The corner. North Pineville Road at Rease Seales Road, and a dead end sign.](images/TwoRed/twored_florida_signs.jpg){#fig-fl-signs}
 
 ![The same corner, with the car in it. Note the dead end sign in both frames: that is what welds the two photographs into one piece of evidence rather than two separate ones.](images/TwoRed/twored_florida_corner.jpg){#fig-fl-corner}
 

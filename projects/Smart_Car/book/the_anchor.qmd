@@ -58,7 +58,7 @@ reloc <- max(tb2$odo_to) - tb2$odo_from[tb2$from == as.Date("2016-09-24")]
 
 ## A stall that came free
 
-My mother spent most of her last years in an assisted living facility, in an apartment of her own — two bedrooms, a good living room, a kitchen. It came with a parking stall.
+My mother spent most of her last years in an assisted living facility, in an apartment of her own. Two bedrooms, a good living room, a kitchen. It came with a parking stall.
 
 She kept a car in that stall for a while after she'd given up driving. When the car went to my brother, where it belonged, **the stall stayed empty.**
 
@@ -66,11 +66,15 @@ That matters more than it sounds. Hundreds of stalls ring that facility and hard
 
 Part of what we saw was practical. A car kept there would cost less than renting one every time we came, and it would be waiting when we arrived instead of being collected from a counter at the airport.
 
-But that isn't the main reason, and I'd rather be straight about it. **The car in that stall was a standing message to my mother.** It meant we'd be back, and probably sooner rather than later. An unusual car reinforced that, because she'd recognise it every time she walked past. Not a car. *Our* car.
+But that isn't the main reason, and I'd rather be straight about it. **The car in that stall was a standing message to my mother.** It meant we'd be back, and probably sooner rather than later. An unusual car reinforced that, because she'd recognize it every time she walked past. Not a car. *Our* car.
+
+![TwoRed with Nancy, my mother and me, before one of the drives. **The car in her stall was the message. The drives were what it made possible.**](images/TwoRed/2014_TwoRed_at_start_of_Canada_Trip.jpg){#fig-the-message}
 
 TwoRed did that job for six years, and it became a tangible link between us.
 
-**And the driving we did out of that stall was the visits, not the errands.** We supplied things — some of it necessary, most of it treats — by buzzing around the neighbouring streets. **Mom never let us be gone long. Those were her times with us.**
+![Under its cover in my mother's stall at Lake San Marcos, July 2010, five days after it was bought. **This is what the car spent most of sixteen years doing.**](images/TwoRed/2010_TwoRed_covered.jpg){#fig-covered}
+
+**And the driving we did out of that stall was the visits, not the errands.** We supplied things by buzzing around the neighboring streets. Some of it necessary. Most of it treats. **Mom never let us be gone long. Those were her times with us.**
 
 Hold on to that, because a number later in this chapter depends on it.
 
@@ -78,19 +82,19 @@ Hold on to that, because a number later in this chapter depends on it.
 
 Sixteen years of records, and the most basic question turns out to be the hardest one. **What is a trip?**
 
-The obvious answer is that a trip is a journey — you go somewhere, you come back. But that isn't what the record contains. The fuel log contains purchases. The trip log contains the days I decided were worth writing down. Neither of them contains a journey, and the gap between those things is wider than it sounds.
+The obvious answer is that a trip is a journey. You go somewhere, you come back. But that isn't what the record contains. The fuel log contains purchases. The trip log contains the days I decided were worth writing down. Neither of them contains a journey, and the gap between those things is wider than it sounds.
 
 Here is the rule I was actually using at the time, written down now for the first time. **A trip was a drive that took several days and covered a lot of miles, and when both of those were true, I started keeping the log.**
 
-That is an operational definition — a term defined by the way it is measured — and it has a peculiar property worth being honest about. **Everything in the trip log is a trip, by construction.** Whether everything that was a trip got into the log is a different question, and the answer is no.
+That is an operational definition: a term defined by the way it is measured. And it has a peculiar property worth being honest about. **Everything in the trip log is a trip, by construction.** Whether everything that was a trip got into the log is a different question, and the answer is no.
 
 ## The shape of sixteen years, on one picture
 
-Every span of time in both cars' lives is on this chart. A span is either a trip, or the interval between one trip ending and the next beginning — and there is nothing else, because those two categories exhaust the calendar.
+Every span of time in both cars' lives is on this chart. A span is either a trip, or the interval between one trip ending and the next beginning. There is nothing else, because those two categories exhaust the calendar.
 
 ```{r}
 #| label: fig-regimes
-#| fig-cap: "Every trip and every between-trip interval, both cars. Across: how many days it lasted. Up: how many miles were covered. The grey diagonals are lines of constant pace. TwoRed's trips are named in her own log; Creamsicle's are derived from gaps between logged legs, so the triangles and the circles are not measured quite the same way."
+#| fig-cap: "Every trip and every between-trip interval, both cars. Across: how many days it lasted. Up: how many miles were covered. The gray diagonals are lines of constant pace. TwoRed's trips are named in her own log; Creamsicle's are derived from gaps between logged legs, so the triangles and the circles are not measured quite the same way."
 #| fig-width: 7.5
 #| fig-height: 4.6
 fig_regimes(spans)
@@ -98,45 +102,45 @@ fig_regimes(spans)
 
 Each mark is one span. Across the bottom is how long it lasted, up the side is how far the car went, and both scales climb by multiplication rather than addition, because otherwise every short span would pile into the corner.
 
-**The grey diagonals are the part that matters.** A diagonal is a line of constant pace — every point on it covers the same miles per day. Where a mark sits between the diagonals tells you what kind of driving it was, and that turns out to say more than either axis alone.
+**The gray diagonals are the part that matters.** A diagonal is a line of constant pace. Every point on it covers the same miles per day. Where a mark sits between the diagonals tells you what kind of driving it was, and that turns out to say more than either axis alone.
 
 Now look at four things, in the order they surprised me.
 
-**The two clouds do not touch.** Not one of the trips runs slower than twenty miles a day. Only `r stray` of the intervals run faster. A trip and a not-trip are not two ends of one scale with a line drawn somewhere convenient in the middle — they are two separate populations, and the empty band between them was not put there by me.
+**The two clouds do not touch.** Not one of the trips runs slower than twenty miles a day. Only `r stray` of the intervals run faster. A trip and a not-trip are not two ends of one scale with a line drawn somewhere convenient in the middle. They are two separate populations, and the empty band between them was not put there by me.
 
-**Those `r stray` strays are the log confessing.** They are intervals — supposedly the quiet time between trips — sitting up among the trips, and every one of them contains a crossing that nobody wrote down. The largest is a run to Texas and back. **The record is telling you where it failed to keep itself**, and it takes a chart to hear it.
+**Those `r stray` strays are the log confessing.** They are intervals sitting up among the trips, and an interval is supposed to be the quiet time between them. Every one contains a crossing that nobody wrote down. The largest is a run to Texas and back. **The record is telling you where it failed to keep itself**, and it takes a chart to hear it.
 
-**Wisconsin sits alone in the gap.** One interval, in neither cloud, at about eighteen miles a day. That is the winter Creamsicle spent doing what TwoRed had done for years at Lake San Marcos, only more of it, and further — doctor visits, and the shopping, and getting there and back.
+**Wisconsin sits alone in the gap.** One interval, in neither cloud, at about eighteen miles a day. That is the winter Creamsicle spent doing what TwoRed had done for years at Lake San Marcos, only more of it, and further. Doctor visits. The shopping. Getting there and back.
 
 **And now the part that is not there.** Look along the bottom of the picture, below the line marked one mile a day. **Nothing.** In two cars and twenty years of calendar, almost no period ran below a mile a day, and not one of them was the car sitting still. The slowest span on this chart still ran at `r low` miles a day.
 
 That empty region is where *parked* would live, if the word meant what people take it to mean. **It is all but empty, because that is not what the cars were doing.** They were on station: waiting, and being used a little while they waited, which is a different thing altogether.
 
-**And at Lake San Marcos we know what the small motion was.** It was the runs round the neighbouring streets for the things she needed, and the things she'd never have asked for unless we offered. A couple of miles a day is what visiting your mother looks like, measured with an odometer.
+**And at Lake San Marcos we know what the small motion was.** It was the runs round the neighboring streets for the things she needed, and the things she'd never have asked for unless we offered. A couple of miles a day is what visiting your mother looks like, measured with an odometer.
 
 ## How much of a life is standing still
 
 That chart is about pace. This one is about time, and it asks a blunter question: where did the sixteen years actually go?
 
-Every fill-up carries a date, so the gap between one fill and the next is a stretch when the car wasn't drinking. There are hundreds of them. But counting them tells you almost nothing, because more than half are a single day — a fill yesterday, a fill today, which is just what driving looks like. So don't count the stretches. Weigh them. Ask how much of the car's life each length of stretch is responsible for.
+Every fill-up carries a date, so the gap between one fill and the next is a stretch when the car wasn't drinking. There are hundreds of them. But counting them tells you almost nothing, because more than half are a single day. A fill yesterday, a fill today, which is just what driving looks like. So don't count the stretches. Weigh them. Ask how much of the car's life each length of stretch is responsible for.
 
 ```{r}
 #| label: fig-dwell
-#| fig-cap: "Where the days went. Across: how long the car stood between one fill and the next. Up: the share of all the days each log covers that sit inside a stretch of that length. An interval is bounded by fills, so this measures time between drinks, not time asleep — a car that ran 300 miles on the last day of a long stretch still reads as one long stretch. The two records are different lengths, which is why both panels show shares rather than counts."
+#| fig-cap: "Where the days went. Across: how long the car stood between one fill and the next. Up: the share of all the days each log covers that sit inside a stretch of that length. An interval is bounded by fills, so this measures time between drinks, not time asleep. A car that ran 300 miles on the last day of a long stretch still reads as one long stretch. The two records are different lengths, which is why both panels show shares rather than counts."
 #| fig-width: 7.5
 #| fig-height: 4.8
 fig_dwell(dwell)
 ```
 
-**The weight is all on the right.** `r tw_month`% of the days TwoRed's log covers sit inside a single unbroken stretch of a month or more. For Creamsicle it's `r cs_month`%. The driving days — those one-day gaps that make up most of the *count* — come to `r tw_oneday`% and `r cs_oneday`% of the *calendar*. A car with a reputation for short hops, and the short hops are a rounding error in its own life.
+**The weight is all on the right.** `r tw_month`% of the days TwoRed's log covers sit inside a single unbroken stretch of a month or more. For Creamsicle it's `r cs_month`%. The driving days, those one-day gaps that make up most of the *count*, come to `r tw_oneday`% and `r cs_oneday`% of the *calendar*. A car with a reputation for short hops, and the short hops are a rounding error in its own life.
 
-**And the middle is nearly empty.** Between a couple of days and a month there's `r tw_middle`% of TwoRed's life and `r cs_middle`% of Creamsicle's. The car was either being driven or it was somewhere waiting to be. There isn't much of a third state, and nothing chose that shape on the car's behalf — it falls out of what the two of them were for.
+**And the middle is nearly empty.** Between a couple of days and a month there's `r tw_middle`% of TwoRed's life and `r cs_middle`% of Creamsicle's. The car was either being driven or it was somewhere waiting to be. There isn't much of a third state, and nothing chose that shape on the car's behalf. It falls out of what the two of them were for.
 
 That is the same claim the last chart made about pace, reached from the opposite direction. One says a trip and a not-trip are two populations with a gap between them. This one says the not-trips are where the life went.
 
 **Both cars have the same shape**, and that is worth a moment. They're different cars, a decade apart, doing different jobs on different coasts, and one of them was bought for a reason the other never had. It didn't matter. The pattern isn't TwoRed's peculiarity. It's what happens when you keep a car somewhere so that it's there when you fly in.
 
-The longest single stand in either record ran `r stand$days` days and covered `r stand$miles` miles. Which is not nothing — and the fact that it isn't nothing is the whole of the last section.
+The longest single stand in either record ran `r stand$days` days and covered `r stand$miles` miles. Which is not nothing. And the fact that it isn't nothing is the whole of the last section.
 
 ## What happens when the space goes
 
@@ -152,6 +156,8 @@ Then her health fell away steeply, and one more trip had to be made. We took the
 
 From the day the car left that first parking stall to the day it reached the dock, it covered `r format(reloc, big.mark = ',')` miles. **Almost none of it was travel.** It was a car being moved between places because it no longer had a place.
 
+![The Matson terminal in Seattle, May 22, 2017. **The last thing the mainland record has to say about this car.** The bucket-list sticker is still in the rear window.](images/TwoRed/2017_TwoRed_Matson_dropoff.jpg){#fig-matson}
+
 ## The one time it was actually parked
 
 There is exactly one stretch in sixteen years when the word means what everyone assumes it means.
@@ -164,11 +170,11 @@ So: somewhere near an airport, at a price that made sense. I looked around and f
 
 Would I do it again? Maybe not. But at the time I had no obvious alternative, and it worked.
 
-**Now here is what the record makes of it.** There's no trip log for 2010 — I didn't start keeping one until the following spring — so the stop survives only as a hole between two fuel fills: `r stl_days` days, and the odometer moved `r stl_miles` miles across them. About `r stl_rate` a day, against a median of `r stl_med` for the quiet stretches between trips. **An ordinary interval's pace, for three and a half weeks when the car was locked in a stranger's garage.**
+**Now here is what the record makes of it.** There's no trip log for 2010. I didn't start keeping one until the following spring. So the stop survives only as a hole between two fuel fills: `r stl_days` days, and the odometer moved `r stl_miles` miles across them. About `r stl_rate` a day, against a median of `r stl_med` for the quiet stretches between trips. **An ordinary interval's pace, for three and a half weeks when the car was locked in a stranger's garage.**
 
 The explanation is prosaic. I wasn't in St Louis to park a car. I was there to work with people at the Missouri Botanical Garden, which is nowhere near the airport, and for several days I drove between the garden and the hotel and out to meals. **The car went into that garage at the end of the visit, not the beginning.**
 
-Which is exactly the point. **The one genuinely stationary period in the whole record is invisible.** The days the car sat locked in a stranger's garage are averaged in with the days I spent driving across St Louis, and what comes out looks like every other quiet interval. And because the whole thing sits inside a trip, it never becomes a gap *between* trips — so it isn't on the chart at all.
+Which is exactly the point. **The one genuinely stationary period in the whole record is invisible.** The days the car sat locked in a stranger's garage are averaged in with the days I spent driving across St Louis, and what comes out looks like every other quiet interval. And because the whole thing sits inside a trip, it never becomes a gap *between* trips. So it isn't on the chart at all.
 
 **The exception is hidden three times.** Once by the odometer, which cannot tell stillness from motion after the fact. Once by the definition, which files the whole business under travel. And once by the fills themselves: the last one before is at `r stl_from` and the first one after is at `r stl_to`, two towns the better part of a hundred miles either side of the city. **The record never names the place where the car actually sat.**
 
@@ -188,21 +194,23 @@ waited <- as.numeric(as.Date("2021-10-15") - as.Date("2021-09-28"))
 
 Creamsicle was bought used, and cost mattered, because we could see exactly what the car was for and how long it would be needed.
 
-We had offered to help Nancy's brother. If the offer was taken up, we'd need a car on the mainland for something like four months. **We don't have trouble making decisions.** Once the potential need was clear we searched the internet, and within a day we'd bought a car — one of only a few that met all of what we wanted at once: the right Smart model, the right look, the right condition, and in a place we could get to.
+We had offered to help Nancy's brother. If the offer was taken up, we'd need a car on the mainland for something like four months. **We don't have trouble making decisions.** Once the potential need was clear we searched the internet, and within a day we'd bought a car. It was one of only a few that met all of what we wanted at once: the right Smart model, the right look, the right condition, and in a place we could get to.
 
 Then came the part that always comes next. **Where do you keep it?**
 
 Nancy's cousin, in Torrance, sort of had a space for a small car. The problem was that the space was full of stuff, and had been for years, and she'd been meaning to deal with it. She made us an offer: help clear it out and the space is yours.
 
-We did. **That is the arrangement working at its best.** The rule had always been to find somewhere that cost the person providing it as little as possible — but this went further than that. She got a job done that she'd been putting off, and we got a space in her garage exactly big enough for a Smart car.
+We did. **That is the arrangement working at its best.** The rule had always been to find somewhere that cost the person providing it as little as possible. This went further than that. She got a job done that she'd been putting off, and we got a space in her garage exactly big enough for a Smart car.
+
+![Creamsicle in the Torrance garage, October 2024. **This is the space we cleared out to earn**, and the arrangement outlasted the car.](images/Creamsicle/PXL_20241005_203118137.RAW-01.COVER.jpg){#fig-torrance}
 
 **And then it turned into something none of us had planned.**
 
-Over the years we kept the car there, going to fetch it meant going to see her. And not only her — a lot of more distant relatives live in that region, and friends too. **The parking space opened a social conduit**, and it stayed open. It has outlasted the car itself, which left for Wisconsin and never came back.
+Over the years we kept the car there, going to fetch it meant going to see her. And not only her. A lot of more distant relatives live in that region, and friends too. **The parking space opened a social conduit**, and it stayed open. It has outlasted the car itself, which left for Wisconsin and never came back.
 
 Each time we flew in to collect Creamsicle we spent time with family. We'd do the trip, come back, and spend more. **The Lake San Marcos pattern, repeating.** For the same reason, and with the same result: a practical necessity, a place to put a car, turned into a way of keeping people close.
 
-**One detail in the record shows how completely the parking came first.** We bought the car in Missouri and drove it `r format(to_port, big.mark = ',')` miles to Torrance — *west*, away from Wisconsin, away from the thing it had been bought for. Then we flew home and left it in the garage for `r waited` days. Only after that did we fly back, collect it, and drive `r format(to_job, big.mark = ',')` miles east to do the job.
+**One detail in the record shows how completely the parking came first.** We bought the car in Missouri and drove it `r format(to_port, big.mark = ',')` miles to Torrance. *West*, away from Wisconsin, away from the thing it had been bought for. Then we flew home and left it in the garage for `r waited` days. Only after that did we fly back, collect it, and drive `r format(to_job, big.mark = ',')` miles east to do the job.
 
 **And at the time we bought it, nobody knew for certain the job would happen at all.** We had a car, on the mainland, in a garage, standing by for a need that had not yet arrived. That is not a strange way to own a car. It is the only way we ever owned one.
 
@@ -213,51 +221,13 @@ It is the obvious question, and there is an obvious way to answer it: purchase a
 
 **I think that's a futile exercise**, and not because the arithmetic would come out badly. Because the arithmetic isn't the reason.
 
-There is something about driving your own car that resonates. Part of it is trivially practical — you can leave things in it. My big tripod lives in the car. So does a heavy coat. **A car you keep is, in a small way, a cupboard you can park.**
+There is something about driving your own car that resonates. Part of it is trivially practical. You can leave things in it. My big tripod lives in the car. So does a heavy coat. **A car you keep is, in a small way, a closet you can park.**
 
 But the part that matters is safety, and it is the same argument this book has already made twice.
 
-**You know your own car.** Not merely how to work it, though there is something to be said for not hunting for the defroster while the windshield fogs over. You know how it *drives*. Where it sits in a lane. What it does when you ask it for something suddenly. **You build muscle memory over years without noticing you are doing it** — and then you are on a crowded Los Angeles freeway, and it turns out to be a very nice thing to have.
+**You know your own car.** Not merely how to work it, though there is something to be said for not hunting for the defroster while the windshield fogs over. You know how it *drives*. Where it sits in a lane. What it does when you ask it for something suddenly. **You build muscle memory over years without noticing you are doing it.** And then you are on a crowded Los Angeles freeway, and it turns out to be a very nice thing to have.
 
-A rental is a car you have no pattern for. @sec-safe argued that small and nimble are components of safety, and then that attention is one too. **Familiarity is the third**, and it is the only one of the three you cannot buy on the day you need it. It accumulates, slowly, in one particular car — which means it accumulates only if that car is waiting somewhere for you to come back to it.
+A rental is a car you have no pattern for. @sec-safe argued that small and nimble are components of safety, and then that attention is one too. **Familiarity is the third**, and it is the only one of the three you cannot buy on the day you need it. It accumulates, slowly, in one particular car. Which means it accumulates only if that car is waiting somewhere for you to come back to it.
 
 Which is what the parking spaces were for.
 
-
-<!-- SCAFFOLD -- still to write. Delete each line as it lands in the chapter.
-
-STILL TO WRITE: the ports themselves, and why the car was where it was.
-- 8 of 13 logged trips begin AND end at Lake San Marcos; every complete one from 2011
-  through the Fourth Crossing does -- including the Arctic run.
-- [DONE, differently] Kim ruled the rental-vs-ownership costing futile. Replaced by
-  'Why not just rent one?' -- familiarity as the third component of safety.
-- Kim: 'Parking is a big issue and we've been fortunate that friends and family have
-  helped at critical times.'
-- The holdings: his mother's covered spot at LSM (the car sat there under a cover while
-  they were in Hawaii); his niece at Mentone; a close colleague's farm with a huge garage
-  in Eugene; a motel in SoCal; the garage in Torrance for Creamsicle; and the St Louis
-  car wash near the airport -- the ONLY paid holding in sixteen years, improvised on sight.
-- Kim: 'I saw a hand carwash business that had a large garage that they didn't seem to be
-  using. I asked... And I got a car wash, too.'
-- THE THESIS (Kim, 2026-08-22): 'Having a car at the right location was the point of having
-  the car. It wasn't that we wanted to drive. The drives were an additional feature.'
-- The car left because the parking spot did: she sold the LSM apartment Aug 2016; the car
-  went north 2016-09-22. Then 4,592 miles in eight months, none of it travel, all of it
-  generated by the car being in the wrong place.
-- EXCURSIONS are the third kind of driving: a day out and back from the port. Mom's
-  supplies at LSM; the Flower Fields at Carlsbad and the four botanical gardens across the
-  LA basin for Creamsicle. Same form, different purpose.
-- ON STATION vs STANDING BY: the rate separates Wisconsin (18.3 mi/day) from everything
-  else, but NOT TwoRed-on-station (2.6) from Creamsicle-standing-by (3.2). The record sees
-  when the job changed, never why. Say so.
-
-OPEN / NEEDED
-- The Eugene colleague is NOT NAMED -- 'a close colleague' (Kim, 2026-08-20).
-- STANDING RULE (Kim, 2026-08-22): institutions are nameable, individuals are not.
-- Confirm: the niece at Mentone (relationship without a name? town or not?) and whether
-  the St Louis business is named.
-- She died January 2017 with the car already in Oregon. ADJACENT FACTS, SEPARATE CAUSES --
-  do not let the bereavement do work the parking policy did.
-- Finding 041: a fill records where fuel was BOUGHT, not where the car RESTED. Four ports,
-  four cheap-fuel stops -- the fill clusters DO mark the ports, but by price, not position.
--->

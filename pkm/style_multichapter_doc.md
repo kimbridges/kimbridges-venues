@@ -641,6 +641,17 @@ photo with a diagram rendered from the document's own R code),
 that's a sentence worth including somewhere — probably in the
 Preface or as a Foreword note rather than in the caption.
 
+
+### Web-sizing the photographs (2026-09-03)
+
+**A photo-heavy Document must be web-sized before it is copied into the venue, and the resize is a BUILD STEP, not a source edit.** Smart Car carried 80 images off phones and a 5D Mark III at up to 4080 px and 10.6 MB each; the rendered document was **80.1 MB**, against a venue already near 400 MB where Netlify Drop uploads scale with size.
+
+- **Long edge 1800 px, JPEG quality 88.** The Quarto body column is about 700 px and `.column-body-outset` about 850, so 1800 is roughly twice the widest the page can display: retina headroom, plus room to enable lightbox later without redoing the work. Measured on Smart Car: images **178.4 -> 47.1 MB**, rendered document **80.1 -> 26.6 MB**, largest surviving file 1.27 MB.
+- **Resize the SCRATCH BUILD TREE, never the project.** Full-resolution originals stay under `G:\My Drive\Projects\<name>\images\` and are never rewritten. No `.qmd` path changes, because the scratch tree's `images/` sits at the same relative path.
+- **Skip rather than re-encode** anything already at or below the target, so the step is re-runnable without cumulative loss.
+- **Verify by reading the files back** -- maximum long edge measured off disk, not inferred from the return value of the write.
+- **Check the picture, not just the byte count.** A 1:1 crop of the worst case in the set -- random high-frequency detail, gravel or foliage -- is what catches an over-aggressive setting.
+- Reference implementation: `Projects\Smart_Car\book\R\resize_images.R`, `resize_book_images(dir, long_edge, quality)`.
 ### Infographics and data figures (2026-06-14)
 
 Adopted from the coenosr document's infographic program, and reflecting Kim's
@@ -1113,3 +1124,12 @@ Microscope document. Kim's report was that the new charts "are pushed to the lef
 look unusual that way." The cause was `.column-page`, which widens the container but not
 the image. Diagnosed by measuring figure and paragraph geometry in the rendered page at
 three viewport widths rather than eyeballing it.
+
+### 2026-09-03 (Section 6 - web-sizing the photographs)
+Added the resize build step to Section 6, from the Smart Car publication. Kim's
+framing was practical: the photographs were 3000x4000 originals and re-doing them
+by hand in Photoshop would take a long while, so the step became an R function in
+the project rather than a manual pass. The convention that matters beyond the
+numbers is WHERE it runs -- against the scratch build tree, so the originals on
+Drive are never rewritten and the step is re-runnable. Kim chose q88 over q82 when
+shown the measured file sizes for both.

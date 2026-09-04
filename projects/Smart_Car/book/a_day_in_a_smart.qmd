@@ -31,15 +31,15 @@ Except that the second car's sheet had two more columns on it.
 
 Creamsicle's form has a place for stopped time, and TwoRed's doesn't. That one difference is the reason this chapter exists.
 
-Here's what it says. Across `r DY$cr_legs` timed legs the median stopped time is **`r sprintf("%.2f", DY$med_stop)` hours**, which is fifteen minutes, and **`r DY$n_zero` of the `r DY$cr_legs` legs record no stopped time at all.** Over the whole record, stopped hours are **`r sprintf("%.1f", DY$stop_share_all)` per cent** of all the time the car was out.
+Here's what it says. Across `r DY$cr_legs` timed legs the median stopped time is **`r sprintf("%.2f", DY$med_stop)` hours**, which is fifteen minutes, and **`r DY$n_zero` of the `r DY$cr_legs` legs record no stopped time at all.** Over the whole record, stopped hours are **`r sprintf("%.1f", DY$stop_share_all)` percent** of all the time the car was out.
 
-So the first finding is a deflating one. **Most days really were just driving.** You get in, you go, you stop for fuel and you don't write it down because a fuel stop isn't a stop, it's a tax. Twelve per cent is not a lot of standing around for sixteen years of what I'd have called travelling.
+So the first finding is a deflating one. **Most days really were just driving.** You get in, you go, you stop for fuel and you don't write it down because a fuel stop isn't a stop, it's a tax. Twelve percent is not a lot of standing around for sixteen years of what I'd have called traveling.
 
-But that twelve per cent isn't spread evenly, and the way it clumps is the whole story.
+But that twelve percent isn't spread evenly, and the way it clumps is the whole story.
 
 ## A column nobody had to fill in
 
-There's one more column on Creamsicle's sheet: a free-text box at the end of the row, with no instructions and no requirement. I filled it in **`r DY$n_comment` times out of `r DY$cr_legs`**, which is `r sprintf("%.0f", DY$pct_comment)` per cent, and I did it entirely by whim. Some days I wrote "Lunch." Some days I wrote nothing at all after twelve hours and three hundred miles.
+There's one more column on Creamsicle's sheet: a free-text box at the end of the row, with no instructions and no requirement. I filled it in **`r DY$n_comment` times out of `r DY$cr_legs`**, which is `r sprintf("%.0f", DY$pct_comment)` percent, and I did it entirely by whim. Some days I wrote "Lunch." Some days I wrote nothing at all after twelve hours and three hundred miles.
 
 I want to be plain that no method was involved. Nobody designed that column as an instrument, the same way nobody put three columns on the fuel form so they'd multiply. **It was there because the form had room**, which is the same accident @sec-paper is built on.
 
@@ -47,7 +47,7 @@ And it turns out to be the sharpest instrument in this book.
 
 **Legs with a comment: median `r sprintf("%.2f", DY$med_stop_comment)` hours stopped, and only `r DY$zero_comment` of the `r DY$n_comment` show zero. Legs without one: median `r sprintf("%.2f", DY$med_stop_silent)` hours, and `r DY$zero_silent` of `r DY$cr_legs - DY$n_comment` show zero.** The two distributions separate at p = `r sprintf("%.1e", DY$p_comment)`.
 
-Put it the way that matters. **`r sprintf("%.0f", DY$pct_comment)` per cent of the legs carry `r sprintf("%.0f", DY$share_of_stopped)` per cent of all the stopped time in the record.** Whether I felt like writing a word at the end of a row predicts, better than anything else on the sheet, whether that day had anything in it besides the road.
+Put it the way that matters. **`r sprintf("%.0f", DY$pct_comment)` percent of the legs carry `r sprintf("%.0f", DY$share_of_stopped)` percent of all the stopped time in the record.** Whether I felt like writing a word at the end of a row predicts, better than anything else on the sheet, whether that day had anything in it besides the road.
 
 ## Three ways it could have been something else
 
@@ -63,13 +63,13 @@ Now take the stopped hours out and ask again. **Net speed `r sprintf("%.1f", DY$
 
 **Same distance. Same driving. The only thing that separates the two kinds of day is time the car spent standing still.**
 
-That's about as clean as this record ever gets. `r sprintf("%.0f", 100*(DY$gap_gross - DY$gap_net)/DY$gap_gross)` per cent of the apparent speed difference is not speed at all, and the free-text column that nobody asked me to fill in is, functionally, a stopped-time detector that I built by accident and used for three years without noticing.
+That's about as clean as this record ever gets. `r sprintf("%.0f", 100*(DY$gap_gross - DY$gap_net)/DY$gap_gross)` percent of the apparent speed difference is not speed at all, and the free-text column that nobody asked me to fill in is, functionally, a stopped-time detector that I built by accident and used for three years without noticing.
 
 ## What made a day stop
 
 ```{r}
 #| label: fig-day
-#| fig-cap: "Every leg that carries a comment, ordered by how long the car stood still. The bar is the whole elapsed day, with the stopped hours drawn first so they can be read straight off the axis, and the driving in grey behind them. Each bar is labelled with what I wrote at the time, verbatim, spelling included. The four bars with no blue at all record no stopped time, and they are the exceptions the text takes up."
+#| fig-cap: "Every leg that carries a comment, ordered by how long the car stood still. The bar is the whole elapsed day, with the stopped hours drawn first so they can be read straight off the axis, and the driving in gray behind them. Each bar is labeled with what I wrote at the time, verbatim, spelling included. The four bars with no blue at all record no stopped time, and they are the exceptions the text takes up."
 #| fig-width: 7.2
 #| fig-height: 8.4
 #| echo: false
@@ -117,7 +117,16 @@ So here's what eleven chapters of miles and dollars and errata come to when you 
 
 The median day was `r round(DY$cr_med)` miles and `r DY$hr_med` hours, and on the `r DY$cr_legs - DY$n_comment` legs that got no comment at all it really was just that: an early start, a long quiet run, a motel. **That's what the car was for and it's what it was good at.** @sec-car-cost says the fuel cost about a dime a mile, and @sec-long-days says three hundred miles was what a person could do in a day, and both of those are true of nearly every row in this record.
 
-And then `r sprintf("%.0f", DY$pct_comment)` per cent of the time I wrote a word in a box, and that word turns out to mark the days that were about something. **Not slower days. Not shorter days. Days with a person or a canyon or a bird in them, where the car sat in a car park for an hour or six while the trip happened outside it.**
+And then `r sprintf("%.0f", DY$pct_comment)` percent of the time I wrote a word in a box, and that word turns out to mark the days that were about something. **Not slower days. Not shorter days. Days with a person or a canyon or a bird in them, where the car sat in a parking lot for an hour or six while the trip happened outside it.**
+
+::: {#fig-bird-days layout-ncol=2}
+
+![Short-eared owls near Mount Vernon, Washington, November 2022.](images/Creamsicle/PXL_20221120_232106843.jpg)
+
+![Pelicans on the coast near Oxnard, California, November 2022.](images/Creamsicle/PXL_20221127_205434747.jpg)
+
+**Two days with a bird in them.** In both, the car is on the shoulder and the trip is happening outside it. This is the kind of day the comment column turned out to be detecting.
+:::
 
 I'd have told you the driving was the trip. **The one column I filled in for no reason says otherwise**, and it says so at p = `r sprintf("%.1e", DY$p_comment)`, which is a strange way to learn something you already knew.
 
@@ -129,7 +138,7 @@ There's a lesson in all of this and it isn't really about cars.
 
 It wouldn't have taken much. A few minutes of thinking would have produced measures of *human* performance alongside the measures of car performance, and **stopped time is the obvious one.** Even a mock-up of the analyses I might one day want would have shown me that. But I was in a hurry, other responsibilities took the time, and things got figured out as I went.
 
-**Here's what that cost, exactly.** TwoRed's sheet has no stopped-time column, so everything this chapter has just shown you can only be asked of the later car. **`r DY$tw_no_stop` of the record's `r DY$all_legs` legs, `r sprintf("%.0f", DY$pct_unaskable)` per cent of it, cannot be asked at all.** Six years of driving, and the question doesn't reach them.
+**Here's what that cost, exactly.** TwoRed's sheet has no stopped-time column, so everything this chapter has just shown you can only be asked of the later car. **`r DY$tw_no_stop` of the record's `r DY$all_legs` legs, `r sprintf("%.0f", DY$pct_unaskable)` percent of it, cannot be asked at all.** Six years of driving, and the question doesn't reach them.
 
 That's a different kind of loss from the ones in @sec-audit. **An error can be corrected and a missing entry can be recovered from a scan.** No amount of care recovers a column that was never on the page. It's the one thing in this project that better analysis cannot repair, and it's why I'd put the planning above everything else I've learned here.
 

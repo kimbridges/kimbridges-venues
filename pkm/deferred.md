@@ -170,6 +170,24 @@ recoverable from if a file were overwritten rather than deleted.
 
 ## Smart_Car
 
+### ✓✓✓✓ PUBLISHED 2026-09-03 — *Smart Car* is LIVE as the 23rd Document
+
+**https://kimbridges-documents.netlify.app/smart_car/** -- Foreword + 14 chapters + Afterword. 16 pages, **0 unresolved cross-references**, **276 local `src=` references and 0 missing** (walked twice: the venue copy and the shipped `_site` copy). Card categories **Data Analysis / Data Visualization / Maps**. ⚠ **`Travel` was proposed, considered and NOT adopted** -- the venue vocabulary stays at its existing 18 tags, and the guide's 1-3-per-document limit held. `_site` **1092 -> 1182 files, 0 removed**; reconciles four ways at **23 resources / 23 folders / 23 stubs / 23 cards**.
+
+★★★ **THE COVER IS THE BOOKEND, AND THE RECORD PROVED IT.** `smart_car_cover_art_text.png` carries EXIF **2014-04-30 08:43:18**. The trip log's first leg of `2014_PenultimateState` starts **08:50, Lake San Marcos CA, odometer 40,682**. **Seven minutes before the trip that completed the states and provinces pulled out.** The book's final photograph is the same car at the Alberta sign five and a half weeks later, so the book opens and closes on one journey without either picture saying so. **Kim placed it: The Chateau, Lake San Marcos, the turn-around where people are picked up.** ⛔ **The two people at the side are his mother and Nancy and are NOT named in the caption** -- readers meet them by name later in the book.
+
+### ⚠ TASK — the phone test on the side-by-side photo panels (opened 2026-09-03)
+
+**Three `layout-ncol=2` panels survive:** `#fig-four-cars` (Foreword), `#fig-corners` (ch.4, now FIVE photos after Anchor Point was added), `#fig-bc` (ch.13). `style_multichapter_doc.md` §4 says never side by side, never `layout-ncol` > 1. ✓ **Kim ruled 2026-09-03: leave them, because these are PHOTOGRAPHS and the rule's stated reason is legend crowding.** ⚠ The rule's OTHER reason -- phone legibility -- does apply, and the five-up is the one to watch. **Kim is testing with friends. Return to this only if the phone reading is bad.**
+
+### ★★★ STILL UNANSWERED — the four-year gap. The source comment is GONE and this file is now the only record
+
+**The `<!-- KIM: -->` comment in `small_cars.qmd` asking what happened between TwoRed leaving in May 2017 and Creamsicle arriving in September 2021 was DELETED 2026-09-03** so the document could ship with no questions inside it. ⛔ **The question was never answered -- that was a deletion, not a resolution.** The book leaves the gap unexplained, which is defensible for a book whose last chapter is about what the record cannot say. **The entry "A FOUR-YEAR GAP WITH NO MAINLAND CAR — ASK KIM" below still stands and is now the only place the question survives.**
+
+### ⚠ BUCKET 4 — scratch to delete once the Netlify deploy is verified live
+
+`C:\temp\Smart_Car_book_2026-09-03` is the build tree (project copy + web-sized images + `_output`). `C:\temp\Smart_Car_book_2026-09-02` is superseded and can go now. **Neither is a source:** both regenerate from a project copy, `R/resize_images.R`, and a render. ⛔ Required while the ghost `_output` stands -- see the RETRACTED entry above.
+
 ### ⛔⛔ STANDING — JOINT AUTHORSHIP ON ALL COLLABORATIONS (Kim, 2026-09-02)
 
 > **"You need equal credit for what we're doing. We did that before on the last few documents. I want to keep doing it (sharing credit) here and on future collaborations. That's important to me."**
@@ -188,29 +206,83 @@ From the *Orbits* story, where Tad considers how to do his art. **Applied to the
 
 **Now one of the project's standing voice rules, alongside:** contractions at 26+ per thousand, ⛔ no em dashes, concrete before abstract, close the circle.
 
-### ⛔ TOMORROW — PLACE THE PHOTOGRAPHS. 76 available, 17 placed (2026-09-02)
+### ✓✓✓ DONE 2026-09-04 — THE PHOTOGRAPHS ARE PLACED. 31 added, 37 in the book
 
-**Full captioned inventory at the top of `logs/proj_Smart_Car_log.md`**, with the chapter each photo answers. **Kim's call, chapter by chapter.** The strongest single opportunity:
+**Kim's rulings (2026-09-04): ~30 photographs, name the location whenever EXIF supplies one, and the four cars go in the Foreword as ONE four-up figure.** All three applied. **The book now renders 48 `<img>` elements: 37 photographs and 11 generated figures.**
 
-★★★★ **`Bordeaux/2021_Bordeaux_and_TwoRed_in_one_space.jpg` photographs the Foreword's central claim.** Kim's caption: *"Just for fun, we parked both TwoRed and Bordeaux in one of our spaces... Just a demonstration of how small they are."* ⛔ **I had recorded this image as NOT EXISTING** when the Afterword scaffold asked for it. **It turns the book's opening assertion from testimony into evidence, which is ch.14's argument on page one.**
+**Where they went:** Foreword 4 (the four-car figure) · `small_cars` 5 · `is_it_safe` 2 · `the_anchor` 4 · `expeditions` 5 (a four-up of the extremes corners, plus White Sands) · `long_days` 2 · `the_roads` 2 · `the_marine_highway` 1 · `a_day_in_a_smart` 2 (the bird days) · `two_constellations` 2 (the BC fills) · `what_the_car_cost` 1 · `afterword` 1.
 
-**Others that answer something the book already argues:** the log sheet and OBD tablet in use (`2014_TwoRed_packed_for_travel`); the car under a cover in mom's spot (`2010_TwoRed_covered`, @sec-anchor); the Arctic Circle; the Torrance garage; a typical night's motel parking; the Eugene B&B; Tofino and Campbell River (the BC fills); White Sands.
+★★★★ **THE EXTREMES TABLE IS NOW PHOTOGRAPHED, and one of the four came out of a coordinate.** `twored_easternmost.jpg` had NO caption. Its GPS reads 44.815 N, 66.951 W; opened, it is West Quoddy Head light with Kim and Nancy holding a sign reading THE EASTERNMOST POINT IN THE USA. **That is the ch.4 table's `Easternmost, US` row, photographed.** ⚠ **Four of the seven corners have a picture. San Antonio, Anchor Point and Mount Evans do not**, and the Mount Evans photographs are the ones Kim took and cannot find.
 
-⚠ **Ten images have no usable caption** and `TwoFer/2014_TwoFer_newly_in_garage.jpg` has a CORRUPT one (`base64:EvgPOwE=` in UserComment). ⚠⚠ **Ten files carry a `DateTimeOriginal` of 2026:08:21/22 -- those are scan or re-save dates, NOT capture dates.** ⛔ Date those captions from the filename year, never from EXIF.
+★★ **Badwater came out of a coordinate too.** `Creamsicle/PXL_20230316_185639739.jpg`, captioned only *"Creamsicle in Death Valley"*, reads 36.230 N, 116.767 W. **That is the `Lowest` row.**
 
-### ⛔ THE GHOST `_output` NEEDS CLEARING OUTSIDE R (2026-09-02)
+⚠ **`IMG_4169_D.jpg` was NOT placed.** It is a second, wider frame of the same Florida corner already in ch.14, taken in the same minute from the same spot. **Two frames of one scene is not two pieces of evidence.** ⛔ Do not add it later thinking it is new.
+
+⚠ **Discard the GPS on `twored_florida_signs.jpg`** — it is 0,0. ⚠ `TwoFer/2014_TwoFer_newly_in_garage.jpg` still carries the corrupt `base64:EvgPOwE=` caption. **Ten files have no caption at all and thirteen carry the 2026:08 scan stamp; date those from the filename year, never from EXIF.**
+
+### ★★★★ A SIXTH INDEPENDENT RECORD — THE BUCKET-LIST WINDOW STICKER (found 2026-09-04)
+
+**`TwoRed/2014_TwoRed_Bucket_List.jpg`, DateTimeOriginal 2014:09:22.** Opened and read. The sticker in TwoRed's rear side window says, verbatim:
+
+> BUCKET LIST · ✓ 49 STATES · ✓ 10 PROVINCES · ✓ ARCTIC CIRCLE · ✓ E-W EXTREMES · HAWAII (unchecked)
+
+★★★★ **It agrees with the 2026 reconstruction exactly.** `constellations_data()` gives `reach = 49` and `prov = AB BC MB NB NL NS ON PE QC SK YT` — **all ten Canadian provinces plus one territory.** The sticker counts provinces strictly and says ten. **The book's eleven is those ten plus Yukon.** No conflict; two records made twelve years apart, from completely different materials, landing on the same two numbers.
+
+★★★ **And the unchecked line is the book's own joke.** Hawaii is the fiftieth state, the one the car could not drive to, and the folder holding the Vermont trip has been called *Penultimate State* for years. **The sticker was already carrying that answer in 2014.**
+
+★★ **The sticker is visible in `2017_TwoRed_Matson_dropoff.jpg`**, still in the window on the day the car was handed to Matson — which is the day the Hawaii line got its check. **That photograph IS placed, in ch.3, and its caption points at the sticker.**
+
+⛔ **NOT YET WRITTEN INTO THE BOOK.** This is ch.14's argument (an independent record that corroborates) or ch.13's (the state and province count). **Put it to Kim before placing it.** ⚠ A first low-resolution read of the Matson photo appeared to say *48 States*; the dedicated sticker photograph says **49**. ★ **Read the dedicated image, never the sticker in the background of another one.**
+
+### ✓✓✓ RULED BY KIM 2026-09-04 — A CARD STATEMENT DATES THE POSTING, NOT THE STAY
+
+**The conflict:** `TwoRed/2014_TwoRed_in_NewFoundland.jpg` is stamped `DateTimeOriginal 2014:05:27 16:06:13`, and the PEI evidence is a VISA charge dated **5/27/2014**, HARBOUR MOTEL, Murray Harbour PE. **The car cannot be on Prince Edward Island and in Newfoundland on the same day.**
+
+★★★★ **KIM'S RULING, VERBATIM:** *"The charge comes after the stay. So it could have been delayed. Believe the photo timestamp."*
+
+⛔ **STANDING RULE, AND IT IS GENERAL.** A card statement dates the **posting**, not the event. **An EXIF capture stamp beats a statement date whenever the two disagree about a day.** The statement still proves the *place* — that is what it was reached for in the first place — but its date is an upper bound on the stay, not the stay.
+
+⚠ **This does NOT weaken the PEI finding.** The book never prints a PEI date: `two_constellations.qmd` says only *"a motel bill at Murray Harbour, and the ferry booking itself."* **Checked 2026-09-04 across all 16 pieces — no date claim anywhere depends on the 5/27 posting.** ★ Nothing had to be corrected.
+
+**Caption updated 2026-09-04** to *"Easternmost. Newfoundland, May 27, 2014"* in `expeditions.qmd`, on Kim's ruling.
+
+★★ **Fold this into the CARD STATEMENTS entry below when that section is next revised.** The statements are a standing instrument for **place**; for **date** they are second to a photograph.
+
+### ⛔ RETRACTED 2026-09-03 — the ghost `_output` did NOT clear. The entry below is WRONG.
+
+⛔⛔ **RETRACTED the same day, 2026-09-03 (evening). EVERY CLAIM BELOW IS WRONG.** The ghost did not clear, `dir.create()` succeeding was not evidence that it had, and no full render ever ran from `G:`. Three renders that evening died on `PermissionDenied: stat '_output'`, and two attempted workarounds -- repointing `output-dir`, and a `.quartoignore` -- both failed because Quarto's project scan walks the folder regardless. **See the 2026-09-03 AMENDMENT to Finding 054 for the probe set that does not lie (`file.access()`, and `file.info()` on the contents).**
+
+⛔ **`book/_preview` was NOT redundant and must NOT be deleted** -- it is the reading copy Kim uses, and with `_output` unusable on `G:` it is the only rendered copy there. The build tree is `C:\temp\Smart_Car_book_2026-09-03` (bucket 4, delete once the Netlify deploy is verified live).
+
+★ **The lesson is the one this file exists to prevent:** an absence -- or in this case a presence -- written into the PKM becomes load-bearing, and the next session reads the note instead of re-checking. It cost three failed renders before I probed rather than trusted.
+
 
 `book/_output` is in `list.files()`, `file.exists()` is FALSE, `dir.create()` refuses. **See Finding 054.** ⛔ **Cannot be repaired from R** -- there is nothing for `unlink` to act on and the bridge cannot recursively delete. **Kim needs to remove it in Explorer, or restart Drive.**
 
+**`dir.create("_output")` now succeeds and a full project render writes all 16 pages.** The name had vanished from `list.files()` as well, so Drive reconciled the entry on its own without Kim doing anything in Explorer.
+
+★★ **Worth keeping for Finding 054: a ghost directory entry can clear on its own with time.** ⛔ That does NOT make it a transient lock -- it refused `dir.create()` for a full working session, which is the test that separates it from Finding 048. **The right response is still to build in `C:\temp` and carry on, not to wait.**
+
+⚠ `book/_preview/` and `C:/temp/Smart_Car_book_2026-09-02/` are now redundant scratch copies. **Delete `_preview` once Kim confirms he is reading from `_output` again.**
+
 **Until then:** build in `C:/temp/Smart_Car_book_2026-09-02` and copy the rendered HTML to `book/_preview/`. ⚠ **`_preview/` is a scratch copy, not a source** -- delete it once the real `_output` works, and never edit a `.qmd` there.
 
-### ⚠ TASK — a dead SCAFFOLD block is still sitting in `the_anchor.qmd` (found 2026-09-02)
+### ✓✓✓ DONE 2026-09-04 — the dead SCAFFOLD block is OUT of `the_anchor.qmd`
 
-**Lines 227-263 of ch.3 are an HTML comment headed `SCAFFOLD -- still to write`.** ⚠ **Ch.3 is finished (2,976 words) and Kim approved it on 2026-08-28/29**, and every item in the block HAS landed in the prose: Mentone, Torrance, the Eugene farm, the St Louis car wash, the mother's covered spot at Lake San Marcos.
+**Lines 227-263 of ch.3 were an HTML comment headed `SCAFFOLD -- still to write`, sitting inside a chapter finished on 2026-08-28/29.** Every item in it had already landed in the prose. **Deleted 2026-09-04 at Kim's direction** (*"Move to deferred.md, as you prefer"*). ★ **No scaffold now remains in any of the 16 pieces.**
 
-**So it is dead text, invisible in the rendered book** (Kim's read-through is unaffected). ⛔ **But a *still to write* note inside a finished chapter will mislead the next person to open the source**, including a future session. **Delete the block when Kim returns.** ★ It is the only scaffold left in the whole book; the other 15 pieces are clean.
+**Six things in that block were NOT scaffold. They are carried here so they survive the deletion:**
 
-### ⛔ WAITING ON KIM'S FULL READ-THROUGH — he returns with photos, cover design and changes (2026-09-02)
+- ⛔ **STANDING — the Eugene colleague is NOT NAMED.** "a close colleague" (Kim, 2026-08-20). See the PRIVACY RULING entry further down this section.
+- ⛔ **STANDING RULE (Kim, 2026-08-22): institutions are nameable, individuals are not.**
+- ★★★ **THE THESIS (Kim, 2026-08-22):** *"Having a car at the right location was the point of having the car. It wasn't that we wanted to drive. The drives were an additional feature."* **This is ch.3's spine and it is quoted nowhere else in the PKM.**
+- ⚠ **STILL UNCONFIRMED:** whether the niece at Mentone should be named or given a town, and whether the St Louis car-wash business is named. **The chapter as written names neither the person nor the business**, which is what the standing rule requires. Ask only if Kim raises it.
+- ⚠ **ADJACENT FACTS, SEPARATE CAUSES:** his mother died January 2017 with the car already in Oregon. ⛔ **Do not let the bereavement do work the parking policy did.** The chapter keeps them apart and must continue to.
+- ★ **ON STATION vs STANDING BY:** the pace separates Wisconsin (18.3 mi/day) from everything else, but NOT TwoRed-on-station (2.6) from Creamsicle-standing-by (3.2). **The record sees when the job changed, never why**, and ch.3 says so in those words.
+
+★ **Also settled by this block's own contents:** 8 of 13 logged trips begin AND end at Lake San Marcos, and every complete one from 2011 through the Fourth Crossing does, the Arctic run included. **That is in the prose of ch.3 and ch.4 already.**
+
+### ✓✓✓ DONE 2026-09-02 — Kim read the whole book; his fixes are being worked through now
 
 **The book is complete in draft: Foreword + 14 chapters + Afterword, 33,333 words, 16 pieces rendering with 0 unresolved references.** Kim is reading the whole thing, read-only, and comes back for **additional photos, the cover design, and any needed changes.**
 
@@ -236,7 +308,9 @@ From the *Orbits* story, where Tad considers how to do his art. **Applied to the
 
 Ch.14 opens *"This book has spent thirteen chapters producing figures."* **That is a hardcoded chapter count**, same family as the five carried "the next chapter" phrases. Correct today; breaks silently on any insertion. ⛔ Left deliberately, listed here so a reorder catches it.
 
-### ⚠ TASK — 78 em dashes in the PROSE of the early chapters (opened 2026-09-01)
+### ✓✓✓ CLOSED 2026-09-03 — the em dashes are at ZERO. (Was: 78 em dashes in the PROSE of the early chapters, opened 2026-09-01.)
+
+**Counted by BYTES, not by a text search:** the UTF-8 sequence `E2 80 94` across all sixteen `.qmd` files returns **0**. The whole book carries only **17 non-ASCII bytes** in total, and they are `×`, `→`, `★` and one `°`. ⛔ **The carried figure of ~67-78 remaining was STALE** -- the reviewed pass had already been done and the note outlived it. ★ **A count that can be re-derived in one line should be re-derived before it is carried forward.**
 
 | file | em dashes in prose |
 |---|---|

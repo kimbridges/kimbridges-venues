@@ -1,0 +1,8 @@
+---
+title: "Smart Car"
+subtitle: "Sixteen years, four small cars, and 100,000 miles of evidence"
+categories: ["Data Analysis", "Data Visualization", "Maps"]
+image: ../smart_car/smart_car_cover_art_text.png
+---
+
+[View Document](../smart_car/){.btn .btn-primary}

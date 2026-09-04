@@ -1,5 +1,5 @@
 # PROJECT: kimbridges-documents
-_Last updated: 2026-08-03_
+_Last updated: 2026-09-03_
 _Status: Standing_
 _Focus readiness: Ready_
 
@@ -12,7 +12,7 @@ geographic analysis, cartography, and research methods. Each document is
 a self-contained reference with its own folder of pre-rendered HTML.
 
 ## Current Status
-Live on Netlify. **22 document folders**, the latest **llm_examples ("Experiments with LLMs", published
+Live on Netlify. **23 document folders**, the latest **smart_car ("Smart Car", published 2026-09-03)**; llm_examples was 2026-08-03, ai_podcasts 2026-08-02, vouchr 2026-07-29, ai_microscope 2026-07-25, checklistr 2026-07-09, lists 2026-06-16, coenosr 2026-06-15. Grid listing
 2026-08-03)**; ai_podcasts was 2026-08-02, vouchr 2026-07-29, ai_microscope 2026-07-25, checklistr 2026-07-09, lists 2026-06-16, coenosr 2026-06-15. Grid listing
 page with category filtering. Document landing page concept designed but not yet implemented. The
 site is now about 393 MB of resources, which makes a full render overrun the 60-second R-bridge
@@ -297,3 +297,31 @@ proj_LLM_Examples.md and Finding 025.
 
 Size note: the venue has gone 342 -> 373 -> 393 MB in three days. Netlify Drop uploads
 scale with that, and self-hosted media is why.
+
+---
+
+### 2026-09-03 -- smart_car added; the venue's first photography-led narrative
+
+Twenty-third document. *Smart Car* -- sixteen years, four Smart cars, ~33,300 words and 37
+photographs. Followed the five-step workflow; the copy was done from R into a fresh folder and
+explicitly checked for the coenosr nesting slip. `_site` **1092 -> 1182 files, 0 removed**, which
+is the check that matters; reconciles at 23 folders / 23 resources / 23 cards / 23 stubs.
+`_quarto.yml` edited in BINARY again (it is CRLF) -- byte delta exactly 20, the inserted line plus
+its CRLF, and CR/LF counts moved 47/47 -> 48/48 together.
+
+**New to the routine, and it should stay: web-size the photographs before copying in.** At native
+size this document rendered to **80.1 MB** -- 77.6 MB of it 41 images, the largest a single 10.6 MB
+photo. `Projects\Smart_Car\book\R\resize_images.R` at 1800 px / q88 brought the rendered document
+to **26.6 MB**, so the venue went 393 -> 420 MB instead of 393 -> 473. The convention is written up
+in `style_multichapter_doc.md` Section 6. The resize runs against the SCRATCH BUILD TREE, so the
+full-resolution originals on Drive are never rewritten.
+
+**Category vocabulary:** `Travel` was proposed and, on reflection, not adopted -- the document took
+**Data Analysis / Data Visualization / Maps**, all existing tags, and the guide's 1-3 limit held.
+The venue's vocabulary stays at 18. The Open Question in `style_multichapter_doc.md` Section 10
+about curating that vocabulary is still open, but it did not grow today.
+
+⚠ **The `src=` walk earned its place again**: 276 local references checked on the venue copy and
+again on the shipped `_site` copy, 0 missing both times.
+
+Companion project: proj_Smart_Car.md.

@@ -27,28 +27,32 @@ dim_wt <- format(twored_dim[["weight_lb"]], big.mark = ",")
 pair_len <- sprintf("%d ft %d in", twored_pair_ft, twored_pair_in)
 ```
 
-![TwoRed on the day it arrived, on the narrow tires it left the factory with. I'm five foot seven, which gives you the scale. **The silver band running around the car isn't trim — it's the safety cell**, and chapter -@sec-safe comes back to it.](images/TwoRed/twored_day_one.jpg){#fig-day-one}
+![TwoRed on the day it arrived, on the narrow tires it left the factory with. I'm five foot seven, which gives you the scale. **The silver band running around the car isn't trim. It's the safety cell**, and chapter -@sec-safe comes back to it.](images/TwoRed/twored_day_one.jpg){#fig-day-one}
 
 That's the reaction, and it's usually delivered as an exclamation rather than a question.
 
-It's worth being concrete about how small, because the rest of this book doesn't make much sense otherwise. Two seats, and no back seat at all — not a small one, none. **The luggage space behind them is about the size of the boot of an ordinary car with the boot floor raised to the window line** — and it sits on top of the engine. To load it you swing the rear window up and drop the solid part of the hatch down, which opens the whole back of the car.
+It's worth being concrete about how small, because the rest of this book doesn't make much sense otherwise. Two seats, and no back seat at all. Not a small one. None. **The luggage space behind them is about the size of the trunk of an ordinary car with the trunk floor raised to the window line.** And it sits on top of the engine. To load it you swing the rear window up and drop the tailgate down, which opens the whole back of the car.
 
 I went out with a tape rather than look it up: `r boot_w` wide, `r boot_h` high, `r boot_d` deep. That last one is measured back to the driver's seat in the position I actually drive in, which is the only depth that means anything when you're loading.
 
-I could multiply those together and give you a volume. **It would be a useless number.** Fill the compartment and you can't see out of the back of the car — so the limit was never how much will go in. It is how much will go in and still leave the mirror working.
+I could multiply those together and give you a volume. **It would be a useless number.** Fill the compartment and you can't see out of the back of the car. So the limit was never how much will go in. It is how much will go in and still leave the mirror working.
 
-Before heading to Alaska I bought a spare wheel to carry, and it barely fitted.
+Before heading to Alaska I bought a spare wheel to carry, and it barely fit.
 
-Here's the other measure, and it's the one I can point at today. **TwoRed and Bordeaux both live in our building's parking structure in Honolulu. We park them side by side — but nose to nose they would fit inside a single space marked out for one ordinary car, with room to spare.** When Matson shipped TwoRed they measured it for stowage, the way you measure any piece of freight: `r dim_l` long, `r dim_w` wide, `r dim_h` tall, `r dim_wt` pounds. Two of them end to end come to `r pair_len`, which is why the pair fits where one ordinary car is meant to go.
+![The spare wheel and the emergency gear, loaded for the Arctic Circle run in 2013. **There was still room for the suitcases.**](images/TwoRed/2013_TwoRed_tire_and_emergency_gear.jpg){#fig-spare-wheel}
 
-The owner's manual gives a different width: `r man_w`, against Matson's `r dim_w_in`. **Neither is wrong.** The gap is `r man_gap` — `r man_side` a side — and the manual settles it in a footnote: that width is measured **with the mirrors folded out**. The manual is describing the car you drive, mirrors and all; the shipping clerk measured the car you stow. Length and height agree between them to within a rounding tick. **Which width you want depends on whether you are parking it or putting it on a boat**, and that is going to keep happening in this book.
+Here's the other measure, and it's the one I can point at today. **TwoRed and Bordeaux both live in our building's parking structure in Honolulu. We park them side by side. Nose to nose, they would fit inside a single space marked out for one ordinary car, with room to spare.** When Matson shipped TwoRed they measured it for stowage, the way you measure any piece of freight: `r dim_l` long, `r dim_w` wide, `r dim_h` tall, `r dim_wt` pounds. Two of them end to end come to `r pair_len`, which is why the pair fits where one ordinary car is meant to go.
+
+![TwoRed and Bordeaux nose to nose in a single stall, Honolulu, June 2021. **We didn't leave them that way.** It was a demonstration, and it is the paragraph above, photographed.](images/Bordeaux/2021_Bordeaux_and_TwoRed_in_one_space.jpg){#fig-one-space}
+
+The owner's manual gives a different width: `r man_w`, against Matson's `r dim_w_in`. **Neither is wrong.** The gap is `r man_gap`. That's `r man_side` a side. The manual settles it in a footnote: that width is measured **with the mirrors folded out**. The manual is describing the car you drive, mirrors and all; the shipping clerk measured the car you stow. Length and height agree between them to within a rounding tick. **Which width you want depends on whether you are parking it or putting it on a boat**, and that is going to keep happening in this book.
 
 
 ## It isn't a shrunken car. It's a car built around a box.
 
-Most small cars are ordinary cars made smaller. A Smart isn't. Mercedes started from the steel cell you can see in @fig-day-one — the silver band — and built outward. **The cell is the structure. The coloured panels hung on it aren't.** That's why the proportions look wrong to an eye trained on normal cars: you're looking at a passenger box with the mechanical parts pushed to the ends, rather than a long car with the middle removed. The manual puts a number on it — the wheelbase is `r wb_pct` of the total length, which leaves about `r oh_each` of car hanging past each axle. There is almost nothing at the ends because there is almost no end.
+Most small cars are ordinary cars made smaller. A Smart isn't. Mercedes started from the steel cell you can see in @fig-day-one, the silver band, and built outward. **The cell is the structure. The colored panels hung on it aren't.** That's why the proportions look wrong to an eye trained on normal cars: you're looking at a passenger box with the mechanical parts pushed to the ends, rather than a long car with the middle removed. The manual puts a number on it. The wheelbase is `r wb_pct` of the total length, which leaves about `r oh_each` of car hanging past each axle. There is almost nothing at the ends because there is almost no end.
 
-It's also why the panels are a different colour. They aren't pretending to be structural, so they don't have to match.
+It's also why the panels are a different color. They aren't pretending to be structural, so they don't have to match.
 
 ## What it was designed to be good at
 
@@ -58,7 +62,7 @@ What it was built for is a short list, and the car is very good at all of it. **
 
 Notice what isn't on that list. Then notice that we bought it anyway, and drove it across the continent four times.
 
-**Every fuel figure in this book is a number produced by a car that was optimised for something else.** It is a good deal better than it has any right to be, and that is worth holding onto before any of those numbers start looking like an achievement of engineering rather than an accident of small size.
+**Every fuel figure in this book is a number produced by a car that was optimized for something else.** It is a good deal better than it has any right to be, and that is worth holding onto before any of those numbers start looking like an achievement of engineering rather than an accident of small size.
 
 ## Why a Smart, and not something else
 
@@ -66,19 +70,21 @@ There were other small cars in 2010. The honest answer for why it was this one i
 
 **We'd seen them all over Europe, and people were having fun with them.** That is not a specification, but it is a real reason, and it got there first.
 
-The rest of it was ordinary enough. The price was right. And there was the ecological-economy side of it -- **we simply didn't see the need for a large car.** Two people who travel light, going a long way, do not require much car to do it in.
+The rest of it was ordinary enough. The price was right. And there was the ecological-economy side of it. **We simply didn't see the need for a large car.** Two people who travel light, going a long way, do not require much car to do it in.
 
 There were a few alternatives. **None of them hit all of those at once** the way a Smart did.
 
 ## You sit high, which nobody expects
 
-Getting in is unremarkable. It's about like getting into any sedan -- you fit, but you watch your head going in. Then you sit down and the car surprises you.
+Getting in is unremarkable. It's about like getting into any sedan. You fit, but you watch your head going in. Then you sit down and the car surprises you.
 
 **You sit high.** Almost like getting into an SUV. You're not down near the road the way the outside of the car leads you to expect.
 
-That follows directly from the box. A car built around a passenger cell puts you *in* the cell, upright, rather than reclining you into a wedge. Which is also why a Smart isn't streamlined. **Across the body it is very nearly as tall as it is wide** — `r dim_h` against `r dim_w`, by the carrier's own tape. That is not a shape chosen for slipping through air. It's a shape chosen for putting a person upright inside it.
+That follows directly from the box. A car built around a passenger cell puts you *in* the cell, upright, rather than reclining you into a wedge. Which is also why a Smart isn't streamlined. **Across the body it is very nearly as tall as it is wide.** It's `r dim_h` against `r dim_w`, by the carrier's own tape. That is not a shape chosen for slipping through air. It's a shape chosen for putting a person upright inside it.
 
 The payoff is headroom, and there's a lot of it. I'm five foot seven, which is to say I stand taller than the car does, and I've never come close to the roof. I've had big friends fold themselves in expecting the worst, and had no complaints afterwards.
+
+![Bordeaux inside. Simple, and functional. **You sit in the cell rather than reclining into a wedge**, which is where the headroom comes from.](images/Bordeaux/2019_Bordeaux_interior.jpg){#fig-interior}
 
 There's one more thing about sitting in a box, and it only shows up on a long day. Behind the seats there's a shelf, and you can reach it without stopping. Snacks. A jacket. The camera. That's a genuinely useful travel feature and no one ever mentions it in a review.
 
@@ -86,15 +92,17 @@ There's one more thing about sitting in a box, and it only shows up on a long da
 
 The other thing people assume is that there is nowhere to put anything.
 
-The space behind the seats, as I said, is an ordinary boot stood on end. We travel light, so we rarely fill it -- unless we are ferrying something large for somebody.
+The space behind the seats, as I said, is an ordinary trunk stood on end. We travel light, so we rarely fill it, unless we are ferrying something large for somebody.
 
-Around town the test is Costco. **I don't hesitate over the big awkward things** — the bundle of toilet paper, the bundle of paper towels, both in the same trip if that is the week — on top of the ordinary shopping. It all goes in. **And I can still see out the back window when I look in the mirror.**
+Around town the test is Costco. **I don't hesitate over the big awkward things.** The bundle of toilet paper. The bundle of paper towels. Both in the same trip, if that is the week. All of that on top of the ordinary shopping. It goes in. **And I can still see out the back window when I look in the mirror.**
 
 In sixteen years I have never once put something back on the shelf because I was afraid it wouldn't fit in the car.
 
+![A typical load, photographed near Las Cruces, New Mexico, in October 2024. A big camera bag, a bag of road necessities, a small cooler, and the two carry-on bags already stowed behind the passenger seat. **That is a full load for a cross-country trip.**](images/Creamsicle/PXL_20241010_215209431.RAW-01.MP.COVER.jpg){#fig-typical-load}
+
 The limit isn't cargo. It's seats. There are two, and most people say *yikes* when they work that out.
 
-My answer is that I'd have exactly the same problem in a Lamborghini -- and I can carry things the Lamborghini can't. When we need to move four people, we take both cars. **Two cars, two passengers.** That's not a workaround we invented; it is why two of the bars above run side by side from 2019 on.
+My answer is that I'd have exactly the same problem in a Lamborghini. And I can carry things the Lamborghini can't. When we need to move four people, we take both cars. **Two cars, two passengers.** That's not a workaround we invented; it is why two of the bars in @fig-fleet-timeline run side by side from 2019 on.
 
 ```{r}
 #| label: leg-floor
@@ -108,27 +116,29 @@ min_cr_leg <- round(min(.cr))
 biggest_fill <- round(max(twored_fuel$Gallons, na.rm = TRUE), 1)   ## TwoRed tank, effectively
 ```
 
-## The gearbox, which I will not defend
+## The transmission, which I will not defend
 
-TwoRed has one honest weak point and it's the automated manual gearbox. In town it isn't as smooth as I'd like. That's the complaint, and it's a fair one.
+TwoRed has one honest weak point and it's the automated manual transmission. In town it isn't as smooth as I'd like. That's the complaint, and it's a fair one.
 
-On the highway it stops mattering, because once you're up to speed there's almost no shifting to do. Creamsicle, six model years later, had a much better gearbox, and local driving was noticeably nicer for it.
+On the highway it stops mattering, because once you're up to speed there's almost no shifting to do. Creamsicle, six model years later, had a much better transmission, and local driving was noticeably nicer for it.
 
 Here's the part I didn't expect. **The record cannot referee any of this.** Not one of TwoRed's `r n_tr_legs` usable legs is shorter than `r min_tr_leg` miles, and Creamsicle's shortest is `r min_cr_leg`. There's no town driving in the fuel log at all.
 
-The reason is that a leg isn't a trip -- it's a tankful, and neither car holds much. The largest single fill anywhere in sixteen years of TwoRed's record is `r biggest_fill` gallons. Errands don't go missing from the record so much as get *absorbed* into it: a week of short runs and then a long highway day arrive at the pump as a single leg with a single number. The instrument has a resolution, and the tank sets it.
+The reason is that a leg isn't a trip. It's a tankful, and neither car holds much. The largest single fill anywhere in sixteen years of TwoRed's record is `r biggest_fill` gallons. Errands don't go missing from the record so much as get *absorbed* into it: a week of short runs and then a long highway day arrive at the pump as a single leg with a single number. The instrument has a resolution, and the tank sets it.
 
-So the gearbox complaint is about driving that sixteen years of careful record-keeping never once saw. We will come back to that.
+So the transmission complaint is about driving that sixteen years of careful record-keeping never once saw. We will come back to that.
 
 ## A table at my right hand
 
-On the solo long-distance drives I generally put the passenger seat down flat. That gave me a table off to my right -- and the thing that lived on it was the clipboard with the travel information.
+On the solo long-distance drives I generally put the passenger seat down flat. That gave me a table off to my right. The thing that lived on it was the clipboard with the travel information.
 
 Which is worth saying plainly, because the rest of this book depends on it. **The record exists because the car had a flat surface within arm's reach.**
 
+![The passenger seat down flat, and the table it makes. **The clipboard with the log sheet is on it, and the tablet is reading the car's OBD port.** Nearly every number in this book came off that surface.](images/TwoRed/2014_TwoRed_packed_for_travel.jpg){#fig-the-table}
+
 ## What everyone assumes it's for
 
-People assume a car this size is for short trips in a crowded place. That's a fair assumption — it's what Mercedes designed it for, and it's what most of them do.
+People assume a car this size is for short trips in a crowded place. That's a fair assumption. It's what Mercedes designed it for, and it's what most of them do.
 
 **And we owned one that did exactly that.**
 
@@ -138,20 +148,27 @@ People assume a car this size is for short trips in a crowded place. That's a fa
 
 ## TwoFer: from the leased-car gas log (a live Google Sheet, not yet in the corrected
 ## dataset -- see deferred.md). 7 fill-ups, 2014-03-22 to 2015-01-10.
-twofer_miles <- 1209
+twofer_miles  <- 1209                                   ## 7 fill-ups, 2014-03-22 to 2015-01-10
 twored_median_day <- round(median(twored_legs$odo_miles, na.rm = TRUE))
 twofer_in_days <- round(twofer_miles / twored_median_day, 1)
+twofer_mi_txt  <- format(twofer_miles, big.mark = ",")
+## Finding 051: the prose below said "about four days" as a typed-in word while the
+## generator sat here unused. Spell it from the generator so it cannot drift.
+.spell <- c("one","two","three","four","five","six","seven","eight","nine","ten")
+twofer_days_word <- .spell[round(twofer_in_days)]
 ```
 
-**Two4Two** — we called it TwoFer — was leased in Honolulu in March 2014 and never left the island. It was **a stand-in**: something to drive at home until we could bring TwoRed across. Only short trips, and we kept no proper logs for it.
+**Two4Two**, which we called TwoFer, was leased in Honolulu in March 2014 and never left the island. It was **a stand-in**: something to drive at home until we could bring TwoRed across. Only short trips, and we kept no proper logs for it.
 
-The lease ran thirty-six months and ended on **22 March 2017**. **TwoRed was handed to a shipping company in Seattle sixty-one days later.** The stand-in went back two months before the car it stood in for arrived.
+![TwoFer in our garage in Honolulu, March 22, 2014, the day the lease was signed. **The whole car, and the whole job it was bought for.**](images/TwoFer/2014_TwoFer_newly_in_garage.jpg){#fig-twofer}
 
-What record there is — seven fill-ups between March 2014 and January 2015 — covers **`r twofer_miles` miles.** The lease allowed 22,500 over its whole term and the closing statement charged nothing for mileage at all, so whatever TwoFer did in three years, it wasn't much.
+The lease ran thirty-six months and ended on **March 22, 2017**. **TwoRed was handed to a shipping company in Seattle sixty-one days later.** The stand-in went back two months before the car it stood in for arrived.
+
+The record is seven fill-ups, between March 2014 and January 2015. They cover **`r twofer_mi_txt` miles.** The lease allowed 22,500 over its whole term and the closing statement charged nothing for mileage at all, so whatever TwoFer did in three years, it wasn't much.
 
 TwoRed's median driving day, on the mainland, was **`r twored_median_day` miles.**
 
-**So TwoRed covered TwoFer's entire logged mileage in about four days of driving.** Same manufacturer, near enough the same car, and the difference isn't in the machine at all. It's in what we asked of it.
+**So TwoRed covered TwoFer's entire logged mileage in about `r twofer_days_word` days of driving.** Same manufacturer, near enough the same car, and the difference isn't in the machine at all. It's in what we asked of it.
 
 
 
@@ -166,32 +183,24 @@ TwoRed's median driving day, on the mainland, was **`r twored_median_day` miles.
 
 The Foreword introduced them. What matters here is the shape, and it isn't a relay.
 
-**TwoRed, 23 July 2010.** Bought new in San Diego with four miles on the odometer. We still have it. **It has never been replaced** — that's the thing to hold on to, because the other three all arrived around it rather than after it.
+**TwoRed, July 23, 2010.** Bought new in San Diego with four miles on the odometer. We still have it. **It has never been replaced.** That's the thing to hold on to, because the other three all arrived around it rather than after it.
 
 **TwoFer, March 2014 to March 2017.** A three-year lease, in Honolulu, entirely inside TwoRed's life. A stand-in, not a successor.
 
-**Bordeaux, 1 April 2019.** Leased first, then bought out at the end — Mercedes insisted on that procedure, presumably for reasons of their own. **It was ours from the first day of the lease and it still is.**
+**Bordeaux, April 1, 2019.** Leased first, then bought out at the end. Mercedes insisted on that procedure, presumably for reasons of their own. **It was ours from the first day of the lease and it still is.**
 
-**Creamsicle, 15 September 2021.** Bought used — a 2016 car, five years old. Sold to family in October 2024.
+**Creamsicle, September 15, 2021.** Bought used. A 2016 car, five years old. Sold to family in October 2024.
 
 **★ And there's a hole in the middle of that list.** TwoRed left the mainland in May 2017. Creamsicle wasn't bought until September 2021. **For four years and four months we had no car on the mainland at all**, and the long drives simply stopped.
 
-<!-- KIM: what happened in those four years? The pandemic covers part of it but that's an
-     assumption, not a finding. And why buy a mainland car again in 2021, from a dealer in
-     Missouri, when the Lake San Marcos anchor was long gone? -->
+So Creamsicle isn't TwoRed's replacement. **It's the resumption.** Mainland driving picked up again after a four-year pause, starting from a different part of the country because the parking space that had organized everything was gone.
 
-So Creamsicle isn't TwoRed's replacement. **It's the resumption** — mainland driving picked up again after a four-year pause, starting from a different part of the country because the parking space that had organised everything was gone.
-
-**That's the fleet argument, and it doesn't depend on any single car being good.** One car you like is taste. **Four, chosen and re-chosen across sixteen years — including one bought used, one leased twice over, and one still sitting in the garage — is a judgement.**
-
-<!-- KIM: Bordeaux was one of the last Smart cars your Mercedes dealership sold; after those
-     few went, they stopped carrying the line. That belongs in the AFTERWORD -- the fleet
-     outlasts the product. Confirm and I'll put it there. -->
+**That's the fleet argument, and it doesn't depend on any single car being good.** One car you like is taste. **Four, chosen and re-chosen across sixteen years, is a judgment.** One bought used. One leased twice over. One still sitting in the garage.
 
 
 ```{r}
 #| label: fig-fleet-timeline
-#| fig-cap: "Sixteen years and four cars. Each bar is one car's ownership; the colour is which ocean it was on. Every date comes from a purchase, lease or shipping document -- none from memory. The seam in TwoRed's bar is the eighteen days it spent on a ship between Seattle and Honolulu."
+#| fig-cap: "Sixteen years and four cars. Each bar is one car's ownership; the color is which ocean it was on. Every date comes from a purchase, lease or shipping document. None comes from memory. The seam in TwoRed's bar is the eighteen days it spent on a ship between Seattle and Honolulu."
 #| fig-width: 7.5
 #| fig-height: 3.4
 fig_fleet_timeline()

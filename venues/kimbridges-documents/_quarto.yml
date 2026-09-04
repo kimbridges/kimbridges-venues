@@ -20,6 +20,7 @@ project:
     - r_basics/**
     - seasonalityr/**
     - sitemaps/**
+    - smart_car/**
     - storylines/**
     - using_an_llm/**
     - vouchr/**

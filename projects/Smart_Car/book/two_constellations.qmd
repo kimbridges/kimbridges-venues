@@ -27,7 +27,7 @@ Sixteen years of driving make a map, and here it is.
 
 ```{r}
 #| label: fig-driving
-#| fig-cap: "Everywhere the two cars went. Dark is ground both of them covered; light is ground only one of them did. The pale territories at the top are the only places on this map neither car reached."
+#| fig-cap: "Everywhere the two cars went. Dark is ground both of them covered; light is ground only one of them did."
 #| fig-width: 7.4
 #| fig-height: 5.4
 #| echo: false
@@ -67,7 +67,7 @@ Here's what I'd add now that I've seen the map, because the table above makes th
 
 **Every one of those six is a stretch where there was no reason to buy fuel, and in most of them no opportunity either.** Vermont was a friend's house a few miles over the line, and I got there by following him home from his office in New Hampshire: no stations on that road, and no stopping anyway, because I'd have lost him. **The card statement caught the dinner because dinner is a thing you stop for. The fuel log caught nothing because fuel was not.** South Dakota was a dash north to the line and straight back. Florida was a few miles into the panhandle and a turn around.
 
-**A fuel log doesn't record where a car went. It records where a driver bought petrol**, and those are the same map only when the trip is long enough and ordinary enough to need one. The six holes are the places where the journey and the transaction came apart.
+**A fuel log doesn't record where a car went. It records where a driver bought gas**, and those are the same map only when the trip is long enough and ordinary enough to need one. The six holes are the places where the journey and the transaction came apart.
 
 **I believe in being strict with the data. But circumstances that are clearly explained do count**, and every one of these has a circumstance rather than an excuse. The strictness is in demanding the explanation, not in refusing to hear it.
 
@@ -80,6 +80,15 @@ Here's a result I didn't expect and had to check twice.
 Creamsicle drove `r K$n_cr_us` states in its three years. **Every single one of them was already TwoRed's.** Not one new state, a decade later, in a different car, from a different starting point, on what I'd have described as completely different trips.
 
 The only ground the two cars share outside the United States is **British Columbia**, and they got there in opposite ways. Creamsicle bought three tanks on Vancouver Island. **TwoRed crossed it twice and never bought anything.** Coming off the ship at Haines there's exactly one road north, and it runs through British Columbia before it reaches the Yukon: it's a short enough stretch that the question of fuel never came up. And I clipped the corner of the province again coming off the Canadian plains.
+
+::: {#fig-bc layout-ncol=2}
+
+![Tofino, at 49.131 N.](images/Creamsicle/PXL_20230919_162223001.MP.jpg)
+
+![Campbell River, at 49.903 N.](images/Creamsicle/PXL_20230924_151206464.jpg)
+
+**Creamsicle's British Columbia, September 2023.** These are two of the three Vancouver Island cities in which we got fuel. TwoRed's British Columbia has no photograph and no fill at all.
+:::
 
 **Prince Edward Island is the same story with a different receipt.** We crossed on the Confederation Bridge and left by the ferry to Pictou, and no tank was bought on the island. What proves it is a card statement again: **a motel bill at Murray Harbour, and the ferry booking itself.** That makes eleven provinces and territories, and the fuel log knows about ten of them.
 
@@ -116,7 +125,7 @@ fig_stops(S, "Creamsicle", "figures/stops_creamsicle.png")
 
 Now the caution, because the spacing in those figures is the first thing anybody will try to read.
 
-**A dot is not a day.** It's a transaction, and they only line up when the day happened to need exactly one tank. **`r sprintf("%.0f", S$perday$pct_multi[S$perday$car=="TwoRed"])` per cent of TwoRed's fuelling days carry more than one fill, and `r sprintf("%.0f", S$perday$pct_multi[S$perday$car=="Creamsicle"])` per cent of Creamsicle's.** The most in a single day is `r max(S$perday$most)`.
+**A dot is not a day.** It's a transaction, and they only line up when the day happened to need exactly one tank. **`r sprintf("%.0f", S$perday$pct_multi[S$perday$car=="TwoRed"])` percent of TwoRed's fueling days carry more than one fill, and `r sprintf("%.0f", S$perday$pct_multi[S$perday$car=="Creamsicle"])` percent of Creamsicle's.** The most in a single day is `r max(S$perday$most)`.
 
 So the gap between two adjacent dots is **a floor on how far the car went that day, and never a reading of it.** Where the beads run evenly across the prairie you're seeing a tank's range and a driver's habit tangled together, and @sec-long-days is the chapter that pulls them apart properly, with a clock and an odometer rather than with a picture.
 
@@ -130,14 +139,14 @@ From the first logged leg to the last is **`r format(K$span, big.mark = ",")` da
 
 ```{r}
 #| label: fig-parking
-#| fig-cap: "The same six years from the other side. The top row is every day the record can show the car moving. The bottom row is the twelve intervals between logged trips, coloured by what the odometer says was happening in them. The four longest are labelled."
+#| fig-cap: "The same six years from the other side. The top row is every day the record can show the car moving. The bottom row is the twelve intervals between logged trips, colored by what the odometer says was happening in them. The four longest are labeled."
 #| fig-width: 7.4
 #| fig-height: 2.5
 #| echo: false
 fig_parking(K)
 ```
 
-**`r sprintf("%.1f", K$pct_driving)` per cent.** Everything in this book, every long day and every road and every argument about fuel economy, comes off the thin blue marks in the top row of that figure. The other **`r sprintf("%.1f", K$pct_parked)` per cent** is the bottom row, and the bottom row is a car sitting still in somebody's garage.
+**`r sprintf("%.1f", K$pct_driving)` percent.** Everything in this book, every long day and every road and every argument about fuel economy, comes off the thin blue marks in the top row of that figure. The other **`r sprintf("%.1f", K$pct_parked)` percent** is the bottom row, and the bottom row is a car sitting still in somebody's garage.
 
 That's what a mainland car kept from Hawaii actually is. **It's a parked car with `r K$leg_days` exceptions**, and @sec-anchor is the chapter about the real problem, which was never driving and always storage.
 
@@ -151,7 +160,7 @@ Look at the dark bands in that figure, because they're the reason the parking ma
 
 This is @sec-expeditions's finding arriving from a completely different direction. There it was Kim's own list of fourteen expeditions against thirteen logged trips. Here it's the odometer, which cannot be argued with: **`r format(K$gap_miles, big.mark = ",")` miles happened between the logged trips**, against `r format(K$leg_miles, big.mark = ",")` inside them.
 
-So the honest reading of that bottom row is three-way, and the figure colours it that way. Some of those intervals really are a car under a tarpaulin. Some are ambiguous. **And three of them are journeys that left no trace except a number going up.**
+So the honest reading of that bottom row is three-way, and the figure colors it that way. Some of those intervals really are a car under a tarpaulin. Some are ambiguous. **And three of them are journeys that left no trace except a number going up.**
 
 ## Where it actually slept
 
@@ -167,9 +176,9 @@ What the record holds is the shape: **long stillness, punctuated.** What I hold 
 
 Put the two constellations side by side and they disagree about what this car was.
 
-**The driving map says a continental vehicle**: `r K$reach` states, `r K$n_prov` provinces, the Arctic, four crossings, and a coastline at each end. It's the map I'd show somebody who asked what we did with a Smart car.
+**The driving map says a continental vehicle**: `r K$reach` states, `r K$n_prov` provinces and territories, the Arctic, four crossings, and a coastline at each end. It's the map I'd show somebody who asked what we did with a Smart car.
 
-**The parking timeline says a car that sat still `r sprintf("%.0f", K$pct_parked)` per cent of the time** and was driven on fewer than a hundred and fifty days in six years.
+**The parking timeline says a car that sat still `r sprintf("%.0f", K$pct_parked)` percent of the time** and was driven on fewer than a hundred and fifty days in six years.
 
 **Both are accurate and neither is the answer.** The first map is what the car was for. The second is what owning it was actually like, and the second is the one that explains the first: **the stillness is what made the driving possible.** A car parked free in a friend's garage for fourteen months is a car you can fly to and drive across a continent. That was the arrangement, and the arrangement is the story.
 

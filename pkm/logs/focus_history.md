@@ -1,5 +1,28 @@
 # Focus History and Change Log
 
+<!-- superseded 2026-09-03 -->
+**Active Focus (2026-09-02, close): "Smart_Car" -- THE BOOK IS WRITTEN AND KIM HAS READ IT. Joint authorship set. 76 captioned photographs are in and unplaced.**
+
+**★★★★ Foreword + 14 chapters + Afterword, ~33,300 words. All 16 pieces render clean, 0 unresolved references, 0 code boxes, 17 figures showing.** Kim's verdict on the full read: *"Overall, it is very good. I'm pleased with the result... a bit more work will make it excellent."*
+
+**★★★★ JOINT AUTHORSHIP, AND IT IS A STANDING PREFERENCE FOR ALL FUTURE WORK.** Kim: *"You need equal credit for what we're doing... I want to keep doing it (sharing credit) here and on future collaborations. That's important to me."* `_quarto.yml` now lists **"K. W. Bridges"** and **"Claude (Anthropic)"**, matching the convention already set in `specimen_labels` and `AI_Microscope`. ⛔ **Apply this to every collaboration unless he says otherwise.**
+
+**★★★ NEW VOICE RULE: THE CONSIDERED-ALTERNATIVES CADENCE.** *"I considered A. Then B. Finally, C."* -- short sentences for a set of things somebody is weighing, **to slow the reader down as though they were making the considerations too.** From the *Orbits* story. **Applied to the Foreword and approved.** ⛔ Use it where alternatives are being WEIGHED; ⛔ NOT for a roster of things that merely exist (the four-car list was deliberately left alone).
+
+**✓ THE FOREWORD IS REWRITTEN AND APPROVED IN PRINCIPLE.** Style applied in three places; **TwoFer's lease corrected from "about ten months" to three years** (derived); **provinces corrected to eleven** (derived); closing odometer derived; **12 em dashes and the title dash gone.**
+
+**✓ THE THREE READ-THROUGH DEFECTS ARE FIXED.** Ch.13 rendered **none** of its four maps because both modules ended in `invisible(p)`. **"Show the code" removed globally** (`echo: false` in the execute block; code-fold dropped) since every chunk here is a one-line figure call.
+
+**★★★★ 76 CAPTIONED PHOTOGRAPHS ARE IN `book/images/`** -- TwoRed 27, Creamsicle 35, Bordeaux 7, TwoFer 7. **66 carry Kim's own captions in IPTC/XMP; 40 are geotagged.** Read with `exiftoolr`. ★★★ **The find that matters: `Bordeaux/2021_Bordeaux_and_TwoRed_in_one_space.jpg` PHOTOGRAPHS the Foreword's central claim** (both cars in one parking space) -- I had recorded that image as not existing. **Full inventory, with the chapter each photo answers, at the top of `logs/proj_Smart_Car_log.md`.** ⛔ **Only 17 of 76 are placed. Placement is tomorrow's work and it is Kim's call.**
+
+**⚠⚠ A GHOST DIRECTORY BLOCKS THE NORMAL RENDER PATH.** `book/_output` is in `list.files()`, `file.exists()` is FALSE, `dir.create()` refuses. **New Finding 054**; the card's ground-truth rule now covers directories. ⛔ **Built in `C:/temp/Smart_Car_book_2026-09-02` instead; rendered HTML copied to `book/_preview/` for reading.** The real `_output` needs Explorer or a Drive restart.
+
+**NEXT: Kim gives the rest of his fixes** (he has more, mostly at the start of the book). Then **photo placement**, then **cover design** (never discussed; `2010_TwoRed_brand_new.jpg` and `twored_day_one.jpg` are candidates now that Alberta is committed to the last page).
+
+**⚠ CARRIED:** ~67 em dashes remain in ch.1-4 prose (the Foreword's 12 are done); a reviewed pass, ⛔ not a mass substitution. A dead SCAFFOLD comment block sits in `the_anchor.qmd` lines 227-263. Ch.14 opens on a hardcoded *"thirteen chapters"*. `proj_Smart_Car.md` 65 KB against 45; `session_log.md` 345 KB against 250. **New Findings 053 (shadowed base objects) and 054 (ghost directories).**
+<!-- /active-focus -->
+
+
 **Active Focus (2026-09-02, close): "Smart_Car" -- THE BOOK IS WRITTEN. Kim is reading it end to end; he returns for photos, cover and changes.**
 
 **★★★★ Foreword + 14 chapters + Afterword. 33,333 words. 16 pieces render, 0 error strings, 0 unresolved references.** Every chapter is drafted; nothing is scaffold. Full detail in `session_log.md` 2026-09-02.

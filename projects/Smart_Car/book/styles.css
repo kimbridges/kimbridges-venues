@@ -1,0 +1,7 @@
+/* Smart Car -- book-wide base type.
+   One place, so the Foreword and the chapters cannot drift apart. */
+
+body {
+  font-size: 1.10rem;
+  line-height: 1.6;
+}

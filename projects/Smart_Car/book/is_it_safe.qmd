@@ -11,29 +11,29 @@ The first thing people say is that it is cute.
 
 Very cute, usually, because it is so different from what anyone expects a car to look like. That was especially true in 2010. Smarts were not common then, and pulling into a gas station meant somebody was going to come over.
 
-*I like your car.* That was almost always the opener. **Seeing TwoRed was an invitation to talk**, and a great many conversations started exactly that way, with a stranger walking across a forecourt to say something friendly about a very small car.
+*I like your car.* That was almost always the opener. **Seeing TwoRed was an invitation to talk**, and a great many conversations started exactly that way, with a stranger walking across a gas station lot to say something friendly about a very small car.
 
-@fig-day-one is TwoRed on the first day we owned it. **That is the car people were crossing forecourts to look at** — small, bright, and not much like anything else in the row.
+@fig-day-one is TwoRed on the first day we owned it. **That is the car people were crossing the lot to look at.** Small, bright, and not much like anything else in the row.
 
-**It did not last, and the record of that is worth keeping.** By the time we were driving Creamsicle, Smart cars were relatively common and the effect had largely worn off. People no longer crossed a forecourt to look. Creamsicle is cute too — **but by my measure not quite as cute as TwoRed**, and in any case by then it was not a surprise. **The reaction this chapter is about belongs to a particular decade**, and it faded as the cars stopped being strange.
+**It did not last, and the record of that is worth keeping.** By the time we were driving Creamsicle, Smart cars were relatively common and the effect had largely worn off. People no longer crossed the lot to look. Creamsicle is cute too. **By my measure not quite as cute as TwoRed**, and in any case by then it was not a surprise. **The reaction this chapter is about belongs to a particular decade**, and it faded as the cars stopped being strange.
 
 And then, nearly every time, the same second question.
 
 *Is it safe?*
 
-It's worth noticing where that question comes from. **It isn't hostility.** Nobody opens with the size as an accusation. They open by saying they like it — and then, having said so, they worry about it. The car is small, everything else on an American interstate isn't, and the arithmetic seems obvious. **The concern is affectionate, which is exactly why it deserves a real answer rather than a defence.**
+It's worth noticing where that question comes from. **It isn't hostility.** Nobody opens with the size as an accusation. They open by saying they like it. Then, having said so, they worry about it. The car is small, everything else on an American interstate isn't, and the arithmetic seems obvious. **The concern is affectionate, which is exactly why it deserves a real answer rather than a defense.**
 
 ## The answer I give
 
 I've a short version and I've given it many times, standing next to the car.
 
-Mercedes designed this to be safe. Just like a race car. **See the silver part? That's the safety cell.** When a race car crashes, the cell protects the driver — they pop out afterwards and hold their hands up.
+Mercedes designed this to be safe. Just like a race car. **See the silver part? That's the safety cell.** When a race car crashes, the cell protects the driver. They pop out afterwards and hold their hands up.
 
 I demonstrate that part. Hands up, unhurt, walking away from the wreckage.
 
 Same thing here. A solid structure built for protection. The silver you can see running around the car in @fig-day-one isn't trim; it's the structure, and the body panels hung on it aren't.
 
-Do they believe it? Maybe. Maybe not. **A specification does not defeat an impression**, and the impression arrived first — from twenty feet away, before anyone heard a word about safety cells. The pointing helps more than the explaining does, which tells you something about what kind of question it really is.
+Do they believe it? Maybe. Maybe not. **A specification does not defeat an impression.** The impression arrived first, from twenty feet away, before anyone heard a word about safety cells. The pointing helps more than the explaining does, which tells you something about what kind of question it really is.
 
 So I stopped relying on the engineering answer alone. What I have instead is sixteen years of driving.
 
@@ -70,11 +70,11 @@ knitr::kable(
 )
 ```
 
-Add the two odometers together and they stop `r short` miles short of a hundred thousand. **That is not a rounded figure, and it is not the fuel log's figure either** — a fill is a transaction, not the end of a life, and the last drive each car ever made is one neither fuel log can see. Four hundred and sixty-seven fill-ups. Two hundred and twenty-five logged driving days. **Forty-nine mainland states, ten Canadian provinces and the Yukon Territory** — the log itself only witnesses forty-five of the states, for reasons chapter -@sec-cannot-say gets into, but the car went to all of them. Gravel on the Dalton Highway north of the Arctic Circle. Frost heaves across the Canadian plains. The Tail of the Dragon. The Oregon coast highway. Two winters and a good many summers.
+Add the two odometers together and they stop `r short` miles short of a hundred thousand. **That is not a rounded figure, and it is not the fuel log's figure either.** A fill is a transaction, not the end of a life, and the last drive each car ever made is one neither fuel log can see. Four hundred and sixty-seven fill-ups. Two hundred and twenty-five logged driving days. **Forty-nine mainland states, ten Canadian provinces and the Yukon Territory.** The log itself only witnesses forty-five of the states, for reasons chapter -@sec-cannot-say gets into, but the car went to all of them. Gravel on the Dalton Highway north of the Arctic Circle. Frost heaves across the Canadian plains. The Tail of the Dragon. The Oregon coast highway. Two winters and a good many summers.
 
 No crash.
 
-That's worth stating plainly and then immediately qualifying, because a number like that can be made to say more than it should. I'm one driver, and a prudent one. The miles are mostly interstate, mostly in daylight, and almost none of them are urban commuting. **The hundred thousand miles do not show that the car kept me safe. They show that the car did not prevent sixteen years of safe driving** — which is a smaller claim, and the honest one.
+That's worth stating plainly and then immediately qualifying, because a number like that can be made to say more than it should. I'm one driver, and a prudent one. The miles are mostly interstate, mostly in daylight, and almost none of them are urban commuting. **The hundred thousand miles do not show that the car kept me safe. They show that the car did not prevent sixteen years of safe driving.** That's a smaller claim, and the honest one.
 
 The larger claim comes from two days when the driving stopped being ordinary.
 
@@ -84,7 +84,7 @@ The larger claim comes from two days when the driving stopped being ordinary.
 
 Before heading to Alaska, where the car would meet the challenges of the Dalton Highway, the cute wheels came off.
 
-Smart Madness put steel rims on the car, and I bought a spare wheel to carry. It barely fitted in the rear luggage compartment. **They were quite sure I would hit something bad** — although I imagine they were thinking about something sharp rather than something deep.
+Smart Madness put steel rims on the car, and I bought a spare wheel to carry. It barely fit in the rear luggage compartment. **They were quite sure I would hit something bad.** Although I imagine they were thinking about something sharp rather than something deep.
 
 Nobody told me about the flags.
 
@@ -92,23 +92,23 @@ Along the highway through Canada's Yukon Territory, small flags are set at the r
 
 The car-eater had no flag.
 
-It was big enough to swallow a car — not a wheel, a car — and it arrived with no warning at all. I saw it late and went around it.
+It was big enough to swallow a car. Not a wheel. A car. And it arrived with no warning at all. I saw it late and went around it.
 
 Two things about that. The first is the one this chapter is built on: **the hole was big enough to eat a big car too.** The hazard didn't care what I was driving. **The escape did.** Something wider and heavier has a wider, heavier problem getting out of the way at speed, on a road that narrow, with a shoulder that isn't really a shoulder.
 
-The second is about how it happened at all. **You learn the pattern. Flag equals slow and swerve. You begin to trust your experience — and the trust is earned, because the pattern is real and it holds hundreds of times.** Then once it doesn't.
+The second is about how it happened at all. **You learn the pattern. Flag equals slow and swerve. You begin to trust your experience. The trust is earned, because the pattern is real and it holds hundreds of times.** Then once it doesn't.
 
 **Accidents happen when the pattern doesn't hold.**
 
 ### The on-ramp near Fort Worth
 
-I was heading east on the interstate. I left it to drive through a small town — no reason, just curious, nothing to stop for. Getting back on meant crossing over the freeway on an overpass and then taking a long sweeping left turn down onto the on-ramp.
+I was heading east on the interstate. I left it to drive through a small town. No reason. Just curious, and nothing to stop for. Getting back on meant crossing over the freeway on an overpass and then taking a long sweeping left turn down onto the on-ramp.
 
 I was most of the way around that curve when a police car came up the ramp. Full speed. No lights, no siren.
 
 I pulled the steering wheel hard right and hit the brakes hard. TwoRed slid to a stop on the shoulder, inches from the metal guard rail.
 
-I sat there. I was stunned, and my first thought was that I'd done something wrong — that I was the one going the wrong way. So I waited. And while I waited I watched several cars come down the on-ramp exactly as I had been doing.
+I sat there. I was stunned, and my first thought was that I'd done something wrong. That I was the one going the wrong way. So I waited. And while I waited I watched several cars come down the on-ramp exactly as I had been doing.
 
 It was the police car that was going the wrong direction.
 
@@ -118,7 +118,7 @@ I missed being hit head-on by three things: quick action, some luck, and a small
 
 Note what was and was not available to me. Nothing about prudence prevents a vehicle coming the wrong way up a ramp with no warning; the hazard was outside my control entirely. What I had was a steering input and a braking distance, and both had to work in a very short space.
 
-**And note that it is the same failure as the pothole.** On-ramps run one way. That is a pattern, it is real, and it holds every single time for years — which is precisely why I was around that curve at speed and not creeping. **I trusted a pattern, and the pattern didn't hold.** The sat-there-stunned part, the wondering whether I was the one going the wrong way, is what it feels like when a rule that has never failed suddenly does.
+**And note that it is the same failure as the pothole.** On-ramps run one way. That is a pattern, it is real, and it holds every single time for years. Which is precisely why I was around that curve at speed and not creeping. **I trusted a pattern, and the pattern didn't hold.** The sat-there-stunned part, the wondering whether I was the one going the wrong way, is what it feels like when a rule that has never failed suddenly does.
 
 ## The pattern, and what happens when it breaks
 
@@ -134,21 +134,25 @@ You can't drive without trusting patterns. **And you can't make patterns hold.**
 
 That is the argument, and I know it runs against the intuition.
 
-The preconception treats size as a liability to be excused — *yes, it is small, but it is well built.* I don't think that's the right shape for the answer. **In both of the moments where this car came closest to being destroyed, it was the smallness that got me out.** Less mass to move, less distance to move it through, and a chassis that answers immediately because there is not much of it.
+The preconception treats size as a liability to be excused. *Yes, it is small, but it is well built.* I don't think that's the right shape for the answer. **In both of the moments where this car came closest to being destroyed, it was the smallness that got me out.** Less mass to move, less distance to move it through, and a chassis that answers immediately because there is not much of it.
 
-A safety cell is for the crash you are having. **Handling is for the crash you aren't going to have** — and that second kind gets used far more often. Nobody counts those. There's no column for them, in this record or any other, which is why the two I remember are worth more here than the hundred thousand miles they sit inside.
+A safety cell is for the crash you are having. **Handling is for the crash you aren't going to have.** And that second kind gets used far more often. Nobody counts those. There's no column for them, in this record or any other, which is why the two I remember are worth more here than the hundred thousand miles they sit inside.
 
 The wide tires belong to the same argument, which is why they come next.
 
 ## The people who knew the car
 
-Something about that period is easy to miss now. **In 2010, and for a few years after, the Smart was the hot-rodder's small car.** People tricked them out -- unusual paint, custom accessories, engine work. There was a whole scene. We did some of that ourselves, and the tires were only part of it.
+Something about that period is easy to miss now. **In 2010, and for a few years after, the Smart was the hot-rodder's small car.** People tricked them out: unusual paint, custom accessories, engine work. There was a whole scene. We did some of that ourselves, and the tires were only part of it.
+
+![**If you want to see the variety of Smart modification, go to a gathering of Smarts**, like this Bash on the Bridge event in 2014. It is the scene the modifications came out of, and the mechanics came with it.](images/TwoRed/2014_TwoRed_at_the_Bash_on_the_Bridge.JPG){#fig-bash}
 
 The modifications are not the point. **The scene came with mechanics who actually knew the car**, and that is what we got out of it. The alternative was the Mercedes dealer, and you can guess what a dealer charges for simple maintenance.
 
 So when the crosswind became a problem, I wasn't working it out alone. I described it to people who had heard it described before.
 
-Every service TwoRed and Creamsicle ever had was done at that shop, in Signal Hill, California, over fourteen years and two cars -- with one exception, when something went wrong in Wisconsin and we were a long way from anybody who knew a Smart.
+Every service TwoRed and Creamsicle ever had was done at that shop, in Signal Hill, California, over fourteen years and two cars. There was one exception, when something went wrong in Wisconsin and we were a long way from anybody who knew a Smart.
+
+![TwoRed back at the shop in Signal Hill at the end of the Arctic run, 2013. **The expedition sticker is on the door.**](images/TwoRed/2013_TwoRed_at_end_of_Alaska_trip.jpg){#fig-madness}
 
 **And there is evidence for all of this that I did not put in the record on purpose.** Signal Hill turns up seven times in TwoRed's fuel log. Every one of them is a service visit. There is a filling station two blocks up the street, and after a service there was usually a hundred-mile drive back to Lake San Marcos, so it made sense to leave with a full tank.
 
@@ -156,9 +160,9 @@ Every service TwoRed and Creamsicle ever had was done at that shop, in Signal Hi
 
 ## The one modification, and what it cost
 
-The first crossing was made on the stock narrow tires — the ones a car like this leaves the factory with, sized for a city.
+The first crossing was made on the stock narrow tires. Those are the ones a car like this leaves the factory with, sized for a city.
 
-Crossing the deserts, a strong wind would come from the side. It pushed the car enough that staying in the lane could be a challenge. **And the difficulty was not the strength of it. It was that the push was not constant.** It varied, so I had to keep correcting — a small input, then another, then another, for as long as the wind lasted.
+Crossing the deserts, a strong wind would come from the side. It pushed the car enough that staying in the lane could be a challenge. **And the difficulty was not the strength of it. It was that the push was not constant.** It varied, so I had to keep correcting. A small input. Then another. Then another, for as long as the wind lasted.
 
 It was possible to control. But it was tiring.
 
@@ -172,7 +176,7 @@ The fancy rims came along with them, because this is a car that is fun to drive 
 
 Now, when I pull up behind a high-priced sports car, I note the width of their tires. Mine aren't as wide. **But they are wide enough to take care of the problem.**
 
-**The wheels were never about fuel.** They were bought for control in a crosswind, which is to say they were bought for safety. But wider tires have a theoretical cost — more rolling resistance, more frontal area. The effect ought to be small, and it ought to be there.
+**The wheels were never about fuel.** They were bought for control in a crosswind, which is to say they were bought for safety. But wider tires have a theoretical cost. More rolling resistance, and more frontal area. The effect ought to be small, and it ought to be there.
 
 ```{r}
 #| label: wheels-data
@@ -218,16 +222,16 @@ knitr::kable(wheel_tab, caption = paste(
   "fill-ups. 95% intervals."))
 ```
 
-**Look at the signs.** Positive, more positive, negative, negative — and every interval contains zero. Not one of those rows is wrong. They are four defensible ways of handling the same fill-ups, and they do not agree on whether the wide tires helped or hurt.
+**Look at the signs.** Positive, more positive, negative, negative. And every interval contains zero. Not one of those rows is wrong. They are four defensible ways of handling the same fill-ups, and they do not agree on whether the wide tires helped or hurt.
 
 **That is not a cautious result. A cautious result is a small number with a tight interval.** This is an unstable one, and the instability has a cause. `r n_nar` rows against `r n_wid`, and the `r n_nar` are not a sample of ordinary driving. They are the car's first ten months: one crossing, one season, one part of the country. Every difference between that year and the fifteen that followed is riding along with the wheel change, and no amount of controlling pulls them apart.
 
 **I could have picked one.** Any single row of that table, printed on its own, would have looked like an answer. That is exactly why the table is here instead.
 
 
-The one thing the table does rule out is a large effect. Nothing in it is consistent with the wheels costing ten per cent. Beyond that it declines to say, and I am not going to make it.
+The one thing the table does rule out is a large effect. Nothing in it is consistent with the wheels costing ten percent. Beyond that it declines to say, and I am not going to make it.
 
-**The one change ever made to this car was made for safety.** What it cost at the pump is a question this record cannot settle — and knowing that is worth more than a number I would have had to choose.
+**The one change ever made to this car was made for safety.** What it cost at the pump is a question this record cannot settle. Knowing that is worth more than a number I would have had to choose.
 
 ## Following the trucks
 
@@ -245,13 +249,13 @@ Everything above is about the car. But the most important safety variable on a l
 
 When Nancy's along we talk, mostly. That works, and it works well.
 
-Alone is the harder problem, and my answer was audio books. Captivating ones -- the kind that keep you on the edge of the seat. You can listen and drive; the two go together rather than compete for the same attention. I mixed them with Radio Lab episodes, preloaded on the phone and played through the car speakers.
+Alone is the harder problem, and my answer was audio books. Captivating ones. The kind that keep you on the edge of the seat. You can listen and drive; the two go together rather than compete for the same attention. I mixed them with Radio Lab episodes, preloaded on the phone and played through the car speakers.
 
 There were days I arrived at my destination and didn't want to stop. I had to hear more of the book. It got to the point where I wanted to drive, so that I could listen to something interesting.
 
-Now the part that actually matters, because it's the part that generalises. **I wasn't being interrupted.** No calls, no messages, nobody at the door, nothing waiting for an answer. Hours of it. That's what let me follow a story properly, and following a story properly is what kept me alert.
+Now the part that actually matters, because it's the part that generalizes. **I wasn't being interrupted.** No calls, no messages, nobody at the door, nothing waiting for an answer. Hours of it. That's what let me follow a story properly, and following a story properly is what kept me alert.
 
-Which turns the usual worry inside out. The hazard on a long drive isn't stimulation. It's monotony -- the tree tunnels of the road chapter, the fast unremarkable miles that turn out later to have been the worst ones. **A good story is the countermeasure, and a car is one of the last places left where you can give one your whole attention without something interrupting.**
+Which turns the usual worry inside out. The hazard on a long drive isn't stimulation. It's monotony. The tree tunnels of the road chapter, the fast unremarkable miles that turn out later to have been the worst ones. **A good story is the countermeasure, and a car is one of the last places left where you can give one your whole attention without something interrupting.**
 
 It's audio, and that isn't a caveat I'm adding afterwards. Eyes on the road and hands on the wheel is the condition that makes the whole thing work.
 

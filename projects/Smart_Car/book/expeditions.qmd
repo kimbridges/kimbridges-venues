@@ -145,7 +145,7 @@ By the spring of 2014 the list of states we hadn't driven in was down to four. I
 
 The fourth one was Vermont, and Vermont was the last.
 
-It's a quiet ending for a five-year project. A lawyer we needed to see had his office on the New Hampshire side of the river and his house on the Vermont side, so we drove over, stayed two nights, and drove out again. **We arrived in Hartland with `r vt_arrive` miles on the car and left Lebanon with `r vt_depart` — `r vt_local` miles for what the map calls an eighteen-mile drive.** The forty-ninth state, reached by the accident of somebody else's address, and the record of it is a small unexplained number sitting between two ordinary legs.
+It's a quiet ending for a five-year project. A lawyer we needed to see had his office on the New Hampshire side of the river and his house on the Vermont side, so we drove over, stayed two nights, and drove out again. **We arrived in Hartland with `r vt_arrive` miles on the car and left Lebanon with `r vt_depart`. That's `r vt_local` miles for what the map calls an eighteen-mile drive.** The forty-ninth state, reached by the accident of somebody else's address, and the record of it is a small unexplained number sitting between two ordinary legs.
 
 The forty-ninth, not the fiftieth. **Hawaii is the fiftieth and we live there**, which is the one state this car was never going to drive to. The folder that holds this trip on my computer has been called *Penultimate State* for years, and it took me until this year to notice that the name had been carrying the answer all along.
 
@@ -155,15 +155,32 @@ There is another way to lay out sixteen years, and I like it better than a list 
 
 | | |
 |---|---|
-| Northernmost | Wiseman, Alaska — about seventy-five miles past the Arctic Circle |
+| Northernmost | Wiseman, Alaska. About seventy-five miles past the Arctic Circle |
 | Southernmost | San Antonio, Texas |
-| Westernmost | Anchor Point, Alaska — as far west as the road system goes |
+| Westernmost | Anchor Point, Alaska. As far west as the road system goes |
 | Easternmost, US | West Quoddy Head, Maine |
 | Easternmost | Deer Lake, Newfoundland |
 | Lowest | Death Valley, California, at 282 feet below sea level |
-| Highest | Mount Evans, Colorado — 14,130 feet, and the road goes to the top. The mountain was renamed Mount Blue Sky after this was written |
+| Highest | Mount Evans, Colorado. 14,130 feet, and the road goes to the top. The mountain was renamed Mount Blue Sky after this was written |
 
 **Every one of those is a place you have to decide to go to.** None of them's on the way to anywhere. The southernmost point of sixteen years of driving is San Antonio because that's where a road we were on happened to bottom out; every other line on that table is a detour that somebody sat down and planned.
+
+::: {#fig-corners layout-ncol=2}
+
+![**Northernmost.** The Arctic Circle sign on the Dalton Highway, Alaska, August 17, 2013.](images/TwoRed/2013_TwoRed_at_the_Arctic_Circle.JPG)
+
+![**Westernmost.** Anchor Point, Alaska, August 25, 2013, at 59.774 N, 151.867 W. The sign makes the claim; the file carries the coordinates that check it.](images/TwoRed/kwb_5d3_34771_C.jpg)
+
+![**Easternmost, US.** West Quoddy Head, Lubec, Maine, May 2014. The file carries no caption. It carries 44.815 N, 66.951 W, and a sign.](images/TwoRed/twored_easternmost.jpg)
+
+![**Easternmost.** Newfoundland, May 27, 2014. About as far from Lake San Marcos as a road goes.](images/TwoRed/2014_TwoRed_in_NewFoundland.jpg)
+
+![**Lowest.** Badwater, Death Valley, at 36.230 N, 116.767 W. This one is Creamsicle, in March 2023.](images/Creamsicle/PXL_20230316_185639739.jpg)
+
+Five of the seven corners. **San Antonio and Mount Evans have no picture**, and the Mount Evans photographs are the ones I took and cannot find.
+:::
+
+![White Sands, New Mexico, October 11, 2024. **Not a corner, and nobody passes through it.** It was on the drive that ended with the car changing hands.](images/Creamsicle/PXL_20241011_170742168.RAW-01.COVER.jpg){#fig-white-sands}
 
 ### The corner I thought I had lost
 
@@ -177,21 +194,21 @@ I got there in June 2016, on what turned out to be the last crossing. **And then
 |---|---|---|
 | the leg | Denver to Grand Junction, `r ev_miles` odometer miles against about `r ev_road` on the interstate | excess **`r ev_excess`** |
 | the tank | Watkins to Gypsum, `r ev_tank` miles against about 150 of road | excess about 53 |
-| the clock | out at `r format(ev$start_time)`, in at `r format(ev$end_time)` — **`r ev_hours` hours** for a four-hour drive | about six hours spare |
+| the clock | out at `r format(ev$start_time)`, in at `r format(ev$end_time)`, giving **`r ev_hours` hours** for a four-hour drive | about six hours spare |
 
 **The byway is twenty-eight miles from the interstate to the summit. Out and back is `r ev_byway`.**
 
-The tank is the part I find hardest to argue with. It's a different instrument from the leg, with different endpoints and its own boundaries, and nobody lined the two up on purpose — and it gives the same answer. There's even a control: I crossed that same stretch eastbound three weeks earlier and filled at the same station in Gypsum. **`r gy_east` miles per gallon going down, `r gy_west` coming back up.** Grade accounts for some of that. Fourteen thousand feet accounts for the rest.
+The tank is the part I find hardest to argue with. It's a different instrument from the leg, with different endpoints and its own boundaries, and nobody lined the two up on purpose. And it gives the same answer. There's even a control: I crossed that same stretch eastbound three weeks earlier and filled at the same station in Gypsum. **`r gy_east` miles per gallon going down, `r gy_west` coming back up.** Grade accounts for some of that. Fourteen thousand feet accounts for the rest.
 
 Here is what none of it holds. I couldn't stay long at the top, because the altitude gave me a headache. On the way down we drove into a hail storm hard enough that I spent it worrying about the paint, and there was no damage, and I've rarely been so pleased to see an interstate.
 
-**What the record has is fifty-five miles and six hours.** It can't tell you about the headache, or the hail, or that I'd been trying to get up there for years and this was the last chance I was going to get. But it can tell you, a decade later and without being asked, that a small red car went somewhere a long way off the road that day — and that's enough to put the last corner in the table.
+**What the record has is fifty-five miles and six hours.** It can't tell you about the headache, or the hail, or that I'd been trying to get up there for years and this was the last chance I was going to get. But it can tell you, a decade later and without being asked, that a small red car went somewhere a long way off the road that day. And that's enough to put the last corner in the table.
 
 ## And then it stops
 
 There's no final expedition. Nothing closes.
 
-The Fourth Crossing in 2016 is the last one that looks like the others — `r format(lg$miles_logged[lg$trip == "2016_FourthCrossing"], big.mark = ",")` miles, out and back, beginning and ending in the same parking space it had begun and ended in for six years. Nobody knew it was the last, least of all me.
+The Fourth Crossing in 2016 is the last one that looks like the others. `r format(lg$miles_logged[lg$trip == "2016_FourthCrossing"], big.mark = ",")` miles, out and back, beginning and ending in the same parking space it had begun and ended in for six years. Nobody knew it was the last, least of all me.
 
 What happens after that isn't a trip and chapter -@sec-anchor has already told it: the parking space goes, and the car spends its remaining `r format(round(max(twored_legs$end_odo, na.rm = TRUE) - twored_legs$start_odo[twored_legs$trip == "2016_FallWinter"][1]), big.mark = ",")` mainland miles being moved between places because it no longer has a place. Then a dock in Seattle, and a boat.
 

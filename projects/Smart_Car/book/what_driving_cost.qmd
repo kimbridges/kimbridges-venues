@@ -83,9 +83,9 @@ All of that would be an argument rather than a finding, except that a later car 
 
 Across `r D$n_cream` timed legs, **the median gross speed is `r D$cream_gross` miles an hour and the median net speed is `r D$cream_net`.** A gap of **`r D$cream_gap`**.
 
-That number is worth sitting with. It means **every gross speed printed anywhere in this book is a ceiling, roughly seven or eight miles an hour below the speed the car was actually travelling** when it was travelling. And it means the averaging I've been describing isn't a hypothesis. It's got a size.
+That number is worth sitting with. It means **every gross speed printed anywhere in this book is a ceiling, roughly seven or eight miles an hour below the speed the car was actually traveling** when it was traveling. And it means the averaging I've been describing isn't a hypothesis. It's got a size.
 
-The extreme case is my favourite thing in either record. `r format(as.Date(CR$date), "%d %B %Y")`, `r CR$lv_city` to `r CR$ar_city`. **`r CR$miles` miles. `r CR$raw_hours` hours, `r CR$stop_hours` of them stopped.** Gross speed `r CR$gross_mph` miles an hour, which is walking pace for a car.
+The extreme case is my favorite thing in either record. `r format(as.Date(CR$date), "%d %B %Y")`, `r CR$lv_city` to `r CR$ar_city`. **`r CR$miles` miles. `r CR$raw_hours` hours, `r CR$stop_hours` of them stopped.** Gross speed `r CR$gross_mph` miles an hour, which is walking pace for a car.
 
 The comment column on that row contains one word.
 
