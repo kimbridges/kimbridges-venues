@@ -12,6 +12,29 @@ Mechanism 4.
 ---
 
 
+## 2026-09-05 -- A NEW PROJECT WRITTEN END-TO-END WITH THE PKM CLOSED: *THREE WAYS TO LET GO OF THE RICE* (sake_brewery); FIRST SESSION ON CLAUDE FABLE 5.1
+
+**Active focus at start:** Smart_Car, CLOSED (published 2026-09-03; "nothing scheduled"). Kim opened the session as a deliberate experiment on the new model with the PKM kept closed, then opened the PKM once the result was approved. New focus: **sake_brewery -> kimbridges-fiction.**
+
+**What was built.** From Kim's diary entry `brewery_visit.txt`, seven Google Docs of pre-trip reading (Sake in Kyoto; Discussing Sake; Kyoto Sake Rice Sourcing; Rice Milling and Sake Quality; Kyoto Water and Sake Quality; A Focus on Kyoto's Sake Breweries; the Wabunka booking) and the 34 tour photographs: a first-person story, ~6,150 words in 12 sections, dialogue among Kim, Nancy, the brewery's production manager and the Wabunka interpreter Naomi; 22 photographs placed at their scenes; **11 small infographics** (water hardness, grain anatomy, the grade ladder, koji vs tank climates, parallel fermentation, the three extraction methods, the tasting matrix, the tongue's verdict, the SMV scale, fermentation temperature, the many-columns table, a timeline). Web version as a self-contained HTML (photos as data URIs, inline SVG, light/dark) and as a Claude artifact. Then the Fiction-site build: 40-page 6x9 PDF printed from the same HTML through Chromium, cover thumbnail, `works/` stub.
+
+**Kim's verdict:** *"Otherwise, this is perfect!!! It is just like what happened on that day."* One photo fix (bottles-after-labeling belonged in the label scene; the final pair was a duplicate -- the better door portrait kept).
+
+**★★★ Two corrections came from READING THE PHOTOGRAPHS, not the notes.** The koji-room sign: above 35 °C, under 60% RH, three days (the diary had 40 °F / 35% RH -- a transcription slip). The tasting slide: glass 4 is SMV +4.0, drier by the meter than glasses 1-3, while the diary says it tasted softer; the story keeps both and makes it a lesson. The slide also supplied yeast 1801 for the Jurakudai line and **Kyo no Kagayaki rice with yeast 221** for the Koto Origarami. All five specs recorded in `proj_sake_brewery.md`.
+
+**Rulings (Kim).** First person, Kim narrating. Real names for Kim, Nancy, Naomi and Akira Sasaki; the production manager's name invented ("Hayashi-san") and declared in the opening note. Source of record stays in `Projects\sake_brewery` (bucket 2); the venue cross-posts. Venue = kimbridges-fiction.
+
+**Applied without asking, flag for veto:** the standing joint-authorship rule (2026-09-02) -- cover and front matter read "Kim Bridges · with Claude (Anthropic)".
+
+**Infrastructure notes.** (1) The sandbox cannot fetch from `lh3.googleusercontent.com` (proxy 403), so Google Photos album links are read-only from here: the album grid was viewed in the built-in browser to identify frames, and the originals came via a connected folder. (2) `G:` did not mount in `device_bash` this session ("failed to mount"); everything went through stage/commit, 34 originals in five batches under the 50-second budget. (3) Google Fonts are unreachable from the sandbox; the PDF uses local Lora / TeX Gyre Pagella / TeX Gyre Heros / Noto Serif CJK JP, and the web page falls back if fonts.googleapis.com is blocked for a viewer. (4) `session_log.md`, `project_index.md` and `logs/focus_history.md` are CRLF; edited as bytes with line endings preserved (the 2026-07-29 `writeLines` hazard).
+
+**Files written.** `Projects\sake_brewery\three-ways-to-let-go-of-the-rice.html`, `...\Three_Ways_to_Let_Go_of_the_Rice.pdf`; `kimbridges-fiction\pdfs\Three_Ways_to_Let_Go_of_the_Rice.pdf`, `images\Three_Ways_to_Let_Go_of_the_Rice.jpg`, `works\three-ways-to-let-go-of-the-rice.qmd`; PKM: `proj_sake_brewery.md` (new), `project_index.md` (Active Focus, two rows), `logs/focus_history.md` (superseded block filed), `proj_kimbridges_fiction.md` (status, key files, log), this entry. Nothing written outside `G:` except the Cowork sandbox build tree (ephemeral; no bucket 4 or 5 writes).
+
+**Queued.** Kim: `quarto render` in kimbridges-fiction, drag `_site` to Netlify, confirm the flipbook loads. Then set sake_brewery Complete / Not applicable; `pkm_health()` + `pkm_backup()` (the mirror will pick up `Projects\sake_brewery`). Possible sequel, unscheduled: four-voice narration (proj_audio.md).
+
+---
+
+
 ## 2026-09-03 -- *SMART CAR* IS PUBLISHED. THE 23rd DOCUMENT, AND A NEW VENUE CONVENTION
 
 **★★★★★ LIVE at https://kimbridges-documents.netlify.app/smart_car/.** Kim: *"Bingo! It all worked... Thanks, so much, for all the help in turning a bunch of scan sheets into an interesting story, along with unique ways to analyze travel data. It was a big job, one of our longest running projects. But it was well worth it. The collaboration made it happen."* `proj_Smart_Car.md` set **Complete / Not applicable**.

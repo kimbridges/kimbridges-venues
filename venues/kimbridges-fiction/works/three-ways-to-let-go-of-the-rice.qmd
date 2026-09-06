@@ -1,0 +1,13 @@
+---
+title: "Three Ways to Let Go of the Rice"
+subtitle: "A hundred minutes inside the last sake brewery in the old capital of Kyoto, and the one variable nobody prints on the label."
+date: 2026-09-05
+categories: ["Fiction", "Short Story", "Illustrated", "Based on a true visit"]
+image: ../images/Three_Ways_to_Let_Go_of_the_Rice.jpg
+pdf: ../pdfs/Three_Ways_to_Let_Go_of_the_Rice.pdf
+---
+Kim and Nancy arrive at Sasaki Shuzō in Nishijin with a month of reading behind them and a question about water. What they get is a tour of the well, the milled rice, the mold room and the cold tanks, and then a tasting designed like an experiment: three sakes identical in every way but how they left the mash. Real people, real place, real bottles; the dialogue is what the day would have sounded like. Twenty-two photographs and eleven small infographics on how sake is made and what "quality" measures.
+
+Pages: 40
+
+<iframe src="../viewer.html?pdf=Three_Ways_to_Let_Go_of_the_Rice.pdf" width="100%" height="700px" style="border: none; border-radius: 6px;"></iframe>

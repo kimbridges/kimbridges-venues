@@ -1,5 +1,20 @@
 # Focus History and Change Log
 
+<!-- superseded 2026-09-05 -->
+**Active Focus (2026-09-03, CLOSED): "Smart_Car" -- PUBLISHED. The book is live as the 23rd Document and the project is Complete.**
+
+**★★★★★ https://kimbridges-documents.netlify.app/smart_car/** -- Foreword + 14 chapters + Afterword, ~33,300 words, 37 photographs. **0 unresolved cross-references; 276 local `src=` references, 0 missing, walked twice.** `_site` 1092 -> 1182 files, **0 removed**; reconciles at 23 resources / 23 folders / 23 stubs / 23 cards. Kim: *"It all worked... a bunch of scan sheets into an interesting story."*
+
+**★★★ THE COVER IS THE BOOKEND.** EXIF **2014-04-30 08:43:18** against the trip log leg starting **08:50 from Lake San Marcos at odometer 40,682** -- seven minutes before the trip that completed the states and provinces. The last photograph is the same car at the Alberta sign five and a half weeks later.
+
+**★★★ NEW VENUE CONVENTION -- WEB-SIZE THE PHOTOGRAPHS.** `resize_images.R` at 1800 px / q88 took the rendered document **80.1 -> 26.6 MB**, so the venue went 393 -> 420 MB rather than 473. Runs against the SCRATCH BUILD TREE; originals never rewritten. Written up in `style_multichapter_doc.md` Section 6.
+
+**⛔⛔ FINDING 054 AMENDED, AND A PKM ENTRY RETRACTED.** The note saying the ghost `book/_output` "resolved itself overnight" was **WRONG and load-bearing for a day**. A reboot does NOT clear a ghost directory; after one, `file.exists()`, `dir.exists()` and `file.create()` all return TRUE while it stays unreadable. ★ **The probes that do not lie are `file.access()` and `file.info()` on the CONTENTS.** Repointing `output-dir` and a `.quartoignore` both fail -- Quarto's project scan walks the folder regardless. **Build in bucket 4.**
+
+**⚠ CARRIED (all in `deferred.md`):** the phone test on the three surviving `layout-ncol=2` photo panels, which **Kim ruled stay** pending that test; the four-year mainland gap, **still unanswered** and now recorded only there since the source comment was deleted; `C:\temp\Smart_Car_book_2026-09-03` to delete once the deploy is verified live. **✓ The em-dash pass is CLOSED at zero** -- counted by bytes; the carried figure of ~78 was stale. ⚠ `proj_Smart_Car.md` 64.7 KB against 45; `session_log.md` 353 KB against 250.
+
+**NEXT: nothing scheduled.** Kim is testing the book with friends and has called a break. The phone-panel item returns only if that reading is bad.
+
 <!-- superseded 2026-09-03 -->
 **Active Focus (2026-09-02, close): "Smart_Car" -- THE BOOK IS WRITTEN AND KIM HAS READ IT. Joint authorship set. 76 captioned photographs are in and unplaced.**
 

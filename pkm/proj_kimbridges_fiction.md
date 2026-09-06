@@ -1,5 +1,5 @@
 # PROJECT: kimbridges-fiction
-_Last updated: 2026-07-28_
+_Last updated: 2026-09-05_
 _Status: Standing_
 _Focus readiness: Ready_
 
@@ -14,6 +14,12 @@ built through human–AI collaboration. Seeded 2026-06-26 with two pieces:
 (novel-length, 183 pp, cross-posted from the Collections Gallery).
 
 ## Current Status
+**2026-09-05: a THIRD piece is staged and awaits render + deploy** — *Three Ways to Let Go of the Rice*
+(illustrated short story, 40 pp, 3.5 MB; source of record `Projects\sake_brewery`, see
+proj_sake_brewery.md). PDF, thumbnail and stub are in place; Kim runs `quarto render` and drags
+`_site` to the Deploys tab. First native fiction piece since the site opened; the
+`underway\` convention was NOT used — Kim ruled the source stays in Projects\ (bucket 2).
+
 **LIVE 2026-06-26 at https://kimbridges-fiction.netlify.app** — the fifth content
 site is up, with two pieces published as illustrated flipbooks: **My Name Is Nike**
 (25 pp, ~0.6 MB compressed) and **Orbits** (183 pp). The hub (kimbridges.info) was
@@ -45,10 +51,11 @@ same workflow (PDF in pdfs/, thumbnail in images/, stub in works/, render, deplo
 - works/*.qmd — one stub per piece (YAML: title, subtitle, date, categories, image, pdf; body = blurb + Pages + viewer iframe)
   - works/my-name-is-nike.qmd
   - works/orbits.qmd
+  - works/three-ways-to-let-go-of-the-rice.qmd *(added 2026-09-05)*
 - viewer.html — PDF.js two-page-spread flipbook (parameterized via ?pdf=), cloned from kimbridges-stories
 - custom.css — card-thumbnail styling (contain, no crop)
-- pdfs/*.pdf — My_Name_Is_Nike.pdf (19.2 MB), Orbits.pdf (15.9 MB)
-- images/*.{jpg,png} — card thumbnails (My_Name_Is_Nike.jpg = the stark NIKE portrait; Orbits.png = the Orbits cover)
+- pdfs/*.pdf — My_Name_Is_Nike.pdf (0.6 MB compressed), Orbits.pdf (15.9 MB), Three_Ways_to_Let_Go_of_the_Rice.pdf (3.5 MB, added 2026-09-05)
+- images/*.{jpg,png} — card thumbnails (My_Name_Is_Nike.jpg = the stark NIKE portrait; Orbits.png = the Orbits cover; Three_Ways_to_Let_Go_of_the_Rice.jpg = the PDF cover, page 1, added 2026-09-05)
 
 ## Architecture
 - Quarto website (type: website), cosmo theme — consistent with the other four sites
@@ -102,3 +109,13 @@ Ch.5 journal text stays legible) and placed in the **source** pdfs/ so it's dura
 re-renders. (3) Clarified a stale caution: for Netlify **drag-and-drop**, dropping the
 `_site` *folder* is fine (Netlify uses its contents as root); the "contents, not the
 folder" rule was Finding 008's *file-copy* nesting case, not drag-and-drop.
+
+### 2026-09-05 (third piece staged: *Three Ways to Let Go of the Rice*)
+Added the sake-brewery story (proj_sake_brewery.md) by the standing workflow: PDF in pdfs/,
+cover thumbnail in images/, stub in works/ cloned from my-name-is-nike.qmd (categories
+"Fiction", "Short Story", "Illustrated", "Based on a true visit"; Pages: 40). The PDF was
+printed from the story's own HTML through headless Chromium in the Cowork sandbox with a 6x9
+print stylesheet (no Ghostscript available; 3.5 MB as built, photos at 1000 px / q74). Cover
+and front matter carry the joint byline. Kim's remaining steps: `quarto render`, drag `_site`
+to the kimbridges-fiction Deploys tab, verify the viewer loads the PDF. The venue's
+`underway\` convention for native fiction was not used this time (source stays in Projects\).
