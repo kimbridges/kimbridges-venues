@@ -1,8 +1,7 @@
 # PROJECT: sake_brewery
 _Last updated: 2026-09-05_
-_Status: Active_
-_Focus readiness: Ready_
-_Tags: finishing_
+_Status: Complete_
+_Focus readiness: Not applicable_
 
 ## Type
 Content project — illustrated fiction ("based on a true visit"), with a series of small infographics. First native fiction piece built for the kimbridges-fiction venue.
@@ -11,7 +10,7 @@ Content project — illustrated fiction ("based on a true visit"), with a series
 A first-person narrative, *Three Ways to Let Go of the Rice*, built from Kim and Nancy's 2025-05-19 Wabunka tour of Sasaki Shuzō (Nishijin, Kyoto — the last sake brewery in Rakuchū). The dialogue is reconstructed, not transcribed: it is what the four people (Kim, Nancy, the production manager, the interpreter Naomi) would have said given the background reading Kim assembled before the trip. The educational aim is to show how sake production maps onto the scale of sake quality, with the brewery's own three-way extraction tasting (drip / centrifuge / press, everything else held constant) as the climax. Deliverable: an illustrated piece (22 photographs + 11 infographics, ~6,150 words) published to the Fiction site as a flipbook PDF, with the web page as a companion.
 
 ## Current Status
-**Story COMPLETE and approved by Kim 2026-09-05** ("It is just like what happened on that day"). Built in one Cowork session as a deliberate Claude Fable 5.1 trial (the first piece of work on this model; the PKM was kept closed until the experiment succeeded). Web version published as a Claude artifact and saved as a self-contained HTML (photos embedded) beside the images. **Fiction-site build DONE 2026-09-05:** flipbook PDF (40 pp, 6×9 in, 3.5 MB) in `pdfs/`, cover thumbnail in `images/`, stub in `works/`. Cover and front matter carry the standing joint byline ("Kim Bridges · with Claude (Anthropic)"). **Waiting on Kim: `quarto render` + drag `_site` to Netlify**, then this file goes Complete / Not applicable.
+**Story COMPLETE and approved by Kim 2026-09-05** ("It is just like what happened on that day"). Built in one Cowork session as a deliberate Claude Fable 5.1 trial (the first piece of work on this model; the PKM was kept closed until the experiment succeeded). Web version published as a Claude artifact and saved as a self-contained HTML (photos embedded) beside the images. **Fiction-site build DONE 2026-09-05:** flipbook PDF (40 pp, 6×9 in, 3.5 MB) in `pdfs/`, cover thumbnail in `images/`, stub in `works/`. Cover and front matter carry the standing joint byline ("Kim Bridges · with Claude (Anthropic)"). **PUBLISHED 2026-09-05 (same session): Kim rendered and deployed; live at https://kimbridges-fiction.netlify.app/works/three-ways-to-let-go-of-the-rice.html, reachable from kimbridges.info → Fiction.** Complete / Not applicable.
 
 ## Locations
 - Source of record: `G:\My Drive\Projects\sake_brewery\` (bucket 2, Kim's ruling 2026-09-05; the venue only cross-posts the finished PDF)
@@ -42,9 +41,7 @@ A first-person narrative, *Three Ways to Let Go of the Rice*, built from Kim and
 - proj_audio.md — a possible sequel: four-voice narration (Kim, Nancy, Hayashi-san, Naomi) is the obvious TTS follow-on; not scheduled.
 
 ## Next Steps
-1. ~~Build the flipbook PDF, cover thumbnail and works/ stub; write them into `kimbridges-fiction`.~~ Done 2026-09-05.
-2. Kim: `quarto render` in `G:\My Drive\kimbridges-fiction`, drag `_site` to the kimbridges-fiction Netlify Deploys tab, verify the PDF loads in the viewer.
-3. Set Status Complete / Not applicable once live; run `pkm_health()` so the works register picks up the third Fiction piece.
+None. Published 2026-09-05; the deliverable is the live piece. Real-but-not-now items (none yet) would go to `deferred.md`. Possible follow-ons, unscheduled and Kim's call: the same method applied to other trip stories; a four-voice narration (proj_audio.md).
 
 ## Collaborators / Dependencies
 Nancy (co-protagonist; the labeling contest winner). Sasaki Shuzō staff and Wabunka's interpreter, as characters. No external blockers.
@@ -56,3 +53,6 @@ None.
 ## Log
 ### 2026-09-05
 Project created at intake (Mechanism 1), after the fact: the whole piece was drafted, illustrated and approved in this session with the PKM deliberately closed as a Fable 5.1 experiment. Kim opened the PKM once the experiment succeeded. Inputs: `brewery_visit.txt`, seven Google Docs, the Google Photos album (34 originals staged from `Projects\sake_brewery\images`). Two corrections found by reading the photographs rather than the notes (koji-room climate; the SMV of glass 4, which the story turns into a lesson). One photo fix from Kim (bottles-after-labeling moved to §9; final pair dropped). Rulings: source of record stays in `Projects\sake_brewery`; venue is kimbridges-fiction; real names for Kim, Nancy, Naomi, Akira Sasaki; manager's name invented and declared.
+
+### 2026-09-05 (later — PUBLISHED; Complete)
+Kim rendered and deployed the Fiction site; the piece is live as its third work. Kim's close: "It was an experiment, and it was very successful... This shows there is a new, and maybe better, way to produce stories that document our past trips." Joint byline confirmed by Kim. Status set Complete / Not applicable (deployed = Complete, per the 2026-07-28 rule). Close: `pkm_health()` re-run and `pkm_backup()` pushed (verified against the remote).

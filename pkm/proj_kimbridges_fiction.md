@@ -14,10 +14,10 @@ built through human–AI collaboration. Seeded 2026-06-26 with two pieces:
 (novel-length, 183 pp, cross-posted from the Collections Gallery).
 
 ## Current Status
-**2026-09-05: a THIRD piece is staged and awaits render + deploy** — *Three Ways to Let Go of the Rice*
+**2026-09-05: a THIRD piece is LIVE** — *Three Ways to Let Go of the Rice*
 (illustrated short story, 40 pp, 3.5 MB; source of record `Projects\sake_brewery`, see
-proj_sake_brewery.md). PDF, thumbnail and stub are in place; Kim runs `quarto render` and drags
-`_site` to the Deploys tab. First native fiction piece since the site opened; the
+proj_sake_brewery.md). Kim rendered and deployed the same evening; live at
+https://kimbridges-fiction.netlify.app/works/three-ways-to-let-go-of-the-rice.html. First native fiction piece since the site opened; the
 `underway\` convention was NOT used — Kim ruled the source stays in Projects\ (bucket 2).
 
 **LIVE 2026-06-26 at https://kimbridges-fiction.netlify.app** — the fifth content
@@ -119,3 +119,6 @@ print stylesheet (no Ghostscript available; 3.5 MB as built, photos at 1000 px /
 and front matter carry the joint byline. Kim's remaining steps: `quarto render`, drag `_site`
 to the kimbridges-fiction Deploys tab, verify the viewer loads the PDF. The venue's
 `underway\` convention for native fiction was not used this time (source stays in Projects\).
+
+### 2026-09-05 (later — third piece LIVE)
+Kim rendered and drag-deployed; the piece is live. Three works on the venue: Nike, Orbits, *Three Ways to Let Go of the Rice*.

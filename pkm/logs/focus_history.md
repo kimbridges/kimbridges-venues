@@ -1,5 +1,16 @@
 # Focus History and Change Log
 
+<!-- superseded 2026-09-05 (same day; the staged block) -->
+**Active Focus (2026-09-05): "sake_brewery" -- *Three Ways to Let Go of the Rice* is WRITTEN, ILLUSTRATED, APPROVED, and staged on the Fiction site. Kim renders and deploys.**
+
+**★★★★ NEW PROJECT, AND THE FIRST PIECE OF WORK ON CLAUDE FABLE 5.1.** Kim ran the session with the PKM deliberately closed as an experiment; he opened it once the experiment succeeded. Kim: *"Otherwise, this is perfect!!! It is just like what happened on that day."* A first-person "based on a true visit" story of the 2025-05-19 Sasaki Shuzō tour in Nishijin: ~6,150 words, 12 sections, **22 photographs + 11 small infographics**, dialogue among Kim, Nancy, the production manager and the interpreter. Web version (self-contained HTML, photos embedded) beside the images in `Projects\sake_brewery`; Claude artifact of the same. Intake done (`proj_sake_brewery.md`).
+
+**★★★ THE PHOTOGRAPHS CORRECTED THE NOTES TWICE.** The brewery's koji-room sign reads **above 35 °C / under 60% RH** where the diary had 40 °F / 35% RH; the tasting slide gives glass 4 as **SMV +4.0** where the diary said it tasted less dry -- the story keeps both and makes the contradiction the lesson (the meter weighs density; aroma and added alcohol change perceived sweetness). Every spec of the five sakes is now settled from the slide photo and recorded in the proj file so nobody re-derives it.
+
+**★★ FICTION-SITE BUILD DONE FROM THE SANDBOX (no R, no Quarto needed).** `pdfs/Three_Ways_to_Let_Go_of_the_Rice.pdf` (40 pp, 6×9 in, 3.5 MB, Chromium print from the same HTML with a print stylesheet), `images/Three_Ways_to_Let_Go_of_the_Rice.jpg` (cover = page 1), `works/three-ways-to-let-go-of-the-rice.qmd` (stub cloned from Nike's). **Joint authorship applied per the standing rule:** cover and front matter read "Kim Bridges · with Claude (Anthropic)". Kim may veto; a byline change is a one-line rebuild.
+
+**NEXT (Kim):** `quarto render` in `G:\My Drive\kimbridges-fiction`, drag `_site` to the kimbridges-fiction Deploys tab, open the piece and confirm the flipbook loads the PDF. Then set `proj_sake_brewery.md` Complete / Not applicable and run `pkm_health()` so the register shows three Fiction pieces. **Possible sequel, not scheduled:** four-voice audio narration (proj_audio.md).
+
 <!-- superseded 2026-09-05 -->
 **Active Focus (2026-09-03, CLOSED): "Smart_Car" -- PUBLISHED. The book is live as the 23rd Document and the project is Complete.**
 
