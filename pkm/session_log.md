@@ -12,6 +12,29 @@ Mechanism 4.
 ---
 
 
+## 2026-09-13 -- NEW PROJECT: *icons* -- Hawai‘i's icons as a register; 34 rows in one sitting, and the classification broke and was repaired four times
+
+**Active focus at start:** sake_brewery, CLOSED (published 2026-09-05). **Active focus at end: icons, OPEN (Active / Exploring).** Session-start reads done (card, index, proj_PKM); TODAY bound 2026-09-13.
+
+**What happened.** Kim opened a new project, *icons*, to characterize how people think about Hawai‘i through its icons. He proposed "icon = visual metaphone"; discussion moved the definition to the referent ("something between a metaphone and a metaphor") and settled the operating test: **a Hawai‘i icon is an object, place, sound, word or practice that a person with NO caption resolves to "Hawai‘i" and to nothing else.** Three goals in sequence: register -> rendered symbol family -> the story of each; a theme ("if you come to Hawai‘i you should encounter each of these") and a testable claim (highest icon density anywhere). Intake done (Mechanism 1): `proj_icons.md`, index row, Active Focus block; the superseded sake_brewery block moved verbatim to `logs/focus_history.md`. Track: R on Kim's machine. `Projects\icons` created through the R bridge (probed three ways, Finding 054) with `icon_register.csv` + `README.md` codebook.
+
+**The register: 34 rows by session end**, argued in batches of three with a ruling on each. 20 pass, 12 borderline, 2 deliberate fails (Hawaiian pizza, wiki) kept because they define boundaries. Origins: native_hawaiian 9, missionary_monarchy 5, local 5, external 4, territorial_tourist 4, natural 3, plantation_immigrant 3, military 1. Channels: visual 16, gustatory 7, auditory 4, lexical 4, kinetic 3.
+
+**The classification broke four times and each break became a rule (all Kim-ruled):**
+1. **`external`** added to origin -- made elsewhere and attributed to or named for Hawai‘i (Hawaiian pizza, tiki, grass skirt, wiki). Kim: keep it, the appropriation class is interesting.
+2. **`missionary_monarchy`** (1820-1893) added -- muumuu, Kamehameha statue, ‘Iolani Palace, the flag, *Aloha ‘Oe*. Kim: qualifies, important to local people.
+3. **`caption_test` split into `distinct` + `recognized`** after loco moco: maximally distinctive, barely recognized outside the islands. The old column conflated distinctiveness with recognition. All rows recoded.
+4. **`local`** added -- the fused post-plantation multi-ethnic culture (shaka, plate lunch, loco moco, Spam musubi, slippers). Kim: yes.
+Plus `olfactory` added to channel, PROVISIONAL (plumeria's strongest key is scent).
+
+**Patterns worth carrying.** (a) The borderlines all fail the same way: a stronger confusable that Hawai‘i once owned and lost -- surfboard to California, steel guitar to Nashville, poke bowl to fast-casual, pineapple to "tropics", tiki to Polynesian pop. **The density claim may need restating as "most icons ORIGINATED here" vs "still exclusively OWNED here", and the gap is the finding.** (b) Outsider/resident pairs on one referent recur (hula girl vs halau; grass skirt vs pa‘u; tiki vs ki‘i; poi as joke vs Haloa) -- a `pairs_with` column is likely. (c) `audience` agrees with `recognized` on 33/34 and is redundant; drop it when Kim rules. (d) Natural-origin plants are all borderline (pan-tropical); landforms pass cleanly.
+
+**Written:** `proj_icons.md` (new), `project_index.md` (Active Focus + row), `logs/focus_history.md` (superseded block), `Projects\icons\icon_register.csv` (34 rows), `Projects\icons\README.md` (codebook). Index/proj/log files via the device bridge, CRLF preserved and verified by content after a fresh stage; register and codebook via the R bridge, read back after every write.
+
+**Carried:** nothing new to `deferred.md`. The commit-side stale-copy finding still awaits a number in `pkm_findings.md`.
+
+**Next:** a few more candidate batches (resident quadrant is thin: pidgin, Merrie Monarch, malasadas, paniolo, Hokule‘a, nene), then the first symbol -- Diamond Head, the single-line profile.
+
 ## 2026-09-05 -- A NEW PROJECT WRITTEN END-TO-END WITH THE PKM CLOSED: *THREE WAYS TO LET GO OF THE RICE* (sake_brewery); FIRST SESSION ON CLAUDE FABLE 5.1
 
 **Active focus at start:** Smart_Car, CLOSED (published 2026-09-03; "nothing scheduled"). Kim opened the session as a deliberate experiment on the new model with the PKM kept closed, then opened the PKM once the result was approved. New focus: **sake_brewery -> kimbridges-fiction.**

@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-09-05 22:38 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-09-13 11:29 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -9,7 +9,7 @@ _Generated 2026-09-05 22:38 by pkm_health.R. Regenerate; do not edit._
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 4
 - **Files over size budget:** 6
-- **Active Focus block:** 1.5 KB (budget 6)
+- **Active Focus block:** 1.6 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 6
 - **Legacy pages awaiting account deletion:** 58
@@ -36,7 +36,7 @@ None.
 
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
-| session_log.md | REFERENCE | 357.2 | 250 | 107.2 | FALSE |
+| session_log.md | REFERENCE | 361.2 | 250 | 111.2 | FALSE |
 | proj_Smart_Car.md | PROJECT |  65.9 |  45 |  20.9 | TRUE |
 | deferred.md | REFERENCE | 210.6 | 200 |  10.6 | FALSE |
 | proj_seasonality.md | PROJECT |  51.6 |  45 |   6.6 | TRUE |
@@ -47,7 +47,7 @@ None.
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 1.5 | 6 | -4.5 |
+| 8 | 1.6 | 6 | -4.4 |
 
 ## Venues without a source repo
 
@@ -74,18 +74,18 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| Smart_Car_book_2026-09-02 |  3.0 | 174 | FALSE |
-| Smart_Car_book_2026-09-03 |  2.0 | 151 | FALSE |
-| sc_imgtest |  2.0 |  16 | FALSE |
-| smartcar_docs_20260821 | 15.2 |   3 | TRUE |
-| ch4_20260829 |  7.1 |   0 | FALSE |
-| chateau_2026-08-29 |  7.3 |   0 | FALSE |
-| creamsicle_clean_20260828 |  8.0 |   0 | FALSE |
-| pkm_edits_20260811 | 25.5 |   0 | TRUE |
-| pkm_snapshots | 34.1 |   0 | TRUE |
-| smartcar_fuelfix_20260817 |  7.1 |   0 | FALSE |
-| timelapse | 23.0 |   0 | TRUE |
-| venuemirror_clone_2026-08-03 | 34.3 |   0 | TRUE |
+| Smart_Car_book_2026-09-02 | 10.5 | 174 | FALSE |
+| Smart_Car_book_2026-09-03 |  9.5 | 151 | FALSE |
+| sc_imgtest |  9.6 |  16 | FALSE |
+| smartcar_docs_20260821 | 22.8 |   3 | TRUE |
+| ch4_20260829 | 14.6 |   0 | TRUE |
+| chateau_2026-08-29 | 14.8 |   0 | TRUE |
+| creamsicle_clean_20260828 | 15.6 |   0 | TRUE |
+| pkm_edits_20260811 | 33.1 |   0 | TRUE |
+| pkm_snapshots | 41.6 |   0 | TRUE |
+| smartcar_fuelfix_20260817 | 14.6 |   0 | TRUE |
+| timelapse | 30.5 |   0 | TRUE |
+| venuemirror_clone_2026-08-03 | 41.8 |   0 | TRUE |
 
 ## Legacy pages by platform
 
@@ -101,4 +101,4 @@ None.
 None.
 
 ---
-_Ran in 69 s._
+_Ran in 89.6 s._

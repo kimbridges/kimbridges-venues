@@ -1,5 +1,16 @@
 # Focus History and Change Log
 
+<!-- superseded 2026-09-13 (icons opened; sake_brewery focus retired) -->
+**Active Focus (2026-09-05, CLOSED): "sake_brewery" -- PUBLISHED. *Three Ways to Let Go of the Rice* is live on the Fiction site as its third piece; the project is Complete.**
+
+**★★★★★ LIVE at https://kimbridges-fiction.netlify.app/works/three-ways-to-let-go-of-the-rice.html** (kimbridges.info → Fiction). Written, illustrated, built and deployed in ONE session -- the first work on Claude Fable 5.1, run as an experiment with the PKM closed until it succeeded. ~6,150 words, 22 photographs, 11 small infographics, 40-page flipbook. Kim: *"It was an experiment, and it was very successful. It was a pretty complex editing and assembly job. This shows there is a new, and maybe better, way to produce stories that document our past trips."* Joint byline confirmed: *"I'm glad you're listed as the co-author."*
+
+**★★★ THE METHOD IS THE FINDING.** Diary entry + pre-trip background docs + the photo album → a first-person "based on a true visit" story with reconstructed dialogue, the photographs read as PRIMARY SOURCES (two corrected the diary), small infographics one concept each, one HTML that yields both the web page and the 6×9 print PDF. This is a candidate template for the other Kyoto legs and the trip logs (proj_Trip_Log / proj_storylines). Not scheduled; Kim decides.
+
+**⚠ CARRIED (in `deferred.md`):** none new. The commit-side stale-copy finding (session_log 2026-09-05) awaits a number in `pkm_findings.md`. `C:/temp` scratch 344 MB / 12 folders still flagged by `pkm_health()`.
+
+**NEXT: nothing scheduled.** Kim returns tomorrow.
+
 <!-- superseded 2026-09-05 (same day; the staged block) -->
 **Active Focus (2026-09-05): "sake_brewery" -- *Three Ways to Let Go of the Rice* is WRITTEN, ILLUSTRATED, APPROVED, and staged on the Fiction site. Kim renders and deploys.**
 
