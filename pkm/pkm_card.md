@@ -46,6 +46,7 @@ headings, known strings), never by reading size.
 | write a `grep` to locate a line | 022 -- `fixed=TRUE` ignores `^`; ALWAYS check the match count before using the index |
 | push, or trust a tool's "success" | **028** -- verify against the REMOTE, not the return value |
 | **see a TIMEOUT, or check that a job ran** | **031** -- a bridge timeout is NOT a failure; READ the function, then check the artifact it actually writes |
+| **commit a revised file to `G:` a SECOND time** | **055** -- the bridge re-sends the FIRST version under a fresh mtime; copy to a NEW staged name, then md5 through R |
 | commit anything to a repo | **027** -- `pkm_secret_scan()` first, with `stopifnot` |
 | create a folder or scratch tree | **026** -- `C:\temp` ONLY; the bridge cannot rmdir |
 | conclude a document has NO SOURCE | **025** -- read the PDF's producer string first |

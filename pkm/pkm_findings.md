@@ -2306,3 +2306,21 @@ exactly the kind of half-signal that would mislead anyone checking the return va
 ⛔ **And it poisons the whole PROJECT directory, not just the output path.** Two workarounds were tried and both failed, because Quarto's own project scan walks the folder: (1) pointing `output-dir` at a different, real directory -- the error simply moved from `ensureDirSync` to `createWalkEntrySync` inside `expandGlobSync`; (2) a `.quartoignore` listing `_output/` -- ignored entirely. **The only route is still bucket 4:** copy the project to `C:\temp\<name>_<date>`, build there, copy the output back.
 
 ★★ **The cheap version of the whole finding: to test a directory, READ it. Do not ask whether it exists.**
+
+## Finding 055 -- `device_commit_files` CAN WRITE THE PREVIOUS VERSION OF A STAGED PATH, UNDER A FRESH MTIME (2026-09-13)
+
+**Observed three times in one day, with a byte-level reproduction the third time.** When a file in the
+container's outputs folder is edited and committed AGAIN to the same `G:` path, the commit reports `written`
+and the destination's mtime updates, but the BYTES on `G:` are the version committed the FIRST time
+(`proj_icons.md`: intended 6,826 B / md5 d5c9..., landed 6,204 B / md5 b188... = the earlier commit, fresh mtime).
+This is the 2026-09-05 'commit-side stale copy' that was waiting for a number. The cache is on the
+commit side, keyed by the STAGED path, not on Drive: reading through the R bridge, which is ground truth
+for `G:`, returned the old bytes, so it is not a read-lag illusion (Findings 005/013 are the read-side twins).
+
+**Rule.** A path committed once is committed FOREVER as that content. To commit a revised file:
+1. copy it to a NEW staged filename (`proj_icons_20260913b.md`) and commit that to the same `G:` destination;
+2. verify by CONTENT through the R bridge -- `tools::md5sum()` against the container's md5, or a known new
+   string -- never by mtime or size. **A fresh mtime is not evidence the bytes changed** (this finding's whole point).
+`force = TRUE` does NOT bypass the cache; it only skips the mtime guard.
+
+**Cheap version: never commit the same staged filename twice. Date-suffix the copy, commit, md5 through R.**

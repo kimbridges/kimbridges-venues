@@ -12,6 +12,26 @@ Mechanism 4.
 ---
 
 
+## 2026-09-13 (evening) -- icons: THE REGISTER REACHES 40, THE VISUAL DESIGN IS SETTLED, AND FINDING 055 GETS ITS NUMBER
+
+**Active focus at start and end:** icons, OPEN (Active / Ready). Second sitting of the day (TODAY bound 2026-09-13 HST; UTC was already the 14th).
+
+**Register to the cap.** The six queued resident icons added (pidgin, Merrie Monarch, malasadas, paniolo, Hokule‘a, nene) -> **40 rows**: 24 pass, 14 borderline, 2 deliberate fails. Recognized: both 26, resident 6, outsider 5, few 3. The quadrants now mean something: high-distinct / low-recognition is the resident treasure the "encounter each one" theme exists to promote; outsider-only is the appropriation set.
+
+**Housekeeping (Kim: "easy to forget the mundane tasks").** `audience` dropped (agreed with `recognized` on 39/40; pre-drop snapshot in `C:\temp\icons_2026-09-13`), `pairs_with` added (hula <-> Merrie Monarch, wa‘a <-> Hokule‘a, grass skirt <-> hula; tiki, poke, poi noted in-row). `olfactory` stays provisional until a row uses it.
+
+**★ FINDING 055 -- the commit-side stale copy, reproduced byte-for-byte.** Committing a revised `proj_icons.md` from the SAME staged filename reported `written` and refreshed the mtime, but the bytes on `G:` were the FIRST version (6,204 B / md5 b188... vs intended 6,826 B / md5 d5c9...), read through the R bridge. Third occurrence today; `force = TRUE` does not bypass it. **Rule: never commit the same staged filename twice -- date-suffix a copy, commit, md5 through R.** Written to `pkm_findings.md`; one-line trigger added to the card (now 6.4 KB vs 6 KB budget -- `pkm_health()` will flag it; move older material out, do not shrink the row). All later commits this session used fresh names and were md5-verified.
+
+**Visual design, settled jointly.** Kim showed a flat poster-style rendering of Diamond Head Lighthouse made from his own photograph -- the Matson / tourist-bureau dialect, adopted knowingly, which turns the kitsch risk into a method. Agreed: **two tiers.** Posters generated from Kim's photographs via the OpenAI API driven from R (the register builds the prompt; `confusable` is the do-not clause; fallback allowed, the agent-driving lesson is a goal in itself), and vector glyphs as SVG under one grammar. Kim: images come from his photographs by intention, so a visitor can say *"I can take that picture, too."* Objective updated with that line.
+
+**Photo supply is the constraint.** `photo_log.csv` created as the shot list (40 rows, stand-in subjects for the 12 non-visual icons; `photos/`, `posters/`, `glyphs/` folders). Kim filed two Diamond Head photographs (hotel view, jetty view; 2013 and June 2026) -> 1 `have`, 39 `need`. His archive is mid-migration (QNAP -> Lexar SSD). The project will run in spurts; the PKM carries it between them.
+
+**Written:** `icon_register.csv` (40 rows, 15 cols), `photo_log.csv` (new), `README.md` (codebook extended), `pkm_findings.md` (Finding 055), `pkm_card.md` (one row), `proj_icons.md`, this entry, the index block. Register/log/findings/card via the R bridge, read back; proj/index/session_log via the device bridge under FRESH staged names, md5-verified through R.
+
+**Carried:** nothing new to `deferred.md`. The 2026-09-05 stale-copy note is now CLOSED by Finding 055. Card over budget by 0.4 KB (flag expected).
+
+**Next:** the first poster (R function: register row + photograph -> OpenAI image edit) on Diamond Head, and the first three glyphs (Diamond Head, Arizona Memorial span, Kamehameha arm) to test one grammar across landform, building, figure.
+
 ## 2026-09-13 -- NEW PROJECT: *icons* -- Hawai‘i's icons as a register; 34 rows in one sitting, and the classification broke and was repaired four times
 
 **Active focus at start:** sake_brewery, CLOSED (published 2026-09-05). **Active focus at end: icons, OPEN (Active / Exploring).** Session-start reads done (card, index, proj_PKM); TODAY bound 2026-09-13.

@@ -18,7 +18,10 @@ by a human. Three goals in sequence: (1) identify and classify the
 Hawai‘i-unique icons in a register; (2) render each as a visual symbol, built
 as a family under one visual grammar so the set discriminates; (3) tell the
 story of each -- who made it an icon, when, and for whom. A theme beneath the
-project: if you come to Hawai‘i you should encounter each of these. A testable
+project: if you come to Hawai‘i you should encounter each of these -- and
+because every image in the work is made from one of Kim's own photographs, a
+visitor can look at any of them and say "I can take that picture, too." The
+encounter list is a checklist a person can carry with a camera. A testable
 claim at the center: Hawai‘i likely has the highest density of such icons of
 anywhere, because it combines three things that rarely co-occur -- an isolated
 indigenous culture whose lexicon English borrowed wholesale, a century of
@@ -27,8 +30,20 @@ with a unique landscape and one globally known historical event.
 
 ## Current Status
 Opened 2026-09-13 as Active Focus (replacing the closed sake_brewery focus).
-**Register at 34 rows after the opening session** (20 pass, 12 borderline, 2
-deliberate fails kept as boundary cases: Hawaiian pizza, wiki). The test is
+**Register at 40 rows -- the first-pass cap -- as of 2026-09-13** (24 pass, 14
+borderline, 2 deliberate fails kept as boundary cases: Hawaiian pizza, wiki).
+Housekeeping done the same day: `audience` dropped, `pairs_with` added.
+**Visual design settled (evening 2026-09-13), joint decision:** two tiers.
+(1) **Posters** -- flat, simplified poster-style illustrations in the lineage of
+the 1930s-50s Matson / tourist-bureau posters (the dialect the icon-makers used,
+adopted knowingly), generated from Kim's photographs via the OpenAI API driven
+from R; the register builds the prompt (`icon`, `encounter`, `story_lead`) and
+`confusable` is the do-not clause; fallback allowed, the learning about driving
+another agent from R is itself a goal. (2) **Glyphs** -- vector symbols under one
+grammar, drawn as SVG so stroke, grid and palette are shared across the set.
+**Photo supply is the constraint:** `photo_log.csv` is the shot list (40 rows; 1
+`have` -- Diamond Head, two perspectives, 2013 and June 2026 -- 39 `need`).
+Kim's archive is mid-migration (QNAP -> Lexar SSD). Work proceeds in spurts. The test is
 scored as two columns: `distinct` (uncaptioned, resolves to Hawai‘i and
 nothing else) and `recognized` (outsider / resident / both / few). **Two-axis
 classification, as amended by Kim's rulings during the session:**
@@ -48,8 +63,11 @@ tiki -> Polynesian pop). The density claim may need restating as *originated
 here* vs *still exclusively owned here*, and the gap is the finding.
 Outsider/resident pairs on one referent recur (hula girl vs halau, grass skirt
 vs pa‘u, tiki vs ki‘i, poi as joke vs Haloa) -- a `pairs_with` column is likely.
-`audience` agrees with `recognized` on 33/34 and is redundant. Natural-origin
-plants are all borderline (pan-tropical); landforms pass cleanly.
+Natural-origin plants are all borderline (pan-tropical); landforms pass cleanly.
+**The quadrants mean something:** high-distinct / low-recognition is the resident
+treasure (pidgin, Merrie Monarch, loco moco, slack key, nene) -- the set the
+"encounter each one" theme exists to promote; outsider-only is the appropriation
+set (mai tai, pineapple, tiki, grass skirt, wiki).
 
 **Risks written in at intake.** Scope: the register will want to grow without
 limit -- the caption-free test is the gate; cap the first pass (~40).
@@ -62,16 +80,21 @@ that tension deliberately.
 
 ## Locations
 - Source of record: G:\My Drive\Projects\icons (bucket 2) -- created 2026-09-13
-- Data: G:\My Drive\Projects\icons\icon_register.csv (34 rows)
+- Data: G:\My Drive\Projects\icons\icon_register.csv (40 rows)
 - Docs/output: venue undecided (documents vs stories vs collections)
 - GitHub: not yet
 
 ## Key Files
 - icon_register.csv -- one row per icon; 15 columns (id, icon, channel, origin,
-  audience, distinct, recognized, confusable, encounter, era, made_by,
+  distinct, recognized, pairs_with, confusable, encounter, era, made_by,
   story_lead, symbol_status, notes, added)
 - README.md -- the codebook: column definitions, the test, the axis values,
   the gate (no row without a `distinct` judgement; first pass capped ~40)
+- photo_log.csv -- the SHOT LIST: one row per icon; photo_status (have /
+  candidate / need / not_photographable), photo_file, subject (stand-in
+  subjects set for the 12 non-visual icons), where_when, poster_status,
+  glyph_status
+- photos/ (Kim's source photographs), posters/ (generated), glyphs/ (SVG)
 
 ## Related Projects
 - proj_checklists.md / proj_checklistr.md -- the "encounter each one" theme is
@@ -80,14 +103,16 @@ that tension deliberately.
   candidate template for the per-icon stories.
 
 ## Next Steps
-1. A few more candidate batches; the resident quadrant is thin (5 of 34):
-   pidgin, Merrie Monarch, malasadas, paniolo, Hokule‘a, nene are queued.
-2. Rulings pending: drop `audience`; add `pairs_with`; confirm `olfactory`.
-3. Decide the density metric and comparators; run the borrowed-word count
-   first (aloha, hula, lei, ukulele, luau, wiki, kahuna, mahalo, tiki, poi...).
-4. Settle the visual grammar for the symbol family, then render Diamond Head
-   first (the single-line profile), then the Arizona Memorial span, the
-   Kamehameha arm, the plate-lunch tray, the shave-ice cone.
+1. **First poster:** an R function taking a register row + a photograph ->
+   OpenAI image edit in the poster style; run on Diamond Head from
+   `photos/diamondhead_*.jpg`. Review against `confusable`.
+2. **First glyphs:** Diamond Head, the Arizona Memorial span, the Kamehameha
+   arm as SVG, to test whether one grammar holds across landform, building
+   and figure.
+3. Keep `photo_log.csv` current; shoot from the `need` rows in spurts.
+4. Decide the density metric and comparators; borrowed-word count first.
+5. Second-pass candidates wait (ki'i, 'ohi'a lehua, Waimea Canyon, Na Pali,
+   the conch, the falsetto). `olfactory` provisional until a row uses it.
 
 ## Collaborators / Dependencies
 None.
@@ -109,3 +134,15 @@ classification broke four times and each break became a Kim-ruled rule:
 `external`, `missionary_monarchy`, the `distinct`/`recognized` split (after
 loco moco), and `local`. Session closed with Kim taking a break; resume with
 more candidates, then symbols.
+Second sitting (same HST day): the six queued resident icons added (pidgin,
+Merrie Monarch, malasadas, paniolo, Hokule'a, nene) -> 40 rows, the cap.
+Housekeeping: `audience` dropped (39/40 agreement with `recognized`; snapshot
+in C:\temp\icons_2026-09-13), `pairs_with` added with the four explicit pairs.
+Evening: Kim showed a flat poster-style rendering of Diamond Head Lighthouse
+made from his own photograph and proposed the OpenAI API (driven from R) for
+image generation; agreed as a joint design: posters generated from Kim's
+photographs + vector glyphs. Finding 055 written (commit-side stale copy, now
+reproduced byte-for-byte) and a card row added. `photo_log.csv` created as the
+shot list with photos/, posters/, glyphs/ folders; two Diamond Head photographs
+filed. Objective updated with the visitor angle. Next: first poster + first
+three glyphs.
