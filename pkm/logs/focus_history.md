@@ -1,5 +1,16 @@
 # Focus History and Change Log
 
+<!-- superseded 2026-09-22 (icons paused awaiting photographs; trilogy round two opened) -->
+**Active Focus (2026-09-13, OPEN): "icons" -- Hawai‘i's icons as a register (40 rows, the first-pass cap), then a symbol family, then stories. Active / Ready.**
+
+**Design settled 2026-09-13 (evening), jointly.** Two visual tiers: **posters** (flat Matson-dialect illustrations generated from Kim's own photographs via the OpenAI API driven from R; the register builds the prompt, `confusable` is the do-not clause) and **glyphs** (vector SVG under one grammar). Every image starts from a photograph of Kim's so a visitor can say *"I can take that picture, too."* **Photo supply is the constraint:** `photo_log.csv` is the shot list -- 1 have (Diamond Head, two views), 39 need; archive mid-migration (QNAP -> Lexar SSD). Register: 24 pass / 14 borderline / 2 deliberate fails; `audience` dropped, `pairs_with` added. **Finding 055 written** (commit-side stale copy, reproduced): never commit the same staged filename twice; md5 through R. Source of record `Projects\icons` (bucket 2).
+
+**Previous focus (2026-09-05, CLOSED): sake_brewery -- PUBLISHED.** Block preserved in `logs/focus_history.md`.
+
+**⚠ CARRIED (in `deferred.md`):** none new. The 2026-09-05 stale-copy note is CLOSED by Finding 055. `pkm_card.md` is 0.4 KB over budget (the 055 row) -- move older material to findings rather than cut the trigger. `C:/temp` scratch still flagged.
+
+**NEXT: first poster (R -> OpenAI image edit) on Diamond Head; first three glyphs as SVG.**
+
 <!-- superseded 2026-09-13 (icons opened; sake_brewery focus retired) -->
 **Active Focus (2026-09-05, CLOSED): "sake_brewery" -- PUBLISHED. *Three Ways to Let Go of the Rice* is live on the Fiction site as its third piece; the project is Complete.**
 

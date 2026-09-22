@@ -11,6 +11,24 @@ Mechanism 4.
 
 ---
 
+## 2026-09-22 -- TRILOGY ROUND TWO: *Baselines, Deviations & Spans* finds its scale; icons paused for photographs
+
+**Active focus at start:** icons, OPEN (Active / Ready). **At end:** the trilogy, round two (capture only); icons PAUSED (Active / Blocked on photographs). Session-start reads done (card, index, proj_PKM); TODAY bound 2026-09-22 HST. First session after a nine-day break (family priorities).
+
+**Session start.** The local Filesystem MCP connector failed every call (JSON-schema dialect error: draft-07 vs 2020-12) -- worked around through the device bridge and the R bridge. device_bash cannot mount `G:`, as the card says. Staged-copy staleness (Finding 013) was flagged at start because nine days had passed; Kim confirmed nothing had happened in between.
+
+**Icons paused (Kim).** He needs to find and take new photos. `proj_icons.md` Ready -> Blocked, blocker named; next steps unchanged.
+
+**The three themes located.** Kim asked whether the PKM held a record of three themes he wanted to pursue. Found through `priorities.md` (★ NEW, captured 2026-08-11) -> `ideas_three_documents.md`, untouched since. The capture-only note did its job: six weeks later the thinking was intact, with Kim's rulings and the open problems.
+
+**Round two -- Baselines only.** Kim opened with *spells, stretches and snaps*: common terms whose endpoints can be defined while the middle (the "noise") is ambiguous. Formal definitions proposed (snap = rate of change against recent days; spell = threshold departure against the normal; stretch = persistence) -- Kim: "a strong baseline for the discussion." Five implementation strategies (strict run, gap tolerance, hysteresis, window mean, state model), each a theory of the word -- **Kim: the implementations are the most interesting part, because they show strategies for thinking about the terms.** Kim then **reframed the whole document around the scale between weather and climate** -- a season up to a good part of a year, the farmer's and the vintage's scale. **Both directions** (Kim: conservation looks forward -- should we conserve water?), with the groups who use this scale as the way to make readers see its importance. **Rulings:** three worked groups -- fire, vintage, tree rings -- others later; **Hawai‘i is a test of generality, not the setting** ("might even be a distraction"). **Closing note from Kim: a rich visual language -- images, charts, diagrams -- will tie all the documents together.** Working seven-part outline for Baselines recorded.
+
+**Written:** `ideas_three_documents.md` (Round two section + a new Next), `project_index.md` (Active Focus + icons row), `logs/focus_history.md` (icons block, verbatim), `proj_icons.md` (paused, Blocked, log), `priorities.md` (pointer), this entry. All through the R bridge, byte-level with CRLF preserved, read back by content. Pre-edit snapshots in `C:\temp\pkm_close_2026-09-22` (bucket 4 -- delete once the next session confirms the files).
+
+**Carried:** factual claims made from general knowledge, listed for verification in the ideas file (ETCCDI, the old UK Met Office drought definitions, Ashenfelter, S2S); card 0.4 KB over budget; `C:/temp` scratch; the Filesystem connector error.
+
+**Next:** Kim chooses -- round two on *Maps with Tiles* and *Measurements Require Categories*, or outline *Baselines* (ready now).
+
 
 ## 2026-09-13 (evening) -- icons: THE REGISTER REACHES 40, THE VISUAL DESIGN IS SETTLED, AND FINDING 055 GETS ITS NUMBER
 

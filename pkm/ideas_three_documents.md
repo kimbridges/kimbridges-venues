@@ -182,7 +182,169 @@ session finds it. *Raised by Claude, elevated by Kim, 2026-08-11.*
 
 ---
 
+## Round two -- 2026-09-22 (Baselines, Deviations & Spans only)
+
+_First session after a nine-day break (family priorities). Icons paused the same
+day, awaiting photographs. Documents 2 and 3 not yet revisited. Speaker marked
+throughout: Kim's statements and rulings vs Claude's proposals._
+
+### Kim's reframe: the scale this document is about
+
+Kim: people interested in rainfall, temperature and related measurements focus on
+either **weather** (daily or weekly; current measurements or short-term
+predictions) or **climate** (the long-term average of the short-term data;
+climate predictions exist, but at decades or longer). **This document is about
+what lies in between** -- more than a day or two, likely a good part of the year.
+It is the scale a **farmer** uses to plan the year's crops and the scale a **wine
+connoisseur** uses to choose a vintage. We have terms that express patterns at
+this scale.
+
+Claude's additions (proposals, not rulings):
+- Weather is experienced, climate is computed; the in-between scale is the one
+  people **remember** ("the winter of '78", "a late spring", "a good vintage").
+- Forecasters call roughly two weeks to a season **subseasonal-to-seasonal
+  (S2S)**, a recognized weak spot in prediction. Kim's scale reaches further, to
+  the character of a whole season or year.
+- The unit of analysis becomes the **season**; snaps, spells and stretches are
+  its building blocks. **Timing** relative to the organism's calendar is a new
+  axis (frost at budbreak vs in dormancy). A season's signature = *which*
+  episodes, *how long*, and *when*.
+- The title now names a method: **baseline** = the expected seasonal curve (not a
+  single mean); **deviations** = departures from it; **spans** = the episodes.
+
+### Kim's starting vocabulary: spells, stretches and snaps
+
+Kim: these terms are commonly used for weather periods; what is interesting is
+coming up with definitions of them. **The endpoints can be defined, but what
+goes on in between (the "noise") is ambiguous.**
+
+Formal definitions -- Claude's proposal; **Kim: "They give us a strong baseline
+for the discussion."**
+
+| Term | Defined by | Implied baseline | Example |
+|---|---|---|---|
+| Snap | rate of change: abrupt onset, short | the last few days | a 15F overnight drop |
+| Spell | departure past a threshold for a minimum duration | the climate normal | 15 days under 1 mm of rain |
+| Stretch | persistence alone; neutral, often pleasant | the run itself | "a stretch of fine weather" |
+
+Snap = deviation from recent days; spell = deviation from the baseline;
+stretch = span. Everyday speech made the distinction and never wrote it down.
+
+### The three points -- criteria between definition and implementation
+
+**Kim placed these as the transition** from the formal definitions to the
+implementation alternatives:
+1. **Noise is relative to the receiver.** Whether one cool day breaks a spell
+   depends on the organism's response time; biology sets the gap tolerance, not
+   statistics. (Kim's instrument-and-scale theme.)
+2. **The sap-flow counterexample.** For maples the freeze-thaw alternation IS the
+   signal (the Temperature Periodicity work); a definition that smooths it as
+   noise loses the thing that makes sap run. Lens and blinder -- open problem 3.
+3. **Relative thresholds manufacture spells everywhere.** Percentile definitions
+   give every climate about the same number of "heat waves"; absolute thresholds
+   give the biologically meaningful ones. The baseline choice decides whether a
+   place has spells at all.
+
+### Implementations -- the most interesting part (Kim)
+
+Kim: **it is how we implement these definitions that is most interesting, as the
+implementations show strategies for thinking about the terms themselves.**
+
+Claude: each algorithm is a theory of the word.
+
+| Algorithm | What it claims a spell is |
+|---|---|
+| Strict run | a uniform condition; any break ends it |
+| Gap tolerance (k days) | something that survives interruptions, up to a limit |
+| Hysteresis (enter strict, exit lax) | harder to start than to keep going |
+| Window mean | a regime, not a sequence of days |
+| State model (HMM) | a hidden condition the weather only partly reveals |
+
+Proposed demonstration: run all five on one station record and map where they
+disagree -- the disagreement is the finding (the checklistr logic: conflict marks
+where the concept is unsettled). Package core: one function per strategy, one
+shared output format.
+
+### Two directions, and the groups who use this scale (Kim)
+
+Kim: **it is important to look both directions.** Forward, e.g. conservation --
+should we conserve water? Backward -- judging what the season was. **Use the
+groups who view this period from the two perspectives as a way to make people
+see the importance of this stretch of time.**
+
+Claude's first-pass roster: forward -- water managers, fire agencies, farmers and
+ranchers, utilities and public health; backward -- vintners and connoisseurs,
+insurers and disaster programs, ecologists, dendrochronologists. Observations:
+the directions form a **loop** (the backward judgment becomes next year's forward
+baseline); and **nobody reports this scale to the public** -- the news gives
+weather, assessments give climate. That is the missing context of Kim's original
+TV-weather reaction.
+
+**Kim's ruling: three worked groups first; others brought in once the main
+arguments are made.**
+- **Fire** (forward; SEQUENCE -- a wet period grows fine fuel, a dry one cures it)
+- **Vintage** (backward; TIMING -- Ashenfelter's Bordeaux equation as prior art)
+- **Tree rings** (the organism's own record -- one ring, one season)
+
+### Hawai‘i: a test case, not the setting (Kim's ruling)
+
+Kim: he lives and works in Hawai‘i, but it need not be the focus and **might be a
+distraction if it gets too much emphasis.** He sees it as **a counterexample, or
+a test of whether the principles are general, even for outliers like Hawai‘i.**
+
+Consequences (agreed): the fire case is made in Mediterranean climates
+(California, southern Europe, Australia). Hawai‘i gets a closing test chapter --
+small temperature amplitude, so rain and wind carry the season (the kau /
+ho‘oilo calendar); windward and leeward seasons miles apart; percentile
+thresholds inventing spells that do not matter biologically. This also supplies
+the counterexample chapter open problem 3 asked for.
+
+### ★ Visual language -- Kim's note, 2026-09-22
+
+Kim: *"I hope we can illustrate what we're creating with a rich set of images,
+charts and diagrams. The visual language is going to be important and it will
+help tie all the documents together."*
+
+This makes visual language a **trilogy-level requirement**, not per-document
+decoration. It strengthens open problem 4's proposal of one shared grammar
+package: a single visual vocabulary (baseline, deviation, span, cell) that a
+reader learns once and carries across all three documents.
+
+### Working outline -- Baselines, Deviations & Spans (after round two)
+
+1. **The scale** -- between weather and climate; remembered and decided at;
+   reported by nobody.
+2. **Two directions** -- forward and backward, joined in a loop.
+3. **Three worked groups** -- fire, vintage, tree rings.
+4. **The vocabulary** -- snap, spell, stretch, each with its implied baseline.
+5. **The criteria** -- receiver response time; noise vs signal; relative vs
+   absolute thresholds.
+6. **The implementations** -- five strategies as theories, and where they disagree.
+7. **The test** -- Hawai‘i as the outlier.
+
+### Open problems after round two
+
+1. Title collision (*Maps with Tiles*) -- not revisited.
+2. Exposition order -- not revisited; format (three documents) stands.
+3. Counterexample -- **answered for Baselines**: the sap-flow case and the Hawai‘i
+   test chapter.
+4. Package boundaries -- sharpened: the Baselines engine core is the five
+   strategies with a common output; the visual-language note adds weight to a
+   shared grammar package.
+5. Parallel ideation, staged production -- holds.
+
+### Verify before writing -- stated in conversation from general knowledge, not checked
+
+- ETCCDI warm-spell duration index: at least 6 consecutive days above the 90th percentile.
+- Historical UK Met Office definitions: absolute drought (15 consecutive days,
+  none above 0.2 mm), partial drought (29 days, mean at or below 0.2 mm), dry
+  spell (15 consecutive days, none reaching 1.0 mm).
+- Ashenfelter's Bordeaux equation: inputs and date.
+- The S2S terminology and its stated range.
+
 ## Next
 
-Round two of Kim's thinking, then outlines, then formal intake if the shape
-holds. Do not start production writing from this file.
+Round two continues with *Maps with Tiles* and *Measurements Require
+Categories*. **Baselines is ready to outline now** -- Kim was offered outline vs
+continuing round two and closed the session before choosing. Then formal intake
+if the shape holds. Do not start production writing from this file.

@@ -1,7 +1,7 @@
 # PROJECT: icons
-_Last updated: 2026-09-13_
+_Last updated: 2026-09-22_
 _Status: Active_
-_Focus readiness: Ready_
+_Focus readiness: Blocked_
 
 ## Type
 Content project, data-driven (icon register -> rendered symbols -> stories)
@@ -29,6 +29,11 @@ deliberate place-branding aimed at one large market, and a small bounded area
 with a unique landscape and one globally known historical event.
 
 ## Current Status
+**PAUSED 2026-09-22 (Kim).** Active Focus moved to the trilogy
+(`ideas_three_documents.md`). Icons waits on photographs: Kim needs to find and
+take new ones. Focus readiness Ready -> Blocked. Next Steps below are unchanged
+and resume as written.
+
 Opened 2026-09-13 as Active Focus (replacing the closed sake_brewery focus).
 **Register at 40 rows -- the first-pass cap -- as of 2026-09-13** (24 pass, 14
 borderline, 2 deliberate fails kept as boundary cases: Hawaiian pizza, wiki).
@@ -118,7 +123,8 @@ that tension deliberately.
 None.
 
 ## Blockers
-None.
+**Photographs** (since 2026-09-22): 39 of 40 icons are `need` in `photo_log.csv`.
+Kim to find them in the archive (mid-migration QNAP -> Lexar SSD) or shoot new.
 
 ---
 ## Log
@@ -146,3 +152,8 @@ reproduced byte-for-byte) and a card row added. `photo_log.csv` created as the
 shot list with photos/, posters/, glyphs/ folders; two Diamond Head photographs
 filed. Objective updated with the visitor angle. Next: first poster + first
 three glyphs.
+### 2026-09-22
+Paused by Kim after a nine-day break (family priorities): he needs to find
+and take new photos. Focus readiness Ready -> Blocked; blocker named in Blockers.
+No project work this session; Next Steps unchanged. Active Focus moved to the
+trilogy (round two of `ideas_three_documents.md`).
