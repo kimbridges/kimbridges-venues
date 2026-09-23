@@ -111,7 +111,7 @@ writing; parallel ideation but staged production).
 
 **Kim's rulings 2026-08-11:** three documents (open to further analysis), outlines first, NOT written all at once, reuse the existing packages. **★ He also promoted the INVERSE** -- that a concept makes you see what is not there and stops you seeing alternatives -- from a chapter idea to a general working principle, linking it to falsification. Candidate for `pkm_findings.md` or the card; his call, not acted on. Round two of his thinking pending, then outlines, then formal intake.
 
-**Round two BEGAN 2026-09-22 (Baselines only)** and the trilogy is now the Active Focus; icons paused awaiting photographs. *Baselines* reframed around the scale between weather and climate; worked groups fire / vintage / tree rings; Hawai‘i a test case, not the setting; a shared visual language to tie the three documents together. Detail: `ideas_three_documents.md` → Round two.
+**Round two BEGAN 2026-09-22 (Baselines only)** and the trilogy is now the Active Focus; icons paused awaiting photographs. *Baselines* reframed around the scale between weather and climate; worked groups fire / vintage / tree rings; Hawai‘i a test case, not the setting; a shared visual language to tie the three documents together. Detail: `ideas_three_documents.md` → Round two. **Evening 2026-09-22:** S3 titled and paused, ready to outline; friction made a trilogy spine; *Maps with Tiles* round two underway.
 
 ---
 

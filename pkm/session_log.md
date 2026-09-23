@@ -11,6 +11,22 @@ Mechanism 4.
 
 ---
 
+## 2026-09-22 (evening) -- S3 GETS ITS NAME, FRICTION BECOMES A SPINE, AND *MAPS WITH TILES* FINDS ITS EMPTY CELL
+
+**Active focus at start and end:** the trilogy, round two (capture only). Second sitting of the day; TODAY re-bound 2026-09-22 HST (20:49). Morning writes confirmed present through the R bridge before work began.
+
+**S3.** Kim asked whether the document had a title; Claude argued the working title named the method, not the subject, and proposed *Spells, Stretches and Snaps: Reading the Scale Between Weather and Climate*, with *Baselines, Deviations & Spans* kept as the heading for the method chapters. **Kim accepted and named it S3.** Kim brought in operational definitions (Bridgman -- the spelling corrected, *The Logic of Modern Physics*, 1927) and "no concept, no seeing" at several levels -- the weather/climate gap and the unfamiliar implementations. Claude: three nested levels (scale, vocabulary, operation); strictly, five operations are five concepts, and the disagreement map shows Bridgman's problem. **Ruling: Bridgman lightly in S3, fully in *Measurements Require Categories*.** Agreed S3 is ready to outline; **Kim paused it** so another document can feed back.
+
+**Maps with Tiles, round two opened.** Claude recommended it next (a spell partitions time as a tile partitions space; it tests the shared visual language; Categories stays last as synthesis). Kim framed it as an ecologist: point, isopleth, choropleth and entitated vegetation maps are familiar; **the category-at-points map drawn as tiles is overlooked**, because it cannot be drawn by hand, and colleagues would not recognise "Voronoi" or "Thiessen". Rulings: **"reproducible", not "objective"**; tiles matter because without clear pattern information **no lines get drawn and the analysis is incomplete**; **friction is a really big idea**; mapping was hard and now is not, so examples will help; few kinds of maps makes mapping simpler. Kim attached **Andrews et al. (1981), *A Guide for Selecting Statistical Techniques for Analyzing Social Science Data*** as the decision-tree model. A draft two-question, seven-outcome map tree recorded. No suitable vegetation map in hand; Kim will look.
+
+**★ FRICTION ruled a major component of S3 and of the trilogy (Kim: "We need to make sure we don't forget it").** Two spines: conceptual (no concept, no seeing) and practical (friction), each keeping the other in place.
+
+**Written:** `ideas_three_documents.md` (S3 cont.; friction; Tiles round two; the draft tree), `project_index.md` (Active Focus), `priorities.md` (pointer), this entry. R bridge, byte-level, CRLF preserved, read back by content. Pre-edit snapshots added to `C:\temp\pkm_close_2026-09-22` (bucket 4; the bridge cannot delete recursively -- Kim may remove the folder once satisfied).
+
+**Mechanism 5 notes.** No proj file for the trilogy by Kim's ruling (capture until outlines). No project Status changed this sitting. Nothing new for `deferred.md`.
+
+**Next:** *Maps with Tiles* -- more ideation (raw vs dissolved tiles, edges, study area) or the tree as a diagram. Kim wanted time to think first.
+
 ## 2026-09-22 -- TRILOGY ROUND TWO: *Baselines, Deviations & Spans* finds its scale; icons paused for photographs
 
 **Active focus at start:** icons, OPEN (Active / Ready). **At end:** the trilogy, round two (capture only); icons PAUSED (Active / Blocked on photographs). Session-start reads done (card, index, proj_PKM); TODAY bound 2026-09-22 HST. First session after a nine-day break (family priorities).

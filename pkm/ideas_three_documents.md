@@ -342,9 +342,160 @@ reader learns once and carries across all three documents.
 - Ashenfelter's Bordeaux equation: inputs and date.
 - The S2S terminology and its stated range.
 
+### Round two, cont. -- 2026-09-22 (evening sitting)
+
+**Title (Kim accepted the suggestion):** ***Spells, Stretches and Snaps*** --
+*Reading the Scale Between Weather and Climate*. **Short name: S3** (Kim).
+*Baselines, Deviations & Spans* is retired as the title and kept as the heading
+for the method chapters (criteria and implementations).
+
+**Operational definitions (Kim).** S3 shows that definitions are operational --
+Kim recalled Bridgman, correctly (Percy W. Bridgman, *The Logic of Modern
+Physics*, 1927: a concept means the set of operations that measure it). Claude:
+taken strictly, five operations = five concepts; "spell" is five ideas sharing one
+word. The Part 6 disagreement map makes Bridgman's problem visible -- where the
+operations agree the word is safe; where they diverge it covers several concepts.
+**Boundary ruling (Kim): S3 introduces or references Bridgman lightly;
+*Measurements Require Categories* gives the full treatment.**
+
+**"No concept, no seeing" works at several levels in S3 (Kim).** Kim named two --
+the gap between weather and climate, and the five implementations (not all
+familiar, hence not seen) -- and noted they are likely related. Claude's framing,
+three nested levels:
+
+| Level | Concept | Unseen without it |
+|---|---|---|
+| Scale | the band between weather and climate | the band itself -- nobody reports it |
+| Vocabulary | snap, spell, stretch | episodes as units (and the gaps: no "heat snap") |
+| Operation | the five implementations | spells a strict run breaks apart |
+
+The inverse (every concept also blinds) is carried by the Hawai‘i test. The thread
+runs through the existing parts rather than adding one: scale -> Part 1,
+vocabulary -> Part 4, operations + Bridgman -> Parts 5-6, inverse -> Part 7; a
+short opening states the claim. **Visual consequence:** since unfamiliar concepts
+go unseen, the figures are how the concept is delivered -- all five
+implementations drawn on the same series, side by side.
+
+**Readiness (agreed at the close of the sitting).** S3 has enough to outline:
+title, thesis, scale, three worked groups, vocabulary, criteria,
+implementations, test, the visual-language requirement, the Bridgman boundary.
+Still open, and deliberately left for later because the other documents bear on
+them: data choices (station record; vintage and fire data sources), package
+boundaries, the verify list. **S3 PAUSED here by Kim** so another document can
+be developed and feed back into it.
+
+### ★ FRICTION -- a major component of S3 and of the trilogy (Kim's ruling, 2026-09-22)
+
+Kim: **"We need to add 'friction' as a major component to the S3 document ...
+We need to make sure we don't forget it."** It arose in the *Maps with Tiles*
+discussion below and applies to all three documents.
+
+The trilogy now has **two spines that feed each other**: a CONCEPTUAL one (no
+concept, no seeing) and a PRACTICAL one (friction). Friction keeps a concept
+unfamiliar; an unfamiliar concept never earns the effort to lower its friction.
+The documents exist to break that loop. (Same theme as the briefing-book method
+spine.)
+
+Friction in S3, first pass (Claude, not yet discussed): at the SCALE level,
+seasonal summaries are not packaged anywhere -- they must be built from daily
+records; at the OPERATION level, anything beyond a strict run takes code most
+people do not have (hysteresis, HMM). Remedy: one function per strategy, shared
+output, worked examples.
+
+## Maps with Tiles -- round two, 2026-09-22 (evening)
+
+_Title work deferred by Kim ("that can come later")._
+
+**Kim's perspective as an ecologist (vegetation bent).** The familiar maps: a
+base (street map or satellite image) with points, sometimes scaled for a value
+or coloured for a category; with values, an **isopleth** (contour) map after
+interpolating to a grid; a **choropleth** with predefined areas (census units,
+political boundaries) coloured by category with a legend. **Vegetation maps are
+generally the choropleth type: the ecologist does an "entitation"**, viewing the
+area to pick boundaries of relatively homogeneous stands. **What is missing: the
+map with CATEGORY data at points, where each point's category extends as far as
+it can before meeting an adjacent category's area -- a set of tiles -- showing
+each point's "influence."** Kim: we are not familiar with it because of the
+computational complexity of drawing the tiles; people do not do it by hand, as
+they do the others. **Overlooked** outside geography (and maybe public health):
+colleagues would not recognise "Voronoi tessellation" or "Thiessen polygons."
+For vegetation it may be the better way to show pattern from samples. **People
+find it hard to draw good maps; technical difficulty may also limit conceptual
+understanding.** Same shape as S3: familiar methods plus one overlooked one.
+
+**Claude: the five types as a grid** -- rows = where boundaries come from (none /
+computed / given / judged); columns = values vs categories at points. Voronoi
+fills the "categories + computed" cell: **the categorical counterpart of the
+isopleth.** The structure makes the missing type visible (the trilogy's thesis
+in a figure).
+
+**Kim's rulings and additions:**
+- **"Reproducible", not "objective"** (Kim accepted the correction).
+- **Voronoi's real role:** when clear pattern information exists, the expert
+  draws good lines; often it does not, **so no lines are drawn and the analysis
+  is incomplete.** Drawing a good vegetation map is a considerable barrier.
+- **"Friction is a really big idea for this."** If a simple map has high
+  friction, nobody considers complex ones (e.g., the arguments over grid
+  interpolation). **Mapping was hard; now, not so much -- examples will really
+  help** (Kim liked the short R code idea).
+- **Knowing there are just a few kinds of maps makes the problem of creating a
+  map much simpler.**
+- **Decision tree (Kim, 2026-09-22):** attached as a model -- Andrews, Klem,
+  Davidson, O'Malley & Rodgers (1981), *A Guide for Selecting Statistical
+  Techniques for Analyzing Social Science Data*, 2nd ed., ISR, Univ. of
+  Michigan. Map choice can be shown the same way; "for us, it is a much smaller
+  decision tree."
+- **No suitable vegetation map in hand**; Kim will try to find one (needed for
+  the overlay example: plots with coordinates + an expert-drawn map of the same
+  site).
+
+**Claude's proposals (not ruled):** two versions of the tile map -- RAW (tile
+size
+shows sampling density and extrapolation, i.e., its own uncertainty) and
+DISSOLVED (the category pattern); Voronoi's assumptions (boundaries halfway and
+straight, nothing between points counts, edge clipping) -- each method shows and
+hides; Braun-Blanquet link (preferentially placed releves re-encode the expert's
+entitation -- feeds *Measurements Require Categories*); the barrier moved from
+computation to concept (`sf::st_voronoi`, `deldir`); **overlay the Voronoi map on
+the expert map where one exists -- agreement = support, disagreement = the
+expert saw something between samples, or sampling is thin -- the same device as
+S3's disagreement map, possibly trilogy-wide**; good defaults end the
+interpolation arguments; **a spell is a one-dimensional tile** (shared visual
+element with S3); history to check with Tom Koch -- Thiessen 1911; Snow's
+equal-walking-distance line around the Broad Street pump.
+
+**Draft map decision tree (Claude, end of the evening sitting; not yet discussed):**
+
+```
+What is at your points?
++- Location only ---------------------------------> Dot map
++- A VALUE (a measurement)
+|   +- Where do boundaries come from?
+|       +- Given (census units, counties) --------> Choropleth (values)
+|       +- None; show each point -----------------> Proportional symbols
+|       +- Computed; a continuous surface --------> Isopleth (interpolate + contour)
++- A CATEGORY (a class)
+    +- Where do boundaries come from?
+        +- Given ---------------------------------> Choropleth (categories)
+        +- Judged; pattern visible in the field --> Expert vegetation map (entitation)
+        +- Computed; pattern not visible ---------> VORONOI TILES (raw -> dissolved)
+```
+
+Two questions, seven outcomes. Voronoi lands where no other method answers; if
+the expert branch also applies, it leads on to the overlay. Each terminal box to
+carry what Andrews's boxes carry: a one-line description, a few lines of R, and
+where to learn more. **Andrews parallels:** empty terminal boxes = "no known
+technique" (our empty cell); Appendix B, programs that compute each statistic
+(friction reduction, 1981); Appendix C, "new or rarely used techniques" (the
+overlooked method). His root question -- scale of measurement -- is the subject
+of *Measurements Require Categories*.
+
 ## Next
 
-Round two continues with *Maps with Tiles* and *Measurements Require
-Categories*. **Baselines is ready to outline now** -- Kim was offered outline vs
-continuing round two and closed the session before choosing. Then formal intake
+Round two is UNDERWAY on *Maps with Tiles* (2026-09-22 evening); then
+*Measurements Require Categories*. **Tiles resumes with a choice Kim left open:**
+more ideation (raw vs dissolved tiles, edge effects, what counts as the study
+area) or render the decision tree as a proper diagram. Kim wanted time to think
+first. Open: a site with plots + an expert vegetation map (Kim searching). **S3 is ready to outline** and paused by Kim (2026-09-22 evening) so
+another document can feed back into it. Then formal intake
 if the shape holds. Do not start production writing from this file.
