@@ -490,9 +490,252 @@ technique" (our empty cell); Appendix B, programs that compute each statistic
 overlooked method). His root question -- scale of measurement -- is the subject
 of *Measurements Require Categories*.
 
+## Measurements Require Categories -- round two, 2026-09-23
+
+_Speaker marked throughout: Kim's statements and rulings vs Claude's proposals._
+
+### Kim's foundational ideas (as given)
+
+1. **Every measurement comes with a classification system.** The categories give
+   the values meaning; a measurement alone has little value.
+2. **The scale is always there, formal or not.** A physician applies body
+   temperature to an agreed scale ("normal", "ill", "very sick", "emergency" --
+   not the doctor's terms, but the idea); the nightly weathercast applies a
+   looser, unspoken one.
+3. **The unit-switch test.** Give someone the forecast in unfamiliar units (C for
+   F) and they pause to convert before the number means anything -- unless they
+   grew up with those units.
+4. **Learning the scale is part of education**, often not explicit -- exposure
+   and experience.
+5. **Switching units has friction, often a lot.**
+6. **A new device teaches how to measure, rarely the scale**, though the two are
+   inseparable -- partly because one measurement can have several scales by
+   purpose (medical diagnosis vs outdoor comfort).
+7. **Accuracy matters near a boundary.** Mid-category, error hardly matters; near
+   a border we employ statistics to decide which category a value falls in.
+
+**Round two, cont. (Kim):**
+- **Scales can DESCRIBE without a decision** -- Colorado's 14,000 ft peaks; the
+  tree line. Eliciting behaviour is one use, not the only one (Kim likes the
+  behaviour thread).
+- **Comparison supplies a scale when the absolute value has none** -- runs
+  scored judged against the opponent's; the behaviour is "Team A won"; the
+  comparison is itself categorised ("squeaked by", "clobbered").
+- **External models set categories** (e.g. a theoretical limit).
+- **History sets categories** (most HR in a season; top-10 fastest 100 yards) --
+  boundaries move over time for membership.
+- **Personalisation.** Kim's Smart Car gauge (8 bars): 3 bars = look for the
+  favourite brand; 2 = any brand; 1 = AC off, slow down, look carefully. Others
+  differ -- urban drivers with frequent stations vs Kim on remote Interstate.
+- **Several measurements combine into one category** -- Whittaker diagram,
+  temperature + humidity comfort index, soil categories from three measurements.
+  **Kim: make this a chapter.**
+- **Categories are not always the same size (not linear), and can be "lumpy"** --
+  different characteristics in different categories (Braun-Blanquet mixes cover
+  and abundance).
+
+### Kim's rulings
+
+- **BACKBONE: "where do boundaries come from"** (Kim: "I really like" it).
+- **All of Claude's points below are correct and belong in the argument** (Kim).
+- **Chapters 7 and 8 belong** -- "strong additions".
+- **Working title KEPT: *Measurements Require Categories*** -- descriptive.
+- **Examples added as we go.**
+
+### Claude's proposals (accepted as part of the argument unless marked)
+
+- Point 6 is Bridgman from the user's side: the device gives the operation, not
+  the meaning. Full Bridgman treatment lives here.
+- Behavioural scales are indexed by decisions -- boundaries mark where you act
+  differently; different purposes, different boundaries.
+- Required precision varies along the scale, peaking at boundaries (a figure).
+  Metrology formalises this as guard bands / decision rules.
+- Boundaries move while measurements stand still (2017 US blood-pressure
+  guideline) -- S3's re-based normal in another register.
+- Institutions publish the category, not the number: UV index, AQI colours,
+  fire-danger ratings, Saffir-Simpson.
+- Spectrum of binding: value vs unspoken scale -> value vs formal scale ->
+  category recorded instead of value (Braun-Blanquet, Beaufort, texture by feel,
+  the gauge's 8 bars).
+- The inverse: "normal" is a population scale; a patient a degree above their
+  own normal is still "normal" -- S3's baseline problem; the counterexample.
+- Convention categories are unit-bound: "fourteener" exists only in feet
+  (~4,267 m); the Alps' 4000ers are a different set.
+- Rank categories behave like S3's percentile spells: a top-10 always has ten.
+- The gauge categorises twice: hardware bins to 8 bars; the person lays
+  behaviour on the bars. The cost of being wrong places the boundaries.
+- Combining measurements: PARTITION the joint space (Whittaker, soil triangle)
+  vs COLLAPSE to an index then categorise (heat index, wind chill). A partitioned
+  measurement space is a tile map -- Whittaker's biome lines are judged, like the
+  expert vegetation map; could be computed (Voronoi in climate space) with
+  `whittakerr`. With two inputs the error is an ellipse; at class junctions one
+  reading can fall in several classes. Soil fractions sum to 100%: three
+  measurements, two degrees of freedom.
+
+**Backbone table (draft):**
+
+| Source of boundary | Example |
+|---|---|
+| Nature | tree line, freezing point |
+| Convention | 14,000 ft |
+| Agreement | fever, hypertension |
+| Comparison | runs vs the opponent's |
+| Model | theoretical limit; heat index |
+| History / rank | season HR record, top-10 |
+| Person | the fuel-gauge ladder |
+
+Crossed with use: DESCRIBE vs ELICIT BEHAVIOUR.
+
+### Working outline -- Measurements Require Categories (after round two)
+
+1. **The claim** -- every measurement has a classification; temperature as the
+   running example; the unit-switch test.
+2. **Learning the scale** -- tacit, experience; devices teach the operation, not
+   the scale (Bridgman, full treatment); unit friction.
+3. **Two uses** -- describe vs elicit behaviour.
+4. **Where boundaries come from** (the backbone).
+5. **Boundaries and error** -- precision near boundaries; statistics to assign;
+   cost of error sets the boundary; boundaries move.
+6. **Several measurements, one category** -- partition vs collapse; Whittaker as
+   a tile map in climate space; the error ellipse.
+7. **Categories instead of measurements** -- Braun-Blanquet, Beaufort, texture by
+   feel, gauge bars; unequal and "lumpy" categories; `bbSynth` shows what class
+   boundaries do to identical vegetation.
+8. **The inverse** -- categories blind as well as reveal; the personal baseline
+   hidden inside "normal". The counterexample chapter.
+
+**Still open:** worked examples with data for chapters 5-7.
+
+### Verify before writing
+
+- 38.0 C fever threshold; 2017 AHA/ACC hypertension change (130/80 from 140/90).
+- Metrology guard bands (ILAC G8, JCGM 106).
+- Beaufort scale history; Alps 4000ers count (82, UIAA list).
+- NWS heat index categories; Steadman's heat index model.
+- USDA soil texture classes (12); Braun-Blanquet class definitions (r, +, 1-5).
+
+## The trilogy as a set -- 2026-09-23
+
+### Kim's rulings
+
+- **UNIFYING STATEMENT: "boundaries in value, space and time."** *Measurements
+  Require Categories* = value; *Maps with Tiles* = space; S3 = time. (Sharpens the
+  2026-08-11 what / where / how-much framing.)
+- **Reading order: *Measurements Require Categories* FIRST** in the series. Open
+  problem 2 (exposition order) is therefore settled; format (three documents) stood
+  already.
+- ***Maps with Tiles* kept as the working title; short name MWT.** Candidate later
+  title: ***The Missing Map*** -- parallel to S3's missing scale between weather and
+  climate.
+
+### Claude's observations (accepted with the unifying statement)
+
+- The MRC backbone ("where do boundaries come from") contains MWT's four boundary
+  sources (none / given / judged / computed); S3's "endpoints definable, middle
+  ambiguous" is the same question in time.
+- The TILE runs through all three: a spell is a one-dimensional tile (a DISSOLVED
+  one); the Whittaker diagram is a tile map in climate space. The central element
+  of the shared visual language.
+- Judged vs computed boundaries in all three; disagreement-as-finding in all three
+  (one figure style could serve the trilogy).
+
+### Writing ruling -- personal stories (Kim, 2026-09-23, at the close)
+
+Kim: **load the trilogy documents with personal stories** -- "We've done this with
+many other documents. I'd like to keep doing it here." Applies to all three. In
+hand already: the coconut-palm count on the islets of Ailinginae Atoll (optional
+opening for MWT ch.9) and the fuel-gauge ladder on remote Interstate legs (MRC).
+More to gather as writing begins.
+## MWT -- round two, cont. 2026-09-23
+
+### Kim's rulings
+
+- **Chapter outline accepted** (below).
+- **Counterexample = the CONTINUUM** (Kim: "does work"). Vegetation often changes
+  gradually; tiles draw sharp lines through ecotones -- Gleason vs Clements; the
+  same move MRC criticises in Braun-Blanquet classes.
+- **The counting frame (the Koch method) is its own chapter.** Tiles generated
+  from one dataset, items counted within them from another. Kim: a vegetation map
+  with Voronoi tiles as units, then counting occurrences of a species or of
+  diseased plants within each unit to enhance the description of the vegetation;
+  "counting within units could be a very common application." **The point: the
+  items counted are located INDEPENDENTLY of the area mapping.**
+- **Example: neutral -- invasives or diseased plants.** Not coconut palms (Kim's
+  memory of counting them on the islets of Ailinginae Atoll; available as an
+  optional opening anecdote for the chapter, not required).
+
+### Raw vs dissolved tiles (Claude's elaboration; Kim: "all of that makes sense")
+
+- RAW: one tile per sample, coloured by its category; all boundaries drawn. Shows
+  the EVIDENCE: tile size is the inverse of sampling density; large tiles =
+  extrapolation; edge tiles sized by the study-area clip, not the data.
+- DISSOLVED: adjacent same-category tiles merged; only category-change boundaries
+  remain -- the vegetation-map look, comparable to the expert map. Shows the
+  PATTERN; hides evidence (one-sample patch looks as solid as a thirty-sample one).
+- Each dissolved boundary is the halfway line between two disagreeing samples, so
+  its positional uncertainty is ~half their spacing -- LOCAL and COMPUTABLE. Figure:
+  boundaries drawn as bands of that width. Links to MRC ch.5 (error matters at
+  boundaries); here the tiles say how much.
+- A spell is a dissolved 1-D tile (S3 link). Code is a few lines of `sf`.
+
+### Counting frame -- consequences (Claude; Kim: "all of that makes sense")
+
+- In the MWT grid it is the VALUE + COMPUTED-boundary cell (a choropleth whose
+  units come from data) -- it fills another cell, it does not compete with the
+  missing map. Tiles do two jobs: extend a category, or serve as a container.
+- Counts need a denominator (density, or observed vs area-expected -- the
+  epidemiological move).
+- Raw vs dissolved changes the counts: MAUP in miniature (links ch.6).
+- Independence can fail: plots placed BECAUSE the item was there (preferential
+  sampling; MRC link).
+- Counted items can carry their own category (healthy / diseased).
+- Sources of counted locations: GPS, aerial/drone imagery, herbarium records
+  (`checklistr`), iNaturalist.
+- Koch caution: credit the collaboration; do not depend on Tom's data or timing
+  (Phase 2 paused). The vegetation version is Kim's own (e.g. herbarium specimens
+  per relevé tile = collecting effort by vegetation type).
+
+### Working outline -- Maps with Tiles (MWT), after round two
+
+1. **Only a few kinds of maps** -- the type grid (boundary source x values /
+   categories); the empty cell made visible.
+2. **The familiar maps** -- dot, proportional symbol, choropleth, isopleth; each
+   with its boundary source (MRC backbone link).
+3. **The ecologist's map** -- entitation; good lines when pattern is visible, no
+   lines when it is not.
+4. **The missing map** -- Voronoi tiles from category points; Thiessen 1911,
+   Snow's line (check with Tom Koch); reproducible, not objective.
+5. **Friction** -- mapping was hard, now not; short R code; good defaults.
+6. **Reading the tiles** -- raw vs dissolved; boundary uncertainty; assumptions
+   (halfway, straight, nothing between points, edge clipping / study area).
+7. **Choosing a map** -- the Andrews-style decision tree.
+8. **The overlay** -- tiles over the expert map; agreement / disagreement;
+   preferential releves (MRC link).
+9. **Tiles as containers** -- the counting frame; invasives / diseased plants.
+10. **The inverse** -- the continuum; ecotones; Gleason vs Clements.
+11. **Tiles beyond maps** (optional) -- spell as 1-D tile; Whittaker as climate-
+    space tiles.
+
+**Still open:** a worked site with plots + an expert vegetation map (Kim
+searching); an invasive / disease point dataset for ch.9.
+
 ## Next
 
-Round two is UNDERWAY on *Maps with Tiles* (2026-09-22 evening); then
+All three documents have first-round working outlines (2026-09-23): MRC (8 chapters),
+MWT (11 chapters), S3 (7 parts); unifying statement ruled (boundaries in value, space
+and time); reading order MRC first. Carried: sites and datasets (plots + expert map;
+invasive / disease points; S3 station, vintage and fire data); worked examples for MRC
+ch.5-7; package boundaries and the shared visual vocabulary; the verify lists. Then
+formal intake if the shape holds. Do not start production writing from this file.
+
+_Next as of earlier 2026-09-23, kept as history:_ All three documents now have a first-round working outline (2026-09-23): S3 (7 parts),
+*Maps with Tiles* (map-type grid + draft decision tree), *Measurements Require
+Categories* (8 chapters, backbone = where boundaries come from). **Next: look at the
+whole set together** (Kim, 2026-09-23). Carried: Tiles title; a site with plots + an
+expert vegetation map (Kim searching); worked examples for MRC chapters 5-7; package
+boundaries; the verify lists. Do not start production writing from this file.
+
+_Previous Next (2026-09-22), kept as history:_ Round two is UNDERWAY on *Maps with Tiles* (2026-09-22 evening); then
 *Measurements Require Categories*. **Tiles resumes with a choice Kim left open:**
 more ideation (raw vs dissolved tiles, edge effects, what counts as the study
 area) or render the decision tree as a proper diagram. Kim wanted time to think

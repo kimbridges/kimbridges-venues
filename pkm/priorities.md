@@ -1,6 +1,6 @@
 # Priorities
 _Created: 2026-05-27_
-_Last updated: 2026-09-22 — trilogy round two begun (Baselines); icons paused for photographs_
+_Last updated: 2026-09-23 -- all three trilogy documents outlined; unifying statement ruled_
 _Log: logs/priorities_history.md_
 
 ## Purpose
@@ -112,6 +112,8 @@ writing; parallel ideation but staged production).
 **Kim's rulings 2026-08-11:** three documents (open to further analysis), outlines first, NOT written all at once, reuse the existing packages. **★ He also promoted the INVERSE** -- that a concept makes you see what is not there and stops you seeing alternatives -- from a chapter idea to a general working principle, linking it to falsification. Candidate for `pkm_findings.md` or the card; his call, not acted on. Round two of his thinking pending, then outlines, then formal intake.
 
 **Round two BEGAN 2026-09-22 (Baselines only)** and the trilogy is now the Active Focus; icons paused awaiting photographs. *Baselines* reframed around the scale between weather and climate; worked groups fire / vintage / tree rings; Hawai‘i a test case, not the setting; a shared visual language to tie the three documents together. Detail: `ideas_three_documents.md` → Round two. **Evening 2026-09-22:** S3 titled and paused, ready to outline; friction made a trilogy spine; *Maps with Tiles* round two underway.
+
+**2026-09-23: all three outlined** -- MRC (8 chapters; backbone "where do boundaries come from"), MWT (11 chapters; the counting frame; the continuum as counterexample), S3 (7 parts). **Unifying statement ruled: boundaries in value, space and time; MRC read first.** Writing ruling: load the documents with personal stories. Next: data sources. Detail: `ideas_three_documents.md`.
 
 ---
 

@@ -1,21 +1,23 @@
 # Projects Index
-_Last updated: 2026-09-22_
+_Last updated: 2026-09-23_
 
 > **History split out 2026-07-28.** The superseded Active Focus blocks and the full
 > dated Change Log now live in `logs/focus_history.md`, verbatim and unedited.
 > This file carries the current focus, the structural notes, and the listings only.
 
-**Active Focus (2026-09-22, OPEN): the TRILOGY -- round two of ideation. S3 (*Spells, Stretches and Snaps*, formerly *Baselines, Deviations & Spans*) ready to outline and PAUSED; *Maps with Tiles* UNDERWAY; *Measurements Require Categories* still to revisit. Capture only; formal intake after outlines (Kim's ruling, 2026-08-11).**
+**Active Focus (2026-09-23, OPEN): the TRILOGY -- all three documents now have first-round working outlines. Unifying statement ruled: "boundaries in value, space and time." Reading order: *Measurements Require Categories* (MRC) first, then *Maps with Tiles* (MWT), then S3 (*Spells, Stretches and Snaps*). Capture only; formal intake when Kim decides the shape holds.**
 
-**Round two, Baselines (2026-09-22).** Kim reframed the document around the scale BETWEEN weather (days) and climate (decades) -- a season up to a good part of a year; the farmer's scale and the vintage's. Spells / stretches / snaps formally defined (Kim: "a strong baseline for the discussion"); endpoints definable, the middle ambiguous; five implementation strategies, each a theory of the word -- Kim: the implementations are the most interesting part. Both directions (forward: conservation, planning; backward: judgment). Worked groups ruled: **fire, vintage, tree rings**. **Hawai‘i = a test of generality, not the setting.** **Kim's note: a rich visual language -- images, charts, diagrams -- is to tie all three documents together.** Detail: `ideas_three_documents.md` -> Round two.
+**MRC round two (2026-09-23).** Kim's foundation: every measurement comes with a classification whose categories give the values meaning -- agreed (the physician's temperature scale) or unspoken (the weathercast); the unit-switch test; scales learned tacitly; devices teach the operation, not the scale; one measurement, several scales by purpose; error matters near a boundary. Scales describe (14ers, tree line) or elicit behaviour (Kim's fuel-gauge ladder); comparison, models, history and the person also set boundaries. **Backbone ruled: "where do boundaries come from."** 8-chapter outline, incl. several measurements -> one category (Whittaker, soil triangle, comfort index), categories instead of measurements (unequal, "lumpy" classes -- Braun-Blanquet) and the inverse (a personal baseline hidden inside "normal"). Working title kept.
 
-**Evening sitting (2026-09-22).** S3 titled *Spells, Stretches and Snaps: Reading the Scale Between Weather and Climate* (short name **S3**); definitions are operational (Bridgman -- light reference here, full treatment in *Categories*); "no concept, no seeing" at three levels (scale, vocabulary, operation). **★ FRICTION ruled a major component of S3 and of the trilogy** -- the practical spine beside the conceptual one. *Maps with Tiles* opened from Kim's ecologist's view: the familiar map types plus the overlooked one, Voronoi tiles from category points; "reproducible", not "objective"; tiles are what you draw when the expert cannot; a small decision tree modelled on Andrews et al. (1981). Kim is looking for a site with plots + an expert vegetation map.
+**MWT (2026-09-23).** 11-chapter outline accepted; raw vs dissolved tiles elaborated (boundary uncertainty is local and computable); **counterexample = the continuum** (ecotones; Gleason vs Clements); **the counting frame (the Koch method) is its own chapter** -- items located independently of the tiles and counted within them (neutral example: invasives or diseased plants). Candidate later title *The Missing Map*.
 
-**Paused 2026-09-22: icons** -- Active / Blocked on photographs (1 have, 39 need; archive mid-migration QNAP -> Lexar). Kim needs to find and take new photos. Next steps unchanged in `proj_icons.md`; the superseded icons block is in `logs/focus_history.md`.
+**★ Writing ruling (Kim): load the documents with personal stories, as in earlier documents.** Detail for all of the above: `ideas_three_documents.md`.
 
-**⚠ CARRIED:** `pkm_card.md` 0.4 KB over budget; `C:/temp` scratch still flagged; factual claims to verify before writing are listed in the ideas file. The local Filesystem MCP connector fails every call (JSON-schema dialect error) -- worked around this session.
+**Paused: icons** -- Active / Blocked on photographs; unchanged since 2026-09-22 (block in `logs/focus_history.md`).
 
-**NEXT: *Maps with Tiles* -- more ideation (raw vs dissolved, edges, study area) or render the decision tree as a diagram; Kim wanted time to think first. S3 waits, ready to outline.**
+**⚠ CARRIED:** `pkm_card.md` 0.4 KB over budget; `C:/temp` scratch still flagged (now incl. `pkm_close_2026-09-23`); verify lists in the ideas file; the local Filesystem MCP connector still fails -- device and R bridges used. Finding 055 recurred on this session's first commit and was handled by its rule.
+
+**NEXT: data sources -- a site with plots + an expert vegetation map; an invasive / diseased-plant point dataset; S3's station, vintage and fire data. Then worked examples for MRC ch.5-7, the shared visual vocabulary, package boundaries.**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

@@ -1,5 +1,18 @@
 # Focus History and Change Log
 
+<!-- superseded 2026-09-23 (same focus; round two continued: MRC and MWT outlined, unifying statement ruled) -->
+**Active Focus (2026-09-22, OPEN): the TRILOGY -- round two of ideation. S3 (*Spells, Stretches and Snaps*, formerly *Baselines, Deviations & Spans*) ready to outline and PAUSED; *Maps with Tiles* UNDERWAY; *Measurements Require Categories* still to revisit. Capture only; formal intake after outlines (Kim's ruling, 2026-08-11).**
+
+**Round two, Baselines (2026-09-22).** Kim reframed the document around the scale BETWEEN weather (days) and climate (decades) -- a season up to a good part of a year; the farmer's scale and the vintage's. Spells / stretches / snaps formally defined (Kim: "a strong baseline for the discussion"); endpoints definable, the middle ambiguous; five implementation strategies, each a theory of the word -- Kim: the implementations are the most interesting part. Both directions (forward: conservation, planning; backward: judgment). Worked groups ruled: **fire, vintage, tree rings**. **Hawai‘i = a test of generality, not the setting.** **Kim's note: a rich visual language -- images, charts, diagrams -- is to tie all three documents together.** Detail: `ideas_three_documents.md` -> Round two.
+
+**Evening sitting (2026-09-22).** S3 titled *Spells, Stretches and Snaps: Reading the Scale Between Weather and Climate* (short name **S3**); definitions are operational (Bridgman -- light reference here, full treatment in *Categories*); "no concept, no seeing" at three levels (scale, vocabulary, operation). **★ FRICTION ruled a major component of S3 and of the trilogy** -- the practical spine beside the conceptual one. *Maps with Tiles* opened from Kim's ecologist's view: the familiar map types plus the overlooked one, Voronoi tiles from category points; "reproducible", not "objective"; tiles are what you draw when the expert cannot; a small decision tree modelled on Andrews et al. (1981). Kim is looking for a site with plots + an expert vegetation map.
+
+**Paused 2026-09-22: icons** -- Active / Blocked on photographs (1 have, 39 need; archive mid-migration QNAP -> Lexar). Kim needs to find and take new photos. Next steps unchanged in `proj_icons.md`; the superseded icons block is in `logs/focus_history.md`.
+
+**⚠ CARRIED:** `pkm_card.md` 0.4 KB over budget; `C:/temp` scratch still flagged; factual claims to verify before writing are listed in the ideas file. The local Filesystem MCP connector fails every call (JSON-schema dialect error) -- worked around this session.
+
+**NEXT: *Maps with Tiles* -- more ideation (raw vs dissolved, edges, study area) or render the decision tree as a diagram; Kim wanted time to think first. S3 waits, ready to outline.**
+
 <!-- superseded 2026-09-22 (icons paused awaiting photographs; trilogy round two opened) -->
 **Active Focus (2026-09-13, OPEN): "icons" -- Hawai‘i's icons as a register (40 rows, the first-pass cap), then a symbol family, then stories. Active / Ready.**
 
