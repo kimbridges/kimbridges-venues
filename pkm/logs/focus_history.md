@@ -1,5 +1,20 @@
 # Focus History and Change Log
 
+<!-- superseded 2026-09-25 (focus moved to the new Voronoi document; the trilogy paused, capture only) -->
+**Active Focus (2026-09-23, OPEN): the TRILOGY -- all three documents now have first-round working outlines. Unifying statement ruled: "boundaries in value, space and time." Reading order: *Measurements Require Categories* (MRC) first, then *Maps with Tiles* (MWT), then S3 (*Spells, Stretches and Snaps*). Capture only; formal intake when Kim decides the shape holds.**
+
+**MRC round two (2026-09-23).** Kim's foundation: every measurement comes with a classification whose categories give the values meaning -- agreed (the physician's temperature scale) or unspoken (the weathercast); the unit-switch test; scales learned tacitly; devices teach the operation, not the scale; one measurement, several scales by purpose; error matters near a boundary. Scales describe (14ers, tree line) or elicit behaviour (Kim's fuel-gauge ladder); comparison, models, history and the person also set boundaries. **Backbone ruled: "where do boundaries come from."** 8-chapter outline, incl. several measurements -> one category (Whittaker, soil triangle, comfort index), categories instead of measurements (unequal, "lumpy" classes -- Braun-Blanquet) and the inverse (a personal baseline hidden inside "normal"). Working title kept.
+
+**MWT (2026-09-23).** 11-chapter outline accepted; raw vs dissolved tiles elaborated (boundary uncertainty is local and computable); **counterexample = the continuum** (ecotones; Gleason vs Clements); **the counting frame (the Koch method) is its own chapter** -- items located independently of the tiles and counted within them (neutral example: invasives or diseased plants). Candidate later title *The Missing Map*.
+
+**★ Writing ruling (Kim): load the documents with personal stories, as in earlier documents.** Detail for all of the above: `ideas_three_documents.md`.
+
+**Paused: icons** -- Active / Blocked on photographs; unchanged since 2026-09-22 (block in `logs/focus_history.md`).
+
+**⚠ CARRIED:** `pkm_card.md` 0.4 KB over budget; `C:/temp` scratch still flagged (now incl. `pkm_close_2026-09-23`); verify lists in the ideas file; the local Filesystem MCP connector still fails -- device and R bridges used. Finding 055 recurred on this session's first commit and was handled by its rule.
+
+**NEXT: data sources -- a site with plots + an expert vegetation map; an invasive / diseased-plant point dataset; S3's station, vintage and fire data. Then worked examples for MRC ch.5-7, the shared visual vocabulary, package boundaries.**
+
 <!-- superseded 2026-09-23 (same focus; round two continued: MRC and MWT outlined, unifying statement ruled) -->
 **Active Focus (2026-09-22, OPEN): the TRILOGY -- round two of ideation. S3 (*Spells, Stretches and Snaps*, formerly *Baselines, Deviations & Spans*) ready to outline and PAUSED; *Maps with Tiles* UNDERWAY; *Measurements Require Categories* still to revisit. Capture only; formal intake after outlines (Kim's ruling, 2026-08-11).**
 

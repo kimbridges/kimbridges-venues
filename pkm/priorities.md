@@ -1,6 +1,6 @@
 # Priorities
 _Created: 2026-05-27_
-_Last updated: 2026-09-23 -- all three trilogy documents outlined; unifying statement ruled_
+_Last updated: 2026-09-25 -- Voronoi document opened as the Active Focus; trilogy paused (capture only)_
 _Log: logs/priorities_history.md_
 
 ## Purpose
@@ -114,6 +114,8 @@ writing; parallel ideation but staged production).
 **Round two BEGAN 2026-09-22 (Baselines only)** and the trilogy is now the Active Focus; icons paused awaiting photographs. *Baselines* reframed around the scale between weather and climate; worked groups fire / vintage / tree rings; Hawai‘i a test case, not the setting; a shared visual language to tie the three documents together. Detail: `ideas_three_documents.md` → Round two. **Evening 2026-09-22:** S3 titled and paused, ready to outline; friction made a trilogy spine; *Maps with Tiles* round two underway.
 
 **2026-09-23: all three outlined** -- MRC (8 chapters; backbone "where do boundaries come from"), MWT (11 chapters; the counting frame; the continuum as counterexample), S3 (7 parts). **Unifying statement ruled: boundaries in value, space and time; MRC read first.** Writing ruling: load the documents with personal stories. Next: data sources. Detail: `ideas_three_documents.md`.
+
+**2026-09-25: FOCUS MOVED to a separate Voronoi methods document (`proj_Voronoi.md`, NEW), to be finished BEFORE the trilogy discusses the technology** (Kim's ruling). Opened from MWT's data-source question; structure-constrained Voronoi (releves + canopy height) prototyped at Kipuka Puaulu and accepted. MWT keeps the concept and one worked example. Detail: `proj_Voronoi.md`; `ideas_three_documents.md` (2026-09-25).
 
 ---
 

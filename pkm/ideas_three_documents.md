@@ -719,7 +719,69 @@ More to gather as writing begins.
 **Still open:** a worked site with plots + an expert vegetation map (Kim
 searching); an invasive / disease point dataset for ch.9.
 
+## MWT and the Voronoi document -- 2026-09-25
+
+### Kim's reframe: a fair comparison needs boundary data
+
+A Voronoi map uses only category data at points. An expert vegetation map starts the same way (releve
+points -> categories) but its BOUNDARIES come from extra information -- once the air photo, now the
+satellite view. **Comparing the two is not fair: one used more data, specifically about boundaries.**
+Kim's question: can a small set of Voronoi sites plus **canopy height** -- in important ways equivalent
+to seeing vegetation-zone changes on imagery -- get closer to a professionally drawn map? His aims:
+**"the enemy of good is better"** -- a new, reproducible technique giving a good first approximation;
+few people know canopy-height data exist; it may cut the number of releves needed (releves are
+expensive = friction); **getting a map and judging whether it is "good enough" is a research strategy.**
+
+### The prototype -- Kipuka Puaulu (accepted by Kim)
+
+Structure-constrained Voronoi: canopy height (Meta/WRI 1 m) -> four structure classes -> each cell takes
+the category of the nearest releve in the SAME class. 12 releves, 3 per class, stand-in categories.
+Plain vs constrained disagree on 66% of the area. Kim: "realistic boundaries and an appropriate
+classification"; "two relatively unknown technologies ... combine into something that's very
+informative." Detail, caveats and code: `proj_Voronoi.md`; `Projects\Voronoi\prototype\`.
+
+### Claude's points (discussed; the design choices Kim took up)
+
+- Three ways to combine: segment-then-label; cost-distance (geodesic) Voronoi; nearest releve in
+  position + structure space. The prototype is the simplest variant of the first two.
+- Canopy height sees STRUCTURE, not composition: it finds forest / shrub / open and stand-age edges,
+  misses boundaries where species change at similar height; and it draws edges that are not type
+  boundaries (treefall gaps) -- hence smoothing and a minimum mapping unit.
+- Releve heights could set the structure breaks, so the data decide which height change is a
+  category change.
+- Test design: plain Voronoi / Voronoi + canopy / expert map; **agreement vs number of releves, with
+  and without canopy height** is the figure that answers "fewer releves".
+- Patches with no releve are flagged, not guessed: the map also says where the next releve goes.
+
+### ★ Kim's ruling -- a SEPARATE Voronoi document, finished first
+
+The Voronoi technology gets its own methods document (`proj_Voronoi.md`), **completed before the
+technology is discussed in the trilogy.** Consequences for MWT:
+- MWT keeps the CONCEPT -- only a few kinds of maps; the missing map; boundary sources -- and cites the
+  Voronoi document for mechanics.
+- **One worked example stays in MWT: Kipuka Puaulu, in ch.8 (the overlay), as argument** -- a fair
+  computed map must borrow boundary information too. This refines ch.8: the comparison is plain
+  Voronoi / Voronoi + canopy / expert map.
+- Ch.5 (friction, R code), ch.6 (reading the tiles), ch.9 (tiles as containers) and ch.11 (tiles
+  beyond maps) shrink to summary + reference; their substance moves to the Voronoi document.
+- **The MWT type grid gains a cell:** categories at points + boundaries COMPUTED FROM A CONTINUOUS
+  SURFACE -- entitation made reproducible. The decision tree's "Computed; pattern not visible" branch
+  may split on whether an auxiliary surface exists.
+- Kim's outline for the new document (use cases; per-cell statistics; weighted Voronoi; "once
+  partitioned, ask") is recorded in `proj_Voronoi.md`; its line on the limit (no outside information,
+  e.g. rivers) is answered by the Kipuka Puaulu result.
+
+_Still open for MWT:_ an expert vegetation map for the overlay; an invasive / disease point dataset.
+
 ## Next
+
+**2026-09-25: focus moved to the Voronoi document (`proj_Voronoi.md`), to be finished BEFORE the
+trilogy discusses the technology.** The trilogy stays at capture; MWT's changes are recorded in the
+2026-09-25 section above. Carried as before: sites and datasets; worked examples for MRC ch.5-7;
+package boundaries and the shared visual vocabulary; the verify lists. Do not start production
+writing from this file.
+
+_Next as of 2026-09-23, kept as history:_
 
 All three documents have first-round working outlines (2026-09-23): MRC (8 chapters),
 MWT (11 chapters), S3 (7 parts); unifying statement ruled (boundaries in value, space

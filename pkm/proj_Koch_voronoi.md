@@ -1,5 +1,5 @@
 # PROJECT: Koch Voronoi Analysis
-_Last updated: 2026-05-30_
+_Last updated: 2026-09-25_
 _Status: Paused_
 _Focus readiness: Not applicable_
 
@@ -17,9 +17,9 @@ Phase 1 complete. Report sent to Tom Koch for review; no response yet.
 Functions still in main script; package structure not yet created.
 
 ## Locations
-- Code: Google Drive / Projects / proj_Koch_voronoi
+- Code: G:\My Drive\Projects\Koch_voronoi (folder renamed from proj_Koch_voronoi 2026-05-27)
 - Data: None (Phase 1 uses simulated data)
-- Output: Google Drive / Projects / proj_Koch_voronoi / phase1_report.pdf
+- Output: G:\My Drive\Projects\Koch_voronoi\phase1_report.pdf
 - GitHub: Not yet
 
 ## Key Files
@@ -33,6 +33,10 @@ Functions still in main script; package structure not yet created.
 4. Test with real epidemiological data (awaiting from Koch)
 5. Test with alternative domain data (ecology or vegetation)
 6. Write general documentation covering all domains tested
+
+**2026-09-25: Next Steps 5-6 are taken up by `proj_Voronoi.md`** -- a separate Voronoi methods
+document (vegetation first, canopy-height-constrained tiles) in which this epidemiological work becomes
+one credited domain. That project does not wait on Phase 2 data.
 
 ## Collaborators / Dependencies
 - Tom Koch — project initiator; review of Phase 1 pending
@@ -54,3 +58,8 @@ real data — a specific named trigger, which is why this is Paused
 (the new status this session) rather than Dormant. Part of the
 collection-wide back-fill; see proj_PKM.md and session_log.md
 (2026-05-30).
+
+### 2026-09-25
+Pointer added: the vegetation / general-documentation steps (5-6) moved to the new
+`proj_Voronoi.md` (Active Focus). Status here unchanged -- Paused on Tom Koch. Locations corrected to
+the renamed folder `Projects\Koch_voronoi` (forward pointers move; history does not).
