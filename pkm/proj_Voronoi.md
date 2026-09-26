@@ -1,5 +1,5 @@
 # PROJECT: Voronoi
-_Last updated: 2026-09-25_
+_Last updated: 2026-09-25 (night)_
 _Status: Active_
 _Focus readiness: Ready_
 
@@ -71,6 +71,69 @@ is Kim's "reproducible, not objective".
   late.
 - Friction: a few lines of `sf` / `terra`; show the code.
 
+## Chapter plan (Kim approved the structure, 2026-09-25 afternoon)
+Organising question (Kim): **are Voronoi tessellations useful in the research fields I inhabit?** Each chapter
+tests part of it; ch.10 answers. Arnold & Milne (1984) run through as a benchmark: what they did, or could not, then.
+1. **The map that never got drawn.** OPENING (Kim's design): a simple Voronoi map, then a hand-drawn vegetation
+   map; pose -- can Voronoi tessellations make maps with the border complexity of hand-drawn vegetation maps? --
+   and leave it UNANSWERED, as tension to carry the reader. Then Kim's story (colleagues' fieldwork stalling at
+   the map; scribing, ruby scribes, darkroom and large-format camera; pen plotters; an article with code in the
+   wrong language; the shelf; a usable implementation years later) and the Arnold & Milne reprint from his
+   separates library. Simple map = plain Voronoi of Kipuka Puaulu; hand-drawn map = the 1974 map (permission:
+   Kim says no problem getting it).
+2. **What a Voronoi map is.** Points + categories + border; halfway; markets / schools vs releves. Arnold & Milne:
+   the soil cartographer's 'sphere of influence' IS a Voronoi tessellation at dense sampling.
+3. **The study area.** Bounded / unbounded; edge cells.
+4. **Kinds of Voronoi maps.** Kim's taxonomy; raw vs merged (Arnold & Milne's Fig. 8-10 did this in 1984).
+5. **Reading the cells.** Per-cell statistics; patterns; boundary uncertainty ~ half the spacing.
+6. **Tiles as containers.** Counting frame (Koch; invasives; herbarium specimens).
+7. **Weighted Voronoi.** Attendance / capacity; geodesic distance as the bridge to ch.8.
+8. **Adding what the points don't know.** Canopy height; structure-constrained Voronoi; Kipuka Puaulu. Credit
+   Arnold & Milne for the hybrid IDEA (clip to towns/rivers; merge surveyor polygons with tiles).
+9. **Good enough?** The 1974 map as the check; the releve-number curve; boundary agreement.
+10. **Were they useful?** Field by field (incl. **ethnobotany** -- Kim: the first readers will be ethnobotanists); where the friction went. Careful claim: shown in soils in 1984,
+    published in a graphics journal, not seen in vegetation mapping -- 'I didn't see them', not 'nobody used them'.
+Appendix: functions + data sources (-> package).
+
+## The expert-map check (2026-09-25 afternoon)
+**Source:** Mueller-Dombois & Fosberg 1974, *Vegetation Map of Hawaii Volcanoes National Park (at 1:52,000)*,
+CPSU/UH Tech. Rept. 4. Drawn by Fosberg indoors from 1954 air photos (1:12,000), field-checked by Mueller-Dombois
+1965, ~20% by photo-pattern matching alone, boundaries hand-transferred by T. Nakata. Units are dominance types;
+**scrub/forest split at ~5 m, open/closed at ~60% crown cover -- canopy measures.** Kipuka Puaulu = type 8
+`AcSaM(ad)` ('Kipuka Ki and Puaulu forests'). Report: 162 releves 'located on the basis of the mapped vegetation
+units' (preferential; squares 19, 20, 38, 39, 62 near the kipuka). Report notice restricts open-literature use
+without UH/NPS Unit permission -- Kim: no problem getting it.
+**Method:** vegetation overlays of sheets 12 + 13 (Kipuka Puaulu sits on the seam) extracted from the PDF at
+native resolution (~4.4 m/px); homography from the four corner marks (7.5' x 3.75' sheets); polygons = regions
+between lines, text holes merged; 69 regions coded by symbol and grouped into 7 classes; Old Hawaiian Datum ->
+WGS 84 by PROJ (~285 m E, ~345 m S). Kipuka Ki's outline is open in the scan -- left uncoded (1.4% of window).
+**Registration: the 1954 boundaries sit on today's canopy edges** (kipuka ring, the small southern kipuka).
+**Results (window 3.2 x 2.6 km):**
+- 1974 class vs today's structure: Kipuka forest 62% in the >10 m class (median 11.4 m); scrub 91% open today.
+- 12 prototype releves relabelled with the 1974 class: plain Voronoi 45% agreement, within-structure 55%.
+- **Boundary recall: 70% of the expert boundary lies within 50 m of a within-structure boundary vs 17% for
+  plain Voronoi.** But the constrained map draws 137 km of boundary vs the expert's 51 km -- too fragmented;
+  a minimum mapping unit nearer the expert's is the obvious next knob.
+- **Releve-number curve** (6-192 releves, 20 draws): with releves STRATIFIED by canopy structure, the
+  constrained map leads through ~48 releves (6: 59% vs 47%; 24: 66% vs 60%) and the two converge by ~96.
+  With RANDOM releves plain Voronoi matches or beats it from 12 up. Structure alone plateaus at ~64%.
+  Reading: canopy structure pays most when releves are few and placed by structure -- the 'fewer releves'
+  claim holds in that regime, not in general. Some of the gap is 70 years of change (e.g. the fire east of
+  the kipuka) and floristic splits inside one structure class; Kim: early check on the technology, not now.
+
+## Minimum mapping unit (2026-09-25 evening; Kim chose this over real releve sites)
+Tested MMU 0.25-16 ha (terra::sieve) on the structure classes (A), on the output map (B), and both; 12 releves
+with 1974 classes. The expert map's own class patches: smallest interior ~1.8 ha, median ~11 ha.
+- **A+B at 2 ha:** 107 km of boundary, 56% area agreement, 58% of the expert boundary recovered within 50 m, 54%
+  of drawn boundary on an expert line. **At 8 ha:** 58 km, 60%, 35%, 56%. **At 16 ha:** 52 km (= expert's 51),
+  61%, 32%, 57%. Area agreement and precision creep up; recall falls fast. **MMU is a scale choice, not a fix.**
+- **Why:** today's canopy edges (4 classes, 0.25 ha) lie within 50 m of **81%** of the expert's lines -- the
+  expert's boundaries are largely structural -- but only **~52-60%** of canopy edges lie on an expert line, at
+  ANY MMU. Recasting the classes as the 1974 rules (crown cover of >5 m trees in a 25 m radius; open/closed at
+  60%) does not change that (recall 0.80, precision 0.47 at 0.25 ha). The surplus edges are the expert's
+  generalised mosaics (savanna `mx-` units are 53% closed canopy today) and change since 1954 -- not speckle.
+- Candidate default for the document: ~2 ha, stated as the map's scale, with the trade-off figure shown.
+
 ## Locations
 - Code: G:\My Drive\Projects\Voronoi (bucket 2) -- `prototype/` holds the first script
 - Data: none stored; canopy height streamed on demand (Meta/WRI, AWS `dataforgood-fb-data`)
@@ -82,6 +145,14 @@ is Kim's "reproducible, not objective".
 - prototype/kipuka_puaulu_prototype_v2.png -- three panels: canopy height / plain Voronoi / within structure class
 - prototype/prototype_objects.rds -- rasters and releves from the run (terra objects wrapped)
 - notes/Voronoi_thoughts_2026-09-25.txt -- Kim's outline, verbatim as uploaded
+- references/ -- Arnold & Milne 1984; Mueller-Dombois & Fosberg 1974; Johnston et al. 1996 (Pokegama wetland: Thiessen polygons from 81 points vs airborne video, 52% correspondence -- held for Ch.9); Kim's sheet-12 composite
+- expert_map/ -- digitised 1974 map (asc grids, region codes CSV), georef + coding scripts (Python), expert_overlay_v1.R, releve_curve_2026-09-25.rds
+- prototype/expert_overlay_v1.png, prototype/releve_curve_v1.png -- the check's two figures
+- prototype/mmu_tradeoff_v1.png; expert_map/mmu_results_2026-09-25.rds -- the MMU test
+- **The book (Quarto, project root):** `_quarto.yml`, `index.qmd` (Preface), `where_the_map_stopped.qmd` (Ch.1),
+  `what_is_a_voronoi_map.qmd` (Ch.2); `data/kipuka_puaulu_releves.csv`, `data/kipuka_puaulu_study_area.csv`;
+  `images/` (Ch.1 figures); `R/fig_ch1_voronoi.R`; `background/drafting_notes.md` (status, rulings, KIM questions, verify list).
+  Renders clean to `_output/` (0 chunk errors, 5 gt tables, 3 figures).
 
 ## Related Projects
 - **Maps with Tiles (MWT)** -- trilogy document, capture only (`ideas_three_documents.md`). MWT
@@ -96,11 +167,11 @@ is Kim's "reproducible, not objective".
 - **checklists / checklistr** -- herbarium points; a candidate counting-frame dataset.
 
 ## Next Steps
-1. Restructure Kim's outline into a chapter plan (Kim to rule).
-2. Real categories at Kipuka Puaulu: Kim relabels the 12 points or places his own; re-run.
-3. Decide the structure breaks from releve heights rather than fixed defaults.
+1. ~~Minimum mapping unit~~ DONE 2026-09-25 evening (scale choice, not a fix). Next knob: mosaic/texture classes that match the expert's `mx-` units, or accept and explain.
+2. Boundary metrics in the releve-number curve, not only area agreement.
+3. Real releve locations: the report's numbered sites; categories from their own records (Newell 1968?), not the map.
 4. Read `Koch_voronoi\voronoi_functions.R`; decide what carries into a package.
-5. An expert vegetation map for an overlay check (still sought).
+5. Chapter 1 draft: the two maps and the open question; then Kim's story.
 
 ## Collaborators / Dependencies
 Tom Koch (credit for the epidemiological Voronoi work; not a dependency).
@@ -114,3 +185,17 @@ None.
 Project opened. Prototype built and accepted at Kipuka Puaulu; Kim ruled a separate Voronoi document,
 finished before the trilogy discusses the technology. Set as Active Focus. Session detail:
 `session_log.md` 2026-09-25.
+### 2026-09-25 (afternoon)
+Chapter plan approved (opening with the unanswered question, Kim's design). Arnold & Milne 1984 filed as the
+running benchmark. Kim found the 1974 Mueller-Dombois & Fosberg map; digitised and georeferenced; first overlay
+and releve-number curve run. Detail in the section 'The expert-map check'.
+### 2026-09-25 (evening)
+MMU test run at Kim's choice; result: trade-off, not a fix; the expert's lines sit on canopy edges (81%) but
+half the canopy edges are generalised or changed since 1954. Figure: prototype/mmu_tradeoff_v1.png.
+### 2026-09-25 (night)
+Kim accepted the 2 ha MMU for this area and turned to the document. Title ruled: *The Map That Never Got Drawn*;
+source at the project root. Preface, Ch.1 (Where the Map Stopped) and Ch.2 (What a Voronoi Map Is) drafted and
+rendered; three KIM questions left as HTML comments (decade/article/languages; same article as Arnold & Milne?;
+acknowledgements and permission note).
+Kim's notes (night): awareness began with the 1984 article; code FORTRAN -> BASIC 'if memory serves'; add ethnobotany
+(first readers are ethnobotanists); US spelling ('color'). Johnston et al. 1996 added from Kim's files and cited in Ch.1.

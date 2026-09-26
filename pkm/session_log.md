@@ -11,6 +11,34 @@ Mechanism 4.
 
 ---
 
+## 2026-09-25 (evening and night) -- MMU RULED 2 HA, AND *THE MAP THAT NEVER GOT DRAWN* GETS ITS FIRST THREE CHAPTERS
+
+**Active focus:** Voronoi (unchanged). Kim returned from the pause at 19:54 HST.
+
+**Minimum mapping unit (Kim's choice over real releve sites).** 0.25-16 ha tested on structure classes, output, and both: area agreement and precision creep up, boundary recall falls fast -- a scale choice, not a fix. Diagnosis: today's canopy edges sit within 50 m of 81% of the 1974 lines, but only ~52-60% of canopy edges fall on an expert line at any MMU; rebuilding classes on the 1974 rules (crown cover >5 m, 60%) did not change it. Surplus edges = generalised mosaics (savanna `mx-` units 53% closed canopy today) + change since 1954. **Kim ruled 2 ha for this area.** Figure `prototype/mmu_tradeoff_v1.png`.
+
+**The book.** Kim turned to writing. Rulings: title ***The Map That Never Got Drawn***; source at the `Projects\Voronoi` root; Preface + Ch.1 + Ch.2 tonight. Style guide and association index read first. Drafted: Preface; Ch.1 *Where the Map Stopped* (Kim's opening -- simple Voronoi map, hand-drawn 1974 crop, the question left open -- then his story kept close to his words, the 1984 article, the friction gone); Ch.2 *What a Voronoi Map Is* (five markets, the halfway rule, three inputs, names, reproducible not objective, the 12 Kipuka Puaulu points from CSV, area table, a 'Useful?' callout). Code per the style guide; Okabe-Ito colors. Renders clean via `quarto::quarto_render` on G: (0 chunk errors, 5 gt tables, 3 figures).
+
+**Kim's corrections folded in:** awareness began with the 1984 Arnold & Milne article; the code was FORTRAN, converted toward BASIC 'if memory serves'; **ethnobotany** added -- the first readers will be ethnobotanists (Preface paragraph, field lists, Ch.10 note); US spelling ('color'). Kim added **Johnston et al. 1996** (Pokegama River wetland: Thiessen polygons from 81 points, 'somewhat blocky'; 52% correspondence with airborne video -- held for Ch.9) -- cited in Ch.1 as proof the method reached vegetation mapping, and for the GPS friction. **At the close Kim told his own location story** (barometric altimeter set each morning at base station, then finding yourself on a topo sheet; inaccurate away from roads) -- captured verbatim in `background/drafting_notes.md` for Ch.1.
+
+**Observation, not yet a finding:** `device_commit_files` delivered image files (Kim's JPG composite, a PNG crop) with DIFFERENT bytes from the source (sizes shifted by a few KB) while text files and PDFs matched by md5. Content looked right; treat image commits as re-encoded until checked.
+
+**Written:** `proj_Voronoi.md` (MMU section, book files, notes, log), `project_index.md` (NEXT), `priorities.md`, this entry; `Projects\Voronoi`: `_quarto.yml`, `index.qmd`, `where_the_map_stopped.qmd`, `what_is_a_voronoi_map.qmd`, `data/` (2 CSV), `images/` (2), `R/fig_ch1_voronoi.R`, `background/drafting_notes.md`, `references/` (+Johnston 1996), `expert_map/mmu_results_2026-09-25.rds`, `_output/` (render). Text files md5-verified on copy. Snapshots in `C:\temp\pkm_close_2026-09-25`.
+
+**Mechanism 5.** (1) No new project; proj_Voronoi updated. (2) No Status change. (3) New files listed above. (8) Nothing for `deferred.md`. (10) Outside `G:`: `C:\temp\mwt_prototype_2026-09-25` (scratch: prototype, expert-map work, book_r1-r3 staging, render_check -- all sources now copied into `Projects\Voronoi`; safe to delete) and `C:\temp\pkm_close_2026-09-25`. (11) `pkm_health()` (21:32, 74.7 s): 85 works, 0 reconciliation failures, 0 broken pointers, gate 0; drift 4 and over-budget 6 unchanged (session_log 383 KB); scratch 17 folders / 365 MB. (12) `pkm_backup()` -- see below.
+
+**Next (tomorrow):** Kim reads Preface + Ch.1-2; fold the altimeter story into Ch.1; then Ch.3 (study area). 'A good day' (Kim).
+
+## 2026-09-25 (afternoon, interim -- Kim paused ~2 h) -- THE 1974 EXPERT MAP ARRIVES, AND THE 1954 LINES FALL ON TODAY'S CANOPY
+
+**Active focus:** Voronoi (unchanged). PKM reopened 15:38 HST; nothing had changed since the noon close.
+
+**Chapter plan approved** from Kim's outline and his story (colleagues stalled at the map; scribing, darkroom, pen plotters; code in the wrong language; the shelf). **Kim's opening:** a simple Voronoi map, then a hand-drawn vegetation map, and the question -- can tessellations match hand-drawn border complexity? -- left unanswered as tension. Kim supplied **Arnold & Milne 1984** (IEEE CG&A; Voronoi for Greek soil survey) from his separates -- it anticipates raw vs merged tiles, manual-mapping bias and the hybrid idea; to run through the document as a benchmark. Claim softened by Kim: 'I didn't see them', not 'not adopted'.
+
+**Kim found the expert map:** Mueller-Dombois & Fosberg 1974 (CPSU/UH Tech. Rept. 4, 1:52,000; 1954 photos). Sheets 12 + 13 digitised in the sandbox (corner-mark homography, 69 regions coded, 7 classes), Old Hawaiian Datum -> WGS 84 in R. **Registration: 1954 boundaries sit on today's canopy edges.** 12 releves: area agreement plain 45% / within-structure 55%; boundary recall within 50 m 17% / 70%; constrained map over-fragmented (137 vs 51 km). Releve curve (6-192, 20 draws): structure-stratified releves -> canopy method leads to ~48, converges by ~96; random releves -> plain matches or wins from 12; structure alone plateaus ~64%. Kim: no problem getting permission for the report; a fire east of the kipuka changed vegetation, set aside for now.
+
+**Written:** `proj_Voronoi.md` (plan, check, next steps, log), `project_index.md` (NEXT line), this entry; `Projects\Voronoi\references` (2 PDFs md5-verified; Kim's composite JPG arrived 5 KB larger than the upload -- re-encoded in transfer, not byte-identical), `expert_map/`, `prototype/` figures. Snapshots in `C:\temp\pkm_close_2026-09-25`. No health check or backup yet -- run at the real close.
+
 ## 2026-09-25 -- CANOPY HEIGHT GIVES VORONOI ITS BOUNDARIES: A KIPUKA PUAULU PROTOTYPE, AND A NEW DOCUMENT OPENS AS THE FOCUS
 
 **Active focus at start:** the trilogy (capture only). **At end:** VORONOI -- a separate methods document, `proj_Voronoi.md` (NEW), Active / Ready. Session-start reads done (card, index, proj_PKM) via the device bridge; device_bash still cannot mount `G:`. TODAY bound 2026-09-25 HST in R (11:15).

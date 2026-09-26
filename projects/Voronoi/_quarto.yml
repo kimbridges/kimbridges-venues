@@ -1,0 +1,33 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "The Map That Never Got Drawn"
+  subtitle: "Voronoi tessellations for vegetation and the fields around it"
+  author: "K. W. Bridges"
+  date: today
+  ## cover-image: voronoi_cover_art_text.png   (not made yet)
+  chapters:
+    - index.qmd
+    - where_the_map_stopped.qmd
+    - what_is_a_voronoi_map.qmd
+  ## navbar:
+  ##   logo: voronoi_logo_art.png             (not made yet)
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    embed-resources: false
+
+editor: visual
+
+toc: true
+number-sections: true
+number-depth: 2
+
+execute:
+  warning: false
+  error: false
+  message: false

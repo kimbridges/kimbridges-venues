@@ -15,7 +15,7 @@ _Last updated: 2026-09-25_
 
 **⚠ CARRIED:** `pkm_card.md` 0.4 KB over budget; `C:/temp` scratch flagged (now incl. `mwt_prototype_2026-09-25`, whose files were COPIED to `Projects\Voronoi\prototype` -- the scratch copy may go); the local Filesystem MCP connector still fails; device_bash still cannot mount `G:`.
 
-**NEXT: restructure Kim's outline (`Projects\Voronoi\notes\Voronoi_thoughts_2026-09-25.txt`) into a chapter plan; real categories at Kipuka Puaulu (Kim relabels or places the points); structure breaks from releve heights; read `Koch_voronoi\voronoi_functions.R` for the package.**
+**NEXT (2026-09-25 close): the book *The Map That Never Got Drawn* is started -- Preface, Ch.1 (Where the Map Stopped) and Ch.2 (What a Voronoi Map Is) drafted and rendering clean at the `Projects\Voronoi` root. Tomorrow: Kim reads the drafts; fold his barometric-altimeter location story into Ch.1 (in `background/drafting_notes.md`); then Ch.3 (study area). MMU ruled 2 ha for this area. The 1974 map analysis waits for Ch.8-9. Detail: `proj_Voronoi.md`.**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

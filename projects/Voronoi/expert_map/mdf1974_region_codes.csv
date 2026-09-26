@@ -1,0 +1,71 @@
+region,symbol,class_id,class,uncertain
+2,AcM(od-C),2,Koa-ohia forest,False
+3,scM(ns),4,Ohia scrub / low forest,False
+80,MAc(od-C),2,Koa-ohia forest,False
+182,x-scM(G),4,Ohia scrub / low forest,False
+201,oM(mx),3,Ohia forest,False
+234,mx(MAc),5,Grass mix / savanna,False
+239,cM(C),3,Ohia forest,False
+245,mx-AcM,5,Grass mix / savanna,False
+271,AcM(od-C),2,Koa-ohia forest,False
+280,AcM,2,Koa-ohia forest,False
+283,mx(MAc),5,Grass mix / savanna,False
+310,mx-MAc,5,Grass mix / savanna,False
+330,MAc(ns),2,Koa-ohia forest,False
+336,MAc(ns),2,Koa-ohia forest,False
+339,mx(scM),5,Grass mix / savanna,False
+343,AcM(od),2,Koa-ohia forest,False
+344,mx(AcSoM),5,Grass mix / savanna,False
+350,mx(MAc),5,Grass mix / savanna,False
+352,x,7,Modified / other,False
+361,MAc(ns),2,Koa-ohia forest,False
+364,AcM(od),2,Koa-ohia forest,False
+371,MAc(ns),2,Koa-ohia forest,False
+373,mx-AcM,5,Grass mix / savanna,False
+375,MAc(ns),2,Koa-ohia forest,False
+376,x,7,Modified / other,False
+382,mx-AcSoM,5,Grass mix / savanna,False
+401,mx-AcM,5,Grass mix / savanna,False
+403,AcSoM(od),1,Kipuka forest (koa-manele-ohia),False
+410,mx-AcSoM,5,Grass mix / savanna,False
+413,AcSoM(od),1,Kipuka forest (koa-manele-ohia),False
+436,AcSoM(od),1,Kipuka forest (koa-manele-ohia),False
+440,mx-AcSoM,5,Grass mix / savanna,False
+447,mx(scM),5,Grass mix / savanna,True
+452,MAc(ns),2,Koa-ohia forest,False
+455,mx(AcSoM),5,Grass mix / savanna,False
+460,oM(ns-L)/scM(ns-L),4,Ohia scrub / low forest,False
+464,mx(scM),5,Grass mix / savanna,True
+480,mx,5,Grass mix / savanna,False
+492,mx-AcSoM,5,Grass mix / savanna,False
+496,AcSoM(od),1,Kipuka forest (koa-manele-ohia),False
+499,mx-AcSoM,5,Grass mix / savanna,False
+503,mx-AcSoM,5,Grass mix / savanna,False
+505,mx-AcSoM,5,Grass mix / savanna,False
+509,MAc(ns),2,Koa-ohia forest,True
+515,mx-AcM,5,Grass mix / savanna,False
+517,oM(G-C),3,Ohia forest,False
+544,scM(An-G),4,Ohia scrub / low forest,False
+568,mx-ns,5,Grass mix / savanna,False
+570,scM(ns-L),4,Ohia scrub / low forest,False
+100003,mx(AcSaSoM)+ns(i),5,Grass mix / savanna,False
+100004,mx-AcSoM,5,Grass mix / savanna,False
+100006,mx-AcM,5,Grass mix / savanna,False
+100008,mx-ns,5,Grass mix / savanna,True
+100009,scM(ns)/scM(ns-L),4,Ohia scrub / low forest,False
+100010,scM(ns-L),4,Ohia scrub / low forest,False
+100011,MAc(ns),2,Koa-ohia forest,False
+100012,oM(ns-L),4,Ohia scrub / low forest,False
+100013,x,7,Modified / other,False
+100014,scM(An-G),4,Ohia scrub / low forest,False
+100017,fu,7,Modified / other,False
+100022,mx-ns,5,Grass mix / savanna,False
+100045,r-scM(ns),6,Open lava / ash,False
+100055,x,7,Modified / other,False
+100058,scM(ns-r),4,Ohia scrub / low forest,False
+100060,scM(ns-L),4,Ohia scrub / low forest,False
+100069,r-ash(ns),6,Open lava / ash,False
+100070,x,7,Modified / other,False
+100074,ash,6,Open lava / ash,True
+100075,x,7,Modified / other,False
+900003,AcSoM(od),1,Kipuka forest (koa-manele-ohia),False

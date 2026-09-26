@@ -1,0 +1,19 @@
+# Preface {.unnumbered}
+
+This document asks one question. Are Voronoi tessellations useful in the research fields I work in? Those fields are vegetation science, ethnobotany, ecology, botany, geography and, through a long collaboration, public health. The question is older than the tools that can answer it. Chapter 1 tells how it got started and why it sat on a shelf for so long.
+
+A Voronoi tessellation divides an area into tiles, one tile around each point. Every place inside a tile is closer to that tile's point than to any other. Give each point a category, color the tiles, and you have a map. It's about the simplest map you can make from samples, and it's reproducible. Anyone with the same points gets the same map.
+
+If you work in ethnobotany, the questions will be familiar. We record where plants are gathered, named and used, and those records are points. What does a point stand for, and how far does it reach? That's the question a Voronoi map answers, in the simplest way it can.
+
+That simplicity is also the problem. A vegetation scientist's hand-drawn map has boundaries that follow the land. They wander along the edge of a forest, loop around a small stand of trees and trace an old lava flow. Voronoi tiles have straight edges. Much of this document is about closing that gap, and about being honest where it can't be closed.
+
+The work is built around one place, Kīpuka Puaulu in Hawaiʻi Volcanoes National Park. It's a small island of old forest surrounded by younger lava. I know it well, and it has a professionally drawn vegetation map from the 1970s to check the results against. The same site returns in chapter after chapter, so you can see each idea change the same map.
+
+A second thread runs through the document. In 1984 two computer scientists, David Arnold and Wendy Milne, showed how Voronoi tessellations could turn soil survey points into soil maps. Their paper has been in my files for a long time. It's a useful benchmark. Where they solved something, I'll say so. Where the tools of 1984 held them back, I'll show what has changed.
+
+The chapters move from the basics toward the harder cases. First comes what a Voronoi map is and what it assumes. Then the practical questions: the study area, the kinds of Voronoi maps, and what the tiles themselves can tell you. After that come the extensions: counting things inside tiles, weighting the points, and adding information the points don't carry. The last chapters test the maps against the expert's and give my answer to the question.
+
+The examples use R. The code is folded away under "Show the code" links, so you can read the argument without it and open it when you want to see how something was done. The data files are small and included, so any example can be run on its own.
+
+<!-- KIM: acknowledgements? (e.g., the 1974 map's authors and the UH/NPS Unit, permission note; collaboration credits as in earlier documents) -->
