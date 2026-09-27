@@ -1,0 +1,151 @@
+# Were They Useful?
+
+Chapter 1 asked whether Voronoi tessellations are useful in the research fields I inhabit: vegetation science, ethnobotany, ecology, botany, geography and public health. Chapter 9 answered the narrow version of that question, about vegetation maps. A plain Voronoi map isn't good enough to stand in for a hand-drawn one. Combined with canopy height, it is.
+
+That answer could leave the wrong impression. It would be easy to read it as "plain Voronoi maps are a first draft, and the real work starts when you add other data." Sometimes that's true. But often the plain map is exactly the right tool, and sometimes it's the only tool fast enough to matter.
+
+```{r}
+#| label: setuparchive
+#| message: false
+
+## --- Standard packages ---
+
+## many useful functions, including read_csv() and tibble()
+library(tidyverse)
+## formatted tables
+library(gt)
+
+## --- Specialized packages ---
+
+## spatial data: points, polygons, and the Voronoi function
+library(sf)
+
+## --- Options and defaults ---
+
+## suppress read_csv() column-type messages
+options(readr.show_col_types = FALSE)
+```
+
+## When plain is enough
+
+A plain Voronoi map is weakest at one thing: putting a boundary in exactly the right place. Plenty of questions don't need that. They need to know *which* point a place belongs to, or which place a point serves, and they need the answer quickly.
+
+**Tracing a contaminated food.** A public health investigator has a list of people who fell ill and a list of shops that sold a suspect product. Tile the shops, drop the cases into the tiles, and count, as in Chapter 6. A tile with far more cases than its population would predict points to the shop worth visiting first. If a boundary is off by a block, the answer doesn't change. What matters is that the map takes minutes, not days, while people are still getting sick.
+
+**Placing a new school.** A school district wants to know what a new school would do to enrollment. Tile the existing schools, count the children in each tile from the census, as with the gardens in Chapter 7, then add the new school and count again. Move the point to another site and run it once more. Each version takes a second. Nobody needs the exact line between two catchments to see which site relieves the most crowded school.
+
+**Finding the source of cholera.** The idea is old. In his 1855 account of the Broad Street outbreak in London, John Snow drew a line around the Broad Street pump marking the places that were equally far, by the nearest road, from that pump and from the pumps around it. Inside the line, the nearest water was Broad Street's, and most of the deaths fell inside it. It was a Voronoi tile in all but name, with walking distance in place of straight-line distance, the same substitution Chapter 7 made with travel time.
+
+<!-- KIM: a sentence on your own epidemiological work (the clustering system with Tom Koch) could fit here, if you'd like it in. -->
+
+In each case, a quick answer that's good enough is worth more than a precise one that comes too late. The plain tessellation is fast, needs nothing but the points, and anyone can check it. For these jobs, it's not a rough draft of something better. It's the finished tool.
+
+## When the boundaries matter
+
+Vegetation maps are different. A vegetation map is used to measure areas, find edges, plan field work and compare one decade with another, and all of those depend on where the lines fall. That's where the plain map fell short in Chapter 9, finding only a small part of the 1974 boundary, and where the canopy map made the difference.
+
+The general lesson is simple. When the position of a boundary matters, look for another source of information that knows where boundaries are. At Kīpuka Puaulu it was canopy height. Elsewhere it might be soils, elevation, a road network, or a satellite image of flooding. The tessellation supplies the names; the other data supplies the edges.
+
+## Maps as archives
+
+There's a second kind of need that has nothing to do with speed. Some maps are made to be kept: a record of what was where, for someone to analyze later, maybe decades later. The 1974 vegetation map is one. Chapter 9 showed what it takes to use it half a century on. It had to be scanned, cut from its base map, fitted to the corner marks, traced into regions and shifted from a datum that's no longer in use. Kīpuka Kī had to be left blank because its outline was broken in the scan. None of that was anyone's fault. It's what happens to a map stored as a picture.
+
+A map made from points and rules can be stored differently. The points are data. The rules are a few lines of code. Store both, in a standard digital format, with a description of where everything came from, and the map can be rebuilt exactly, any time. Better still, it can be rebuilt with new information. A future reader with a newer canopy map can run the same rules and see what's changed.
+
+The code below shows what that looks like. It writes the twelve points, their tiles and a table of metadata into a single GeoPackage file, a format that GIS software and R can both read.
+
+```{r}
+#| label: archive
+
+## the points and the study area, as in Chapter 2
+releves       <- read_csv("data/kipuka_puaulu_releves.csv")
+releve_points <- st_as_sf(releves, coords = c("easting", "northing"), crs = 32605)
+area_corners  <- read_csv("data/kipuka_puaulu_study_area.csv")
+study_area    <- st_as_sfc(st_bbox(c(xmin = area_corners$easting[1],  ymin = area_corners$northing[1],
+                                     xmax = area_corners$easting[2],  ymax = area_corners$northing[2]),
+                                   crs = st_crs(32605)))
+
+## the tiles, with the three steps from Chapter 2
+tiles <- st_collection_extract(st_voronoi(st_union(releve_points), envelope = study_area))
+tiles <- st_join(st_sf(geometry = st_intersection(tiles, study_area)), releve_points)
+
+## a description of everything in the file
+metadata <- tribble(
+  ~item,                ~value,
+  "Title",              "Voronoi tiles, Kīpuka Puaulu study area",
+  "Points",             "12 demonstration points, 3 per canopy structure class (Chapter 2)",
+  "Point categories",   "Vegetation types from Mueller-Dombois and Fosberg (1974)",
+  "Coordinate system",  "WGS 84 / UTM zone 5N (EPSG:32605), meters",
+  "Frame",              "Study-area rectangle, 3.2 by 2.6 km (frame of convenience, Chapter 3)",
+  "Rule",               "Plain Voronoi: each place takes the category of its nearest point",
+  "Software",           paste0("R ", getRversion(), "; sf ", packageVersion("sf"), "; st_voronoi()"),
+  "Created",            as.character(Sys.Date()),
+  "Author",             "K. W. Bridges",
+  "Caution",            "Points are for demonstration, not field relevés")
+
+## write the three layers to one file
+archive <- file.path(tempdir(), "kipuka_puaulu_tiles.gpkg")
+st_write(releve_points, archive, layer = "points",   quiet = TRUE, delete_dsn = TRUE)
+st_write(tiles,         archive, layer = "tiles",    quiet = TRUE)
+st_write(metadata,      archive, layer = "metadata", quiet = TRUE)
+
+## read the metadata back from the file, to show it's there
+st_read(archive, layer = "metadata", quiet = TRUE) |>
+  gt() |>
+  cols_label(item = "Item", value = "Value") |>
+  tab_header(title = "Metadata stored with the tiles")
+```
+
+A structure-constrained map would add a few more rows: the canopy height source and its date, the smoothing, the height breaks and the mapping unit. Those are exactly the judgments that Chapter 9 said a hand-drawn map hides. Here they're written into the file.
+
+So the two needs aren't in conflict. The quick map for an investigator and the careful record for an archive come from the same points and the same rules. The difference is only in how much gets written down, and writing it down costs very little.
+
+## Field by field
+
+Here's how the answer comes out across the fields in Chapter 1.
+
+```{r}
+#| label: fields
+
+## the fields, with what the points are and what the tiles do
+fields <- read_csv(file =
+"field,points,what the tiles do,chapters
+Vegetation science,relevés,draw a vegetation map from a few plots; with canopy height the boundaries follow the forest edges,2-5; 8-9
+Ethnobotany,villages; markets; gardens; collection sites,show which place serves which people; count uses or records per area,2; 6-7
+Ecology,plots; traps; individual plants,measure spacing and pattern; give each plant the area around it; flag change for a second look,4-5; 8
+Botany,herbarium specimens,count collections per area; find where the record is thin,6
+Geography,any located features,service areas; frames and meaningful boundaries; weights and travel distance,3; 7
+Public health,cases; clinics; shops; schools,fast catchments and counts when a quick answer matters most,6-7")
+
+## show it
+fields |>
+  gt() |>
+  cols_label(field = "Field", points = "The points", `what the tiles do` = "What the tiles do",
+             chapters = "Chapters")
+```
+
+**Vegetation science** gets the biggest change. The plain map isn't enough, but the plain map plus canopy height is. It needs fewer relevés than a plain map, as long as they're placed with the canopy in mind, and every judgment in it is written down.
+
+**Ethnobotany** was the field I most wanted to reach, because ethnobotanists will be the first readers. Much ethnobotanical work is about people and places together: which village uses which forest, which market a plant passes through, which garden a visitor chooses. Those are questions of service areas and containers, and they rarely need exact boundaries. A plain tessellation answers them quickly. The herbarium count in Chapter 6 adds something else: a map of where the botanical record is thin, which is where the next trip will add the most. And some of the boundaries that matter most in ethnobotany, such as ahupuaʻa, come from the people themselves. Chapter 3 showed how to let a boundary like that shape the tiles.
+
+**Ecology and botany** use the tiles as a measuring tool. Tile areas describe how points are spread, and counts inside tiles describe where records pile up. Both need care with frames and location precision, as Chapters 3 and 6 showed.
+
+**Geography and public health** are where tessellations have the longest history, from Thiessen's rain gauges to Snow's water pumps. They remain the fast, honest first answer to "which one is nearest?" and, with weights or travel time, to "which one will people choose?"
+
+## Two things to take away
+
+Beyond the answer to Chapter 1's question, this document leaves two things behind.
+
+The first is a **method**: structure-constrained Voronoi, in which each place takes the name of the nearest point with the same kind of canopy. It's a small change to an old rule, and it moves the boundaries to where the vegetation changes.
+
+The second is a **data source**. The global canopy height map from Meta and the World Resources Institute is free, covers nearly every forest on earth, and measures the same kind of thing Fosberg read from air photos. I suspect many people in these fields don't know it exists. It made the largest single difference in this document.
+
+The method and the data also showed what happens when a map can be rerun and compared. Where it disagreed with what we expected, the question "why?" led somewhere: to seventy years of cattle, koa and fire around Kīpuka Puaulu, and to questions sharp enough to answer with the next season's field work.
+
+::: {.callout-note}
+## Useful?
+
+**Yes.** Plain Voronoi tessellations are useful, sometimes essential, when a fast answer about which place serves which is what's needed, as in tracing an outbreak or placing a school. Combined with other data, such as canopy height, they're good enough for vegetation maps, where the boundaries matter. Either way, the points and the rules can be stored with their metadata, so the map can be rebuilt, checked and improved long after it's made.
+:::
+
+The map that never got drawn can be drawn now. It was worth the wait.

@@ -211,6 +211,8 @@ releve_tiles <- st_join(releve_tiles, releve_points)
 ggplot() +
   geom_sf(data = releve_tiles, aes(fill = vegetation), color = "white", linewidth = 0.6) +
   geom_sf(data = releve_points, shape = 21, fill = "white", color = "black", size = 2.4) +
+  geom_sf_label(data = releve_points, aes(label = releve), nudge_y = 110, size = 3,
+                label.padding = unit(0.1, "lines"), fill = "white") +
   scale_fill_manual(values = veg_colors, breaks = names(veg_colors), name = NULL) +
   coord_sf(datum = NA, expand = FALSE) +
   theme_void(base_size = 13) +

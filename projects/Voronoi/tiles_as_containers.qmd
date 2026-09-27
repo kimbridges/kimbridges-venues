@@ -1,0 +1,310 @@
+# Tiles as Containers
+
+Up to now the tiles have been the answer: a map of what the points say. They can also be the question. Once an area is divided into tiles, you can drop a second set of points onto it and count how many land in each tile.
+
+My notes for this project called this "points inside polygons." In public health, the tiles might come from possible sources of infection and the points might be cases. In ecology, the tiles might come from vegetation samples and the points might be invasive plants. The logic is the same. Tiles from one dataset, counts from another.
+
+There's one condition that matters more than any other. **The counted points have to be located independently of the tiles.** If they were placed because of the tiles, the counts only repeat what the tiles already say.
+
+This chapter counts something people don't usually think of as points on a map: herbarium specimens. In an earlier project I built a plant checklist for Kīpuka Puaulu from herbarium records, for *The Briefing Books*. Every one of those specimens was collected somewhere, and many carry coordinates. The botanists who collected them knew nothing about our twelve sample points, so the condition holds.
+
+```{r}
+#| label: setupcontainers
+#| message: false
+
+## --- Standard packages ---
+
+## many useful functions, including read_csv() and ggplot()
+library(tidyverse)
+## formatted tables
+library(gt)
+
+## --- Specialized packages ---
+
+## spatial data: points, polygons, and the Voronoi function
+library(sf)
+
+## --- Options and defaults ---
+
+## suppress read_csv() column-type messages
+options(readr.show_col_types = FALSE)
+
+## the vegetation colors used throughout the document (Okabe-Ito palette)
+veg_colors <- c("Kīpuka forest"     = "#009E73",
+                "Koa-ʻōhiʻa forest" = "#0072B2",
+                "ʻŌhiʻa forest"     = "#56B4E9",
+                "ʻŌhiʻa scrub"      = "#E69F00",
+                "Grass and savanna" = "#F0E442")
+
+## the twelve sample points, in UTM zone 5N
+releves       <- read_csv("data/kipuka_puaulu_releves.csv")
+releve_points <- st_as_sf(releves, coords = c("easting", "northing"), crs = 32605)
+
+## the study area rectangle
+area_corners <- read_csv("data/kipuka_puaulu_study_area.csv")
+study_box    <- st_bbox(c(xmin = area_corners$easting[1],
+                          ymin = area_corners$northing[1],
+                          xmax = area_corners$easting[2],
+                          ymax = area_corners$northing[2]),
+                        crs = st_crs(32605))
+study_area   <- st_as_sfc(study_box)
+```
+
+```{r}
+#| label: tilefunctioncontainers
+
+## the three tile-building steps from Chapter 2, as a function
+make_tiles <- function(points, frame) {
+  ## build the tiles around all the points
+  tiles_all <- st_voronoi(st_union(points), envelope = frame)
+  ## split the result into separate polygons
+  tiles <- st_collection_extract(tiles_all)
+  ## trim the tiles to the frame
+  tiles <- st_intersection(tiles, frame)
+  ## attach each tile to the point inside it
+  tiles <- st_sf(geometry = tiles)
+  st_join(tiles, points)
+}
+
+## the vegetation tiles
+releve_tiles <- make_tiles(releve_points, study_area)
+```
+
+## The specimens
+
+The records come from GBIF, the Global Biodiversity Information Facility. They're flowering-plant specimens held in herbaria, found within two kilometers of the kīpuka. Duplicate sheets of the same gathering, sent to more than one herbarium, have been removed, so each record is one visit to one plant.
+
+```{r}
+#| label: specimens
+
+## the specimen records
+specimens <- read_csv("data/kipuka_puaulu_specimens.csv")
+
+## show the first few
+specimens |>
+  head(8) |>
+  gt() |>
+  tab_header(title = "Herbarium specimens (first 8 of the file)") |>
+  tab_source_note(source_note = "GBIF preserved-specimen records within 2 km of 19.437 N, 155.296 W, accessed 2026-07-05; one sheet per gathering.")
+
+## how many, and how precisely located
+specimens |>
+  count(georeference, name = "specimens") |>
+  gt() |>
+  tab_header(title = "How the specimens are located")
+```
+
+The last column matters, and we'll come back to it. Some specimens have coordinates measured on the ground, most of them in the GPS era. Others carry a coordinate that was rounded, often to a round number of minutes of latitude and longitude, which can put them a kilometer or more from where the plant grew.
+
+## A frame for the counts
+
+Chapter 3 said that every map needs a border. So does every count. The specimens were gathered from a circle with a radius of two kilometers around the kīpuka, not from our rectangle. Any part of the rectangle outside that circle would look empty of specimens only because nobody searched there. So the counting frame is the part of the rectangle that lies inside the circle.
+
+```{r}
+#| label: countframe
+
+## the specimens as points in UTM zone 5N
+specimen_points <- st_as_sf(specimens, coords = c("longitude", "latitude"), crs = 4326)
+specimen_points <- st_transform(specimen_points, 32605)
+
+## the circle the specimens were drawn from: 2 km around the query center
+query_center <- st_sfc(st_point(c(-155.296, 19.437)), crs = 4326)
+query_circle <- st_buffer(st_transform(query_center, 32605), 2000)
+
+## the counting frame: the study rectangle, inside the circle
+count_frame <- st_intersection(study_area, query_circle)
+
+## the tiles, trimmed to the counting frame
+frame_tiles <- st_intersection(releve_tiles, count_frame)
+
+## the specimens that fall inside the counting frame
+inside <- lengths(st_intersects(specimen_points, count_frame)) > 0
+frame_specimens <- specimen_points[inside, ]
+```
+
+```{r}
+#| label: countnumbers
+#| echo: false
+
+## numbers used in the text
+n_frame   <- nrow(frame_specimens)
+frame_pct <- round(100 * as.numeric(st_area(count_frame)) / as.numeric(st_area(study_area)))
+```
+
+The counting frame covers `r frame_pct` percent of the rectangle, and `r n_frame` specimens fall inside it.
+
+```{r}
+#| label: specimenmap
+#| fig-cap: "Specimens over the vegetation tiles. Circles are specimens located on the ground; triangles carry rounded coordinates. Larger symbols mean more specimens at the same coordinate. The solid grey line is the kīpuka outline from Chapter 3; the dashed line is the edge of the counting frame. Labels mark the point at the center of each tile."
+#| fig-height: 7.5
+
+## several specimens can share one coordinate; count them per location
+stacks <- frame_specimens |>
+  mutate(x = st_coordinates(geometry)[, 1], y = st_coordinates(geometry)[, 2]) |>
+  st_drop_geometry() |>
+  count(x, y, georeference, name = "specimens")
+
+## the kīpuka outline from Chapter 3, for reference
+kipuka <- st_read("data/kipuka_puaulu_outline.geojson", quiet = TRUE)
+
+## draw the tiles, the kīpuka, the frame and the specimens
+ggplot() +
+  geom_sf(data = frame_tiles, aes(fill = vegetation), color = "white", linewidth = 0.6, alpha = 0.85) +
+  geom_sf(data = kipuka, fill = NA, color = "grey20", linewidth = 0.6) +
+  geom_sf(data = count_frame, fill = NA, color = "black", linetype = "dashed", linewidth = 0.5) +
+  geom_sf_text(data = st_filter(releve_points, count_frame), aes(label = releve), fontface = "bold", size = 3.6) +
+  geom_point(data = stacks, aes(x, y, shape = georeference, size = specimens),
+             fill = "white", color = "black", stroke = 0.6) +
+  scale_fill_manual(values = veg_colors, breaks = names(veg_colors), name = NULL) +
+  scale_shape_manual(values = c(precise = 21, rounded = 24), name = "Location") +
+  scale_size_area(max_size = 9, name = "Specimens") +
+  coord_sf(datum = NA, expand = FALSE) +
+  theme_void(base_size = 12) +
+  theme(legend.position = "bottom", legend.box = "vertical")
+```
+
+## Counting inside the tiles
+
+Counting is one line. The rest is giving the counts a fair comparison. A tile with twice the area would be expected to hold twice the specimens if collecting were even. So each count is set beside the number expected from the tile's share of the frame, and the ratio of the two says whether the tile was collected more or less than its size would suggest.
+
+```{r}
+#| label: tilecounts
+
+## count the specimens in each tile
+count_tiles <- function(tiles, points) {
+  counted <- mutate(tiles,
+                    specimens = lengths(st_intersects(geometry, points)),
+                    area_ha   = as.numeric(st_area(geometry)) / 10000)
+  counted <- st_drop_geometry(counted)
+  ## expected count if specimens were spread evenly by area
+  counted <- mutate(counted,
+                    expected = sum(specimens) * (area_ha / sum(area_ha)),
+                    ratio    = round(specimens / expected, 1),
+                    expected = round(expected, 1),
+                    area_ha  = round(area_ha, 1))
+  counted
+}
+
+## all specimens
+tile_counts <- count_tiles(frame_tiles, frame_specimens)
+
+## show the tiles, most collected first
+tile_counts |>
+  select(releve, vegetation, area_ha, specimens, expected, ratio) |>
+  arrange(desc(ratio)) |>
+  gt() |>
+  cols_label(releve     = "Tile",
+             vegetation = "Vegetation",
+             area_ha    = "Area in frame (ha)",
+             specimens  = "Specimens",
+             expected   = "Expected by area",
+             ratio      = "Ratio")
+```
+
+## The pile-up problem
+
+Look again at the map. Some of the largest symbols are triangles: many specimens sharing one rounded coordinate. Those specimens weren't collected at that spot. The coordinate is where someone later put a pin for "Kīpuka Puaulu," or for a round number near it. Wherever that pin falls, its tile collects all of them.
+
+That's a problem with the data, not the tiles, and it's the same friction as the one in Chapter 1. Before GPS, a botanist deep in the forest wrote down the locality, not a coordinate, and the coordinate was added later, as well as anyone could. The fair test is to count again using only the specimens located on the ground.
+
+```{r}
+#| label: precisecounts
+
+## only the specimens located on the ground
+precise_specimens <- filter(frame_specimens, georeference == "precise")
+precise_counts    <- count_tiles(frame_tiles, precise_specimens)
+
+## compare the two counts, tile by tile
+compare_counts <- left_join(
+  select(tile_counts, releve, vegetation, all_specimens = specimens, all_ratio = ratio),
+  select(precise_counts, releve, precise_specimens = specimens, precise_ratio = ratio),
+  by = "releve")
+
+## show it
+compare_counts |>
+  arrange(releve) |>
+  gt() |>
+  cols_label(releve            = "Tile",
+             vegetation        = "Vegetation",
+             all_specimens     = "All specimens",
+             all_ratio         = "Ratio, all",
+             precise_specimens = "Located on the ground",
+             precise_ratio     = "Ratio, located")
+```
+
+```{r}
+#| label: precisenumbers
+#| echo: false
+
+## numbers used in the text
+n_precise <- nrow(precise_specimens)
+n_rounded <- n_frame - n_precise
+
+## the tile that changes most when rounded coordinates are removed
+biggest_drop <- slice_max(mutate(compare_counts, drop = all_specimens - precise_specimens), drop, n = 1, with_ties = FALSE)
+```
+
+Of the `r n_frame` specimens in the frame, `r n_rounded` carry rounded coordinates. Taking them out changes the picture tile by tile. Tile `r biggest_drop$releve` goes from `r biggest_drop$all_specimens` specimens to `r biggest_drop$precise_specimens`: every specimen it held came from rounded coordinates. The rule it teaches is simple. **A point can only be counted in a tile if its location error is small compared with the tile.** These tiles are several hundred meters across. A coordinate that could be a kilometer off can't be placed in one of them, however confidently the number is printed.
+
+## Counting by vegetation type
+
+Tiles of the same vegetation type can be merged, as in Chapter 4, and counted as one container. Now the question becomes: which kinds of vegetation have botanists collected in, and which have they passed by?
+
+```{r}
+#| label: typecounts
+#| fig-cap: "Specimens per vegetation type, compared with what area alone would predict. A ratio above 1 means the type was collected more than its area suggests. Blue: all specimens. Orange: only those located on the ground."
+#| fig-height: 4.5
+
+## merge the tiles in the frame by vegetation type
+type_tiles <- summarise(group_by(frame_tiles, vegetation))
+
+## counts by type, for all specimens and for those located on the ground
+type_all     <- mutate(count_tiles(type_tiles, frame_specimens), which = "All specimens")
+type_precise <- mutate(count_tiles(type_tiles, precise_specimens), which = "Located on the ground")
+type_counts  <- bind_rows(type_all, type_precise)
+
+## show the table
+type_counts |>
+  select(which, vegetation, area_ha, specimens, expected, ratio) |>
+  gt(groupname_col = "which") |>
+  cols_label(vegetation = "Vegetation",
+             area_ha    = "Area in frame (ha)",
+             specimens  = "Specimens",
+             expected   = "Expected by area",
+             ratio      = "Ratio")
+
+## draw the ratios, one row per vegetation type
+ggplot(type_counts, aes(x = ratio, y = factor(vegetation, levels = rev(names(veg_colors))),
+                        color = which, shape = which)) +
+  geom_vline(xintercept = 1, color = "grey50", linetype = "dashed") +
+  geom_point(size = 3.5) +
+  scale_color_manual(values = c("All specimens" = "#0072B2", "Located on the ground" = "#E69F00"), name = NULL) +
+  scale_shape_manual(values = c("All specimens" = 16, "Located on the ground" = 17), name = NULL) +
+  labs(x = "Specimens compared with area (ratio)", y = NULL) +
+  theme_minimal(base_size = 12) +
+  theme(legend.position = "bottom", panel.grid.minor = element_blank())
+```
+
+```{r}
+#| label: toptype
+#| echo: false
+
+## the most-collected type, used in the text
+top_type <- slice_max(type_precise, ratio, n = 1, with_ties = FALSE)
+```
+
+The top of the list is a surprise: `r str_to_lower(top_type$vegetation)`. The map explains it. Point R12 sits inside the kīpuka, in what the 1974 map shows as one of its grassy openings, so it's labeled grass and savanna. But its tile covers the whole south end of the kīpuka, forest included, where the loop trail begins, and that's where many of the specimens were collected. The count is right. It's the label on the container that's wrong. A count by vegetation type is only as good as the map of types, and a map from twelve points is coarse. That's the problem Chapter 8 takes on.
+
+## What the counts measure
+
+It's worth being clear about what these counts are. They aren't a measure of how many plants grow in each type. They're a measure of where botanists went. A type with a high ratio drew collectors, perhaps because it's rich in species, perhaps because a trail runs through it, perhaps because it has a name people know. A type with a low ratio was passed by. Here the ʻōhiʻa forest and scrub, which cover most of the frame, hold almost none of the specimens.
+
+That turns the count into something practical. The types with low ratios are where the next collecting trip will add the most. That's the idea behind *The Briefing Books*: use the herbarium's own record to see where the gaps are before heading into the field. The tiles give that idea a map.
+
+::: {.callout-note}
+## Useful?
+
+**Yes, and the example is less obvious than it looks.** Invasive plants or cases of a disease are the natural things to count inside tiles. Herbarium specimens show that any located record can be counted the same way, and that the count often measures the people who made the record as much as the thing recorded. Two cautions come with it: the counted points need their own frame, and their locations have to be good enough for the tiles they're counted in.
+:::
+
+The tiles give the counts a home. The coordinates decide whether they belong there.

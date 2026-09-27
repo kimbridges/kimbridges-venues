@@ -12,6 +12,14 @@ book:
     - index.qmd
     - where_the_map_stopped.qmd
     - what_is_a_voronoi_map.qmd
+    - the_study_area.qmd
+    - kinds_of_voronoi_maps.qmd
+    - reading_the_cells.qmd
+    - tiles_as_containers.qmd
+    - weighted_voronoi.qmd
+    - adding_what_the_points_dont_know.qmd
+    - good_enough.qmd
+    - were_they_useful.qmd
   ## navbar:
   ##   logo: voronoi_logo_art.png             (not made yet)
 

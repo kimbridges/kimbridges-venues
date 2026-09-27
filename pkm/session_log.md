@@ -11,6 +11,28 @@ Mechanism 4.
 
 ---
 
+## 2026-09-26 -- *THE MAP THAT NEVER GOT DRAWN*: ALL TEN CHAPTERS DRAFTED, AND THE DOCUMENT FINDS ITS ANSWER
+
+**Active focus:** Voronoi (unchanged). One long session; the book went from three drafted pieces to ten chapters rendering clean as a whole.
+
+**Chapters drafted today** (each read and approved by Kim before the next): Ch.1 altimeter story added; Ch.3 *The Study Area* (frames, edge tiles, the kipuka outline, ahupuaʻa -- Kim: 'a very important chapter... elevated to the right level'); Ch.4 *Kinds of Voronoi Maps* ('exactly the style that's needed'); Ch.5 *Reading the Cells*; Ch.6 *Tiles as Containers* (herbarium specimens, Kim's choice); Ch.7 *Weighted Voronoi* (Kim's five LA basin gardens; by pageviews the Huntington swallows the basin -- 'data exploration has a new tool'); Ch.8 *Adding What the Points Don't Know* (Meta/WRI canopy height, structure classes at 2 ha, structure-constrained Voronoi, the kipuka outline derived in code); Ch.9 *Good Enough?*; Ch.10 *Were They Useful?*.
+
+**Kim's history turned two 'errors' into findings.** He supplied Loh et al. 2007 (Broomsedge Fire, 30 June 2000, east of the kipuka) and Stone & Pratt 1994 (cattle gone 1948; koa regrowth in old pasture). The R12/R08 label mismatches are 1954 names on today's canopy; R04/R05 sit in the burn; R01 perhaps the 1975 fire (no burn map). Kim's principle, now in Ch.8: results should provoke sharper questions, not end the examination.
+
+**Kim's conclusion (recorded in `drafting_notes.md`, crafted into Ch.9-10):** plain Voronoi maps aren't good enough for vegetation maps; combined with other data they are; reproducibility is part of the value (hand-drawn maps hide their judgments); mismatches lead to 'why?' and new data; the study introduces a method and a data source. For Ch.10 he added: plain Voronoi is sometimes essential when boundaries needn't be exact (outbreak source, school siting), and maps built from points + rules + metadata make good archives.
+
+**Numbers of record (Ch.9, twelve points):** area agreement with the 1974 map plain 45% / constrained 56%; 1974 boundary found within 50 m 17% / 58%; releve curve -- with stratified points the canopy does the work of about half the releves, no gain with random points; changed ground 15% of the area, ~a quarter of the disagreement; Johnston 1996's 52% as yardstick.
+
+**New data and scripts (Projects\Voronoi):** `data/la_gardens.csv`, `la_land_frame.geojson`, `la_tracts_2020.csv` (`R/make_la_gardens_data.R`); `data/kipuka_puaulu_canopy_height.tif` (`R/make_kipuka_canopy_data.R`); `data/mdf1974_classes.tif` + `.csv` (`R/make_mdf1974_data.R`); `references/` +Loh 2007, +Stone & Pratt 1994 excerpt. Point labels R01-R12 added to ten maps at Kim's request.
+
+**Mechanics learned:** a full book render from a background job needs `quarto::quarto_render(input = ".", quiet = FALSE)` -- with `quiet = TRUE` or no input it fails at once. `device_commit_files` can deliver a stale copy when a staged path is reused: always commit under a new file name and md5-check before copying into G:. Ch.9's releve curve takes ~7 min; cached.
+
+**Written:** `proj_Voronoi.md` (chapter plan, conclusion, key files, log), `project_index.md` (NEXT), `priorities.md`, this entry; `Projects\Voronoi`: `_quarto.yml`, Ch.3-10 `.qmd`, `R/` (3 new scripts), `data/` (6 new files), `references/` (2), `background/drafting_notes.md`, `_output/` (full render). Snapshots in `C:\temp\pkm_close_2026-09-26`.
+
+**Mechanism 5.** (1) No new project. (2) No Status change. (3) New files listed above. (8) Nothing for `deferred.md`. (10) Outside `G:`: `C:\temp\mwt_prototype_2026-09-25` (staging book_r14-r18, render_check, backup_labels_2026-09-26 -- all sources now in `Projects\Voronoi`; safe to delete) and `C:\temp\pkm_close_2026-09-26`. (11) HEALTH_LINE (12) BACKUP_LINE
+
+**Next:** Kim brings the cover and logo images; then the appendix (functions + data sources), the verify list (Snow 1855 line, Tolan 2024, attendance sources, Dirichlet/Voronoi/Thiessen years, Gilbert 1962, Brown 1965/Mead 1966, Johnston venue), Preface acknowledgements and the 1974-map permission note, and a full read-through. Kim: 'this is an excellent document... we got a lot finished.'
+
 ## 2026-09-25 (evening and night) -- MMU RULED 2 HA, AND *THE MAP THAT NEVER GOT DRAWN* GETS ITS FIRST THREE CHAPTERS
 
 **Active focus:** Voronoi (unchanged). Kim returned from the pause at 19:54 HST.

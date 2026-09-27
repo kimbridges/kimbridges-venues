@@ -1,5 +1,5 @@
 # PROJECT: Voronoi
-_Last updated: 2026-09-25 (night)_
+_Last updated: 2026-09-26_
 _Status: Active_
 _Focus readiness: Ready_
 
@@ -17,6 +17,10 @@ vegetation map from a small number of releves. **Kim's ruling (2026-09-25): fini
 BEFORE the technology is discussed in the trilogy;** *Maps with Tiles* then cites it.
 
 ## Current Status
+**KIM'S CONCLUSION (2026-09-26):** plain Voronoi maps aren't good enough; combined with other data (here canopy height) they are.
+Reproducibility is part of their value (hand-drawn maps disguised their judgments); mismatches prompt 'why?' and lead to new data.
+The study introduces both a methodology and a data source. -> Ch.9 verdict, Ch.10 opening. Full quote in `background/drafting_notes.md`.
+
 **NEW 2026-09-25.** Opened from the MWT work the same session, after a prototype at Kipuka Puaulu
 succeeded. Kim: "It shows just what we need; realistic boundaries and an appropriate
 classification." Nothing is written yet; the structure starts from Kim's late-night outline
@@ -87,11 +91,11 @@ tests part of it; ch.10 answers. Arnold & Milne (1984) run through as a benchmar
 4. **Kinds of Voronoi maps.** Kim's taxonomy; raw vs merged (Arnold & Milne's Fig. 8-10 did this in 1984).
 5. **Reading the cells.** Per-cell statistics; patterns; boundary uncertainty ~ half the spacing.
 6. **Tiles as containers.** Counting frame (Koch; invasives; herbarium specimens).
-7. **Weighted Voronoi.** Attendance / capacity; geodesic distance as the bridge to ch.8.
-8. **Adding what the points don't know.** Canopy height; structure-constrained Voronoi; Kipuka Puaulu. Credit
+7. **Weighted Voronoi.** DRAFTED 2026-09-26 with Kim's five LA basin gardens: plain / by acres / by Wikipedia pageviews; census tracts as containers; attendance check; travel time as the bridge to ch.8.
+8. **Adding what the points don't know.** DRAFTED 2026-09-26: Meta/WRI canopy height; 4 structure classes (25 m smoothing, 2/5/10 m, 2 ha MMU); outline traced; structure-constrained Voronoi; label-vs-canopy check; limits. Credit
    Arnold & Milne for the hybrid IDEA (clip to towns/rivers; merge surveyor polygons with tiles).
-9. **Good enough?** The 1974 map as the check; the releve-number curve; boundary agreement.
-10. **Were they useful?** Field by field (incl. **ethnobotany** -- Kim: the first readers will be ethnobotanists); where the friction went. Careful claim: shown in soils in 1984,
+9. **Good enough?** DRAFTED 2026-09-26: 1974 map as data; area vs boundary agreement; releve curve (random vs stratified); change vs method; Johnston's 52%; verdict from Kim's conclusion.
+10. **Were they useful?** DRAFTED 2026-09-26 (plain is enough when boundaries aren't critical; archives with metadata; field by field; method + data source). Field by field (incl. **ethnobotany** -- Kim: the first readers will be ethnobotanists); where the friction went. Careful claim: shown in soils in 1984,
     published in a graphics journal, not seen in vegetation mapping -- 'I didn't see them', not 'nobody used them'.
 Appendix: functions + data sources (-> package).
 
@@ -150,7 +154,7 @@ with 1974 classes. The expert map's own class patches: smallest interior ~1.8 ha
 - prototype/expert_overlay_v1.png, prototype/releve_curve_v1.png -- the check's two figures
 - prototype/mmu_tradeoff_v1.png; expert_map/mmu_results_2026-09-25.rds -- the MMU test
 - **The book (Quarto, project root):** `_quarto.yml`, `index.qmd` (Preface), `where_the_map_stopped.qmd` (Ch.1),
-  `what_is_a_voronoi_map.qmd` (Ch.2); `data/kipuka_puaulu_releves.csv`, `data/kipuka_puaulu_study_area.csv`;
+  `what_is_a_voronoi_map.qmd` (Ch.2), `the_study_area.qmd` (Ch.3), `kinds_of_voronoi_maps.qmd` (Ch.4), `reading_the_cells.qmd` (Ch.5), `tiles_as_containers.qmd` (Ch.6), `weighted_voronoi.qmd` (Ch.7), `adding_what_the_points_dont_know.qmd` (Ch.8), `good_enough.qmd` (Ch.9), `were_they_useful.qmd` (Ch.10); `data/mdf1974_classes.tif` + `.csv` (Ch.9, made by `R/make_mdf1974_data.R`); `data/kipuka_puaulu_canopy_height.tif` (Ch.8, made by `R/make_kipuka_canopy_data.R`); `data/la_gardens.csv`, `data/la_land_frame.geojson`, `data/la_tracts_2020.csv` (Ch.7, made by `R/make_la_gardens_data.R`); `data/kipuka_puaulu_releves.csv`, `data/kipuka_puaulu_study_area.csv`, `data/kipuka_puaulu_outline.geojson` (canopy > 8 m, 94.5 ha);
   `images/` (Ch.1 figures); `R/fig_ch1_voronoi.R`; `background/drafting_notes.md` (status, rulings, KIM questions, verify list).
   Renders clean to `_output/` (0 chunk errors, 5 gt tables, 3 figures).
 
@@ -167,6 +171,7 @@ with 1974 classes. The expert map's own class patches: smallest interior ~1.8 ha
 - **checklists / checklistr** -- herbarium points; a candidate counting-frame dataset.
 
 ## Next Steps
+0. **BOOK (2026-09-26 close):** all ten chapters drafted. Remaining: cover + logo (Kim's images), appendix (functions + data sources), verify list in `background/drafting_notes.md`, Preface acknowledgements + 1974-map permission, read-through. Items 1-5 below predate the book.
 1. ~~Minimum mapping unit~~ DONE 2026-09-25 evening (scale choice, not a fix). Next knob: mosaic/texture classes that match the expert's `mx-` units, or accept and explain.
 2. Boundary metrics in the releve-number curve, not only area agreement.
 3. Real releve locations: the report's numbered sites; categories from their own records (Newell 1968?), not the map.
@@ -199,3 +204,46 @@ rendered; three KIM questions left as HTML comments (decade/article/languages; s
 acknowledgements and permission note).
 Kim's notes (night): awareness began with the 1984 article; code FORTRAN -> BASIC 'if memory serves'; add ethnobotany
 (first readers are ethnobotanists); US spelling ('color'). Johnston et al. 1996 added from Kim's files and cited in Ch.1.
+### 2026-09-26
+Altimeter story added to Ch.1 (beside Johnston's GPS passage). Ch.3 *The Study Area* drafted and rendering clean:
+frame of convenience vs meaningful boundary; edge tiles (10 of 12 touch the frame; enlarging it 500 m changes 9, all
+edge tiles); the kipuka outline (canopy > 8 m) and two ways to map it -- tessellate all then clip (outside points claim
+~21%) vs inside points only.
+Ch.3 revised with Kim's notes (ahupuaʻa still being marked in neighborhoods; canopy tracing = what was once done by hand);
+Kim: the study-area chapter is 'very important... You've elevated it to the right level.' Ch.4 *Kinds of Voronoi Maps* drafted:
+one tile per point (traps; largest tile ~7x smallest), named districts, shared categories merged (12 tiles -> 6 patches, 2
+resting on one sample), raw vs merged with tile edges drawn over patches, merging at a coarser level (Arnold & Milne's
+'criteria other than equality').
+Kim on Ch.4: 'exactly the style that's needed' (brief, maps carry the points). Ch.5 *Reading the Cells* drafted: six per-tile
+measures from Kim's outline (area, border, nearest/farthest, neighbors, shared border) with Arnold & Milne's spacing audit;
+pattern via CV of interior tile area (even 0.07 / random 0.46 / clustered 1.46; 20 random trials 0.43-0.63); boundary
+uncertainty bands of half the sample spacing (15 boundaries, +/-170 to 629 m; 59% of the window within a band).
+Ch.6 *Tiles as Containers* drafted with herbarium specimens (Kim's choice; ties to checklists/Briefing Books): counting frame =
+window inside the 2 km query circle (85%); 87 specimens, 25 rounded; tile R08 17 -> 0 without rounded coordinates (the pile-up rule:
+location error must be small against the tile); by type, kipuka forest 2.6x area-expected, ohia forest/scrub ~0; grass-and-savanna
+tops the list because R12's tile covers the kipuka's south end -- 'the label on the container is wrong', pointing to Ch.8.
+Ch.7 *Weighted Voronoi* drafted -- a break from the kipuka, with Kim's five LA basin gardens (Arboretum, Descanso, Huntington,
+South Coast, California Botanic Garden; his photo-essay gardens). One rule (distance / weight) on a 500 m land grid, three weights:
+equal, acres, 2024 Wikipedia pageviews. 2020 tracts (3,207; 13.8 M people) as containers. Unexpected results kept as the point
+(Kim: 'data exploration has a new tool'): by acres the strongest garden (Descanso) reappears along the coast past the Arboretum;
+by pageviews the Huntington (article = whole institution, ~7x the next) takes 13.5 M of 13.8 M. Attendance check: Arboretum 0.52,
+Huntington 0.48 visits per resident of the plain service area. Attendance and acreage sources added to the verify list.
+Kim on Ch.7: works as is, frame edge fine, no changes. Ch.8 *Adding What the Points Don't Know* drafted: Arnold & Milne's
+overwrite/surveyor-polygon idea as precedent; Meta/WRI canopy saved as data (5 m, script); Fosberg's own rules were canopy measures;
+structure classes at 2 ha MMU; kipuka outline re-derived in the chapter (94.5 ha); structure-constrained map differs from plain on 51%
+of the area. Honest findings kept: R01 and R12 labels contradict today's canopy (R12 spreads 'grass' in tall forest; KIM question on what
+happened there); same-class halfway lines remain (NW open lava R01/R02; R11/R12 in the kipuka); R08 labels the NE woodland belt grass;
+11% of area in unsampled patches, shown faded. Ch.6 R12 wording corrected ('what the 1974 map shows as').
+Kim supplied history (Loh et al. 2007 Broomsedge Fire; Stone & Pratt 1994 grazing) -- now in references/ and in Ch.8: the R12/R08
+mismatches are 1954 names on today's canopy (koa regrowth after cattle; fire recovery east). R01 still open. Ch.9 must treat the 1974
+comparison as change + method, not method alone.
+Kim answered the Ch.8 questions (R04/R05 in the Broomsedge burn near the koa outplanting; R01 maybe the 1975 fire) and set a principle:
+results should provoke sharper questions, not end the examination. Ch.8 now closes its label section with four such questions.
+Ch.9 *Good Enough?* drafted (Kim: craft the ideas, not his words): the 1974 map as a dated benchmark, not an answer key; plain vs
+constrained: area 45 -> 56%, 1974 boundary found 17 -> 58%; releve curve: canopy does the work of ~half the releves when few and stratified,
+no gain with random points; change (15% of area) explains ~a quarter of the disagreement; Johnston's 52% as yardstick. Verdict: alone not
+good enough; combined with other data it is; reproducible where hand-drawn maps hid their judgments; mismatches lead to 'why?' and new data.
+Ch.10 *Were They Useful?* drafted from Kim's notes: plain Voronoi is sometimes essential when boundaries needn't be exact (outbreak source,
+new school, Snow's 1855 pump line); when boundaries matter, add data that knows where edges are; maps as archives (points + rules +
+metadata in a GeoPackage, rebuilt any time -- contrast the 1974 map's digitizing); field-by-field table; two take-aways: method + data source.
+All ten chapters now drafted.

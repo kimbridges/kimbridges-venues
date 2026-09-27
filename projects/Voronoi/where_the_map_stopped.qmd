@@ -50,7 +50,11 @@ And somebody did. Another reprint in my files, from 1996, shows it. Carol Johnst
 
 What stopped us then was the drawing, the computing, and getting the result out to a device you could use. All three are gone now. A tessellation of thousands of points takes a moment on a laptop. The map goes to a screen, a web page or a printer without anyone scribing a line.
 
-Johnston's group points to a fourth kind of friction: knowing exactly where each point is. "Constructing a map from point data requires collection of locational as well as floristic data," they wrote, "a fact often overlooked by field ecologists." In 1993 that meant a differential GPS on a backpack frame, with a base station, a radio link and two 12-volt batteries in a wooden box. Today a phone comes close.
+Johnston's group points to a fourth kind of friction: knowing exactly where each point is. "Constructing a map from point data requires collection of locational as well as floristic data," they wrote, "a fact often overlooked by field ecologists." In 1993 that meant a differential GPS on a backpack frame, with a base station, a radio link and two 12-volt batteries in a wooden box.
+
+Before GPS it was worse. If you were deep in the vegetation of Kīpuka Puaulu, how would you know where you were? You had to remember to set your barometric altimeter at the base station each morning. Then you tried to find your location on a topo sheet. Even with the best of intentions, locations were pretty inaccurate, except when they were near roads or similar structures you could see on the map. It was a lot of friction, and every map drawn from those points inherited it.
+
+Today a phone in your pocket comes close to what Johnston's backpack did.
 
 Something else has changed too. There are now kinds of data that Arnold and Milne and my colleagues didn't have. One of them, a map of canopy height covering almost every forest on earth, turns out to matter a great deal for the question above. That's for a later chapter.
 

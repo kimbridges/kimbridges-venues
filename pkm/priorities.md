@@ -1,6 +1,6 @@
 # Priorities
 _Created: 2026-05-27_
-_Last updated: 2026-09-25 (close) -- Voronoi book started: Preface + Ch.1-2 drafted_
+_Last updated: 2026-09-26 (close) -- Voronoi book: all ten chapters drafted_
 _Log: logs/priorities_history.md_
 
 ## Purpose
@@ -118,6 +118,8 @@ writing; parallel ideation but staged production).
 **2026-09-25: FOCUS MOVED to a separate Voronoi methods document (`proj_Voronoi.md`, NEW), to be finished BEFORE the trilogy discusses the technology** (Kim's ruling). Opened from MWT's data-source question; structure-constrained Voronoi (releves + canopy height) prototyped at Kipuka Puaulu and accepted. MWT keeps the concept and one worked example. Detail: `proj_Voronoi.md`; `ideas_three_documents.md` (2026-09-25).
 
 **2026-09-25 (close):** the 1974 Mueller-Dombois & Fosberg map digitised and overlaid; MMU tested and ruled 2 ha; the book *The Map That Never Got Drawn* started (Preface + Ch.1-2). Next: Kim's read, then Ch.3. Detail: `proj_Voronoi.md`.
+
+**2026-09-26 (close):** *The Map That Never Got Drawn* -- Ch.3-10 drafted; whole book renders. Next: cover/logo (Kim), appendix, verify list, acknowledgements, read-through. Detail: `proj_Voronoi.md`.
 
 ---
 
