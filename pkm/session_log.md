@@ -11,6 +11,24 @@ Mechanism 4.
 
 ---
 
+## 2026-09-27 (evening) -- TESSELLR 0.1.0 BUILT AND RELEASED; VORONOI DOCUMENT AND PACKAGE BOTH COMPLETE
+
+**Active focus:** tessellr (opened this evening, `proj_tessellr.md` NEW), then none -- Kim ruled both projects COMPLETE.
+
+**The package, in one evening.** Kim approved the API (12 functions, 5 groups) and the order. Built on G: in the checklistr layout, files written in the cloud and handed over through a granted `C:\temp\tessellr_staging` with md5 checks. Tiles (tile_points with frame/clip modes, tile_measures, tile_pattern with random-trial reference, merge_tiles, boundary_bands); containers (count_in_tiles: counting frame, location uncertainty, Poisson + chi-squared from the Koch code; Kim asked for, and got, `allocation = "proportional"` alongside the document's strict rule); canopy (get_canopy_height for ANY frame via zoom-9 quadkeys -- Kipuka = 022300033; structure_classes; trace_patch = 94.5 ha; constrained_voronoi with a `sampled` layer and a field-recorded `point_class` override); weights (weighted_areas; Apollonius-disk test; Ch.7 people within 0.7%); checking (map_agreement; Ch.9 reproduced exactly). 92 tests, many reproducing the book's numbers; R CMD check 0/0/2 routine notes.
+
+**Release.** README + v0.1.0; GitHub repo created with gh (Kim's PAT), working clone `C:\repos\tessellr` (bucket 5), secret scan clean, commit `510426a` verified on the server; `install_github` tested. The book's Appendix gained a 'tessellr package' section (install + function reference generated from the package), Ch.10 one sentence; rebuilt in `C:/temp/voronoi_build_2026-09-27b`, copied into the venue (md5), `_site` rendered, Kim redeployed; verified live from R.
+
+**Rulings (Kim):** proj_Voronoi and proj_tessellr COMPLETE; open notes kept -- the UH/HVNP map permission (Kim, this week) and citation details Kim will check (list in `proj_Voronoi.md`). Active Focus left for Kim to set.
+
+**Written:** `proj_tessellr.md` (new), `proj_Voronoi.md`, `project_index.md` (Active Focus, NEXT, two rows), `priorities.md`, this entry; `Projects/tessellr/` (package), `C:/repos/tessellr`, `Projects/Voronoi/appendix.qmd`, `were_they_useful.qmd`, `data/appendix_tessellr.csv`; `kimbridges-documents/voronoi/`, `_site/`. Snapshots in `C:/temp/pkm_close_2026-09-27`.
+
+**Mechanism 5.** (1) New project: proj_tessellr.md (index row added). (2) Status changes: Voronoi -> Complete; tessellr -> Complete. (3) New files listed above. (3b) `ideas_rehearsals.md` (new capture note). (8) Nothing for `deferred.md`. (10) Outside `G:`: `C:/repos/tessellr` (bucket 5, keep), `C:/temp/tessellr_staging` and `C:/temp/voronoi_build_2026-09-27b` (scratch, safe to delete), close snapshots. (11) HEALTH_LINE (12) BACKUP_LINE
+
+**The small piece of work: "Rehearsals before the field" (idea capture).** Kim raised the Koch_voronoi `phase1_report.pdf` sensitivity tests; agreed to extend them into repeated simulations (hit and false-alarm rates), Kim favouring the "nothing there" and "fooled by effort" scenarios. Kim then added the Chapter 10 theme: practice exercises on a familiar place (botanical garden, large park) with one's own data, before costly field trips -- "just as you'd practice with a new digital camera"; the friction is finding a test site. Worked out: a three-rung ladder (simulation / practice site / field site), practice-site criteria, five exercises tied to chapters and tessellr functions, and the payoff of running the desk exercise on the real field site before going. Proposed form: a short companion document plus `simulate_*` helpers in tessellr. Kim: "I think we're on to something good." Captured in `ideas_rehearsals.md` (capture only, no intake).
+
+**Next:** Kim sets the Active Focus next session; candidates are the rehearsals idea (first step: choose Kim's practice site) or the trilogy.
+
 ## 2026-09-27 -- *THE MAP THAT NEVER GOT DRAWN* IS PUBLISHED (THE 24TH DOCUMENT), AND ITS PACKAGE HAS A NAME: TESSELLR
 
 **Active focus:** Voronoi (unchanged). Opened 10:59 HST after Kim restarted the RStudio addin (the session needed `connect_session("default")`).

@@ -1,6 +1,6 @@
 # Priorities
 _Created: 2026-05-27_
-_Last updated: 2026-09-27 (close) -- Voronoi book PUBLISHED; next: tessellr_
+_Last updated: 2026-09-27 (evening) -- Voronoi document + tessellr COMPLETE_
 _Log: logs/priorities_history.md_
 
 ## Purpose
@@ -122,6 +122,8 @@ writing; parallel ideation but staged production).
 **2026-09-26 (close):** *The Map That Never Got Drawn* -- Ch.3-10 drafted; whole book renders. Next: cover/logo (Kim), appendix, verify list, acknowledgements, read-through. Detail: `proj_Voronoi.md`.
 
 **2026-09-27:** *The Map That Never Got Drawn* PUBLISHED at kimbridges-documents (`/voronoi/`), verified live. NEXT PROJECT: the companion package **tessellr** (Kim's name) -- Kim to weigh next steps at the next session. Detail: `proj_Voronoi.md`.
+
+**2026-09-27 (evening):** tessellr 0.1.0 released on GitHub; the book's Appendix documents it. **Both projects COMPLETE (Kim).** Open notes: 1974-map permission (Kim), citation checks (Kim). Next focus: Kim's choice.
 
 ---
 

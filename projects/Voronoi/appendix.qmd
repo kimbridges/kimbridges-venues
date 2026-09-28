@@ -63,9 +63,9 @@ scripts |>
   tab_style(style = cell_text(font = "monospace", size = "small"), locations = cells_body(columns = script))
 ```
 
-## Functions
+## Functions in the chapters
 
-Each chapter defines the functions it needs, so that each chapter runs on its own. That means some functions appear in more than one chapter. The table gathers them in the order the document uses them. A companion R package, tessellr, is in preparation.
+Each chapter defines the functions it needs, so that each chapter runs on its own. That means some functions appear in more than one chapter. The table gathers them in the order the document uses them. The tessellr package, in the next section, gathers the same ideas in general form.
 
 ```{r}
 #| label: functions
@@ -79,6 +79,39 @@ functions |>
   cols_label(fun = "Function", arguments = "Arguments", purpose = "Purpose", chapters = "Chapters") |>
   tab_style(style = cell_text(font = "monospace", size = "small"), locations = cells_body(columns = c(fun, arguments))) |>
   tab_style(style = cell_text(weight = "bold"), locations = cells_row_groups())
+```
+
+## The tessellr package
+
+The code in the chapters is written to teach. Each chapter repeats what it needs, and some of it is specific to Kīpuka Puaulu. The companion R package, tessellr, gathers the same ideas in general form, for any points and any area. Its canopy function reads the Meta and World Resources Institute map for any frame, not only the one tile that covers the kīpuka, and its counting function adds Poisson tests and a choice of how to handle uncertain locations. The package's tests reproduce the numbers in Chapters 3 to 9.
+
+Install it from GitHub:
+
+```{r}
+#| label: installtessellr
+#| eval: false
+#| code-fold: false
+
+## install the companion package
+remotes::install_github("kimbridges/tessellr")
+```
+
+Its functions, in the same five groups as the chapters:
+
+```{r}
+#| label: tessellrfunctions
+
+## the functions in tessellr, with their arguments and defaults
+tessellr_functions <- read_csv("data/appendix_tessellr.csv")
+
+## show them, grouped by stage
+tessellr_functions |>
+  select(stage, usage, purpose) |>
+  gt(groupname_col = "stage") |>
+  cols_label(usage = "Function", purpose = "Purpose") |>
+  tab_style(style = cell_text(font = "monospace", size = "small"), locations = cells_body(columns = usage)) |>
+  tab_style(style = cell_text(weight = "bold"), locations = cells_row_groups()) |>
+  tab_source_note(source_note = "Each function has a help page with a worked example; see ?tile_points and so on once the package is loaded.")
 ```
 
 ## The two functions at the heart of the method
@@ -137,13 +170,13 @@ The document was built with R [@rcore2024] and Quarto. The spatial work uses sf 
 #| label: software
 
 ## the packages used in the chapters and the data scripts
-packages <- c("tidyverse", "gt", "patchwork", "ggrepel", "sf", "terra", "tidycensus", "tigris", "jsonlite")
+packages <- c("tidyverse", "gt", "patchwork", "ggrepel", "sf", "terra", "tidycensus", "tigris", "jsonlite", "tessellr")
 
 ## their versions, with R itself at the top
 software <- tibble(software = c("R", "Quarto", packages),
                    version  = c(as.character(getRversion()),
                                 as.character(quarto::quarto_version()),
-                                sapply(packages, function(p) as.character(packageVersion(p)))))
+                                sapply(packages, function(p) tryCatch(as.character(packageVersion(p)), error = function(e) "not installed"))))
 
 ## show it
 software |>

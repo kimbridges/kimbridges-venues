@@ -1,0 +1,15 @@
+stage,fun,usage,purpose
+Tiles,tile_points,"tile_points(points, frame = NULL, clip = NULL, clip_mode = c(""all"", ""inside""), expand = 0.05)",Build Voronoi tiles around points
+Tiles,tile_measures,"tile_measures(tiles, frame = NULL)",Measure each tile
+Tiles,tile_pattern,"tile_pattern(tiles, frame = NULL, trials = 20, seed = NULL)",Read the pattern of the points from their tiles
+Tiles,merge_tiles,"merge_tiles(tiles, by)",Merge neighboring tiles that share a category
+Tiles,boundary_bands,"boundary_bands(tiles, by, frame = NULL)",Uncertainty bands around the boundaries between categories
+Containers,count_in_tiles,"count_in_tiles(tiles, records, frame = NULL, uncertainty = NULL, allocation = c(""exclude"", ""proportional""), by = NULL, test = TRUE, p_adjust = ""holm"", alpha = 0.05)",Count records inside tiles
+Weights,weighted_areas,"weighted_areas(sites, weights, frame, cell = 500)",Weighted service areas
+Canopy,get_canopy_height,"get_canopy_height(frame, resolution = 5, pad = 50)",Get canopy height for any area
+Canopy,structure_classes,"structure_classes(canopy, breaks = c(2, 5, 10), labels = c(""open"", ""low"", ""woodland"", ""forest""), smooth = 25, mmu_ha = 2)",Classes of canopy structure
+Canopy,trace_patch,"trace_patch(canopy, seed, height = 8, smooth = 25, soften = 20, fill_holes = TRUE)",Trace the outline of a patch of tall canopy
+Canopy,constrained_voronoi,"constrained_voronoi(points, type, classes, constrained = TRUE, point_class = NULL, mmu_ha = 2)",Plain or structure-constrained Voronoi map on a grid
+Checking,map_agreement,"map_agreement(map, reference, tolerance = 50)",Agreement between a map and a reference map
+Data,kipuka_frame,kipuka_frame(),The Kīpuka Puaulu study area
+Data,kipuka_releves,kipuka_releves,Twelve demonstration points at Kīpuka Puaulu

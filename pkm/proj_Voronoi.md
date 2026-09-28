@@ -1,7 +1,7 @@
 # PROJECT: Voronoi
-_Last updated: 2026-09-26_
-_Status: Active_
-_Focus readiness: Ready_
+_Last updated: 2026-09-27_
+_Status: Complete_
+_Focus readiness: Not applicable_
 
 ## Type
 Quarto multi-chapter document (methods) + likely companion R package. **Track (Mechanism 1):
@@ -17,6 +17,9 @@ vegetation map from a small number of releves. **Kim's ruling (2026-09-25): fini
 BEFORE the technology is discussed in the trilogy;** *Maps with Tiles* then cites it.
 
 ## Current Status
+**COMPLETE 2026-09-27 (Kim).** *The Map That Never Got Drawn* is live at https://kimbridges-documents.netlify.app/voronoi/ and its companion package tessellr 0.1.0 is live at https://github.com/kimbridges/tessellr (see `proj_tessellr.md`). Closed under the posted-on-website Complete rule.
+**Open notes (not blockers):** (1) HVNP / UH permission for the 1974 map -- Kim is obtaining it this week. (2) Citation details for Kim to confirm: Dirichlet 1850 and Voronoi 1908 volumes/pages, Snow 1855 2nd ed., Stone & Pratt 1994 publisher line, and whether Brown 1965 / Mead 1966 treat tile area as the area available to each plant (Ch.5). Any fix is a one-line `references.bib` edit + re-render + redeploy.
+
 **PUBLISHED 2026-09-27:** *The Map That Never Got Drawn* is live at https://kimbridges-documents.netlify.app/voronoi/ (24th document in the venue), verified from R. The document phase is complete; the project continues with the companion package **tessellr** (Next Steps 00).
 
 **KIM'S CONCLUSION (2026-09-26):** plain Voronoi maps aren't good enough; combined with other data (here canopy height) they are.
@@ -254,3 +257,5 @@ All ten chapters now drafted.
 Cover + logo in (Kim's images; web-size cover copy in images/). Shared authorship (Kim + Claude (Anthropic)) in _quarto.yml and the Preface -- Kim's ruling for ALL jointly created documents, now in the style guide. references.bib (17) + References page; citations at first mention per chapter. Acknowledgments from Kim. Kim's full read-through: 'Excellent!'. Appendix (data files, scripts, functions, core code, software) drafted. G: _output became a ghost directory (Finding 054); builds now in C:/temp/voronoi_build_2026-09-27. Next: deploy to kimbridges-documents.
 Appendix now says 'A companion R package, tessellr, is in preparation.' Document placed in kimbridges-documents as `voronoi/` (contents of the C:/temp build, md5-verified, + card cover); stub `docs/voronoi.qmd` (Maps, Ecology, Methods); `voronoi/**` added to resources; venue site rendered to `_site` (card present). Awaiting Kim's Netlify drag.
 PUBLISHED and verified live (`/voronoi/`). Kim cleared `C:/temp` scratch (all Voronoi staging and build folders, Smart Car builds); the ghost `_output` on G: is gone too. Kim: 'teamwork has paid off.' Next session: evaluate next steps (tessellr first).
+tessellr 0.1.0 released on GitHub; the Appendix gained a 'tessellr package' section (install + function reference), Ch.10 one sentence; venue `voronoi/` updated and `_site` rebuilt (2026-09-27).
+Kim confirmed the redeployed site (Appendix function reference, Ch.10 sentence) and ruled the project COMPLETE 2026-09-27, with the map permission and citation checks kept as open notes.
