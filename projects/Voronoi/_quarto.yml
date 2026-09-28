@@ -5,9 +5,11 @@ project:
 book:
   title: "The Map That Never Got Drawn"
   subtitle: "Voronoi tessellations for vegetation and the fields around it"
-  author: "K. W. Bridges"
+  author:
+    - "K. W. Bridges"
+    - "Claude (Anthropic)"
   date: today
-  ## cover-image: voronoi_cover_art_text.png   (not made yet)
+  cover-image: images/voronoi_cover_art_text.png
   chapters:
     - index.qmd
     - where_the_map_stopped.qmd
@@ -20,8 +22,10 @@ book:
     - adding_what_the_points_dont_know.qmd
     - good_enough.qmd
     - were_they_useful.qmd
-  ## navbar:
-  ##   logo: voronoi_logo_art.png             (not made yet)
+    - references.qmd
+    - appendix.qmd
+  navbar:
+    logo: voronoi_logo_art.png
 
 format:
   html:
@@ -30,6 +34,8 @@ format:
     embed-resources: false
 
 editor: visual
+
+bibliography: references.bib
 
 toc: true
 number-sections: true

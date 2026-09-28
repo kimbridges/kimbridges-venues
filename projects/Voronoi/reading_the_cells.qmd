@@ -128,7 +128,7 @@ Two of the columns deserve a closer look.
 
 **Farthest corner.** This is the farthest place that the point's category is being stretched to cover. A sample whose tile reaches a kilometer away is making a much bigger claim than one whose tile reaches 200 meters.
 
-Arnold and Milne used the same idea as a check on their field crews. The Greek survey was meant to sample every 50 to 200 meters, and the distances to each point's nearest and farthest neighbors showed whether it had. The map audits the sampling that made it.
+@arnold1984 used the same idea as a check on their field crews. The Greek survey was meant to sample every 50 to 200 meters, and the distances to each point's nearest and farthest neighbors showed whether it had. The map audits the sampling that made it.
 
 The last column comes from Chapter 3. A tile that shares only part of its border with other tiles is an edge tile, and part of its shape comes from the frame.
 
@@ -244,7 +244,7 @@ For points scattered at random, the coefficient of variation of tile area comes 
 
 <!-- VERIFY: the textbook reference value for random points (about 0.53 for Poisson-Voronoi cell areas, e.g. Gilbert 1962) if it is to be cited. -->
 
-That's useful in two ways. For samples, large tiles are gaps in the sampling, the places where a map is stretched thinnest. For plants, if the points are the stems of trees, large tiles can be real openings in the canopy, and tile area becomes the space each tree has to grow. Plant ecologists have used the tiles that way, as the area available to each plant, in studies of competition.
+That's useful in two ways. For samples, large tiles are gaps in the sampling, the places where a map is stretched thinnest. For plants, if the points are the stems of trees, large tiles can be real openings in the canopy, and tile area becomes the space each tree has to grow. Plant ecologists have used the tiles that way, as the area available to each plant, in studies of competition [@brown1965; @mead1966].
 
 <!-- VERIFY: the plant-competition use ("area potentially available"), e.g. Brown 1965 and Mead 1966, before citing it. -->
 

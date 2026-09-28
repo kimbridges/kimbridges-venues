@@ -118,7 +118,7 @@ Climate zones are sometimes drawn this way, with each weather station claiming t
 
 Vegetation samples are different. The twelve points fall into only five vegetation types, so several tiles carry the same type. Where two tiles of the same type touch, the line between them doesn't mean anything. Both sides are the same vegetation. So the natural next step is to remove those lines and merge neighboring tiles of the same type into one patch.
 
-Arnold and Milne did exactly this in 1984. Their 656 soil samples made 1,969 tile edges, and merging tiles of the same soil type reduced the map to 54 polygons. Johnston and her colleagues did the same for their wetland in 1996, dissolving the boundaries between tiles of the same plant community.
+@arnold1984 did exactly this. Their 656 soil samples made 1,969 tile edges, and merging tiles of the same soil type reduced the map to 54 polygons. Johnston and her colleagues [-@johnston1996] did the same for their wetland, dissolving the boundaries between tiles of the same plant community.
 
 ```{r}
 #| label: mergetiles

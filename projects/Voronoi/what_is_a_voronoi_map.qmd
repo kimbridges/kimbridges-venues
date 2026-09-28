@@ -144,7 +144,7 @@ A Voronoi map uses three things and nothing else:
 
 It doesn't know about roads, rivers, ridges or lava flows. If a river runs between two markets, the tile edge crosses it anyway. For markets, that might be a real weakness. People don't shop across a river with no bridge.
 
-The method has several names, because it was found more than once. Mathematicians know it from the work of Peter Gustav Lejeune Dirichlet in 1850 and Georgy Voronoi in 1908. Geographers and hydrologists often say Thiessen polygons, after Alfred Thiessen, who used them in 1911 to average rainfall from a scatter of rain gauges. It's the same construction under each name.
+The method has several names, because it was found more than once. Mathematicians know it from the work of Peter Gustav Lejeune Dirichlet in 1850 [@dirichlet1850] and Georgy Voronoi in 1908 [@voronoi1908]. Geographers and hydrologists often say Thiessen polygons, after Alfred Thiessen, who used them in 1911 to average rainfall from a scatter of rain gauges [@thiessen1911]. It's the same construction under each name.
 
 <!-- VERIFY before publishing: Dirichlet 1850, Voronoi 1908, Thiessen 1911 (Monthly Weather Review), per the verify list. -->
 
@@ -245,7 +245,7 @@ Those numbers are only as good as the assumption behind them. Twelve points can'
 
 For markets and schools, the halfway rule is close to how people behave. You shop at the nearest market and your children go to the nearest school, most of the time.
 
-For soils, Arnold and Milne found that it matched what the cartographer already did. With a sample every 50 to 200 meters, a hand-drawn soil map is close to a Voronoi map anyway.
+For soils, @arnold1984 found that it matched what the cartographer already did. With a sample every 50 to 200 meters, a hand-drawn soil map is close to a Voronoi map anyway.
 
 Vegetation is harder. Relevés are expensive, so they're far apart. And the vegetation scientist drawing the map doesn't draw halfway lines. The line goes where the edge of the forest shows on the air photo. That's the gap between the two maps in Chapter 1, and it's why the question there is a real one.
 

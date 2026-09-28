@@ -18,6 +18,8 @@ _Started 2026-09-25 (evening). Working notes for the drafting sessions; the chap
 | adding_what_the_points_dont_know.qmd | 8. Adding What the Points Don't Know | first draft 2026-09-26 (code runs) |
 | good_enough.qmd | 9. Good Enough? | first draft 2026-09-26 (code runs; releve curve ~6 min, cached) |
 | were_they_useful.qmd | 10. Were They Useful? | first draft 2026-09-26 (code runs) |
+| references.qmd | References | added 2026-09-27 (17 works incl. software) |
+| appendix.qmd | Appendix | drafted 2026-09-27: data files, scripts, functions (from data/appendix_*.csv), the two core functions, software |
 
 Whole book renders clean 2026-09-26 (11 pages). Full render from a background job needs `quarto::quarto_render(input = ".")`; with no input it fails at once.
 Point labels (R01-R12) added 2026-09-26 at Kim's request: Ch.2 relevetiles; Ch.3 edgemap, waymap1, waymap2; Ch.5 bandmap; Ch.6 specimenmap (tile labels); Ch.8 canopymap, structuremap, extendedmap; Ch.9 linesmap (Ch.4 namedmap and Ch.8 comparemaps already had them). Backups of the pre-edit qmds in C:/temp/mwt_prototype_2026-09-25/backup_labels_2026-09-26. Full renders: use quiet = FALSE (quiet = TRUE fails from a background job).
@@ -83,6 +85,7 @@ Not yet in the draft. It is the personal version of Johnston's fourth friction a
 
 ## Kim's notes, 2026-09-26
 
+- 2026-09-27: Kim's read-through of the whole book: 'Excellent! This captures more than I expected when we started.' Acknowledgments added (Koch, Mueller-Dombois, Wingert, McClatchey, Furumoto); HVNP map permission to be obtained by Kim, not mentioned in the text. Appendix done. Next: move to the website.
 - Ch.3: "An ahupuaʻa is a great example of a boundary. These were important border lines to the Hawaiian culture. Even today,
   we're marking them in the neighborhoods." (Added to Ch.3.)
 - Ch.3: tracing the kipuka from canopy height "is exactly what would have been done manually." (Added to Ch.3.)
@@ -134,6 +137,14 @@ Not yet in the draft. It is the personal version of Johnston's fourth friction a
   sharpened questions (1975 burn at R01; pasture in today's outline; Broomsedge regrowth rate; which points need new releves).
 
 ## Verify before publishing
+- 2026-09-27: CITATIONS ADDED. `references.bib` (12 works) + `references.qmd`; `bibliography:` in `_quarto.yml`; first mention per
+  chapter cited. Checked on the web: Johnston 1996 venue = NCGIA Santa Fe CD-ROM (Third Int. Conf./Workshop on Integrating GIS and
+  Environmental Modeling) -- Ch.1 VERIFY comment removed; Thiessen 1911 MWR 39(7):1082-1084; Tolan 2024 RSE 300:113888; Mead 1966
+  Ann. Bot. 30(2):301-309; Brown 1965 title (NZ FRI Forest Research Notes 38); Arnold & Milne pages 22-28 from the PDF. From
+  memory, for Kim to confirm: Dirichlet 1850 (J. reine angew. Math. 40:209-227), Voronoi 1908 (134:198-287), Snow 1855 2nd ed.,
+  Stone & Pratt 1994 publisher line. Authorship: Kim + Claude (Anthropic), stated in the Preface (Kim's ruling).
+- 2026-09-27: G:/.../Voronoi/_output became a ghost directory (listed, not dir.exists -- Finding 054); full renders now in
+  C:/temp/voronoi_build_2026-09-27 (sources copied from G:, which stays the source of record).
 - Ch.10: John Snow 1855 -- the dotted line of equal distance 'by the nearest road' from the Broad Street pump and the surrounding
   pumps (Cholera Inquiry Committee report / 2nd ed. of On the Mode of Communication of Cholera); confirm wording and source.
 - Ch.10: KIM comment -- optional sentence on Kim's epidemiological clustering work with Tom Koch.

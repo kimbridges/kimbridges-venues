@@ -1,0 +1,8 @@
+---
+title: "The Map That Never Got Drawn"
+subtitle: "Voronoi tessellations for vegetation and the fields around it"
+categories: ["Maps", "Ecology", "Methods"]
+image: ../voronoi/voronoi_cover_art_text.png
+---
+
+[View Document](../voronoi/){.btn .btn-primary}

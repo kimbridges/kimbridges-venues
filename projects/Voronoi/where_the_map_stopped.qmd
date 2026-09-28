@@ -8,7 +8,7 @@ It took a few lines of R and less than a second to draw. Anyone with the same tw
 
 Here's another map of the same ground.
 
-![Part of the vegetation map of Hawaiʻi Volcanoes National Park: the hand-drawn vegetation overlay on its topographic base sheet. Kīpuka Puaulu is near the center. Mueller-Dombois and Fosberg (1974), sheet 12.](images/ch1_mdf1974_kipuka.png){#fig-ch1-handdrawn width=100% fig-align="center"}
+![Part of the vegetation map of Hawaiʻi Volcanoes National Park: the hand-drawn vegetation overlay on its topographic base sheet. Kīpuka Puaulu is near the center. @muellerdombois1974, sheet 12.](images/ch1_mdf1974_kipuka.png){#fig-ch1-handdrawn width=100% fig-align="center"}
 
 F. Raymond Fosberg drew its boundaries from air photographs taken in 1954, working indoors from years of field knowledge. Dieter Mueller-Dombois checked them on the ground in 1965 and adjusted them. Then Tomatsu Nakata traced every line by hand onto the topographic map sheets. The lines wander. They follow the edge of the kīpuka, loop around small stands of trees, and run along the lava flows. Nothing about them is straight.
 
@@ -30,7 +30,7 @@ It was only years later that I ran across a useful implementation. All those mem
 
 ## The 1984 article
 
-The article was by David Arnold and Wendy Milne, computer scientists at the University of East Anglia: "The Use of Voronoi Tessellations in Processing Soil Survey Results," in the March 1984 issue of *IEEE Computer Graphics and Applications*.
+The article was by David Arnold and Wendy Milne, computer scientists at the University of East Anglia: "The Use of Voronoi Tessellations in Processing Soil Survey Results," in the March 1984 issue of *IEEE Computer Graphics and Applications* [@arnold1984].
 
 Their problem was the Greek soil survey. Surveyors sampled the soil every 50 to 200 meters, about 5,000 points for a single map sheet. A cartographer then drew boundaries around groups of points with the same classification. Arnold and Milne saw what that cartographer was really doing:
 
@@ -42,9 +42,7 @@ The friction is all there in the paper too. They entered points on a digitizing 
 
 The paper appeared in a computer graphics journal, not a soils or an ecology journal. That may be part of why I didn't see the method taken up in vegetation mapping. I'll put it carefully: I didn't see it. That's not the same as saying nobody used it.
 
-And somebody did. Another reprint in my files, from 1996, shows it. Carol Johnston and her colleagues at the University of Minnesota sampled a 2.9 hectare wetland along the Pokegama River in Wisconsin at 81 points. They classified the points into seven plant communities, drew a Thiessen polygon around each point, and merged neighbors of the same community. They were candid about the result. The map "appeared somewhat blocky," and the polygons were "not necessarily representative of the true spatial extent of vegetation types, particularly in areas where sample points are widely spaced." That's the question at the top of this chapter, seen from a wetland in Wisconsin. They also compared their tiles with a map made from airborne video, and that comparison comes back in a later chapter.
-
-<!-- VERIFY: where Johnston et al. (1996) was published; the PDF gives no venue (it was coded into HTML for web publication). -->
+And somebody did. Another reprint in my files, from 1996, shows it. Carol Johnston and her colleagues at the University of Minnesota [@johnston1996] sampled a 2.9 hectare wetland along the Pokegama River in Wisconsin at 81 points. They classified the points into seven plant communities, drew a Thiessen polygon around each point, and merged neighbors of the same community. They were candid about the result. The map "appeared somewhat blocky," and the polygons were "not necessarily representative of the true spatial extent of vegetation types, particularly in areas where sample points are widely spaced." That's the question at the top of this chapter, seen from a wetland in Wisconsin. They also compared their tiles with a map made from airborne video, and that comparison comes back in a later chapter.
 
 ## The friction is gone
 

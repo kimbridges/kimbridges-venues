@@ -1,6 +1,6 @@
 # Priorities
 _Created: 2026-05-27_
-_Last updated: 2026-09-26 (close) -- Voronoi book: all ten chapters drafted_
+_Last updated: 2026-09-27 (close) -- Voronoi book PUBLISHED; next: tessellr_
 _Log: logs/priorities_history.md_
 
 ## Purpose
@@ -120,6 +120,8 @@ writing; parallel ideation but staged production).
 **2026-09-25 (close):** the 1974 Mueller-Dombois & Fosberg map digitised and overlaid; MMU tested and ruled 2 ha; the book *The Map That Never Got Drawn* started (Preface + Ch.1-2). Next: Kim's read, then Ch.3. Detail: `proj_Voronoi.md`.
 
 **2026-09-26 (close):** *The Map That Never Got Drawn* -- Ch.3-10 drafted; whole book renders. Next: cover/logo (Kim), appendix, verify list, acknowledgements, read-through. Detail: `proj_Voronoi.md`.
+
+**2026-09-27:** *The Map That Never Got Drawn* PUBLISHED at kimbridges-documents (`/voronoi/`), verified live. NEXT PROJECT: the companion package **tessellr** (Kim's name) -- Kim to weigh next steps at the next session. Detail: `proj_Voronoi.md`.
 
 ---
 

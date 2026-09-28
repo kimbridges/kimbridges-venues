@@ -50,9 +50,9 @@ study_area   <- st_as_sfc(study_box)
 
 There are two ways to draw the border.
 
-The first is a frame of convenience: a rectangle drawn around the points so the tiles have somewhere to stop. Arnold and Milne did this for the Greek soil survey. They chose a rectangular window that enclosed all their sample points. The rectangle in Chapter 2 is the same kind of frame. It doesn't claim anything about the land.
+The first is a frame of convenience: a rectangle drawn around the points so the tiles have somewhere to stop. @arnold1984 did this for the Greek soil survey. They chose a rectangular window that enclosed all their sample points. The rectangle in Chapter 2 is the same kind of frame. It doesn't claim anything about the land.
 
-The second is a boundary that means something. Johnston and her colleagues mapped a wetland, so they traced the wetland's edge from their airborne video and clipped the tiles to it. A park boundary, a lava flow, the edge of a kīpuka, or an ahupuaʻa, running from the uplands to the sea, are all boundaries of this kind. Each one says that the area inside is a unit and that what lies outside belongs to something else. Ahupuaʻa were important boundaries in Hawaiian culture, and they matter still. Today we're marking them again in our neighborhoods.
+The second is a boundary that means something. Johnston and her colleagues [-@johnston1996] mapped a wetland, so they traced the wetland's edge from their airborne video and clipped the tiles to it. A park boundary, a lava flow, the edge of a kīpuka, or an ahupuaʻa, running from the uplands to the sea, are all boundaries of this kind. Each one says that the area inside is a unit and that what lies outside belongs to something else. Ahupuaʻa were important boundaries in Hawaiian culture, and they matter still. Today we're marking them again in our neighborhoods.
 
 The two kinds behave differently, and it's worth seeing how.
 

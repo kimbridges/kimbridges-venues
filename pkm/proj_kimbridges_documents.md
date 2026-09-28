@@ -12,7 +12,7 @@ geographic analysis, cartography, and research methods. Each document is
 a self-contained reference with its own folder of pre-rendered HTML.
 
 ## Current Status
-Live on Netlify. **23 document folders**, the latest **smart_car ("Smart Car", published 2026-09-03)**; llm_examples was 2026-08-03, ai_podcasts 2026-08-02, vouchr 2026-07-29, ai_microscope 2026-07-25, checklistr 2026-07-09, lists 2026-06-16, coenosr 2026-06-15. Grid listing
+Live on Netlify. **24 document folders**, the latest **voronoi ("The Map That Never Got Drawn", published 2026-09-27)**; smart_car was 2026-09-03; llm_examples was 2026-08-03, ai_podcasts 2026-08-02, vouchr 2026-07-29, ai_microscope 2026-07-25, checklistr 2026-07-09, lists 2026-06-16, coenosr 2026-06-15. Grid listing
 2026-08-03)**; ai_podcasts was 2026-08-02, vouchr 2026-07-29, ai_microscope 2026-07-25, checklistr 2026-07-09, lists 2026-06-16, coenosr 2026-06-15. Grid listing
 page with category filtering. Document landing page concept designed but not yet implemented. The
 site is now about 393 MB of resources, which makes a full render overrun the 60-second R-bridge
@@ -325,3 +325,6 @@ about curating that vocabulary is still open, but it did not grow today.
 again on the shipped `_site` copy, 0 missing both times.
 
 Companion project: proj_Smart_Car.md.
+
+### 2026-09-27
+**Twenty-fourth document: *The Map That Never Got Drawn* (`/voronoi/`)** -- Voronoi methods book, K. W. Bridges and Claude (Anthropic); categories Maps, Ecology, Methods. Built in `C:/temp` because the source project's `_output` had become a ghost directory (Finding 054), contents copied into `voronoi/` from R and md5-verified (59 files) plus a card-size cover at the folder root; stub `docs/voronoi.qmd`; `voronoi/**` in resources; site rendered to `_site` (25 pages), Kim dragged `_site` to the existing site. **Verified live** from R: card on the index, book title + both authors, Appendix, and the cover byte-identical (2,524,093 bytes).

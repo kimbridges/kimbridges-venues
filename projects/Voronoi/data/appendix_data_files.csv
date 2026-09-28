@@ -1,0 +1,11 @@
+file,contents,source,made_by,chapters
+kipuka_puaulu_releves.csv,"12 demonstration points: ID, UTM easting and northing, vegetation type",Points placed 3 per canopy structure class; types read from Mueller-Dombois and Fosberg (1974),prototype/canopy_voronoi_prototype_v1.R,2-9
+kipuka_puaulu_study_area.csv,Corners of the 3.2 by 2.6 km study-area rectangle (UTM zone 5N),Centered on photographs taken in the kīpuka,prototype/canopy_voronoi_prototype_v1.R,2-10
+kipuka_puaulu_outline.geojson,Outline of Kīpuka Puaulu (94.5 ha),Traced from canopy height over 8 m,Chapter 8 (the tracing code),"3, 6, 8, 9"
+kipuka_puaulu_specimens.csv,"164 herbarium specimens with species, family, status, year, herbarium and coordinates","GBIF preserved specimens within 2 km of the kīpuka, accessed 2026-07-05, one sheet per gathering",the checklists project (Projects/checklists),6
+kipuka_puaulu_canopy_height.tif,Canopy height in 5 m cells for the study area,Meta and World Resources Institute global 1 m canopy height map (Tolan et al. 2024),R/make_kipuka_canopy_data.R,8-9
+mdf1974_classes.tif,The 1974 vegetation map as classes in 5 m cells,"Mueller-Dombois and Fosberg (1974), sheets 12 and 13, digitized",R/make_mdf1974_data.R,9
+mdf1974_classes.csv,Names of the 1974 classes,Mueller-Dombois and Fosberg (1974),R/make_mdf1974_data.R,9
+la_gardens.csv,"Five Los Angeles basin botanical gardens: city, area, location, Wikipedia article and 2024 pageviews",Wikipedia; OpenStreetMap (Nominatim); Wikimedia pageviews API,R/make_la_gardens_data.R,7
+la_land_frame.geojson,Land frame for the Los Angeles basin,"U.S. Census Bureau county boundaries, 2020 (via tigris)",R/make_la_gardens_data.R,7
+la_tracts_2020.csv,"3,207 census tracts: ID, 2020 population, a point inside each tract","U.S. Census Bureau, 2020 Census (P1_001N, via tidycensus)",R/make_la_gardens_data.R,7

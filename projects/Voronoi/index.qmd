@@ -16,4 +16,8 @@ The chapters move from the basics toward the harder cases. First comes what a Vo
 
 The examples use R. The code is folded away under "Show the code" links, so you can read the argument without it and open it when you want to see how something was done. The data files are small and included, so any example can be run on its own.
 
-<!-- KIM: acknowledgements? (e.g., the 1974 map's authors and the UH/NPS Unit, permission note; collaboration credits as in earlier documents) -->
+This document was written jointly by Kim Bridges and Claude, an AI model made by Anthropic. The first person in these pages is Kim's: the field experience, the memories and the long acquaintance with Kīpuka Puaulu are his. The drafting, the code and the analysis were shared, worked out chapter by chapter in conversation. The works we drew on are listed in the References.
+
+## Acknowledgments {.unnumbered}
+
+Tom Koch renewed my interest in Voronoi tessellations as a mapping tool. Years of collaboration with Dieter Mueller-Dombois kept me focused on the problems and the potential of vegetation mapping. Ev Wingert showed me that cartography is both an art and a valuable way to visualize information. An ongoing dialog with Will McClatchey keeps my creative juices flowing. And Nancy Furumoto provides the environment that lets me exercise my imagination.

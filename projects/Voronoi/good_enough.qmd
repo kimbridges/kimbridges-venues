@@ -2,9 +2,9 @@
 
 Chapter 1 set two maps side by side and asked a question: can Voronoi tessellations make maps with the border complexity of hand-drawn vegetation maps? It's time to answer it.
 
-The hand-drawn map is the obvious yardstick. Fosberg drew it from air photos taken in 1954, Mueller-Dombois checked it on the ground in 1965, and it was published in 1974. But Chapter 8 showed that it can't be treated as the truth. Cattle left the Mauna Loa Strip in 1948, koa has grown up in the old pastures, and fire has burned the woodland east of the kīpuka. The 1974 map is a careful record of a landscape that has since changed.
+The hand-drawn map is the obvious yardstick. Fosberg drew it from air photos taken in 1954, Mueller-Dombois checked it on the ground in 1965, and it was published in 1974 [@muellerdombois1974]. But Chapter 8 showed that it can't be treated as the truth. Cattle left the Mauna Loa Strip in 1948, koa has grown up in the old pastures, and fire has burned the woodland east of the kīpuka. The 1974 map is a careful record of a landscape that has since changed.
 
-Johnston and her colleagues took the right attitude in 1996. They compared their Thiessen polygon map with a map made from airborne video and concluded that "one cannot be thought of as more 'correct' than the other." That's the spirit of this chapter. The 1974 map is a benchmark with a date on it, not an answer key.
+@johnston1996 took the right attitude. They compared their Thiessen polygon map with a map made from airborne video and concluded that "one cannot be thought of as more 'correct' than the other." That's the spirit of this chapter. The 1974 map is a benchmark with a date on it, not an answer key.
 
 ```{r}
 #| label: setupgood

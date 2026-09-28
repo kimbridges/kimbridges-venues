@@ -1,0 +1,152 @@
+# Appendix {.unnumbered}
+
+Everything in this document can be rebuilt from the files in its project folder. This appendix lists them: the data, the scripts that made the data, the functions the chapters define, and the software they run on. Chapter 10 argued that a map made from points and rules is worth keeping because it can be rebuilt. This is the same idea applied to the document itself.
+
+```{r}
+#| label: setupappendix
+#| message: false
+
+## --- Standard packages ---
+
+## many useful functions, including read_csv()
+library(tidyverse)
+## formatted tables
+library(gt)
+
+## --- Options and defaults ---
+
+## suppress read_csv() column-type messages
+options(readr.show_col_types = FALSE)
+```
+
+## Data files
+
+All the data files are in the `data` folder. Most are small, so any chapter can be run on its own.
+
+```{r}
+#| label: datafiles
+
+## the list of data files, with their sources
+data_files <- read_csv("data/appendix_data_files.csv")
+
+## add the size of each file, in kilobytes
+data_files <- mutate(data_files, kb = round(file.size(file.path("data", file)) / 1024))
+
+## show it
+data_files |>
+  select(file, contents, source, kb, made_by, chapters) |>
+  gt() |>
+  cols_label(file = "File", contents = "Contents", source = "Source", kb = "Size (KB)",
+             made_by = "Made by", chapters = "Chapters") |>
+  tab_style(style = cell_text(font = "monospace", size = "small"), locations = cells_body(columns = c(file, made_by)))
+```
+
+## Scripts that make the data
+
+Three of the data files come from scripts in the `R` folder. Each one runs once, from the project folder, and writes its files into `data`. The chapters read the files; they don't run the scripts.
+
+```{r}
+#| label: scripts
+
+## the scripts, what they make, and what they need
+scripts <- read_csv(file =
+"script,makes,needs
+R/make_kipuka_canopy_data.R,kipuka_puaulu_canopy_height.tif,an internet connection (no key)
+R/make_mdf1974_data.R,mdf1974_classes.tif and mdf1974_classes.csv,the digitized map sheets in expert_map/ and the canopy file (for its grid)
+R/make_la_gardens_data.R,la_gardens.csv; la_land_frame.geojson; la_tracts_2020.csv,an internet connection and a Census API key
+R/fig_ch1_voronoi.R,the Voronoi map in Chapter 1,the points and study area files")
+
+## show it
+scripts |>
+  gt() |>
+  cols_label(script = "Script", makes = "Makes", needs = "Needs") |>
+  tab_style(style = cell_text(font = "monospace", size = "small"), locations = cells_body(columns = script))
+```
+
+## Functions
+
+Each chapter defines the functions it needs, so that each chapter runs on its own. That means some functions appear in more than one chapter. The table gathers them in the order the document uses them. A companion R package, tessellr, is in preparation.
+
+```{r}
+#| label: functions
+
+## the functions defined in the chapters
+functions <- read_csv("data/appendix_functions.csv")
+
+## show them, grouped by stage
+functions |>
+  gt(groupname_col = "stage") |>
+  cols_label(fun = "Function", arguments = "Arguments", purpose = "Purpose", chapters = "Chapters") |>
+  tab_style(style = cell_text(font = "monospace", size = "small"), locations = cells_body(columns = c(fun, arguments))) |>
+  tab_style(style = cell_text(weight = "bold"), locations = cells_row_groups())
+```
+
+## The two functions at the heart of the method
+
+Two functions carry the main ideas. The first builds a plain Voronoi map from points, in three steps. It's the one Chapters 3 to 6 use.
+
+```{r}
+#| label: maketiles
+#| eval: false
+#| code-fold: false
+
+## a function for the three tile-building steps from Chapter 2
+make_tiles <- function(points, frame) {
+  ## build the tiles around all the points
+  tiles_all <- st_voronoi(st_union(points), envelope = frame)
+  ## split the result into separate polygons
+  tiles <- st_collection_extract(tiles_all)
+  ## trim the tiles to the frame
+  tiles <- st_intersection(tiles, frame)
+  ## attach each tile to the point inside it
+  tiles <- st_sf(geometry = tiles)
+  st_join(tiles, points)
+}
+```
+
+The second works on a grid of cells instead of polygons. With `constrained = FALSE` it gives the same map as `make_tiles()`, drawn in cells. With `constrained = TRUE` it applies the rule from Chapter 8: each cell takes the type of the nearest point in the same structure class. It expects two objects to exist already: `cell_xy`, the coordinates of the cell centers, and `cell_class`, the structure class of each cell.
+
+```{r}
+#| label: nearesttype
+#| eval: false
+#| code-fold: false
+
+## a function that assigns every cell to its nearest point, with or without the structure rule
+nearest_type <- function(px, py, type, point_class, constrained) {
+  best <- rep(Inf, nrow(cell_xy))
+  out  <- rep(NA_integer_, nrow(cell_xy))
+  for (i in seq_along(px)) {
+    ## squared distance from every cell to point i
+    d <- ((cell_xy[, 1] - px[i])^2) + ((cell_xy[, 2] - py[i])^2)
+    ## under the structure rule, points in other classes are out of reach
+    if (constrained) d[cell_class != point_class[i]] <- Inf
+    ## keep point i wherever it's nearer than anything found so far
+    closer <- d < best
+    best[closer] <- d[closer]
+    out[closer]  <- type[i]
+  }
+  out
+}
+```
+
+## Software
+
+The document was built with R [@rcore2024] and Quarto. The spatial work uses sf [@pebesma2023] for points and polygons and terra [@hijmans2025] for grids. The census data for Chapter 7 came through tidycensus [@walker2025tidycensus] and tigris [@walker2025tigris]. The versions used for this build are below.
+
+```{r}
+#| label: software
+
+## the packages used in the chapters and the data scripts
+packages <- c("tidyverse", "gt", "patchwork", "ggrepel", "sf", "terra", "tidycensus", "tigris", "jsonlite")
+
+## their versions, with R itself at the top
+software <- tibble(software = c("R", "Quarto", packages),
+                   version  = c(as.character(getRversion()),
+                                as.character(quarto::quarto_version()),
+                                sapply(packages, function(p) as.character(packageVersion(p)))))
+
+## show it
+software |>
+  gt() |>
+  cols_label(software = "Software", version = "Version")
+```

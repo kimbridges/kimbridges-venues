@@ -11,6 +11,24 @@ Mechanism 4.
 
 ---
 
+## 2026-09-27 -- *THE MAP THAT NEVER GOT DRAWN* IS PUBLISHED (THE 24TH DOCUMENT), AND ITS PACKAGE HAS A NAME: TESSELLR
+
+**Active focus:** Voronoi (unchanged). Opened 10:59 HST after Kim restarted the RStudio addin (the session needed `connect_session("default")`).
+
+**Finishing the book.** Kim's cover and logo (found at the project root and in Downloads; a 1275 px cover copy in `images/`). **Shared authorship** -- Kim's reminder, for this and ALL jointly created documents: `K. W. Bridges` + `Claude (Anthropic)` in `_quarto.yml`, a Preface paragraph, and a new rule in `style_multichapter_doc.md`. **Citations:** `references.bib` (17 works incl. R, sf, terra, tidycensus, tigris) + a References page; first mention per chapter cited. Web checks settled the Johnston 1996 venue (NCGIA Santa Fe CD-ROM) and confirmed Thiessen 1911, Tolan 2024, Mead 1966 and the Brown 1965 title; Dirichlet/Voronoi volumes, Snow 1855 and the Stone & Pratt publisher line are from memory, flagged for Kim. **Acknowledgments** in Kim's words (Tom Koch, Dieter Mueller-Dombois, Ev Wingert, Will McClatchey, Nancy Furumoto); the HVNP map permission Kim will obtain, not mentioned in the text. **Kim's full read-through: 'Excellent! This captures more than I expected when we started.'** **Appendix:** data files, scripts, the 15 chapter functions (both tables from CSV), `make_tiles()` and `nearest_type()` in full, software versions.
+
+**tessellr.** Kim asked whether the code should become a package, as in other projects. Agreed: the method and the data source are only usable by others as a package; Koch_voronoi's `voronoi_functions.R` overlaps and folds in. Ruled: publish the document now, build the package next; Kim chose the name **tessellr**. Scope (~10 functions, incl. a canopy fetch for ANY area) in `proj_Voronoi.md` Next Steps 00.
+
+**Published.** `G:/.../Voronoi/_output` became a ghost directory (listed, not `dir.exists`; Quarto: PermissionDenied) -- Finding 054; per the card, built in `C:/temp/voronoi_build_2026-09-27`. Deployed per the venue workflow: contents copied from R into `kimbridges-documents/voronoi/` (59 files md5-matched) + card cover; stub `docs/voronoi.qmd` (Maps, Ecology, Methods); `voronoi/**` in resources; `_site` rendered (25 pages); Kim dragged it to the existing site. **Verified live from R:** card on the index, title + both authors, Appendix (tessellr line), cover byte-identical.
+
+**Cleanup (Kim, after the live check):** all of `C:/temp` except the 09-26 close snapshot (Voronoi staging and build, Smart Car builds, older snapshots and small scratch); the ghost `_output` has cleared.
+
+**Written:** `proj_Voronoi.md` (status PUBLISHED, Next Steps 00 tessellr, log), `proj_kimbridges_documents.md` (24 documents, log), `project_index.md` (NEXT, two rows, CARRIED), `priorities.md`, `style_multichapter_doc.md` (shared authorship), this entry; `Projects/Voronoi`: `_quarto.yml`, `index.qmd`, `appendix.qmd`, `references.bib`, `references.qmd`, chapter citations (Ch.1-10), `data/appendix_*.csv`, `images/voronoi_cover_art_text.png`, `voronoi_logo_art.png`, `background/drafting_notes.md`; `kimbridges-documents`: `voronoi/`, `docs/voronoi.qmd`, `_quarto.yml`, `_site/`. Snapshots in `C:/temp/pkm_close_2026-09-27`.
+
+**Mechanism 5.** (1) No new project file yet -- tessellr is recorded as proj_Voronoi's next phase; open `proj_tessellr.md` when work starts. (2) proj_Voronoi document phase complete; project stays Active for the package. (3) New files listed above. (8) Nothing for `deferred.md`. (10) Outside `G:`: only `C:/temp/pkm_close_2026-09-26` and today's snapshot. (11) HEALTH_LINE (12) BACKUP_LINE
+
+**Next:** Kim returns to evaluate next steps -- tessellr first; open items for the book: the remaining citation checks and the HVNP map permission. Kim: 'Again, teamwork has paid off.'
+
 ## 2026-09-26 -- *THE MAP THAT NEVER GOT DRAWN*: ALL TEN CHAPTERS DRAFTED, AND THE DOCUMENT FINDS ITS ANSWER
 
 **Active focus:** Voronoi (unchanged). One long session; the book went from three drafted pieces to ten chapters rendering clean as a whole.

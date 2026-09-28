@@ -1,19 +1,19 @@
 # PKM Health Report
-_Generated 2026-09-26 19:20 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-09-27 15:19 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
-- **Works registered:** 85
+- **Works registered:** 86
 - **Works failing reconciliation:** 0 (source -> _site -> live)
 - **Rendered pages with no source:** 0
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 4
 - **Files over size budget:** 6
-- **Active Focus block:** 2.4 KB (budget 6)
+- **Active Focus block:** 2.2 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 6
 - **Legacy pages awaiting account deletion:** 58
-- **Build scratch in C:/temp:** 18 folder(s), 368 MB
+- **Build scratch in C:/temp:** 2 folder(s), 0 MB
 
 ## Reconciliation failures
 
@@ -36,7 +36,7 @@ None.
 
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
-| session_log.md | REFERENCE | 391.2 | 250 | 141.2 | FALSE |
+| session_log.md | REFERENCE | 395.2 | 250 | 145.2 | FALSE |
 | proj_Smart_Car.md | PROJECT |  65.9 |  45 |  20.9 | TRUE |
 | deferred.md | REFERENCE | 210.6 | 200 |  10.6 | FALSE |
 | proj_seasonality.md | PROJECT |  51.6 |  45 |   6.6 | TRUE |
@@ -47,7 +47,7 @@ None.
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 2.4 | 6 | -3.6 |
+| 8 | 2.2 | 6 | -3.8 |
 
 ## Venues without a source repo
 
@@ -74,24 +74,8 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| Smart_Car_book_2026-09-02 | 23.9 | 174 | TRUE |
-| Smart_Car_book_2026-09-03 | 22.9 | 151 | TRUE |
-| mwt_prototype_2026-09-25 |  0.1 |  20 | FALSE |
-| sc_imgtest | 22.9 |  16 | TRUE |
-| smartcar_docs_20260821 | 36.1 |   3 | TRUE |
-| pkm_close_2026-09-25 |  0.4 |   2 | FALSE |
-| pkm_close_2026-09-22 |  3.9 |   1 | FALSE |
-| pkm_close_2026-09-23 |  3.1 |   1 | FALSE |
-| ch4_20260829 | 27.9 |   0 | TRUE |
-| chateau_2026-08-29 | 28.1 |   0 | TRUE |
-| creamsicle_clean_20260828 | 28.9 |   0 | TRUE |
-| icons_2026-09-13 | 13.0 |   0 | FALSE |
-| pkm_close_2026-09-26 |  0.0 |   0 | FALSE |
-| pkm_edits_20260811 | 46.4 |   0 | TRUE |
-| pkm_snapshots | 55.0 |   0 | TRUE |
-| smartcar_fuelfix_20260817 | 27.9 |   0 | TRUE |
-| timelapse | 43.9 |   0 | TRUE |
-| venuemirror_clone_2026-08-03 | 55.2 |   0 | TRUE |
+| pkm_close_2026-09-26 | 0.8 | 0 | FALSE |
+| pkm_close_2026-09-27 | 0.0 | 0 | FALSE |
 
 ## Legacy pages by platform
 
@@ -107,4 +91,4 @@ None.
 None.
 
 ---
-_Ran in 95.2 s._
+_Ran in 91.8 s._

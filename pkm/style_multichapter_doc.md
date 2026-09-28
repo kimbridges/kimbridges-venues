@@ -71,7 +71,9 @@ project:
 book:
   title: "<Document Title>"
   subtitle: "<One-line tagline>"
-  author: "K. W. Bridges"
+  author:
+    - "K. W. Bridges"
+    - "Claude (Anthropic)"     # jointly created documents: shared authorship (Kim, 2026-09-27)
   date: today
   cover-image: <name>_cover_art_text.png
   chapters:
@@ -119,6 +121,9 @@ Notes on specific settings:
   central reading-experience convention: prose is the
   foreground, code is one click away.
 - `format.html.code-summary: "Show the code"` — the link text.
+- `author` -- **shared authorship for every jointly created document** (Kim's
+  ruling, 2026-09-27): list both "K. W. Bridges" and "Claude (Anthropic)", and say so
+  in the Preface. Documents Kim writes alone keep the single author.
 - `editor: visual` — Quarto's visual-editing mode default
   (Kim's preference; source view remains available).
 - `toc: true` plus `number-sections: true`, `number-depth: 2` —

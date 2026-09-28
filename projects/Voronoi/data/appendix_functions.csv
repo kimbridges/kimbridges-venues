@@ -1,0 +1,16 @@
+stage,fun,arguments,purpose,chapters
+Building tiles,make_tiles,"points, frame","Build Voronoi tiles around the points, trim them to the frame, and attach each point's attributes to its tile",3-6
+Reading tiles,pattern_tiles,"pts, label",Build tiles for one point pattern and flag the interior tiles,5
+Reading tiles,cv_of,tiles,Coefficient of variation of interior tile area,5
+Reading tiles,pattern_map,"tiles, title","Map one pattern, shaded by tile area",5
+Tiles as containers,count_tiles,"tiles, points",Count the points (such as specimens) that fall in each tile,6
+Weighted tiles,winning_garden,"xy, weights","For each location, the garden with the smallest distance divided by weight",7
+Weighted tiles,service_map,weights,Service areas on a 500 m grid of land cells,7
+Weighted tiles,people_won,weights,"People living in each garden's service area, from census tracts",7
+Weighted tiles,draw_service,"areas, title",Draw one service-area map,7
+Adding the canopy,nearest_type,"px, py, type, point_class, constrained",Plain or structure-constrained Voronoi on a raster grid,8-9
+Adding the canopy,"map_polys, type_polys",a raster of types,Turn a raster of vegetation types into polygons for drawing,8-9
+Adding the canopy,"draw_veg, draw_with_lines","a raster of types, title","Draw a vegetation map, with or without the 1974 lines",8-9
+Checking the map,area_agree,v,Share of the area with the same type as the 1974 map,9
+Checking the map,edges_of,v,Boundary cells of a map,9
+Checking the map,boundary_agree,v,"Share of the 1974 boundary within 50 m of the map's boundary, the reverse, and the length drawn",9

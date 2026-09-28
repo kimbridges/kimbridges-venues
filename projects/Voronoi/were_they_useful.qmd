@@ -34,7 +34,7 @@ A plain Voronoi map is weakest at one thing: putting a boundary in exactly the r
 
 **Placing a new school.** A school district wants to know what a new school would do to enrollment. Tile the existing schools, count the children in each tile from the census, as with the gardens in Chapter 7, then add the new school and count again. Move the point to another site and run it once more. Each version takes a second. Nobody needs the exact line between two catchments to see which site relieves the most crowded school.
 
-**Finding the source of cholera.** The idea is old. In his 1855 account of the Broad Street outbreak in London, John Snow drew a line around the Broad Street pump marking the places that were equally far, by the nearest road, from that pump and from the pumps around it. Inside the line, the nearest water was Broad Street's, and most of the deaths fell inside it. It was a Voronoi tile in all but name, with walking distance in place of straight-line distance, the same substitution Chapter 7 made with travel time.
+**Finding the source of cholera.** The idea is old. In his 1855 account of the Broad Street outbreak in London, John Snow drew a line around the Broad Street pump marking the places that were equally far, by the nearest road, from that pump and from the pumps around it [@snow1855]. Inside the line, the nearest water was Broad Street's, and most of the deaths fell inside it. It was a Voronoi tile in all but name, with walking distance in place of straight-line distance, the same substitution Chapter 7 made with travel time.
 
 <!-- KIM: a sentence on your own epidemiological work (the clustering system with Tom Koch) could fit here, if you'd like it in. -->
 
@@ -138,7 +138,7 @@ Beyond the answer to Chapter 1's question, this document leaves two things behin
 
 The first is a **method**: structure-constrained Voronoi, in which each place takes the name of the nearest point with the same kind of canopy. It's a small change to an old rule, and it moves the boundaries to where the vegetation changes.
 
-The second is a **data source**. The global canopy height map from Meta and the World Resources Institute is free, covers nearly every forest on earth, and measures the same kind of thing Fosberg read from air photos. I suspect many people in these fields don't know it exists. It made the largest single difference in this document.
+The second is a **data source**. The global canopy height map from Meta and the World Resources Institute [@tolan2024] is free, covers nearly every forest on earth, and measures the same kind of thing Fosberg read from air photos. I suspect many people in these fields don't know it exists. It made the largest single difference in this document.
 
 The method and the data also showed what happens when a map can be rerun and compared. Where it disagreed with what we expected, the question "why?" led somewhere: to seventy years of cattle, koa and fire around Kīpuka Puaulu, and to questions sharp enough to answer with the next season's field work.
 

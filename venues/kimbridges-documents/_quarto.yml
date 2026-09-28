@@ -23,6 +23,7 @@ project:
     - smart_car/**
     - storylines/**
     - using_an_llm/**
+    - voronoi/**
     - vouchr/**
     - whittakerr/**
 

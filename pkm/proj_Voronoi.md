@@ -17,6 +17,8 @@ vegetation map from a small number of releves. **Kim's ruling (2026-09-25): fini
 BEFORE the technology is discussed in the trilogy;** *Maps with Tiles* then cites it.
 
 ## Current Status
+**PUBLISHED 2026-09-27:** *The Map That Never Got Drawn* is live at https://kimbridges-documents.netlify.app/voronoi/ (24th document in the venue), verified from R. The document phase is complete; the project continues with the companion package **tessellr** (Next Steps 00).
+
 **KIM'S CONCLUSION (2026-09-26):** plain Voronoi maps aren't good enough; combined with other data (here canopy height) they are.
 Reproducibility is part of their value (hand-drawn maps disguised their judgments); mismatches prompt 'why?' and lead to new data.
 The study introduces both a methodology and a data source. -> Ch.9 verdict, Ch.10 opening. Full quote in `background/drafting_notes.md`.
@@ -171,6 +173,7 @@ with 1974 classes. The expert map's own class patches: smallest interior ~1.8 ha
 - **checklists / checklistr** -- herbarium points; a candidate counting-frame dataset.
 
 ## Next Steps
+00. **NEXT PROJECT (Kim, 2026-09-27): the companion R package `tessellr`** (name ruled by Kim). Scope ~10 functions: tiles in a frame, per-tile measures, counting with the precision check, distance/weight assignment, canopy-height fetch for ANY area (quadkey lookup + mosaic, not the one hard-coded tile), structure classes (smooth/breaks/MMU), structure-constrained Voronoi, outline tracing, area + boundary agreement. Absorbs Koch_voronoi `voronoi_functions.R` (compute_voronoi, assign_to_cells, compute_cell_statistics). When built: replace the Appendix function table with a function reference (style guide Sec. 3).
 0. **BOOK (2026-09-26 close):** all ten chapters drafted. Remaining: cover + logo (Kim's images), appendix (functions + data sources), verify list in `background/drafting_notes.md`, Preface acknowledgements + 1974-map permission, read-through. Items 1-5 below predate the book.
 1. ~~Minimum mapping unit~~ DONE 2026-09-25 evening (scale choice, not a fix). Next knob: mosaic/texture classes that match the expert's `mx-` units, or accept and explain.
 2. Boundary metrics in the releve-number curve, not only area agreement.
@@ -247,3 +250,7 @@ Ch.10 *Were They Useful?* drafted from Kim's notes: plain Voronoi is sometimes e
 new school, Snow's 1855 pump line); when boundaries matter, add data that knows where edges are; maps as archives (points + rules +
 metadata in a GeoPackage, rebuilt any time -- contrast the 1974 map's digitizing); field-by-field table; two take-aways: method + data source.
 All ten chapters now drafted.
+### 2026-09-27
+Cover + logo in (Kim's images; web-size cover copy in images/). Shared authorship (Kim + Claude (Anthropic)) in _quarto.yml and the Preface -- Kim's ruling for ALL jointly created documents, now in the style guide. references.bib (17) + References page; citations at first mention per chapter. Acknowledgments from Kim. Kim's full read-through: 'Excellent!'. Appendix (data files, scripts, functions, core code, software) drafted. G: _output became a ghost directory (Finding 054); builds now in C:/temp/voronoi_build_2026-09-27. Next: deploy to kimbridges-documents.
+Appendix now says 'A companion R package, tessellr, is in preparation.' Document placed in kimbridges-documents as `voronoi/` (contents of the C:/temp build, md5-verified, + card cover); stub `docs/voronoi.qmd` (Maps, Ecology, Methods); `voronoi/**` added to resources; venue site rendered to `_site` (card present). Awaiting Kim's Netlify drag.
+PUBLISHED and verified live (`/voronoi/`). Kim cleared `C:/temp` scratch (all Voronoi staging and build folders, Smart Car builds); the ghost `_output` on G: is gone too. Kim: 'teamwork has paid off.' Next session: evaluate next steps (tessellr first).
