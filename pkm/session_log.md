@@ -23,7 +23,7 @@ Mechanism 4.
 
 **Written:** `ideas_rehearsals.md` (focus ruling, five ideas, draft text, checklist, gallery-entry template proposal + drought sketch), `ideas_three_documents.md` (new section 'Rehearsals ideas that argue for the trilogy'), `project_index.md` (Active Focus, NEXT), `logs/focus_history.md` (09-27 block archived), `proj_Voronoi.md` (open note 2 resolved, log), this entry; `Projects/Voronoi/references.bib`, `were_they_useful.qmd`; `kimbridges-documents/voronoi/`, `_site/`.
 
-**Mechanism 5.** (1) No new project (rehearsals still capture only). (2) Active Focus -> Rehearsals (capture). (3) No new files. (8) Nothing for `deferred.md`. (10) Outside `G:`: `C:/temp/voronoi_build_2026-09-29` (scratch, deletable now that the deploy is verified). (11) HEALTH_LINE (12) BACKUP_LINE
+**Mechanism 5.** (1) No new project (rehearsals still capture only). (2) Active Focus -> Rehearsals (capture). (3) No new files. (8) Nothing for `deferred.md`. (10) Outside `G:`: `C:/temp/voronoi_build_2026-09-29` (scratch, deletable now that the deploy is verified). (11) Health 16:37: 86 works, 0 reconciliation failures, 0 unsourced pages, 0 broken log pointers; carried: 4 drifting projects, 6 files over budget, 7 repo/clone mismatches, 5 C:/temp scratch folders (20 MB). (12) Backup: 1315 files, secret scan clean, commit 4ac5dbbb3a, push verified against the server; second backup after this line.
 
 **Next:** Kim returns after dinner; see the index NEXT line (gallery template, gallery order, a first quick test).
 
