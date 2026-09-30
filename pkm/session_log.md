@@ -21,7 +21,7 @@ Mechanism 4.
 
 **Written:** `ideas_rehearsals.md` (five evening sections, status line, checklist item 15), `ideas_three_documents.md` (three more mapping lines), `project_index.md` (NEXT), this entry.
 
-**Mechanism 5.** (1) No new project. (2) No status changes. (3) No new files. (8) Nothing for `deferred.md`. (10) Outside `G:`: `C:/temp/voronoi_build_2026-09-29` still deletable. (11) HEALTH_LINE (12) BACKUP_LINE
+**Mechanism 5.** (1) No new project. (2) No status changes. (3) No new files. (8) Nothing for `deferred.md`. (10) Outside `G:`: `C:/temp/voronoi_build_2026-09-29` still deletable. (11) Health 20:49: 86 works, 0 reconciliation failures, 0 unsourced pages, 0 broken log pointers; carried: 4 drifting projects, 6 files over budget, 7 repo/clone mismatches, 4 C:/temp scratch folders (10 MB). (12) Backup: 1315 files, secret scan clean, commit 042cab485d, push verified against the server; second backup after this line.
 
 **Next:** see the index NEXT line -- gallery template and vocabulary, a scale-ladder gallery order, a first quick test once materials are in.
 
