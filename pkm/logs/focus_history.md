@@ -1,5 +1,11 @@
 # Focus History and Change Log
 
+<!-- superseded 2026-09-29 (focus set to 'Rehearsals before the field', capture phase; Voronoi citation note closed) -->
+**Active Focus (2026-09-27): NONE SET -- Voronoi document and tessellr both COMPLETE 2026-09-27. Kim chooses the next focus at the next session (candidates: "Rehearsals before the field" -- `ideas_rehearsals.md`; or return to the trilogy -- *Maps with Tiles* can now cite the book and the package).**
+
+**NEXT (2026-09-27 close): *The Map That Never Got Drawn* (kimbridges-documents/voronoi/) and **tessellr 0.1.0** (github.com/kimbridges/tessellr) are both COMPLETE. Open notes, not blockers: UH/HVNP permission for the 1974 map (Kim, this week); a short list of citation details Kim will check (in `proj_Voronoi.md`). **NEW IDEA (evening): "Rehearsals before the field" -- simulations + practice exercises at a familiar park/garden before costly field trips; captured in `ideas_rehearsals.md` (capture only). Next session: Kim sets the new Active Focus (candidates: rehearsals, or the trilogy).**
+
+
 <!-- superseded 2026-09-25 (focus moved to the new Voronoi document; the trilogy paused, capture only) -->
 **Active Focus (2026-09-23, OPEN): the TRILOGY -- all three documents now have first-round working outlines. Unifying statement ruled: "boundaries in value, space and time." Reading order: *Measurements Require Categories* (MRC) first, then *Maps with Tiles* (MWT), then S3 (*Spells, Stretches and Snaps*). Capture only; formal intake when Kim decides the shape holds.**
 

@@ -11,6 +11,22 @@ Mechanism 4.
 
 ---
 
+## 2026-09-29 -- VORONOI CITATIONS CLOSED; "REHEARSALS BEFORE THE FIELD" FINDS ITS FOCUS: A GALLERY OF WHAT MAPS CAN (AND CANNOT) TEACH
+
+**Active focus:** opened with none set; Kim chose the Voronoi open notes, then moved to the rehearsals idea (now the Active Focus, capture phase).
+
+**Voronoi citations (closed).** Kim's notes (`Citation_details.txt`) + a web check agreed on Dirichlet 1850, Voronoi 1908, Brown 1965, Mead 1966 and the Stone & Pratt publisher line. One real fix: Snow's equal-walking-distance line around the Broad Street pump is in his report to the St James Cholera Inquiry Committee (1855, pp. 97-120), not the 2nd ed. of *On the Mode*; Kim chose to cite both. `references.bib` 17 -> 18 (+ `snow1855report`, Dirichlet DOI, Brown pagetotal, Stone & Pratt distribution note); `were_they_useful.qmd` Snow sentence split. Rebuilt in `C:/temp/voronoi_build_2026-09-29` (clean), venue `voronoi/` + `_site` md5 59/59, Kim redeployed, verified live from R. Only the UH/HVNP permission remains.
+
+**Rehearsals -- ideas captured in `ideas_rehearsals.md`:** (1) campsites cut in a purchased square of dense conifers (Kim): sites placed by the user, trees simulated; area, trees per site. (2) Can AI help find borders? -- Honolulu's urban core; Claude's reply kept as DRAFT TEXT (Kim: "EXACTLY what we're after"): found borders, rule-derived borders (`trace_patch` on building density), AI removing friction -- and an AI-drawn line from general knowledge is "a hand-drawn map in disguise". Kim: a Skyline station is being built one block from his window. (3) Botanical gardens (Kim and Nancy's visits): garden unit map = the 1974 map, phone photos = releves; Kim's photo archive may already hold the data. (4) Rainfall and drought (Kim): Thiessen's home ground; several category dimensions; gauge network shrinkage (2,354 stations since 1838, 398 active 2017; HC&S 100+ gauges closed 2016) -- then-vs-now is partly network. (5) METAR coverage (Kim's past need): tiles as coverage maps. **Kim's reflection kept verbatim:** satellite spectral analysis was sold as a replacement for releves but saw only the canopy and fails to scale (too many small units); canopy height SUPPLEMENTS releves. A running **cautions checklist** (14 items) started at Kim's suggestion.
+
+**Rulings (Kim):** the companion document's focus is "training before the trip" -- the concepts AND being able to use them; partly a **gallery of examples**, valued for what the portrayal teaches: from "I can make this kind of map" to "from this kind of map, I can learn ..."; "what we can't learn is also needed." Kim: these ideas are building arguments for the trilogy -- mapping written into `ideas_three_documents.md` (drought is the first example spanning value, space and time).
+
+**Written:** `ideas_rehearsals.md` (focus ruling, five ideas, draft text, checklist, gallery-entry template proposal + drought sketch), `ideas_three_documents.md` (new section 'Rehearsals ideas that argue for the trilogy'), `project_index.md` (Active Focus, NEXT), `logs/focus_history.md` (09-27 block archived), `proj_Voronoi.md` (open note 2 resolved, log), this entry; `Projects/Voronoi/references.bib`, `were_they_useful.qmd`; `kimbridges-documents/voronoi/`, `_site/`.
+
+**Mechanism 5.** (1) No new project (rehearsals still capture only). (2) Active Focus -> Rehearsals (capture). (3) No new files. (8) Nothing for `deferred.md`. (10) Outside `G:`: `C:/temp/voronoi_build_2026-09-29` (scratch, deletable now that the deploy is verified). (11) HEALTH_LINE (12) BACKUP_LINE
+
+**Next:** Kim returns after dinner; see the index NEXT line (gallery template, gallery order, a first quick test).
+
 ## 2026-09-27 (evening) -- TESSELLR 0.1.0 BUILT AND RELEASED; VORONOI DOCUMENT AND PACKAGE BOTH COMPLETE
 
 **Active focus:** tessellr (opened this evening, `proj_tessellr.md` NEW), then none -- Kim ruled both projects COMPLETE.

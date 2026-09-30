@@ -1,5 +1,5 @@
 # PROJECT: Voronoi
-_Last updated: 2026-09-27_
+_Last updated: 2026-09-29_
 _Status: Complete_
 _Focus readiness: Not applicable_
 
@@ -18,7 +18,7 @@ BEFORE the technology is discussed in the trilogy;** *Maps with Tiles* then cite
 
 ## Current Status
 **COMPLETE 2026-09-27 (Kim).** *The Map That Never Got Drawn* is live at https://kimbridges-documents.netlify.app/voronoi/ and its companion package tessellr 0.1.0 is live at https://github.com/kimbridges/tessellr (see `proj_tessellr.md`). Closed under the posted-on-website Complete rule.
-**Open notes (not blockers):** (1) HVNP / UH permission for the 1974 map -- Kim is obtaining it this week. (2) Citation details for Kim to confirm: Dirichlet 1850 and Voronoi 1908 volumes/pages, Snow 1855 2nd ed., Stone & Pratt 1994 publisher line, and whether Brown 1965 / Mead 1966 treat tile area as the area available to each plant (Ch.5). Any fix is a one-line `references.bib` edit + re-render + redeploy.
+**Open notes (not blockers):** (1) HVNP / UH permission for the 1974 map -- Kim is obtaining it. (2) ~~Citation details~~ RESOLVED 2026-09-29: Kim's notes + web check confirmed Dirichlet, Voronoi, Brown, Mead and the Stone & Pratt publisher line; Snow's pump line is in his report to the St James Cholera Inquiry Committee (1855, pp. 97-120), not the 2nd ed. -- Ch.10 now cites both (`snow1855`, `snow1855report`, Kim's choice). Dirichlet DOI added. Rebuilt in `C:/temp/voronoi_build_2026-09-29`, venue `voronoi/` + `_site` updated (md5 59/59); awaiting Kim's redeploy.
 
 **PUBLISHED 2026-09-27:** *The Map That Never Got Drawn* is live at https://kimbridges-documents.netlify.app/voronoi/ (24th document in the venue), verified from R. The document phase is complete; the project continues with the companion package **tessellr** (Next Steps 00).
 
@@ -259,3 +259,5 @@ Appendix now says 'A companion R package, tessellr, is in preparation.' Document
 PUBLISHED and verified live (`/voronoi/`). Kim cleared `C:/temp` scratch (all Voronoi staging and build folders, Smart Car builds); the ghost `_output` on G: is gone too. Kim: 'teamwork has paid off.' Next session: evaluate next steps (tessellr first).
 tessellr 0.1.0 released on GitHub; the Appendix gained a 'tessellr package' section (install + function reference), Ch.10 one sentence; venue `voronoi/` updated and `_site` rebuilt (2026-09-27).
 Kim confirmed the redeployed site (Appendix function reference, Ch.10 sentence) and ruled the project COMPLETE 2026-09-27, with the map permission and citation checks kept as open notes.
+### 2026-09-29
+Citation open note resolved (see Current Status). references.bib 17 -> 18 entries (+ snow1855report; Dirichlet DOI; Brown pagetotal; Stone & Pratt distribution note -- the last two are not shown by the citation style). `were_they_useful.qmd`: Snow sentence split into the map (2nd ed.) and the pump line (parish report). Rebuilt, venue updated; Kim to redeploy.

@@ -773,6 +773,20 @@ technology is discussed in the trilogy.** Consequences for MWT:
 
 _Still open for MWT:_ an expert vegetation map for the overlay; an invasive / disease point dataset.
 
+## Rehearsals ideas that argue for the trilogy (2026-09-29)
+
+_Kim: "I'm wondering if we're building arguments for the trilogy." Claude's mapping, not yet ruled. Source notes: `ideas_rehearsals.md`._
+
+- **AI and borders** -> MRC backbone (where do boundaries come from) and MWT ch.1-2 (boundary sources none / given / judged / computed). AI makes computed boundaries cheap (FRICTION spine) and can pass a judged boundary off as computed: "a hand-drawn map in disguise". Honolulu's several official urban-core borders = one place, several boundary sources.
+- **Drought** -> ALL THREE, the first example to span the unifying statement: value (drought classes; "history sets categories" -- drought is defined against the historical record; several measurements -> one category, MRC ch.6), space (Thiessen tiles, MWT ch.4), time (a drought IS a spell, S3). Candidate running example for the trilogy.
+- **Gauge network change** -> MWT ch.6 (tiles show coverage; tiles grow as gauges close), S3 (a changing network breaks a baseline), MRC ch.8 (the inverse: "normal" computed from a network that changed).
+- **METAR coverage (Kim)** -> MWT ch.6: tile area and farthest border as the reach of the data; the nearest station can be the wrong one (MRC: distance is not similarity).
+- **Supplement, not replace; spectral maps fail to scale (Kim)** -> MWT ch.3 (the ecologist's map, entitation) and ch.8 (overlay); CONCEPT spine: the satellite's categories see only the canopy -- the inverse (a concept blinds as well as reveals); scale as a stated choice (MRC ch.5).
+- **Botanical gardens (Kim)** -> MWT ch.8 (the garden's unit map as the expert map); preferential sampling (MRC link already in the MWT outline); personal stories (Kim and Nancy's garden visits) per the 2026-09-23 writing ruling.
+- **Campsites in a purchased forest (Kim)** -> MWT ch.6 and ch.9 (reading tiles; trees counted in tiles); points placed by judgment.
+- **Skyline station a block from Kim's window** -> personal story; walking-distance tiles (Snow's line, MWT ch.4).
+- **The cautions checklist** -> THE INVERSE / falsification principle in practice: each item is a way to attack one's own map before trusting it.
+
 ## Next
 
 **2026-09-25: focus moved to the Voronoi document (`proj_Voronoi.md`), to be finished BEFORE the

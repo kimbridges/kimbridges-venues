@@ -1,11 +1,11 @@
 # Projects Index
-_Last updated: 2026-09-25_
+_Last updated: 2026-09-29_
 
 > **History split out 2026-07-28.** The superseded Active Focus blocks and the full
 > dated Change Log now live in `logs/focus_history.md`, verbatim and unedited.
 > This file carries the current focus, the structural notes, and the listings only.
 
-**Active Focus (2026-09-27): NONE SET -- Voronoi document and tessellr both COMPLETE 2026-09-27. Kim chooses the next focus at the next session (candidates: "Rehearsals before the field" -- `ideas_rehearsals.md`; or return to the trilogy -- *Maps with Tiles* can now cite the book and the package).**
+**Active Focus (2026-09-29): "REHEARSALS BEFORE THE FIELD" -- capture phase (`ideas_rehearsals.md`). Kim's ruling on the focus: training before the trip = the concepts + being able to use them; partly a GALLERY OF EXAMPLES, each judged by what it teaches -- from "I can make this kind of map" to "from this kind of map, I can learn ...", and what it cannot teach. Companion to *The Map That Never Got Drawn*; its ideas also argue for the trilogy (mapped in `ideas_three_documents.md`). No formal intake yet.**
 
 **How it opened (2026-09-25).** The day began on MWT's missing data source (plots + an expert map). Kim's reframe: an expert map uses TWO inputs -- releves for categories, imagery for boundaries -- so a plain Voronoi map is not a fair comparison. Add canopy height as the boundary input. **Prototype at Kipuka Puaulu, same session:** Meta/WRI 1 m canopy (keyless, the July route) -> four structure classes -> 12 releves, 3 per class, STAND-IN categories -> **structure-constrained Voronoi** (nearest releve in the same structure class). Plain vs constrained disagree on 66% of the area; the constrained map follows the kipuka edge. Kim: "It shows just what we need; realistic boundaries and an appropriate classification." Limit shown as expected: compositional boundaries inside one structure class stay straight bisectors.
 
@@ -15,7 +15,7 @@ _Last updated: 2026-09-25_
 
 **⚠ CARRIED:** `pkm_card.md` 0.4 KB over budget; `C:/temp` scratch CLEARED by Kim 2026-09-27 (only the 09-26 and today's close snapshots remain); the local Filesystem MCP connector still fails; device_bash still cannot mount `G:`.
 
-**NEXT (2026-09-27 close): *The Map That Never Got Drawn* (kimbridges-documents/voronoi/) and **tessellr 0.1.0** (github.com/kimbridges/tessellr) are both COMPLETE. Open notes, not blockers: UH/HVNP permission for the 1974 map (Kim, this week); a short list of citation details Kim will check (in `proj_Voronoi.md`). **NEW IDEA (evening): "Rehearsals before the field" -- simulations + practice exercises at a familiar park/garden before costly field trips; captured in `ideas_rehearsals.md` (capture only). Next session: Kim sets the new Active Focus (candidates: rehearsals, or the trilogy).**
+**NEXT (2026-09-29, dinner break): Kim returns in a few hours with fresh thoughts. Candidates: rule on the gallery-entry template (question / data / map / can learn / cannot learn / cautions / try it); sort the examples into a gallery order (campsites, Honolulu urban core + Skyline, botanical gardens + phone photos, rainfall and drought, METAR coverage); first quick test (three urban-core borders, or one garden from Kim's photo archive). Voronoi: citation note CLOSED and redeployed; only the UH/HVNP map permission remains (Kim).**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

@@ -2,7 +2,19 @@
 
 _Captured 2026-09-27 (evening), at the close of the day tessellr 0.1.0 and *The Map That Never Got Drawn* were finished. Discussion between Kim and Claude._
 
-_Status: CAPTURE ONLY. Formal Mechanism 1 intake -- venue / language track, `proj_*.md`, index row -- deliberately NOT done yet. Kim: "I think we're on to something good." Return to it next session._
+_Status: CAPTURE ONLY -- now the Active Focus (2026-09-29); formal Mechanism 1 intake (venue / track, `proj_*.md`, index row) NOT done yet. Grown 2026-09-29 with Kim's focus ruling, five example ideas, draft text on AI and borders, and a 14-item cautions checklist._
+
+## ★ FOCUS OF THE COMPANION DOCUMENT (Kim's ruling, 2026-09-29)
+
+- **"Training before the trip"** is the key to the focus.
+- Training has two parts: **having the concepts**, and **actually being able to use them**.
+- The training is, in part, **a gallery of examples**. "An example has value when it tells us what we will learn from the way it is portraying the data."
+- It changes the focus **from "I can make this kind of map" to "from this kind of map, I can learn ..."**
+- **"What we can't learn is also needed."**
+
+_Claude's proposal for a gallery entry (not yet ruled):_ 1. the question in plain words; 2. the data and where the points and the border come from; 3. the map; 4. **From this map you can learn** (2-4 statements, each checked against the map); 5. **From this map you cannot learn** (2-4, each with what WOULD tell you); 6. the cautions that apply (numbers from the checklist); 7. try it yourself (the tessellr lines, and how to swap in your own place).
+
+_Worked sketch -- drought tiles from rain gauges:_ **can learn** which gauges' areas are in drought this month; how much of the island each drought class covers, as the tiles define it; how coverage changed as gauges closed (tile sizes then vs now). **Cannot learn** where the drought edge really runs (halfway lines ignore mountains -- needs terrain-constrained tiles or the gridded maps); whether then-vs-now is climate or network (needs the same gauges in both periods); anything between gauges in a tile the size of a mountainside. Cautions 9, 10, 11.
 
 ## Where it came from
 
@@ -42,6 +54,85 @@ _Status: CAPTURE ONLY. Formal Mechanism 1 intake -- venue / language track, `pro
 - **E. Change (Ch. 8, 9).** Canopy map vs an older garden map or air photo; turn disagreements into "why?" questions.
 
 **The extra payoff:** Exercise A works anywhere, so before a long trip run it on the actual field site -- see its structure, place the releves, estimate how many are needed. Learn the camera at home, then scout the location.
+
+## Example idea: campsites in a purchased forest (Kim, 2026-09-29)
+
+_Recorded as an idea for an example; nothing to build yet (Kim)._
+
+- **Setting:** you have bought a square patch of forest -- a fairly dense stand of conifers -- and want to cut clearings for camping. The square is the purchased plot, so the frame is a real boundary, not a convenience.
+- **What campers want:** not too close to each other; more trees around the site is more desirable; larger areas are preferred.
+- **Who controls what:** site placement is under the user's control; the tree distribution is generated (random, clustered, etc.).
+- **What to look at:** place sites, then examine the statistics -- area per site, trees per area, and so on.
+- **Why it fits:** a plausible real-world problem that sits neatly inside a square.
+
+_Claude's notes (not ruled):_ it sits between rung 1 and rung 2 -- the trees are simulated (known truth) but the decisions are the reader's, so it teaches judgment rather than detection. Maps onto tessellr directly: sites -> `tile_points()` in the square; `tile_measures()` for area, nearest border (how close is the neighbor), shared border; trees -> `count_in_tiles()` for trees per site against area-expected; `tile_pattern()` to show whether the site layout is even. Natural comparisons: the same sites under random vs clustered trees; a grid layout vs sites chosen by the reader; moving one site and watching its neighbors' areas change.
+
+## Draft text: can AI help find borders? (2026-09-29 -- Kim: "EXACTLY what we're after", a key chapter)
+
+_Kim's question: points and borders are the basis of everything; can AI help find borders? Example: the border of the urban core of Honolulu. Manual tracing is a friction point, and quick tests need borders fast. Claude's reply, kept as draft text:_
+
+> The urban core of Honolulu has no single right border; it's a definition waiting to be chosen. That makes it the Chapter 3 lesson again, with a city in place of a kīpuka. AI can help in three ways, and the third matters most.
+>
+> **1. Finding borders someone has already drawn.** Several official ones exist, each with its own idea of "core": the Census "Urban Honolulu" place (large, running roughly from the airport area to the east end of the island); the City's Primary Urban Center planning area (Kahala to Pearl City); smaller districts such as the Kakaʻako redevelopment district, or Downtown and Chinatown zoning. These can be fetched in minutes (census through `tigris`; the others from the City's open GIS portal or OpenStreetMap). Comparing them shows how much the answer depends on who drew the line.
+>
+> **2. Deriving a border from a rule and public data.** This is `trace_patch()` with a different map. Kīpuka Puaulu was "smoothed canopy height over 8 m, connected to a seed point". The urban core could be "building coverage over X% within 250 m, connected to Downtown", or tall buildings, or pavement. Building footprints with heights, and land-cover maps of pavement and roofs, are public and cover Oʻahu. Such a border is reproducible and says what it assumes, which is the book's argument.
+>
+> **3. Doing the work that makes it a quick test.** Hand tracing is slow, and it hides judgment the way the 1974 map did. An AI assistant takes the friction out: it finds the data, writes the rule, runs it, and redraws at a new threshold in seconds. You still make the call ("that's not the core, move the line"). You just no longer need the pen.
+>
+> What to avoid: having AI draw the line from general knowledge ("the core is Downtown, Kakaʻako, Ala Moana and Waikīkī") or from reading an air photo. It would look authoritative, but **it's a hand-drawn map in disguise**, with the rules unstated.
+>
+> Points to go inside, once there's a border: Skyline rail stations, as service areas by walking distance, like Snow's pump line; parks or schools, as containers counting people from census blocks, like Chapter 7; the City's street-tree inventory, if it's public, for a species-mix exercise at home.
+
+- Kim (aside): a Skyline station is being built one block from his window -- the walking-distance example is literally close to home. Candidate opening.
+- Proposed quick test (not yet run): three borders on one map -- census place, planning area, one traced from building density -- with the area of each and which Skyline stations fall inside.
+
+## Idea: botanical gardens as test cases (Kim, 2026-09-29)
+
+- Kim and Nancy have visited many botanical gardens worldwide. A garden usually has a **map divided into units**, and a visit produces **cell-phone photos -- georeferenced images showing vegetation structure at a point**.
+- Kim: "It sort of looks like releves, the M-D/Fosberg map and Kipuka Puaulu."
+
+_Claude's notes (not ruled):_ the parallel is exact -- photos = releves (location + what grows there), garden map = the 1974 map (units drawn by someone else, with unstated rules), canopy height map = structure. **The data may already exist:** past visits in Kim's photo archive carry GPS in EXIF, so the practice site needs no trip. Built-in lessons: photos cluster along paths ("fooled by effort" for real); phone GPS error under canopy (5-20 m) against small garden units (the Ch.6 pile-up rule); a photo shows what's in front of the camera, not at the point (EXIF heading helps); photo-taking is preferential sampling, like the 1974 releves placed on mapped units. Friction to solve: georeferencing the garden's map (control points on paths/buildings matched to OSM or imagery -- AI can propose them, the reader checks).
+
+## Idea: rainfall and drought (Kim, 2026-09-29)
+
+- Kim: Voronoi tessellations are associated with rainfall data (Thiessen 1911). Tie climate -- drought in particular -- to areas as a category, or a series of categories showing different dimensions of the phenomenon. Historical vs current as another dimension. "Could be quite a powerful demonstration."
+
+_Claude's notes (not ruled):_
+- **Origin story:** Thiessen's polygons were invented for exactly this (averaging rain gauges); the book already cites him. The rehearsal returns the method to its home ground.
+- **Categories, several dimensions from one set of tiles:** per-gauge drought class for a month (e.g. SPI normal / moderate / severe / extreme); duration (months in drought); frequency over decades; trend. Same tiles, several maps -- Kim's 'series of categories'.
+- **Historical vs current has TWO changes in it:** the climate, and the gauge network. At least 2,354 stations have operated in Hawaii since 1838; 398 were active in early 2017. HC&S alone ran 100+ gauges in central Maui (1931-2016) and stopped when sugar ended (Sci. Data 2018, 'Compilation of climate data from heterogeneous networks across the Hawaiian Islands'; authors to confirm). As gauges close, tiles grow: some of 'then vs now' is the network, not the rain. `tile_measures()` shows it directly. Strongest lesson in this example.
+- **Where plain Voronoi fails in Hawaii:** rainfall changes over a few km with elevation and windward/leeward exposure; a Hilo gauge's tile reaching up Mauna Kea is plainly wrong. Same move as Ch.8: constrain the tiles by what the points don't know (elevation band, exposure) -- rainfall's 'canopy structure'.
+- **The expert map exists:** the Rainfall Atlas of Hawaii and the monthly gridded maps 1920-present (Frazier et al. 2016; Lucas et al. 2022; UH Hawaii Climate Data Portal) play the part of the 1974 map; `map_agreement()` applies.
+- **A hand-drawn map, openly:** the US Drought Monitor (covers Hawaii) is drawn weekly by expert authors blending indicators and local reports -- judgment acknowledged rather than disguised. Worth a side-by-side with a rule-based tile map. (Check its methods page before writing.)
+- **As a rehearsal:** pure desk work, public data, no trip; teaches network change, thresholds-as-judgments, and when the method is out of its depth.
+
+## Kim's notes (2026-09-29): data coverage, and supplement vs replace
+
+- **Coverage (Kim):** in the past Kim looked at the distribution of METAR stations when trying to predict the climate of a study site some distance away. "Using tiles to show the extent of data coverage is what I needed when I did that before."
+  - _Claude:_ a tile map of stations is a coverage map. Drop the study site in: which station's tile holds it, how far to that station, how far to the tile's farthest border (the worst case in that tile), and how different the second-nearest is. Caution: the nearest station can be the wrong station (elevation, exposure) -- distance is not similarity.
+- **Supplement, not replace (Kim, a reflection -- possibly the document's through-line):** "There was a time, years ago, that all we had were traditionally-created vegetation maps. Then we got satellite images, and people said that spectral analysis was the replacement technology. I was skeptical as the proper determination of the vegetation at a site needed both the canopy and below-canopy plants. Satellites just saw the canopy. A lot of effort went into spectral analysis. Some of it was very valuable, of course. But it didn't really replace the releve data. With the canopy height data, we're supplementing the releve data, not trying to replace it. And that supplement is, in many ways, more useful for our mapping than the spectral data. I think particularly about how maps based on spectral data often have way too many small units. They are, in my view, failing to scale properly. That's why I was really excited to see the power of canopy height."
+  - _Claude:_ (1) This is the 2026-09-25 reframe stated as history: an expert map has two inputs, releves for categories and imagery for boundaries. (2) Our own run showed the scaling problem too: the constrained map drew 137 km of boundary vs the expert's 51 km until smoothing + a 2 ha MMU -- scale is a choice the map must state. (3) Why height scales better than spectral values (hypothesis): height is a structural quantity, fairly steady within a stand and stepping at stand edges; spectral values vary crown by crown with species, shadow, sun angle and season, so pixel-level classification speckles. (4) The same pattern applies to AI: announced as a replacement, most useful as a supplement that removes friction (finding data, running rules) while the judgment and the releve stay with the person. A rehearsal is how you find out which a new technology is -- Ch.10's question, asked before the trip.
+
+_Trilogy links (2026-09-29): each idea above is mapped to the trilogy's documents and spines in `ideas_three_documents.md`, section 'Rehearsals ideas that argue for the trilogy'._
+
+## Cautions checklist (running; Kim: "a checklist of things where you need to be careful")
+
+_Collected from the examples so far; each item names where it shows up._
+
+1. **Effort looks like signal** -- records pile up on trails, paths, famous plants (iNaturalist in parks; garden photos). ['fooled by effort'; Ch.6]
+2. **Nothing there can still look like something** -- random points flag tiles too; calibrate with simulations. ['nothing there']
+3. **Location error vs tile size** -- phone GPS 5-20 m under canopy; garden beds can be smaller. [Ch.6 pile-up rule; gardens]
+4. **The frame is a choice** -- the urban core has several official borders; a purchased square is a real one. [Ch.3; Honolulu; campsites]
+5. **A border drawn from general knowledge or by eye is a hand-drawn map in disguise** -- state the rule. [AI borders]
+6. **What the camera sees is not what is at the point** -- photos look outward; use heading. [gardens]
+7. **Preferential sampling** -- photos, 1974 releves placed within mapped units. [gardens; Ch.9]
+8. **Someone else's map has unstated rules** -- garden unit maps, brochure maps not to scale; georeference and check. [gardens; Ch.9]
+9. **The network changes, not only the phenomenon** -- closed gauges enlarge tiles; separate network change from real change. [rainfall]
+10. **The points don't know the terrain** -- orographic rainfall, canopy structure; constrain the tiles. [rainfall; Ch.8]
+11. **Thresholds are judgments** -- drought classes, canopy breaks, building-density cut-offs; write them down. [rainfall; Ch.8; urban core]
+12. **A reference map is dated, not an answer key** -- disagreement can be change. [Ch.9; rainfall atlas]
+13. **The nearest station can be the wrong station** -- distance is not similarity; check elevation and exposure. [METAR coverage; rainfall]
+14. **Scale is a choice the map must state** -- pixel classifications over-split; smoothing and an MMU set the scale. [spectral maps; Ch.8-9 MMU]
 
 ## Proposed form
 
