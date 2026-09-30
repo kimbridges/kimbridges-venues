@@ -15,7 +15,7 @@ _Last updated: 2026-09-29_
 
 **⚠ CARRIED:** `pkm_card.md` 0.4 KB over budget; `C:/temp` scratch CLEARED by Kim 2026-09-27 (only the 09-26 and today's close snapshots remain); the local Filesystem MCP connector still fails; device_bash still cannot mount `G:`.
 
-**NEXT (2026-09-29, dinner break): Kim returns in a few hours with fresh thoughts. Candidates: rule on the gallery-entry template (question / data / map / can learn / cannot learn / cautions / try it); sort the examples into a gallery order (campsites, Honolulu urban core + Skyline, botanical gardens + phone photos, rainfall and drought, METAR coverage); first quick test (three urban-core borders, or one garden from Kim's photo archive). Voronoi: citation note CLOSED and redeployed; only the UH/HVNP map permission remains (Kim).**
+**NEXT (2026-09-29 close): Kim is gathering materials (e.g. garden maps) so the ideas can be tried. Candidates next session: rule on the gallery-entry template (question / data / map / can learn / cannot learn / cautions / try it) and the vocabulary; order the gallery on a SCALE ladder (lawn sprinklers -> garden -> kipuka / traps -> city: Skyline stations over a street map -> island rainfall); first quick test (Skyline tiles over a simplified Honolulu street map, three urban-core borders, or one garden with Kim's photos). Voronoi: only the UH/HVNP map permission remains (Kim).**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

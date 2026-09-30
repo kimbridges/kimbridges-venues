@@ -786,6 +786,9 @@ _Kim: "I'm wondering if we're building arguments for the trilogy." Claude's mapp
 - **Campsites in a purchased forest (Kim)** -> MWT ch.6 and ch.9 (reading tiles; trees counted in tiles); points placed by judgment.
 - **Skyline station a block from Kim's window** -> personal story; walking-distance tiles (Snow's line, MWT ch.4).
 - **The cautions checklist** -> THE INVERSE / falsification principle in practice: each item is a way to attack one's own map before trusting it.
+- **Choropleth vs tessellation (Kim, evening)** -> MWT ch.2 (the familiar maps and their boundary sources: given vs computed) and ch.6 (reading the tiles); candidate chapter title "the least information, the most color"; tiles as containers = a choropleth with computed boundaries (MWT ch.9).
+- **Points and their service areas; sprinklers vs traps (Kim)** -> MWT ch.1 (one operation, many uses) and ch.9 (counting in service areas -- the reader arrives "half way there").
+- **SCALE runs through everything (Kim's ruling, close)** -> S3 already opens on scale in time; the rehearsals add scale in space (lawn -> garden -> kipuka -> city -> island). Candidate thread for the trilogy beside the two spines (concept, friction).
 
 ## Next
 

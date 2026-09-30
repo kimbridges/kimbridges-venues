@@ -2,7 +2,7 @@
 
 _Captured 2026-09-27 (evening), at the close of the day tessellr 0.1.0 and *The Map That Never Got Drawn* were finished. Discussion between Kim and Claude._
 
-_Status: CAPTURE ONLY -- now the Active Focus (2026-09-29); formal Mechanism 1 intake (venue / track, `proj_*.md`, index row) NOT done yet. Grown 2026-09-29 with Kim's focus ruling, five example ideas, draft text on AI and borders, and a 14-item cautions checklist._
+_Status: CAPTURE ONLY -- now the Active Focus (2026-09-29); formal Mechanism 1 intake (venue / track, `proj_*.md`, index row) NOT done yet. Grown 2026-09-29 with Kim's focus ruling, five example ideas, draft text on AI and borders, a 15-item cautions checklist; evening: choropleth vs tessellation, chapter title 'the least information, the most color', vocabulary, street-map overlay (Skyline), sprinklers vs traps, points and their service areas, SCALE as a theme._
 
 ## ★ FOCUS OF THE COMPANION DOCUMENT (Kim's ruling, 2026-09-29)
 
@@ -113,6 +113,66 @@ _Claude's notes (not ruled):_
 - **Supplement, not replace (Kim, a reflection -- possibly the document's through-line):** "There was a time, years ago, that all we had were traditionally-created vegetation maps. Then we got satellite images, and people said that spectral analysis was the replacement technology. I was skeptical as the proper determination of the vegetation at a site needed both the canopy and below-canopy plants. Satellites just saw the canopy. A lot of effort went into spectral analysis. Some of it was very valuable, of course. But it didn't really replace the releve data. With the canopy height data, we're supplementing the releve data, not trying to replace it. And that supplement is, in many ways, more useful for our mapping than the spectral data. I think particularly about how maps based on spectral data often have way too many small units. They are, in my view, failing to scale properly. That's why I was really excited to see the power of canopy height."
   - _Claude:_ (1) This is the 2026-09-25 reframe stated as history: an expert map has two inputs, releves for categories and imagery for boundaries. (2) Our own run showed the scaling problem too: the constrained map drew 137 km of boundary vs the expert's 51 km until smoothing + a 2 ha MMU -- scale is a choice the map must state. (3) Why height scales better than spectral values (hypothesis): height is a structural quantity, fairly steady within a stand and stepping at stand edges; spectral values vary crown by crown with species, shadow, sun angle and season, so pixel-level classification speckles. (4) The same pattern applies to AI: announced as a replacement, most useful as a supplement that removes friction (finding data, running rules) while the judgment and the releve stay with the person. A rehearsal is how you find out which a new technology is -- Ch.10's question, asked before the trip.
 
+## Idea: a tessellation is not a choropleth (Kim, 2026-09-29)
+
+- Kim: someone may confuse a choropleth map with a tessellation. Both use boundaries, but in very different ways; the ID assignments are very different too. A superficial viewing of a tessellation might confuse a viewer more familiar with choropleth maps. Is an example that emphasizes the difference useful?
+
+_Claude's notes (not ruled):_
+
+| | Choropleth | Tessellation |
+|---|---|---|
+| What comes first | the boundaries (counties, tracts) | the points |
+| Where boundaries come from | given, drawn for other purposes | computed from the points (halfway lines) |
+| Whose ID a polygon carries | the unit's (a FIPS code) | the point's (a gauge, a releve) |
+| What the color claims | a summary of everything inside the unit | the value measured at one spot, extended by assumption |
+| Add or move data | boundaries stay put | neighboring boundaries move |
+| A big polygon means | a big unit (often rural, few people) | sparse sampling -- where we know the LEAST |
+
+- **The sharpest trap:** in both maps big polygons pull the eye. In a choropleth that is a known distortion (big empty counties); in a tessellation it is worse -- the largest tiles carry the least information and the most color.
+- **Visual cues that tell them apart:** straight edges meeting three at a time; one point inside each polygon; edges that are perpendicular bisectors of point pairs. Remedy: always draw the points; say "value at the point" in the legend; consider fading tiles by size or by distance to the point.
+- **Where they meet:** tiles used as containers (Ch.6) ARE a choropleth with computed boundaries -- counts summarized over the tile. Same polygons, two different claims, depending on whether the color comes from the point or from what's inside.
+- **A gallery pair:** the same rain gauges shown both ways -- (a) district mean rainfall as a choropleth; (b) Thiessen tiles colored by each gauge. Same data, same palette, different claims. Exercise: hide the points and ask which is which; then reveal the cues. Can learn / cannot learn written for each.
+- **Trilogy:** MWT ch.2 (the familiar maps, each with its boundary source) -- choropleth = given boundaries, tessellation = computed; MRC backbone (where boundaries come from).
+
+## Kim's notes (2026-09-29, evening): a chapter title, descriptive discipline, and a street-map overlay
+
+- **Chapter title candidate (Kim):** a form of "the least information and the most color".
+- **Descriptive discipline (Kim):** use terms consistently -- e.g. "value at the point" every time. _Claude: start a short vocabulary for the document and hold to it:_ **tile** (never zone / region / district, which suggest a unit); **point** or the thing it is (gauge, releve, station); **value at the point** (never "the tile's value" unless it was counted inside the tile); **frame** (the study-area border); **computed boundary** vs **given boundary**; **counted in the tile** for container use.
+- **A street-map overlay demonstration (Kim):** use the tessellation as an overlay on a familiar map, such as a simplified street map. "People need to get oriented and street maps are a familiar tool."
+  - _Claude:_ tiles as outlines (or a very light fill) so the streets stay readable; points drawn and labeled; a simplified base -- coastline, main roads, a few landmarks (OpenStreetMap, attribution required).
+  - The overlay makes the reader a checker: "my house is in this station's tile, but I'd walk to that one" -- truth known because you know the place (rung 2).
+  - It also exposes the limit at once: straight halfway lines cut across blocks, freeways and streams that no one walks across -- the step to walking distance (Snow's line, Ch.7 travel time).
+  - Natural first case: Skyline stations over a simplified Honolulu street map, one block from Kim's window.
+
+## Idea: lawn sprinklers, all equal (Kim, 2026-09-29 evening) -- and color
+
+- **Color (Kim):** the overlay brings in the choice of colors -- a topic Kim is very interested in. To be treated deliberately, not as decoration.
+- **Skyline (Kim):** agrees the stations make the right points; he has not seen such a map.
+- **Sprinklers (Kim):** "something very mundane" -- the locations of lawn sprinklers, all assumed equal. Is that interesting?
+
+_Claude's notes (not ruled):_ yes, because the tile model and the physics disagree in instructive ways.
+- **What the tiles get right: the gaps.** The corners of the tiles (Voronoi vertices) are the places farthest from every sprinkler -- where a dry spot appears first. The farthest-border distance in `tile_measures()` is each sprinkler's worst-covered spot; compare it with the throw radius and the dry spots are predicted. (The 'largest empty circle' problem.)
+- **What the tiles get wrong: overlap.** A tile gives each place to exactly one source; a sprinkler throws a circle, and good irrigation design spaces heads so each throws to the next ('head-to-head'), so most ground gets water from two or more. The tile is a claim of exclusive service that the water does not honor.
+- **An assumption made visible:** if each sprinkler's water is spread over its own tile, small tiles are over-watered and large ones dry -- wrong physics, but it shows what the halfway rule implies.
+- **The truth is measurable at home:** a catch-can test (cups on a grid, run the system, measure) or simply the brown patches in August. Rung 2 with a real experiment in one's own yard.
+- **Unequal heads** (different nozzles / radii) lead to weighted tiles (Ch.7).
+- **A color lesson:** with all sprinklers equal, the tile colors carry no data -- they only separate neighbors (a map-coloring problem; four colors always suffice). Color should be quiet here, and it should be obvious that it means nothing. Contrast with maps where color IS the value at the point.
+
+## Kim's notes (2026-09-29 evening): points and their service areas; SCALE as a theme
+
+- **Sprinklers = insect traps in reverse (Kim).** Color can show the areas receiving relatively more or less water. "It's not a great model but it shows that you can do first approximation work quickly."
+- **The general idea: points and their service areas (Kim).** Seeing sprinklers beside traps, people should see the similarity and develop a sense of a general application. "Then, when we do counting in service areas, the user will be half way there conceptually."
+- **Scale might be a theme (Kim):** lawns are small; insect collections larger; pharmacy or market service areas large.
+
+_Claude's notes (not ruled):_
+- **Sprinkler color, computed:** equal output spread over each tile -> relative water = mean tile area / tile area. One sequential palette, low to high; the smallest tiles are the wettest.
+- **Two directions, one tile:** SOURCES that send something out (sprinklers, pharmacies, markets, stations) and COLLECTORS that take something in (traps, rain gauges, releves as samples). Same geometry; the tile is a service area for a source and a catchment for a collector. Vocabulary to settle.
+- **A scale ladder as the gallery's spine:** lawn (meters) -> garden (hundreds of meters) -> kipuka / trapping grid (kilometers) -> city, Skyline and pharmacies (tens of km) -> island rainfall (100 km). The same operation at each rung.
+- **What changes with scale** (so the cautions move with it): location error that ruins a lawn map is irrelevant for pharmacies (caution 3); straight-line distance is fine on a lawn, wrong in a city (streets) and on an island (terrain) (cautions 10, 13); what 'the value at the point' means stretches as tiles grow (caution 15).
+- **Trilogy:** scale is already S3's opening reframe (the scale between weather and climate); here it is spatial -- a candidate thread across all three.
+
+**Kim's ruling (2026-09-29, close): scale runs through everything** -- a theme of the companion document (and a candidate thread for the trilogy). Kim will start gathering materials (e.g. garden maps) so the ideas can be tried.
+
 _Trilogy links (2026-09-29): each idea above is mapped to the trilogy's documents and spines in `ideas_three_documents.md`, section 'Rehearsals ideas that argue for the trilogy'._
 
 ## Cautions checklist (running; Kim: "a checklist of things where you need to be careful")
@@ -133,6 +193,7 @@ _Collected from the examples so far; each item names where it shows up._
 12. **A reference map is dated, not an answer key** -- disagreement can be change. [Ch.9; rainfall atlas]
 13. **The nearest station can be the wrong station** -- distance is not similarity; check elevation and exposure. [METAR coverage; rainfall]
 14. **Scale is a choice the map must state** -- pixel classifications over-split; smoothing and an MMU set the scale. [spectral maps; Ch.8-9 MMU]
+15. **A tile is not a unit** -- its color is one point's value, not a summary of the area, and the biggest tiles are where you know least. [choropleth vs tessellation]
 
 ## Proposed form
 

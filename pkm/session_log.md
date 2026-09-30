@@ -11,6 +11,20 @@ Mechanism 4.
 
 ---
 
+## 2026-09-29 (evening) -- REHEARSALS: CHOROPLETH VS TESSELLATION, POINTS AND THEIR SERVICE AREAS, AND SCALE AS A THEME
+
+**Active focus:** Rehearsals before the field (capture phase), continued after the dinner break.
+
+**Ideas captured in `ideas_rehearsals.md`:** (1) **A tessellation is not a choropleth** (Kim): boundaries first vs points first; the unit's ID vs the point's; a summary of the area vs the value at one spot; big polygons = sparse sampling -- Kim: a form of "the least information and the most color" looks like a chapter title. Gallery pair proposed: the same rain gauges as a district choropleth and as Thiessen tiles. (2) **Descriptive discipline** (Kim): use terms consistently ("value at the point"); a starter vocabulary drafted. (3) **Street-map overlay** (Kim): tiles over a simplified street map to orient readers; Skyline stations as the points (Kim has not seen such a map); color choice raised as a deliberate topic (Kim's interest). (4) **Lawn sprinklers, all equal** (Kim): traps in reverse; color = relatively more or less water; a quick first approximation; Voronoi vertices predict dry spots, overlap is what tiles get wrong; catch-can test at home. (5) **Points and their service areas** as the general idea, so counting in service areas finds the reader "half way there" (Kim). Cautions checklist now 15 items ("a tile is not a unit").
+
+**Rulings (Kim):** scale runs through everything -- a theme of the companion document (lawn -> garden -> kipuka -> city -> island). Kim will gather materials (garden maps) so the ideas can be tried.
+
+**Written:** `ideas_rehearsals.md` (five evening sections, status line, checklist item 15), `ideas_three_documents.md` (three more mapping lines), `project_index.md` (NEXT), this entry.
+
+**Mechanism 5.** (1) No new project. (2) No status changes. (3) No new files. (8) Nothing for `deferred.md`. (10) Outside `G:`: `C:/temp/voronoi_build_2026-09-29` still deletable. (11) HEALTH_LINE (12) BACKUP_LINE
+
+**Next:** see the index NEXT line -- gallery template and vocabulary, a scale-ladder gallery order, a first quick test once materials are in.
+
 ## 2026-09-29 -- VORONOI CITATIONS CLOSED; "REHEARSALS BEFORE THE FIELD" FINDS ITS FOCUS: A GALLERY OF WHAT MAPS CAN (AND CANNOT) TEACH
 
 **Active focus:** opened with none set; Kim chose the Voronoi open notes, then moved to the rehearsals idea (now the Active Focus, capture phase).
