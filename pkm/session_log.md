@@ -11,6 +11,24 @@ Mechanism 4.
 
 ---
 
+## 2026-09-30 -- REHEARSALS TEST CASE 1: THE HUNTINGTON FROM KIM'S PHOTO ARCHIVE ("THIS IS WHAT A QUICK LOOK SHOULD PRODUCE")
+
+**Active focus:** Rehearsals before the field (capture phase); Kim confirmed the Huntington as the first garden test.
+
+**Materials (Kim):** the Huntington visitor map (construction-detours edition, June 2026, PDF) and 38 photos from several visits, 2018-2025 (folder `C:\Users\kim\Downloads\huntington_photos`, connected this session).
+
+**The archive as data.** EXIF read with exifr in R: GPS in all 38 (two downloaded copies lost their dates), heading in 30, Kim's title (EXIF Description) in 31, 7 untitled. All 38 inside the OSM boundary of the Huntington (84.6 ha). OpenStreetMap supplied the boundary and 22 named garden units (no Desert Garden or Lily Ponds). `osmdata` installed in Kim's R; Overpass reached via the lz4 mirror after a 504.
+
+**First map** (photos as points, plain tiles trimmed to the boundary, colored by Claude's grouping of 17 titles into 8 areas + untitled): tiles 0.33-14.5 ha (44x) -- two Mausoleum photos and the Entrance color the whole north incl. parking (the least information, the most color); the boundary includes nonpublic land (frame is a choice); effort (8 Japanese, 7 Desert, 1 Chinese); untitled = gray holes; one Sony 'Japan' photo inside the OSM Chinese Garden. **Kim:** "This actually does quite well. Better than I expected. This is what a 'quick look' should produce"; areas properly located; "I know where I'd take more photos."
+
+**Photos only, no map (Kim's question):** box frame 58.1 ha; leaves out 30.5 ha of garden, takes in 4 ha of street; inside the overlap every tile identical (21 of 38 unchanged); largest tile 14.5 -> 5.5 ha, so the map LOOKS more even because the samples drew their own frame -- a frame of convenience flatters the sampling; lost: orientation and label-vs-place checks. Kim: worth doing; a different concern from vegetation boundaries.
+
+**Written:** `ideas_rehearsals.md` (TEST CASE 1 section), `project_index.md` (NEXT), this entry. Figures sent to Kim: `huntington_tiles_v1.png`, `huntington_photos_only.png`.
+
+**Mechanism 5.** (1) No new project (still capture). (2) No status changes. (3) No new files on G:. (8) Nothing for `deferred.md`. (10) Outside `G:`: `C:/temp/rehearsals_huntington_2026-09-30` (photo table CSV, OSM extract, objects RDS, figures -- KEEP until the rehearsals project has a home on G:); four PNGs in `C:/temp/tessellr_staging` (staging copies, deletable); `osmdata` package added to Kim's R library. (11) HEALTH_LINE (12) BACKUP_LINE
+
+**Next:** see the index NEXT line.
+
 ## 2026-09-29 (evening) -- REHEARSALS: CHOROPLETH VS TESSELLATION, POINTS AND THEIR SERVICE AREAS, AND SCALE AS A THEME
 
 **Active focus:** Rehearsals before the field (capture phase), continued after the dinner break.

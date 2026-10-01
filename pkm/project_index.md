@@ -1,5 +1,5 @@
 # Projects Index
-_Last updated: 2026-09-29_
+_Last updated: 2026-09-30_
 
 > **History split out 2026-07-28.** The superseded Active Focus blocks and the full
 > dated Change Log now live in `logs/focus_history.md`, verbatim and unedited.
@@ -15,7 +15,7 @@ _Last updated: 2026-09-29_
 
 **⚠ CARRIED:** `pkm_card.md` 0.4 KB over budget; `C:/temp` scratch CLEARED by Kim 2026-09-27 (only the 09-26 and today's close snapshots remain); the local Filesystem MCP connector still fails; device_bash still cannot mount `G:`.
 
-**NEXT (2026-09-29 close): Kim is gathering materials (e.g. garden maps) so the ideas can be tried. Candidates next session: rule on the gallery-entry template (question / data / map / can learn / cannot learn / cautions / try it) and the vocabulary; order the gallery on a SCALE ladder (lawn sprinklers -> garden -> kipuka / traps -> city: Skyline stations over a street map -> island rainfall); first quick test (Skyline tiles over a simplified Honolulu street map, three urban-core borders, or one garden with Kim's photos). Voronoi: only the UH/HVNP map permission remains (Kim).**
+**NEXT (2026-09-30 close): TEST CASE 1 (the Huntington, from Kim's 38 photos) done -- Kim: "most instructive"; "this is what a quick look should produce." Next session: another example from the scale ladder (lawn sprinklers -- simulated in minutes; Skyline stations over a Honolulu street map; rain gauges), or a Huntington v2 (Kim names the 7 untitled photos and checks Claude's grouping of his 17 titles; frame trimmed to the public garden; heading arrows). Still to rule: the gallery-entry template and the vocabulary. Voronoi: only the UH/HVNP map permission remains (Kim).**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R
