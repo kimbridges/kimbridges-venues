@@ -25,7 +25,7 @@ Mechanism 4.
 
 **Written:** `ideas_rehearsals.md` (TEST CASE 1 section), `project_index.md` (NEXT), this entry. Figures sent to Kim: `huntington_tiles_v1.png`, `huntington_photos_only.png`.
 
-**Mechanism 5.** (1) No new project (still capture). (2) No status changes. (3) No new files on G:. (8) Nothing for `deferred.md`. (10) Outside `G:`: `C:/temp/rehearsals_huntington_2026-09-30` (photo table CSV, OSM extract, objects RDS, figures -- KEEP until the rehearsals project has a home on G:); four PNGs in `C:/temp/tessellr_staging` (staging copies, deletable); `osmdata` package added to Kim's R library. (11) HEALTH_LINE (12) BACKUP_LINE
+**Mechanism 5.** (1) No new project (still capture). (2) No status changes. (3) No new files on G:. (8) Nothing for `deferred.md`. (10) Outside `G:`: `C:/temp/rehearsals_huntington_2026-09-30` (photo table CSV, OSM extract, objects RDS, figures -- KEEP until the rehearsals project has a home on G:); four PNGs in `C:/temp/tessellr_staging` (staging copies, deletable); `osmdata` package added to Kim's R library. (11) Health 21:08: 86 works, 0 reconciliation failures, 0 unsourced pages, 0 broken log pointers; carried: 4 drifting projects, 6 files over budget, 7 repo/clone mismatches, 5 C:/temp scratch folders (13 MB). (12) Backup: 1315 files, secret scan clean, commit 831de3f949, push verified against the server; second backup after this line.
 
 **Next:** see the index NEXT line.
 
