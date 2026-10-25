@@ -2445,13 +2445,12 @@ version uninstalls. I can't do it now.").
   carries all 495 packages in `win-library/4.6`, RStudio points at 4.6.1, nothing uses
   4.3.3. The old `win-library/4.3` folder can go with it. Occasion: Kim's next free
   moment at the machine. (Kim, 2026-10-24)
-- **TASK -- renew the GitHub token.** BOTH stored tokens are dead: `GITHUB_TOKEN` in
-  `C:\Users\kim\.Renviron` and the one in the git credential store
-  (`gitcreds::gitcreds_set()`). The R upgrade went round them with archive zips, but
-  `pkm_backup()` pushes and the venue mirror push need a live token. **Occasion: before
-  the next `pkm_backup()`** -- which is therefore blocked until this is done. Remove the
-  `.Renviron` copy and keep one, in the credential store (remotes' own advice). (found
-  by Claude, 2026-10-24)
+- **DONE 2026-10-24 -- GitHub token renewed.** Kim made a classic PAT (repo + workflow,
+  1-year expiry -- renew before 2027-10-24), stored ONLY in the Windows credential store
+  (`gitcreds::gitcreds_set()`); the `.Renviron` `GITHUB_TOKEN` line is deleted. `pkm_backup()`
+  now calls `credentials::set_github_pat()` (reads the store). Verified: `gh_whoami()` =
+  kimbridges; `pkm_backup()` committed 8c5fc8ceb9, push verified against the server
+  (first backup since 2026-09-30).
 - **TASK -- Gemini API key.** Google refuses the key (403 PERMISSION_DENIED on
   ListModels); Kim: setting it up "was a mess", so he moved to OpenAI to keep working.
   Occasion: when PubMaps compares providers (OpenAI and Anthropic both work). (Kim, 2026-10-24)

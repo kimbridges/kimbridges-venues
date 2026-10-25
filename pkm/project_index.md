@@ -13,7 +13,7 @@ _Last updated: 2026-10-24_
 
 **⚠ CARRIED:** `pkm_card.md` 0.4 KB over budget; `C:/temp` scratch CLEARED by Kim 2026-09-27 (only the 09-26 and today's close snapshots remain); the local Filesystem MCP connector still fails; device_bash still cannot mount `G:`.
 
-**NEXT (2026-10-24, paused for the night): PubMaps steps 1-5 built and wired into one call -- `pubmap("paper.pdf")` -> `review/<stem>/` (vector PDF + PNG, editable `points.csv`, `review.html` with Esri check map -- streets / topo / satellite -- author query and place table); `pubmap_rerender(dir)` after edits. Next: Kim tries editor input (coordinates in points.csv) himself; retest GeoNames (401 tonight) and rerun the seven cases with it; then alternate-name matching (Kitege/Kiteghe), parks/districts as areas, journal style file, methods doc. Deferred (Kim): uninstall R 4.3.3/Rtools43; renew the GitHub token (blocks `pkm_backup()`); Gemini key.**
+**NEXT (2026-10-24, paused for the night): PubMaps steps 1-5 built and wired into one call -- `pubmap("paper.pdf")` -> `review/<stem>/` (vector PDF + PNG, editable `points.csv`, `review.html` with Esri check map -- streets / topo / satellite -- author query and place table); `pubmap_rerender(dir)` after edits. Next: Kim tries editor input (coordinates in points.csv) himself; retest GeoNames (401 tonight) and rerun the seven cases with it; then alternate-name matching (Kitege/Kiteghe), parks/districts as areas, journal style file, methods doc. Deferred (Kim): uninstall R 4.3.3/Rtools43; Gemini key. (GitHub token renewed 2026-10-24; backup pushed.)**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

@@ -21,6 +21,8 @@ Mechanism 4.
 
 **Late fixes:** review-page map showed "403 Access Blocked" in Kim's browser (OpenStreetMap tile servers refuse pages opened from disk); switched to Esri tiles with Streets / Topographic / Satellite layers; all seven pages rebuilt and verified (one missing map preview fixed).
 
+**GitHub token renewed (Kim):** classic PAT in the Windows credential store only; `.Renviron` copy removed; `pkm_backup()` reads the store. Backup run: 1378 files, secret scan clean, commit 8c5fc8ceb9, push verified -- first backup since 2026-09-30.
+
 **Kim at pause:** "a really big step forward today"; next he tries editor input himself and retests GeoNames.
 
 **Open:** GeoNames premium still returns 401 (Kim's account propagating); alternate-name matching; areal context drawn as polygons; journal style file; methods doc.
