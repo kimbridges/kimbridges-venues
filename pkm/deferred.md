@@ -2435,3 +2435,23 @@ before the ambition was finished off. Rewritten.
 **METHOD NOTE.** Same class as South Dakota, Delaware, Rhode Island and Ogunquit — geometry plus time
 plus testimony, with no fill and no photograph at the place itself. **Sixth recovery by this route.**
 Kim: *"It proves we've got a good analysis technology running."*
+
+## R ENVIRONMENT / PubMaps -- opened 2026-10-24
+
+Raised by Kim at the dinner break after the R upgrade ("Let's remember to do the older
+version uninstalls. I can't do it now.").
+
+- **TASK -- uninstall R 4.3.3 and Rtools43** (Windows Settings -> Apps). Safe now: R 4.6.1
+  carries all 495 packages in `win-library/4.6`, RStudio points at 4.6.1, nothing uses
+  4.3.3. The old `win-library/4.3` folder can go with it. Occasion: Kim's next free
+  moment at the machine. (Kim, 2026-10-24)
+- **TASK -- renew the GitHub token.** BOTH stored tokens are dead: `GITHUB_TOKEN` in
+  `C:\Users\kim\.Renviron` and the one in the git credential store
+  (`gitcreds::gitcreds_set()`). The R upgrade went round them with archive zips, but
+  `pkm_backup()` pushes and the venue mirror push need a live token. **Occasion: before
+  the next `pkm_backup()`** -- which is therefore blocked until this is done. Remove the
+  `.Renviron` copy and keep one, in the credential store (remotes' own advice). (found
+  by Claude, 2026-10-24)
+- **TASK -- Gemini API key.** Google refuses the key (403 PERMISSION_DENIED on
+  ListModels); Kim: setting it up "was a mess", so he moved to OpenAI to keep working.
+  Occasion: when PubMaps compares providers (OpenAI and Anthropic both work). (Kim, 2026-10-24)

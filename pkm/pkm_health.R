@@ -925,7 +925,9 @@ pkm_backup <- function(push = TRUE, message = NULL, quiet = FALSE) {
   say("  committed ", substr(cid, 1, 10), " (", nrow(st), " changed)\n", sep = "")
 
   if (!push) return(invisible(list(files = n, changed = nrow(st), pushed = FALSE, head = cid)))
-  credentials::set_github_pat(Sys.getenv("GITHUB_TOKEN"))
+  # Token lives ONLY in the Windows credential store (gitcreds::gitcreds_set()),
+  # not in .Renviron -- renewed 2026-10-24, classic PAT, repo + workflow, 1-year expiry.
+  credentials::set_github_pat()
   invisible(utils::capture.output(
     gert::git_push(remote = "origin", repo = m, verbose = TRUE), type = "message"))
   # Verify against the SERVER, not the return value. git_push reports success

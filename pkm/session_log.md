@@ -11,6 +11,40 @@ Mechanism 4.
 
 ---
 
+## 2026-10-24 (evening) -- PUBMAPS STEPS 2-5 BUILT: LOCATE, PLAN, RENDER, EDITOR REVIEW; ONE-CALL PIPELINE
+
+**Active focus:** PubMaps (unchanged).
+
+**Built:** `R/locate_places.R` (Nominatim + GeoNames backends, disk cache, feature-kind check, two-pass anchor tie-break, match categories stated/exact/partial/suggestion/none, flags generic/relative/far); `R/plan_map.R` (point selection with a reason for every place left off, UTM/LAEA, aspect-fitted frame, inset corner by overlap, widened when all corners busy); `R/render_map.R` (vector PDF + PNG, admin-1 lines, optional hillshade); `R/points_io.R` + `R/review_report.R` (editable `points.csv`; `review.html` with Leaflet check map, rendered preview, copy-ready author query, place table); `R/pubmap.R` (`pubmap()`, `pubmap_rerender()`).
+
+**Results:** Nominatim located 108/167 named places; Yucatan order now correct; Kasigau, Yucatan, Shewa, Sumatra, Himalaya maps good; Simpson and Chitwan need GeoNames. Review page caught OSM's "Kitege" for the manuscript's "Kiteghe"; edit -> rerender round trip verified. All seven cases in `Projects\PubMaps\review\`.
+
+**Late fixes:** review-page map showed "403 Access Blocked" in Kim's browser (OpenStreetMap tile servers refuse pages opened from disk); switched to Esri tiles with Streets / Topographic / Satellite layers; all seven pages rebuilt and verified (one missing map preview fixed).
+
+**Kim at pause:** "a really big step forward today"; next he tries editor input himself and retests GeoNames.
+
+**Open:** GeoNames premium still returns 401 (Kim's account propagating); alternate-name matching; areal context drawn as polygons; journal style file; methods doc.
+
+---
+
+## 2026-10-24 -- PUBMAPS INTAKE AND ACTIVE FOCUS; STEP 1 EXTRACT BUILT; R UPGRADED 4.3.3 -> 4.6.1 (paused for dinner)
+
+**Active focus:** set to **PubMaps** this session (Rehearsals paused; block in `logs/focus_history.md`).
+
+**Intake.** Kim's story: at Will McClatchey's, the problem of redrawing authors' maps as a journal editor -> Gemini-written R code (paragraph -> OpenAI -> YAML -> R -> PDF) with a 10-case test suite. New `proj_PubMaps.md`, index row, **Mapping family** cluster note; folder moved `G:\My Drive\PubMaps` -> `Projects\PubMaps` (88 files, verified). **Finding: the LLM invented site coordinates** (Yucatan towns in reversed east-west order).
+
+**Rulings (Kim):** an EDITOR'S tool (or one person in a lab); gpt-4o-mini retired; division of labour -- LLM reads, gazetteer locates, code decides geometry, operator edits a points CSV, YAML only as the machine-written recipe; input = the WHOLE manuscript (McClatchey's time sink was finding every location). Design history recorded: YAML-first engine, LLM added later.
+
+**Built:** engine audit (`pubmap_tools.r` current; renderer kept); `R/extract_places.R` -- whole PDF -> typed place table, coordinates only when stated. Seven era_old manuscripts: every place in the hand-written paragraphs found, more besides, ZERO invented coordinates; the test paragraphs themselves carried two errors (Simpson "centre" = an 1876 historical position; Sumatra extent from figure graticule labels).
+
+**R upgraded (Kim's decision):** 4.6.1 + Rtools45 alongside 4.3.3; 495/495 packages restored (~9 min + 5 retried); ClaudeR 0.16.2; ellmer 0.5.0 works with Claude. GeoNames premium account recorded (`kimbridges`, `secure.geonames.net`).
+
+**Written:** `proj_PubMaps.md` (new), `project_index.md` (focus, row, cluster note), `logs/focus_history.md`, `deferred.md` (new section: R uninstall, GitHub token, Gemini key), this entry; `Projects/PubMaps/R/extract_places.R`, `test_suite/extract/`; `Claude outputs/r_upgrade_2026-10-24/`.
+
+**Mechanism 5 (partial -- session paused, not closed).** (8) Three items filed to `deferred.md`. (10) Outside `G:`: R 4.6.1, Rtools45 and the `win-library/4.6` library installed on Kim's machine. (11)/(12) NOT RUN: `pkm_backup()` is blocked until the GitHub token is renewed (`deferred.md`).
+
+**Next:** step 2 LOCATE -- GeoNames premium, Nominatim fallback; source + match quality per point; misses -> author-query list.
+
 ## 2026-09-30 -- REHEARSALS TEST CASE 1: THE HUNTINGTON FROM KIM'S PHOTO ARCHIVE ("THIS IS WHAT A QUICK LOOK SHOULD PRODUCE")
 
 **Active focus:** Rehearsals before the field (capture phase); Kim confirmed the Huntington as the first garden test.

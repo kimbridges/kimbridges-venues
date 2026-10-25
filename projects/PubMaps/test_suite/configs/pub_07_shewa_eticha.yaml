@@ -1,0 +1,39 @@
+country_name: Ethiopia
+subdivision_name: Oromiya
+inset_corner: tl
+output_pdf: test_suite/outputs/pub_07_shewa_eticha.pdf
+main_bbox_wgs84:
+- 38.01
+- 9.02
+- 38.09
+- 9.23
+study_bbox_wgs84:
+- 38.01
+- 9.02
+- 38.09
+- 9.23
+sites:
+- name: Chilanko
+  lon: 38.05
+  lat: 9.15
+  type: Study Site
+- name: Edensa Gelan
+  lon: 38.06
+  lat: 9.18
+  type: Study Site
+- name: Galessa Koftu
+  lon: 38.07
+  lat: 9.1
+  type: Study Site
+- name: Galessa Kota Geshir
+  lon: 38.08
+  lat: 9.12
+  type: Study Site
+- name: Ginchi
+  lon: 38.09
+  lat: 9.02
+  type: Market Town
+- name: Shikute
+  lon: 38.01
+  lat: 9.23
+  type: Market Town

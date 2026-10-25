@@ -1,5 +1,18 @@
 # Focus History and Change Log
 
+<!-- superseded 2026-10-24 (focus set to PubMaps; Rehearsals paused, capture phase) -->
+**Active Focus (2026-09-29): "REHEARSALS BEFORE THE FIELD" -- capture phase (`ideas_rehearsals.md`). Kim's ruling on the focus: training before the trip = the concepts + being able to use them; partly a GALLERY OF EXAMPLES, each judged by what it teaches -- from "I can make this kind of map" to "from this kind of map, I can learn ...", and what it cannot teach. Companion to *The Map That Never Got Drawn*; its ideas also argue for the trilogy (mapped in `ideas_three_documents.md`). No formal intake yet.**
+
+**How it opened (2026-09-25).** The day began on MWT's missing data source (plots + an expert map). Kim's reframe: an expert map uses TWO inputs -- releves for categories, imagery for boundaries -- so a plain Voronoi map is not a fair comparison. Add canopy height as the boundary input. **Prototype at Kipuka Puaulu, same session:** Meta/WRI 1 m canopy (keyless, the July route) -> four structure classes -> 12 releves, 3 per class, STAND-IN categories -> **structure-constrained Voronoi** (nearest releve in the same structure class). Plain vs constrained disagree on 66% of the area; the constrained map follows the kipuka edge. Kim: "It shows just what we need; realistic boundaries and an appropriate classification." Limit shown as expected: compositional boundaries inside one structure class stay straight bisectors.
+
+**Relation to MWT.** MWT keeps the concept (the missing map) and ONE worked example, Kipuka Puaulu, in its overlay chapter; the mechanics move to the Voronoi document, so MWT ch.5, 6, 9, 11 shrink to summary + reference. Detail: `ideas_three_documents.md` (2026-09-25). Koch Voronoi Next Steps 5-6 are absorbed; Tom's work becomes a credited domain.
+
+**Paused: the trilogy** (capture only; all three outlined 2026-09-23; block in `logs/focus_history.md`). **Paused: icons** (Blocked on photographs).
+
+**⚠ CARRIED:** `pkm_card.md` 0.4 KB over budget; `C:/temp` scratch CLEARED by Kim 2026-09-27 (only the 09-26 and today's close snapshots remain); the local Filesystem MCP connector still fails; device_bash still cannot mount `G:`.
+
+**NEXT (2026-09-30 close): TEST CASE 1 (the Huntington, from Kim's 38 photos) done -- Kim: "most instructive"; "this is what a quick look should produce." Next session: another example from the scale ladder (lawn sprinklers -- simulated in minutes; Skyline stations over a Honolulu street map; rain gauges), or a Huntington v2 (Kim names the 7 untitled photos and checks Claude's grouping of his 17 titles; frame trimmed to the public garden; heading arrows). Still to rule: the gallery-entry template and the vocabulary. Voronoi: only the UH/HVNP map permission remains (Kim).**
+
 <!-- superseded 2026-09-29 (focus set to 'Rehearsals before the field', capture phase; Voronoi citation note closed) -->
 **Active Focus (2026-09-27): NONE SET -- Voronoi document and tessellr both COMPLETE 2026-09-27. Kim chooses the next focus at the next session (candidates: "Rehearsals before the field" -- `ideas_rehearsals.md`; or return to the trilogy -- *Maps with Tiles* can now cite the book and the package).**
 

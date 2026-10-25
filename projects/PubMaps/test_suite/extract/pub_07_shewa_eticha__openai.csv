@@ -1,0 +1,17 @@
+"name","role","country","admin1","stated_lat","stated_lon","coord_text","elevation_m","page","evidence","coord_source"
+"Ethiopia","other","Ethiopia",NA,NA,NA,NA,NA,2,"West Shewa zone of Oromiya region, Ethiopia.",NA
+"Oromiya region","administrative_unit","Ethiopia",NA,NA,NA,NA,NA,2,"West Shewa zone of Oromiya region, Ethiopia.",NA
+"West Shewa","administrative_unit","Ethiopia","Oromiya region",NA,NA,NA,NA,2,"in the West Shewa administrative zone",NA
+"central highlands of Ethiopia","natural_feature","Ethiopia",NA,NA,NA,NA,NA,2,"These communities are located within the central highlands of Ethiopia",NA
+"Jeldu district","administrative_unit","Ethiopia","Oromiya region",NA,NA,NA,NA,2,"Chilanko and Edensa Gelan from Jeldu district",NA
+"Dandi district","administrative_unit","Ethiopia","Oromiya region",NA,NA,NA,NA,2,"Galessa Koftu and Galessa Kota Geshir from Dandi district.",NA
+"Chilanko","study_site","Ethiopia","Oromiya region",NA,NA,NA,NA,2,"The communities were Chilanko and Edensa Gelan from Jeldu district",NA
+"Edensa Gelan","study_site","Ethiopia","Oromiya region",NA,NA,NA,NA,2,"The communities were Chilanko and Edensa Gelan from Jeldu district",NA
+"Galessa Koftu","study_site","Ethiopia","Oromiya region",NA,NA,NA,NA,2,"Galessa Koftu and Galessa Kota Geshir from Dandi district.",NA
+"Galessa Kota Geshir","study_site","Ethiopia","Oromiya region",NA,NA,NA,NA,2,"Galessa Koftu and Galessa Kota Geshir from Dandi district.",NA
+"Ginchi","reference_town","Ethiopia",NA,9.03333333333333,39.15,"9°2’N, 39°9’E",NA,3,"the all-weather road from Ginchi (9°2’N, 39°9’E)","text"
+"Shikute","reference_town","Ethiopia",NA,9.38333333333333,38.0166666666667,"9°23’N, 38°1’E",NA,3,"to Shikute (9°23’N, 38°1’E).","text"
+"Villages alongside the all-weather road from Ginchi to Shikute","relative_location","Ethiopia","Oromiya region",NA,NA,NA,NA,3,"Three villages were selected from each community.",NA
+"Addis Ababa","reference_town","Ethiopia",NA,NA,NA,NA,NA,3,"Addis Ababa",NA
+"Ome River","natural_feature","Ethiopia",NA,NA,NA,NA,NA,3,"Ome River",NA
+"Jibat","study_site","Ethiopia",NA,NA,NA,NA,NA,7,"Jibat my living place and barley my husband grow and flourish well",NA

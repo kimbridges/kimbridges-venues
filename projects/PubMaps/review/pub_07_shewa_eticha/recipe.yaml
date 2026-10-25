@@ -1,0 +1,43 @@
+manuscript: era_Eticha_et_al_2010.pdf
+made: 2026-10-24 21:02
+read_by: openai gpt-6.1-sol
+projection: EPSG:32637
+extent_lonlat:
+- 37.26612
+- 8.26613
+- 39.35227
+- 9.86131
+page_mm:
+- 170.0
+- 130.0
+inset:
+  corner: tr
+  countries: Ethiopia
+  widened_for_inset: no
+north_arrow: tl
+scale_bar: bl
+points:
+- name: Ginchi
+  role: reference_town
+  lon: 39.15
+  lat: 9.03333
+  source: text
+  match: stated
+- name: Shikute
+  role: reference_town
+  lon: 38.01667
+  lat: 9.38333
+  source: text
+  match: stated
+- name: Addis Ababa
+  role: reference_town
+  lon: 38.75243
+  lat: 9.03581
+  source: nominatim
+  match: exact
+- name: Jibat
+  role: study_site
+  lon: 37.47279
+  lat: 8.7436
+  source: nominatim
+  match: partial

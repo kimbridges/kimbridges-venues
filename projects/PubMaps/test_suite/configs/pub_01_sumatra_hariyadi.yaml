@@ -1,0 +1,23 @@
+country_name: Indonesia
+subdivision_name: Jambi Province
+inset_corner: tl
+output_pdf: test_suite/outputs/pub_01_sumatra_hariyadi.pdf
+main_bbox_wgs84:
+- 101.0
+- -3.5
+- 102.0
+- -1.5
+study_bbox_wgs84:
+- 101.0
+- -3.5
+- 102.0
+- -1.5
+sites:
+- name: Tanjung Kasri
+  lon: 101.5
+  lat: -2.5
+  type: Study Site
+- name: Renah Kemumu
+  lon: 101.7
+  lat: -2.8
+  type: Study Site

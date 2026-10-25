@@ -1,0 +1,27 @@
+country_name: Mexico
+subdivision_name: Yucatán
+inset_corner: tl
+output_pdf: test_suite/outputs/pub_03_yucatan_hopkins.pdf
+main_bbox_wgs84:
+- -89.5
+- 20.0
+- -88.5
+- 21.0
+study_bbox_wgs84:
+- -89.3
+- 20.1
+- -88.7
+- 20.9
+sites:
+- name: Oxkutzcab
+  lon: -89.2
+  lat: 20.3
+  type: Market Town
+- name: Tzucacab
+  lon: -89.4
+  lat: 20.2
+  type: Study Site
+- name: Peto
+  lon: -89.3
+  lat: 20.4
+  type: Study Site

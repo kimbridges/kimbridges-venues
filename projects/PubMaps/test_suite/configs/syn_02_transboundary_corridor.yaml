@@ -1,0 +1,27 @@
+country_name: Brazil
+subdivision_name: Amazonas
+inset_corner: tl
+output_pdf: test_suite/outputs/syn_02_transboundary_corridor.pdf
+main_bbox_wgs84:
+- -67.0
+- -2.0
+- -65.0
+- 1.0
+study_bbox_wgs84:
+- -67.0
+- -2.0
+- -65.0
+- 1.0
+sites:
+- name: Cucuí
+  lon: -66.85
+  lat: 1.23
+  type: Study Site
+- name: San Carlos de Río Negro
+  lon: -66.5
+  lat: 0.5
+  type: Study Site
+- name: La Guadalupe
+  lon: -66.5
+  lat: 1.0
+  type: Study Site

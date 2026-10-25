@@ -1,0 +1,39 @@
+country_name: Kenya
+subdivision_name: Taita-Taveta
+inset_corner: tl
+output_pdf: test_suite/outputs/pub_06_kasigau_medley.pdf
+main_bbox_wgs84:
+- 38.5
+- -4.0
+- 39.0
+- -3.5
+study_bbox_wgs84:
+- 38.6667
+- -3.8167
+- 38.6667
+- -3.8167
+sites:
+- name: Mt. Kasigau
+  lon: 38.6667
+  lat: -3.8167
+  type: Study Site
+- name: Rukanga
+  lon: 38.5
+  lat: -3.85
+  type: Market Town
+- name: Jora
+  lon: 38.55
+  lat: -3.9
+  type: Market Town
+- name: Bungule
+  lon: 38.6
+  lat: -3.75
+  type: Market Town
+- name: Makwasinyi
+  lon: 38.65
+  lat: -3.8
+  type: Market Town
+- name: Kiteghe
+  lon: 38.7
+  lat: -3.85
+  type: Market Town

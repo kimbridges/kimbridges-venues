@@ -1,0 +1,143 @@
+---
+title: "Test_Cases"
+format: html
+editor: visual
+---
+
+# Test Cases
+
+- pub_01_sumatra_hariyadi.txt
+
+- pub_02_simpson_silcock.txt
+
+- pub_03_yucatan_hopkins.txt
+
+- pub_04_chitwan_rijal.txt
+
+- pub_05_himalaya_phondani.txt
+
+- pub_06_kasigau_medley.txt
+
+- pub_07_shewa_eticha.txt
+
+- syn_01_archipelago_island.txt
+
+- syn_02_transboundary_corridor.txt
+
+- syn_03_riverine_linear_transect.txt
+
+## Published Benchmark Test Texts
+
+### Pub 01: Sumartr Hariyadi
+
+*Protected Area Buffer / Inter-provincial Margin*
+
+**Cartographic Challenge Tested:** Bordering a national park and neighboring provinces (Jambi, West Sumatra, Bengkulu); negative southern latitudes; equatorial UTM zone selection.
+
+**The LLM Prompt:**
+
+> The Serampas inhabit the border of Kerinci Seblat National Park (KSNP) in Midwestern Sumatra, Indonesia. This research took place in the community of Serampas, a sub clan who inhabit the northeastern area of Jangkat Subdistrict, Merangin District, Jambi Province, southwestern Sumatra (between 1.5°S and 3.5°S, and 101°E and 102°E). Primary fieldwork centered on the villages of Tanjung Kasri and Renah Kemumu. Regional trade and transport connects through Lempur and Sungai Penuh in the Kerinci highlands out to the port of Teluk Bayur in West Sumatra.
+
+**Prompt to YAML:**
+
+```{r}
+###
+
+```
+
+**YAML File:**
+
+```{yaml}
+country_name: Indonesia
+subdivision_name: Jambi Province
+inset_corner: tl
+output_pdf: test_suite/outputs/pub_01_sumatra_hariyadi.pdf
+main_bbox_wgs84:
+- 101.0
+- -3.5
+- 102.0
+- -1.5
+study_bbox_wgs84:
+- 101.0
+- -3.5
+- 102.0
+- -1.5
+sites:
+- name: Tanjung Kasri
+  lon: 101.5
+  lat: -2.5
+  type: Study Site
+- name: Renah Kemumu
+  lon: 101.7
+  lat: -2.8
+  type: Study Site
+
+```
+
+**YAML to Map:**
+
+```{r}
+###
+
+```
+
+**Maps:**
+
+![Vector Version](outputs/pub_01_sumatra_hariyadi_vector.pdf){fig-align="left"}
+
+
+![Relief Version](outputs/pub_01_sumatra_hariyadi_relief.pdf){fig-align="left"}
+
+### Pub 02: Simpson Desert Silcock
+
+*Remote Arid Dunefield / High-Aspect Grid*
+
+Cartographic Challenge Tested: Vast arid extent with sparse named infrastructure; cross-border state boundary (QLD/NT); point markers across an elongated longitudinal axis.
+
+### Pub 03: Yucatan Hopkins
+
+*Multi-Municipal Regional Cluster*
+
+Cartographic Challenge Tested: Multiple contiguous municipal boundaries; close proximity of focal towns requiring collision-free label repulsion (ggrepel).
+
+### Pub 04: Chitwan Rijal
+
+*Sub-District Administrative Units / Mid-Hills Topography*
+
+Cartographic Challenge Tested: Small sub-district units (VDC/Wards) embedded in steep altitudinal zones; national park adjacent to agricultural lowlands.
+
+### Pub 05: Himalaya Phondani
+
+*High-Altitude Mountain Valley / Transhumance Sites*
+
+Cartographic Challenge Tested: International border zone; linear settlement chain along a narrow glacial river gorge; high point density.
+
+### Pub 06: Kasigau Medley
+
+*Isolated Insular Mountain / Radial Village Ring*
+
+Cartographic Challenge Tested: Circular arrangement of settlements around a single geographic feature; tight radial spacing requiring balanced label placement without overlapping the summit area.
+
+### Pub 07: Shewa Eticha
+
+*Contiguous Highland Districts / Road Corridor*
+
+Cartographic Challenge Tested: Linear study transect aligned along a mountain road corridor; multiple paired community names; high-altitude highland plateau.
+
+### Syn 01: Archipelago Island
+
+*Island / Marine Margin*
+
+Target Failure Mode: Automated bounding logic expanding over vast stretches of open ocean; Pacific projection crossing the 180° antimeridian; small island landmasses disappearing at standard continental scales.
+
+### Syn 02: Transboundary Corridor
+
+*Tri-National Frontier*
+
+Target Failure Mode: Inset map selection (which country does the macro inset highlight when three nations intersect?); multi-country boundary clipping in rnaturalearth.
+
+### Syn 03: Riverine Linear Transect
+
+*Narrow Linear Hydrological Axis*
+
+Target Failure Mode: Highly skewed aspect ratio (long and very narrow), causing default square padding to either zoom out too far or crop critical lateral reference marks.

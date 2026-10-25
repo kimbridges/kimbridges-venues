@@ -1,0 +1,47 @@
+country_name: India
+subdivision_name: Uttarakhand
+inset_corner: tl
+output_pdf: test_suite/outputs/pub_05_himalaya_phondani.pdf
+main_bbox_wgs84:
+- 78.5753
+- 29.9761
+- 80.2983
+- 31.0711
+study_bbox_wgs84:
+- 78.5753
+- 29.9761
+- 80.2983
+- 31.0711
+sites:
+- name: Lata
+  lon: 78.5753
+  lat: 29.9761
+  type: Study Site
+- name: Reni
+  lon: 78.6
+  lat: 29.99
+  type: Study Site
+- name: Suraithota
+  lon: 78.65
+  lat: 30.0
+  type: Study Site
+- name: Tolma
+  lon: 78.7
+  lat: 30.05
+  type: Study Site
+- name: Malari
+  lon: 78.75
+  lat: 30.1
+  type: Study Site
+- name: Bampa
+  lon: 78.8
+  lat: 30.15
+  type: Study Site
+- name: Ghamshali
+  lon: 78.85
+  lat: 30.2
+  type: Study Site
+- name: Niti
+  lon: 78.9
+  lat: 30.25
+  type: Study Site

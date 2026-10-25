@@ -1,0 +1,22 @@
+"name","role","country","admin1","stated_lat","stated_lon","coord_text","elevation_m","page","evidence","coord_source"
+"Mt. Kasigau","natural_feature","Kenya",NA,-3.8166666667,38.6666666667,"3˚49’ S, 38˚40’E",1641,3,"The sudden rise of Mt. Kasigau (3˚49’ S, 38˚40’E)","text"
+"Eastern Arc Mountains","natural_feature",NA,NA,NA,NA,NA,NA,2,"the most northeastern peak in the Eastern Arc Mountains of Kenya and Tanzania",NA
+"Rukanga","study_site","Kenya",NA,NA,NA,NA,NA,3,"the market center at Rukanga with less than 500 households",NA
+"Jora","study_site","Kenya",NA,NA,NA,NA,NA,2,"working from the villages of Rukanga, Jora, Bungule, Makwasinyi, and Kiteghe",NA
+"Bungule","study_site","Kenya",NA,NA,NA,NA,NA,2,"working from the villages of Rukanga, Jora, Bungule, Makwasinyi, and Kiteghe",NA
+"Makwasinyi","study_site","Kenya",NA,NA,NA,NA,NA,2,"working from the villages of Rukanga, Jora, Bungule, Makwasinyi, and Kiteghe",NA
+"Kiteghe","study_site","Kenya",NA,NA,NA,NA,NA,2,"working from the villages of Rukanga, Jora, Bungule, Makwasinyi, and Kiteghe",NA
+"Tsavo East national park","protected_area","Kenya",NA,NA,NA,NA,NA,3,"from the semiarid plains between Tsavo East and West national parks",NA
+"Tsavo West national park","protected_area","Kenya",NA,NA,NA,NA,NA,3,"from the semiarid plains between Tsavo East and West national parks",NA
+"Tsavo ecosystem","other","Kenya",NA,NA,NA,NA,NA,7,"the surrounding Acacia-Commiphora bushland of the Tsavo ecosystem",NA
+"national forest reserve","protected_area","Kenya",NA,NA,NA,NA,NA,7,"on Mt. Kasigau were gazetted as a 202 ha national forest reserve in 1941",NA
+"Siriri River","natural_feature","Kenya",NA,NA,NA,NA,NA,7,"Along the Siriri River above Kiteghe",NA
+"Ndomokonyi","study_site","Kenya",NA,NA,NA,NA,NA,5,"the historic Ndomokonyi settlement above Jora village",NA
+"Mwarashua","study_site","Kenya",NA,NA,NA,NA,NA,7,"between Bungule and Makwasinyi (near “Mwarashua”)",NA
+"streams between 610-800 m above southeast-facing Bungule village","relative_location","Kenya",NA,NA,NA,NA,NA,4,"three evergreen forest plots were placed along streams between 610-800 m above southeast-facing Bungule village",NA
+"open rocky site above Makwasinyi village","relative_location","Kenya",NA,NA,NA,NA,NA,5,"an open rocky site above Makwasinyi village",NA
+"cloud forest below the summit","relative_location","Kenya",NA,NA,NA,NA,NA,6,"The highest density value (950/ha) was in the cloud forest below the summit.",NA
+"west facing spur ridge plot above Kiteghe village","relative_location","Kenya",NA,NA,NA,NA,NA,7,"Above Kiteghe village, we recorded 31 woody plant species in a west facing spur ridge plot",NA
+"site along the Siriri River above Kiteghe","relative_location","Kenya",NA,NA,NA,NA,NA,7,"Along the Siriri River above Kiteghe, one site had 36 species",NA
+"montane woodland plot on a route between Jora and Rukanga","relative_location","Kenya",NA,NA,NA,NA,NA,7,"On a route between Jora and Rukanga, we recorded 26 woody plant species in a montane woodland plot",NA
+"lower montane location between Bungule and Makwasinyi (near “Mwarashua”)","relative_location","Kenya",NA,NA,NA,NA,NA,7,"In a lower montane location between Bungule and Makwasinyi (near “Mwarashua”)",NA

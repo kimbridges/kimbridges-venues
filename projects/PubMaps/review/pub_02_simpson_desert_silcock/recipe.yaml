@@ -1,0 +1,25 @@
+manuscript: era_Silcock_et_al_2012.pdf
+made: 2026-10-24 21:01
+read_by: openai gpt-6.1-sol
+projection: EPSG:32754
+extent_lonlat:
+- 139.40613
+- -24.405
+- 139.5343
+- -24.31415
+page_mm:
+- 170.0
+- 130.0
+inset:
+  corner: tr
+  countries: Australia
+  widened_for_inset: no
+north_arrow: tl
+scale_bar: bl
+points:
+- name: Bedourie
+  role: reference_town
+  lon: 139.47024
+  lat: -24.35959
+  source: nominatim
+  match: partial

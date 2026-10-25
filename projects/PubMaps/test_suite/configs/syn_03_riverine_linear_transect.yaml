@@ -1,0 +1,31 @@
+country_name: Botswana
+subdivision_name: Ngamiland District
+inset_corner: tl
+output_pdf: test_suite/outputs/syn_03_riverine_linear_transect.pdf
+main_bbox_wgs84:
+- 21.84
+- -18.75
+- 22.21
+- -18.36
+study_bbox_wgs84:
+- 21.84
+- -18.75
+- 22.21
+- -18.36
+sites:
+- name: Shakawe
+  lon: 21.84
+  lat: -18.36
+  type: Study Site
+- name: Sepopa
+  lon: 22.21
+  lat: -18.75
+  type: Study Site
+- name: Samochima
+  lon: 21.9
+  lat: -18.5
+  type: Study Site
+- name: Nxamasere
+  lon: 21.95
+  lat: -18.6
+  type: Study Site

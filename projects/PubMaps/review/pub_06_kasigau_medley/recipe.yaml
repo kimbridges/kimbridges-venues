@@ -1,0 +1,49 @@
+manuscript: era_Medley_et_al_2010.pdf
+made: 2026-10-24 21:02
+read_by: openai gpt-6.1-sol
+projection: EPSG:32737
+extent_lonlat:
+- 38.59811
+- -3.87587
+- 38.7143
+- -3.78608
+page_mm:
+- 170.0
+- 130.0
+inset:
+  corner: br
+  countries: Kenya
+  widened_for_inset: no
+north_arrow: tl
+scale_bar: bl
+points:
+- name: Mt. Kasigau
+  role: natural_feature
+  lon: 38.66667
+  lat: -3.81667
+  source: text
+  match: stated
+- name: Rukanga
+  role: study_site
+  lon: 38.63807
+  lat: -3.81263
+  source: nominatim
+  match: exact
+- name: Jora
+  role: study_site
+  lon: 38.64354
+  lat: -3.8412
+  source: nominatim
+  match: exact
+- name: Bungule
+  role: study_site
+  lon: 38.6666
+  lat: -3.85
+  source: nominatim
+  match: exact
+- name: Makwasinyi
+  role: study_site
+  lon: 38.67436
+  lat: -3.81196
+  source: nominatim
+  match: exact

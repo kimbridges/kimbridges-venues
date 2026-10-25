@@ -1,0 +1,23 @@
+country_name: Nepal
+subdivision_name: Chitwan
+inset_corner: tl
+output_pdf: test_suite/outputs/pub_04_chitwan_rijal.pdf
+main_bbox_wgs84:
+- 80.0
+- 27.5
+- 84.0
+- 30.0
+study_bbox_wgs84:
+- 80.5
+- 27.5
+- 84.0
+- 28.0
+sites:
+- name: Supar
+  lon: 80.6
+  lat: 27.7
+  type: Market Town
+- name: Gairibari
+  lon: 80.7
+  lat: 27.8
+  type: Market Town

@@ -1,0 +1,36 @@
+"name","role","country","admin1","stated_lat","stated_lon","coord_text","elevation_m","page","evidence","coord_source"
+"Simpson Desert","natural_feature","Australia",NA,NA,NA,NA,NA,3,"The Simpson Desert is the largest sand ridge desert in the world",NA
+"Queensland","administrative_unit","Australia",NA,NA,NA,NA,NA,1,"Simpson Desert of far south-western Queensland, Australia",NA
+"Northern Territory","administrative_unit","Australia",NA,NA,NA,NA,NA,3,"comprising adjacent portions of the Northern Territory, South Australia and Queensland",NA
+"South Australia","administrative_unit","Australia",NA,NA,NA,NA,NA,3,"comprising adjacent portions of the Northern Territory, South Australia and Queensland",NA
+"Mulligan River","natural_feature","Australia","Queensland",NA,NA,NA,NA,3,"the alluvial plains of the Mulligan River merge with the Simpson dune fields",NA
+"Ethabuka Reserve","protected_area","Australia","Queensland",NA,NA,NA,NA,3,"Ethabuka Reserve and Carlo Station adjoin the Queensland-Northern Territory border",NA
+"Carlo Station","study_site","Australia","Queensland",NA,NA,NA,NA,3,"Ethabuka Reserve and Carlo Station adjoin the Queensland-Northern Territory border",NA
+"Simpson Desert National Park","protected_area","Australia","Queensland",NA,NA,NA,NA,4,"were walked on Carlo, Ethabuka and Simpson Desert National Park in June and July 2010",NA
+"Bedourie","reference_town","Australia","Queensland",NA,NA,NA,NA,3,"Bedourie (100 km to the east of Ethabuka)",NA
+"Cravens Peak","other","Australia",NA,NA,NA,NA,NA,3,"with outlying stands on Cravens Peak",NA
+"Glenormiston","other","Australia",NA,NA,NA,NA,NA,4,"Glenormiston to the north",NA
+"NAIBAR","other","Australia",NA,NA,NA,NA,NA,2,"NAIBAR",NA
+"MARION DOWNS","other","Australia",NA,NA,NA,NA,NA,2,"MARION DOWNS",NA
+"SANDRINGHAM","other","Australia",NA,NA,NA,NA,NA,2,"SANDRINGHAM",NA
+"KAMARAN DOWNS","other","Australia",NA,NA,NA,NA,NA,2,"KAMARAN DOWNS",NA
+"Mirrica","other","Australia",NA,NA,NA,NA,NA,2,"Mirrica",NA
+"Bookera","other","Australia",NA,NA,NA,NA,NA,2,"Bookera",NA
+"Ethabuka homestead","reference_town","Australia","Queensland",NA,NA,NA,NA,6,"a 20 km line west-north-west of the Ethabuka homestead",NA
+"Alnagata Spring complex","natural_feature","Australia",NA,NA,NA,NA,NA,6,"groves close to the Alnagata Spring complex",NA
+"Cunja Spring complex","natural_feature","Australia",NA,NA,NA,NA,NA,7,"Alnagata and Cunja Spring complexes are 20 km to the south-east",NA
+"Ethabuka Spring","natural_feature","Australia",NA,NA,NA,NA,NA,7,"Ethabuka Spring is 20 km to the east",NA
+"Pulchera","natural_feature","Australia",NA,NA,NA,NA,NA,7,"waterholes of the Mulligan, including Pulchera, Tiribilkie and Wongitta",NA
+"Tiribilkie","natural_feature","Australia",NA,NA,NA,NA,NA,7,"waterholes of the Mulligan, including Pulchera, Tiribilkie and Wongitta",NA
+"Wongitta","natural_feature","Australia",NA,NA,NA,NA,NA,7,"waterholes of the Mulligan, including Pulchera, Tiribilkie and Wongitta",NA
+"Great Artesian Basin","natural_feature","Australia",NA,NA,NA,NA,NA,6,"springs that emanate from the Great Arte-sian Basin",NA
+"Three 30 x 1 km transects on Carlo, Ethabuka and Simpson Desert National Park","relative_location","Australia","Queensland",NA,NA,NA,NA,4,"were walked on Carlo, Ethabuka and Simpson Desert National Park in June and July 2010",NA
+"40 km transect","sampling_point","Australia",NA,NA,NA,NA,NA,4,"An additional 40 km transect was walked in August 2011.",NA
+"60 km transect north-west of the present study area","relative_location","Australia",NA,NA,NA,NA,NA,4,"A 60 km transect on foot with pack camels directly to the north-west of the present study area",NA
+"20 km line west-north-west of the Ethabuka homestead","relative_location","Australia","Queensland",NA,NA,NA,NA,6,"occurred along a 20 km line west-north-west of the Ethabuka homestead",NA
+"396 B","sampling_point","Australia","Queensland",NA,NA,NA,NA,6,"396 B",NA
+"386 F","sampling_point","Australia","Queensland",NA,NA,NA,NA,6,"386 F",NA
+"445 C","sampling_point","Australia","Queensland",NA,NA,NA,NA,6,"445 C",NA
+"446 A","sampling_point","Australia","Queensland",NA,NA,NA,NA,6,"446 A",NA
+"396 O","sampling_point","Australia","Queensland",NA,NA,NA,NA,6,"396 O",NA
+"397 D","sampling_point","Australia","Queensland",NA,NA,NA,NA,6,"397 D",NA

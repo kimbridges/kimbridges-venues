@@ -1,0 +1,23 @@
+"name","role","country","admin1","stated_lat","stated_lon","coord_text","elevation_m","page","evidence","coord_source"
+"Tanjung Kasri","study_site","Indonesia","Jambi",NA,NA,NA,NA,3,"15 respondents from the village of Tanjung Kasri",NA
+"Renah Kemumu","study_site","Indonesia","Jambi",NA,NA,NA,NA,3,"21 from the village of Renah Kemumu",NA
+"Serampas","study_site","Indonesia","Jambi",NA,NA,NA,NA,2,"The term Serampas refers to both the people and the region that they inhabit",NA
+"Kerinci Seblat National Park","protected_area","Indonesia",NA,NA,NA,NA,NA,3,"Two Serampas villages are within the territory of Kerinci Seblat National Park",NA
+"Serampas River","natural_feature","Indonesia","Jambi",NA,NA,NA,NA,3,"the Serampas River which passes through the northern territory of Serampas",NA
+"Bukit Barisan","natural_feature","Indonesia",NA,NA,NA,NA,NA,3,"a part of Bukit Barisan, a mountainous chain",NA
+"Jangkat Subdistrict","administrative_unit","Indonesia","Jambi",NA,NA,NA,NA,2,"Serampas in Jangkat Subdistrict, Merangin District, Jambi Province",NA
+"Merangin District","administrative_unit","Indonesia","Jambi",NA,NA,NA,NA,2,"Serampas in Jangkat Subdistrict, Merangin District, Jambi Province",NA
+"Jambi Province","administrative_unit","Indonesia","Jambi",NA,NA,NA,NA,2,"Merangin District, Jambi Province, southwestern Sumatera, Indonesia.",NA
+"Sumatra","natural_feature","Indonesia",NA,NA,NA,NA,NA,2,"the region that they inhabit, in southwestern Sumatra, Indonesia.",NA
+"Indonesia","administrative_unit","Indonesia",NA,NA,NA,NA,NA,2,"Merangin District, Jambi Province, southwestern Sumatera, Indonesia.",NA
+"Kerinci","administrative_unit","Indonesia","Jambi",NA,NA,NA,NA,2,"Sungai Penuh city (Kerinci)",NA
+"Lempur","reference_town","Indonesia","Jambi",NA,NA,NA,NA,2,"Lempur",NA
+"Sungai Penuh","reference_town","Indonesia","Jambi",NA,NA,NA,NA,2,"cinnamon produced in Serampas is collected in Sungai Penuh city (Kerinci)",NA
+"Teluk Bayur","other","Indonesia","West Sumatra",NA,NA,NA,NA,2,"the Teluk Bayur port in West Sumatra",NA
+"West Sumatra","administrative_unit","Indonesia","West Sumatra",NA,NA,NA,NA,2,"the Teluk Bayur port in West Sumatra",NA
+"Bengkulu","administrative_unit","Indonesia","Bengkulu",NA,NA,NA,NA,2,"Bengkulu",NA
+"South Sumatra","administrative_unit","Indonesia","South Sumatra",NA,NA,NA,NA,2,"South Sumatra",NA
+"Aceh","administrative_unit","Indonesia","Aceh",NA,NA,NA,NA,2,"Aceh",NA
+"North Sumatra","administrative_unit","Indonesia","North Sumatra",NA,NA,NA,NA,2,"North Sumatra",NA
+"Riau","administrative_unit","Indonesia","Riau",NA,NA,NA,NA,2,"Riau",NA
+"Lampung","administrative_unit","Indonesia","Lampung",NA,NA,NA,NA,2,"Lampung",NA

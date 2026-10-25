@@ -1,21 +1,19 @@
 # Projects Index
-_Last updated: 2026-09-30_
+_Last updated: 2026-10-24_
 
 > **History split out 2026-07-28.** The superseded Active Focus blocks and the full
 > dated Change Log now live in `logs/focus_history.md`, verbatim and unedited.
 > This file carries the current focus, the structural notes, and the listings only.
 
-**Active Focus (2026-09-29): "REHEARSALS BEFORE THE FIELD" -- capture phase (`ideas_rehearsals.md`). Kim's ruling on the focus: training before the trip = the concepts + being able to use them; partly a GALLERY OF EXAMPLES, each judged by what it teaches -- from "I can make this kind of map" to "from this kind of map, I can learn ...", and what it cannot teach. Companion to *The Map That Never Got Drawn*; its ideas also argue for the trilogy (mapped in `ideas_three_documents.md`). No formal intake yet.**
+**Active Focus (2026-10-24): PUBMAPS -- AI-assisted publication study-site maps (detail map + locator inset), an EDITOR'S TOOL (`proj_PubMaps.md`, code at `Projects\PubMaps`). Kim expects to finish it efficiently; he has been focused on it. Intake finding: the LLM INVENTS site coordinates (Yucatan towns placed in reversed order). gpt-4o-mini retired.**
 
-**How it opened (2026-09-25).** The day began on MWT's missing data source (plots + an expert map). Kim's reframe: an expert map uses TWO inputs -- releves for categories, imagery for boundaries -- so a plain Voronoi map is not a fair comparison. Add canopy height as the boundary input. **Prototype at Kipuka Puaulu, same session:** Meta/WRI 1 m canopy (keyless, the July route) -> four structure classes -> 12 releves, 3 per class, STAND-IN categories -> **structure-constrained Voronoi** (nearest releve in the same structure class). Plain vs constrained disagree on 66% of the area; the constrained map follows the kipuka edge. Kim: "It shows just what we need; realistic boundaries and an appropriate classification." Limit shown as expected: compositional boundaries inside one structure class stay straight bisectors.
+**Design review first.** The engine began YAML-only (the user wrote the YAML); the LLM was added when Kim found hand-written YAML too hard, so the design is pieced together. Kim sees value in a file the operator can touch to add a location or two, but YAML's validity rigor is a likely friction point.
 
-**Relation to MWT.** MWT keeps the concept (the missing map) and ONE worked example, Kipuka Puaulu, in its overlay chapter; the mechanics move to the Voronoi document, so MWT ch.5, 6, 9, 11 shrink to summary + reference. Detail: `ideas_three_documents.md` (2026-09-25). Koch Voronoi Next Steps 5-6 are absorbed; Tom's work becomes a credited domain.
-
-**Paused: the trilogy** (capture only; all three outlined 2026-09-23; block in `logs/focus_history.md`). **Paused: icons** (Blocked on photographs).
+**Paused: Rehearsals before the field** (capture phase, `ideas_rehearsals.md`; its last NEXT -- scale-ladder example or Huntington v2 -- is in `logs/focus_history.md`). **Paused: the trilogy** (capture only). **Paused: icons** (Blocked on photographs).
 
 **⚠ CARRIED:** `pkm_card.md` 0.4 KB over budget; `C:/temp` scratch CLEARED by Kim 2026-09-27 (only the 09-26 and today's close snapshots remain); the local Filesystem MCP connector still fails; device_bash still cannot mount `G:`.
 
-**NEXT (2026-09-30 close): TEST CASE 1 (the Huntington, from Kim's 38 photos) done -- Kim: "most instructive"; "this is what a quick look should produce." Next session: another example from the scale ladder (lawn sprinklers -- simulated in minutes; Skyline stations over a Honolulu street map; rain gauges), or a Huntington v2 (Kim names the 7 untitled photos and checks Claude's grouping of his 17 titles; frame trimmed to the public garden; heading arrows). Still to rule: the gallery-entry template and the vocabulary. Voronoi: only the UH/HVNP map permission remains (Kim).**
+**NEXT (2026-10-24, paused for the night): PubMaps steps 1-5 built and wired into one call -- `pubmap("paper.pdf")` -> `review/<stem>/` (vector PDF + PNG, editable `points.csv`, `review.html` with Esri check map -- streets / topo / satellite -- author query and place table); `pubmap_rerender(dir)` after edits. Next: Kim tries editor input (coordinates in points.csv) himself; retest GeoNames (401 tonight) and rerun the seven cases with it; then alternate-name matching (Kitege/Kiteghe), parks/districts as areas, journal style file, methods doc. Deferred (Kim): uninstall R 4.3.3/Rtools43; renew the GitHub token (blocks `pkm_backup()`); Gemini key.**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R
@@ -37,6 +35,8 @@ siblings: LLM_Creates_R (document) and R_LLM_tests (test bed)
 — relationship to be confirmed. Each clustered project's
 proj_*.md carries a Related Projects section pointing at the
 siblings.
+
+**Mapping family (named 2026-10-24, Kim: "mapping has many facets"):** Plainmaps (plain publication maps), sitemaps, gePoints, geContour, Voronoi + tessellr, the Rehearsals gallery, and PubMaps (AI-assisted study-site maps for editors).
 
 For session protocol, see pkm_protocol.md.
 For storage and audit detail, see system_audit.md.
@@ -120,6 +120,7 @@ under kimbridges-fiction\underway\. See proj_kimbridges_fiction.md and session_l
 | proj_icons.md | icons | Content project, data-driven (register → symbols → stories) | **NEW 2026-09-13; PAUSED 2026-09-22 -- Active / Blocked on photographs (Kim needs to find and take new photos); focus moved to the trilogy.** Hawai‘i icons: caption-free "Hawai‘i and nothing else" test; channel × origin classification; outsider vs resident sets; density hypothesis. Track R on Kim's machine. Source of record `Projects\icons` (bucket 2): register 40 rows + codebook + photo log; two-tier visual design (posters from Kim's photos via OpenAI API in R; SVG glyphs) | 2026-09-22 |
 | proj_Voronoi.md | Voronoi | Quarto methods document + likely companion R package | **COMPLETE 2026-09-27.** Voronoi tessellation for category data at points; centrepiece = **structure-constrained Voronoi** (releve tiles bounded by Meta/WRI canopy-height classes), prototyped at Kipuka Puaulu the day it opened. **2026-09-26: book drafted. 2026-09-27: PUBLISHED (`/voronoi/`); next, the package tessellr.** Finished before the trilogy discusses the technology; MWT cites it. Absorbs Koch Voronoi Next Steps 5-6. Track: kimbridges-documents, R + Quarto. Source of record `Projects\Voronoi` (bucket 2) | 2026-09-27 |
 | proj_tessellr.md | tessellr | R package | **COMPLETE 2026-09-27 -- v0.1.0 on GitHub (github.com/kimbridges/tessellr).** Companion package to *The Map That Never Got Drawn* (name ruled by Kim): tiles, per-tile measures, counts + Poisson tests (from Koch_voronoi), weighted areas, canopy fetch for any area, structure-constrained Voronoi, map agreement. Code `Projects\tessellr` | 2026-09-27 |
+| proj_PubMaps.md | PubMaps | R tool (LLM-assisted) + planned methods doc | **NEW 2026-10-24 (intake) / Active / Ready** -- an EDITOR'S TOOL for publication study-site maps with locator inset: paragraph -> LLM -> YAML -> R -> PDF; 10-case test suite. Origin: Will McClatchey's years of redrawing authors' maps. **Intake finding: the LLM invents site coordinates** (Yucatan towns placed in reversed order); next = gazetteer + provenance + operator review; gpt-4o-mini retired. Mapping family. **ACTIVE FOCUS 2026-10-24.** Folder moved to `Projects\PubMaps` 2026-10-24. **Pipeline working 2026-10-24:** manuscript -> extract -> locate (Nominatim) -> plan -> render + editor review page; `pubmap()` / `pubmap_rerender()` | 2026-10-24 |
 | proj_LLM_API_R.md | LLM-API-R | Quarto document (R + LLM API) | Complete; posted; .qmd source still to be located; filed 2026-05-30 | 2026-05-30 |
 
 ## System Projects

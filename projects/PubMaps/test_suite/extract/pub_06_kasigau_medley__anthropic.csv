@@ -1,0 +1,17 @@
+"name","role","country","admin1","stated_lat","stated_lon","coord_text","elevation_m","page","evidence","coord_source"
+"Mt. Kasigau","natural_feature","Kenya",NA,-3.8167,38.6667,"3˚49’ S, 38˚40’E",1641,3,"The sudden rise of Mt. Kasigau (3˚49’ S, 38˚40’E)","text"
+"Eastern Arc Mountains","natural_feature","Kenya",NA,NA,NA,NA,NA,2,"Location of Mt. Kasigau in the Eastern Arc Mountains of Kenya and Tanzania",NA
+"Tsavo East National Park","protected_area","Kenya",NA,NA,NA,NA,NA,3,"semiarid plains between Tsavo East and West national parks",NA
+"Tsavo West National Park","protected_area","Kenya",NA,NA,NA,NA,NA,3,"semiarid plains between Tsavo East and West national parks",NA
+"Rukanga","study_site","Kenya",NA,NA,NA,NA,NA,2,"working from the villages of Rukanga, Jora, Bungule, Makwasinyi, and Kiteghe",NA
+"Jora","study_site","Kenya",NA,NA,NA,NA,NA,2,"working from the villages of Rukanga, Jora, Bungule, Makwasinyi, and Kiteghe",NA
+"Bungule","study_site","Kenya",NA,NA,NA,NA,NA,2,"working from the villages of Rukanga, Jora, Bungule, Makwasinyi, and Kiteghe",NA
+"Makwasinyi","study_site","Kenya",NA,NA,NA,NA,NA,2,"working from the villages of Rukanga, Jora, Bungule, Makwasinyi, and Kiteghe",NA
+"Kiteghe","study_site","Kenya",NA,NA,NA,NA,NA,2,"working from the villages of Rukanga, Jora, Bungule, Makwasinyi, and Kiteghe",NA
+"Siriri River","natural_feature","Kenya",NA,NA,NA,NA,NA,7,"Along the Siriri River above Kiteghe, one site had 36 species",NA
+"Ndomokonyi settlement above Jora village","relative_location","Kenya",NA,NA,NA,NA,NA,4,"site of the historic Ndomokonyi settlement above Jora village",NA
+"open rocky site above Makwasinyi village","relative_location","Kenya",NA,NA,NA,NA,NA,4,"lowest value (80/ha) at an open rocky site above Makwasinyi village",NA
+"west facing spur ridge plot above Kiteghe village","relative_location","Kenya",NA,NA,NA,NA,NA,7,"Above Kiteghe village, we recorded 31 woody plant species in a west facing spur ridge plot",NA
+"route between Jora and Rukanga","relative_location","Kenya",NA,NA,NA,NA,NA,7,"On a route between Jora and Rukanga, we recorded 26 woody plant species",NA
+"Mwarashua","relative_location","Kenya",NA,NA,NA,NA,NA,7,"lower montane location between Bungule and Makwasinyi (near “Mwarashua”)",NA
+"streams above southeast-facing Bungule village","relative_location","Kenya",NA,NA,NA,NA,NA,4,"three evergreen forest plots were placed along streams between 610-800 m above southeast-facing Bungule village",NA

@@ -1,0 +1,97 @@
+manuscript: era_Phondani_et_al_2010.pdf
+made: 2026-10-24 21:01
+read_by: openai gpt-6.1-sol
+projection: EPSG:32644
+extent_lonlat:
+- 78.42055
+- 29.92314
+- 80.05302
+- 31.01959
+page_mm:
+- 170.0
+- 130.0
+inset:
+  corner: tl
+  countries: India
+  widened_for_inset: no
+north_arrow: tr
+scale_bar: bl
+points:
+- name: Bampa
+  role: study_site
+  lon: 79.82972
+  lat: 30.74367
+  source: nominatim
+  match: exact
+- name: Dronagiri
+  role: study_site
+  lon: 79.86804
+  lat: 30.59917
+  source: nominatim
+  match: exact
+- name: Garpak
+  role: study_site
+  lon: 79.85424
+  lat: 30.62691
+  source: nominatim
+  match: exact
+- name: Kaga
+  role: study_site
+  lon: 79.82386
+  lat: 30.61246
+  source: nominatim
+  match: exact
+- name: Lata
+  role: study_site
+  lon: 79.7138
+  lat: 30.4947
+  source: nominatim
+  match: exact
+- name: Malari
+  role: study_site
+  lon: 79.88937
+  lat: 30.68455
+  source: nominatim
+  match: exact
+- name: Niti
+  role: study_site
+  lon: 79.84112
+  lat: 30.77766
+  source: nominatim
+  match: exact
+- name: Reni
+  role: study_site
+  lon: 79.69109
+  lat: 30.48522
+  source: nominatim
+  match: exact
+- name: Suraithota
+  role: study_site
+  lon: 79.74152
+  lat: 30.53101
+  source: nominatim
+  match: exact
+- name: Tolma
+  role: study_site
+  lon: 79.75222
+  lat: 30.52391
+  source: nominatim
+  match: exact
+- name: Satopanth glacier
+  role: natural_feature
+  lon: 79.36487
+  lat: 30.75447
+  source: nominatim
+  match: exact
+- name: Bhagirath kharak glacier
+  role: natural_feature
+  lon: 79.36874
+  lat: 30.79262
+  source: nominatim
+  match: exact
+- name: Devprayag
+  role: reference_town
+  lon: 78.59858
+  lat: 30.14614
+  source: nominatim
+  match: exact

@@ -1,0 +1,40 @@
+"name","role","country","admin1","stated_lat","stated_lon","coord_text","elevation_m","page","evidence","coord_source"
+"Bampa","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"The 15 Bhotiya villages (Bampa, Dronagiri, Farki",NA
+"Dronagiri","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"The 15 Bhotiya villages (Bampa, Dronagiri, Farki",NA
+"Farki","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"The 15 Bhotiya villages (Bampa, Dronagiri, Farki",NA
+"Garpak","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"All households of Jhuma, Garpak, Kaga, Dronagiri, Malari",NA
+"Ghamshali","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"Bampa, Ghamshali and Niti villages",NA
+"Jhuma","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"All households of Jhuma, Garpak, Kaga, Dronagiri, Malari",NA
+"Kaga","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"All households of Jhuma, Garpak, Kaga, Dronagiri, Malari",NA
+"Kaileshpur","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"Kaga, Kaileshpur, Lata, Malari",NA
+"Lata","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"Kaga, Kaileshpur, Lata, Malari",NA
+"Malari","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"Kaga, Kaileshpur, Lata, Malari",NA
+"Niti","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"Niti, Phagti, Reni, Suraithota, Tolma",NA
+"Phagti","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"Niti, Phagti, Reni, Suraithota, Tolma",NA
+"Reni","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"Niti, Phagti, Reni, Suraithota, Tolma",NA
+"Suraithota","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"Niti, Phagti, Reni, Suraithota, Tolma",NA
+"Tolma","study_site","India","Uttarakhand",NA,NA,NA,NA,3,"Niti, Phagti, Reni, Suraithota, Tolma",NA
+"Niti valley","natural_feature","India","Uttarakhand",NA,NA,NA,NA,2,"the Niti valley of Alaknanda catchment in Central Himalaya",NA
+"Alaknanda catchment","natural_feature","India","Uttarakhand",NA,NA,NA,NA,2,"The Alaknanda catchment area stretches",NA
+"Central Himalaya","natural_feature","India",NA,NA,NA,NA,NA,2,"Central Himalaya, Uttarakhand state of India",NA
+"River Alaknanda","natural_feature","India","Uttarakhand",NA,NA,NA,NA,1,"The River Alaknanda originates in the Satopanth and Bhagirath kharak glacier",NA
+"Satopanth glacier","natural_feature","India","Uttarakhand",NA,NA,NA,NA,1,"The River Alaknanda originates in the Satopanth and Bhagirath kharak glacier",NA
+"Bhagirath kharak glacier","natural_feature","India","Uttarakhand",NA,NA,NA,NA,1,"Bhagirath kharak glacier",NA
+"Chaukamba peak","natural_feature","India","Uttarakhand",NA,NA,NA,7138,1,"eastern slope of Chaukamba peak (7138m.)",NA
+"Devprayag","reference_town","India","Uttarakhand",NA,NA,NA,NA,2,"tapers off at Devprayag",NA
+"river Bhagirathi","natural_feature","India","Uttarakhand",NA,NA,NA,NA,2,"a confluence with the river Bhagirathi",NA
+"Ganga","natural_feature","India",NA,NA,NA,NA,NA,2,"forming the holy Ganga",NA
+"Chamoli District","administrative_unit","India","Uttarakhand",NA,NA,NA,NA,2,"Central Himalaya, Chamoli District, Uttarakhand State",NA
+"Rudraprayag district","administrative_unit","India","Uttarakhand",NA,NA,NA,NA,1,"Rudraprayag district of Uttarakhand state",NA
+"Pauri","administrative_unit","India","Uttarakhand",NA,NA,NA,NA,2,"Chamoli, Rudraprayag, Pauri and Tehri",NA
+"Tehri","administrative_unit","India","Uttarakhand",NA,NA,NA,NA,2,"Chamoli, Rudraprayag, Pauri and Tehri",NA
+"Garhwal region","administrative_unit","India","Uttarakhand",NA,NA,NA,NA,2,"four districts of Garhwal region of Uttarakhand state",NA
+"Uttarakhand","administrative_unit","India","Uttarakhand",NA,NA,NA,NA,2,"Central Himalaya, Uttarakhand state of India",NA
+"Uttarkashi","administrative_unit","India","Uttarakhand",NA,NA,NA,NA,2,"Uttarkashi",NA
+"Pithoragarh","administrative_unit","India","Uttarakhand",NA,NA,NA,NA,2,"Pithoragarh",NA
+"Bageshwar","administrative_unit","India","Uttarakhand",NA,NA,NA,NA,2,"Bageshwar",NA
+"Himachal Pradesh","administrative_unit","India","Himachal Pradesh",NA,NA,NA,NA,2,"Himachal Pradesh",NA
+"Uttar Pradesh","administrative_unit","India","Uttar Pradesh",NA,NA,NA,NA,2,"Uttar Pradesh",NA
+"CHINA","other","China",NA,NA,NA,NA,NA,2,"CHINA",NA
+"NEPAL","other","Nepal",NA,NA,NA,NA,NA,2,"NEPAL",NA
+"India","other","India",NA,NA,NA,NA,NA,2,"Central Himalaya, Uttarakhand state of India",NA

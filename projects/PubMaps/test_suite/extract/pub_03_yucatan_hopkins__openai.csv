@@ -1,0 +1,26 @@
+"name","role","country","admin1","stated_lat","stated_lon","coord_text","elevation_m","page","evidence","coord_source"
+"México","other","México",NA,NA,NA,NA,NA,3,"three municipalities in the southern cone of Yucatán State, México",NA
+"Yucatán","administrative_unit","México",NA,NA,NA,NA,NA,3,"in the state of Yucatán, México",NA
+"Yucatán Peninsula","natural_feature","México",NA,NA,NA,NA,NA,2,"Land use/land cover change and associated drivers in the Yucatán Peninsula",NA
+"southern cone of Yucatán State","other","México","Yucatán",NA,NA,NA,NA,3,"three municipalities in the southern cone of Yucatán State, México",NA
+"Tzucacab","administrative_unit","México","Yucatán",NA,NA,NA,NA,3,"Tzucacab, Oxkutzcab, and Peto, three municipalities",NA
+"Peto","administrative_unit","México","Yucatán",NA,NA,NA,NA,3,"Tzucacab, Oxkutzcab, and Peto, three municipalities",NA
+"Oxkutzcab","administrative_unit","México","Yucatán",NA,NA,NA,NA,3,"Tzucacab, Oxkutzcab, and Peto, three municipalities",NA
+"Tzucacab","study_site","México","Yucatán",NA,NA,NA,NA,4,"key informant interviews in the cities of Oxkutzcab, Peto and Tzucacab",NA
+"Peto","study_site","México","Yucatán",NA,NA,NA,NA,4,"key informant interviews in the cities of Oxkutzcab, Peto and Tzucacab",NA
+"Oxkutzcab","study_site","México","Yucatán",NA,NA,NA,NA,4,"key informant interviews in the cities of Oxkutzcab, Peto and Tzucacab",NA
+"Mérida","reference_town","México","Yucatán",NA,NA,NA,NA,4,"office in Mérida, Yucatán and acquired all the available information",NA
+"Tekax","administrative_unit","México","Yucatán",NA,NA,NA,NA,5,"the municipalities of: A) Oxkutzcab, B) Tekax, C) Tzucacab, and D) Peto",NA
+"Champeche","administrative_unit","México",NA,NA,NA,NA,NA,5,"Champeche",NA
+"Quitana Roo","administrative_unit","México",NA,NA,NA,NA,NA,5,"Quitana",NA
+"Gulf of Mexico","natural_feature",NA,NA,NA,NA,NA,NA,5,"Gulf of Mexico",NA
+"Caribbean Sea","natural_feature",NA,NA,NA,NA,NA,NA,5,"Caribbean Sea",NA
+"Pacific Ocean","natural_feature",NA,NA,NA,NA,NA,NA,5,"Pacific Ocean",NA
+"Ek Balam","other","México","Yucatán",NA,NA,NA,NA,8,"the archaeological site Ek Balam",NA
+"caves of Lotún","natural_feature","México","Yucatán",NA,NA,NA,NA,9,"caves of Lotún",NA
+"Sayil","other","México","Yucatán",NA,NA,NA,NA,9,"archaeological sites like Sayil",NA
+"Labná","other","México","Yucatán",NA,NA,NA,NA,9,"Labná, Xlapak, Kom, Sabacché and Kiuic",NA
+"Xlapak","other","México","Yucatán",NA,NA,NA,NA,9,"Labná, Xlapak, Kom, Sabacché and Kiuic",NA
+"Kom","other","México","Yucatán",NA,NA,NA,NA,9,"Labná, Xlapak, Kom, Sabacché and Kiuic",NA
+"Sabacché","other","México","Yucatán",NA,NA,NA,NA,9,"Labná, Xlapak, Kom, Sabacché and Kiuic",NA
+"Kiuic","other","México","Yucatán",NA,NA,NA,NA,9,"Labná, Xlapak, Kom, Sabacché and Kiuic",NA

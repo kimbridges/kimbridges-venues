@@ -1,0 +1,39 @@
+country_name: Australia
+subdivision_name: Queensland
+inset_corner: tl
+output_pdf: test_suite/outputs/pub_02_simpson_desert_silcock.pdf
+main_bbox_wgs84:
+- 138.0
+- -23.5
+- 138.5
+- -23.0
+study_bbox_wgs84:
+- 138.0
+- -23.5
+- 138.5
+- -23.0
+sites:
+- name: Ethabuka homestead
+  lon: 138.2
+  lat: -23.3
+  type: Study Site
+- name: Mirrica
+  lon: 138.3
+  lat: -23.2
+  type: Study Site
+- name: Pulchera Waterhole
+  lon: 138.1
+  lat: -23.4
+  type: Study Site
+- name: Wongitta Waterhole
+  lon: 138.4
+  lat: -23.3
+  type: Study Site
+- name: Alnagata/Cunjua spring complex
+  lon: 138.2
+  lat: -23.1
+  type: Study Site
+- name: Bedourie
+  lon: 138.5
+  lat: -23.0
+  type: Market Town

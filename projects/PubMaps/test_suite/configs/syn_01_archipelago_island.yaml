@@ -1,0 +1,31 @@
+country_name: Tonga
+subdivision_name: ''
+inset_corner: tl
+output_pdf: test_suite/outputs/syn_01_archipelago_island.pdf
+main_bbox_wgs84:
+- -175.0
+- -20.0
+- -173.0
+- -18.0
+study_bbox_wgs84:
+- -175.5
+- -20.5
+- -173.5
+- -18.5
+sites:
+- name: Lifuka
+  lon: -174.35
+  lat: -19.8
+  type: Study Site
+- name: Foa
+  lon: -174.5
+  lat: -19.7
+  type: Study Site
+- name: '''Uiha'
+  lon: -174.2
+  lat: -19.9
+  type: Study Site
+- name: Tofua
+  lon: -175.0
+  lat: -19.5
+  type: Study Site
