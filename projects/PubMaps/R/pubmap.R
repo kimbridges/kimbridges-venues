@@ -10,9 +10,13 @@ pubmaps_home <- function() {
   if (!dir.exists(d)) stop("Set options(pubmaps.home = <PubMaps folder>)")
   d
 }
-for (f in c("extract_places", "locate_places", "plan_map", "render_map",
-            "points_io", "review_report"))
-  source(file.path(pubmaps_home(), "R", paste0(f, ".R")))
+PUBMAPS_MODULES <- c("extract_places", "locate_places", "plan_map", "plan_areas", "render_map",
+                     "points_io", "review_report")
+# (2026-10-25) pubmap() and pubmap_rerender() reload the modules on every run, so an
+# R session that sourced PubMaps earlier never runs out-of-date code.
+pubmaps_load <- function()
+  for (f in PUBMAPS_MODULES) source(file.path(pubmaps_home(), "R", paste0(f, ".R")))
+pubmaps_load()
 
 write_recipe <- function(plan, dir, manuscript, provider) {
   d <- plan$points[plan$points$drawn, ]
@@ -45,7 +49,8 @@ build_outputs <- function(points, dir, manuscript, provider, relief = FALSE) {
 }
 
 pubmap <- function(manuscript, dir = NULL, provider = "openai", model = "gpt-6.1-sol",
-                   backends = "nominatim", places = NULL, relief = FALSE) {
+                   backends = c("geonames", "nominatim"), places = NULL, relief = FALSE) {
+  pubmaps_load()
   stem <- tools::file_path_sans_ext(basename(manuscript))
   if (is.null(dir)) dir <- file.path(pubmaps_home(), "review", stem)
   dir.create(dir, recursive = TRUE, showWarnings = FALSE)
@@ -61,6 +66,7 @@ pubmap <- function(manuscript, dir = NULL, provider = "openai", model = "gpt-6.1
 }
 
 pubmap_rerender <- function(dir, relief = FALSE) {
+  pubmaps_load()
   pts <- read_points_csv(dir)
   places <- readRDS(file.path(dir, "places_extracted.rds"))
   prov <- if (file.exists(file.path(dir, "provider.rds"))) readRDS(file.path(dir, "provider.rds")) else ""

@@ -20,8 +20,15 @@ CORNERS <- c("tr", "tl", "br", "bl")   # preference order when tied
 
 # natural features that a dot can honestly represent (OSM type or GeoNames code);
 # ranges, rivers, islands, basins and deserts are context, not points
+# Gazetteer types that are a POINT at study-map scale. Widened 2026-10-25 with
+# GeoNames: populated places (P:), spots such as homesteads, farms and airstrips
+# (S:), small water bodies, and village-level administrative units (ADM3-5,
+# e.g. Nepal's VDCs) -- otherwise Chitwan's study villages and the Simpson
+# Desert stations and waterholes were held back as "context".
 POINT_FEATURE <- paste0("peak|volcano|hill|spring|saddle|pass|cave|waterfall|glacier|rock|",
-                        "^T:(MT|PK|VLC|HLL|PASS|CAVE)|^H:(SPNG|FLLS|GLCR)")
+                        "^T:(MT|PK|VLC|HLL|PASS|CAVE)|^H:(SPNG|FLLS|GLCR|LK|LKI|WTRH|WLL|PND)|",
+                        "^P:|^S:|^A:ADM[345]|",
+                        "place:(village|hamlet|town|farm|isolated_dwelling|locality)")
 point_like <- function(p) p$match %in% "stated" |
   (!is.na(p$gaz_type) & grepl(POINT_FEATURE, p$gaz_type, ignore.case = TRUE))
 
@@ -37,12 +44,17 @@ select_points <- function(points, dedupe_km = 5) {
                      "not located (author query)",
               ifelse(is.na(p$lon), "not located (context)",
               ifelse(p$flag %in% "far", "far from the study (check)",
-              ifelse(!p$role %in% ROLE_DRAW, paste0(p$role, " (context, not a point)"),
+              ifelse(!p$role %in% ROLE_DRAW & !(p$role %in% c("administrative_unit", "other") & point_like(p)),
+                     paste0(p$role, " (context, not a point)"),
               ifelse(p$role == "natural_feature" & !point_like(p),
                      "area or line feature (context, not a point)", "")))))))
   inc <- if (is.null(p$include)) rep("", nrow(p)) else tolower(trimws(ifelse(is.na(p$include), "", p$include)))
   p$reason[inc == "no"] <- "excluded by editor"
-  p$reason[inc == "yes" & !is.na(p$lon)] <- ""
+  p$reason[inc == "name"] <- "name only (no symbol)"   # 2026-10-25: printed by render_map, never a point
+  # include = yes forces a POINT -- except a park/district that is not point-like:
+  # that stays for plan_areas(), which then draws it as an area even if it would skip it
+  p$reason[inc == "yes" & !is.na(p$lon) &
+           !(p$role %in% c("protected_area", "administrative_unit") & !point_like(p))] <- ""
   ok <- which(p$reason == "")
   ok <- ok[order(match(p$role[ok], ROLE_PRIORITY))]
   key <- core_name(p$name)
@@ -131,7 +143,7 @@ plan_inset <- function(pts_ll, aspect) {
 # ------------------------------------------------------------------------------
 plan_map <- function(points, page_mm = c(170, 130), margin_mm = c(14, 10),
                      pad = 0.12, min_span_km = 8, inset_frac = c(0.32, 0.40),
-                     label_mm = 3) {
+                     label_mm = 3, areas = TRUE) {
   sel <- select_points(points)
   d <- sel[sel$drawn, ]
   if (!nrow(d)) stop("No located points to draw.")
@@ -151,14 +163,28 @@ plan_map <- function(points, page_mm = c(170, 130), margin_mm = c(14, 10),
   bb <- bb + c(-1, -1, 1, 1) * pad * max(w, h)
   bb <- fit_aspect(bb, aspect)
 
-  cf <- corner_conflicts(xy, d$name, bb, panel_mm, inset_frac, label_mm)
+  # name-only labels (include = name) must also stay clear of the inset
+  xy_c <- xy; nm_c <- d$name
+  incl <- if (is.null(sel$include)) rep("", nrow(sel)) else tolower(trimws(ifelse(is.na(sel$include), "", sel$include)))
+  nmo <- sel[incl == "name", , drop = FALSE]
+  if (nrow(nmo)) {
+    pick <- function(a, b, c) ifelse(!is.na(a), a, ifelse(!is.na(b), b, c))
+    lx <- if (is.null(nmo$label_lon)) NA else nmo$label_lon; ly <- if (is.null(nmo$label_lat)) NA else nmo$label_lat
+    nx <- pick(lx, nmo$lon, nmo$gaz_lon); ny <- pick(ly, nmo$lat, nmo$gaz_lat)
+    ok <- !is.na(nx) & !is.na(ny)
+    if (any(ok)) {
+      nxy <- st_coordinates(st_transform(st_as_sf(data.frame(x = nx[ok], y = ny[ok]), coords = c("x", "y"), crs = 4326), crs))
+      xy_c <- rbind(xy, nxy); nm_c <- c(d$name, toupper(nmo$name[ok]))
+    }
+  }
+  cf <- corner_conflicts(xy_c, nm_c, bb, panel_mm, inset_frac, label_mm)
   widened <- FALSE
   if (min(cf) > 0) {                       # every corner occupied: make room
     best <- CORNERS[which.min(cf)]
     W <- bb[3] - bb[1]; extra <- W * inset_frac[1] / (1 - inset_frac[1])
     if (grepl("l", best)) bb[1] <- bb[1] - extra else bb[3] <- bb[3] + extra
     bb <- fit_aspect(bb, aspect); widened <- TRUE
-    cf <- corner_conflicts(xy, d$name, bb, panel_mm, inset_frac, label_mm)
+    cf <- corner_conflicts(xy_c, nm_c, bb, panel_mm, inset_frac, label_mm)
   }
   inset_corner <- CORNERS[which.min(cf)]
   free <- setdiff(CORNERS, inset_corner)
@@ -170,8 +196,9 @@ plan_map <- function(points, page_mm = c(170, 130), margin_mm = c(14, 10),
 
   ext_ll <- st_bbox(st_transform(st_as_sfc(st_bbox(setNames(bb, c("xmin", "ymin", "xmax", "ymax")),
                                                      crs = crs)), 4326))
+  ar <- if (areas) plan_areas(sel, bb, crs) else list(points = sel, areas = NULL, areas_ll = NULL)
   structure(list(
-    points = sel, crs = crs, bbox = unname(bb), extent_lonlat = unname(ext_ll),
+    points = ar$points, areas = ar$areas, areas_ll = ar$areas_ll, crs = crs, bbox = unname(bb), extent_lonlat = unname(ext_ll),
     page_mm = page_mm, panel_mm = panel_mm, inset_frac = inset_frac,
     inset_corner = inset_corner, corner_conflicts = round(cf * 1e4) / 1e4,
     widened_for_inset = widened, north_arrow = north, scale_bar = scale,
@@ -189,6 +216,7 @@ print.pubmap_plan <- function(x, ...) {
       "| countries:", paste(x$inset$countries, collapse = ", "),
       if (x$inset$parts_dropped) sprintf("| %d remote parts dropped", x$inset$parts_dropped), "\n")
   cat("  north arrow:", x$north_arrow, "| scale bar:", x$scale_bar, "\n")
+  if (!is.null(x$areas)) cat("  areas:", paste(x$areas$name, collapse = "; "), "\n")
   r <- table(d$reason[!d$drawn]); if (length(r)) { cat("  not drawn:\n"); print(r) }
   invisible(x)
 }

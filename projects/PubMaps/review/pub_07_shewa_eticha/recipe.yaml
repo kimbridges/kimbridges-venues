@@ -1,5 +1,5 @@
 manuscript: era_Eticha_et_al_2010.pdf
-made: 2026-10-24 21:02
+made: 2026-10-25 14:50
 read_by: openai gpt-6.1-sol
 projection: EPSG:32637
 extent_lonlat:
@@ -31,9 +31,9 @@ points:
   match: stated
 - name: Addis Ababa
   role: reference_town
-  lon: 38.75243
-  lat: 9.03581
-  source: nominatim
+  lon: 38.74689
+  lat: 9.02497
+  source: geonames
   match: exact
 - name: Jibat
   role: study_site

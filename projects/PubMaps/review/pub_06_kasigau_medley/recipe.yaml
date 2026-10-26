@@ -1,17 +1,17 @@
 manuscript: era_Medley_et_al_2010.pdf
-made: 2026-10-24 21:02
+made: 2026-10-25 14:26
 read_by: openai gpt-6.1-sol
 projection: EPSG:32737
 extent_lonlat:
-- 38.59811
-- -3.87587
-- 38.7143
-- -3.78608
+- 38.59855
+- -3.86054
+- 38.71473
+- -3.77075
 page_mm:
 - 170.0
 - 130.0
 inset:
-  corner: br
+  corner: tr
   countries: Kenya
   widened_for_inset: no
 north_arrow: tl
@@ -25,21 +25,21 @@ points:
   match: stated
 - name: Rukanga
   role: study_site
-  lon: 38.63807
-  lat: -3.81263
-  source: nominatim
+  lon: 38.63892
+  lat: -3.81251
+  source: geonames
   match: exact
 - name: Jora
   role: study_site
-  lon: 38.64354
-  lat: -3.8412
-  source: nominatim
+  lon: 38.6461
+  lat: -3.83963
+  source: geonames
   match: exact
 - name: Bungule
   role: study_site
-  lon: 38.6666
-  lat: -3.85
-  source: nominatim
+  lon: 38.66774
+  lat: -3.84699
+  source: geonames
   match: exact
 - name: Makwasinyi
   role: study_site
@@ -47,3 +47,9 @@ points:
   lat: -3.81196
   source: nominatim
   match: exact
+- name: Kiteghe
+  role: study_site
+  lon: 38.6486
+  lat: -3.7843
+  source: editor
+  match: editor

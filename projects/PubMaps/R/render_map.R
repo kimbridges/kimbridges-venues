@@ -44,6 +44,95 @@ hillshade_layer <- function(ext_ll, crs, span_deg) {
                     interpolate = TRUE)
 }
 
+# ------------------------------------------------------------------------------
+# Labels (2026-10-25). Point names and area names are placed together, so they
+# push away from each other. The editor can override any name without moving the
+# place: label_pos = N/NE/E/SE/S/SW/W/NW (fixed side), "none" (hidden), or
+# label_lon/label_lat (exact position; points get a thin leader line).
+# ------------------------------------------------------------------------------
+LABEL_DIRS <- list(N = c(0, 1), NE = c(1, 1), E = c(1, 0), SE = c(1, -1),
+                   S = c(0, -1), SW = c(-1, -1), W = c(-1, 0), NW = c(-1, 1))
+
+label_layers <- function(pts, d, plan, crs, bb) {
+  getc <- function(x, col, default) if (is.null(x[[col]])) rep(default, nrow(x)) else x[[col]]
+  xy <- st_coordinates(pts)
+  L <- data.frame(x = xy[, 1], y = xy[, 2], text = d$name, face = pts$face,
+                  colour = "#1a1a1a", size = 3, kind = "point",
+                  pos = getc(d, "label_pos", ""), lx = getc(d, "label_lon", NA_real_),
+                  ly = getc(d, "label_lat", NA_real_), stringsAsFactors = FALSE)
+  if (!is.null(plan$areas) && nrow(plan$areas)) {
+    ar <- plan$areas
+    a_xy <- st_coordinates(suppressWarnings(st_point_on_surface(st_geometry(ar))))
+    L <- rbind(L, data.frame(x = a_xy[, 1], y = a_xy[, 2], text = ar$name, face = "italic",
+                             colour = ifelse(ar$role == "protected_area", "#3d6b30", "#555555"),
+                             size = 2.6, kind = "area", pos = getc(ar, "label_pos", ""),
+                             lx = getc(ar, "label_lon", NA_real_), ly = getc(ar, "label_lat", NA_real_),
+                             stringsAsFactors = FALSE))
+  }
+  # name-only places (include = name): text, no symbol; regions in capitals
+  pp <- plan$points
+  inc <- if (is.null(pp$include)) rep("", nrow(pp)) else tolower(trimws(ifelse(is.na(pp$include), "", pp$include)))
+  nm <- pp[inc == "name", , drop = FALSE]
+  if (nrow(nm)) {
+    llx <- getc(nm, "label_lon", NA_real_); lly <- getc(nm, "label_lat", NA_real_)
+    gx <- ifelse(!is.na(nm$lon), nm$lon, getc(nm, "gaz_lon", NA_real_))
+    gy <- ifelse(!is.na(nm$lat), nm$lat, getc(nm, "gaz_lat", NA_real_))
+    ax <- ifelse(!is.na(llx) & !is.na(lly), llx, gx); ay <- ifelse(!is.na(llx) & !is.na(lly), lly, gy)
+    ok <- !is.na(ax) & !is.na(ay)
+    if (any(ok)) {
+      nm <- nm[ok, , drop = FALSE]
+      nxy <- st_coordinates(st_transform(st_as_sf(data.frame(x = ax[ok], y = ay[ok]), coords = c("x", "y"), crs = 4326), crs))
+      txt <- ifelse(!is.na(getc(nm, "label", NA)) & nzchar(getc(nm, "label", "")), nm$label, nm$name)
+      region <- nm$role %in% c("administrative_unit", "protected_area")
+      L <- rbind(L, data.frame(x = nxy[, 1], y = nxy[, 2], text = ifelse(region, toupper(txt), txt),
+                               face = "italic", colour = "#4a4a4a", size = ifelse(region, 3.4, 3),
+                               kind = "name", pos = getc(nm, "label_pos", ""), lx = NA_real_, ly = NA_real_,
+                               stringsAsFactors = FALSE))
+    }
+  }
+  L$pos <- toupper(trimws(ifelse(is.na(L$pos), "", L$pos)))
+  L <- L[L$pos != "NONE", ]
+  out <- list()
+  # exact positions
+  ex <- L[!is.na(L$lx) & !is.na(L$ly), ]
+  if (nrow(ex)) {
+    exy <- st_coordinates(st_transform(st_as_sf(ex, coords = c("lx", "ly"), crs = 4326), crs))
+    ex$lx <- exy[, 1]; ex$ly <- exy[, 2]
+    sg <- ex[ex$kind == "point", ]
+    if (nrow(sg)) out <- c(out, list(geom_segment(data = sg, aes(x = x, y = y, xend = lx, yend = ly),
+                                                  colour = "#555555", linewidth = 0.3)))
+    out <- c(out, list(geom_label(data = ex, aes(x = lx, y = ly, label = text, fontface = face,
+                                                 colour = colour, size = size),
+                                  fill = "white", label.size = 0, label.padding = unit(0.08, "lines"))))
+  }
+  # fixed side
+  mm <- (bb[3] - bb[1]) / plan$panel_mm[1]           # map units per mm
+  fx <- L[(is.na(L$lx) | is.na(L$ly)) & L$pos %in% names(LABEL_DIRS), ]
+  if (nrow(fx)) {
+    v <- do.call(rbind, LABEL_DIRS[fx$pos])
+    off <- ifelse(fx$kind == "point", 2.2, 0) * mm
+    fx$tx <- fx$x + v[, 1] * off; fx$ty <- fx$y + v[, 2] * off
+    fx$hj <- ifelse(v[, 1] > 0, 0, ifelse(v[, 1] < 0, 1, 0.5))
+    fx$vj <- ifelse(v[, 2] > 0, 0, ifelse(v[, 2] < 0, 1, 0.5))
+    out <- c(out, list(geom_label(data = fx, aes(x = tx, y = ty, label = text, fontface = face,
+                                                 colour = colour, size = size, hjust = hj, vjust = vj),
+                                  fill = "white", label.size = 0, label.padding = unit(0.08, "lines"))))
+  }
+  # automatic: points and areas repel each other
+  au <- L[(is.na(L$lx) | is.na(L$ly)) & !L$pos %in% names(LABEL_DIRS), ]
+  if (nrow(au)) {
+    au$seg <- ifelse(au$kind == "point", "#555555", NA)
+    au$psize <- ifelse(au$kind == "point", 1.5, 0)
+    out <- c(out, list(geom_text_repel(data = au,
+      aes(x = x, y = y, label = text, fontface = face, colour = colour, size = size,
+          segment.colour = seg, point.size = psize),
+      bg.color = "white", bg.r = 0.15, max.overlaps = Inf, box.padding = 0.35,
+      point.padding = 0.3, min.segment.length = 0, segment.size = 0.3, seed = 1)))
+  }
+  c(out, list(scale_colour_identity(aesthetics = c("colour", "segment.colour")),
+              scale_size_identity()))
+}
+
 render_map <- function(plan, out_stem, relief = FALSE, png = TRUE, legend = TRUE) {
   crs <- plan$crs; bb <- plan$bbox; ell <- plan$extent_lonlat
   span_deg <- max(ell[3] - ell[1], ell[4] - ell[2])
@@ -76,18 +165,23 @@ render_map <- function(plan, out_stem, relief = FALSE, png = TRUE, legend = TRUE
   if (!is.null(states) && nrow(states))
     p <- p + geom_sf(data = states, fill = NA, colour = "#9a9a9a", linewidth = 0.25,
                      linetype = "22")
+  # areas (2026-10-25): parks/reserves pale green fill, districts dashed outline
+  if (!is.null(plan$areas) && nrow(plan$areas)) {
+    ar <- plan$areas
+    pa <- ar[ar$role == "protected_area", ]; ad <- ar[ar$role != "protected_area", ]
+    if (nrow(pa)) p <- p + geom_sf(data = pa, fill = "#d4e8c8", colour = "#5a8a4a",
+                                   linewidth = 0.4, alpha = 0.75)
+    if (nrow(ad)) p <- p + geom_sf(data = ad, fill = NA, colour = "#6b6b6b",
+                                   linewidth = 0.45, linetype = "42")
+  }
   sty <- ROLE_STYLE[ROLE_STYLE$role %in% d$role, ]
   p <- p +
     geom_sf(data = pts, aes(shape = label, fill = label), colour = "#1a1a1a",
             size = pts$size, stroke = 0.35, show.legend = legend) +
-    geom_text_repel(data = pts, aes(label = name, geometry = geometry),
-                    stat = "sf_coordinates", size = 3, fontface = pts$face,
-                    bg.color = "white", bg.r = 0.15, max.overlaps = Inf,
-                    box.padding = 0.35, point.padding = 0.3, min.segment.length = 0,
-                    segment.colour = "#555555", segment.size = 0.3, seed = 1) +
     scale_shape_manual(NULL, values = setNames(sty$shape, sty$label)) +
     scale_fill_manual(NULL, values = setNames(sty$fill, sty$label))
 
+  p <- p + label_layers(pts, d, plan, crs, bb)
   stp <- nice_step(span_deg)
   p <- p +
     coord_sf(crs = crs, xlim = bb[c(1, 3)], ylim = bb[c(2, 4)], expand = FALSE,

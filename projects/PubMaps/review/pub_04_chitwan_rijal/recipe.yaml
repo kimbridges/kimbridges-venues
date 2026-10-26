@@ -1,25 +1,55 @@
 manuscript: era_Rijal_2011.pdf
-made: 2026-10-24 20:59
+made: 2026-10-25 14:26
 read_by: openai gpt-6.1-sol
 projection: EPSG:32645
 extent_lonlat:
-- 85.25449
-- 27.66275
-- 85.38662
-- 27.75385
+- 84.50354
+- 27.66959
+- 84.67674
+- 27.78937
 page_mm:
 - 170.0
 - 130.0
 inset:
-  corner: tr
+  corner: tl
   countries: Nepal
   widened_for_inset: no
-north_arrow: tl
+north_arrow: tr
 scale_bar: bl
 points:
-- name: Kathmandu
-  role: reference_town
-  lon: 85.32058
-  lat: 27.70832
-  source: nominatim
+- name: Supar village
+  role: study_site
+  lon: 84.60248
+  lat: 27.74607
+  source: geonames
+  match: exact
+- name: Gairibari village
+  role: study_site
+  lon: 84.56821
+  lat: 27.73474
+  source: geonames
+  match: exact
+- name: Kaule
+  role: administrative_unit
+  lon: 84.63806
+  lat: 27.77544
+  source: geonames
+  match: exact
+- name: Dahakhani
+  role: administrative_unit
+  lon: 84.5701
+  lat: 27.7704
+  source: geonames
   match: partial
+- name: Jutpani
+  role: administrative_unit
+  lon: 84.5289
+  lat: 27.68331
+  source: geonames
+  match: exact
+- name: Siddi
+  role: administrative_unit
+  lon: 84.65303
+  lat: 27.70531
+  source: geonames
+  match: exact

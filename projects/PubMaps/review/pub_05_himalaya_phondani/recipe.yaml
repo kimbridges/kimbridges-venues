@@ -1,12 +1,12 @@
 manuscript: era_Phondani_et_al_2010.pdf
-made: 2026-10-24 21:01
+made: 2026-10-25 14:26
 read_by: openai gpt-6.1-sol
 projection: EPSG:32644
 extent_lonlat:
-- 78.42055
-- 29.92314
-- 80.05302
-- 31.01959
+- 78.21845
+- 29.84571
+- 80.07492
+- 31.09308
 page_mm:
 - 170.0
 - 130.0
@@ -43,9 +43,9 @@ points:
   match: exact
 - name: Lata
   role: study_site
-  lon: 79.7138
-  lat: 30.4947
-  source: nominatim
+  lon: 79.71353
+  lat: 30.49625
+  source: geonames
   match: exact
 - name: Malari
   role: study_site
@@ -73,9 +73,9 @@ points:
   match: exact
 - name: Tolma
   role: study_site
-  lon: 79.75222
-  lat: 30.52391
-  source: nominatim
+  lon: 79.75443
+  lat: 30.52067
+  source: geonames
   match: exact
 - name: Satopanth glacier
   role: natural_feature
@@ -91,7 +91,13 @@ points:
   match: exact
 - name: Devprayag
   role: reference_town
-  lon: 78.59858
-  lat: 30.14614
-  source: nominatim
+  lon: 78.60272
+  lat: 30.14603
+  source: geonames
+  match: partial
+- name: Tehri
+  role: administrative_unit
+  lon: 78.41559
+  lat: 30.37103
+  source: geonames
   match: exact

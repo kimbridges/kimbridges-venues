@@ -11,6 +11,18 @@ Mechanism 4.
 
 ---
 
+## 2026-10-25 -- PUBMAPS: GEONAMES + FUZZY, AREAS, NAME CONTROLS, EDITOR'S GUIDE STARTED
+
+- GeoNames (free server) pooled with Nominatim: 99 -> 114 places on 7 cases. Fuzzy pass: Kiteghe -> Kitege.
+- Parks and districts drawn as shaded areas / dashed outlines (OSM polygons).
+- Name controls in points.csv: label, label_pos, label_lon/lat, include = name (no symbol). lon/lat move the PLACE.
+- Stale-code incident fixed: pubmap()/pubmap_rerender() reload all modules each run.
+- Editor's Guide: Quarto book `PubMaps/book/`, Part I drafted (Preface, Ch 1-3, Appendix); Ch 4-6 stubs.
+- Kim: "EXCELLENT start to the documentation"; has suggestions for next session.
+- Next: Kim's guide suggestions; Kim tests against the guide; Ch 4-6; cover/logo; publish.
+
+---
+
 ## 2026-10-24 (evening) -- PUBMAPS STEPS 2-5 BUILT: LOCATE, PLAN, RENDER, EDITOR REVIEW; ONE-CALL PIPELINE
 
 **Active focus:** PubMaps (unchanged).

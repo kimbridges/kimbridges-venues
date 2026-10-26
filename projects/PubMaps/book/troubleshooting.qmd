@@ -1,0 +1,9 @@
+# Troubleshooting
+
+*To be written.* Planned topics:
+
+-   The redraw stops with an error: the map PDF or `points.csv` is open.
+-   A map with only one or two points.
+-   A place lands in the wrong country or far from the study.
+-   GeoNames refuses the username.
+-   The model's place list looks incomplete.

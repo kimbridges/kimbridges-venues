@@ -1,0 +1,90 @@
+# The Review Folder
+
+Every run of `pubmap()` produces one folder. It holds the finished map, a page for checking it, and the table you use to correct it. This chapter goes through what is there and how to read it.
+
+## What is in the folder
+
+| File | What it is |
+|------------------------------------|------------------------------------|
+| `map_vector.pdf` | The map, ready for the journal. Vector graphics, 170 × 130 mm. |
+| `map_vector.png` | The same map as a picture, for previews. |
+| `review.html` | The review page. Open it in a web browser. |
+| `points.csv` | The table of places. This is the only file you edit. |
+| `recipe.yaml` | A record of what was drawn: projection, extent, inset corner, and every point with its position and source. |
+| `places_extracted.rds`, `points_original.rds`, `plan.rds`, `provider.rds` | PubMaps' working files. Leave them alone. |
+
+## The review page
+
+The review page puts everything PubMaps decided in one place. Read it from the top down.
+
+![The review page for the Mt. Kasigau manuscript.](images/review_page.png){fig-align="center" width="95%"}
+
+### Heading and counts
+
+The heading names the manuscript and gives a one-sentence summary of where the fieldwork took place. It also records which language model read the manuscript.
+
+Four counts follow:
+
+-   **places in the manuscript**: everything the model found.
+-   **on the map**: places drawn as points.
+-   **need coordinates**: study sites, plots and towns that could not be located. These go into the author query.
+-   **to confirm**: places located from a gazetteer with a less-than-exact match. Check these.
+
+### The check map
+
+The left-hand map is interactive. Zoom and pan as on any web map. Every located place has a coloured marker, and clicking one shows its role, how it was located, its status, the gazetteer entry it matched, and the sentence in the manuscript that mentions it. The marker colour tells you where the position came from:
+
+| Colour | Meaning |
+|------------------------------------|------------------------------------|
+| green | **stated in the manuscript**: the authors gave coordinates. |
+| purple | **set by the editor**: you typed the position. |
+| blue | **gazetteer, exact match**: the name matched exactly, and the place is the right kind of feature. |
+| orange | **gazetteer, partial match**: close but not certain. Confirm it. |
+| red, hollow | **suggestion only**: the gazetteer offered something, but not the right kind of feature (for example a road for a mountain). It is not on the map. |
+| grey | **not located**. |
+
+Larger, solid markers are drawn on the map. Smaller, paler ones are context the map leaves out.
+
+The dashed rectangle is the frame of the finished map. Parks and districts drawn as areas appear as green shapes and dashed outlines.
+
+The switch in the top corner changes the background. **Streets** is the default. **Topographic** shows relief, which helps when checking a mountain or a ridge. **Satellite + labels** shows the ground itself: whether a gazetteer point actually sits on a village, a clearing, or empty forest.
+
+### The map preview
+
+To the right of the check map is the finished map, exactly as it will print. Compare the two: every solid marker on the check map should appear on the preview.
+
+### The author query
+
+Below the maps is a draft message to the authors. It asks for coordinates of the study sites that could not be found, and lists the positions that need confirming. The **Copy text** button copies it ready to paste into an email. Chapter 5 covers this step.
+
+### Every place
+
+The table lists every place the model found, in manuscript order. For each one it shows the role, where the position came from, the **status** (whether it is on the map, and if not, why), the coordinates, the page, and the sentence it came from. The status column is the quickest way to understand a map: if a place is missing, its status says why. The Appendix lists every status and what it means.
+
+The last box on the page summarises how to make corrections.
+
+## The map
+
+![The finished map for Mt. Kasigau.](images/kasigau_map.png){fig-align="center" width="80%"}
+
+Each map has the same parts:
+
+-   **The frame** fits the study's places, with a margin. It never shrinks below about 8 km across, so a single village still has context.
+-   **The inset** locates the study within its country. PubMaps puts it in whichever corner is free of points and names. If every corner is busy, it widens the map to make room.
+-   **The north arrow and scale bar** go in two of the remaining corners.
+-   **The legend** below the map lists the kinds of places shown.
+
+Places are drawn by role:
+
+| Symbol | Role |
+|------------------------------------|------------------------------------|
+| orange circle, bold name | study site: a village or locality where fieldwork took place |
+| orange triangle | sampling point: a plot, transect or station |
+| dark blue square, italic name | town: a reference town, or a place used to give location |
+| black triangle | natural feature: a peak, spring, lake or waterhole |
+| grey diamond | other place: a homestead, farm, or small administrative unit |
+| pale green area | park or reserve |
+| dashed outline | district |
+| grey italic capitals, no symbol | a region named by the editor (`include = name`) |
+
+The background shows land in grey, the study country in off-white, the sea in blue-grey, and state or province boundaries as dashed lines.

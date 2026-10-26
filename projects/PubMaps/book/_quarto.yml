@@ -1,0 +1,39 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "PubMaps"
+  subtitle: "Study-site maps for journal editors"
+  author:
+    - "K. W. Bridges"
+    - "Claude (Anthropic)"
+  date: today
+  chapters:
+    - index.qmd
+    - part: "Editor's Guide"
+      chapters:
+        - getting_started.qmd
+        - review_folder.qmd
+        - correcting.qmd
+        - examples.qmd
+        - author.qmd
+        - troubleshooting.qmd
+    - appendix.qmd
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    embed-resources: false
+
+editor: visual
+
+toc: true
+number-sections: true
+number-depth: 2
+
+execute:
+  warning: false
+  error: false
+  message: false

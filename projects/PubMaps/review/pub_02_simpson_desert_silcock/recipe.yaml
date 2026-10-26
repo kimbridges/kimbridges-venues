@@ -1,12 +1,12 @@
 manuscript: era_Silcock_et_al_2012.pdf
-made: 2026-10-24 21:01
+made: 2026-10-25 14:26
 read_by: openai gpt-6.1-sol
 projection: EPSG:32754
 extent_lonlat:
-- 139.40613
-- -24.405
-- 139.5343
-- -24.31415
+- 137.74821
+- -24.54256
+- 140.29336
+- -22.72636
 page_mm:
 - 170.0
 - 130.0
@@ -19,7 +19,43 @@ scale_bar: bl
 points:
 - name: Bedourie
   role: reference_town
-  lon: 139.47024
-  lat: -24.35959
+  lon: 139.46528
+  lat: -24.3637
+  source: geonames
+  match: exact
+- name: Cravens Peak
+  role: other
+  lon: 138.59015
+  lat: -23.32315
   source: nominatim
+  match: exact
+- name: Glenormiston
+  role: other
+  lon: 138.80344
+  lat: -22.91621
+  source: nominatim
+  match: exact
+- name: SANDRINGHAM
+  role: other
+  lon: 139.06345
+  lat: -24.05218
+  source: nominatim
+  match: exact
+- name: KAMARAN DOWNS
+  role: other
+  lon: 139.167
+  lat: -24.3333
+  source: geonames
+  match: exact
+- name: Pulchera
+  role: natural_feature
+  lon: 138.60001
+  lat: -23.83333
+  source: geonames
+  match: partial
+- name: Wongitta
+  role: natural_feature
+  lon: 138.65
+  lat: -23.75
+  source: geonames
   match: partial

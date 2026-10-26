@@ -257,3 +257,55 @@ pipeline wrapper pubmap(); all seven cases in review/; edit round trip verified.
 Map tiles switched to Esri (OSM 403 from file:// pages); all review pages rebuilt and checked.
 Kim (pausing): "a really big step forward today"; next he will try editor input himself
 (coordinates in points.csv, as an author would supply), and retest GeoNames tomorrow.
+
+### 2026-10-25 (morning)
+- **GeoNames:** free server (http://api.geonames.org) answers for `kimbridges`; premium servers still refuse the
+  username (viewAccount: "provide a valid username for the GeoNames Premium Web Service") -- account-side, Kim to check
+  subscription / token / IP allow-list. Default host now the free server; `GEONAMES_HOST` switches to premium.
+- **Fix:** `place_candidates()` now pools candidates from ALL gazetteers (first-to-answer used to win; GeoNames then
+  displaced better Nominatim matches). Local admin words (desa, kecamatan, kabupaten, gampong, woreda, awraja, zone) ignored in name matching.
+- **Result (7 cases):** located 99 -> 114 with no regressions; Chitwan 4 -> 12 (study VDCs Kaule, Jutpani, Siddi,
+  Dahakhani; Gairibari, Supar), Simpson +3 (Pulchera, Wongitta), Yucatan +3. Kiteghe still missed (needs fuzzy/alternate-name search).
+- **Selection rule widened:** gazetteer POINT types now include populated places, spots (homesteads, farms, airstrips),
+  small water bodies and village-level admin units (ADM3-5); `administrative_unit` / `other` places of those types are drawn
+  (as "Other place"). Simpson now shows its stations and waterholes; Chitwan its six study villages. Default backends: geonames + nominatim.
+- All seven review folders rebuilt (points.csv regenerated; no editor edits existed).
+- **Kim's editor test (11:47):** typed Kiteghe's coordinates and include = yes into points.csv, reran -- "worked great";
+  the review page's correction instructions "especially helpful".
+- **Fuzzy place-name matching (pass 3 of `locate_places()`):** for places still unfound, GeoNames fuzzy search
+  (fuzzy = 0.7) inside a box around the study; accept only name similarity >= 0.75, right feature kind, and within
+  max(30 km, 2 x median distance of the study's sites/towns). Marked partial + flag "spelling"; the author query
+  says "spelled differently in the gazetteer". Result on 7 cases: exactly one hit, Kiteghe -> Kitege (4 km), no false matches.
+  Lessons: GeoNames `isNameRequired=true` silently disables fuzzy; a radius built from country/province centroids let in
+  Serampas -> Serampok (541 km) and Ghamshali -> Ghansali (wrong village) -- radius now from point places only.
+
+### 2026-10-25 (afternoon) -- areas
+- **New `R/plan_areas.R`:** parks/reserves (protected_area) and districts (administrative_unit) drawn as AREAS.
+  Outline from OSM via Nominatim (`polygon_geojson`; lookup by OSM id, else name, else core name), only of the right
+  class (boundary:administrative / protected_area / national_park / leisure:nature_reserve), within 100 km of the
+  gazetteer position; clipped to the frame (the frame is still set by the points). Parks: pale green fill;
+  districts: dashed grey outline; italic labels. Cached in `cache/areas/`.
+- **Skipped (status in points.csv):** provinces/states (place_rank <= 8; the state lines already show them), areas
+  covering > 90% of the frame, slivers (< 2% of frame and < 25% of the area inside), same name as a drawn point
+  (Yucatan municipalities = towns); areas < 0.3% of the frame become points. include = no hides; include = yes forces.
+- **Review page:** full outlines on the Leaflet map (green fill / dashed), tooltip "(area)".
+- **Result:** Sumatra -- Kerinci Seblat NP + Merangin, Kerinci; Simpson -- Simpson Desert NP; Himalaya -- six districts;
+  Shewa -- West Shewa, Jeldu. Lesson: Nominatim's first hit for "Chitwan District" was a BUILDING (District
+  Development Office) -- hence the class filter. Windows writeLines saves CRLF: normalise before string edits.
+- **Name placement (2026-10-25, after Kim's test):** Kim moved names by editing lon/lat -- that moves the PLACE,
+  so the frame was re-planned ("often completely changed the map"). New points.csv columns move only the NAME:
+  `label_pos` (N NE E SE S SW W NW | none) and `label_lon`/`label_lat` (exact spot; points get a leader line).
+  Area names now join the automatic (repelled) placement with point names. Kim's four coordinate edits
+  (Kerinci Seblat NP, Kerinci; Ethiopia, Jeldu district) restored to gazetteer positions and his chosen spots
+  kept as label_lon/label_lat. Review-page instructions updated.
+- **Stale-code incident:** pub_01/03/07 rerendered from Kim's console with PubMaps code loaded before the label
+  change -> old points.csv format, label columns lost (not Excel). Fix: `pubmap()`/`pubmap_rerender()` now call
+  `pubmaps_load()` (re-source all modules) every run. Lost name positions for Kerinci Seblat, Kerinci, Jeldu re-applied.
+- **Name only:** `include = name` prints the name with no symbol (regions in capitals, italic grey), e.g. YUCATAN.
+  Name-only labels count when choosing the inset corner (Yucatan centre was under the inset).
+- **Editor's Guide (2026-10-25, evening):** Kim: one book, two parts, tight focus. Quarto book at
+  `PubMaps/book/` (documents-series style): Part I Editor's Guide -- Preface, 1 Getting Started, 2 The Review Folder,
+  3 Correcting the Map, Appendix (status/match tables, functions, env vars) drafted; 4 Worked Examples,
+  5 Working with the Author, 6 Troubleshooting are stubs. Part II Methods later. Renders to `book/_output/`.
+  Code fix while writing: `include = yes` on a park/district now draws the AREA (was forcing a point).
+  Kim will use the guide for final testing.

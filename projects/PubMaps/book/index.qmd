@@ -1,0 +1,20 @@
+# Preface {.unnumbered}
+
+Most field studies need a map. A reader wants to know where the villages, plots and transects were, and how they sit in the wider country. Authors draw these maps once or twice in a career. The results vary. Some are excellent. Many have the wrong projection, no scale, an unreadable inset, or sites placed by guesswork.
+
+PubMaps grew out of that problem. Will McClatchey spent years as a journal editor redrawing authors' maps so they could be published. The drawing was not the hardest part. The time went into reading each manuscript closely to find every place it mentioned, then working out where each one actually was. PubMaps takes on that reading and locating work, and then draws a consistent, publication-ready map.
+
+It is a tool for an editor, or for the one person in a lab who makes maps for everyone else. That person sees many manuscripts. They learn the tool once and use it often. An author making a single map would find it easier to ask that person.
+
+The work is divided so that each part does what it does well:
+
+-   **A language model reads.** It goes through the whole manuscript and lists every place that belongs on the map, with the page and the sentence where it found each one. It copies coordinates only when the manuscript states them. It never estimates a position.
+-   **Gazetteers locate.** Two place-name databases, GeoNames and OpenStreetMap, supply the positions. Each one is recorded with its source and how well the name matched.
+-   **Code decides the geometry.** The frame, projection, inset, scale bar and north arrow follow fixed rules, so every map is planned the same way.
+-   **The editor checks and corrects.** Everything PubMaps decided is laid out on a review page. Corrections go into one plain table, and the map is redrawn from it.
+
+This book is in two parts. Part I, the Editor's Guide, is practical. It shows how to run PubMaps, read the review page, and correct a map. Part II, on methods, will explain how PubMaps makes its decisions. Seven published papers serve as test cases throughout: study areas in Sumatra, the Simpson Desert, Yucatán, Chitwan, the Garhwal Himalaya, Mt. Kasigau in Kenya, and Shewa in Ethiopia.
+
+Commands you type into R are shown in grey boxes. Everything else is ordinary reading.
+
+This book was written jointly by K. W. Bridges and Claude (Anthropic), as was the PubMaps code it describes.

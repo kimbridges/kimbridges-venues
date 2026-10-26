@@ -1,0 +1,3 @@
+# Working with the Author
+
+*To be written.* Sending the author query, what to ask for, and turning the replies into `points.csv` entries.

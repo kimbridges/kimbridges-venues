@@ -1,0 +1,110 @@
+# Correcting the Map
+
+No automatic map is right every time. A village is missing from the gazetteers, a name sits on top of another, or a place the authors care about is left off. All of these are fixed in one file, `points.csv`, and the map is redrawn from it.
+
+This chapter goes through the file column by column. Chapter 4 works through real cases.
+
+## The correction cycle
+
+1.  Open `points.csv` from the review folder. Excel is fine.
+2.  Make your changes and save. In Excel, keep the format **CSV UTF-8 (Comma delimited)** so accented names (Yucatán, Labná) survive.
+3.  Close `points.csv` and close the map's PDF if it is open.
+4.  Redraw:
+
+``` r
+pubmap_rerender("G:/My Drive/Projects/PubMaps/review/<manuscript>")
+```
+
+5.  Refresh `review.html` in the browser.
+
+Redrawing takes a few seconds. Repeat the cycle as often as you like. Each redraw rewrites `points.csv` with your changes kept and the **status** column brought up to date.
+
+## The columns
+
+Each row is one place. Some columns are yours to change. The rest are information.
+
+| Column | Change it? | Purpose |
+|------------------------|------------------------|------------------------|
+| `id` | never | PubMaps' row number. Leave it alone; blank it only for a new row. |
+| `include` | yes | Whether the place is drawn. |
+| `label` | yes | The name printed on the map. |
+| `label_pos` | yes | Which side of the symbol the name goes. |
+| `label_lon`, `label_lat` | yes | An exact position for the name. |
+| `name` | no | The name as the manuscript spells it. To print something different, use `label`. |
+| `role` | yes | What kind of place it is (see below). |
+| `lon`, `lat` | yes | The place's position, in decimal degrees. |
+| `note` | yes | Your own notes. PubMaps keeps them and ignores them. |
+| `coord_source`, `match`, `status`, `gaz_name`, `gaz_type`, `page`, `evidence` | no | Where the position came from, why the place is or is not drawn, and where the manuscript mentions it. |
+
+## Showing or hiding a place: `include`
+
+| Value | Effect |
+|------------------------------------|------------------------------------|
+| blank | PubMaps decides, using the rules in the status column. |
+| `yes` | Always draw it, if it has a position. Use this for a place PubMaps left out as "context". |
+| `no` | Never draw it. Works for points and for areas. |
+| `name` | Print the name only, with no symbol. Use this for a state, a region or a mountain range. |
+
+A name-only place is printed at its own position. States and districts appear in grey italic capitals, for example **YUCATÁN**. If that position is not where you want the name, give it a `label_lon` and `label_lat`.
+
+## Changing the printed name: `label`
+
+`label` is the text that appears on the map. It starts as the manuscript's spelling. Change it to shorten a long name ("Kerinci Seblat NP"), to correct a spelling, or to add an accent the manuscript lacked. The `name` column stays as it was, so the place can still be traced back to the manuscript.
+
+## Moving a name, not the place
+
+Names sometimes collide or sit awkwardly. Two columns move a name without touching the place.
+
+**`label_pos`** puts the name on one side of its symbol: `N`, `NE`, `E`, `SE`, `S`, `SW`, `W` or `NW`. A name set this way stays exactly there; it is no longer moved automatically. Use `none` to hide a name and keep the symbol.
+
+**`label_lon` and `label_lat`** put the name at an exact spot. Read the coordinates off the check map or the grid of the finished map. A point's name gets a thin leader line back to its symbol. For a park or district, this is the way to move its name to an open part of the area.
+
+Leave both blank and PubMaps places the name itself, keeping it clear of other names.
+
+::: callout-important
+## The one rule
+
+**`lon` and `lat` move the place. The label columns move only the name.**
+
+Changing `lon` or `lat` tells PubMaps the place itself is somewhere else. The frame, inset and scale are then planned again around the new position, which can change the whole map. If you only want a name to move, use `label_pos` or `label_lon`/`label_lat`.
+:::
+
+## Setting a position: `lon` and `lat`
+
+Type a position when the gazetteer found the wrong place, or found nothing. Use decimal degrees, with south and west negative: Mt. Kasigau is at about `lon = 38.66`, `lat = -3.83`.
+
+A typed position is marked **set by the editor** (purple on the check map). From then on it is treated like any other position: a study site with a typed position is drawn. If a place PubMaps would normally leave out as context should also be drawn, put `yes` in `include` as well.
+
+To remove a position, clear both cells. The place becomes **not located**.
+
+## Changing the role
+
+The role decides the symbol and whether a place is normally drawn. If the model gave a place the wrong role, change it here.
+
+| Role | Meaning | Drawn by default? |
+|------------------------|------------------------|------------------------|
+| `study_site` | a village or locality where fieldwork took place | yes |
+| `sampling_point` | a plot, transect or station | yes |
+| `reference_town` | a town used to locate the study | yes |
+| `natural_feature` | a mountain, river, lake or spring | if it is a point (a peak, spring, waterhole), not a range or river |
+| `protected_area` | a park or reserve | as a shaded area, when its outline is found |
+| `administrative_unit` | a district, county, province or state | as a dashed outline; small units as points |
+| `other` | anything else | if the gazetteer shows it is a point (a homestead, farm or airstrip) |
+| `relative_location` | a position given only relative to something ("2 km north of the village") | no; it goes into the author query |
+
+## Adding a place
+
+To add a place the manuscript does not name, or one the model missed, add a row at the bottom:
+
+-   leave `id` blank;
+-   give a `name` (or a `label`);
+-   give a `role` (blank means `study_site`);
+-   give `lon` and `lat`.
+
+The new place is marked **set by the editor** and drawn.
+
+## Things to know
+
+-   **Areas.** Parks and districts are drawn from their OpenStreetMap outlines. `include = no` hides one. `include = yes` forces one to be drawn even if PubMaps would skip it, for example a province that covers the whole map. Its name responds to `label`, `label_pos` and `label_lon`/`label_lat` like any other.
+-   **Keep the file a CSV.** If Excel offers to save as a workbook, decline. PubMaps reads only `points.csv`.
+-   **Your changes are kept.** Each redraw writes your edits back into `points.csv`. The status column changes to show what PubMaps now does with each place.

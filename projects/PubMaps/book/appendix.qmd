@@ -1,0 +1,67 @@
+# Appendix {.unnumbered}
+
+## Status messages
+
+The **status** column of `points.csv`, and of the table on the review page, says what PubMaps did with each place. If a place is missing from the map, its status says why.
+
+| Status | Meaning | What you can do |
+|------------------------|------------------------|------------------------|
+| on map | Drawn as a point. | — |
+| drawn as area | A park or district drawn from its outline. | `include = no` to hide it. |
+| name only (no symbol) | You set `include = name`. | — |
+| excluded by editor | You set `include = no`. | Clear `include` to undo. |
+| not located (author query) | A study site, plot or town with no position. It is in the author query. | Type `lon`/`lat`, or ask the author. |
+| not located (context) | Another kind of place with no position. Not needed on the map. | Type a position and `include = yes` if it matters. |
+| generic name (author query) | A description rather than a name ("Ward no. 3", "plot 396 B", "national forest reserve"). Gazetteers cannot look these up. | Ask the author for positions, or type them. |
+| relative location (author query) | Located only relative to something else ("2 km above the village"). Grouped into one request in the author query. | Ask the author for GPS positions. |
+| far from the study (check) | The gazetteer position is much farther from the other places than expected, often a different place with the same name. | Check it on the check map; type the right position or set `include = no`. |
+| *role* (context, not a point) | A place named for context, such as a country or a large region. | `include = name` to name it. `include = yes` forces it: a park or district is then drawn as an area, anything else as a point. |
+| area or line feature (context, not a point) | A natural feature too large to be a point: a mountain range, river, desert or plain. | `include = name` to name it without a symbol. |
+| duplicate of '*name*' | The same place twice under one name, within 5 km. | — |
+| province/state (shown by the state boundaries) | A state or province. The dashed state lines already show it. | `include = name` to name it; `include = yes` to outline it. |
+| area covers the whole map (context) | A district or park that fills the frame. Shading it would tint everything. | `include = name` to name it. |
+| area outside the map frame | The area does not reach the map. | — |
+| only a sliver inside the map (context) | Only a thin edge of the area falls inside the frame. | `include = yes` to draw it anyway. |
+| same place is drawn as a point | A district with the same name as a town already on the map. | — |
+| … -- no outline found | No OpenStreetMap outline was found for this park or district. | `include = name` to name it. |
+
+## How a position was found
+
+The `match` column, and the marker colours on the check map:
+
+| Match | Meaning |
+|------------------------------------|------------------------------------|
+| stated | The manuscript gives the coordinates. |
+| editor | You typed the position. |
+| exact | The gazetteer name matched exactly and the feature is the right kind. |
+| partial | A close name, a slightly different kind of feature, or a spelling variant. Confirm it. |
+| suggestion | The gazetteer offered something of the wrong kind (a road for a mountain). Not placed. |
+| none | Not located. |
+
+`coord_source` names the source: `text` (the manuscript), `editor`, `geonames` or `nominatim` (OpenStreetMap).
+
+## Functions and settings
+
+**`pubmap(manuscript, dir = NULL, provider = "openai", model = "gpt-6.1-sol", backends = c("geonames", "nominatim"), relief = FALSE)`**\
+Reads a manuscript and builds its review folder.
+
+-   `manuscript`: path to the PDF (or a text file).
+-   `dir`: where to write the review folder. By default `review/<manuscript name>` inside the PubMaps folder.
+-   `provider`, `model`: which language model reads the manuscript (`"openai"` or `"anthropic"`).
+-   `backends`: which gazetteers to search, in order.
+-   `relief`: `TRUE` adds a second map, `map_relief.pdf`, with shaded relief.
+
+**`pubmap_rerender(dir, relief = FALSE)`**\
+Redraws a map from its `points.csv` after corrections. Does not read the manuscript again.
+
+**`options(pubmaps.home = "...")`**\
+The PubMaps folder. Set it before loading PubMaps.
+
+**Environment variables** (in `.Renviron`):
+
+| Variable | Purpose |
+|------------------------------------|------------------------------------|
+| `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` | Access to the language model. |
+| `GEONAMES_USERNAME` | Your GeoNames account name. |
+| `GEONAMES_HOST` | Optional. The GeoNames server; set it for a premium account. |
+| `GEONAMES_TOKEN` | Optional. A premium account's token, if it uses one. |

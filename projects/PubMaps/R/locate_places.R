@@ -28,7 +28,10 @@ norm_name <- function(x) {
 
 GENERIC_WORDS <- c("village", "villages", "settlement", "town", "city", "area",
                    "district", "subdistrict", "sub district", "province",
-                   "municipality", "county", "region", "complex", "site", "the")
+                   "municipality", "county", "region", "complex", "site", "the",
+                   # local administrative words gazetteers prefix or suffix (2026-10-25)
+                   "desa", "kecamatan", "kabupaten", "kelurahan", "gampong",
+                   "woreda", "awraja", "zone")
 
 core_name <- function(x) {
   x <- norm_name(x)
@@ -133,10 +136,15 @@ nominatim_search <- function(q, cc = NULL, cache_dir = NULL) {
 # Backend: GeoNames (premium host by default). Same output columns.
 # ------------------------------------------------------------------------------
 geonames_search <- function(q, cc = NULL, cache_dir = NULL,
-                            host = Sys.getenv("GEONAMES_HOST", "https://secure.geonames.net"),
+                            # free server (http only; 10k credits/day). Premium (secure.geonames.net) still
+                            # refuses the username as of 2026-10-25 -- set GEONAMES_HOST when it works.
+                            host = Sys.getenv("GEONAMES_HOST", "http://api.geonames.org"),
                             user = Sys.getenv("GEONAMES_USERNAME", "kimbridges"),
-                            token = Sys.getenv("GEONAMES_TOKEN")) {
-  key <- paste0("gn_", gsub("[^A-Za-z0-9]", "_", paste(q, paste(cc, collapse = "-"))))
+                            token = Sys.getenv("GEONAMES_TOKEN"),
+                            fuzzy = NULL, bbox = NULL) {
+  key <- paste0(if (is.null(fuzzy)) "gn_" else "gnf_",
+                gsub("[^A-Za-z0-9]", "_", paste(q, paste(cc, collapse = "-"), fuzzy,
+                                                 if (is.null(bbox)) "" else paste(round(bbox, 2), collapse = "_"))))
   cf <- if (!is.null(cache_dir)) file.path(cache_dir, paste0(key, ".rds"))
   if (!is.null(cf) && file.exists(cf)) return(readRDS(cf))
   req <- request(paste0(host, "/searchJSON")) |>
@@ -144,6 +152,9 @@ geonames_search <- function(q, cc = NULL, cache_dir = NULL,
     req_error(is_error = function(r) FALSE)
   if (nzchar(token)) req <- req_url_query(req, token = token)
   if (length(cc)) req <- req_url_query(req, country = cc, .multi = "explode")
+  if (!is.null(fuzzy)) req <- req_url_query(req, fuzzy = fuzzy)  # NB isNameRequired=true disables fuzzy matching
+  if (!is.null(bbox)) req <- req_url_query(req, west = bbox[1], south = bbox[2],
+                                           east = bbox[3], north = bbox[4])
   j <- resp_body_json(req_perform(req))
   if (!is.null(j$status)) stop("GeoNames: ", j$status$message)
   out <- if (!length(j$geonames)) NULL else do.call(rbind, lapply(j$geonames, function(g) {
@@ -164,16 +175,23 @@ geonames_search <- function(q, cc = NULL, cache_dir = NULL,
 # ------------------------------------------------------------------------------
 # Candidates for one place: try name variants until something comes back
 # ------------------------------------------------------------------------------
+# Every backend is asked (first name variant that returns anything, per backend) and
+# ALL candidates are pooled, so the scorer chooses across gazetteers. (Until
+# 2026-10-25 the first backend to answer won outright -- GeoNames then displaced
+# better Nominatim matches, e.g. "Jambi Province" -> a village 730 km away.)
 place_candidates <- function(name, cc, backends, cache_dir) {
+  pool <- list()
   for (b in backends) {
     f <- switch(b, nominatim = nominatim_search, geonames = geonames_search)
     for (v in name_variants(name)) {
       cand <- tryCatch(f(v, cc, cache_dir), error = function(e) {
         message(b, " failed for '", v, "': ", conditionMessage(e)); NULL })
-      if (!is.null(cand) && nrow(cand)) { cand$query <- v; return(cand) }
+      if (!is.null(cand) && nrow(cand)) { cand$query <- v; pool[[b]] <- cand; break }
     }
   }
-  NULL
+  if (!length(pool)) return(NULL)
+  cols <- Reduce(intersect, lapply(pool, names))
+  do.call(rbind, lapply(pool, function(p) p[, cols, drop = FALSE]))
 }
 
 score_candidates <- function(cand, name, role, admin1) {
@@ -263,8 +281,44 @@ locate_places <- function(places, study = attr(places, "study"),
     places$gaz_lon[i] <- b$lon; places$gaz_lat[i] <- b$lat
     places$n_candidates[i] <- nrow(cd)
   }
-  places$coord_source[is.na(places$coord_source) | is.na(places$lon)] <- "none"
   places$match[is.na(places$match)] <- "none"
+
+  # pass 3 (2026-10-25): spelling variants. For places still not found, ask GeoNames
+  # for FUZZY name matches inside a box around the study. Accepted only if the name
+  # is close (sim >= 0.75), the feature is the right kind, and it lies within the
+  # study radius; marked "partial" + flag "spelling" so the editor confirms it.
+  # (Catches the manuscript's "Kiteghe" = gazetteer "Kitege".)
+  places$fuzzy <- FALSE
+  if (!is.null(anchor) && "geonames" %in% backends) {
+    # radius from the study's own POINT places only (sites, plots, towns) -- country and
+    # province centroids would inflate it and let distant look-alikes in
+    pt <- places$match %in% c("stated", "exact") &
+          places$role %in% c("study_site", "sampling_point", "reference_town")
+    d0 <- haversine_km(anchor[1], anchor[2], places$lon[pt], places$lat[pt])
+    rad <- if (length(d0)) max(30, 2 * median(d0, na.rm = TRUE)) else 30
+    dlat <- rad / 111; dlon <- rad / (111 * cos(anchor[2] * pi / 180))
+    bbox <- c(anchor[1] - dlon, anchor[2] - dlat, anchor[1] + dlon, anchor[2] + dlat)
+    todo <- which(places$match == "none" & places$role != "relative_location" &
+                  !is_generic_name(places$name))
+    for (i in todo) {
+      cc <- suppressWarnings(countrycode(places$country[i], "country.name", "iso2c"))
+      cc <- if (!is.na(cc)) cc else cc_study
+      cand <- tryCatch(geonames_search(places$name[i], cc, cache_dir, fuzzy = 0.7, bbox = bbox),
+                       error = function(e) NULL)
+      if (is.null(cand) || !nrow(cand)) next
+      cand <- score_candidates(cand, places$name[i], places$role[i], places$admin1[i])
+      cand$km <- haversine_km(anchor[1], anchor[2], cand$lon, cand$lat)
+      cand <- cand[cand$sim >= 0.75 & cand$km <= rad & (cand$role_ok | cand$role_fallback), ]
+      if (!nrow(cand)) next
+      b <- cand[order(-cand$sim, cand$km), ][1, ]
+      places$match[i] <- "partial"; places$coord_source[i] <- "geonames"; places$fuzzy[i] <- TRUE
+      places$lon[i] <- b$lon; places$lat[i] <- b$lat
+      places$gaz_name[i] <- b$cand_name; places$gaz_type[i] <- b$ftype
+      places$gaz_id[i] <- b$gaz_id; places$gaz_admin1[i] <- b$admin1
+      places$gaz_lon[i] <- b$lon; places$gaz_lat[i] <- b$lat
+    }
+  }
+  places$coord_source[is.na(places$coord_source) | is.na(places$lon)] <- "none"
 
   # distance from the study's centre; flag the strays
   places$km_from_centre <- if (is.null(anchor)) NA else
@@ -276,6 +330,7 @@ locate_places <- function(places, study = attr(places, "study"),
                  ifelse(!is.na(places$km_from_centre) & places$km_from_centre > lim &
                           !places$role %in% c("administrative_unit", "protected_area"),
                         "far", "")))
+  places$flag[places$fuzzy & places$flag == ""] <- "spelling"
   attr(places, "study") <- study
   attr(places, "anchor") <- anchor
   attr(places, "far_km") <- lim

@@ -1,12 +1,12 @@
 manuscript: era_Hariyadi_and_Ticktin_2012.pdf
-made: 2026-10-24 21:01
+made: 2026-10-25 14:50
 read_by: openai gpt-6.1-sol
 projection: EPSG:32747
 extent_lonlat:
-- 101.18654
-- -2.56718
-- 101.91091
-- -2.00615
+- 101.0692
+- -3.11583
+- 102.57955
+- -1.94613
 page_mm:
 - 170.0
 - 130.0
@@ -25,9 +25,21 @@ points:
   match: exact
 - name: Renah Kemumu
   role: study_site
-  lon: 101.62533
-  lat: -2.43685
-  source: nominatim
+  lon: 101.62
+  lat: -2.431
+  source: geonames
+  match: exact
+- name: Bukit Barisan
+  role: natural_feature
+  lon: 102.25
+  lat: -3.0
+  source: geonames
+  match: exact
+- name: Jangkat Subdistrict
+  role: administrative_unit
+  lon: 101.75722
+  lat: -2.52667
+  source: geonames
   match: exact
 - name: Lempur
   role: reference_town

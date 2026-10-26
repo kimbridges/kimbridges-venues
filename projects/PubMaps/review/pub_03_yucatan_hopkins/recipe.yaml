@@ -1,43 +1,79 @@
 manuscript: era_Hopkins_et_al_2011.pdf
-made: 2026-10-24 20:59
+made: 2026-10-25 14:51
 read_by: openai gpt-6.1-sol
 projection: EPSG:32616
 extent_lonlat:
-- -90.05562
-- 19.94938
-- -88.49423
-- 21.08902
+- -90.81134
+- 19.67243
+- -88.51263
+- 21.35212
 page_mm:
 - 170.0
 - 130.0
 inset:
-  corner: tr
+  corner: tl
   countries: Mexico
-  widened_for_inset: no
-north_arrow: tl
+  widened_for_inset: yes
+north_arrow: tr
 scale_bar: bl
 points:
 - name: Tzucacab
   role: study_site
-  lon: -89.04973
-  lat: 20.07185
-  source: nominatim
-  match: partial
+  lon: -89.05009
+  lat: 20.0721
+  source: geonames
+  match: exact
 - name: Peto
   role: study_site
-  lon: -88.92343
-  lat: 20.12561
-  source: nominatim
-  match: partial
+  lon: -88.92302
+  lat: 20.1261
+  source: geonames
+  match: exact
 - name: Oxkutzcab
   role: study_site
-  lon: -89.41668
-  lat: 20.30448
-  source: nominatim
-  match: partial
+  lon: -89.41809
+  lat: 20.30734
+  source: geonames
+  match: exact
 - name: Mérida
   role: reference_town
-  lon: -89.62374
-  lat: 20.96708
+  lon: -89.62318
+  lat: 20.967
+  source: geonames
+  match: exact
+- name: Tekax
+  role: administrative_unit
+  lon: -89.28585
+  lat: 20.20523
   source: nominatim
+  match: exact
+- name: Ek Balam
+  role: other
+  lon: -89.06519
+  lat: 20.12329
+  source: geonames
+  match: exact
+- name: Sayil
+  role: other
+  lon: -89.65194
+  lat: 20.17798
+  source: geonames
+  match: exact
+- name: Labná
+  role: other
+  lon: -89.56667
+  lat: 20.21667
+  source: geonames
+  match: exact
+- name: Xlapak
+  role: other
+  lon: -89.60652
+  lat: 20.17452
+  source: geonames
+  match: exact
+- name: Sabacché
+  role: other
+  lon: -89.56972
+  lat: 20.20395
+  source: geonames
   match: exact

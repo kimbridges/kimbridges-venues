@@ -1,0 +1,107 @@
+# Getting Started
+
+This chapter sets PubMaps up and makes a first map. Setting up is done once. After that, a map is one command.
+
+## What you need
+
+-   **R**, a current version. PubMaps was developed with R 4.6. RStudio is convenient but not required.
+-   **An internet connection.** PubMaps sends the manuscript to a language model and looks places up in online gazetteers.
+-   **An account with a language-model provider.** PubMaps works with OpenAI or Anthropic. You need an API key from one of them.
+-   **A free GeoNames account.** Sign up at geonames.org, then turn on web services on your account page. That second step is easy to miss.
+-   **The PubMaps folder.** It holds the code (`R/`), a cache of gazetteer answers (`cache/`), and the review folders it creates (`review/`).
+
+## Install the packages
+
+PubMaps uses a set of standard R packages. Install them once:
+
+``` r
+install.packages(c("ellmer", "pdftools", "httr2", "jsonlite", "yaml",
+                   "sf", "rnaturalearth", "rnaturalearthdata",
+                   "ggplot2", "ggrepel", "ggspatial", "patchwork",
+                   "countrycode", "base64enc"))
+
+## detailed coastlines for small study areas
+install.packages("rnaturalearthhires",
+                 repos = "https://ropensci.r-universe.dev")
+```
+
+Two more packages, `elevatr` and `terra`, are needed only if you want shaded relief behind the map. They can wait.
+
+## Store your keys
+
+Keys belong in your `.Renviron` file, not in scripts or documents. Open it with:
+
+``` r
+usethis::edit_r_environ()
+```
+
+Add the lines that apply to you, save the file, and restart R:
+
+``` default
+OPENAI_API_KEY=your-openai-key
+ANTHROPIC_API_KEY=your-anthropic-key
+GEONAMES_USERNAME=your-geonames-name
+```
+
+You need only one of the two model keys. `GEONAMES_USERNAME` is essential: without your own name, lookups go out under the developer's account.
+
+::: callout-note
+## GeoNames premium
+
+If you have a premium GeoNames account, add `GEONAMES_HOST=https://secure.geonames.net` (and `GEONAMES_TOKEN=...` if your account uses one). With nothing set, PubMaps uses the free server, which allows 10,000 lookups a day. A manuscript needs a few hundred at most, and repeat lookups come from the cache.
+:::
+
+## Load PubMaps
+
+Tell R where the PubMaps folder is, then load it:
+
+``` r
+options(pubmaps.home = "G:/My Drive/Projects/PubMaps")
+source("G:/My Drive/Projects/PubMaps/R/pubmap.R")
+```
+
+Do this at the start of each R session. PubMaps reloads its own code every time it runs, so a session never uses an out-of-date version.
+
+## Make a first map
+
+Give `pubmap()` the manuscript. A PDF is best, because PubMaps reads it page by page and records where each place was found:
+
+``` r
+pubmap("C:/manuscripts/Medley_et_al_2010.pdf")
+```
+
+PubMaps works through five steps:
+
+1.  **Read.** The text is extracted from the PDF, one page at a time.
+2.  **Extract.** The language model reads the whole manuscript and returns every mappable place: its name, its role in the study, the page, and the sentence that mentions it. This is one request and takes up to a minute.
+3.  **Locate.** Each place is looked up in GeoNames and OpenStreetMap. OpenStreetMap allows one request a second, so a long manuscript takes a few minutes the first time. Answers are cached, so a second run is quick.
+4.  **Plan and draw.** PubMaps chooses the frame, projection and inset corner, and draws the map.
+5.  **Write the review folder.** Everything goes into a folder named after the manuscript, inside `review/`.
+
+When it finishes, PubMaps prints the path of the review page. Open that file in a web browser. Chapter 2 explains what you will find.
+
+## Choosing the reader
+
+By default the manuscript is read by an OpenAI model. To use Anthropic instead:
+
+``` r
+pubmap("paper.pdf", provider = "anthropic", model = "claude-sonnet-5-5")
+```
+
+Different models can produce slightly different place lists. Whichever you use is recorded on the review page.
+
+## Redrawing after corrections
+
+After you correct a map (Chapter 3), redraw it with:
+
+``` r
+pubmap_rerender("G:/My Drive/Projects/PubMaps/review/Medley_et_al_2010")
+```
+
+This does not read the manuscript again or repeat the lookups. It reads your corrections and redraws, in a few seconds.
+
+::: callout-important
+## Close the map PDF first
+
+If the map's PDF is open in a viewer, Windows will not let PubMaps replace it, and the redraw stops with an error. The same applies to `points.csv` if it is open in Excel. Close both before redrawing.
+:::

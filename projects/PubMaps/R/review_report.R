@@ -46,7 +46,8 @@ author_queries <- function(p, manuscript) {
       r <- conf[k, ]; ll <- if (!is.na(r$lat)) c(r$lat, r$lon) else c(r$gaz_lat, r$gaz_lon)
       out <- c(out, sprintf("  - %s: %s (gazetteer entry \"%s\", %s)%s",
         r$name, if (!is.na(ll[1])) fmt_ll(ll[1], ll[2]) else "?", r$gaz_name, r$gaz_type,
-        if (r$match == "suggestion") " -- not yet on the map" else ""))
+        if (r$match == "suggestion") " -- not yet on the map" else
+        if (isTRUE(r$flag == "spelling")) " -- spelled differently in the gazetteer" else ""))
     }
     out <- c(out, "")
   }
@@ -73,6 +74,12 @@ review_report <- function(plan, dir, manuscript, png = NULL, provider = "") {
   pts <- p[!is.na(p$show_lon), c("name", "role", "match", "status", "show_lon", "show_lat",
                                   "gaz_name", "gaz_type", "page", "evidence", "colour", "drawn")]
   js <- jsonlite::toJSON(pts, na = "null", dataframe = "rows", auto_unbox = TRUE)
+  ajs <- "null"
+  if (!is.null(plan$areas_ll) && nrow(plan$areas_ll)) {
+    tf <- tempfile(fileext = ".geojson")
+    st_write(st_transform(plan$areas_ll, 4326), tf, quiet = TRUE, delete_dsn = TRUE)
+    ajs <- paste(readLines(tf, warn = FALSE), collapse = ""); unlink(tf)
+  }
   ext <- plan$extent_lonlat
   img <- if (!is.null(png) && file.exists(png))
     sprintf('<img src="data:image/png;base64,%s" alt="Planned map">', base64enc::base64encode(png)) else ""
@@ -137,8 +144,12 @@ code{background:#f1f3f5;padding:1px 5px;border-radius:4px}
 <th>Position from</th><th>Status</th><th>Coordinates</th><th>Page</th><th>Evidence</th></tr></thead><tbody>
 ', rows, '</tbody></table></div>
 <h2>Making corrections</h2><div class="howto">Edit <code>points.csv</code> in this folder:
-<code>include</code> = yes / no to force a place on or off the map, <code>label</code> to change
-the printed name, <code>lon</code> / <code>lat</code> to set a position (decimal degrees). Add a row
+<code>include</code> = yes / no to force a place on or off the map (<code>name</code> = print the name only, without a symbol, e.g. a state), <code>label</code> to change
+the printed name, <code>lon</code> / <code>lat</code> to set a position (decimal degrees).
+<br><b>To move a name without moving the place:</b> <code>label_pos</code> = N, NE, E, SE, S, SW, W or NW
+puts the name on that side of the symbol (<code>none</code> hides it); or give <code>label_lon</code> /
+<code>label_lat</code> to put the name exactly there. Changing <code>lon</code>/<code>lat</code> moves the
+place itself, and the map frame is re-planned around it. Add a row
 with a blank <code>id</code> for a place the manuscript lacks. Then run
 <code>pubmap_rerender("', esc(normalizePath(dir, winslash = "/", mustWork = FALSE)), '")</code>.</div>
 </main><script>
@@ -163,6 +174,11 @@ pts.forEach(p=>{const sug=p.match==="suggestion";
   "<br>"+e(p.status)+(p.gaz_name?"<br>gazetteer: "+e(p.gaz_name)+" ("+e(p.gaz_type)+")":"")+
   (p.page?"<br>p. "+e(p.page)+": <i>"+e(p.evidence)+"</i>":""));
  if(p.drawn) b.extend([p.show_lat,p.show_lon]);});
+const areas=', ajs, ';
+if(areas) L.geoJSON(areas,{style:f=>f.properties.role==="protected_area"?
+ {color:"#3d6b30",weight:1.5,fillColor:"#7fbf5f",fillOpacity:0.18}:
+ {color:"#555",weight:1.5,dashArray:"6 4",fill:false},
+ onEachFeature:(f,l)=>l.bindTooltip(e(f.properties.name)+" (area)")}).addTo(map);
 map.fitBounds(b.pad(0.08));
 </script></body></html>')
   f <- file.path(dir, "review.html")
