@@ -1,0 +1,45 @@
+manuscript: era_36_11
+made: 2026-10-26 16:55
+read_by: openai gpt-6.1-sol
+pubmaps_version: 0.2.0
+projection: EPSG:32642
+extent_lonlat:
+- 71.53245
+- 34.71119
+- 71.83837
+- 34.90798
+page_mm:
+- 170.0
+- 130.0
+framed_by: points
+inset:
+  corner: tr
+  countries: Pakistan
+  widened_for_inset: no
+north_arrow: tl
+scale_bar: bl
+points:
+- name: Ghazi Baba
+  role: study_site
+  lon: 71.6865
+  lat: 34.7329
+  source: text
+  match: stated
+- name: Jandool
+  role: other
+  lon: 71.66186
+  lat: 34.88692
+  source: nominatim
+  match: partial
+- name: Mamund
+  role: administrative_unit
+  lon: 71.41065
+  lat: 34.82249
+  source: nominatim
+  match: partial
+- name: Naranj
+  role: other
+  lon: 71.70944
+  lat: 34.75861
+  source: geonames
+  match: exact

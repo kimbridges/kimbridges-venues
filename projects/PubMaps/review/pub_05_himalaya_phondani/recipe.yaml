@@ -1,6 +1,7 @@
 manuscript: era_Phondani_et_al_2010.pdf
-made: 2026-10-25 14:26
+made: 2026-10-26 17:01
 read_by: openai gpt-6.1-sol
+pubmaps_version: 0.2.0
 projection: EPSG:32644
 extent_lonlat:
 - 78.21845
@@ -10,6 +11,7 @@ extent_lonlat:
 page_mm:
 - 170.0
 - 130.0
+framed_by: points
 inset:
   corner: tl
   countries: India

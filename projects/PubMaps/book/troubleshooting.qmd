@@ -1,9 +1,159 @@
 # Troubleshooting
 
-*To be written.* Planned topics:
+Each entry starts from what you see: a message in R, or something odd on the review page or the map. Messages are quoted as PubMaps prints them.
 
--   The redraw stops with an error: the map PDF or `points.csv` is open.
--   A map with only one or two points.
--   A place lands in the wrong country or far from the study.
--   GeoNames refuses the username.
--   The model's place list looks incomplete.
+## Running PubMaps
+
+### An error that names an API key
+
+**Cause.** The model provider's key is missing. R reads `.Renviron` only when it starts, so a key added during a session is not seen until R restarts.
+
+**Fix.** Check that `.Renviron` has `OPENAI_API_KEY=` (or `ANTHROPIC_API_KEY=` if you use `provider = "anthropic"`), then restart R. Chapter 1 shows how to open the file.
+
+### "GeoNames skipped: set GEONAMES_USERNAME in .Renviron"
+
+**Cause.** No GeoNames username is set. PubMaps carries on with OpenStreetMap alone, which finds fewer villages.
+
+**Fix.** Add `GEONAMES_USERNAME=` to `.Renviron` and restart R.
+
+### Messages beginning "geonames failed for"
+
+**Cause.** GeoNames refused the request. The rest of the message is GeoNames' own explanation. The usual ones are that web services are not enabled on the account, or that the day's limit has been reached. Places are still looked up in OpenStreetMap, so the run finishes, but villages that only GeoNames knows will be missing.
+
+**Fix.** For "not enabled", sign in at geonames.org and turn on web services on your account page. That step is easy to miss when the account is new. For a premium account, check `GEONAMES_HOST` and `GEONAMES_TOKEN` (Chapter 1). Then make the map again (see *Starting again* below).
+
+### The first run is slow
+
+**Cause.** OpenStreetMap allows one lookup a second, and a manuscript can name a hundred places. A river's line takes up to half a minute the first time it is fetched.
+
+**Fix.** None needed. Every answer is saved in the cache, so later runs and redraws are quick.
+
+### The manuscript is a Word file
+
+**Cause.** PubMaps reads PDF and plain text. It cannot read a `.docx` file.
+
+**Fix.** Save the manuscript as a PDF from Word and give PubMaps the PDF. The page numbers on the review page then match the PDF's pages.
+
+### Almost nothing was found
+
+**Symptom.** The heading shows only a handful of places, or none, for a manuscript that clearly names many.
+
+**Cause.** The PDF is probably a scan: pictures of pages with no text in them. Try selecting a sentence in a PDF viewer. If you cannot, there is no text for the model to read.
+
+**Fix.** Run the PDF through text recognition (OCR), for example in Acrobat, or ask the author for the original file. Then make the map again.
+
+## Redrawing
+
+### "No review folder found for …"
+
+**Cause.** `pubmap_rerender()` was given a name it cannot match to a review folder. The message names the folder where it looked.
+
+**Fix.** Give the manuscript's name, as it appears in the review folder's name, for example `pubmap_rerender("Medley_et_al_2010")`. Or copy the redraw line from the review page, which has the folder filled in.
+
+### The redraw stops with an error about a file
+
+**Cause.** The map's PDF is open in a viewer, or `points.csv` is open in Excel. Windows will not let PubMaps replace a file that is open.
+
+**Fix.** Close both and redraw.
+
+### Accented names have turned into odd characters
+
+**Cause.** `points.csv` was saved from Excel in a format that does not keep accents, so Yucatán becomes something like YucatÃ¡n.
+
+**Fix.** Correct the names, and save as **CSV UTF-8 (Comma delimited)**. Chapter 3 has the details.
+
+### A correction made no difference
+
+**Check:**
+
+-   that you refreshed `review.html` in the browser after the redraw;
+-   that you edited `points.csv` in the right review folder;
+-   that the change is in a column PubMaps reads. Changes to `name`, `status` or the other information columns are ignored; use `label` to change a printed name;
+-   that `lon` and `lat` are in decimal degrees, with south and west negative.
+
+## The map
+
+### Only one or two points, or no map at all
+
+**Message.** `PLAN: Only 2 point(s) located -- too few for a useful map; resolve the author queries first.` If nothing at all could be placed: `No located points or study areas to draw.`
+
+**Cause.** The study sites could not be located. They may be absent from the gazetteers, or the manuscript gives their positions only in relation to other places ("2 km above the village").
+
+**Fix.** Look at the places counted as **need coordinates**. Send the author query (Chapter 5), or type positions you know into `lon` and `lat` (Chapter 3).
+
+### A place is far from the study
+
+**Status.** `far from the study (check)`.
+
+**Cause.** The gazetteer found a place of that name, but much farther from the study than everything else: more than three times the typical distance of the confident matches, and at least 50 km. Usually this is a namesake. In the Assam example in Chapter 4, "Northeast India" matched a railway line 1,500 km away. Such places are not drawn.
+
+**Fix.** If the place does not belong on the map, do nothing. If it does, and the gazetteer picked the wrong one, type the right position into `lon` and `lat`. If the place really is far away and the map should show it, put `yes` in `include`. The frame will grow to take it in.
+
+### A place is in the right area but the wrong spot
+
+**Cause.** A partial match: a similar name nearby, or the gazetteer's point for a village is off to one side. Partial matches have orange markers and are counted as **to confirm**.
+
+**Fix.** Check it on the **Satellite + labels** background, then type the right position. Chapter 4 shows this for Kiteghe.
+
+### A place is flagged as a generic name
+
+**Status.** `generic name (author query)`.
+
+**Cause.** Names such as "Plot 3", "Site A" or "Transect 2" are labels within the study, not place names. No gazetteer can find them.
+
+**Fix.** Ask the author for their coordinates (Chapter 5), or type them in if the manuscript gives them in a table.
+
+### A river is missing
+
+**Status.** One of:
+
+| Status | Meaning and fix |
+|------------------------------------|------------------------------------|
+| `river not found within the map` | OpenStreetMap has no river of that name inside the frame. It may use another spelling, or the river may be unnamed there. Try OpenStreetMap's spelling in `label` and redraw. |
+| `river: map server not reachable (redraw later)` | The river server did not answer. Nothing was saved, so simply redraw later. |
+| `same river as '…'` | The manuscript names one river in two ways. It is drawn once. |
+
+### A park or district is not drawn
+
+**Status.** One of:
+
+| Status | Meaning |
+|------------------------------------|------------------------------------|
+| `area outside the map frame` | The area is beyond the edge of the map. |
+| `area covers the whole map (context)` | Shading or outlining it would add nothing. |
+| `only a sliver inside the map (context)` | Too little of it is on the map to be worth drawing. |
+| `province/state (shown by the state boundaries)` | The state boundaries already show it. To print its name, use `include = name`. |
+
+**Fix.** Usually none. For the last three, `include = yes` draws the area anyway. An area outside the frame cannot be drawn, because the frame is planned around the study, not its surroundings.
+
+## The reading
+
+### A place in the manuscript is missing from the list
+
+**Cause.** The model reads well but not perfectly. It can miss a place mentioned only once, or only in a table or a figure caption.
+
+**Fix.** Add the place as a new row in `points.csv` (Chapter 3). For a manuscript where several places are missing, read it again with the other provider into a separate folder, and compare the two lists:
+
+``` r
+pubmap("paper.pdf", provider = "anthropic", dir = "C:/maps/review/paper_anthropic")
+```
+
+### A place has the wrong role
+
+**Cause.** The model decides each place's role from the text. A town used only to give directions may be called a study site, or the reverse.
+
+**Fix.** Change the `role` column (Chapter 3).
+
+## Starting again
+
+`pubmap()` reads the manuscript afresh and **replaces `points.csv`**, so any corrections in that folder are lost. To keep them, use `pubmap_rerender()`, which never reads the manuscript again.
+
+To start again without paying for a second reading, for example after fixing a GeoNames problem, give `pubmap()` the place list it saved the first time:
+
+``` r
+dir <- "C:/maps/review/Medley_et_al_2010"
+pubmap("Medley_et_al_2010.pdf",
+       places = readRDS(file.path(dir, "places_extracted.rds")))
+```
+
+This repeats the lookups and the planning, but not the reading. It also replaces `points.csv`.

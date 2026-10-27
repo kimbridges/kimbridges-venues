@@ -1,9 +1,118 @@
 # Worked Examples
 
-*To be written.* Real corrections from the seven test manuscripts:
+Each example below is a real case from the test manuscripts. It shows what the review page reported, the change made in `points.csv`, and what the redraw produced. Only the columns that matter are shown; the rest of each row is left as it was.
 
--   **Kiteghe, Mt. Kasigau.** The manuscript spells it Kiteghe; the gazetteers spell it Kitege. Confirming a spelling match, or typing the position.
--   **Kerinci Seblat National Park, Sumatra.** Moving an area's name to an open part of the park.
--   **YUCATÁN.** Naming a state without a symbol.
--   **Tsavo West, Mt. Kasigau.** Leaving out a place that is outside the study frame.
--   **The Chitwan villages.** Study villages that are formally administrative units.
+## Confirming a spelling match: Kiteghe
+
+**The situation.** The Mt. Kasigau manuscript names five villages. Four matched the gazetteers exactly. The fifth, Kiteghe, did not. GeoNames has a village called Kitege, a different transliteration of the same name, 4 km from the mountain's summit.
+
+**What the review page shows.** The heading counts **1 to confirm**. On the check map Kiteghe has an orange marker: a partial match. It is drawn, because it is a study site with a position, but PubMaps is asking you to check it. The row in `points.csv`:
+
+| name | lon | lat | coord_source | match | gaz_name | gaz_type |
+|---------|---------|---------|---------|---------|---------|---------|
+| Kiteghe | 38.64862 | -3.78428 | geonames | partial | Kitege | P:PPL |
+
+`P:PPL` is GeoNames' code for a populated place, so the gazetteer found a village, not a hill or a stream of a similar name.
+
+**Checking it.** Click the marker. The pop-up shows the gazetteer entry and the manuscript's sentence. Switch the background to **Satellite + labels** and zoom in: the point sits on a settlement on the lower slopes, where the manuscript puts the village.
+
+**The correction.** Type the position into `lon` and `lat` yourself. Here the gazetteer's position was right, so the same numbers go back in:
+
+| name | lon | lat |
+|---------|---------|---------|
+| Kiteghe | 38.6486 | -3.7843 |
+
+Four decimal places are about 11 m, which is plenty.
+
+**The result.** After the redraw the marker is purple, **set by the editor**, and the heading shows **0 to confirm**. The map itself does not change. What changes is the record: `recipe.yaml` now shows that a person checked this position.
+
+If the satellite view had shown the point in empty bush, the correction would be the same, with the right coordinates in place of the gazetteer's.
+
+## Moving an area's name: Kerinci Seblat National Park
+
+**The situation.** The Sumatra map is dominated by Kerinci Seblat National Park, drawn as a green area. PubMaps places an area's name automatically, keeping it clear of other names. Here it chose a spot at the edge of the park, next to the two study villages, Renah Kemumu and Tanjung Kasri. The name works, but it crowds the part of the map the reader most needs to see.
+
+**The correction.** Give the name its own position with `label_lon` and `label_lat`. Read a spot off the map's grid: the open part of the park, south-east of the villages, around 102.0° E, 2.8° S.
+
+| name | label_lon | label_lat |
+|---------|---------|---------|
+| Kerinci Seblat National Park | 102.0 | -2.8 |
+
+`lon` and `lat` are not touched. They are the park's position, and changing them would re-plan the whole map.
+
+**The result.** The name moves into the empty green, and the villages are left clear.
+
+::: {layout-ncol="2"}
+![Before: the park's name beside the study villages.](images/examples/kerinci_before.png)
+
+![After: the name moved with `label_lon` and `label_lat`.](images/examples/kerinci_after.png)
+:::
+
+## Naming a state without a symbol: Yucatán
+
+**The situation.** The Yucatán study lies entirely within the state of Yucatán. The manuscript names the state, and PubMaps located it, but did not draw it. Its status reads **province/state (shown by the state boundaries)**: the state is already present as its boundary lines, and a point symbol for a whole state would be misleading. The result is a map that never says which state the reader is looking at.
+
+**The correction.** Ask for the name only, with no symbol:
+
+| name | include |
+|---------|---------|
+| Yucatán | name |
+
+**The result.** **YUCATÁN** appears in grey italic capitals, the style used for states and districts. The status changes to **name only (no symbol)**.
+
+Notice that the frame changed too. The name sits where the inset had been, in the upper right. PubMaps moved the inset to the upper-left and widened the frame to make room for it. A name-only place takes part in the layout like any other. If the result is not what you want, `label_lon` and `label_lat` can put the name elsewhere.
+
+::: {layout-ncol="2"}
+![Before: the state is not named.](images/examples/yucatan_before.png)
+
+![After: `include = name`. The inset has moved to make room.](images/examples/yucatan_after.png)
+:::
+
+## Places left off on purpose
+
+Not every place in a manuscript belongs on its map. Before correcting anything, read the **status** column: it says why each place is or is not drawn. Often the answer is that PubMaps made the right call.
+
+**A map that needs no corrections.** The Assam manuscript studies two districts, Dibrugarh and Majuli. It names eight places:
+
+| name | gazetteer match | status |
+|---------|---------|---------|
+| Dibrugarh district | Dibrugarh | drawn as area |
+| Majuli district | Majuli | drawn as area |
+| Majuli | Mājuli Island | area or line feature (context, not a point) |
+| Brahmaputra River | Brahmaputra | drawn as river |
+| Assam | Assam | province/state (shown by the state boundaries) |
+| Upper Assam | Upper Dikrai (a stream) | other (context, not a point) |
+| Northeast India | Northeast Railway Kāshīpur Extension | far from the study (check) |
+| India | India | province/state (shown by the state boundaries) |
+
+The two districts are drawn as outlines, and they set the frame, because they are the study. Majuli the island is an area, not a point, and the district outline already shows it, so it gets no symbol of its own. The Brahmaputra is drawn as a river. Assam and India are shown by their boundaries and by the inset.
+
+The last three rows show why the status column matters. The gazetteers had nothing sensible for "Upper Assam" or "Northeast India", and matched a stream and a railway line instead. Neither reached the map. The railway is about 1,500 km away and is flagged **far from the study (check)**. Nothing needs to be done about either. They are not places to map, and PubMaps has kept them off.
+
+![The Assam map, with no corrections.](images/examples/assam.png){fig-align="center" width="80%"}
+
+**Parks outside the frame.** The Mt. Kasigau manuscript describes the mountain as rising "from the semiarid plains between Tsavo East and West national parks". Both parks have the status **area outside the map frame**. They lie beyond the edge of a map drawn around the mountain and its villages, so they are left off. Forcing one on with `include = yes` would stretch the map to take in a park the study did not work in. The inset already shows where the mountain sits in Kenya.
+
+## Putting the key in the caption: Shewa
+
+**The situation.** Some journals do not want a legend inside the figure. They explain the symbols in the caption, which they typeset themselves.
+
+**The correction.** This is not a change to `points.csv`. Redraw with the legend switched off:
+
+``` r
+pubmap_rerender("pub_07_shewa_eticha", legend = FALSE)
+```
+
+Here `pub_07_shewa_eticha` is the name of the review folder; use your manuscript's name. The choice is remembered for this review folder, so later redraws leave the legend off until you ask for it back with `legend = TRUE`.
+
+**The result.** The legend strip under the map is gone. The review page, and `symbol_key.txt` in the review folder, give the key as a sentence, ready to send with the figure:
+
+> Orange circle, study site; dark blue squares, towns; dark grey dashed lines, district boundaries (West Shewa and Jeldu district); fine grey dashes, state or province boundaries. Inset: location of the map area (orange box) in Ethiopia.
+
+The key is written either way, so it can also go into a caption alongside the legend.
+
+::: {layout-ncol="2"}
+![With the legend strip.](images/examples/shewa_legend.png)
+
+![`legend = FALSE`: the symbols are explained in the caption.](images/examples/shewa_nolegend.png)
+:::

@@ -12,8 +12,10 @@ This chapter goes through the file column by column. Chapter 4 works through rea
 4.  Redraw:
 
 ``` r
-pubmap_rerender("G:/My Drive/Projects/PubMaps/review/<manuscript>")
+pubmap_rerender("<manuscript name>")
 ```
+
+For example, `pubmap_rerender("Medley_et_al_2010")`. The review page shows this line with the folder filled in; copy it from there.
 
 5.  Refresh `review.html` in the browser.
 
@@ -86,7 +88,7 @@ The role decides the symbol and whether a place is normally drawn. If the model 
 | `study_site` | a village or locality where fieldwork took place | yes |
 | `sampling_point` | a plot, transect or station | yes |
 | `reference_town` | a town used to locate the study | yes |
-| `natural_feature` | a mountain, river, lake or spring | if it is a point (a peak, spring, waterhole), not a range or river |
+| `natural_feature` | a mountain, river, lake or spring | a peak, spring or waterhole as a point; a river as a blue line; a range or plain not at all |
 | `protected_area` | a park or reserve | as a shaded area, when its outline is found |
 | `administrative_unit` | a district, county, province or state | as a dashed outline; small units as points |
 | `other` | anything else | if the gazetteer shows it is a point (a homestead, farm or airstrip) |
@@ -105,6 +107,7 @@ The new place is marked **set by the editor** and drawn.
 
 ## Things to know
 
+-   **Rivers.** A river named in the manuscript is drawn as a blue line, from OpenStreetMap, wherever it crosses the map. `include = no` hides it; `include = name` prints only its name. The first redraw with a new river can take half a minute while the line is fetched; later redraws use the saved copy.
 -   **Areas.** Parks and districts are drawn from their OpenStreetMap outlines. `include = no` hides one. `include = yes` forces one to be drawn even if PubMaps would skip it, for example a province that covers the whole map. Its name responds to `label`, `label_pos` and `label_lon`/`label_lat` like any other.
 -   **Keep the file a CSV.** If Excel offers to save as a workbook, decline. PubMaps reads only `points.csv`.
 -   **Your changes are kept.** Each redraw writes your edits back into `points.csv`. The status column changes to show what PubMaps now does with each place.

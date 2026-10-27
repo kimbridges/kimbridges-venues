@@ -16,7 +16,11 @@ The **status** column of `points.csv`, and of the table on the review page, says
 | relative location (author query) | Located only relative to something else ("2 km above the village"). Grouped into one request in the author query. | Ask the author for GPS positions. |
 | far from the study (check) | The gazetteer position is much farther from the other places than expected, often a different place with the same name. | Check it on the check map; type the right position or set `include = no`. |
 | *role* (context, not a point) | A place named for context, such as a country or a large region. | `include = name` to name it. `include = yes` forces it: a park or district is then drawn as an area, anything else as a point. |
-| area or line feature (context, not a point) | A natural feature too large to be a point: a mountain range, river, desert or plain. | `include = name` to name it without a symbol. |
+| area or line feature (context, not a point) | A natural feature too large to be a point: a mountain range, desert or plain. | `include = name` to name it without a symbol. |
+| drawn as river | A river, drawn as a blue line where it crosses the map. | `include = no` to hide it; `include = name` for the name alone. |
+| river not found within the map | No stretch of a river of that name crosses the map. | Check the spelling in `label`; OpenStreetMap may use another name. |
+| river: map server not reachable (redraw later) | The OpenStreetMap river service did not answer. | Redraw later; nothing needs changing. |
+| same river as '*name*' | The manuscript names the river twice ("Rapti", "Rapti River"). | — |
 | duplicate of '*name*' | The same place twice under one name, within 5 km. | — |
 | province/state (shown by the state boundaries) | A state or province. The dashed state lines already show it. | `include = name` to name it; `include = yes` to outline it. |
 | area covers the whole map (context) | A district or park that fills the frame. Shading it would tint everything. | `include = name` to name it. |
@@ -42,26 +46,34 @@ The `match` column, and the marker colours on the check map:
 
 ## Functions and settings
 
-**`pubmap(manuscript, dir = NULL, provider = "openai", model = "gpt-6.1-sol", backends = c("geonames", "nominatim"), relief = FALSE)`**\
+**`pubmap(manuscript, dir = NULL, provider = "openai", model = "gpt-6.1-sol", backends = c("geonames", "nominatim"), relief = FALSE, legend = TRUE, inset_label = TRUE)`**\
 Reads a manuscript and builds its review folder.
 
 -   `manuscript`: path to the PDF (or a text file).
--   `dir`: where to write the review folder. By default `review/<manuscript name>` inside the PubMaps folder.
+-   `dir`: where to write the review folder. By default a folder named after the manuscript inside your review folder.
 -   `provider`, `model`: which language model reads the manuscript (`"openai"` or `"anthropic"`).
--   `backends`: which gazetteers to search, in order.
+-   `backends`: which gazetteers to search.
 -   `relief`: `TRUE` adds a second map, `map_relief.pdf`, with shaded relief.
+-   `legend`: `FALSE` leaves the legend strip off the figure, for a journal that explains the symbols in the caption.
+-   `inset_label`: `FALSE` leaves the country name off the inset.
 
-**`pubmap_rerender(dir, relief = FALSE)`**\
-Redraws a map from its `points.csv` after corrections. Does not read the manuscript again.
+**`pubmap_rerender(dir, relief = FALSE, legend = NULL, inset_label = NULL)`**\
+Redraws a map from its `points.csv` after corrections. Does not read the manuscript again. `dir` is the review folder, or just the manuscript's name. `legend` and `inset_label` change those choices; left out, the folder's last choice is kept.
 
-**`options(pubmaps.home = "...")`**\
-The PubMaps folder. Set it before loading PubMaps.
+**`pubmaps_review_dir()`, `pubmaps_cache_dir()`**\
+Show where review folders and the gazetteer cache are kept.
+
+The steps inside `pubmap()` are also available on their own (`extract_places()`, `locate_places()`, `plan_map()`, `render_map()`). Part II describes them. Each function's help page (`?pubmap`) gives the full details.
 
 **Environment variables** (in `.Renviron`):
 
 | Variable | Purpose |
 |------------------------------------|------------------------------------|
 | `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` | Access to the language model. |
-| `GEONAMES_USERNAME` | Your GeoNames account name. |
+| `GEONAMES_USERNAME` | Your GeoNames account name. Without it, GeoNames is skipped. |
+| `PUBMAPS_REVIEW` | Optional. Where review folders go. Default: `review` in the working directory. |
+| `PUBMAPS_CACHE` | Optional. Where gazetteer answers are cached. Default: R's user cache folder. |
 | `GEONAMES_HOST` | Optional. The GeoNames server; set it for a premium account. |
 | `GEONAMES_TOKEN` | Optional. A premium account's token, if it uses one. |
+
+The same two folders can also be set for one session with `options(pubmaps.review = ...)` and `options(pubmaps.cache = ...)`, which take precedence.

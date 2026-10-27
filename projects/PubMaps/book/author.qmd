@@ -1,3 +1,74 @@
 # Working with the Author
 
-*To be written.* Sending the author query, what to ask for, and turning the replies into `points.csv` entries.
+PubMaps does most of its work without the author. Some things only the author knows: where the plots were, which of two villages with the same name they worked in. This chapter covers asking for those, and what to do with the answers.
+
+## Where PubMaps fits
+
+PubMaps is most useful once a manuscript has been accepted. By then the editor is already asking the author for changes: references to fix, a table to clarify, a figure to replace. Questions about the map go out with the rest of these. They are one more item in a list the author expects, not a separate round of correspondence.
+
+The finished map is then checked along with the completed manuscript, in its final form, before publication.
+
+## The author query
+
+The review page drafts the request for you. It has up to three parts, depending on what the manuscript needs. For the Mt. Kasigau manuscript it reads:
+
+``` default
+Manuscript: Medley_et_al_2010.pdf
+
+To place your study sites accurately on the location map, please supply
+coordinates (decimal degrees, WGS84) for these localities:
+
+  - Ndomokonyi (p. 5: "the historic Ndomokonyi settlement above Jora village")
+  - Mwarashua (p. 7: "between Bungule and Makwasinyi (near "Mwarashua")")
+
+Please confirm, or correct, these positions taken from a gazetteer:
+
+  - Kiteghe: 3.7843° S, 38.6486° E (gazetteer entry "Kitege", P:PPL) -- spelled differently in the gazetteer
+
+The manuscript locates 7 sampling sites only relative to named places
+(for example: streams between 610-800 m above southeast-facing Bungule village).
+If you recorded GPS positions for your plots, please send them; otherwise the
+map will show the named places only.
+```
+
+The three parts are:
+
+-   **Places that could not be found.** Each comes with its page and sentence, so the author can see exactly what is meant.
+-   **Positions to confirm.** These are partial matches from a gazetteer. Once you confirm one yourself and redraw (Chapter 4), it drops off the request.
+-   **Sites described only relative to other places.** The author may have GPS readings for these. If not, the map shows the named places they were described from.
+
+The draft is a starting point. Edit it like any other text before it goes out.
+
+## Sending the request
+
+1.  Copy the query with the **Copy text** button and paste it into the email that carries your other requests.
+2.  Say in a sentence what the coordinates are for: the study-site map, which you are redrawing in the journal's style.
+3.  Attach `map_vector.pdf` from the review folder. The author sees the proposed map, and often spots a problem the text did not reveal: a village in the wrong valley, a site missing.
+
+For most manuscripts this is all that is needed, and the author replies with a few coordinates in the body of an email. A larger request, such as the positions of fifty plots, is the editor's to frame, as with any other request for data.
+
+## Turning replies into `points.csv`
+
+**Coordinates for a place already in the table.** Type them into that row's `lon` and `lat`, in decimal degrees, with south and west negative. The place becomes **set by the editor** and is drawn.
+
+**Degrees and minutes.** Authors often write positions as degrees, minutes and seconds. Convert them: degrees + minutes/60 + seconds/3600. The manuscript's "3˚49' S, 38˚40' E" for Mt. Kasigau becomes:
+
+| lat | lon |
+|----|----|
+| -(3 + 49/60) = -3.8167 | 38 + 40/60 = 38.6667 |
+
+**New places, such as plots.** Add a row for each, with a blank `id`, a `name`, the `role` (`sampling_point` for plots and transects), and `lon` and `lat`. If the author sends a list, it can be pasted into `points.csv` in Excel, a column at a time.
+
+**A confirmation.** If the author confirms a gazetteer position, type that position into `lon` and `lat` so the record shows it was checked. If the author corrects it, type the corrected position.
+
+Then redraw. The map that results is the one that goes forward with the completed manuscript.
+
+## When the map is a mess
+
+Sometimes the first map is plainly wrong: sites scattered across a country, half the places unlocated, a frame that makes no sense. This is rarely PubMaps misreading a clear manuscript. Usually the manuscript is not clear. It may never name the study area, use local names no gazetteer knows, or describe sites only by their distance from each other.
+
+That makes it a matter of editing the text, not the map. The review page shows exactly where the manuscript falls short, with the page and sentence for each place. The editor can then decide whether the fix is one they can make, such as adding a district name the author used elsewhere, or whether it must go back to the author. A clearer manuscript gives a better map, and readers get both.
+
+## Less friction
+
+Without PubMaps, a map problem often means a vague request ("please improve Figure 1"), a new screenshot from the author, and another round of review. With PubMaps, the editor sends a short, specific question with a proposed map attached, puts the answer into one table, and redraws. Most maps need nothing from the author at all.

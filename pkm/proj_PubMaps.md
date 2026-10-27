@@ -309,3 +309,54 @@ Kim (pausing): "a really big step forward today"; next he will try editor input 
   5 Working with the Author, 6 Troubleshooting are stubs. Part II Methods later. Renders to `book/_output/`.
   Code fix while writing: `include = yes` on a park/district now draws the AREA (was forcing a point).
   Kim will use the guide for final testing.
+- **R package (2026-10-26, Kim: "let's move this to a package"):** `pubmaps` 0.2.0 at `Projects/PubMaps/pubmaps/`
+  (subfolder; book, review, cache stay siblings). Code separated from data: cache = option `pubmaps.cache` >
+  env `PUBMAPS_CACHE` > `tools::R_user_dir`; review folders = `pubmaps.review` > `PUBMAPS_REVIEW` > `review` in wd.
+  GeoNames no longer defaults to Kim's username -- skipped with a message if `GEONAMES_USERNAME` unset.
+  ellmer types built at call time; explicit importFrom; `pubmaps_load()`/`pubmaps.home` retired (the package fixes
+  the stale-code incident). Exports: pubmap, pubmap_rerender, extract_places, locate_places, plan_map, render_map,
+  pubmaps_cache_dir, pubmaps_review_dir. 9 tests. `devtools::check()` 0 E / 0 W / 1 N (rnaturalearthdata/hires
+  imported for data only). Regression: 7 cases rerendered in `C:/temp/pubmaps_regress_2026-10-26` old vs new --
+  points.csv identical, drawn counts, areas, bbox, inset and PNG md5 all identical. Will McClatchey listed as ctb in
+  DESCRIPTION -- Kim confirmed ("that was his role"). GitHub: deferred to the end of the project (Kim); use the
+  local install meanwhile. Old code archived to `PubMaps/_archive/` (`R_sourced_2026-10-26/`, 11 files;
+  `engines_2026-10-17/`, 6 pre-pipeline scripts incl. pubmap_tools.r) -- Kim: delete later.
+- **Area-framed studies (2026-10-26, Kim's test of era_36_10, Borah et al., Dibrugarh + Majuli districts, Assam):**
+  the paper names no villages; the study sites ARE two districts. Old behaviour: Majuli (GeoNames A:ADM3) drawn as a
+  point, frame = 8 km minimum around it, Dibrugarh 'area outside the map frame'. Rule added: when no drawn point is
+  anything but a district/park, `area_frame()` unions the study's district/park outlines (OSM place_rank > 8;
+  states/countries excluded unless include = yes) and they set the frame; districts drawn as areas, not points;
+  the inset corner also avoids the outlines (`area_corner_cover()`). Result: 187 x 144 km, both districts outlined,
+  inset top-left. The 7 test maps byte-identical (rule does not trigger: Simpson has stations). Guide Ch 2 updated.
+- **Rivers (2026-10-26, Kim: "adding rivers will likely be very useful, given the kinds of studies this cohort studies"):**
+  new `plan_rivers.R`. Nominatim returns only single stretches of big rivers, so lines come from the OSM Overpass
+  API (overpass-api.de; ~30 s per first query, cached in `cache/rivers`, retries on 429/5xx). Query: waterway
+  river|canal, whole-word name match inside the frame; then KEEP ONLY ways whose core name equals the river's
+  ("Dhauli Ganga" is not "Ganga" -- the first version drew every tributary). Lookup uses the editor's `label`, so a
+  spelling can be fixed there. Drawn blue (#5b8db8) under points/district outlines, labelled at the middle of the
+  longest stretch. include = yes no longer turns a river into a point. Statuses: drawn as river / river not found
+  within the map / map server not reachable (redraw later) / same river as. Results: Brahmaputra (era_36_10),
+  Alaknanda + Bhagirathi + Ganga (Himalaya), Mulligan (Simpson); not in OSM by name: Siriri (Kasigau), Ome
+  (Shewa), Serampas (Sumatra). Other 5 test maps byte-identical. Bhagirathi label falls under
+  the inset -- Kim 2026-10-26: no issue, leave it. Also: `pubmap_rerender()` now takes just the manuscript name (with or
+  without .pdf) and its error names the review folder -- Kim had typed the guide's example path + .pdf.
+- **Display options (2026-10-26, Kim: "Small, but important, changes"):** (1) inset shows the country name in
+  capitals, placed on a grid inside the country at the spot nearest its centre whose text box clears the orange
+  marker; `inset_label = FALSE` turns it off. (2) The ggplot legend is replaced by a full legend strip under the
+  map (patchwork, mm layout, wraps to rows; lists every symbol, line and area drawn); `legend = FALSE` for journals
+  that explain symbols in the caption. Both are arguments of `pubmap()` and `pubmap_rerender()` and are remembered
+  per review folder (`display.rds`; NULL keeps the last choice). (3) Symbol key as caption prose (e.g. "Orange
+  circles, study sites; ...; Inset: location of the map area (orange box) in India.") written to `symbol_key.txt`
+  and shown on the review page with a Copy button -- Kim: "something the editor can copy and include with the
+  manuscript. This is exactly in line with this being an editor's tool." Guide Ch 2 + Appendix updated.
+- **Editor's Guide Part I fully drafted (2026-10-26 evening).** Preface: aim (the common map; manuscripts must name
+  study areas and sites clearly), warning callout "Maps PubMaps does not draw" (plot layouts, sampling grids, data-
+  coloured maps, multi-panel distant regions, author GIS layers), and the VECTOR point (Kim: many current maps are
+  screenshots -> fuzzy; "This feature alone might make PubMaps useful to an editor"). Ch 2: Kasigau review page
+  embedded live (`book/examples/kasigau_review.html`, scrolling iframe); maps described as first/second, not left/
+  right. Ch 4 Worked Examples from real before/after redraws: Kiteghe confirm, Kerinci label move, Yucatan
+  include = name, places left off on purpose (Assam status table, Tsavo parks), Shewa legend = FALSE (Chitwan dropped,
+  Kim). Ch 5 Working with the Author (Kim): used on ACCEPTED manuscripts; map queries go with the other requested
+  changes; author replies with coordinates in a simple email; attach map_vector.pdf; a messy map usually means an
+  unclear manuscript -> text editing, editor decides; PubMaps removes friction. Ch 6 Troubleshooting (18 entries
+  from the code's own messages). Kim: editors work on a computer, not a phone (wide tables OK).

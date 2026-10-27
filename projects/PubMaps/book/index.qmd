@@ -1,10 +1,18 @@
 # Preface {.unnumbered}
 
-Most field studies need a map. A reader wants to know where the villages, plots and transects were, and how they sit in the wider country. Authors draw these maps once or twice in a career. The results vary. Some are excellent. Many have the wrong projection, no scale, an unreadable inset, or sites placed by guesswork.
+Most field studies need a map. A reader wants to know where the villages, plots and transects were, and how they sit in the wider country. Authors usually draw these maps only a few times in a career. The results vary. Some are excellent. Many have the wrong projection, no scale, an unreadable inset, or sites placed by guesswork. Many more are screenshots from a mapping website, which blur as soon as the page is printed or enlarged.
 
-PubMaps grew out of that problem. Will McClatchey spent years as a journal editor redrawing authors' maps so they could be published. The drawing was not the hardest part. The time went into reading each manuscript closely to find every place it mentioned, then working out where each one actually was. PubMaps takes on that reading and locating work, and then draws a consistent, publication-ready map.
+PubMaps grew out of that problem. Will McClatchey spent years as a journal editor redrawing authors' maps so they could be published. The drawing was not the hardest part. Most of his time went into reading each manuscript closely to find every place it mentioned and then working out where each one actually was. PubMaps takes on that reading and locating work, and then draws a consistent, publication-ready map. The map is vector graphics, not a picture, so every line and name stays sharp at any size and in print.
 
 It is a tool for an editor, or for the one person in a lab who makes maps for everyone else. That person sees many manuscripts. They learn the tool once and use it often. An author making a single map would find it easier to ask that person.
+
+The aim is to handle the common map well: one study area, its sites and the features around them, and where the area sits in its country. A consistent map also asks something of the manuscript. It must name its study area and sites clearly enough for a reader to find them. When PubMaps cannot place a site, the manuscript often does not say where it is, and that is a question for the author (Chapter 5).
+
+::: callout-warning
+## Maps PubMaps does not draw
+
+Some maps are particular to their study and are best drawn by hand. Examples are a plot layout or transect diagram, a sampling grid, a map coloured by data such as rainfall or land cover, sites spread across distant regions that need several panels, and maps built from the author's own GIS layers. PubMaps can still do the reading and locating for these. `points.csv` gives the position of every place the manuscript names, ready for whoever draws the map.
+:::
 
 The work is divided so that each part does what it does well:
 

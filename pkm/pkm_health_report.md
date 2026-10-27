@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-09-30 21:08 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-10-26 21:08 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -9,11 +9,11 @@ _Generated 2026-09-30 21:08 by pkm_health.R. Regenerate; do not edit._
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 4
 - **Files over size budget:** 6
-- **Active Focus block:** 2.6 KB (budget 6)
+- **Active Focus block:** 2.4 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 7
 - **Legacy pages awaiting account deletion:** 58
-- **Build scratch in C:/temp:** 5 folder(s), 13 MB
+- **Build scratch in C:/temp:** 8 folder(s), 51 MB
 
 ## Reconciliation failures
 
@@ -36,9 +36,9 @@ None.
 
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
-| session_log.md | REFERENCE | 408.4 | 250 | 158.4 | FALSE |
+| session_log.md | REFERENCE | 417.2 | 250 | 167.2 | FALSE |
 | proj_Smart_Car.md | PROJECT |  65.9 |  45 |  20.9 | TRUE |
-| deferred.md | REFERENCE | 210.6 | 200 |  10.6 | FALSE |
+| deferred.md | REFERENCE | 211.8 | 200 |  11.8 | FALSE |
 | proj_seasonality.md | PROJECT |  51.6 |  45 |   6.6 | TRUE |
 | proj_audio.md | PROJECT |  47.3 |  45 |   2.3 | TRUE |
 | pkm_card.md | HOT |   6.4 |   6 |   0.4 | FALSE |
@@ -47,7 +47,7 @@ None.
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 2.6 | 6 | -3.4 |
+| 8 | 2.4 | 6 | -3.6 |
 
 ## Venues without a source repo
 
@@ -75,11 +75,14 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| voronoi_build_2026-09-27b | 3.0 | 10 | FALSE |
-| rehearsals_huntington_2026-09-30 | 0.1 |  2 | FALSE |
-| tessellr_staging | 0.1 |  1 | FALSE |
-| pkm_close_2026-09-26 | 4.1 |  0 | FALSE |
-| pkm_close_2026-09-27 | 3.0 |  0 | FALSE |
+| pubmaps_regress_2026-10-26 |  0.2 | 33 | FALSE |
+| voronoi_build_2026-09-27b | 29.0 | 10 | TRUE |
+| pubmaps_examples_2026-10-26 |  0.0 |  5 | FALSE |
+| rehearsals_huntington_2026-09-30 | 26.1 |  2 | TRUE |
+| tessellr_staging | 26.1 |  1 | TRUE |
+| pkm_close_2026-09-26 | 30.1 |  0 | TRUE |
+| pkm_close_2026-09-27 | 29.0 |  0 | TRUE |
+| pubmaps.Rcheck |  0.2 |  0 | FALSE |
 
 ## Legacy pages by platform
 
@@ -95,4 +98,4 @@ None.
 None.
 
 ---
-_Ran in 94.4 s._
+_Ran in 96.7 s._

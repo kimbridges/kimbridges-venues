@@ -1,33 +1,28 @@
 # Getting Started
 
-This chapter sets PubMaps up and makes a first map. Setting up is done once. After that, a map is one command.
+This chapter installs PubMaps and makes a first map. Setting up is done once. After that, a map is one command.
 
 ## What you need
 
--   **R**, a current version. PubMaps was developed with R 4.6. RStudio is convenient but not required.
+-   **R**, version 4.4 or later. PubMaps was developed with R 4.6. RStudio is convenient but not required.
 -   **An internet connection.** PubMaps sends the manuscript to a language model and looks places up in online gazetteers.
 -   **An account with a language-model provider.** PubMaps works with OpenAI or Anthropic. You need an API key from one of them.
 -   **A free GeoNames account.** Sign up at geonames.org, then turn on web services on your account page. That second step is easy to miss.
--   **The PubMaps folder.** It holds the code (`R/`), a cache of gazetteer answers (`cache/`), and the review folders it creates (`review/`).
 
-## Install the packages
+## Install PubMaps
 
-PubMaps uses a set of standard R packages. Install them once:
+PubMaps is an R package. Install it once:
 
 ``` r
-install.packages(c("ellmer", "pdftools", "httr2", "jsonlite", "yaml",
-                   "sf", "rnaturalearth", "rnaturalearthdata",
-                   "ggplot2", "ggrepel", "ggspatial", "patchwork",
-                   "countrycode", "base64enc"))
-
-## detailed coastlines for small study areas
-install.packages("rnaturalearthhires",
-                 repos = "https://ropensci.r-universe.dev")
+install.packages("remotes")
+remotes::install_github("kimbridges/pubmaps")
 ```
+
+This also installs the packages PubMaps depends on, including detailed coastlines for small study areas. The first install takes a few minutes.
 
 Two more packages, `elevatr` and `terra`, are needed only if you want shaded relief behind the map. They can wait.
 
-## Store your keys
+## Store your keys and folders
 
 Keys belong in your `.Renviron` file, not in scripts or documents. Open it with:
 
@@ -41,9 +36,18 @@ Add the lines that apply to you, save the file, and restart R:
 OPENAI_API_KEY=your-openai-key
 ANTHROPIC_API_KEY=your-anthropic-key
 GEONAMES_USERNAME=your-geonames-name
+PUBMAPS_REVIEW=C:/maps/review
 ```
 
-You need only one of the two model keys. `GEONAMES_USERNAME` is essential: without your own name, lookups go out under the developer's account.
+You need only one of the two model keys. Without `GEONAMES_USERNAME`, PubMaps skips GeoNames and uses OpenStreetMap alone, which finds fewer villages.
+
+`PUBMAPS_REVIEW` is the folder where review folders go. Without it, they go into a folder called `review` inside R's working directory. Choose a folder you can find again.
+
+::: callout-note
+## The gazetteer cache
+
+PubMaps keeps every gazetteer answer, so a second run of the same manuscript makes no new lookups. The cache lives in R's standard user folder; `pubmaps_cache_dir()` shows where. To keep it somewhere else, for example on a shared drive, add `PUBMAPS_CACHE=` and a folder to `.Renviron`.
+:::
 
 ::: callout-note
 ## GeoNames premium
@@ -53,14 +57,11 @@ If you have a premium GeoNames account, add `GEONAMES_HOST=https://secure.geonam
 
 ## Load PubMaps
 
-Tell R where the PubMaps folder is, then load it:
+At the start of each R session:
 
 ``` r
-options(pubmaps.home = "G:/My Drive/Projects/PubMaps")
-source("G:/My Drive/Projects/PubMaps/R/pubmap.R")
+library(pubmaps)
 ```
-
-Do this at the start of each R session. PubMaps reloads its own code every time it runs, so a session never uses an out-of-date version.
 
 ## Make a first map
 
@@ -76,7 +77,7 @@ PubMaps works through five steps:
 2.  **Extract.** The language model reads the whole manuscript and returns every mappable place: its name, its role in the study, the page, and the sentence that mentions it. This is one request and takes up to a minute.
 3.  **Locate.** Each place is looked up in GeoNames and OpenStreetMap. OpenStreetMap allows one request a second, so a long manuscript takes a few minutes the first time. Answers are cached, so a second run is quick.
 4.  **Plan and draw.** PubMaps chooses the frame, projection and inset corner, and draws the map.
-5.  **Write the review folder.** Everything goes into a folder named after the manuscript, inside `review/`.
+5.  **Write the review folder.** Everything goes into a folder named after the manuscript, inside your review folder.
 
 When it finishes, PubMaps prints the path of the review page. Open that file in a web browser. Chapter 2 explains what you will find.
 
@@ -92,16 +93,28 @@ Different models can produce slightly different place lists. Whichever you use i
 
 ## Redrawing after corrections
 
-After you correct a map (Chapter 3), redraw it with:
+After you correct a map (Chapter 3), redraw it by giving `pubmap_rerender()` the manuscript's name:
 
 ``` r
-pubmap_rerender("G:/My Drive/Projects/PubMaps/review/Medley_et_al_2010")
+pubmap_rerender("Medley_et_al_2010")
 ```
 
-This does not read the manuscript again or repeat the lookups. It reads your corrections and redraws, in a few seconds.
+PubMaps finds the review folder of that name in your review folder. The full path of the folder also works, and so does the name with `.pdf` on the end. The review page shows the command with the folder already filled in, ready to copy.
+
+This does not read the manuscript again or repeat the lookups. It reads your corrections and redraws, usually in a few seconds.
 
 ::: callout-important
 ## Close the map PDF first
 
 If the map's PDF is open in a viewer, Windows will not let PubMaps replace it, and the redraw stops with an error. The same applies to `points.csv` if it is open in Excel. Close both before redrawing.
 :::
+
+## Updating PubMaps
+
+When a new version is released, run the install line again:
+
+``` r
+remotes::install_github("kimbridges/pubmaps")
+```
+
+Then restart R. Review folders made by an earlier version can be redrawn with the new one; `recipe.yaml` records which version drew each map.

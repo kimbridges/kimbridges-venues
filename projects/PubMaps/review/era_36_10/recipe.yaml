@@ -1,0 +1,21 @@
+manuscript: era_36_10
+made: 2026-10-26 16:52
+read_by: openai gpt-6.1-sol
+pubmaps_version: 0.2.0
+projection: EPSG:32646
+extent_lonlat:
+- 93.7724
+- 26.62396
+- 95.68451
+- 27.94737
+page_mm:
+- 170.0
+- 130.0
+framed_by: study districts and parks
+inset:
+  corner: tl
+  countries: India
+  widened_for_inset: no
+north_arrow: tr
+scale_bar: bl
+points: []

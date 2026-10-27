@@ -11,6 +11,27 @@ Mechanism 4.
 
 ---
 
+## 2026-10-26 -- PUBMAPS BECOMES AN R PACKAGE
+
+- Preface: "Authors usually draw these maps only a few times in a career" (Kim's edit).
+- Kim asked whether PubMaps should be a package; yes, before testing the guide (Ch 1 would change).
+- `pubmaps` 0.2.0 built at `Projects/PubMaps/pubmaps/`: check clean, 9 tests, 7 maps byte-identical to the sourced code.
+- `.Renviron`: GEONAMES_USERNAME, PUBMAPS_CACHE, PUBMAPS_REVIEW added. Kim's live session cleared of the sourced functions; `library(pubmaps)` loaded.
+- Guide: Ch 1 rewritten (install_github, keys and folders, library), Appendix settings, Ch 3 redraw line. Book re-rendered.
+- Kim's first test with the guide: era_36_10 (two districts, no villages) showed one district only. Fixed: studies with only districts/parks are framed by their outlines; inset avoids them. 7 test maps unchanged; check clean.
+- Rivers added (Overpass; exact-name filter after a first version drew every "-ganga" tributary); pubmap_rerender("name") + clearer error. Check clean.
+- Kim's rulings: GitHub at the end of the project; Will McClatchey as contributor confirmed; old code archived to `PubMaps/_archive/` (delete later).
+- Kim's three display changes: country name on the inset (placed clear of the orange marker); complete legend strip under the map (`legend = FALSE` for journals that explain symbols in the caption; remembered per folder in display.rds); copyable caption symbol key on the review page + `symbol_key.txt` (Kim: "exactly in line with this being an editor's tool"). Guide Ch 2 + Appendix updated; book re-rendered; check clean.
+- Guide (Kim's comments): Preface states the aim (the common map; clear naming of study areas and sites) + warning callout "Maps PubMaps does not draw". Ch 2 review page now embedded live in a scrolling frame (`book/examples/kasigau_review.html`, path genericised to C:/maps/review) instead of a top-only screenshot.
+- Preface sentence: Kim chose the smoother version ("Most of his time went into reading..."). Ch 2: left/right -> first/second map (layout may stack).
+- Ch 4 Worked Examples drafted from real before/after redraws (clean 'before' rebuilt from cached lookups in `C:/temp/pubmaps_examples_2026-10-26`): Kiteghe confirm (to-confirm 1 -> 0), Kerinci name moved, Yucatán include = name (inset moved, frame widened), places left off on purpose (Assam status table; Tsavo parks), Shewa legend = FALSE. Images in `book/images/examples/`. Chitwan example held: its intended point unclear.
+- Kim: Ch 4 approved (Chitwan example dropped; editors use a computer, so wide tables are fine). Ch 6 Troubleshooting drafted from the code's own messages/statuses (18 entries: setup, redrawing, the map, the reading, starting again). Ch 5 (author) left for last.
+- Ch 5 Working with the Author drafted from Kim's notes: accepted manuscripts; map queries go with other modifications; final map reviewed with the completed manuscript; coordinates come back in a simple email; attach map_vector.pdf; a messy map usually means an unclear manuscript (text editing, editor decides). Preface: screenshots blur; PubMaps maps are vector (Kim: "This feature alone might make PubMaps useful"). Part I now fully drafted. (Finding 055 recurred: reused book_v10 resent the old author.qmd; fixed via book_v11, md5 verified.)
+- Close: Kim read Ch 5 + 6 ("They are great!"); he works on the cover and logo overnight. Next session: cover/logo, publish to kimbridges-documents, Part II Methods.
+- Open: scratch `C:/temp/pubmaps_regress_2026-10-26` and `C:/temp/pubmaps_examples_2026-10-26` (delete after review).
+
+---
+
 ## 2026-10-25 -- PUBMAPS: GEONAMES + FUZZY, AREAS, NAME CONTROLS, EDITOR'S GUIDE STARTED
 
 - GeoNames (free server) pooled with Nominatim: 99 -> 114 places on 7 cases. Fuzzy pass: Kiteghe -> Kitege.

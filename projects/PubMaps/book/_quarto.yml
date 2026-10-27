@@ -1,6 +1,8 @@
 project:
   type: book
   output-dir: _output
+  resources:
+    - examples/
 
 book:
   title: "PubMaps"

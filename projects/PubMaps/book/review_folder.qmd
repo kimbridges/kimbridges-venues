@@ -10,14 +10,20 @@ Every run of `pubmap()` produces one folder. It holds the finished map, a page f
 | `map_vector.png` | The same map as a picture, for previews. |
 | `review.html` | The review page. Open it in a web browser. |
 | `points.csv` | The table of places. This is the only file you edit. |
+| `symbol_key.txt` | What each symbol means, in words, ready for the figure caption. |
 | `recipe.yaml` | A record of what was drawn: projection, extent, inset corner, and every point with its position and source. |
-| `places_extracted.rds`, `points_original.rds`, `plan.rds`, `provider.rds` | PubMaps' working files. Leave them alone. |
+| `places_extracted.rds`, `points_original.rds`, `plan.rds`, `provider.rds`, `display.rds` | PubMaps' working files. Leave them alone. |
 
 ## The review page
 
 The review page puts everything PubMaps decided in one place. Read it from the top down.
 
-![The review page for the Mt. Kasigau manuscript.](images/review_page.png){fig-align="center" width="95%"}
+```{=html}
+<iframe src="examples/kasigau_review.html" title="The review page for the Mt. Kasigau manuscript"
+        style="width:100%; height:720px; border:1px solid #ccc; border-radius:4px;" loading="lazy"></iframe>
+```
+
+*The review page for the Mt. Kasigau manuscript. Scroll inside the frame to see all of it, or [open it in its own tab](examples/kasigau_review.html){target="_blank"}.*
 
 ### Heading and counts
 
@@ -32,7 +38,7 @@ Four counts follow:
 
 ### The check map
 
-The left-hand map is interactive. Zoom and pan as on any web map. Every located place has a coloured marker, and clicking one shows its role, how it was located, its status, the gazetteer entry it matched, and the sentence in the manuscript that mentions it. The marker colour tells you where the position came from:
+The first map on the page is interactive. Zoom and pan as on any web map. Every located place has a coloured marker, and clicking one shows its role, how it was located, its status, the gazetteer entry it matched, and the sentence in the manuscript that mentions it. The marker colour tells you where the position came from:
 
 | Colour | Meaning |
 |------------------------------------|------------------------------------|
@@ -45,17 +51,25 @@ The left-hand map is interactive. Zoom and pan as on any web map. Every located 
 
 Larger, solid markers are drawn on the map. Smaller, paler ones are context the map leaves out.
 
-The dashed rectangle is the frame of the finished map. Parks and districts drawn as areas appear as green shapes and dashed outlines.
+The dashed rectangle is the frame of the finished map. Parks and districts drawn as areas appear as green shapes and dashed outlines, and rivers as blue lines.
 
 The switch in the top corner changes the background. **Streets** is the default. **Topographic** shows relief, which helps when checking a mountain or a ridge. **Satellite + labels** shows the ground itself: whether a gazetteer point actually sits on a village, a clearing, or empty forest.
 
 ### The map preview
 
-To the right of the check map is the finished map, exactly as it will print. Compare the two: every solid marker on the check map should appear on the preview.
+The second map is the finished map, exactly as it will print. On a wide screen it sits beside the check map; on a narrower one it appears below it. Compare the two: every solid marker on the check map should appear on the preview.
 
 ### The author query
 
 Below the maps is a draft message to the authors. It asks for coordinates of the study sites that could not be found, and lists the positions that need confirming. The **Copy text** button copies it ready to paste into an email. Chapter 5 covers this step.
+
+### Symbol key for the caption
+
+Next comes the map's key written out in words, for the figure caption. For example:
+
+> Orange circles, study sites; dark blue squares, towns; pale green shading, Kerinci Seblat National Park; dark grey dashed lines, district boundaries (Merangin District and Kerinci); fine grey dashes, state or province boundaries. Inset: location of the map area (orange dot) in Indonesia.
+
+It is written from what was actually drawn, so it always matches the map, and it changes when the map does. **Copy key** copies it. The same text is saved as `symbol_key.txt` in the review folder.
 
 ### Every place
 
@@ -69,10 +83,10 @@ The last box on the page summarises how to make corrections.
 
 Each map has the same parts:
 
--   **The frame** fits the study's places, with a margin. It never shrinks below about 8 km across, so a single village still has context.
--   **The inset** locates the study within its country. PubMaps puts it in whichever corner is free of points and names. If every corner is busy, it widens the map to make room.
+-   **The frame** fits the study's places, with a margin. It never shrinks below about 8 km across, so a single village still has context. When a manuscript names no villages, plots or towns, only districts or parks ("the study sites were Majuli and Dibrugarh districts"), the outlines of those districts and parks set the frame instead, and they are drawn as areas.
+-   **The inset** locates the study within its country, which is named in capitals. PubMaps puts it in whichever corner is free of points, names and, for a study framed by its districts, their outlines. If every corner is busy, it widens the map to make room.
 -   **The north arrow and scale bar** go in two of the remaining corners.
--   **The legend** below the map lists the kinds of places shown.
+-   **The legend** below the map lists every kind of symbol that appears: the kinds of places, parks, district boundaries, rivers and state boundaries. Only what is on the map is listed.
 
 Places are drawn by role:
 
@@ -85,6 +99,18 @@ Places are drawn by role:
 | grey diamond | other place: a homestead, farm, or small administrative unit |
 | pale green area | park or reserve |
 | dashed outline | district |
+| blue line, blue italic name | river |
 | grey italic capitals, no symbol | a region named by the editor (`include = name`) |
 
 The background shows land in grey, the study country in off-white, the sea in blue-grey, and state or province boundaries as dashed lines.
+
+### When the journal puts the key in the caption
+
+Some journals explain the symbols in the figure caption rather than on the figure. Redraw without the legend strip:
+
+``` r
+pubmap_rerender("Medley_et_al_2010", legend = FALSE)
+```
+
+The map then uses the full height of the page, and the symbol key on the review page goes into the caption instead. The choice is remembered for that manuscript: later redraws stay without the legend until you set `legend = TRUE`. In the same way, `inset_label = FALSE` leaves the country name off the inset.
+
