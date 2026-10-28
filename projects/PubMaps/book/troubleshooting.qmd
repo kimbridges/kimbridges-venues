@@ -10,7 +10,7 @@ Each entry starts from what you see: a message in R, or something odd on the rev
 
 **Fix.** Check that `.Renviron` has `OPENAI_API_KEY=` (or `ANTHROPIC_API_KEY=` if you use `provider = "anthropic"`), then restart R. Chapter 1 shows how to open the file.
 
-### "GeoNames skipped: set GEONAMES_USERNAME in .Renviron"
+### A message beginning "GeoNames skipped"
 
 **Cause.** No GeoNames username is set. PubMaps carries on with OpenStreetMap alone, which finds fewer villages.
 
@@ -91,7 +91,7 @@ Each entry starts from what you see: a message in R, or something odd on the rev
 
 ### A place is in the right area but the wrong spot
 
-**Cause.** A partial match: a similar name nearby, or the gazetteer's point for a village is off to one side. Partial matches have orange markers and are counted as **to confirm**.
+**Cause.** A partial match: a similar name nearby, or the gazetteer's point for a village is off to one side. Partial matches have orange markers; for study sites, plots and towns they are counted as **to confirm**.
 
 **Fix.** Check it on the **Satellite + labels** background, then type the right position. Chapter 4 shows this for Kiteghe.
 
@@ -99,7 +99,7 @@ Each entry starts from what you see: a message in R, or something odd on the rev
 
 **Status.** `generic name (author query)`.
 
-**Cause.** Names such as "Plot 3", "Site A" or "Transect 2" are labels within the study, not place names. No gazetteer can find them.
+**Cause.** Names such as "Plot 3", "Site 4" or "Transect 2" are labels within the study, not place names. No gazetteer can find them.
 
 **Fix.** Ask the author for their coordinates (Chapter 5), or type them in if the manuscript gives them in a table.
 

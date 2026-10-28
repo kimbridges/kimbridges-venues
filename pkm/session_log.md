@@ -11,6 +11,19 @@ Mechanism 4.
 
 ---
 
+## 2026-10-27 -- PUBMAPS RELEASED: GITHUB + EDITOR'S GUIDE
+
+- PKM opened; Active Focus PubMaps confirmed. Kim's scope: finish Part I, publish to kimbridges-documents, GitHub repo, then share with Will McClatchey.
+- Cover + logo (Kim) added to the book. Independent proofread fixed 25 items; 2 code fixes (pubmap model/display defaults).
+- GitHub PUBLIC kimbridges/pubmaps (3c3fc4a, 437dc03; verified against server; install_github tested). Clone C:/repos/pubmaps.
+- Guide in kimbridges-documents/pubmaps/ + card; Kim deployed; LIVE and verified from R (only Netlify's pretty-URL rewrites differ). Kim: "This is another big step forward." Kim will explain the GeoNames premium issue to Will.
+- Kim sent the guide + repo links to Will McClatchey (he reads tomorrow morning).
+- VORONOI open note closed: permission to use the 1974 Mueller-Dombois & Fosberg HVNP vegetation map received by email (Kim).
+- Voronoi: permission credit added to the Preface; rebuilt + venue/_site updated; upload deferred (Kim). Rebuild shifted three Ch.9 numbers by 1 and a Ch.7 legend order (software drift) -- Kim to decide full vs Preface-only. Scratch: C:/temp/voronoi_build_2026-10-27.
+- Scratch: C:/temp/pubmaps_installtest_2026-10-27 (delete).
+
+---
+
 ## 2026-10-26 -- PUBMAPS BECOMES AN R PACKAGE
 
 - Preface: "Authors usually draw these maps only a few times in a career" (Kim's edit).
@@ -3700,3 +3713,6 @@ briefing_book still ON HOLD (no McClatchey review yet).
 
 Older entries (133) were moved to `logs/session_log_archive.md` on 2026-07-30 by pkm_health.R.
 They are verbatim. Search there before concluding an entry is missing.
+
+- 2026-10-27 Covers updated (document name on each): checklistr (jpg), lists (png, resized, 9 MB), PubMaps (jpg regenerated 1200px q85 from new PNG, margin values removed). Copied to each book's _output and venue; venue re-rendered; _site verified by md5 (checklistr 38/38, lists 42/42, pubmaps 39/39, voronoi 60/60). Awaiting Netlify upload (also carries the Voronoi rebuild).
+- 2026-10-27 Netlify upload done; verified live: 3 covers byte-identical, voronoi PCSU acknowledgment live, pages HTTP 200. NEXT: Will McClatchey feedback on PubMaps guide; later add document names to remaining covers.

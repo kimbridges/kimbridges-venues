@@ -34,7 +34,7 @@ map will show the named places only.
 The three parts are:
 
 -   **Places that could not be found.** Each comes with its page and sentence, so the author can see exactly what is meant.
--   **Positions to confirm.** These are partial matches from a gazetteer. Once you confirm one yourself and redraw (Chapter 4), it drops off the request.
+-   **Positions to confirm.** These are study sites, plots and towns whose gazetteer match is only partial. Once you confirm one yourself and redraw (Chapter 4), it drops off the request.
 -   **Sites described only relative to other places.** The author may have GPS readings for these. If not, the map shows the named places they were described from.
 
 The draft is a starting point. Edit it like any other text before it goes out.
@@ -51,15 +51,15 @@ For most manuscripts this is all that is needed, and the author replies with a f
 
 **Coordinates for a place already in the table.** Type them into that row's `lon` and `lat`, in decimal degrees, with south and west negative. The place becomes **set by the editor** and is drawn.
 
-**Degrees and minutes.** Authors often write positions as degrees, minutes and seconds. Convert them: degrees + minutes/60 + seconds/3600. The manuscript's "3˚49' S, 38˚40' E" for Mt. Kasigau becomes:
+**Degrees and minutes.** Authors often write positions as degrees, minutes and seconds. Convert them: degrees + minutes/60 + seconds/3600. The manuscript's "3°49' S, 38°40' E" for Mt. Kasigau becomes:
 
-| lat | lon |
+| lon | lat |
 |----|----|
-| -(3 + 49/60) = -3.8167 | 38 + 40/60 = 38.6667 |
+| 38 + 40/60 = 38.6667 | -(3 + 49/60) = -3.8167 |
 
 **New places, such as plots.** Add a row for each, with a blank `id`, a `name`, the `role` (`sampling_point` for plots and transects), and `lon` and `lat`. If the author sends a list, it can be pasted into `points.csv` in Excel, a column at a time.
 
-**A confirmation.** If the author confirms a gazetteer position, type that position into `lon` and `lat` so the record shows it was checked. If the author corrects it, type the corrected position.
+**A confirmation.** If the author confirms a gazetteer position, type that position into `lon` and `lat`, rounded to four decimal places, so the record shows it was checked. (A value identical to the one already in the cell does not count as an edit.) If the author corrects it, type the corrected position.
 
 Then redraw. The map that results is the one that goes forward with the completed manuscript.
 

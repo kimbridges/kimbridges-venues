@@ -71,8 +71,6 @@ mdf_values <- values(mdf1974)[, 1]
 coded      <- !is.na(mdf_values)
 ```
 
-<!-- KIM: permission note for the 1974 map (UH/NPS Unit) goes in the Preface acknowledgements; this chapter uses the digitized map as data. -->
-
 ## Rebuilding the two maps
 
 The two maps from Chapter 8 are rebuilt here from the same twelve points, with one change. Each point now takes the 1974 type at its own location, which is what the points have carried since Chapter 2. So any disagreement below comes from the method, the twelve points, or the years, not from mislabeled points.

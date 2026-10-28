@@ -12,7 +12,7 @@ The **status** column of `points.csv`, and of the table on the review page, says
 | excluded by editor | You set `include = no`. | Clear `include` to undo. |
 | not located (author query) | A study site, plot or town with no position. It is in the author query. | Type `lon`/`lat`, or ask the author. |
 | not located (context) | Another kind of place with no position. Not needed on the map. | Type a position and `include = yes` if it matters. |
-| generic name (author query) | A description rather than a name ("Ward no. 3", "plot 396 B", "national forest reserve"). Gazetteers cannot look these up. | Ask the author for positions, or type them. |
+| generic name (author query) | A description rather than a name ("Ward no. 3", "Plot 3", "national forest reserve"). Gazetteers cannot look these up. | Ask the author for positions, or type them. |
 | relative location (author query) | Located only relative to something else ("2 km above the village"). Grouped into one request in the author query. | Ask the author for GPS positions. |
 | far from the study (check) | The gazetteer position is much farther from the other places than expected, often a different place with the same name. | Check it on the check map; type the right position or set `include = no`. |
 | *role* (context, not a point) | A place named for context, such as a country or a large region. | `include = name` to name it. `include = yes` forces it: a park or district is then drawn as an area, anything else as a point. |
@@ -28,6 +28,7 @@ The **status** column of `points.csv`, and of the table on the review page, says
 | only a sliver inside the map (context) | Only a thin edge of the area falls inside the frame. | `include = yes` to draw it anyway. |
 | same place is drawn as a point | A district with the same name as a town already on the map. | — |
 | … -- no outline found | No OpenStreetMap outline was found for this park or district. | `include = name` to name it. |
+| area too small | A park or district too small to show as an area, with no position to draw it as a point instead. | Type a position to show it as a point. |
 
 ## How a position was found
 
@@ -42,20 +43,24 @@ The `match` column, and the marker colours on the check map:
 | suggestion | The gazetteer offered something of the wrong kind (a road for a mountain). Not placed. |
 | none | Not located. |
 
-`coord_source` names the source: `text` (the manuscript), `editor`, `geonames` or `nominatim` (OpenStreetMap).
+`coord_source` names the source: `text` (the manuscript), `editor`, `geonames`, `nominatim` (OpenStreetMap), or `none` when the place has no position.
 
 ## Functions and settings
 
-**`pubmap(manuscript, dir = NULL, provider = "openai", model = "gpt-6.1-sol", backends = c("geonames", "nominatim"), relief = FALSE, legend = TRUE, inset_label = TRUE)`**\
+The package source, with its README and change history, is at <https://github.com/kimbridges/pubmaps>.
+
+**`pubmap(manuscript, dir = NULL, provider = "openai", model = NULL, backends = c("geonames", "nominatim"), places = NULL, relief = FALSE, legend = NULL, inset_label = NULL)`**\
 Reads a manuscript and builds its review folder.
 
 -   `manuscript`: path to the PDF (or a text file).
 -   `dir`: where to write the review folder. By default a folder named after the manuscript inside your review folder.
--   `provider`, `model`: which language model reads the manuscript (`"openai"` or `"anthropic"`).
+-   `provider`, `model`: which language model reads the manuscript (`"openai"` or `"anthropic"`). Left out, `model` is `"gpt-6.1-sol"` for OpenAI and `"claude-sonnet-5-5"` for Anthropic.
 -   `backends`: which gazetteers to search.
+-   `places`: a place list saved earlier (`places_extracted.rds` in the review folder), to skip the reading.
 -   `relief`: `TRUE` adds a second map, `map_relief.pdf`, with shaded relief.
 -   `legend`: `FALSE` leaves the legend strip off the figure, for a journal that explains the symbols in the caption.
 -   `inset_label`: `FALSE` leaves the country name off the inset.
+-   For `legend` and `inset_label`, leaving them out keeps the review folder's last choice; a new folder starts with both on.
 
 **`pubmap_rerender(dir, relief = FALSE, legend = NULL, inset_label = NULL)`**\
 Redraws a map from its `points.csv` after corrections. Does not read the manuscript again. `dir` is the review folder, or just the manuscript's name. `legend` and `inset_label` change those choices; left out, the folder's last choice is kept.

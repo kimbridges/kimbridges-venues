@@ -1,19 +1,19 @@
 # PKM Health Report
-_Generated 2026-10-26 21:08 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-10-27 18:19 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
-- **Works registered:** 86
+- **Works registered:** 87
 - **Works failing reconciliation:** 0 (source -> _site -> live)
 - **Rendered pages with no source:** 0
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
-- **Projects drifting from their code:** 4
+- **Projects drifting from their code:** 5
 - **Files over size budget:** 6
-- **Active Focus block:** 2.4 KB (budget 6)
+- **Active Focus block:** 2.7 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 7
 - **Legacy pages awaiting account deletion:** 58
-- **Build scratch in C:/temp:** 8 folder(s), 51 MB
+- **Build scratch in C:/temp:** 10 folder(s), 93 MB
 
 ## Reconciliation failures
 
@@ -27,8 +27,9 @@ None.
 
 | file | location | issue | days |
 |---|---|---|---|
-| proj_checklists.md | G:/My Drive/Projects/checklists | code newer than the proj file | 10.0 |
-| proj_checklists.md | G:/My Drive/Projects/checklists/kipuka_puaulu | code newer than the proj file |  9.3 |
+| proj_listsr.md | G:/My Drive/Projects/lists | code newer than the proj file | 132.8 |
+| proj_checklists.md | G:/My Drive/Projects/checklists | code newer than the proj file |  10.0 |
+| proj_checklists.md | G:/My Drive/Projects/checklists/kipuka_puaulu | code newer than the proj file |   9.3 |
 | proj_audio.md | G:/My Drive/Projects/Audio/renders/ — rendered MP3 outp | location not found | NA |
 | proj_R_LLM_tests.md | G:/My Drive/Projects/R_LLM_tests/_book | location not found | NA |
 
@@ -36,7 +37,7 @@ None.
 
 | file | class | kb | budget_kb | over | splittable |
 |---|---|---|---|---|---|
-| session_log.md | REFERENCE | 417.2 | 250 | 167.2 | FALSE |
+| session_log.md | REFERENCE | 419.0 | 250 | 169.0 | FALSE |
 | proj_Smart_Car.md | PROJECT |  65.9 |  45 |  20.9 | TRUE |
 | deferred.md | REFERENCE | 211.8 | 200 |  11.8 | FALSE |
 | proj_seasonality.md | PROJECT |  51.6 |  45 |   6.6 | TRUE |
@@ -47,7 +48,7 @@ None.
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 2.4 | 6 | -3.6 |
+| 8 | 2.7 | 6 | -3.3 |
 
 ## Venues without a source repo
 
@@ -75,14 +76,16 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| pubmaps_regress_2026-10-26 |  0.2 | 33 | FALSE |
-| voronoi_build_2026-09-27b | 29.0 | 10 | TRUE |
-| pubmaps_examples_2026-10-26 |  0.0 |  5 | FALSE |
-| rehearsals_huntington_2026-09-30 | 26.1 |  2 | TRUE |
-| tessellr_staging | 26.1 |  1 | TRUE |
-| pkm_close_2026-09-26 | 30.1 |  0 | TRUE |
-| pkm_close_2026-09-27 | 29.0 |  0 | TRUE |
+| voronoi_build_2026-10-27 |  0.1 | 42 | FALSE |
+| pubmaps_regress_2026-10-26 |  1.1 | 33 | FALSE |
+| voronoi_build_2026-09-27b | 29.9 | 10 | TRUE |
+| pubmaps_examples_2026-10-26 |  0.9 |  5 | FALSE |
+| rehearsals_huntington_2026-09-30 | 27.0 |  2 | TRUE |
+| tessellr_staging | 27.0 |  1 | TRUE |
+| pkm_close_2026-09-26 | 31.0 |  0 | TRUE |
+| pkm_close_2026-09-27 | 29.9 |  0 | TRUE |
 | pubmaps.Rcheck |  0.2 |  0 | FALSE |
+| pubmaps_installtest_2026-10-27 |  0.2 |  0 | FALSE |
 
 ## Legacy pages by platform
 
@@ -98,4 +101,4 @@ None.
 None.
 
 ---
-_Ran in 96.7 s._
+_Ran in 102.9 s._

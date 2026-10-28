@@ -27,7 +27,7 @@ Each row is one place. Some columns are yours to change. The rest are informatio
 
 | Column | Change it? | Purpose |
 |------------------------|------------------------|------------------------|
-| `id` | never | PubMaps' row number. Leave it alone; blank it only for a new row. |
+| `id` | never | PubMaps' row number. Leave it alone. In a row you add, leave it blank. |
 | `include` | yes | Whether the place is drawn. |
 | `label` | yes | The name printed on the map. |
 | `label_pos` | yes | Which side of the symbol the name goes. |
@@ -47,7 +47,7 @@ Each row is one place. Some columns are yours to change. The rest are informatio
 | `no` | Never draw it. Works for points and for areas. |
 | `name` | Print the name only, with no symbol. Use this for a state, a region or a mountain range. |
 
-A name-only place is printed at its own position. States and districts appear in grey italic capitals, for example **YUCATÁN**. If that position is not where you want the name, give it a `label_lon` and `label_lat`.
+A name-only place is printed at its own position. States, districts and parks appear in grey italic capitals, for example **YUCATÁN**. If that position is not where you want the name, give it a `label_lon` and `label_lat`.
 
 ## Changing the printed name: `label`
 
@@ -59,7 +59,7 @@ Names sometimes collide or sit awkwardly. Two columns move a name without touchi
 
 **`label_pos`** puts the name on one side of its symbol: `N`, `NE`, `E`, `SE`, `S`, `SW`, `W` or `NW`. A name set this way stays exactly there; it is no longer moved automatically. Use `none` to hide a name and keep the symbol.
 
-**`label_lon` and `label_lat`** put the name at an exact spot. Read the coordinates off the check map or the grid of the finished map. A point's name gets a thin leader line back to its symbol. For a park or district, this is the way to move its name to an open part of the area.
+**`label_lon` and `label_lat`** put the name at an exact spot. Read the coordinates off the grid of the finished map. A point's name gets a thin leader line back to its symbol. For a park or district, this is the way to move its name to an open part of the area.
 
 Leave both blank and PubMaps places the name itself, keeping it clear of other names.
 
@@ -73,9 +73,9 @@ Changing `lon` or `lat` tells PubMaps the place itself is somewhere else. The fr
 
 ## Setting a position: `lon` and `lat`
 
-Type a position when the gazetteer found the wrong place, or found nothing. Use decimal degrees, with south and west negative: Mt. Kasigau is at about `lon = 38.66`, `lat = -3.83`.
+Type a position when the gazetteer found the wrong place, or found nothing. Use decimal degrees, with south and west negative: Mt. Kasigau is at about `lon = 38.67`, `lat = -3.82`.
 
-A typed position is marked **set by the editor** (purple on the check map). From then on it is treated like any other position: a study site with a typed position is drawn. If a place PubMaps would normally leave out as context should also be drawn, put `yes` in `include` as well.
+A typed position is marked **set by the editor** (purple on the check map). It counts only if it differs from what was already in the cell; to confirm a gazetteer position, type it rounded to four decimal places (Chapter 4). From then on it is treated like any other position: a study site with a typed position is drawn. If a place PubMaps would normally leave out as context should also be drawn, put `yes` in `include` as well.
 
 To remove a position, clear both cells. The place becomes **not located**.
 
@@ -103,7 +103,7 @@ To add a place the manuscript does not name, or one the model missed, add a row 
 -   give a `role` (blank means `study_site`);
 -   give `lon` and `lat`.
 
-The new place is marked **set by the editor** and drawn.
+The new place is marked **set by the editor** and drawn. A study site, plot or town is drawn as it stands. Any other kind of place, such as a natural feature, also needs `yes` in `include`.
 
 ## Things to know
 

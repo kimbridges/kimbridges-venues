@@ -33,8 +33,8 @@ Four counts follow:
 
 -   **places in the manuscript**: everything the model found.
 -   **on the map**: places drawn as points.
--   **need coordinates**: study sites, plots and towns that could not be located. These go into the author query.
--   **to confirm**: places located from a gazetteer with a less-than-exact match. Check these.
+-   **need coordinates**: study sites, plots and towns with no position, or with only a generic name such as "Plot 3", plus one item for any sites described only relative to other places. These go into the author query.
+-   **to confirm**: study sites, plots and towns with only a partial match, or only a suggestion, from a gazetteer. Check these.
 
 ### The check map
 
@@ -100,7 +100,7 @@ Places are drawn by role:
 | pale green area | park or reserve |
 | dashed outline | district |
 | blue line, blue italic name | river |
-| grey italic capitals, no symbol | a region named by the editor (`include = name`) |
+| grey italic name, no symbol | a place named by the editor (`include = name`); capitals for states, districts and parks |
 
 The background shows land in grey, the study country in off-white, the sea in blue-grey, and state or province boundaries as dashed lines.
 
@@ -112,5 +112,5 @@ Some journals explain the symbols in the figure caption rather than on the figur
 pubmap_rerender("Medley_et_al_2010", legend = FALSE)
 ```
 
-The map then uses the full height of the page, and the symbol key on the review page goes into the caption instead. The choice is remembered for that manuscript: later redraws stay without the legend until you set `legend = TRUE`. In the same way, `inset_label = FALSE` leaves the country name off the inset.
+The map then uses the full height of the page, and the symbol key on the review page goes into the caption instead. The choice is remembered for that review folder: later redraws stay without the legend until you set `legend = TRUE`. In the same way, `inset_label = FALSE` leaves the country name off the inset.
 

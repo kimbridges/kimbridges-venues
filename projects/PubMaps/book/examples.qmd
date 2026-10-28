@@ -16,13 +16,13 @@ Each example below is a real case from the test manuscripts. It shows what the r
 
 **Checking it.** Click the marker. The pop-up shows the gazetteer entry and the manuscript's sentence. Switch the background to **Satellite + labels** and zoom in: the point sits on a settlement on the lower slopes, where the manuscript puts the village.
 
-**The correction.** Type the position into `lon` and `lat` yourself. Here the gazetteer's position was right, so the same numbers go back in:
+**The correction.** Type the position into `lon` and `lat` yourself. Here the gazetteer's position was right, so its numbers go back in, rounded to four decimal places:
 
 | name | lon | lat |
 |---------|---------|---------|
 | Kiteghe | 38.6486 | -3.7843 |
 
-Four decimal places are about 11 m, which is plenty.
+Four decimal places are about 11 m, which is plenty. Rounding also matters for another reason: PubMaps counts a position as yours only when it differs from what was already in the cell, so the gazetteer's numbers retyped unchanged would not count.
 
 **The result.** After the redraw the marker is purple, **set by the editor**, and the heading shows **0 to confirm**. The map itself does not change. What changes is the record: `recipe.yaml` now shows that a person checked this position.
 
@@ -60,7 +60,7 @@ If the satellite view had shown the point in empty bush, the correction would be
 
 **The result.** **YUCATÁN** appears in grey italic capitals, the style used for states and districts. The status changes to **name only (no symbol)**.
 
-Notice that the frame changed too. The name sits where the inset had been, in the upper right. PubMaps moved the inset to the upper-left and widened the frame to make room for it. A name-only place takes part in the layout like any other. If the result is not what you want, `label_lon` and `label_lat` can put the name elsewhere.
+Notice that the frame changed too. The name sits where the inset had been, in the upper right. PubMaps moved the inset to the upper left and widened the frame to make room for it. A name-only place takes part in the layout like any other. If the result is not what you want, `label_lon` and `label_lat` can put the name elsewhere.
 
 ::: {layout-ncol="2"}
 ![Before: the state is not named.](images/examples/yucatan_before.png)
@@ -87,11 +87,11 @@ Not every place in a manuscript belongs on its map. Before correcting anything, 
 
 The two districts are drawn as outlines, and they set the frame, because they are the study. Majuli the island is an area, not a point, and the district outline already shows it, so it gets no symbol of its own. The Brahmaputra is drawn as a river. Assam and India are shown by their boundaries and by the inset.
 
-The last three rows show why the status column matters. The gazetteers had nothing sensible for "Upper Assam" or "Northeast India", and matched a stream and a railway line instead. Neither reached the map. The railway is about 1,500 km away and is flagged **far from the study (check)**. Nothing needs to be done about either. They are not places to map, and PubMaps has kept them off.
+Two of the last three rows show why the status column matters. The gazetteers had nothing sensible for "Upper Assam" or "Northeast India", and matched a stream and a railway line instead. Neither reached the map. The railway is about 1,500 km away and is flagged **far from the study (check)**. Nothing needs to be done about either. They are not places to map, and PubMaps has kept them off.
 
 ![The Assam map, with no corrections.](images/examples/assam.png){fig-align="center" width="80%"}
 
-**Parks outside the frame.** The Mt. Kasigau manuscript describes the mountain as rising "from the semiarid plains between Tsavo East and West national parks". Both parks have the status **area outside the map frame**. They lie beyond the edge of a map drawn around the mountain and its villages, so they are left off. Forcing one on with `include = yes` would stretch the map to take in a park the study did not work in. The inset already shows where the mountain sits in Kenya.
+**Parks outside the frame.** The Mt. Kasigau manuscript describes the mountain as rising "from the semiarid plains between Tsavo East and West national parks". Both parks have the status **area outside the map frame**. They lie beyond the edge of a map drawn around the mountain and its villages, so they are left off. Not even `include = yes` draws them: an area outside the frame is never drawn, and an area never enlarges the frame. The inset already shows where the mountain sits in Kenya.
 
 ## Putting the key in the caption: Shewa
 

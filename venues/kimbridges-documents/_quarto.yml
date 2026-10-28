@@ -16,6 +16,7 @@ project:
     - pedigree/**
     - photolocations/**
     - plainmaps/**
+    - pubmaps/**
     - r_api/**
     - r_basics/**
     - seasonalityr/**

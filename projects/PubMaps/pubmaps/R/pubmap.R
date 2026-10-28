@@ -53,6 +53,9 @@ build_outputs <- function(points, dir, manuscript, provider, relief = FALSE, dis
   invisible(plan)
 }
 
+# the model used when pubmap() is not given one (provider -> model name)
+DEFAULT_MODEL <- list(openai = "gpt-6.1-sol", anthropic = "claude-sonnet-5-5")
+
 #' Make a study-site map from a manuscript
 #'
 #' Reads the manuscript with a language model, locates every place in the
@@ -65,7 +68,9 @@ build_outputs <- function(points, dir, manuscript, provider, relief = FALSE, dis
 #'   manuscript inside [pubmaps_review_dir()].
 #' @param provider Which language model provider reads the manuscript:
 #'   `"openai"`, `"anthropic"` or `"gemini"`. Its API key must be in `.Renviron`.
-#' @param model Model name, or `NULL` for the provider's default.
+#' @param model Model name. `NULL` (the default) uses PubMaps' choice for the
+#'   provider: `"gpt-6.1-sol"` for OpenAI, `"claude-sonnet-5-5"` for Anthropic.
+#'   The model used is recorded on the review page.
 #' @param backends Gazetteers to search, `"geonames"` and/or `"nominatim"`.
 #' @param places Optional: a place table already made by [extract_places()],
 #'   to skip the reading step.
@@ -74,17 +79,20 @@ build_outputs <- function(points, dir, manuscript, provider, relief = FALSE, dis
 #'   that explains the symbols in the caption; the review page and
 #'   `symbol_key.txt` give the key as text either way.
 #' @param inset_label Print the country name on the inset map.
+#'   For both, `NULL` (the default) keeps the review folder's last choice; a new
+#'   folder starts with both on.
 #' @return The review folder path, invisibly.
 #' @seealso [pubmap_rerender()] to redraw after editing `points.csv`.
 #' @examples
 #' \dontrun{
 #' pubmap("Medley_et_al_2010.pdf")
-#' pubmap("paper.pdf", provider = "anthropic", model = "claude-sonnet-5-5")
+#' pubmap("paper.pdf", provider = "anthropic")
 #' }
 #' @export
-pubmap <- function(manuscript, dir = NULL, provider = "openai", model = "gpt-6.1-sol",
+pubmap <- function(manuscript, dir = NULL, provider = "openai", model = NULL,
                    backends = c("geonames", "nominatim"), places = NULL, relief = FALSE,
-                   legend = TRUE, inset_label = TRUE) {
+                   legend = NULL, inset_label = NULL) {
+  if (is.null(model)) model <- DEFAULT_MODEL[[provider]]
   stem <- tools::file_path_sans_ext(basename(manuscript))
   if (is.null(dir)) dir <- file.path(pubmaps_review_dir(), stem)
   dir.create(dir, recursive = TRUE, showWarnings = FALSE)

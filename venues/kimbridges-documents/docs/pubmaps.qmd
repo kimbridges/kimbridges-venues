@@ -1,0 +1,8 @@
+---
+title: "PubMaps"
+subtitle: "Study-site maps for journal editors"
+categories: ["Maps", "R", "AI"]
+image: ../pubmaps/images/pubmaps_cover.jpg
+---
+
+[View Document](../pubmaps/){.btn .btn-primary}

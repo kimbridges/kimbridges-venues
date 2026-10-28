@@ -11,6 +11,10 @@ book:
     - "K. W. Bridges"
     - "Claude (Anthropic)"
   date: today
+  cover-image: images/pubmaps_cover.jpg
+  favicon: images/favicon.png
+  navbar:
+    logo: pubmaps_logo.png
   chapters:
     - index.qmd
     - part: "Editor's Guide"

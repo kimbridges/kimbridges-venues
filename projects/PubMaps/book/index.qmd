@@ -21,7 +21,7 @@ The work is divided so that each part does what it does well:
 -   **Code decides the geometry.** The frame, projection, inset, scale bar and north arrow follow fixed rules, so every map is planned the same way.
 -   **The editor checks and corrects.** Everything PubMaps decided is laid out on a review page. Corrections go into one plain table, and the map is redrawn from it.
 
-This book is in two parts. Part I, the Editor's Guide, is practical. It shows how to run PubMaps, read the review page, and correct a map. Part II, on methods, will explain how PubMaps makes its decisions. Seven published papers serve as test cases throughout: study areas in Sumatra, the Simpson Desert, Yucatán, Chitwan, the Garhwal Himalaya, Mt. Kasigau in Kenya, and Shewa in Ethiopia.
+This book is in two parts. Part I, the Editor's Guide, is practical. It shows how to run PubMaps, read the review page, and correct a map. Part II, on methods, will explain how PubMaps makes its decisions. Seven published papers serve as test cases throughout: study areas in Sumatra, the Simpson Desert, Yucatán, Chitwan, the Garhwal Himalaya, Mt. Kasigau in Kenya, and Shewa in Ethiopia. An eighth, a study of two districts in Assam, appears in Chapters 4 and 6.
 
 Commands you type into R are shown in grey boxes. Everything else is ordinary reading.
 

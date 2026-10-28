@@ -86,7 +86,7 @@ When it finishes, PubMaps prints the path of the review page. Open that file in 
 By default the manuscript is read by an OpenAI model. To use Anthropic instead:
 
 ``` r
-pubmap("paper.pdf", provider = "anthropic", model = "claude-sonnet-5-5")
+pubmap("paper.pdf", provider = "anthropic")
 ```
 
 Different models can produce slightly different place lists. Whichever you use is recorded on the review page.

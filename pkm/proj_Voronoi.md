@@ -18,7 +18,7 @@ BEFORE the technology is discussed in the trilogy;** *Maps with Tiles* then cite
 
 ## Current Status
 **COMPLETE 2026-09-27 (Kim).** *The Map That Never Got Drawn* is live at https://kimbridges-documents.netlify.app/voronoi/ and its companion package tessellr 0.1.0 is live at https://github.com/kimbridges/tessellr (see `proj_tessellr.md`). Closed under the posted-on-website Complete rule.
-**Open notes (not blockers):** (1) HVNP / UH permission for the 1974 map -- Kim is obtaining it. (2) ~~Citation details~~ RESOLVED 2026-09-29: Kim's notes + web check confirmed Dirichlet, Voronoi, Brown, Mead and the Stone & Pratt publisher line; Snow's pump line is in his report to the St James Cholera Inquiry Committee (1855, pp. 97-120), not the 2nd ed. -- Ch.10 now cites both (`snow1855`, `snow1855report`, Kim's choice). Dirichlet DOI added. Rebuilt in `C:/temp/voronoi_build_2026-09-29`, venue `voronoi/` + `_site` updated (md5 59/59); awaiting Kim's redeploy.
+**Open notes (not blockers):** (1) ~~HVNP / UH permission for the 1974 map~~ RESOLVED 2026-10-27: Kim received the approval by email (Mueller-Dombois & Fosberg 1974, Vegetation Map of Hawaii Volcanoes National Park, Tech. Rep. 4), granted by the Director of the Pacific Cooperative Studies Unit (PCSU), University of Hawai'i. (2) ~~Citation details~~ RESOLVED 2026-09-29: Kim's notes + web check confirmed Dirichlet, Voronoi, Brown, Mead and the Stone & Pratt publisher line; Snow's pump line is in his report to the St James Cholera Inquiry Committee (1855, pp. 97-120), not the 2nd ed. -- Ch.10 now cites both (`snow1855`, `snow1855report`, Kim's choice). Dirichlet DOI added. Rebuilt in `C:/temp/voronoi_build_2026-09-29`, venue `voronoi/` + `_site` updated (md5 59/59); awaiting Kim's redeploy.
 
 **PUBLISHED 2026-09-27:** *The Map That Never Got Drawn* is live at https://kimbridges-documents.netlify.app/voronoi/ (24th document in the venue), verified from R. The document phase is complete; the project continues with the companion package **tessellr** (Next Steps 00).
 
@@ -261,3 +261,10 @@ tessellr 0.1.0 released on GitHub; the Appendix gained a 'tessellr package' sect
 Kim confirmed the redeployed site (Appendix function reference, Ch.10 sentence) and ruled the project COMPLETE 2026-09-27, with the map permission and citation checks kept as open notes.
 ### 2026-09-29
 Citation open note resolved (see Current Status). references.bib 17 -> 18 entries (+ snow1855report; Dirichlet DOI; Brown pagetotal; Stone & Pratt distribution note -- the last two are not shown by the citation style). `were_they_useful.qmd`: Snow sentence split into the map (2nd ed.) and the pump line (parish report). Rebuilt, venue updated; Kim to redeploy.
+- **2026-10-27 permission + rebuild (Kim):** Preface Acknowledgments now credit the Director, Pacific Cooperative Studies Unit
+  (PCSU), University of Hawai'i for the 1974 map [@muellerdombois1974]; Ch.9 KIM reminder comment removed. Rebuilt in
+  `C:/temp/voronoi_build_2026-10-27` (59 files, 7.5 min); venue `voronoi/` + `_site` updated (md5 59/59, 60/60). Kim: hold
+  the Netlify upload until more updates. FOUND: the rebuild is not byte-stable -- software drift since 09-29 moved
+  geometry-derived numbers in Ch.9 (1974 boundary 51 -> 50 km; constrained boundary agreement 58 -> 59%; stratified 24-pt
+  70 -> 69) and reordered the Ch.7 specimen-map legend; text stays self-consistent (inline values). Also picks up an
+  undeployed bib edit (Snow 1855a publisher 'J.' -> 'John Churchill'). Kim to choose: publish full rebuild, or Preface-only.

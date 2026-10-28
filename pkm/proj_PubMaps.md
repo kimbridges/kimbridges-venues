@@ -360,3 +360,20 @@ Kim (pausing): "a really big step forward today"; next he will try editor input 
   changes; author replies with coordinates in a simple email; attach map_vector.pdf; a messy map usually means an
   unclear manuscript -> text editing, editor decides; PubMaps removes friction. Ch 6 Troubleshooting (18 entries
   from the code's own messages). Kim: editors work on a computer, not a phone (wide tables OK).
+- **2026-10-27 RELEASE (Kim: "complete Part I, publish to kimbridges-documents and do the GitHub repo", then share with Will McClatchey for input).**
+  Cover + logo (Kim's images, `PubMaps_cover.png` 2550x3300, `PubMaps_logo.png` 1024 sq) in the book: web cover
+  `images/pubmaps_cover.jpg` (1200 px), navbar logo `pubmaps_logo.png` (400 px), favicon. Independent proofread (fresh
+  agent, guide vs code) found 16 factual + 4 consistency + 5 wording items; all fixed. Two were CODE fixes: pubmap()
+  `model = NULL` now maps to the provider default (OpenAI gpt-6.1-sol, Anthropic claude-sonnet-5-5) -- before, provider
+  = "anthropic" alone sent the OpenAI model name; and `legend`/`inset_label` default NULL so re-running pubmap() keeps
+  the folder's display choice. Doc facts learned: retyping an unchanged lon/lat is not an edit (confirm = type it
+  rounded to 4 dp); a new non-site row needs include = yes; area outside frame can't be forced. GitHub: PUBLIC
+  https://github.com/kimbridges/pubmaps, clone `C:/repos/pubmaps`, commits 3c3fc4a (0.2.0) + 437dc03 (defaults),
+  pushes verified against the server; install_github from the live repo installs 0.2.0 (8 exports). Check 0/0/1 note.
+  Venue: `kimbridges-documents/pubmaps/` (39 files md5-matched to book `_output`), card `docs/pubmaps.qmd`
+  (Maps, R, AI), `pubmaps/**` in resources; venue rendered to `_site` (25 cards; `_site/pubmaps` 39/39 md5). Awaiting
+  Kim's Netlify drag of `_site`. Open: GEONAMES_HOST premium advice in Ch 1 (Kim's premium login still refused).
+- **PUBLISHED 2026-10-27:** the Editor's Guide is live at https://kimbridges-documents.netlify.app/pubmaps/ (Kim's
+  Netlify drag; card live on the listing). Verified from R: pages 200, cover/logo/review-page byte-identical to `_site`; HTML
+  differs only by Netlify's pretty-URL link rewriting (`./index.html` -> `/pubmaps/`), and the proofread fixes are live.
+  Kim will handle the GeoNames premium question with Will. Next: Kim shares with Will McClatchey; Part II Methods later.
