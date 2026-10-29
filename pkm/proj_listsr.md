@@ -1,6 +1,6 @@
 # PROJECT: listsr
 
-_Last updated: 2026-06-16_
+_Last updated: 2026-10-28_
 _Status: Active_
 _Focus readiness: Ready_
 
@@ -38,6 +38,16 @@ https://github.com/kimbridges/listsr** (Kim, 2026-06-16). Install:
   package was extracted from its `lists_functions_clean.R`).
 - GitHub: **LIVE at https://github.com/kimbridges/listsr** (Kim pushed + checked
   2026-06-16). Future pushes: RStudio Git pane, or `usethis`/`gert`.
+- **⚠ 2026-10-28: NOT FOUND ON GITHUB.** The API returns 404 for `kimbridges/listsr`, authenticated as
+  the owner, and it is absent from all 26 of Kim's repos (public and private). The Drive repo at
+  `Projects\listsr` has ONE commit (2026-06-16, "Initial commit") and NO remote. The published `lists`
+  document links to the repo (`function_reference.qmd` L3), so that link is currently broken. Asked Kim
+  whether it was deleted or renamed; re-publishing it is his call.
+- **✓ RESOLVED 2026-10-28 (Kim approved): PUBLISHED at https://github.com/kimbridges/listsr** -- public, branch `main`
+  (renamed from `master`), commit af40884, 37 files; secret scan clean; push verified against the server; the repo
+  page answers 200, so the `lists` document's link works again; `install_github("kimbridges/listsr")` installs 0.1.0
+  (15 exports) into a clean library. **Working clone: `C:\repos\listsr`** (bucket 5) -- future pushes from there.
+  The Drive repo at `Projects\listsr` keeps its `.git` (same single commit, no remote).
 
 ## Key Files
 - `R/read.R` — `read_lists()`, `to_long()`, `item_list()`, `data_to_2way()`

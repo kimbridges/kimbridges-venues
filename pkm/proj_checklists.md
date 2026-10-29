@@ -1,6 +1,6 @@
 # PROJECT: checklists
 _Last updated: 2026-07-16_
-_Status: Active_
+_Status: Complete (was Active; Kim 2026-10-28)_
 _Focus readiness: Ready_
 <!-- 2026-07-09: COMPLETE — the exploration delivered the checklistr package (GitHub) AND the document "A Checklist Is an Argument" (live at kimbridges-documents.netlify.app/checklistr/). Posted-on-website Complete rule; see proj_checklistr.md + session_log.md 2026-07-09. -->
 _Tags: (none)_
@@ -48,6 +48,9 @@ into a package.
 - Code: G:\My Drive\Projects\checklists\  (per-site subfolders)
 - Data: G:\My Drive\Projects\checklists\kipuka_puaulu\  (3 CSVs + provenance scripts)
 - Docs/output: (none yet; a Quarto write-up is a candidate later)
+- _Note 2026-10-28:_ the newest files here (2026-07-17 to 07-26: `briefing_book_commission.md`,
+  `kipuka_puaulu/*.pdf`) are Briefing Book outputs -- tracked in `proj_briefing_book.md`, not new
+  checklists work (health-check drift).
 - GitHub: not yet
 
 ## Key Files

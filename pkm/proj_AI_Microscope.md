@@ -145,6 +145,7 @@ plant-anatomist review, which is the project's only open dependency.
 - GitHub: https://github.com/kimbridges/ai_microscope (single
   source of truth; Netlify now builds from it via continuous
   deployment — push → auto-deploy)
+- Git working clone: `C:\repos\ai_microscope` (moved from OneDrive 2026-10-28; fresh clone at 666c245, `core.autocrlf` true; matched the old clone file for file). A push here DEPLOYS the live site.
 
 ## Key Files
 - `index.html` — the whole app (HTML/CSS/JS, single file, ~23 KB):

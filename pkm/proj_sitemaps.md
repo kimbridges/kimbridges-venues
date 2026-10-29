@@ -116,3 +116,6 @@ Complete like the other posted documents, tag it `update` (new tag
 this session) and keep it Active, because the pending work is
 functional, not cosmetic. Part of the collection-wide back-fill;
 see proj_PKM.md and session_log.md (2026-05-30).
+
+- 2026-10-28: Cover titled "Sitemaps" by Kim (`sitemaps_cover.png`, old kept as `sitemaps_cover_old.png`); synced to
+  `Projects/sitemaps/sitemaps_website` + `_output` and kimbridges-documents; verified live. Navbar thumbnail left untitled.

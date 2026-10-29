@@ -2324,3 +2324,9 @@ for `G:`, returned the old bytes, so it is not a read-lag illusion (Findings 005
 `force = TRUE` does NOT bypass the cache; it only skips the mtime guard.
 
 **Cheap version: never commit the same staged filename twice. Date-suffix the copy, commit, md5 through R.**
+
+## Finding 056 -- A VECTOR OF SECRETS NAMES ITS OWN OUTPUT (2026-10-28)
+
+**What happened.** Checking whether old API keys were dead, I fingerprinted the key in `.Renviron` with `vapply(keys, fp, "")`. `vapply()` (and `sapply()`) over a character vector USE THE INPUT VALUES AS NAMES, so the printed result showed the live key beside its fingerprint. (It was the Google Maps key `GGMAP_GOOGLE_API_KEY`; first reported to Kim, wrongly, as his Gemini key -- newer Gemini keys are 53 characters and do not start `AIza`, so `SECRET_PATTERNS$google` does not catch them either.) The helper existed precisely to keep the key out of the output; the container leaked it.
+
+**Rule.** Never let a secret be an element of a vector that is printed, named, or used for names. Inside any code that touches a key: `unname()` every result, prefer `vapply(seq_along(keys), function(i) fp(keys[[i]]), "")`, return only derived values (status, fingerprint), and `rm()` the keys before the last expression. Treat ANY secret that reaches tool output as exposed: rotate it, say so at once, and never write it into the PKM.

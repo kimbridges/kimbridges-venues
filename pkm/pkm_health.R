@@ -470,6 +470,9 @@ split_session_log <- function(keep = 15, dry_run = TRUE) {
   f <- file.path(PKM$index, "session_log.md")
   g <- file.path(PKM$logs, "session_log_archive.md")
   a <- readLines(f, warn = FALSE)
+  # GUARD 2026-10-28: the write below REPLACES the archive with a fresh header + this split,
+  # which would destroy every entry already archived. Refuse until it is rewritten to prepend.
+  if (!dry_run && file.exists(g)) stop("archive exists -- split_session_log() would OVERWRITE it. Prepend by hand (see session_log 2026-10-28).")
   hd <- which(startsWith(a, "## "))
   if (length(hd) <= keep) { message("only ", length(hd), " entries -- nothing to archive"); return(invisible(NULL)) }
   cutline <- hd[keep + 1]
@@ -520,11 +523,28 @@ VENUE_GITIGNORE <- c("_site/", "_book/", ".quarto/", "site_libs/", "_freeze/",
 }
 
 .gh_repos <- function() {
+  # Authenticated first, so PRIVATE repos count as present (2026-10-28); the
+  # anonymous endpoint sees public repos only and reported them as missing.
+  a <- tryCatch({
+    x <- gh::gh("/user/repos", per_page = 100, affiliation = "owner",
+                .token = gh::gh_token(), .progress = FALSE)
+    vapply(x, `[[`, "", "name") }, error = function(e) NULL)
+  if (length(a)) return(sort(a))
   r <- tryCatch(jsonlite::fromJSON(
     "https://api.github.com/users/kimbridges/repos?per_page=100"),
     error = function(e) NULL)
   if (is.null(r)) character(0) else sort(r$name)
 }
+
+# Projects whose repo/clone shape is KNOWN and ACCEPTED (checked file by file
+# against GitHub, 2026-10-28). GitHub holds the package; Drive holds documents.
+CLONE_ACCEPTED <- c(
+  accessOAI  = "GitHub = package (all shared files identical); Drive = working copy",
+  geContour  = "GitHub = package source; Drive folder = examples and data only",
+  milestones = "GitHub = package (all shared files identical); Drive = documentation",
+  plainmaps  = "GitHub = full package (9 files not on Drive); Drive = document source",
+  Temperature_Patterns = "local git only, never committed; no repo intended")
+REPOS_DIR <- "C:/repos"   # bucket 5 -- git working clones
 
 pkm_consolidation <- function(check_legacy = TRUE) {
   repos <- .gh_repos()
@@ -535,12 +555,17 @@ pkm_consolidation <- function(check_legacy = TRUE) {
     gitignore = file.exists(file.path(PKM$drive, vf, ".gitignore")),
     stringsAsFactors = FALSE)
   pd <- list.dirs(file.path(PKM$drive, "Projects"), recursive = FALSE)
+  # A clone counts in the project folder OR in bucket 5 (C:/repos); names match
+  # case-insensitively (PubMaps -> pubmaps). 2026-10-28: tessellr and pubmaps were
+  # false positives because only Projects/<name>/.git was checked.
+  rd <- tolower(list.dirs(REPOS_DIR, recursive = FALSE, full.names = FALSE))
   prj <- data.frame(project = basename(pd),
-    local_clone = dir.exists(file.path(pd, ".git")),
-    public_repo = basename(pd) %in% repos,
+    local_clone = dir.exists(file.path(pd, ".git")) | tolower(basename(pd)) %in% rd,
+    public_repo = tolower(basename(pd)) %in% tolower(repos),
     stringsAsFactors = FALSE)
-  prj$issue <- ifelse(prj$local_clone & !prj$public_repo, "clone but no public repo",
-               ifelse(!prj$local_clone & prj$public_repo, "public repo but no local clone", ""))
+  prj$issue <- ifelse(prj$local_clone & !prj$public_repo, "clone but no repo on GitHub",
+               ifelse(!prj$local_clone & prj$public_repo, "repo on GitHub but no local clone", ""))
+  prj$issue[prj$project %in% names(CLONE_ACCEPTED)] <- ""
   leg <- data.frame()
   if (check_legacy) {
     a <- .read(file.path(PKM$index, "inventory_all_projects.md"))
@@ -847,6 +872,7 @@ SECRET_PATTERNS <- c(
   anthropic  = "sk-ant-[A-Za-z0-9_-]{20,}",
   openai     = "sk-[A-Za-z0-9]{32,}",
   google     = "AIza[0-9A-Za-z_-]{35}",
+  google_auth = "AQ\\.[A-Za-z0-9_-]{40,}",   # AI Studio auth keys, 53 chars (2026-10-28)
   github_pat = "gh[pousr]_[A-Za-z0-9]{36}",
   github_fg  = "github_pat_[A-Za-z0-9_]{22,}",
   aws        = "AKIA[0-9A-Z]{16}",
@@ -918,6 +944,9 @@ pkm_backup <- function(push = TRUE, message = NULL, quiet = FALSE) {
   if (!nrow(st)) { say("no changes since last backup\n"); return(invisible(
     list(files = n, changed = 0, pushed = FALSE, head = gert::git_log(repo = m)$commit[1]))) }
   gert::git_add(c("venues", "projects", "pkm", "README.md", ".gitignore"), repo = m)
+  # Count AFTER staging: the pre-staging count undercounted by the number of new
+  # files (deferred.md, raised 2026-08-11; fixed 2026-10-28).
+  n <- nrow(gert::git_ls(repo = m))
   msg <- if (is.null(message))
     paste0("Backup refresh: ", nrow(st), " changed of ", n, " tracked") else message
   sig <- gert::git_signature("Kim Bridges", "kim.bridges@gmail.com")

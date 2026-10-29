@@ -1,6 +1,6 @@
 # PROJECT: Travel System
 _Last updated: 2026-06-10_
-_Status: Active_
+_Status: Standing (was Active; Kim 2026-10-28)_
 _Focus readiness: Ready_
 ## Type
 Standalone system (pointer)

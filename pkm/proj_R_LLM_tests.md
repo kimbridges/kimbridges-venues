@@ -25,7 +25,9 @@ Significant overlap with the chapter set in LLM_Creates_R.
 
 ## Locations
 - Source: G:\My Drive\Projects\R_LLM_tests (.qmd files)
-- Output: G:\My Drive\Projects\R_LLM_tests\_book
+- Output: rendered alongside the source -- per-chapter `*_files\` folders in
+  G:\My Drive\Projects\R_LLM_tests. _Corrected 2026-10-28: there is no `_book\` folder
+  (health-check drift)._
 - GitHub: not yet
 
 ## Key Files

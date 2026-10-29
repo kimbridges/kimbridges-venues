@@ -1,6 +1,6 @@
 # PROJECT: Ceska
 _Last updated: 2026-07-26_
-_Status: Active_
+_Status: Complete (was Active; Kim 2026-10-28)_
 _Focus readiness: Ready_
 
 ## Type

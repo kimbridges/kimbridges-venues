@@ -1,6 +1,6 @@
 # PROJECT: vouchr
 _Last updated: 2026-07-29 (cont.)_
-_Status: Active_
+_Status: Complete (was Active; Kim 2026-10-28)_
 _Focus readiness: Ready (v0.1.0 pushed 2026-07-28; the capture side is proven on real hardware, and the
 companion book *Voucher Labels* is LIVE at https://kimbridges-documents.netlify.app/vouchr/ as of 2026-07-29. The binding-clearance
 comment correction is **committed and pushed** (`9be8f1c`) -- working tree clean, level with origin. Next release
@@ -195,3 +195,7 @@ number codes**. NAMESPACE was hand-written to match roxygen and proved identical
 source files byte-identical to what was delivered, all four new `.Rd` present, no stale
 arguments left in `man/make_qr_cards.Rd`, all 26 `.Rd` documenting functions that exist,
 and no stray PDFs, ledgers or `.Rhistory` in the tree.
+
+- 2026-10-28: The *Voucher Labels* cover (`documentation/images/voucher_cover_art_text.png`, in `Projects/specimen_labels`) was
+  replaced by Kim with a titled version (old kept as `_old`); copied to `_output` and to kimbridges-documents (`vouchr/images/`
+  and the card file `vouchr/vouchr_cover_art_text.png`); verified live.

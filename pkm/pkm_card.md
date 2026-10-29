@@ -3,8 +3,8 @@
 _The one page read at EVERY session start. Created 2026-07-31 (Tier 3)._
 _Budget: 6 KB. If it outgrows that, the surplus belongs in pkm_findings.md._
 
-Full detail lives in `pkm_findings.md` (001-034). This card exists because that file
-passed 66 KB with **nothing firing it**. *The trigger is the mechanism, not the list.*
+Full detail: `pkm_findings.md`. This card exists because that file passed 66 KB with
+**nothing firing it**. *The trigger is the mechanism, not the list.*
 
 ---
 
@@ -22,10 +22,10 @@ or not yet materialised. Every surface except the R bridge can be lied to.**
 - `file.info()` size read straight after a write is unreliable (020)
 
 **Rule.** For ground truth on any `G:` file -- existence, content or size -- read it
-
-⚠ **DIRECTORIES do it too (054).** A name can sit in `list.files()` while `dir.exists()` is FALSE and `dir.create()` refuses it. **Probe three ways.** Build in `C:\temp` when it happens.
 through the **R bridge**. Verify a write by reading **CONTENT** back (line count,
 headings, known strings), never by reading size.
+
+⚠ **DIRECTORIES too (054).** A name can sit in `list.files()` while `dir.exists()` is FALSE. **Probe three ways**; build in `C:\temp`.
 
 ---
 
@@ -33,7 +33,7 @@ headings, known strings), never by reading size.
 
 | If you are about to... | read |
 |---|---|
-| **write a date** | **029 -- BIND IT ONCE, AT SESSION START.** `TODAY <- format(Sys.time(), "%Y-%m-%d", tz="Pacific/Honolulu")`, then write `TODAY` everywhere. Session clock is UTC and runs a day ahead from 14:00 HST. **Failed 3x as a reminder; a binding cannot drift mid-session.** |
+| **write a date** | **029 -- BIND IT ONCE, AT SESSION START.** `TODAY <- format(Sys.time(), "%Y-%m-%d", tz="Pacific/Honolulu")`, then write `TODAY` everywhere. The session clock is UTC, a day ahead from 14:00 HST. |
 | say a file, page, entry or site is MISSING or GONE | **018, 019, 020** |
 | verify a write you just made | 020 |
 | render Quarto | 012, 016, 017 |
@@ -46,7 +46,8 @@ headings, known strings), never by reading size.
 | write a `grep` to locate a line | 022 -- `fixed=TRUE` ignores `^`; ALWAYS check the match count before using the index |
 | push, or trust a tool's "success" | **028** -- verify against the REMOTE, not the return value |
 | **see a TIMEOUT, or check that a job ran** | **031** -- a bridge timeout is NOT a failure; READ the function, then check the artifact it actually writes |
-| **commit a revised file to `G:` a SECOND time** | **055** -- the bridge re-sends the FIRST version under a fresh mtime; copy to a NEW staged name, then md5 through R |
+| **commit a revised file to `G:` a SECOND time** | **055** -- the bridge re-sends the FIRST version; use a NEW staged name, then md5 through R |
+| **write any file on `G:`** | **037** -- never `writeLines()` (it doubles CRs); write in binary, keep the file's line endings, check for `\r\r` |
 | commit anything to a repo | **027** -- `pkm_secret_scan()` first, with `stopifnot` |
 | create a folder or scratch tree | **026** -- `C:\temp` ONLY; the bridge cannot rmdir |
 | conclude a document has NO SOURCE | **025** -- read the PDF's producer string first |
@@ -70,8 +71,7 @@ the PKM becomes load-bearing: the next session reads the note instead of re-chec
 Adopted 2026-07-31 (Kim). **Update every pointer that tells a future session where to
 go; leave every record of what was true at the time.** The test: *is this sentence
 telling someone where to go, or telling them what happened?* Move the first, preserve
-the second. A stale instruction sends the next session to a path that is gone; a
-rewritten log entry falsifies the past.
+the second.
 
 ---
 
@@ -84,9 +84,7 @@ rewritten log entry falsifies the past.
 | **device_bash** | Kim's machine, granted folders | see `G:` AT ALL; delete anything |
 | **sandbox bash** | the cloud container only | see Kim's disk; reach netlify.app |
 
-Folder grants are per-folder and **asymmetric**: `G:\My Drive\Projects_Index` and
-`C:\temp` grant; `C:\Users\kim\OneDrive\Documents` REFUSES while its
-`ai_microscope` subfolder grants.
+Folder grants are per-folder, per-session and asymmetric; the R bridge needs none.
 
 ---
 
@@ -97,9 +95,7 @@ root. Never a subfolder.** Netlify Drop REPLACES the entire site with whatever i
 dropped -- on 2026-07-31 dragging `kimbridges-documents/plainmaps/` 404'd all twenty
 documents.
 
-The trap is structural: document folders live at the project ROOT (where you edit)
-and are copied into `_site` as declared `resources:` (where you deploy), so both
-places hold folders with the same names.
+The trap: document folders sit at the ROOT (edit) AND in `_site` (deploy), same names.
 
 Before dragging anything large: right-click -> **Available offline**, wait for the
 solid green check, then drag. Verify the biggest asset by URL afterwards (Finding 008).
