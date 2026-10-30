@@ -11,6 +11,33 @@ Mechanism 4.
 
 ---
 
+## 2026-10-29 -- PUBMAPS: EMAIL SUBMISSION LOOP BUILT AND TESTED (CLAUDE DUET)
+
+- Session run in Claude Duet (not Cowork); no PKM mount from there, so this entry was pasted in by hand. [Inserted verbatim 19:12 via the Cowork R bridge from Kim's paste.]
+- GOAL: let Will (and later others) submit by emailing a PDF with subject "PubMaps submission", no API keys needed. Kim stays in the loop for testing; automation later.
+- INTAKE: Duet's Drive connector cannot upload PDFs. Fix: Apps Script pubmaps_intake.gs installed in Kim's Google account (script.google.com), trigger every 2 h. Files each submission PDF to Projects/PubMaps/service/inbox as <Sender>_<Gmail message id>.pdf; process_inbox() adds the date, so outbox folders are YYYYMMDD_<Sender>_<message id>.
+- WATCH: Duet routine "PubMaps submission watch" checks Gmail every 2 h, 8am-8pm HST, and notifies Kim of new submissions (notify only).
+- RETURN: on Kim's "approved", Duet drafts a reply to the sender with the five outbox files (map_vector.pdf, map_vector.png, points.csv, review.html, symbol_key.txt), body from reply_draft.txt; sent only on Kim's Send press.
+- TEST: Kim's self-submission (Gmail id 1a18a9f16ed7c0a4) filed, processed, approved and replied end to end. Loop works.
+- NEXT: tell Will the loop is live; watch for his first real submission. Possible later: reply subject "PubMaps results" (reply_draft.txt suggests it); remove Kim from the loop.
+
+---
+
+## 2026-10-29 -- PUBMAPS: WILL'S FIRST COMMENTS; SERVICE PLAN (A NOW, C LATER)
+
+- PKM opened. device_bash still cannot mount G:; the Drive connector refuses text/markdown downloads (content readable only through search snippets). THE R BRIDGE READS AND WRITES G: -- use it for PKM writes.
+- WILL McCLATCHEY'S FIRST COMMENTS (relayed by Kim): all positive. He called PubMaps the most complicated of the documents generated so far, even counting the coding and appendices of the others. Kim agrees it is complex, but others have been very complex too. Will's install attempt on his WORK machine (locked down; he handles confidential materials) did not get it running; he will retry from his HOME computer.
+- DECISION (Kim): offer PubMaps as a submit-a-PDF service, so early users get the map + points.csv without the setup. PHASE A NOW = concierge: a tester emails a PDF, Kim runs pubmap() locally, and returns the map + points.csv + review page. PHASE C LATER = a Docker container (rocker/geospatial + pubmaps + Shiny or Plumber) on Cloud Run or Hugging Face Spaces. (Option B, Shiny on Posit hosting, not chosen.)
+- Design constraints carried into A and C: (1) CONFIDENTIALITY -- unpublished manuscripts go to the server and the LLM provider; test with published papers or with author consent; delete uploads after the run. (2) THE REVIEW LOOP MUST SURVIVE -- return an editable points.csv + the review page, and accept a corrected CSV for a re-render (the web pubmap_rerender()). (3) Keys stay server-side; testers get an invite code. (4) Nominatim/Overpass limits are fine for testing, not for open use. Idea: the guide could split into a short submit-and-review path for users and the full manual for operators.
+- Kim proposes CLAUDE DUET (Preview) to automate A: watch Gmail for submissions, run R on Kim's machine, Kim reviews, reply drafted. Under evaluation.
+- 16:25 SERVICE FOLDERS BUILT + TESTED END TO END: `Projects/PubMaps/service/` with inbox/, work/<id>/ (review + edit points.csv here), outbox/<id>/ (APPROVED only: map PDF + PNG, points.csv, review.html, symbol_key.txt, reply_draft.txt), processed/, failed/, service_log.csv. Script `service/pubmap_service.R`: process_inbox(), rerender_submission(id), approve_submission(id), service_status(). Test on era_36_10.pdf (id 20261029_TEST_era_36_10): process 40 s, 7 places; rerender 16 s; approve -> 6 files in outbox. Test outputs left in place, labeled TEST. Will told the plan (no API keys needed). Next: Kim emails himself a test submission and tries Duet on the Gmail -> Drive inbox step.
+- 19:30 OPERATOR DOCUMENT + PKM CHECK: `Projects/PubMaps/service/SERVICE.md` (who does what, where each piece runs, folders, functions, limits, the out-of-the-loop plan, alternatives) + `service_loop.svg`. `pubmap_service.R` gained `service_check()` and now writes text in binary CRLF (Finding 037; the earlier files were checked clean, no CRCR). Kim adopted STEP 4 AS A PKM ROUTINE: STANDING CHECK line in project_index.md (the trigger) + rule in pkm_protocol.md Mechanism 2 -- check at session start, propose process_inbox(), run only on Kim's yes. First check found KimBridges_1a18abecb5e15568.pdf (filed 18:00). NOTE: this session skipped pkm_card.md at start (Kim's preference names only two files); the 16:2x session-log size misfire was Finding 020 exactly.
+- 19:29 FIRST PKM-ROUTINE RUN (Kim's yes): KimBridges_1a18abecb5e15568.pdf -> 20261029_KimBridges_1a18abecb5e15568, ok, 10 places, 35 s (Kerinci/Jambi, Sumatra). For Kim's review: Lempur PARTIAL match; Bukit Barisan placed as one point at a rounded GeoNames range centroid (-3.00, 102.25); INDONESIA flagged by the engine 'far from the study (check)'; Jangkat Subdistrict a point (GeoNames ADM3, no polygon). Awaiting Kim's review/approval.
+- 19:34 Kim reviewed (map good) and APPROVED with a confirmation request to the author: reply_draft.txt asks the author to confirm the study sites, naming Lempur (partial match; several Kerinci villages share the name). Outbox: 6 files. Check now 0/0/0. Next: Kim tells Duet it is approved; Duet drafts; Kim sends.
+- 19:49 SENT (Kim). Duet objected that it had already been sent; Kim sent anyway and received the email -- confirmed. Kim made a small fix to the Google script to avoid unnecessary resends. Next: Kim asks Will to submit something; waiting on Will.
+
+---
+
 ## 2026-10-28 -- COVERS: NINE MORE DOCUMENTS NAMED ON THEIR COVERS
 
 - PKM opened (R bridge started late; files first read via staging). Active Focus PubMaps; no word from Will yet. Kim emailed GeoNames about the premium-account refusal.

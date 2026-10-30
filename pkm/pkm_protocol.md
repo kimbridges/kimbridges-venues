@@ -102,6 +102,20 @@ filed precisely because they are cheap to do when the file is already
 open and pointless to do at any other time. If they are not read at
 that moment they are not read at all.
 
+### The PubMaps service check -- added 2026-10-29
+
+While PubMaps runs as an email service (Phase A, testing with a limited
+audience), session start has one more step after the three reads:
+`source("G:/My Drive/Projects/PubMaps/service/pubmap_service.R"); service_check()`.
+Claude reports the one-line result alongside the Active Focus. If the
+inbox holds PDFs, Claude proposes `process_inbox()` and runs it only on
+Kim's yes (async; about a minute per PDF). Items awaiting review and
+failures are reported, not acted on -- review and approval stay Kim's.
+The TRIGGER is the STANDING CHECK line in project_index.md (this file is
+not among the session-start reads). Retire both when step 4 is automated
+(Task Scheduler) or replaced by the Phase C container. Operator
+description: `Projects/PubMaps/service/SERVICE.md`.
+
 ---
 
 ## Mechanism 3: Active Focus Pointer

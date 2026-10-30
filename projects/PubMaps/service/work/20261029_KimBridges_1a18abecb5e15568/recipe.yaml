@@ -1,0 +1,57 @@
+manuscript: KimBridges_1a18abecb5e15568.pdf
+made: 2026-10-29 19:28
+read_by: openai gpt-6.1-sol
+pubmaps_version: 0.2.0
+projection: EPSG:32747
+extent_lonlat:
+- 101.0692
+- -3.11583
+- 102.57955
+- -1.94613
+page_mm:
+- 170.0
+- 130.0
+framed_by: points
+inset:
+  corner: tr
+  countries: Indonesia
+  widened_for_inset: no
+north_arrow: tl
+scale_bar: bl
+points:
+- name: Lempur
+  role: study_site
+  lon: 101.53563
+  lat: -2.26098
+  source: nominatim
+  match: partial
+- name: Renah Kemumu
+  role: study_site
+  lon: 101.62533
+  lat: -2.43685
+  source: nominatim
+  match: exact
+- name: Tanjung Kasri
+  role: study_site
+  lon: 101.6988
+  lat: -2.51203
+  source: nominatim
+  match: exact
+- name: Sungai Penuh
+  role: reference_town
+  lon: 101.39862
+  lat: -2.06116
+  source: nominatim
+  match: exact
+- name: Jangkat Subdistrict
+  role: administrative_unit
+  lon: 101.75722
+  lat: -2.52667
+  source: geonames
+  match: exact
+- name: Bukit Barisan
+  role: natural_feature
+  lon: 102.25
+  lat: -3.0
+  source: geonames
+  match: exact

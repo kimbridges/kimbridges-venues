@@ -1,0 +1,8 @@
+"time","id","file","action","status","n_points","seconds","note"
+"2026-10-29 16:23:37","20261029_TEST_era_36_10","TEST_era_36_10.pdf","process","ok",7,40,""
+"2026-10-29 16:24:06","20261029_TEST_era_36_10","","rerender","ok",7,16,""
+"2026-10-29 16:24:06","20261029_TEST_era_36_10","","approve","ok",7,NA,"(TEST RUN -- not a real submission)"
+"2026-10-29 16:51:04","20261029_KimBridges_1a18a9f16ed7c0a4","KimBridges_1a18a9f16ed7c0a4.pdf","process","ok",21,52,""
+"2026-10-29 16:53:50","20261029_KimBridges_1a18a9f16ed7c0a4","","approve","ok",21,NA,""
+"2026-10-29 19:28:46","20261029_KimBridges_1a18abecb5e15568","KimBridges_1a18abecb5e15568.pdf","process","ok",10,35,""
+"2026-10-29 19:33:18","20261029_KimBridges_1a18abecb5e15568","","approve","ok",10,NA,"Please confirm the study sites before using the map. In particular, Lempur matched the gazetteer only partially, and several villages in Kerinci share that name. If the point is wrong, tell us which Lempur (or send coordinates) and we will redraw the map."
