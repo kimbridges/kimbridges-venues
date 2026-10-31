@@ -1,5 +1,5 @@
 # PROJECT: Temperature_Patterns
-_Last updated: 2026-05-30_
+_Last updated: 2026-10-30_
 _Status: Active_
 _Focus readiness: Ready_
 
@@ -38,6 +38,9 @@ and the corresponding `analysis_report.Rmd` source.
 - R/visualization.R — plotting and figures
 - R/data_acquisition.R — data retrieval
 - analysis_report.Rmd — analysis notebook
+- R/eugene_frost_boundary.R — freezing-boundary figure from REAL station data (copy of MRC ch.6 fig 4)
+- data/GHCND_USW00024221_Eugene.csv — Eugene Airport GHCN-Daily, 1938-2026 (NCEI direct download, no token)
+- figures/eugene_frost_boundary.png/.pdf
 - report_Eugene_OR_32F.html — rendered output (Eugene, OR 32°F
   case study)
 - Temperature_Patterns.Rproj — RStudio project
@@ -75,3 +78,9 @@ finished Eugene 32°F report; clear next steps (confirm the GitHub
 remote, document the pipeline, extend to more locations). Part of
 the collection-wide back-fill; see proj_PKM.md and session_log.md
 (2026-05-30).
+
+### 2026-10-30 (figure from MRC)
+Added the freezing-boundary figure built for MRC chapter 6: 5% of Oct-Apr nights sit exactly on 32 F, so the rule
+for the line (<= 32 vs < 32) moves frost nights from 39 to 50 a winter; moving 32 -> 33 F shifts the last spring
+frost a median 3.5 days but 58 days in 2025. Uses REAL station data -- the existing pipeline defaults to SYNTHETIC
+data (use_synthetic = TRUE). Kim wants more time with this figure. New files not yet committed to git.

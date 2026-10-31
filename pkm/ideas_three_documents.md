@@ -790,7 +790,233 @@ _Kim: "I'm wondering if we're building arguments for the trilogy." Claude's mapp
 - **Points and their service areas; sprinklers vs traps (Kim)** -> MWT ch.1 (one operation, many uses) and ch.9 (counting in service areas -- the reader arrives "half way there").
 - **SCALE runs through everything (Kim's ruling, close)** -> S3 already opens on scale in time; the rehearsals add scale in space (lawn -> garden -> kipuka -> city -> island). Candidate thread for the trilogy beside the two spines (concept, friction).
 
+## Measurements Require Categories -- round three, 2026-10-30
+
+_Kim redirected from PubMaps to MRC: time away from the mapping work, "a different perspective". Speaker marked._
+
+### Kim's ideas and rulings
+
+- **Took up approach 3 (AI and tacit scales) and reframed it as CONTEXT.** There is a generally held view of a
+  boundary, but context (Honolulu vs Fairbanks) shifts it. The terms for outside air temperature differ sharply
+  between the two.
+- **"Thin blood."** People from Hawai‘i say they have "thin blood" when they complain of cool temperatures on
+  mainland trips. We retain our personal temperature/comfort scale, and it likely differs from the local people's.
+- **THE OPPOSITE: fixed boundaries.** Boundaries can be fixed, e.g. by statute, even where a flexible (contextual)
+  approach might be better. **Twilight**: a rigidly defined category with different impacts from far north to far south.
+- **RULING: fixed and contextual boundaries are PAIRED IN ONE CHAPTER.**
+- **On the examples:** these are more interesting examples that people will understand; in some cases (the far
+  north) readers may not be aware how important the context is.
+- **Kona coffee school year.** On the Big Island the school year (session vs break) was defined differently from
+  the other islands: the break was shifted to the coffee harvest because students were needed to pick. Compare the
+  temperature season that defines the school year in temperate areas.
+
+### Claude's proposals (NOT yet ruled unless marked)
+
+- **The label is fixed, the number moves.** "Cold" is ~60 F in Honolulu and far below zero in Fairbanks; the word
+  marks the same category in both places. The cleanest statement yet of the MRC claim.
+- **Two scales meet.** A local forecast is written for the local scale; the visitor applies a home scale. Counterpart
+  to the unit-switch test: the traveller can convert the units but not the scale.
+- **The carried scale has inertia -- S3 inside a person.** A comfort boundary behaves like a running baseline of the
+  climate one has lived in; it shifts after a move, slowly. Links MRC to S3 through a person, not a chart.
+- **A fixed boundary is always fixed in SOME variable; choosing the variable decides where context returns.**
+  Civil twilight is fixed in sun angle (6 deg) and its DURATION varies with latitude; statutes (headlights, hunting
+  hours) fix it in CLOCK time ("30 minutes after sunset"), a mid-latitude proxy for dark enough. The two fixed
+  definitions disagree in the far north. Kona follows the same pattern: the break fixed by HARVEST, not by heat.
+- **Daylight saving time** -- a fixed clock rule whose benefit depends on latitude; Hawai‘i opted out. Hawai‘i as
+  test case, per the S3 ruling.
+- **The trade-off.** Fixed buys uniformity, enforceability, comparability and low friction of APPLICATION; the cost is
+  poor fit at the extremes. Contextual buys fit; the cost is the friction of KNOWING the context and lost
+  comparability. Hybrid: speed limits (fixed numbers, posted by context). Fixed: 0.08 BAC, age 18, 38.0 C fever.
+- **Chapter title candidate:** "Fixed or contextual: who chooses the boundary, and in which variable." Proposed
+  placement after ch.4 (where boundaries come from) -- PLACEMENT NOT YET RULED.
+- **Worked example for approach 3:** LLM-elicited boundaries for comfort words (cold / chilly / pleasant / warm /
+  hot) in 20-30 cities, plotted against each city's climate; checked against NWS local criteria as an independent
+  source; Kim's carried scale as the testable outlier. The AI as an INSTRUMENT for eliciting tacit scales, not an
+  authority. All R, no maps.
+- **Possible backbone addition:** PURPOSE / ECONOMY as a boundary source (the harvest sets the school break).
+
+### Kim, cont. -- surf height, conformity, language
+
+- **Surf height** is an interesting example, and one that CHANGED in Kim's lifetime (through external influences?).
+- **Conformity** -- "probably a soft way of saying standardization" -- may be a theme the surf case raises.
+- **How a language holds the categories.** Much folk mythology about one language having X words for Y where
+  another has only Z. Kim believes WIND is an example in Hawaiian. His thought: a language may be either a
+  BARRIER to category creation or an AID to more (and better understood) categories.
+
+### Claude, cont. (NOT yet ruled)
+
+- **Surf is a change of OPERATION, not of category -- Bridgman again.** The Hawaiian scale and face height measure
+  different parts of the same wave; the switch moved the number, not the wave. Old-timers keep the Hawaiian
+  number: the carried scale again. Pressure for the switch likely came from a global audience (forecast sites,
+  visitors) and SAFETY -- a visitor hearing a Hawaiian-scale number underestimates the wave.
+- **Standardization belongs in the fixed-or-contextual chapter** as the force that pushes boundaries and units
+  toward fixed: who pushes (state, commerce, safety, a global audience) and what is lost (local fit, identity).
+- **Hawaiian winds and rains are named BY PLACE** -- the language builds context into the category itself, the
+  opposite of standardization. A named rain is not "light rain" but the rain of a particular valley.
+- **The folk myth has a name:** the "Eskimo words for snow" story (Boas -> Whorf -> Pullum's debunking). The
+  defensible version: vocabulary follows NEED and EXPERTISE (skiers, surfers, meteorologists, Braun-Blanquet);
+  language STORES and TRANSMITS categories rather than permitting or forbidding perception.
+- **Evidence that language moves a boundary:** categorical perception -- Russian speakers discriminate blues faster
+  across their light/dark-blue word boundary. A boundary in language is measurable at the boundary, which ties to
+  ch.5 (precision matters near a boundary).
+- **Ethnobiology as the counterweight:** Berlin's work suggests folk taxonomies converge across languages at the
+  generic level -- NATURE constrains the categories. Kim's discussionsr notes hold a Berlin 1992 reference.
+- **Barrier AND aid:** aid -- a word makes a distinction shareable and learnable (ch.2) and stores local
+  environmental knowledge; loss of a language is loss of categories (the inverse: no concept, not seen).
+  Barrier -- an imposed vocabulary (standardization again) can overwrite a finer local one.
+- **Placement candidate:** language as the carrier of scales fits ch.2 (learning the scale).
+
+### Kim, cont. -- immersion schools and rain names
+
+- Kim asked whether the Hawaiian immersion (Kaiapuni) schools are saving the Hawaiian rain terms; if so, it
+  strengthens "when a language is lost, the categories are lost too". Kim: it should be possible to check.
+
+### Checked (web, 2026-10-30) -- Claude
+
+- **Hanau ka Ua: Hawaiian Rain Names** (Akana with Gonzalez, Kamehameha Publishing 2015/16): 200+ rain names,
+  recovered over ~11 years from ~300 Hawaiian-language primary sources (newspapers, chants, songs, proverbs).
+  Names are tied to PLACES; Hilo has the most, Nu'uanu leads on O'ahu. Companion wind book (600+ names) was in
+  production in 2016 -- current status not checked. Akana met the names through hula chant, not daily speech.
+- **Immersion schools:** a Big Island immersion school teaches second graders cloud names (ao 'opua) and their
+  rain-forecasting meaning; Kulaniakea (preschool) teaches cloud names. NO direct evidence found yet that
+  Kaiapuni curricula teach the rain-name corpus specifically. Next check: Hale Kuamo'o (UH Hilo curriculum centre)
+  or Kamehameha Publishing.
+- **Refines the claim (proposal):** the names left LIVING USE but survived DORMANT in the written record, and
+  were revived by scholarship and education. Loss of a language removes the people who can APPLY place-bound
+  categories; a written archive can keep the categories but not the seeing. Recovery needs both text and a
+  person in the place.
+
+### Kim, cont. -- wayfinding and Hokule'a
+
+- Reading the ocean was LOST in Hawai'i until a master navigator was brought from elsewhere in the Pacific where
+  long-distance sailing was still practised. Hokule'a's voyage, which depended on that skill, contributed to the
+  start of the revitalisation of Hawaiian culture. To Kim this speaks of the VALUE of the categories: in some
+  areas they may be the BASIS of the culture. Kim asked whether that overstates it.
+
+### Claude's answer (proposal, NOT ruled)
+
+- Slightly overstated as a general claim; defensible in a narrower form: in PRACTICAL-KNOWLEDGE domains
+  (wayfinding, rain, planting) the categories ARE the competence -- lose them and the skill goes, not just words.
+  Culture also rests on practice, relationships, values and institutions.
+- The case supports "categories need a practitioner": the revival came through a PERSON who could apply them
+  (Mau Piailug), not from an archive -- the same point as the rain names.
+- The categories were TRANSFERRED (Carolinian, Micronesian) and ADAPTED, not retrieved: the Hawaiian star compass
+  (Nainoa Thompson) was rebuilt from Mau's teaching plus study. Categories can travel between cultures -- the
+  carried scale at a cultural level.
+- The 1976 voyage worked as a TEST (against the accidental-drift view of Pacific settlement): categories proved
+  by use. Ties to THE INVERSE / falsification principle.
+- The navigator's horizon is a categorised space (star houses, named swells) -- noted, not pursued (Kim is
+  taking a break from mapping).
+- Candidate placement: ch.8 (the inverse -- loss of categories) or a closing chapter on what categories are worth.
+
+### Kim, cont. -- personal stories; event boundaries; category lifespans
+
+- **PERSONAL STORY:** Kim had dinner with Ben Finney, one of the voyagers on the first trip, soon after his
+  return, and got a very detailed account of the voyage. Much later Kim was in Palau when Hokule'a arrived there
+  for the first time and saw the community's excitement first hand -- "the emotions were pretty profound."
+- **Historical events as category boundaries** -- temporal categories on a bigger scale (pre- and post-Hokule'a).
+  System changes, beyond the scope of the specific event, occur at a point that is widely recognised.
+- **Categories may have a finite LIFESPAN.** The category may remain in the historical record while its ROLE is
+  lost or replaced.
+
+### Claude, cont. (NOT yet ruled)
+
+- **An event boundary is a sharp marker agreed for a gradual change** -- the renaissance was underway before 1976;
+  the voyage became the recognised point. Same pattern as twilight's clock-time proxy: a boundary fixed on a
+  convenient variable (an event) standing for a fuzzy one (a system state). Usually assigned in RETROSPECT.
+  Mirror of S3's "endpoints definable, middle ambiguous". Other cases: 1778 contact, BC/AD, wars, pandemics.
+- **The formal version: geology's "golden spike"** -- a committee procedure for choosing a point marker for a
+  system change; the Anthropocene proposal was, as far as Claude knows, REJECTED (2024). A boundary refused.
+- **Three fates of a category** (life cycle): (a) RETIRED, role gone, name kept in the record (Kona coffee
+  vacation); (b) LABEL KEPT, DEFINITION REPLACED (Beaufort numbers redefined from sail carried to wind speed;
+  horsepower); (c) DORMANT, then REVIVED (rain names, wayfinding). Taxonomic synonymy is (a) in Kim's own field.
+  Possible chapter: "the life of a category" -- gathers today's material.
+- **EVIDENCE (Kim's kept document):** printed programme "Hokule'a and Alingano Maisu -- Schedule of Events", Palau,
+  planned for arrival SUNDAY 1 APRIL 2007 (five days; Hokule'a with navigator Nainoa Thompson; Alingano Maisu with
+  master navigator Sesario Sewralur); welcome with shell horn, chants, Paramount High Chief Ibedul and President
+  Remengesau; "Historical Voyage Presentation" by Thompson; possible departure for Yap and Japan "as determined by
+  Master Navigator". Kim: arrived ON SCHEDULE. Kim has his own photographs of the arrival (voyaging canoe in the Rock Islands
+  with a Palauan war-canoe escort and crowd on the dock) -- candidate figure.
+- **The programme is itself an example (Claude):** its note says Day #1 begins on the DAY OF ARRIVAL, and the
+  schedule shifts if navigation delays it. The days are categories bounded by an EVENT, not by the calendar --
+  and departure is set by the navigator's reading, not the clock. Event-defined vs clock-defined time, on one page.
+
+### Working outline -- MRC (after round three) -- ADOPTED by Kim 2026-10-30 ("this outline works well")
+
+_Part I -- What a category does_
+1. **The claim** -- temperature; the unit-switch test.
+2. **Learning the scale** -- tacit; Bridgman; LANGUAGE as the carrier (place-named rains, the snow myth,
+   categorical perception, Berlin); the AI-elicitation worked example.
+3. **Two uses** -- describe vs elicit behaviour.
+
+_Part II -- Where boundaries come from_
+4. **Where boundaries come from** -- the backbone table; candidate new sources PURPOSE/ECONOMY and EVENT (not ruled).
+5. **Fixed or contextual** -- thin blood; twilight; DST; Kona coffee break; standardization and the surf scale.
+   Organising question: fixed in WHICH variable?
+6. **Boundaries and error.**
+7. **Several measurements, one category.**
+8. **Categories instead of measurements.**
+
+_Part III -- Categories over time_
+9. **The life of a category** -- retired / redefined / dormant-then-revived; rain names, wayfinding, Hokule'a;
+   event boundaries (the Palau programme, the golden spike).
+10. **The inverse** -- categories blind as well as reveal.
+
+**Kim's rulings on the open questions:**
+- **S3 overlap:** event boundaries STAY IN MRC as part of a category's life cycle.
+- **Balance:** ch.6-8 are still valid and important; they need work.
+- **Ch.9:** liked, but may be in the wrong LOCATION -- not a concern now.
+- **Language early:** ch.2 is OK.
+- **NEXT FOCUS: chapter 6 (Boundaries and error).**
+- **CHART RULE (trilogy visual vocabulary):** when possible, include an interpretation note working one example
+  on the chart; a new type of chart must teach the reader how to read it.
+- **SOURCE suggested by Kim (2026-10-30, parting note): Miller (1956) "The Magical Number Seven, Plus or Minus Two",**
+  Psychological Review 63:81-97 (psychclassics.yorku.ca/Miller/). Claude's mapping (NOT ruled):
+  - Span of absolute judgment: unidimensional judgments carry ~2.6 bits (mean of studies) = about 6.5 categories,
+    range ~3-15. A HUMAN-CAPACITY limit on how many categories a learned scale can hold -- a boundary source for the
+    backbone (ch.4); why informal scales have few classes (BP 4, gauge 8 bars, Braun-Blanquet ~7). Ch.2 and ch.8.
+  - Confusions begin near capacity = errors between ADJACENT categories -- ch.6's error-at-the-boundary in the
+    perceiver rather than the instrument.
+  - More dimensions raise capacity at a decreasing rate (crude judgments of several things at once) -- ch.7.
+  - Relative judgment beats absolute -- the COMPARISON boundary source (runs vs the opponent).
+  - Recoding/chunking; Miller calls linguistic recoding the "lifeblood" of thought -- language as AID (ch.2).
+  - Miller ends suspecting the many sevens are coincidence -- a caution against reading pattern into categories (ch.10).
+  - **Kim (origin story):** Miller's paper was, in a way, the STARTING POINT of his thinking about categories -- it showed
+    him the contrast between measurement and categories.
+  - **RULING (Kim, 2026-10-30 evening): Miller OPENS the document** -- it is the true origin, and recent documents
+    consistently start with a personal event. At the time, the NUMBER of categories was what fascinated him; only
+    later did he make the link between measurement and categories.
+
+### Verify before writing
+
+- Acclimatization physiology; "thin blood" as Hawai‘i folk usage.
+- Civil-twilight duration by latitude; the ~60.5 N threshold for all-night civil twilight.
+- State headlight statutes ("30 minutes after sunset"); hunting-hours rules; 14 CFR 1.1 definition of night.
+- Hawai‘i's DST exemption (Uniform Time Act 1966; Hawai‘i's opt-out).
+- NWS local criteria for wind-chill and heat advisories; any shift from national thresholds to local ones.
+- Kona "coffee vacation": years in force, scope (Kona district vs all Big Island schools), months.
+- Origin of the temperate summer break (agrarian story vs heat / standardisation -- contested).
+- Hawaiian surf scale definition; when and why NWS Honolulu (and forecast sites) moved to face height.
+- Hawaiian wind names (Wind Gourd of La
+‘
+amaomao, Nakuina); rain-name compilation (Akana & Gonzalez 2015).
+- Boas 1911; Pullum 1989 "The Great Eskimo Vocabulary Hoax".
+- Winawer et al. 2007 (Russian blues); Berlin & Kay 1969; Berlin 1992 (ethnobiological classification).
+- Mau Piailug (Satawal); 1976 Hokule'a voyage to Tahiti; Polynesian Voyaging Society 1973; Nainoa Thompson's
+- Ben Finney's role on the 1976 voyage; Palau arrival -- ANSWERED by Kim's kept programme (below).
+- Beaufort scale's original sail-based definitions and the change to wind speed; Anthropocene GSSP vote (2024).
+  star compass; Andrew Sharp's drift thesis (1956); Hokule'a's role in the Hawaiian Renaissance (timing).
+
+---
+
 ## Next
+
+**2026-10-30: focus returned to the trilogy -- MRC round three (above).** Context moves the boundary
+("thin blood") paired with fixed boundaries (twilight, DST, Kona coffee break) in ONE chapter. Open: the
+chapter's placement; the LLM-elicitation worked example; the new verify list.
+**Later the same day: round-three outline ADOPTED (10 chapters, three parts); NEXT = chapter 6, Boundaries and error.**
+
+_Next as of 2026-09-25, kept as history:_
 
 **2026-09-25: focus moved to the Voronoi document (`proj_Voronoi.md`), to be finished BEFORE the
 trilogy discusses the technology.** The trilogy stays at capture; MWT's changes are recorded in the

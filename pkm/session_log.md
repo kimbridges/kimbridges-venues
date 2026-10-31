@@ -11,6 +11,49 @@ Mechanism 4.
 
 ---
 
+## 2026-10-30 -- MRC: REDIRECT FROM PUBMAPS, ROUND THREE, FORMAL INTAKE, CH.6 FIGURES 1-4
+
+**Date / duration:** 14:56-21:50 HST, with a dinner break (~16:50-20:30).
+
+**Active focus at start:** PubMaps (2026-10-24). Session start ran the three reads and the PubMaps service check
+(0 inbox / 0 awaiting / 0 failed). device_bash still cannot mount G: -- all reads and writes went through the R bridge.
+Kim had started the R server late; the bridge reconnected on the first call.
+
+**What was worked on:**
+- Redirected to the trilogy, then to MRC (*Measurements Require Categories*) for "a different perspective" away from mapping.
+- MRC round three in `ideas_three_documents.md`: context moves the boundary ("thin blood") paired with fixed boundaries
+  (twilight, DST, Kona coffee break) in ONE chapter; standardization and the surf scale; language holds categories
+  (Hawaiian rain names by place -- web-checked: Hanau ka Ua; immersion schools teach cloud names, rain corpus unconfirmed);
+  Hokule'a and the life of a category; Kim's Ben Finney dinner and the Palau arrival (2007-04-01, on schedule -- his
+  printed programme and his own photograph); Miller (1956) "The Magical Number Seven".
+- FORMAL INTAKE (Mechanism 1): `proj_MRC.md`, `Projects\MRC\` (R/, figures/, data/), index row; Active Focus moved to
+  MRC ch.6 (old block preserved in logs/focus_history.md). PubMaps stays Active (service running).
+- Ch.6 argument adopted (7 steps) -> `Projects/MRC/ch06_argument.md`. Figures built (scripts in R/, PNG + PDF):
+  fig1 misclassification curve; fig2 cost moves the threshold; fig3 NHANES 2017-18 BP reclassification (19% -> 39%
+  hypertensive on measured BP alone; 34% relabelled with no change in reading); fig4 Eugene frost from REAL GHCN-Daily
+  data (5% of winter nights sit exactly on 32 F; last frost moves 58 days in 2025 for 32 -> 33 F).
+- Fig4 also added to Temperature_Patterns (data/, figures/, R/eugene_frost_boundary.R; proj file updated; NOT committed to git).
+
+**Key decisions (Kim):** round-three MRC outline ADOPTED (10 chapters, three parts); event boundaries stay in MRC (life
+cycle), not S3; ch.6-8 need work; ch.9 location open; language in ch.2; ch.6 = boundary VALUE shifting, ch.9 = ROLE
+changing; short folder name MRC; Miller OPENS the document (true origin -- first the NUMBER of categories, later the
+measurement link); CHART RULE for the trilogy: include an interpretation note working one example; teach the reader how
+to read a new chart type.
+
+**Personal stories captured (ch.6 notes):** smudge pots in the Southern California orange groves; Kim's letter-grade
+system for classes of 300-500 (predefined 0.5 band; three computed round-up tests -- bad day, upward trend, strong
+final; noted in the gradebook; thousands of students, never challenged); the 28-day exam spacing and the origin of the
+bad-day rule; item-analysis correction of exams (+1 to all per flawed question; "I got feedback, too").
+**CAUTION:** Kim is nervous about disclosing the borderline rules (never discussed with colleagues) -- disclosure level
+is HIS decision; do not draft them into chapter text until he rules.
+
+**Queued:** continue MRC tomorrow -- options: fig5 (simulated class of 400, the borderline band and its tests); ch.7-8
+worked examples; ch.2 AI-elicitation example; verify lists (ideas file round three; ch.6 notes). Ask Kim which item
+statistic he used. PubMaps NEXT unchanged: tell Will the loop is live.
+
+**Notes:** the count of Eugene nights jumps at 32 F (31: 235, 32: 334) -- heaping or latent-heat physics? Worth checking.
+Temperature_Patterns' pipeline defaults to SYNTHETIC data.
+
 ## 2026-10-29 -- PUBMAPS: EMAIL SUBMISSION LOOP BUILT AND TESTED (CLAUDE DUET)
 
 - Session run in Claude Duet (not Cowork); no PKM mount from there, so this entry was pasted in by hand. [Inserted verbatim 19:12 via the Cowork R bridge from Kim's paste.]
@@ -35,6 +78,7 @@ Mechanism 4.
 - 19:29 FIRST PKM-ROUTINE RUN (Kim's yes): KimBridges_1a18abecb5e15568.pdf -> 20261029_KimBridges_1a18abecb5e15568, ok, 10 places, 35 s (Kerinci/Jambi, Sumatra). For Kim's review: Lempur PARTIAL match; Bukit Barisan placed as one point at a rounded GeoNames range centroid (-3.00, 102.25); INDONESIA flagged by the engine 'far from the study (check)'; Jangkat Subdistrict a point (GeoNames ADM3, no polygon). Awaiting Kim's review/approval.
 - 19:34 Kim reviewed (map good) and APPROVED with a confirmation request to the author: reply_draft.txt asks the author to confirm the study sites, naming Lempur (partial match; several Kerinci villages share the name). Outbox: 6 files. Check now 0/0/0. Next: Kim tells Duet it is approved; Duet drafts; Kim sends.
 - 19:49 SENT (Kim). Duet objected that it had already been sent; Kim sent anyway and received the email -- confirmed. Kim made a small fix to the Google script to avoid unnecessary resends. Next: Kim asks Will to submit something; waiting on Will.
+- 19:58 SESSION CLOSE: pkm_health() -- drift 0, repo/clone mismatches 0, reconciliation failures 0; ONE NEW FLAG: project_index.md 30.5 KB vs 30 KB budget (+0.5, the new STANDING CHECK line) -- trim next session (the Active Focus NEXT paragraph is the obvious candidate). rehearsals_huntington scratch past 14 days = known KEEP. pkm_backup(): 1424 files, secret scan clean, committed 790f60d9a8 (6 changed), push verified against the server. Next session: Kim pushes Will to submit and asks how the email strategy fits his needs and constraints.
 
 ---
 
