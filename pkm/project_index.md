@@ -1,5 +1,5 @@
 # Projects Index
-_Last updated: 2026-10-30_
+_Last updated: 2026-11-01_
 
 > **History split out 2026-07-28.** The superseded Active Focus blocks and the full
 > dated Change Log now live in `logs/focus_history.md`, verbatim and unedited.
@@ -15,7 +15,7 @@ _Last updated: 2026-10-30_
 
 **STANDING CHECK (from 2026-10-29, while PubMaps runs as an email service):** after the session-start reads, run `source("G:/My Drive/Projects/PubMaps/service/pubmap_service.R"); service_check()` and report its line with the Active Focus. If the inbox holds PDFs, PROPOSE `process_inbox()` and run it (async) only on Kim's yes. Report items awaiting review and failures; do not act on them. Detail: `Projects/PubMaps/service/SERVICE.md`; rule: pkm_protocol.md Mechanism 2.
 
-**NEXT (2026-10-30): chapter 6 worked examples, proposed order -- (1) misclassification curve at 38.0 C (simulation; the chapter's central figure); (2) cost moves the boundary; (3) NHANES, the 2017 blood-pressure reclassification; (4) Eugene 32 F (Temperature_Patterns). Kim chooses the start.**
+**NEXT (2026-11-01): MRC -- figures built: ch.6 (4), ch.10 bunching, size guides, age thresholds. Remaining gaps: machine-classification thresholds; ch.7-8 worked examples; ch.2 AI-elicitation; exam bunching data; verify lists. Detail: ideas_three_documents.md round four; session_log.**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

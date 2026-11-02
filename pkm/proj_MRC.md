@@ -76,3 +76,14 @@ categories; the measurement-category link came later). Started ch.6 fig4 (Eugene
 Fig4 built from real Eugene GHCN-Daily data: 5% of winter nights sit exactly on 32 F (rule for the line moves
 frost nights 39 -> 50 a winter); last frost moves a median 3.5 days for 32 -> 33 F, 58 days in 2025. Chapter 6's
 four planned figures are done.
+### 2026-11-01
+Round four opened (ideas file): clothing sizes (bespoke vs ready-to-wear; Japan S); Bridges & Lau 2006 skill levels --
+RULING: an example toward the END; the document's progression is the UBIQUITY of classification and its various uses.
+Compiled size guides (data/size_guides_tshirts.csv: 195 rows, 22 brand charts with data + JIS, EN 13402-3) and drew
+figures/ch05_fig_size_guides (draft). Caveats: Uniqlo Japan source is a 2015 dress-shirt chart; JIS copy is secondary.
+Hat sizes captured (counterexample: neutral number, a measurement disguised as a label). Gap review; Kim chose ch.10
+BUNCHING first, with his hypothesis (penalty or reward attached to a category). Built ch10_fig1_bunching from real
+data (Boston Marathon 2001-14; UK Price Paid 2013); notes in Projects/MRC/ch10_notes.md. Raw pp-2013.csv in C:/temp.
+Warning scales checked (JMA shindo 1949/1996, UV index 1992/1994, NWS watch/warning research); Kim's own-field examples
+(life forms, Zone System, plant families -> families placed with Dreyfus toward the end). AGE: Kim's grandmother story;
+drew figures/ch05_fig_age_thresholds (data/us_age_thresholds.csv; Pew 2009 'old' by respondent age). Draft.

@@ -11,6 +11,36 @@ Mechanism 4.
 
 ---
 
+## 2026-11-01 -- MRC ROUND FOUR: SIZE GUIDES, SKILL LEVELS, BUNCHING, WARNING SCALES, AGE
+
+**Date / duration:** 15:00-16:45 HST.
+
+**Active focus at start:** MRC ch.6 (2026-10-30). Session start: three reads; Friday's close CONFIRMED complete
+(health report 21:49 clean; backup commit 8de5922 pushed 21:50). PubMaps check 0/0/0. R session had restarted.
+
+**What was worked on (all MRC; capture in ideas_three_documents.md, 'round four'):**
+- Clothing sizes (Kim): S-M-L vs measurement; Japan's S; bespoke/home-sewn needed no categories. Subagent compiled
+  data/size_guides_tshirts.csv (195 rows, 22 brand charts + JIS, EN 13402-3); fig ch05_fig_size_guides.
+- Kim's paper Bridges & Lau 2006 (Dreyfus skill levels) -- RULING: an example toward the END; the document's
+  progression is the UBIQUITY of classification and its uses.
+- Hat sizes as counterexample (neutral number; a measurement disguised as a label).
+- Gap review -> ch.10 BUNCHING first; Kim's hypothesis: a penalty or reward attached to a category. Fig ch10_fig1_bunching
+  from real data: Boston Marathon 2001-14 (16% fewer finishers in the minute after 4:00); UK Price Paid 2013 (17,197
+  sales at exactly 250,000 vs 72 just above). Notes: Projects/MRC/ch10_notes.md.
+- Warning scales (Kim: violent events, naming, colour, categories improve as importance is appreciated): checked JMA
+  shindo (7 added 1949; 5 and 6 split 1996 after Kobe), UV index (Canada 1992; WHO/WMO 1994 colours), NWS watch/warning research.
+- Kim's own fields: life forms (focus reduces friction), Zone System, plant families -- RULING: families placed with
+  Dreyfus toward the end.
+- AGE: Kim's grandmother (old at 50; black clothes; a 42-year battle). Fig ch05_fig_age_thresholds (US thresholds,
+  changes over time; Pew 2009 'old' by respondent age).
+
+**Queued:** remaining gaps -- machine-classification thresholds; ch.7-8 worked examples; ch.2 AI-elicitation;
+exam bunching data (NY Regents at 65); verify lists (ideas file; ch05/ch06/ch10 notes). Figure placement is provisional.
+PubMaps NEXT unchanged (tell Will the loop is live).
+
+**Notes:** C:/temp/pp-2013.csv (140 MB, bucket 4 scratch; the compact extract is in MRC/data). Size-guide caveats in
+the CSV notes (Uniqlo Japan source a 2015 dress-shirt chart; JIS secondary copy).
+
 ## 2026-10-30 -- MRC: REDIRECT FROM PUBMAPS, ROUND THREE, FORMAL INTAKE, CH.6 FIGURES 1-4
 
 **Date / duration:** 14:56-21:50 HST, with a dinner break (~16:50-20:30).

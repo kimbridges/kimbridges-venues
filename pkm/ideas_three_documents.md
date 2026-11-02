@@ -1009,6 +1009,163 @@ amaomao, Nakuina); rain-name compilation (Akana & Gonzalez 2015).
 
 ---
 
+## Measurements Require Categories -- round four, 2026-11-01
+
+_Session opened on MRC; Kim brought new ideas. Speaker marked. MRC is now a formal project (proj_MRC.md); chapter-level_
+_working notes live in Projects/MRC/ (e.g. ch06_argument.md). This file keeps trilogy-level capture._
+
+### Kim's ideas
+
+- **CLOTHING SIZES -- "a really easy example" of categories vs measurement.** S-M-L are the basic categories; XS, XL,
+  XXL for people outside that range -- fits the magic-number-seven argument. Some people are caught ON THE BOUNDARY
+  (usually an S but sometimes an M). Is there any STANDARDIZATION for a particular item, e.g. a t-shirt? Online shops
+  commonly give a SIZE GUIDE -- "the translation between measurement and category". HOW MUCH VARIATION IS THERE IN SIZE
+  GUIDES? ("You can see where this is headed.")
+- Kim does NOT need to be in the figure. But the STORY may relate to TRAVEL TO JAPAN, where the meaning of S is very
+  different from the US ("travelers beware!").
+- **BESPOKE TAILORING didn't have the category problem -- each person was measured.** Ready-to-wear, Kim guesses,
+  changed all that. HOME-SEWN clothing is the same as bespoke. This example might show the DIFFICULTY OF ADOPTING A
+  COMMON STANDARD.
+
+### Claude (NOT ruled)
+
+- **Categories are what you need when one thing must fit many.** Bespoke = pure measurement, one garment per body;
+  ready-to-wear = categories forced by MASS PRODUCTION. A boundary source: ECONOMY OF SCALE (cf. purpose/economy,
+  round three). Possibly a thesis-level line for ch.1 or ch.4.
+- **Standards context (web, 2026-11-01):** US -- only VOLUNTARY body-measurement tables (ASTM D6240, men, chest
+  34-52); EU -- EN 13402 tried to label by BODY DIMENSIONS with a pictogram (men's chest in 4 cm intervals),
+  adoption varied; UK committee warned a mandatory version would hurt its industry. The market kept the letters
+  (ch.8 / ch.5). Vanity sizing = the boundary moves, the label stays (ch.6 step 6).
+- **Worked example (Kim agreed in principle):** men's/unisex t-shirt size guides, ~20 brands incl. JAPANESE ones;
+  chest range per size; record BODY vs GARMENT measurement (two operations, one label -- Bridgman).
+- Verify: Japan's JIS men's sizing standard; history of ready-to-wear sizing (military uniforms; US women's
+  commercial standard and its withdrawal).
+
+### Kim -- skill acquisition as a set of categories (Bridges & Lau 2006)
+
+- SOURCE (Kim's own paper, attached 2026-11-01): Bridges, K.W. & Y.H. Lau. 2006. The skill acquisition process relative
+  to ethnobotanical methods. Ethnobotany Research & Applications 4:115-118 (editorial). Builds on Dreyfus & Dreyfus
+  (1986) Mind over Machine: five stages NOVICE, ADVANCED BEGINNER, COMPETENT, PROFICIENT, EXPERT (Fig.1, nested boxes);
+  mapped to research activities DATA, ANALYSIS, PROBLEM, HYPOTHESIS, THEORY; a person at a higher level is expected to
+  work at the lower levels too. Closing questions include skill MAINTENANCE cost.
+- Kim: five categories, each with a CLEAR NAME; the same names are used across a range of applications. A COMBINATION OF
+  SKILLS AND BEHAVIORS establishes each category. The names are in a FIXED ORDER. The skills and behaviors measured
+  CHANGE FROM CATEGORY TO CATEGORY -- so there is not always a simple linear scale behind the categories. People relate
+  the names ALMOST INTUITIVELY to different situations. Once a person has thought through what establishes each
+  category, there is a GUIDE ON HOW TO PROGRESS from one to the next (learning how to learn). An important way he
+  organizes a lot of things. Self-placement: TRAVEL at Proficient, aspiring to Expert; AI at Competent, aspiring to
+  Proficient. "Another way to view what we're examining."
+
+### Claude (NOT ruled)
+
+- An ORDINAL category set with no single measurement underneath -- each rung is tested by different criteria. Stronger
+  than Braun-Blanquet (which has a cover axis). Primary home: ch.8 (categories instead of measurements); also ch.7.
+- The category tells you how to cross its upper boundary -- a boundary that ELICITS behaviour and teaches (ch.3).
+  Echoes the grading 'upward trend' rule (learning how to learn).
+- REFLEXIVE: Dreyfus's novice follows explicit rules; the expert acts without consciously applying them -- the same
+  path as learning a measurement scale, from explicit boundary rules (size guide, 38.0 C) to the tacit scale (ch.2).
+  Learning a scale is itself a progression through these categories.
+- Five named levels -- within Miller's range. Maintenance cost (paper's closing question): a category held by a
+  person can decay (ch.9, at the scale of one life).
+- **RULING (Kim, 2026-11-01):** the skills/behavior categories story is an EXAMPLE TOWARD THE END, not an overarching
+  theme ("too abrupt"). Claude's observations on what it tells us are "exactly right". The natural progression of the
+  document: show the UBIQUITY of classification and the VARIOUS WAYS IT IS USED.
+
+### Kim -- hat sizes as a counterexample (2026-11-01)
+
+- Kim wonders if HAT SIZES are a counterexample: do you want to be known as having a "big" head, or worse a "small"
+  head? Size 8 is pretty NEUTRAL. And most people don't know where that number comes from.
+
+### Claude (NOT ruled)
+
+- US hat size = head circumference (in) / pi -- the DIAMETER of a circle of the same girth (22.25 in -> 7.08 -> 7 1/8;
+  checked: divisbyzero.com 2010). Stepped in EIGHTHS of an inch: a measurement, rounded, not ~5-7 broad categories.
+- So the counterexample has two parts: (1) a number carries no judgement, a WORD does ("small", "XL") -- the label's
+  connotation is part of the category (cf. vanity sizing; prehypertension renamed for being too mild); (2) a
+  measurement DISGUISED as a label -- people use 7 1/8 as a category name without knowing it is a measurement.
+- Fine steps because a hat must fit closely (little tolerance) -- the required precision is set by the use (ch.6 thesis).
+  Stretch caps / 'one size fits most' / S-M-L caps = the category returns where the garment tolerates error.
+- Verify: UK hat sizes ~1/8 smaller than US; EU sizes = circumference in cm; origin of the pi convention.
+
+### Gap review (Claude, 2026-11-01) and Kim's choice
+
+- Claude's gap review: ch.10 (the inverse) thinnest -- candidate evidence BUNCHING; public warning scales (hurricane,
+  UV, AQI) for ch.3/9; Kim's own fields (Raunkiaer life forms; Ansel Adams Zone System); AGE as fixed boundaries (ch.5);
+  machine classification thresholds. Kim: "excellent analysis and a very useful set of examples to work on".
+- **Kim: work ch.10 (bunching) FIRST.** Kim's HYPOTHESIS: bunching comes when there is some sort of PENALTY OR REWARD
+  for being in a particular category -- marathons: bragging rights / personal gratification; taxes: a true financial
+  cost; exam scores: grades and the rewards/penalties of a different grade. Are there data sets to support it?
+  -> Bunching worked up 2026-11-01: Projects/MRC/ch10_notes.md, figures/ch10_fig1_bunching (Boston; UK stamp duty).
+
+### Kim -- public warning scales (2026-11-01)
+
+- Public warning scales are probably most important for potentially VIOLENT events -- "that's when we pay attention".
+  Places that have such events FREQUENTLY (earthquakes in Japan) are likely to have the most useful scales.
+- NAMING IS IMPORTANT. Do people understand the difference between a flood WARNING and a flood WATCH? Which is more
+  serious? Names -- and, Kim argues, COLORS -- are important.
+- The argument: WE IMPROVE THE CATEGORIES AND THEIR NAMES AS WE BETTER APPRECIATE THE IMPORTANCE. UV index is probably a
+  good example: in the 1960s a tan was a positive thing and nobody thought about UV danger; associate UV exposure with
+  melanoma and people start to pay attention.
+
+### Checked (web, 2026-11-01) -- Claude
+
+- **JMA seismic intensity (shindo):** 1884 four levels; 1898 seven (0-6); 1949 INTENSITY 7 ADDED after the 1948 Fukui
+  earthquake (damage beyond what 6 could describe); 1996 fully INSTRUMENTAL and 5 and 6 each SPLIT into lower/upper after
+  Sanriku 1994 and Kobe 1995 exposed wide variation in damage within 5 and 6 -> 10 levels now (0,1,2,3,4,5-,5+,6-,6+,7).
+  Strong support for Kim's argument: categories added and split exactly where disasters showed them too coarse --
+  and refined where decisions matter most (ch.6 thesis). Also ch.9 (life of a category).
+- **UV index:** Environment Canada, launched 27 May 1992 (ozone-depletion concern); WHO/WMO standardized 1994 with
+  standard COLORS: 0-2 green low, 3-5 yellow moderate, 6-7 orange high, 8-10 red very high, 11+ violet extreme.
+- **Watch / warning / advisory (NWS Hazard Simplification social science):** Warning best understood; Watch and Warning
+  sometimes confused; ADVISORY least understood, often confused with Watch. Tested alternatives: "Notice" at watch
+  level, "Orange/Red Warning", "Emergency" for the top. No decision reported on that page -- verify current status.
+- Further candidates (verify): Saffir-Simpson 2010 redefined to wind only (label kept, definition replaced -- ch.9);
+  Category 6 proposal (2024); JMA special warnings (2013); Hawai'i tsunami advisory/watch/warning tiers.
+
+### Kim -- examples from his own fields (2026-11-01)
+
+- **LIFE FORMS.** To a home gardener a simple set (grass, shrub, small tree, big tree) pretty much covers the range. But
+  assessing the plants on a complex site, a COMPETENT or PROFICIENT observer is forced to SEE MORE -- that's where
+  RAUNKIAER's life forms come in handy. The focus is on a SPECIFIC TRAIT, which differentiates species into about the
+  right number of familiar and useful categories. It addresses a need to QUICKLY FOCUS on a specific property; otherwise
+  you're left standing and staring, reviewing all the possible sets of categories and wondering what might best apply.
+  THE FOCUS REDUCES FRICTION.
+- **ZONE SYSTEM.** Kim never used Ansel Adams' Zone System but recognizes its value; it was once widely taught, he
+  believes; Adams' photos show its value. Perhaps NEARLY LOST due to automated exposure calculation and the increased
+  sensitivity of recording media.
+- **PLANT FAMILIES -- "maybe the biggest use of categories in my field."** Sits inside the whole Linnaean hierarchy, but
+  for botany grouping by family is a KEY SKILL. Takes categories OUT OF THE MILLER RANGE (7 +/- 2). What it adds: the
+  recognition that a category's members SHARE A COMMON SET OF PROPERTIES and that these properties are NOT FOUND IN OTHER
+  CATEGORIES.
+
+### Claude (NOT ruled; verify)
+
+- Life forms: the category set GROWS WITH COMPETENCE (gardener ~4 -> Raunkiaer's classes) -- ties to the Dreyfus example.
+  Raunkiaer's single trait is essentially a measurement: where the perennating buds sit relative to the ground in the
+  unfavourable season. And the biological spectrum (share of each life form in a flora) turns categories BACK INTO a
+  quantity that tracks climate. Friction ties MRC to S3/MWT.
+- Zone System: a category scale made dormant by a DEVICE (the meter now makes the judgement) -- ch.9. Contrast with
+  round two: devices teach the measurement but not the scale; here the device removes the need for the scale. Verify
+  ~11 zones (0-X), one stop apart; Adams & Archer c.1940.
+- Families: Miller's own escape routes explain how botanists exceed 7 +/- 2 -- MORE DIMENSIONS (many characters at once)
+  and RECODING into a HIERARCHY (chunks). Recognition by gestalt = the expert end of Dreyfus. Molecular phylogenetics
+  (APG) redrew families -- now defined by DESCENT, not only shared properties (ch.9). Verify APG IV family count.
+- **RULING (Kim, 2026-11-01):** plant FAMILIES go with Dreyfus TOWARD THE END (the expert's kind of category; shows
+  classification well beyond slicing a measurement -- completes the ubiquity arc).
+
+### Kim -- AGE (2026-11-01)
+
+- Is there a graphic (like the S-M-L one) showing the AGE TRANSITIONS for societal categories? Maybe also how these have
+  CHANGED THROUGH TIME (e.g., retirement age).
+- **PERSONAL STORY:** Kim's grandmother decided when she turned 50 that she was an OLD WOMAN -- and in her view an old
+  woman wears BLACK CLOTHES. Kim's mother worked very hard to make grandma dress in "pretty colors". The battle lasted
+  42 YEARS.
+- Built 2026-11-01: figures/ch05_fig_age_thresholds (US thresholds, changes over time; Pew 2009: 'old' begins at 60 for
+  18-29s, 68 overall, 74 for 65+). Claude: 'old' is a CARRIED scale that moves with the person (cf. thin blood); the
+  grandmother's 50 is a self-assigned category with a dress code -- a category that ELICITS behaviour (ch.3).
+
+---
+
 ## Next
 
 **2026-10-30: focus returned to the trilogy -- MRC round three (above).** Context moves the boundary

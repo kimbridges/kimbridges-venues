@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-10-30 21:49 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-11-01 16:41 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -55,12 +55,12 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| R_Basics_index_2026-10-28 |  2.1 | 14 | FALSE |
-| plainmaps_index_2026-10-28 |  2.1 |  5 | FALSE |
-| rehearsals_huntington_2026-09-30 | 30.1 |  2 | TRUE |
-| pkm_health_backup_2026-10-28 |  2.1 |  1 | FALSE |
-| listsr_installtest_2026-10-28 |  2.2 |  0 | FALSE |
-| secret_audit_2026-10-28 |  2.3 |  0 | FALSE |
+| R_Basics_index_2026-10-28 |  3.9 | 14 | FALSE |
+| plainmaps_index_2026-10-28 |  3.9 |  5 | FALSE |
+| rehearsals_huntington_2026-09-30 | 31.9 |  2 | TRUE |
+| pkm_health_backup_2026-10-28 |  3.9 |  1 | FALSE |
+| listsr_installtest_2026-10-28 |  4.0 |  0 | FALSE |
+| secret_audit_2026-10-28 |  4.0 |  0 | FALSE |
 
 ## Legacy pages by platform
 
@@ -76,4 +76,4 @@ None.
 None.
 
 ---
-_Ran in 89.6 s._
+_Ran in 92.6 s._
