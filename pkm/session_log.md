@@ -11,6 +11,30 @@ Mechanism 4.
 
 ---
 
+## 2026-11-02 -- MRC ROUND FIVE: HIDDEN RUBRIC, WHITTAKER YEARS, HEAT INDEX VS WBGT, UNEQUAL CATEGORIES, MARTINI GLASS
+
+**Date / duration:** 18:48-20:15 HST.
+
+**Active focus at start:** MRC. Session start: three reads; nothing changed since the 11-01 close; PubMaps check 0/0/0.
+
+**What was worked on (capture: ideas_three_documents.md 'round five'):**
+- Athletics (Kim): win/loss and places are categories by comparison; the record keeps the category, not the scores.
+- Gap 1 reviewed -> Kim's 'HIDDEN RUBRIC': smoke alarm (burnt toast; Kim's motel steam story), Kim's road test ~70 years
+  ago (failed, no explanation; first-try failure then almost guaranteed); counterpoint to Dreyfus.
+- Ch.7: figures/ch07_fig1_whittaker_years (whittakerr; Denver 32/78 and Eugene 31/87 years outside their mean's biome;
+  strip of years). Kim's reframe: the biota's STRESS at boundary sites. Eugene precip shift (131 -> 91 cm) TO VERIFY.
+- Ch.7: figures/ch07_fig2_heat_index_wbgt (IEM airport obs, Phoenix vs Tokyo Haneda, Jun-Sep 2021-25; US heat index vs
+  Japan WBGT (BoM approx.) -- a Bridgman example). RULING: heat deaths only as an example or two in the text.
+- Ch.8: figures/ch08_fig1_unequal_categories (AQI PM2.5 2024 breakpoints; Saffir-Simpson) after Kim's fuel-gauge example;
+  figures/ch08_fig2_martini_glass (Kim's idea; volume ~ height cubed).
+- Kim at close: the document is becoming much more everyday experience and common sense than he imagined.
+
+**Queued:** verify lists (Eugene precip; WBGT vs MOE published values; AQI/fuel-gauge claims; heat deaths; DMV score sheet;
+Attwood 2012); ch.2 AI-elicitation; exam bunching data; ch.6 hidden-rubric section text. PubMaps NEXT unchanged.
+
+**Notes:** new data in MRC/data: GHCND_USW00023062_Denver.csv, iem_hourly_PHX_RJTT_JunSep_2021_2025.csv. Scratch in
+C:/temp: ghcn/, isd/ (failed downloads -- the NCEI global-hourly path has moved), pp-2013.csv.
+
 ## 2026-11-01 -- MRC ROUND FOUR: SIZE GUIDES, SKILL LEVELS, BUNCHING, WARNING SCALES, AGE
 
 **Date / duration:** 15:00-16:45 HST.

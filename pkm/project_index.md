@@ -1,11 +1,11 @@
 # Projects Index
-_Last updated: 2026-11-01_
+_Last updated: 2026-11-02_
 
 > **History split out 2026-07-28.** The superseded Active Focus blocks and the full
 > dated Change Log now live in `logs/focus_history.md`, verbatim and unedited.
 > This file carries the current focus, the structural notes, and the listings only.
 
-**Active Focus (2026-10-30): MRC -- *Measurements Require Categories*, first document of the trilogy (`proj_MRC.md`, code at `Projects\MRC`). Round-three outline ADOPTED (10 chapters in three parts). NOW: chapter 6, Boundaries and error -- worked examples with data.**
+**Active Focus (2026-10-30): MRC -- *Measurements Require Categories*, first document of the trilogy (`proj_MRC.md`, code at `Projects\MRC`). Round-three outline ADOPTED (10 chapters in three parts). NOW: worked examples and figures across the chapters (drafts for ch.5-10 exist); then the verify lists.**
 
 **How it opened.** Kim redirected from PubMaps for "a different perspective". Round three: context moves the boundary ("thin blood"), paired with FIXED boundaries (twilight, DST, the Kona coffee break) in ONE chapter; language holds the categories (Hawaiian rain names by place; immersion schools checked); Hokule'a and the life of a category (Kim's dinner with Ben Finney; the Palau arrival 2007-04-01, his programme and photo). Rulings: event boundaries stay in MRC; ch.6-8 need work; ch.9 location open; language in ch.2. Detail: `ideas_three_documents.md`, round three.
 
@@ -15,7 +15,7 @@ _Last updated: 2026-11-01_
 
 **STANDING CHECK (from 2026-10-29, while PubMaps runs as an email service):** after the session-start reads, run `source("G:/My Drive/Projects/PubMaps/service/pubmap_service.R"); service_check()` and report its line with the Active Focus. If the inbox holds PDFs, PROPOSE `process_inbox()` and run it (async) only on Kim's yes. Report items awaiting review and failures; do not act on them. Detail: `Projects/PubMaps/service/SERVICE.md`; rule: pkm_protocol.md Mechanism 2.
 
-**NEXT (2026-11-01): MRC -- figures built: ch.6 (4), ch.10 bunching, size guides, age thresholds. Remaining gaps: machine-classification thresholds; ch.7-8 worked examples; ch.2 AI-elicitation; exam bunching data; verify lists. Detail: ideas_three_documents.md round four; session_log.**
+**NEXT (2026-11-02): MRC -- figures drafted: ch.5 (size guides, age), ch.6 (4), ch.7 (Whittaker years, heat index vs WBGT), ch.8 (AQI/Saffir-Simpson, martini glass), ch.10 (bunching). Next: the verify lists (incl. Eugene precip shift, WBGT check); ch.2 AI-elicitation; exam bunching data; hidden-rubric section. Detail: ideas_three_documents.md rounds four-five; session_log.**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-11-01 16:41 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-11-02 20:14 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -9,11 +9,11 @@ _Generated 2026-11-01 16:41 by pkm_health.R. Regenerate; do not edit._
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 0
 - **Files over size budget:** 0
-- **Active Focus block:** 1.9 KB (budget 6)
+- **Active Focus block:** 2 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 0
 - **Legacy pages awaiting account deletion:** 58
-- **Build scratch in C:/temp:** 6 folder(s), 22 MB
+- **Build scratch in C:/temp:** 8 folder(s), 79 MB
 
 ## Reconciliation failures
 
@@ -35,7 +35,7 @@ None.
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 1.9 | 6 | -4.1 |
+| 8 | 2 | 6 | -4 |
 
 ## Venues without a source repo
 
@@ -55,12 +55,14 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| R_Basics_index_2026-10-28 |  3.9 | 14 | FALSE |
-| plainmaps_index_2026-10-28 |  3.9 |  5 | FALSE |
-| rehearsals_huntington_2026-09-30 | 31.9 |  2 | TRUE |
-| pkm_health_backup_2026-10-28 |  3.9 |  1 | FALSE |
-| listsr_installtest_2026-10-28 |  4.0 |  0 | FALSE |
-| secret_audit_2026-10-28 |  4.0 |  0 | FALSE |
+| ghcn |  0.0 | 57 | FALSE |
+| R_Basics_index_2026-10-28 |  5.0 | 14 | FALSE |
+| plainmaps_index_2026-10-28 |  5.0 |  5 | FALSE |
+| rehearsals_huntington_2026-09-30 | 33.0 |  2 | TRUE |
+| pkm_health_backup_2026-10-28 |  5.0 |  1 | FALSE |
+| isd |  0.0 |  0 | FALSE |
+| listsr_installtest_2026-10-28 |  5.2 |  0 | FALSE |
+| secret_audit_2026-10-28 |  5.2 |  0 | FALSE |
 
 ## Legacy pages by platform
 
@@ -76,4 +78,4 @@ None.
 None.
 
 ---
-_Ran in 92.6 s._
+_Ran in 89 s._

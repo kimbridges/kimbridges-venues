@@ -1166,6 +1166,114 @@ _working notes live in Projects/MRC/ (e.g. ch06_argument.md). This file keeps tr
 
 ---
 
+## Measurements Require Categories -- round five, 2026-11-02
+
+### Kim -- athletic events
+
+- The result of a baseball game is a CATEGORY (win/loss) no matter what the scores -- a score COMPARISON, not magnitude.
+  The same for a foot race: first, second and third, independent of the time. The PERFORMANCE OF EACH OF THE WINNERS
+  SETS THE CATEGORY LIMIT.
+- What generally PERSISTS IN THE RECORD is the CATEGORY value ("player X won Wimbledon Y times"), not the game scores.
+
+### Claude (NOT ruled)
+
+- Extends the COMPARISON boundary source (backbone): the boundary is set by the COMPETITORS themselves and moves every
+  event -- the same time wins one race and finishes fourth in another. Rank categories always hold the same number of
+  members (one winner, three medals), like a top-10.
+- The record keeps the category and DISCARDS the measurement -- history stores categories (ch.9 tie). The inverse: a
+  photo-finish margin of 0.01 s and a 10 s margin become the same 'win' (ch.10).
+
+### Machine classification -> THE HIDDEN RUBRIC (Kim, 2026-11-02)
+
+- Claude reviewed gap 1 (AI classifiers: score -> threshold -> category; threshold invisible) and recommended a short
+  ch.6 section, no figure. Kim: "I really like the idea of a HIDDEN THRESHOLD"; the spam filter is interesting, but
+  wants something more everyday / personal-story oriented. Kim's name for it: THE HIDDEN RUBRIC.
+- Claude's candidates (NOT ruled): card declined abroad (a fraud score crossed a hidden line -- travel); the car's
+  low-fuel light / tyre-pressure light (a maker's hidden threshold beside Kim's own fuel-gauge ladder); the smoke alarm
+  (set sensitive on purpose -- a miss costs lives, so cooking trips it); the camera's auto modes (the device's hidden
+  thresholds replaced the photographer's zones -- Zone System link); self-checkout "unexpected item in bagging area";
+  and Kim's own undisclosed grading rules -- the hidden rubric seen from the side of the person who set it.
+- **Kim likes the SMOKE ALARM.** PERSONAL STORY: in a motel on a trip to a scientific conference, early on the day of the
+  meeting, Kim took a long shower while gathering his thoughts; the STEAM tripped the smoke alarm; there was NO WAY TO
+  SHUT IT OFF; the frustration nearly ruined his day. (Kim unsure it's as relevant as BURNT TOAST, which most people have
+  experienced.)
+- **PERSONAL STORY -- "a true hidden rubric": Kim's DRIVING ROAD TEST.** Failed on the first try. Why? No explanation --
+  just "try again after some more practice". He's sure the examiner's rubric was sophisticated and covered many
+  dimensions of driving. KNOWING THERE WAS A RUBRIC DIDN'T HELP. He practised and passed on the next try.
+- Claude (NOT ruled): (1) steam is a category error AT THE SENSOR -- the alarm measures particles/obscuration and cannot
+  tell steam from smoke; un-silenceable = the false-alarm cost pushed onto the guest (fixed rule, no context: ch.5).
+  Toast as the main example, the motel as a short aside. (2) the road test = many dimensions -> ONE category (pass/fail,
+  ch.7) with the category reported and the measurements withheld; it is the COUNTERPOINT to Dreyfus -- a known category
+  tells you how to progress, a hidden rubric does not; contrast Kim's own gradebook, which recorded which rule applied.
+  Verify: modern DMV score sheets (e.g. California: fail on any 'critical driving error' -- a veto -- or on too many
+  errors) -- if so, the rubric became visible over time (ch.9).
+- Kim: California DMV has changed a LOT. His road test was NEARLY 70 YEARS AGO; in those days a failure on the first try
+  was ALMOST GUARANTEED. (So the modern score sheet is a later development -- ch.9, not his experience.)
+
+### Kim -- ch.7 worked examples (2026-11-02)
+
+- Likes the WHITTAKER diagram. Rather than an error ellipse: find a LOCATION THAT SITS NEAR A BORDER, then compare the
+  LONG-TERM AVERAGE rain/temp to the PATTERN OF ANNUAL rain/temp -- shows temporal change, much like taking a patient's
+  temperature on successive days guides the medical protocols. The diagram is also pretty, and it is nice to LINK TO
+  OTHER DOCUMENTS (whittakerr).
+- HEAT INDEX works for him. Honolulu isn't the best location; better to compare places SEASONALLY HOT AND DRY (Phoenix)
+  vs HOT AND HUMID (Tokyo?). There might also be a CULTURAL difference (not unlike his "thin blood").
+- Built: figures/ch07_fig1_whittaker_years (Denver 32 of 78 years, Eugene 31 of 87, outside their mean's biome; strip of
+  years in order). Eugene shift to check: woodland/shrubland 10% of years 1970-99 vs 69% since 2000 (precip 131 -> 91 cm)
+  -- verify against official normals / gauge history before use.
+- **Kim's REFRAME of the Whittaker diagram:** we are not the species impacted -- it is the BIOTA EXISTING WITHIN THE
+  CATEGORY. The plants develop under the LONG-TERM conditions; EXCURSIONS from the mean represent STRESS on the system.
+  A site in the MIDDLE of a category likely avoids significant stress; BOUNDARY LOCATIONS might be at HIGHER RISK. The
+  two-location diagram is very interesting; the Eugene data (if they hold) give a really interesting, NEW WAY to view the
+  data -- especially the STRIP DIAGRAM.
+- **Kim on the heat index:** go ahead with the two locations. The COMBINATION OF DIFFERENT MEASURES FOR A SIMILAR GOAL
+  (safety warning) is part of the story -- and ANOTHER BRIDGMAN EXAMPLE.
+- Built: figures/ch07_fig2_heat_index_wbgt (IEM airport obs, PHX and Tokyo Haneda, Jun-Sep 2021-25, each day's peak
+  heat-index hour; ~610 days each). US heat index 'Danger' days: Phoenix 309, Tokyo 162. Japan WBGT (BoM approximation)
+  'Danger': Phoenix 415, Tokyo 390 -- the US index ranks Phoenix far worse; WBGT nearly equalizes them (humidity weighted
+  more). Worked example: Phoenix 108 F/9% and Tokyo 91 F/60% both heat index 102 ('Extreme caution'); WBGT 30.8 vs 34.2.
+  Japan MOE WBGT levels (checked): <21 almost safe, 21-25 caution, 25-28 warning, 28-31 severe warning, >=31 danger.
+  VERIFY: BoM formula omits sun and wind -- check against MOE published WBGT for Tokyo; heat-stroke alert thresholds.
+- **Kim on the figure:** counter-intuitive given the US concept is a "heat index"; under the US definition Tokyo spends a
+  lot of time with NO WORRIES ("below 80"), under the Japanese definition the summer is ALWAYS AT LEAST "CAUTION". Would
+  HEAT-STROKE CASES PER CAPITA for the two places help -- or is that obscured by Phoenix's extensive AIR CONDITIONING?
+- Claude: overall WBGT nearly equalizes the two (Phoenix 415 vs Tokyo 390 'Danger' days); the worked example is where
+  Tokyo comes out worse. Tokyo: 143 of 610 peak hours 'below 80' (US) vs 0 'almost safe' (WBGT). Japan's levels are
+  framed as EXERCISE guidance -> purpose sets the boundary. Outcome data (web, 2026-11-02): Maricopa County heat deaths
+  602 (2024), 645 (2023) [abc15]; 100+ Phoenix-area deaths where AC was not working or not on [azfamily 2024]; Tokyo July
+  2024: 123 heatstroke deaths, 121 found indoors, most not using installed AC (Tokyo Medical Examiner via PA). The counts
+  are DIFFERENT OPERATIONS (US deaths 'heat-associated'; Japan counts ambulance transports nationally (FDMA) and deaths by
+  medical examiner) -- Bridgman again. The index measures the OUTDOOR AIR; harm depends on where the person is (indoors
+  without AC; unsheltered outdoors). Verify populations, full-summer Tokyo deaths, Maricopa unsheltered share.
+- **RULING (Kim, 2026-11-02):** the value of heat-death numbers is to show this is a SERIOUS problem, not just one of
+  COMFORT. An EXAMPLE OR TWO IN THE TEXT is enough -- no table, no per-capita analysis.
+
+### Kim -- ch.8 unequal categories (2026-11-02)
+
+- His SMART CAR FUEL GAUGE (bars) is an example of unequal categories: he can go a very long way before he's down ONE
+  bar; once down to THREE bars they go much faster. He can't quantify this from his own data.
+- Wants a chart showing unequal categories for something COMMONLY EXPERIENCED. Are there WEATHER WARNING systems with
+  unequal categories? Making the measurement scale LOG values is likely where we'll find something.
+- Built: figures/ch08_fig1_unequal_categories. (a) US AQI for PM2.5, 2024 breakpoints (EPA fact sheet, checked): equal
+  50-point AQI bands over concentration widths 9, 26, 20, 70, 100 ug/m3 -- equal-looking bars over unequal amounts, the
+  fuel gauge's design; the 2024 revision moved Good's upper boundary 12.0 -> 9.0 and Unhealthy's 150.4 -> 125.4 (ch.6
+  step 6). (b) Saffir-Simpson widths 22/15/19/27 mph + open (Cat 2 narrowest). Log-scale candidates kept: earthquake
+  magnitude, decibels, pH. Verify: fuel gauges deliberately non-linear (claim to check).
+- **Kim -- the MARTINI GLASS (V-shaped):** is the height of the drink an interesting example? You drink quite a bit
+  before you see a drop in the height; toward the end the level goes down quickly. Is there a story behind that?
+- Claude (NOT ruled): a cone's volume goes as height cubed -- half the drink is gone when the level has fallen only to
+  ~79% of its height; at half height only one-eighth remains. We READ HEIGHT, the quantity is VOLUME (Bridgman). It is
+  the MECHANISM behind the fuel gauge: a float measures fuel LEVEL, and the tank's shape turns level into volume
+  unequally unless the maker compensates. Evidence to verify: Attwood et al. 2012 (PLoS ONE) -- beer drunk faster from
+  CURVED glasses, attributed to misjudging the halfway point; bartenders pour more into short wide glasses (2005 BMJ
+  study, Wansink -- check status given later retractions of other Wansink work). Possible small figure: volume left vs
+  level for a cone and a cylinder.
+- Built: figures/ch08_fig2_martini_glass.
+- **Kim (close, 2026-11-02):** really likes the examples; the document is becoming much more EVERYDAY EXPERIENCE AND
+  COMMON SENSE than he originally imagined.
+
+---
+
 ## Next
 
 **2026-10-30: focus returned to the trilogy -- MRC round three (above).** Context moves the boundary

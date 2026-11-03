@@ -87,3 +87,13 @@ data (Boston Marathon 2001-14; UK Price Paid 2013); notes in Projects/MRC/ch10_n
 Warning scales checked (JMA shindo 1949/1996, UV index 1992/1994, NWS watch/warning research); Kim's own-field examples
 (life forms, Zone System, plant families -> families placed with Dreyfus toward the end). AGE: Kim's grandmother story;
 drew figures/ch05_fig_age_thresholds (data/us_age_thresholds.csv; Pew 2009 'old' by respondent age). Draft.
+### 2026-11-02
+Round five (ideas file): athletics (win/loss by comparison; the record keeps the category); the HIDDEN RUBRIC (Kim's
+name) -- smoke alarm (toast; Kim's motel steam story), Kim's road test ~70 years ago. Ch.7: figures/ch07_fig1_whittaker_years
+(Denver and Eugene year by year on whittakerr's diagram; GHCN-Daily, data/GHCND_*). Next: heat index Phoenix vs Tokyo.
+Kim reframed Whittaker (the biota's stress at boundary sites). Built figures/ch07_fig2_heat_index_wbgt (Phoenix vs
+Tokyo; US heat index vs Japan WBGT -- a Bridgman example; data/iem_hourly_PHX_RJTT_JunSep_2021_2025.csv).
+Heat-death numbers: RULING -- one or two examples in the text only. Built figures/ch08_fig1_unequal_categories (AQI PM2.5
+2024 breakpoints; Saffir-Simpson) after Kim's fuel-gauge example of unequal bars.
+Kim's martini-glass idea -> figures/ch08_fig2_martini_glass (volume ~ height cubed; half height = 1/8 left; the
+mechanism behind the fuel gauge's unequal bars).
