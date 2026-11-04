@@ -11,6 +11,31 @@ Mechanism 4.
 
 ---
 
+## 2026-11-03 -- MRC: VERIFY PASS; CORVALLIS FOR EUGENE; OFFICIAL WBGT; CH.2 AI ELICITATION (3 MODELS)
+
+**Date / duration:** 14:21-15:55 HST.
+
+**Active focus at start:** MRC. Session start: three reads; nothing changed since the 11-02 close; PubMaps check 0/0/0.
+
+**What was worked on:**
+- VERIFY PASS: Projects/MRC/verify_list.md consolidates ~50 items; two research helpers checked ~33 text facts (B1, B2). Corrections incl.
+  Beaufort (sails only; IMC not WMO), Kona coffee vacation 1932-69 (Konawaena), Alingano Maisu did not go to Japan, federal Fruit Frost Service,
+  NWS 'Advisory' to be replaced (not yet in effect), Tokyo heat deaths (official: 306 in summer 2024, July 199, 291 indoors). Regents bunching
+  (Dee et al. 2019) confirmed -- vanished when grading was centralized.
+- Eugene precip shift = INSTRUMENTAL (vs Salem, Corvallis); Kim found the station history -- ASOS from 1 Sep 1995. RULING: Corvallis replaces
+  Eugene in ch07_fig1 (55 of 120 years outside its mean's biome); keep a caution paragraph (draft in ch07_notes.md).
+- WBGT approximation ran ~3 C high vs Japan MOE MEASURED WBGT (API needs a browser user-agent) -> ch07_fig2 panel b rebuilt from official data.
+- Kim supplied: exam statistic = 'Item Analysis' with reliability, and his UH ITS/MIS OMR form (RULING: show it in ch.6; sources/); Ben Finney
+  was crew on the 1976 voyage (Hawaii Magazine 2017); 'thin blood' is a widespread warm-place myth (RULING: include the observation).
+- CH.2 AI ELICITATION built: 24 cities x Claude Sonnet 5.5 / GPT-5-mini / Gemini 3.8 Flash x 3. 'cold' tracks climate ~1:1, 'hot' ~0.3:1;
+  span of words vs seasonal range r = 0.96 (each model 0.92-0.97). Figures/ch02_fig1_llm_scales; notes ch02_notes.md. Kim: likes the results "a lot".
+
+**Queued:** human-data check of the stretch-to-fit finding; begin writing (ch.6 or the Miller opening); minor verify items (JIS S, Wansink).
+PubMaps NEXT unchanged.
+
+**Notes:** scratch in C:/temp: llm/ (72 per-model CSVs), ghcn/, isd/, wbgt files, pp-2013.csv. A copy of the OMR form also sits in
+Projects_Index/Claude outputs (bridge cannot delete). A first sequential LLM run stalled and was cancelled after 26 min.
+
 ## 2026-11-02 -- MRC ROUND FIVE: HIDDEN RUBRIC, WHITTAKER YEARS, HEAT INDEX VS WBGT, UNEQUAL CATEGORIES, MARTINI GLASS
 
 **Date / duration:** 18:48-20:15 HST.

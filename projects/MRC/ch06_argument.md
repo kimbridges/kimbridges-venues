@@ -107,9 +107,17 @@ question is itself a category with a computed boundary (>= 2 queries OR fails th
 the INSTRUMENT'S error was announced; the BOUNDARY RULE was kept private (gaming). (5) Proposal: run the grading story
 through ch.6 as one case -- fixed cutoffs; correcting the instrument; the band; the bad day as systematic error.
 Verify: the item statistic Kim likely used (point-biserial / discrimination index -- ask, don't assume).
+ANSWERED (Kim, 2026-11-03): "ITEM ANALYSIS" -- the name of the test he specified on the job submittal form; the same form notes the choice
+includes "reliability". DOCUMENT (Kim's kept form): University of Hawai'i ITS/MIS "Optical Mark Reader (OMR) Service Request Form" -- BIOL101,
+50 questions; optional Reports 3 (% choosing each alternative), 4 (frequency bar chart) and 5 (summary of test statistics: reliability,
+standard score, percentile) checked; Report 6 Item Analysis prints when 5 is checked. Claude's notes (NOT ruled): the form itself offers
+"Question(s) Number to be Omitted" and "ADDSC, Points to Add" -- the institution's two standard corrections; Kim used neither form field
+for his rule (he kept the flawed item and added a point), and the form warns that Reports 5 & 6 are NOT generated if questions are omitted
+-- dropping an item would also have dropped the item analysis. Candidate figure/illustration: the form itself (a hidden rubric's paperwork).
 
 **Kim, cont.:** a side effect -- admitting to a few "bad" questions made him work very hard to minimise their number.
 "Students get feedback on their exam performance with a score. In my case, I got feedback, too."
 Claude (NOT ruled): the correction rule measured the MEASURER -- the count of flawed questions was the instructor's own
 score, and the public admission made it a boundary that elicited behaviour in the person who set it (ch.3). Each exam
 measured the students and, through the item analysis, the instrument; the instrument's error fell over time.
+**RULING (Kim, 2026-11-03):** SHOW THE FORM in ch.6 (crop/cover contact details). Copy: sources/ITS_OMR_service_request_BIOL101.pdf.

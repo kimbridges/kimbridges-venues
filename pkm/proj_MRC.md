@@ -97,3 +97,10 @@ Heat-death numbers: RULING -- one or two examples in the text only. Built figure
 2024 breakpoints; Saffir-Simpson) after Kim's fuel-gauge example of unequal bars.
 Kim's martini-glass idea -> figures/ch08_fig2_martini_glass (volume ~ height cubed; half height = 1/8 left; the
 mechanism behind the fuel gauge's unequal bars).
+### 2026-11-03
+VERIFY pass: Projects/MRC/verify_list.md consolidates all items; two research helpers checked ~33 text facts (results
+B1, B2). Data checks: Eugene precip shift = instrumental (vs Salem, Corvallis) -> RULING: Corvallis replaces Eugene in ch07_fig1; keep a
+caution paragraph (draft in ch07_notes.md). WBGT approximation ran ~3 C high vs MOE measured data -> ch07_fig2 panel b rebuilt from official
+WBGT (data/moe_wbgt_tokyo44132_JunSep_2021_2025.csv).
+Ch.2 AI-elicitation worked example built: figures/ch02_fig1_llm_scales (24 cities x 3 models x 3). Finding: 'cold' tracks climate ~1:1,
+'hot' ~0.3:1; the span of the words tracks the seasonal range (r = 0.96) -- the vocabulary stretches to fit. Notes: Projects/MRC/ch02_notes.md.

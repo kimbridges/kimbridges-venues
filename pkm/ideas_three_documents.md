@@ -1274,6 +1274,17 @@ _working notes live in Projects/MRC/ (e.g. ch06_argument.md). This file keeps tr
 
 ---
 
+## MRC -- verify pass, 2026-11-03 (rulings)
+
+- Detail in Projects/MRC/verify_list.md. Kim's rulings this session: show CORVALLIS instead of Eugene in ch07_fig1, KEEP a caution paragraph on
+  Eugene's 1995 automation (draft in ch07_notes.md); rebuild the WBGT panel from official data (done); SHOW Kim's ITS/MIS OMR form in ch.6.
+- Kim: 'thin blood' is a widespread myth of warm places. Claude: the folk label names a real shift in a personal scale with a false mechanism
+  (acclimatization, not blood). **Kim: "I like the 'thin blood' observation. Another good point to be included."** (ch.5)
+- Kim supplied: the Eugene station history (ASOS from 1 Sep 1995); Ben Finney's crew place on the 1976 voyage (Hawaii Magazine 2017);
+  his exam item statistic ('Item Analysis' with reliability).
+
+---
+
 ## Next
 
 **2026-10-30: focus returned to the trilogy -- MRC round three (above).** Context moves the boundary
