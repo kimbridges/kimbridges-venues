@@ -30,12 +30,24 @@ location is open; language comes early (ch.2). Work begins on CHAPTER 6, Boundar
 - GitHub: not yet
 
 ## Key Files
-- Projects/MRC/ch06_argument.md -- chapter 6 argument (7 steps), adopted 2026-10-30
+- Projects/MRC/background/chapter_error_ideas.md (was ch06_argument.md) -- chapter 6 argument (7 steps), adopted 2026-10-30
 - ideas_three_documents.md -- trilogy capture; MRC rounds two (2026-09-23) and three (2026-10-30), outline, rulings, verify lists
 
 ## Track
 R on Kim's machine (ClaudeR bridge): destined for documentation; may draw on whittakerr, bbSynth and
 Temperature_Patterns. MRC's figure style is to become the trilogy's shared visual vocabulary.
+
+## Design Decisions
+- **Style-guide exceptions for MRC (Kim, 2026-11-04):** "Flexibility is important in this document." MRC's diagrams differ from the other
+  documents', so three rules of style_multichapter_doc.md are relaxed here: (1) SIDE-BY-SIDE composition is allowed where the design works
+  better (comparisons); (2) SUBJECT COLOURS are allowed where the colours are the content (official AQI/UV/hazard codes, biome palettes),
+  Okabe-Ito otherwise, and colour is still never the only channel; (3) SVG is optional (PNG + PDF acceptable).
+- **Cover (Kim, 2026-11-04):** all the venue covers are AI-generated images, and Kim inclines to keep that style -- often an AI image built
+  on one of his own photographs (Orbits is an example). Candidate concepts on the table: his rainbow + Newton's seven cuts; two thermometers
+  (Fairbanks / Honolulu); tape measure turning to colours; martini glass. Kim is thinking about them.
+- **US spelling (Kim, 2026-11-04):** "color", not "colour"; regular US spellings throughout (prose, labels, captions).
+- **Voice (Kim, 2026-11-04):** "my" for Kim's own stories, "we" for shared analysis -- keep this convention.
+- **File locations follow the guide:** chapter notes move to background/chapter_<name>_ideas.md when drafting begins (Kim accepted).
 
 ## Related Projects
 - Trilogy siblings, still at capture: MWT and S3 (in ideas_three_documents.md; no proj files yet).
@@ -104,3 +116,18 @@ caution paragraph (draft in ch07_notes.md). WBGT approximation ran ~3 C high vs 
 WBGT (data/moe_wbgt_tokyo44132_JunSep_2021_2025.csv).
 Ch.2 AI-elicitation worked example built: figures/ch02_fig1_llm_scales (24 cities x 3 models x 3). Finding: 'cold' tracks climate ~1:1,
 'hot' ~0.3:1; the span of the words tracks the seasonal range (r = 0.96) -- the vocabulary stretches to fit. Notes: Projects/MRC/ch02_notes.md.
+### 2026-11-04
+Round six opened: NAMES AND COLOURS of categories -> ch.3 (RULING; split if too long); verification research running.
+Style-guide exceptions adopted for MRC (side-by-side, subject colours, SVG optional); notes to move to background/ at drafting.
+DRAFTING BEGUN: Quarto book scaffold (_quarto.yml, index.qmd + 10 chapter stubs + appendix.qmd); chapter notes moved to background/
+chapter_<name>_ideas.md (learning, two_uses, error, several, inverse); Preface drafted (Miller opening). US spelling rule adopted.
+Preface APPROVED by Kim ("I really like the draft... Excellent start"); 'hospital thresholds' -> 'medical guidelines' (doctor-oriented, not
+institution-oriented). Part division and trilogy paragraph approved. Next: chapter 1, The Claim.
+Ch.1 'The Claim' drafted and APPROVED ("It really works. The figure is perfect" -- ch01_fig1_same_number, 38 on seven scales, sets up
+the whole document). Kim's edits applied: Honolulu -> SINGAPORE visitor to Chicago (different units, so conversion is needed); 'a scale' ->
+'a butcher's scale' (device vs set of categories).
+Ch.2 'Learning the Scale' drafted; Kim: rain story 'just the right length' -- cautionary, because the names are COMPOUND (rain + place): look
+closely at the names before deciding how many categories are in use (sentence added). Next: ch.3 Two Uses + names and colors.
+Ch.3 'Two Uses: Describe and Act' drafted (~1,700 words) with figures/ch03_fig1_color_ladders (nine scales by order of concern; panel b
+simulated deuteranopia). Book renders clean (index + ch.1-3).
+Ch.3 APPROVED ("Another excellent chapter... catching the spirit of what I've been thinking about for so many years"). Voice convention ruled.

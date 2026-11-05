@@ -15,7 +15,7 @@ ga <- ggplot(d, aes(h, v, colour = glass)) +
   scale_x_reverse(breaks = c(1, 0.794, 0.5, 0.25, 0), labels = c("full", "79%", "half", "25%", "empty"), expand = c(0.01, 0)) +
   scale_y_continuous(breaks = c(0, 0.125, 0.25, 0.5, 0.75, 1), labels = c("0", "1/8", "1/4", "1/2", "3/4", "all"), expand = c(0.01, 0)) +
   annotate("label", x = 0.56, y = 0.99, hjust = 0, vjust = 1, size = 2.9, fill = "white", label.r = unit(0, "pt"), lineheight = 1.05,
-           label = "How to read: drinking moves you left\nto right as the level falls. In a martini\nglass (red), half the drink is gone when\nthe level has dropped only to 79% of its\nheight; at half height, only one-eighth\nis left. In a straight glass (grey), half\nheight means half the drink.") +
+           label = "How to read: drinking moves you left\nto right as the level falls. In a martini\nglass (red), half the drink is gone when\nthe level has dropped only to 79% of its\nheight; at half height, only one-eighth\nis left. In a straight glass (gray), half\nheight means half the drink.") +
   labs(x = "level of the drink (share of the glass's height)", y = "drink remaining", tag = "a") +
   theme_minimal(base_size = 10.5) + theme(legend.position = "bottom", panel.grid.minor = element_blank())
 # glass silhouettes at half height

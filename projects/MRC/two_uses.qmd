@@ -1,0 +1,82 @@
+# Two Uses: Describe and Act
+
+Some categories simply describe. A mountain in Colorado is a "fourteener" if its summit rises above 14,000 feet. Nobody has to do anything about it. The category sorts the peaks, gives climbers a list to work through, and that's all. Other categories are made to change what we do. A fever sends us home. An orange air-quality warning keeps an asthmatic child indoors. A red flag on a beach keeps swimmers out of the water.
+
+This chapter looks at the two uses side by side, and then at the second one in detail. Categories that are meant to make people act have to reach people quickly, often at a glance and sometimes across languages. So they come with short names, a clear order and, very often, colors. How those names and colors are chosen turns out to have a history, and to differ from place to place.
+
+```{r}
+#| label: setup
+#| code-summary: "Show the setup code"
+
+## graphics
+library(ggplot2)
+library(patchwork)
+## color-blindness simulation
+library(colorspace)
+```
+
+## To describe
+
+Descriptive categories sort the world so we can talk about it. The tree line on a mountain marks where trees stop growing. The biomes of the Whittaker diagram sort the world's vegetation by temperature and rainfall. A fourteener is a summit above 14,000 feet. None of these asks us to do anything. They give us names for kinds of things and let us compare, count and remember.
+
+Even descriptive categories carry choices. The fourteener exists only in feet. In meters the line falls at about 4,267, an unremarkable number, and the Alps have their own list instead: the 82 summits above 4,000 meters. Same idea, different units, a different set of mountains. Description is never quite neutral.
+
+## To act
+
+Behavioral categories are indexed by decisions. Their boundaries sit where we start doing something different. The clearest example from my own life is the fuel gauge on my Smart Car, which shows eight bars. Over years of long drives I built my own rules on top of it. At three bars, I start looking for my favorite brand of gas. At two, any brand will do. At one, the air conditioning goes off, I slow down and I look carefully at every exit. The gauge measures fuel. The ladder I laid on top of it tells me what to do.
+
+Other drivers have different ladders. Someone in a city with a station on every corner can wait much longer than I could on a remote stretch of interstate. The boundaries move with the cost of getting it wrong, a theme that returns in Chapter 6.
+
+A behavioral category doesn't even need a measurement behind it. My grandmother decided, when she turned fifty, that she was an old woman. In her view an old woman wore black clothes, and so she did. My mother worked very hard to get her into pretty colors. The battle lasted forty-two years. The category was self-assigned, its boundary was a birthday, and it came with a dress code. That's a behavioral category in its purest form.
+
+## Names in order of concern
+
+Categories that ask for action are almost always arranged in order of concern, from the least worrying to the most. And their names are short: low, moderate, high, extreme. Short names are quick to say, quick to read and hard to misremember.
+
+Short isn't the same as clear. The US National Weather Service has used three words for hazards that are coming or possible: advisory, watch and warning. When the Service surveyed the public, "warning" was well understood, "watch" and "warning" were sometimes confused, and "advisory" was the least understood of all, often mistaken for a watch. Which is more serious, a watch or a warning? Many people aren't sure. The Service has decided to replace "advisory" with plain-language headlines, and some names have already changed: "excessive heat" became "extreme heat" in 2025.
+
+Industrial safety signs use a ladder of four words: NOTICE, CAUTION, WARNING and DANGER. The standard behind them draws the line between the top two with a single word. DANGER marks a hazard that *will* cause death or serious injury; WARNING marks one that *may*. Studies of how people read these words found that almost everyone agrees on DANGER, and on red. WARNING and CAUTION, though, are barely told apart. The ladder has four rungs on paper and closer to three in people's heads.
+
+Sometimes a name is deliberately neutral. Hat sizes are numbers like 7 1/8, and almost nobody knows that the number is the head's circumference divided by pi. Nobody wants to be told they have a large head, and a number carries no judgment. The doctors who rewrote the blood-pressure guidelines in 2017 made the opposite choice for the opposite reason. They dropped the word "prehypertension" because it sounded too mild for a condition that already doubled the risk of a heart attack. Names are chosen for what they make people feel, and so for what they make people do.
+
+## Colors
+
+Most warning scales add colors, and the colors mostly repeat what the names already say. In that sense they're redundant. But they're fast. A color can be taken in at a glance, from across a room, before a word is read, and it can work where there's no room for a word at all. The air-quality reading on a phone is often just a colored dot. It works only because we've already learned the scale behind it.
+
+The World Health Organization is candid about this. When it standardized the colors of the UV Index, it noted that they have no scientific basis. They were chosen to make the index easier to present. The colors carry no information the numbers don't. What they carry is speed.
+
+Line up the color schemes of a few common scales and a pattern appears.
+
+```{r}
+#| label: fig-color-ladders
+#| fig-cap: "The colors of nine warning and rating scales, each ordered from least to most concern: (a) as designed; (b) as seen with red-green color blindness."
+#| fig-width: 9.5
+#| fig-height: 8.6
+#| file: R/ch03_fig1_color_ladders.R
+```
+
+Most of the scales climb the same ladder: green, then yellow, then orange, then red. Order of concern is carried by color, and the colors follow a loose convention that nobody wrote down for all of them at once. Look at the exceptions, though. On the US fire-danger sign, "moderate" is blue. On Australia's newer system, "moderate" is green. The retired US terror-alert scheme used blue for "guarded." Japan's heat-stress scale starts with blue for "almost safe." And at the top of the ladder the scales disagree completely: maroon, purple, red, black.
+
+Panel (b) shows why the names matter even when the colors seem to do the work. About one man in twelve of European descent has red-green color blindness. For him, green, yellow and orange draw close together, and green and red can be hard to tell apart. Good signal design never relies on color alone. A traffic light puts red at the top, so its position carries the meaning for anyone who can't see the color.
+
+## Where the colors came from
+
+The red, amber and green of a traffic light came from the railways. An early British convention, set in 1841, used white for "clear," red for "danger" and green for "caution." White didn't last. A broken red lens shows white light, and so does a stray lamp, and either could be read as "all clear." By the 1890s green had become "clear" and white was gone. The first traffic light, outside the Houses of Parliament in London in 1868, borrowed from railway practice with red and green gas lamps. It exploded a few weeks later.
+
+Colors can cross languages where words fail. After a World Cup match in 1966 that was thrown into confusion when players didn't understand a referee's instructions, the English referee Ken Aston was driving through London and stopped at a traffic light. Yellow meant take care; red meant stop. Football's yellow and red cards were first used in 1970. A card needs no translation.
+
+## Same colors, different meanings
+
+Colors also carry cultural meanings, and those don't always agree. In China, red signals luck and prosperity, and stock prices that rise are shown in red. Falling prices are green, the reverse of Western markets. In Korea rising prices are red and falling ones blue. A Western investor glancing at a Shanghai screen full of red could easily misread a good day as a disaster.
+
+Ski runs make a tidy comparison for a traveler. In North America the easiest runs are marked with a green circle, the intermediate ones with a blue square and the hardest with a black diamond. In much of Europe the scale runs blue, red, black, with green added for beginners in some countries. So a blue run means intermediate in Colorado and easy in Austria. Only the North American scheme adds shapes, which also helps skiers who can't see the colors.
+
+In Japan, the "go" light on a traffic signal is called *ao*, the word usually translated as blue. Older Japanese used *ao* for a range of blues and greens, and when the first signals arrived from the United States in 1930, the public called the green light *ao*. The law followed the public. In the early 1970s Japanese police authorities had the signals made as blue as international standards allowed, so the light would match the word. Language held the category, and the lamp was changed to fit it.
+
+Even black, my grandmother's color, isn't universal. In the West black has been the color of mourning since Roman times. In China and India the traditional color of mourning is white, and Japan used white until Western customs spread in the late nineteenth century. A woman who chose black to announce that she was old was speaking a language her neighbors understood. Somewhere else the same choice would have said something else.
+
+## Two uses, one scale
+
+A category can describe, or it can ask us to act. The two uses aren't always separate, since a description becomes a call to action as soon as someone attaches a decision to it. But the second use changes how a category is built. It needs a clear order, short names and, usually, a color that can be read before the name is. And because people read colors through their culture as well as their eyes, the same color can say different things in different places.
+
+Names tell us what a category means. Colors tell us how much to worry.

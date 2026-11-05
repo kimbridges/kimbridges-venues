@@ -1,0 +1,44 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Measurements Require Categories"
+  subtitle: "Boundaries in value"
+  author:
+    - "K. W. Bridges"
+    - "Claude (Anthropic)"
+  date: today
+  cover-image: MRC_cover_art_text.png
+  chapters:
+    - index.qmd
+    - claim.qmd
+    - learning.qmd
+    - two_uses.qmd
+    - boundaries.qmd
+    - fixed_contextual.qmd
+    - error.qmd
+    - several.qmd
+    - instead.qmd
+    - life.qmd
+    - inverse.qmd
+    - appendix.qmd
+  navbar:
+    logo: MRC_logo_art.png
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    embed-resources: false
+
+editor: visual
+
+toc: true
+number-sections: true
+number-depth: 2
+
+execute:
+  warning: false
+  error: false
+  message: false

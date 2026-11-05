@@ -31,7 +31,7 @@ yy$site <- factor(yy$site, levels = c("Corvallis", "Denver"))
 gb <- ggplot(yy, aes(yr, site, fill = biome)) + geom_tile(height = 0.8, colour = "white", linewidth = 0.2) +
   scale_fill_manual(values = cols, guide = "none") +
   scale_x_continuous(breaks = seq(1900, 2020, 20), expand = c(0.005, 0)) +
-  labs(x = NULL, y = NULL, tag = "b", subtitle = "The same readings in order: each tile is one year, coloured by the biome that year's climate falls in. Gaps are incomplete years.") +
+  labs(x = NULL, y = NULL, tag = "b", subtitle = "The same readings in order: each tile is one year, colored by the biome that year's climate falls in. Gaps are incomplete years.") +
   theme_minimal(base_size = 10.5) + theme(panel.grid = element_blank(), plot.subtitle = element_text(size = 8.5, colour = "grey25"))
 g <- ga / gb + plot_layout(heights = c(4, 1))
 out <- "G:/My Drive/Projects/MRC/figures"

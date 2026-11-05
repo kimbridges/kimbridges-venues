@@ -1,0 +1,19 @@
+# Preface {.unnumbered}
+
+This document began with a paper I read long ago. In 1956 the psychologist George Miller published "The Magical Number Seven, Plus or Minus Two." He had gathered a set of experiments in which people were asked to sort simple things into categories: tones of different pitch, sounds of different loudness, the saltiness of a drink. However the experiments were arranged, people could keep about seven categories straight. Past that, they began to confuse one category with its neighbor.
+
+What caught me then was the number. Seven, give or take two, kept turning up wherever Miller looked, and he was half amused that it seemed to follow him around. Only later did I see what sat underneath it. A measurement and a category are different things. A tone has a pitch, and you can measure that pitch as finely as your instrument allows. But when a person names the tone, they put it into one of a handful of bins. Measurements can be as fine as we like. The categories we use them with are coarse, and it's the categories we act on.
+
+That is the claim of this document: measurements require categories. A number on its own tells us very little. A body temperature of 38.0°C means something because a physician has a scale that calls it a fever. Tomorrow's forecast of 60°F means something because each of us carries a scale that says whether that's cold. Sometimes the scale is written down and agreed. More often it's unspoken, learned so early and so thoroughly that we forget it's there. Either way, the categories give the values their meaning.
+
+Once you start looking, the categories are everywhere, and most of the examples here are everyday ones. A fever. A T-shirt size that means one thing in Honolulu and another in Tokyo. The air-quality dot on a phone. A smoke alarm that can't tell steam from smoke. The level of a drink in a martini glass. A few come from my own life: grading classes of several hundred students, where a fraction of a point decided a letter grade, and the smudge pots that ran in the Southern California orange groves on nights forecast to freeze. The stories are there because the ideas are easier to see in a life than in a definition.
+
+The chapters follow a path in three parts. The first asks what a category does: how we learn a scale, often without noticing, and how categories describe the world or tell us what to do in it, through their names and colors. The second asks where boundaries come from: nature, agreement, comparison, cost, context, and error near the line. It also looks at categories built from several measurements at once, and at categories that stand in for measurement altogether. The third follows categories through time: how they are born, redefined, retired and sometimes revived, and how a category can hide things as well as reveal them.
+
+Many of the figures are built from real data: medical guidelines, weather records, house sales, marathon finishing times, clothing size guides. Each comes with a short note on how to read it, because a new kind of chart has to teach its reader before it can show them anything. The R code behind every figure is one click away, for anyone who wants to check the work or use it on their own questions.
+
+This is the first of three related documents about boundaries. This one is about boundaries in value. Its companions take up boundaries in space and boundaries in time.
+
+It was written jointly by me and Claude, an AI model made by Anthropic. Claude helped find and check the data, build the figures and draft the text. AI also turned out to be part of the subject: in one chapter, three AI models serve as instruments for drawing out the temperature scales people carry in their heads.
+
+A measurement tells us how much. A category tells us what it means.

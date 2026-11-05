@@ -45,7 +45,7 @@ gb <- ggplot() +
   geom_point(data = lf, aes(yr, doy, colour = th_lab), size = 1.8) +
   scale_colour_manual(values = pal, name = "last spring night at or below") +
   annotate("text", x = 1995.3, y = 216, hjust = 0, vjust = 1, size = 3, colour = "grey15", lineheight = 1.05,
-           label = sprintf("How to read: each column is one spring; the grey line spans the last-frost dates given by the three\nthresholds. In most years moving the line from 32 to 33 \u00B0F moves the last frost %g days (median);\nin %d (dark line) it moves it %d days.", med, big$yr, big$s)) +
+           label = sprintf("How to read: each column is one spring; the gray line spans the last-frost dates given by the three\nthresholds. In most years moving the line from 32 to 33 \u00B0F moves the last frost %g days (median);\nin %d (dark line) it moves it %d days.", med, big$yr, big$s)) +
   scale_y_continuous(limits = c(NA, 217), breaks = brk, labels = c("1 Mar", "1 Apr", "1 May", "1 Jun")) +
   scale_x_continuous(breaks = seq(1996, 2024, 4)) +
   labs(x = NULL, y = "date of last spring frost", tag = "b") +

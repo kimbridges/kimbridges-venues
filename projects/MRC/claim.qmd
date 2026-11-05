@@ -1,0 +1,61 @@
+# The Claim
+
+Thirty-eight. On its own, the number tells us almost nothing. Is it good news or bad? Should we do something about it? We can't say until we know what it measures, and even then we often can't say until we know the scale it's read against.
+
+This chapter makes the document's central claim: every measurement comes with a classification, and the categories are what give the values their meaning. Sometimes the classification is formal, written down and agreed. Often it's informal, so familiar that we never notice it. But it's always there, and the measurement does very little work without it.
+
+```{r}
+#| label: setup
+#| code-summary: "Show the setup code"
+
+## graphics
+library(ggplot2)
+```
+
+## One number, seven meanings
+
+Take that number, 38, and read it on a few of the scales we meet in ordinary life. As a body temperature in degrees Celsius, it's a fever. As an outdoor temperature in Fahrenheit, it's a cold day in Honolulu, but only a chilly one in Chicago. As a wind speed in miles per hour, it's a near gale. As a chest measurement in inches, it's a medium T-shirt at one American maker and a large at a Japanese one. As a reading on the Air Quality Index, it's good air, nothing to think about.
+
+```{r}
+#| label: fig-same-number
+#| fig-cap: "The same number, 38, read on seven scales."
+#| fig-width: 9
+#| fig-height: 5.2
+#| file: R/ch01_fig1_same_number.R
+```
+
+Nothing about 38 changed from row to row. What changed was the scale. Each scale cuts a range of values into a few named pieces, and the number takes its meaning from the piece it lands in.
+
+There's a second thing in the figure worth noticing now, because it will come back. On four of the seven scales, 38 sits right on a boundary. It's the threshold for a fever. It's the top of a near gale. It's the first inch of a medium shirt. Round numbers make tidy boundaries, so a value near a round number is often a value near a line, and lines are where the trouble starts. That's the subject of Chapter 6.
+
+## The physician and the weathercaster
+
+Body temperature is a good place to begin, because nearly everyone has met its scale. When a physician reads a thermometer, the number goes straight into a set of categories. The words aren't the doctor's own, but the idea is clear enough: normal, unwell, quite sick, an emergency. Each category calls for something different. Go home and rest. Come back tomorrow. Start treatment now. The boundary between "normal" and "fever" is written down. In the United States it's 100.4°F, which is 38.0°C.
+
+The nightly weathercast uses temperature too, but its scale is never stated. The forecaster says tomorrow's high will be 60, and nobody explains what 60 means. They don't need to. Every viewer already carries a scale that says whether 60 is a sweater day or a shirtsleeve day. The scale is just as real as the physician's. It's simply unspoken, and it differs from place to place and from person to person.
+
+So one kind of measurement, temperature, already shows the two kinds of scale this document is about. One is formal and agreed, and it's written into guidelines. The other is informal and learned, and it lives in people's heads. Both turn a number into a category. Both tell us what the number means for us.
+
+## The unit-switch test
+
+There's a simple way to see a scale that's normally invisible: change the units. Give an American a forecast in Celsius and watch what happens. "Tomorrow, 15 degrees." There's a pause. The number has arrived, but its meaning hasn't. The listener has to convert, 15 times nine-fifths plus 32, call it 59, and only then does the category appear: cool, bring a jacket.
+
+Someone who grew up with Celsius doesn't pause. For them, 15 is already a category. The pause is the sound of a scale being looked up. It shows that the meaning was never in the number. It was in a scale the listener had learned to apply without thinking, and that scale was tied to a particular set of units.
+
+Conversion fixes the units. It doesn't always fix the scale. A visitor from Singapore who converts a Chicago forecast from Fahrenheit to Celsius gets the arithmetic right and still lands on the wrong side of the line, because the scale they carry was learned somewhere far warmer. People in warm places joke that they have "thin blood." The blood is fine. What travels with them is the scale. That story belongs to Chapter 5.
+
+## Where the knowledge lives
+
+An instrument produces a value. A thermometer, a butcher's scale, a rain gauge, an air sensor: each gives us a number, often a very precise one. But the number is inert until it meets a scale that maps it to categories of meaning. The same reading means one thing in a clinic and another on the weather report. The instrument isn't the knowledge. The scale is where the knowledge lives.
+
+This is easy to say and surprisingly rare to see stated. Statistics is a good example. A significance test asks whether a value has crossed a boundary with enough confidence to act on. The arithmetic is about measurement, but the question is about a category: is this result in the "real effect" bin or the "could be chance" bin? The familiar cutoff of 0.05 is a boundary, chosen by convention, and much of the argument about significance testing is an argument about where that line belongs.
+
+The habit this produces is a way of moving through the world. Once you see that every measurement carries a scale, you start asking about the scale first. Who drew these lines? For what purpose? What happens near them? Those questions organize the rest of this document.
+
+## The path ahead
+
+The next two chapters stay with what categories do. Chapter 2 asks how we learn a scale, usually without being taught, and how language holds the categories we use. Chapter 3 separates two uses: categories that describe the world, and categories that tell us to act, with names and colors chosen to get our attention.
+
+The middle of the document asks where boundaries come from, and what happens to a measurement that lands near one. The last part follows categories through time, from birth to retirement, and ends with the way a category can hide as much as it shows.
+
+A number answers the question "how much?" The scale answers the question that matters next: "so what?"

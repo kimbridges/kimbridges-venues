@@ -21,7 +21,7 @@ ga <- ggplot(bp) +
   scale_x_continuous(limits = c(0, 262), breaks = c(0, 50, 100, 150, 200, 250), expand = c(0, 0)) +
   scale_y_continuous(limits = c(-40, 305), breaks = seq(0, 300, 50), expand = c(0, 0)) +
   annotate("label", x = 4, y = 298, hjust = 0, vjust = 1, size = 2.8, fill = "white", label.r = unit(0, "pt"), lineheight = 1.05,
-           label = "How to read: the AQI on your phone moves in equal\n50-point steps (left axis), but each step stands for a\ndifferent amount of fine particles (bottom). The\nnumbers in the strip are the widths: 'Good' covers\n9 micrograms per cubic metre; 'Unhealthy' covers 70.\nEqual-looking bars over unequal amounts -- like a\nfuel gauge.") +
+           label = "How to read: the AQI on your phone moves in equal\n50-point steps (left axis), but each step stands for a\ndifferent amount of fine particles (bottom). The\nnumbers in the strip are the widths: 'Good' covers\n9 micrograms per cubic meter; 'Unhealthy' covers 70.\nEqual-looking bars over unequal amounts -- like a\nfuel gauge.") +
   labs(x = "fine particles, PM2.5 (\u00B5g/m\u00B3)", y = "Air Quality Index", tag = "a") +
   theme_minimal(base_size = 10.5) + theme(panel.grid.minor = element_blank())
 ss <- data.frame(cat = factor(paste("Category", 1:5), levels = paste("Category", 1:5)), lo = c(74, 96, 111, 130, 157), hi = c(95, 110, 129, 156, 185))

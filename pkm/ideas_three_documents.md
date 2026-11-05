@@ -1285,6 +1285,37 @@ _working notes live in Projects/MRC/ (e.g. ch06_argument.md). This file keeps tr
 
 ---
 
+## Measurements Require Categories -- round six, 2026-11-04: NAMING AND COLOURING CATEGORIES
+
+### Kim's ideas
+
+- Wants to START WRITING, following the multi-chapter document style guide -- but first, HOW WE NAME CATEGORIES (some is in the notes).
+- Categories are often in ORDER OF CONCERN. Names tend to be SHORT. COLOURS are often associated with the name.
+- Colours are generally FUNCTIONALLY REDUNDANT, but colour may carry a more IMMEDIATE and UNIVERSAL signal.
+- Sometimes there isn't room for a name: a colour shown just as a SMALL DOT must be the whole message.
+- Is there a place to discuss names, and specifically colours? Curious about HISTORICAL PATTERNS or CULTURAL DIFFERENCES.
+
+### Claude (NOT ruled; facts to VERIFY before use)
+
+- Already in hand: watch/warning/advisory (NWS research: colours read more reliably than words; 'Advisory' to be dropped); UV index and AQI
+  official colours (WHO/WMO 1994; EPA); Japan WBGT level names; neutral hat-size numbers vs 'small'; 'prehypertension' renamed for sounding
+  too mild; the grandmother's black clothes (a colour that signals a category).
+- Historical: traffic-light colours inherited from railway signals; early railway 'go' was WHITE, changed to green because white was confused
+  with other lights. The US Homeland Security colour-coded alert scheme, 2002-2011, was retired -- the level never dropped below yellow (ch.9).
+  Hong Kong typhoon signals numbered 1, 3, 8, 9, 10 -- gaps from history; 'Signal No. 8' is a household phrase.
+- Cultural: in China red signals luck and prosperity -- stock prices rising are shown RED, falling GREEN (the reverse of the West). Japan's 'go'
+  light is called AO (blue): the word ao spans blue-green, and signals were made bluish-green to fit the word (ties to Berlin & Kay, ch.2).
+  Ski runs: North America green circle / blue square / black diamond; Europe green / blue / red / black -- same idea, different colour codes.
+- Redundancy has a reason: ~8% of men have red-green colour-vision deficiency, so position (traffic lights in a fixed order), shape (ski
+  symbols) and words back up colour. Standards: ISO 3864 safety colours (red danger/prohibition, yellow caution, green safe, blue mandatory).
+  Triage tags (green / yellow / red / black) put the order of concern in colour; US fire-danger signs use BLUE for 'moderate'.
+- The dot alone: phone AQI dot, map traffic colours, battery icons, device status lights -- the category reduced to its colour.
+- Placement candidates: a section of ch.3 (categories that elicit behaviour speak through names and colours), or a short new chapter after ch.3.
+- **RULING (Kim, 2026-11-04):** fit NAMES AND COLOURS into CHAPTER 3; split into its own chapter only if it grows too long. Run a
+  VERIFICATION pass first. Wants SIDE-BY-SIDE DIAGRAMS to support the graphics-forward style.
+
+---
+
 ## Next
 
 **2026-10-30: focus returned to the trilogy -- MRC round three (above).** Context moves the boundary

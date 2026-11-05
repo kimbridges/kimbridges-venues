@@ -11,6 +11,29 @@ Mechanism 4.
 
 ---
 
+## 2026-11-04 -- MRC: NAMES AND COLORS; STYLE EXCEPTIONS; DRAFTING BEGUN (PREFACE, CH.1-3)
+
+**Date / duration:** 20:06-21:55 HST.
+
+**Active focus at start:** MRC. Session start: three reads; nothing changed since the 11-03 close; PubMaps check 0/0/0.
+
+**What was worked on:**
+- Round six (ideas file): NAMING AND COLORING categories (Kim: order of concern, short names, colors redundant but immediate, the dot alone).
+  RULING: into ch.3 (split if long). Research helper verified 18 items -> Projects/MRC/background/chapter_two_uses_ideas.md (official color
+  codes; corrections: terror alert never below yellow, Japan ao via National Police Agency early 1970s, Hong Kong stock colors unverified).
+- STYLE: MRC exceptions to the guide's figure rules (side-by-side allowed; subject colors; SVG optional) -- recorded in proj_MRC.md and a
+  dated note in style_multichapter_doc.md. US SPELLING rule added to the guide; six figure labels fixed and re-rendered.
+- Cover: covers are AI-generated, often from Kim's photo; four concepts noted (rainbow + Newton's seven favored). KAKA'AKO BUILDINGS
+  (murals) QUEUED after MRC -- priorities.md 0.1 and the index; an exhibit is coming up (date to confirm).
+- DRAFTING BEGUN: Quarto book scaffold in Projects/MRC (_quarto.yml; index + 10 chapters + appendix); notes moved to background/.
+  Preface (Miller opening) APPROVED ('hospital thresholds' -> 'medical guidelines'). Ch.1 The Claim APPROVED with new figure
+  ch01_fig1_same_number (38 on seven scales; Kim: 'perfect'); edits: Singapore visitor, butcher's scale. Ch.2 Learning the Scale drafted
+  (rain names: compound names caution added). Ch.3 Two Uses drafted with ch03_fig1_color_ladders (nine scales; simulated color blindness);
+  APPROVED. Voice: 'my' for Kim's stories, 'we' for shared work. Renders via quarto::quarto_render (async) -- clean.
+
+**Queued:** ch.4 Where Boundaries Come From onward; optional ch.3 side-by-side (fire danger US/Australia, or ski runs); cover; Kaka'ako after MRC.
+PubMaps NEXT unchanged.
+
 ## 2026-11-03 -- MRC: VERIFY PASS; CORVALLIS FOR EUGENE; OFFICIAL WBGT; CH.2 AI ELICITATION (3 MODELS)
 
 **Date / duration:** 14:21-15:55 HST.

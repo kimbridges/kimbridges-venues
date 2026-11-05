@@ -1138,3 +1138,14 @@ the project rather than a manual pass. The convention that matters beyond the
 numbers is WHERE it runs -- against the scratch build tree, so the originals on
 Drive are never rewritten and the step is re-runnable. Kim chose q88 over q82 when
 shown the measured file sizes for both.
+
+### 2026-11-04 (document-level exceptions -- MRC)
+Kim ruled that a Document may relax Section 6's figure rules when its diagrams call for it: *Measurements Require Categories* allows
+side-by-side comparison figures, subject colours where the colours are the content (official warning-scale codes, biome palettes), and
+PNG/PDF in place of SVG. "Flexibility is important in this document." Record any such exception in the Document's proj file
+(proj_MRC.md, Design Decisions); the defaults stand for other Documents.
+
+### 2026-11-04 (Section 8 -- US spelling)
+Kim: "color" is the preferred spelling. Use regular US spellings throughout every Document -- color, behavior, center, gray,
+meter, favor, organize, analyze -- not British forms (an earlier draft slipped into "colour" and similar). Applies to prose, figure
+labels and captions.

@@ -1,0 +1,74 @@
+# Learning the Scale
+
+Nobody taught us that 60°F is a sweater day. There was no lesson, no chart on the classroom wall. We learned it the way we learned which way the wind usually blows: by living somewhere long enough for the numbers to settle into meanings. By the time we were adults, the scale was so much a part of us that we no longer noticed it was there.
+
+This chapter is about how scales are learned, and where they're kept. Most are learned by exposure rather than instruction. The instruments we buy teach us how to measure, but almost never what the measurement means. And much of what we know about categories is held in language, in the words a community uses and the distinctions those words make easy. At the end of the chapter we try something new: asking three AI models to tell us the temperature scales people carry in different cities.
+
+```{r}
+#| label: setup
+#| code-summary: "Show the setup code"
+
+## graphics
+library(ggplot2)
+library(patchwork)
+## labels that avoid each other
+library(ggrepel)
+```
+
+## Learning without lessons
+
+Learning a scale is part of growing up, but it's rarely part of schooling. Children learn that a hot stove burns, that a cold morning means a coat, that a fever means staying home. Nobody hands them the boundaries. They absorb them from the people around them, from what those people do, and from what happens when they ignore the advice.
+
+Because the learning is tacit, it's also local. A child in Fairbanks and a child in Singapore both learn the word "cold," and both learn it well. They simply learn it against very different weather. Each ends up with a scale that fits where they live, and neither has any reason to think about it until they travel.
+
+Switching units exposes how much of this is habit. A scale learned in Fahrenheit doesn't transfer to Celsius by arithmetic alone. The conversion can be done, but it has to be done, every time, until enough experience builds a new scale in the new units. That friction is real, and it's one reason countries change their units slowly and people change them more slowly still.
+
+## The device teaches the measurement, not the scale
+
+Buy a thermometer and it comes with instructions. They tell you how to place it, how long to wait, how to read the display. They almost never tell you what the number means. The device teaches the operation. The scale is left for you to supply.
+
+The physicist Percy Bridgman made a related point in 1927. A concept, he argued, is defined by the operations used to measure it. Length measured with a ruler and length measured by the travel time of light are, strictly speaking, two concepts that happen to agree in the range where both can be used. Bridgman's idea is usually discussed in physics, but it reaches much further. The operation gives us a number, and the number means whatever our operation makes it mean.
+
+This document adds a second half to Bridgman's point. The operation produces the value, but the categories produce the meaning, and the categories are not part of the operation. A thermometer can't tell you whether 38 is a fever, because the same thermometer could be measuring bath water. One measurement can serve several scales, each built for a different purpose. A body temperature of 37.5°C is worth watching in a clinic. The same 37.5 as an air temperature is a dangerously hot day. Same instrument, same units, different scale, because the purpose is different.
+
+## Language holds the categories
+
+Much of what a community knows about its categories is stored in its words. That idea has a famous and mostly false version, and a less famous but true one.
+
+The false version is the claim that the Inuit have dozens, or hundreds, of words for snow. It goes back to a modest remark by the anthropologist Franz Boas in 1911, who listed four Inuit roots for snow to make a point about how languages divide the world. Retelling inflated the number, and in 1989 the linguist Geoffrey Pullum called the whole thing "the great Eskimo vocabulary hoax." The lesson he drew wasn't that vocabulary doesn't matter. It was that vocabulary follows need. Skiers have many words for snow. So do meteorologists. Surfers have a rich vocabulary for waves, and botanists have one for leaf shapes. Where people need a distinction, they make a word for it.
+
+The true version is subtler and can be measured. In 2007 a group of psychologists led by Jonathan Winawer tested Russian and English speakers on shades of blue. Russian has two basic words, *goluboy* for lighter blues and *siniy* for darker ones, where English has only "blue." Russian speakers were faster at telling two blues apart when the pair fell on opposite sides of their word boundary. English speakers showed no such edge. The effect disappeared when the Russian speakers had to hold a word in mind at the same time, which suggests the language itself was doing the work. A boundary in the vocabulary had become a boundary in perception, and it showed up exactly at the line.
+
+There's a counterweight. When the ethnobiologist Brent Berlin compared how people in many cultures name plants and animals, he found striking agreement at the level of the genus, the level of "oak" or "rose." People around the world tend to cut nature in similar places, because nature itself has joints. Language stores categories and passes them on. It doesn't invent them out of nothing.
+
+Hawaiʻi offers a beautiful case of language storing categories that a community needed. Hawaiian has more than two hundred recorded names for rain. They aren't synonyms. Many name the rain of a particular place, so a rain name carries its context with it: not just "light rain" but the rain of one valley, one hillside, one town. Hilo has the most. For a long stretch of the twentieth century the names fell out of daily use, but they survived in chants, songs and Hawaiian-language newspapers. Collette Leimomi Akana and Kiele Gonzalez spent eleven years recovering them from about three hundred sources, and their book *Hānau ka Ua* (2015) is now the fullest record. A rain name is a category with the place built in. That's also a caution: look closely at the names before deciding how many categories are really in use. Two hundred rain names may be a smaller number of kinds of rain, each joined to many places.
+
+Language, then, can help or hinder. A word makes a distinction easy to share and easy to learn. A community that loses its words loses easy access to the distinctions they held. And a vocabulary imposed from outside can flatten finer local categories into coarser ones. George Miller, whose paper opened this document, thought that putting things into words was one of the main ways people stretch their limited capacity for judgment. We remember the word, and the word carries the category.
+
+## Asking the machines
+
+If our temperature scales are tacit, how could anyone map them? Surveys are slow and expensive, and they ask people to put into numbers something they normally never think about. AI language models offer a new kind of instrument. They have read an enormous amount of what people write, including how people in different places talk about the weather. In a sense they've absorbed the unspoken scales. So we asked them.
+
+Three models, from three different companies, were each asked the same question about twenty-four cities, from Fairbanks to Singapore: at what outdoor temperatures do long-time residents start to call the weather "cold," "chilly," "warm" and "hot"? Each model was asked three times for each city, which gave 216 answers. Each city's climate came from a standard global climate dataset.
+
+```{r}
+#| label: fig-llm-scales
+#| fig-cap: "Where temperature words begin, by city, as described by three AI models: (a) against each city's annual mean temperature; (b) the span of the words against the span of the seasons."
+#| fig-width: 8.5
+#| fig-height: 10
+#| file: R/ch02_fig1_llm_scales.R
+```
+
+The three models agreed on a pattern we hadn't predicted. Where "cold" begins moves with the climate almost one for one: for every ten degrees warmer the climate, "cold" starts about ten degrees higher. Where "hot" begins hardly moves at all, only about three degrees for every ten. So in warm places the words crowd together. In Singapore the whole vocabulary, from "cold" to "hot," fits into about nineteen degrees. In Fairbanks and Ulaanbaatar it stretches past seventy.
+
+The second panel shows why. The span of the words tracks the span of the seasons, the difference between the warmest and coldest parts of the year. Where the seasons barely differ, the words are packed close. Where they differ a great deal, the words spread out to cover them. People seem to use roughly the same handful of temperature words wherever they live, and lay them over whatever range their climate offers. It's Miller's limited number of categories, calibrated locally.
+
+The gray band is a check from a different direction. It shows the indoor temperatures people find comfortable, from field studies of building occupants, which is a different measurement entirely. It sits near the models' "warm" line, which makes sense: comfortable indoors is a little warmer than pleasant outdoors.
+
+Two cautions belong here. The models report what their training says people say, so their answers are a hypothesis about human usage, not a measurement of people. And the three models aren't fully independent, since they learned from overlapping sources. A survey of real people's temperature words would be the right test. Still, as an instrument for drawing out a tacit scale, the models did something no thermometer can do. They gave us the categories, not just the numbers.
+
+## Where the scale is kept
+
+A scale is learned where you live and kept in the words you use. The thermometer gives everyone the same number. What the number means is local, personal and mostly unspoken, and it's written into language more often than into rules.
+
+We learn the scale without lessons. We keep it without noticing.

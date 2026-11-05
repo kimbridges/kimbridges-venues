@@ -32,7 +32,7 @@ g <- ggplot() +
   labs(x = 'the city\'s annual mean temperature (\u00B0F)', y = 'where the word begins (\u00B0F)',
        tag = 'a', caption = sprintf(paste0('How to read (a): each dot is one city, the average of three AI models (vertical line: their range). In Fairbanks, "cold" begins below %.0f\u00B0F; in\n',
          'Honolulu, below %.0f\u00B0F. For every 10\u00B0F warmer the climate, "cold" starts about %.0f\u00B0F higher but "hot" only about %.0f\u00B0F higher: the words crowd together where\n',
-         'the climate is warm. Grey band: comfortable INDOOR temperatures from field studies (ASHRAE 55 adaptive model) -- a different measurement, for comparison.'),
+         'the climate is warm. Gray band: comfortable INDOOR temperatures from field studies (ASHRAE 55 adaptive model) -- a different measurement, for comparison.'),
          ex$avg[ex$city == 'Fairbanks'], ex$avg[ex$city == 'Honolulu'], 10 * fits$slope[fits$word == 'cold'], 10 * fits$slope[fits$word == 'hot'])) +
   scale_x_continuous(breaks = seq(20, 90, 10)) + scale_y_continuous(breaks = seq(-10, 110, 10)) +
   theme_minimal(base_size = 10.5) + theme(panel.grid.minor = element_blank(), legend.position = 'right',
