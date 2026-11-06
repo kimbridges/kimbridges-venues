@@ -1,21 +1,19 @@
 # Projects Index
-_Last updated: 2026-11-04_
+_Last updated: 2026-11-06_
 
 > **History split out 2026-07-28.** The superseded Active Focus blocks and the full
 > dated Change Log now live in `logs/focus_history.md`, verbatim and unedited.
 > This file carries the current focus, the structural notes, and the listings only.
 
-**Active Focus (2026-10-30): MRC -- *Measurements Require Categories*, first document of the trilogy (`proj_MRC.md`, code at `Projects\MRC`). Round-three outline ADOPTED (10 chapters in three parts). NOW: DRAFTING (all 10 chapters drafted; appendix next).**
+**Active Focus (2026-11-06): KAKA'AKO BUILDINGS -- the building-murals story (`G:\My Drive\kimbridges-stories\underway\Kakaako_Buildings\`, ~71 files / 867 MB of mural images; no proj file yet). Set by Kim at the MRC close; an exhibit of building murals is coming up (date to confirm). NOW: INTAKE.**
 
-**How it opened** (2026-10-30, round three): moved verbatim to `logs/focus_history.md`.
-
-**QUEUED AFTER MRC (Kim, 2026-11-04): Kaka'ako Buildings** -- the building-murals story (`kimbridges-stories/underway/Kakaako_Buildings`); an exhibit of building murals is coming up and Kim wants to finish the document. See priorities.md 0.1. **Running alongside: PubMaps** as an email service (standing check below); its NEXT is unchanged -- tell Will the loop is live; then Part II Methods. **Paused:** Rehearsals (capture), icons (Blocked on photographs). S3 and MWT stay at capture.
+**MRC PUBLISHED 2026-11-06** -- *Measurements Require Categories: Boundaries in value*, https://kimbridges-documents.netlify.app/mrc/ (`proj_MRC.md`); its focus block is in `logs/focus_history.md`. Kim is sending Will the link. **Running alongside: PubMaps** as an email service (standing check below); its NEXT is unchanged -- tell Will the loop is live; then Part II Methods. **Paused:** Rehearsals (capture), icons (Blocked on photographs). S3 and MWT stay at capture.
 
 **⚠ CARRIED:** the local Filesystem MCP connector still fails; device_bash still cannot mount `G:`.
 
 **STANDING CHECK (from 2026-10-29, while PubMaps runs as an email service):** after the session-start reads, run `source("G:/My Drive/Projects/PubMaps/service/pubmap_service.R"); service_check()` and report its line with the Active Focus. If the inbox holds PDFs, PROPOSE `process_inbox()` and run it (async) only on Kim's yes. Report items awaiting review and failures; do not act on them. Detail: `Projects/PubMaps/service/SERVICE.md`; rule: pkm_protocol.md Mechanism 2.
 
-**NEXT (2026-11-05 eve): MRC -- Preface + ch.1-10 drafted, cover in place (Projects/MRC/*.qmd; render async; read _output/*.html). Kim reads ch.10; then the appendix, the subtitle, a whole-book read-through. Then Kaka'ako Buildings.**
+**NEXT (2026-11-06): KAKA'AKO BUILDINGS -- formal intake (Mechanism 1): survey the underway folder from R (it is on G:), create `proj_Kakaako_Buildings.md`, confirm the exhibit date and the document's form and venue (likely kimbridges-stories). Web-size the photographs as a build step (style guide Section 6).**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

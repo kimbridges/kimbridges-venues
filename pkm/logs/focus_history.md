@@ -1,5 +1,18 @@
 # Focus History and Change Log
 
+<!-- superseded 2026-11-06 (MRC PUBLISHED to kimbridges-documents /mrc/; focus moved to Kaka'ako Buildings by Kim) -->
+**Active Focus (2026-10-30): MRC -- *Measurements Require Categories*, first document of the trilogy (`proj_MRC.md`, code at `Projects\MRC`). Round-three outline ADOPTED (10 chapters in three parts). NOW: DRAFTING (all 10 chapters drafted; appendix next).**
+
+**How it opened** (2026-10-30, round three): moved verbatim to `logs/focus_history.md`.
+
+**QUEUED AFTER MRC (Kim, 2026-11-04): Kaka'ako Buildings** -- the building-murals story (`kimbridges-stories/underway/Kakaako_Buildings`); an exhibit of building murals is coming up and Kim wants to finish the document. See priorities.md 0.1. **Running alongside: PubMaps** as an email service (standing check below); its NEXT is unchanged -- tell Will the loop is live; then Part II Methods. **Paused:** Rehearsals (capture), icons (Blocked on photographs). S3 and MWT stay at capture.
+
+**⚠ CARRIED:** the local Filesystem MCP connector still fails; device_bash still cannot mount `G:`.
+
+**STANDING CHECK (from 2026-10-29, while PubMaps runs as an email service):** after the session-start reads, run `source("G:/My Drive/Projects/PubMaps/service/pubmap_service.R"); service_check()` and report its line with the Active Focus. If the inbox holds PDFs, PROPOSE `process_inbox()` and run it (async) only on Kim's yes. Report items awaiting review and failures; do not act on them. Detail: `Projects/PubMaps/service/SERVICE.md`; rule: pkm_protocol.md Mechanism 2.
+
+**NEXT (2026-11-05 eve): MRC -- Preface + ch.1-10 drafted, cover in place (Projects/MRC/*.qmd; render async; read _output/*.html). Kim reads ch.10; then the appendix, the subtitle, a whole-book read-through. Then Kaka'ako Buildings.**
+
 <!-- moved 2026-11-05 from the MRC Active Focus block (project_index.md over its 30 KB budget) -->
 **How it opened.** Kim redirected from PubMaps for "a different perspective". Round three: context moves the boundary ("thin blood"), paired with FIXED boundaries (twilight, DST, the Kona coffee break) in ONE chapter; language holds the categories (Hawaiian rain names by place; immersion schools checked); Hokule'a and the life of a category (Kim's dinner with Ben Finney; the Palau arrival 2007-04-01, his programme and photo). Rulings: event boundaries stay in MRC; ch.6-8 need work; ch.9 location open; language in ch.2. Detail: `ideas_three_documents.md`, round three.
 

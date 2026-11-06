@@ -21,7 +21,7 @@ My own field fought over this for most of the twentieth century. Frederic Clemen
 
 ## Differences inside a category disappear
 
-Chapter 6 ended with a warning. A temperature of 37.2 °C and one of 37.6 are both "normal." The category treats them as the same, and so do most of the people reading them.
+Near its end, Chapter 6 gave a warning. A temperature of 37.2 °C and one of 37.6 are both "normal." The category treats them as the same, and so do most of the people reading them.
 
 But "normal" is a population scale. It describes what's typical across many people. A patient whose own temperature usually runs low may be a full degree above their personal normal and still read "normal" on the chart. The category answers the question it was built for, whether this reading is unusual for people in general, and stays silent on the question that may matter more: whether it's unusual for this person.
 

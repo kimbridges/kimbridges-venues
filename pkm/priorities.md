@@ -1,6 +1,6 @@
 # Priorities
 _Created: 2026-05-27_
-_Last updated: 2026-11-04 -- Kaka'ako Buildings queued after MRC (Kim)_
+_Last updated: 2026-11-06 -- MRC PUBLISHED; Kaka'ako Buildings is now the Active Focus (Kim)_
 _Log: logs/priorities_history.md_
 
 ## Purpose
@@ -21,13 +21,13 @@ Real-but-not-now: `deferred.md`. Session rules: `pkm_card.md`, then
 
 ---
 
-## ▶ QUEUED NEXT (2026-11-04, Kim)
+## ▶ NOW THE ACTIVE FOCUS (2026-11-06, Kim) -- was QUEUED NEXT 2026-11-04
 
 | # | Item | State | Where |
 |---|---|---|---|
 | 0.1 | **Kaka'ako Buildings (building murals)** -- RAISED by Kim: an exhibit of building murals is coming up; he'd like to FINISH this document. Work on it AFTER MRC. | Underway story (no proj file yet): ~71 files, 867 MB of mural images (PNG, stained-glass treatments, stamps), plus a 2026 Tang article on the Kaka'ako murals; last touched 2026-06-02. Needs intake (Mechanism 1) when picked up; exhibit date to confirm. | `G:\My Drive\kimbridges-stories\underway\Kakaako_Buildings\` |
 
-Active Focus: MRC (see project_index.md). The 2026-10-28 block below is kept as history.
+Active Focus: Kaka'ako Buildings (see project_index.md); MRC published 2026-11-06. The 2026-10-28 block below is kept as history.
 
 ## ▶ RESUME HERE (2026-10-28)
 

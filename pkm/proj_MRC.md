@@ -19,7 +19,7 @@ three parts: I What a category does (1 The claim; 2 Learning the scale, incl. la
 boundaries come from (4 the backbone; 5 Fixed or contextual; 6 Boundaries and error; 7 Several measurements, one
 category; 8 Categories instead of measurements); III Categories over time (9 The life of a category; 10 The
 inverse). Rulings: event boundaries stay in MRC (life cycle), not S3; ch.6-8 are valid and need work; ch.9's
-location is open; language comes early (ch.2). DRAFTING since 2026-11-04: Preface + ch.1-10 drafted (ch.1-9 approved; ch.10 with Kim for reading), 2026-11-05.
+location is open; language comes early (ch.2). PUBLISHED 2026-11-06 at https://kimbridges-documents.netlify.app/mrc/ (Preface, ch.1-10, appendix; all approved; Kim's full read-through done).
 
 ## Locations
 - Code: G:\My Drive\Projects\MRC\R
@@ -56,9 +56,9 @@ Temperature_Patterns. MRC's figure style is to become the trilogy's shared visua
   proj_Temperature_Patterns.md (Eugene 32 F -- a ch.6 candidate); proj_Smart_Car.md (the fuel-gauge ladder).
 
 ## Next Steps
-1. Kim reads ch.10 The Inverse (check the Regents-vs-grading contrast paragraph and the August 'thread' quote timing).
-2. Draft the appendix (appendix.qmd is a stub); settle the subtitle (placeholder 'Boundaries in value' in _quarto.yml).
-3. Whole-book read-through and cross-reference check; minor verify items (JIS S chest, Wansink 2005, Hong Kong stock colors).
+1. PUBLISHED. Remaining minor verify items (JIS S chest, Wansink 2005 -- not used in text, Hong Kong stock colors).
+2. Optional later: a human-data check of the ch.2 AI comfort-word finding; the second ch.3 side-by-side figure.
+3. Trilogy: MWT and S3 remain at capture.
 
 ## Collaborators / Dependencies
 None yet.
@@ -152,3 +152,9 @@ its end ('exactly right'); co-author is HAN LAU (Y. H. Lau; 'everyone calls him 
 Ch.9 The Life of a Category drafted and approved ('strong'); new fig ch09_fig1_shindo; Kim's Palau photo + schedule added
 (sources/Hokulea_arrives_in_Palau.jpg, sources/2007Hokulea-palau.pdf -> figures/ch09_fig2/3) as a side-by-side figure.
 Ch.10 The Inverse drafted (bunching fig; Clements/Gleason; questions-to-ask table closing the book). ALL TEN CHAPTERS DRAFTED.
+### 2026-11-06
+Kim read ch.10 ('great'; final words bring it full circle); Regents paragraph kept as is. SUBTITLE RULED: 'Boundaries in value' (all trilogy members
+are 'boundaries' based). APPENDIX drafted (data files, figure scripts, asking the machines, credits, 30 sources, software); Mueller-Dombois &
+Ellenberg 1974 confirmed. Cross-reference pass: 48 links checked, one fixed (ch.10 'Near its end, Chapter 6'); 'tile map' wording OK (Kim).
+Kim's full read-through: 'reads well... balance... remarkable coverage'. PUBLISHED to kimbridges-documents as /mrc/ (see proj_kimbridges_documents.md
+2026-11-06); verified live. Kim: 'I've wanted to do this document... for decades.'

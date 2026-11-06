@@ -11,6 +11,23 @@ Mechanism 4.
 
 ---
 
+## 2026-11-06 -- MRC: APPENDIX, CROSS-REFERENCES, PUBLISHED; FOCUS -> KAKA'AKO BUILDINGS
+
+**Date / duration:** 10:10-13:04 HST.
+
+**Active focus at start:** MRC (confirmed). Session start: three reads; nothing changed since the 11-05 evening close; PubMaps check 0/0/0.
+
+**What was worked on:**
+- Ch.10 approved as is (Regents paragraph kept); subtitle RULED 'Boundaries in value'.
+- Appendix drafted (data-file and figure-script tables from CSVs, the AI prompt verbatim, credits, 30 sources, software from the scripts).
+- Cross-reference pass (48 refs; one fix) and style sweep while Kim did the full read-through ('reads well... remarkable coverage').
+- PUBLISHED to kimbridges-documents as /mrc/ (25th document); Kim dragged _site to Netlify; verified live from R.
+- Focus change at close: MRC block -> logs/focus_history.md; Kaka'ako Buildings is the Active Focus (intake next); priorities.md updated.
+
+**Next:** Kaka'ako Buildings intake. Kim will send Will the MRC link.
+
+---
+
 ## 2026-11-05 (evening) -- MRC: COVER CHOSEN; CH.8-10 DRAFTED (ALL CHAPTERS DRAFTED)
 
 **Date / duration:** 21:02-22:16 HST.

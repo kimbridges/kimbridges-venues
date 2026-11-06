@@ -13,6 +13,7 @@ project:
     - lists/**
     - llm_examples/**
     - milestones/**
+    - mrc/**
     - pedigree/**
     - photolocations/**
     - plainmaps/**

@@ -1,3 +1,153 @@
 # Appendix {.unnumbered}
 
-_Draft pending._
+This appendix gathers the material behind the chapters: the data files and where they came from, the scripts that draw each figure, how the AI models in Chapter 2 were asked, credits for the photographs and documents, sources for further reading, and the software used.
+
+```{r}
+#| label: setupappendix
+#| code-summary: "Show the setup code"
+
+## formatted tables
+library(gt)
+```
+
+## Data files
+
+Every data figure in this document is drawn from a file in the project's `data/` folder. The table lists each file, the chapters that use it, what it holds and where it came from.
+
+```{r}
+#| label: datafiles
+#| code-summary: "Show the code"
+
+## the list of data files, with their sources
+datafiles <- read.csv("data/appendix_data_files.csv")
+## add the size of each file, in kilobytes
+datafiles$kb <- round(file.size(file.path("data", datafiles$file)) / 1024)
+## show it
+gt(datafiles[, c("file", "chapter", "holds", "source", "kb")]) |>
+  cols_label(file = "File", chapter = "Chapter", holds = "What it holds",
+             source = "Source", kb = "Size (KB)") |>
+  tab_source_note(source_note = "Files are in the data/ folder of the project.")
+```
+
+Two other sources are read directly by the scripts rather than stored in `data/`. The climate of the 24 cities in Chapter 2 comes from WorldClim version 2.1, at 2.5 arc-minute resolution. The biome boundaries in Chapter 7 come from the `whittakerr` package, and the soil texture classes from the USDA class outlines distributed with the `ggtern` package.
+
+## Figure scripts
+
+Each figure is drawn by a script in the project's `R/` folder. The chapters run the script when the document is built, so every figure is redrawn from its data each time.
+
+```{r}
+#| label: scripts
+#| code-summary: "Show the code"
+
+## the scripts, what they make, and what they need
+scripts <- read.csv("data/appendix_figure_scripts.csv")
+## show it, grouped by chapter
+gt(scripts, groupname_col = "chapter") |>
+  cols_label(script = "Script", makes = "What it draws", uses = "What it uses") |>
+  tab_source_note(source_note = "Scripts are in the R/ folder of the project.")
+```
+
+One script, `ch02_llm_elicit.R`, doesn't draw a figure. It asks the AI models their questions and saves the answers. It was run once, and its results are kept in `llm_comfort_thresholds_24cities.csv`, so the document can be rebuilt without asking the models again.
+
+## Asking the machines
+
+Chapter 2 used three AI models as instruments for eliciting tacit temperature scales. The models were Claude Sonnet 5.5 (Anthropic), GPT-5 mini (OpenAI) and Gemini 3.8 Flash (Google), called from R through the `ellmer` package on 3 November 2026. Each model was asked the same question three times for each of 24 cities, giving 216 sets of answers. The answers came back as four numbers in a fixed structure, one for each word.
+
+The question, exactly as sent, with the city and country filled in, was:
+
+```text
+Think about ordinary people who have lived in <city>, <country> for many years.
+In everyday conversation, at what outdoor air temperatures (daytime, in degrees
+Fahrenheit) do they start to describe the weather as 'cold', 'chilly', 'warm'
+and 'hot'? Give typical local thresholds, as whole numbers, for their own sense
+of the words -- not a universal standard.
+```
+
+The models are treated as a way to reach what is written about how people talk, not as an authority on it. Their answers agreed with one another closely, which says they share a source more than it proves the source is right. A check against how real residents use the words would be the natural next step.
+
+## Photographs, documents and the cover
+
+The photograph of Hōkūleʻa arriving in Palau (Chapter 9) is mine, taken in April 2007, as is the printed schedule of events shown beside it. The optical-mark-reader request form in Chapter 6 is from my own files, from my years teaching introductory biology at the University of Hawaiʻi; the contact details on it are covered. The cover image was generated with an AI image tool.
+
+## Sources and further reading
+
+Allen, E. J., P. M. Dechow, D. G. Pope and G. Wu. 2017. Reference-dependent preferences: evidence from marathon runners. *Management Science* 63: 1657-1672. (Chapter 10)
+
+Akana, C. L., with K. Gonzalez. 2015. *Hānau ka Ua: Hawaiian Rain Names.* Kamehameha Publishing, Honolulu. (Chapters 2, 9)
+
+Attwood, A. S., N. E. Scott-Samuel, G. Stothart and M. R. Munafò. 2012. Glass shape influences consumption rate for alcoholic beverages. *PLoS ONE* 7: e43007. (Chapter 8)
+
+Berlin, B. 1992. *Ethnobiological Classification.* Princeton University Press, Princeton. (Chapter 2)
+
+Berlin, B. and P. Kay. 1969. *Basic Color Terms.* University of California Press, Berkeley. (Chapter 2)
+
+Boas, F. 1911. Introduction. In *Handbook of American Indian Languages.* Bureau of American Ethnology Bulletin 40. (Chapter 2)
+
+Bowker, G. C. and S. L. Star. 1999. *Sorting Things Out: Classification and Its Consequences.* MIT Press, Cambridge, Massachusetts. (Chapter 10)
+
+Braun-Blanquet, J. 1932. *Plant Sociology: The Study of Plant Communities.* McGraw-Hill, New York. (Chapters 8, 10)
+
+Bridges, K. W. and Y. H. Lau. 2006. The skill acquisition process relative to ethnobotanical methods. *Ethnobotany Research & Applications* 4: 115-118. (Chapter 8)
+
+Bridgman, P. W. 1927. *The Logic of Modern Physics.* Macmillan, New York. (Chapters 2, 5, 7, 8)
+
+Clements, F. E. 1916. *Plant Succession.* Carnegie Institution of Washington, Publication 242. (Chapter 10)
+
+Dee, T. S., W. Dobbie, B. A. Jacob and J. Rockoff. 2019. The causes and consequences of test score manipulation: evidence from the New York Regents examinations. *American Economic Journal: Applied Economics* 11(3): 382-423. (Chapter 10)
+
+Dreyfus, H. L. and S. E. Dreyfus. 1986. *Mind over Machine.* Free Press, New York. (Chapter 8)
+
+Fick, S. E. and R. J. Hijmans. 2017. WorldClim 2: new 1-km spatial resolution climate surfaces for global land areas. *International Journal of Climatology* 37: 4302-4315. (Chapter 2)
+
+Finney, B. 1979. *Hokule'a: The Way to Tahiti.* Dodd, Mead, New York. (Chapter 9)
+
+Gleason, H. A. 1926. The individualistic concept of the plant association. *Bulletin of the Torrey Botanical Club* 53: 7-26. (Chapter 10)
+
+Gold, K. M. 2002. *School's In: The History of Summer Education in American Public Schools.* Peter Lang, New York. (Chapter 5)
+
+Holdridge, L. R. 1967. *Life Zone Ecology.* Tropical Science Center, San José, Costa Rica. (Chapter 4)
+
+Menne, M. J., I. Durre, R. S. Vose, B. E. Gleason and T. G. Houston. 2012. An overview of the Global Historical Climatology Network-Daily database. *Journal of Atmospheric and Oceanic Technology* 29: 897-910. (Chapters 6, 7)
+
+Miller, G. A. 1956. The magical number seven, plus or minus two: some limits on our capacity for processing information. *Psychological Review* 63: 81-97. (Preface; Chapters 4, 7, 8, 10)
+
+Mueller-Dombois, D. and H. Ellenberg. 1974. *Aims and Methods of Vegetation Ecology.* Wiley, New York. (Chapter 8)
+
+Pew Research Center. 2009. *Growing Old in America: Expectations vs. Reality.* Washington, DC. (Chapter 5)
+
+Pullum, G. K. 1989. The great Eskimo vocabulary hoax. *Natural Language and Linguistic Theory* 7: 275-281. (Chapter 2)
+
+Raunkiaer, C. 1934. *The Life Forms of Plants and Statistical Plant Geography.* Clarendon Press, Oxford. (Chapter 8)
+
+Rothfusz, L. P. 1990. The heat index "equation." National Weather Service Technical Attachment SR 90-23. (Chapter 7)
+
+Steadman, R. G. 1979. The assessment of sultriness. Part I: a temperature-humidity index based on human physiology and clothing science. *Journal of Applied Meteorology* 18: 861-873. (Chapter 7)
+
+Whelton, P. K., et al. 2018. 2017 ACC/AHA guideline for the prevention, detection, evaluation, and management of high blood pressure in adults. *Hypertension* 71: e13-e115. (Chapters 3, 6)
+
+Whittaker, R. H. 1975. *Communities and Ecosystems.* 2nd edition. Macmillan, New York. (Chapters 4, 7)
+
+Winawer, J., N. Witthoft, M. C. Frank, L. Wu, A. R. Wade and L. Boroditsky. 2007. Russian blues reveal effects of language on color discrimination. *Proceedings of the National Academy of Sciences* 104: 7780-7785. (Chapters 2, 6)
+
+## Software
+
+The figures were drawn in R. The table lists the packages the scripts load, found by reading the scripts themselves, with the version used for this build.
+
+```{r}
+#| label: software
+#| code-summary: "Show the code"
+
+## read every figure script and find the packages it uses
+code <- unlist(lapply(list.files("R", pattern = "\\.R$", full.names = TRUE), readLines, warn = FALSE))
+found <- c(regmatches(code, gregexpr("(?<=library\\()[A-Za-z0-9.]+", code, perl = TRUE)),
+           regmatches(code, gregexpr("[A-Za-z0-9.]+(?=::)", code, perl = TRUE)),
+           regmatches(code, gregexpr("(?<=package = ')[A-Za-z0-9.]+", code, perl = TRUE)))
+pkgs <- sort(setdiff(unique(unlist(found)), c("base", "stats", "utils", "grDevices", "graphics", "tools")))
+## their versions, with R itself at the top
+software <- data.frame(package = c("R", pkgs),
+                       version = c(paste(R.version$major, R.version$minor, sep = "."),
+                                   vapply(pkgs, function(p) as.character(packageVersion(p)), character(1))))
+## show it
+gt(software) |> cols_label(package = "Package", version = "Version")
+```
+

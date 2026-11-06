@@ -1,9 +1,9 @@
 # PKM Health Report
-_Generated 2026-11-05 22:17 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-11-06 13:06 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
-- **Works registered:** 87
+- **Works registered:** 88
 - **Works failing reconciliation:** 0 (source -> _site -> live)
 - **Rendered pages with no source:** 0
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
@@ -55,15 +55,15 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| ghcn |  2.3 | 85 | FALSE |
-| R_Basics_index_2026-10-28 |  8.1 | 14 | FALSE |
-| plainmaps_index_2026-10-28 |  8.1 |  5 | FALSE |
-| rehearsals_huntington_2026-09-30 | 36.1 |  2 | TRUE |
-| pkm_health_backup_2026-10-28 |  8.1 |  1 | FALSE |
-| isd |  3.1 |  0 | FALSE |
-| listsr_installtest_2026-10-28 |  8.3 |  0 | FALSE |
-| llm |  2.3 |  0 | FALSE |
-| secret_audit_2026-10-28 |  8.3 |  0 | FALSE |
+| ghcn |  2.9 | 85 | FALSE |
+| R_Basics_index_2026-10-28 |  8.7 | 14 | FALSE |
+| plainmaps_index_2026-10-28 |  8.7 |  5 | FALSE |
+| rehearsals_huntington_2026-09-30 | 36.7 |  2 | TRUE |
+| pkm_health_backup_2026-10-28 |  8.7 |  1 | FALSE |
+| isd |  3.7 |  0 | FALSE |
+| listsr_installtest_2026-10-28 |  8.9 |  0 | FALSE |
+| llm |  2.9 |  0 | FALSE |
+| secret_audit_2026-10-28 |  8.9 |  0 | FALSE |
 
 ## Legacy pages by platform
 
@@ -79,4 +79,4 @@ None.
 None.
 
 ---
-_Ran in 90.1 s._
+_Ran in 110.2 s._

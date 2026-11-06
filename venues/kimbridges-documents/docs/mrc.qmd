@@ -1,0 +1,8 @@
+---
+title: "Measurements Require Categories"
+subtitle: "Boundaries in value"
+categories: ["Methods", "Data Analysis", "Data Visualization"]
+image: ../mrc/MRC_cover_art_text.png
+---
+
+[View Document](../mrc/){.btn .btn-primary}

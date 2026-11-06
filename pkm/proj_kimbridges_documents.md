@@ -12,7 +12,7 @@ geographic analysis, cartography, and research methods. Each document is
 a self-contained reference with its own folder of pre-rendered HTML.
 
 ## Current Status
-Live on Netlify. **24 document folders**, the latest **voronoi ("The Map That Never Got Drawn", published 2026-09-27)**; smart_car was 2026-09-03; llm_examples was 2026-08-03, ai_podcasts 2026-08-02, vouchr 2026-07-29, ai_microscope 2026-07-25, checklistr 2026-07-09, lists 2026-06-16, coenosr 2026-06-15. Grid listing
+Live on Netlify. **25 document folders**, the latest **mrc ("Measurements Require Categories", published 2026-11-06)**; voronoi was 2026-09-27; smart_car was 2026-09-03; llm_examples was 2026-08-03, ai_podcasts 2026-08-02, vouchr 2026-07-29, ai_microscope 2026-07-25, checklistr 2026-07-09, lists 2026-06-16, coenosr 2026-06-15. Grid listing
 2026-08-03)**; ai_podcasts was 2026-08-02, vouchr 2026-07-29, ai_microscope 2026-07-25, checklistr 2026-07-09, lists 2026-06-16, coenosr 2026-06-15. Grid listing
 page with category filtering. Document landing page concept designed but not yet implemented. The
 site is now about 393 MB of resources, which makes a full render overrun the 60-second R-bridge
@@ -328,3 +328,11 @@ Companion project: proj_Smart_Car.md.
 
 ### 2026-09-27
 **Twenty-fourth document: *The Map That Never Got Drawn* (`/voronoi/`)** -- Voronoi methods book, K. W. Bridges and Claude (Anthropic); categories Maps, Ecology, Methods. Built in `C:/temp` because the source project's `_output` had become a ghost directory (Finding 054), contents copied into `voronoi/` from R and md5-verified (59 files) plus a card-size cover at the folder root; stub `docs/voronoi.qmd`; `voronoi/**` in resources; site rendered to `_site` (25 pages), Kim dragged `_site` to the existing site. **Verified live** from R: card on the index, book title + both authors, Appendix, and the cover byte-identical (2,524,093 bytes).
+### 2026-11-06
+**Twenty-fifth document: *Measurements Require Categories* (`/mrc/`)** -- subtitle 'Boundaries in value'; K. W. Bridges and Claude (Anthropic);
+categories Methods, Data Analysis, Data Visualization (all existing tags). First of the trilogy (MRC; MWT and S3 to follow as `mwt`, `s3`).
+Rendered in Projects/MRC/_output; contents copied from R into a fresh `mrc/` folder (55 files, md5-verified, no nesting); venue-only web copies:
+cover 2550x3300 -> 1275x1650 (8.9 -> 3.1 MB), logo 1024 -> 512 px. Stub `docs/mrc.qmd`; `mrc/**` in resources (binary edit, delta 14, CR/LF
+50/50 -> 51/51). `_site` 1285 -> 1341 files, 0 removed; src/href walk 498 local refs, 0 missing; site ~449 MB. Kim dragged `_site` to the existing
+site. **Verified live from R:** index card present (26 grid items); /mrc/ title, subtitle and both authors; all 11 chapter pages + appendix 200;
+cover byte-identical (3,046,762 bytes). Companion project: proj_MRC.md.
