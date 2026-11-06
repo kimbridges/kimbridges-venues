@@ -5,9 +5,9 @@ _Last updated: 2026-11-04_
 > dated Change Log now live in `logs/focus_history.md`, verbatim and unedited.
 > This file carries the current focus, the structural notes, and the listings only.
 
-**Active Focus (2026-10-30): MRC -- *Measurements Require Categories*, first document of the trilogy (`proj_MRC.md`, code at `Projects\MRC`). Round-three outline ADOPTED (10 chapters in three parts). NOW: DRAFTING (Preface + ch.1-3 done).**
+**Active Focus (2026-10-30): MRC -- *Measurements Require Categories*, first document of the trilogy (`proj_MRC.md`, code at `Projects\MRC`). Round-three outline ADOPTED (10 chapters in three parts). NOW: DRAFTING (Preface + ch.1-7 done).**
 
-**How it opened.** Kim redirected from PubMaps for "a different perspective". Round three: context moves the boundary ("thin blood"), paired with FIXED boundaries (twilight, DST, the Kona coffee break) in ONE chapter; language holds the categories (Hawaiian rain names by place; immersion schools checked); Hokule'a and the life of a category (Kim's dinner with Ben Finney; the Palau arrival 2007-04-01, his programme and photo). Rulings: event boundaries stay in MRC; ch.6-8 need work; ch.9 location open; language in ch.2. Detail: `ideas_three_documents.md`, round three.
+**How it opened** (2026-10-30, round three): moved verbatim to `logs/focus_history.md`.
 
 **QUEUED AFTER MRC (Kim, 2026-11-04): Kaka'ako Buildings** -- the building-murals story (`kimbridges-stories/underway/Kakaako_Buildings`); an exhibit of building murals is coming up and Kim wants to finish the document. See priorities.md 0.1. **Running alongside: PubMaps** as an email service (standing check below); its NEXT is unchanged -- tell Will the loop is live; then Part II Methods. **Paused:** Rehearsals (capture), icons (Blocked on photographs). S3 and MWT stay at capture.
 
@@ -15,7 +15,7 @@ _Last updated: 2026-11-04_
 
 **STANDING CHECK (from 2026-10-29, while PubMaps runs as an email service):** after the session-start reads, run `source("G:/My Drive/Projects/PubMaps/service/pubmap_service.R"); service_check()` and report its line with the Active Focus. If the inbox holds PDFs, PROPOSE `process_inbox()` and run it (async) only on Kim's yes. Report items awaiting review and failures; do not act on them. Detail: `Projects/PubMaps/service/SERVICE.md`; rule: pkm_protocol.md Mechanism 2.
 
-**NEXT (2026-11-04): MRC DRAFTING -- Preface + ch.1-3 drafted and approved (Projects/MRC/*.qmd; render with quarto::quarto_render, async; read _output/*.html). Next: ch.4 Where Boundaries Come From, then ch.5-10. Optional: a second ch.3 side-by-side figure; the cover. Then Kaka'ako Buildings.**
+**NEXT (2026-11-05): MRC DRAFTING -- Preface + ch.1-7 drafted and approved (Projects/MRC/*.qmd; render with quarto::quarto_render, async; read _output/*.html). Next: ch.8 Categories Instead of Measurements, then ch.9-10 and the appendix. Then the cover; then Kaka'ako Buildings.**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

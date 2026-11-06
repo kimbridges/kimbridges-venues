@@ -44,7 +44,7 @@ g <- ggplot() +
   annotate("point", x = 37.8, y = 1 - pnorm(1), size = 2.2, colour = pal[2]) +
   annotate("segment", x = 37.0, xend = 37.77, y = 0.30, yend = 1 - pnorm(1) + 0.01, colour = "grey45", linewidth = 0.3) +
   annotate("text", x = 36.6, y = 0.335, hjust = 0, size = 3, colour = "grey20",
-           label = sprintf("How to read: true temperature 37.8 \u00B0C, a \u00B10.2 \u00B0C thermometer --\n%.0f%% of single readings will say 'fever'.", 100 * (1 - pnorm(1)))) +
+           label = sprintf("How to read: true temperature 37.8 \u00B0C, a \u00B10.2 \u00B0C thermometer:\n%.0f%% of single readings will say 'fever'.", 100 * (1 - pnorm(1)))) +
   scale_colour_manual(values = pal, name = "reading error (1 SD)") +
   scale_y_continuous(labels = function(x) paste0(round(100 * x), "%"), limits = c(0, 0.6),
                      breaks = seq(0, 0.5, 0.1), expand = c(0, 0)) +

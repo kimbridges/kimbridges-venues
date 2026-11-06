@@ -25,7 +25,7 @@ gr$hic <- cut(gr$hi, c(-Inf, 80, 90, 103, 125, Inf), right = FALSE, labels = c("
 gr$wbc <- cut(gr$wb, c(-Inf, 21, 25, 28, 31, Inf), right = FALSE, labels = c("Almost safe", "Caution", "Warning", "Severe warning", "Danger"))
 pal5 <- c("#f4f1ea", "#fbe3a2", "#f6b26b", "#e06c4f", "#a8233a")
 pts <- function() list(geom_point(data = pk, aes(tmpf, relh, shape = city), size = 0.9, stroke = 0.3, colour = "grey15", fill = "white", alpha = 0.7),
-  scale_shape_manual(values = c(Phoenix = 21, Tokyo = 24), name = "daily peak hour"),
+  scale_shape_manual(values = c(Phoenix = 16, Tokyo = 24), name = "daily peak hour"),
   scale_x_continuous(limits = c(70, 120), expand = c(0, 0), breaks = seq(70, 120, 10)),
   scale_y_continuous(limits = c(2, 100), expand = c(0, 0)),
   labs(x = "air temperature (\u00B0F)", y = "relative humidity (%)"),
@@ -54,7 +54,7 @@ gb <- ggplot(bb) + geom_col(aes(x = n, y = scale, fill = factor(k)), width = 0.6
             colour = ifelse(bb$k[bb$n >= 40] >= 4, "white", "grey15")) +
   scale_x_continuous(expand = c(0, 0)) +
   labs(x = sprintf("Tokyo summer days, June-September 2021-2025 (%d days)", nrow(tk)), y = NULL, tag = "b",
-       caption = sprintf("How to read (b): the same %d Tokyo summer days, sorted by each country's scale. The US heat index calls %d of\nthem 'Danger' and puts %d below its first warning level; Japan's measured WBGT calls %d 'Danger' and only %d 'Almost safe'.\nSame air, same goal -- different measurement, different categories.\n(a): each symbol is one summer day's hottest hour; colors are the US heat-index categories. Data: Iowa Environmental Mesonet\n(Phoenix, Tokyo Haneda airport observations); Japan Ministry of the Environment, measured WBGT, Tokyo station.",
+       caption = sprintf("How to read (b): the same %d Tokyo summer days, sorted by each country's scale. The US heat index calls %d of\nthem 'Danger' and puts %d below its first warning level; Japan's measured WBGT calls %d 'Danger' and only %d 'Almost safe'.\nSame air, same goal; different measurement, different categories.\n(a): each symbol is one summer day's hottest hour; colors are the US heat-index categories. Data: Iowa Environmental Mesonet\n(Phoenix, Tokyo Haneda airport observations); Japan Ministry of the Environment, measured WBGT, Tokyo station.",
          nrow(tk), sum(hl %in% c("Danger", "Extreme danger")), sum(hl == "below 80"), sum(wl == "Danger"), sum(wl == "Almost safe"))) +
   theme_minimal(base_size = 10.5) + theme(panel.grid = element_blank(), axis.text.x = element_blank(), plot.caption = element_text(hjust = 0, size = 8, colour = "grey20"))
 g <- ga / gb + plot_layout(heights = c(3, 1))

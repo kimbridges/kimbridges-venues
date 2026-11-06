@@ -11,6 +11,28 @@ Mechanism 4.
 
 ---
 
+## 2026-11-05 -- MRC: DRAFTING, CH.4-7 APPROVED
+
+**Date / duration:** 14:41-16:45 HST.
+
+**Active focus at start:** MRC (drafting). Session start: three reads; nothing changed since the 11-04 close; PubMaps check 0/0/0.
+
+**What was worked on:**
+- Health flag fixed: project_index.md trimmed under its 30 KB budget (How-it-opened paragraph moved to logs/focus_history.md).
+- Ch.4 Where Boundaries Come From drafted and approved; new figure ch04_fig1_boundary_sources (nine sources x describe/act).
+- Ch.5 Fixed or Contextual drafted and approved; new computed figure ch05_fig_twilight; Kim's edits (relocation; Arnold Kishi and the
+  Kona coffee vacation; surf-report confusion on the nightly news).
+- Ch.6 Boundaries and Error drafted and approved, incl. the grading case; Kim ruled the borderline disclosure level (three reasons by
+  name, no mechanics); OMR form shown with contact details covered (ch06_fig5_omr_form).
+- Ch.7 Several Measurements, One Category drafted; Kim's figure comments applied (new ch07_fig0_whittaker_soil; filled black dots for the
+  second location; biome labels; 'stripe'). Book renders clean (Preface + ch.1-7).
+
+**Decisions / rulings:** borderline grading disclosure level (proj_MRC.md log 2026-11-05); Arnold Kishi may be named.
+
+**Next:** ch.8 Categories Instead of Measurements, then ch.9, ch.10, appendix; the cover.
+
+---
+
 ## 2026-11-04 -- MRC: NAMES AND COLORS; STYLE EXCEPTIONS; DRAFTING BEGUN (PREFACE, CH.1-3)
 
 **Date / duration:** 20:06-21:55 HST.

@@ -1,5 +1,8 @@
 # Focus History and Change Log
 
+<!-- moved 2026-11-05 from the MRC Active Focus block (project_index.md over its 30 KB budget) -->
+**How it opened.** Kim redirected from PubMaps for "a different perspective". Round three: context moves the boundary ("thin blood"), paired with FIXED boundaries (twilight, DST, the Kona coffee break) in ONE chapter; language holds the categories (Hawaiian rain names by place; immersion schools checked); Hokule'a and the life of a category (Kim's dinner with Ben Finney; the Palau arrival 2007-04-01, his programme and photo). Rulings: event boundaries stay in MRC; ch.6-8 need work; ch.9 location open; language in ch.2. Detail: `ideas_three_documents.md`, round three.
+
 <!-- superseded 2026-10-30 (focus moved to MRC chapter 6 after formal intake; PubMaps continues as an email service) -->
 **Active Focus (2026-10-24): PUBMAPS -- AI-assisted publication study-site maps (detail map + locator inset), an EDITOR'S TOOL (`proj_PubMaps.md`, code at `Projects\PubMaps`). Kim expects to finish it efficiently; he has been focused on it. Intake finding: the LLM INVENTS site coordinates (Yucatan towns placed in reversed order). gpt-4o-mini retired.**
 

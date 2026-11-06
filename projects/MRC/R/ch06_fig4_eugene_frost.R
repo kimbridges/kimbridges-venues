@@ -21,7 +21,7 @@ ga <- ggplot(h, aes(tmin, Freq / nseas, fill = grp)) +
   annotate("segment", x = 32, xend = 32, y = 0, yend = 12.2, linetype = "22", colour = "grey35", linewidth = 0.4) +
   scale_fill_manual(values = c(on = "#d1495b", near = "#e9a3ab", other = "grey72"), guide = "none") +
   annotate("text", x = 18.5, y = 19.6, hjust = 0, vjust = 1, size = 3, colour = "grey15", lineheight = 1.05,
-           label = sprintf("How to read: each bar counts nights per winter with that whole-degree\nminimum. The red bar -- %.0f%% of all cold-season nights -- sits exactly\non 32 \u00B0F. Count it as frost (\u2264 32) and Eugene has %.0f frost nights a\nwinter; don't (< 32) and it has %.0f. The rule for the line decides.", pct32, le, lt)) +
+           label = sprintf("How to read: each bar counts nights per winter with that whole-degree\nminimum. The red bar (%.0f%% of all cold-season nights) sits exactly\non 32 \u00B0F. Count it as frost (\u2264 32) and Eugene has %.0f frost nights a\nwinter; don't (< 32) and it has %.0f. The rule for the line decides.", pct32, le, lt)) +
   scale_x_continuous(breaks = seq(18, 46, 2), expand = c(0.01, 0)) +
   scale_y_continuous(expand = c(0, 0), limits = c(0, 20), breaks = seq(0, 15, 5)) +
   labs(x = "nightly minimum temperature (\u00B0F), October\u2013April", y = "nights per winter", tag = "a") +

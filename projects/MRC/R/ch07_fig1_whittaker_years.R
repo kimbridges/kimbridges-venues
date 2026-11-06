@@ -17,12 +17,16 @@ wb <- Whittaker_biomes
 cols <- Ricklefs_colors
 ga <- ggplot() +
   geom_polygon(data = wb, aes(temp_c, precp_cm, group = biome_id, fill = biome), colour = "white", linewidth = 0.3) +
-  scale_fill_manual(values = cols, name = NULL, breaks = c("Temperate rain forest", "Temperate seasonal forest", "Woodland/shrubland", "Temperate grassland/desert", "Subtropical desert", "Boreal forest")) +
+  scale_fill_manual(values = cols, name = NULL, breaks = c("Temperate rain forest", "Temperate seasonal forest", "Woodland/shrubland", "Temperate grassland/desert", "Subtropical desert", "Tropical seasonal forest/savanna", "Boreal forest")) +
+  geom_label(data = data.frame(x = c(5.6, 5.6, 17.3, 17.6), y = c(192, 132, 85, 10),
+             l = c('Temperate rain forest', 'Temperate seasonal forest', 'Woodland/shrubland', 'Subtropical desert')),
+             aes(x, y, label = l), hjust = c(0, 0, 1, 1), size = 2.7, label.size = 0, fill = alpha('white', 0.7), colour = 'grey10', label.padding = unit(0.12, 'lines')) +
+  geom_label(aes(x = 5.6, y = 10, label = 'Temperate grassland/desert'), hjust = 0, size = 2.7, label.size = 0, fill = alpha('white', 0.7), colour = 'grey10', label.padding = unit(0.12, 'lines')) +
   geom_point(data = yy, aes(T, P, shape = site), size = 1.5, colour = "grey10", fill = "white", stroke = 0.4) +
   geom_point(data = mn, aes(T, P), shape = 21, size = 4.2, stroke = 1.3, colour = "white", fill = "#b0172a") +
   annotate("segment", x = mn$T, xend = c(14.6, 14.6), y = mn$P, yend = ifelse(mn$site == "Denver", 30, 165), colour = "#b0172a", linewidth = 0.4) +
-  annotate("text", x = 14.8, y = ifelse(mn$site == "Denver", 30, 165), hjust = 0, size = 3.2, colour = "#b0172a", fontface = "bold", label = paste0(mn$site, " long-term mean")) +
-  scale_shape_manual(values = c(Denver = 21, Corvallis = 24), name = "one year") +
+  annotate("text", x = 14.75, y = ifelse(mn$site == "Denver", 30, 165), hjust = 0, size = 3.2, colour = "#b0172a", fontface = "bold", label = paste0(mn$site, " mean")) +
+  scale_shape_manual(values = c(Denver = 16, Corvallis = 24), name = "one year") +
   coord_cartesian(xlim = c(4, 19), ylim = c(0, 200), expand = FALSE) +
   labs(x = "mean annual temperature (\u00B0C)", y = "annual precipitation (cm)", tag = "a",
        caption = sprintf("How to read: each symbol is one year, placed by that year's mean temperature and total rainfall; the red dot is the long-term mean.\nDenver's mean sits in temperate grassland/desert, but %d of its %d years fall in woodland/shrubland. Corvallis's mean is temperate\nseasonal forest, but %d of its %d years are not.", nd[["Denver"]], nrow(den), nd[["Corvallis"]], nrow(eug))) +
@@ -31,7 +35,7 @@ yy$site <- factor(yy$site, levels = c("Corvallis", "Denver"))
 gb <- ggplot(yy, aes(yr, site, fill = biome)) + geom_tile(height = 0.8, colour = "white", linewidth = 0.2) +
   scale_fill_manual(values = cols, guide = "none") +
   scale_x_continuous(breaks = seq(1900, 2020, 20), expand = c(0.005, 0)) +
-  labs(x = NULL, y = NULL, tag = "b", subtitle = "The same readings in order: each tile is one year, colored by the biome that year's climate falls in. Gaps are incomplete years.") +
+  labs(x = NULL, y = NULL, tag = "b", subtitle = "The same years in order: each stripe is one year, colored by its biome. Gaps are incomplete years.") +
   theme_minimal(base_size = 10.5) + theme(panel.grid = element_blank(), plot.subtitle = element_text(size = 8.5, colour = "grey25"))
 g <- ga / gb + plot_layout(heights = c(4, 1))
 out <- "G:/My Drive/Projects/MRC/figures"

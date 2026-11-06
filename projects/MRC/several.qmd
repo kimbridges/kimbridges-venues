@@ -1,3 +1,110 @@
 # Several Measurements, One Category
 
-_Draft pending._
+Some categories need more than one number. A forest isn't defined by temperature alone, or by rainfall alone, but by the two together. A heat warning depends on the temperature and on how humid the air is. A soil is sandy or clayey according to three fractions that add up to the whole. And a driving test, as Chapter 6 described, turns dozens of observations into a single word: pass or fail.
+
+This chapter is about how several measurements become one category, and what happens to error, and to meaning, along the way.
+
+```{r}
+#| label: setup
+#| code-summary: "Show the setup code"
+
+## graphics
+library(ggplot2)
+library(patchwork)
+## biome boundaries
+library(whittakerr)
+```
+
+## Two ways to combine
+
+There are two basic ways to do it.
+
+The first is to **partition** the space the measurements make. Plot temperature against rainfall and divide the plane into regions, each one a category. The Whittaker diagram of world biomes works this way. So does the soil texture triangle, which divides every possible mix of sand, silt and clay into twelve named classes. Each measurement keeps its own axis, and the category is a region in the space between them.
+
+Both diagrams are worth seeing whole before we use them.
+
+```{r}
+#| label: fig-whittaker-soil
+#| fig-cap: "Two partitioned measurement spaces: (a) Whittaker's world biomes, by mean annual temperature and annual precipitation; (b) the USDA soil texture classes, by percent sand, silt and clay."
+#| fig-width: 9.5
+#| fig-height: 5
+#| file: R/ch07_fig0_whittaker_soil.R
+```
+
+In the biome diagram, a place is located by its long-term mean temperature and rainfall, and the region it lands in names its vegetation: a mean of 10 °C and 100 cm of rain is temperate seasonal forest. In the soil triangle, each corner is a soil made entirely of one fraction, and every point inside is a mix. Read the three percentages along the guide lines: 40 percent sand, 40 percent silt and 20 percent clay lands in loam.
+
+The second is to **collapse** the measurements into a single index first, and then cut that index into categories. The heat index combines temperature and humidity into one "feels like" number, and the warning levels are lines on that number. Wind chill does the same with temperature and wind. Body mass index divides weight by the square of height, and the familiar categories, underweight, normal, overweight and obese, are cuts at 18.5, 25 and 30.
+
+Both approaches end with one category. They differ in what they keep. A partition remembers where in the space a reading fell. An index forgets: once two readings have the same index value, nothing in the category can tell them apart. A muscular athlete and a sedentary person of the same height and weight have the same body mass index, and the same label.
+
+## A map of measurement space
+
+A partitioned measurement space is a map. The Whittaker diagram looks like one, with regions of color and boundaries between them, and it behaves like one. Its axes happen to be temperature and rainfall instead of longitude and latitude. The companion document in this trilogy, on maps, calls this kind of map a tile map: a surface divided into regions with no gaps and no overlaps. The biome diagram is a tile map of climate.
+
+That also means its boundaries can be judged or computed, just as Chapter 4 described. Whittaker's lines were judged. He drew them from what he knew of the world's vegetation, and they are smooth because he drew them smooth. The soil triangle's boundaries were agreed by a committee and are straight lines. Neither is wrong. Both are choices. The biome boundaries in this chapter's figure come from my R package, whittakerr, which follows Whittaker's lines.
+
+The soil triangle shows one more subtlety. Sand, silt and clay are three measurements, but they must add up to 100 percent. Know two and the third is fixed. So the triangle is really a two-dimensional space drawn with three axes, which is why it's a triangle rather than a cube.
+
+## Year by year
+
+A category built from long-term averages describes a place's typical climate. But no single year is typical. Each year has its own temperature and its own rainfall, and each falls somewhere on the Whittaker diagram.
+
+```{r}
+#| label: fig-whittaker-years
+#| fig-cap: "Denver, Colorado (1948-2025), and Corvallis, Oregon (1896-2024), on the Whittaker biome diagram: (a) each year by its mean temperature and total rainfall; (b) the biome of each year in order."
+#| fig-width: 8
+#| fig-height: 7.2
+#| file: R/ch07_fig1_whittaker_years.R
+```
+
+Denver's long-term mean falls in temperate grassland and desert. But 32 of its 78 years fall instead in woodland and shrubland, the next zone up the rainfall axis. Corvallis's mean sits comfortably inside temperate seasonal forest, yet 55 of its 120 years fall outside it. Both stations sit close enough to a boundary that ordinary year-to-year variation carries them across it again and again.
+
+The strips in the lower panel show the same years in order. They read like a patient's temperature chart, taken day after day. One high reading means little. A run of them means something. And just as a doctor watches a patient near the fever line more closely than one far from it, a site near a biome boundary deserves closer watching than one in the middle.
+
+There's an ecological way to read this. The category describes the conditions the vegetation has developed under, over a long time. Each year that falls outside the category is a year of stress for the plants and animals living there. A site in the middle of its biome rarely leaves it, and its biota rarely face conditions they aren't suited to. A site near a boundary leaves often. Those boundary places are likely to be the first to show change when the climate shifts, and the strip diagram is a simple way to watch for it.
+
+## A tale of caution
+
+We first drew this figure with Eugene, Oregon, instead of Corvallis, and its strip told a striking story. From 1970 to 1999 only about one year in ten fell outside temperate seasonal forest. Since 2000, more than two years in three have. It looked like a forest slipping toward shrubland.
+
+It was a rain gauge. Set beside two neighbors with long records, Salem and Corvallis, Eugene's rainfall crept upward from the 1950s until it was running about 40 percent above theirs. Then, in 1995, it dropped abruptly back into line, and it has stayed slightly below them since. That was the year the airport's staffed weather office closed and an automated station took over. Nothing in the station's documented history explains the earlier upward drift, and we have to leave that question open.
+
+Neighboring stations share their weather. They don't share their instruments. A step at one station that its neighbors don't see points to a change in how the measurement was made, not in what was measured. The category changed because the operation changed, which is Bridgman's point once again. Long-term monitoring is difficult, and the conditions of measurement do change. A gauge is replaced, a station moves, a tree grows up beside it. Any such change can move a site across a boundary that the vegetation never crossed.
+
+## One index, two very different days
+
+The collapse approach has its own hazard. Take two summer afternoons. In Phoenix it's 108 °F with 9 percent humidity, dry desert heat. In Tokyo it's 91 °F with 60 percent humidity, the heavy air of a Japanese summer. The US heat index gives both the same value, 102, and the same category: "Extreme Caution." The index has done exactly what it was designed to do. It has also erased the difference between the two days.
+
+Whether that matters depends on whether the formula weighs temperature and humidity the way the human body does. And different countries have answered that question differently.
+
+## Same goal, different measurements
+
+Japan doesn't use the heat index. Its heat-stress warnings are based on the wet-bulb globe temperature, or WBGT, which combines air temperature, humidity, sunshine and wind, and gives humidity much more weight than the US formula does. Both systems aim at the same thing: warning people when heat becomes dangerous. They measure it in different ways, with different instruments, and they draw different categories.
+
+```{r}
+#| label: fig-heat-index-wbgt
+#| fig-cap: "Heat categories in Phoenix and Tokyo, June-September 2021-2025: (a) the hottest hour of each summer day on the US heat-index chart; (b) the same Tokyo days sorted by the US heat index and by Japan's measured WBGT."
+#| fig-width: 8
+#| fig-height: 7.6
+#| file: R/ch07_fig2_heat_index_wbgt.R
+```
+
+The lower panel takes the same 610 Tokyo summer days and sorts them both ways. By the US heat index, 143 of them, nearly a quarter, never reach the first warning level. By Japan's measured WBGT, only 13 are "almost safe," and 223 reach "Danger." Same air, same goal, different measurement, different categories. A Tokyo resident reading an American forecast would be told not to worry on days when the Japanese system says to take care.
+
+This is Bridgman's lesson applied to a warning. Two operations that claim to measure "heat stress" are measuring different things, and the categories inherit the difference.
+
+None of this is just a matter of comfort. In the summer of 2024, Tokyo's medical examiner recorded 306 heatstroke deaths in the city's 23 wards. Almost all of them, 291, happened indoors, and most of those who died indoors had an air conditioner they weren't using. In the same year, Maricopa County, which includes Phoenix, recorded 602 heat-associated deaths. The categories are meant to change behavior, and the stakes are lives. Both indexes also measure the outdoor air, while the harm depends on where the person is: inside a hot apartment, or outside with no shade at all.
+
+## How many categories can several measurements hold?
+
+George Miller, whose paper opened the Preface, noticed something about judgments made on more than one dimension at once. When people judge several properties of a stimulus together, they can sort it into more categories than with any one property alone. But the gain shrinks with each dimension added. We make crude judgments of several things at once rather than fine judgments of one.
+
+That fits how partitioned categories are built. The Whittaker diagram has about nine biomes, the soil triangle twelve classes. Neither divides its space finely, even though the measurements behind them could support far finer divisions. The categories are sized for people to learn and use, not for the precision of the instruments.
+
+It also suggests why combining measurements is so common for categories meant to make people act. A heat warning that asked people to weigh temperature, humidity, sun and wind for themselves would be ignored. One word, "Danger," gets through.
+
+## What the combination costs
+
+Combining measurements into one category is unavoidable whenever the thing we care about depends on more than one factor, and most things do. But it has costs. A partition multiplies the boundaries, so a reading near a corner can be one small error away from several different categories. An index hides its inputs, so very different conditions wear the same label. And either way, the category is only as sound as the operations behind each measurement, as Eugene's rain gauge showed.
+
+The category is one word. It's worth remembering how many numbers it is standing in for.

@@ -58,7 +58,7 @@ g <- ggplot() +
   annotate("text", x = xl, y = -0.06, size = 3.1, colour = "grey25", label = sprintf("hypertension: %.0f%%", 100 * htn_j)) +
   annotate("text", x = xr, y = -0.06, size = 3.1, colour = "grey25", label = sprintf("hypertension: %.0f%%", 100 * htn_a)) +
   annotate("label", x = 1.5, y = -0.2, size = 3, hjust = 0.5, fill = "white", colour = "grey15",
-           label = sprintf("How to read: each band is the same group of adults on both sides. Their readings did not change,\nso the bands run straight across -- only the names and boundaries changed. Orange bands (%.0f%% of adults)\nchanged label; the larger one (%.0f%%) was 'prehypertension' in 2003 and 'stage 1 hypertension' in 2017.", 100 * moved_all, 100 * moved_23)) +
+           label = sprintf("How to read: each band is the same group of adults on both sides. Their readings did not change,\nso the bands run straight across; only the names and boundaries changed. Orange bands (%.0f%% of adults)\nchanged label; the larger one (%.0f%%) was 'prehypertension' in 2003 and 'stage 1 hypertension' in 2017.", 100 * moved_all, 100 * moved_23)) +
   scale_x_continuous(limits = c(0.45, 2.55)) +
   scale_y_continuous(limits = c(-0.3, 1.12)) +
   theme_void(base_size = 11) +

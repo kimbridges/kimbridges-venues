@@ -1,3 +1,101 @@
 # Where Boundaries Come From
 
-_Draft pending._
+Every category has edges, and every edge was put somewhere. Water freezes at a temperature that nature chose. A mountain becomes a "fourteener" at a height that people chose because the number was round. A runner wins because she crossed the line before anyone else, whatever the clock said. A driver starts looking for gas when the gauge reaches a bar that he picked himself.
+
+These are different kinds of boundaries. This chapter sorts them by where they come from. Knowing the source tells us a lot: how firmly the line is fixed, who can move it, and what happens when we cross it.
+
+```{r}
+#| label: setup
+#| code-summary: "Show the setup code"
+
+## graphics
+library(ggplot2)
+```
+
+## Nine sources
+
+We can name nine sources of boundaries. Each one shows up in both uses from the last chapter: some lines only describe, and some tell us to act.
+
+```{r}
+#| label: fig-boundary-sources
+#| fig-cap: "Nine sources of category boundaries, each with an example used to describe and an example used to act."
+#| fig-width: 9.5
+#| fig-height: 6.2
+#| file: R/ch04_fig1_boundary_sources.R
+```
+
+The rest of the chapter takes the sources one at a time. They run roughly from the line the world draws to the line we draw for ourselves.
+
+## Nature: the world has a joint
+
+Some boundaries sit where the world itself changes. Water is liquid on one side of the freezing point and solid on the other. Trees grow up a mountainside and then, fairly abruptly, stop. Geographers long ago noticed that the poleward edge of the forest follows the line where the warmest month averages about 10 °C. Nobody voted on these boundaries. They were found, not set.
+
+Even so, the *number* attached to a natural boundary depends on the instrument. Freezing is 0 on the Celsius scale because Celsius built his scale on it. On the Fahrenheit scale the same event happens at 32, a number with no meaning of its own. The joint is in nature. The way we write it down is ours.
+
+And natural joints are seldom sharp. The tree line, seen up close, is a band of stunted and wind-shaped trees, not a line. When we draw it on a map we choose where in that band to put the pen.
+
+## Convention: a round number, chosen
+
+Many boundaries are round numbers in a particular unit. The fourteener is the standard example. Nothing happens to a mountain at 14,000 feet; the number is simply easy to remember. Then the convention needed a second rule. A bump on a ridge that tops 14,000 feet isn't a separate mountain unless it rises at least 300 feet above the saddle that joins it to a higher neighbor. By that rule Colorado has 53 fourteeners. Count every named summit over the line and the list grows to 58. Climbers argue about which number to finish.
+
+Conventions are bound to their units. Switch to meters and the fourteener disappears, as we saw in Chapter 3. Ages work the same way. Eighteen, twenty-one and sixty-five are round birthdays, chosen by law, not discovered in the body.
+
+## Agreement: experts set a line
+
+Some boundaries are set by a group of experts who meet, look at the evidence and agree. A fever starts at 38.0 °C (100.4 °F). Hypertension started at 140/90 for decades, until a committee moved it to 130/80 in 2017 and millions of Americans changed category overnight without their blood pressure changing at all. Chapter 6 comes back to that case. Soil scientists agreed on twelve texture classes, from sand to clay, laid out as regions of a triangle. Chapter 7 looks at the triangle closely.
+
+Agreed boundaries carry authority because of who drew them. They can also be redrawn by the same kind of meeting, and they often are.
+
+## Comparison: the competitors set it
+
+In sport the boundary is set by the other competitors. A baseball team wins if it scores more runs than its opponent. Four runs win one game and lose the next. A foot race is the same. The winner is whoever finishes first, and the time only matters relative to the others.
+
+The 2011 Boston Marathon was won in 2:03:02, the fastest marathon ever run at the time. The next year, on a day that reached about 87 °F, the winner finished in 2:12:40, more than nine minutes slower. The record books list both men the same way: winner. A comparison boundary moves with every event. What the record keeps is the category, not the measurement, a point Chapter 9 picks up.
+
+## Model: a formula sets it
+
+Some boundaries come out of a theory or a formula. The Holdridge life-zone system is a good example from ecology. It sorts the world's vegetation using two numbers, a mean "biotemperature" and annual rainfall, each on a doubling scale. The lines between zones aren't drawn by hand. They fall where the model says they fall, so every boundary is set at once, by the same rule.
+
+A model-made boundary is only as good as the model. If the formula is wrong for a place, the line is wrong there too, and it's wrong in the same way everywhere. That consistency is both the strength and the weakness of the approach.
+
+## History and rank: the record sets it
+
+Some boundaries come from the record itself. Babe Ruth hit 60 home runs in 1927. Roger Maris hit 61 in 1961. The season record moved again in 1998 and in 2001. "Record-breaking" is a category whose boundary is wherever the best performance so far happens to sit, and it moves every time someone crosses it.
+
+Rank categories are related. A top-10 list always has ten members, however good or bad the year. Drought works the same way. The US Drought Monitor's worst class, "exceptional drought," is a condition seen in only the driest 2 percent of the historical record. A place with very little rain is not in drought if very little rain is normal there. The boundary is set by the past.
+
+## The person: one person draws it
+
+Some boundaries belong to one person. My sense of "chilly" is one of them. I carry it from place to place, and a visitor from a colder city carries a different one. Chapter 2 showed how hard such scales are to see, because nobody writes them down. My fuel-gauge ladder is another. So was my grandmother's decision that fifty was old.
+
+Personal boundaries are the easiest to move and the hardest to share. They are also, very often, the ones that decide what we actually do.
+
+## Purpose and economy: the job sets it
+
+Some boundaries are set by the job to be done. A tailor making one suit for one customer needs no sizes at all, only measurements. A factory making a million shirts can't work that way. It needs a few sizes, S, M and L, so that one pattern fits many bodies. Mass production created the clothing category. Chapter 5 looks at how differently brands draw those lines.
+
+Work can set boundaries in time as well. For decades, schools in the Kona coffee district shifted their long vacation to the autumn harvest, because the children were needed to pick. The school calendar was drawn by the crop. Chapter 5 tells that story.
+
+## Human capacity: how many we can tell apart
+
+The last source is us. George Miller's paper, the one that opened the Preface, showed that people can reliably sort a single kind of stimulus into about seven categories, give or take two. Beyond that, we start confusing neighbors.
+
+This is a limit on the *number* of boundaries rather than on where they fall. It may explain why so many working scales have few classes. Braun-Blanquet's cover classes, which botanists have used for a century to record how much ground a plant covers, have about seven. My fuel gauge has eight bars. The warning ladders in Chapter 3 have four to six rungs. Scales that ask more of us than that tend to collapse in use, the way WARNING and CAUTION merged in people's heads.
+
+## Sources stack
+
+Real boundaries usually come from more than one source. The heat index is a model: a formula that combines temperature and humidity into one number. But the lines between its categories, "Caution" at 80 °F, "Extreme Caution" at 90, "Danger" at 103 and "Extreme Danger" at 125, were set by agreement. The model makes the number. The experts draw the lines on it. The fourteener mixes convention with a rule about saddles. The drought classes mix history with agreement about which percentiles to use.
+
+So the nine sources are best treated as ingredients rather than bins. Asking "where did this line come from?" usually has a two-part answer, and the parts can be moved separately.
+
+## Judged or computed
+
+There is one more way to cut the sources. Some boundaries are *computed*: a rule or formula places them, and anyone using the same rule gets the same line. The Holdridge zones, the drought classes and the fourteener are computed in this sense. Others are *judged*: a person looks at the evidence and draws the line. Whittaker's well-known diagram of world biomes is judged. Its lines were drawn by an ecologist who knew the vegetation, not by a formula.
+
+Neither kind is better. A judged line can hold knowledge that no formula captures. A computed line can be checked, repeated and argued with. The difference matters most when two people disagree, because a computed line tells us exactly where the disagreement lies. The same distinction runs through the other two documents of this trilogy, for boundaries in space and in time.
+
+## Where the line came from
+
+A measurement arrives with a unit and an instrument. A category arrives with something less visible: a history of who drew its edges and why. Nature draws a few. Conventions, committees, competitors, models, records, purposes and our own limits draw the rest. And each of us draws a few of our own.
+
+When a category surprises us, the first question to ask is where its boundary came from. The answer usually tells us whether the line is likely to hold, and who has the power to move it.

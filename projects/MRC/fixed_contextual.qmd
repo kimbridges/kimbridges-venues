@@ -1,3 +1,107 @@
 # Fixed or Contextual
 
-_Draft pending._
+When people from Hawaiʻi travel to the mainland in winter, they often complain that they have "thin blood." We say it half as a joke. A morning that a local calls crisp feels cold to us, and a day the forecaster calls mild calls for a jacket. Our blood is no thinner than anyone else's. What we carry is a scale, learned in a warm place, and we take it with us wherever we go.
+
+That small complaint holds the question for this chapter. Some boundaries move with the place or the person. Others are fixed, often by law, and stay put wherever we are. Both kinds have good reasons behind them, and both cause trouble at the edges.
+
+```{r}
+#| label: setup
+#| code-summary: "Show the setup code"
+
+## graphics
+library(ggplot2)
+```
+
+## The label stays, the number moves
+
+Chapter 2 asked three AI models where "cold" begins in twenty-four cities, from Fairbanks to Singapore. The answers moved almost one for one with the climate. "Cold" in Honolulu is a temperature that would count as a warm spell in Fairbanks. The word marks the same category in both places: the point where people reach for a coat and complain. Only the number changes.
+
+That's a contextual boundary. It fits the people who use it, and it's what makes a local forecast useful to locals. The trouble comes when two scales meet. A visitor can convert a forecast from Fahrenheit to Celsius in a moment. Nobody can convert it from the local scale to their own. The visitor reads the local words through a scale learned somewhere else, and the jacket stays in the suitcase.
+
+A carried scale also has inertia. It shifts after a relocation, but slowly. In that sense it behaves like a running average of the weather a person has lived through, gradually forgetting the old place and learning the new one.
+
+## Fixed boundaries
+
+The opposite choice is a boundary that doesn't move at all. A fever begins at 38.0 °C whether the patient lives in Fairbanks or Singapore. The legal limit for driving is a blood-alcohol level of 0.08 percent in most of the United States. A person becomes an adult in the eyes of the law at eighteen, whatever their maturity.
+
+Fixed boundaries have real virtues. Everyone can know them in advance. They're easy to enforce, because nobody has to judge the context; a number on a meter settles the question. And they make comparisons possible: a fever in one hospital means the same as a fever in another.
+
+Fixed doesn't always mean universal, though. Utah lowered its legal limit to 0.05 percent in 2018. The line is still fixed. It's just fixed somewhere else.
+
+## Fixed in which variable?
+
+Every fixed boundary is fixed in *some* variable, and the choice of variable decides where the context creeps back in. Twilight shows this beautifully.
+
+Astronomers define civil twilight by the angle of the sun. It ends when the sun is 6° below the horizon, which is about when it gets too dark to read outdoors without a light. US aviation rules use exactly this definition for "night." Many state traffic laws, Hawaiʻi's among them, use a different one. They fix twilight in clock time: headlights must be on from thirty minutes after sunset. Both definitions are fixed. They're fixed in different variables, and they agree only in some places.
+
+```{r}
+#| label: fig-twilight
+#| fig-cap: "How long civil twilight lasts after sunset, by latitude and season, compared with the fixed 30 minutes of a typical headlight law."
+#| fig-width: 9.5
+#| fig-height: 6
+#| file: R/ch05_fig_twilight.R
+```
+
+Near the equator the sun drops almost straight down, and twilight is short: about 21 minutes at the equinox. Farther from the equator the sun slides down at a slant, and twilight stretches out. In Seattle in June it lasts about 41 minutes. North of 60.6° the June sky never gets dark enough to end civil twilight at all. The thirty-minute rule is a good stand-in for "dark enough" at the latitude of most American drivers. It is a poor one in Anchorage and in Honolulu, in opposite directions.
+
+Daylight saving time is another fixed clock rule whose value depends on latitude. The idea is to shift an hour of summer daylight from early morning, when most people are asleep, to evening. That makes sense in Seattle, where the day ranges from about 8½ hours in December to 16 hours in June. In Honolulu the day only ranges from about 10¾ hours to 13½. There is little summer daylight to move. When Congress passed the Uniform Time Act in 1966, it let states opt out, and Hawaiʻi did so the next year. One fixed rule for the whole country fit the middle well and the edges badly. So one edge stepped out.
+
+## Fixed by the job
+
+Some boundaries are fixed by the work to be done rather than by the calendar. In the Kona coffee district, the coffee harvest arrives in late summer and autumn, and picking it took every pair of hands. For decades the schools there shifted their long vacation to match. The arrangement began in 1932, centered on Konawaena School, and the Territorial Legislature recognized it in 1935. Children went back to school after the harvest, not before. A good friend, Arnold Kishi, was one of those children. His family had a Kona coffee farm, and he told me recently about getting off school and returning to Kona to help with the picking. The coffee vacation lasted until 1969, when the schools moved to a standard four-quarter calendar.
+
+The boundary between school and vacation was still fixed. Every child in the district knew when it fell. But it was fixed by the crop, and it fit one district. It's a nice contrast to the usual story that the American summer vacation exists so farm children could work. Historians have shown that story is mostly a myth: farm work peaks at planting and harvest, not in July. Kona really did draw its school year around a harvest. The rest of the country mostly didn't.
+
+## Same letters, different bodies
+
+Clothing sizes show what happens when one category has to fit many places. A tailor making a suit for one person needs no categories. He measures, and the measurement *is* the garment. Clothing sewn at home works the same way. Ready-to-wear clothing changed that. A factory needs a few sizes so that one pattern fits many bodies, and so it needs boundaries.
+
+The trouble is that each maker draws its own. We collected 21 published size guides for men's T-shirts from 17 brands, some brands with separate guides for different markets, and added two national standards. Then we plotted the chest measurement each one assigns to S, M and L.
+
+```{r}
+#| label: fig-size-guides
+#| fig-cap: "Body chest measurements assigned to sizes S, M and L by 23 T-shirt size guides, grouped by market."
+#| fig-width: 7.5
+#| fig-height: 7
+#| file: R/ch05_fig_size_guides.R
+```
+
+The American brands cluster together: an M fits a chest of about 97 to 102 cm (38 to 40 inches). The Japanese guides, and the Japanese standard behind them, sit about one size smaller. A man with a 96 cm chest is an S at Uniqlo's American store and an L at Uniqlo in Japan. Same company, same body, two letters apart. The lesson for a traveler shopping in Tokyo is simple: try it on.
+
+There have been attempts to fix the boundaries. Europe's EN 13402 standard proposed labeling clothes by the body measurements themselves, with a small pictogram, so that the size would travel. Adoption has been patchy, and the letters survived. In the United States the body-measurement tables are voluntary. The market kept its contextual categories, partly because shoppers know the letters and partly because the letters let each brand fit its own customers. The S, M and L are fixed within a brand and contextual across them.
+
+## Lines that move with the years
+
+A fixed boundary can still move. It just moves all at once, by law, rather than drifting with the person.
+
+```{r}
+#| label: fig-age-thresholds
+#| fig-cap: "US age boundaries for rights, permissions and benefits, with the changes over time; and where people say old age begins."
+#| fig-width: 8
+#| fig-height: 6.4
+#| file: R/ch05_fig_age_thresholds.R
+```
+
+The voting age came down from 21 to 18 in 1971. The drinking age went up to 21 in 1984, and the age to buy tobacco followed it to 21 in 2019. The age at which retirement savings must start to be withdrawn has moved from 70½ to 72, then 73, and is scheduled to reach 75. Each of these lines is perfectly fixed on any given day. Over a lifetime, a person can watch them move.
+
+The bottom of the figure shows a category that has no statute at all: "old." It's purely contextual, and the context is the person's own age. Young adults say old age begins at about 60. People over 65 put it at about 74. My grandmother put it at 50, and dressed for it.
+
+## The push toward fixed
+
+Over time, many contextual boundaries get pushed toward fixed ones. The surf report in Hawaiʻi is a good example, and one that changed in my lifetime. For generations, island surfers reported wave height on the Hawaiian scale, which gives a number roughly half the height of the wave's face. A "six-foot" day on the Hawaiian scale meant faces of roughly ten to twelve feet. Locals understood it. Visitors didn't, and a visitor hearing a modest number could badly underestimate the water. In April 2001 the National Weather Service office in Honolulu switched to reporting the full face height, partly for safety and partly to match the way waves are reported elsewhere. I'm not a surfer, but I remember that the change was confusing for a few years, as the nightly newscasts reported the wave heights for each of the island's coasts.
+
+Strictly, the change was in the operation rather than the category. The two scales measure different parts of the same wave, a point Bridgman would have enjoyed. But the effect was standardization. The local number gave way to one a global audience could read. Many old-timers still call the surf in Hawaiian-scale numbers, carrying their scale the way islanders carry theirs to the mainland.
+
+The pressure toward fixed boundaries usually comes from the same few places: governments that need rules they can enforce, commerce that needs goods to sell everywhere, safety, and audiences that are no longer local. What's lost is fit, and sometimes identity. The Hawaiian rain names in Chapter 2 are the opposite case: categories with their place built in, each one the rain of a single valley. A standard vocabulary of "light," "moderate" and "heavy" rain can be read anywhere, and it fits nowhere in particular.
+
+## Hybrids
+
+Many working systems mix the two. Speed limits are the familiar example. The numbers are fixed: 25, 35, 55, 65. Which number applies is chosen by context, a school zone, a city street, an open highway, and posted on a sign. The driver doesn't have to judge the context, because someone else already did and wrote the answer down. Clothing sizes are a hybrid too: fixed letters, contextual boundaries.
+
+## Choosing
+
+Neither kind of boundary is better. They buy different things.
+
+A fixed boundary buys uniformity, enforcement and comparison. Its cost is a poor fit at the extremes: the thirty-minute rule in Anchorage, daylight saving in Honolulu, the adult who becomes one overnight on a birthday. A contextual boundary buys fit. Its cost is that someone has to know the context, and comparisons across places get harder. A visitor needs a translation the forecast doesn't supply.
+
+The useful question isn't "fixed or contextual?" but "fixed in which variable, and for whom?" Twilight fixed in sun angle fits every latitude and no clock. Twilight fixed in clock time fits every clock and some latitudes. Someone chose, and the choice decided who would be served well and who would be left reaching for a jacket.

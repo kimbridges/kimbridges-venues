@@ -32,7 +32,7 @@ g <- ggplot(a, aes(y = item)) +
   facet_grid(group ~ ., scales = "free_y", space = "free_y") +
   scale_x_continuous(breaks = seq(10, 90, 10), limits = c(12, 100), expand = c(0, 0)) +
   labs(x = "age (years)", y = NULL,
-       caption = "How to read: each row is one US age boundary. A white dot and arrow show where the line used to be and where it\nmoved (with the year). Between 18 and 21 (shaded) a young adult crosses three lines; in 1984 and 2019 two of them moved\nup, after the voting age had moved down in 1971. Red dots: where people say 'old' begins -- 60 if you are 18-29, 74 if\nyou are over 65 (Pew Research Center, 2009). Kim's grandmother put it at 50.") +
+       caption = "How to read: each row is one US age boundary. A white dot and arrow show where the line used to be and where it\nmoved (with the year). Between 18 and 21 (shaded) a young adult crosses three lines; in 1984 and 2019 two of them moved\nup, after the voting age had moved down in 1971. Red dots: where people say 'old' begins: 60 if you are 18-29, 74 if\nyou are over 65 (Pew Research Center, 2009). My grandmother put it at 50.") +
   theme_minimal(base_size = 10.5) + theme(axis.text.y = element_text(colour = "grey20")) +
   theme(panel.grid.minor = element_blank(), panel.grid.major.y = element_blank(),
         strip.text.y = element_text(angle = 0, face = "bold", hjust = 0),

@@ -19,7 +19,7 @@ three parts: I What a category does (1 The claim; 2 Learning the scale, incl. la
 boundaries come from (4 the backbone; 5 Fixed or contextual; 6 Boundaries and error; 7 Several measurements, one
 category; 8 Categories instead of measurements); III Categories over time (9 The life of a category; 10 The
 inverse). Rulings: event boundaries stay in MRC (life cycle), not S3; ch.6-8 are valid and need work; ch.9's
-location is open; language comes early (ch.2). Work begins on CHAPTER 6, Boundaries and error.
+location is open; language comes early (ch.2). DRAFTING since 2026-11-04: Preface + ch.1-7 drafted and approved (2026-11-05).
 
 ## Locations
 - Code: G:\My Drive\Projects\MRC\R
@@ -56,12 +56,11 @@ Temperature_Patterns. MRC's figure style is to become the trilogy's shared visua
   proj_Temperature_Patterns.md (Eugene 32 F -- a ch.6 candidate); proj_Smart_Car.md (the fuel-gauge ladder).
 
 ## Next Steps
-1. Chapter 6 worked examples, proposed order: (1) misclassification curve at 38.0 C (simulation -- the chapter's
-   central figure); (2) cost moves the boundary; (3) NHANES, the 2017 blood-pressure reclassification; (4) Eugene
-   32 F. Kim chooses the start.
-2. Chapters 7-8: worked examples with data.
-3. Ch.2: the AI-elicitation worked example (comfort-word boundaries by city vs climate; NWS local criteria).
-4. Work the verify lists in ideas_three_documents.md before production writing.
+1. Draft ch.8 Categories instead of measurements (figures built: ch08_fig1_unequal_categories, ch08_fig2_martini_glass;
+   Beaufort, Braun-Blanquet, texture by feel, the gauge's 8 bars). Then ch.9 Life of a category, ch.10 The inverse, appendix.
+2. Ch.7 is approved with Kim's figure fixes (2026-11-05); BMI added as the collapse example (Kim to confirm); the biota-stress
+   reading is unattributed (Kim may claim it with 'my').
+3. Cover image (MRC_cover_art_text.png, MRC_logo_art.png); minor verify items (JIS S chest, Wansink 2005, Hong Kong stock colors).
 
 ## Collaborators / Dependencies
 None yet.
@@ -131,3 +130,18 @@ closely at the names before deciding how many categories are in use (sentence ad
 Ch.3 'Two Uses: Describe and Act' drafted (~1,700 words) with figures/ch03_fig1_color_ladders (nine scales by order of concern; panel b
 simulated deuteranopia). Book renders clean (index + ch.1-3).
 Ch.3 APPROVED ("Another excellent chapter... catching the spirit of what I've been thinking about for so many years"). Voice convention ruled.
+### 2026-11-05
+Index trimmed under budget (How-it-opened paragraph -> logs/focus_history.md). FOUR CHAPTERS DRAFTED AND APPROVED:
+Ch.4 Where Boundaries Come From (fig ch04_fig1_boundary_sources: nine sources x describe/act; Purpose/economy and Human capacity drafted in
+as sources; EVENT left to ch.9; Holdridge as the model example, Whittaker as judged; Boston 2011/2012 winners from published times -- the
+boston rds elite times do NOT match published results, fine for ch.10 bunching only). Kim: 'shows a lot of depth'.
+Ch.5 Fixed or Contextual (new fig ch05_fig_twilight, computed civil-twilight duration vs the 30-minute headlight law; size guides; age
+thresholds). Kim's edits: 'relocation'; ARNOLD KISHI (friend; family Kona coffee farm; picked as a child) added -- Kim says he'll be OK with
+it; nightly-newscast surf confusion added (Kim is not a surfer). 'Thin blood' widely used in Hawai'i (confirmed with Nancy).
+Ch.6 Boundaries and Error (~2,500 words; figs 1-4 + new ch06_fig5_omr_form, contact details covered). BORDERLINE RULING (Kim): show the
+three reasons by name (bad day; learning how to learn; not giving up), NO mechanics; make clear it is only a very thin rounding band;
+x.5 rounding is biased/odd-even arbitrary; the context was fixed by rule, not by knowing the student. Non-disclosure to students OK ('very
+tiny'); admitting bad questions is the big disclosure. 28-day story kept as is. Kim: 'amazing'; final section 'took my breath away'.
+Ch.7 Several Measurements, One Category: Kim's fixes applied -- new ch07_fig0_whittaker_soil (both diagrams shown whole, labeled, with
+worked examples), Denver/Phoenix as filled black dots, biome names on the year figure, 'stripe', 'the Whittaker diagram'.
+Figure notes: double hyphens replaced in ch06/ch07 scripts; age figure says 'My grandmother'.

@@ -27,7 +27,7 @@ g <- ggplot(b) +
   scale_x_continuous(breaks = seq(76, 116, 4), limits = c(76, 116), expand = c(0, 0)) +
   facet_grid(grp ~ ., scales = "free_y", space = "free_y") +
   labs(x = "body chest girth (cm)", y = NULL,
-       caption = "How to read: each row is one size guide; the bars give the body chest it assigns to S, M and L.\nFollow the shaded column down: a man with a 96\u2013101 cm (38\u201340 in) chest is an M at Hanes and Gildan\nbut an L at Uniqlo Japan and Muji -- same body, same letters, different boundaries.\nSources: published size guides, compiled 2026-11-01 (data/size_guides_tshirts.csv).") +
+       caption = "How to read: each row is one size guide; the bars give the body chest it assigns to S, M and L.\nFollow the shaded column down: a man with a 96\u2013101 cm (38\u201340 in) chest is an M at Hanes and Gildan\nbut an L at Uniqlo Japan and Muji. Same body, same letters, different boundaries.\nSources: published size guides, compiled 2026-11-01 (data/size_guides_tshirts.csv).") +
   theme_minimal(base_size = 10.5) + theme(axis.text.y = element_text(colour = "grey20")) +
   theme(panel.grid.minor = element_blank(), panel.grid.major.y = element_blank(), legend.position = "top",
         legend.justification = "left", strip.text.y = element_text(angle = 0, face = "bold", hjust = 0), plot.caption = element_text(hjust = 0, size = 8.5, colour = "grey20", lineheight = 1.1))
