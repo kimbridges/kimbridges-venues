@@ -5,7 +5,7 @@ _Last updated: 2026-11-04_
 > dated Change Log now live in `logs/focus_history.md`, verbatim and unedited.
 > This file carries the current focus, the structural notes, and the listings only.
 
-**Active Focus (2026-10-30): MRC -- *Measurements Require Categories*, first document of the trilogy (`proj_MRC.md`, code at `Projects\MRC`). Round-three outline ADOPTED (10 chapters in three parts). NOW: DRAFTING (Preface + ch.1-7 done).**
+**Active Focus (2026-10-30): MRC -- *Measurements Require Categories*, first document of the trilogy (`proj_MRC.md`, code at `Projects\MRC`). Round-three outline ADOPTED (10 chapters in three parts). NOW: DRAFTING (all 10 chapters drafted; appendix next).**
 
 **How it opened** (2026-10-30, round three): moved verbatim to `logs/focus_history.md`.
 
@@ -15,7 +15,7 @@ _Last updated: 2026-11-04_
 
 **STANDING CHECK (from 2026-10-29, while PubMaps runs as an email service):** after the session-start reads, run `source("G:/My Drive/Projects/PubMaps/service/pubmap_service.R"); service_check()` and report its line with the Active Focus. If the inbox holds PDFs, PROPOSE `process_inbox()` and run it (async) only on Kim's yes. Report items awaiting review and failures; do not act on them. Detail: `Projects/PubMaps/service/SERVICE.md`; rule: pkm_protocol.md Mechanism 2.
 
-**NEXT (2026-11-05): MRC DRAFTING -- Preface + ch.1-7 drafted and approved (Projects/MRC/*.qmd; render with quarto::quarto_render, async; read _output/*.html). Next: ch.8 Categories Instead of Measurements, then ch.9-10 and the appendix. Then the cover; then Kaka'ako Buildings.**
+**NEXT (2026-11-05 eve): MRC -- Preface + ch.1-10 drafted, cover in place (Projects/MRC/*.qmd; render async; read _output/*.html). Kim reads ch.10; then the appendix, the subtitle, a whole-book read-through. Then Kaka'ako Buildings.**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

@@ -1,3 +1,120 @@
 # Categories Instead of Measurements
 
-_Draft pending._
+So far the measurement has come first and the category second. A thermometer gives a number, and we decide whether it's a fever. But often we skip the number altogether. A botanist looks at a plot and writes down "3" for a species, without ever measuring its cover. A sailor names the wind "force 6" without an instrument. A soil scientist rubs a pinch of moist soil between finger and thumb and says "silty clay loam." My car's fuel gauge shows bars, never liters.
+
+In each case the category *is* the record. There is no number behind it to go back to. This chapter looks at why we do that, what the categories look like when they stand in for a measurement, and what they hide.
+
+```{r}
+#| label: setup
+#| code-summary: "Show the setup code"
+
+## graphics
+library(ggplot2)
+library(patchwork)
+```
+
+## How tightly the category is bound
+
+It helps to think of a spectrum. At one end, we have a number and a scale nobody has written down. I read the thermometer, see 18 °C, and know without thinking that it's "cool." Chapter 2 was about scales like that. In the middle, we have a number and a formal scale: a reading of 38.2 °C and a published line at 38.0 that turns it into "fever." Chapters 3 through 7 lived mostly there.
+
+At the far end, the number never exists. The observer goes straight to the category. That's the subject of this chapter.
+
+## Why record the category
+
+There are good reasons to skip the measurement.
+
+It's faster. A vegetation survey might record a hundred species in a plot. Estimating a class for each takes seconds. Measuring the exact cover of each would take hours.
+
+Sometimes there's no instrument. When Francis Beaufort devised his wind scale in 1805, a ship had no anemometer. What it had was sails, and the officers knew exactly how much sail a ship could carry in each strength of wind.
+
+And often the category is all anyone needs. The decision only depends on which class a reading falls in, so a more precise number adds work without changing anything. Chapter 6 made the same point from the other side: precision matters near a boundary and hardly anywhere else.
+
+There's a human reason too. George Miller's limit, about seven categories for a single kind of judgment, means an observer can assign a handful of classes quickly and consistently. Ask the same observer for a percentage, and two people looking at the same plot can give numbers that differ widely. The classes are coarse, but they are more repeatable than the false precision of a guessed number.
+
+## A botanist's scale
+
+One of these scales comes from my own field. For a century, vegetation scientists have described plant communities with the cover-abundance classes devised by Josias Braun-Blanquet. The observer looks at each species in a plot and records a single symbol.
+
+```{r}
+#| label: fig-braun-blanquet
+#| fig-cap: "The Braun-Blanquet cover-abundance classes, laid on the cover scale they replace."
+#| fig-width: 8
+#| fig-height: 2.9
+#| file: R/ch08_fig0_braun_blanquet.R
+```
+
+The classes aren't equal. Classes 3, 4 and 5 each cover 25 percentage points. Class 1 covers only 5. And the two lowest symbols, r and +, aren't cover classes at all: they record that a species is present as one plant or a few. The scale changes what it measures partway along, from counting plants to estimating cover.
+
+That looks untidy, but it has a logic. In almost any plot, most species are minor, with a few plants or a little cover, and only one or two dominate. The scale is finest where most of the species are and coarsest where only the dominants reach. Its unevenness is a design.
+
+Every analysis built on these records inherits that design. Two surveys with slightly different class boundaries, recording identical vegetation, will produce different numbers downstream. The categories aren't a summary of the data. They are the data.
+
+## A sailor's scale
+
+The Beaufort scale has a history that shows what happens when a category outlives the thing it was defined by. Beaufort's original numbers, 0 to 12, described the sail a fighting ship of his day could carry, from calm to a wind no canvas could stand. Descriptions of the sea's appearance came later. Then steam replaced sail, and the original definitions described ships that no longer existed. In 1906 the British meteorologist George Simpson gave each Beaufort number an equivalent wind speed, and international meteorologists adopted equivalents in 1926 and revised them in 1946.
+
+The numbers survived. Sailors still speak of "force 8." But a force 8 is now defined by a range of measured wind speeds, not by the sails of a frigate. The label was kept and its definition replaced, a kind of change Chapter 9 looks at more closely.
+
+## Institutions publish the category
+
+Many agencies measure precisely and then publish only the category. The air-quality index on a phone, the UV index, a fire-danger sign at the edge of a park, a hurricane's category on the evening news: in each case a careful measurement sits behind the public message, but the public sees the class. The number is there for those who want it. The category is what's meant to change behavior.
+
+That makes the shape of the categories very important, because most people will never see what's underneath them.
+
+## Equal-looking bars over unequal amounts
+
+My Smart Car's fuel gauge has eight bars. On a long drive I can go a very long way before the first bar disappears. Once I'm down to three bars, they seem to go much faster. I can't prove it from my own records, but the feeling is strong, and it turns out to be common. Some engineers say gauges are deliberately set to read full for a while and to keep a reserve below empty. Part of it is simply the shape of the tank.
+
+The air-quality index is a clearer case, because its numbers are published.
+
+```{r}
+#| label: fig-unequal-categories
+#| fig-cap: "Categories that look equal but cover unequal amounts: (a) the US Air Quality Index for fine particles (PM2.5), 2024 breakpoints; (b) the Saffir-Simpson hurricane wind scale."
+#| fig-width: 7.5
+#| fig-height: 7.2
+#| file: R/ch08_fig1_unequal_categories.R
+```
+
+On a phone, the AQI moves in equal steps of 50 points, each with its own color. But the steps stand for very different amounts of fine particles in the air. "Good" covers a range of 9 micrograms per cubic meter. "Unhealthy" covers 70. The display makes the categories look the same size. The air doesn't.
+
+The breakpoints also move. In 2024 the agency lowered the top of "Good" from 12.0 to 9.0, as evidence grew that lower levels of fine particles still harm health. Overnight, some days that had been "Good" became "Moderate." That is Chapter 6's lesson again: the boundary moved, the measurement stood still.
+
+The hurricane scale is uneven in a different way. Category 1 spans 22 miles per hour of wind speed, Category 2 only 15, Category 3 19 and Category 4 27. Category 5 has no upper limit at all. The categories aren't even ordered by size. They were set to match the kinds of damage engineers observed, not to divide the wind evenly.
+
+## The martini glass
+
+Why might a fuel gauge feel uneven even if its maker did nothing special? A martini glass gives the answer.
+
+```{r}
+#| label: fig-martini-glass
+#| fig-cap: "The fraction of a drink left as its level falls, in a straight glass and a cone-shaped martini glass."
+#| fig-width: 8
+#| fig-height: 4.6
+#| file: R/ch08_fig2_martini_glass.R
+```
+
+In a straight-sided glass, the level and the amount fall together. Half the height means half the drink. A martini glass is a cone, and a cone holds most of its volume near the top. Half the drink is gone when the level has dropped only about a fifth of the way down. At half height, only one-eighth is left. So the first sips seem to go nowhere, and the last ones vanish.
+
+What we read is the level. What we care about is the volume. They are two different quantities, and the shape of the container decides how one turns into the other. This is Bridgman once more: the operation we perform, looking at the height, isn't the quantity we want to know. A fuel gauge has the same problem. Its float measures the level of fuel in a tank whose shape is anything but a simple cylinder.
+
+The effect is real enough to change behavior. In a 2012 study, people drank a full glass of lager much faster from a curved glass than from a straight one. The difference disappeared with a soft drink, and with a half-full glass. The researchers suggested that the curved glass made it harder to judge the halfway point, so drinkers lost track of their pace.
+
+## Scales that multiply
+
+Some category scales are evenly spaced, but on a scale that multiplies. Earthquake magnitude, the decibel scale for sound and the pH scale for acidity all work this way. Each step up stands for a fixed multiple of the step before, not a fixed amount. A magnitude 7 earthquake isn't a little stronger than a 6. Its shaking is about ten times larger. The categories look even on paper and are wildly uneven in the world. Everyday language rarely keeps up. "Only one point higher" sounds reassuring and isn't.
+
+## Categories with no single measurement behind them
+
+At the far end of this chapter's spectrum are categories with no single measurement underneath at all.
+
+Life forms are a step in that direction. To a home gardener, four categories cover most plants: grass, shrub, small tree, big tree. When I had to describe the plants of a complicated site, that wasn't enough. I was forced to see more, and that's where the life forms of the Danish botanist Christen Raunkiaer came in handy. Raunkiaer sorted plants by a single trait: where their surviving buds sit during the unfavorable season, high in the air, near the ground, at the surface or below it. Focusing on one trait gives about the right number of familiar categories, and it lets an observer get to work instead of standing and staring, wondering which of many possible schemes might apply. The focus reduces friction.
+
+Skill levels go further. Years ago I wrote a short paper, with Han Lau, about how people acquire skill in ethnobotanical research. We built on the work of Hubert and Stuart Dreyfus, who described five stages: novice, advanced beginner, competent, proficient and expert. Each stage has a clear name, and the names come in a fixed order. But no single measurement places a person on the ladder. A different combination of skills and behaviors marks each rung, and what matters changes from one rung to the next. Even so, people grasp the names almost intuitively, and once someone has thought through what defines each stage, the categories show how to move up. I use them myself. For travel, I'd place myself at proficient, aspiring to expert. For working with AI, I'm competent, aspiring to proficient.
+
+Plant families go furthest of all, and they may be the biggest use of categories in my field. A botanist learns to recognize many dozens of families, sometimes hundreds, far more than Miller's seven. That's possible because a family isn't a slice of one measurement. Its members share a whole set of properties, and those properties aren't found together in other families. A trained eye takes in many characters at once and recognizes the family as a whole, often before it could list the reasons. Miller himself pointed to the two ways people escape the limit of seven: judging many dimensions at once, and recoding information into larger chunks. Botanists do both. The families sit inside a hierarchy of orders and classes above them, and each level is a chunk that holds the ones below.
+
+## What the category leaves behind
+
+Recording the category instead of the measurement is often the wise choice. It's quick, it's repeatable, and it captures exactly what a decision needs. But it is a one-way door. Once a plot is recorded as "3," nobody can recover whether the species covered 26 percent or 49. Once a day is "Good," the phone doesn't say how close it came to "Moderate." Once a wind is "force 6," the gusts are gone.
+
+When the category stands in for the measurement, the shape of the category becomes the shape of everything we know.

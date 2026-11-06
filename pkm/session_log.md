@@ -11,6 +11,23 @@ Mechanism 4.
 
 ---
 
+## 2026-11-05 (evening) -- MRC: COVER CHOSEN; CH.8-10 DRAFTED (ALL CHAPTERS DRAFTED)
+
+**Date / duration:** 21:02-22:16 HST.
+
+**Active focus at start:** MRC (confirmed). Session start: three reads; nothing changed since the afternoon close; PubMaps check 0/0/0.
+
+**What was worked on:**
+- Ch.7 rulings applied (keep BMI; 'My own reading is ecological').
+- Cover: Kim's AI-generated gauge image adopted as is; cover + logo placed in Projects/MRC root; render confirmed.
+- Ch.8 Categories Instead of Measurements drafted and approved (new Braun-Blanquet figure; Han Lau named; life forms in Kim's voice).
+- Ch.9 The Life of a Category drafted and approved (new shindo figure; Kim's Palau photo and schedule added).
+- Ch.10 The Inverse drafted (bunching figure; closing checklist table). Book renders clean, Preface + ch.1-10.
+
+**Next:** Kim reads ch.10; then the appendix, the subtitle, and a whole-book read-through.
+
+---
+
 ## 2026-11-05 -- MRC: DRAFTING, CH.4-7 APPROVED
 
 **Date / duration:** 14:41-16:45 HST.

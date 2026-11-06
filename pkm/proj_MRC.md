@@ -19,7 +19,7 @@ three parts: I What a category does (1 The claim; 2 Learning the scale, incl. la
 boundaries come from (4 the backbone; 5 Fixed or contextual; 6 Boundaries and error; 7 Several measurements, one
 category; 8 Categories instead of measurements); III Categories over time (9 The life of a category; 10 The
 inverse). Rulings: event boundaries stay in MRC (life cycle), not S3; ch.6-8 are valid and need work; ch.9's
-location is open; language comes early (ch.2). DRAFTING since 2026-11-04: Preface + ch.1-7 drafted and approved (2026-11-05).
+location is open; language comes early (ch.2). DRAFTING since 2026-11-04: Preface + ch.1-10 drafted (ch.1-9 approved; ch.10 with Kim for reading), 2026-11-05.
 
 ## Locations
 - Code: G:\My Drive\Projects\MRC\R
@@ -56,11 +56,9 @@ Temperature_Patterns. MRC's figure style is to become the trilogy's shared visua
   proj_Temperature_Patterns.md (Eugene 32 F -- a ch.6 candidate); proj_Smart_Car.md (the fuel-gauge ladder).
 
 ## Next Steps
-1. Draft ch.8 Categories instead of measurements (figures built: ch08_fig1_unequal_categories, ch08_fig2_martini_glass;
-   Beaufort, Braun-Blanquet, texture by feel, the gauge's 8 bars). Then ch.9 Life of a category, ch.10 The inverse, appendix.
-2. Ch.7 is approved with Kim's figure fixes (2026-11-05); BMI added as the collapse example (Kim to confirm); the biota-stress
-   reading is unattributed (Kim may claim it with 'my').
-3. Cover image (MRC_cover_art_text.png, MRC_logo_art.png); minor verify items (JIS S chest, Wansink 2005, Hong Kong stock colors).
+1. Kim reads ch.10 The Inverse (check the Regents-vs-grading contrast paragraph and the August 'thread' quote timing).
+2. Draft the appendix (appendix.qmd is a stub); settle the subtitle (placeholder 'Boundaries in value' in _quarto.yml).
+3. Whole-book read-through and cross-reference check; minor verify items (JIS S chest, Wansink 2005, Hong Kong stock colors).
 
 ## Collaborators / Dependencies
 None yet.
@@ -145,3 +143,12 @@ tiny'); admitting bad questions is the big disclosure. 28-day story kept as is. 
 Ch.7 Several Measurements, One Category: Kim's fixes applied -- new ch07_fig0_whittaker_soil (both diagrams shown whole, labeled, with
 worked examples), Denver/Phoenix as filled black dots, biome names on the year figure, 'stripe', 'the Whittaker diagram'.
 Figure notes: double hyphens replaced in ch06/ch07 scripts; age figure says 'My grandmother'.
+### 2026-11-05 (evening)
+Kim: KEEP BMI; the ecological-stress reading is his ('My own reading is ecological'). COVER chosen: Kim's AI-generated rusty pressure gauge
+(0-100 with NORMAL / CAUTION / WARNING / DANGER bands; uneven, off-round boundaries kept on purpose -- 'something known behind the scenes';
+needle half-hiding WARNING kept -- shows the value of color). 2550x3300 (ratio 1.29, letter); logo 1024x1024; both in the project root;
+render confirms. Ch.8 Categories Instead of Measurements drafted and APPROVED (new fig ch08_fig0_braun_blanquet); Dreyfus + families at
+its end ('exactly right'); co-author is HAN LAU (Y. H. Lau; 'everyone calls him Han'; OK to name); life forms in Kim's 'I'.
+Ch.9 The Life of a Category drafted and approved ('strong'); new fig ch09_fig1_shindo; Kim's Palau photo + schedule added
+(sources/Hokulea_arrives_in_Palau.jpg, sources/2007Hokulea-palau.pdf -> figures/ch09_fig2/3) as a side-by-side figure.
+Ch.10 The Inverse drafted (bunching fig; Clements/Gleason; questions-to-ask table closing the book). ALL TEN CHAPTERS DRAFTED.

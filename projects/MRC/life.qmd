@@ -1,3 +1,87 @@
 # The Life of a Category
 
-_Draft pending._
+Categories aren't permanent. They are born when someone needs them, they change as we learn, and sometimes they outlive the job they were made for. A few disappear from use and then come back. This chapter follows categories through time: how they grow, the three fates that await them, what the historical record keeps of them, and how a single event can become a boundary of its own.
+
+Chapter 6 looked at a boundary that moves while the category stays in use, like the line for hypertension. This chapter is about the category itself: its role, its name and its definition, changing over years and generations.
+
+```{r}
+#| label: setup
+#| code-summary: "Show the setup code"
+
+## graphics
+library(ggplot2)
+```
+
+## Categories grow where they matter
+
+We improve categories, and their names, as we come to appreciate what's at stake. Japan's scale of earthquake intensity, the shindo scale, shows this more clearly than any other example I know.
+
+```{r}
+#| label: fig-shindo
+#| fig-cap: "Japan's seismic intensity (shindo) scale as it stood from 1884, 1898, 1949 and 1996."
+#| fig-width: 8
+#| fig-height: 5.4
+#| file: R/ch09_fig1_shindo.R
+```
+
+The first official scale, in 1884, had four levels. By 1898 it had seven, numbered 0 to 6. Then the Fukui earthquake of 1948 caused destruction beyond anything a 6 could describe, and a new top level, 7, was added the following year. In the 1990s two more great earthquakes, off Sanriku in 1994 and at Kobe in 1995, showed that the damage within a single level could vary enormously. In 1996 levels 5 and 6 were each split in two, and the scale became fully instrumental: intensity is now measured by a network of meters rather than judged from damage reports.
+
+Every change came where a disaster had shown the scale too coarse, and every change added resolution at the dangerous end. That's Chapter 6's argument written into history: precision is needed near the boundaries that matter, and institutions add it there once they learn where those boundaries are.
+
+The UV index is a gentler example. In the 1960s, a tan was a sign of health, and nobody spoke of ultraviolet danger. Once sun exposure was firmly linked to skin cancer, and the thinning ozone layer made headlines, people needed a way to judge the risk on a given day. Environment Canada launched a UV index in 1992, and the World Health Organization and the World Meteorological Organization standardized it two years later. The measurement had been possible for decades. The category arrived when the concern did.
+
+## Three fates
+
+Once a category exists, it tends to meet one of three fates.
+
+**Retired, but kept in the record.** The Kona coffee vacation, from Chapter 5, is a category whose role is gone. The schools moved to a standard calendar in 1969, and nobody now arranges a school year around the harvest. But the category survives in records and in memory: Arnold Kishi can still tell the story of leaving school to pick coffee. My own field is full of retired categories. Every plant species has its list of synonyms, older names that botanists once used and that now point to a species known by another name. The old name stays in the literature, because the old literature still has to be read.
+
+**Label kept, definition replaced.** The Beaufort scale, from Chapter 8, kept its numbers when their meaning shifted from the sails of a warship to measured wind speeds. Horsepower still names the power of an engine, though nobody measures it with horses. Plant families have kept their names through a quieter revolution. They were once defined by shared features of flowers and fruits. Since the 1990s, DNA evidence has redrawn many of them so that each family is a group descended from a common ancestor. Many names stayed the same while the membership changed underneath them.
+
+The reverse happens too: the definition stays and the label changes. Chapter 3 described how "prehypertension" was dropped because it sounded too mild, and how "excessive heat" became "extreme heat." The readings and boundaries didn't change. The words did, because the words weren't doing their job.
+
+**Dormant, then revived.** Some categories leave daily use and survive only in the written record, until someone brings them back. The Hawaiian rain names in Chapter 2 are one case: more than two hundred names, each tied to a place, recovered from old newspapers, chants and proverbs and returned to use through scholarship and teaching.
+
+Wayfinding is a more dramatic case. By the twentieth century, the skill of navigating across open ocean without instruments had been lost in Hawaiʻi. The knowledge was a set of categories: named stars and the points on the horizon where they rise and set, named swells, the signs of land beyond the horizon. Without people who could apply them, the categories were gone. In 1976 the voyaging canoe Hōkūleʻa sailed from Hawaiʻi to Tahiti, navigated by Mau Piailug, a master navigator from Satawal in Micronesia, where the tradition was still alive. Soon after the canoe returned, I had dinner with Ben Finney, one of the founders of the Polynesian Voyaging Society and a member of the crew, and heard a detailed account of the voyage. The voyage helped spark a revival of Hawaiian culture that is still going on.
+
+Two lessons stand out. The first is that categories need a practitioner. A written archive can keep the names of the stars, but not the ability to steer by them. Wayfinding came back through a person who could apply the categories, not through a book. The second is that categories can travel between cultures and change on the way. Nainoa Thompson, who became the first Hawaiian in centuries to navigate this way, built a Hawaiian star compass from Mau's teaching combined with his own study. The categories were adapted, not just retrieved.
+
+A device can also make a category dormant. Photographers once learned the Zone System, devised by Ansel Adams and Fred Archer around 1940. It divides the tones of a scene into eleven zones, from black to white, each one stop of exposure apart, and lets the photographer decide where each part of the scene should fall. I never used it myself, but I recognize its value, and Adams's photographs show what it could do. Today a camera's meter and a sensor's wide range make the decision automatically. The zones are rarely taught. They aren't wrong; the device simply made the category unnecessary for most people. Chapter 2 said that devices teach the measurement but not the scale. Here the device removed the need for the scale altogether.
+
+## The record keeps the category
+
+When events pass into history, the categories usually survive and the measurements don't. A baseball season is remembered by its wins and losses, not by the runs in each game. A tennis player's career is counted in tournaments won: so many Wimbledon titles, not so many points. Chapter 4 noted that the record books list the 2011 and 2012 Boston Marathon winners the same way, though their times differed by more than nine minutes.
+
+History compresses, and categories are what compression leaves. That's one reason categories matter so much. They are often all that later generations will have.
+
+## Rubrics that come into view
+
+Categories can also become more visible over time. My California road test, nearly seventy years ago, was a hidden rubric, as Chapter 6 described: I failed, and nobody told me why. Today the California examiner works from a score sheet that the public can read. It lists the maneuvers being judged, names the errors that fail a driver outright, and sets a limit on the number of smaller errors allowed. The category is the same, pass or fail, but its boundaries have come out from behind the examiner's clipboard.
+
+## Events as boundaries
+
+Some of the most important boundaries in history aren't values at all. They are events. We speak of before and after a war, a discovery, a voyage. In Hawaiʻi people speak of the time before and after Hōkūleʻa.
+
+An event boundary is usually a sharp marker agreed for a gradual change. The Hawaiian cultural renaissance was already underway before 1976. The voyage became the point everyone recognizes. That is the same pattern as twilight in Chapter 5: a convenient, sharp variable, here an event instead of a clock time, standing in for a fuzzy one. Event boundaries are usually drawn in hindsight.
+
+Some event boundaries are planned. In April 2007 I was in Palau when Hōkūleʻa arrived there for the first time, sailing with the canoe Alingano Maisu, which had been built in Hawaiʻi as a gift to Mau Piailug. The printed program of events treated time in an unusual way. Day 1 was defined as the day of arrival, whenever that turned out to be, and every later event was counted from it. Departure would be decided by the master navigator. The days were categories bounded by an event, not by the calendar. As it happened, the canoes arrived on schedule. I saw the community's excitement first hand, and the emotions were pretty profound.
+
+::: {#fig-palau layout-ncol=2}
+
+![Hōkūleʻa arriving in Palau, escorted by Palauan canoes.](figures/ch09_fig2_palau_arrival.jpg){#fig-palau-arrival}
+
+![The printed schedule of events. The note at the bottom defines Day 1 as the day of arrival.](figures/ch09_fig3_palau_schedule.png){#fig-palau-schedule}
+
+Hōkūleʻa and Alingano Maisu in Palau, April 2007. Photograph and program from my own collection.
+:::
+
+How to read the program: each day's events are listed under a day number, not just a date. The dates printed beside them are the plan. If the navigators had been delayed, every date would have shifted, and the day numbers would have stayed the same.
+
+Geology has the most formal version of an event boundary. To divide Earth's history into named periods, geologists choose a single point in a layer of rock as the marker for each boundary, informally called a "golden spike." A committee examines the evidence and votes. In 2024 the relevant subcommission voted against defining a new epoch, the Anthropocene, to mark humanity's effect on the planet, and the parent bodies upheld the decision. The changes are real. The boundary was refused, at least for now. A category's life can end before it formally begins.
+
+## Categories over time
+
+Looking at categories over time changes how we see them. A category isn't a fixed fact about the world. It's a tool, made at a particular time for a particular need, and it carries that history with it. The shindo scale carries the memory of Fukui and Kobe. The Beaufort numbers carry the sails of a vanished navy. The rain names carry the valleys they belong to.
+
+When a category seems strange, it's often because it was made for a world that has since changed. And when a category disappears, it's worth asking whether the world no longer needs it, or whether we've simply lost the people who knew how to use it.
+

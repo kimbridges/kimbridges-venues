@@ -1,3 +1,91 @@
 # The Inverse
 
-_Draft pending._
+This document has argued that measurements need categories: that a number means little until we know which side of which line it falls on. An argument like that needs its own counterexample, or it becomes an advertisement. So this last chapter turns the claim around.
+
+It's often said that we don't see something unless we have a concept of it. That's true, and much of this document has been about it. But the inverse is just as true, and more interesting. A concept also makes us see things that aren't there, and it stops us from seeing the alternatives. Every set of categories is a lens and a blinder at the same time. When this idea first came up as we planned these documents, it struck me as the kind of thread that's needed in everything we do. It's close to the way a scientist tries to disprove an idea rather than collect support for it.
+
+```{r}
+#| label: setup
+#| code-summary: "Show the setup code"
+
+## graphics
+library(ggplot2)
+library(patchwork)
+```
+
+## Lens and blinder
+
+The Braun-Blanquet classes of Chapter 8 make plant cover easy to record and compare. They also hide the continuum underneath. Once a plot is a list of 3s and 1s, nobody sees the gradual changes in cover between them.
+
+My own field fought over this for most of the twentieth century. Frederic Clements described plant communities as distinct units, almost organisms, each with its own boundary. Henry Gleason argued that each species responds to the environment in its own way, so communities blend into one another along gradients, with no natural boundaries at all. Later work on gradients largely supported Gleason. Yet vegetation maps still draw lines, and field guides still name communities, because people need categories to talk about vegetation. Both views are useful. The danger is forgetting that the line on the map was drawn by us. Between two named communities there is usually a zone of transition, an ecotone, and the map can't show it unless someone makes a category for that too.
+
+## Differences inside a category disappear
+
+Chapter 6 ended with a warning. A temperature of 37.2 °C and one of 37.6 are both "normal." The category treats them as the same, and so do most of the people reading them.
+
+But "normal" is a population scale. It describes what's typical across many people. A patient whose own temperature usually runs low may be a full degree above their personal normal and still read "normal" on the chart. The category answers the question it was built for, whether this reading is unusual for people in general, and stays silent on the question that may matter more: whether it's unusual for this person.
+
+The same silence hides the size of a difference. A race decided by a hundredth of a second and one won by ten seconds both go into the record as a "win." An air-quality reading one microgram short of "Moderate" is as "Good" as the cleanest day of the year. Chapter 7's Phoenix and Tokyo afternoons, desert heat and humid heat, both became "Extreme Caution." A category is a promise that the differences inside it don't matter. Sometimes that promise is false.
+
+## Categories reshape the measurements
+
+The most surprising effect of categories is that they change the measurements themselves. When a boundary carries a reward or a penalty, people and their numbers pile up on the favorable side of it.
+
+```{r}
+#| label: fig-bunching
+#| fig-cap: "Measurements bunched against category boundaries: (a) Boston Marathon finishing times, 2001-2014; (b) house sale prices in England and Wales, 2013, around the £250,000 stamp-duty threshold."
+#| fig-width: 7.5
+#| fig-height: 8
+#| file: R/ch10_fig1_bunching.R
+```
+
+The marathon finishing times show it in a small way. Across fourteen Boston Marathons and nearly 270,000 finishers, the minute just before each half hour holds more runners than the minute just after it. At four hours, 16 percent fewer finish in the minute after the line than in the minute before. Nobody gets a prize for finishing in 3:59 rather than 4:01. The reward is personal, a goal set long before the race, and runners near the line find the energy to beat it.
+
+The house prices show it in a big way. In 2013 English stamp duty was charged on the whole price of a house, at 1 percent for houses between £125,000 and £250,000 and 3 percent above that. A house sold for £250,000 paid £2,500 in tax. One sold for £250,001 paid £7,500. So in 2013 more than 17,000 houses sold for exactly £250,000, and only 72 sold for anything between £250,001 and £252,500. Buyers and sellers simply set the price on the safe side of the line. Notice the rule for the value on the line, from Chapter 6: the higher rate applied *above* £250,000, so £250,000 itself was safe.
+
+Exam scores can bunch too. New York's high-school Regents exams had passing scores of 65, and 55 for some students. A study of the scores found a striking pile-up just above those lines and a gap just below them. The researchers estimated that about 40 percent of scores that would have fallen just short of a cutoff were pushed over it. Teachers were grading their own schools' students, and some re-scored the near misses. When the state ended re-scoring and stopped teachers from grading their own schools' exams, the bunching largely disappeared.
+
+My working guess is that bunching appears wherever being in a category brings some reward or penalty: bragging rights for a runner, real money for a house buyer, a grade and what follows from it for a student. The size of the bunch tracks the size of the stakes. The marathon dip is small. The empty band above £250,000 is dramatic.
+
+There are three different ways a bunch can form. The measured thing itself can change: runners really do run faster near the line. The transaction can be set to the line: a house price is a number two people agree on. Or the recorded value can be moved, as when a grader adds a point. It helps to tell all three apart from simple heaping, where readings pile up on round numbers because of how people read and report them, like the 32 °F nights at Eugene or house prices on every round £5,000.
+
+The Regents story also sharpens the grading case in Chapter 6. My borderline rules moved recorded values too, but only inside a narrow band set in advance, by rules computed the same way for every student, and with a record of which rule applied. The difference isn't whether a value is moved. It's whether the rule for moving it is fixed before anyone sees the student.
+
+## Seeing what isn't there
+
+Categories can also make us see patterns that aren't real. George Miller noticed sevens everywhere: seven categories of absolute judgment, about seven items in short-term memory, seven days of the week, seven wonders, seven notes of the scale. At the end of his famous paper he stepped back and said he suspected the whole collection of sevens was a coincidence. It's a good model. Once we have a category in mind, examples fit it easily.
+
+The Eugene rain gauge in Chapter 7 showed the danger from the other side. The strip diagram showed a forest slipping toward shrubland. The vegetation hadn't moved; the instrument had. The category made a change look real and ecologically meaningful. Only a check against the neighbors showed that the change was in the gauge.
+
+Rank categories create their own illusions. A top-10 list always has ten members, in a great year or a terrible one. "Record-breaking" always sounds remarkable, but even a series with no trend at all sets new records from time to time, purely by chance. The category promises significance whether or not there is any.
+
+## No category, no seeing
+
+The original claim is still true, of course. Without a category, some things go unseen. When the Hawaiian rain names fell out of use, the distinctions they held became hard for anyone to notice. When the skills of wayfinding were lost, the ocean's swells were still there, but nobody in Hawaiʻi could read them. A category is a kind of attention, stored and shared. Losing it means losing a way of looking.
+
+That's why the inverse doesn't argue against categories. It argues for treating them with care: keeping the ones that let us see, and checking the ones that might be hiding something.
+
+## Questions to ask of any category
+
+Each chapter of this document suggests a question to ask when a category matters. Together they make a short checklist for testing a category, in the spirit of trying to disprove it rather than simply trust it.
+
+| Question | Chapter |
+|---|---|
+| What would this number mean in a different unit, or to someone from somewhere else? | 1, 2 |
+| Is the category meant to describe, or to make someone act? | 3 |
+| Where did the boundary come from, and who can move it? | 4 |
+| Is it fixed or contextual, fixed in which variable, and for whom? | 5 |
+| How close is this reading to the line, and what does each kind of mistake cost? | 6 |
+| How many measurements is this one word standing in for? | 7 |
+| Was the measurement kept, or only the category? | 8 |
+| What world was this category made for, and is that still our world? | 9 |
+| What does it hide, and what is it making me see? | 10 |
+
+Not every question matters every time. But a category that survives all of them is one we can rely on, and a category that fails one has told us exactly where to look.
+
+## Measurements require categories
+
+The Preface began with George Miller and the number seven, and with a claim: a measurement tells us how much, and a category tells us what it means. The chapters since then have shown how categories are learned, named and colored, where their boundaries come from, how they handle error, how they combine measurements and replace them, and how they live and change over time. This chapter has added the necessary caution. Categories show us the world and also edit it.
+
+We can't do without them. Every measurement anyone acts on passes through a category first, whether it's a fever, a frost, a fuel gauge or a grade. The best we can do is to know the categories we're using: who drew their lines, where, why, and what they leave out.
+
