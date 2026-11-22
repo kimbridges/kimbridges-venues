@@ -2245,3 +2245,25 @@ version uninstalls. I can't do it now.").
 - **DONE 2026-10-28 (Kim: billing; verified generateContent) -- Gemini API key.** Google refuses the key (403 PERMISSION_DENIED on
   ListModels); Kim: setting it up "was a mess", so he moved to OpenAI to keep working.
   Occasion: when PubMaps compares providers (OpenAI and Anthropic both work). (Kim, 2026-10-24)
+
+## Jones Collection -- Bob Jones analyses to Alaska (opened 2026-11-21)
+
+### CONDITIONAL -- revive when Kim and Peter McRoy take it up (expected within the next few months)
+
+- Kim met Peter McRoy on 2026-11-21 and said he wants to get the Bob Jones analyses
+  to the right people in Alaska. Peter agreed; the project will likely come back in
+  the next few months. Peter is in Honolulu from Alaska until April 2027.
+- When it surfaces: start from `proj_jones_collection.md` and the live Jones
+  collection on kimbridges-collections; the analysis source is under
+  `Jones/Jones_analysis/` (see the legacy-links note above).
+
+## Koch Voronoi Analysis -- Tom Koch visit (opened 2026-11-21)
+
+### CONDITIONAL -- revive if Tom Koch comes to Honolulu (possible in the next few weeks)
+
+- Kim (2026-11-21): Tom may visit in the coming weeks, which would revive work on
+  his projects.
+- When it surfaces: start from `proj_Koch_voronoi.md` (Phase 1 done, Phase 2
+  pending) and tessellr v0.1.0 (counts + Poisson tests carried over from
+  Koch_voronoi).
+

@@ -11,6 +11,80 @@ Mechanism 4.
 
 ---
 
+## 2026-11-21 -- S3 ROUND FOUR: EVENT TIME, VARIABILITY, FRICTION CHAPTER, GUIDING PRINCIPLE, GAP REVIEW, THE SNAP AS TRIGGER
+
+**Date / duration:** 19:50-21:10 HST.
+
+**Active focus at start:** S3 at capture (confirmed). PubMaps service_check(): 0/0/0.
+
+**Kaka'ako (Under/Ground, 2026-11-20):** Kim met the two founders of Pow! Wow! (now the traveling Under/Ground exhibit) and described his gallery-like addition -- short-term goal accomplished. Warmly received; they have other objectives and noted government-policy resistance to the painting in Kaka'ako. Ruling: GO SLOW; eventually some sort of book. Index updated.
+
+**S3 ideas captured** (`ideas_three_documents.md`):
+- Round four: calendar time templates vs. event time (rain seasons, soil moisture); the neglect of variability in visualization; an enriched climate (Walter-Lieth) diagram with extremes, long-term mean and current year. Ruling: record only, no prototype yet.
+- The weathercast in event time (Kim's two-version passage, verbatim).
+- ★ Then and now: data access -- Kim's IBP Island Ecosystems IRP weather work (early 1970s) vs. API access today. Ruling: an S3 FRICTION CHAPTER; friction reintroduced periodically as a motif ("what we did was OK; now it can be smoother"). The Bob Jones work is a prime friction example.
+- Sea-otter depletion before the 1867 Alaska sale: the slow wearing away of an economic base (a conservation theme).
+- ★ GUIDING PRINCIPLE (Kim): keep the focus on the meso scale -- it is how we understand, through context, what happens at the micro and macro ends.
+- Overview and gap review (Claude, at Kim's request; 7 gaps, top: no outline holds the November material).
+- Back to the three terms, balanced: Kim -- a snap is a potential TRIGGER that changes behavior. Claude framing (not ruled): stretch = state, spell = load, snap = trigger; whether a snap triggers is set by the middle range.
+- Snaps beyond biology: Nvidia/Huang resignation (2026-11-12) as an economic snap; discoveries as snaps.
+
+**Side notes filed in `deferred.md` (CONDITIONAL):** Jones analyses to Alaska with Peter McRoy (in Honolulu until April 2027; likely revival in the next few months); Tom Koch may visit Honolulu in the next few weeks (revives Koch Voronoi work).
+
+**Open / next:** Kim reviews the gap review and thinks; continue tomorrow. Then likely: develop the snap (and balance the three terms), then a round-three S3 outline that holds the November material.
+
+---
+
+## 2026-11-18 -- S3 CAPTURE ROUND THREE: THE NEGLECTED MIDDLE, PHENOLOGY, AND A DURATION DIAGRAM
+
+**Date / duration:** 15:20-20:55 HST.
+
+**Active focus at start:** Kaka'ako Buildings (intake). PubMaps service_check(): 0 inbox, 0 awaiting review, 0 failed. R bridge working (G: reachable via R); Filesystem MCP limited to Desktop.
+
+**Housekeeping:** filed the missing 2026-11-07 material (S3 ideas block; session-log entry with the Kaka'ako prospectus reframe and the billboard-ban constraint).
+
+**Focus change (Kim):** Kaka'ako Buildings PAUSED -- could not get his head into it; will gather ideas from other people at Under/Ground (Bishop Museum, Fri 2026-11-20 evening). Active Focus -> S3 at capture.
+
+**MRC news:** Will read MRC carefully over several days; judged it the best so far; it gave him new ideas and perspectives.
+
+**S3 ideas captured** (all in `ideas_three_documents.md`, round three):
+- The neglected middle: between climate averages and the nightly weathercast lies the ecologist's realm; this year vs. recent years with wettest/driest bounds; Mekong River Commission displays; a dashboard as a nightly-weather supplement; the frog in the pot as a measurement-interval parable. Goal: take S3 into very different areas where the middle scale is neglected.
+- Ruling: scope TOO EARLY to decide; look at topics beyond weather/climate first.
+- Event years that don't start with the solar year -- probably a chapter.
+- Phenology: DC cherry blossoms (third try) vs. Kyoto fall color (first try); the sentinel tree; amplified phenology (The Flower Fields, Keukenhof). Ruling: the childhood lupine hillside (about age 5) OPENS the phenology chapter. Fireweed in Valdez (Peter and Carla; their boat *Fireweed*) as a living calendar over a long period.
+- Annual rings and otoliths: organisms record their cycles. Story: first biology job, nine months with California Fish and Game preparing otoliths and scales.
+- Ruling: USDA hardiness zones MUST be in S3. Desert superblooms: unpredictable in time and space; crowds.
+- Migratory land birds as a phenological trigger for voyaging (precursor: Gatty, Lewis).
+- A ladder of wet-weather timescales (Gemini table, unverified).
+- Ruling: KEEP the duration diagram -- periods of rain at a ladder of gap tolerances, one record, across a year; periods rather than amounts.
+
+**Built:** `Projects/S3/figures/rain_periods/rain_periods.R` (base R: `rp_events()`, `rain_periods_plot()`, `rp_ladder`, `rp_synthetic_year()`) + `rain_periods_synthetic.png` (synthetic demo, rendered and checked). New folder `Projects/S3/`.
+
+**Note:** Kim's R session had an object `pi` (a list) masking the constant; script uses `base::pi`.
+
+**Open / next:** feed real hourly gauge data (a Hawai'i station with a long hourly record as a first test, plus contrasting places); verify the Gemini ladder against AMS/WMO and the IETD/ETCCDI anchors; continue the beyond-weather topic search before deciding scope; work the verify lists.
+
+---
+
+## 2026-11-07 -- S3 IDEAS (DEGREE-DAYS, PHENOLOGY); KAKA'AKO REFRAMED AS A PROSPECTUS
+
+_Filed 2026-11-18. The session ran in a claude.ai chat with Drive read-only and no R
+bridge; its paste-ready blocks were never applied. Written now from that chat._
+
+**Date / duration:** 16:15-20:05 HST, with a dinner break.
+
+**Active focus at start:** Kaka'ako Buildings (confirmed; Kim slipped in S3 ideas first). PubMaps check not run (no R).
+
+**What was worked on:**
+- S3: round-three ideas captured (degree-days, the Arizona insect story, phenology, Lieth, DC cherry blossoms) -> `ideas_three_documents.md`. Ruling: use "degree-day". Werner attribution partly checked; the degree-day link unconfirmed.
+- Kaka'ako Buildings REFRAMED (Kim): Pow! Wow! murals are being lost to gentrification and condo redevelopment. Proposal: temporary large-format, weather-resistant prints hung on buildings as if the wall were a gallery wall -- no long-term owner commitment, pieces can move. Kim's own designs (first made to be painted) become worked examples, not advocacy. Form: likely a PROSPECTUS; venue likely kimbridges-documents, not stories.
+- Constraint identified: Hawai'i's billboard ban (since 1926; one of four states) and the art-vs-billboard line (a 2020 painted voting message drew Outdoor Circle complaints). Honolulu sign code / Kaka'ako rules for non-commercial hung art NOT yet checked.
+- Exhibit named: Under/Ground, Bishop Museum, 2026-11-20 (Friday evening).
+
+**Open (Kaka'ako):** what the 71-file underway folder holds (Kim's designs, photos of existing murals, or both); how many designs are finished; the proj file.
+
+---
+
 ## 2026-11-06 -- MRC: APPENDIX, CROSS-REFERENCES, PUBLISHED; FOCUS -> KAKA'AKO BUILDINGS
 
 **Date / duration:** 10:10-13:04 HST.

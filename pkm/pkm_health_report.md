@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-11-06 13:06 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-11-21 21:10 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -8,8 +8,8 @@ _Generated 2026-11-06 13:06 by pkm_health.R. Regenerate; do not edit._
 - **Rendered pages with no source:** 0
 - **Broken _Log: pointers:** 0  |  **orphaned log files:** 0
 - **Projects drifting from their code:** 0
-- **Files over size budget:** 0
-- **Active Focus block:** 1.6 KB (budget 6)
+- **Files over size budget:** 1
+- **Active Focus block:** 2.7 KB (budget 6)
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 0
 - **Legacy pages awaiting account deletion:** 58
@@ -29,13 +29,15 @@ None.
 
 ## Over budget
 
-None.
+| file | class | kb | budget_kb | over | splittable |
+|---|---|---|---|---|---|
+| project_index.md | HOT | 30.6 | 30 | 0.6 | FALSE |
 
 ## Active Focus size
 
 | line | kb | budget_kb | over |
 |---|---|---|---|
-| 8 | 1.6 | 6 | -4.4 |
+| 8 | 2.7 | 6 | -3.3 |
 
 ## Venues without a source repo
 
@@ -55,15 +57,15 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| ghcn |  2.9 | 85 | FALSE |
-| R_Basics_index_2026-10-28 |  8.7 | 14 | FALSE |
-| plainmaps_index_2026-10-28 |  8.7 |  5 | FALSE |
-| rehearsals_huntington_2026-09-30 | 36.7 |  2 | TRUE |
-| pkm_health_backup_2026-10-28 |  8.7 |  1 | FALSE |
-| isd |  3.7 |  0 | FALSE |
-| listsr_installtest_2026-10-28 |  8.9 |  0 | FALSE |
-| llm |  2.9 |  0 | FALSE |
-| secret_audit_2026-10-28 |  8.9 |  0 | FALSE |
+| ghcn | 18.3 | 85 | TRUE |
+| R_Basics_index_2026-10-28 | 24.1 | 14 | TRUE |
+| plainmaps_index_2026-10-28 | 24.1 |  5 | TRUE |
+| rehearsals_huntington_2026-09-30 | 52.1 |  2 | TRUE |
+| pkm_health_backup_2026-10-28 | 24.1 |  1 | TRUE |
+| isd | 19.1 |  0 | TRUE |
+| listsr_installtest_2026-10-28 | 24.2 |  0 | TRUE |
+| llm | 18.2 |  0 | TRUE |
+| secret_audit_2026-10-28 | 24.2 |  0 | TRUE |
 
 ## Legacy pages by platform
 
@@ -79,4 +81,4 @@ None.
 None.
 
 ---
-_Ran in 110.2 s._
+_Ran in 92.1 s._

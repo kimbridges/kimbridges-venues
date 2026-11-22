@@ -1,19 +1,19 @@
 # Projects Index
-_Last updated: 2026-11-06_
+_Last updated: 2026-11-21_
 
 > **History split out 2026-07-28.** The superseded Active Focus blocks and the full
 > dated Change Log now live in `logs/focus_history.md`, verbatim and unedited.
 > This file carries the current focus, the structural notes, and the listings only.
 
-**Active Focus (2026-11-06): KAKA'AKO BUILDINGS -- the building-murals story (`G:\My Drive\kimbridges-stories\underway\Kakaako_Buildings\`, ~71 files / 867 MB of mural images; no proj file yet). Set by Kim at the MRC close; an exhibit of building murals is coming up (date to confirm). NOW: INTAKE.**
+**Active Focus (2026-11-18): S3 -- *Spells, Stretches and Snaps*, at CAPTURE (round three). Opened by Kim with new S3 ideas after he paused Kaka'ako Buildings. Ideas go to `ideas_three_documents.md`; no proj file yet (formal intake when the shape holds). The superseded Kaka'ako block is in `logs/focus_history.md`.**
 
-**MRC PUBLISHED 2026-11-06** -- *Measurements Require Categories: Boundaries in value*, https://kimbridges-documents.netlify.app/mrc/ (`proj_MRC.md`); its focus block is in `logs/focus_history.md`. Kim is sending Will the link. **Running alongside: PubMaps** as an email service (standing check below); its NEXT is unchanged -- tell Will the loop is live; then Part II Methods. **Paused:** Rehearsals (capture), icons (Blocked on photographs). S3 and MWT stay at capture.
+**MRC PUBLISHED 2026-11-06** -- *Measurements Require Categories: Boundaries in value*, https://kimbridges-documents.netlify.app/mrc/ (`proj_MRC.md`); its focus block is in `logs/focus_history.md`. **Will has read it (Kim, 2026-11-18):** carefully, over several days; he judged it the best so far, and it gave him new ideas and perspectives. **Running alongside: PubMaps** as an email service (standing check below); its NEXT is unchanged -- tell Will the loop is live; then Part II Methods. **Paused:** Kaka'ako Buildings (Kim, 2026-11-18: could not get his head into it. **Under/Ground, 2026-11-20: Kim met the two founders of Pow! Wow! (now the traveling Under/Ground exhibit) and described his idea of a gallery-like addition to the art form -- short-term goal ACCOMPLISHED. Warmly received, but they have other objectives; they noted some resistance to the painting from government policies in Kaka'ako. Kim's ruling (2026-11-21): GO SLOW; work it eventually into some sort of book.** The 11-07 prospectus reframe is in `session_log.md` 2026-11-07), Rehearsals (capture), icons (Blocked on photographs). MWT stays at capture.
 
 **⚠ CARRIED:** the local Filesystem MCP connector still fails; device_bash still cannot mount `G:`.
 
 **STANDING CHECK (from 2026-10-29, while PubMaps runs as an email service):** after the session-start reads, run `source("G:/My Drive/Projects/PubMaps/service/pubmap_service.R"); service_check()` and report its line with the Active Focus. If the inbox holds PDFs, PROPOSE `process_inbox()` and run it (async) only on Kim's yes. Report items awaiting review and failures; do not act on them. Detail: `Projects/PubMaps/service/SERVICE.md`; rule: pkm_protocol.md Mechanism 2.
 
-**NEXT (2026-11-06): KAKA'AKO BUILDINGS -- formal intake (Mechanism 1): survey the underway folder from R (it is on G:), create `proj_Kakaako_Buildings.md`, confirm the exhibit date and the document's form and venue (likely kimbridges-stories). Web-size the photographs as a build step (style guide Section 6).**
+**NEXT (2026-11-21, close): S3 -- Kim reviews the overview and gap review (`ideas_three_documents.md`, 2026-11-21) and thinks it over. Then: (1) balance the three terms, starting with the SNAP (trigger; stretch = state, spell = load, snap = trigger -- Claude framing, not ruled); (2) a round-three outline that holds the November material and the friction chapter, tested against the guiding principle (keep the focus on the middle); (3) feed `Projects/S3/figures/rain_periods/rain_periods.R` real hourly data; (4) verify lists. Kaka'ako: going slow (Kim, 2026-11-21); no scheduled step. When it resumes: intake -- survey the underway folder, create `proj_Kakaako_Buildings.md`, settle the form (some sort of book) and venue, check the Honolulu sign code.**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

@@ -1316,6 +1316,690 @@ _working notes live in Projects/MRC/ (e.g. ch06_argument.md). This file keeps tr
 
 ---
 
+## S3 -- round three, 2026-11-07 (filed 2026-11-18)
+
+_Captured in a claude.ai chat on 2026-11-07 with Drive read-only; the block was not
+applied that day and was filed through the R bridge on 2026-11-18._
+
+### Kim's ideas
+
+- **The degree-day plot** is a tool for S3's middle range, between the weather and
+  climate bookends.
+- **The Arizona story:** insects in Arizona crop fields complete their life cycles in
+  a set number of degree-days. Viewed on that axis, insect collections that looked
+  chaotic (species abundances through the crop season) became understandable. Kim
+  recalls this as Floyd Werner's work (University of Arizona) -- to be verified.
+- **Phenology as an ecological lens.** Helmut Lieth told Kim, in essence, that old
+  ecologists become phenologists. To Kim as a young ecologist, that meant it takes
+  years of study to see why phenology matters.
+- Phenology is hard to study: long timespans and much field time -- unless a
+  citizen-science project recruits many volunteers.
+- **Visualization matters in phenology:** maps of fall color moving across the US or
+  Japan.
+- Kim has a graphic or two of Washington, DC cherry blossoms, plus personal stories
+  to tell about them.
+
+### Kim's ruling
+
+- S3 uses the standard term **degree-day** (not "day-degree").
+
+### Claude (NOT ruled)
+
+- The Arizona story is S3's thesis in one example: change the time axis from
+  calendar days to accumulated heat, and pattern appears.
+- Friction: degree-day sums were tedious by hand; now a line of R.
+- MRC tie-in: the base temperature is a category boundary (boundaries in value)
+  that sets the clock.
+- Candidate fourth worked group (crop pests / phenology), beside fire, vintage and
+  tree rings.
+- Long records for the backward view: Kyoto cherry-blossom dates and the DC
+  peak-bloom record; Japan's sakura-zensen and koyo-zensen maps as the classic
+  phenology-front graphics.
+
+### Verify before writing
+
+- Werner: Floyd G. Werner (1921-1992), PhD Harvard 1950, University of Arizona from
+  1954; his departmental work included parasites of cotton insects (Olson, Psyche
+  101, 1994; Fauna of New Zealand 34 contributor notes). **The degree-day link is
+  NOT confirmed.**
+- Length of the Kyoto record and the start year of the DC peak-bloom record.
+
+## S3 -- round three, cont. 2026-11-18: THE NEGLECTED MIDDLE, BEYOND WEATHER
+
+### Kim's ideas
+
+- **The scale, restated.** Climate is one end: a long-term average (many years) of
+  temperature and precipitation. The nightly news weather segment is the other end:
+  short-interval data, mostly predictions -- hourly temperature and rain
+  probabilities through the next few days. The scales in between are ones people
+  generally don't encounter. **That is the realm of the ecologist.**
+- **The middle-scale question:** what is this year's precipitation pattern, compared
+  with the last few years -- with the wettest and driest years added to set the
+  historical boundaries. That analysis and display gives the context, and the
+  variability, that reports from the two ends leave out.
+- **Mekong River Commission** (a worked example in a neighboring subject): river
+  cross-sections marked with the current water level and the extreme levels; and
+  the seasonal progression of water levels with reference lines that put the
+  current trend in context.
+- **A dashboard as a nightly-weather supplement:** the components of weather plus
+  analytical derivatives (e.g., drought).
+- **The frog in the pot:** the frog checks the water every few seconds; the change
+  between readings is too small to notice, so the pattern is never seen. Measure
+  every minute and the change is obvious. Daily weather is the same -- day-to-day
+  is too short an interval to see a change in pattern (except in extremes); the
+  weekly-or-longer pattern, set against previous years, shows it.
+- **The goal:** take this into new, very different areas -- places where the middle
+  of the time scale has been neglected and where its patterns would give better
+  context for understanding. Weather/climate was the starting point; the Mekong is
+  a step sideways.
+
+### Claude (NOT ruled)
+
+- **Accumulation is the middle-scale instrument.** Degree-days (11-07), rainfall to
+  date, river and reservoir storage are all running sums. Day-to-day differences
+  sit below notice; sums integrate them into something visible. The frog reads
+  differences; the ecologist reads accumulations.
+- **The frog as a threshold problem.** Change per interval falls below a
+  just-noticeable difference. A longer interval lifts it over the threshold -- a
+  perceptual category boundary, which ties to MRC (boundaries in value). Note: the
+  biology is a myth (real frogs leave); use it as a parable and say so.
+- **The canonical display:** this year's trace against an envelope (median, the
+  record wet and dry years, or percentile bands). The Mekong charts are one form;
+  so are flu-season curves plotted against past seasons.
+- **Shifting baselines (Pauly)** may be the frog at generational scale: each
+  generation takes the state it first saw as normal. A backward-looking chapter
+  candidate.
+- **Candidate domains for the neglected middle:** public health (flu seasons);
+  reef heat stress (NOAA Coral Reef Watch's degree heating weeks -- accumulation
+  again); reservoirs and lake levels; fire danger against percentiles;
+  household energy or fuel use against previous years; personal health
+  measures against one's own baseline; markets (daily ticks vs. the year).
+- **Name clash:** the Mekong River Commission's acronym is MRC, the same as
+  *Measurements Require Categories*. Spell it out in S3.
+- **Scope question for Kim:** S3's subtitle is about the scale between weather and
+  climate. Today's goal generalizes past weather. Keep weather/climate as the
+  anchor case with other domains as chapters, or retitle around the general
+  middle scale?
+
+### Verify before writing
+
+- What the Mekong River Commission's monitoring pages show today (cross-section and
+  seasonal hydrograph with reference lines).
+- Boiling-frog history (19th-century experiments vs. the modern debunking).
+- Shifting baseline syndrome: Pauly 1995 attribution.
+- Degree heating weeks: NOAA Coral Reef Watch definition.
+
+### Kim's ruling (2026-11-18, later)
+
+- **Scope: too early to decide.** More thinking first, and a look at potential
+  topics besides weather and climate. The subtitle question stays open.
+
+### Kim -- the event year (2026-11-18, later)
+
+- **The start of an event year doesn't always match the solar year.** Probably a
+  chapter in itself.
+
+### Claude (NOT ruled)
+
+- Examples: the water year (US, starting in October); the crop year and the wine
+  vintage (a Southern Hemisphere vintage straddles two calendar years); the flu
+  season; the hurricane season; fire seasons; fiscal and academic years.
+- **The principle: put the year's boundary in the trough,** where little happens,
+  so a single event isn't cut in two. A wet season split by January 1 becomes two
+  half-seasons in two different years -- the boundary manufactures noise.
+- That makes the event year a boundary-in-time decision -- the trilogy's
+  "boundaries in value, space and time" -- and the time-axis counterpart of
+  MRC's chosen category cut points.
+- Hawai'i test case (light touch, per the ruling): the two Hawaiian seasons and the
+  Makahiki as a year framed by events rather than by the solar calendar.
+
+### Verify before writing
+
+- Water-year definition (USGS, Oct 1-Sep 30); flu-season week convention (CDC);
+  Atlantic and Central Pacific hurricane-season dates; Hawaiian season names and
+  Makahiki timing.
+
+### Kim -- phenology, travel and spectacle (2026-11-18, evening)
+
+- **DC cherry blossoms (story):** Kim and Nancy worked hard to see them. Flights
+  and hotels have to be booked early, and predicting peak bloom was tricky. They
+  succeeded on the **third try**.
+- **Kyoto fall color (story):** easier -- they hit the peak on the **first try**.
+- These are among the few phenological events widely shown in the news cycle.
+- **The sentinel.** In DC a single "sentinel" tree is observed and the bloom stages
+  are extrapolated from it. The sentinel organism is interesting and may be
+  critical to some phenological studies.
+- **Amplified phenology.** Organizations, and businesses, amplify phenology by
+  massing a single species so its flowering covers a large area or draws crowds --
+  a cultural phenomenon. The Ranunculus at The Flower Fields (near San Diego) and
+  Keukenhof (The Netherlands): bucket-list experiences Kim and Nancy have enjoyed
+  more than once.
+- **First flower memory (story):** family picnic drives in the mountains above San
+  Bernardino, California. Rounding a corner on a remote mountain road, a hillside
+  covered with lupine. Dad stopped the car; everyone got out; everyone was very
+  excited.
+
+### Claude (NOT ruled)
+
+- **The title is in the trips.** A cherry peak lasts days -- a *snap*. Kyoto's fall
+  color holds for weeks -- a *stretch*. A narrow window against the same forecast
+  error explains three tries versus one.
+- **Travelers live the missing middle.** Bookings are made months ahead on
+  climate-like knowledge; the date is set by weeks of weather (degree-days again).
+- **Sentinel as a sampling choice:** one individual stands for the population, a
+  kind of type specimen for time. Cloned lilac networks are the engineered
+  version -- removing genetic variation so the sentinel reads only the weather.
+- **Amplified phenology runs two ways:** massing spectacle in space (fields, gardens)
+  and engineering the season in time (staggered planting, varieties chosen to
+  stretch the bloom). Public phenology: hanami, koyo, leaf-peeping, superblooms,
+  bloom forecasts as news.
+- **Structural pair:** the lupine hillside is chance -- the bloom you stumble on --
+  against the planned trip, the bloom you forecast. Possible chapter opening.
+
+### Verify before writing
+
+- NPS name and siting of the DC indicator ("sentinel") tree; its bloom-stage
+  definitions and the peak-bloom criterion.
+- Cloned lilac phenology networks (origin, US network history).
+- The Flower Fields (Carlsbad) and Keukenhof: season length and how it is managed.
+
+### Kim's ruling (2026-11-18, evening)
+
+- **The lupine hillside opens the phenology chapter.** Kim was about 5 years old;
+  he can still picture the field, especially the color of the flowers.
+
+### Kim -- fireweed, the living calendar (2026-11-18, evening)
+
+- **Story:** Kim and Nancy spotted their first fireweed just after leaving the
+  airport in Valdez. Their hosts, Peter and Carla, told them the folk reading: it
+  blooms from the bottom of the spike upward, and when the top flowers open, summer
+  is nearly over. They were on their way to Peter and Carla's boat in the Valdez
+  harbor -- named *Fireweed*.
+- Kim has driven around Alaska quite a bit. Fireweed is a beautiful roadside plant
+  and, indeed, **a living calendar for the season.**
+- **Unlike the turning of fall leaves, fireweed shows seasonal time over a long
+  period.**
+- Photographs exist: the TwoRed 2013 Alaska deck includes fireweed (see
+  `proj_Smart_Car` / `deferred.md`).
+
+### Claude (NOT ruled)
+
+- **A third kind of phenological signal.** The cherry peak is an event (a snap);
+  fall color is a window (a stretch); fireweed is a **gauge** -- a continuous
+  readout of how far the season has run. The spike is a progress bar.
+- **Fireweed is a running sum drawn by a plant** -- the same idea as the degree-day
+  accumulation, displayed on a stem. A candidate bridge between the phenology
+  chapter and the accumulation spine.
+- The chapter could run lupine (chance) -> cherry blossoms (forecast event) -> Kyoto
+  (window) -> fireweed (gauge).
+
+### Verify before writing
+
+- Fireweed's bottom-up (acropetal) flowering and the Alaskan folk saying's usual
+  wording.
+
+### Kim -- annual rings, otoliths, and organisms as recorders (2026-11-18, evening)
+
+- Does the annual ring fit somewhere? If it does, otoliths belong too.
+- **Story -- first "biology job":** a seasonal aide for California Fish and Game (as
+  it was then called), collecting and preparing otoliths and fish scales. It lasted
+  nine months: a short break from school to find out whether he liked biology
+  enough to make it a profession.
+- **Possible theme:** organisms work in cycles, and sometimes they record the
+  details of the cycles (e.g., the widths of tree rings).
+
+### Claude (NOT ruled)
+
+- Tree rings are already one of S3's three worked groups (ruling, 2026-09-22); the
+  otolith joins them rather than opening a new slot.
+- **Gauge vs. archive.** Fireweed shows this season live, then forgets it. Rings,
+  otoliths and scales keep every season. Phenology reads the present; the
+  recorders give the backward perspective S3 wanted.
+- **One structure, two scales:** otoliths carry daily increments (in young fish) as
+  well as annual rings -- the snap and the year in one bone.
+- Other biological recorders: coral growth bands, mollusk shells (sclerochronology),
+  tooth cementum. The recorded width is itself an accumulation -- a season's growth
+  summed and laid down.
+
+### Verify before writing
+
+- Daily otolith increments (Pannella, Science 1971); otolith and scale annuli in age
+  determination; the agency's name at the time of Kim's job.
+
+### Kim -- USDA hardiness zones (2026-11-18, evening)
+
+- **Ruling: hardiness zones must be in S3.**
+- A measure people know about but may not fully understand. To many it is just a
+  number on a nursery plant label, matched to a value someone said would be safe
+  to buy.
+- Prior work: whittakerr (2026-05-14 side thought on hardiness zones and the agency
+  model; queued Hardiness-vs-Whittaker example on the gardens CSV) and
+  Temperature_Patterns notes (zones from WorldClim BIO6; California zone shifts).
+
+### Kim -- desert superblooms (2026-11-18, evening)
+
+- Somewhat parallel to eastern US fall color: the spectacular flower blooms of the
+  Southwest deserts.
+- **Not easily predicted in either time or space.**
+- When they are reported, huge crowds head out to see them -- traffic and parking
+  problems.
+
+### Claude (NOT ruled)
+
+- **Hardiness: an average of snaps.** A zone is built from each year's single
+  coldest night, averaged over climate-length periods. The plant lives or dies by
+  one night, not by the average.
+- The label number is an MRC-style category from one measurement; the zone map's
+  boundaries move between USDA editions (boundaries in time). The scale is silent
+  on heat, rain and how long the cold lasts.
+- **Superbloom: a snap triggered by a stretch.** The bloom lasts weeks; whether it
+  happens depends on the season's accumulated rain, and the seed bank waits through
+  dry years for it -- three scales in one event.
+- **Natural vs. planted spectacle:** The Flower Fields and Keukenhof are engineered
+  to be predictable; the desert is not. Unpredictability plus instant reporting is
+  what produces the crowd surge. Pairs with the lupine (the bloom found by chance).
+
+### Verify before writing
+
+- USDA zone definition: averaging period of the current map, 10-degree F zones with
+  5-degree a/b halves, edition years.
+- Superbloom germination triggers (fall/winter rain thresholds); a documented crowd
+  episode (e.g., Walker Canyon, Lake Elsinore, 2019).
+
+### Kim -- migratory land birds and voyaging (2026-11-18, evening)
+
+- **A phenological event with a profound cultural response.** Living on a Pacific
+  island long ago, you notice that all the individuals of one kind of bird -- land
+  birds, not seabirds -- suddenly leave, and months later all come back.
+- That strongly hints there is someplace similar, far enough away that you can't
+  see it. It might inspire a voyage to look for it -- and **the birds also give the
+  direction.**
+- **It took both** the birds and a population living in a non-contiguous land area.
+
+### Claude (NOT ruled)
+
+- **There is a published precursor.** Harold Gatty (*The Raft Book*, 1943; *Nature Is
+  Your Guide*, 1958) proposed that Polynesian voyaging followed seasonal bird
+  migrations: the long-tailed cuckoo (a land bird) to New Zealand, the Pacific
+  golden plover (kolea) north from Tahiti to Hawai'i. David Lewis (*We, the
+  Navigators*, 1972) discussed it. Te Ara (Irwin) notes Maori tradition of
+  following migrating birds; others call the cuckoo link controversial. Kim's
+  version adds the reasoning from the islander's side: synchrony + absence +
+  return = a place; the flight line = a bearing.
+- **A middle-scale inference.** One departure proves nothing; years of watching the
+  same birds leave and return make it a pattern worth a voyage.
+- **Why land birds matter:** islands hold few land-bird species, so a whole species
+  vanishing at once is conspicuous -- and land birds can't rest on the sea.
+- **Hawai'i as test case (light touch):** kolea leave Hawai'i each spring flying
+  north toward Alaska, yet no voyage followed them there -- the hint is necessary,
+  not sufficient.
+
+### Verify before writing
+
+- Gatty's exact claims and dates; Lewis 1972 treatment; the current scholarly view
+  (contested). Kolea arrival and departure months in Hawai'i.
+
+### Kim -- a ladder of wet-weather timescales (2026-11-18, evening)
+
+_Source: a table Kim got from Gemini (AI output, unverified), reformatted._
+
+| Typical duration | Meteorological / broadcast term | Underlying scale and driver |
+|---|---|---|
+| 10-45 minutes | Passing shower | Microscale/mesoscale: a single convective cumulus cell moving with the wind |
+| 1-12 hours | Period of rain / frontal passage | Mesoscale/synoptic: a single frontal rainband or stratiform shield |
+| 2-7 days | Rain spell / rainy stretch | Synoptic: a slow-moving trough, stalled front, or short run of disturbances |
+| 1-2 weeks | Unsettled pattern / storm train / blocking pattern | Planetary (Rossby wave): jet-stream lock, cut-off low, Rex/Omega block, atmospheric-river parade |
+| 2-6 weeks | Subseasonal wet regime / AR family | Subseasonal: MJO wet phase or a persistent wave-train anomaly |
+| 2-6 months | Rainy season / monsoon / ENSO regime | Seasonal: annual migration of the jet stream, or El Nino/La Nina coupling |
+
+### Claude (NOT ruled)
+
+- **The table uses S3's own words:** "spell" and "stretch" sit at 2-7 days. The
+  vocabulary for the middle exists; it just isn't in the nightly broadcast.
+- **The bottom three rows are S3's missing middle** (a week to a season).
+  Meteorology has its own name for this band -- "subseasonal to seasonal" (S2S) --
+  and treats it as the hardest range to forecast: too long for the weather's
+  initial state to matter, too short for the slow ocean signals to dominate. The
+  forecasters' gap and the public's gap are the same gap.
+- **A ladder is an MRC object:** duration categories with boundaries (45 minutes,
+  12 hours, a week). Parallel ladders could be built for dry spells and for
+  temperature (the cold *snap*). Possibly one graphic per variable, tying S3's
+  title to real scales.
+
+### Verify before writing
+
+- Check every row against a standard source (AMS Glossary of Meteorology, WMO).
+  AI-generated durations and term assignments need confirmation.
+- The WMO S2S Prediction Project and the "predictability gap/desert" framing.
+
+### Kim -- a year diagram of durations (2026-11-18, evening)
+
+- **Idea:** a diagram plotting the duration of each type of wet pattern (the ladder
+  above), lined up across a year.
+- Critical assumptions would be required, but formal definitions probably exist
+  to help.
+- **Such a diagram shows the periods of precipitation, whereas we usually show the
+  amounts.** Somewhat different goals.
+
+### Claude (NOT ruled)
+
+- **One parameter builds every row.** Hydrology defines a storm event by a minimum
+  inter-event time (IETD): dry gaps shorter than it are merged into one event.
+  Apply the same hourly record with a growing gap tolerance (an hour, a day, a
+  week, a month) and each row of the ladder falls out. The diagram is a
+  hierarchical clustering of wet hours in time -- a dendrogram laid on a calendar.
+- The gap tolerance is the critical assumption -- and an MRC-style boundary choice.
+- Formal anchors to check: the IETD literature; ETCCDI indices for consecutive wet
+  and dry days (CWD, CDD).
+- Periods and amounts can share the figure: duration rows above, daily amounts
+  below, bars shaded by event total.
+- Kin to a wavelet scalogram (variance by period through time), but categorical
+  and readable without the mathematics.
+- Sketch with synthetic data made 2026-11-18 (illustration only); a real-data
+  version needs an hourly gauge record.
+
+### Kim's ruling (2026-11-18, evening)
+
+- **Keep the duration diagram** and feed it data from different places. It gives a
+  visualization for what is otherwise a formal table; it fits the spirit of the
+  trilogy.
+- Tool saved: `Projects/S3/figures/rain_periods/rain_periods.R` (base R;
+  `rp_events()`, `rain_periods_plot()`, `rp_ladder`, `rp_synthetic_year()`), with the
+  synthetic demo `rain_periods_synthetic.png`. Input: hourly time + amount.
+
+## S3 -- round four, 2026-11-21: TIME TEMPLATES AND THE VISUALIZATION OF VARIABILITY
+
+### Kim's ideas
+
+- **Time templates.** Civilization, with celestial mechanics, has imprinted time
+  units on us: 24 hours in a day, 7 days in a week. These units shape how we think
+  about and represent time-based activities and phenomena.
+- **The alternative:** things begin when they begin and end when they end, without
+  being fitted into our time templates.
+- **Rain seasons:** we report annual rainfall -- fitting parts of a cycle into a
+  system whose boundaries were set for a different purpose. Our time units are
+  applied, perhaps, to too many things. Handy for searching for correlations, but
+  it distorts the underlying reality.
+- **Soil moisture** is a seasonal pattern with its own beginning and end; it does
+  not recognize that the calendar moved from December to January.
+- As we visualize data, **we need to consider the boundary issue.** (Kim: "I know
+  I'm not stating this quite right.")
+- **Variability is generally neglected in visualization.** Its importance showed
+  when we plotted annual values on Whittaker diagrams (whittakerr). A theme that
+  needs more work.
+- **An enriched climate diagram:** the classical climate diagram with the lines for
+  mean monthly temperature and precipitation, plus an indication of variability --
+  maybe, like the Mekong River Commission charts, lines for extreme years, the
+  long-term average, and the current year. **It's the context that's too often
+  missing.**
+
+### Claude (NOT ruled)
+
+- **Two kinds of time.** Calendar time is a template laid on everything (hours,
+  weeks, months, years). Event time is set by the phenomenon itself (a rain spell,
+  a wet season, a soil-moisture recharge). This generalizes the 11-18 event-year
+  idea from "where does the year start" to "should the template be used at all."
+- **The template's virtue is also its cost:** shared bins make different series
+  comparable (correlation), but each bin cuts through events. Monthly means smear
+  a wet season's onset across two months; a calendar total splits one season in
+  two. Possible phrase: "templates are for comparison, events are for
+  understanding."
+- **rain_periods already works in event time:** its bars start and stop with the
+  rain, not the calendar. The tool is a demonstration of Kim's alternative.
+- **The classical climate diagram is the Walter-Lieth diagram** (Walter & Lieth,
+  *Klimadiagramm-Weltatlas*, 1960s) -- Helmut Lieth's own, which ties to Kim's
+  "old ecologists become phenologists" story. Enriching it with variability
+  would be a direct homage.
+- **What the enriched diagram could show:** mean temperature and precipitation
+  lines (as now); a band per month for the interannual spread (e.g., 10th-90th
+  percentiles); the wettest and driest years as thin lines; the current year as a
+  bold trace. Same envelope grammar as the Mekong charts and the 11-18 "this year
+  against an envelope" display.
+- **Combine the two ideas:** an event-time climate diagram whose year starts in the
+  trough (e.g., the water year) rather than in January.
+- Prior work to reuse: whittakerr (annual values plotted on Whittaker biomes
+  showed the spread); the seasonality / seasonalityr work.
+
+### Verify before writing
+
+- Walter-Lieth diagram conventions (scales: 10 C = 20 mm; humid/arid shading; the
+  >100 mm compression) and the atlas citation and dates.
+- Existing R implementations (e.g., climatol::diagwl) to build on.
+
+### Kim -- the weathercast in event time (2026-11-21)
+
+- Kim confirmed the round-four reading above. Ruling: **record only for now; no
+  prototype** of the enriched climate diagram yet.
+- **The nightly report Kim imagines** (his wording):
+
+  > "That cold front that moves in on Thursday should be the start of our rainy
+  > season. We usually get four or five big pulses like we're expecting to start
+  > on Thursday. We'll keep track of them as the season progresses."
+
+  instead of
+
+  > "Rain is forecast for Thursday and it may last a few days."
+
+### Claude (NOT ruled)
+
+- What changes: the forecast is placed **inside a season** (event time, not the
+  calendar); it carries a **norm** ("usually four or five"); and it starts a
+  **running count** ("we'll keep track") -- accumulation again. Same rain, now with
+  context.
+- The "big pulses" are the rain_periods rows at multi-day tolerance; the
+  season-to-date count is what the nightly-weather supplement dashboard would
+  show.
+- Strong candidate for S3's opening or closing passage -- the whole argument in
+  two sentences.
+
+## ★ THEN AND NOW: DATA ACCESS -- Kim, 2026-11-21 ("pretty big for me"; arose from our work together)
+
+### Kim's story and argument
+
+- **Early 1970s, International Biological Program (IBP), Island Ecosystems
+  Integrated Research Program (IRP).** Kim's job: oversee weather data collection
+  and processing.
+- A transect of weather stations, each with a rainfall collector and a paper-chart
+  temperature recorder. **Each week** a field assistant drove the transect,
+  measured the water depth in each rain gauge and replaced the recorder paper.
+- Back at the university, an assistant read the **hourly temperatures** off the
+  charts and keypunched them so the weather log could be printed. Simple analyses;
+  data printed as reports.
+- Using the data for any other purpose was hard, especially without the deck of
+  cards. **Data were expensive (sometimes difficult) to collect, cumbersome to
+  organize, and generally hard to use.**
+- **What has changed is digital access, particularly API access. This is
+  revolutionary.**
+- The problem: most people in Kim's research arena still think of their
+  relationship to data as it was in the past.
+- In other documents we drew critical insight because we had access. The types of
+  data have been astounding (who knew there was canopy height data?), and the
+  spatial resolution equally amazing. With easy access we can look at things very
+  differently -- yet we keep our previous analysis and visualization tools.
+- **There were no shortcuts to getting data in the past. Now we have different
+  access. We need to use it.**
+
+### Claude (NOT ruled)
+
+- **This is FRICTION (ruled a major S3/trilogy component, 2026-09-22) at first
+  hand:** Kim ran the high-friction pipeline himself -- gauge, chart, keypunch,
+  printout.
+- **The collection method imposed a time template.** The weekly gauge read summed
+  each week's rain into one number: the rain periods were never recorded. The
+  rain_periods diagram (11-18) was literally impossible with IRP rainfall data;
+  hourly temperature survived only because a person read every hour off the
+  chart. Ties to round four: the template came from the field schedule, not the
+  phenomenon.
+- **Scarcity habits vs. abundance.** Old methods were designed to economize scarce
+  data (summaries, monthly means, one station per zone). With abundance the
+  bottleneck moves from getting data to having the concept to look for -- the
+  trilogy's founding point ("you don't see something unless you have a concept
+  of it").
+- **Evidence already in hand:** Voronoi/tessellr (Meta/WRI canopy height),
+  checklists (GBIF), PubMaps (Nominatim), Smart Car (logs); a then/now table could
+  list each with its pre-API cost.
+- **Possible worked example:** an IRP transect station then (weekly totals, hourly
+  chart temperatures) against modern data for the same place now.
+- **Placement is open:** an S3 chapter on friction, a preface for the whole
+  trilogy, or a document of its own.
+
+### Verify before writing
+
+- IRP name, dates and leadership (Mueller-Dombois; the 1981 *Island Ecosystems*
+  volume); the transect's location and station count; whether IRP weather reports
+  or card decks survive.
+
+### Kim's ruling -- placement (2026-11-21)
+
+- **Then-and-now data access goes in S3 as a FRICTION CHAPTER.**
+- **Friction is reintroduced periodically** -- Kim likes it as a recurring motif. It
+  is a kind way of saying that what we did in the past was OK; we can just make
+  things "smoother" now if we are willing to change.
+- Cross-reference: `deferred.md` > Smart_Car > "CARRY THE FRICTION LESSON OUT OF
+  SMART_CAR" (2026-09-01).
+- **Kim (2026-11-21): the Bob Jones work is a PRIME EXAMPLE of friction** -- hard-won
+  older data, recovered and made usable (Jones Collection; Alaska revival with Peter
+  McRoy pending, see `deferred.md`).
+
+## ★ S3 GUIDING PRINCIPLE -- KEEP THE FOCUS ON THE MIDDLE (Kim, 2026-11-21)
+
+- **Kim's statement:** as these ideas develop, we must not lose the focus on the
+  **middle range** of the time scale. We often focus on the macro (long-term) and
+  micro (short-term) ends and forget that **the meso (middle-term) scale is how we
+  understand, through context, what is happening at the ends.** "At least that's
+  been my focus."
+- Claude (NOT ruled): a working test for every candidate example -- *what does it
+  show at the meso scale that the two ends cannot?* Examples that live only at an
+  end get cut or reframed.
+
+### Kim -- the slow wearing away of an economic base (2026-11-21)
+
+- Prompted by a story Kim saw: killing off the sea otters made Alaska much less
+  valuable to Russia before the 1867 sale.
+- Ruling: **the slow wearing away of an economic base is a good example**,
+  especially if it can be tied to other work in progress. **A strong theme in
+  conservation in general.**
+- Claude (NOT ruled): the meso view is the decade-by-decade decline of the otter
+  harvest -- the context that explains both the snap (the 1867 sale) and the
+  macro story (empire). The frog in the pot at the scale of a state; kin to
+  shifting baselines. Possible tie-ins: the Jones / Alaska work; fisheries (Kim's
+  otolith job).
+- Verify: Russian-American Company otter-harvest records over time; the weight
+  historians give otter depletion among the reasons for the sale; the $7.2 million
+  price.
+
+## S3 -- overview and gap review, 2026-11-21 (Claude, at Kim's request; NOT ruled)
+
+**In hand.** Sept (rounds one-two): title, thesis (no concept, no seeing), the scale,
+snap/spell/stretch, three criteria, five implementations, three worked groups (fire,
+vintage, tree rings), Hawai'i test, friction, Bridgman boundary, visual-language
+requirement. Nov (rounds three-four): accumulation (degree-days); phenology
+(lupine / cherry / Kyoto / fireweed = chance / event / window / gauge); recorders
+(rings, otoliths); hardiness zones; superblooms; event year; calendar vs event time;
+the envelope display and an enriched Walter-Lieth diagram; the weathercast passage;
+the then-and-now friction chapter; the guiding principle; one working tool
+(rain_periods).
+
+**Gaps, in priority order:**
+
+1. **No outline holds the November material.** The 2026-09-22 seven-part outline is
+   built on spell definitions and algorithms; phenology, recorders, event time, the
+   envelope display and the friction chapter have no slots. A round-three outline
+   is the next structural step.
+2. **Scope is untested.** The goal is "very different areas," but every worked
+   example is still weather, climate or biology. Candidate domains (flu seasons,
+   reefs, markets, personal health) are Claude's lists; none chosen. A cheap test:
+   one domain with data already in hand (e.g., the Smart Car fuel logs, which carry
+   ambient temperature).
+3. **The guiding principle needs applying.** Several new examples sit at an end:
+   hardiness zone (an average of snaps), superbloom (a snap), the 1867 sale. Each
+   must show what the meso view adds. And no worked analysis yet shows HOW the
+   middle explains an end event -- the weathercast passage states it; an analysis
+   should demonstrate it.
+4. **Vocabulary vs ladder conflict.** Sept defined a spell by threshold + minimum
+   duration; the Gemini ladder defines it by duration alone (2-7 days); rain_periods
+   uses gap tolerance only (one of the five implementations). These need
+   reconciling.
+5. **No real data yet.** Fire, vintage and tree-ring data sources unchosen since
+   September; rain_periods never fed a real record; the five implementations never
+   run. Verify lists long.
+6. **Lopsided coverage.** Rain dominates; temperature (snap, heat wave), the dry side
+   (drought, dry spell) and the FORWARD direction (decisions: water, fire,
+   forecasting at S2S range) are thin. November material is mostly backward-looking.
+7. **Display forms uncatalogued.** Envelope, duration ladder, accumulation curve,
+   gauge, enriched climate diagram: a small set, perhaps chosen by a decision tree
+   like MWT's map-choice tree.
+
+Not a gap: personal stories (now plentiful; the two live wine stories on
+kimbridges-stories may serve the vintage group).
+
+## S3 -- back to the three terms: balancing snap, spell and stretch (2026-11-21)
+
+### Kim
+
+- Before the November material: return to what started S3 -- snap, spell and
+  stretch. **Our view of the three must be balanced in the discussion.**
+- How do we define a snap, and what are its implications? **Kim sees a snap as a
+  potential trigger event -- something that changes behavior.**
+- Question: are these key concepts that help define the importance of the middle
+  range?
+
+### Claude (NOT ruled)
+
+- **Three roles:** stretch = the STATE (sets the background, readies the system);
+  spell = the LOAD (a sustained departure whose effect accumulates -- a dose);
+  snap = the TRIGGER (an abrupt change that crosses a threshold and changes state
+  or behavior). Stretch sets the stage, spell loads it, snap releases it.
+- **Snap defined:** by RATE of change, not by level or length; short; measured
+  against the last few days (the 2026-09-22 table). Implication: a response --
+  leaves drop, birds move, people turn on heaters, a fire starts.
+- **The key move: whether a snap triggers anything is decided by the middle
+  range.** The same frost is harmless in dormancy and ruinous after budbreak (set
+  by spring degree-days). The same lightning does nothing after a wet stretch and
+  starts a fire after a drying spell. The first big storm germinates a superbloom
+  only after the right season. **The snap lives at the weather end; its
+  consequence is set at the meso scale.** This is the mechanism the guiding
+  principle asked for (gap 3 of the overview).
+- **Fire is already the template:** wet stretch grows fuel, dry spell cures it, a
+  wind or lightning snap ignites it (the SEQUENCE ruling, 2026-09-22).
+- **Perception is tuned to snaps.** Organisms and people are snap detectors; slow
+  change without a snap goes unnoticed. The frog in the pot is the case of no
+  snap. That is one reason the middle range is neglected.
+- **Helps reconcile the spell conflict (gap 4):** the three terms name KINDS of
+  departure (rate, threshold-plus-duration, persistence); the Gemini ladder names
+  DURATIONS. Two axes, not rival definitions -- a snap is defined by rate, so it
+  is orthogonal to the ladder.
+- **Balance gap:** snap is the least developed of the three; its vocabulary is
+  mostly cold ("cold snap"; no "heat snap"); rain and wind have their own words
+  (cloudburst, squall, gust).
+
+### Kim -- snaps beyond biology (2026-11-21)
+
+- **An economic snap:** Jensen Huang's resignation as Nvidia CEO (news, 2026-11-12)
+  and the drop in the company's market value. **Snaps are not just biology.**
+- **Discoveries are kinds of snaps.**
+
+### Claude (NOT ruled)
+
+- **The Nvidia day shows all three terms at once** (web, 2026-11-21): shares fell
+  about 10% premarket and as much as 14% early, then recovered to about 4% down by
+  midday (the snap, with a partial rebound). Before it, the stock had fallen as
+  much as 19% since the previous Friday (a spell) and about 27% over six months (a
+  stretch). The size of the snap only makes sense against that run-up -- the
+  middle explaining the end again.
+- **Discovery as snap:** an abrupt change in knowledge that triggers new behavior.
+  Its effect also depends on readiness: Mendel's 1866 paper drew little response
+  for about 35 years; rediscovered in 1900, it triggered genetics (a snap without
+  a primed state, then a snap after a long stretch). Kuhn's pattern may map onto
+  the three terms: normal science (stretch), accumulating anomalies (spell),
+  revolution (snap). Kim's own: finding there is canopy height data.
+
+### Verify before writing
+
+- Nvidia figures (premarket, intraday low, close on 2026-11-12; the prior-week and
+  six-month declines). Mendel publication and rediscovery dates; the Kuhn mapping
+  as an analogy, not a claim about Kuhn.
+
 ## Next
 
 **2026-10-30: focus returned to the trilogy -- MRC round three (above).** Context moves the boundary

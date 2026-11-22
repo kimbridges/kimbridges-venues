@@ -1,5 +1,10 @@
 # Focus History and Change Log
 
+<!-- superseded 2026-11-18 (Kim paused Kaka'ako Buildings at intake; focus -> S3 capture, round three) -->
+**Active Focus (2026-11-06): KAKA'AKO BUILDINGS -- the building-murals story (`G:\My Drive\kimbridges-stories\underway\Kakaako_Buildings\`, ~71 files / 867 MB of mural images; no proj file yet). Set by Kim at the MRC close; an exhibit of building murals is coming up (date to confirm). NOW: INTAKE.**
+
+**NEXT (2026-11-06): KAKA'AKO BUILDINGS -- formal intake (Mechanism 1): survey the underway folder from R (it is on G:), create `proj_Kakaako_Buildings.md`, confirm the exhibit date and the document's form and venue (likely kimbridges-stories). Web-size the photographs as a build step (style guide Section 6).**
+
 <!-- superseded 2026-11-06 (MRC PUBLISHED to kimbridges-documents /mrc/; focus moved to Kaka'ako Buildings by Kim) -->
 **Active Focus (2026-10-30): MRC -- *Measurements Require Categories*, first document of the trilogy (`proj_MRC.md`, code at `Projects\MRC`). Round-three outline ADOPTED (10 chapters in three parts). NOW: DRAFTING (all 10 chapters drafted; appendix next).**
 
