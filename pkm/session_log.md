@@ -11,6 +11,22 @@ Mechanism 4.
 
 ---
 
+## 2026-11-25 (evening) -- S3 ROUND-THREE OUTLINE: DRAFTED, RULED, REVISED; FIRST CHAPTER STORIES
+
+**Date / duration:** 19:55-21:25 HST.
+
+**Active focus at start:** S3 at capture; nothing changed since the 16:23 close; PubMaps 0/0/0.
+
+**What was done:**
+- Draft round-three outline (13 chapters + prologue, closing, appendix) with nine gaps, filed in `ideas_three_documents.md`.
+- **Kim's rulings:** merge ch.3+4 and move to second place (snaps, spells and stretches early); merge Recorders into The living calendar; spread the Hawai'i test through the chapters; **SCOPE RULED -- the environment is central** (planet-wide, underlying so much else), excursions welcome.
+- **Revised outline filed:** 10 chapters in three parts (like MRC), Hawai'i test marked per chapter.
+- **Kim's first chapter stories (verbatim, for joint editing):** ch.3 the Dieter / climate-diagram story (a temperate calendar imposed on Hawaiian seasonality); ch.2 snaps, spells and stretches as a folk taxonomy that persists for its utility; ch.7 the corrected misconception and what new visualization opened; plus the HNL runway reversal past his window.
+
+**Open / next:** more stories (chapters 1, 4-6, 8-10; ch.2's operations); then the process of getting good graphics (Kim); remaining gaps: fire and vintage worked groups, chapter 2's implementations on a real record, drought and the forward direction, chapter 10's figures.
+
+---
+
 ## 2026-11-25 -- S3 ROUND FIVE: PREDICTION VS THE MIDDLE; A WEEK OF CURRENT-DATA VISUALIZATIONS
 
 **Date / duration:** 09:58-16:25 HST, with breaks.

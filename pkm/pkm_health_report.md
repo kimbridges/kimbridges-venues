@@ -1,5 +1,5 @@
 # PKM Health Report
-_Generated 2026-11-25 16:25 by pkm_health.R. Regenerate; do not edit._
+_Generated 2026-11-25 21:23 by pkm_health.R. Regenerate; do not edit._
 
 ## Summary
 
@@ -13,7 +13,7 @@ _Generated 2026-11-25 16:25 by pkm_health.R. Regenerate; do not edit._
 - **Venues without a source repo:** 5 of 5
 - **Repo/clone mismatches:** 0
 - **Legacy pages awaiting account deletion:** 58
-- **Build scratch in C:/temp:** 11 folder(s), 416 MB
+- **Build scratch in C:/temp:** 10 folder(s), 138 MB
 
 ## Reconciliation failures
 
@@ -57,17 +57,16 @@ None.
 
 | folder | age_days | MB | past_threshold |
 |---|---|---|---|
-| pressure_terrain_20261125 |  0.0 | 278 | FALSE |
-| ghcn | 22.1 |  85 | TRUE |
-| cherry_20261125 |  0.0 |  31 | FALSE |
-| R_Basics_index_2026-10-28 | 27.9 |  14 | TRUE |
-| plainmaps_index_2026-10-28 | 27.9 |   5 | TRUE |
-| rehearsals_huntington_2026-09-30 | 55.9 |   2 | TRUE |
-| pkm_health_backup_2026-10-28 | 27.9 |   1 | TRUE |
-| isd | 22.9 |   0 | TRUE |
-| listsr_installtest_2026-10-28 | 28.0 |   0 | TRUE |
-| llm | 22.0 |   0 | TRUE |
-| secret_audit_2026-10-28 | 28.0 |   0 | TRUE |
+| ghcn | 22.3 | 85 | TRUE |
+| cherry_20261125 |  0.2 | 31 | FALSE |
+| R_Basics_index_2026-10-28 | 28.1 | 14 | TRUE |
+| plainmaps_index_2026-10-28 | 28.1 |  5 | TRUE |
+| rehearsals_huntington_2026-09-30 | 56.1 |  2 | TRUE |
+| pkm_health_backup_2026-10-28 | 28.1 |  1 | TRUE |
+| isd | 23.1 |  0 | TRUE |
+| listsr_installtest_2026-10-28 | 28.2 |  0 | TRUE |
+| llm | 22.2 |  0 | TRUE |
+| secret_audit_2026-10-28 | 28.2 |  0 | TRUE |
 
 ## Legacy pages by platform
 
@@ -83,4 +82,4 @@ None.
 None.
 
 ---
-_Ran in 88.4 s._
+_Ran in 88.7 s._

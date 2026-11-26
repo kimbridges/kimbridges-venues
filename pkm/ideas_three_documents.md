@@ -2499,6 +2499,199 @@ kimbridges-stories may serve the vintage group).
   fundamental ways to look at current data -- "a reminder that there are important
   things happening all the time."
 
+## S3 -- working outline, round three (DRAFT, Claude, 2026-11-25 evening; for Kim's rulings)
+
+_Supersedes the 2026-09-22 seven-part outline once ruled. Test applied to every chapter: what
+does it show at the middle scale that the two ends cannot? [F] = figure already built._
+
+**Prologue -- The weathercast, twice.** Kim's two versions ("start of our rainy season ... four or
+five big pulses" vs "rain is forecast for Thursday").
+
+_Part I -- The missing middle_
+1. **Two ends and a gap** -- climate averages vs the nightly forecast; prediction pulled the focus
+   (telegraph forecasting born to catch snaps; 'First Alert'); the almanac as a middle-scale
+   product with a weak method; the 1938 averages revolt; the frog and the measurement interval.
+2. **Calendar time and event time** -- time templates; the event year (boundary in the trough);
+   periods vs amounts; the wet-weather ladder. [F] rain_periods.
+3. **Snaps, spells and stretches** -- three kinds of departure (rate; threshold + duration;
+   persistence) and three roles (trigger, load, state); the snap gated by the middle; vocabulary
+   gaps (no 'heat snap'); beyond weather (Nvidia, discovery); the three criteria (noise relative
+   to the receiver; the sap-flow counterexample; relative vs absolute thresholds).
+4. **Definitions become operations** -- the five implementations as theories of the word; the
+   disagreement map; Bridgman, lightly.
+
+_Part II -- Reading the middle_
+5. **Accumulation** -- degree-days and the Arizona insects (Werner, verify); running sums;
+   hardiness zones (an average of snaps); the superbloom (a snap triggered by a stretch).
+6. **The living calendar** -- opens with the lupine hillside; DC cherries (sentinel tree; Kim's
+   2022 analysis: variability sits early, the 2018 miss, the 2017 frost) [F]; Kyoto's window;
+   fireweed's gauge; amplified phenology; migratory land birds and voyaging.
+7. **Recorders** -- tree rings; otoliths (daily and annual); Noguchi's wind-shaped trees
+   (persistence written in form); gauge vs archive.
+8. **This year against the envelope** -- the Mekong displays; the enriched Walter-Lieth diagram
+   (Lieth); the neglect of variability; thresholds: San Francisco's small addition [F]; floods as
+   resource vs hazard (Angkor); periodic vs aperiodic.
+9. **The moving landscape** -- pressure as terrain, the six-day animation, Topeka's barograph,
+   rivers of air and the integrative statement, particles aloft and at the surface, where 500 hPa
+   is [F x7]; weather has a speed; the 1-2 week row made visible.
+
+_Part III -- Living with the middle_
+10. **Forward and backward** -- the groups who work at this scale; the loop; fire (forward:
+    stretch grows fuel, spell cures it, snap ignites); vintage (backward: Ashenfelter); farmers,
+    water managers, travelers booking cherry trips.
+11. **Friction, then and now** -- the IRP transect and keypunch; the map that could not be drawn;
+    the 1985 preface; API access; scarcity habits; the Jones recovery; Noguchi's 590 sites.
+12. **Frozen categories and rare events** -- stationarity is dead; Zone 7a; the 1% flood and the
+    mortgage; memory vs return interval; external memories (hurricane tracks, tsunami stones);
+    focusing events; the slow wearing away (sea otters); shifting baselines.
+13. **The test: Hawai'i** -- trade-wind persistence (Noguchi); kau and ho'oilo; windward vs
+    leeward; percentile spells that do not matter; hurricanes and tsunamis.
+
+**Closing -- An open psychohistory.** Asimov's Foundation; examples plus tools.
+**Appendix -- The catalog.** Picture-first; code hidden until asked.
+
+### Gaps the draft exposes (Claude, NOT ruled)
+
+1. **Thirteen chapters is long** (MRC has ten). Candidates to merge: 4 into 3; 13 into the others
+   as recurring tests; 7 into 6.
+2. **The worked groups are uneven.** Fire has a template but no figure or data; vintage has
+   only the Ashenfelter reference (Kim's two wine stories could help); tree rings moved into
+   Recorders.
+3. **Chapter 4 has nothing built:** the five implementations have never run on a real record.
+4. **Scope is still open:** beyond-weather examples are few (Nvidia, discovery, the otters). The
+   outline keeps the environment central with excursions; that needs a ruling.
+5. **The forward direction is thin:** fire, water decisions, seasonal forecasting.
+6. **Drought and the dry side** are missing (Topeka gives a cold front; nothing for dry spells).
+7. **Chapter 12 needs its figures:** the hurricane-track map; chance over a mortgage vs return period.
+8. **Personal stories are uneven:** rich in 6, 7, 11; thin in 2, 3, 4, 9 (Kim's paper-chart
+   recorders could anchor 9: the barograph he used to read).
+9. **Chapter 9 may be too big** for one chapter (seven figures).
+
+### Kim's rulings on the draft (2026-11-25 evening)
+
+- **Merge chapters 3 and 4** and **move them to second place**: snaps, spells and stretches are an
+  important theme and belong early.
+- **Merge chapter 7 (Recorders) into chapter 6 (The living calendar).**
+- **Spread chapter 13 (Hawai'i) through the others** as recurring tests.
+- **SCOPE RULED:** be candid -- **the environment is central**, because it is broad in scope
+  (planet-wide) and a factor underlying so many other things. Excursions beyond it
+  (markets, discovery) remain welcome as examples.
+- Next (Kim): he will give stories; then work through the process of getting good graphics.
+
+## S3 -- working outline, round three, REVISED (after Kim's rulings, 2026-11-25 evening)
+
+_Ten chapters in three parts, like MRC. [F] = figure built. [H] = where the Hawai'i test appears._
+
+**Prologue -- The weathercast, twice.**
+
+_Part I -- The missing middle_
+1. **Two ends and a gap** -- climate averages vs the nightly forecast; prediction pulled the focus
+   (telegraph, 'First Alert'); the almanac and the 1938 revolt; the frog and the measurement
+   interval; the guiding principle; scope stated candidly (the environment, planet-wide).
+2. **Snaps, spells and stretches** -- three kinds of departure (rate; threshold + duration;
+   persistence) and three roles (trigger, load, state); the snap gated by the middle; vocabulary
+   gaps; beyond the environment (Nvidia, discovery); the three criteria (noise relative to the
+   receiver; sap flow; relative vs absolute thresholds); the five implementations as theories
+   of the word and where they disagree; Bridgman, lightly. [H: percentile spells that do not
+   matter in a low-amplitude climate]
+3. **Calendar time and event time** -- time templates; the event year (boundary in the trough);
+   periods vs amounts; the wet-weather ladder. [F] rain_periods. [H: kau and ho'oilo; the
+   Makahiki as a year framed by events]
+
+_Part II -- Reading the middle_
+4. **Accumulation** -- degree-days and the Arizona insects; running sums; hardiness zones (an
+   average of snaps); the superbloom (a snap triggered by a stretch).
+5. **The living calendar and its recorders** -- the lupine hillside; DC cherries [F]; Kyoto;
+   fireweed (gauge); amplified phenology; land birds and voyaging; then the archives: tree
+   rings, otoliths, Noguchi's wind-shaped trees. [H: trade-wind persistence written in crowns]
+6. **This year against the envelope** -- the Mekong displays; the enriched Walter-Lieth diagram;
+   variability; thresholds: San Francisco's small addition [F]; floods as resource vs hazard
+   (Angkor); periodic vs aperiodic. [H: windward vs leeward rainfall envelopes]
+7. **The moving landscape** -- pressure as terrain; the six-day animation; Topeka's barograph;
+   rivers of air and the integrative statement; particles aloft and at the surface; where
+   500 hPa is [F x7]; weather has a speed. [H: the subtropical high over the islands; Kona lows]
+
+_Part III -- Living with the middle_
+8. **Forward and backward** -- the groups who work at this scale; the loop; fire (forward);
+   vintage (backward); farmers, water managers, travelers.
+9. **Friction, then and now** -- the IRP transect and keypunch; the map that could not be drawn;
+   the 1985 preface; API access; scarcity habits; Jones; Noguchi's 590 sites.
+10. **Frozen categories and rare events** -- stationarity; Zone 7a; the 1% flood and the
+    mortgage; memory vs return interval; external memories; focusing events; the sea otters.
+    [H: the hurricane-track map; tsunami inundations]
+
+**Closing -- An open psychohistory.** **Appendix -- The catalog** (picture-first; code hidden until asked).
+
+**Gaps still open (from the draft review):** worked groups uneven (fire: no figure; vintage: thin);
+chapter 2's implementations never run on a real record; forward direction and drought thin;
+chapter 10 needs its figures; personal stories thin in 1-3 and 7; chapter 7 large.
+
+## S3 -- Kim's chapter stories, first drafts (2026-11-25 evening)
+
+_Kim: "This is all pretty rough as I'm quite tired from a long day. Treat the stories as a draft
+subject to our (joint) editing." Kept verbatim below (typos included) for the joint edit._
+
+### For chapter 3, Calendar time and event time (Kim, verbatim)
+
+> Working with Dieter Mueller-Dombois meant it was inevitable that I'd be creating climate diagrams.
+> This was his way of thinking about the year's weather. He was the project director. I liked the
+> climate diagram utility, but found the alignment to the boundaries tied to a twelve month temperate
+> calendar. My research was examining seasonality and the visualization was working against me. It
+> was imposing a structure that might work elsewhere, but not for my studies in Hawai`i.
+
+### For chapter 2, Snaps, spells and stretches (Kim, verbatim)
+
+> Listen to what people say about the weather. Not so much the daily report. But off-hand remarks.
+> That's when people slip in terms like snaps, spells and stretches. Now that I'm listening, I'm
+> hearing them more often. To the people who use these words, there is an important meaning. Yet
+> these word -- they are really concepts -- seem to lie on the edge or even outside of our more formal
+> weather descriptions. Maybe, I asked myself, this is a "folk taxonomy" that persists because of its
+> utility. It's not needed for the nightly weather forecast. That has its own rigid format. The snaps,
+> spells and stretches seems to come from an earlier time when we took a broader view of weather. And
+> maybe, just maybe, the concept extends beyond weather. Maybe it is a fundamental way of thinking
+> about time-based phenomena.
+
+- ("Definitions become operations", now part of chapter 2: nothing yet.)
+
+### For chapter 7, The moving landscape (Kim, verbatim)
+
+> If we use images to help us think about things, then limitations in creating images will limit our
+> understanding. Black and white images usually convey less information than those rendered in color;
+> color can be an added bit of data. I lived in that world that was constrained by technology and by
+> the slow acceptance of changes in convention. We simply got used to how data were presented. I was
+> actually timid in my asking Claude about weather charts that show the highs and lows. I knew the
+> fundamentals. At least I thought I did. When I asked for a 3D visualization, it was clear I was
+> wrong. The mew visualization showed me where I'd made a bad assumption. I'm pretty sure that I've
+> not been alone in making this conceptual error. For me, seeing the data presented in a new way
+> opened a door leading to a number of new ways to examine the way weather moves. To be realistic, it
+> would have been difficult for me to do this without today's technology resources. The point is,
+> however, that we now have the needed capabilities to better portray complex systems, like weather
+> patterns. As in other areas, the enhanced visualization isn't limited to weather. It just serves as
+> a good example.
+
+### Claude's notes for the joint edit (NOT ruled)
+
+- **Ch.3:** the climate diagram is both villain here (a temperate twelve-month frame on Hawaiian
+  seasonality) and hero in ch.6 (the enriched version shows variability). The two meet if the
+  ch.6 diagram starts its year in the trough -- the story sets up the resolution.
+- **Ch.2:** 'folk taxonomy' is Kim's own ethnobiology vocabulary, and it links to MRC's
+  language chapter (Berlin). The line 'persists because of its utility' could carry the
+  chapter's thesis.
+- **Ch.7:** an honest account of a corrected misconception; pairs with the integrative statement
+  and the histograms. Its middle sentences (technology limits, slow conventions) also echo in
+  ch.9's friction story.
+- Typos to fix in editing: 'these word' -> 'these words'; 'mew' -> 'new'.
+
+### Kim -- story for chapter 7 (and the Hawai'i test): the planes past the window (2026-11-25, at the close)
+
+- After today's work on air flow, Kim checked the flow over the Hawaiian Islands: "a bit
+  'backwards' as it is described locally." A few hours later, planes began landing in the
+  opposite direction at HNL -- a flight path very (VERY) close to his apartment window. **Each
+  plane that goes by is a reminder of the wind pattern and how it changes.**
+- Claude (NOT ruled): planes land into the wind, so the runway in use is a wind instrument read
+  by everyone under the flight path -- a snap (the reversal) seen at home. Fits ch.7's Kona-low
+  test. Verify: HNL runway configurations under trades vs Kona winds.
+
 ## Next
 
 **2026-10-30: focus returned to the trilogy -- MRC round three (above).** Context moves the boundary
