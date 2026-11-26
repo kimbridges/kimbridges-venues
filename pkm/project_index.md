@@ -1,5 +1,5 @@
 # Projects Index
-_Last updated: 2026-11-21_
+_Last updated: 2026-11-25_
 
 > **History split out 2026-07-28.** The superseded Active Focus blocks and the full
 > dated Change Log now live in `logs/focus_history.md`, verbatim and unedited.
@@ -13,7 +13,7 @@ _Last updated: 2026-11-21_
 
 **STANDING CHECK (from 2026-10-29, while PubMaps runs as an email service):** after the session-start reads, run `source("G:/My Drive/Projects/PubMaps/service/pubmap_service.R"); service_check()` and report its line with the Active Focus. If the inbox holds PDFs, PROPOSE `process_inbox()` and run it (async) only on Kim's yes. Report items awaiting review and failures; do not act on them. Detail: `Projects/PubMaps/service/SERVICE.md`; rule: pkm_protocol.md Mechanism 2.
 
-**NEXT (2026-11-21, close): S3 -- Kim reviews the overview and gap review (`ideas_three_documents.md`, 2026-11-21) and thinks it over. Then: (1) balance the three terms, starting with the SNAP (trigger; stretch = state, spell = load, snap = trigger -- Claude framing, not ruled); (2) a round-three outline that holds the November material and the friction chapter, tested against the guiding principle (keep the focus on the middle); (3) feed `Projects/S3/figures/rain_periods/rain_periods.R` real hourly data; (4) verify lists. Kaka'ako: going slow (Kim, 2026-11-21); no scheduled step. When it resumes: intake -- survey the underway folder, create `proj_Kakaako_Buildings.md`, settle the form (some sort of book) and venue, check the Honolulu sign code.**
+**NEXT (2026-11-25, close): S3 -- (1) a round-three outline that holds the November material, the friction chapter and the figures now built in `Projects/S3/figures/` (cherry_blossom, pressure_terrain, thresholds, rain_periods), tested against the guiding principle (keep the focus on the middle); closing idea: Asimov's Foundation; (2) balance the three terms (snap as trigger); (3) verify lists; (4) candidate builds: rain_periods on real hourly data, a Hawai'i hurricane-track external-memory map, Noguchi then-and-now. Series style (Kim, 2026-11-25): examples plus tools. Kaka'ako: going slow; no scheduled step.**
 <!-- /active-focus -->
 
 **Project clusters worth seeing as units.** Three Active R

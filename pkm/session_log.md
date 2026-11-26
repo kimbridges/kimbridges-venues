@@ -11,6 +11,29 @@ Mechanism 4.
 
 ---
 
+## 2026-11-25 -- S3 ROUND FIVE: PREDICTION VS THE MIDDLE; A WEEK OF CURRENT-DATA VISUALIZATIONS
+
+**Date / duration:** 09:58-16:25 HST, with breaks.
+
+**Active focus at start:** S3 at capture (confirmed). 11-21 close verified (log entry, NEXT line, health report 21:10). PubMaps 0/0/0. R restarted since 11-21.
+
+**S3 ideas captured** (`ideas_three_documents.md`, round five and after): prediction ('First Alert') pulled focus from the middle -- telegraph forecasting was born to catch snaps; the almanac as a middle-scale product with weak method (1938 averages revolt); weather has a speed; memory and the Hawai'i hurricane map as external memory; Kim's 2022 cherry-blossom analysis (sentinel tree; variability sits early; the 2018 miss and 2017 frost in the data); visualization friction and the abandoned paper (data lost); Kim's 1985 *Scientific Chart Design* (picture-first, code beside) -> ruling: keep a picture-first catalog with hidden-until-asked code; pressure as terrain; a small addition, a large impact (thresholds); rivers, floods as resource, *Wandering in Angkor*, periodic vs aperiodic; Noguchi 1979 (wind in tree shape); the coarse end -- frozen categories, rare events outrunning memory, focusing events; Asimov's Foundation.
+
+**Rulings (Kim):** series style = examples plus tools ("now find your own examples using the tools provided"); the integrative statement on surface vs upper-air flow saved verbatim; the angle histograms are a key visualization; Asimov as a closing idea; current data as method.
+
+**Built** (all on Drive, under `Projects/S3/figures/`):
+- `cherry_blossom/` -- Kim's 2022 Rmd + 4 plots, byte-identical; NOTES.md lists code issues.
+- `pressure_terrain/` -- `pressure_terrain.R` (SLP and 500 hPa terrain; pt_frame500), 3D renders; `z500_animation_nov19-25/` (25 frames, GIF, MP4); `topeka_barograph.R` + figure + CSVs (KTOP ASOS vs GFS); `rivers_of_air.R` + four-panel figure (aloft median 7 deg off contours; surface +20 deg toward lows); `particles_500.R` (particles_500, particles_10m) + two GIFs; `where_is_500hpa.R` + figure.
+- `thresholds/` -- `sf_small_addition.R` + figure + CSV (NOAA 9414290: +0.35 m residual turned a harmless king tide into 14.9 h above the NWS minor flood line).
+
+**Machine:** rayshader (+ rgl, gifski, av) installed on Kim's R. Folder grant for this session: `C:\temp\cherry_20261125`.
+
+**Findings:** device_commit_files adds a C2PA `caBX` chunk to PNGs (filed in `deferred.md` > PKM; md5-check binaries). Windows png device ~35 s/frame with alpha trails; ragg 0.4 s. A terra SpatExtent does not survive saveRDS. Naming a variable `as` broke a render (masked `as()`).
+
+**Open / next:** the round-three S3 outline (now with many built figures to place); verify lists; real hourly data for rain_periods; Hawai'i hurricane-track external-memory map; Noguchi then-and-now (modern wind climatology); Kaka'ako still going slow.
+
+---
+
 ## 2026-11-21 -- S3 ROUND FOUR: EVENT TIME, VARIABILITY, FRICTION CHAPTER, GUIDING PRINCIPLE, GAP REVIEW, THE SNAP AS TRIGGER
 
 **Date / duration:** 19:50-21:10 HST.

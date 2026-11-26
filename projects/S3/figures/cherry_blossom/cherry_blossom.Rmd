@@ -1,0 +1,321 @@
+---
+title: "Cherry Blossom Analysis"
+author: "K. W. Bridges"
+date: "3/9/2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+
+## Set up the options and libraries.
+knitr::opts_chunk$set(echo = TRUE)
+
+library(dplyr)      ## Data wrangling
+library(patchwork)  ## Combine images on a page
+library(flextable)  ## Make great tables
+library(officer)    ## Used with flextable
+library(ggplot2)    ## The big graphics engine
+library(lubridate)  ## Dates
+library(tidyverse)  ## Lots of useful functions
+```
+
+## Yoshino Cherry Blossoms at the Tidal Basin
+
+We visited the Tidal Basin in Washington, DC on two previous occasions to view the cherry blossoms. Each time we missed the peak bloom by a few days.
+
+The second trip was from March 31 to April 1, 2018.
+
+This year, we're trying again.
+
+```{r data}
+
+####################################################################################
+## Cherry Blossom Analysis
+####################################################################################
+
+## Data from the National Park Service (2004-2021)
+data <- read_csv(file=
+    "Year,Buds,Florets,Extension,Peduncle,Puffy,Peak,End, Comment
+     2021,Mar 11,Mar 16,Mar 22,Mar 24,Mar 26,Mar 28, Apr 06,
+     2020,Feb 28,Mar 03,Mar 09,Mar 12,Mar 16,Mar 20, Mar 29,
+     2019,Mar 05,Mar 17,Mar 23,Mar 25,Mar 29,Apr 01, Apr 10,
+     2018,Feb 25,Mar 15,Mar 26,Mar 29,Apr 01,Apr 05, Apr 14,
+     2017,Feb 24,Mar 01,Mar 06,Mar 08,Mar 22,Mar 25, Apr 03, frost
+     2016,Mar 08,Mar 13,Mar 15,Mar 17,Mar 22,Mar 25, Apr 03,
+     2015,Mar 18,Apr 01,Apr 04,Apr 06,Apr 08,Apr 10, Apr 19,
+     2014,Mar 16,Mar 23,Mar 31,Apr 04,Apr 07,Apr 10, Apr 19,
+     2013,Mar 11,Mar 17,Mar 26,Mar 31,Apr 04,Apr 09, Apr 18,
+     2012,Feb 29,Mar 08,Mar 12,Mar 14,Mar 15,Mar 20, Mar 29,
+     2011,Feb 28,Mar 09,Mar 16,Mar 19,Mar 22,Mar 29, Apr 07,
+     2010,Mar 14,Mar 19,Mar 21,Mar 23,Mar 26,Mar 31, Apr 09
+     2009,Mar 03,Mar 12,Mar 18,Mar 23,Mar 27,Apr 01, Apr 10,
+     2008,Feb 19,Mar 11,Mar 17,Mar 18,Mar 24,Mar 26, Apr 04,
+     2007,Mar 05,Mar 20,Mar 25,Mar 27,Mar 28,Apr 01, Apr 10,
+     2006,Feb 28,Mar 13,Mar 14,Mar 16,Mar 22,Mar 30, Apr 08,
+     2005,Mar 07,Mar 22,Mar 31,Apr 03,Apr 04,Apr 09, Apr 18,
+     2004,Mar 04,Mar 12,Mar 15,Mar 22,Mar 27,Mar 31, Apr 09,")
+
+## Check the input data.
+table1 <- flextable(data) %>% 
+  colformat_num(big.mark = "") %>%   ## no comma in the dates
+  add_header_lines(values="Phenological phases of Yoshino Cherry trees at the Tidal Basin") %>% 
+  align(align="center",part="header") %>% 
+  add_footer_lines(values="Data from NPS, with estimated End values.",top = FALSE) %>% 
+  align(align="right",part="footer")
+
+save_as_image(x=table1,path="cherry_table1.png")
+
+table1
+
+```
+
+\newpage
+
+## Get the Data Formatted
+
+
+```{r wrangle}
+
+####################################################################################
+## Data wrangling section
+####################################################################################
+
+## The anchor allows an interval before the first event. The value is arbitrary.
+anchor <- "Feb 15"
+
+## Make abbreviated dates for phases into full date strings with start and stop dates.
+data2 <- data %>% 
+   mutate(Quiescent = paste(anchor,Year,Buds,Year)) %>% 
+   mutate(Peak_Range = paste(Peak,Year,End,Year)) %>% 
+   mutate(Puffy_Range = paste(Puffy,Year,Peak,Year)) %>% 
+   mutate(Peduncle_Range = paste(Peduncle,Year,Puffy,Year)) %>% 
+   mutate(Extension_Range = paste(Extension,Year,Peduncle,Year)) %>% 
+   mutate(Florets_Range = paste(Florets,Year,Extension,Year)) %>% 
+   mutate(Buds_Range = paste(Buds,Year,Florets,Year)) %>% 
+   rename(Peak_Bloom = Peak_Range, 
+          Puffy_White = Puffy_Range, 
+          Peduncle_Elongation = Peduncle_Range,
+          Florets_Extension = Extension_Range, 
+          Florets_Visible = Florets_Range, 
+          Green_Buds = Buds_Range,
+          group = Year) %>% 
+   select(-Comment,-End, -Buds, -Florets, -Extension, -Peduncle, -Puffy, -Peak)
+
+## Make the data into a long table (with just one row per event)
+data3 <- data2 %>% 
+  pivot_longer(!group, names_to = "event", values_to = "Range")
+
+## Extract and reformat the range info into start and end dates.
+## The end date is adjusted (minus 1 day) so there is no overlap.
+data3$start <- as.character(mdy(substr(data3$Range,1,11)))
+data3$end   <- as.character(mdy(substr(data3$Range,13,23))-1)
+
+## Get the length of the interval.
+## One day is added as you need to account for the day at the end of the interval (end day).
+data4 <- data3 %>% 
+  mutate(length = as.integer(ymd(end) - ymd(start) + 1))
+
+## Sort the data by phase starting date.
+data5 <- data4 %>% 
+  arrange(start)
+
+## Plots like to use factors.
+data5$event <- as.factor(data5$event)
+data5$group <- as.factor(data5$group)
+
+## Data check
+## head(data5,n=30)
+
+```
+
+\newpage
+
+## Annual Phase Duration
+
+
+
+```{r barplot}
+
+####################################################################################
+## Set up some plotting information
+####################################################################################
+
+## Establish the order of the phases (purposely backwards).
+all_levels <- c(
+  "Peak_Bloom",
+  "Puffy_White",
+  "Peduncle_Elongation",
+  "Florets_Extension",
+  "Florets_Visible",
+  "Green_Buds",
+  "Quiescent")
+
+## Assign colors to each phase.
+phase_colors <- c("pink",       ## Peak Bloom
+                "white",
+                "navajowhite3",
+                "navajowhite",
+                "lightyellow",
+                "olivedrab",
+                "#FFFFFF00")    ## Quiescent (transparent using Alpha value)
+
+## Simplify the legend labels.
+legend = c("Peak Bloom",
+            "Puffy White",
+            "Peduncle Elongation",
+            "Florets Extension",
+            "Florets Visible",
+            "Green Buds",
+            "")
+
+####################################################################################
+## Phase duration plot
+####################################################################################
+
+## Horizontal stacked bar chart showing the length of each phase. 
+plot1 <- ggplot(data5, aes(x=group,y=length)) +
+         geom_bar(aes(fill=factor(event, levels=all_levels)),
+                       stat="identity") +
+         coord_flip() +
+         labs(x="Year",y=paste("Days from",anchor),fill="Phase") +
+         scale_fill_manual(values=phase_colors,labels=legend) +
+         labs(caption = "Data from NPS, with estimated Peak Bloom end values.") +
+         theme(panel.background = element_rect(fill = "lightblue"))
+
+ggsave("cherry_plot1.png",plot1,width=6.5,height=9)
+
+```
+
+\newpage
+
+## Phase Duration Statistics
+
+
+```{r phaselength}
+
+####################################################################################
+## Plots showing the length of each phase (with some data wrangling)
+####################################################################################
+
+## Eliminate rows with "Quiescent" and "Peak_Bloom".
+data6 <- data5 %>% 
+  filter(!event=="Quiescent") %>% 
+  filter(!event=="Peak_Bloom")
+
+## Data check
+head(data6,n=20)
+
+## Assign colors to each phase
+phase_colors2 <- c(
+                "white",        ## Puffy white
+                "navajowhite3",
+                "navajowhite",
+                "lightyellow",
+                "olivedrab")    ## Green buds
+  
+## Standard Bar Chart with the mean days for each event 
+plot2 <- ggplot(data6) +
+  geom_bar(aes(event, length, fill=factor(event, levels=phase_levels)), 
+           stat = "summary", fun.y = "mean", show.legend = FALSE) +
+  scale_fill_manual(values=phase_colors2) +
+  scale_x_discrete(limits=phase_limits) +
+  scale_y_continuous(breaks=seq(0,10,2)) +
+  theme(panel.background = element_rect(fill = "lightblue")) +
+  labs(x="Phase",y="Mean Length (days)",caption = "Data from NPS")
+ 
+ggsave("cherry_plot2.png",plot2,width=6.5,height=9)
+
+## Create sets of items used to control the plots.
+phase_levels <- c("Puffy_White",
+                  "Peduncle_Elongation",
+                  "Florets_Extension",
+                  "Florets_Visible",
+                  "Green_Buds")
+
+phase_limits <- c("Green_Buds",
+                  "Florets_Visible",
+                  "Florets_Extension",
+                  "Peduncle_Elongation",
+                  "Puffy_White")
+## Standard Boxplot
+plot3 <- ggplot(data6) +
+  geom_boxplot(aes(event, length, fill=factor(event, levels=phase_levels)),
+  show.legend = FALSE) +
+  scale_fill_manual(values=phase_colors2) +
+  scale_x_discrete(limits=phase_limits) +
+  scale_y_continuous(breaks=seq(0,22,2)) +
+  theme(panel.background = element_rect(fill = "lightblue")) +
+  labs(x="Phase",y="Length (days)",caption = "Data from NPS")
+
+ggsave("cheery_plot3.png",plot3,width=6.5,height=9)
+
+## Dotplot
+plot4 <- ggplot(data6,aes(x=event,y=length)) +
+  geom_dotplot(binaxis="y", stackdir="center", dotsize=0.7) +
+  scale_x_discrete(limits=phase_limits) +
+  scale_y_continuous(breaks=seq(0,22,2)) +
+  theme(panel.background = element_rect(fill = "lightblue")) +
+  labs(x="Phase",y="Length (days)",caption = "Data from NPS")
+
+ggsave("cherry_plot4.png",plot4,width=6.5,height=9)
+```
+
+
+## Add some duration information
+
+```{r dur}
+
+development <- data2 %>% 
+  mutate(start = mdy(substr(Green_Buds,1,11))) %>% 
+  mutate(end = mdy(substr(Peak_Bloom,1,11))) %>% 
+  mutate(period = as.integer(end-start)) %>% 
+  select(group,start,end,period)
+  
+ development 
+ 
+ ggplot (development,aes(x=1,y=period)) +
+   geom_dotplot(binaxis = "y",stackdir="center",dotsize = 1.0) +
+   theme(panel.background = element_rect(fill = "lightblue"),
+         axis.text.x=element_blank(),
+         axis.ticks.x = element_blank()) +
+  labs(x="",y="Start to Peak (days)")
+ 
+dev_stats <- summary(development$period)
+dev_stats
+
+
+ggplot(development,aes(x="",y=period)) +
+  geom_boxplot(fill="olivedrab",size=1.5) +
+  coord_cartesian(ylim = c(10, 40)) +
+  theme(panel.background = element_rect(fill = "lightblue")) +
+  labs(x="",y="Start to Peak (days)")
+```
+
+## start stuff
+
+```{r}
+
+## Use an offset (anchor) to get the interval to the start of Green Buds.
+## This gets rid of the "year" (here, group) so that just the month + day is used.
+## The interval (days_start) can now be used to calculate statistics.
+## The result will need to add back the anchor value to get dates (month & day).
+data7 <- data6 %>% 
+  filter(event=="Green_Buds") %>% 
+  mutate(anchor = ymd(paste(group,"-2-15"))) %>% 
+  mutate(days_start = as.Date(start)-anchor)
+
+## Use this anchor again to get the actual date for the statistics.
+anchor <- ymd("2021-2-15")
+
+## Calculate the statistics of the start of the process.
+early_start <- min(data7$days_start) + anchor
+late_start <- max(data7$days_start) + anchor
+mean_start <- as.integer(mean(data7$days_start)) + anchor
+median_start <- as.integer(median(data7$days_start)) + anchor
+
+## Get rid of the year
+
+
+
+```
+

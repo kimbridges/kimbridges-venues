@@ -1507,6 +1507,18 @@ document. *Occasion:* the next deploy to this collection.
 
 ## PKM
 
+### ⚠ FINDING TO FILE (2026-11-25) -- device_commit_files ADDS A C2PA `caBX` CHUNK TO PNGs
+
+- Five files committed from the cloud container to `C:\temp` via the device bridge: the
+  `.Rmd` arrived byte-identical; each PNG arrived exactly 5,770 bytes larger -- one
+  `caBX` chunk (C2PA content credentials, 5,758 bytes + 12-byte chunk header) inserted.
+  IDAT data untouched.
+- Remedy used: strip the `caBX` chunk in R (walk the PNG chunks, drop that one), write
+  to a temp name, and accept only if the md5 equals the container's md5. All four
+  matched. Rule: **md5-check every binary that crosses the bridge**; for a PNG that
+  must stay the user's original, strip `caBX` before accepting it.
+- To move into `pkm_findings.md` and the card's situation table at the next PKM pass.
+
 **DONE (closed 2026-10-28) — Add a finding for the CRLF hazard.** Written as **Finding 037** (2026-08-19); this task was left open by oversight.
 `writeLines()` on Windows rewrites every line ending in a file. Edit CRLF files in
 binary and verify the byte delta equals the intended insertion. This bit twice on

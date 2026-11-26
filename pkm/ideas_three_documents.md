@@ -2000,6 +2000,505 @@ kimbridges-stories may serve the vintage group).
   six-month declines). Mendel publication and rediscovery dates; the Kuhn mapping
   as an analogy, not a claim about Kuhn.
 
+## S3 -- round five, 2026-11-25: PREDICTION PULLED THE FOCUS FROM THE MIDDLE
+
+### Kim (speculation, his word)
+
+- The nightly-news weather section is not very old; its emphasis is prediction
+  ("tomorrow, expect a high of 87"). One local channel calls it **"First Alert
+  Weather"** -- concerned with upcoming big events: **triggers**, in our terms.
+- The story Kim remembers: we didn't know where weather came from until the
+  **telegraph**. Communication drives forecasting; satellites (with computational
+  models) lifted it to a higher level.
+- Did we once depend on the **Farmer's Almanac** before shifting to daily
+  predictions? If so, was that a kind of middle system?
+- **Kim's point: our prediction-oriented capabilities (not just in weather) have
+  pulled the focus away from what we once did with middle-system examinations.**
+
+### Checked (web, 2026-11-25) -- Claude
+
+- Joseph Henry (Smithsonian) realized in 1847 that US storms generally move west
+  to east; by 1849 telegraph companies carried weather reports to the Smithsonian
+  free, from about 150 volunteer observers; a daily weather map from 1856. In 1870
+  forecasting passed to the Army Signal Service, whose original purpose was storm
+  warnings for the Atlantic and Gulf coasts and the Great Lakes. (Smithsonian
+  Archives; Britannica; historyofinformation.com.)
+- The Old Farmer's Almanac: published continuously since 1792 (Robert B. Thomas),
+  with long-range forecasts from a secret formula; the rival Farmers' Almanac since
+  1818 with 16-month forecasts. Independent checks find little skill (Farmers'
+  Almanac about 50%; a Walsh and Allen study of 60 monthly OFA forecasts at 32 US
+  stations); the almanacs claim about 80%.
+- **1938: the Old Farmer's Almanac dropped its forecasts and printed temperature
+  and precipitation averages instead. The public outcry was so strong it
+  destroyed the editor's reputation** (Roger Scaife).
+
+### Claude (NOT ruled)
+
+- **Forecasting was born to catch snaps.** The telegraph let news of a storm outrun
+  the storm; the first federal service existed to issue storm warnings. "First
+  Alert" is the same lineage: a snap detector, matching the 11-21 point that
+  perception is tuned to snaps.
+- **The almanac was a middle-scale product with a weak method.** Its time frame was
+  the season and the year -- planting charts, frost, the coming winter -- but its
+  forecasts had little skill. When skillful prediction arrived, it arrived at the
+  short end, and public attention followed the skill.
+- **The 1938 episode is a gem for S3:** readers rejected averages (the climate end)
+  and wanted a forecast. Neither end gave them the middle -- "what kind of season
+  is this turning out to be?" -- which is the question the almanac pretended to
+  answer.
+- **The middle didn't vanish; it went to specialists:** crop and weather bulletins
+  for farmers, drought monitors, water managers, seasonal outlooks that are issued
+  but not broadcast. The public channel kept the snaps.
+- Kim's "not just weather" may generalize: markets (daily ticks), health
+  (alerts), news itself -- prediction and alerting crowd out reading the season.
+
+### Verify before writing
+
+- FitzRoy (UK, 1861) and the word "forecast"; Cleveland Abbe's 1869 Cincinnati
+  forecasts; the Walsh and Allen citation and result; Scaife dates (appointed 1936,
+  1938 edition); USDA Weekly Weather and Crop Bulletin start date; NOAA CPC
+  30/90-day outlooks as the modern seasonal product.
+
+### Kim -- weather has a speed (2026-11-25)
+
+- Kim read that weather moves across the continent at about 30 mph (unverified):
+  "an interesting concept: weather has a speed." Filed with the telegraph history.
+- Claude (NOT ruled): mid-latitude systems typically move east at roughly 20-30
+  mph, faster in winter; at 30 mph a system crosses the US in about four days --
+  spell length. The telegraph worked because the news outran the storm.
+- Verify: typical speeds of US frontal systems by season.
+
+### Kim -- memory, and the Hawai'i hurricane map (2026-11-25)
+
+- **Memory is another time-based thing: we forget events that occur
+  infrequently.**
+- One of Kim's favorite diagrams: **the map of the historical record of
+  hurricanes approaching Hawai'i.**
+- Claude (NOT ruled): human memory has its own time window; events rarer than it
+  fall out of awareness between occurrences (kin to shifting baselines). The
+  hurricane-track map is an EXTERNAL MEMORY: it collapses decades of rare snaps
+  into one picture -- an accumulation display in space. The envelope's record-year
+  lines play the same role in time. A reproducible version could be drawn in R
+  from the NOAA HURDAT2 / IBTrACS central Pacific tracks.
+- Verify: source and design of the map Kim means; Hawai'i landfalls and near
+  misses (e.g., Iniki 1992).
+
+### Kim -- the DC cherry-blossom analysis (2022), shared 2026-11-25
+
+- Kim's own R Markdown (`cherry_blossom.Rmd`, 2022-03-09) and four plots: NPS
+  phase dates for the Tidal Basin Yoshino cherries, 2004-2021; phases drawn as
+  stacked bars per year in days from a Feb 15 anchor, plus phase-length bar,
+  box and dot plots.
+- **Kim: having a sentinel tree was a key to setting the dates year after year.**
+- Filed 2026-11-25 at `Projects/S3/figures/cherry_blossom/` (Rmd + four plots,
+  byte-identical to Kim's upload; `NOTES.md` lists the known code issues).
+  Kim: "I did the charts quite quickly. Haste makes waste (or, rather, bad code)."
+
+### Claude on the cherry analysis (NOT ruled; numbers computed from Kim's table)
+
+- **Kim's plot 1 is already the S3 display grammar:** phases as bars on an
+  anchored time axis, years stacked -- the same form as rain_periods, and it shows
+  between-year variability directly (the round-four theme, done in 2022).
+- **The variability sits early.** Green buds last 4-21 days (median 8.5); florets
+  visible 1-11; extension 1-7 (median 2); peduncle 1-14; puffy white 2-8 (median
+  4). Puffy white to peak is 2-8 days, mostly 2-5. Once puffy white is reached the
+  rest runs nearly on a clock; the uncertainty is all in the early, weather-
+  sensitive phase. That is why peak can only be called a few days ahead.
+- **Kim's 2018 miss is in the data:** trip Mar 31-Apr 1; peak Apr 5. That year had
+  the longest florets-visible phase (11 days) and an 18-day green-bud phase --
+  development stalled early.
+- **2017 is the snap-as-trigger case:** Kim's table flags frost; peduncle
+  elongation ran 14 days (the outlier). A freeze stage-gated by development --
+  the 11-21 framing in Kim's own data.
+- **Peak dates span three weeks** (Mar 20, 2012 and 2020, to Apr 10, 2014 and
+  2015); start-to-peak 17-39 days (median 27).
+- **The sentinel is an operational definition** (Bridgman; MRC): the same tree and
+  the same stage criteria every year make the series comparable.
+- Code notes for any reuse: plot2 uses `phase_levels`/`phase_limits` before they
+  are defined; `fun.y` is deprecated (now `fun`); the 2010 row lacks its trailing
+  comma; one output is named `cheery_plot3.png`. Data could be extended
+  2022-2026 from NPS.
+
+### Verify before writing
+
+- NPS indicator-tree practice (location, how far ahead of the general bloom) and
+  the stage definitions; the March 2017 freeze and its effect on the bloom; the
+  2022-2026 bloom dates.
+
+### Kim -- visualization friction and the paper that was never written (2026-11-25)
+
+- Not long ago most science communication went through journals. Early in Kim's
+  career, graphics were discouraged (production costs among the reasons); a chart
+  had to be black and white, with gray scales done by screen patterns or stripes.
+  Creating visualizations was a big problem.
+- **Story:** Kim abandoned an interesting paper because he could not create a map
+  showing the plant distribution. A lot of field effort and cost -- a hard-to-reach
+  international site -- was wasted because of a technical limitation.
+- **This may have limited creative thinking, since visualizations often give us
+  insight.**
+
+### Claude (NOT ruled)
+
+- Belongs in the S3 friction chapter beside the IRP weather story: friction in
+  COLLECTING (gauges, keypunch) and friction in SHOWING (the map that could not be
+  drawn). Two costs, the second less often told.
+- **Friction shaped thinking, not only output:** if a figure cannot be drawn, nobody
+  looks for what it would show. That is the trilogy's founding point (no concept,
+  no seeing) with the visualization as the concept's carrier. Cheap plotting
+  arrived with Tukey-style exploratory graphics; journals moved to color online.
+- Resonance: Kim's Voronoi document is titled *The Map That Never Got Drawn* (2026-09-27).
+  Ask Kim whether this paper's map is the one behind the title.
+
+### Verify before writing
+
+- Kim: the site, the plants, the decade, and whether the data survive (a candidate
+  to finally draw the map now). Tukey, *Exploratory Data Analysis* (1977).
+
+### Kim -- answers, and the 1985 chart book (2026-11-25)
+
+- The abandoned paper's map is **not** the map behind *The Map That Never Got
+  Drawn* -- "a very different kind of map."
+- **The data are gone:** the trip was years before scanners; all data from that
+  trip are lost. (So it cannot be redrawn; it stays a friction story.)
+- **This is definitely inside the "you don't see it" theme.** Kim hopes the
+  trilogy presents **novel (or rarely used) visualizations.**
+- **Kim's book:** K. W. Bridges and Sam Kim, *Scientific Chart Design: Computer-
+  generated charts using TELL-A-GRAF* (Honolulu, January 1985; 94 pp, scanned PDF
+  uploaded 2026-11-25). Kim's teaching strategy: **find the visualization of what
+  you want, then see the code that creates that specific visualization.** "That
+  was quite successful."
+
+### Claude on the 1985 book (NOT ruled; read from the scan)
+
+- Structure: a picture-first table of contents (chart types shown as small
+  drawings); numbered examples, each a figure beside its exact TELL-A-GRAF
+  specification, the central lines in bold; deliberately simple test data ("Why
+  bother entering a lot of data if you aren't sure that it is going to work?").
+- **The preface is a friction-chapter quotation:** "While automation has invaded
+  the rest of the laboratory, illustrating remains a manual process. This is
+  changing." And the prediction that computer charting "will gain quick acceptance
+  in the scientist's office and take its place beside the wordprocessor." Kim
+  stood at the moment the drawing friction began to fall -- the same friction that
+  cost him the abandoned paper.
+- **The 1985 method is the answer to overview gap 7** (display forms
+  uncatalogued): a picture-first catalog of S3's displays -- envelope, duration
+  ladder (rain_periods), accumulation curve, gauge, phase bars (cherry), enriched
+  climate diagram -- each shown first, with its R code beside it. Could serve the
+  whole trilogy (shared visual language) as an appendix or companion gallery: Kim's
+  1985 strategy, reborn in R, for visualizations that are novel or rarely used.
+- Personal-story value: a 1985 book by Kim on the very subject (with a designer
+  co-author from UH Art).
+
+### Kim's ruling -- the picture-first catalog (2026-11-25)
+
+- **Keep the catalog idea for now.** The style already in use -- every chart made
+  with code, the code shown when a button is pressed -- is a very similar strategy.
+  The 1985 book worked because TELL-A-GRAF code was brief; R code can be much
+  longer, so **hidden-until-asked** suits it better.
+
+### Kim -- pressure as terrain (2026-11-25)
+
+- On the overview weather map, the H and L areas and the fronts are abstract lines
+  over a base map. Kim pictures **high pressure as a "mountain" of air and low
+  pressure as a "valley"**, and wants to visualize the 3D structure of the
+  atmosphere for a more interesting view of the pattern. Limitations expected.
+  Unsure whether it fits the current work.
+
+### Claude (NOT ruled)
+
+- **Forecasters already think this way aloft:** upper-air charts map the height of
+  a pressure surface (e.g., 500 hPa) -- literally its topography -- and the
+  features have terrain names: ridge, trough, col, cut-off low.
+- **The instructive limitation:** air does not roll downhill. On the large scale
+  it flows ALONG the contours (geostrophic balance; clockwise around highs in the
+  northern hemisphere). Only near the ground does friction let it spiral out of
+  highs and into lows, where it rises -- clouds and rain. A terrain view makes
+  that surprise visible.
+- **Fronts are not terrain;** they are boundaries between air masses (temperature,
+  humidity) and tend to lie in pressure troughs. Drape temperature as color over
+  the pressure terrain and fronts appear as sharp color edges in the valleys.
+  Trilogy tie: a front is a boundary in space between categories (air masses) --
+  MWT's subject; the surface map is a judged-boundary tile map.
+- **Scale:** heavy vertical exaggeration needed, as in relief maps.
+- **S3 tie -- the moving landscape:** the terrain drifts east ("weather has a
+  speed"). A barograph trace at one station is a transect across a moving
+  landscape; a front passage is crossing a valley -- a snap. Animated over a week,
+  the map shows spells and stretches as terrain that lingers.
+- Feasible in R: gridded sea-level pressure or 500 hPa heights (GFS, ERA5) +
+  rayshader (3D relief) or plotly surfaces. A candidate entry for the catalog of
+  novel visualizations.
+
+### Verify before writing
+
+- Typical 500 hPa height range; geostrophic flow and surface friction angle;
+  data access route (NOAA NOMADS / ERA5 via an R package).
+
+### Prototype built (2026-11-25) -- Kim: "I think we should try it!"
+
+- Kim: the air-flows-along-contours point corrected a misunderstanding he held.
+- `Projects/S3/figures/pressure_terrain/`: `pressure_terrain.R` (pt_get_gfs, pt_smooth,
+  pt_scene, pt_render; terra + rayshader), the GFS 2026-11-25 18Z grib, a 3D render
+  and a 2D draft. rayshader installed on Kim's machine for this.
+- Reads well: the Gulf of Alaska low (975 hPa) as a basin, the 1042 hPa high over the
+  Northeast as a hill, a ridge across the continent. Limits seen: sea-level pressure
+  over the Rockies is extrapolated and noisy (smoothed); isobar overlay faint;
+  warm colors dominate. Next ideas: a 500 hPa height version (the forecasters'
+  terrain, no mountain artifacts); an animation over several days (the moving
+  landscape); a station barograph as a transect across it.
+- **500 hPa version built the same day** (Kim: "VERY promising"):
+  `z500_terrain_20261125_18z.png`, `pt_scene500()` in the script. The jet stream's
+  waves read as terrain: a deep trough over the Gulf of Alaska (522 dam), a closed low
+  over the central US (556 dam, a crater near Kansas), a ridge between them, and the
+  subtropical high (588 dam) right over Hawai'i. The surface slopes down from the warm
+  south to the cold north -- the polar 'bowl'. No mountain artifacts. Still to fix:
+  contour overlay not visible; fine-grained shading speckle on the southern plateau.
+- S3 note (Claude, NOT ruled): these waves are the ladder's 1-2 week row (Rossby
+  waves, blocking, cut-off lows) made visible.
+- **The moving landscape, built the same day** (Kim: "really, really interesting"):
+  25 GFS analyses, 2026-11-19 18Z to 11-25 18Z every 6 h, rendered with a fixed
+  floor (496 dam), color range and camera; `z500_animation_nov19-25/` holds the
+  frames, a GIF (2.8 MB) and an MP4. A trough near the West Coast on Nov 19 moves
+  inland and east over the following days; by Nov 25 it has closed off over the
+  central US while a new trough deepens over the Gulf of Alaska. Weather's speed,
+  seen. Frame renderer saved as `pt_frame500()` in `pressure_terrain.R`.
+- **The Topeka barograph, built the same day** (Kim chose Kansas): `topeka_barograph_nov19-25.png`
+  + `topeka_barograph.R` + CSVs. A: GFS 500 hPa height at Topeka; B: observed hourly
+  sea-level pressure (KTOP, ASOS via Iowa Environmental Mesonet) with GFS points --
+  the model tracks the observations closely; C: observed temperature.
+- What it shows (Claude, NOT ruled): a two-day pressure fall to 1008.5 hPa (Sat Nov 21,
+  late morning HST); that evening temperature drops from about 19 to 7 C in a few
+  hours and pressure climbs about 25 hPa over two days -- a cold front: a SNAP sitting
+  on a SPELL. Then a cold stretch near 0 C. Panel C holds three scales at once: the
+  daily cycle, the frontal step, the multi-day cooling. Panels A and B disagree on
+  Wed Nov 25: the closed low is overhead aloft (556 dam) while surface pressure is
+  high (about 1030 hPa) -- cold, dense air at the surface under a low aloft. The 3D
+  structure Kim wanted to see, read from one station.
+- **Rivers of air, built the same day** (Kim: the along-the-contours flow corrected his
+  mental model; "how can we show this?"): `rivers_of_air_20261125_18z.png` +
+  `rivers_of_air.R`. A: 500 hPa contours, 500 hPa wind arrows, jet core shaded by 250 hPa
+  speed (max 93 m/s). B: sea-level isobars and 10 m wind. C/D: the angle between wind and
+  contour direction at every grid point north of 22N -- aloft median 7 deg off the
+  contours (87% within 20 deg); at the surface median +20 deg, turned toward low pressure.
+- Claude (NOT ruled): Kim's old model (air flows downhill from high to low) is partly
+  right near the ground, where friction slows the wind and lets it drift toward the lows
+  -- and that inflow is what makes air rise and rain in lows. A candidate catalog entry
+  and an S3 personal story: the misconception corrected, and how a picture did it.
+
+### ★ Kim's ruling -- save this integrative statement (2026-11-25)
+
+- Kim: "a powerful integrative view" -- to be kept, verbatim (Claude's wording, adopted by Kim):
+
+  > "It's what happens in the lowest kilometer or so, where friction slows the wind and lets it
+  > drift downhill toward the lows. That inflow matters: air converging into a low has to go up,
+  > and rising air makes clouds and rain. Higher up, friction is gone, and the air circles the
+  > terrain instead of descending it."
+
+- Context: answers Kim's prior mental model (air flows downhill from high to low pressure) --
+  true near the ground, not aloft.
+- **Kim: the angle histograms (panels C and D) are a key visualization.**
+- Next (Kim): particles drifting along the 500 hPa contours.
+- **Built the same day:** `particles_500_20261125_18z.gif` (120 frames, about 40 h of flow,
+  1,500 particles, frozen 18Z field) + `particles_500.R`. Streaks follow the contours, race
+  through the jet core, and circle the closed low over Kansas. Speed lesson: the Windows png
+  device took about 35 s per frame with semi-transparent trails; ragg::agg_png took 0.4 s.
+- Possible next: particles on the moving (6-day) field; the same particles at 10 m to show
+  the inflow into lows (the integrative statement as motion).
+- **Surface companion built the same day** (Kim asked): `particles_10m_20261125_18z.gif`
+  (`particles_10m()` in `particles_500.R`; 60 min of flow per frame, 3x the 500 hPa
+  version). Air spirals into the Gulf of Alaska low and out of the highs; streaks converge
+  along a curving line southwest of the low -- the cold front, where air from two
+  directions meets. The integrative statement, in motion.
+- **"Where is 500 hPa?" built the same day** (Kim: make 500 hPa something people relate to):
+  `where_is_500hpa.png` + `where_is_500hpa.R`. Standard atmosphere: 500 hPa about 5,570 m
+  (18,000 ft) -- half of all the air below; 850 hPa 1,460 m (16% below); 250 hPa 10,360 m,
+  the jet level (75% below). Landmarks: Haleakala, Mauna Kea (about 600 hPa; 41% of the
+  air beneath), Kilimanjaro, Denali, Everest (69%), airliner cruise; plus today's band of
+  the real 500 hPa surface (5,064-5,924 m) -- the terrain in the animation.
+
+### Kim -- a small addition, a large impact (2026-11-25)
+
+- Waves are battering the West Coast today (Kim's report): tides, El Nino and weather
+  working together for record wave impacts -- "as though there is just a bit of height
+  added to the usual pattern that's making the difference."
+- **How to visualize it?** "Sort of the inverse of using log values to keep high peak
+  values from dominating a chart. Now we need to show that a small addition to the
+  average (pattern) has a large impact."
+
+### Claude (NOT ruled)
+
+- **It is a threshold problem.** Impact begins at a boundary (flood stage, the top of a
+  seawall, the dune toe); what matters is the part above it. A few percent added to the
+  water level can multiply the hours and volume above the line. Three displays:
+  1. **The tip view:** the tide curve with the threshold drawn in; only the part above it
+     filled. Panels with and without the addition show the tip growing out of
+     proportion.
+  2. **The exceedance curve:** impact (hours above threshold) against the size of the
+     addition -- steep, which is the inverse-of-log point made explicit.
+  3. **The shifted distribution:** a small shift of the whole distribution multiplies
+     the frequency beyond a fixed threshold (the familiar climate-extremes figure).
+- **The three terms again:** El Nino raises sea level for months (a STRETCH, the middle
+  scale -- the "bit of height"); a storm sequence adds surge and swell (a SPELL); high
+  tide at the storm peak is the SNAP. Stretch = state, spell = load, snap = trigger.
+- MRC tie: the threshold is a category boundary; accuracy matters most near it.
+- Data route: NOAA CO-OPS tide gauges (observed vs predicted water level, flood
+  thresholds) via its API from R.
+
+### Kim -- thresholds, rivers, and the cultural view of floods (2026-11-25)
+
+- **San Francisco** is the perfect example (city streets flooded, in the news). Fits the
+  middle area of interest: **crossing the threshold can have a huge impact.**
+- Coasts see the tides; **inland, rivers are the analog.**
+- **A cultural perspective is needed:** our society sees floods as bad; **earlier societies
+  depended on the annual floods.** Kim wrote about this in his story *Wandering in Angkor*.
+  Many examples of river floods bringing nutrients to delta areas.
+- **Periodic vs aperiodic:** some big events, like floods, are fairly periodic; others,
+  like tsunami inundations, are aperiodic and seen on very long time scales.
+
+### Claude (NOT ruled)
+
+- The same threshold, two meanings: the flood pulse as resource (Nile basin irrigation,
+  the Mekong's reversal into the Tonle Sap that fed Angkor) vs the flood as hazard. The
+  value judgment sits in the category boundary, not the water (MRC).
+- Periodic thresholds are learned (a society builds around the annual pulse); aperiodic
+  ones are forgotten between events (the 11-25 memory idea) -- tsunami stones in Japan as
+  an external memory.
+
+### Verify before writing
+
+- *Wandering in Angkor* on kimbridges-stories (what Kim wrote); Tonle Sap flow reversal;
+  Japanese tsunami stones.
+
+### Built (2026-11-25): San Francisco, a small addition and a large impact
+
+- `Projects/S3/figures/thresholds/`: `sf_small_addition_nov18-25.png`, `sf_small_addition.R`
+  (`sa_get()`, `sa_plot()`; any NOAA CO-OPS station), and the week's data as CSV.
+- NOAA station 9414290, Nov 18-25, MHHW datum. Thresholds: NWS minor flood 0.37 m, NOAA
+  minor 0.57 m; station record 0.86 m on Jan 27, 1983 (an El Nino winter).
+- The predicted tide alone (a king tide building through the week) peaks at 0.36 m: 0.3 h
+  above the NWS line. The observed water ran a median +0.35 m above prediction (the
+  non-tidal residual: raised sea level, surge, wind, runoff): 14.9 h above the NWS line,
+  6 h above NOAA's; peak 0.73 m on Mon Nov 24. Panel C: hours above the line vs height
+  added -- flat until the tips reach the line, then steep.
+- Caveat for the text: a tide gauge records still-water level in the bay; the record
+  wave impacts on the open coast add wave run-up on top.
+
+### ★ Kim's ruling -- the series style: examples plus tools (2026-11-25)
+
+- The San Francisco visualizations and storyline work well, and the code can analyze
+  other areas. **That is the style Kim intended for the series:** "you get examples here,
+  now use these in your own situation" -- or, "This is what I found; now you can find
+  your own examples using the tools provided." (Applies to the whole trilogy.)
+
+### Kim -- Noguchi 1979: wind recorded in tree shapes (2026-11-25)
+
+- Y. Noguchi (1979) Deformation of trees in Hawaii and its relation to wind. *Journal
+  of Ecology* 67: 611-628 (PDF uploaded 2026-11-25). Kim has always thought it creative.
+- Kim: it shows that **persistent trends are recorded in the vegetation.** We usually think
+  of these as water- or temperature-related; Yasuo, then a graduate student (now
+  Professor Emeritus Noguchi), showed that **wind impacts can be scaled by the
+  deformation of a variety of species.**
+
+### Claude on the paper (NOT ruled; read from the PDF)
+
+- 1,045 isolated trees at 590 sites on O'ahu and Maui, 60 dicot species; deformation
+  graded by crown asymmetry and slant within four crown classes (umbrella, cone, flag,
+  Casuarina); direction by compass. Species calibration: Casuarina, Prosopis, Cassia,
+  Tabebuia more wind-resistant (+1 grade), Ficus benjamina more sensitive (-1).
+  Consistency within a site: 82% of mixed-species trees within +/-5 degrees of the site's
+  median direction. Result: flow-line and deformation-grade maps for both islands,
+  agreeing broadly with instrument-based maps.
+- **The key sentence for S3:** discrepancies with instrument maps were "probably
+  attributable to the differences in the periods of time represented" -- the instrument
+  maps covered 15 tradewind days (1963) or a few weeks; the trees integrate years. A
+  tree's crown is a long-period average of the wind: a recorder like a tree ring, but of
+  persistence rather than seasons -- the middle-to-long scale written in shape.
+- **Trilogy-wide:** MRC -- an ordinal grade scale, calibrated across species (the same
+  wind read on instruments of different sensitivity). MWT -- category data at points
+  turned into isolines and flow lines (the map from points). Friction -- 590 sites by
+  road and trail with a clinometer and compass, before gridded wind data existed.
+- Possible then-and-now: Noguchi's tree-derived flow lines vs a modern high-resolution
+  wind climatology for O'ahu and Maui.
+
+### Verify before writing
+
+- The modern source for a Hawai'i wind climatology (resolution, period); Noguchi's later
+  career and title as Kim gives it.
+
+## S3 -- the coarse end: frozen categories, rare events, and waking up (Kim, 2026-11-25)
+
+### Kim
+
+- For a long time we treated a location's climate as a constant (long-term sense): if
+  you live in Zone 7a you stay in 7a unless you move. With climate change we hold on to
+  the broad category but are unsure of the future.
+- **What we are seeing, Kim believes, is a change in the frequency of extreme events.**
+  Who would have expected the high tides in SF? The events often impact how the
+  ecosystem functions.
+- Back to the historical hurricane patterns for Hawai'i, and tsunami inundations: **how
+  do we record these in ways that alert people to the rare but consequential events?**
+- New interest in forest-fire protection; coastal cities re-evaluating shoreline
+  development; flood zones driving home-insurance rates.
+- **It seems we need significant events (e.g., the Los Angeles fires) to wake up the
+  population -- and then it might be too late. Is there a theme here?**
+
+### Claude (NOT ruled)
+
+- **Theme: the categories assume the world holds still.** Zone 7a, the 100-year flood
+  line, the flood-zone tile on an insurance map all rest on a stationary distribution
+  ("Stationarity is dead" -- Milly et al. 2008, *Science*). When the distribution
+  shifts, the category label stays while the tails move -- and change shows first in
+  the tails (the shifted-distribution panel; SF this week).
+- **Rare events outrun memory.** A 1%-per-year event has about a 26% chance in a
+  30-year mortgage, yet most residents never see one; memory fades between events
+  (Kim's memory idea, 11-25). The middle scale fails here because the events are rarer
+  than human attention.
+- **External memories carry what people forget:** the Hawai'i hurricane-track map,
+  tsunami stones, high-water marks on buildings -- and insurance rates, a memory with
+  a price attached that works between events.
+- **Waking up:** policy follows 'focusing events' (Birkland); drought has the
+  'hydro-illogical cycle' (concern, then apathy when rain returns). The snap that wakes
+  people comes after the stretch that set it up -- stretch = state, spell = load, snap
+  = trigger, applied to society.
+- **Trilogy-wide:** MRC (moving category boundaries -- the zone map redrawn); MWT (flood
+  zones are tile maps); S3 (frequency of extremes, return intervals, memory).
+- Candidate closing chapter for S3: the forward direction made urgent.
+- Displays: chance over a lifetime or mortgage vs return period; memory span vs return
+  interval; an external-memory map (Hawai'i hurricane tracks, tsunami run-ups).
+
+### Verify before writing
+
+- Milly et al. 2008 citation; Birkland 'focusing events'; NDMC 'hydro-illogical
+  cycle'; USDA zone map editions and shifts; 1 - 0.99^30 = 0.26.
+
+### Kim -- Asimov's Foundation as the image (2026-11-25)
+
+- Kim imagines all this in Asimov's trilogy: a mathematical model holding the equations
+  that state the probabilities of the events discussed, and a few scientists who
+  understand and guard the model to protect future generations.
+
+### Claude (NOT ruled)
+
+- Psychohistory predicts only for large numbers, never individuals -- like a return
+  period: the frequency, not the year. Seldon Crises are snaps the plan expects in
+  kind but not in detail.
+- **Seldon's Time Vault** -- recorded messages that open at each crisis -- is an external
+  memory timed to the event: a tsunami stone with a schedule.
+- **The Mule** is the non-stationary shock the equations could not hold: the plan assumed
+  the distribution would stay put ("stationarity is dead").
+- **A tension worth using:** Asimov's guardians (the Second Foundation) kept the model
+  secret. Kim's series does the opposite -- examples plus tools, so readers can run the
+  probabilities themselves. An open psychohistory.
+- Possible epigraph or closing image for S3 (and a nod to one trilogy from another).
+- Verify: Foundation (1951), Foundation and Empire (1952), Second Foundation (1953);
+  details of the Time Vault and the Mule.
+
+### Kim's rulings at the close (2026-11-25)
+
+- **Keep the Asimov/Foundation image as a CLOSING IDEA for S3.** ("Fun? Yes!")
+- **Current data as method:** Kim particularly likes that this week's data showed
+  fundamental ways to look at current data -- "a reminder that there are important
+  things happening all the time."
+
 ## Next
 
 **2026-10-30: focus returned to the trilogy -- MRC round three (above).** Context moves the boundary
