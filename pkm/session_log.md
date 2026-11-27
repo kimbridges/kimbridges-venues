@@ -11,6 +11,25 @@ Mechanism 4.
 
 ---
 
+## 2026-11-26 -- S3 FORMAL INTAKE; STORIES; VINTAGE; JAPAN'S TWO FRONTS (MAPS AND ANIMATIONS)
+
+**Date / duration:** 2026-11-26, with breaks, to 15:20 HST.
+
+**Active focus at start:** S3 at capture (confirmed); PubMaps 0/0/0.
+
+**What was done:**
+- **S3 made a formal project:** `proj_S3.md` created; index row and Active Focus updated.
+- **Kim's stories (verbatim, for joint editing):** Lieth moves near the start; ch.1 phenology chasing; ch.10 Iniki with Mike Huddleston, Laupahoehoe and the 1946 tsunami, the Doak Cox catalog ('a little number times a big number'); ch.8 the childhood forest-fire memory.
+- **Vintage reviewed:** three answers to the year (celebrate, hedge, erase); Kim's statement that a vintage is a summary of a season's weather -- 'a strong example of the middle time zone.'
+- **Japan's fronts built** (`Projects/S3/figures/japan_fronts/`), from JMA phenology (102 stations, 1953-2025): `japan_two_fronts.png` (latitude-date plane; fronts moving apart), `japan_maple_stripes.png` (station x year anomalies; national trend +2.7 d/decade), `japan_front_maps.png` (fronts on terrain; maples later at 72 of 77 stations), `japan_maple_front` and `japan_cherry_front` MP4 + GIF; scripts `japan_fronts.R`, `japan_front_maps.R`, `japan_maple_animation.R` (event = maple or cherry).
+- **Kim's ruling-level statement (verbatim in ideas file):** the two seasonal fronts integrate events over many weeks -- 'just the sort of thing that fits in the middle area. We've got a powerful addition with this work.'
+- **Interpretive 'why' notes filed** for the text (warm coasts, elevation, the late southern end and winter chilling, two triggers, Kyoto basin, Sea of Japan side, Hokkaido species), each tagged [data] or [verify].
+- **Correction:** the first `japan_two_fronts.png` labeled Kagoshima (47827) as Fukuoka; fixed, both labeled.
+
+**Open / next:** Kim: 'rapidly closing in on a final document.' More stories (ch.2 operations, ch.4, ch.6); the graphics process; verify the [verify] notes; remaining gaps (fire figure, ch.2 implementations on a real record, drought and the forward direction, ch.10 figures). Side: Kim and Nancy taking Peter McRoy to Thanksgiving dinner (Bob Jones, sea otters). C:\temp scratch (s3_koyo_20261126, cherry_20261125) can be cleared.
+
+---
+
 ## 2026-11-25 (evening) -- S3 ROUND-THREE OUTLINE: DRAFTED, RULED, REVISED; FIRST CHAPTER STORIES
 
 **Date / duration:** 19:55-21:25 HST.

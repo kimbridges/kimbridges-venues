@@ -1,5 +1,8 @@
 # Focus History and Change Log
 
+<!-- superseded 2026-11-26 (S3 formal intake: proj_S3.md created) -->
+**Active Focus (2026-11-18): S3 -- *Spells, Stretches and Snaps*, at CAPTURE (round three). Opened by Kim with new S3 ideas after he paused Kaka'ako Buildings. Ideas go to `ideas_three_documents.md`; no proj file yet (formal intake when the shape holds). The superseded Kaka'ako block is in `logs/focus_history.md`.**
+
 <!-- superseded 2026-11-18 (Kim paused Kaka'ako Buildings at intake; focus -> S3 capture, round three) -->
 **Active Focus (2026-11-06): KAKA'AKO BUILDINGS -- the building-murals story (`G:\My Drive\kimbridges-stories\underway\Kakaako_Buildings\`, ~71 files / 867 MB of mural images; no proj file yet). Set by Kim at the MRC close; an exhibit of building murals is coming up (date to confirm). NOW: INTAKE.**
 

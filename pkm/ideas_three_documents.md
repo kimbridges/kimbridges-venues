@@ -2692,6 +2692,206 @@ subject to our (joint) editing." Kept verbatim below (typos included) for the jo
   by everyone under the flight path -- a snap (the reversal) seen at home. Fits ch.7's Kona-low
   test. Verify: HNL runway configurations under trades vs Kona winds.
 
+## S3 -- Kim's chapter stories, second batch (2026-11-26; drafts for joint editing)
+
+### Kim's ruling -- move the Lieth story near the start
+
+> I'd move the Lieth story close to the start. Those were comments out of the blue. A famous
+> person making a statement that was clearly close to his heart. If toward the end of your
+> career, you had just a few minutes in which to impart advice to a beginner in your discipline,
+> what would you say? That's the way I felt with Lieth's comment. It's the sort of thing you
+> don't forget. And he was right, but I only discovered that years later.
+
+### For chapter 1, Two ends and a gap (Kim, verbatim)
+
+> Nancy and I have chased phenological events, and we've been successful more often than not.
+> Japan to see the Fall colors in Kyoto (there is a series of travel reports in the stories
+> folder about one of those trips). Washington, DC, to see the Cherry Blossoms at the Tidal
+> Basin. We missed twice and hit it right on once. Many trips to The Flower Fields in Southern
+> California to see the Ranunculus flowering. This produced several stories about these plants.
+> The botany has generally come first in this travel; it's not a secondary reason for the trip.
+> I've published a bit with phenological observations. Seagrass studies. But I was the data
+> analyst, not the field observer.
+
+### For chapter 10, Frozen categories and rare events (Kim, verbatim)
+
+> A colleague from Texas, Mike Huddleston, has family on Kaua`i. They were hit hard by Iniki.
+> Like so many families, they had lost power and generators had sold out everywhere in the
+> islands. Mike flew in with a generator he brought from Texas. I went with him to Kaua`i. We
+> were there toward the end of the first week after the hurricane had passed over the island.
+> Mike and I knew a lot of special places where we'd taken students on field trips. We revisited
+> many of these to see the aftermath of the storm. The tall pines had been stripped of their
+> branches in so many areas. Even now, well after that 1992 event, I can see the pattern in the
+> branches of the older trees. It's an historical reminder stored in the vegetation.
+
+> When Nancy and I visit Laupahoehoe, a sparsely settled area north of Hilo, different memories
+> surface. For me, it was where I first joined the staff in a Peace Corps training project. A
+> positive memory as this was my first "professional" job. For Nancy, the place holds a different
+> memory. It was here that a relative was lost to a tsunami in 1946. We travel to Laupahoehoe
+> Point to visit the plaque commemorating the event and the lives lost most times we're in the
+> area. There aren't many places where this has happened in Hawai`i's recorded history. Not so
+> for other places across the Pacific.
+
+> Doak Cox, then the scientist in charge of the Preliminary Catalog of Tsunamis Occurring in the
+> Pacific Ocean (1967) asked me to help him by converting the paper version to digital records. I
+> spent many evenings going through the hundreds of entries and typing the data into a structured
+> file. My recollection is that events were rare in any one location and their occurrence
+> overall. The catalog covers the long timespan, starting in 173 AD. This is an example of the
+> Darwinian idea that a little number times a big number is always a big number. Over the long
+> history of infrequent tsunamis, there have been a lot of events.
+
+### For chapter 8, Forward and backward (Kim, verbatim)
+
+> I don't think you can forget the sight of a burning forest, especially if you are close enough
+> to appreciate the immense breadth of the flames as they stretch over the hills and through the
+> valleys. I can still picture a past event. I was quite young and living in Southern California.
+> I didn't really understand what was happening. But it left me with a strong visual memory. It's
+> one that still fills me with fear.
+
+- (Kim: "That's all I have time for right now.")
+
+### Claude's notes for the joint edit (NOT ruled)
+
+- **Lieth near the start:** ch.1 could open with it -- the advice that took years to understand is
+  itself a middle-scale lesson (understanding that arrives over a career, not a day).
+- **Ch.1 vs ch.5 overlap:** the phenology chases are the ch.1 hook (planning trips means living in
+  the middle scale; botany first); ch.5 keeps the detail (sentinel tree, the 2018 miss, fireweed).
+- **Iniki's pines** are a recorder (ch.5) and an external memory (ch.10): the storm written in
+  branch architecture, like Noguchi's trade winds -- a snap stored by a tree.
+- **Laupahoehoe** holds both scales in one place: Kim's first professional job and the 1946
+  tsunami -- personal memory vs community memory; the plaque is an external memory.
+- **The tsunami catalog** serves ch.10 (rare in any one place, many over the long span) and ch.9
+  (friction: evenings of typing a paper catalog into a structured file). The 'little number times
+  a big number' line is a strong one for ch.10.
+- **The fire memory** gives ch.8's forward direction a felt opening: fear as the memory that
+  persists -- an external memory carried inside a person.
+
+### Verify before writing
+
+- 1946 tsunami (April 1; Aleutian source) and Laupahoehoe Point losses; Cox's 1967 catalog
+  (publisher, entry count, 173 AD start); the source and wording of the Darwin idea; Iniki
+  (Sept 11, 1992) on Kaua'i; Kim's seagrass phenology publications; the Kyoto travel reports and
+  Flower Fields stories on kimbridges-stories.
+
+## S3 -- the vintage stories reviewed for chapter 8 (2026-11-26; Claude, at Kim's request)
+
+_Kim's three wine stories on kimbridges-stories (flipbook PDFs read in full text):_
+- *Finding Fine Wine* (Napa, 2018-06-24; 70 pp) -- the richest for S3.
+- *Bordeaux* (Oct 2019 trip; published 2020-04-12; 136 pp) -- the vintage as identity.
+- *Bordeaux 2* (2023-02-01; 88 pp) -- little for S3 (harvested countryside at season's end; rain).
+
+### What the stories already hold (from Kim's text)
+
+- **Napa, Hendry Ranch:** George Hendry -- "we know that weather and tastes change ... A year might be
+  hot or cold, wet or dry. Each year is different. You can't predict people's preferences or the
+  weather." The Hendry solution: plant many varieties -- "spread your bets." 203 acres, eleven
+  varieties, 49 blocks; staggered ripening spreads work across the seasons, so labor is
+  year-round. Tastes as a second variable: the film *Sideways* moved buyers from Merlot to Pinot
+  Noir; Zinfandel, once dominant, now on 3% of the land.
+- **Napa, Palmaz:** the opposite strategy -- aerial imagery twice a week drives irrigation; an
+  information system tracks every block and barrel; production deliberately ADDS variability so
+  that blending can "smooth out the effects of a wet or dry, hot or cold year." Aim: consistent
+  wines, year after year.
+- **Bordeaux:** arrived just after the 2019 harvest ("the harvest finished on Friday"; a high
+  yield; a lunch for the pickers); tastings by vintage (2012, 2014); a highly rated vintage at a
+  restaurant; Mouton Rothschild's eleven vintages, each with an artist's label -- the year as
+  identity. The trip itself ran through rain fronts: weather-end snaps beside a middle-scale
+  product.
+
+### Claude (NOT ruled): the vintage section of chapter 8 -- three answers to the year
+
+1. **Celebrate it (Bordeaux):** the vintage names the year; quality is judged backward from the
+   growing season (Ashenfelter's weather equation as the formal version). The year is the product.
+2. **Hedge it (Hendry):** diversify so some varieties succeed whatever the year; staggered
+   harvests also steady the labor force. The portfolio answer.
+3. **Erase it (Palmaz):** measure intensively and blend the variation away. The year is a
+   nuisance to remove.
+- All three are responses to the same middle-scale fact ("each year is different"); together
+  they fill the vintage worked group with Kim's own fieldwork, in his own published words.
+- Beyond the environment: tastes change too (*Sideways*) -- a market stretch beside a weather one.
+- Personal hook: Kim was there for the end of the 2019 harvest -- the vintage's boundary, seen.
+
+### Verify before writing
+
+- Ashenfelter's Bordeaux equation (inputs, date); the 2019 Bordeaux vintage's character; Hendry
+  and Palmaz figures as of 2018 (from Kim's story; may have changed).
+
+### Kim -- what a vintage is (2026-11-26)
+
+> Traditionally, a vintage is a summary of the weather for a season. The grapes in the vineyard are
+> genetically identical (a "variety") and each plant, if growing in the same environment, is
+> responding the same way as all the other individual plants. It is this shared response that gives
+> the character and sums the key weather events of the season. A characteristic vintage may be
+> shared across many of the vineyards in the region. People remember, and pay a premium, for
+> special vintages. This is a strong example of the middle time zone.
+
+### Claude (NOT ruled)
+
+- **A vineyard is a field of sentinels.** Clonal vines remove genetic variation, so the response
+  reads the weather alone -- the same logic as the cloned-lilac networks and the DC sentinel tree
+  (ch.5). The vintage is the summed reading of thousands of identical instruments.
+- **The vintage is an accumulation (ch.4) and a recorder (ch.5) in one:** the season's key events
+  summed into a product that keeps -- a bottle as an archive of one growing season.
+- **Shared across a region:** the vintage is a regional signal, like the envelope's year-in-context
+  (ch.6).
+- **Remembered and priced:** the premium is a memory with a price, like insurance rates in ch.10 --
+  but here the market remembers a good season rather than a disaster.
+- Opening line candidate for the vintage section: "a vintage is a summary of the weather for a season."
+
+## S3 visualization: Japan's two fronts (2026-11-26)
+
+Kim (11-26): wants a visualization that integrates the spatial and temporal aspects of Japan's fall foliage (koyo): the north-south axis, yearly media predictions, variability between years and places; culturally important (*The Garden at Nanzen-in Temple*); planted maples on hillsides.
+
+Built (Claude, NOT ruled), from JMA phenological observations (designated sample trees, 1953-2025; 102 stations), in `S3/figures/japan_fronts/`:
+- `japan_two_fronts.png`. A: the latitude-date plane; cherry flowering and maple coloring as two fronts, station medians with 10-90% bars, the season between the fronts shaded. B: fronts 1961-1990 vs 1996-2025.
+- `japan_maple_stripes.png`. C: station x year anomaly stripes (66 stations, south to north). D: national median anomaly by year.
+- `japan_fronts.R` (`jf_get()` downloads and parses any JMA phenology CSV with station coordinates); `jma_phenology_work.rds`.
+
+Results: cherry front moves north ~25 km/day, maple front south ~29 km/day (ginkgo ~39). Year-to-year spread about two weeks at a station. Season between the fronts: ~246 days at 35N, ~180 at 43N. At 36N the cherry front now arrives 5 days earlier and maple 10 days later (15 more days between them). Maple trend +2.7 d/decade, cherry -1.1 (JMA publishes +3.0, -1.3). Latest maple years: 2024, 2020, 2011.
+
+Fit: ch.5 (the living calendar; a national network of sentinel trees, a direct echo of Kim's DC sentinel tree) and ch.6 (this year against the envelope; panel D is the envelope for a nation). The two fronts make 'weather moves at 30 mph' concrete at a slower speed: a front of color moving ~1 mph. Possible extensions (NOT ruled): isochrone map of the front, ginkgo, elevation (koyo descends the mountains).
+
+### Japan front maps (2026-11-26, later)
+
+Kim: 'This is getting at what I'm interested in. Bravo! Let's move forward with the Japan map. That may reveal even more.'
+
+Built (Claude, NOT ruled): `japan_front_maps.png` + `japan_front_maps.R` (any JMA phenomenon; surface = regression on latitude, longitude, elevation + thin-plate spline of residuals, on a 30" DEM). A: cherry front in 10-day bands. B: maple front. C: change in maple date per station, 1996-2025 vs 1961-1990.
+
+What the map adds beyond the latitude plot: the maple front is not a clean north-south line; it follows terrain, coloring the mountains first and descending (3.2 days earlier per 100 m; cherry 1.2 days later per 100 m). The Pacific coastal plains (Tokyo, Kanto) are last for maple and first for cherry; Tokyo blooms in the same band as Fukuoka. Maples turn later at 72 of 77 stations (median +9.5 days). Caveat: stations reach only 612 m; above 1000 m the surface is held, so the mountains are understated.
+
+### Maple front animation (2026-11-26, later)
+
+Kim: 'I can easily picture places I know, such as Kyoto. An animation of the maple front would show the pattern in a very interesting way.'
+
+Built (Claude, NOT ruled): `japan_maple_front.mp4` / `.gif` + `japan_maple_animation.R` (any JMA event). Sep 15 to Dec 31, one frame per day of the 1991-2020 normal, over hillshaded terrain; stages green, turning, peak (JMA's date), fading, bare (stages around the date schematic). It shows the color starting on the Hokkaido and Tohoku peaks, pouring down the mountain flanks into the valleys, and reaching the Kanto plain and the coasts last; Kyoto's basin stays green while the hills around it turn. A moving example of 'the moving landscape' (ch.7) as well as ch.5.
+
+### Cherry front animation (2026-11-26, later)
+
+Kim: 'We really need to do this for the cherry blossoms, too. The animation is really, really interesting.'
+
+Built (Claude, NOT ruled): `japan_cherry_front.mp4` / `.gif`, Mar 1 to Jun 4, same script (`jma_anim_frames(..., event = "cherry")`); stages bare branches, buds, first flowers (JMA's date), full bloom, petal fall, new leaves (schematic around the date). The pair is a mirror: the cherry front climbs north and uphill, warm coasts and cities first (Tokyo with Fukuoka), mountains last; the maple front comes south and downhill, mountains first, warm coasts last. Same terrain, same warmth, opposite directions. Pairs well as one spread in ch.5 (or the moving landscape, ch.7).
+
+### Kim on why the Japan fronts matter (2026-11-26)
+
+Kim (verbatim): 'Absolutely amazing. I think the importance, besides better understanding these events, is that we're working in that middle area. The nightly (news) forecast looks narrowly at what's happening now (back to the role of prediction). This set of two seasonal phenomena integrates events over many weeks, just the sort of thing that fits in the middle area. We've got a powerful addition with this work.'
+
+### Why? Interpretive notes for the text on the Japan fronts (2026-11-26)
+
+Kim: 'We need to make sure your observations of collateral information, like the impact of ocean temperatures, is kept for the text. The graphic causes us to ask "why?" You've provided some of the answer.'
+
+Claude's observations (NOT ruled). [data] = checked in the JMA records this session; [verify] = the explanation is standard but needs a source before it goes in the text.
+
+1. Warm coasts. The Pacific coastal plains (Tokyo-Kanto, the Kii and Shikoku coasts) are among the first to bloom and the last to color. Tokyo's cherry normal (Mar 23) matches Fukuoka's (Mar 22), 900 km southwest; Tokyo's maple (Nov 28) is a month later than Sapporo's (Oct 28). [data] Likely causes: the warm Kuroshio current along the Pacific side, and the urban heat island of the large cities. [verify]
+2. Elevation. Each 100 m delays cherry flowering ~1.2 days and brings maple color ~3.2 days earlier (regression on 1991-2020 station normals; stations reach only 612 m). [data] Air cools with height (~0.6 C per 100 m), so spring warmth arrives later and autumn chill earlier up the slope. [verify] This is why the maple front runs downhill and the cherry front uphill: the same terrain, opposite directions.
+3. The southern end blooms late. Southernmost Kyushu and the warm islands are later than latitude predicts: Kagoshima Mar 27, Tanegashima Mar 28, Yakushima Mar 25, Hachijo-jima Mar 31, against Fukuoka Mar 22. [data] Explanation: Somei-yoshino needs winter chilling to break bud dormancy; where winters are too mild, chilling is incomplete and flowering is delayed (warm winters can push it later still). [verify; JMA has discussed this] A strong 'why' example: warmer is not always earlier.
+4. Two different triggers. Cherry flowering is mainly spring warmth adding up after dormancy (accumulation, ch.4); maple coloring follows autumn cooling (cool nights, shortening days). [verify] So warming moves the two fronts by different amounts: maple +2.7 days/decade later, cherry 1.1 days/decade earlier. [data] The autumn front is the more sensitive indicator.
+5. The maples turn later at 72 of 77 stations (1996-2025 vs 1961-1990; median +9.5 days). [data] A national, not regional, signal.
+6. Kyoto. The basin is late for maple (normal Dec 6, later than Tokyo's Nov 28) while the surrounding hills turn weeks earlier; in the animation the hills ring the green city. [data] Basin heat and the city likely hold the floor warm. [verify] Fits Kim's Nanzen-in story (temple on the eastern hills).
+7. Sea of Japan side. Cherry blooms later on the Sea of Japan side than on the Pacific side at the same latitude (visible in the cherry map). [data, by eye] Likely the heavy winter snow and colder spring on that side. [verify]
+8. Hokkaido. North and east Hokkaido observe other cherry species (Ezo-yamazakura, Chishima-zakura), so the front there joins two different trees. [JMA documentation; verify wording]
+
+Correction: in the first draft of `japan_two_fronts.png` the label 'Fukuoka' sat on station 47827, which is Kagoshima. Fixed 2026-11-26; both cities are now labeled.
+
 ## Next
 
 **2026-10-30: focus returned to the trilogy -- MRC round three (above).** Context moves the boundary
