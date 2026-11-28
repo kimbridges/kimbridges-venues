@@ -11,6 +11,24 @@ Mechanism 4.
 
 ---
 
+## 2026-11-27 -- S3: SOURCES, CH.2 OPERATIONS, IRP TRANSCRIPTION, ACCUMULATION, FIRE, LIVE EL NINO CALL, HYDRO-ILLOGICAL, TREE RINGS, PETRUS
+
+**Date / duration:** 2026-11-27, with breaks, to 22:15 HST.
+
+**Active focus at start:** S3 (confirmed).
+
+**What was done (all in `Projects/S3/figures/`, each script listed in `proj_S3.md`, each result and Kim's words filed in `ideas_three_documents.md`):**
+- **Sources** for the 'why' notes and the remaining items found and filed.
+- **Ch.2 operations:** five dry-spell implementations on HNL 1974-2026 (`dry_spells/`), the station-move test, airport vs Manoa. RULED: the spell/stretch mapping accepted -- Kim: 'Giving definitions a practical computations basis is part of my core belief.'
+- **Kim's stories (verbatim):** across the street; Waialeale-Barking Sands; Hilo to the park; the 2026 Super El Nino year; Tree down in Volcano (photo, 2026-03-14); the 1969 '100-year' storms; the Mauna Loa (Strip) Road; Butler, Darwin's worms, tree planting; the 1972 blind glass of wine.
+- **Figures built:** hurricane tracks by ENSO; the folk-odds envelope; return periods; IRP weekly rain 1971-75 transcribed from TR22 S1/TR38/TR59/TR70 (847 records, self-checked) with calendar vs event years (RULED: emphasize event years); Mauna Loa CO2 at four sampling intervals; fire return interval (model + LANDFIRE vs human spans); the LIVE HNL wet-season figure with a FROZEN forward call (`drought_live/`, rerun `live_update()` to Apr 30, 2027); the hydro-illogical cycle measured (apathy gap, HNL 1975-2026); tree rings (Mesa Verde Douglas-fir, dplR co021: measuring not counting, 22 locally absent rings, event-year r 0.78 vs 0.27); Petrus on/off vintages (Liv-ex) with Bordeaux weather.
+- **Rulings:** TR22 temperature tables dropped; groundwater extension deferred; one estate (Petrus) not three; dashboard version of the live figure PARKED for later.
+- **Fix:** the anchor-count check (`sum(gregexpr()[[1]] > 0) == 1`) replaced a test that passed on no match; all proj_S3 entries audited.
+
+**Open / next:** WRITING BEGINS 2026-11-28 (Kim). Suggested pilot chapter: ch.2 (or ch.4), to set voice, Quarto layout and the drafting split. Also: verify lists; rerun `live_update()` periodically; Island Ecosystems Ch.9 scan when the copy arrives. C:\temp scratch folders (cherry_20261125, drought_live, treerings) can be cleared.
+
+---
+
 ## 2026-11-26 -- S3 FORMAL INTAKE; STORIES; VINTAGE; JAPAN'S TWO FRONTS (MAPS AND ANIMATIONS)
 
 **Date / duration:** 2026-11-26, with breaks, to 15:20 HST.

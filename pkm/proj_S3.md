@@ -43,6 +43,18 @@ graphics.
 - figures/japan_fronts/japan_fronts.R -- JMA phenology: cherry and maple fronts, anomaly stripes; two PNGs (ch.5, ch.6)
 - figures/japan_fronts/japan_front_maps.R -- maps of the fronts on terrain + change map (ch.5, ch.6)
 - figures/japan_fronts/japan_maple_animation.R -- maple and cherry front animations (event = "maple" or "cherry"), MP4 + GIF (ch.5, ch.7)
+- figures/dry_spells/dry_spells.R -- five implementations of 'dry spell' (one function each) + figures + station-move test; HNL 1974-2026; hnl_vs_manoa.R, airport vs Manoa 1983-2022 (ch.2)
+- figures/hurricanes/hawaii_hurricanes.R -- tracks near Hawai'i, El Nino vs other seasons, 2026 against both (ch.6, ch.10)
+- figures/envelope_folk/envelope_folk.R -- this year against the envelope, bands labeled with the folk words for the odds; HNL water year 2025-26 (ch.6)
+- figures/return_periods/return_periods.R -- what 'a 100-year event' means over a span and across many gauges (ch.10)
+- figures/irp_1973/ -- Kim's IRP weekly rain Jan 1971-Jun 1975 (TR22 S1, TR38, TR59, TR70); irp_years_fig.R, transcribed and checked; K54 Kilauea Rain Forest + M42/M54/M66 Mauna Loa Road; irp_rain_fig.R (ch.9, ch.2)
+- figures/irp_1973/irp_eventyear_fig.R -- calendar year vs event year (July start), same IRP rain (ch.3)
+- figures/accumulation/co2_intervals.R -- Mauna Loa CO2 at four sampling intervals; 'a little number times a big number' (ch.4)
+- figures/fire/fire_return.R -- fire return interval as accumulation: fire_sim() model (same weather, forest vs grass regrowth), fire_fig(); LANDFIRE regimes vs human spans (ch.4/ch.10)
+- figures/drought_live/hnl_live.R -- LIVE figure, HNL wet season 2026-27: live_update() refreshes GHCN-D + ONI and redraws; forward call FROZEN in forward_call_wy2027.rds (made 2026-11-27); judge after Apr 30, 2027 (ch.8 forward/backward; drought)
+- figures/hydro_illogical/hydro_illogical.R -- the hydro-illogical cycle measured: hi_daily(), hi_episodes() (drought = 12-mo rain < 70% of median 90+ days; apathy gap = first 1-inch day after the low -> back to median), hi_fig(); HNL 1975-2026 (ch.8/ch.10)
+- figures/tree_rings/tree_rings.R -- measuring rings, not counting: tr_prep(), tr_fig(); Schulman Old Tree No. 1, Mesa Verde (dplR co021) vs Mesa Verde NP gauge; cores to measured widths, crossdating, locally absent rings, index vs Oct-Jun rain; tropics limit (ch.5/ch.3)
+- figures/vintage/petrus_vintage.R -- the market's operation: Petrus on/off vintages (Liv-ex prices 2008-2023, petrus_livex_2025.csv) with Bordeaux-Merignac weather (GHCN-D FR000007510, Ashenfelter variables); pv_read(), pv_weather(), pv_fig() (ch.8 backward)
 
 ## Related Projects
 - proj_MRC.md -- trilogy document 1 (value); published; its chart rule and visual vocabulary carry over
@@ -71,8 +83,9 @@ gifski installed for the S3 figures (2026-11-25). Venue: kimbridges-documents.
    Still thin: ch.2's operations, ch.4, ch.6. Vintage side of ch.8 now drawn from Kim's three wine stories
    (2026-11-26: celebrate / hedge / erase the year -- Bordeaux, Hendry, Palmaz).
 2. Work through the process of getting good graphics (Kim).
-3. Open gaps: fire and vintage worked groups (ch.8); ch.2's five implementations on a real record; drought and the
-   forward direction; ch.10's figures (Hawai'i hurricane-track map; chance over a mortgage vs return period).
+3. Open gaps (updated 2026-11-27): CLOSED -- ch.2's five implementations (ruled accepted), drought and the forward direction
+   (live figure + hydro-illogical), fire (ch.4/ch.8), ch.10 figures. vintage figure DONE (Petrus, 2026-11-27); tree-ring group DONE (2026-11-27). STILL OPEN --
+   rerun hnl_live periodically to Apr 30, 2027.
 4. Verify lists in ideas_three_documents.md.
 
 ## Collaborators / Dependencies

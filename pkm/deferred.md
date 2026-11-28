@@ -1509,6 +1509,8 @@ document. *Occasion:* the next deploy to this collection.
 
 ### ⚠ FINDING TO FILE (2026-11-25) -- device_commit_files ADDS A C2PA `caBX` CHUNK TO PNGs
 
+- 2026-11-27: SAME FOR JPEG. A committed .jpg arrived 5,771 bytes larger -- one APP11 (0xFFEB) segment (C2PA/JUMBF). Stripping APP11 segments restored the original md5 exactly (Tree_down_in_Volcano.jpg).
+
 - Five files committed from the cloud container to `C:\temp` via the device bridge: the
   `.Rmd` arrived byte-identical; each PNG arrived exactly 5,770 bytes larger -- one
   `caBX` chunk (C2PA content credentials, 5,758 bytes + 12-byte chunk header) inserted.
